@@ -1,0 +1,16 @@
+{
+  "table": "gimmickprocess",
+  "build_id": "24969282",
+  "record_size": 96,
+  "allow_trailing": true,
+  "observed_record_sizes": [96, 104],
+  "notes": "The machine ID list has one or two members, shifting later input/output fields by eight bytes. Only the stable prefix is declarative; the process decoder reads the counted list.",
+  "fields": [
+    {"name": "id", "offset": 0, "kind": "u32", "required": true, "evidence": [{"record_id": 1000, "value": 1000}, {"record_id": 1001, "value": 1001}]},
+    {"name": "internal_string_offset", "offset": 8, "kind": "u32", "required": true, "evidence": [{"record_id": 1000, "value": 0}, {"record_id": 1001, "value": 67}]},
+    {"name": "internal_id_length", "offset": 12, "kind": "u32", "required": true, "evidence": [{"record_id": 1000, "value": 38}, {"record_id": 1001, "value": 34}]},
+    {"name": "machine_count", "offset": 24, "kind": "u32", "required": true, "evidence": [{"record_id": 1000, "value": 2}, {"record_id": 1001, "value": 2}]},
+    {"name": "first_machine_item_id", "offset": 28, "kind": "u32", "required": true, "evidence": [{"record_id": 1000, "value": 240010000}, {"record_id": 1001, "value": 240010000}]}
+  ]
+}
+

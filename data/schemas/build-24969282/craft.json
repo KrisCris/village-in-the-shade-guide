@@ -1,0 +1,17 @@
+{
+  "table": "craft",
+  "build_id": "24969282",
+  "record_size": 148,
+  "observed_record_sizes": [148],
+  "fields": [
+    {"name": "id", "offset": 0, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 1}, {"record_id": 2, "value": 2}]},
+    {"name": "internal_string_offset", "offset": 8, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 0}, {"record_id": 2, "value": 33}]},
+    {"name": "internal_id_length", "offset": 12, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 22}, {"record_id": 2, "value": 23}]},
+    {"name": "machine_item_id", "offset": 24, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 240140000}, {"record_id": 2, "value": 240140000}]},
+    {"name": "input_1_item_id", "offset": 32, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 230000}, {"record_id": 2, "value": 230020}]},
+    {"name": "input_1_quantity", "offset": 40, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 1}, {"record_id": 2, "value": 1}]},
+    {"name": "output_item_id", "offset": 92, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 21000}, {"record_id": 2, "value": 21010}]},
+    {"name": "output_quantity", "offset": 100, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 2}, {"record_id": 2, "value": 2}]}
+  ]
+}
+

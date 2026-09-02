@@ -1,0 +1,17 @@
+{
+  "table": "item",
+  "build_id": "24969282",
+  "record_size": 496,
+  "allow_trailing": true,
+  "observed_record_sizes": [496, 504, 512, 520, 528, 536, 544, 560],
+  "notes": "All verified business fields are inside the 496-byte common prefix. Longer records contain optional trailing structures.",
+  "fields": [
+    {"name": "id", "offset": 0, "kind": "u32", "required": true, "evidence": [{"record_id": 10000, "value": 10000}, {"record_id": 100010, "value": 100010}]},
+    {"name": "internal_string_offset", "offset": 8, "kind": "u32", "required": true, "evidence": [{"record_id": 10000, "value": 0}, {"record_id": 10010, "value": 537}]},
+    {"name": "internal_id_length", "offset": 12, "kind": "u32", "required": true, "evidence": [{"record_id": 10000, "value": 22}, {"record_id": 10010, "value": 18}]},
+    {"name": "related_item_id", "offset": 24, "kind": "u32", "required": false, "evidence": [{"record_id": 10000, "value": 100000}, {"record_id": 10010, "value": 100010}]},
+    {"name": "buy_price", "offset": 292, "kind": "u32", "required": false, "evidence": [{"record_id": 10010, "value": 40}, {"record_id": 10350, "value": 90}]},
+    {"name": "sell_price", "offset": 296, "kind": "u32", "required": true, "evidence": [{"record_id": 100010, "value": 63}, {"record_id": 200140, "value": 32}]}
+  ]
+}
+

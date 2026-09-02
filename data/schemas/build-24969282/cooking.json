@@ -1,0 +1,16 @@
+{
+  "table": "cooking",
+  "build_id": "24969282",
+  "record_size": 176,
+  "observed_record_sizes": [176],
+  "fields": [
+    {"name": "id", "offset": 0, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 1}, {"record_id": 2, "value": 2}]},
+    {"name": "internal_string_offset", "offset": 8, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 0}, {"record_id": 2, "value": 31}]},
+    {"name": "internal_id_length", "offset": 12, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 14}, {"record_id": 2, "value": 14}]},
+    {"name": "output_item_id", "offset": 24, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 60000}, {"record_id": 2, "value": 60010}]},
+    {"name": "output_quantity", "offset": 32, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 1}, {"record_id": 2, "value": 1}]},
+    {"name": "input_1_item_id", "offset": 52, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 140020}, {"record_id": 2, "value": 130040}]},
+    {"name": "input_1_quantity", "offset": 68, "kind": "u32", "required": true, "evidence": [{"record_id": 1, "value": 1}, {"record_id": 2, "value": 2}]}
+  ]
+}
+
