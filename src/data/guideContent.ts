@@ -1,5 +1,6 @@
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
+import guideTranslations from '../../data/sources/guide-translations.json';
 
 export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string };
 
@@ -28,7 +29,7 @@ const exactTitles: Record<string, string> = {
 };
 
 const names: Record<string, string> = { リン: '林', コマコ: '驹子', シロージ: '四郎治', キスケ: '木助', ユータ: '裕太', サザンカ: '茶梅', ロッカク: '六角', ヨウ: '洋', ハスミ: '莲实', スミレ: '堇怜', トバリ: '帷', コンノ: '今野', チナナ: '琪娜娜', ナゴ: '名护' };
-const anomaly: Record<string, string> = { '付喪達磨': '付丧达摩', '牛お化け': '牛怪', '天狗': '天狗', '風神雷神': '风神雷神', '百目': '百目', '提灯お化け': '灯笼怪', '野槌': '野槌', '唐傘お化け': '唐伞怪', '雪女': '雪女', 'ヅ主': '毛怪“ヅ主”' };
+const anomaly: Record<string, string> = { '付喪達磨': '付丧达摩', '牛お化け': '牛怪', '天狗': '天狗', '風神雷神': '风神雷神', '百目': '百目', '提灯お化け': '灯笼怪', '野槌': '野槌', '唐傘お化け': '唐伞怪', '雪女': '雪女', 'ヅ主': '毛怪首领' };
 
 const exactHeadings: Record<string, string> = {
   '序盤の効率的な進め方': '前期高效推进顺序', '主人公の見た目を決める': '确定主角外观', '遊ぶゲームモードを選択する': '选择游戏模式',
@@ -57,37 +58,14 @@ const exactHeadings: Record<string, string> = {
 
 function chineseTitle(title: string) {
   if (exactTitles[title]) return exactTitles[title];
-  if (names[title]) return `${names[title]}（${title}）角色指南`;
+  if (names[title]) return `${names[title]}角色指南`;
   if (anomaly[title]) return `${anomaly[title]}：出现条件与应对方法`;
-  return title
-    .replace('春月前半', '春月上半').replace('春月後半', '春月下半').replace('夏月前半', '夏月上半').replace('夏月後半', '夏月下半')
-    .replace('秋月前半', '秋月上半').replace('秋月後半', '秋月下半').replace('冬月前半', '冬月上半').replace('冬月後半', '冬月下半')
-    .replace('掟の', '戒律').replace(/[()]/g, (c) => c === '(' ? '（' : '）').replace('縁日', '庙会').replace('年末祭', '年末祭');
+  return guideTranslations[title as keyof typeof guideTranslations] ?? title;
 }
-
-const replacements: Array<[RegExp, string]> = [
-  [/ほの暮しの庭 関連記事/g, '相关攻略'], [/サイト TOP/g, '攻略首页'], [/ストーリーチャート/g, '主线流程'], [/クリア後/g, '通关后'],
-  [/簡易チャート/g, '简明流程'], [/攻略チャート/g, '详细流程'], [/出現条件/g, '出现条件'], [/倒し方/g, '击败方法'], [/対処方法|対処法/g, '应对方法'],
-  [/入手方法/g, '获取方法'], [/使い道/g, '用途'], [/解放条件/g, '解锁条件'], [/入手アイテム/g, '可获得物品'], [/おすすめ/g, '推荐'], [/一覧/g, '一览'],
-  [/のやり方/g, '的方法'], [/の上げ方/g, '的提升方法'], [/最速解放手順/g, '最快解锁流程'], [/効率的な/g, '高效'], [/種類/g, '种类'], [/方法/g, '方法'],
-  [/春月前半/g, '春月上半'], [/春月後半/g, '春月下半'], [/夏月前半/g, '夏月上半'], [/夏月後半/g, '夏月下半'], [/秋月前半/g, '秋月上半'], [/秋月後半/g, '秋月下半'], [/冬月前半/g, '冬月上半'], [/冬月後半/g, '冬月下半'],
-  [/掟の/g, '戒律'], [/自由時間/g, '自由活动'], [/朝$/g, '早晨'], [/夕方$/g, '傍晚'], [/深夜$/g, '深夜'], [/翌日以降/g, '次日以后'], [/翌日/g, '次日'],
-  [/イベント発生/g, '触发事件'], [/家を訪れる/g, '来到家中'], [/へ向かう|に行く/g, '：前往'], [/と話す|と会話する/g, '：与其交谈'], [/に報告する/g, '：完成后汇报'],
-  [/を入手する/g, '：获得'], [/を作成する|を作る/g, '：制作'], [/を集める/g, '：收集'], [/を捕まえる/g, '：捕捉'], [/を釣る/g, '：钓到'], [/を届ける/g, '：交付'], [/を倒す/g, '：击败'], [/を調べる/g, '：调查'], [/を進む/g, '：继续前进'], [/を探す/g, '：寻找'], [/を追いかける/g, '：追赶'],
-  [/を選択する|を選ぶ/g, '：选择'], [/を設定する/g, '：设置'], [/を購入する/g, '：购买'], [/を改良する/g, '：升级'], [/を修繕する|を直す/g, '：修复'], [/を覚える/g, '：学会'], [/を返す/g, '：归还'], [/をもらう/g, '：领取'],
-  [/できるようになる/g, '：解锁'], [/購入可能になる/g, '：可购买'], [/開催/g, '举行'], [/午前/g, '上午'], [/午後/g, '下午'], [/日/g, '日'],
-  [/ゲームモード/g, '游戏模式'], [/ストーリー/g, '剧情'], [/主人公/g, '主角'], [/村の人/g, '村民'], [/雑貨店/g, '杂货店'], [/図書館/g, '图书馆'], [/診療所/g, '诊所'], [/食堂/g, '食堂'], [/時計塔/g, '钟楼'],
-  [/作物/g, '作物'], [/畑/g, '农田'], [/種/g, '种子'], [/水をやる|水を撒く/g, '浇水'], [/家畜/g, '家畜'], [/好感度/g, '好感度'], [/祠/g, '祠堂'], [/村長邸/g, '村长宅邸'], [/仕事場/g, '工作场所'], [/家/g, '家'],
-  [/木の収納箱/g, '木制收纳箱'], [/作業台/g, '工作台'], [/出荷台/g, '出货箱'], [/アイテム/g, '物品'], [/スキル/g, '技能'], [/報酬/g, '报酬'], [/カギ/g, '钥匙'], [/オノ/g, '斧头'], [/ツルハシ/g, '镐'], [/ジョウロ/g, '洒水壶'],
-  ...Object.entries(names).map(([ja, zh]) => [new RegExp(ja, 'g'), zh] as [RegExp, string]),
-  ...Object.entries(anomaly).map(([ja, zh]) => [new RegExp(ja, 'g'), zh] as [RegExp, string]),
-];
 
 export function translateHeading(text: string) {
   if (exactHeadings[text]) return exactHeadings[text];
-  let result = text;
-  for (const [pattern, replacement] of replacements) result = result.replace(pattern, replacement);
-  return result;
+  return guideTranslations[text as keyof typeof guideTranslations] ?? text;
 }
 
 export function dataTarget(title: string) {

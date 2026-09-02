@@ -11,6 +11,7 @@
     "content:catalog": "node tools/content/catalog-sources.mjs",
     "content:outlines": "node tools/content/catalog-outlines.mjs",
     "content:coverage": "node tools/content/build-coverage.mjs",
+    "content:translate": "powershell -NoProfile -File tools/content/translate-headings.ps1",
     "content:check": "node tools/content/check-coverage.mjs",
     "build": "npm run build:data && astro build && pagefind --site dist",
     "preview": "astro preview",

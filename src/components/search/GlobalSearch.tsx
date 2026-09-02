@@ -1,17 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import type { Entity } from '../../data/types';
-import { entityUrl, rankEntities } from '../../data/repository';
+import { entityUrl, expandSearchRows, rankEntities } from '../../data/clientSearch';
+import type { CompactSearchRow } from '../../data/clientSearch';
 
 export default function GlobalSearch({ prominent = false }: { prominent?: boolean }) {
   const [query, setQuery] = useState('');
   const [rows, setRows] = useState<Entity[]>([]);
-  useEffect(() => { fetch('/game-data.json').then((r) => r.json()).then((data) => setRows(data.entities)); }, []);
+  const [loading, setLoading] = useState(false);
+  const request = useRef<Promise<void> | null>(null);
+  const loadIndex = () => {
+    if (!request.current) {
+      setLoading(true);
+      request.current = fetch('/search-index.json')
+        .then((response) => response.json())
+        .then((data: { rows: CompactSearchRow[] }) => setRows(expandSearchRows(data.rows)))
+        .finally(() => setLoading(false));
+    }
+    return request.current;
+  };
   const results = useMemo(() => rankEntities(query, rows).slice(0, 12), [query, rows]);
   return <div className={`global-search ${prominent ? 'prominent' : ''}`}>
     <label htmlFor="global-query">搜索物品、作物、机械、料理、角色或日文名</label>
-    <input id="global-query" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="例如：洋葱 / 洋蔥 / タマネギ" autoComplete="off" />
+    <input id="global-query" type="search" value={query} onFocus={loadIndex} onChange={(event) => { setQuery(event.target.value); void loadIndex(); }} placeholder="例如：洋葱 / 洋蔥 / タマネギ" autoComplete="off" />
     {query && <div className="search-results" role="listbox" aria-label="搜索结果">
-      {results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={entityUrl(entity)} role="option">
+      {loading && rows.length === 0 ? <p>正在读取搜索索引…</p> : results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={entityUrl(entity)} role="option">
         <span>{entity.name.zh_hans}</span><small>{entity.kind} · {entity.name.ja || entity.id}</small>
       </a>) : <p>没有匹配项</p>}
     </div>}

@@ -12,7 +12,8 @@ for (const file of (await readdir(source)).filter((name) => name.endsWith('.json
   const rows = JSON.parse(await readFile(join(source, file), 'utf8'));
   counts[kind] = rows.length;
   for (const row of rows) {
-    const name = row.name ? { ...row.name, zh_hans: toSimplified(row.name.zh_hant || row.name.zh_hans) } : undefined;
+    const simplified = row.name ? toSimplified(row.name.zh_hant || row.name.zh_hans) : '';
+    const name = row.name ? { ...row.name, zh_hans: simplified, aliases: [...new Set([simplified, ...row.name.aliases])] } : undefined;
     entities.push({ ...row, ...(name ? { name } : {}), kind });
   }
 }
@@ -29,4 +30,11 @@ for (const entity of entities) {
 }
 await mkdir('public', { recursive: true });
 await writeFile('public/game-data.json', JSON.stringify({ buildId: '24969282', counts, entities }));
-console.log(`site-data entities=${entities.length}`);
+const searchRows = entities.filter((entity) => entity.name).map((entity) => {
+  const { name } = entity;
+  const baseNames = new Set([entity.id, name.zh_hans, name.zh_hant, name.ja, name.internal]);
+  const extraAliases = name.aliases.filter((alias) => alias && !baseNames.has(alias));
+  return [entity.id, entity.kind, name.zh_hans, name.zh_hant || '', name.ja || '', extraAliases];
+});
+await writeFile('public/search-index.json', JSON.stringify({ buildId: '24969282', rows: searchRows }));
+console.log(`site-data entities=${entities.length} search-index=${searchRows.length}`);

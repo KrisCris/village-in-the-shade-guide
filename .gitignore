@@ -9,6 +9,7 @@ node_modules/
 .playwright-cli/
 dist/
 public/game-data.json
+public/search-index.json
 output/
 data/raw/
 data/extracted/
