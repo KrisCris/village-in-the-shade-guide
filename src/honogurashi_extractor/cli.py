@@ -4,6 +4,8 @@ import argparse
 from collections.abc import Sequence
 from pathlib import Path
 
+from .archive import FafullfsArchive
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="honogurashi-data")
@@ -17,11 +19,21 @@ def build_parser() -> argparse.ArgumentParser:
     diff.add_argument("before", type=Path)
     diff.add_argument("after", type=Path)
 
+    inspect_archive = subcommands.add_parser(
+        "inspect-archive", help="list entries in the installed data.dat"
+    )
+    inspect_archive.add_argument("--game-dir", type=Path, required=True)
+
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    build_parser().parse_args(argv)
+    args = build_parser().parse_args(argv)
+    if args.command == "inspect-archive":
+        archive = FafullfsArchive.open(args.game_dir / "data.dat")
+        print(f"entries={len(archive.entries())}")
+        for entry in archive.entries():
+            print(f"{entry.name}\t{entry.size}")
     return 0
 
 
