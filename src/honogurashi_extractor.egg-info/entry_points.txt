@@ -1,0 +1,2 @@
+[console_scripts]
+honogurashi-data = honogurashi_extractor.cli:main
