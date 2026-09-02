@@ -1,0 +1,113 @@
+from __future__ import annotations
+
+import struct
+
+from honogurashi_extractor.localization import build_name
+from honogurashi_extractor.normalize import normalize_snapshot
+from honogurashi_extractor.table import read_table
+from tests.fixtures.build_table import build_table
+
+
+def _localized_group(internal: str, ja: str, zh_hant: str) -> bytes:
+    values = [internal, ja, "", "", "", zh_hant, ""]
+    return ("\0".join(values) + "\0").encode()
+
+
+def _record(size: int, values: dict[int, int]) -> bytes:
+    result = bytearray(size)
+    for offset, value in values.items():
+        struct.pack_into("<I", result, offset, value)
+    return bytes(result)
+
+
+def test_official_names_and_aliases_are_preserved():
+    name = build_name(
+        ja="タマネギ",
+        zh_hant="洋蔥",
+        internal="CROPS_ID_ONION",
+        overrides={"CROPS_ID_ONION": "洋葱"},
+    )
+
+    assert name.zh_hans == "洋葱"
+    assert {"洋蔥", "タマネギ", "CROPS_ID_ONION"} <= set(name.aliases)
+    assert name.review_status == "override"
+
+
+def test_normalizes_crop_seed_and_processing_relationships():
+    item_groups = [
+        _localized_group("ITEM_ID_SEED_ONION", "タマネギの種", "洋蔥種子"),
+        _localized_group("ITEM_ID_CROPS_ONION", "タマネギ", "洋蔥"),
+        _localized_group("ITEM_ID_MACHINE_PICKLE", "漬物樽", "醃漬桶"),
+        _localized_group("ITEM_ID_PICKLED_ONION", "タマネギの漬物", "醃洋蔥"),
+        _localized_group("ITEM_ID_LIVESTOCK_CHICKEN", "ニワトリ", "雞"),
+    ]
+    starts = []
+    cursor = 0
+    for group in item_groups:
+        starts.append(cursor)
+        cursor += len(group)
+    item_records = [
+        _record(
+            496,
+            {
+                0: 10010,
+                8: starts[0],
+                12: 18,
+                24: 100010,
+                292: 40,
+                296: 30,
+                356: 1,
+            },
+        ),
+        _record(496, {0: 100010, 8: starts[1], 12: 20, 296: 63}),
+        _record(496, {0: 400000, 8: starts[2], 12: 22, 296: 37}),
+        _record(496, {0: 200010, 8: starts[3], 12: 21, 296: 83}),
+        _record(496, {0: 900000, 8: starts[4], 12: 25, 356: 1}),
+    ]
+    crop_group = _localized_group("CROPS_ID_ONION", "タマネギ", "洋蔥")
+    crop_record = _record(488, {0: 1, 8: 0, 12: 14})
+    process_group = ("GIMMICK_PROCESS_PICKLED_ONION\0タマネギの漬物\0").encode()
+    process_record = _record(
+        104,
+        {
+            0: 1001,
+            8: 0,
+            12: 29,
+            24: 2,
+            28: 240010000,
+            36: 240010000,
+            44: 100010,
+            52: 1,
+            68: 200010,
+            76: 1,
+            80: 1380,
+        },
+    )
+    gimmick_group = ("GIMMICK_ID_STORAGE_JAR\0保存ジャー\0").encode()
+    gimmick_record = _record(
+        96, {0: 240010000, 8: 0, 12: 22, 48: 400000}
+    )
+    tables = {
+        "item": read_table(
+            build_table(records=item_records, strings=b"".join(item_groups))
+        ),
+        "crops": read_table(build_table(records=[crop_record], strings=crop_group)),
+        "gimmickprocess": read_table(
+            build_table(records=[process_record], strings=process_group)
+        ),
+        "gimmick": read_table(
+            build_table(records=[gimmick_record], strings=gimmick_group)
+        ),
+    }
+
+    snapshot = normalize_snapshot(tables, {}, {"CROPS_ID_ONION": "洋葱"})
+
+    crop = snapshot.crops["CROPS_ID_ONION"]
+    process = snapshot.processes["GIMMICK_PROCESS_PICKLED_ONION"]
+    assert crop.seed_item_ids == ("ITEM_ID_SEED_ONION",)
+    assert crop.harvest_item_ids == ("ITEM_ID_CROPS_ONION",)
+    assert process.machine_ids == ("ITEM_ID_MACHINE_PICKLE", "ITEM_ID_MACHINE_PICKLE")
+    assert process.inputs[0].item_id == "ITEM_ID_CROPS_ONION"
+    assert process.output.item_id == "ITEM_ID_PICKLED_ONION"
+    assert process.duration_minutes == 1380
+    assert process.name.zh_hans == "腌洋葱"
