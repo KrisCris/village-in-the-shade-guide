@@ -13,6 +13,7 @@ from .audit import audit_snapshot
 from .diff import diff_snapshots
 from .manifest import Provenance, write_snapshot
 from .normalize import normalize_snapshot
+from .normalize_world import normalize_world
 from .probe import build_probe
 from .schema import SchemaError, load_schema_file, verify_schema_evidence
 from .table import read_table
@@ -81,6 +82,19 @@ def main(argv: Sequence[str] | None = None) -> int:
             "storesales",
             "gimmickprocess",
             "gimmick",
+            "fish",
+            "fishing",
+            "livestock",
+            "livestockfeature",
+            "character",
+            "characterpresent",
+            "facility",
+            "facilityrelease",
+            "quest",
+            "lostbook",
+            "huntreward",
+            "treasurebox",
+            "weather",
         )
         raw_tables = {
             name: archive.read_entry(f"data/database/{name}.dat")
@@ -95,6 +109,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         }
         overrides = json.loads(args.overrides.read_text(encoding="utf-8"))
         snapshot = normalize_snapshot(tables, schemas, overrides)
+        world = normalize_world(tables, snapshot, overrides)
+        for attribute in (
+            "fish",
+            "livestock",
+            "characters",
+            "facilities",
+            "facility_releases",
+            "quests",
+            "collectibles",
+            "hunt_rewards",
+            "weather",
+        ):
+            setattr(snapshot, attribute, getattr(world, attribute))
         with archive_path.open("rb") as stream:
             archive_hash = hashlib.file_digest(stream, "sha256").hexdigest()
         provenance = Provenance(
@@ -108,7 +135,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             extractor_version=version("honogurashi-extractor"),
         )
         write_snapshot(snapshot, args.output, provenance)
-        print(f"wrote={args.output} entities={sum(len(getattr(snapshot, name)) for name in ('items', 'crops', 'machines', 'processes', 'craft_recipes', 'cooking_recipes', 'store_offers'))}")
+        print(
+            f"wrote={args.output} entities="
+            f"{sum(len(getattr(snapshot, name)) for name in snapshot.__dataclass_fields__ if isinstance(getattr(snapshot, name), dict))}"
+        )
     elif args.command == "diff":
         print(json.dumps(asdict(diff_snapshots(args.before, args.after)), ensure_ascii=False, indent=2))
     elif args.command == "audit":

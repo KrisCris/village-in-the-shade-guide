@@ -1,0 +1,91 @@
+{
+  "table": "huntreward",
+  "build_id": "24969282",
+  "record_size": 88,
+  "observed_record_sizes": [
+    88
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 21
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 20
+        },
+        {
+          "record_id": 2,
+          "value": 18
+        }
+      ]
+    },
+    {
+      "name": "certificate_item_id",
+      "offset": 16,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 155010
+        },
+        {
+          "record_id": 2,
+          "value": 155020
+        }
+      ]
+    },
+    {
+      "name": "reward_count",
+      "offset": 20,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 2
+        },
+        {
+          "record_id": 2,
+          "value": 3
+        }
+      ]
+    }
+  ]
+}
+

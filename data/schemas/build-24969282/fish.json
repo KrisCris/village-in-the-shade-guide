@@ -1,0 +1,27 @@
+{
+  "table": "fish",
+  "build_id": "24969282",
+  "record_size": 56,
+  "observed_record_sizes": [
+    56
+  ],
+  "fields": [
+    {
+      "name": "item_id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 160000,
+          "value": 160000
+        },
+        {
+          "record_id": 160010,
+          "value": 160010
+        }
+      ]
+    }
+  ]
+}
+

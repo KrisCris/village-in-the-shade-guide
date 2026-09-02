@@ -1,0 +1,1663 @@
+[
+  {
+    "id": "ITEM_ID_FISHING_AMAGO_SALMON",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "淡水石川鲑",
+        "淡水石川鮭",
+        "アマゴ",
+        "ITEM_ID_FISHING_AMAGO_SALMON"
+      ],
+      "internal": "ITEM_ID_FISHING_AMAGO_SALMON",
+      "ja": "アマゴ",
+      "review_status": "override",
+      "zh_hans": "淡水石川鲑",
+      "zh_hant": "淡水石川鮭"
+    },
+    "numeric_id": 160060,
+    "sell_price": 120
+  },
+  {
+    "id": "ITEM_ID_FISHING_AMUR_MINNOW",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "拉氏大吻鱥",
+        "アブラハヤ",
+        "ITEM_ID_FISHING_AMUR_MINNOW"
+      ],
+      "internal": "ITEM_ID_FISHING_AMUR_MINNOW",
+      "ja": "アブラハヤ",
+      "review_status": "override",
+      "zh_hans": "拉氏大吻鱥",
+      "zh_hant": "拉氏大吻鱥"
+    },
+    "numeric_id": 160000,
+    "sell_price": 30
+  },
+  {
+    "id": "ITEM_ID_FISHING_BITTERLING",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "黑腹鱊",
+        "タナゴ",
+        "ITEM_ID_FISHING_BITTERLING"
+      ],
+      "internal": "ITEM_ID_FISHING_BITTERLING",
+      "ja": "タナゴ",
+      "review_status": "override",
+      "zh_hans": "黑腹鱊",
+      "zh_hant": "黑腹鱊"
+    },
+    "numeric_id": 160010,
+    "sell_price": 30
+  },
+  {
+    "id": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "黑斑蛙",
+        "トノサマガエル",
+        "ITEM_ID_FISHING_BLACK_SPOTTED_FROG"
+      ],
+      "internal": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+      "ja": "トノサマガエル",
+      "review_status": "override",
+      "zh_hans": "黑斑蛙",
+      "zh_hant": "黑斑蛙"
+    },
+    "numeric_id": 160260,
+    "sell_price": 105
+  },
+  {
+    "id": "ITEM_ID_FISHING_CARP",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "鲤鱼",
+        "鯉魚",
+        "コイ",
+        "ITEM_ID_FISHING_CARP"
+      ],
+      "internal": "ITEM_ID_FISHING_CARP",
+      "ja": "コイ",
+      "review_status": "override",
+      "zh_hans": "鲤鱼",
+      "zh_hant": "鯉魚"
+    },
+    "numeric_id": 160160,
+    "sell_price": 60
+  },
+  {
+    "id": "ITEM_ID_FISHING_CATFISH",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "鲶鱼",
+        "鯰魚",
+        "ナマズ",
+        "ITEM_ID_FISHING_CATFISH"
+      ],
+      "internal": "ITEM_ID_FISHING_CATFISH",
+      "ja": "ナマズ",
+      "review_status": "override",
+      "zh_hans": "鲶鱼",
+      "zh_hant": "鯰魚"
+    },
+    "numeric_id": 160170,
+    "sell_price": 120
+  },
+  {
+    "id": "ITEM_ID_FISHING_CRUCIAN_CARP",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "鲫鱼",
+        "鯽魚",
+        "フナ",
+        "ITEM_ID_FISHING_CRUCIAN_CARP"
+      ],
+      "internal": "ITEM_ID_FISHING_CRUCIAN_CARP",
+      "ja": "フナ",
+      "review_status": "override",
+      "zh_hans": "鲫鱼",
+      "zh_hant": "鯽魚"
+    },
+    "numeric_id": 160150,
+    "sell_price": 60
+  },
+  {
+    "id": "ITEM_ID_FISHING_DACE",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "珠星三块鱼",
+        "珠星三塊魚",
+        "ウグイ",
+        "ITEM_ID_FISHING_DACE"
+      ],
+      "internal": "ITEM_ID_FISHING_DACE",
+      "ja": "ウグイ",
+      "review_status": "override",
+      "zh_hans": "珠星三块鱼",
+      "zh_hant": "珠星三塊魚"
+    },
+    "numeric_id": 160100,
+    "sell_price": 45
+  },
+  {
+    "id": "ITEM_ID_FISHING_DARK_CHUB",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "特氏东瀛鲤",
+        "特氏東瀛鯉",
+        "カワムツ",
+        "ITEM_ID_FISHING_DARK_CHUB"
+      ],
+      "internal": "ITEM_ID_FISHING_DARK_CHUB",
+      "ja": "カワムツ",
+      "review_status": "override",
+      "zh_hans": "特氏东瀛鲤",
+      "zh_hant": "特氏東瀛鯉"
+    },
+    "numeric_id": 160020,
+    "sell_price": 45
+  },
+  {
+    "id": "ITEM_ID_FISHING_DARK_SLEEPER",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "暗色沙塘鳢",
+        "暗色沙塘鱧",
+        "ドンコ",
+        "ITEM_ID_FISHING_DARK_SLEEPER"
+      ],
+      "internal": "ITEM_ID_FISHING_DARK_SLEEPER",
+      "ja": "ドンコ",
+      "review_status": "override",
+      "zh_hans": "暗色沙塘鳢",
+      "zh_hant": "暗色沙塘鱧"
+    },
+    "numeric_id": 160200,
+    "sell_price": 60
+  },
+  {
+    "id": "ITEM_ID_FISHING_EEL",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "鳗鱼",
+        "鰻魚",
+        "ウナギ",
+        "ITEM_ID_FISHING_EEL"
+      ],
+      "internal": "ITEM_ID_FISHING_EEL",
+      "ja": "ウナギ",
+      "review_status": "override",
+      "zh_hans": "鳗鱼",
+      "zh_hant": "鰻魚"
+    },
+    "numeric_id": 160110,
+    "sell_price": 315
+  },
+  {
+    "id": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "日本汉氏泽蟹",
+        "日本漢氏澤蟹",
+        "サワガニ",
+        "ITEM_ID_FISHING_FRESHWATER_CRAB"
+      ],
+      "internal": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+      "ja": "サワガニ",
+      "review_status": "override",
+      "zh_hans": "日本汉氏泽蟹",
+      "zh_hant": "日本漢氏澤蟹"
+    },
+    "numeric_id": 160180,
+    "sell_price": 105
+  },
+  {
+    "id": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "吻鰕虎鱼",
+        "吻鰕虎魚",
+        "ヨシノボリ",
+        "ITEM_ID_FISHING_FRESHWATER_GOBY"
+      ],
+      "internal": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+      "ja": "ヨシノボリ",
+      "review_status": "override",
+      "zh_hans": "吻鰕虎鱼",
+      "zh_hant": "吻鰕虎魚"
+    },
+    "numeric_id": 160130,
+    "sell_price": 30
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_01",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "被诅咒的日本溪哥",
+        "被詛咒的日本溪哥",
+        "祟られオイカワ",
+        "ITEM_ID_FISHING_GHOST_FISH_01"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_01",
+      "ja": "祟られオイカワ",
+      "review_status": "override",
+      "zh_hans": "被诅咒的日本溪哥",
+      "zh_hant": "被詛咒的日本溪哥"
+    },
+    "numeric_id": 162000,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_02",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "被诅咒的鲫鱼",
+        "被詛咒的鯽魚",
+        "祟られフナ",
+        "ITEM_ID_FISHING_GHOST_FISH_02"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_02",
+      "ja": "祟られフナ",
+      "review_status": "override",
+      "zh_hans": "被诅咒的鲫鱼",
+      "zh_hant": "被詛咒的鯽魚"
+    },
+    "numeric_id": 162010,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_03",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "被诅咒的日本汉氏泽蟹",
+        "被詛咒的日本漢氏澤蟹",
+        "祟られサワガニ",
+        "ITEM_ID_FISHING_GHOST_FISH_03"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_03",
+      "ja": "祟られサワガニ",
+      "review_status": "override",
+      "zh_hans": "被诅咒的日本汉氏泽蟹",
+      "zh_hant": "被詛咒的日本漢氏澤蟹"
+    },
+    "numeric_id": 162020,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_04",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "被诅咒的淡水石川鲑",
+        "被詛咒的淡水石川鮭",
+        "祟られアマゴ",
+        "ITEM_ID_FISHING_GHOST_FISH_04"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_04",
+      "ja": "祟られアマゴ",
+      "review_status": "override",
+      "zh_hans": "被诅咒的淡水石川鲑",
+      "zh_hant": "被詛咒的淡水石川鮭"
+    },
+    "numeric_id": 162030,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_05",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "被诅咒的香鱼",
+        "被詛咒的香魚",
+        "祟られアユ",
+        "ITEM_ID_FISHING_GHOST_FISH_05"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_05",
+      "ja": "祟られアユ",
+      "review_status": "override",
+      "zh_hans": "被诅咒的香鱼",
+      "zh_hant": "被詛咒的香魚"
+    },
+    "numeric_id": 162040,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_GHOST_FISH_06",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "被诅咒的青蛙",
+        "被詛咒的青蛙",
+        "祟られカエル",
+        "ITEM_ID_FISHING_GHOST_FISH_06"
+      ],
+      "internal": "ITEM_ID_FISHING_GHOST_FISH_06",
+      "ja": "祟られカエル",
+      "review_status": "override",
+      "zh_hans": "被诅咒的青蛙",
+      "zh_hant": "被詛咒的青蛙"
+    },
+    "numeric_id": 162050,
+    "sell_price": 99
+  },
+  {
+    "id": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "日本黑螯虾",
+        "日本黑螯蝦",
+        "ニホンザリガニ",
+        "ITEM_ID_FISHING_JAPANESE_CRAYFISH"
+      ],
+      "internal": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
+      "ja": "ニホンザリガニ",
+      "review_status": "override",
+      "zh_hans": "日本黑螯虾",
+      "zh_hant": "日本黑螯蝦"
+    },
+    "numeric_id": 160220,
+    "sell_price": 90
+  },
+  {
+    "id": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "钝头杜父鱼",
+        "鈍頭杜父魚",
+        "カジカ",
+        "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN"
+      ],
+      "internal": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+      "ja": "カジカ",
+      "review_status": "override",
+      "zh_hans": "钝头杜父鱼",
+      "zh_hant": "鈍頭杜父魚"
+    },
+    "numeric_id": 160140,
+    "sell_price": 75
+  },
+  {
+    "id": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "远东哲罗鱼",
+        "遠東哲羅魚",
+        "イトウ",
+        "ITEM_ID_FISHING_JAPANESE_HUCHEN"
+      ],
+      "internal": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+      "ja": "イトウ",
+      "review_status": "override",
+      "zh_hans": "远东哲罗鱼",
+      "zh_hant": "遠東哲羅魚"
+    },
+    "numeric_id": 160280,
+    "sell_price": 330
+  },
+  {
+    "id": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "日本石龟",
+        "日本石龜",
+        "イシガメ",
+        "ITEM_ID_FISHING_JAPANESE_POND_TURTLE"
+      ],
+      "internal": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+      "ja": "イシガメ",
+      "review_status": "override",
+      "zh_hans": "日本石龟",
+      "zh_hant": "日本石龜"
+    },
+    "numeric_id": 160250,
+    "sell_price": 150
+  },
+  {
+    "id": "ITEM_ID_FISHING_LOACH",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "斑北鳅",
+        "斑北鰍",
+        "ホトケドジョウ",
+        "ITEM_ID_FISHING_LOACH"
+      ],
+      "internal": "ITEM_ID_FISHING_LOACH",
+      "ja": "ホトケドジョウ",
+      "review_status": "override",
+      "zh_hans": "斑北鳅",
+      "zh_hant": "斑北鰍"
+    },
+    "numeric_id": 160210,
+    "sell_price": 120
+  },
+  {
+    "id": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "日本沼虾",
+        "日本沼蝦",
+        "テナガエビ",
+        "ITEM_ID_FISHING_LONG_ARM_SHRIMP"
+      ],
+      "internal": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+      "ja": "テナガエビ",
+      "review_status": "override",
+      "zh_hans": "日本沼虾",
+      "zh_hant": "日本沼蝦"
+    },
+    "numeric_id": 160230,
+    "sell_price": 75
+  },
+  {
+    "id": "ITEM_ID_FISHING_MITTEN_CRAB",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "日本绒螯蟹",
+        "日本絨螯蟹",
+        "モクズガニ",
+        "ITEM_ID_FISHING_MITTEN_CRAB"
+      ],
+      "internal": "ITEM_ID_FISHING_MITTEN_CRAB",
+      "ja": "モクズガニ",
+      "review_status": "override",
+      "zh_hans": "日本绒螯蟹",
+      "zh_hant": "日本絨螯蟹"
+    },
+    "numeric_id": 160190,
+    "sell_price": 150
+  },
+  {
+    "id": "ITEM_ID_FISHING_PALE_CHUB",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "日本溪哥",
+        "オイカワ",
+        "ITEM_ID_FISHING_PALE_CHUB"
+      ],
+      "internal": "ITEM_ID_FISHING_PALE_CHUB",
+      "ja": "オイカワ",
+      "review_status": "override",
+      "zh_hans": "日本溪哥",
+      "zh_hant": "日本溪哥"
+    },
+    "numeric_id": 160090,
+    "sell_price": 105
+  },
+  {
+    "id": "ITEM_ID_FISHING_RAINBOW_TROUT",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "虹鳟",
+        "虹鱒",
+        "ニジマス",
+        "ITEM_ID_FISHING_RAINBOW_TROUT"
+      ],
+      "internal": "ITEM_ID_FISHING_RAINBOW_TROUT",
+      "ja": "ニジマス",
+      "review_status": "override",
+      "zh_hans": "虹鳟",
+      "zh_hant": "虹鱒"
+    },
+    "numeric_id": 160050,
+    "sell_price": 240
+  },
+  {
+    "id": "ITEM_ID_FISHING_SALMON",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "鲑鱼",
+        "鮭魚",
+        "サケ",
+        "ITEM_ID_FISHING_SALMON"
+      ],
+      "internal": "ITEM_ID_FISHING_SALMON",
+      "ja": "サケ",
+      "review_status": "override",
+      "zh_hans": "鲑鱼",
+      "zh_hant": "鮭魚"
+    },
+    "numeric_id": 160270,
+    "sell_price": 270
+  },
+  {
+    "id": "ITEM_ID_FISHING_SATSUKI_TROUT",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "石川鲑",
+        "石川鮭",
+        "サツキマス",
+        "ITEM_ID_FISHING_SATSUKI_TROUT"
+      ],
+      "internal": "ITEM_ID_FISHING_SATSUKI_TROUT",
+      "ja": "サツキマス",
+      "review_status": "override",
+      "zh_hans": "石川鲑",
+      "zh_hant": "石川鮭"
+    },
+    "numeric_id": 160080,
+    "sell_price": 225
+  },
+  {
+    "id": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "鳖",
+        "鱉",
+        "スッポン",
+        "ITEM_ID_FISHING_SOFTSHELL_TURTLE"
+      ],
+      "internal": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
+      "ja": "スッポン",
+      "review_status": "override",
+      "zh_hans": "鳖",
+      "zh_hant": "鱉"
+    },
+    "numeric_id": 160240,
+    "sell_price": 330
+  },
+  {
+    "id": "ITEM_ID_FISHING_SWEETFISH",
+    "locations": [],
+    "name": {
+      "aliases": [
+        "香鱼",
+        "香魚",
+        "アユ",
+        "ITEM_ID_FISHING_SWEETFISH"
+      ],
+      "internal": "ITEM_ID_FISHING_SWEETFISH",
+      "ja": "アユ",
+      "review_status": "override",
+      "zh_hans": "香鱼",
+      "zh_hant": "香魚"
+    },
+    "numeric_id": 160070,
+    "sell_price": 180
+  },
+  {
+    "id": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "小头刺鱼",
+        "小頭刺魚",
+        "ハリヨ",
+        "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK"
+      ],
+      "internal": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+      "ja": "ハリヨ",
+      "review_status": "override",
+      "zh_hans": "小头刺鱼",
+      "zh_hant": "小頭刺魚"
+    },
+    "numeric_id": 160120,
+    "sell_price": 90
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_CARP",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化鲤鱼",
+        "白化鯉魚",
+        "白いコイ",
+        "ITEM_ID_FISHING_WHITE_CARP"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_CARP",
+      "ja": "白いコイ",
+      "review_status": "override",
+      "zh_hans": "白化鲤鱼",
+      "zh_hant": "白化鯉魚"
+    },
+    "numeric_id": 161010,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_CATFISH",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化鲶鱼",
+        "白化鯰魚",
+        "白いナマズ",
+        "ITEM_ID_FISHING_WHITE_CATFISH"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_CATFISH",
+      "ja": "白いナマズ",
+      "review_status": "override",
+      "zh_hans": "白化鲶鱼",
+      "zh_hant": "白化鯰魚"
+    },
+    "numeric_id": 161020,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_EEL",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化鳗鱼",
+        "白化鰻魚",
+        "白いウナギ",
+        "ITEM_ID_FISHING_WHITE_EEL"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_EEL",
+      "ja": "白いウナギ",
+      "review_status": "override",
+      "zh_hans": "白化鳗鱼",
+      "zh_hant": "白化鰻魚"
+    },
+    "numeric_id": 161000,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化日本黑螯虾",
+        "白化日本黑螯蝦",
+        "白いニホンザリガニ",
+        "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+      "ja": "白いニホンザリガニ",
+      "review_status": "override",
+      "zh_hans": "白化日本黑螯虾",
+      "zh_hant": "白化日本黑螯蝦"
+    },
+    "numeric_id": 161030,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化远东哲罗鱼",
+        "白化遠東哲羅魚",
+        "白いイトウ",
+        "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+      "ja": "白いイトウ",
+      "review_status": "override",
+      "zh_hans": "白化远东哲罗鱼",
+      "zh_hant": "白化遠東哲羅魚"
+    },
+    "numeric_id": 161050,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "白化鳖",
+        "白化鱉",
+        "白いスッポン",
+        "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE"
+      ],
+      "internal": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+      "ja": "白いスッポン",
+      "review_status": "override",
+      "zh_hans": "白化鳖",
+      "zh_hant": "白化鱉"
+    },
+    "numeric_id": 161040,
+    "sell_price": 2500
+  },
+  {
+    "id": "ITEM_ID_FISHING_YAMAME_TROUT",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "山女鱼",
+        "山女魚",
+        "ヤマメ",
+        "ITEM_ID_FISHING_YAMAME_TROUT"
+      ],
+      "internal": "ITEM_ID_FISHING_YAMAME_TROUT",
+      "ja": "ヤマメ",
+      "review_status": "override",
+      "zh_hans": "山女鱼",
+      "zh_hant": "山女魚"
+    },
+    "numeric_id": 160030,
+    "sell_price": 150
+  },
+  {
+    "id": "ITEM_ID_FISHING_YAMATO_CHAR",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "日本红点鲑",
+        "日本紅點鮭",
+        "ヤマトイワナ",
+        "ITEM_ID_FISHING_YAMATO_CHAR"
+      ],
+      "internal": "ITEM_ID_FISHING_YAMATO_CHAR",
+      "ja": "ヤマトイワナ",
+      "review_status": "override",
+      "zh_hans": "日本红点鲑",
+      "zh_hant": "日本紅點鮭"
+    },
+    "numeric_id": 160040,
+    "sell_price": 135
+  },
+  {
+    "id": "ITEM_ID_TRASH_EMPTY_CAN",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "空罐",
+        "空き缶",
+        "ITEM_ID_TRASH_EMPTY_CAN"
+      ],
+      "internal": "ITEM_ID_TRASH_EMPTY_CAN",
+      "ja": "空き缶",
+      "review_status": "override",
+      "zh_hans": "空罐",
+      "zh_hant": "空罐"
+    },
+    "numeric_id": 600000,
+    "sell_price": 0
+  },
+  {
+    "id": "ITEM_ID_TRASH_PLASTIC_BAG",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "塑胶袋",
+        "塑膠袋",
+        "ビニール袋",
+        "ITEM_ID_TRASH_PLASTIC_BAG"
+      ],
+      "internal": "ITEM_ID_TRASH_PLASTIC_BAG",
+      "ja": "ビニール袋",
+      "review_status": "override",
+      "zh_hans": "塑胶袋",
+      "zh_hant": "塑膠袋"
+    },
+    "numeric_id": 600010,
+    "sell_price": 0
+  },
+  {
+    "id": "ITEM_ID_TRASH_TWIG",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "树枝",
+        "樹枝",
+        "小枝",
+        "ITEM_ID_TRASH_TWIG"
+      ],
+      "internal": "ITEM_ID_TRASH_TWIG",
+      "ja": "小枝",
+      "review_status": "override",
+      "zh_hans": "树枝",
+      "zh_hant": "樹枝"
+    },
+    "numeric_id": 600030,
+    "sell_price": 1
+  },
+  {
+    "id": "ITEM_ID_TRASH_WATER_PLANT",
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "下流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(澱み)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "source-ja",
+          "zh_hans": "中流(流れ)",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "source-ja",
+          "zh_hans": "上流",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "name": {
+          "aliases": [
+            "湧水池",
+            "FISHING_ID_06"
+          ],
+          "internal": "FISHING_ID_06",
+          "ja": "湧水池",
+          "review_status": "source-ja",
+          "zh_hans": "湧水池",
+          "zh_hant": ""
+        }
+      }
+    ],
+    "name": {
+      "aliases": [
+        "水草",
+        "ITEM_ID_TRASH_WATER_PLANT"
+      ],
+      "internal": "ITEM_ID_TRASH_WATER_PLANT",
+      "ja": "水草",
+      "review_status": "override",
+      "zh_hans": "水草",
+      "zh_hant": "水草"
+    },
+    "numeric_id": 600020,
+    "sell_price": 1
+  }
+]

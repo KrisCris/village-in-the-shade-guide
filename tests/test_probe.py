@@ -53,3 +53,22 @@ def test_probe_follows_string_offsets_when_record_order_differs():
 
     assert rows[0]["strings"] == ["ITEM_TWO"]
     assert rows[1]["strings"] == ["ITEM_ONE"]
+
+
+def test_probe_uses_row_aligned_strings_when_table_has_no_string_offsets():
+    table = read_table(
+        build_table(
+            records=[
+                b"".join(value.to_bytes(4, "little") for value in (1, 0, 100, 0)),
+                b"".join(value.to_bytes(4, "little") for value in (2, 0, 100, 0)),
+            ],
+            strings=b"ROW_ONE\0ROW_TWO\0",
+        )
+    )
+
+    rows = build_probe({"rules": table})["tables"]["rules"][
+        "representative_rows"
+    ]
+
+    assert rows[0]["strings"] == ["ROW_ONE"]
+    assert rows[1]["strings"] == ["ROW_TWO"]

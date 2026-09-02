@@ -1,0 +1,382 @@
+[
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_KEYITEM_PURPLE_FLOWER",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_BOY",
+    "name": {
+      "aliases": [
+        "堇怜",
+        "スミレ",
+        "CHARA_ID_BOY"
+      ],
+      "internal": "CHARA_ID_BOY",
+      "ja": "スミレ",
+      "review_status": "override",
+      "zh_hans": "堇怜",
+      "zh_hant": "堇怜"
+    },
+    "numeric_id": 1120,
+    "role_ja": "少年"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_CARPENTER",
+    "name": {
+      "aliases": [
+        "木助",
+        "キスケ",
+        "CHARA_ID_CARPENTER"
+      ],
+      "internal": "CHARA_ID_CARPENTER",
+      "ja": "キスケ",
+      "review_status": "override",
+      "zh_hans": "木助",
+      "zh_hant": "木助"
+    },
+    "numeric_id": 1020,
+    "role_ja": "大工"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_NAGO_WALLET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_CITY_HALL_STAFF",
+    "name": {
+      "aliases": [
+        "名护",
+        "名護",
+        "ナゴ",
+        "CHARA_ID_CITY_HALL_STAFF"
+      ],
+      "internal": "CHARA_ID_CITY_HALL_STAFF",
+      "ja": "ナゴ",
+      "review_status": "override",
+      "zh_hans": "名护",
+      "zh_hant": "名護"
+    },
+    "numeric_id": 1090,
+    "role_ja": "市役所員"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_OBJECT_SAP",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_KEYITEM_DONG_QUAI",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_FEMALE_DOCTOR",
+    "name": {
+      "aliases": [
+        "莲实",
+        "蓮實",
+        "ハスミ",
+        "CHARA_ID_FEMALE_DOCTOR"
+      ],
+      "internal": "CHARA_ID_FEMALE_DOCTOR",
+      "ja": "ハスミ",
+      "review_status": "override",
+      "zh_hans": "莲实",
+      "zh_hant": "蓮實"
+    },
+    "numeric_id": 1130,
+    "role_ja": "女医"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COPPER_ORE",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_GENERAL_STORE_MANAGER",
+    "name": {
+      "aliases": [
+        "茶梅",
+        "サザンカ",
+        "CHARA_ID_GENERAL_STORE_MANAGER"
+      ],
+      "internal": "CHARA_ID_GENERAL_STORE_MANAGER",
+      "ja": "サザンカ",
+      "review_status": "override",
+      "zh_hans": "茶梅",
+      "zh_hant": "茶梅"
+    },
+    "numeric_id": 1060,
+    "role_ja": "雑貨屋"
+  },
+  {
+    "gift_items": [],
+    "id": "CHARA_ID_GHOST_GIRL",
+    "name": {
+      "aliases": [
+        "CHARA_ID_GHOST_GIRL"
+      ],
+      "internal": "CHARA_ID_GHOST_GIRL",
+      "ja": "",
+      "review_status": "source-ja",
+      "zh_hans": "CHARA_ID_GHOST_GIRL",
+      "zh_hant": ""
+    },
+    "numeric_id": 1150,
+    "role_ja": ""
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_GIRL",
+    "name": {
+      "aliases": [
+        "洋",
+        "ヨウ",
+        "CHARA_ID_GIRL"
+      ],
+      "internal": "CHARA_ID_GIRL",
+      "ja": "ヨウ",
+      "review_status": "override",
+      "zh_hans": "洋",
+      "zh_hant": "洋"
+    },
+    "numeric_id": 1100,
+    "role_ja": "幼女"
+  },
+  {
+    "gift_items": [],
+    "id": "CHARA_ID_HUNTER",
+    "name": {
+      "aliases": [
+        "驹子",
+        "駒子",
+        "コマコ",
+        "CHARA_ID_HUNTER"
+      ],
+      "internal": "CHARA_ID_HUNTER",
+      "ja": "コマコ",
+      "review_status": "override",
+      "zh_hans": "驹子",
+      "zh_hant": "駒子"
+    },
+    "numeric_id": 1050,
+    "role_ja": "狩人"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_LUMBERJACK",
+    "name": {
+      "aliases": [
+        "四郎治",
+        "シロージ",
+        "CHARA_ID_LUMBERJACK"
+      ],
+      "internal": "CHARA_ID_LUMBERJACK",
+      "ja": "シロージ",
+      "review_status": "override",
+      "zh_hans": "四郎治",
+      "zh_hant": "四郎治"
+    },
+    "numeric_id": 1030,
+    "role_ja": "木こり"
+  },
+  {
+    "gift_items": [],
+    "id": "CHARA_ID_MOTHER",
+    "name": {
+      "aliases": [
+        "CHARA_ID_MOTHER"
+      ],
+      "internal": "CHARA_ID_MOTHER",
+      "ja": "",
+      "review_status": "source-ja",
+      "zh_hans": "CHARA_ID_MOTHER",
+      "zh_hant": ""
+    },
+    "numeric_id": 1160,
+    "role_ja": ""
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_OLD_MAN",
+    "name": {
+      "aliases": [
+        "六角",
+        "ロッカク",
+        "CHARA_ID_OLD_MAN"
+      ],
+      "internal": "CHARA_ID_OLD_MAN",
+      "ja": "ロッカク",
+      "review_status": "override",
+      "zh_hans": "六角",
+      "zh_hant": "六角"
+    },
+    "numeric_id": 1070,
+    "role_ja": "おっさん"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_ORPHAN",
+    "name": {
+      "aliases": [
+        "帷",
+        "トバリ",
+        "CHARA_ID_ORPHAN"
+      ],
+      "internal": "CHARA_ID_ORPHAN",
+      "ja": "トバリ",
+      "review_status": "override",
+      "zh_hans": "帷",
+      "zh_hant": "帷"
+    },
+    "numeric_id": 1010,
+    "role_ja": "みなしご"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_SECRETARY",
+    "name": {
+      "aliases": [
+        "今野",
+        "コンノ",
+        "CHARA_ID_SECRETARY"
+      ],
+      "internal": "CHARA_ID_SECRETARY",
+      "ja": "コンノ",
+      "review_status": "override",
+      "zh_hans": "今野",
+      "zh_hant": "今野"
+    },
+    "numeric_id": 1080,
+    "role_ja": "秘書"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_STREET_VENDOR",
+    "name": {
+      "aliases": [
+        "琪娜娜",
+        "チナナ",
+        "CHARA_ID_STREET_VENDOR"
+      ],
+      "internal": "CHARA_ID_STREET_VENDOR",
+      "ja": "チナナ",
+      "review_status": "override",
+      "zh_hans": "琪娜娜",
+      "zh_hant": "琪娜娜"
+    },
+    "numeric_id": 1140,
+    "role_ja": "露天商"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_KEYITEM_RIN_LUNCH_BOX",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_VILLAGE_HEAD",
+    "name": {
+      "aliases": [
+        "林",
+        "リン",
+        "CHARA_ID_VILLAGE_HEAD"
+      ],
+      "internal": "CHARA_ID_VILLAGE_HEAD",
+      "ja": "リン",
+      "review_status": "override",
+      "zh_hans": "林",
+      "zh_hant": "林"
+    },
+    "numeric_id": 1040,
+    "role_ja": "村長"
+  },
+  {
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
+        "preference": 2
+      },
+      {
+        "item_id": "ITEM_ID_KEYITEM_HONEYBEE",
+        "preference": 2
+      }
+    ],
+    "id": "CHARA_ID_YOUNG_MAN",
+    "name": {
+      "aliases": [
+        "裕太",
+        "ユータ",
+        "CHARA_ID_YOUNG_MAN"
+      ],
+      "internal": "CHARA_ID_YOUNG_MAN",
+      "ja": "ユータ",
+      "review_status": "override",
+      "zh_hans": "裕太",
+      "zh_hant": "裕太"
+    },
+    "numeric_id": 1110,
+    "role_ja": "青年"
+  }
+]

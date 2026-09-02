@@ -1,0 +1,928 @@
+[
+  {
+    "id": "LOSTBOOK_ID_00",
+    "name": {
+      "aliases": [
+        "《桃子的灵性》",
+        "《桃子的靈性》",
+        "桃の実の霊性",
+        "LOSTBOOK_ID_00"
+      ],
+      "internal": "LOSTBOOK_ID_00",
+      "ja": "桃の実の霊性",
+      "review_status": "override",
+      "zh_hans": "《桃子的灵性》",
+      "zh_hant": "《桃子的靈性》"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "LOSTBOOK_ID_01",
+    "name": {
+      "aliases": [
+        "《伊邪那岐的敕令》",
+        "イザナギの勅命",
+        "LOSTBOOK_ID_01"
+      ],
+      "internal": "LOSTBOOK_ID_01",
+      "ja": "イザナギの勅命",
+      "review_status": "override",
+      "zh_hans": "《伊邪那岐的敕令》",
+      "zh_hant": "《伊邪那岐的敕令》"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "LOSTBOOK_ID_02",
+    "name": {
+      "aliases": [
+        "《彼津村的起源》",
+        "彼ヶ津村のなりたち",
+        "LOSTBOOK_ID_02"
+      ],
+      "internal": "LOSTBOOK_ID_02",
+      "ja": "彼ヶ津村のなりたち",
+      "review_status": "override",
+      "zh_hans": "《彼津村的起源》",
+      "zh_hant": "《彼津村的起源》"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "LOSTBOOK_ID_03",
+    "name": {
+      "aliases": [
+        "《战败而逃的君主大人》",
+        "《戰敗而逃的君主大人》",
+        "落ち延びた殿様",
+        "LOSTBOOK_ID_03"
+      ],
+      "internal": "LOSTBOOK_ID_03",
+      "ja": "落ち延びた殿様",
+      "review_status": "override",
+      "zh_hans": "《战败而逃的君主大人》",
+      "zh_hant": "《戰敗而逃的君主大人》"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "LOSTBOOK_ID_04",
+    "name": {
+      "aliases": [
+        "《平息灾厄的人祭》",
+        "《平息災厄的人祭》",
+        "災いを鎮めた人柱",
+        "LOSTBOOK_ID_04"
+      ],
+      "internal": "LOSTBOOK_ID_04",
+      "ja": "災いを鎮めた人柱",
+      "review_status": "override",
+      "zh_hans": "《平息灾厄的人祭》",
+      "zh_hant": "《平息災厄的人祭》"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "LOSTBOOK_ID_05",
+    "name": {
+      "aliases": [
+        "《不信者的末路》",
+        "不信心者の末路",
+        "LOSTBOOK_ID_05"
+      ],
+      "internal": "LOSTBOOK_ID_05",
+      "ja": "不信心者の末路",
+      "review_status": "override",
+      "zh_hans": "《不信者的末路》",
+      "zh_hant": "《不信者的末路》"
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "LOSTBOOK_ID_06",
+    "name": {
+      "aliases": [
+        "《诱人入睡的桃香》",
+        "《誘人入睡的桃香》",
+        "眠りを誘う桃の香",
+        "LOSTBOOK_ID_06"
+      ],
+      "internal": "LOSTBOOK_ID_06",
+      "ja": "眠りを誘う桃の香",
+      "review_status": "override",
+      "zh_hans": "《诱人入睡的桃香》",
+      "zh_hant": "《誘人入睡的桃香》"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "LOSTBOOK_ID_07",
+    "name": {
+      "aliases": [
+        "《神从天而降》",
+        "《神從天而降》",
+        "神、天より来る",
+        "LOSTBOOK_ID_07"
+      ],
+      "internal": "LOSTBOOK_ID_07",
+      "ja": "神、天より来る",
+      "review_status": "override",
+      "zh_hans": "《神从天而降》",
+      "zh_hant": "《神從天而降》"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "LOSTBOOK_ID_08",
+    "name": {
+      "aliases": [
+        "《无名之村的故事》",
+        "《無名之村的故事》",
+        "名もなき村の話",
+        "LOSTBOOK_ID_08"
+      ],
+      "internal": "LOSTBOOK_ID_08",
+      "ja": "名もなき村の話",
+      "review_status": "override",
+      "zh_hans": "《无名之村的故事》",
+      "zh_hant": "《無名之村的故事》"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "LOSTBOOK_ID_09",
+    "name": {
+      "aliases": [
+        "《裂了一半的书》",
+        "《裂了一半的書》",
+        "半分に破れた本",
+        "LOSTBOOK_ID_09"
+      ],
+      "internal": "LOSTBOOK_ID_09",
+      "ja": "半分に破れた本",
+      "review_status": "override",
+      "zh_hans": "《裂了一半的书》",
+      "zh_hant": "《裂了一半的書》"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "LOSTBOOK_ID_10",
+    "name": {
+      "aliases": [
+        "《鬼的条纹布》",
+        "《鬼的條紋布》",
+        "鬼の縞模様の布",
+        "LOSTBOOK_ID_10"
+      ],
+      "internal": "LOSTBOOK_ID_10",
+      "ja": "鬼の縞模様の布",
+      "review_status": "override",
+      "zh_hans": "《鬼的条纹布》",
+      "zh_hant": "《鬼的條紋布》"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "LOSTBOOK_ID_11",
+    "name": {
+      "aliases": [
+        "《鬼的奇蹟之歌》",
+        "鬼の奇跡の歌",
+        "LOSTBOOK_ID_11"
+      ],
+      "internal": "LOSTBOOK_ID_11",
+      "ja": "鬼の奇跡の歌",
+      "review_status": "override",
+      "zh_hans": "《鬼的奇蹟之歌》",
+      "zh_hant": "《鬼的奇蹟之歌》"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "LOSTBOOK_ID_12",
+    "name": {
+      "aliases": [
+        "《鬼的劈岩柴刀》",
+        "鬼の岩切り鉈",
+        "LOSTBOOK_ID_12"
+      ],
+      "internal": "LOSTBOOK_ID_12",
+      "ja": "鬼の岩切り鉈",
+      "review_status": "override",
+      "zh_hans": "《鬼的劈岩柴刀》",
+      "zh_hant": "《鬼的劈岩柴刀》"
+    },
+    "numeric_id": 13
+  },
+  {
+    "id": "LOSTBOOK_ID_14",
+    "name": {
+      "aliases": [
+        "《招财之物》",
+        "《招財之物》",
+        "富をもたらすもの",
+        "LOSTBOOK_ID_14"
+      ],
+      "internal": "LOSTBOOK_ID_14",
+      "ja": "富をもたらすもの",
+      "review_status": "override",
+      "zh_hans": "《招财之物》",
+      "zh_hant": "《招財之物》"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "LOSTBOOK_ID_16",
+    "name": {
+      "aliases": [
+        "《消失於怪物背上的少女》",
+        "異形の背に消えし娘",
+        "LOSTBOOK_ID_16"
+      ],
+      "internal": "LOSTBOOK_ID_16",
+      "ja": "異形の背に消えし娘",
+      "review_status": "override",
+      "zh_hans": "《消失於怪物背上的少女》",
+      "zh_hant": "《消失於怪物背上的少女》"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "LOSTBOOK_ID_17",
+    "name": {
+      "aliases": [
+        "《火灾的新闻报导》",
+        "《火災的新聞報導》",
+        "火事の新聞記事",
+        "LOSTBOOK_ID_17"
+      ],
+      "internal": "LOSTBOOK_ID_17",
+      "ja": "火事の新聞記事",
+      "review_status": "override",
+      "zh_hans": "《火灾的新闻报导》",
+      "zh_hant": "《火災的新聞報導》"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "LOSTBOOK_ID_20",
+    "name": {
+      "aliases": [
+        "《破旧的日记》",
+        "《破舊的日記》",
+        "古い日記",
+        "LOSTBOOK_ID_20"
+      ],
+      "internal": "LOSTBOOK_ID_20",
+      "ja": "古い日記",
+      "review_status": "override",
+      "zh_hans": "《破旧的日记》",
+      "zh_hant": "《破舊的日記》"
+    },
+    "numeric_id": 17
+  },
+  {
+    "id": "LOSTBOOK_ID_21",
+    "name": {
+      "aliases": [
+        "《连续杀人事件的报导》",
+        "《連續殺人事件的報導》",
+        "連続殺人の新聞記事",
+        "LOSTBOOK_ID_21"
+      ],
+      "internal": "LOSTBOOK_ID_21",
+      "ja": "連続殺人の新聞記事",
+      "review_status": "override",
+      "zh_hans": "《连续杀人事件的报导》",
+      "zh_hant": "《連續殺人事件的報導》"
+    },
+    "numeric_id": 18
+  },
+  {
+    "id": "LOSTBOOK_ID_23",
+    "name": {
+      "aliases": [
+        "《夜鸣的牛》",
+        "《夜鳴的牛》",
+        "夜鳴き牛",
+        "LOSTBOOK_ID_23"
+      ],
+      "internal": "LOSTBOOK_ID_23",
+      "ja": "夜鳴き牛",
+      "review_status": "override",
+      "zh_hans": "《夜鸣的牛》",
+      "zh_hant": "《夜鳴的牛》"
+    },
+    "numeric_id": 19
+  },
+  {
+    "id": "LOSTBOOK_ID_24",
+    "name": {
+      "aliases": [
+        "《老鼠的宝藏》",
+        "《老鼠的寶藏》",
+        "ネズミの宝",
+        "LOSTBOOK_ID_24"
+      ],
+      "internal": "LOSTBOOK_ID_24",
+      "ja": "ネズミの宝",
+      "review_status": "override",
+      "zh_hans": "《老鼠的宝藏》",
+      "zh_hant": "《老鼠的寶藏》"
+    },
+    "numeric_id": 20
+  },
+  {
+    "id": "LOSTBOOK_ID_25",
+    "name": {
+      "aliases": [
+        "《虔诚的狐狸》",
+        "《虔誠的狐狸》",
+        "信心ぶかいキツネ",
+        "LOSTBOOK_ID_25"
+      ],
+      "internal": "LOSTBOOK_ID_25",
+      "ja": "信心ぶかいキツネ",
+      "review_status": "override",
+      "zh_hans": "《虔诚的狐狸》",
+      "zh_hant": "《虔誠的狐狸》"
+    },
+    "numeric_id": 21
+  },
+  {
+    "id": "LOSTBOOK_ID_26",
+    "name": {
+      "aliases": [
+        "《愚者的黄金》",
+        "《愚者的黃金》",
+        "愚か者の黄金",
+        "LOSTBOOK_ID_26"
+      ],
+      "internal": "LOSTBOOK_ID_26",
+      "ja": "愚か者の黄金",
+      "review_status": "override",
+      "zh_hans": "《愚者的黄金》",
+      "zh_hant": "《愚者的黃金》"
+    },
+    "numeric_id": 22
+  },
+  {
+    "id": "LOSTBOOK_ID_27",
+    "name": {
+      "aliases": [
+        "《池主传》",
+        "《池主傳》",
+        "池ノ主伝",
+        "LOSTBOOK_ID_27"
+      ],
+      "internal": "LOSTBOOK_ID_27",
+      "ja": "池ノ主伝",
+      "review_status": "override",
+      "zh_hans": "《池主传》",
+      "zh_hant": "《池主傳》"
+    },
+    "numeric_id": 23
+  },
+  {
+    "id": "LOSTBOOK_ID_28",
+    "name": {
+      "aliases": [
+        "《诱人的灯火》",
+        "《誘人的燈火》",
+        "誘う灯火",
+        "LOSTBOOK_ID_28"
+      ],
+      "internal": "LOSTBOOK_ID_28",
+      "ja": "誘う灯火",
+      "review_status": "override",
+      "zh_hans": "《诱人的灯火》",
+      "zh_hant": "《誘人的燈火》"
+    },
+    "numeric_id": 24
+  },
+  {
+    "id": "LOSTBOOK_ID_29",
+    "name": {
+      "aliases": [
+        "《不倒翁的呼唤》",
+        "《不倒翁的呼喚》",
+        "だるまさんの呼び声",
+        "LOSTBOOK_ID_29"
+      ],
+      "internal": "LOSTBOOK_ID_29",
+      "ja": "だるまさんの呼び声",
+      "review_status": "override",
+      "zh_hans": "《不倒翁的呼唤》",
+      "zh_hant": "《不倒翁的呼喚》"
+    },
+    "numeric_id": 25
+  },
+  {
+    "id": "LOSTBOOK_ID_30",
+    "name": {
+      "aliases": [
+        "《口传故事「黑影」》",
+        "《口傳故事「黑影」》",
+        "口伝「黒きもの」",
+        "LOSTBOOK_ID_30"
+      ],
+      "internal": "LOSTBOOK_ID_30",
+      "ja": "口伝「黒きもの」",
+      "review_status": "override",
+      "zh_hans": "《口传故事「黑影」》",
+      "zh_hant": "《口傳故事「黑影」》"
+    },
+    "numeric_id": 26
+  },
+  {
+    "id": "LOSTBOOK_ID_31",
+    "name": {
+      "aliases": [
+        "《潜伏於地底的蛇》",
+        "《潛伏於地底的蛇》",
+        "地に潜むヘビ",
+        "LOSTBOOK_ID_31"
+      ],
+      "internal": "LOSTBOOK_ID_31",
+      "ja": "地に潜むヘビ",
+      "review_status": "override",
+      "zh_hans": "《潜伏於地底的蛇》",
+      "zh_hant": "《潛伏於地底的蛇》"
+    },
+    "numeric_id": 27
+  },
+  {
+    "id": "LOSTBOOK_ID_32",
+    "name": {
+      "aliases": [
+        "《生命之火》",
+        "命の火",
+        "LOSTBOOK_ID_32"
+      ],
+      "internal": "LOSTBOOK_ID_32",
+      "ja": "命の火",
+      "review_status": "override",
+      "zh_hans": "《生命之火》",
+      "zh_hant": "《生命之火》"
+    },
+    "numeric_id": 28
+  },
+  {
+    "id": "LOSTBOOK_ID_33",
+    "name": {
+      "aliases": [
+        "《斗笠妖怪》",
+        "笠の化け物",
+        "LOSTBOOK_ID_33"
+      ],
+      "internal": "LOSTBOOK_ID_33",
+      "ja": "笠の化け物",
+      "review_status": "override",
+      "zh_hans": "《斗笠妖怪》",
+      "zh_hant": "《斗笠妖怪》"
+    },
+    "numeric_id": 29
+  },
+  {
+    "id": "LOSTBOOK_ID_34",
+    "name": {
+      "aliases": [
+        "《口传故事「白女」》",
+        "《口傳故事「白女」》",
+        "口伝「真白き女」",
+        "LOSTBOOK_ID_34"
+      ],
+      "internal": "LOSTBOOK_ID_34",
+      "ja": "口伝「真白き女」",
+      "review_status": "override",
+      "zh_hans": "《口传故事「白女」》",
+      "zh_hant": "《口傳故事「白女」》"
+    },
+    "numeric_id": 30
+  },
+  {
+    "id": "LOSTBOOK_ID_35",
+    "name": {
+      "aliases": [
+        "《年幼的守护者》",
+        "《年幼的守護者》",
+        "幼き守り手",
+        "LOSTBOOK_ID_35"
+      ],
+      "internal": "LOSTBOOK_ID_35",
+      "ja": "幼き守り手",
+      "review_status": "override",
+      "zh_hans": "《年幼的守护者》",
+      "zh_hant": "《年幼的守護者》"
+    },
+    "numeric_id": 31
+  },
+  {
+    "id": "LOSTBOOK_ID_36",
+    "name": {
+      "aliases": [
+        "《神隐之子》",
+        "《神隱之子》",
+        "神かくしの子",
+        "LOSTBOOK_ID_36"
+      ],
+      "internal": "LOSTBOOK_ID_36",
+      "ja": "神かくしの子",
+      "review_status": "override",
+      "zh_hans": "《神隐之子》",
+      "zh_hant": "《神隱之子》"
+    },
+    "numeric_id": 32
+  },
+  {
+    "id": "LOSTBOOK_ID_37",
+    "name": {
+      "aliases": [
+        "《遗书》",
+        "《遺書》",
+        "遺言書",
+        "LOSTBOOK_ID_37"
+      ],
+      "internal": "LOSTBOOK_ID_37",
+      "ja": "遺言書",
+      "review_status": "override",
+      "zh_hans": "《遗书》",
+      "zh_hant": "《遺書》"
+    },
+    "numeric_id": 33
+  },
+  {
+    "id": "LOSTBOOK_ID_38",
+    "name": {
+      "aliases": [
+        "《向鬼发誓的恶童》",
+        "《向鬼發誓的惡童》",
+        "鬼に誓った悪童",
+        "LOSTBOOK_ID_38"
+      ],
+      "internal": "LOSTBOOK_ID_38",
+      "ja": "鬼に誓った悪童",
+      "review_status": "override",
+      "zh_hans": "《向鬼发誓的恶童》",
+      "zh_hant": "《向鬼發誓的惡童》"
+    },
+    "numeric_id": 34
+  },
+  {
+    "id": "LOSTBOOK_ID_40",
+    "name": {
+      "aliases": [
+        "《风土病的报告书》",
+        "《風土病的報告書》",
+        "風土病の報告書",
+        "LOSTBOOK_ID_40"
+      ],
+      "internal": "LOSTBOOK_ID_40",
+      "ja": "風土病の報告書",
+      "review_status": "override",
+      "zh_hans": "《风土病的报告书》",
+      "zh_hant": "《風土病的報告書》"
+    },
+    "numeric_id": 35
+  },
+  {
+    "id": "LOSTBOOK_ID_41",
+    "name": {
+      "aliases": [
+        "《祭品仪式》",
+        "《祭品儀式》",
+        "贄の儀式",
+        "LOSTBOOK_ID_41"
+      ],
+      "internal": "LOSTBOOK_ID_41",
+      "ja": "贄の儀式",
+      "review_status": "override",
+      "zh_hans": "《祭品仪式》",
+      "zh_hant": "《祭品儀式》"
+    },
+    "numeric_id": 36
+  },
+  {
+    "id": "LOSTBOOK_ID_42",
+    "name": {
+      "aliases": [
+        "《向鬼许下的心愿》",
+        "《向鬼許下的心願》",
+        "鬼への願い事",
+        "LOSTBOOK_ID_42"
+      ],
+      "internal": "LOSTBOOK_ID_42",
+      "ja": "鬼への願い事",
+      "review_status": "override",
+      "zh_hans": "《向鬼许下的心愿》",
+      "zh_hant": "《向鬼許下的心願》"
+    },
+    "numeric_id": 37
+  },
+  {
+    "id": "LOSTBOOK_ID_43",
+    "name": {
+      "aliases": [
+        "《「看到罗」妖怪》",
+        "《「看到囉」妖怪》",
+        "見たぞの怪物",
+        "LOSTBOOK_ID_43"
+      ],
+      "internal": "LOSTBOOK_ID_43",
+      "ja": "見たぞの怪物",
+      "review_status": "override",
+      "zh_hans": "《「看到罗」妖怪》",
+      "zh_hant": "《「看到囉」妖怪》"
+    },
+    "numeric_id": 38
+  },
+  {
+    "id": "LOSTBOOK_ID_44",
+    "name": {
+      "aliases": [
+        "《独眼不倒翁》",
+        "《獨眼不倒翁》",
+        "ひとつ目のダルマ",
+        "LOSTBOOK_ID_44"
+      ],
+      "internal": "LOSTBOOK_ID_44",
+      "ja": "ひとつ目のダルマ",
+      "review_status": "override",
+      "zh_hans": "《独眼不倒翁》",
+      "zh_hant": "《獨眼不倒翁》"
+    },
+    "numeric_id": 39
+  },
+  {
+    "id": "LOSTBOOK_ID_45",
+    "name": {
+      "aliases": [
+        "《黑色的雾》",
+        "《黑色的霧》",
+        "黒いモヤの話",
+        "LOSTBOOK_ID_45"
+      ],
+      "internal": "LOSTBOOK_ID_45",
+      "ja": "黒いモヤの話",
+      "review_status": "override",
+      "zh_hans": "《黑色的雾》",
+      "zh_hant": "《黑色的霧》"
+    },
+    "numeric_id": 40
+  },
+  {
+    "id": "LOSTBOOK_ID_46",
+    "name": {
+      "aliases": [
+        "《使大地翻涌的大蛇》",
+        "《使大地翻湧的大蛇》",
+        "大地をうねる大蛇",
+        "LOSTBOOK_ID_46"
+      ],
+      "internal": "LOSTBOOK_ID_46",
+      "ja": "大地をうねる大蛇",
+      "review_status": "override",
+      "zh_hans": "《使大地翻涌的大蛇》",
+      "zh_hant": "《使大地翻湧的大蛇》"
+    },
+    "numeric_id": 41
+  },
+  {
+    "id": "LOSTBOOK_ID_47",
+    "name": {
+      "aliases": [
+        "《蒙面的蜡烛商人》",
+        "《蒙面的蠟燭商人》",
+        "仮面のロウソク売り",
+        "LOSTBOOK_ID_47"
+      ],
+      "internal": "LOSTBOOK_ID_47",
+      "ja": "仮面のロウソク売り",
+      "review_status": "override",
+      "zh_hans": "《蒙面的蜡烛商人》",
+      "zh_hant": "《蒙面的蠟燭商人》"
+    },
+    "numeric_id": 42
+  },
+  {
+    "id": "LOSTBOOK_ID_48",
+    "name": {
+      "aliases": [
+        "《地藏菩萨和雨怪》",
+        "《地藏菩薩和雨怪》",
+        "地蔵と雨の怪",
+        "LOSTBOOK_ID_48"
+      ],
+      "internal": "LOSTBOOK_ID_48",
+      "ja": "地蔵と雨の怪",
+      "review_status": "override",
+      "zh_hans": "《地藏菩萨和雨怪》",
+      "zh_hant": "《地藏菩薩和雨怪》"
+    },
+    "numeric_id": 43
+  },
+  {
+    "id": "LOSTBOOK_ID_49",
+    "name": {
+      "aliases": [
+        "《雪夜女子与婴儿》",
+        "《雪夜女子與嬰兒》",
+        "雪夜の女と赤子",
+        "LOSTBOOK_ID_49"
+      ],
+      "internal": "LOSTBOOK_ID_49",
+      "ja": "雪夜の女と赤子",
+      "review_status": "override",
+      "zh_hans": "《雪夜女子与婴儿》",
+      "zh_hant": "《雪夜女子與嬰兒》"
+    },
+    "numeric_id": 44
+  },
+  {
+    "id": "LOSTBOOK_ID_50",
+    "name": {
+      "aliases": [
+        "《风神、雷神与乌龟》",
+        "《風神、雷神與烏龜》",
+        "風神と雷神と亀",
+        "LOSTBOOK_ID_50"
+      ],
+      "internal": "LOSTBOOK_ID_50",
+      "ja": "風神と雷神と亀",
+      "review_status": "override",
+      "zh_hans": "《风神、雷神与乌龟》",
+      "zh_hant": "《風神、雷神與烏龜》"
+    },
+    "numeric_id": 45
+  },
+  {
+    "id": "LOSTBOOK_ID_51",
+    "name": {
+      "aliases": [
+        "《自地而出的神》",
+        "地より出でし神",
+        "LOSTBOOK_ID_51"
+      ],
+      "internal": "LOSTBOOK_ID_51",
+      "ja": "地より出でし神",
+      "review_status": "override",
+      "zh_hans": "《自地而出的神》",
+      "zh_hant": "《自地而出的神》"
+    },
+    "numeric_id": 46
+  },
+  {
+    "id": "LOSTBOOK_ID_52",
+    "name": {
+      "aliases": [
+        "《村长的日记》",
+        "《村長的日記》",
+        "村長の日記",
+        "LOSTBOOK_ID_52"
+      ],
+      "internal": "LOSTBOOK_ID_52",
+      "ja": "村長の日記",
+      "review_status": "override",
+      "zh_hans": "《村长的日记》",
+      "zh_hant": "《村長的日記》"
+    },
+    "numeric_id": 47
+  },
+  {
+    "id": "LOSTBOOK_ID_53",
+    "name": {
+      "aliases": [
+        "《巨大的白萝卜》",
+        "《巨大的白蘿蔔》",
+        "大きなダイコン",
+        "LOSTBOOK_ID_53"
+      ],
+      "internal": "LOSTBOOK_ID_53",
+      "ja": "大きなダイコン",
+      "review_status": "override",
+      "zh_hans": "《巨大的白萝卜》",
+      "zh_hant": "《巨大的白蘿蔔》"
+    },
+    "numeric_id": 48
+  },
+  {
+    "id": "LOSTBOOK_ID_54",
+    "name": {
+      "aliases": [
+        "《公布新规矩》",
+        "《公布新規矩》",
+        "新たな掟、掲示",
+        "LOSTBOOK_ID_54"
+      ],
+      "internal": "LOSTBOOK_ID_54",
+      "ja": "新たな掟、掲示",
+      "review_status": "override",
+      "zh_hans": "《公布新规矩》",
+      "zh_hant": "《公布新規矩》"
+    },
+    "numeric_id": 49
+  },
+  {
+    "id": "LOSTBOOK_ID_55",
+    "name": {
+      "aliases": [
+        "《某个女孩的秘密》",
+        "《某個女孩的祕密》",
+        "ある娘の秘密",
+        "LOSTBOOK_ID_55"
+      ],
+      "internal": "LOSTBOOK_ID_55",
+      "ja": "ある娘の秘密",
+      "review_status": "override",
+      "zh_hans": "《某个女孩的秘密》",
+      "zh_hant": "《某個女孩的祕密》"
+    },
+    "numeric_id": 50
+  },
+  {
+    "id": "LOSTBOOK_ID_56",
+    "name": {
+      "aliases": [
+        "《无法返回的山路》",
+        "《無法返回的山路》",
+        "帰れずの峠道",
+        "LOSTBOOK_ID_56"
+      ],
+      "internal": "LOSTBOOK_ID_56",
+      "ja": "帰れずの峠道",
+      "review_status": "override",
+      "zh_hans": "《无法返回的山路》",
+      "zh_hant": "《無法返回的山路》"
+    },
+    "numeric_id": 51
+  },
+  {
+    "id": "LOSTBOOK_ID_57",
+    "name": {
+      "aliases": [
+        "《新规矩的公告》",
+        "《新規矩的公告》",
+        "新しい掟の掲示",
+        "LOSTBOOK_ID_57"
+      ],
+      "internal": "LOSTBOOK_ID_57",
+      "ja": "新しい掟の掲示",
+      "review_status": "override",
+      "zh_hans": "《新规矩的公告》",
+      "zh_hant": "《新規矩的公告》"
+    },
+    "numeric_id": 52
+  },
+  {
+    "id": "LOSTBOOK_ID_58",
+    "name": {
+      "aliases": [
+        "《遗失之物》",
+        "《遺失之物》",
+        "失ったもの",
+        "LOSTBOOK_ID_58"
+      ],
+      "internal": "LOSTBOOK_ID_58",
+      "ja": "失ったもの",
+      "review_status": "override",
+      "zh_hans": "《遗失之物》",
+      "zh_hant": "《遺失之物》"
+    },
+    "numeric_id": 53
+  },
+  {
+    "id": "LOSTBOOK_ID_59",
+    "name": {
+      "aliases": [
+        "《愿望成真的旅人》",
+        "《願望成真的旅人》",
+        "願いを叶えた旅人",
+        "LOSTBOOK_ID_59"
+      ],
+      "internal": "LOSTBOOK_ID_59",
+      "ja": "願いを叶えた旅人",
+      "review_status": "override",
+      "zh_hans": "《愿望成真的旅人》",
+      "zh_hant": "《願望成真的旅人》"
+    },
+    "numeric_id": 54
+  },
+  {
+    "id": "LOSTBOOK_ID_61",
+    "name": {
+      "aliases": [
+        "《夜夜回响的脚步声》",
+        "《夜夜迴響的腳步聲》",
+        "夜ごとひびく足音",
+        "LOSTBOOK_ID_61"
+      ],
+      "internal": "LOSTBOOK_ID_61",
+      "ja": "夜ごとひびく足音",
+      "review_status": "override",
+      "zh_hans": "《夜夜回响的脚步声》",
+      "zh_hant": "《夜夜迴響的腳步聲》"
+    },
+    "numeric_id": 55
+  }
+]

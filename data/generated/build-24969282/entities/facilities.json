@@ -1,0 +1,565 @@
+[
+  {
+    "id": "FACILITY_ID_AVIARY_01",
+    "name": {
+      "aliases": [
+        "鸡舍",
+        "雞舍",
+        "鶏小屋",
+        "FACILITY_ID_AVIARY_01"
+      ],
+      "internal": "FACILITY_ID_AVIARY_01",
+      "ja": "鶏小屋",
+      "review_status": "override",
+      "zh_hans": "鸡舍",
+      "zh_hant": "雞舍"
+    },
+    "numeric_id": 23
+  },
+  {
+    "id": "FACILITY_ID_AVIARY_02",
+    "name": {
+      "aliases": [
+        "鸡舍",
+        "雞舍",
+        "鶏小屋",
+        "FACILITY_ID_AVIARY_02"
+      ],
+      "internal": "FACILITY_ID_AVIARY_02",
+      "ja": "鶏小屋",
+      "review_status": "override",
+      "zh_hans": "鸡舍",
+      "zh_hant": "雞舍"
+    },
+    "numeric_id": 24
+  },
+  {
+    "id": "FACILITY_ID_AVIARY_03",
+    "name": {
+      "aliases": [
+        "鸡舍",
+        "雞舍",
+        "鶏小屋",
+        "FACILITY_ID_AVIARY_03"
+      ],
+      "internal": "FACILITY_ID_AVIARY_03",
+      "ja": "鶏小屋",
+      "review_status": "override",
+      "zh_hans": "鸡舍",
+      "zh_hant": "雞舍"
+    },
+    "numeric_id": 25
+  },
+  {
+    "id": "FACILITY_ID_AVIARY_04",
+    "name": {
+      "aliases": [
+        "鸡舍",
+        "雞舍",
+        "鶏小屋",
+        "FACILITY_ID_AVIARY_04"
+      ],
+      "internal": "FACILITY_ID_AVIARY_04",
+      "ja": "鶏小屋",
+      "review_status": "override",
+      "zh_hans": "鸡舍",
+      "zh_hant": "雞舍"
+    },
+    "numeric_id": 26
+  },
+  {
+    "id": "FACILITY_ID_BARN_01",
+    "name": {
+      "aliases": [
+        "仓库",
+        "倉庫",
+        "納屋",
+        "FACILITY_ID_BARN_01"
+      ],
+      "internal": "FACILITY_ID_BARN_01",
+      "ja": "納屋",
+      "review_status": "override",
+      "zh_hans": "仓库",
+      "zh_hant": "倉庫"
+    },
+    "numeric_id": 31
+  },
+  {
+    "id": "FACILITY_ID_BARN_02",
+    "name": {
+      "aliases": [
+        "仓库",
+        "倉庫",
+        "納屋",
+        "FACILITY_ID_BARN_02"
+      ],
+      "internal": "FACILITY_ID_BARN_02",
+      "ja": "納屋",
+      "review_status": "override",
+      "zh_hans": "仓库",
+      "zh_hant": "倉庫"
+    },
+    "numeric_id": 32
+  },
+  {
+    "id": "FACILITY_ID_BARN_03",
+    "name": {
+      "aliases": [
+        "仓库",
+        "倉庫",
+        "納屋",
+        "FACILITY_ID_BARN_03"
+      ],
+      "internal": "FACILITY_ID_BARN_03",
+      "ja": "納屋",
+      "review_status": "override",
+      "zh_hans": "仓库",
+      "zh_hant": "倉庫"
+    },
+    "numeric_id": 33
+  },
+  {
+    "id": "FACILITY_ID_BARN_04",
+    "name": {
+      "aliases": [
+        "仓库",
+        "倉庫",
+        "納屋",
+        "FACILITY_ID_BARN_04"
+      ],
+      "internal": "FACILITY_ID_BARN_04",
+      "ja": "納屋",
+      "review_status": "override",
+      "zh_hans": "仓库",
+      "zh_hant": "倉庫"
+    },
+    "numeric_id": 34
+  },
+  {
+    "id": "FACILITY_ID_CARPENTER_HOUSE",
+    "name": {
+      "aliases": [
+        "木助的家",
+        "キスケの家",
+        "FACILITY_ID_CARPENTER_HOUSE"
+      ],
+      "internal": "FACILITY_ID_CARPENTER_HOUSE",
+      "ja": "キスケの家",
+      "review_status": "override",
+      "zh_hans": "木助的家",
+      "zh_hant": "木助的家"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "FACILITY_ID_CITY_HALL_EMPLOYEE_HOUSE",
+    "name": {
+      "aliases": [
+        "名护的家",
+        "名護的家",
+        "ナゴの家",
+        "FACILITY_ID_CITY_HALL_EMPLOYEE_HOUSE"
+      ],
+      "internal": "FACILITY_ID_CITY_HALL_EMPLOYEE_HOUSE",
+      "ja": "ナゴの家",
+      "review_status": "override",
+      "zh_hans": "名护的家",
+      "zh_hant": "名護的家"
+    },
+    "numeric_id": 13
+  },
+  {
+    "id": "FACILITY_ID_CLINIC",
+    "name": {
+      "aliases": [
+        "樟树诊所",
+        "樟樹診所",
+        "くすのき診療所",
+        "FACILITY_ID_CLINIC"
+      ],
+      "internal": "FACILITY_ID_CLINIC",
+      "ja": "くすのき診療所",
+      "review_status": "override",
+      "zh_hans": "樟树诊所",
+      "zh_hant": "樟樹診所"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "FACILITY_ID_CLOCK_TOWER",
+    "name": {
+      "aliases": [
+        "钟楼",
+        "鐘樓",
+        "時計塔",
+        "FACILITY_ID_CLOCK_TOWER"
+      ],
+      "internal": "FACILITY_ID_CLOCK_TOWER",
+      "ja": "時計塔",
+      "review_status": "override",
+      "zh_hans": "钟楼",
+      "zh_hant": "鐘樓"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "FACILITY_ID_CONSTRUCTION_SHED",
+    "name": {
+      "aliases": [
+        "树木建设",
+        "樹木建設",
+        "FACILITY_ID_CONSTRUCTION_SHED"
+      ],
+      "internal": "FACILITY_ID_CONSTRUCTION_SHED",
+      "ja": "樹木建設",
+      "review_status": "override",
+      "zh_hans": "树木建设",
+      "zh_hant": "樹木建設"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "FACILITY_ID_DOCTOR_AND_BOY_HOUSE",
+    "name": {
+      "aliases": [
+        "莲实与堇怜的家",
+        "蓮實與堇怜的家",
+        "ハスミとスミレの家",
+        "FACILITY_ID_DOCTOR_AND_BOY_HOUSE"
+      ],
+      "internal": "FACILITY_ID_DOCTOR_AND_BOY_HOUSE",
+      "ja": "ハスミとスミレの家",
+      "review_status": "override",
+      "zh_hans": "莲实与堇怜的家",
+      "zh_hant": "蓮實與堇怜的家"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "FACILITY_ID_GENERAL_STORE",
+    "name": {
+      "aliases": [
+        "田上杂货店",
+        "田上雜貨店",
+        "田上雑貨店",
+        "FACILITY_ID_GENERAL_STORE"
+      ],
+      "internal": "FACILITY_ID_GENERAL_STORE",
+      "ja": "田上雑貨店",
+      "review_status": "override",
+      "zh_hans": "田上杂货店",
+      "zh_hant": "田上雜貨店"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "FACILITY_ID_GENERAL_STORE_HOUSE",
+    "name": {
+      "aliases": [
+        "茶梅的家",
+        "サザンカの家",
+        "FACILITY_ID_GENERAL_STORE_HOUSE"
+      ],
+      "internal": "FACILITY_ID_GENERAL_STORE_HOUSE",
+      "ja": "サザンカの家",
+      "review_status": "override",
+      "zh_hans": "茶梅的家",
+      "zh_hant": "茶梅的家"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "FACILITY_ID_HUNTER_AND_LUMBERJACK_HOUSE",
+    "name": {
+      "aliases": [
+        "驹子与四郎治的家",
+        "駒子與四郎治的家",
+        "コマコとシロージの家",
+        "FACILITY_ID_HUNTER_AND_LUMBERJACK_HOUSE"
+      ],
+      "internal": "FACILITY_ID_HUNTER_AND_LUMBERJACK_HOUSE",
+      "ja": "コマコとシロージの家",
+      "review_status": "override",
+      "zh_hans": "驹子与四郎治的家",
+      "zh_hant": "駒子與四郎治的家"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "FACILITY_ID_HUNTINGLODGE",
+    "name": {
+      "aliases": [
+        "猎人哨站",
+        "獵人哨站",
+        "狩人詰所",
+        "FACILITY_ID_HUNTINGLODGE"
+      ],
+      "internal": "FACILITY_ID_HUNTINGLODGE",
+      "ja": "狩人詰所",
+      "review_status": "override",
+      "zh_hans": "猎人哨站",
+      "zh_hant": "獵人哨站"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "FACILITY_ID_LIVESTOCK_HOUSE_01",
+    "name": {
+      "aliases": [
+        "畜舍",
+        "家畜小屋",
+        "FACILITY_ID_LIVESTOCK_HOUSE_01"
+      ],
+      "internal": "FACILITY_ID_LIVESTOCK_HOUSE_01",
+      "ja": "家畜小屋",
+      "review_status": "override",
+      "zh_hans": "畜舍",
+      "zh_hant": "畜舍"
+    },
+    "numeric_id": 27
+  },
+  {
+    "id": "FACILITY_ID_LIVESTOCK_HOUSE_02",
+    "name": {
+      "aliases": [
+        "畜舍",
+        "家畜小屋",
+        "FACILITY_ID_LIVESTOCK_HOUSE_02"
+      ],
+      "internal": "FACILITY_ID_LIVESTOCK_HOUSE_02",
+      "ja": "家畜小屋",
+      "review_status": "override",
+      "zh_hans": "畜舍",
+      "zh_hant": "畜舍"
+    },
+    "numeric_id": 28
+  },
+  {
+    "id": "FACILITY_ID_LIVESTOCK_HOUSE_03",
+    "name": {
+      "aliases": [
+        "畜舍",
+        "家畜小屋",
+        "FACILITY_ID_LIVESTOCK_HOUSE_03"
+      ],
+      "internal": "FACILITY_ID_LIVESTOCK_HOUSE_03",
+      "ja": "家畜小屋",
+      "review_status": "override",
+      "zh_hans": "畜舍",
+      "zh_hant": "畜舍"
+    },
+    "numeric_id": 29
+  },
+  {
+    "id": "FACILITY_ID_LIVESTOCK_HOUSE_04",
+    "name": {
+      "aliases": [
+        "畜舍",
+        "家畜小屋",
+        "FACILITY_ID_LIVESTOCK_HOUSE_04"
+      ],
+      "internal": "FACILITY_ID_LIVESTOCK_HOUSE_04",
+      "ja": "家畜小屋",
+      "review_status": "override",
+      "zh_hans": "畜舍",
+      "zh_hant": "畜舍"
+    },
+    "numeric_id": 30
+  },
+  {
+    "id": "FACILITY_ID_LIVRARY",
+    "name": {
+      "aliases": [
+        "图书馆",
+        "圖書館",
+        "図書館",
+        "FACILITY_ID_LIVRARY"
+      ],
+      "internal": "FACILITY_ID_LIVRARY",
+      "ja": "図書館",
+      "review_status": "override",
+      "zh_hans": "图书馆",
+      "zh_hant": "圖書館"
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "FACILITY_ID_MAYOR_DETACHED_BUILDING",
+    "name": {
+      "aliases": [
+        "村长宅邸的别馆",
+        "村長宅邸的別館",
+        "村長邸の離れ",
+        "FACILITY_ID_MAYOR_DETACHED_BUILDING"
+      ],
+      "internal": "FACILITY_ID_MAYOR_DETACHED_BUILDING",
+      "ja": "村長邸の離れ",
+      "review_status": "override",
+      "zh_hans": "村长宅邸的别馆",
+      "zh_hant": "村長宅邸的別館"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "FACILITY_ID_MAYOR_HOUSE",
+    "name": {
+      "aliases": [
+        "村长宅邸",
+        "村長宅邸",
+        "村長邸",
+        "FACILITY_ID_MAYOR_HOUSE"
+      ],
+      "internal": "FACILITY_ID_MAYOR_HOUSE",
+      "ja": "村長邸",
+      "review_status": "override",
+      "zh_hans": "村长宅邸",
+      "zh_hant": "村長宅邸"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "FACILITY_ID_MAYOR_STOREHOUSE",
+    "name": {
+      "aliases": [
+        "村长宅邸的仓库",
+        "村長宅邸的倉庫",
+        "村長邸の蔵",
+        "FACILITY_ID_MAYOR_STOREHOUSE"
+      ],
+      "internal": "FACILITY_ID_MAYOR_STOREHOUSE",
+      "ja": "村長邸の蔵",
+      "review_status": "override",
+      "zh_hans": "村长宅邸的仓库",
+      "zh_hant": "村長宅邸的倉庫"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "FACILITY_ID_MYHOUSE_LV1",
+    "name": {
+      "aliases": [
+        "我的家",
+        "自宅",
+        "FACILITY_ID_MYHOUSE_LV1"
+      ],
+      "internal": "FACILITY_ID_MYHOUSE_LV1",
+      "ja": "自宅",
+      "review_status": "override",
+      "zh_hans": "我的家",
+      "zh_hant": "我的家"
+    },
+    "numeric_id": 19
+  },
+  {
+    "id": "FACILITY_ID_MYHOUSE_LV2",
+    "name": {
+      "aliases": [
+        "我的家",
+        "自宅",
+        "FACILITY_ID_MYHOUSE_LV2"
+      ],
+      "internal": "FACILITY_ID_MYHOUSE_LV2",
+      "ja": "自宅",
+      "review_status": "override",
+      "zh_hans": "我的家",
+      "zh_hant": "我的家"
+    },
+    "numeric_id": 20
+  },
+  {
+    "id": "FACILITY_ID_MYHOUSE_LV3",
+    "name": {
+      "aliases": [
+        "我的家",
+        "自宅",
+        "FACILITY_ID_MYHOUSE_LV3"
+      ],
+      "internal": "FACILITY_ID_MYHOUSE_LV3",
+      "ja": "自宅",
+      "review_status": "override",
+      "zh_hans": "我的家",
+      "zh_hant": "我的家"
+    },
+    "numeric_id": 21
+  },
+  {
+    "id": "FACILITY_ID_MYHOUSE_LV4",
+    "name": {
+      "aliases": [
+        "我的家",
+        "自宅",
+        "FACILITY_ID_MYHOUSE_LV4"
+      ],
+      "internal": "FACILITY_ID_MYHOUSE_LV4",
+      "ja": "自宅",
+      "review_status": "override",
+      "zh_hans": "我的家",
+      "zh_hant": "我的家"
+    },
+    "numeric_id": 22
+  },
+  {
+    "id": "FACILITY_ID_RESTAURANT",
+    "name": {
+      "aliases": [
+        "茶碗亭",
+        "FACILITY_ID_RESTAURANT"
+      ],
+      "internal": "FACILITY_ID_RESTAURANT",
+      "ja": "茶碗亭",
+      "review_status": "override",
+      "zh_hans": "茶碗亭",
+      "zh_hant": "茶碗亭"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "FACILITY_ID_SHRINE",
+    "name": {
+      "aliases": [
+        "岔路的祠堂",
+        "辻の祠",
+        "FACILITY_ID_SHRINE"
+      ],
+      "internal": "FACILITY_ID_SHRINE",
+      "ja": "辻の祠",
+      "review_status": "override",
+      "zh_hans": "岔路的祠堂",
+      "zh_hant": "岔路的祠堂"
+    },
+    "numeric_id": 18
+  },
+  {
+    "id": "FACILITY_ID_STREET_VENDOR",
+    "name": {
+      "aliases": [
+        "流动摊贩",
+        "流動攤販",
+        "露天商",
+        "FACILITY_ID_STREET_VENDOR"
+      ],
+      "internal": "FACILITY_ID_STREET_VENDOR",
+      "ja": "露天商",
+      "review_status": "override",
+      "zh_hans": "流动摊贩",
+      "zh_hant": "流動攤販"
+    },
+    "numeric_id": 17
+  },
+  {
+    "id": "FACILITY_ID_YOUTH_HOUSE",
+    "name": {
+      "aliases": [
+        "裕太的家",
+        "ユータの家",
+        "FACILITY_ID_YOUTH_HOUSE"
+      ],
+      "internal": "FACILITY_ID_YOUTH_HOUSE",
+      "ja": "ユータの家",
+      "review_status": "override",
+      "zh_hans": "裕太的家",
+      "zh_hant": "裕太的家"
+    },
+    "numeric_id": 11
+  }
+]

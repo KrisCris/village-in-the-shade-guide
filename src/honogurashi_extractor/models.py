@@ -85,3 +85,70 @@ class Snapshot:
     cooking_recipes: dict[str, Recipe] = field(default_factory=dict)
     store_offers: dict[str, StoreOffer] = field(default_factory=dict)
     issues: list[Issue] = field(default_factory=list)
+    fish: dict[str, Fish] = field(default_factory=dict)
+    livestock: dict[str, WorldEntry] = field(default_factory=dict)
+    characters: dict[str, Character] = field(default_factory=dict)
+    facilities: dict[str, WorldEntry] = field(default_factory=dict)
+    facility_releases: dict[str, WorldEntry] = field(default_factory=dict)
+    quests: dict[str, WorldEntry] = field(default_factory=dict)
+    collectibles: dict[str, WorldEntry] = field(default_factory=dict)
+    hunt_rewards: dict[str, HuntReward] = field(default_factory=dict)
+    weather: dict[str, WorldEntry] = field(default_factory=dict)
+
+
+@dataclass(frozen=True, slots=True)
+class FishLocation:
+    location_id: str
+    name: LocalizedName
+
+
+@dataclass(frozen=True, slots=True)
+class Fish:
+    id: str
+    numeric_id: int
+    name: LocalizedName
+    sell_price: int
+    locations: tuple[FishLocation, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class GiftItem:
+    item_id: str
+    preference: int
+
+
+@dataclass(frozen=True, slots=True)
+class Character:
+    id: str
+    numeric_id: int
+    name: LocalizedName
+    role_ja: str
+    gift_items: tuple[GiftItem, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class WorldEntry:
+    id: str
+    numeric_id: int
+    name: LocalizedName
+
+
+@dataclass(frozen=True, slots=True)
+class HuntReward:
+    id: str
+    numeric_id: int
+    certificate_item_id: str | None
+    rewards: tuple[ItemQuantity, ...]
+
+
+@dataclass(slots=True)
+class WorldSnapshot:
+    fish: dict[str, Fish] = field(default_factory=dict)
+    livestock: dict[str, WorldEntry] = field(default_factory=dict)
+    characters: dict[str, Character] = field(default_factory=dict)
+    facilities: dict[str, WorldEntry] = field(default_factory=dict)
+    facility_releases: dict[str, WorldEntry] = field(default_factory=dict)
+    quests: dict[str, WorldEntry] = field(default_factory=dict)
+    collectibles: dict[str, WorldEntry] = field(default_factory=dict)
+    hunt_rewards: dict[str, HuntReward] = field(default_factory=dict)
+    weather: dict[str, WorldEntry] = field(default_factory=dict)

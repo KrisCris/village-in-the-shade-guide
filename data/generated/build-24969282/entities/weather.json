@@ -1,0 +1,96 @@
+[
+  {
+    "id": "WEATHER_ID_CLOUDY",
+    "name": {
+      "aliases": [
+        "阴天",
+        "曇り",
+        "WEATHER_ID_CLOUDY"
+      ],
+      "internal": "WEATHER_ID_CLOUDY",
+      "ja": "曇り",
+      "review_status": "override",
+      "zh_hans": "阴天",
+      "zh_hant": ""
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "WEATHER_ID_PEACH_BLOSSOMS",
+    "name": {
+      "aliases": [
+        "桃の花",
+        "WEATHER_ID_PEACH_BLOSSOMS"
+      ],
+      "internal": "WEATHER_ID_PEACH_BLOSSOMS",
+      "ja": "桃の花",
+      "review_status": "source-ja",
+      "zh_hans": "桃の花",
+      "zh_hant": ""
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "WEATHER_ID_RAIN",
+    "name": {
+      "aliases": [
+        "雨天",
+        "雨",
+        "WEATHER_ID_RAIN"
+      ],
+      "internal": "WEATHER_ID_RAIN",
+      "ja": "雨",
+      "review_status": "override",
+      "zh_hans": "雨天",
+      "zh_hant": ""
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "WEATHER_ID_SNOW",
+    "name": {
+      "aliases": [
+        "雪天",
+        "雪",
+        "WEATHER_ID_SNOW"
+      ],
+      "internal": "WEATHER_ID_SNOW",
+      "ja": "雪",
+      "review_status": "override",
+      "zh_hans": "雪天",
+      "zh_hant": ""
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "WEATHER_ID_SUNNY",
+    "name": {
+      "aliases": [
+        "晴朗",
+        "晴れ",
+        "WEATHER_ID_SUNNY"
+      ],
+      "internal": "WEATHER_ID_SUNNY",
+      "ja": "晴れ",
+      "review_status": "override",
+      "zh_hans": "晴朗",
+      "zh_hant": ""
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "WEATHER_ID_THUNDERSTORM",
+    "name": {
+      "aliases": [
+        "雷雨",
+        "WEATHER_ID_THUNDERSTORM"
+      ],
+      "internal": "WEATHER_ID_THUNDERSTORM",
+      "ja": "雷雨",
+      "review_status": "source-ja",
+      "zh_hans": "雷雨",
+      "zh_hant": ""
+    },
+    "numeric_id": 5
+  }
+]

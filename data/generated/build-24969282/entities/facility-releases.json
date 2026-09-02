@@ -1,0 +1,272 @@
+[
+  {
+    "id": "FACILITY_RELEASE_ID_CLINIC",
+    "name": {
+      "aliases": [
+        "可以使用樟树诊所了！",
+        "可以使用樟樹診所了！",
+        "くすのき診療所が利用できるようになった！",
+        "FACILITY_RELEASE_ID_CLINIC"
+      ],
+      "internal": "FACILITY_RELEASE_ID_CLINIC",
+      "ja": "くすのき診療所が利用できるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以使用樟树诊所了！",
+      "zh_hant": "可以使用樟樹診所了！"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_CONSTRUCTION_SHED",
+    "name": {
+      "aliases": [
+        "可以在树木建设委托建筑工程了！",
+        "可以在樹木建設委託建築工程了！",
+        "樹木建設で建築の依頼ができるようになった！",
+        "FACILITY_RELEASE_ID_CONSTRUCTION_SHED"
+      ],
+      "internal": "FACILITY_RELEASE_ID_CONSTRUCTION_SHED",
+      "ja": "樹木建設で建築の依頼ができるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以在树木建设委托建筑工程了！",
+      "zh_hant": "可以在樹木建設委託建築工程了！"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1",
+    "name": {
+      "aliases": [
+        "买下了一座新庭院！",
+        "買下了一座新庭院！",
+        "新しい庭を買い取った！",
+        "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1"
+      ],
+      "internal": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1",
+      "ja": "新しい庭を買い取った！",
+      "review_status": "override",
+      "zh_hans": "买下了一座新庭院！",
+      "zh_hant": "買下了一座新庭院！"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2",
+    "name": {
+      "aliases": [
+        "买下了一座新庭院！",
+        "買下了一座新庭院！",
+        "新しい庭を買い取った！",
+        "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2"
+      ],
+      "internal": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2",
+      "ja": "新しい庭を買い取った！",
+      "review_status": "override",
+      "zh_hans": "买下了一座新庭院！",
+      "zh_hant": "買下了一座新庭院！"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_GENERAL_STORE",
+    "name": {
+      "aliases": [
+        "可以在田上杂货店买东西了！",
+        "可以在田上雜貨店買東西了！",
+        "田上雑貨店で買い物ができるようになった！",
+        "FACILITY_RELEASE_ID_GENERAL_STORE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_GENERAL_STORE",
+      "ja": "田上雑貨店で買い物ができるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以在田上杂货店买东西了！",
+      "zh_hant": "可以在田上雜貨店買東西了！"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_HUNTING_LODGE",
+    "name": {
+      "aliases": [
+        "可以使用猎人哨站了！",
+        "可以使用獵人哨站了！",
+        "狩人詰所が利用できるようになった！",
+        "FACILITY_RELEASE_ID_HUNTING_LODGE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_HUNTING_LODGE",
+      "ja": "狩人詰所が利用できるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以使用猎人哨站了！",
+      "zh_hant": "可以使用獵人哨站了！"
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_LIBRARY",
+    "name": {
+      "aliases": [
+        "可以使用图书馆了！",
+        "可以使用圖書館了！",
+        "図書館が利用できるようになった！",
+        "FACILITY_RELEASE_ID_LIBRARY"
+      ],
+      "internal": "FACILITY_RELEASE_ID_LIBRARY",
+      "ja": "図書館が利用できるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以使用图书馆了！",
+      "zh_hant": "可以使用圖書館了！"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_REMOVE_RUBBLE",
+    "name": {
+      "aliases": [
+        "庭院的小路开通了！",
+        "庭院的小路開通了！",
+        "庭の裏道が開通した！",
+        "FACILITY_RELEASE_ID_REMOVE_RUBBLE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_REMOVE_RUBBLE",
+      "ja": "庭の裏道が開通した！",
+      "review_status": "override",
+      "zh_hans": "庭院的小路开通了！",
+      "zh_hant": "庭院的小路開通了！"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_RESTAURANT",
+    "name": {
+      "aliases": [
+        "可以在茶碗亭用餐了！",
+        "茶碗亭で食事ができるようになった！",
+        "FACILITY_RELEASE_ID_RESTAURANT"
+      ],
+      "internal": "FACILITY_RELEASE_ID_RESTAURANT",
+      "ja": "茶碗亭で食事ができるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以在茶碗亭用餐了！",
+      "zh_hant": "可以在茶碗亭用餐了！"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_BUNDLE",
+    "name": {
+      "aliases": [
+        "修好岔路的祠堂了！",
+        "辻の祠を直した！",
+        "FACILITY_RELEASE_ID_SHRINE_BUNDLE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_BUNDLE",
+      "ja": "辻の祠を直した！",
+      "review_status": "override",
+      "zh_hans": "修好岔路的祠堂了！",
+      "zh_hant": "修好岔路的祠堂了！"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV2",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV2"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV2",
+      "ja": "祠をさらに修復した！",
+      "review_status": "override",
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV3",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV3"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV3",
+      "ja": "祠をさらに修復した！",
+      "review_status": "override",
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV4",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV4"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV4",
+      "ja": "祠をさらに修復した！",
+      "review_status": "override",
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_STREET_VENDOR",
+    "name": {
+      "aliases": [
+        "可以跟流动摊贩买东西了！",
+        "可以跟流動攤販買東西了！",
+        "露天商で買い物ができるようになった！",
+        "FACILITY_RELEASE_ID_STREET_VENDOR"
+      ],
+      "internal": "FACILITY_RELEASE_ID_STREET_VENDOR",
+      "ja": "露天商で買い物ができるようになった！",
+      "review_status": "override",
+      "zh_hans": "可以跟流动摊贩买东西了！",
+      "zh_hant": "可以跟流動攤販買東西了！"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE",
+    "name": {
+      "aliases": [
+        "交付後再和林领取奖励吧！",
+        "交付後再和林領取獎勵吧！",
+        "納品してリンからごほうびを貰おう！",
+        "FACILITY_RELEASE_ID_VILLAGE_BUNDLE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE",
+      "ja": "納品してリンからごほうびを貰おう！",
+      "review_status": "override",
+      "zh_hans": "交付後再和林领取奖励吧！",
+      "zh_hant": "交付後再和林領取獎勵吧！"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE",
+    "name": {
+      "aliases": [
+        "完成林所有的委托了！",
+        "完成林所有的委託了！",
+        "リンからの依頼をすべて達成した！",
+        "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE"
+      ],
+      "internal": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE",
+      "ja": "リンからの依頼をすべて達成した！",
+      "review_status": "override",
+      "zh_hans": "完成林所有的委托了！",
+      "zh_hant": "完成林所有的委託了！"
+    },
+    "numeric_id": 13
+  }
+]

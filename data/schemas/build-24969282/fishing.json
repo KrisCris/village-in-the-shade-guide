@@ -1,0 +1,66 @@
+{
+  "table": "fishing",
+  "build_id": "24969282",
+  "record_size": 60,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    60,
+    3696,
+    3912,
+    4344,
+    4488,
+    4848,
+    5064
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 1351
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 13
+        },
+        {
+          "record_id": 2,
+          "value": 13
+        }
+      ]
+    }
+  ]
+}
+

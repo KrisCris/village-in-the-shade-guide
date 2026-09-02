@@ -1,0 +1,1381 @@
+[
+  {
+    "id": "QUEST_ID_BOY_01",
+    "name": {
+      "aliases": [
+        "帮忙堇怜",
+        "幫忙堇怜",
+        "スミレのお手伝い",
+        "QUEST_ID_BOY_01"
+      ],
+      "internal": "QUEST_ID_BOY_01",
+      "ja": "スミレのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙堇怜",
+      "zh_hant": "幫忙堇怜"
+    },
+    "numeric_id": 13
+  },
+  {
+    "id": "QUEST_ID_CARPENTER_01",
+    "name": {
+      "aliases": [
+        "帮忙木助",
+        "幫忙木助",
+        "キスケのお手伝い",
+        "QUEST_ID_CARPENTER_01"
+      ],
+      "internal": "QUEST_ID_CARPENTER_01",
+      "ja": "キスケのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙木助",
+      "zh_hant": "幫忙木助"
+    },
+    "numeric_id": 21
+  },
+  {
+    "id": "QUEST_ID_CHAIN_CONTROLLED_VILLAGER_01",
+    "name": {
+      "aliases": [
+        "？？？？？？",
+        "QUEST_ID_CHAIN_CONTROLLED_VILLAGER_01"
+      ],
+      "internal": "QUEST_ID_CHAIN_CONTROLLED_VILLAGER_01",
+      "ja": "？？？？？？",
+      "review_status": "override",
+      "zh_hans": "？？？？？？",
+      "zh_hant": "？？？？？？"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "QUEST_ID_CHAIN_FIND_SACRED",
+    "name": {
+      "aliases": [
+        "寻找三件神器",
+        "尋找三件神器",
+        "三つの神器を探そう",
+        "QUEST_ID_CHAIN_FIND_SACRED"
+      ],
+      "internal": "QUEST_ID_CHAIN_FIND_SACRED",
+      "ja": "三つの神器を探そう",
+      "review_status": "override",
+      "zh_hans": "寻找三件神器",
+      "zh_hant": "尋找三件神器"
+    },
+    "numeric_id": 120
+  },
+  {
+    "id": "QUEST_ID_CHAIN_GRAND_GOAL",
+    "name": {
+      "aliases": [
+        "成为彼津村的一员。",
+        "成為彼津村的一員。",
+        "彼ヶ津村の一員になる",
+        "QUEST_ID_CHAIN_GRAND_GOAL"
+      ],
+      "internal": "QUEST_ID_CHAIN_GRAND_GOAL",
+      "ja": "彼ヶ津村の一員になる",
+      "review_status": "override",
+      "zh_hans": "成为彼津村的一员。",
+      "zh_hant": "成為彼津村的一員。"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST",
+    "name": {
+      "aliases": [
+        "修复岔路祠堂的委托",
+        "修復岔路祠堂的委託",
+        "辻の祠の修復依頼",
+        "QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST"
+      ],
+      "internal": "QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST",
+      "ja": "辻の祠の修復依頼",
+      "review_status": "override",
+      "zh_hans": "修复岔路祠堂的委托",
+      "zh_hant": "修復岔路祠堂的委託"
+    },
+    "numeric_id": 119
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_01",
+    "name": {
+      "aliases": [
+        "规矩之一，夜间十一点後禁止外出。",
+        "規矩之一，夜間十一點後禁止外出。",
+        "掟の一、午後十一時以降外出禁止",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_01"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_01",
+      "ja": "掟の一、午後十一時以降外出禁止",
+      "review_status": "override",
+      "zh_hans": "规矩之一，夜间十一点後禁止外出。",
+      "zh_hant": "規矩之一，夜間十一點後禁止外出。"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_02",
+    "name": {
+      "aliases": [
+        "规矩之二，要为村子尽一份力。",
+        "規矩之二，要為村子盡一份力。",
+        "掟の二、村のために協力せよ",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_02"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_02",
+      "ja": "掟の二、村のために協力せよ",
+      "review_status": "override",
+      "zh_hans": "规矩之二，要为村子尽一份力。",
+      "zh_hant": "規矩之二，要為村子盡一份力。"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_03",
+    "name": {
+      "aliases": [
+        "规矩之三，别靠近陌生人。",
+        "規矩之三，別靠近陌生人。",
+        "掟の三、見知らぬ者に近づくな",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_03"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_03",
+      "ja": "掟の三、見知らぬ者に近づくな",
+      "review_status": "override",
+      "zh_hans": "规矩之三，别靠近陌生人。",
+      "zh_hant": "規矩之三，別靠近陌生人。"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_04",
+    "name": {
+      "aliases": [
+        "规矩之四，别揭露他人秘密。",
+        "規矩之四，別揭露他人祕密。",
+        "掟の四、他人の秘密を暴くな",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_04"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_04",
+      "ja": "掟の四、他人の秘密を暴くな",
+      "review_status": "override",
+      "zh_hans": "规矩之四，别揭露他人秘密。",
+      "zh_hant": "規矩之四，別揭露他人祕密。"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_05",
+    "name": {
+      "aliases": [
+        "规矩之五，不得擅自出村。",
+        "規矩之五，不得擅自出村。",
+        "掟の五、村を出てはならぬ",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_05"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_05",
+      "ja": "掟の五、村を出てはならぬ",
+      "review_status": "override",
+      "zh_hans": "规矩之五，不得擅自出村。",
+      "zh_hant": "規矩之五，不得擅自出村。"
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_06",
+    "name": {
+      "aliases": [
+        "规矩之六，别回应山里传来的声音。",
+        "規矩之六，別回應山裡傳來的聲音。",
+        "掟の六、山からの声に応えるな",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_06"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_06",
+      "ja": "掟の六、山からの声に応えるな",
+      "review_status": "override",
+      "zh_hans": "规矩之六，别回应山里传来的声音。",
+      "zh_hant": "規矩之六，別回應山裡傳來的聲音。"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_07",
+    "name": {
+      "aliases": [
+        "规矩之七，别寻找遗失的物品。",
+        "規矩之七，別尋找遺失的物品。",
+        "掟の七、失った物を探すな",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_07"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_07",
+      "ja": "掟の七、失った物を探すな",
+      "review_status": "override",
+      "zh_hans": "规矩之七，别寻找遗失的物品。",
+      "zh_hant": "規矩之七，別尋找遺失的物品。"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "QUEST_ID_CHAIN_VILLAGE_RULES_08",
+    "name": {
+      "aliases": [
+        "规矩之八，愿望需要相应的代价。",
+        "規矩之八，願望需要相應的代價。",
+        "掟の八、願いには相応の代償が必要",
+        "QUEST_ID_CHAIN_VILLAGE_RULES_08"
+      ],
+      "internal": "QUEST_ID_CHAIN_VILLAGE_RULES_08",
+      "ja": "掟の八、願いには相応の代償が必要",
+      "review_status": "override",
+      "zh_hans": "规矩之八，愿望需要相应的代价。",
+      "zh_hant": "規矩之八，願望需要相應的代價。"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_01",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至树木处",
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至樹木處",
+        "<cmd CMD_UNIT_MOVE_STICK>木まで移動する",
+        "QUEST_ID_CHAPTER_01_01"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_01",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>木まで移動する",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至树木处",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至樹木處"
+    },
+    "numeric_id": 33
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_02",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧头砍倒树木",
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧頭砍倒樹木",
+        "<cmd CMD_UNIT_ACTION>オノで木を切り倒せ",
+        "QUEST_ID_CHAPTER_01_02"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_02",
+      "ja": "<cmd CMD_UNIT_ACTION>オノで木を切り倒せ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧头砍倒树木",
+      "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧頭砍倒樹木"
+    },
+    "numeric_id": 34
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_03",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字镐敲碎所有石头",
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字鎬敲碎所有石頭",
+        "<cmd CMD_UNIT_ACTION>ツルハシで全ての石を壊せ",
+        "QUEST_ID_CHAPTER_01_03"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_03",
+      "ja": "<cmd CMD_UNIT_ACTION>ツルハシで全ての石を壊せ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字镐敲碎所有石头",
+      "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字鎬敲碎所有石頭"
+    },
+    "numeric_id": 35
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_04",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至田地",
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至田地",
+        "<cmd CMD_UNIT_MOVE_STICK>畑まで移動する",
+        "QUEST_ID_CHAPTER_01_04"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_04",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>畑まで移動する",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至田地",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至田地"
+    },
+    "numeric_id": 36
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_05",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用锄头锄地",
+        "<cmd CMD_UNIT_ACTION -offsetY -5>使用鋤頭鋤地",
+        "<cmd CMD_UNIT_ACTION>クワで土を耕せ",
+        "QUEST_ID_CHAPTER_01_05"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_05",
+      "ja": "<cmd CMD_UNIT_ACTION>クワで土を耕せ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_ACTION -offsetY -5>使用锄头锄地",
+      "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用鋤頭鋤地"
+    },
+    "numeric_id": 37
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_06",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移动选择要翻整的位置",
+        "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移動選擇要翻整的位置",
+        "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>並行移動で耕す場所を選ぶ",
+        "QUEST_ID_CHAPTER_01_06"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_06",
+      "ja": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>並行移動で耕す場所を選ぶ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移动选择要翻整的位置",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移動選擇要翻整的位置"
+    },
+    "numeric_id": 38
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_07",
+    "name": {
+      "aliases": [
+        "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播种",
+        "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播種",
+        "<cmd CMD_INTERACTION_TRIANGLE>種を撒け",
+        "QUEST_ID_CHAPTER_01_07"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_07",
+      "ja": "<cmd CMD_INTERACTION_TRIANGLE>種を撒け",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播种",
+      "zh_hant": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播種"
+    },
+    "numeric_id": 39
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_08",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至水边",
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至水邊",
+        "<cmd CMD_UNIT_MOVE_STICK>水辺まで移動する",
+        "QUEST_ID_CHAPTER_01_08"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_08",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>水辺まで移動する",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至水边",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至水邊"
+    },
+    "numeric_id": 40
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_09",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶汲水",
+        "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺汲水",
+        "<cmd CMD_UNIT_ACTION>ジョウロに水をくむ",
+        "QUEST_ID_CHAPTER_01_09"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_09",
+      "ja": "<cmd CMD_UNIT_ACTION>ジョウロに水をくむ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶汲水",
+      "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺汲水"
+    },
+    "numeric_id": 41
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_10",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地",
+        "<cmd CMD_UNIT_MOVE_STICK>畑まで戻る",
+        "QUEST_ID_CHAPTER_01_10"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_10",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>畑まで戻る",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地"
+    },
+    "numeric_id": 42
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_11",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶对种子浇水",
+        "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺對種子澆水",
+        "<cmd CMD_UNIT_ACTION>ジョウロで種に水を撒け",
+        "QUEST_ID_CHAPTER_01_11"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_11",
+      "ja": "<cmd CMD_UNIT_ACTION>ジョウロで種に水を撒け",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶对种子浇水",
+      "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺對種子澆水"
+    },
+    "numeric_id": 43
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_12",
+    "name": {
+      "aliases": [
+        "用心照料种下的蔬菜",
+        "用心照料種下的蔬菜",
+        "植えた野菜を大切にしろ",
+        "QUEST_ID_CHAPTER_01_12"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_12",
+      "ja": "植えた野菜を大切にしろ",
+      "review_status": "override",
+      "zh_hans": "用心照料种下的蔬菜",
+      "zh_hant": "用心照料種下的蔬菜"
+    },
+    "numeric_id": 44
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_13",
+    "name": {
+      "aliases": [
+        "对田地浇水",
+        "對田地澆水",
+        "畑に水を撒け",
+        "QUEST_ID_CHAPTER_01_13"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_13",
+      "ja": "畑に水を撒け",
+      "review_status": "override",
+      "zh_hans": "对田地浇水",
+      "zh_hant": "對田地澆水"
+    },
+    "numeric_id": 45
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_14",
+    "name": {
+      "aliases": [
+        "收获作物",
+        "收穫作物",
+        "作物を収穫しろ",
+        "QUEST_ID_CHAPTER_01_14"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_14",
+      "ja": "作物を収穫しろ",
+      "review_status": "override",
+      "zh_hans": "收获作物",
+      "zh_hant": "收穫作物"
+    },
+    "numeric_id": 46
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_15",
+    "name": {
+      "aliases": [
+        "将蔬菜供奉於祭坛吧",
+        "將蔬菜供奉於祭壇吧",
+        "祭壇に野菜を捧げろ",
+        "QUEST_ID_CHAPTER_01_15"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_15",
+      "ja": "祭壇に野菜を捧げろ",
+      "review_status": "override",
+      "zh_hans": "将蔬菜供奉於祭坛吧",
+      "zh_hant": "將蔬菜供奉於祭壇吧"
+    },
+    "numeric_id": 47
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_18",
+    "name": {
+      "aliases": [
+        "吃掉笔头菜",
+        "吃掉筆頭菜",
+        "つくしを食べろ",
+        "QUEST_ID_CHAPTER_01_18"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_18",
+      "ja": "つくしを食べろ",
+      "review_status": "override",
+      "zh_hans": "吃掉笔头菜",
+      "zh_hant": "吃掉筆頭菜"
+    },
+    "numeric_id": 60
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_19",
+    "name": {
+      "aliases": [
+        "查看商品",
+        "商品を見ろ",
+        "QUEST_ID_CHAPTER_01_19"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_19",
+      "ja": "商品を見ろ",
+      "review_status": "override",
+      "zh_hans": "查看商品",
+      "zh_hant": "查看商品"
+    },
+    "numeric_id": 61
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_20",
+    "name": {
+      "aliases": [
+        "将想要的商品记下来吧",
+        "將想要的商品記下來吧",
+        "欲しい商品をメモしてみよう",
+        "QUEST_ID_CHAPTER_01_20"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_20",
+      "ja": "欲しい商品をメモしてみよう",
+      "review_status": "override",
+      "zh_hans": "将想要的商品记下来吧",
+      "zh_hant": "將想要的商品記下來吧"
+    },
+    "numeric_id": 62
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_01_21",
+    "name": {
+      "aliases": [
+        "检视笔记吧",
+        "檢視筆記吧",
+        "メモしたものを確認してみよう",
+        "QUEST_ID_CHAPTER_01_21"
+      ],
+      "internal": "QUEST_ID_CHAPTER_01_21",
+      "ja": "メモしたものを確認してみよう",
+      "review_status": "override",
+      "zh_hans": "检视笔记吧",
+      "zh_hant": "檢視筆記吧"
+    },
+    "numeric_id": 63
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_02_03",
+    "name": {
+      "aliases": [
+        "把墓地打扫乾净吧",
+        "把墓地打掃乾淨吧",
+        "墓地をキレイにしよう",
+        "QUEST_ID_CHAPTER_02_03"
+      ],
+      "internal": "QUEST_ID_CHAPTER_02_03",
+      "ja": "墓地をキレイにしよう",
+      "review_status": "override",
+      "zh_hans": "把墓地打扫乾净吧",
+      "zh_hant": "把墓地打掃乾淨吧"
+    },
+    "numeric_id": 65
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_04_09",
+    "name": {
+      "aliases": [
+        "若帷遇上危险，保护好她",
+        "若帷遇上危險，保護好她",
+        "トバリに危機が迫ったら守れ",
+        "QUEST_ID_CHAPTER_04_09"
+      ],
+      "internal": "QUEST_ID_CHAPTER_04_09",
+      "ja": "トバリに危機が迫ったら守れ",
+      "review_status": "override",
+      "zh_hans": "若帷遇上危险，保护好她",
+      "zh_hant": "若帷遇上危險，保護好她"
+    },
+    "numeric_id": 85
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_04_10",
+    "name": {
+      "aliases": [
+        "再继续修缮祠堂吧",
+        "再繼續修繕祠堂吧",
+        "もっともっと祠を直そう",
+        "QUEST_ID_CHAPTER_04_10"
+      ],
+      "internal": "QUEST_ID_CHAPTER_04_10",
+      "ja": "もっともっと祠を直そう",
+      "review_status": "override",
+      "zh_hans": "再继续修缮祠堂吧",
+      "zh_hant": "再繼續修繕祠堂吧"
+    },
+    "numeric_id": 86
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_05_00_01",
+    "name": {
+      "aliases": [
+        "试着使用鵺皮",
+        "試著使用鵺皮",
+        "鵺の皮を試せ",
+        "QUEST_ID_CHAPTER_05_00_01"
+      ],
+      "internal": "QUEST_ID_CHAPTER_05_00_01",
+      "ja": "鵺の皮を試せ",
+      "review_status": "override",
+      "zh_hans": "试着使用鵺皮",
+      "zh_hant": "試著使用鵺皮"
+    },
+    "numeric_id": 87
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_05_00_02",
+    "name": {
+      "aliases": [
+        "<cmd CMD_INTERACTION_SQUARE>尝试使用劈岩柴刀",
+        "<cmd CMD_INTERACTION_SQUARE>嘗試使用劈岩柴刀",
+        "<cmd CMD_INTERACTION_SQUARE>岩切りナタを試してみよう",
+        "QUEST_ID_CHAPTER_05_00_02"
+      ],
+      "internal": "QUEST_ID_CHAPTER_05_00_02",
+      "ja": "<cmd CMD_INTERACTION_SQUARE>岩切りナタを試してみよう",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_INTERACTION_SQUARE>尝试使用劈岩柴刀",
+      "zh_hant": "<cmd CMD_INTERACTION_SQUARE>嘗試使用劈岩柴刀"
+    },
+    "numeric_id": 89
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_05_00_03",
+    "name": {
+      "aliases": [
+        "尝试使用奇蹟的呼笛",
+        "嘗試使用奇蹟的呼笛",
+        "奇跡の呼笛を試せ",
+        "QUEST_ID_CHAPTER_05_00_03"
+      ],
+      "internal": "QUEST_ID_CHAPTER_05_00_03",
+      "ja": "奇跡の呼笛を試せ",
+      "review_status": "override",
+      "zh_hans": "尝试使用奇蹟的呼笛",
+      "zh_hant": "嘗試使用奇蹟的呼笛"
+    },
+    "numeric_id": 90
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_05_00_04_DREAM",
+    "name": {
+      "aliases": [
+        "带着神器回到大洞",
+        "帶著神器回到大洞",
+        "神器を持って大穴に戻れ",
+        "QUEST_ID_CHAPTER_05_00_04_DREAM"
+      ],
+      "internal": "QUEST_ID_CHAPTER_05_00_04_DREAM",
+      "ja": "神器を持って大穴に戻れ",
+      "review_status": "override",
+      "zh_hans": "带着神器回到大洞",
+      "zh_hant": "帶著神器回到大洞"
+    },
+    "numeric_id": 92
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_05_00_05",
+    "name": {
+      "aliases": [
+        "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斩帷",
+        "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斬帷",
+        "<cmd CMD_INTERACTION_SQUARE>トバリを岩切りナタで斬れ",
+        "QUEST_ID_CHAPTER_05_00_05"
+      ],
+      "internal": "QUEST_ID_CHAPTER_05_00_05",
+      "ja": "<cmd CMD_INTERACTION_SQUARE>トバリを岩切りナタで斬れ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斩帷",
+      "zh_hant": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斬帷"
+    },
+    "numeric_id": 93
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_06_01",
+    "name": {
+      "aliases": [
+        "移动至柴刀处",
+        "移動至柴刀處",
+        "ナタの前まで移動しろ",
+        "QUEST_ID_CHAPTER_06_01"
+      ],
+      "internal": "QUEST_ID_CHAPTER_06_01",
+      "ja": "ナタの前まで移動しろ",
+      "review_status": "override",
+      "zh_hans": "移动至柴刀处",
+      "zh_hant": "移動至柴刀處"
+    },
+    "numeric_id": 103
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_06_02",
+    "name": {
+      "aliases": [
+        "捡起柴刀",
+        "撿起柴刀",
+        "ナタを拾え",
+        "QUEST_ID_CHAPTER_06_02"
+      ],
+      "internal": "QUEST_ID_CHAPTER_06_02",
+      "ja": "ナタを拾え",
+      "review_status": "override",
+      "zh_hans": "捡起柴刀",
+      "zh_hant": "撿起柴刀"
+    },
+    "numeric_id": 104
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_06_07",
+    "name": {
+      "aliases": [
+        "移开岩石",
+        "移開岩石",
+        "岩を退かせ",
+        "QUEST_ID_CHAPTER_06_07"
+      ],
+      "internal": "QUEST_ID_CHAPTER_06_07",
+      "ja": "岩を退かせ",
+      "review_status": "override",
+      "zh_hans": "移开岩石",
+      "zh_hant": "移開岩石"
+    },
+    "numeric_id": 109
+  },
+  {
+    "id": "QUEST_ID_CHAPTER_06_08",
+    "name": {
+      "aliases": [
+        "移开岩石吧",
+        "移開岩石吧",
+        "岩を退かそう",
+        "QUEST_ID_CHAPTER_06_08"
+      ],
+      "internal": "QUEST_ID_CHAPTER_06_08",
+      "ja": "岩を退かそう",
+      "review_status": "override",
+      "zh_hans": "移开岩石吧",
+      "zh_hant": "移開岩石吧"
+    },
+    "numeric_id": 110
+  },
+  {
+    "id": "QUEST_ID_FEMALE_DOCTOR_01",
+    "name": {
+      "aliases": [
+        "帮忙莲实",
+        "幫忙蓮實",
+        "ハスミのお手伝い",
+        "QUEST_ID_FEMALE_DOCTOR_01"
+      ],
+      "internal": "QUEST_ID_FEMALE_DOCTOR_01",
+      "ja": "ハスミのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙莲实",
+      "zh_hant": "幫忙蓮實"
+    },
+    "numeric_id": 20
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_00",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　0/8",
+        "村の人に挨拶して回ろう　０/８",
+        "QUEST_ID_FIRST_MEETING_00"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_00",
+      "ja": "村の人に挨拶して回ろう　０/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　0/8",
+      "zh_hant": "向村民打招呼吧　0/8"
+    },
+    "numeric_id": 50
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_01",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　1/8",
+        "村の人に挨拶して回ろう　１/８",
+        "QUEST_ID_FIRST_MEETING_01"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_01",
+      "ja": "村の人に挨拶して回ろう　１/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　1/8",
+      "zh_hant": "向村民打招呼吧　1/8"
+    },
+    "numeric_id": 51
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_02",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　2/8",
+        "村の人に挨拶して回ろう　２/８",
+        "QUEST_ID_FIRST_MEETING_02"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_02",
+      "ja": "村の人に挨拶して回ろう　２/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　2/8",
+      "zh_hant": "向村民打招呼吧　2/8"
+    },
+    "numeric_id": 52
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_03",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　3/8",
+        "村の人に挨拶して回ろう　３/８",
+        "QUEST_ID_FIRST_MEETING_03"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_03",
+      "ja": "村の人に挨拶して回ろう　３/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　3/8",
+      "zh_hant": "向村民打招呼吧　3/8"
+    },
+    "numeric_id": 53
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_04",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　4/8",
+        "村の人に挨拶して回ろう　４/８",
+        "QUEST_ID_FIRST_MEETING_04"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_04",
+      "ja": "村の人に挨拶して回ろう　４/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　4/8",
+      "zh_hant": "向村民打招呼吧　4/8"
+    },
+    "numeric_id": 54
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_05",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　5/8",
+        "村の人に挨拶して回ろう　５/８",
+        "QUEST_ID_FIRST_MEETING_05"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_05",
+      "ja": "村の人に挨拶して回ろう　５/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　5/8",
+      "zh_hant": "向村民打招呼吧　5/8"
+    },
+    "numeric_id": 55
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_06",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　6/8",
+        "村の人に挨拶して回ろう　６/８",
+        "QUEST_ID_FIRST_MEETING_06"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_06",
+      "ja": "村の人に挨拶して回ろう　６/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　6/8",
+      "zh_hant": "向村民打招呼吧　6/8"
+    },
+    "numeric_id": 56
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_07",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　7/8",
+        "村の人に挨拶して回ろう　７/８",
+        "QUEST_ID_FIRST_MEETING_07"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_07",
+      "ja": "村の人に挨拶して回ろう　７/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　7/8",
+      "zh_hant": "向村民打招呼吧　7/8"
+    },
+    "numeric_id": 57
+  },
+  {
+    "id": "QUEST_ID_FIRST_MEETING_08",
+    "name": {
+      "aliases": [
+        "向村民打招呼吧　8/8",
+        "村の人に挨拶して回ろう　８/８",
+        "QUEST_ID_FIRST_MEETING_08"
+      ],
+      "internal": "QUEST_ID_FIRST_MEETING_08",
+      "ja": "村の人に挨拶して回ろう　８/８",
+      "review_status": "override",
+      "zh_hans": "向村民打招呼吧　8/8",
+      "zh_hant": "向村民打招呼吧　8/8"
+    },
+    "numeric_id": 58
+  },
+  {
+    "id": "QUEST_ID_GENERAL_STORE_MASTER_01",
+    "name": {
+      "aliases": [
+        "帮忙茶梅",
+        "幫忙茶梅",
+        "サザンカのお手伝い",
+        "QUEST_ID_GENERAL_STORE_MASTER_01"
+      ],
+      "internal": "QUEST_ID_GENERAL_STORE_MASTER_01",
+      "ja": "サザンカのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙茶梅",
+      "zh_hant": "幫忙茶梅"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "QUEST_ID_GIRL_01",
+    "name": {
+      "aliases": [
+        "帮忙洋",
+        "幫忙洋",
+        "ヨウのお手伝い",
+        "QUEST_ID_GIRL_01"
+      ],
+      "internal": "QUEST_ID_GIRL_01",
+      "ja": "ヨウのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙洋",
+      "zh_hant": "幫忙洋"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "QUEST_ID_HOLIDAY_NOTICE_AUTUMN",
+    "name": {
+      "aliases": [
+        "AM 10:00　收获祭典",
+        "AM 10:00　收穫祭典",
+        "AM １０：００　収穫祭",
+        "QUEST_ID_HOLIDAY_NOTICE_AUTUMN"
+      ],
+      "internal": "QUEST_ID_HOLIDAY_NOTICE_AUTUMN",
+      "ja": "AM １０：００　収穫祭",
+      "review_status": "override",
+      "zh_hans": "AM 10:00　收获祭典",
+      "zh_hant": "AM 10:00　收穫祭典"
+    },
+    "numeric_id": 117
+  },
+  {
+    "id": "QUEST_ID_HOLIDAY_NOTICE_FAIR",
+    "name": {
+      "aliases": [
+        "AM 10:00　评监会",
+        "AM 10:00　評鑑會",
+        "AM １０：００　品評会",
+        "QUEST_ID_HOLIDAY_NOTICE_FAIR"
+      ],
+      "internal": "QUEST_ID_HOLIDAY_NOTICE_FAIR",
+      "ja": "AM １０：００　品評会",
+      "review_status": "override",
+      "zh_hans": "AM 10:00　评监会",
+      "zh_hant": "AM 10:00　評鑑會"
+    },
+    "numeric_id": 114
+  },
+  {
+    "id": "QUEST_ID_HOLIDAY_NOTICE_SPRING",
+    "name": {
+      "aliases": [
+        "AM 10:00　赏花",
+        "AM 10:00　賞花",
+        "AM １０：００　お花見",
+        "QUEST_ID_HOLIDAY_NOTICE_SPRING"
+      ],
+      "internal": "QUEST_ID_HOLIDAY_NOTICE_SPRING",
+      "ja": "AM １０：００　お花見",
+      "review_status": "override",
+      "zh_hans": "AM 10:00　赏花",
+      "zh_hant": "AM 10:00　賞花"
+    },
+    "numeric_id": 115
+  },
+  {
+    "id": "QUEST_ID_HOLIDAY_NOTICE_SUMMER",
+    "name": {
+      "aliases": [
+        "PM 4:00　庙会日",
+        "PM 4:00　廟會日",
+        "PM ４：００　縁日",
+        "QUEST_ID_HOLIDAY_NOTICE_SUMMER"
+      ],
+      "internal": "QUEST_ID_HOLIDAY_NOTICE_SUMMER",
+      "ja": "PM ４：００　縁日",
+      "review_status": "override",
+      "zh_hans": "PM 4:00　庙会日",
+      "zh_hant": "PM 4:00　廟會日"
+    },
+    "numeric_id": 116
+  },
+  {
+    "id": "QUEST_ID_HOLIDAY_NOTICE_WINTER",
+    "name": {
+      "aliases": [
+        "PM 8:00　年终祭典",
+        "PM 8:00　年終祭典",
+        "PM ８：００　年末祭",
+        "QUEST_ID_HOLIDAY_NOTICE_WINTER"
+      ],
+      "internal": "QUEST_ID_HOLIDAY_NOTICE_WINTER",
+      "ja": "PM ８：００　年末祭",
+      "review_status": "override",
+      "zh_hans": "PM 8:00　年终祭典",
+      "zh_hant": "PM 8:00　年終祭典"
+    },
+    "numeric_id": 118
+  },
+  {
+    "id": "QUEST_ID_HUNTER_01",
+    "name": {
+      "aliases": [
+        "帮忙驹子",
+        "幫忙駒子",
+        "コマコのお手伝い",
+        "QUEST_ID_HUNTER_01"
+      ],
+      "internal": "QUEST_ID_HUNTER_01",
+      "ja": "コマコのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙驹子",
+      "zh_hant": "幫忙駒子"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "QUEST_ID_OLD_MAN_01",
+    "name": {
+      "aliases": [
+        "帮忙六角",
+        "幫忙六角",
+        "ロッカクのお手伝い",
+        "QUEST_ID_OLD_MAN_01"
+      ],
+      "internal": "QUEST_ID_OLD_MAN_01",
+      "ja": "ロッカクのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙六角",
+      "zh_hant": "幫忙六角"
+    },
+    "numeric_id": 18
+  },
+  {
+    "id": "QUEST_ID_ORPHAN_01",
+    "name": {
+      "aliases": [
+        "帮忙帷",
+        "幫忙帷",
+        "トバリのお手伝い",
+        "QUEST_ID_ORPHAN_01"
+      ],
+      "internal": "QUEST_ID_ORPHAN_01",
+      "ja": "トバリのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙帷",
+      "zh_hant": "幫忙帷"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "QUEST_ID_SECRETARY_01",
+    "name": {
+      "aliases": [
+        "帮忙今野",
+        "幫忙今野",
+        "コンノのお手伝い",
+        "QUEST_ID_SECRETARY_01"
+      ],
+      "internal": "QUEST_ID_SECRETARY_01",
+      "ja": "コンノのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙今野",
+      "zh_hant": "幫忙今野"
+    },
+    "numeric_id": 19
+  },
+  {
+    "id": "QUEST_ID_STREET_VENDOR_01",
+    "name": {
+      "aliases": [
+        "帮忙琪娜娜",
+        "幫忙琪娜娜",
+        "チナナのお手伝い",
+        "QUEST_ID_STREET_VENDOR_01"
+      ],
+      "internal": "QUEST_ID_STREET_VENDOR_01",
+      "ja": "チナナのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙琪娜娜",
+      "zh_hant": "幫忙琪娜娜"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "QUEST_ID_SUB_001",
+    "name": {
+      "aliases": [
+        "试着制作收纳箱吧",
+        "試著製作收納箱吧",
+        "収納箱を作ってみよう",
+        "QUEST_ID_SUB_001"
+      ],
+      "internal": "QUEST_ID_SUB_001",
+      "ja": "収納箱を作ってみよう",
+      "review_status": "override",
+      "zh_hans": "试着制作收纳箱吧",
+      "zh_hant": "試著製作收納箱吧"
+    },
+    "numeric_id": 112
+  },
+  {
+    "id": "QUEST_ID_SUB_002",
+    "name": {
+      "aliases": [
+        "试着制作兵粮丸吧",
+        "試著製作兵糧丸吧",
+        "兵糧丸を作ってみよう",
+        "QUEST_ID_SUB_002"
+      ],
+      "internal": "QUEST_ID_SUB_002",
+      "ja": "兵糧丸を作ってみよう",
+      "review_status": "override",
+      "zh_hans": "试着制作兵粮丸吧",
+      "zh_hant": "試著製作兵糧丸吧"
+    },
+    "numeric_id": 113
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_01",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK>移动",
+        "<cmd CMD_UNIT_MOVE_STICK>移動",
+        "QUEST_ID_TUTORIAL_01"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_01",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>移動",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK>移动",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>移動"
+    },
+    "numeric_id": 23
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_02",
+    "name": {
+      "aliases": [
+        "<cmd CMD_INTERACTION_HARVEST>动作",
+        "<cmd CMD_INTERACTION_HARVEST>動作",
+        "<cmd CMD_INTERACTION_HARVEST>アクション",
+        "QUEST_ID_TUTORIAL_02"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_02",
+      "ja": "<cmd CMD_INTERACTION_HARVEST>アクション",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_INTERACTION_HARVEST>动作",
+      "zh_hant": "<cmd CMD_INTERACTION_HARVEST>動作"
+    },
+    "numeric_id": 24
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_03",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ",
+        "QUEST_ID_TUTORIAL_03"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_03",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍"
+    },
+    "numeric_id": 25
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_04",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋转",
+        "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋轉",
+        "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>その場で回転",
+        "QUEST_ID_TUTORIAL_04"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_04",
+      "ja": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>その場で回転",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋转",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋轉"
+    },
+    "numeric_id": 26
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_05",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移动",
+        "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動",
+        "QUEST_ID_TUTORIAL_05"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_05",
+      "ja": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移动",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動"
+    },
+    "numeric_id": 27
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_06",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃2",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍2",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ２",
+        "QUEST_ID_TUTORIAL_06"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_06",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ２",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃2",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍2"
+    },
+    "numeric_id": 28
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_07",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃3",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍3",
+        "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ３",
+        "QUEST_ID_TUTORIAL_07"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_07",
+      "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ３",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃3",
+      "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍3"
+    },
+    "numeric_id": 29
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_10",
+    "name": {
+      "aliases": [
+        "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地图",
+        "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地圖",
+        "<cmd CMD_UNIT_MAIN_MENU>地図を見る",
+        "QUEST_ID_TUTORIAL_10"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_10",
+      "ja": "<cmd CMD_UNIT_MAIN_MENU>地図を見る",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地图",
+      "zh_hant": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地圖"
+    },
+    "numeric_id": 32
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_11",
+    "name": {
+      "aliases": [
+        "试着吹手哨吧",
+        "試著吹手哨吧",
+        "指笛を吹いてみよう",
+        "QUEST_ID_TUTORIAL_11"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_11",
+      "ja": "指笛を吹いてみよう",
+      "review_status": "override",
+      "zh_hans": "试着吹手哨吧",
+      "zh_hant": "試著吹手哨吧"
+    },
+    "numeric_id": 48
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_12",
+    "name": {
+      "aliases": [
+        "试着照乐谱吹手哨",
+        "試著照樂譜吹手哨",
+        "楽譜に合わせて指笛を吹いてみよう",
+        "QUEST_ID_TUTORIAL_12"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_12",
+      "ja": "楽譜に合わせて指笛を吹いてみよう",
+      "review_status": "override",
+      "zh_hans": "试着照乐谱吹手哨",
+      "zh_hant": "試著照樂譜吹手哨"
+    },
+    "numeric_id": 49
+  },
+  {
+    "id": "QUEST_ID_TUTORIAL_16",
+    "name": {
+      "aliases": [
+        "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移动",
+        "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移動",
+        "<cmd CMD_INTERACTION_LONG_CANCEL> 鵺の皮で早駆け",
+        "QUEST_ID_TUTORIAL_16"
+      ],
+      "internal": "QUEST_ID_TUTORIAL_16",
+      "ja": "<cmd CMD_INTERACTION_LONG_CANCEL> 鵺の皮で早駆け",
+      "review_status": "override",
+      "zh_hans": "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移动",
+      "zh_hant": "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移動"
+    },
+    "numeric_id": 88
+  },
+  {
+    "id": "QUEST_ID_WOODCUTTER_01",
+    "name": {
+      "aliases": [
+        "帮忙四郎治",
+        "幫忙四郎治",
+        "シロージのお手伝い",
+        "QUEST_ID_WOODCUTTER_01"
+      ],
+      "internal": "QUEST_ID_WOODCUTTER_01",
+      "ja": "シロージのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙四郎治",
+      "zh_hant": "幫忙四郎治"
+    },
+    "numeric_id": 22
+  },
+  {
+    "id": "QUEST_ID_YOUNG_MAN_01",
+    "name": {
+      "aliases": [
+        "帮忙裕太",
+        "幫忙裕太",
+        "ユータのお手伝い",
+        "QUEST_ID_YOUNG_MAN_01"
+      ],
+      "internal": "QUEST_ID_YOUNG_MAN_01",
+      "ja": "ユータのお手伝い",
+      "review_status": "override",
+      "zh_hans": "帮忙裕太",
+      "zh_hant": "幫忙裕太"
+    },
+    "numeric_id": 17
+  }
+]

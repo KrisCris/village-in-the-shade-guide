@@ -1,0 +1,79 @@
+{
+  "table": "characterpresent",
+  "build_id": "24969282",
+  "record_size": 136,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    136,
+    144,
+    152,
+    160
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "character_id",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1130
+        },
+        {
+          "record_id": 2,
+          "value": 1090
+        }
+      ]
+    },
+    {
+      "name": "preference",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 2
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "item_or_category_id",
+      "offset": 16,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 140370
+        },
+        {
+          "record_id": 2,
+          "value": 670101
+        }
+      ]
+    }
+  ]
+}
+

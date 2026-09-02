@@ -1,0 +1,43 @@
+{
+  "table": "treasurebox",
+  "build_id": "24969282",
+  "record_size": 52,
+  "observed_record_sizes": [
+    52
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "placement_id",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 990015
+        },
+        {
+          "record_id": 2,
+          "value": 990016
+        }
+      ]
+    }
+  ]
+}
+

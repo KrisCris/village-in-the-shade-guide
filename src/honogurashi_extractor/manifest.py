@@ -25,6 +25,15 @@ ENTITY_FILES = {
     "craft_recipes": "craft-recipes.json",
     "cooking_recipes": "cooking-recipes.json",
     "store_offers": "store-offers.json",
+    "fish": "fish.json",
+    "livestock": "livestock.json",
+    "characters": "characters.json",
+    "facilities": "facilities.json",
+    "facility_releases": "facility-releases.json",
+    "quests": "quests.json",
+    "collectibles": "collectibles.json",
+    "hunt_rewards": "hunt-rewards.json",
+    "weather": "weather.json",
 }
 
 

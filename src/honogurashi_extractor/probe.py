@@ -13,10 +13,20 @@ def _u32(record: bytes, offset: int) -> int:
 def _string_groups(table: TableContainer) -> tuple[tuple[str, ...], ...]:
     if any(len(record) < 16 for record in table.records):
         raise TableFormatError("record is too short to locate its string group")
+    if not table.string_pool:
+        return tuple(() for _ in table.records)
     starts = [_u32(record, 8) for record in table.records]
     ordered_starts = sorted(set(starts))
-    if not ordered_starts or ordered_starts[0] != 0 or len(ordered_starts) != len(starts):
-        raise TableFormatError("record string offsets are incomplete or duplicated")
+    if (
+        not ordered_starts
+        or ordered_starts[0] != 0
+        or len(ordered_starts) != len(starts)
+        or ordered_starts[-1] >= len(table.string_pool)
+    ):
+        flat_strings = table.strings()
+        if len(flat_strings) == len(table.records):
+            return tuple((value,) for value in flat_strings)
+        return tuple(() for _ in table.records)
     end_by_start = {
         start: end
         for start, end in zip(

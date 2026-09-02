@@ -1,0 +1,250 @@
+[
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_BEAR",
+    "id": "HUNT_REWARD_BEAR",
+    "numeric_id": 11,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_BEAR_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_BEAR_BILE",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_BEAR_BOSS",
+    "id": "HUNT_REWARD_BEAR_BOSS",
+    "numeric_id": 12,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_BEAR_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_BEAR_BILE",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_DEER",
+    "id": "HUNT_REWARD_DEER",
+    "numeric_id": 9,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_DEER_ANTLERS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_DEER_ANTLERS",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_DEER_BOSS",
+    "id": "HUNT_REWARD_DEER_BOSS",
+    "numeric_id": 10,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_DEER_ANTLERS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_DEER_ANTLERS",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_FOX",
+    "id": "HUNT_REWARD_FOX",
+    "numeric_id": 5,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_FOX_FUR",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_PHEASANT",
+    "id": "HUNT_REWARD_PHEASANT",
+    "numeric_id": 6,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_PHEASANT_FEATHER",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_RABBIT",
+    "id": "HUNT_REWARD_RABBIT",
+    "numeric_id": 2,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_RABBIT_FUR",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_RACCOON_DOG",
+    "id": "HUNT_REWARD_RACCOON_DOG",
+    "numeric_id": 4,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_RACCOON_DOG_FUR",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_SQUIRREL",
+    "id": "HUNT_REWARD_SQUIRREL",
+    "numeric_id": 1,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_WEASEL",
+    "id": "HUNT_REWARD_WEASEL",
+    "numeric_id": 3,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WEASEL_FUR",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_WILD_BOAR",
+    "id": "HUNT_REWARD_WILD_BOAR",
+    "numeric_id": 7,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "certificate_item_id": "ITEM_ID_HUNTING_CERTIFICATE_WILD_BOAR_BOSS",
+    "id": "HUNT_REWARD_WILD_BOAR_BLACK",
+    "numeric_id": 8,
+    "rewards": [
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 2
+      }
+    ]
+  }
+]
