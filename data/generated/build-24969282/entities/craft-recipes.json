@@ -1,0 +1,6274 @@
+[
+  {
+    "id": "CRAFT_CUSHION_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CASHMERE_CLOTH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风坐墊／咖啡",
+        "成熟風坐墊／咖啡",
+        "大人な座布団/茶",
+        "CRAFT_CUSHION_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_CUSHION_MATURE_BROWN",
+      "ja": "大人な座布団/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风坐墊／咖啡",
+      "zh_hant": "成熟風坐墊／咖啡"
+    },
+    "numeric_id": 118,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CUSHION_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_CUSHION_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_SILK",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織坐墊／咖啡",
+        "あみあみ座布団/茶",
+        "CRAFT_CUSHION_MESH_BROWN"
+      ],
+      "internal": "CRAFT_CUSHION_MESH_BROWN",
+      "ja": "あみあみ座布団/茶",
+      "review_status": "auto",
+      "zh_hans": "編織坐墊／咖啡",
+      "zh_hant": "編織坐墊／咖啡"
+    },
+    "numeric_id": 117,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CUSHION_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_CUSHION_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦坐墊／咖啡",
+        "時髦坐墊／咖啡",
+        "モダンな座布団/茶",
+        "CRAFT_CUSHION_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_CUSHION_MODERN_BROWN",
+      "ja": "モダンな座布団/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦坐墊／咖啡",
+      "zh_hant": "時髦坐墊／咖啡"
+    },
+    "numeric_id": 116,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CUSHION_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ACCESSORY_12",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_FOX_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WEASEL_FUR",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "狐狸面具",
+        "狐面",
+        "CRAFT_TABLE_ACCESSORY_12"
+      ],
+      "internal": "CRAFT_TABLE_ACCESSORY_12",
+      "ja": "狐面",
+      "review_status": "auto",
+      "zh_hans": "狐狸面具",
+      "zh_hant": "狐狸面具"
+    },
+    "numeric_id": 189,
+    "output": {
+      "item_id": "ITEM_ID_ACCESSORY_30",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ACCESSORY_13",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_HORN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "般若面具",
+        "般若面",
+        "CRAFT_TABLE_ACCESSORY_13"
+      ],
+      "internal": "CRAFT_TABLE_ACCESSORY_13",
+      "ja": "般若面",
+      "review_status": "auto",
+      "zh_hans": "般若面具",
+      "zh_hant": "般若面具"
+    },
+    "numeric_id": 191,
+    "output": {
+      "item_id": "ITEM_ID_ACCESSORY_31",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ACCESSORY_14",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_RABBIT_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PIG_SKIN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "阿龜面具",
+        "おかめ面",
+        "CRAFT_TABLE_ACCESSORY_14"
+      ],
+      "internal": "CRAFT_TABLE_ACCESSORY_14",
+      "ja": "おかめ面",
+      "review_status": "auto",
+      "zh_hans": "阿龜面具",
+      "zh_hant": "阿龜面具"
+    },
+    "numeric_id": 192,
+    "output": {
+      "item_id": "ITEM_ID_ACCESSORY_32",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ACCESSORY_15",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_PHEASANT_FEATHER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_DEER_ANTLERS",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "天狗面具",
+        "天狗面",
+        "CRAFT_TABLE_ACCESSORY_15"
+      ],
+      "internal": "CRAFT_TABLE_ACCESSORY_15",
+      "ja": "天狗面",
+      "review_status": "auto",
+      "zh_hans": "天狗面具",
+      "zh_hant": "天狗面具"
+    },
+    "numeric_id": 190,
+    "output": {
+      "item_id": "ITEM_ID_ACCESSORY_37",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_AGUNG_BARREL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STICKY_SAP",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "熟成桶",
+        "熟成樽",
+        "CRAFT_TABLE_AGUNG_BARREL"
+      ],
+      "internal": "CRAFT_TABLE_AGUNG_BARREL",
+      "ja": "熟成樽",
+      "review_status": "auto",
+      "zh_hans": "熟成桶",
+      "zh_hant": "熟成桶"
+    },
+    "numeric_id": 51,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_AGUNG_BARREL_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "熟成桶／改",
+        "熟成樽/改",
+        "CRAFT_TABLE_AGUNG_BARREL_02"
+      ],
+      "internal": "CRAFT_TABLE_AGUNG_BARREL_02",
+      "ja": "熟成樽/改",
+      "review_status": "auto",
+      "zh_hans": "熟成桶／改",
+      "zh_hant": "熟成桶／改"
+    },
+    "numeric_id": 52,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BED_COOL_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥床鋪／咖啡",
+        "クールなベッド/茶",
+        "CRAFT_TABLE_BED_COOL_00"
+      ],
+      "internal": "CRAFT_TABLE_BED_COOL_00",
+      "ja": "クールなベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥床鋪／咖啡",
+      "zh_hant": "酷帥床鋪／咖啡"
+    },
+    "numeric_id": 157,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BED_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 6
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风床鋪／咖啡",
+        "成熟風床鋪／咖啡",
+        "大人なベッド/茶",
+        "CRAFT_TABLE_BED_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BED_MATURE_BROWN",
+      "ja": "大人なベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风床鋪／咖啡",
+      "zh_hant": "成熟風床鋪／咖啡"
+    },
+    "numeric_id": 160,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BED_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_CASHMERE_CLOTH",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織床鋪／咖啡",
+        "あみあみベッド/茶",
+        "CRAFT_TABLE_BED_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BED_MESH_BROWN",
+      "ja": "あみあみベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "編織床鋪／咖啡",
+      "zh_hant": "編織床鋪／咖啡"
+    },
+    "numeric_id": 159,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BED_MODERN_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦床鋪／咖啡",
+        "時髦床鋪／咖啡",
+        "モダンなベッド/茶",
+        "CRAFT_TABLE_BED_MODERN_00"
+      ],
+      "internal": "CRAFT_TABLE_BED_MODERN_00",
+      "ja": "モダンなベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦床鋪／咖啡",
+      "zh_hant": "時髦床鋪／咖啡"
+    },
+    "numeric_id": 158,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BED_WOODEN_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制床鋪／咖啡",
+        "木製床鋪／咖啡",
+        "木のベッド/茶",
+        "CRAFT_TABLE_BED_WOODEN_00"
+      ],
+      "internal": "CRAFT_TABLE_BED_WOODEN_00",
+      "ja": "木のベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "木制床鋪／咖啡",
+      "zh_hant": "木製床鋪／咖啡"
+    },
+    "numeric_id": 156,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BEEHIVE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_SWEET_SAP",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_SAP",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "蜂箱",
+        "養蜂箱",
+        "CRAFT_TABLE_BEEHIVE"
+      ],
+      "internal": "CRAFT_TABLE_BEEHIVE",
+      "ja": "養蜂箱",
+      "review_status": "auto",
+      "zh_hans": "蜂箱",
+      "zh_hant": "蜂箱"
+    },
+    "numeric_id": 61,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BEEHIVE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BENCH_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 6
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥长椅／咖啡",
+        "酷帥長椅／咖啡",
+        "クールな長椅子/茶",
+        "CRAFT_TABLE_BENCH_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BENCH_COOL_BROWN",
+      "ja": "クールな長椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥长椅／咖啡",
+      "zh_hant": "酷帥長椅／咖啡"
+    },
+    "numeric_id": 111,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BENCH_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BENCH_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 16
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_SKIN",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风长椅／咖啡",
+        "成熟風長椅／咖啡",
+        "大人な長椅子/茶",
+        "CRAFT_TABLE_BENCH_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BENCH_MATURE_BROWN",
+      "ja": "大人な長椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风长椅／咖啡",
+      "zh_hant": "成熟風長椅／咖啡"
+    },
+    "numeric_id": 114,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BENCH_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BENCH_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織长椅／咖啡",
+        "編織長椅／咖啡",
+        "あみあみ長椅子/茶",
+        "CRAFT_TABLE_BENCH_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BENCH_MESH_BROWN",
+      "ja": "あみあみ長椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "編織长椅／咖啡",
+      "zh_hant": "編織長椅／咖啡"
+    },
+    "numeric_id": 113,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BENCH_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BENCH_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦长椅／咖啡",
+        "時髦長椅／咖啡",
+        "モダンな長椅子/茶",
+        "CRAFT_TABLE_BENCH_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BENCH_MODERN_BROWN",
+      "ja": "モダンな長椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦长椅／咖啡",
+      "zh_hant": "時髦長椅／咖啡"
+    },
+    "numeric_id": 112,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BENCH_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BENCH_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 40
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制长椅／咖啡",
+        "木製長椅／咖啡",
+        "木の長椅子/茶",
+        "CRAFT_TABLE_BENCH_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BENCH_WOODEN_BROWN",
+      "ja": "木の長椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "木制长椅／咖啡",
+      "zh_hant": "木製長椅／咖啡"
+    },
+    "numeric_id": 110,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BENCH_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BLAST_FURNACE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COPPER_ORE",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "熔爐",
+        "溶鉱炉",
+        "CRAFT_TABLE_BLAST_FURNACE"
+      ],
+      "internal": "CRAFT_TABLE_BLAST_FURNACE",
+      "ja": "溶鉱炉",
+      "review_status": "auto",
+      "zh_hans": "熔爐",
+      "zh_hant": "熔爐"
+    },
+    "numeric_id": 39,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BLAST_FURNACE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_IRON_ORE",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "熔爐／改",
+        "溶鉱炉/改",
+        "CRAFT_TABLE_BLAST_FURNACE_02"
+      ],
+      "internal": "CRAFT_TABLE_BLAST_FURNACE_02",
+      "ja": "溶鉱炉/改",
+      "review_status": "auto",
+      "zh_hans": "熔爐／改",
+      "zh_hant": "熔爐／改"
+    },
+    "numeric_id": 40,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BONFIRE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 15
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "篝火",
+        "焚き火",
+        "CRAFT_TABLE_BONFIRE"
+      ],
+      "internal": "CRAFT_TABLE_BONFIRE",
+      "ja": "焚き火",
+      "review_status": "auto",
+      "zh_hans": "篝火",
+      "zh_hant": "篝火"
+    },
+    "numeric_id": 84,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BONFIRE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BOOKSHELF_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 50
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥書櫃／咖啡",
+        "クールな本棚/茶",
+        "CRAFT_TABLE_BOOKSHELF_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BOOKSHELF_COOL_BROWN",
+      "ja": "クールな本棚/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥書櫃／咖啡",
+      "zh_hant": "酷帥書櫃／咖啡"
+    },
+    "numeric_id": 101,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BOOKSHELF_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 50
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风書櫃／咖啡",
+        "成熟風書櫃／咖啡",
+        "大人な本棚/茶",
+        "CRAFT_TABLE_BOOKSHELF_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BOOKSHELF_MATURE_BROWN",
+      "ja": "大人な本棚/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风書櫃／咖啡",
+      "zh_hant": "成熟風書櫃／咖啡"
+    },
+    "numeric_id": 102,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BOOKSHELF_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 50
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制書櫃／咖啡",
+        "木製書櫃／咖啡",
+        "木の本棚/茶",
+        "CRAFT_TABLE_BOOKSHELF_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_BOOKSHELF_WOODEN_BROWN",
+      "ja": "木の本棚/茶",
+      "review_status": "auto",
+      "zh_hans": "木制書櫃／咖啡",
+      "zh_hant": "木製書櫃／咖啡"
+    },
+    "numeric_id": 100,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BREWING_BARREL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "釀造桶",
+        "醸造樽",
+        "CRAFT_TABLE_BREWING_BARREL"
+      ],
+      "internal": "CRAFT_TABLE_BREWING_BARREL",
+      "ja": "醸造樽",
+      "review_status": "auto",
+      "zh_hans": "釀造桶",
+      "zh_hant": "釀造桶"
+    },
+    "numeric_id": 49,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_BREWING_BARREL_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "釀造桶／改",
+        "醸造樽/改",
+        "CRAFT_TABLE_BREWING_BARREL_02"
+      ],
+      "internal": "CRAFT_TABLE_BREWING_BARREL_02",
+      "ja": "醸造樽/改",
+      "review_status": "auto",
+      "zh_hans": "釀造桶／改",
+      "zh_hant": "釀造桶／改"
+    },
+    "numeric_id": 50,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CARPET_COOL_S_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥地毯／咖啡",
+        "クールな絨毯/茶",
+        "CRAFT_TABLE_CARPET_COOL_S_00"
+      ],
+      "internal": "CRAFT_TABLE_CARPET_COOL_S_00",
+      "ja": "クールな絨毯/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥地毯／咖啡",
+      "zh_hant": "酷帥地毯／咖啡"
+    },
+    "numeric_id": 185,
+    "output": {
+      "item_id": "ITEM_ID_CARPET_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CARPET_MATURE_S_01",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 8
+      },
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风地毯／咖啡",
+        "成熟風地毯／咖啡",
+        "大人な絨毯/茶",
+        "CRAFT_TABLE_CARPET_MATURE_S_01"
+      ],
+      "internal": "CRAFT_TABLE_CARPET_MATURE_S_01",
+      "ja": "大人な絨毯/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风地毯／咖啡",
+      "zh_hant": "成熟風地毯／咖啡"
+    },
+    "numeric_id": 188,
+    "output": {
+      "item_id": "ITEM_ID_CARPET_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CARPET_MESH_S_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 6
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織地毯／咖啡",
+        "あみあみ絨毯/茶",
+        "CRAFT_TABLE_CARPET_MESH_S_00"
+      ],
+      "internal": "CRAFT_TABLE_CARPET_MESH_S_00",
+      "ja": "あみあみ絨毯/茶",
+      "review_status": "auto",
+      "zh_hans": "編織地毯／咖啡",
+      "zh_hant": "編織地毯／咖啡"
+    },
+    "numeric_id": 187,
+    "output": {
+      "item_id": "ITEM_ID_CARPET_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CARPET_MODERN_S_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦地毯／咖啡",
+        "時髦地毯／咖啡",
+        "モダンな絨毯/茶",
+        "CRAFT_TABLE_CARPET_MODERN_S_00"
+      ],
+      "internal": "CRAFT_TABLE_CARPET_MODERN_S_00",
+      "ja": "モダンな絨毯/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦地毯／咖啡",
+      "zh_hant": "時髦地毯／咖啡"
+    },
+    "numeric_id": 186,
+    "output": {
+      "item_id": "ITEM_ID_CARPET_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHAIR_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥椅子／咖啡",
+        "クールな椅子/茶",
+        "CRAFT_TABLE_CHAIR_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHAIR_COOL_BROWN",
+      "ja": "クールな椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥椅子／咖啡",
+      "zh_hant": "酷帥椅子／咖啡"
+    },
+    "numeric_id": 106,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHAIR_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHAIR_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 8
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_SKIN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风椅子／咖啡",
+        "成熟風椅子／咖啡",
+        "大人な椅子/茶",
+        "CRAFT_TABLE_CHAIR_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHAIR_MATURE_BROWN",
+      "ja": "大人な椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风椅子／咖啡",
+      "zh_hant": "成熟風椅子／咖啡"
+    },
+    "numeric_id": 109,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHAIR_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHAIR_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織椅子／咖啡",
+        "あみあみ椅子/茶",
+        "CRAFT_TABLE_CHAIR_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHAIR_MESH_BROWN",
+      "ja": "あみあみ椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "編織椅子／咖啡",
+      "zh_hant": "編織椅子／咖啡"
+    },
+    "numeric_id": 108,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHAIR_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHAIR_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦椅子／咖啡",
+        "時髦椅子／咖啡",
+        "モダンな椅子/茶",
+        "CRAFT_TABLE_CHAIR_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHAIR_MODERN_BROWN",
+      "ja": "モダンな椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦椅子／咖啡",
+      "zh_hant": "時髦椅子／咖啡"
+    },
+    "numeric_id": 107,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHAIR_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHAIR_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制椅子／咖啡",
+        "木製椅子／咖啡",
+        "木の椅子/茶",
+        "CRAFT_TABLE_CHAIR_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHAIR_WOODEN_BROWN",
+      "ja": "木の椅子/茶",
+      "review_status": "auto",
+      "zh_hans": "木制椅子／咖啡",
+      "zh_hant": "木製椅子／咖啡"
+    },
+    "numeric_id": 105,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHAIR_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHARCOAL_KILN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BRICK",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COAL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木炭窯",
+        "炭焼き窯",
+        "CRAFT_TABLE_CHARCOAL_KILN"
+      ],
+      "internal": "CRAFT_TABLE_CHARCOAL_KILN",
+      "ja": "炭焼き窯",
+      "review_status": "auto",
+      "zh_hans": "木炭窯",
+      "zh_hant": "木炭窯"
+    },
+    "numeric_id": 45,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHARCOAL_KILN_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BRICK",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COAL",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木炭窯／改",
+        "炭焼き窯/改",
+        "CRAFT_TABLE_CHARCOAL_KILN_02"
+      ],
+      "internal": "CRAFT_TABLE_CHARCOAL_KILN_02",
+      "ja": "炭焼き窯/改",
+      "review_status": "auto",
+      "zh_hans": "木炭窯／改",
+      "zh_hant": "木炭窯／改"
+    },
+    "numeric_id": 46,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHEST_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "編織收納箱／咖啡",
+        "あみあみ収納箱/茶",
+        "CRAFT_TABLE_CHEST_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHEST_MESH_BROWN",
+      "ja": "あみあみ収納箱/茶",
+      "review_status": "auto",
+      "zh_hans": "編織收納箱／咖啡",
+      "zh_hant": "編織收納箱／咖啡"
+    },
+    "numeric_id": 72,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHEST_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHEST_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦收納箱／咖啡",
+        "時髦收納箱／咖啡",
+        "モダンな収納箱/茶",
+        "CRAFT_TABLE_CHEST_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHEST_MODERN_BROWN",
+      "ja": "モダンな収納箱/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦收納箱／咖啡",
+      "zh_hant": "時髦收納箱／咖啡"
+    },
+    "numeric_id": 71,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHEST_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CHEST_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制收納箱／咖啡",
+        "木製收納箱／咖啡",
+        "木の収納箱/茶",
+        "CRAFT_TABLE_CHEST_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CHEST_WOODEN_BROWN",
+      "ja": "木の収納箱/茶",
+      "review_status": "auto",
+      "zh_hans": "木制收納箱／咖啡",
+      "zh_hant": "木製收納箱／咖啡"
+    },
+    "numeric_id": 70,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CHEST_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CLOSET_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风衣櫃／咖啡",
+        "成熟風衣櫃／咖啡",
+        "大人な洋服棚/茶",
+        "CRAFT_TABLE_CLOSET_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CLOSET_MATURE_BROWN",
+      "ja": "大人な洋服棚/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风衣櫃／咖啡",
+      "zh_hant": "成熟風衣櫃／咖啡"
+    },
+    "numeric_id": 74,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CLOSET_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CLOSET_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制衣櫃／咖啡",
+        "木製衣櫃／咖啡",
+        "木の洋服棚/茶",
+        "CRAFT_TABLE_CLOSET_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CLOSET_WOODEN_BROWN",
+      "ja": "木の洋服棚/茶",
+      "review_status": "auto",
+      "zh_hans": "木制衣櫃／咖啡",
+      "zh_hant": "木製衣櫃／咖啡"
+    },
+    "numeric_id": 73,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CLOSET_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_COMPOSTER",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_MOSS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_TRASH_WATER_PLANT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "堆肥桶",
+        "コンポスター",
+        "CRAFT_TABLE_COMPOSTER"
+      ],
+      "internal": "CRAFT_TABLE_COMPOSTER",
+      "ja": "コンポスター",
+      "review_status": "auto",
+      "zh_hans": "堆肥桶",
+      "zh_hant": "堆肥桶"
+    },
+    "numeric_id": 59,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_COMPOSTER",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_COMPOSTER_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_COMPOSTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CHARCOAL",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "堆肥桶／改",
+        "コンポスター/改",
+        "CRAFT_TABLE_COMPOSTER_02"
+      ],
+      "internal": "CRAFT_TABLE_COMPOSTER_02",
+      "ja": "コンポスター/改",
+      "review_status": "auto",
+      "zh_hans": "堆肥桶／改",
+      "zh_hant": "堆肥桶／改"
+    },
+    "numeric_id": 60,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_COMPOSTER_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CUPBOARD_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 50
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥餐櫃／咖啡",
+        "クールな食器棚/茶",
+        "CRAFT_TABLE_CUPBOARD_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CUPBOARD_COOL_BROWN",
+      "ja": "クールな食器棚/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥餐櫃／咖啡",
+      "zh_hant": "酷帥餐櫃／咖啡"
+    },
+    "numeric_id": 104,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CUPBOARD_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CUPBOARD_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 50
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制餐櫃／咖啡",
+        "木製餐櫃／咖啡",
+        "木の食器棚/茶",
+        "CRAFT_TABLE_CUPBOARD_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_CUPBOARD_WOODEN_BROWN",
+      "ja": "木の食器棚/茶",
+      "review_status": "auto",
+      "zh_hans": "木制餐櫃／咖啡",
+      "zh_hant": "木製餐櫃／咖啡"
+    },
+    "numeric_id": 103,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_CUPBOARD_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CURSE_FURNITURE_DEMON_MASK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_GOAT_HORN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_WILD_BOAR_FANG",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "壁掛般若面具",
+        "壁掛け般若面",
+        "CRAFT_TABLE_CURSE_FURNITURE_DEMON_MASK"
+      ],
+      "internal": "CRAFT_TABLE_CURSE_FURNITURE_DEMON_MASK",
+      "ja": "壁掛け般若面",
+      "review_status": "auto",
+      "zh_hans": "壁掛般若面具",
+      "zh_hant": "壁掛般若面具"
+    },
+    "numeric_id": 183,
+    "output": {
+      "item_id": "ITEM_ID_CURSE_FURNITURE_DEMON_MASK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CURSE_FURNITURE_FOX_MASK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_FOX_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_RACCOON_DOG_FUR",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "壁掛狐狸面具",
+        "壁掛け狐面",
+        "CRAFT_TABLE_CURSE_FURNITURE_FOX_MASK"
+      ],
+      "internal": "CRAFT_TABLE_CURSE_FURNITURE_FOX_MASK",
+      "ja": "壁掛け狐面",
+      "review_status": "auto",
+      "zh_hans": "壁掛狐狸面具",
+      "zh_hant": "壁掛狐狸面具"
+    },
+    "numeric_id": 181,
+    "output": {
+      "item_id": "ITEM_ID_CURSE_FURNITURE_FOX_MASK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CURSE_FURNITURE_MASK_OF_OKAME",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_RABBIT_FUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PIG_SKIN",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "壁掛阿龜面具",
+        "壁掛けおかめ面",
+        "CRAFT_TABLE_CURSE_FURNITURE_MASK_OF_OKAME"
+      ],
+      "internal": "CRAFT_TABLE_CURSE_FURNITURE_MASK_OF_OKAME",
+      "ja": "壁掛けおかめ面",
+      "review_status": "auto",
+      "zh_hans": "壁掛阿龜面具",
+      "zh_hant": "壁掛阿龜面具"
+    },
+    "numeric_id": 184,
+    "output": {
+      "item_id": "ITEM_ID_CURSE_FURNITURE_MASK_OF_OKAME",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_CURSE_FURNITURE_TENGU_MASK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_PHEASANT_FEATHER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CASHMERE_GOAT_HORN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "壁掛天狗面具",
+        "壁掛け天狗面",
+        "CRAFT_TABLE_CURSE_FURNITURE_TENGU_MASK"
+      ],
+      "internal": "CRAFT_TABLE_CURSE_FURNITURE_TENGU_MASK",
+      "ja": "壁掛け天狗面",
+      "review_status": "auto",
+      "zh_hans": "壁掛天狗面具",
+      "zh_hant": "壁掛天狗面具"
+    },
+    "numeric_id": 182,
+    "output": {
+      "item_id": "ITEM_ID_CURSE_FURNITURE_TENGU_MASK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥桌子／咖啡",
+        "クールな机/茶",
+        "CRAFT_TABLE_DESK_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_COOL_BROWN",
+      "ja": "クールな机/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥桌子／咖啡",
+      "zh_hant": "酷帥桌子／咖啡"
+    },
+    "numeric_id": 93,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_LAMP_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风桌灯／咖啡",
+        "成熟風桌燈／咖啡",
+        "大人な卓上照明/茶",
+        "CRAFT_TABLE_DESK_LAMP_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_LAMP_MATURE_BROWN",
+      "ja": "大人な卓上照明/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风桌灯／咖啡",
+      "zh_hant": "成熟風桌燈／咖啡"
+    },
+    "numeric_id": 80,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_LAMP_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦桌灯／咖啡",
+        "時髦桌燈／咖啡",
+        "モダンな卓上照明/茶",
+        "CRAFT_TABLE_DESK_LAMP_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_LAMP_MODERN_BROWN",
+      "ja": "モダンな卓上照明/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦桌灯／咖啡",
+      "zh_hant": "時髦桌燈／咖啡"
+    },
+    "numeric_id": 79,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_LAMP_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制桌灯／咖啡",
+        "木製桌燈／咖啡",
+        "木の卓上照明/茶",
+        "CRAFT_TABLE_DESK_LAMP_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_LAMP_WOODEN_BROWN",
+      "ja": "木の卓上照明/茶",
+      "review_status": "auto",
+      "zh_hans": "木制桌灯／咖啡",
+      "zh_hant": "木製桌燈／咖啡"
+    },
+    "numeric_id": 78,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风桌子／咖啡",
+        "成熟風桌子／咖啡",
+        "大人な机/茶",
+        "CRAFT_TABLE_DESK_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_MATURE_BROWN",
+      "ja": "大人な机/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风桌子／咖啡",
+      "zh_hant": "成熟風桌子／咖啡"
+    },
+    "numeric_id": 96,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織桌子／咖啡",
+        "あみあみ机/茶",
+        "CRAFT_TABLE_DESK_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_MESH_BROWN",
+      "ja": "あみあみ机/茶",
+      "review_status": "auto",
+      "zh_hans": "編織桌子／咖啡",
+      "zh_hant": "編織桌子／咖啡"
+    },
+    "numeric_id": 95,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦桌子／咖啡",
+        "時髦桌子／咖啡",
+        "モダンな机/茶",
+        "CRAFT_TABLE_DESK_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_MODERN_BROWN",
+      "ja": "モダンな机/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦桌子／咖啡",
+      "zh_hant": "時髦桌子／咖啡"
+    },
+    "numeric_id": 94,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DESK_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制桌子／咖啡",
+        "木製桌子／咖啡",
+        "木の机/茶",
+        "CRAFT_TABLE_DESK_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DESK_WOODEN_BROWN",
+      "ja": "木の机/茶",
+      "review_status": "auto",
+      "zh_hans": "木制桌子／咖啡",
+      "zh_hant": "木製桌子／咖啡"
+    },
+    "numeric_id": 92,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DESK_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DRESSING_TABLE_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織梳妝台／咖啡",
+        "あみあみ鏡台/茶",
+        "CRAFT_TABLE_DRESSING_TABLE_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DRESSING_TABLE_MESH_BROWN",
+      "ja": "あみあみ鏡台/茶",
+      "review_status": "auto",
+      "zh_hans": "編織梳妝台／咖啡",
+      "zh_hant": "編織梳妝台／咖啡"
+    },
+    "numeric_id": 77,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DRESSER_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DRESSING_TABLE_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦梳妝台／咖啡",
+        "時髦梳妝台／咖啡",
+        "モダンな鏡台/茶",
+        "CRAFT_TABLE_DRESSING_TABLE_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DRESSING_TABLE_MODERN_BROWN",
+      "ja": "モダンな鏡台/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦梳妝台／咖啡",
+      "zh_hant": "時髦梳妝台／咖啡"
+    },
+    "numeric_id": 76,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DRESSER_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DRESSING_TABLE_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制梳妝台／咖啡",
+        "木製梳妝台／咖啡",
+        "木の鏡台/茶",
+        "CRAFT_TABLE_DRESSING_TABLE_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_DRESSING_TABLE_WOODEN_BROWN",
+      "ja": "木の鏡台/茶",
+      "review_status": "auto",
+      "zh_hans": "木制梳妝台／咖啡",
+      "zh_hant": "木製梳妝台／咖啡"
+    },
+    "numeric_id": 75,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DRESSER_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DRYING_MACHINE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COAL",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥机",
+        "乾燥機",
+        "CRAFT_TABLE_DRYING_MACHINE"
+      ],
+      "internal": "CRAFT_TABLE_DRYING_MACHINE",
+      "ja": "乾燥機",
+      "review_status": "auto",
+      "zh_hans": "乾燥机",
+      "zh_hant": "乾燥機"
+    },
+    "numeric_id": 53,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_DRYING_MACHINE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COAL",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥机／改",
+        "乾燥機／改",
+        "乾燥機/改",
+        "CRAFT_TABLE_DRYING_MACHINE_02"
+      ],
+      "internal": "CRAFT_TABLE_DRYING_MACHINE_02",
+      "ja": "乾燥機/改",
+      "review_status": "auto",
+      "zh_hans": "乾燥机／改",
+      "zh_hant": "乾燥機／改"
+    },
+    "numeric_id": 54,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ENERGY_BAR",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_GRASS_FRUIT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GRASS_ROOT",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "兵糧丸",
+        "CRAFT_TABLE_ENERGY_BAR"
+      ],
+      "internal": "CRAFT_TABLE_ENERGY_BAR",
+      "ja": "兵糧丸",
+      "review_status": "auto",
+      "zh_hans": "兵糧丸",
+      "zh_hant": "兵糧丸"
+    },
+    "numeric_id": 34,
+    "output": {
+      "item_id": "ITEM_ID_ENERGY_BAR",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_BAMBOO",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "竹子柵欄",
+        "竹の柵",
+        "CRAFT_TABLE_FENCE_BAMBOO"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_BAMBOO",
+      "ja": "竹の柵",
+      "review_status": "auto",
+      "zh_hans": "竹子柵欄",
+      "zh_hant": "竹子柵欄"
+    },
+    "numeric_id": 9,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_BAMBOO",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_BRICK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BRICK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "磚頭柵欄",
+        "レンガの柵",
+        "CRAFT_TABLE_FENCE_BRICK"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_BRICK",
+      "ja": "レンガの柵",
+      "review_status": "auto",
+      "zh_hans": "磚頭柵欄",
+      "zh_hant": "磚頭柵欄"
+    },
+    "numeric_id": 4,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_BRICK",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_GARDEN_IRON",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "铁制花园柵欄",
+        "鐵製花園柵欄",
+        "鉄のガーデン柵",
+        "CRAFT_TABLE_FENCE_GARDEN_IRON"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_GARDEN_IRON",
+      "ja": "鉄のガーデン柵",
+      "review_status": "auto",
+      "zh_hans": "铁制花园柵欄",
+      "zh_hant": "鐵製花園柵欄"
+    },
+    "numeric_id": 7,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_GARDEN_IRON",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_IRON",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "铁制柵欄",
+        "鐵製柵欄",
+        "鉄の柵",
+        "CRAFT_TABLE_FENCE_IRON"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_IRON",
+      "ja": "鉄の柵",
+      "review_status": "auto",
+      "zh_hans": "铁制柵欄",
+      "zh_hant": "鐵製柵欄"
+    },
+    "numeric_id": 3,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_IRON",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_MESH",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "网子柵欄",
+        "網子柵欄",
+        "網の柵",
+        "CRAFT_TABLE_FENCE_MESH"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_MESH",
+      "ja": "網の柵",
+      "review_status": "auto",
+      "zh_hans": "网子柵欄",
+      "zh_hant": "網子柵欄"
+    },
+    "numeric_id": 10,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_MESH",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_PLANK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木板柵欄",
+        "板材の柵",
+        "CRAFT_TABLE_FENCE_PLANK"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_PLANK",
+      "ja": "板材の柵",
+      "review_status": "auto",
+      "zh_hans": "木板柵欄",
+      "zh_hant": "木板柵欄"
+    },
+    "numeric_id": 5,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_PLANK",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_PLANK_WHITE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "白色木板柵欄",
+        "白い板材の柵",
+        "CRAFT_TABLE_FENCE_PLANK_WHITE"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_PLANK_WHITE",
+      "ja": "白い板材の柵",
+      "review_status": "auto",
+      "zh_hans": "白色木板柵欄",
+      "zh_hant": "白色木板柵欄"
+    },
+    "numeric_id": 6,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_PLANK_WHITE",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_ROPE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "绳子柵欄",
+        "繩子柵欄",
+        "縄の柵",
+        "CRAFT_TABLE_FENCE_ROPE"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_ROPE",
+      "ja": "縄の柵",
+      "review_status": "auto",
+      "zh_hans": "绳子柵欄",
+      "zh_hant": "繩子柵欄"
+    },
+    "numeric_id": 8,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_ROPE",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "石頭柵欄",
+        "石の柵",
+        "CRAFT_TABLE_FENCE_STONE"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_STONE",
+      "ja": "石の柵",
+      "review_status": "auto",
+      "zh_hans": "石頭柵欄",
+      "zh_hant": "石頭柵欄"
+    },
+    "numeric_id": 2,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_STONE",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FENCE_WOOD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制柵欄",
+        "木製柵欄",
+        "木の柵",
+        "CRAFT_TABLE_FENCE_WOOD"
+      ],
+      "internal": "CRAFT_TABLE_FENCE_WOOD",
+      "ja": "木の柵",
+      "review_status": "auto",
+      "zh_hans": "木制柵欄",
+      "zh_hant": "木製柵欄"
+    },
+    "numeric_id": 1,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FENCE_WOOD",
+      "quantity": 2
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_L_FOLDED_FUTON",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 8
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "折疊好的棉被",
+        "畳まれた布団",
+        "CRAFT_TABLE_FIGURINE_L_FOLDED_FUTON"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_L_FOLDED_FUTON",
+      "ja": "畳まれた布団",
+      "review_status": "auto",
+      "zh_hans": "折疊好的棉被",
+      "zh_hant": "折疊好的棉被"
+    },
+    "numeric_id": 132,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_L_FOLDED_FUTON",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_SEASON_EASTER_EGG",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_DYE_GREEN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_DYE_YELLOW",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "復活節彩蛋",
+        "イースターエッグ",
+        "CRAFT_TABLE_FIGURINE_SEASON_EASTER_EGG"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_SEASON_EASTER_EGG",
+      "ja": "イースターエッグ",
+      "review_status": "auto",
+      "zh_hans": "復活節彩蛋",
+      "zh_hant": "復活節彩蛋"
+    },
+    "numeric_id": 133,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_SEASON_EASTER_EGG",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_S_BUNDLE_OF_FIREWOOD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 15
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木柴捆",
+        "薪の束",
+        "CRAFT_TABLE_FIGURINE_S_BUNDLE_OF_FIREWOOD"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_S_BUNDLE_OF_FIREWOOD",
+      "ja": "薪の束",
+      "review_status": "auto",
+      "zh_hans": "木柴捆",
+      "zh_hant": "木柴捆"
+    },
+    "numeric_id": 131,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_S_BUNDLE_OF_FIREWOOD",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_S_JAR",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CHARCOAL",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "甕",
+        "壺",
+        "CRAFT_TABLE_FIGURINE_S_JAR"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_S_JAR",
+      "ja": "壺",
+      "review_status": "auto",
+      "zh_hans": "甕",
+      "zh_hant": "甕"
+    },
+    "numeric_id": 130,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_S_JAR",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_ABACUS",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "算盤",
+        "そろばん",
+        "CRAFT_TABLE_FIGURINE_XS_ABACUS"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_ABACUS",
+      "ja": "そろばん",
+      "review_status": "auto",
+      "zh_hans": "算盤",
+      "zh_hant": "算盤"
+    },
+    "numeric_id": 125,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_ABACUS",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "竹編蜻蜓",
+        "竹細工のトンボ",
+        "CRAFT_TABLE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+      "ja": "竹細工のトンボ",
+      "review_status": "auto",
+      "zh_hans": "竹編蜻蜓",
+      "zh_hant": "竹編蜻蜓"
+    },
+    "numeric_id": 126,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_KOKEDAMA",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_MOSS",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "苔球",
+        "苔玉",
+        "CRAFT_TABLE_FIGURINE_XS_KOKEDAMA"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_KOKEDAMA",
+      "ja": "苔玉",
+      "review_status": "auto",
+      "zh_hans": "苔球",
+      "zh_hant": "苔球"
+    },
+    "numeric_id": 123,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_KOKEDAMA",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_TEDDY_BEAR_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "小泰迪熊／咖啡",
+        "小さいテディベア/茶",
+        "CRAFT_TABLE_FIGURINE_XS_TEDDY_BEAR_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_TEDDY_BEAR_BROWN",
+      "ja": "小さいテディベア/茶",
+      "review_status": "auto",
+      "zh_hans": "小泰迪熊／咖啡",
+      "zh_hant": "小泰迪熊／咖啡"
+    },
+    "numeric_id": 119,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_TEDDY_BEAR_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_BRONZE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "獎盃／铜",
+        "獎盃／銅",
+        "トロフィー/銅",
+        "CRAFT_TABLE_FIGURINE_XS_TROPHY_BRONZE"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_TROPHY_BRONZE",
+      "ja": "トロフィー/銅",
+      "review_status": "auto",
+      "zh_hans": "獎盃／铜",
+      "zh_hant": "獎盃／銅"
+    },
+    "numeric_id": 127,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_BRONZE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_GOLD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_GOLD_INGOT",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "獎盃／金",
+        "トロフィー/金",
+        "CRAFT_TABLE_FIGURINE_XS_TROPHY_GOLD"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_TROPHY_GOLD",
+      "ja": "トロフィー/金",
+      "review_status": "auto",
+      "zh_hans": "獎盃／金",
+      "zh_hant": "獎盃／金"
+    },
+    "numeric_id": 129,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_GOLD",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_SILVER",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "獎盃／银",
+        "獎盃／銀",
+        "トロフィー/銀",
+        "CRAFT_TABLE_FIGURINE_XS_TROPHY_SILVER"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_TROPHY_SILVER",
+      "ja": "トロフィー/銀",
+      "review_status": "auto",
+      "zh_hans": "獎盃／银",
+      "zh_hant": "獎盃／銀"
+    },
+    "numeric_id": 128,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_SILVER",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_UNFINISHED_SCARF",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "手織圍巾",
+        "手編みマフラー",
+        "CRAFT_TABLE_FIGURINE_XS_UNFINISHED_SCARF"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_UNFINISHED_SCARF",
+      "ja": "手編みマフラー",
+      "review_status": "auto",
+      "zh_hans": "手織圍巾",
+      "zh_hant": "手織圍巾"
+    },
+    "numeric_id": 122,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_UNFINISHED_SCARF",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_VASE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "花瓶",
+        "CRAFT_TABLE_FIGURINE_XS_VASE"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_VASE",
+      "ja": "花瓶",
+      "review_status": "auto",
+      "zh_hans": "花瓶",
+      "zh_hant": "花瓶"
+    },
+    "numeric_id": 120,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_VASE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_CARVED_BEAR",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木雕熊",
+        "木彫りの熊",
+        "CRAFT_TABLE_FIGURINE_XS_WOODEN_CARVED_BEAR"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_WOODEN_CARVED_BEAR",
+      "ja": "木彫りの熊",
+      "review_status": "auto",
+      "zh_hans": "木雕熊",
+      "zh_hant": "木雕熊"
+    },
+    "numeric_id": 121,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_WOODEN_CARVED_BEAR",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_FISH",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木鱼",
+        "木魚",
+        "CRAFT_TABLE_FIGURINE_XS_WOODEN_FISH"
+      ],
+      "internal": "CRAFT_TABLE_FIGURINE_XS_WOODEN_FISH",
+      "ja": "木魚",
+      "review_status": "auto",
+      "zh_hans": "木鱼",
+      "zh_hant": "木魚"
+    },
+    "numeric_id": 124,
+    "output": {
+      "item_id": "ITEM_ID_FIGURINE_XS_WOODEN_FISH",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FLOOR_LAMP_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制灯具／咖啡",
+        "木製燈具／咖啡",
+        "木の照明/茶",
+        "CRAFT_TABLE_FLOOR_LAMP_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_FLOOR_LAMP_WOODEN_BROWN",
+      "ja": "木の照明/茶",
+      "review_status": "auto",
+      "zh_hans": "木制灯具／咖啡",
+      "zh_hant": "木製燈具／咖啡"
+    },
+    "numeric_id": 81,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FLOOR_LAMP_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FLOUR_MILL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "研磨机",
+        "研磨機",
+        "粉挽き",
+        "CRAFT_TABLE_FLOUR_MILL"
+      ],
+      "internal": "CRAFT_TABLE_FLOUR_MILL",
+      "ja": "粉挽き",
+      "review_status": "auto",
+      "zh_hans": "研磨机",
+      "zh_hant": "研磨機"
+    },
+    "numeric_id": 37,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FLOUR_MILL_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HEAVY",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "研磨机／改",
+        "研磨機／改",
+        "粉挽き/改",
+        "CRAFT_TABLE_FLOUR_MILL_02"
+      ],
+      "internal": "CRAFT_TABLE_FLOUR_MILL_02",
+      "ja": "粉挽き/改",
+      "review_status": "auto",
+      "zh_hans": "研磨机／改",
+      "zh_hant": "研磨機／改"
+    },
+    "numeric_id": 38,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_FURNACE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "爐灶",
+        "かまど",
+        "CRAFT_TABLE_FURNACE"
+      ],
+      "internal": "CRAFT_TABLE_FURNACE",
+      "ja": "かまど",
+      "review_status": "auto",
+      "zh_hans": "爐灶",
+      "zh_hant": "爐灶"
+    },
+    "numeric_id": 68,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_FURNACE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_HAY",
+        "quantity": 40
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "牧草捲堆",
+        "牧草ロールの山",
+        "CRAFT_TABLE_GARDEN_FIGURINE_L_HAY_ROLL_PILE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+      "ja": "牧草ロールの山",
+      "review_status": "auto",
+      "zh_hans": "牧草捲堆",
+      "zh_hant": "牧草捲堆"
+    },
+    "numeric_id": 155,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 50
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_MOSS",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "灌木与岩石",
+        "灌木與岩石",
+        "低木と岩",
+        "CRAFT_TABLE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+      "ja": "低木と岩",
+      "review_status": "auto",
+      "zh_hans": "灌木与岩石",
+      "zh_hant": "灌木與岩石"
+    },
+    "numeric_id": 154,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_MOSSY_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_MOSS",
+        "quantity": 30
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "青苔石",
+        "苔むした石",
+        "CRAFT_TABLE_GARDEN_FIGURINE_M_MOSSY_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_M_MOSSY_STONE",
+      "ja": "苔むした石",
+      "review_status": "auto",
+      "zh_hans": "青苔石",
+      "zh_hant": "青苔石"
+    },
+    "numeric_id": 151,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_M_MOSSY_STONE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "大型墊腳石",
+        "大きな飛び石",
+        "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+      "ja": "大きな飛び石",
+      "review_status": "auto",
+      "zh_hans": "大型墊腳石",
+      "zh_hant": "大型墊腳石"
+    },
+    "numeric_id": 152,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "小型墊腳石",
+        "小さな飛び石",
+        "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+      "ja": "小さな飛び石",
+      "review_status": "auto",
+      "zh_hans": "小型墊腳石",
+      "zh_hant": "小型墊腳石"
+    },
+    "numeric_id": 153,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_BRANCH_PILE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_TRASH_TWIG",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "树枝堆",
+        "樹枝堆",
+        "枝の山",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_BRANCH_PILE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_BRANCH_PILE",
+      "ja": "枝の山",
+      "review_status": "auto",
+      "zh_hans": "树枝堆",
+      "zh_hant": "樹枝堆"
+    },
+    "numeric_id": 134,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_BRANCH_PILE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_POT",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "花盆",
+        "植木鉢",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_POT"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_POT",
+      "ja": "植木鉢",
+      "review_status": "auto",
+      "zh_hans": "花盆",
+      "zh_hant": "花盆"
+    },
+    "numeric_id": 145,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_POT",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_TURKEY_TAIL_FEATHER",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／黑",
+        "園藝推車／黑",
+        "フラワーワゴン/黒",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
+      "ja": "フラワーワゴン/黒",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／黑",
+      "zh_hant": "園藝推車／黑"
+    },
+    "numeric_id": 144,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_FORGET_ME_NOT",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／蓝",
+        "園藝推車／藍",
+        "フラワーワゴン/青",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
+      "ja": "フラワーワゴン/青",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／蓝",
+      "zh_hant": "園藝推車／藍"
+    },
+    "numeric_id": 140,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_PINE_CONE",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／咖啡",
+        "園藝推車／咖啡",
+        "フラワーワゴン/茶",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
+      "ja": "フラワーワゴン/茶",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／咖啡",
+      "zh_hant": "園藝推車／咖啡"
+    },
+    "numeric_id": 135,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／绿",
+        "園藝推車／綠",
+        "フラワーワゴン/緑",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
+      "ja": "フラワーワゴン/緑",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／绿",
+      "zh_hant": "園藝推車／綠"
+    },
+    "numeric_id": 139,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_MARIGOLD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／橘",
+        "園藝推車／橘",
+        "フラワーワゴン/橙",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
+      "ja": "フラワーワゴン/橙",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／橘",
+      "zh_hant": "園藝推車／橘"
+    },
+    "numeric_id": 137,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_COSMOS",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／粉红",
+        "園藝推車／粉紅",
+        "フラワーワゴン/桃",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
+      "ja": "フラワーワゴン/桃",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／粉红",
+      "zh_hant": "園藝推車／粉紅"
+    },
+    "numeric_id": 142,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LAVENDER",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／紫",
+        "園藝推車／紫",
+        "フラワーワゴン/紫",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
+      "ja": "フラワーワゴン/紫",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／紫",
+      "zh_hant": "園藝推車／紫"
+    },
+    "numeric_id": 141,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARNATION",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／红",
+        "園藝推車／紅",
+        "フラワーワゴン/赤",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_RED"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
+      "ja": "フラワーワゴン/赤",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／红",
+      "zh_hant": "園藝推車／紅"
+    },
+    "numeric_id": 136,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHAMOMILE",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／白",
+        "園藝推車／白",
+        "フラワーワゴン/白",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
+      "ja": "フラワーワゴン/白",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／白",
+      "zh_hant": "園藝推車／白"
+    },
+    "numeric_id": 143,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SUNFLOWER",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "园藝推车／黄",
+        "園藝推車／黃",
+        "フラワーワゴン/黄",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
+      "ja": "フラワーワゴン/黄",
+      "review_status": "auto",
+      "zh_hans": "园藝推车／黄",
+      "zh_hant": "園藝推車／黃"
+    },
+    "numeric_id": 138,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_GARDEN_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HEAVY",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "景觀石",
+        "庭石",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_GARDEN_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_GARDEN_STONE",
+      "ja": "庭石",
+      "review_status": "auto",
+      "zh_hans": "景觀石",
+      "zh_hant": "景觀石"
+    },
+    "numeric_id": 147,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_GARDEN_STONE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_SIGNBOARD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "立牌",
+        "立て札",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_SIGNBOARD"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_SIGNBOARD",
+      "ja": "立て札",
+      "review_status": "auto",
+      "zh_hans": "立牌",
+      "zh_hant": "立牌"
+    },
+    "numeric_id": 149,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_SIGNBOARD",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STACKED_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 40
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "石堆",
+        "積石",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_STACKED_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_STACKED_STONE",
+      "ja": "積石",
+      "review_status": "auto",
+      "zh_hans": "石堆",
+      "zh_hant": "石堆"
+    },
+    "numeric_id": 146,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_STACKED_STONE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STONE_LANTERN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HEAVY",
+        "quantity": 30
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "石灯笼",
+        "石燈籠",
+        "石積の灯籠",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_STONE_LANTERN"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_STONE_LANTERN",
+      "ja": "石積の灯籠",
+      "review_status": "auto",
+      "zh_hans": "石灯笼",
+      "zh_hant": "石燈籠"
+    },
+    "numeric_id": 150,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_STONE_LANTERN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_WATER_LILY_POT",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_SEED_LOTUS_ROOT",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WATER_HYACINTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "蓮花盆",
+        "睡蓮鉢",
+        "CRAFT_TABLE_GARDEN_FIGURINE_S_WATER_LILY_POT"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FIGURINE_S_WATER_LILY_POT",
+      "ja": "睡蓮鉢",
+      "review_status": "auto",
+      "zh_hans": "蓮花盆",
+      "zh_hant": "蓮花盆"
+    },
+    "numeric_id": 148,
+    "output": {
+      "item_id": "ITEM_ID_GARDEN_FIGURINE_S_WATER_LILY_POT",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_BRICK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BRICK",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外磚頭地板",
+        "レンガの庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_BRICK"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_BRICK",
+      "ja": "レンガの庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外磚頭地板",
+      "zh_hant": "戶外磚頭地板"
+    },
+    "numeric_id": 27,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_BRICK",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_FALLEN_LEAVES",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外落叶地板",
+        "戶外落葉地板",
+        "落ち葉の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_FALLEN_LEAVES"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_FALLEN_LEAVES",
+      "ja": "落ち葉の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外落叶地板",
+      "zh_hant": "戶外落葉地板"
+    },
+    "numeric_id": 28,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_FALLEN_LEAVES",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_FLOWER",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_GYPSOPHILA",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外花朵地板",
+        "花の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_FLOWER"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_FLOWER",
+      "ja": "花の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外花朵地板",
+      "zh_hant": "戶外花朵地板"
+    },
+    "numeric_id": 30,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_FLOWER",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_LOG",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外原木地板",
+        "丸太の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_LOG"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_LOG",
+      "ja": "丸太の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外原木地板",
+      "zh_hant": "戶外原木地板"
+    },
+    "numeric_id": 26,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_LOG",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外石頭地板",
+        "石の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_STONE",
+      "ja": "石の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外石頭地板",
+      "zh_hant": "戶外石頭地板"
+    },
+    "numeric_id": 22,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_STONE",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_STRAW",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_HAY",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外稻草地板",
+        "藁の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_STRAW"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_STRAW",
+      "ja": "藁の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外稻草地板",
+      "zh_hant": "戶外稻草地板"
+    },
+    "numeric_id": 29,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_STRAW",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_BLACK_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HEAVY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外黑石磚地板",
+        "黒石タイルの庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_TILE_BLACK_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_TILE_BLACK_STONE",
+      "ja": "黒石タイルの庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外黑石磚地板",
+      "zh_hant": "戶外黑石磚地板"
+    },
+    "numeric_id": 25,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_BLACK_STONE",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外石磚地板",
+        "石タイルの庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_TILE_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_TILE_STONE",
+      "ja": "石タイルの庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外石磚地板",
+      "zh_hant": "戶外石磚地板"
+    },
+    "numeric_id": 23,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_STONE",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_WHITE_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外白石磚地板",
+        "白石タイルの庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_TILE_WHITE_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_TILE_WHITE_STONE",
+      "ja": "白石タイルの庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外白石磚地板",
+      "zh_hant": "戶外白石磚地板"
+    },
+    "numeric_id": 24,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_WHITE_STONE",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GARDEN_FLOOR_WOOD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "戶外木頭地板",
+        "木の庭床",
+        "CRAFT_TABLE_GARDEN_FLOOR_WOOD"
+      ],
+      "internal": "CRAFT_TABLE_GARDEN_FLOOR_WOOD",
+      "ja": "木の庭床",
+      "review_status": "auto",
+      "zh_hans": "戶外木頭地板",
+      "zh_hant": "戶外木頭地板"
+    },
+    "numeric_id": 21,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_WOOD",
+      "quantity": 3
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_BAMBOO",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "竹子柵欄门",
+        "竹子柵欄門",
+        "竹のゲート",
+        "CRAFT_TABLE_GATE_BAMBOO"
+      ],
+      "internal": "CRAFT_TABLE_GATE_BAMBOO",
+      "ja": "竹のゲート",
+      "review_status": "auto",
+      "zh_hans": "竹子柵欄门",
+      "zh_hant": "竹子柵欄門"
+    },
+    "numeric_id": 19,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_BAMBOO",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_BRICK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BRICK",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "磚頭柵欄门",
+        "磚頭柵欄門",
+        "レンガのゲート",
+        "CRAFT_TABLE_GATE_BRICK"
+      ],
+      "internal": "CRAFT_TABLE_GATE_BRICK",
+      "ja": "レンガのゲート",
+      "review_status": "auto",
+      "zh_hans": "磚頭柵欄门",
+      "zh_hant": "磚頭柵欄門"
+    },
+    "numeric_id": 14,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_BRICK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_GARDEN_IRON",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "铁制花园柵欄门",
+        "鐵製花園柵欄門",
+        "鉄のガーデンゲート",
+        "CRAFT_TABLE_GATE_GARDEN_IRON"
+      ],
+      "internal": "CRAFT_TABLE_GATE_GARDEN_IRON",
+      "ja": "鉄のガーデンゲート",
+      "review_status": "auto",
+      "zh_hans": "铁制花园柵欄门",
+      "zh_hant": "鐵製花園柵欄門"
+    },
+    "numeric_id": 17,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_GARDEN_IRON",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_IRON",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "铁制柵欄门",
+        "鐵製柵欄門",
+        "鉄のゲート",
+        "CRAFT_TABLE_GATE_IRON"
+      ],
+      "internal": "CRAFT_TABLE_GATE_IRON",
+      "ja": "鉄のゲート",
+      "review_status": "auto",
+      "zh_hans": "铁制柵欄门",
+      "zh_hant": "鐵製柵欄門"
+    },
+    "numeric_id": 13,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_IRON",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_MESH",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 30
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "网子柵欄门",
+        "網子柵欄門",
+        "網のゲート",
+        "CRAFT_TABLE_GATE_MESH"
+      ],
+      "internal": "CRAFT_TABLE_GATE_MESH",
+      "ja": "網のゲート",
+      "review_status": "auto",
+      "zh_hans": "网子柵欄门",
+      "zh_hant": "網子柵欄門"
+    },
+    "numeric_id": 20,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_MESH",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_PLANK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木板柵欄门",
+        "木板柵欄門",
+        "板材のゲート",
+        "CRAFT_TABLE_GATE_PLANK"
+      ],
+      "internal": "CRAFT_TABLE_GATE_PLANK",
+      "ja": "板材のゲート",
+      "review_status": "auto",
+      "zh_hans": "木板柵欄门",
+      "zh_hant": "木板柵欄門"
+    },
+    "numeric_id": 15,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_PLANK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_PLANK_WHITE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "白色木板柵欄门",
+        "白色木板柵欄門",
+        "白い板材のゲート",
+        "CRAFT_TABLE_GATE_PLANK_WHITE"
+      ],
+      "internal": "CRAFT_TABLE_GATE_PLANK_WHITE",
+      "ja": "白い板材のゲート",
+      "review_status": "auto",
+      "zh_hans": "白色木板柵欄门",
+      "zh_hant": "白色木板柵欄門"
+    },
+    "numeric_id": 16,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_PLANK_WHITE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_ROPE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "绳子柵欄门",
+        "繩子柵欄門",
+        "縄のゲート",
+        "CRAFT_TABLE_GATE_ROPE"
+      ],
+      "internal": "CRAFT_TABLE_GATE_ROPE",
+      "ja": "縄のゲート",
+      "review_status": "auto",
+      "zh_hans": "绳子柵欄门",
+      "zh_hant": "繩子柵欄門"
+    },
+    "numeric_id": 18,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_ROPE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_STONE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "石頭柵欄门",
+        "石頭柵欄門",
+        "石のゲート",
+        "CRAFT_TABLE_GATE_STONE"
+      ],
+      "internal": "CRAFT_TABLE_GATE_STONE",
+      "ja": "石のゲート",
+      "review_status": "auto",
+      "zh_hans": "石頭柵欄门",
+      "zh_hant": "石頭柵欄門"
+    },
+    "numeric_id": 12,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_STONE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_GATE_WOOD",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制柵欄门",
+        "木製柵欄門",
+        "木のゲート",
+        "CRAFT_TABLE_GATE_WOOD"
+      ],
+      "internal": "CRAFT_TABLE_GATE_WOOD",
+      "ja": "木のゲート",
+      "review_status": "auto",
+      "zh_hans": "木制柵欄门",
+      "zh_hant": "木製柵欄門"
+    },
+    "numeric_id": 11,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_GATE_WOOD",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ITEM_PURIFYING_SALT",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_ROCK_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "淨化盐",
+        "淨化鹽",
+        "清めの塩",
+        "CRAFT_TABLE_ITEM_PURIFYING_SALT"
+      ],
+      "internal": "CRAFT_TABLE_ITEM_PURIFYING_SALT",
+      "ja": "清めの塩",
+      "review_status": "auto",
+      "zh_hans": "淨化盐",
+      "zh_hant": "淨化鹽"
+    },
+    "numeric_id": 194,
+    "output": {
+      "item_id": "ITEM_ID_CURSED_PURIFYING_SALT",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_ITEM_STRAW_DOLL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 500
+      },
+      {
+        "item_id": "ITEM_ID_CURSED_PURIFYING_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_HORSE_TAIL",
+        "quantity": 3
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "稻草人偶",
+        "藁人形",
+        "CRAFT_TABLE_ITEM_STRAW_DOLL"
+      ],
+      "internal": "CRAFT_TABLE_ITEM_STRAW_DOLL",
+      "ja": "藁人形",
+      "review_status": "auto",
+      "zh_hans": "稻草人偶",
+      "zh_hant": "稻草人偶"
+    },
+    "numeric_id": 195,
+    "output": {
+      "item_id": "ITEM_ID_CURSED_STRAW_DOLL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_JAPANESE_CHARCOAL_GRILL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CLAY",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_CHARCOAL",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "炭烤爐",
+        "七輪",
+        "CRAFT_TABLE_JAPANESE_CHARCOAL_GRILL"
+      ],
+      "internal": "CRAFT_TABLE_JAPANESE_CHARCOAL_GRILL",
+      "ja": "七輪",
+      "review_status": "auto",
+      "zh_hans": "炭烤爐",
+      "zh_hant": "炭烤爐"
+    },
+    "numeric_id": 69,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_JAPANESE_DOLL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_BODY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_HEAD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "日本人偶",
+        "日本人形",
+        "CRAFT_TABLE_JAPANESE_DOLL"
+      ],
+      "internal": "CRAFT_TABLE_JAPANESE_DOLL",
+      "ja": "日本人形",
+      "review_status": "auto",
+      "zh_hans": "日本人偶",
+      "zh_hant": "日本人偶"
+    },
+    "numeric_id": 115,
+    "output": {
+      "item_id": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_LOOM",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "織布机",
+        "織布機",
+        "織り機",
+        "CRAFT_TABLE_LOOM"
+      ],
+      "internal": "CRAFT_TABLE_LOOM",
+      "ja": "織り機",
+      "review_status": "auto",
+      "zh_hans": "織布机",
+      "zh_hant": "織布機"
+    },
+    "numeric_id": 55,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_LOOM",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_LOOM_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_LOOM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "織布机／改",
+        "織布機／改",
+        "織り機/改",
+        "CRAFT_TABLE_LOOM_02"
+      ],
+      "internal": "CRAFT_TABLE_LOOM_02",
+      "ja": "織り機/改",
+      "review_status": "auto",
+      "zh_hans": "織布机／改",
+      "zh_hant": "織布機／改"
+    },
+    "numeric_id": 56,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_LOOM_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "美乃滋加工机",
+        "美乃滋加工機",
+        "マヨネーズ加工機",
+        "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE"
+      ],
+      "internal": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE",
+      "ja": "マヨネーズ加工機",
+      "review_status": "auto",
+      "zh_hans": "美乃滋加工机",
+      "zh_hant": "美乃滋加工機"
+    },
+    "numeric_id": 41,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "美乃滋加工机／改",
+        "美乃滋加工機／改",
+        "マヨネーズ加工機/改",
+        "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE_02"
+      ],
+      "internal": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE_02",
+      "ja": "マヨネーズ加工機/改",
+      "review_status": "auto",
+      "zh_hans": "美乃滋加工机／改",
+      "zh_hant": "美乃滋加工機／改"
+    },
+    "numeric_id": 42,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_MESSTIN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_BONFIRE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CHARCOAL",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "煮饭盒",
+        "煮飯盒",
+        "はんごう",
+        "CRAFT_TABLE_MESSTIN"
+      ],
+      "internal": "CRAFT_TABLE_MESSTIN",
+      "ja": "はんごう",
+      "review_status": "auto",
+      "zh_hans": "煮饭盒",
+      "zh_hant": "煮飯盒"
+    },
+    "numeric_id": 67,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_MESSTIN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "牛奶加工机",
+        "牛奶加工機",
+        "ミルク加工機",
+        "CRAFT_TABLE_MILK_PROCESSING_MACHINE"
+      ],
+      "internal": "CRAFT_TABLE_MILK_PROCESSING_MACHINE",
+      "ja": "ミルク加工機",
+      "review_status": "auto",
+      "zh_hans": "牛奶加工机",
+      "zh_hant": "牛奶加工機"
+    },
+    "numeric_id": 47,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HEAVY",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "牛奶加工机／改",
+        "牛奶加工機／改",
+        "ミルク加工機/改",
+        "CRAFT_TABLE_MILK_PROCESSING_MACHINE_02"
+      ],
+      "internal": "CRAFT_TABLE_MILK_PROCESSING_MACHINE_02",
+      "ja": "ミルク加工機/改",
+      "review_status": "auto",
+      "zh_hans": "牛奶加工机／改",
+      "zh_hant": "牛奶加工機／改"
+    },
+    "numeric_id": 48,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "榨油机",
+        "榨油機",
+        "搾油機",
+        "CRAFT_TABLE_OIL_EXTRACTION_MACHINE"
+      ],
+      "internal": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE",
+      "ja": "搾油機",
+      "review_status": "auto",
+      "zh_hans": "榨油机",
+      "zh_hant": "榨油機"
+    },
+    "numeric_id": 57,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "榨油机／改",
+        "榨油機／改",
+        "搾油機/改",
+        "CRAFT_TABLE_OIL_EXTRACTION_MACHINE_02"
+      ],
+      "internal": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE_02",
+      "ja": "搾油機/改",
+      "review_status": "auto",
+      "zh_hans": "榨油机／改",
+      "zh_hant": "榨油機／改"
+    },
+    "numeric_id": 58,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SAP_EXTRACTOR",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "树液採集器",
+        "樹液採集器",
+        "樹液採取器",
+        "CRAFT_TABLE_SAP_EXTRACTOR"
+      ],
+      "internal": "CRAFT_TABLE_SAP_EXTRACTOR",
+      "ja": "樹液採取器",
+      "review_status": "auto",
+      "zh_hans": "树液採集器",
+      "zh_hant": "樹液採集器"
+    },
+    "numeric_id": 62,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SERICULTURE_BOX",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 20
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "蠶箱",
+        "養蚕箱",
+        "CRAFT_TABLE_SERICULTURE_BOX"
+      ],
+      "internal": "CRAFT_TABLE_SERICULTURE_BOX",
+      "ja": "養蚕箱",
+      "review_status": "auto",
+      "zh_hans": "蠶箱",
+      "zh_hant": "蠶箱"
+    },
+    "numeric_id": 63,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SIDE_DESK_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥邊桌／咖啡",
+        "クールな脇机/茶",
+        "CRAFT_TABLE_SIDE_DESK_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_SIDE_DESK_COOL_BROWN",
+      "ja": "クールな脇机/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥邊桌／咖啡",
+      "zh_hant": "酷帥邊桌／咖啡"
+    },
+    "numeric_id": 98,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SIDE_DESK_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 15
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 15
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織邊桌／咖啡",
+        "あみあみ脇机/茶",
+        "CRAFT_TABLE_SIDE_DESK_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_SIDE_DESK_MESH_BROWN",
+      "ja": "あみあみ脇机/茶",
+      "review_status": "auto",
+      "zh_hans": "編織邊桌／咖啡",
+      "zh_hant": "編織邊桌／咖啡"
+    },
+    "numeric_id": 99,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SIDE_DESK_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 30
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制邊桌／咖啡",
+        "木製邊桌／咖啡",
+        "木の脇机/茶",
+        "CRAFT_TABLE_SIDE_DESK_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_SIDE_DESK_WOODEN_BROWN",
+      "ja": "木の脇机/茶",
+      "review_status": "auto",
+      "zh_hans": "木制邊桌／咖啡",
+      "zh_hant": "木製邊桌／咖啡"
+    },
+    "numeric_id": 97,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SMOKING_MACHINE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_FIBER",
+        "quantity": 50
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "煙燻机",
+        "煙燻機",
+        "燻製器",
+        "CRAFT_TABLE_SMOKING_MACHINE"
+      ],
+      "internal": "CRAFT_TABLE_SMOKING_MACHINE",
+      "ja": "燻製器",
+      "review_status": "auto",
+      "zh_hans": "煙燻机",
+      "zh_hant": "煙燻機"
+    },
+    "numeric_id": 43,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SMOKING_MACHINE_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "煙燻机／改",
+        "煙燻機／改",
+        "燻製器/改",
+        "CRAFT_TABLE_SMOKING_MACHINE_02"
+      ],
+      "internal": "CRAFT_TABLE_SMOKING_MACHINE_02",
+      "ja": "燻製器/改",
+      "review_status": "auto",
+      "zh_hans": "煙燻机／改",
+      "zh_hant": "煙燻機／改"
+    },
+    "numeric_id": 44,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLER_LARGE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GOLD_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_METEORIC_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_TOURMALINE",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "強化灑水器",
+        "強化スプリンクラー",
+        "CRAFT_TABLE_SPRINKLER_LARGE"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLER_LARGE",
+      "ja": "強化スプリンクラー",
+      "review_status": "auto",
+      "zh_hans": "強化灑水器",
+      "zh_hant": "強化灑水器"
+    },
+    "numeric_id": 66,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLER_MIDDLE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_GOLD_INGOT",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "普通灑水器",
+        "普通のスプリンクラー",
+        "CRAFT_TABLE_SPRINKLER_MIDDLE"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLER_MIDDLE",
+      "ja": "普通のスプリンクラー",
+      "review_status": "auto",
+      "zh_hans": "普通灑水器",
+      "zh_hant": "普通灑水器"
+    },
+    "numeric_id": 65,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLER_SMALL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_COPPER_INGOT",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "小型灑水器",
+        "小さいスプリンクラー",
+        "CRAFT_TABLE_SPRINKLER_SMALL"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLER_SMALL",
+      "ja": "小さいスプリンクラー",
+      "review_status": "auto",
+      "zh_hans": "小型灑水器",
+      "zh_hant": "小型灑水器"
+    },
+    "numeric_id": 64,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLING_BAIT",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_GRASS_FRUIT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "鱼餌",
+        "魚餌",
+        "撒き餌",
+        "CRAFT_TABLE_SPRINKLING_BAIT"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLING_BAIT",
+      "ja": "撒き餌",
+      "review_status": "auto",
+      "zh_hans": "鱼餌",
+      "zh_hant": "魚餌"
+    },
+    "numeric_id": 31,
+    "output": {
+      "item_id": "ITEM_ID_SPRINKLING_BAIT",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLING_BAIT_HIGH_GRADE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_ACORNS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_PINE_CONE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "優質鱼餌",
+        "優質魚餌",
+        "良質な撒き餌",
+        "CRAFT_TABLE_SPRINKLING_BAIT_HIGH_GRADE"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLING_BAIT_HIGH_GRADE",
+      "ja": "良質な撒き餌",
+      "review_status": "auto",
+      "zh_hans": "優質鱼餌",
+      "zh_hant": "優質魚餌"
+    },
+    "numeric_id": 32,
+    "output": {
+      "item_id": "ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_SPRINKLING_BAIT_WHITE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "白色鱼餌",
+        "白色魚餌",
+        "白い撒き餌",
+        "CRAFT_TABLE_SPRINKLING_BAIT_WHITE"
+      ],
+      "internal": "CRAFT_TABLE_SPRINKLING_BAIT_WHITE",
+      "ja": "白い撒き餌",
+      "review_status": "auto",
+      "zh_hans": "白色鱼餌",
+      "zh_hant": "白色魚餌"
+    },
+    "numeric_id": 33,
+    "output": {
+      "item_id": "ITEM_ID_SPRINKLING_BAIT_WHITE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_STORAGE_JAR",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "腌菜桶",
+        "醃菜桶",
+        "漬物樽",
+        "CRAFT_TABLE_STORAGE_JAR"
+      ],
+      "internal": "CRAFT_TABLE_STORAGE_JAR",
+      "ja": "漬物樽",
+      "review_status": "auto",
+      "zh_hans": "腌菜桶",
+      "zh_hant": "醃菜桶"
+    },
+    "numeric_id": 35,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_STORAGE_JAR_02",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STONE_HARD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "腌菜桶／改",
+        "醃菜桶／改",
+        "漬物樽/改",
+        "CRAFT_TABLE_STORAGE_JAR_02"
+      ],
+      "internal": "CRAFT_TABLE_STORAGE_JAR_02",
+      "ja": "漬物樽/改",
+      "review_status": "auto",
+      "zh_hans": "腌菜桶／改",
+      "zh_hant": "醃菜桶／改"
+    },
+    "numeric_id": 36,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TABLE_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥餐桌／咖啡",
+        "クールな食卓/茶",
+        "CRAFT_TABLE_TABLE_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TABLE_COOL_BROWN",
+      "ja": "クールな食卓/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥餐桌／咖啡",
+      "zh_hant": "酷帥餐桌／咖啡"
+    },
+    "numeric_id": 88,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TABLE_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TABLE_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风餐桌／咖啡",
+        "成熟風餐桌／咖啡",
+        "大人な食卓/茶",
+        "CRAFT_TABLE_TABLE_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TABLE_MATURE_BROWN",
+      "ja": "大人な食卓/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风餐桌／咖啡",
+      "zh_hant": "成熟風餐桌／咖啡"
+    },
+    "numeric_id": 91,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TABLE_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TABLE_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織餐桌／咖啡",
+        "あみあみ食卓/茶",
+        "CRAFT_TABLE_TABLE_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TABLE_MESH_BROWN",
+      "ja": "あみあみ食卓/茶",
+      "review_status": "auto",
+      "zh_hans": "編織餐桌／咖啡",
+      "zh_hant": "編織餐桌／咖啡"
+    },
+    "numeric_id": 90,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TABLE_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TABLE_MODERN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 60
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 3
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦餐桌／咖啡",
+        "時髦餐桌／咖啡",
+        "モダンな食卓/茶",
+        "CRAFT_TABLE_TABLE_MODERN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TABLE_MODERN_BROWN",
+      "ja": "モダンな食卓/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦餐桌／咖啡",
+      "zh_hant": "時髦餐桌／咖啡"
+    },
+    "numeric_id": 89,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TABLE_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TABLE_WOODEN_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 60
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制餐桌／咖啡",
+        "木製餐桌／咖啡",
+        "木の食卓/茶",
+        "CRAFT_TABLE_TABLE_WOODEN_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TABLE_WOODEN_BROWN",
+      "ja": "木の食卓/茶",
+      "review_status": "auto",
+      "zh_hans": "木制餐桌／咖啡",
+      "zh_hant": "木製餐桌／咖啡"
+    },
+    "numeric_id": 87,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TABLE_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TOOL_LANTERN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 5
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "手提灯笼",
+        "手提燈籠",
+        "手持ち提灯",
+        "CRAFT_TABLE_TOOL_LANTERN"
+      ],
+      "internal": "CRAFT_TABLE_TOOL_LANTERN",
+      "ja": "手持ち提灯",
+      "review_status": "auto",
+      "zh_hans": "手提灯笼",
+      "zh_hant": "手提燈籠"
+    },
+    "numeric_id": 193,
+    "output": {
+      "item_id": "ITEM_ID_TOOL_LANTERN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TORCH_BIG",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 20
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 5
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "大型火把",
+        "大きな松明",
+        "CRAFT_TABLE_TORCH_BIG"
+      ],
+      "internal": "CRAFT_TABLE_TORCH_BIG",
+      "ja": "大きな松明",
+      "review_status": "auto",
+      "zh_hans": "大型火把",
+      "zh_hant": "大型火把"
+    },
+    "numeric_id": 86,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TORCH_BIG",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TORCH_SMALL",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "小型火把",
+        "小さい松明",
+        "CRAFT_TABLE_TORCH_SMALL"
+      ],
+      "internal": "CRAFT_TABLE_TORCH_SMALL",
+      "ja": "小さい松明",
+      "review_status": "auto",
+      "zh_hans": "小型火把",
+      "zh_hant": "小型火把"
+    },
+    "numeric_id": 85,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_TORCH_SMALL",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TWIN_BED_COOL_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 100
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 6
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥大床／咖啡",
+        "クールな大ベッド/茶",
+        "CRAFT_TABLE_TWIN_BED_COOL_00"
+      ],
+      "internal": "CRAFT_TABLE_TWIN_BED_COOL_00",
+      "ja": "クールな大ベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥大床／咖啡",
+      "zh_hant": "酷帥大床／咖啡"
+    },
+    "numeric_id": 162,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_BIG_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TWIN_BED_MATURE_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 40
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "成熟风大床／咖啡",
+        "成熟風大床／咖啡",
+        "大人な大ベッド/茶",
+        "CRAFT_TABLE_TWIN_BED_MATURE_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TWIN_BED_MATURE_BROWN",
+      "ja": "大人な大ベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "成熟风大床／咖啡",
+      "zh_hant": "成熟風大床／咖啡"
+    },
+    "numeric_id": 165,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_BIG_MATURE_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TWIN_BED_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 100
+      },
+      {
+        "item_id": "ITEM_ID_CASHMERE_CLOTH",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織大床／咖啡",
+        "あみあみ大ベッド/茶",
+        "CRAFT_TABLE_TWIN_BED_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_TWIN_BED_MESH_BROWN",
+      "ja": "あみあみ大ベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "編織大床／咖啡",
+      "zh_hant": "編織大床／咖啡"
+    },
+    "numeric_id": 164,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_BIG_MESH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TWIN_BED_MODERN_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 100
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "时髦大床／咖啡",
+        "時髦大床／咖啡",
+        "モダンな大ベッド/茶",
+        "CRAFT_TABLE_TWIN_BED_MODERN_00"
+      ],
+      "internal": "CRAFT_TABLE_TWIN_BED_MODERN_00",
+      "ja": "モダンな大ベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "时髦大床／咖啡",
+      "zh_hant": "時髦大床／咖啡"
+    },
+    "numeric_id": 163,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_BIG_MODERN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_TWIN_BED_WOODEN_00",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 100
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_WOOL",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "木制大床／咖啡",
+        "木製大床／咖啡",
+        "木の大ベッド/茶",
+        "CRAFT_TABLE_TWIN_BED_WOODEN_00"
+      ],
+      "internal": "CRAFT_TABLE_TWIN_BED_WOODEN_00",
+      "ja": "木の大ベッド/茶",
+      "review_status": "auto",
+      "zh_hans": "木制大床／咖啡",
+      "zh_hant": "木製大床／咖啡"
+    },
+    "numeric_id": 161,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_BED_BIG_WOODEN_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_TURKEY_TAIL_FEATHER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_TAIL_FEATHER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／黑",
+        "ドライフラワー/黒",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLACK"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
+      "ja": "ドライフラワー/黒",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／黑",
+      "zh_hant": "乾燥花／黑"
+    },
+    "numeric_id": 175,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_FORGET_ME_NOT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_HYACINTH",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／蓝",
+        "乾燥花／藍",
+        "ドライフラワー/青",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLUE"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
+      "ja": "ドライフラワー/青",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／蓝",
+      "zh_hant": "乾燥花／藍"
+    },
+    "numeric_id": 171,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_DUCK_WHITE_FEATHER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／咖啡",
+        "ドライフラワー/茶",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
+      "ja": "ドライフラワー/茶",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／咖啡",
+      "zh_hant": "乾燥花／咖啡"
+    },
+    "numeric_id": 166,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SKUNK_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／绿",
+        "乾燥花／綠",
+        "ドライフラワー/緑",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_GREEN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
+      "ja": "ドライフラワー/緑",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／绿",
+      "zh_hant": "乾燥花／綠"
+    },
+    "numeric_id": 170,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_MARIGOLD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_POPPY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／橘",
+        "ドライフラワー/橙",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_ORANGE"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
+      "ja": "ドライフラワー/橙",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／橘",
+      "zh_hant": "乾燥花／橘"
+    },
+    "numeric_id": 168,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PINK",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_COSMOS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_DIANTHUS",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／粉红",
+        "乾燥花／粉紅",
+        "ドライフラワー/桃",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PINK"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PINK",
+      "ja": "ドライフラワー/桃",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／粉红",
+      "zh_hant": "乾燥花／粉紅"
+    },
+    "numeric_id": 173,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_PINK",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_IRIS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LAVENDER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／紫",
+        "ドライフラワー/紫",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PURPLE"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
+      "ja": "ドライフラワー/紫",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／紫",
+      "zh_hant": "乾燥花／紫"
+    },
+    "numeric_id": 172,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_RED",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TULIP",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_DAHLIA",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／红",
+        "乾燥花／紅",
+        "ドライフラワー/赤",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_RED"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_RED",
+      "ja": "ドライフラワー/赤",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／红",
+      "zh_hant": "乾燥花／紅"
+    },
+    "numeric_id": 167,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_RED",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHAMOMILE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GYPSOPHILA",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／白",
+        "ドライフラワー/白",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_WHITE"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
+      "ja": "ドライフラワー/白",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／白",
+      "zh_hant": "乾燥花／白"
+    },
+    "numeric_id": 174,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_DRIED_FLOWER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_DANDELION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SUNFLOWER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "乾燥花／黄",
+        "乾燥花／黃",
+        "ドライフラワー/黄",
+        "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_YELLOW"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
+      "ja": "ドライフラワー/黄",
+      "review_status": "auto",
+      "zh_hans": "乾燥花／黄",
+      "zh_hant": "乾燥花／黃"
+    },
+    "numeric_id": 169,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_PAINTING_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_DYE_BROWN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "小型图畫／咖啡",
+        "小型圖畫／咖啡",
+        "小さい絵画/茶",
+        "CRAFT_TABLE_WALL_DECORATION_S_PAINTING_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_PAINTING_BROWN",
+      "ja": "小さい絵画/茶",
+      "review_status": "auto",
+      "zh_hans": "小型图畫／咖啡",
+      "zh_hant": "小型圖畫／咖啡"
+    },
+    "numeric_id": 176,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_PAINTING_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_TAPESTRY_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_DYE_BROWN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "布制壁毯／咖啡",
+        "布製壁毯／咖啡",
+        "布タペストリー/茶",
+        "CRAFT_TABLE_WALL_DECORATION_S_TAPESTRY_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_TAPESTRY_BROWN",
+      "ja": "布タペストリー/茶",
+      "review_status": "auto",
+      "zh_hans": "布制壁毯／咖啡",
+      "zh_hant": "布製壁毯／咖啡"
+    },
+    "numeric_id": 177,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_TAPESTRY_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_S_WREATH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_PINE_CONE",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_ACORNS",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_JAPANESE_CEDAR_NUTS",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "花圈／咖啡",
+        "リース/茶",
+        "CRAFT_TABLE_WALL_DECORATION_S_WREATH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_S_WREATH_BROWN",
+      "ja": "リース/茶",
+      "review_status": "auto",
+      "zh_hans": "花圈／咖啡",
+      "zh_hant": "花圈／咖啡"
+    },
+    "numeric_id": 178,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_S_WREATH_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_W_GARLAND_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_RAW_SILK",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CLOTH",
+        "quantity": 2
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "牆壁掛飾／咖啡",
+        "ガーランド/茶",
+        "CRAFT_TABLE_WALL_DECORATION_W_GARLAND_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_W_GARLAND_BROWN",
+      "ja": "ガーランド/茶",
+      "review_status": "auto",
+      "zh_hans": "牆壁掛飾／咖啡",
+      "zh_hant": "牆壁掛飾／咖啡"
+    },
+    "numeric_id": 180,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_W_GARLAND_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_DECORATION_W_PAINTING_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_DYE_WHITE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_DYE_BLACK",
+        "quantity": 1
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "橫幅图畫／咖啡",
+        "橫幅圖畫／咖啡",
+        "横長の絵画/茶",
+        "CRAFT_TABLE_WALL_DECORATION_W_PAINTING_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_DECORATION_W_PAINTING_BROWN",
+      "ja": "横長の絵画/茶",
+      "review_status": "auto",
+      "zh_hans": "橫幅图畫／咖啡",
+      "zh_hant": "橫幅圖畫／咖啡"
+    },
+    "numeric_id": 179,
+    "output": {
+      "item_id": "ITEM_ID_WALL_DECORATION_W_PAINTING_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_LAMP_COOL_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_IRON_INGOT",
+        "quantity": 6
+      },
+      {
+        "item_id": "ITEM_ID_GLASS_ROD",
+        "quantity": 10
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "酷帥壁灯／咖啡",
+        "酷帥壁燈／咖啡",
+        "クールな壁照明/茶",
+        "CRAFT_TABLE_WALL_LAMP_COOL_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_LAMP_COOL_BROWN",
+      "ja": "クールな壁照明/茶",
+      "review_status": "auto",
+      "zh_hans": "酷帥壁灯／咖啡",
+      "zh_hant": "酷帥壁燈／咖啡"
+    },
+    "numeric_id": 82,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_WALL_LAMP_COOL_BROWN",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "CRAFT_TABLE_WALL_LAMP_MESH_BROWN",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
+        "quantity": 10
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO",
+        "quantity": 5
+      },
+      {
+        "item_id": "ITEM_ID_SILK",
+        "quantity": 4
+      }
+    ],
+    "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "編織壁灯／咖啡",
+        "編織壁燈／咖啡",
+        "あみあみ壁照明/茶",
+        "CRAFT_TABLE_WALL_LAMP_MESH_BROWN"
+      ],
+      "internal": "CRAFT_TABLE_WALL_LAMP_MESH_BROWN",
+      "ja": "あみあみ壁照明/茶",
+      "review_status": "auto",
+      "zh_hans": "編織壁灯／咖啡",
+      "zh_hant": "編織壁燈／咖啡"
+    },
+    "numeric_id": 83,
+    "output": {
+      "item_id": "ITEM_ID_GIMMICK_WALL_LAMP_MESH_BROWN",
+      "quantity": 1
+    }
+  }
+]

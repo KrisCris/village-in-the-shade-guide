@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0100",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_COOL_BROWN",
+    "numeric_id": 540
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0101",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_MODERN_BROWN",
+    "numeric_id": 541
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0102",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_MESH_BROWN",
+    "numeric_id": 542
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0103",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_MATURE_BROWN",
+    "numeric_id": 543
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0200",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_VASE",
+    "numeric_id": 210
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0201",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_WOODEN_CARVED_BEAR",
+    "numeric_id": 211
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0202",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_UNFINISHED_SCARF",
+    "numeric_id": 212
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0203",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_KOKEDAMA",
+    "numeric_id": 213
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0204",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_WOODEN_FISH",
+    "numeric_id": 214
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0205",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_ABACUS",
+    "numeric_id": 215
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0206",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+    "numeric_id": 216
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0207",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_ROPHY_BRONZE",
+    "numeric_id": 217
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0208",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_TROPHY_SILVER",
+    "numeric_id": 218
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0209",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_TROPHY_GOLD",
+    "numeric_id": 219
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0210",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_S_JAR",
+    "numeric_id": 220
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0211",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_L_FOLDED_FUTON",
+    "numeric_id": 221
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0212",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_SEASON_EASTER_EGG",
+    "numeric_id": 222
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0213",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_BRANCH_PILE",
+    "numeric_id": 223
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0214",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_FLOWER_POT",
+    "numeric_id": 224
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0215",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_STACKED_STONE",
+    "numeric_id": 225
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0216",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_GARDEN_STONE",
+    "numeric_id": 226
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0217",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_WATER_LILY_POT",
+    "numeric_id": 227
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0218",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_SIGNBOARD",
+    "numeric_id": 228
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0219",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_STONE_LANTERN",
+    "numeric_id": 229
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0220",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_MOSSY_STONE",
+    "numeric_id": 230
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0221",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+    "numeric_id": 231
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0222",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+    "numeric_id": 232
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0223",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+    "numeric_id": 233
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0224",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+    "numeric_id": 234
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0225",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_S_TAPESTRY_BROWN",
+    "numeric_id": 235
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0226",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_S_WREATH_BROWN",
+    "numeric_id": 236
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0227",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_W_PAINTING_BROWN",
+    "numeric_id": 237
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_0228",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_W_GARLAND_BROWN",
+    "numeric_id": 238
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_1000",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_FURNACE",
+    "numeric_id": 544
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_1001",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_JAPANESE_CHARCOAL_GRILL",
+    "numeric_id": 545
+  },
+  {
+    "id": "STORE_SALE_ID_CRAFT_GENERAL_1003",
+    "item_id": "ITEM_ID_CRAFT_RECIPE_TORCH_BIG",
+    "numeric_id": 546
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0001",
+    "item_id": "ITEM_ID_SEED_ASPARAGUS",
+    "numeric_id": 4
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0002",
+    "item_id": "ITEM_ID_SEED_ONION",
+    "numeric_id": 5
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0003",
+    "item_id": "ITEM_ID_SEED_PEA",
+    "numeric_id": 6
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0004",
+    "item_id": "ITEM_ID_SEED_TURNIP",
+    "numeric_id": 7
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0005",
+    "item_id": "ITEM_ID_SEED_POTATO",
+    "numeric_id": 8
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0006",
+    "item_id": "ITEM_ID_SEED_RADISH",
+    "numeric_id": 9
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0007",
+    "item_id": "ITEM_ID_SEED_CABBAGE",
+    "numeric_id": 10
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0008",
+    "item_id": "ITEM_ID_SEED_LETTUCE",
+    "numeric_id": 11
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0009",
+    "item_id": "ITEM_ID_SEED_CARROT",
+    "numeric_id": 12
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0010",
+    "item_id": "ITEM_ID_SEED_STRAWBERRY",
+    "numeric_id": 13
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0011",
+    "item_id": "ITEM_ID_SEED_CHAMOMILE",
+    "numeric_id": 14
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0012",
+    "item_id": "ITEM_ID_SEED_HYACINTH",
+    "numeric_id": 15
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0013",
+    "item_id": "ITEM_ID_SEED_IRIS",
+    "numeric_id": 16
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0014",
+    "item_id": "ITEM_ID_SEED_TULIP",
+    "numeric_id": 17
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0015",
+    "item_id": "ITEM_ID_SEED_DIANTHUS",
+    "numeric_id": 18
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0016",
+    "item_id": "ITEM_ID_SEED_POPPY",
+    "numeric_id": 19
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0017",
+    "item_id": "ITEM_ID_SEED_FORGET_ME_NOT",
+    "numeric_id": 20
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0018",
+    "item_id": "ITEM_ID_SEED_CARNATION",
+    "numeric_id": 21
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0019",
+    "item_id": "ITEM_ID_SEED_SKUNK_CABBAGE",
+    "numeric_id": 22
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0020",
+    "item_id": "ITEM_ID_SEED_RICE",
+    "numeric_id": 23
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0100",
+    "item_id": "ITEM_ID_SEED_WHITE_ONION",
+    "numeric_id": 24
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0101",
+    "item_id": "ITEM_ID_SEED_TOMATO",
+    "numeric_id": 25
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0102",
+    "item_id": "ITEM_ID_SEED_EGGPLANT",
+    "numeric_id": 26
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0103",
+    "item_id": "ITEM_ID_SEED_PEPPER",
+    "numeric_id": 27
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0104",
+    "item_id": "ITEM_ID_SEED_PUMPKIN",
+    "numeric_id": 28
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0105",
+    "item_id": "ITEM_ID_SEED_CUCUMBER",
+    "numeric_id": 29
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0106",
+    "item_id": "ITEM_ID_SEED_CORN",
+    "numeric_id": 30
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0107",
+    "item_id": "ITEM_ID_SEED_GINGER",
+    "numeric_id": 31
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0108",
+    "item_id": "ITEM_ID_SEED_GARLIC",
+    "numeric_id": 32
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0109",
+    "item_id": "ITEM_ID_SEED_EDAMAME",
+    "numeric_id": 33
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0110",
+    "item_id": "ITEM_ID_SEED_WATERMELON",
+    "numeric_id": 34
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0111",
+    "item_id": "ITEM_ID_SEED_MELON",
+    "numeric_id": 35
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0112",
+    "item_id": "ITEM_ID_SEED_PINEAPPLE",
+    "numeric_id": 36
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0113",
+    "item_id": "ITEM_ID_SEED_BLUEBERRY",
+    "numeric_id": 37
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0114",
+    "item_id": "ITEM_ID_SEED_WHEAT",
+    "numeric_id": 38
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0115",
+    "item_id": "ITEM_ID_SEED_HOPS",
+    "numeric_id": 39
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0116",
+    "item_id": "ITEM_ID_SEED_SUGAR_CANE",
+    "numeric_id": 40
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0117",
+    "item_id": "ITEM_ID_SEED_MORNING_GLORY",
+    "numeric_id": 41
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0118",
+    "item_id": "ITEM_ID_SEED_GYPSOPHILA",
+    "numeric_id": 42
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0119",
+    "item_id": "ITEM_ID_SEED_MARIGOLD",
+    "numeric_id": 43
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0120",
+    "item_id": "ITEM_ID_SEED_LILY_OF_THE_VALLEY",
+    "numeric_id": 44
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0121",
+    "item_id": "ITEM_ID_SEED_HIBISCUS",
+    "numeric_id": 45
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0122",
+    "item_id": "ITEM_ID_SEED_ROSE",
+    "numeric_id": 46
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0123",
+    "item_id": "ITEM_ID_SEED_SUNFLOWER",
+    "numeric_id": 47
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0124",
+    "item_id": "ITEM_ID_SEED_LAVENDER",
+    "numeric_id": 48
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0200",
+    "item_id": "ITEM_ID_SEED_BUCKWHEAT",
+    "numeric_id": 49
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0201",
+    "item_id": "ITEM_ID_SEED_TARO",
+    "numeric_id": 50
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0202",
+    "item_id": "ITEM_ID_SEED_SWEET_POTATO",
+    "numeric_id": 51
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0203",
+    "item_id": "ITEM_ID_SEED_SHIITAKE_MUSHROOM",
+    "numeric_id": 52
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0204",
+    "item_id": "ITEM_ID_SEED_SHIMEJI_MUSHROOM",
+    "numeric_id": 53
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0205",
+    "item_id": "ITEM_ID_SEED_WOOD_EAR_MUSHROOM",
+    "numeric_id": 54
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0206",
+    "item_id": "ITEM_ID_SEED_OLIVE",
+    "numeric_id": 55
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0207",
+    "item_id": "ITEM_ID_SEED_SESAME",
+    "numeric_id": 56
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0208",
+    "item_id": "ITEM_ID_SEED_DAHLIA",
+    "numeric_id": 57
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0209",
+    "item_id": "ITEM_ID_SEED_COSMOS",
+    "numeric_id": 58
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0210",
+    "item_id": "ITEM_ID_SEED_CHRYSANTHEMUM",
+    "numeric_id": 59
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0300",
+    "item_id": "ITEM_ID_SEED_CHINESE_CABBAGE",
+    "numeric_id": 60
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0301",
+    "item_id": "ITEM_ID_SEED_JAPANESE_WHITE_RADISH",
+    "numeric_id": 61
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0302",
+    "item_id": "ITEM_ID_SEED_SPINACH",
+    "numeric_id": 62
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0303",
+    "item_id": "ITEM_ID_SEED_DAFFODIL",
+    "numeric_id": 63
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0304",
+    "item_id": "ITEM_ID_SEED_PANSY",
+    "numeric_id": 64
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0305",
+    "item_id": "ITEM_ID_SEED_ROSEMARY",
+    "numeric_id": 65
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0400",
+    "item_id": "ITEM_ID_SEED_TEA",
+    "numeric_id": 66
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0401",
+    "item_id": "ITEM_ID_SEED_WASABI",
+    "numeric_id": 67
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0402",
+    "item_id": "ITEM_ID_SEED_LOTUS_ROOT",
+    "numeric_id": 68
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0403",
+    "item_id": "ITEM_ID_SEED_MULBERRY",
+    "numeric_id": 69
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0404",
+    "item_id": "ITEM_ID_SEED_CHERRIES",
+    "numeric_id": 70
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0405",
+    "item_id": "ITEM_ID_SEED_PLUM",
+    "numeric_id": 71
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0406",
+    "item_id": "ITEM_ID_SEED_PEACH",
+    "numeric_id": 72
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0407",
+    "item_id": "ITEM_ID_SEED_MANGO",
+    "numeric_id": 73
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0408",
+    "item_id": "ITEM_ID_SEED_BANANA",
+    "numeric_id": 74
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0409",
+    "item_id": "ITEM_ID_SEED_CACAO",
+    "numeric_id": 75
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0410",
+    "item_id": "ITEM_ID_SEED_GRAPES",
+    "numeric_id": 76
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0411",
+    "item_id": "ITEM_ID_SEED_PERSIMMON",
+    "numeric_id": 77
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0412",
+    "item_id": "ITEM_ID_SEED_PEAR",
+    "numeric_id": 78
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0413",
+    "item_id": "ITEM_ID_SEED_APPLE",
+    "numeric_id": 79
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0414",
+    "item_id": "ITEM_ID_SEED_ORANGE",
+    "numeric_id": 80
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0415",
+    "item_id": "ITEM_ID_SEED_LEMON",
+    "numeric_id": 81
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0416",
+    "item_id": "ITEM_ID_SEED_YUZU",
+    "numeric_id": 82
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0500",
+    "item_id": "ITEM_ID_TOOL_SICKLE_1",
+    "numeric_id": 3
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0501",
+    "item_id": "ITEM_ID_OBJECT_HAY_PARENT_PLANT",
+    "numeric_id": 84
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0503",
+    "item_id": "ITEM_ID_OBJECT_CURRYPOWDER",
+    "numeric_id": 85
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0504",
+    "item_id": "ITEM_ID_OBJECT_CONSOMME",
+    "numeric_id": 86
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0505",
+    "item_id": "ITEM_ID_TOOL_BAG_LV2",
+    "numeric_id": 1
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0506",
+    "item_id": "ITEM_ID_TOOL_BAG_LV3",
+    "numeric_id": 2
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0507",
+    "item_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "numeric_id": 83
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0508",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_01",
+    "numeric_id": 87
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0509",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_02",
+    "numeric_id": 88
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0510",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_03",
+    "numeric_id": 89
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0511",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_04",
+    "numeric_id": 90
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0512",
+    "item_id": "ITEM_ID_SPECIAL_MIRROR_01",
+    "numeric_id": 91
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0514",
+    "item_id": "ITEM_ID_SPECIAL_SWORD",
+    "numeric_id": 92
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0520",
+    "item_id": "ITEM_ID_COPPER_MOLD",
+    "numeric_id": 93
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0521",
+    "item_id": "ITEM_ID_IRON_MOLD",
+    "numeric_id": 94
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0522",
+    "item_id": "ITEM_ID_GOLD_MOLD",
+    "numeric_id": 95
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0523",
+    "item_id": "ITEM_ID_MRTRORITE_MOLD",
+    "numeric_id": 96
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0600",
+    "item_id": "ITEM_ID_GIMMICK_CHEST_DELICATE_BROWN",
+    "numeric_id": 123
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0601",
+    "item_id": "ITEM_ID_GIMMICK_CHEST_CUTE_BROWN",
+    "numeric_id": 124
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0602",
+    "item_id": "ITEM_ID_GIMMICK_CLOSET_RETRO_BROWN",
+    "numeric_id": 125
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0603",
+    "item_id": "ITEM_ID_GIMMICK_CLOSET_DELICATE_BROWN",
+    "numeric_id": 126
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0604",
+    "item_id": "ITEM_ID_GIMMICK_CLOSET_CUTE_BROWN",
+    "numeric_id": 127
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0605",
+    "item_id": "ITEM_ID_GIMMICK_DRESSER_GOOD_OLD_BROWN",
+    "numeric_id": 128
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0606",
+    "item_id": "ITEM_ID_GIMMICK_DRESSER_ANIMAL_BROWN",
+    "numeric_id": 129
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0607",
+    "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_GOOD_OLD_BROWN",
+    "numeric_id": 130
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0608",
+    "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_CUTE_BROWN",
+    "numeric_id": 131
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0609",
+    "item_id": "ITEM_ID_GIMMICK_FLOOR_LAMP_ANIMAL_BROWN",
+    "numeric_id": 133
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0611",
+    "item_id": "ITEM_ID_GIMMICK_DESK_GOOD_OLD_BROWN",
+    "numeric_id": 518
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0612",
+    "item_id": "ITEM_ID_GIMMICK_DESK_RETRO_BROWN",
+    "numeric_id": 519
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0613",
+    "item_id": "ITEM_ID_GIMMICK_DESK_DELICATE_BROWN",
+    "numeric_id": 520
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0614",
+    "item_id": "ITEM_ID_GIMMICK_DESK_CUTE_BROWN",
+    "numeric_id": 521
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0615",
+    "item_id": "ITEM_ID_GIMMICK_DESK_ANIMAL_BROWN",
+    "numeric_id": 522
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0616",
+    "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_GOOD_OLD_BROWN",
+    "numeric_id": 139
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0617",
+    "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_CUTE_BROWN",
+    "numeric_id": 140
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0618",
+    "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_GOOD_OLD_BROWN",
+    "numeric_id": 523
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0619",
+    "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_RETRO_BROWN",
+    "numeric_id": 524
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0620",
+    "item_id": "ITEM_ID_GIMMICK_CUPBOARD_RETRO_BROWN",
+    "numeric_id": 525
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0621",
+    "item_id": "ITEM_ID_GIMMICK_CUPBOARD_DELICATE_BROWN",
+    "numeric_id": 526
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0622",
+    "item_id": "ITEM_ID_GIMMICK_CUPBOARD_ANIMAL_BROWN",
+    "numeric_id": 527
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0623",
+    "item_id": "ITEM_ID_GIMMICK_CHAIR_GOOD_OLD_BROWN",
+    "numeric_id": 146
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0624",
+    "item_id": "ITEM_ID_GIMMICK_CHAIR_RETRO_BROWN",
+    "numeric_id": 147
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0625",
+    "item_id": "ITEM_ID_GIMMICK_CHAIR_DELICATE_BROWN",
+    "numeric_id": 148
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0626",
+    "item_id": "ITEM_ID_GIMMICK_CHAIR_CUTE_BROWN",
+    "numeric_id": 149
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0627",
+    "item_id": "ITEM_ID_GIMMICK_CHAIR_ANIMAL_BROWN",
+    "numeric_id": 150
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0628",
+    "item_id": "ITEM_ID_GIMMICK_BENCH_GOOD_OLD_BROWN",
+    "numeric_id": 528
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0629",
+    "item_id": "ITEM_ID_GIMMICK_BENCH_RETRO_BROWN",
+    "numeric_id": 529
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0630",
+    "item_id": "ITEM_ID_GIMMICK_BENCH_DELICATE_BROWN",
+    "numeric_id": 530
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0631",
+    "item_id": "ITEM_ID_GIMMICK_BENCH_CUTE_BROWN",
+    "numeric_id": 531
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0632",
+    "item_id": "ITEM_ID_GIMMICK_BENCH_ANIMAL_BROWN",
+    "numeric_id": 532
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0633",
+    "item_id": "ITEM_ID_GIMMICK_CUSHION_GOOD_OLD_BROWN",
+    "numeric_id": 156
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0634",
+    "item_id": "ITEM_ID_GIMMICK_CUSHION_RETRO_BROWN",
+    "numeric_id": 157
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0635",
+    "item_id": "ITEM_ID_GIMMICK_CUSHION_ANIMAL_BROWN",
+    "numeric_id": 158
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0636",
+    "item_id": "ITEM_ID_GIMMICK_BED_GOOD_OLD_BROWN",
+    "numeric_id": 533
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0637",
+    "item_id": "ITEM_ID_GIMMICK_BED_RETRO_BROWN",
+    "numeric_id": 534
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0638",
+    "item_id": "ITEM_ID_GIMMICK_BED_DELICATE_BROWN",
+    "numeric_id": 535
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0639",
+    "item_id": "ITEM_ID_GIMMICK_BED_CUTE_BROWN",
+    "numeric_id": 536
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0640",
+    "item_id": "ITEM_ID_GIMMICK_BED_ANIMAL_BROWN",
+    "numeric_id": 537
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0641",
+    "item_id": "ITEM_ID_HOUSEPLANTS_BANYAN_TREE",
+    "numeric_id": 164
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0642",
+    "item_id": "ITEM_ID_HOUSEPLANTS_PACHIRA",
+    "numeric_id": 165
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0643",
+    "item_id": "ITEM_ID_HOUSEPLANTS_COLUMNAR_CACTUS",
+    "numeric_id": 166
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0644",
+    "item_id": "ITEM_ID_HOUSEPLANTS_POTHOS",
+    "numeric_id": 167
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0645",
+    "item_id": "ITEM_ID_HOUSEPLANTS_DRACAENA",
+    "numeric_id": 168
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0646",
+    "item_id": "ITEM_ID_HOUSEPLANTS_ANTHURIUM",
+    "numeric_id": 169
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0647",
+    "item_id": "ITEM_ID_HOUSEPLANTS_EVERFRESH",
+    "numeric_id": 170
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0648",
+    "item_id": "ITEM_ID_HOUSEPLANTS_SANSEVIERIA",
+    "numeric_id": 171
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0649",
+    "item_id": "ITEM_ID_HOUSEPLANTS_AGAVE",
+    "numeric_id": 172
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0650",
+    "item_id": "ITEM_ID_HOUSEPLANTS_FICUS",
+    "numeric_id": 173
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0651",
+    "item_id": "ITEM_ID_FIGURINE_XS_MOSS_BALL",
+    "numeric_id": 174
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0652",
+    "item_id": "ITEM_ID_FIGURINE_XS_GLOBE",
+    "numeric_id": 175
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0653",
+    "item_id": "ITEM_ID_FIGURINE_XS_HOURGLASS",
+    "numeric_id": 176
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0654",
+    "item_id": "ITEM_ID_FIGURINE_XS_CACTUS",
+    "numeric_id": 177
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0655",
+    "item_id": "ITEM_ID_FIGURINE_XS_BOOKS",
+    "numeric_id": 178
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0656",
+    "item_id": "ITEM_ID_FIGURINE_XS_BEAUTIFUL_STONE",
+    "numeric_id": 179
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0657",
+    "item_id": "ITEM_ID_FIGURINE_XS_ROTARY_DIAL_PHONE",
+    "numeric_id": 180
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0658",
+    "item_id": "ITEM_ID_FIGURINE_XS_AQUARIUM",
+    "numeric_id": 181
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0659",
+    "item_id": "ITEM_ID_FIGURINE_XS_TIN_BUS",
+    "numeric_id": 182
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0660",
+    "item_id": "ITEM_ID_FIGURINE_XS_MOSQUITO_COILS",
+    "numeric_id": 183
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0661",
+    "item_id": "ITEM_ID_FIGURINE_XS_HOT_WATER_BOTTLE",
+    "numeric_id": 184
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0662",
+    "item_id": "ITEM_ID_FIGURINE_XS_COFFEE_MILL",
+    "numeric_id": 185
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0663",
+    "item_id": "ITEM_ID_FIGURINE_XS_FIRST_AID_KIT",
+    "numeric_id": 186
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0664",
+    "item_id": "ITEM_ID_FIGURINE_XS_BALL",
+    "numeric_id": 187
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0665",
+    "item_id": "ITEM_ID_FIGURINE_XS_COOLER_BOX",
+    "numeric_id": 189
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0666",
+    "item_id": "ITEM_ID_FIGURINE_XS_BUCKET",
+    "numeric_id": 190
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0668",
+    "item_id": "ITEM_ID_FIGURINE_S_GUITAR",
+    "numeric_id": 191
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0669",
+    "item_id": "ITEM_ID_FIGURINE_S_SAXOPHONE",
+    "numeric_id": 192
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0671",
+    "item_id": "ITEM_ID_FIGURINE_S_SHAMISEN",
+    "numeric_id": 193
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0672",
+    "item_id": "ITEM_ID_FIGURINE_S_TELESCOPE",
+    "numeric_id": 194
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0674",
+    "item_id": "ITEM_ID_FIGURINE_S_CRT_TV",
+    "numeric_id": 195
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0675",
+    "item_id": "ITEM_ID_FIGURINE_S_MAGAZINE_RACK",
+    "numeric_id": 196
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0676",
+    "item_id": "ITEM_ID_FIGURINE_S_TRASH_CAN",
+    "numeric_id": 197
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0678",
+    "item_id": "ITEM_ID_FIGURINE_S_ELECTRIC_FAN",
+    "numeric_id": 198
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0679",
+    "item_id": "ITEM_ID_FIGURINE_S_ELECTRIC_HEATER",
+    "numeric_id": 199
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0680",
+    "item_id": "ITEM_ID_FIGURINE_S_COLOR_BOX_BROWN",
+    "numeric_id": 200
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0681",
+    "item_id": "ITEM_ID_FIGURINE_S_VACUUM_CLEANER",
+    "numeric_id": 201
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0682",
+    "item_id": "ITEM_ID_FIGURINE_M_DRIFTWOOD",
+    "numeric_id": 538
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0683",
+    "item_id": "ITEM_ID_FIGURINE_M_IRONING_BOARD",
+    "numeric_id": 539
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0684",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_EMPTY_BEER_CRATES",
+    "numeric_id": 204
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0685",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_WHEELBARROW",
+    "numeric_id": 205
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0686",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_WATERING_HOSE",
+    "numeric_id": 206
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0688",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_DRUM_CAN",
+    "numeric_id": 207
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0689",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_SHOVEL",
+    "numeric_id": 208
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0690",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_GARDEN_CARE_SET",
+    "numeric_id": 209
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0692_01",
+    "item_id": "ITEM_ID_CURSED_HEART_SCALE",
+    "numeric_id": 98
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0692_02",
+    "item_id": "ITEM_ID_CURSED_HEART_SCALE",
+    "numeric_id": 99
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0692_03",
+    "item_id": "ITEM_ID_CURSED_HEART_SCALE",
+    "numeric_id": 100
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0692_04",
+    "item_id": "ITEM_ID_CURSED_HEART_SCALE",
+    "numeric_id": 101
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0692_05",
+    "item_id": "ITEM_ID_CURSED_HEART_SCALE",
+    "numeric_id": 102
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0693_01",
+    "item_id": "ITEM_ID_CURSED_FOX_ABURAAGE",
+    "numeric_id": 103
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0693_02",
+    "item_id": "ITEM_ID_CURSED_FOX_ABURAAGE",
+    "numeric_id": 104
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0693_03",
+    "item_id": "ITEM_ID_CURSED_FOX_ABURAAGE",
+    "numeric_id": 105
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0693_04",
+    "item_id": "ITEM_ID_CURSED_FOX_ABURAAGE",
+    "numeric_id": 106
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_01",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 107
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_02",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 108
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_03",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 109
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_04",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 110
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_05",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 111
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_06",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 112
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_07",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 113
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_08",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 114
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_09",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 115
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0694_10",
+    "item_id": "ITEM_ID_NANTEN",
+    "numeric_id": 116
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0695",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_01",
+    "numeric_id": 117
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0696",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_02",
+    "numeric_id": 118
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0697",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_03",
+    "numeric_id": 119
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0698",
+    "item_id": "ITEM_ID_SPECIAL_JEWELS_04",
+    "numeric_id": 120
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0699",
+    "item_id": "ITEM_ID_SPECIAL_MIRROR_01",
+    "numeric_id": 121
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_0700",
+    "item_id": "ITEM_ID_SPECIAL_SWORD",
+    "numeric_id": 122
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_1609",
+    "item_id": "ITEM_ID_GIMMICK_FLOOR_LAMP_RETRO_BROWN",
+    "numeric_id": 132
+  },
+  {
+    "id": "STORE_SALE_ID_GENERAL_1664",
+    "item_id": "ITEM_ID_FIGURINE_XS_PAPER_BALLOON",
+    "numeric_id": 188
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0001",
+    "item_id": "ITEM_ID_CRAB_TRAP",
+    "numeric_id": 494
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0002",
+    "item_id": "ITEM_ID_BINDING_TRAP",
+    "numeric_id": 495
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0003",
+    "item_id": "ITEM_ID_BOX_TRAP",
+    "numeric_id": 496
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0004",
+    "item_id": "ITEM_ID_WILD_HUNTING_BAIT",
+    "numeric_id": 497
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0006",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_SQUIRREL",
+    "numeric_id": 498
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0007",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_RABBIT",
+    "numeric_id": 499
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0008",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_WEASEL",
+    "numeric_id": 500
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0009",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_RACCOON_DOG",
+    "numeric_id": 501
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0010",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_FOX",
+    "numeric_id": 502
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0011",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_PHEASANT",
+    "numeric_id": 503
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0012",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_WILD_BOAR",
+    "numeric_id": 504
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0013",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_DEER",
+    "numeric_id": 505
+  },
+  {
+    "id": "STORE_SALE_ID_HUNTER_0014",
+    "item_id": "ITEM_ID_HUNTING_LICENSE_BEAR",
+    "numeric_id": 506
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0001",
+    "item_id": "ITEM_ID_COOKING_001",
+    "numeric_id": 464
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0005",
+    "item_id": "ITEM_ID_COOKING_005",
+    "numeric_id": 465
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0012",
+    "item_id": "ITEM_ID_COOKING_012",
+    "numeric_id": 466
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0019",
+    "item_id": "ITEM_ID_COOKING_019",
+    "numeric_id": 467
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0031",
+    "item_id": "ITEM_ID_COOKING_031",
+    "numeric_id": 468
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0033",
+    "item_id": "ITEM_ID_COOKING_033",
+    "numeric_id": 469
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0033_HORROR_OFF",
+    "item_id": "ITEM_ID_COOKING_033",
+    "numeric_id": 560
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0035",
+    "item_id": "ITEM_ID_COOKING_035",
+    "numeric_id": 470
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0036",
+    "item_id": "ITEM_ID_COOKING_036",
+    "numeric_id": 471
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0037",
+    "item_id": "ITEM_ID_COOKING_037",
+    "numeric_id": 472
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0039",
+    "item_id": "ITEM_ID_COOKING_039",
+    "numeric_id": 473
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0040",
+    "item_id": "ITEM_ID_COOKING_040",
+    "numeric_id": 474
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0046",
+    "item_id": "ITEM_ID_COOKING_046",
+    "numeric_id": 475
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0047",
+    "item_id": "ITEM_ID_COOKING_047",
+    "numeric_id": 476
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0048",
+    "item_id": "ITEM_ID_COOKING_048",
+    "numeric_id": 477
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0056",
+    "item_id": "ITEM_ID_COOKING_056",
+    "numeric_id": 478
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0057",
+    "item_id": "ITEM_ID_COOKING_057",
+    "numeric_id": 479
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0058",
+    "item_id": "ITEM_ID_COOKING_058",
+    "numeric_id": 480
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0059",
+    "item_id": "ITEM_ID_COOKING_059",
+    "numeric_id": 481
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0069",
+    "item_id": "ITEM_ID_COOKING_069",
+    "numeric_id": 482
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0073",
+    "item_id": "ITEM_ID_COOKING_073",
+    "numeric_id": 483
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0075",
+    "item_id": "ITEM_ID_COOKING_075",
+    "numeric_id": 484
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0078",
+    "item_id": "ITEM_ID_COOKING_078",
+    "numeric_id": 485
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0087",
+    "item_id": "ITEM_ID_COOKING_087",
+    "numeric_id": 486
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0088",
+    "item_id": "ITEM_ID_COOKING_088",
+    "numeric_id": 487
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0090",
+    "item_id": "ITEM_ID_COOKING_090",
+    "numeric_id": 488
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0091",
+    "item_id": "ITEM_ID_COOKING_091",
+    "numeric_id": 489
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0094",
+    "item_id": "ITEM_ID_COOKING_094",
+    "numeric_id": 490
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0096",
+    "item_id": "ITEM_ID_COOKING_096",
+    "numeric_id": 491
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0102",
+    "item_id": "ITEM_ID_COOKING_102",
+    "numeric_id": 492
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0104",
+    "item_id": "ITEM_ID_COOKING_104",
+    "numeric_id": 493
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0117",
+    "item_id": "ITEM_ID_COOKING_117",
+    "numeric_id": 547
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0118",
+    "item_id": "ITEM_ID_COOKING_118",
+    "numeric_id": 548
+  },
+  {
+    "id": "STORE_SALE_ID_RESTAURANT_0119",
+    "item_id": "ITEM_ID_COOKING_119",
+    "numeric_id": 549
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0001",
+    "item_id": "ITEM_ID_SEED_ASPARAGUS",
+    "numeric_id": 239
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0002",
+    "item_id": "ITEM_ID_SEED_ONION",
+    "numeric_id": 240
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0003",
+    "item_id": "ITEM_ID_SEED_PEA",
+    "numeric_id": 241
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0004",
+    "item_id": "ITEM_ID_SEED_TURNIP",
+    "numeric_id": 242
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0005",
+    "item_id": "ITEM_ID_SEED_POTATO",
+    "numeric_id": 243
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0006",
+    "item_id": "ITEM_ID_SEED_RADISH",
+    "numeric_id": 244
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0007",
+    "item_id": "ITEM_ID_SEED_CABBAGE",
+    "numeric_id": 245
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0008",
+    "item_id": "ITEM_ID_SEED_LETTUCE",
+    "numeric_id": 246
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0009",
+    "item_id": "ITEM_ID_SEED_CARROT",
+    "numeric_id": 247
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0010",
+    "item_id": "ITEM_ID_SEED_STRAWBERRY",
+    "numeric_id": 248
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0011",
+    "item_id": "ITEM_ID_SEED_CHAMOMILE",
+    "numeric_id": 249
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0012",
+    "item_id": "ITEM_ID_SEED_HYACINTH",
+    "numeric_id": 250
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0013",
+    "item_id": "ITEM_ID_SEED_IRIS",
+    "numeric_id": 251
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0014",
+    "item_id": "ITEM_ID_SEED_TULIP",
+    "numeric_id": 252
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0015",
+    "item_id": "ITEM_ID_SEED_DIANTHUS",
+    "numeric_id": 253
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0016",
+    "item_id": "ITEM_ID_SEED_POPPY",
+    "numeric_id": 254
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0017",
+    "item_id": "ITEM_ID_SEED_FORGET_ME_NOT",
+    "numeric_id": 255
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0018",
+    "item_id": "ITEM_ID_SEED_CARNATION",
+    "numeric_id": 256
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0019",
+    "item_id": "ITEM_ID_SEED_SKUNK_CABBAGE",
+    "numeric_id": 257
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0020",
+    "item_id": "ITEM_ID_SEED_RICE",
+    "numeric_id": 258
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0100",
+    "item_id": "ITEM_ID_SEED_WHITE_ONION",
+    "numeric_id": 259
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0101",
+    "item_id": "ITEM_ID_SEED_TOMATO",
+    "numeric_id": 260
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0102",
+    "item_id": "ITEM_ID_SEED_EGGPLANT",
+    "numeric_id": 261
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0103",
+    "item_id": "ITEM_ID_SEED_PEPPER",
+    "numeric_id": 262
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0104",
+    "item_id": "ITEM_ID_SEED_PUMPKIN",
+    "numeric_id": 263
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0105",
+    "item_id": "ITEM_ID_SEED_CUCUMBER",
+    "numeric_id": 264
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0106",
+    "item_id": "ITEM_ID_SEED_CORN",
+    "numeric_id": 265
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0107",
+    "item_id": "ITEM_ID_SEED_GINGER",
+    "numeric_id": 266
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0108",
+    "item_id": "ITEM_ID_SEED_GARLIC",
+    "numeric_id": 267
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0109",
+    "item_id": "ITEM_ID_SEED_EDAMAME",
+    "numeric_id": 268
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0110",
+    "item_id": "ITEM_ID_SEED_WATERMELON",
+    "numeric_id": 269
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0111",
+    "item_id": "ITEM_ID_SEED_MELON",
+    "numeric_id": 270
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0112",
+    "item_id": "ITEM_ID_SEED_PINEAPPLE",
+    "numeric_id": 271
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0113",
+    "item_id": "ITEM_ID_SEED_BLUEBERRY",
+    "numeric_id": 272
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0114",
+    "item_id": "ITEM_ID_SEED_WHEAT",
+    "numeric_id": 273
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0115",
+    "item_id": "ITEM_ID_SEED_HOPS",
+    "numeric_id": 274
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0116",
+    "item_id": "ITEM_ID_SEED_SUGAR_CANE",
+    "numeric_id": 275
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0117",
+    "item_id": "ITEM_ID_SEED_MORNING_GLORY",
+    "numeric_id": 276
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0118",
+    "item_id": "ITEM_ID_SEED_GYPSOPHILA",
+    "numeric_id": 277
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0119",
+    "item_id": "ITEM_ID_SEED_MARIGOLD",
+    "numeric_id": 278
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0120",
+    "item_id": "ITEM_ID_SEED_LILY_OF_THE_VALLEY",
+    "numeric_id": 279
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0121",
+    "item_id": "ITEM_ID_SEED_HIBISCUS",
+    "numeric_id": 280
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0122",
+    "item_id": "ITEM_ID_SEED_ROSE",
+    "numeric_id": 281
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0123",
+    "item_id": "ITEM_ID_SEED_SUNFLOWER",
+    "numeric_id": 282
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0124",
+    "item_id": "ITEM_ID_SEED_LAVENDER",
+    "numeric_id": 283
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0200",
+    "item_id": "ITEM_ID_SEED_BUCKWHEAT",
+    "numeric_id": 284
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0201",
+    "item_id": "ITEM_ID_SEED_TARO",
+    "numeric_id": 285
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0202",
+    "item_id": "ITEM_ID_SEED_SWEET_POTATO",
+    "numeric_id": 286
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0203",
+    "item_id": "ITEM_ID_SEED_SHIITAKE_MUSHROOM",
+    "numeric_id": 287
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0204",
+    "item_id": "ITEM_ID_SEED_SHIMEJI_MUSHROOM",
+    "numeric_id": 288
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0205",
+    "item_id": "ITEM_ID_SEED_WOOD_EAR_MUSHROOM",
+    "numeric_id": 289
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0207",
+    "item_id": "ITEM_ID_SEED_OLIVE",
+    "numeric_id": 290
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0208",
+    "item_id": "ITEM_ID_SEED_SESAME",
+    "numeric_id": 291
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0209",
+    "item_id": "ITEM_ID_SEED_DAHLIA",
+    "numeric_id": 292
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0210",
+    "item_id": "ITEM_ID_SEED_COSMOS",
+    "numeric_id": 293
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0211",
+    "item_id": "ITEM_ID_SEED_CHRYSANTHEMUM",
+    "numeric_id": 294
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0212",
+    "item_id": "ITEM_ID_FIGURINE_SEASON_EASEL_AND_OIL_PAINT_SET",
+    "numeric_id": 354
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0214",
+    "item_id": "ITEM_ID_FIGURINE_SEASON_GHOST_FIGURINE",
+    "numeric_id": 355
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0300",
+    "item_id": "ITEM_ID_SEED_CHINESE_CABBAGE",
+    "numeric_id": 295
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0301",
+    "item_id": "ITEM_ID_SEED_JAPANESE_WHITE_RADISH",
+    "numeric_id": 296
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0302",
+    "item_id": "ITEM_ID_SEED_SPINACH",
+    "numeric_id": 297
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0303",
+    "item_id": "ITEM_ID_SEED_DAFFODIL",
+    "numeric_id": 298
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0304",
+    "item_id": "ITEM_ID_SEED_PANSY",
+    "numeric_id": 299
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0305",
+    "item_id": "ITEM_ID_SEED_ROSEMARY",
+    "numeric_id": 300
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0306",
+    "item_id": "ITEM_ID_FIGURINE_SEASON_DARUMA_DOLL",
+    "numeric_id": 356
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0400",
+    "item_id": "ITEM_ID_LIVESTOCK_CHICK_WHITE",
+    "numeric_id": 301
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0401",
+    "item_id": "ITEM_ID_LIVESTOCK_CHICK_BROWN",
+    "numeric_id": 302
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0402",
+    "item_id": "ITEM_ID_LIVESTOCK_CHICK_BLACK",
+    "numeric_id": 303
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0403",
+    "item_id": "ITEM_ID_LIVESTOCK_DUCK_CHICK_WHITE",
+    "numeric_id": 304
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0404",
+    "item_id": "ITEM_ID_LIVESTOCK_DUCK_CHICK_WHITEBLACK",
+    "numeric_id": 305
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0405",
+    "item_id": "ITEM_ID_LIVESTOCK_TURKEY_CHICK_NORMAL",
+    "numeric_id": 306
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0406",
+    "item_id": "ITEM_ID_LIVESTOCK_COWCHILD_NORMAL",
+    "numeric_id": 307
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0407",
+    "item_id": "ITEM_ID_LIVESTOCK_COWCHILD_BROWN",
+    "numeric_id": 308
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0408",
+    "item_id": "ITEM_ID_LIVESTOCK_COWCHILD_BLACK",
+    "numeric_id": 309
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0409",
+    "item_id": "ITEM_ID_LIVESTOCK_LAMB_WHITE",
+    "numeric_id": 310
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0410",
+    "item_id": "ITEM_ID_LIVESTOCK_LAMB_BLACK",
+    "numeric_id": 311
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0411",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_GOAT_WHITE",
+    "numeric_id": 312
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0412",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_GOAT_BROWN",
+    "numeric_id": 313
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0413",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_GOAT_BLACK",
+    "numeric_id": 314
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0414",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_CASHMERE_GOAT",
+    "numeric_id": 315
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0415",
+    "item_id": "ITEM_ID_LIVESTOCK_PIGLET_PINK",
+    "numeric_id": 316
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0416",
+    "item_id": "ITEM_ID_LIVESTOCK_PIGLET_BLACK",
+    "numeric_id": 317
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0417",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_HORSE_BROWN",
+    "numeric_id": 318
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0418",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_HORSE_BLACK",
+    "numeric_id": 319
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0419",
+    "item_id": "ITEM_ID_LIVESTOCK_BABY_HORSE_KINAKO",
+    "numeric_id": 320
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0430",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_RED",
+    "numeric_id": 321
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0431",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_ORANGE",
+    "numeric_id": 322
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0432",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_GREEN",
+    "numeric_id": 323
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0433",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_LIGHT_BLUE",
+    "numeric_id": 324
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0434",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_BLUE",
+    "numeric_id": 325
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0435",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_PURPLE",
+    "numeric_id": 326
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0436",
+    "item_id": "ITEM_ID_LIVESTOCK_COLOR_CHICK_GRAY",
+    "numeric_id": 327
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0500",
+    "item_id": "ITEM_ID_GIMMICK_DYEING_MACHINE",
+    "numeric_id": 328
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0501",
+    "item_id": "ITEM_ID_GIMMICK_LIVESTOCK_COLLECT_MACHINE",
+    "numeric_id": 329
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0504",
+    "item_id": "ITEM_ID_GIMMICK_CAMPFIRE",
+    "numeric_id": 331
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0505",
+    "item_id": "ITEM_ID_GIMMICK_WALL_LAMP_DELICATE_BROWN",
+    "numeric_id": 332
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0506",
+    "item_id": "ITEM_ID_GIMMICK_TABLE_GOOD_OLD_BROWN",
+    "numeric_id": 333
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0507",
+    "item_id": "ITEM_ID_GIMMICK_TABLE_RETRO_BROWN",
+    "numeric_id": 334
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0508",
+    "item_id": "ITEM_ID_GIMMICK_TABLE_DELICATE_BROWN",
+    "numeric_id": 335
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0509",
+    "item_id": "ITEM_ID_GIMMICK_TABLE_CUTE_BROWN",
+    "numeric_id": 336
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0510",
+    "item_id": "ITEM_ID_GIMMICK_TABLE_ANIMAL_BROWN",
+    "numeric_id": 337
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0511",
+    "item_id": "ITEM_ID_GIMMICK_BED_BIG_GOOD_OLD_BROWN",
+    "numeric_id": 338
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0512",
+    "item_id": "ITEM_ID_GIMMICK_BED_BIG_RETRO_BROWN",
+    "numeric_id": 339
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0513",
+    "item_id": "ITEM_ID_GIMMICK_BED_BIG_DELICATE_BROWN",
+    "numeric_id": 340
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0514",
+    "item_id": "ITEM_ID_GIMMICK_BED_BIG_CUTE_BROWN",
+    "numeric_id": 341
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0515",
+    "item_id": "ITEM_ID_GIMMICK_BED_BIG_ANIMAL_BROWN",
+    "numeric_id": 342
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0516",
+    "item_id": "ITEM_ID_CARPET_RETRO_BROWN",
+    "numeric_id": 343
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0517",
+    "item_id": "ITEM_ID_CARPET_CUTE_BROWN",
+    "numeric_id": 344
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0518",
+    "item_id": "ITEM_ID_CARPET_GOOD_OLD_BROWN",
+    "numeric_id": 345
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0519",
+    "item_id": "ITEM_ID_CARPET_DELICATE_BROWN",
+    "numeric_id": 346
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0520",
+    "item_id": "ITEM_ID_CARPET_ANIMAL_BROWN",
+    "numeric_id": 347
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0521",
+    "item_id": "ITEM_ID_FIGURINE_M_CALLIGRAPHY_DESK",
+    "numeric_id": 348
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0522",
+    "item_id": "ITEM_ID_FIGURINE_M_PARTITION",
+    "numeric_id": 349
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0525",
+    "item_id": "ITEM_ID_FIGURINE_L_TEDDY_BEAR",
+    "numeric_id": 350
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0526",
+    "item_id": "ITEM_ID_FIGURINE_L_DRUM_SET",
+    "numeric_id": 351
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0528",
+    "item_id": "ITEM_ID_FIGURINE_L_INDOOR_CLOTHES_DRYING_RACK",
+    "numeric_id": 352
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0529",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_WATER_WELL_PUMP",
+    "numeric_id": 507
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0530",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_STONE_STANDING_LANTERN",
+    "numeric_id": 508
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0531",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_CHOZUBACHI",
+    "numeric_id": 509
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0532",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_SNOW_LANTERN",
+    "numeric_id": 510
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0533",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_S_GARDEN_WATER_FAUCET",
+    "numeric_id": 511
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0534",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_M_BONSAI_SHELF",
+    "numeric_id": 362
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0535",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_M_PILE_OF_BOXES",
+    "numeric_id": 363
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0536",
+    "item_id": "ITEM_ID_GARDEN_FIGURINE_M_SHRUB",
+    "numeric_id": 364
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0543",
+    "item_id": "ITEM_ID_WALL_DECORATION_S_WALL_SHELF",
+    "numeric_id": 367
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0544",
+    "item_id": "ITEM_ID_WALL_DECORATION_S_IVY",
+    "numeric_id": 368
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0545",
+    "item_id": "ITEM_ID_WALL_DECORATION_S_HOUSEPLANTS",
+    "numeric_id": 369
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0546",
+    "item_id": "ITEM_ID_WALL_DECORATION_H_WALL_SHELF",
+    "numeric_id": 370
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0547",
+    "item_id": "ITEM_ID_WALL_DECORATION_H_HANGING_SCROLL",
+    "numeric_id": 371
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0548",
+    "item_id": "ITEM_ID_WALL_DECORATION_S_KEY_HOOK",
+    "numeric_id": 372
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0550",
+    "item_id": "ITEM_ID_WALL_DECORATION_W_WALL_SHELF",
+    "numeric_id": 373
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0551",
+    "item_id": "ITEM_ID_WALL_DECORATION_W_HANGING_SCROLL",
+    "numeric_id": 374
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0552",
+    "item_id": "ITEM_ID_WALL_DECORATION_W_SURFBOARD",
+    "numeric_id": 375
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0553",
+    "item_id": "ITEM_ID_BAIT_DISH_BROWN",
+    "numeric_id": 512
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0554",
+    "item_id": "ITEM_ID_BALL_OF_YARN_BROWN",
+    "numeric_id": 513
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0555",
+    "item_id": "ITEM_ID_PLUSH_CAT_TOY_BROWN",
+    "numeric_id": 514
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0556",
+    "item_id": "ITEM_ID_GOLDFISH_BOWL",
+    "numeric_id": 515
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0557",
+    "item_id": "ITEM_ID_CAT_CUSHION_BROWN",
+    "numeric_id": 516
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0558",
+    "item_id": "ITEM_ID_CAT_TENT_BROWN",
+    "numeric_id": 517
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0559",
+    "item_id": "ITEM_ID_CAT_TOWER",
+    "numeric_id": 382
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_0560",
+    "item_id": "ITEM_ID_GIMMICK_HEATER",
+    "numeric_id": 330
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_1528",
+    "item_id": "ITEM_ID_FIGURINE_XL_LOW_DINING_TABLE",
+    "numeric_id": 353
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2000",
+    "item_id": "ITEM_ID_CLOTHING_02_00",
+    "numeric_id": 391
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2001",
+    "item_id": "ITEM_ID_CLOTHING_03_00",
+    "numeric_id": 392
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2002",
+    "item_id": "ITEM_ID_CLOTHING_04_00",
+    "numeric_id": 393
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2003",
+    "item_id": "ITEM_ID_CLOTHING_05_00",
+    "numeric_id": 394
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2004",
+    "item_id": "ITEM_ID_CLOTHING_06_00",
+    "numeric_id": 395
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2006",
+    "item_id": "ITEM_ID_CLOTHING_08_00",
+    "numeric_id": 397
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2007",
+    "item_id": "ITEM_ID_CLOTHING_09_00",
+    "numeric_id": 398
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2008",
+    "item_id": "ITEM_ID_CLOTHING_10_00",
+    "numeric_id": 399
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2009",
+    "item_id": "ITEM_ID_CLOTHING_11_00",
+    "numeric_id": 400
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2010",
+    "item_id": "ITEM_ID_CLOTHING_12_00",
+    "numeric_id": 401
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2011",
+    "item_id": "ITEM_ID_CLOTHING_13_00",
+    "numeric_id": 402
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2100",
+    "item_id": "ITEM_ID_COLLAR_02_00",
+    "numeric_id": 403
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2101",
+    "item_id": "ITEM_ID_COLLAR_03_00",
+    "numeric_id": 404
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2102",
+    "item_id": "ITEM_ID_ACCESSORY_01_00",
+    "numeric_id": 405
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2103",
+    "item_id": "ITEM_ID_ACCESSORY_02_00",
+    "numeric_id": 406
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2104",
+    "item_id": "ITEM_ID_ACCESSORY_03",
+    "numeric_id": 407
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2105",
+    "item_id": "ITEM_ID_ACCESSORY_04",
+    "numeric_id": 408
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2106",
+    "item_id": "ITEM_ID_ACCESSORY_05_00",
+    "numeric_id": 409
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2107",
+    "item_id": "ITEM_ID_ACCESSORY_10_00",
+    "numeric_id": 410
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2108",
+    "item_id": "ITEM_ID_ACCESSORY_11_00",
+    "numeric_id": 411
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2109",
+    "item_id": "ITEM_ID_ACCESSORY_12",
+    "numeric_id": 412
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2111",
+    "item_id": "ITEM_ID_ACCESSORY_34_00",
+    "numeric_id": 414
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2112",
+    "item_id": "ITEM_ID_ACCESSORY_35_00",
+    "numeric_id": 415
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2113",
+    "item_id": "ITEM_ID_ACCESSORY_36_00",
+    "numeric_id": 416
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2114",
+    "item_id": "ITEM_ID_ACCESSORY_30",
+    "numeric_id": 417
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2115",
+    "item_id": "ITEM_ID_ACCESSORY_31",
+    "numeric_id": 418
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2116",
+    "item_id": "ITEM_ID_ACCESSORY_32",
+    "numeric_id": 419
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2117",
+    "item_id": "ITEM_ID_ACCESSORY_37",
+    "numeric_id": 420
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2118",
+    "item_id": "ITEM_ID_ACCESSORY_50_00",
+    "numeric_id": 421
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2120",
+    "item_id": "ITEM_ID_ACCESSORY_52",
+    "numeric_id": 423
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2121",
+    "item_id": "ITEM_ID_ACCESSORY_53_00",
+    "numeric_id": 424
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2122",
+    "item_id": "ITEM_ID_ACCESSORY_60_00",
+    "numeric_id": 425
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2123",
+    "item_id": "ITEM_ID_ACCESSORY_62_00",
+    "numeric_id": 426
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2124",
+    "item_id": "ITEM_ID_ACCESSORY_63_00",
+    "numeric_id": 427
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2125",
+    "item_id": "ITEM_ID_ACCESSORY_70",
+    "numeric_id": 428
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2126",
+    "item_id": "ITEM_ID_ACCESSORY_71_00",
+    "numeric_id": 429
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2127",
+    "item_id": "ITEM_ID_ACCESSORY_72_00",
+    "numeric_id": 430
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2128",
+    "item_id": "ITEM_ID_ACCESSORY_73",
+    "numeric_id": 431
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2129",
+    "item_id": "ITEM_ID_ACCESSORY_74",
+    "numeric_id": 432
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2200",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_05",
+    "numeric_id": 438
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2201",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_08",
+    "numeric_id": 439
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2202",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_10",
+    "numeric_id": 440
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2203",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_11",
+    "numeric_id": 441
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2204",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_12",
+    "numeric_id": 442
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2205",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_14",
+    "numeric_id": 443
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2206",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_15",
+    "numeric_id": 444
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2207",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_16",
+    "numeric_id": 445
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2208",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_17",
+    "numeric_id": 446
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2209",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_18",
+    "numeric_id": 447
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2210",
+    "item_id": "ITEM_ID_FRONT_HAIRSTYLE_19",
+    "numeric_id": 448
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2300",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_08",
+    "numeric_id": 449
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2302",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_12",
+    "numeric_id": 451
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2303",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_14",
+    "numeric_id": 452
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2304",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_16",
+    "numeric_id": 453
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2305",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_17",
+    "numeric_id": 454
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2306",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_18",
+    "numeric_id": 455
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2307",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_19",
+    "numeric_id": 456
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2308",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_20",
+    "numeric_id": 457
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2309",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_21",
+    "numeric_id": 458
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2311",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_24",
+    "numeric_id": 460
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2312",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_25",
+    "numeric_id": 461
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2313",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_26",
+    "numeric_id": 462
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_2314",
+    "item_id": "ITEM_ID_BACK_HAIRSTYLE_29",
+    "numeric_id": 463
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6000",
+    "item_id": "ITEM_ID_GARDEN_TREE_OSMANTHUS",
+    "numeric_id": 383
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6001",
+    "item_id": "ITEM_ID_GARDEN_TREE_WISTERIA",
+    "numeric_id": 384
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6002",
+    "item_id": "ITEM_ID_GARDEN_TREE_HYDRANGEA",
+    "numeric_id": 385
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6003",
+    "item_id": "ITEM_ID_GARDEN_TREE_AZALEA",
+    "numeric_id": 386
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6004",
+    "item_id": "ITEM_ID_GARDEN_TREE_DOGWOOD",
+    "numeric_id": 387
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6005",
+    "item_id": "ITEM_ID_GARDEN_TREE_PINE",
+    "numeric_id": 388
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6006",
+    "item_id": "ITEM_ID_GARDEN_TREE_MAPLE",
+    "numeric_id": 389
+  },
+  {
+    "id": "STORE_SALE_ID_VENDOR_6007",
+    "item_id": "ITEM_ID_GARDEN_TREE_CHERRY_BLOSSOMS",
+    "numeric_id": 390
+  }
+]

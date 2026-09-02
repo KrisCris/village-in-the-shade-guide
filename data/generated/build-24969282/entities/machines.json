@@ -1,0 +1,733 @@
+[
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+    "name": {
+      "aliases": [
+        "熟成桶",
+        "熟成樽",
+        "ITEM_ID_GIMMICK_AGUNG_BARREL"
+      ],
+      "internal": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+      "ja": "熟成樽",
+      "review_status": "override",
+      "zh_hans": "熟成桶",
+      "zh_hant": "熟成桶"
+    },
+    "numeric_id": 400040,
+    "related_item_id": null,
+    "sell_price": 52
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+    "name": {
+      "aliases": [
+        "熟成桶／改",
+        "熟成樽/改",
+        "ITEM_ID_GIMMICK_AGUNG_BARREL_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+      "ja": "熟成樽/改",
+      "review_status": "override",
+      "zh_hans": "熟成桶／改",
+      "zh_hant": "熟成桶／改"
+    },
+    "numeric_id": 400041,
+    "related_item_id": null,
+    "sell_price": 98
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_BEEHIVE",
+    "name": {
+      "aliases": [
+        "蜂箱",
+        "養蜂箱",
+        "ITEM_ID_GIMMICK_BEEHIVE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BEEHIVE",
+      "ja": "養蜂箱",
+      "review_status": "override",
+      "zh_hans": "蜂箱",
+      "zh_hant": "蜂箱"
+    },
+    "numeric_id": 402040,
+    "related_item_id": null,
+    "sell_price": 90
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+    "name": {
+      "aliases": [
+        "熔炉",
+        "熔爐",
+        "溶鉱炉",
+        "ITEM_ID_GIMMICK_BLAST_FURNACE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+      "ja": "溶鉱炉",
+      "review_status": "override",
+      "zh_hans": "熔炉",
+      "zh_hant": "熔爐"
+    },
+    "numeric_id": 400080,
+    "related_item_id": null,
+    "sell_price": 45
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+    "name": {
+      "aliases": [
+        "熔炉／改",
+        "熔爐／改",
+        "溶鉱炉/改",
+        "ITEM_ID_GIMMICK_BLAST_FURNACE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+      "ja": "溶鉱炉/改",
+      "review_status": "override",
+      "zh_hans": "熔炉／改",
+      "zh_hant": "熔爐／改"
+    },
+    "numeric_id": 400081,
+    "related_item_id": null,
+    "sell_price": 97
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_BREWING_BARREL",
+    "name": {
+      "aliases": [
+        "酿造桶",
+        "釀造桶",
+        "醸造樽",
+        "ITEM_ID_GIMMICK_BREWING_BARREL"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BREWING_BARREL",
+      "ja": "醸造樽",
+      "review_status": "override",
+      "zh_hans": "酿造桶",
+      "zh_hant": "釀造桶"
+    },
+    "numeric_id": 400030,
+    "related_item_id": null,
+    "sell_price": 62
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+    "name": {
+      "aliases": [
+        "酿造桶／改",
+        "釀造桶／改",
+        "醸造樽/改",
+        "ITEM_ID_GIMMICK_BREWING_BARREL_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+      "ja": "醸造樽/改",
+      "review_status": "override",
+      "zh_hans": "酿造桶／改",
+      "zh_hant": "釀造桶／改"
+    },
+    "numeric_id": 400031,
+    "related_item_id": null,
+    "sell_price": 141
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+    "name": {
+      "aliases": [
+        "木炭窑",
+        "木炭窯",
+        "炭焼き窯",
+        "ITEM_ID_GIMMICK_CHARCOAL_KILN"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+      "ja": "炭焼き窯",
+      "review_status": "override",
+      "zh_hans": "木炭窑",
+      "zh_hant": "木炭窯"
+    },
+    "numeric_id": 400090,
+    "related_item_id": null,
+    "sell_price": 38
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+    "name": {
+      "aliases": [
+        "木炭窑／改",
+        "木炭窯／改",
+        "炭焼き窯/改",
+        "ITEM_ID_GIMMICK_CHARCOAL_KILN_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+      "ja": "炭焼き窯/改",
+      "review_status": "override",
+      "zh_hans": "木炭窑／改",
+      "zh_hant": "木炭窯／改"
+    },
+    "numeric_id": 400091,
+    "related_item_id": null,
+    "sell_price": 164
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_COMPOSTER",
+    "name": {
+      "aliases": [
+        "堆肥桶",
+        "コンポスター",
+        "ITEM_ID_GIMMICK_COMPOSTER"
+      ],
+      "internal": "ITEM_ID_GIMMICK_COMPOSTER",
+      "ja": "コンポスター",
+      "review_status": "override",
+      "zh_hans": "堆肥桶",
+      "zh_hant": "堆肥桶"
+    },
+    "numeric_id": 400110,
+    "related_item_id": null,
+    "sell_price": 41
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_COMPOSTER_02",
+    "name": {
+      "aliases": [
+        "堆肥桶／改",
+        "コンポスター/改",
+        "ITEM_ID_GIMMICK_COMPOSTER_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_COMPOSTER_02",
+      "ja": "コンポスター/改",
+      "review_status": "override",
+      "zh_hans": "堆肥桶／改",
+      "zh_hant": "堆肥桶／改"
+    },
+    "numeric_id": 400111,
+    "related_item_id": null,
+    "sell_price": 135
+  },
+  {
+    "buy_price": 500,
+    "id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "工作台",
+        "作業台",
+        "ITEM_ID_GIMMICK_CRAFT_TABLE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+      "ja": "作業台",
+      "review_status": "override",
+      "zh_hans": "工作台",
+      "zh_hant": "工作台"
+    },
+    "numeric_id": 400130,
+    "related_item_id": null,
+    "sell_price": 375
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+    "name": {
+      "aliases": [
+        "乾燥机",
+        "乾燥機",
+        "ITEM_ID_GIMMICK_DRYING_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+      "ja": "乾燥機",
+      "review_status": "override",
+      "zh_hans": "乾燥机",
+      "zh_hant": "乾燥機"
+    },
+    "numeric_id": 400050,
+    "related_item_id": null,
+    "sell_price": 83
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "乾燥机／改",
+        "乾燥機／改",
+        "乾燥機/改",
+        "ITEM_ID_GIMMICK_DRYING_MACHINE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+      "ja": "乾燥機/改",
+      "review_status": "override",
+      "zh_hans": "乾燥机／改",
+      "zh_hant": "乾燥機／改"
+    },
+    "numeric_id": 400051,
+    "related_item_id": null,
+    "sell_price": 164
+  },
+  {
+    "buy_price": 1000,
+    "id": "ITEM_ID_GIMMICK_DYEING_MACHINE",
+    "name": {
+      "aliases": [
+        "染色台",
+        "ITEM_ID_GIMMICK_DYEING_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DYEING_MACHINE",
+      "ja": "染色台",
+      "review_status": "override",
+      "zh_hans": "染色台",
+      "zh_hant": "染色台"
+    },
+    "numeric_id": 400120,
+    "related_item_id": null,
+    "sell_price": 750
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_FLOUR_MILL",
+    "name": {
+      "aliases": [
+        "研磨机",
+        "研磨機",
+        "粉挽き",
+        "ITEM_ID_GIMMICK_FLOUR_MILL"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FLOUR_MILL",
+      "ja": "粉挽き",
+      "review_status": "override",
+      "zh_hans": "研磨机",
+      "zh_hant": "研磨機"
+    },
+    "numeric_id": 400060,
+    "related_item_id": null,
+    "sell_price": 45
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+    "name": {
+      "aliases": [
+        "研磨机／改",
+        "研磨機／改",
+        "粉挽き/改",
+        "ITEM_ID_GIMMICK_FLOUR_MILL_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+      "ja": "粉挽き/改",
+      "review_status": "override",
+      "zh_hans": "研磨机／改",
+      "zh_hant": "研磨機／改"
+    },
+    "numeric_id": 400061,
+    "related_item_id": null,
+    "sell_price": 60
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_FURNACE",
+    "name": {
+      "aliases": [
+        "炉灶",
+        "爐灶",
+        "かまど",
+        "ITEM_ID_GIMMICK_FURNACE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FURNACE",
+      "ja": "かまど",
+      "review_status": "override",
+      "zh_hans": "炉灶",
+      "zh_hant": "爐灶"
+    },
+    "numeric_id": 403010,
+    "related_item_id": null,
+    "sell_price": 175
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+    "name": {
+      "aliases": [
+        "炭烤炉",
+        "炭烤爐",
+        "七輪",
+        "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL"
+      ],
+      "internal": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+      "ja": "七輪",
+      "review_status": "override",
+      "zh_hans": "炭烤炉",
+      "zh_hant": "炭烤爐"
+    },
+    "numeric_id": 403040,
+    "related_item_id": null,
+    "sell_price": 111
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_LOOM",
+    "name": {
+      "aliases": [
+        "织布机",
+        "織布機",
+        "織り機",
+        "ITEM_ID_GIMMICK_LOOM"
+      ],
+      "internal": "ITEM_ID_GIMMICK_LOOM",
+      "ja": "織り機",
+      "review_status": "override",
+      "zh_hans": "织布机",
+      "zh_hant": "織布機"
+    },
+    "numeric_id": 400100,
+    "related_item_id": null,
+    "sell_price": 210
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_LOOM_02",
+    "name": {
+      "aliases": [
+        "织布机／改",
+        "織布機／改",
+        "織り機/改",
+        "ITEM_ID_GIMMICK_LOOM_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_LOOM_02",
+      "ja": "織り機/改",
+      "review_status": "override",
+      "zh_hans": "织布机／改",
+      "zh_hant": "織布機／改"
+    },
+    "numeric_id": 400101,
+    "related_item_id": null,
+    "sell_price": 401
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+    "name": {
+      "aliases": [
+        "美乃滋加工机",
+        "美乃滋加工機",
+        "マヨネーズ加工機",
+        "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+      "ja": "マヨネーズ加工機",
+      "review_status": "override",
+      "zh_hans": "美乃滋加工机",
+      "zh_hant": "美乃滋加工機"
+    },
+    "numeric_id": 400020,
+    "related_item_id": null,
+    "sell_price": 31
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "美乃滋加工机／改",
+        "美乃滋加工機／改",
+        "マヨネーズ加工機/改",
+        "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+      "ja": "マヨネーズ加工機/改",
+      "review_status": "override",
+      "zh_hans": "美乃滋加工机／改",
+      "zh_hant": "美乃滋加工機／改"
+    },
+    "numeric_id": 400021,
+    "related_item_id": null,
+    "sell_price": 135
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_MESSTIN",
+    "name": {
+      "aliases": [
+        "煮饭盒",
+        "煮飯盒",
+        "はんごう",
+        "ITEM_ID_GIMMICK_MESSTIN"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MESSTIN",
+      "ja": "はんごう",
+      "review_status": "override",
+      "zh_hans": "煮饭盒",
+      "zh_hant": "煮飯盒"
+    },
+    "numeric_id": 403000,
+    "related_item_id": null,
+    "sell_price": 66
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+    "name": {
+      "aliases": [
+        "牛奶加工机",
+        "牛奶加工機",
+        "ミルク加工機",
+        "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+      "ja": "ミルク加工機",
+      "review_status": "override",
+      "zh_hans": "牛奶加工机",
+      "zh_hant": "牛奶加工機"
+    },
+    "numeric_id": 400010,
+    "related_item_id": null,
+    "sell_price": 69
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "牛奶加工机／改",
+        "牛奶加工機／改",
+        "ミルク加工機/改",
+        "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+      "ja": "ミルク加工機/改",
+      "review_status": "override",
+      "zh_hans": "牛奶加工机／改",
+      "zh_hant": "牛奶加工機／改"
+    },
+    "numeric_id": 400011,
+    "related_item_id": null,
+    "sell_price": 202
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+    "name": {
+      "aliases": [
+        "榨油机",
+        "榨油機",
+        "搾油機",
+        "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+      "ja": "搾油機",
+      "review_status": "override",
+      "zh_hans": "榨油机",
+      "zh_hant": "榨油機"
+    },
+    "numeric_id": 400070,
+    "related_item_id": null,
+    "sell_price": 83
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+    "name": {
+      "aliases": [
+        "榨油机／改",
+        "榨油機／改",
+        "搾油機/改",
+        "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+      "ja": "搾油機/改",
+      "review_status": "override",
+      "zh_hans": "榨油机／改",
+      "zh_hant": "榨油機／改"
+    },
+    "numeric_id": 400071,
+    "related_item_id": null,
+    "sell_price": 305
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+    "name": {
+      "aliases": [
+        "树液采集器",
+        "樹液採集器",
+        "樹液採取器",
+        "ITEM_ID_GIMMICK_SAP_EXTRACTOR"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+      "ja": "樹液採取器",
+      "review_status": "override",
+      "zh_hans": "树液采集器",
+      "zh_hant": "樹液採集器"
+    },
+    "numeric_id": 402050,
+    "related_item_id": null,
+    "sell_price": 37
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+    "name": {
+      "aliases": [
+        "蚕箱",
+        "蠶箱",
+        "養蚕箱",
+        "ITEM_ID_GIMMICK_SERICULTURE_BOX"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+      "ja": "養蚕箱",
+      "review_status": "override",
+      "zh_hans": "蚕箱",
+      "zh_hant": "蠶箱"
+    },
+    "numeric_id": 402070,
+    "related_item_id": null,
+    "sell_price": 120
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+    "name": {
+      "aliases": [
+        "烟燻机",
+        "煙燻機",
+        "燻製器",
+        "ITEM_ID_GIMMICK_SMOKING_MACHINE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+      "ja": "燻製器",
+      "review_status": "override",
+      "zh_hans": "烟燻机",
+      "zh_hant": "煙燻機"
+    },
+    "numeric_id": 400140,
+    "related_item_id": null,
+    "sell_price": 62
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "烟燻机／改",
+        "煙燻機／改",
+        "燻製器/改",
+        "ITEM_ID_GIMMICK_SMOKING_MACHINE_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+      "ja": "燻製器/改",
+      "review_status": "override",
+      "zh_hans": "烟燻机／改",
+      "zh_hant": "煙燻機／改"
+    },
+    "numeric_id": 400141,
+    "related_item_id": null,
+    "sell_price": 168
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+    "name": {
+      "aliases": [
+        "强化洒水器",
+        "強化灑水器",
+        "強化スプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_LARGE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+      "ja": "強化スプリンクラー",
+      "review_status": "override",
+      "zh_hans": "强化洒水器",
+      "zh_hant": "強化灑水器"
+    },
+    "numeric_id": 402120,
+    "related_item_id": null,
+    "sell_price": 565
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+    "name": {
+      "aliases": [
+        "普通洒水器",
+        "普通灑水器",
+        "普通のスプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+      "ja": "普通のスプリンクラー",
+      "review_status": "override",
+      "zh_hans": "普通洒水器",
+      "zh_hant": "普通灑水器"
+    },
+    "numeric_id": 402110,
+    "related_item_id": null,
+    "sell_price": 330
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+    "name": {
+      "aliases": [
+        "小型洒水器",
+        "小型灑水器",
+        "小さいスプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_SMALL"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+      "ja": "小さいスプリンクラー",
+      "review_status": "override",
+      "zh_hans": "小型洒水器",
+      "zh_hant": "小型灑水器"
+    },
+    "numeric_id": 402100,
+    "related_item_id": null,
+    "sell_price": 120
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_STORAGE_JAR",
+    "name": {
+      "aliases": [
+        "腌菜桶",
+        "醃菜桶",
+        "漬物樽",
+        "ITEM_ID_GIMMICK_STORAGE_JAR"
+      ],
+      "internal": "ITEM_ID_GIMMICK_STORAGE_JAR",
+      "ja": "漬物樽",
+      "review_status": "override",
+      "zh_hans": "腌菜桶",
+      "zh_hant": "醃菜桶"
+    },
+    "numeric_id": 400000,
+    "related_item_id": null,
+    "sell_price": 37
+  },
+  {
+    "buy_price": null,
+    "id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+    "name": {
+      "aliases": [
+        "腌菜桶／改",
+        "醃菜桶／改",
+        "漬物樽/改",
+        "ITEM_ID_GIMMICK_STORAGE_JAR_02"
+      ],
+      "internal": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+      "ja": "漬物樽/改",
+      "review_status": "override",
+      "zh_hans": "腌菜桶／改",
+      "zh_hant": "醃菜桶／改"
+    },
+    "numeric_id": 400001,
+    "related_item_id": null,
+    "sell_price": 56
+  }
+]

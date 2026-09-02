@@ -257,7 +257,13 @@ def _normalize_craft(table, items_by_numeric, machines_by_numeric, snapshot, ove
                 inputs.append(ItemQuantity(item_id, _u32(record, offset + 8)))
         output_id = _resolve_item(_u32(record, 92), items_by_numeric, snapshot, table="craft", record_id=record_id, field="output")
         if output_id:
-            name = _name(group, overrides)
+            output_name = snapshot.items[output_id].name
+            name = build_name(
+                ja=output_name.ja,
+                zh_hant=output_name.zh_hant,
+                internal=group[0],
+                overrides=overrides,
+            )
             numeric_machine_id = _u32(record, 24)
             machine_id = machines_by_numeric.get(numeric_machine_id)
             if machine_id is None:
@@ -280,7 +286,13 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
                 inputs.append(ItemQuantity(item_id, _u32(record, offset + 16)))
         output_id = _resolve_item(_u32(record, 24), items_by_numeric, snapshot, table="cooking", record_id=record_id, field="output")
         if output_id:
-            name = _name(group, overrides)
+            output_name = snapshot.items[output_id].name
+            name = build_name(
+                ja=output_name.ja,
+                zh_hant=output_name.zh_hant,
+                internal=group[0],
+                overrides=overrides,
+            )
             snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)))
 
 

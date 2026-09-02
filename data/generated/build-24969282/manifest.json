@@ -1,0 +1,36 @@
+{
+  "app_id": 3934250,
+  "archive_sha256": "54992524e28359267e1ed0d89ec2e675997f1d898ead41db745ee0f62923b325",
+  "build_id": "24969282",
+  "counts": {
+    "cooking_recipes": 118,
+    "craft_recipes": 195,
+    "crops": 162,
+    "items": 2856,
+    "machines": 37,
+    "processes": 486,
+    "store_offers": 504
+  },
+  "extractor_version": "0.1.0",
+  "format": 1,
+  "generated_files": {
+    "entities/cooking-recipes.json": "a5abaf646fa24312f0c270794257068c87c42c02da28c11f39b422b56efa9ab9",
+    "entities/craft-recipes.json": "49a52d12855000d78099cb70b2bc5880d132fc0e801e38fcfa291f08b141a5a0",
+    "entities/crops.json": "c0f5527070ab358532becf1aeb67b03a0face22d055c1baf850dc83b2676c874",
+    "entities/items.json": "0c8e0394f686e12fff860a99b29db5cfc2c034ad8c61c5926e5f7a526d10db4c",
+    "entities/machines.json": "1b4ce81a1fd4c11931c466312558d5af8eb8d76b9149f9e8fdd6466d2381b0a5",
+    "entities/processes.json": "d918854e0635b99e92162be27f7020211f8c93b16c52bcf65e136053239cbd73",
+    "entities/store-offers.json": "7fe1f76d0342533b22b4911ca3af8c6b5d03c6697b5ad11311d36eae63f2f22a",
+    "issues.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "issue_count": 0,
+  "table_sha256": {
+    "cooking": "9fb4e3551a0ee0f068f8b67a4111239f8ce19c02e80d2adaa0ded90877fecae1",
+    "craft": "a82f59eded739841534011089209760ff6b0edc3b3bf198c43c37197badd32e2",
+    "crops": "443d64d7cddc40afbe925a41f4ec09b4fe5d36f54a8d60b71fbeff8a1c0a22cb",
+    "gimmick": "50df629fe1a87ec7aee28644fde4d643f5773711abe785e129579deea764c57a",
+    "gimmickprocess": "cac2fe3ccaa946b2a5ab9386b363b0dcee12ff8130e4b658a39ef75db91efc0d",
+    "item": "06d5eb76f08e3bc09736df27731fd5af4f874a10cb55f604162cb8c98a36bf06",
+    "storesales": "920363bcd16a602110a760b518dbe44f029f2fe076d410b4f4943c811a024f71"
+  }
+}

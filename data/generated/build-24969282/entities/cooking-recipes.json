@@ -1,0 +1,4578 @@
+[
+  {
+    "id": "COOKING_ID_001",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_MITSUBA",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BRACKEN",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "簡單的早餐",
+        "素朴な朝食",
+        "COOKING_ID_001"
+      ],
+      "internal": "COOKING_ID_001",
+      "ja": "素朴な朝食",
+      "review_status": "auto",
+      "zh_hans": "簡單的早餐",
+      "zh_hant": "簡單的早餐"
+    },
+    "numeric_id": 1,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_001",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_002",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "高汤蛋捲",
+        "高湯蛋捲",
+        "だし巻き卵",
+        "COOKING_ID_002"
+      ],
+      "internal": "COOKING_ID_002",
+      "ja": "だし巻き卵",
+      "review_status": "auto",
+      "zh_hans": "高汤蛋捲",
+      "zh_hant": "高湯蛋捲"
+    },
+    "numeric_id": 2,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_002",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_003",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 2
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "水煮蛋",
+        "ゆでたまご",
+        "COOKING_ID_003"
+      ],
+      "internal": "COOKING_ID_003",
+      "ja": "ゆでたまご",
+      "review_status": "auto",
+      "zh_hans": "水煮蛋",
+      "zh_hant": "水煮蛋"
+    },
+    "numeric_id": 3,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_003",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_004",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BACON",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "炒蛋",
+        "スクランブルエッグ",
+        "COOKING_ID_004"
+      ],
+      "internal": "COOKING_ID_004",
+      "ja": "スクランブルエッグ",
+      "review_status": "auto",
+      "zh_hans": "炒蛋",
+      "zh_hant": "炒蛋"
+    },
+    "numeric_id": 4,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_004",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_005",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_SAUSAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤香腸",
+        "ソーセージグリル",
+        "COOKING_ID_005"
+      ],
+      "internal": "COOKING_ID_005",
+      "ja": "ソーセージグリル",
+      "review_status": "auto",
+      "zh_hans": "烤香腸",
+      "zh_hant": "烤香腸"
+    },
+    "numeric_id": 5,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_005",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_006",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_JAM_STRAWBERRY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "果酱吐司",
+        "果醬吐司",
+        "バタージャムトースト",
+        "COOKING_ID_006"
+      ],
+      "internal": "COOKING_ID_006",
+      "ja": "バタージャムトースト",
+      "review_status": "auto",
+      "zh_hans": "果酱吐司",
+      "zh_hant": "果醬吐司"
+    },
+    "numeric_id": 6,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_006",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_007",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "可頌",
+        "クロワッサン",
+        "COOKING_ID_007"
+      ],
+      "internal": "COOKING_ID_007",
+      "ja": "クロワッサン",
+      "review_status": "auto",
+      "zh_hans": "可頌",
+      "zh_hant": "可頌"
+    },
+    "numeric_id": 7,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_007",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_008",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 2
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "瑪格麗特披薩",
+        "マルゲリータピザ",
+        "COOKING_ID_008"
+      ],
+      "internal": "COOKING_ID_008",
+      "ja": "マルゲリータピザ",
+      "review_status": "auto",
+      "zh_hans": "瑪格麗特披薩",
+      "zh_hant": "瑪格麗特披薩"
+    },
+    "numeric_id": 8,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_008",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_009",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_PICKLED_PLUMS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "梅子茶泡饭",
+        "梅子茶泡飯",
+        "梅茶漬け",
+        "COOKING_ID_009"
+      ],
+      "internal": "COOKING_ID_009",
+      "ja": "梅茶漬け",
+      "review_status": "auto",
+      "zh_hans": "梅子茶泡饭",
+      "zh_hant": "梅子茶泡飯"
+    },
+    "numeric_id": 9,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_009",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_010",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_PICKLED_TURNIP",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "饭糰与腌渍物定食",
+        "飯糰與醃漬物定食",
+        "おにぎりと漬物定食",
+        "COOKING_ID_010"
+      ],
+      "internal": "COOKING_ID_010",
+      "ja": "おにぎりと漬物定食",
+      "review_status": "auto",
+      "zh_hans": "饭糰与腌渍物定食",
+      "zh_hant": "飯糰與醃漬物定食"
+    },
+    "numeric_id": 10,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_010",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_011",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤鱼",
+        "烤魚",
+        "焼き魚",
+        "COOKING_ID_011"
+      ],
+      "internal": "COOKING_ID_011",
+      "ja": "焼き魚",
+      "review_status": "auto",
+      "zh_hans": "烤鱼",
+      "zh_hant": "烤魚"
+    },
+    "numeric_id": 11,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_011",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_012",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BACON",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "培根蘆筍捲",
+        "アスパラベーコン巻き",
+        "COOKING_ID_012"
+      ],
+      "internal": "COOKING_ID_012",
+      "ja": "アスパラベーコン巻き",
+      "review_status": "auto",
+      "zh_hans": "培根蘆筍捲",
+      "zh_hant": "培根蘆筍捲"
+    },
+    "numeric_id": 12,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_012",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_013",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "洋葱汤",
+        "洋蔥湯",
+        "オニオンスープ",
+        "COOKING_ID_013"
+      ],
+      "internal": "COOKING_ID_013",
+      "ja": "オニオンスープ",
+      "review_status": "auto",
+      "zh_hans": "洋葱汤",
+      "zh_hant": "洋蔥湯"
+    },
+    "numeric_id": 13,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_013",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_014",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SAUSAGE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "洋葱火上鍋",
+        "洋蔥火上鍋",
+        "タマネギのポトフ",
+        "COOKING_ID_014"
+      ],
+      "internal": "COOKING_ID_014",
+      "ja": "タマネギのポトフ",
+      "review_status": "auto",
+      "zh_hans": "洋葱火上鍋",
+      "zh_hant": "洋蔥火上鍋"
+    },
+    "numeric_id": 14,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_014",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_015",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "涼拌豌豆",
+        "エンドウ豆のお浸し",
+        "COOKING_ID_015"
+      ],
+      "internal": "COOKING_ID_015",
+      "ja": "エンドウ豆のお浸し",
+      "review_status": "auto",
+      "zh_hans": "涼拌豌豆",
+      "zh_hant": "涼拌豌豆"
+    },
+    "numeric_id": 15,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_015",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_016",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "肉燥大頭菜",
+        "カブの肉あんかけ",
+        "COOKING_ID_016"
+      ],
+      "internal": "COOKING_ID_016",
+      "ja": "カブの肉あんかけ",
+      "review_status": "auto",
+      "zh_hans": "肉燥大頭菜",
+      "zh_hant": "肉燥大頭菜"
+    },
+    "numeric_id": 16,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_016",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_017",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "焗烤马鈴薯",
+        "焗烤馬鈴薯",
+        "ポテトグラタン",
+        "COOKING_ID_017"
+      ],
+      "internal": "COOKING_ID_017",
+      "ja": "ポテトグラタン",
+      "review_status": "auto",
+      "zh_hans": "焗烤马鈴薯",
+      "zh_hant": "焗烤馬鈴薯"
+    },
+    "numeric_id": 17,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_017",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_018",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "薯条",
+        "薯條",
+        "フライドポテト",
+        "COOKING_ID_018"
+      ],
+      "internal": "COOKING_ID_018",
+      "ja": "フライドポテト",
+      "review_status": "auto",
+      "zh_hans": "薯条",
+      "zh_hant": "薯條"
+    },
+    "numeric_id": 18,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_018",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_019",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CURRYPOWDER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "大人咖哩",
+        "大人なカレー",
+        "COOKING_ID_019"
+      ],
+      "internal": "COOKING_ID_019",
+      "ja": "大人なカレー",
+      "review_status": "auto",
+      "zh_hans": "大人咖哩",
+      "zh_hant": "大人咖哩"
+    },
+    "numeric_id": 19,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_019",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_020",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CURRYPOWDER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SAUSAGE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "兒童咖哩",
+        "おこさまカレー",
+        "COOKING_ID_020"
+      ],
+      "internal": "COOKING_ID_020",
+      "ja": "おこさまカレー",
+      "review_status": "auto",
+      "zh_hans": "兒童咖哩",
+      "zh_hant": "兒童咖哩"
+    },
+    "numeric_id": 20,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_020",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_021",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RADISH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OLIVE_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LETTUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "櫻桃萝卜沙拉",
+        "櫻桃蘿蔔沙拉",
+        "ラディッシュサラダ",
+        "COOKING_ID_021"
+      ],
+      "internal": "COOKING_ID_021",
+      "ja": "ラディッシュサラダ",
+      "review_status": "auto",
+      "zh_hans": "櫻桃萝卜沙拉",
+      "zh_hant": "櫻桃蘿蔔沙拉"
+    },
+    "numeric_id": 21,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_021",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_022",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CONSOMME",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "高麗菜捲",
+        "ロールキャベツ",
+        "COOKING_ID_022"
+      ],
+      "internal": "COOKING_ID_022",
+      "ja": "ロールキャベツ",
+      "review_status": "auto",
+      "zh_hans": "高麗菜捲",
+      "zh_hant": "高麗菜捲"
+    },
+    "numeric_id": 22,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_022",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_023",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PORK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "炸猪排",
+        "炸豬排",
+        "とんかつ",
+        "COOKING_ID_023"
+      ],
+      "internal": "COOKING_ID_023",
+      "ja": "とんかつ",
+      "review_status": "auto",
+      "zh_hans": "炸猪排",
+      "zh_hant": "炸豬排"
+    },
+    "numeric_id": 23,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_023",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_024",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "炒青菜",
+        "野菜炒め",
+        "COOKING_ID_024"
+      ],
+      "internal": "COOKING_ID_024",
+      "ja": "野菜炒め",
+      "review_status": "auto",
+      "zh_hans": "炒青菜",
+      "zh_hant": "炒青菜"
+    },
+    "numeric_id": 24,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_024",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_025",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_LETTUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BACON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OLIVE_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "凱撒沙拉",
+        "シーザーサラダ",
+        "COOKING_ID_025"
+      ],
+      "internal": "COOKING_ID_025",
+      "ja": "シーザーサラダ",
+      "review_status": "auto",
+      "zh_hans": "凱撒沙拉",
+      "zh_hant": "凱撒沙拉"
+    },
+    "numeric_id": 25,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_025",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_026",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SOYBEAN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CONSOMME",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "義式蔬菜汤",
+        "義式蔬菜湯",
+        "ミネストローネ",
+        "COOKING_ID_026"
+      ],
+      "internal": "COOKING_ID_026",
+      "ja": "ミネストローネ",
+      "review_status": "auto",
+      "zh_hans": "義式蔬菜汤",
+      "zh_hant": "義式蔬菜湯"
+    },
+    "numeric_id": 26,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_026",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_027",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_TOFU",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "豆腐漢堡排",
+        "豆腐ハンバーグ",
+        "COOKING_ID_027"
+      ],
+      "internal": "COOKING_ID_027",
+      "ja": "豆腐ハンバーグ",
+      "review_status": "auto",
+      "zh_hans": "豆腐漢堡排",
+      "zh_hant": "豆腐漢堡排"
+    },
+    "numeric_id": 27,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_027",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_028",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OLIVE_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "番茄起司沙拉",
+        "カプレーゼ",
+        "COOKING_ID_028"
+      ],
+      "internal": "COOKING_ID_028",
+      "ja": "カプレーゼ",
+      "review_status": "auto",
+      "zh_hans": "番茄起司沙拉",
+      "zh_hant": "番茄起司沙拉"
+    },
+    "numeric_id": 28,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_028",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_029",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 6
+      },
+      {
+        "item_id": "ITEM_ID_MAYONNAISE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "番茄山",
+        "山盛りトマト",
+        "COOKING_ID_029"
+      ],
+      "internal": "COOKING_ID_029",
+      "ja": "山盛りトマト",
+      "review_status": "auto",
+      "zh_hans": "番茄山",
+      "zh_hant": "番茄山"
+    },
+    "numeric_id": 29,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_029",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_030",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "茄子全餐",
+        "ナスづくし",
+        "COOKING_ID_030"
+      ],
+      "internal": "COOKING_ID_030",
+      "ja": "ナスづくし",
+      "review_status": "auto",
+      "zh_hans": "茄子全餐",
+      "zh_hant": "茄子全餐"
+    },
+    "numeric_id": 30,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_030",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_031",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "青椒鑲肉",
+        "ピーマンの肉詰め",
+        "COOKING_ID_031"
+      ],
+      "internal": "COOKING_ID_031",
+      "ja": "ピーマンの肉詰め",
+      "review_status": "auto",
+      "zh_hans": "青椒鑲肉",
+      "zh_hant": "青椒鑲肉"
+    },
+    "numeric_id": 31,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_031",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_032",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PUMPKIN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CHESTNUT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "南瓜汤",
+        "南瓜湯",
+        "カボチャのスープ",
+        "COOKING_ID_032"
+      ],
+      "internal": "COOKING_ID_032",
+      "ja": "カボチャのスープ",
+      "review_status": "auto",
+      "zh_hans": "南瓜汤",
+      "zh_hant": "南瓜湯"
+    },
+    "numeric_id": 32,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_032",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_033",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PUMPKIN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "燉南瓜",
+        "カボチャの煮物",
+        "COOKING_ID_033"
+      ],
+      "internal": "COOKING_ID_033",
+      "ja": "カボチャの煮物",
+      "review_status": "auto",
+      "zh_hans": "燉南瓜",
+      "zh_hant": "燉南瓜"
+    },
+    "numeric_id": 33,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_033",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_034",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BUTTERBUR_SCAPE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_COD_BUD",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BRACKEN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OIL",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "山菜天婦羅",
+        "山菜の天ぷら",
+        "COOKING_ID_034"
+      ],
+      "internal": "COOKING_ID_034",
+      "ja": "山菜の天ぷら",
+      "review_status": "auto",
+      "zh_hans": "山菜天婦羅",
+      "zh_hant": "山菜天婦羅"
+    },
+    "numeric_id": 34,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_034",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_035",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MAYONNAISE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "一根小黄瓜",
+        "一根小黃瓜",
+        "まるごとキュウリ",
+        "COOKING_ID_035"
+      ],
+      "internal": "COOKING_ID_035",
+      "ja": "まるごとキュウリ",
+      "review_status": "auto",
+      "zh_hans": "一根小黄瓜",
+      "zh_hant": "一根小黃瓜"
+    },
+    "numeric_id": 35,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_035",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_036",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "玉米濃汤",
+        "玉米濃湯",
+        "コーンスープ",
+        "COOKING_ID_036"
+      ],
+      "internal": "COOKING_ID_036",
+      "ja": "コーンスープ",
+      "review_status": "auto",
+      "zh_hans": "玉米濃汤",
+      "zh_hant": "玉米濃湯"
+    },
+    "numeric_id": 36,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_036",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_037",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤玉米",
+        "焼きとうもろこし",
+        "COOKING_ID_037"
+      ],
+      "internal": "COOKING_ID_037",
+      "ja": "焼きとうもろこし",
+      "review_status": "auto",
+      "zh_hans": "烤玉米",
+      "zh_hant": "烤玉米"
+    },
+    "numeric_id": 37,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_037",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_038",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "綜合串燒",
+        "肉と野菜の串焼き",
+        "COOKING_ID_038"
+      ],
+      "internal": "COOKING_ID_038",
+      "ja": "肉と野菜の串焼き",
+      "review_status": "auto",
+      "zh_hans": "綜合串燒",
+      "zh_hant": "綜合串燒"
+    },
+    "numeric_id": 38,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_038",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_039",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO_SHOOTS",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "春捲",
+        "春巻き",
+        "COOKING_ID_039"
+      ],
+      "internal": "COOKING_ID_039",
+      "ja": "春巻き",
+      "review_status": "auto",
+      "zh_hans": "春捲",
+      "zh_hant": "春捲"
+    },
+    "numeric_id": 39,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_039",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_040",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PORK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "姜汁燒肉",
+        "薑汁燒肉",
+        "生姜焼き",
+        "COOKING_ID_040"
+      ],
+      "internal": "COOKING_ID_040",
+      "ja": "生姜焼き",
+      "review_status": "auto",
+      "zh_hans": "姜汁燒肉",
+      "zh_hant": "薑汁燒肉"
+    },
+    "numeric_id": 40,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_040",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_041",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "鋁箔紙烤大蒜",
+        "ニンニクホイル焼き",
+        "COOKING_ID_041"
+      ],
+      "internal": "COOKING_ID_041",
+      "ja": "ニンニクホイル焼き",
+      "review_status": "auto",
+      "zh_hans": "鋁箔紙烤大蒜",
+      "zh_hant": "鋁箔紙烤大蒜"
+    },
+    "numeric_id": 41,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_041",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_042",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "牛排",
+        "ステーキ",
+        "COOKING_ID_042"
+      ],
+      "internal": "COOKING_ID_042",
+      "ja": "ステーキ",
+      "review_status": "auto",
+      "zh_hans": "牛排",
+      "zh_hant": "牛排"
+    },
+    "numeric_id": 42,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_042",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_043",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_TURKEY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤火鸡",
+        "烤火雞",
+        "七面鳥の丸焼き",
+        "COOKING_ID_043"
+      ],
+      "internal": "COOKING_ID_043",
+      "ja": "七面鳥の丸焼き",
+      "review_status": "auto",
+      "zh_hans": "烤火鸡",
+      "zh_hant": "烤火雞"
+    },
+    "numeric_id": 43,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_043",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_044",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_LAMB",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OLIVE_OIL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤羊小排",
+        "ラムチョップ",
+        "COOKING_ID_044"
+      ],
+      "internal": "COOKING_ID_044",
+      "ja": "ラムチョップ",
+      "review_status": "auto",
+      "zh_hans": "烤羊小排",
+      "zh_hant": "烤羊小排"
+    },
+    "numeric_id": 44,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_044",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_045",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_WINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BACON",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "多蜜酱焗饭",
+        "多蜜醬焗飯",
+        "デミグラスドリア",
+        "COOKING_ID_045"
+      ],
+      "internal": "COOKING_ID_045",
+      "ja": "デミグラスドリア",
+      "review_status": "auto",
+      "zh_hans": "多蜜酱焗饭",
+      "zh_hant": "多蜜醬焗飯"
+    },
+    "numeric_id": 45,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_045",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_046",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SESAME",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "辣炒蓮藕",
+        "レンコンのピリ辛炒め",
+        "COOKING_ID_046"
+      ],
+      "internal": "COOKING_ID_046",
+      "ja": "レンコンのピリ辛炒め",
+      "review_status": "auto",
+      "zh_hans": "辣炒蓮藕",
+      "zh_hant": "辣炒蓮藕"
+    },
+    "numeric_id": 46,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_046",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_047",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_EDAMAME",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "涼拌毛豆",
+        "おつまみ枝豆",
+        "COOKING_ID_047"
+      ],
+      "internal": "COOKING_ID_047",
+      "ja": "おつまみ枝豆",
+      "review_status": "auto",
+      "zh_hans": "涼拌毛豆",
+      "zh_hant": "涼拌毛豆"
+    },
+    "numeric_id": 47,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_047",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_048",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BUCKWHEAT_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WASABI",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "竹笼蕎麦面",
+        "竹籠蕎麥麵",
+        "ざるそば",
+        "COOKING_ID_048"
+      ],
+      "internal": "COOKING_ID_048",
+      "ja": "ざるそば",
+      "review_status": "auto",
+      "zh_hans": "竹笼蕎麦面",
+      "zh_hant": "竹籠蕎麥麵"
+    },
+    "numeric_id": 48,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_048",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_049",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_BUCKWHEAT_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_JAPANESE_YAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "天婦羅花蕎麦面",
+        "天婦羅花蕎麥麵",
+        "たぬきそば",
+        "COOKING_ID_049"
+      ],
+      "internal": "COOKING_ID_049",
+      "ja": "たぬきそば",
+      "review_status": "auto",
+      "zh_hans": "天婦羅花蕎麦面",
+      "zh_hant": "天婦羅花蕎麥麵"
+    },
+    "numeric_id": 49,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_049",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_050",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "竹笼烏龍面",
+        "竹籠烏龍麵",
+        "ざるうどん",
+        "COOKING_ID_050"
+      ],
+      "internal": "COOKING_ID_050",
+      "ja": "ざるうどん",
+      "review_status": "auto",
+      "zh_hans": "竹笼烏龍面",
+      "zh_hant": "竹籠烏龍麵"
+    },
+    "numeric_id": 50,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_050",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_051",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SOYBEAN",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OIL",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "豆皮烏龍面",
+        "豆皮烏龍麵",
+        "きつねうどん",
+        "COOKING_ID_051"
+      ],
+      "internal": "COOKING_ID_051",
+      "ja": "きつねうどん",
+      "review_status": "auto",
+      "zh_hans": "豆皮烏龍面",
+      "zh_hant": "豆皮烏龍麵"
+    },
+    "numeric_id": 51,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_051",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_052",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TARO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SPINACH",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "家鄉味定食",
+        "実家の味定食",
+        "COOKING_ID_052"
+      ],
+      "internal": "COOKING_ID_052",
+      "ja": "実家の味定食",
+      "review_status": "auto",
+      "zh_hans": "家鄉味定食",
+      "zh_hant": "家鄉味定食"
+    },
+    "numeric_id": 52,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_052",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_053",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_LILY_BULB",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GINKGO_NUT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_SASANOKO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_MATSUTAKE_MUSHROOM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "山珍茶碗蒸",
+        "山の幸茶碗蒸し",
+        "COOKING_ID_053"
+      ],
+      "internal": "COOKING_ID_053",
+      "ja": "山の幸茶碗蒸し",
+      "review_status": "auto",
+      "zh_hans": "山珍茶碗蒸",
+      "zh_hant": "山珍茶碗蒸"
+    },
+    "numeric_id": 53,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_053",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_054",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_MATSUTAKE_MUSHROOM",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤松茸",
+        "焼き松茸",
+        "COOKING_ID_054"
+      ],
+      "internal": "COOKING_ID_054",
+      "ja": "焼き松茸",
+      "review_status": "auto",
+      "zh_hans": "烤松茸",
+      "zh_hant": "烤松茸"
+    },
+    "numeric_id": 54,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_054",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_055",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_DAIKON",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "暖呼呼火鍋",
+        "ぽかぽか鍋",
+        "COOKING_ID_055"
+      ],
+      "internal": "COOKING_ID_055",
+      "ja": "ぽかぽか鍋",
+      "review_status": "auto",
+      "zh_hans": "暖呼呼火鍋",
+      "zh_hant": "暖呼呼火鍋"
+    },
+    "numeric_id": 55,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_055",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_056",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PORK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SESAME_OIL",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "木耳炒蛋",
+        "キクラゲと卵炒め",
+        "COOKING_ID_056"
+      ],
+      "internal": "COOKING_ID_056",
+      "ja": "キクラゲと卵炒め",
+      "review_status": "auto",
+      "zh_hans": "木耳炒蛋",
+      "zh_hant": "木耳炒蛋"
+    },
+    "numeric_id": 56,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_056",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_057",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BACON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_OLIVE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "西班牙木籤小吃",
+        "ピンチョス",
+        "COOKING_ID_057"
+      ],
+      "internal": "COOKING_ID_057",
+      "ja": "ピンチョス",
+      "review_status": "auto",
+      "zh_hans": "西班牙木籤小吃",
+      "zh_hant": "西班牙木籤小吃"
+    },
+    "numeric_id": 57,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_057",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_058",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤鸡肉串",
+        "烤雞肉串",
+        "焼き鳥串",
+        "COOKING_ID_058"
+      ],
+      "internal": "COOKING_ID_058",
+      "ja": "焼き鳥串",
+      "review_status": "auto",
+      "zh_hans": "烤鸡肉串",
+      "zh_hant": "烤雞肉串"
+    },
+    "numeric_id": 58,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_058",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_059",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SESAME_OIL",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "煎餃",
+        "餃子",
+        "COOKING_ID_059"
+      ],
+      "internal": "COOKING_ID_059",
+      "ja": "餃子",
+      "review_status": "auto",
+      "zh_hans": "煎餃",
+      "zh_hant": "煎餃"
+    },
+    "numeric_id": 59,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_059",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_060",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蛋包饭",
+        "蛋包飯",
+        "オムライス",
+        "COOKING_ID_060"
+      ],
+      "internal": "COOKING_ID_060",
+      "ja": "オムライス",
+      "review_status": "auto",
+      "zh_hans": "蛋包饭",
+      "zh_hant": "蛋包飯"
+    },
+    "numeric_id": 60,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_060",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_061",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_WINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "燉牛肉",
+        "ビーフシチュー",
+        "COOKING_ID_061"
+      ],
+      "internal": "COOKING_ID_061",
+      "ja": "ビーフシチュー",
+      "review_status": "auto",
+      "zh_hans": "燉牛肉",
+      "zh_hant": "燉牛肉"
+    },
+    "numeric_id": 61,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_061",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_062",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SAUSAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "奶油燉菜",
+        "ホワイトシチュー",
+        "COOKING_ID_062"
+      ],
+      "internal": "COOKING_ID_062",
+      "ja": "ホワイトシチュー",
+      "review_status": "auto",
+      "zh_hans": "奶油燉菜",
+      "zh_hant": "奶油燉菜"
+    },
+    "numeric_id": 62,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_062",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_063",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "壽喜燒",
+        "すき焼き",
+        "COOKING_ID_063"
+      ],
+      "internal": "COOKING_ID_063",
+      "ja": "すき焼き",
+      "review_status": "auto",
+      "zh_hans": "壽喜燒",
+      "zh_hant": "壽喜燒"
+    },
+    "numeric_id": 63,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_063",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_064",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PUMPKIN",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OLIVE_OIL",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "熱沾酱沙拉",
+        "熱沾醬沙拉",
+        "バーニャカウダ",
+        "COOKING_ID_064"
+      ],
+      "internal": "COOKING_ID_064",
+      "ja": "バーニャカウダ",
+      "review_status": "auto",
+      "zh_hans": "熱沾酱沙拉",
+      "zh_hant": "熱沾醬沙拉"
+    },
+    "numeric_id": 64,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_064",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_065",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FISHING_SWEETFISH",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "盐烤香鱼",
+        "鹽烤香魚",
+        "鮎の塩焼き",
+        "COOKING_ID_065"
+      ],
+      "internal": "COOKING_ID_065",
+      "ja": "鮎の塩焼き",
+      "review_status": "auto",
+      "zh_hans": "盐烤香鱼",
+      "zh_hant": "鹽烤香魚"
+    },
+    "numeric_id": 65,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_065",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_066",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PORK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "自創拉面",
+        "自創拉麵",
+        "オリジナルラーメン",
+        "COOKING_ID_066"
+      ],
+      "internal": "COOKING_ID_066",
+      "ja": "オリジナルラーメン",
+      "review_status": "auto",
+      "zh_hans": "自創拉面",
+      "zh_hant": "自創拉麵"
+    },
+    "numeric_id": 66,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_066",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_067",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "肉饼",
+        "肉餅",
+        "ミートパイ",
+        "COOKING_ID_067"
+      ],
+      "internal": "COOKING_ID_067",
+      "ja": "ミートパイ",
+      "review_status": "auto",
+      "zh_hans": "肉饼",
+      "zh_hant": "肉餅"
+    },
+    "numeric_id": 67,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_067",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_068",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "義大利面",
+        "義大利麵",
+        "スパゲッティ",
+        "COOKING_ID_068"
+      ],
+      "internal": "COOKING_ID_068",
+      "ja": "スパゲッティ",
+      "review_status": "auto",
+      "zh_hans": "義大利面",
+      "zh_hant": "義大利麵"
+    },
+    "numeric_id": 68,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_068",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_069",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BAMBOO_SHOOTS",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "肉包",
+        "肉まん",
+        "COOKING_ID_069"
+      ],
+      "internal": "COOKING_ID_069",
+      "ja": "肉まん",
+      "review_status": "auto",
+      "zh_hans": "肉包",
+      "zh_hant": "肉包"
+    },
+    "numeric_id": 69,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_069",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_070",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_PORK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "炒饭",
+        "炒飯",
+        "チャーハン",
+        "COOKING_ID_070"
+      ],
+      "internal": "COOKING_ID_070",
+      "ja": "チャーハン",
+      "review_status": "auto",
+      "zh_hans": "炒饭",
+      "zh_hant": "炒飯"
+    },
+    "numeric_id": 70,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_070",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_071",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_MOCHI",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SPINACH",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "年糕汤",
+        "年糕湯",
+        "お雑煮",
+        "COOKING_ID_071"
+      ],
+      "internal": "COOKING_ID_071",
+      "ja": "お雑煮",
+      "review_status": "auto",
+      "zh_hans": "年糕汤",
+      "zh_hant": "年糕湯"
+    },
+    "numeric_id": 71,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_071",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_072",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_DAIKON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "七草粥",
+        "COOKING_ID_072"
+      ],
+      "internal": "COOKING_ID_072",
+      "ja": "七草粥",
+      "review_status": "auto",
+      "zh_hans": "七草粥",
+      "zh_hant": "七草粥"
+    },
+    "numeric_id": 72,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_072",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_073",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FISHING_EEL",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_JAPANESE_PEPPER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "鰻鱼饭",
+        "鰻魚飯",
+        "うな重",
+        "COOKING_ID_073"
+      ],
+      "internal": "COOKING_ID_073",
+      "ja": "うな重",
+      "review_status": "auto",
+      "zh_hans": "鰻鱼饭",
+      "zh_hant": "鰻魚飯"
+    },
+    "numeric_id": 73,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_073",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_074",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MAYONNAISE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蘆筍沙拉",
+        "アスパラサラダ",
+        "COOKING_ID_074"
+      ],
+      "internal": "COOKING_ID_074",
+      "ja": "アスパラサラダ",
+      "review_status": "auto",
+      "zh_hans": "蘆筍沙拉",
+      "zh_hant": "蘆筍沙拉"
+    },
+    "numeric_id": 74,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_074",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_075",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_MOCHI",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_KASHIWA_LEAF",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "柏饼",
+        "柏餅",
+        "COOKING_ID_075"
+      ],
+      "internal": "COOKING_ID_075",
+      "ja": "柏餅",
+      "review_status": "auto",
+      "zh_hans": "柏饼",
+      "zh_hant": "柏餅"
+    },
+    "numeric_id": 75,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_075",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_076",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_BAYBERRY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_RASPBERRY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_LOQUAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_AKEBIA",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BUERGER_RASPBERRY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "山中果实拼盤",
+        "山中果實拼盤",
+        "山果実盛り",
+        "COOKING_ID_076"
+      ],
+      "internal": "COOKING_ID_076",
+      "ja": "山果実盛り",
+      "review_status": "auto",
+      "zh_hans": "山中果实拼盤",
+      "zh_hant": "山中果實拼盤"
+    },
+    "numeric_id": 76,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_076",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_077",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHERRIES",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "布丁",
+        "プリン",
+        "COOKING_ID_077"
+      ],
+      "internal": "COOKING_ID_077",
+      "ja": "プリン",
+      "review_status": "auto",
+      "zh_hans": "布丁",
+      "zh_hant": "布丁"
+    },
+    "numeric_id": 77,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_077",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_078",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_WATERMELON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "夏日聖品西瓜",
+        "夏のお供スイカ",
+        "COOKING_ID_078"
+      ],
+      "internal": "COOKING_ID_078",
+      "ja": "夏のお供スイカ",
+      "review_status": "auto",
+      "zh_hans": "夏日聖品西瓜",
+      "zh_hant": "夏日聖品西瓜"
+    },
+    "numeric_id": 78,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_078",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_079",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_MELON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "夢幻甜瓜",
+        "夢いっぱいメロン",
+        "COOKING_ID_079"
+      ],
+      "internal": "COOKING_ID_079",
+      "ja": "夢いっぱいメロン",
+      "review_status": "auto",
+      "zh_hans": "夢幻甜瓜",
+      "zh_hant": "夢幻甜瓜"
+    },
+    "numeric_id": 79,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_079",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_080",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PEACH",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "桃子果凍",
+        "モモゼリー",
+        "COOKING_ID_080"
+      ],
+      "internal": "COOKING_ID_080",
+      "ja": "モモゼリー",
+      "review_status": "auto",
+      "zh_hans": "桃子果凍",
+      "zh_hant": "桃子果凍"
+    },
+    "numeric_id": 80,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_080",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_081",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "莓果奶酪",
+        "ベリーパンナコッタ",
+        "COOKING_ID_081"
+      ],
+      "internal": "COOKING_ID_081",
+      "ja": "ベリーパンナコッタ",
+      "review_status": "auto",
+      "zh_hans": "莓果奶酪",
+      "zh_hant": "莓果奶酪"
+    },
+    "numeric_id": 81,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_081",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_082",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_RASPBERRY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "莓果百匯",
+        "ベリー・ベリーパフェ",
+        "COOKING_ID_082"
+      ],
+      "internal": "COOKING_ID_082",
+      "ja": "ベリー・ベリーパフェ",
+      "review_status": "auto",
+      "zh_hans": "莓果百匯",
+      "zh_hant": "莓果百匯"
+    },
+    "numeric_id": 82,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_082",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_083",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_MANGO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "芒果百匯",
+        "マンゴーパフェ",
+        "COOKING_ID_083"
+      ],
+      "internal": "COOKING_ID_083",
+      "ja": "マンゴーパフェ",
+      "review_status": "auto",
+      "zh_hans": "芒果百匯",
+      "zh_hant": "芒果百匯"
+    },
+    "numeric_id": 83,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_083",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_084",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "quantity": 4
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "草莓蛋糕",
+        "イチゴのケーキ",
+        "COOKING_ID_084"
+      ],
+      "internal": "COOKING_ID_084",
+      "ja": "イチゴのケーキ",
+      "review_status": "auto",
+      "zh_hans": "草莓蛋糕",
+      "zh_hant": "草莓蛋糕"
+    },
+    "numeric_id": 84,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_084",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_085",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_MANGO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PINEAPPLE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PEACH",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "水果蛋糕",
+        "フルーツケーキ",
+        "COOKING_ID_085"
+      ],
+      "internal": "COOKING_ID_085",
+      "ja": "フルーツケーキ",
+      "review_status": "auto",
+      "zh_hans": "水果蛋糕",
+      "zh_hant": "水果蛋糕"
+    },
+    "numeric_id": 85,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_085",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_086",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_OBJECT_CHESTNUT",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蒙布朗",
+        "モンブラン",
+        "COOKING_ID_086"
+      ],
+      "internal": "COOKING_ID_086",
+      "ja": "モンブラン",
+      "review_status": "auto",
+      "zh_hans": "蒙布朗",
+      "zh_hant": "蒙布朗"
+    },
+    "numeric_id": 86,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_086",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_087",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_GRAPES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "葡萄塔",
+        "ブドウのタルト",
+        "COOKING_ID_087"
+      ],
+      "internal": "COOKING_ID_087",
+      "ja": "ブドウのタルト",
+      "review_status": "auto",
+      "zh_hans": "葡萄塔",
+      "zh_hant": "葡萄塔"
+    },
+    "numeric_id": 87,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_087",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_088",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_APPLE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蘋果派",
+        "アップルパイ",
+        "COOKING_ID_088"
+      ],
+      "internal": "COOKING_ID_088",
+      "ja": "アップルパイ",
+      "review_status": "auto",
+      "zh_hans": "蘋果派",
+      "zh_hant": "蘋果派"
+    },
+    "numeric_id": 88,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_088",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_089",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_ORANGE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "牛奶寒天凍",
+        "牛乳寒天",
+        "COOKING_ID_089"
+      ],
+      "internal": "COOKING_ID_089",
+      "ja": "牛乳寒天",
+      "review_status": "auto",
+      "zh_hans": "牛奶寒天凍",
+      "zh_hant": "牛奶寒天凍"
+    },
+    "numeric_id": 89,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_089",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_090",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GOJI_BERRY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "杏仁豆腐",
+        "COOKING_ID_090"
+      ],
+      "internal": "COOKING_ID_090",
+      "ja": "杏仁豆腐",
+      "review_status": "auto",
+      "zh_hans": "杏仁豆腐",
+      "zh_hant": "杏仁豆腐"
+    },
+    "numeric_id": 90,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_090",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_091",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CACAO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ORANGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "綜合巧克力",
+        "チョコレートアソート",
+        "COOKING_ID_091"
+      ],
+      "internal": "COOKING_ID_091",
+      "ja": "チョコレートアソート",
+      "review_status": "auto",
+      "zh_hans": "綜合巧克力",
+      "zh_hant": "綜合巧克力"
+    },
+    "numeric_id": 91,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_091",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_092",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PERSIMMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_WINE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "柿子蜜餞",
+        "カキのコンポート",
+        "COOKING_ID_092"
+      ],
+      "internal": "COOKING_ID_092",
+      "ja": "カキのコンポート",
+      "review_status": "auto",
+      "zh_hans": "柿子蜜餞",
+      "zh_hant": "柿子蜜餞"
+    },
+    "numeric_id": 92,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_092",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_093",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_HONEY",
+        "quantity": 2
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蜂蜜渍檸檬",
+        "蜂蜜漬檸檬",
+        "レモンのはちみつ漬け",
+        "COOKING_ID_093"
+      ],
+      "internal": "COOKING_ID_093",
+      "ja": "レモンのはちみつ漬け",
+      "review_status": "auto",
+      "zh_hans": "蜂蜜渍檸檬",
+      "zh_hant": "蜂蜜漬檸檬"
+    },
+    "numeric_id": 93,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_093",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_094",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "檸檬蛋糕",
+        "レモンケーキ",
+        "COOKING_ID_094"
+      ],
+      "internal": "COOKING_ID_094",
+      "ja": "レモンケーキ",
+      "review_status": "auto",
+      "zh_hans": "檸檬蛋糕",
+      "zh_hant": "檸檬蛋糕"
+    },
+    "numeric_id": 94,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_094",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_095",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CACAO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "古典巧克力蛋糕",
+        "ガトーショコラ",
+        "COOKING_ID_095"
+      ],
+      "internal": "COOKING_ID_095",
+      "ja": "ガトーショコラ",
+      "review_status": "auto",
+      "zh_hans": "古典巧克力蛋糕",
+      "zh_hant": "古典巧克力蛋糕"
+    },
+    "numeric_id": 95,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_095",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_096",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "地瓜甜点",
+        "地瓜甜點",
+        "スイートポテト",
+        "COOKING_ID_096"
+      ],
+      "internal": "COOKING_ID_096",
+      "ja": "スイートポテト",
+      "review_status": "auto",
+      "zh_hans": "地瓜甜点",
+      "zh_hant": "地瓜甜點"
+    },
+    "numeric_id": 96,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_096",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_097",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 3
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FRESH_CREAM",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "茶香冰淇淋",
+        "お茶アイス",
+        "COOKING_ID_097"
+      ],
+      "internal": "COOKING_ID_097",
+      "ja": "お茶アイス",
+      "review_status": "auto",
+      "zh_hans": "茶香冰淇淋",
+      "zh_hant": "茶香冰淇淋"
+    },
+    "numeric_id": 97,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_097",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_098",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_BANANA",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_YOGURT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "香蕉優格",
+        "バナナヨーグルト",
+        "COOKING_ID_098"
+      ],
+      "internal": "COOKING_ID_098",
+      "ja": "バナナヨーグルト",
+      "review_status": "auto",
+      "zh_hans": "香蕉優格",
+      "zh_hant": "香蕉優格"
+    },
+    "numeric_id": 98,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_098",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_099",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_CACAO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_BANANA",
+        "quantity": 2
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "巧克力香蕉",
+        "チョコバナナ",
+        "COOKING_ID_099"
+      ],
+      "internal": "COOKING_ID_099",
+      "ja": "チョコバナナ",
+      "review_status": "auto",
+      "zh_hans": "巧克力香蕉",
+      "zh_hant": "巧克力香蕉"
+    },
+    "numeric_id": 99,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_099",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_100",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_BUTTER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "下午茶套組",
+        "ティーセット",
+        "COOKING_ID_100"
+      ],
+      "internal": "COOKING_ID_100",
+      "ja": "ティーセット",
+      "review_status": "auto",
+      "zh_hans": "下午茶套組",
+      "zh_hant": "下午茶套組"
+    },
+    "numeric_id": 100,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_100",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_101",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "绿茶套組",
+        "綠茶套組",
+        "緑茶セット",
+        "COOKING_ID_101"
+      ],
+      "internal": "COOKING_ID_101",
+      "ja": "緑茶セット",
+      "review_status": "auto",
+      "zh_hans": "绿茶套組",
+      "zh_hant": "綠茶套組"
+    },
+    "numeric_id": 101,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_101",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_102",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HONEY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烏龍茶套組",
+        "烏龍茶セット",
+        "COOKING_ID_102"
+      ],
+      "internal": "COOKING_ID_102",
+      "ja": "烏龍茶セット",
+      "review_status": "auto",
+      "zh_hans": "烏龍茶套組",
+      "zh_hant": "烏龍茶套組"
+    },
+    "numeric_id": 102,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_102",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_103",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CACAO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "焙茶套組",
+        "ほうじ茶セット",
+        "COOKING_ID_103"
+      ],
+      "internal": "COOKING_ID_103",
+      "ja": "ほうじ茶セット",
+      "review_status": "auto",
+      "zh_hans": "焙茶套組",
+      "zh_hant": "焙茶套組"
+    },
+    "numeric_id": 103,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_103",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_104",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_MATCHA",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHERRIES",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ORANGE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "抹茶套組",
+        "抹茶セット",
+        "COOKING_ID_104"
+      ],
+      "internal": "COOKING_ID_104",
+      "ja": "抹茶セット",
+      "review_status": "auto",
+      "zh_hans": "抹茶套組",
+      "zh_hant": "抹茶套組"
+    },
+    "numeric_id": 104,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_104",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_105",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_PEACH",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_APPLE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_BANANA",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_YOGURT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "綜合果汁",
+        "ミックスジュース",
+        "COOKING_ID_105"
+      ],
+      "internal": "COOKING_ID_105",
+      "ja": "ミックスジュース",
+      "review_status": "auto",
+      "zh_hans": "綜合果汁",
+      "zh_hant": "綜合果汁"
+    },
+    "numeric_id": 105,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_105",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_107",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 2
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "盐味饭糰",
+        "鹽味飯糰",
+        "塩むすび",
+        "COOKING_ID_107"
+      ],
+      "internal": "COOKING_ID_107",
+      "ja": "塩むすび",
+      "review_status": "auto",
+      "zh_hans": "盐味饭糰",
+      "zh_hant": "鹽味飯糰"
+    },
+    "numeric_id": 106,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_107",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_108",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_SALMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_GOLD_INGOT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "金粉散壽司",
+        "金粉ちらし寿司",
+        "COOKING_ID_108"
+      ],
+      "internal": "COOKING_ID_108",
+      "ja": "金粉ちらし寿司",
+      "review_status": "auto",
+      "zh_hans": "金粉散壽司",
+      "zh_hant": "金粉散壽司"
+    },
+    "numeric_id": 107,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_108",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_109",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "酱油布丁",
+        "醬油布丁",
+        "醤油プリン",
+        "COOKING_ID_109"
+      ],
+      "internal": "COOKING_ID_109",
+      "ja": "醤油プリン",
+      "review_status": "auto",
+      "zh_hans": "酱油布丁",
+      "zh_hant": "醬油布丁"
+    },
+    "numeric_id": 108,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_109",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_110",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "珍珠奶茶",
+        "タピオカミルクティー",
+        "COOKING_ID_110"
+      ],
+      "internal": "COOKING_ID_110",
+      "ja": "タピオカミルクティー",
+      "review_status": "auto",
+      "zh_hans": "珍珠奶茶",
+      "zh_hant": "珍珠奶茶"
+    },
+    "numeric_id": 109,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_110",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_111",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_SALMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_TOFU",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_MISO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "烤鮭鱼定食",
+        "烤鮭魚定食",
+        "焼き鮭定食",
+        "COOKING_ID_111"
+      ],
+      "internal": "COOKING_ID_111",
+      "ja": "焼き鮭定食",
+      "review_status": "auto",
+      "zh_hans": "烤鮭鱼定食",
+      "zh_hant": "烤鮭魚定食"
+    },
+    "numeric_id": 110,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_111",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_112",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_TOFU",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "牛肉豆腐汤",
+        "牛肉豆腐湯",
+        "肉吸い豆腐",
+        "COOKING_ID_112"
+      ],
+      "internal": "COOKING_ID_112",
+      "ja": "肉吸い豆腐",
+      "review_status": "auto",
+      "zh_hans": "牛肉豆腐汤",
+      "zh_hant": "牛肉豆腐湯"
+    },
+    "numeric_id": 111,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_112",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_113",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "马鈴薯麻糬",
+        "馬鈴薯麻糬",
+        "いももち",
+        "COOKING_ID_113"
+      ],
+      "internal": "COOKING_ID_113",
+      "ja": "いももち",
+      "review_status": "auto",
+      "zh_hans": "马鈴薯麻糬",
+      "zh_hant": "馬鈴薯麻糬"
+    },
+    "numeric_id": 112,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_113",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_114",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LETTUCE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "炸肉饼",
+        "炸肉餅",
+        "メンチカツ",
+        "COOKING_ID_114"
+      ],
+      "internal": "COOKING_ID_114",
+      "ja": "メンチカツ",
+      "review_status": "auto",
+      "zh_hans": "炸肉饼",
+      "zh_hant": "炸肉餅"
+    },
+    "numeric_id": 113,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_114",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_115",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HONEY",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "檸檬水",
+        "レモネード",
+        "COOKING_ID_115"
+      ],
+      "internal": "COOKING_ID_115",
+      "ja": "レモネード",
+      "review_status": "auto",
+      "zh_hans": "檸檬水",
+      "zh_hant": "檸檬水"
+    },
+    "numeric_id": 114,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_115",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_116",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SALT",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "油炸小鱼",
+        "油炸小魚",
+        "小魚の唐揚げ",
+        "COOKING_ID_116"
+      ],
+      "internal": "COOKING_ID_116",
+      "ja": "小魚の唐揚げ",
+      "review_status": "auto",
+      "zh_hans": "油炸小鱼",
+      "zh_hant": "油炸小魚"
+    },
+    "numeric_id": 115,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_116",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_117",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_FLOUR",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "quantity": 2
+      },
+      {
+        "item_id": "ITEM_ID_SOY_SAUCE",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "日式炒面",
+        "日式炒麵",
+        "焼きそば",
+        "COOKING_ID_117"
+      ],
+      "internal": "COOKING_ID_117",
+      "ja": "焼きそば",
+      "review_status": "auto",
+      "zh_hans": "日式炒面",
+      "zh_hant": "日式炒麵"
+    },
+    "numeric_id": 116,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_117",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_118",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_CROPS_APPLE",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 4
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "蘋果糖",
+        "リンゴ飴",
+        "COOKING_ID_118"
+      ],
+      "internal": "COOKING_ID_118",
+      "ja": "リンゴ飴",
+      "review_status": "auto",
+      "zh_hans": "蘋果糖",
+      "zh_hant": "蘋果糖"
+    },
+    "numeric_id": 117,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_118",
+      "quantity": 1
+    }
+  },
+  {
+    "id": "COOKING_ID_119",
+    "inputs": [
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_SUGER",
+        "quantity": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CHERRIES",
+        "quantity": 1
+      }
+    ],
+    "machine_id": null,
+    "name": {
+      "aliases": [
+        "冰淇淋蘇打",
+        "ソーダフロート",
+        "COOKING_ID_119"
+      ],
+      "internal": "COOKING_ID_119",
+      "ja": "ソーダフロート",
+      "review_status": "auto",
+      "zh_hans": "冰淇淋蘇打",
+      "zh_hant": "冰淇淋蘇打"
+    },
+    "numeric_id": 118,
+    "output": {
+      "item_id": "ITEM_ID_COOKING_119",
+      "quantity": 1
+    }
+  }
+]

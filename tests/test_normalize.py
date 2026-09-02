@@ -40,6 +40,7 @@ def test_normalizes_crop_seed_and_processing_relationships():
         _localized_group("ITEM_ID_MACHINE_PICKLE", "漬物樽", "醃漬桶"),
         _localized_group("ITEM_ID_PICKLED_ONION", "タマネギの漬物", "醃洋蔥"),
         _localized_group("ITEM_ID_LIVESTOCK_CHICKEN", "ニワトリ", "雞"),
+        _localized_group("ITEM_ID_COOKING_ONION_SOUP", "オニオンスープ", "洋蔥湯"),
     ]
     starts = []
     cursor = 0
@@ -63,6 +64,7 @@ def test_normalizes_crop_seed_and_processing_relationships():
         _record(496, {0: 400000, 8: starts[2], 12: 22, 296: 37}),
         _record(496, {0: 200010, 8: starts[3], 12: 21, 296: 83}),
         _record(496, {0: 900000, 8: starts[4], 12: 25, 356: 1}),
+        _record(496, {0: 60000, 8: starts[5], 12: 26, 296: 120}),
     ]
     crop_group = _localized_group("CROPS_ID_ONION", "タマネギ", "洋蔥")
     crop_record = _record(488, {0: 1, 8: 0, 12: 14})
@@ -87,6 +89,10 @@ def test_normalizes_crop_seed_and_processing_relationships():
     gimmick_record = _record(
         96, {0: 240010000, 8: 0, 12: 22, 48: 400000}
     )
+    cooking_group = ("COOKING_ID_ONION_SOUP\0オニオンスープ\0").encode()
+    cooking_record = _record(
+        176, {0: 13, 8: 0, 12: 21, 24: 60000, 32: 1, 52: 100010, 68: 2}
+    )
     tables = {
         "item": read_table(
             build_table(records=item_records, strings=b"".join(item_groups))
@@ -97,6 +103,9 @@ def test_normalizes_crop_seed_and_processing_relationships():
         ),
         "gimmick": read_table(
             build_table(records=[gimmick_record], strings=gimmick_group)
+        ),
+        "cooking": read_table(
+            build_table(records=[cooking_record], strings=cooking_group)
         ),
     }
 
@@ -111,3 +120,4 @@ def test_normalizes_crop_seed_and_processing_relationships():
     assert process.output.item_id == "ITEM_ID_PICKLED_ONION"
     assert process.duration_minutes == 1380
     assert process.name.zh_hans == "腌洋葱"
+    assert snapshot.cooking_recipes["COOKING_ID_ONION_SOUP"].name.zh_hans == "洋葱汤"

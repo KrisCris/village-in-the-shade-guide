@@ -1,11 +1,18 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+from dataclasses import asdict
+from importlib.metadata import version
 from collections.abc import Sequence
 from pathlib import Path
 
 from .archive import FafullfsArchive
+from .audit import audit_snapshot
+from .diff import diff_snapshots
+from .manifest import Provenance, write_snapshot
+from .normalize import normalize_snapshot
 from .probe import build_probe
 from .schema import SchemaError, load_schema_file, verify_schema_evidence
 from .table import read_table
@@ -17,7 +24,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     extract = subcommands.add_parser("extract", help="extract a normalized snapshot")
     extract.add_argument("--game-dir", type=Path, required=True)
+    extract.add_argument("--build-id", required=True)
     extract.add_argument("--output", type=Path, required=True)
+    extract.add_argument("--schema-dir", type=Path, default=Path("data/schemas"))
+    extract.add_argument(
+        "--overrides",
+        type=Path,
+        default=Path("data/localization/zh-hans-overrides.json"),
+    )
 
     diff = subcommands.add_parser("diff", help="compare two normalized snapshots")
     diff.add_argument("before", type=Path)
@@ -48,12 +62,59 @@ def build_parser() -> argparse.ArgumentParser:
     verify_schemas.add_argument("--build-id", required=True)
     verify_schemas.add_argument("--schema-dir", type=Path, default=Path("data/schemas"))
 
+    audit = subcommands.add_parser("audit", help="validate a generated snapshot")
+    audit.add_argument("snapshot", type=Path)
+
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.command == "inspect-archive":
+    if args.command == "extract":
+        archive_path = args.game_dir / "data.dat"
+        archive = FafullfsArchive.open(archive_path)
+        table_names = (
+            "item",
+            "crops",
+            "craft",
+            "cooking",
+            "storesales",
+            "gimmickprocess",
+            "gimmick",
+        )
+        raw_tables = {
+            name: archive.read_entry(f"data/database/{name}.dat")
+            for name in table_names
+        }
+        tables = {name: read_table(data) for name, data in raw_tables.items()}
+        schema_root = args.schema_dir / f"build-{args.build_id}"
+        schemas = {
+            name: load_schema_file(schema_root / f"{name}.json")
+            for name in table_names
+            if (schema_root / f"{name}.json").exists()
+        }
+        overrides = json.loads(args.overrides.read_text(encoding="utf-8"))
+        snapshot = normalize_snapshot(tables, schemas, overrides)
+        with archive_path.open("rb") as stream:
+            archive_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+        provenance = Provenance(
+            app_id=3934250,
+            build_id=args.build_id,
+            archive_sha256=archive_hash,
+            table_sha256={
+                name: hashlib.sha256(data).hexdigest()
+                for name, data in raw_tables.items()
+            },
+            extractor_version=version("honogurashi-extractor"),
+        )
+        write_snapshot(snapshot, args.output, provenance)
+        print(f"wrote={args.output} entities={sum(len(getattr(snapshot, name)) for name in ('items', 'crops', 'machines', 'processes', 'craft_recipes', 'cooking_recipes', 'store_offers'))}")
+    elif args.command == "diff":
+        print(json.dumps(asdict(diff_snapshots(args.before, args.after)), ensure_ascii=False, indent=2))
+    elif args.command == "audit":
+        counts = audit_snapshot(args.snapshot)
+        print("ok " + " ".join(f"{name}={count}" for name, count in sorted(counts.items())))
+    elif args.command == "inspect-archive":
         archive = FafullfsArchive.open(args.game_dir / "data.dat")
         print(f"entries={len(archive.entries())}")
         for entry in archive.entries():

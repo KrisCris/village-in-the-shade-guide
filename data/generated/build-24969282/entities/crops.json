@@ -1,0 +1,3683 @@
+[
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_APPLE"
+    ],
+    "id": "CROPS_ID_APPLE_TREE",
+    "name": {
+      "aliases": [
+        "苹果树",
+        "蘋果樹",
+        "リンゴの木",
+        "CROPS_ID_APPLE_TREE"
+      ],
+      "internal": "CROPS_ID_APPLE_TREE",
+      "ja": "リンゴの木",
+      "review_status": "override",
+      "zh_hans": "苹果树",
+      "zh_hant": "蘋果樹"
+    },
+    "numeric_id": 100,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_APPLE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ASPARAGUS"
+    ],
+    "id": "CROPS_ID_ASPARAGUS",
+    "name": {
+      "aliases": [
+        "芦笋",
+        "蘆筍",
+        "アスパラガス",
+        "CROPS_ID_ASPARAGUS"
+      ],
+      "internal": "CROPS_ID_ASPARAGUS",
+      "ja": "アスパラガス",
+      "review_status": "override",
+      "zh_hans": "芦笋",
+      "zh_hant": "蘆筍"
+    },
+    "numeric_id": 17,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ASPARAGUS"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BANANA"
+    ],
+    "id": "CROPS_ID_BANANA_TREE",
+    "name": {
+      "aliases": [
+        "香蕉树",
+        "香蕉樹",
+        "バナナの木",
+        "CROPS_ID_BANANA_TREE"
+      ],
+      "internal": "CROPS_ID_BANANA_TREE",
+      "ja": "バナナの木",
+      "review_status": "override",
+      "zh_hans": "香蕉树",
+      "zh_hant": "香蕉樹"
+    },
+    "numeric_id": 111,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BANANA"
+    ]
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_BIG_CHINESE_CABBAGE",
+    "name": {
+      "aliases": [
+        "巨大作物_大白菜",
+        "巨大作物_ハクサイ",
+        "CROPS_ID_BIG_CHINESE_CABBAGE"
+      ],
+      "internal": "CROPS_ID_BIG_CHINESE_CABBAGE",
+      "ja": "巨大作物_ハクサイ",
+      "review_status": "override",
+      "zh_hans": "巨大作物_大白菜",
+      "zh_hant": "巨大作物_大白菜"
+    },
+    "numeric_id": 603,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_BIG_CORN",
+    "name": {
+      "aliases": [
+        "巨大作物_玉米",
+        "巨大作物_トウモロコシ",
+        "CROPS_ID_BIG_CORN"
+      ],
+      "internal": "CROPS_ID_BIG_CORN",
+      "ja": "巨大作物_トウモロコシ",
+      "review_status": "override",
+      "zh_hans": "巨大作物_玉米",
+      "zh_hant": "巨大作物_玉米"
+    },
+    "numeric_id": 601,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_BIG_TARO",
+    "name": {
+      "aliases": [
+        "巨大作物_芋头",
+        "巨大作物_芋頭",
+        "巨大作物_サトイモ",
+        "CROPS_ID_BIG_TARO"
+      ],
+      "internal": "CROPS_ID_BIG_TARO",
+      "ja": "巨大作物_サトイモ",
+      "review_status": "override",
+      "zh_hans": "巨大作物_芋头",
+      "zh_hant": "巨大作物_芋頭"
+    },
+    "numeric_id": 602,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_BIG_TURNIP",
+    "name": {
+      "aliases": [
+        "巨大作物_大头菜",
+        "巨大作物_大頭菜",
+        "巨大作物_カブ",
+        "CROPS_ID_BIG_TURNIP"
+      ],
+      "internal": "CROPS_ID_BIG_TURNIP",
+      "ja": "巨大作物_カブ",
+      "review_status": "override",
+      "zh_hans": "巨大作物_大头菜",
+      "zh_hant": "巨大作物_大頭菜"
+    },
+    "numeric_id": 600,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BLUEBERRY"
+    ],
+    "id": "CROPS_ID_BLUEBERRY",
+    "name": {
+      "aliases": [
+        "蓝莓",
+        "藍莓",
+        "ブルーベリー",
+        "CROPS_ID_BLUEBERRY"
+      ],
+      "internal": "CROPS_ID_BLUEBERRY",
+      "ja": "ブルーベリー",
+      "review_status": "override",
+      "zh_hans": "蓝莓",
+      "zh_hant": "藍莓"
+    },
+    "numeric_id": 35,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BLUEBERRY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BUCKWHEAT"
+    ],
+    "id": "CROPS_ID_BUCKWHEAT",
+    "name": {
+      "aliases": [
+        "荞麦",
+        "蕎麥",
+        "ソバ",
+        "CROPS_ID_BUCKWHEAT"
+      ],
+      "internal": "CROPS_ID_BUCKWHEAT",
+      "ja": "ソバ",
+      "review_status": "override",
+      "zh_hans": "荞麦",
+      "zh_hant": "蕎麥"
+    },
+    "numeric_id": 45,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BUCKWHEAT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CABBAGE"
+    ],
+    "id": "CROPS_ID_CABBAGE",
+    "name": {
+      "aliases": [
+        "高丽菜",
+        "高麗菜",
+        "キャベツ",
+        "CROPS_ID_CABBAGE"
+      ],
+      "internal": "CROPS_ID_CABBAGE",
+      "ja": "キャベツ",
+      "review_status": "override",
+      "zh_hans": "高丽菜",
+      "zh_hant": "高麗菜"
+    },
+    "numeric_id": 2,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CABBAGE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CACAO"
+    ],
+    "id": "CROPS_ID_CACAO_TREE",
+    "name": {
+      "aliases": [
+        "可可树",
+        "可可樹",
+        "カカオの木",
+        "CROPS_ID_CACAO_TREE"
+      ],
+      "internal": "CROPS_ID_CACAO_TREE",
+      "ja": "カカオの木",
+      "review_status": "override",
+      "zh_hans": "可可树",
+      "zh_hant": "可可樹"
+    },
+    "numeric_id": 112,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CACAO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CARNATION"
+    ],
+    "id": "CROPS_ID_CARNATION",
+    "name": {
+      "aliases": [
+        "康乃馨",
+        "カーネーション",
+        "CROPS_ID_CARNATION"
+      ],
+      "internal": "CROPS_ID_CARNATION",
+      "ja": "カーネーション",
+      "review_status": "override",
+      "zh_hans": "康乃馨",
+      "zh_hant": "康乃馨"
+    },
+    "numeric_id": 8,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CARNATION"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CARROT"
+    ],
+    "id": "CROPS_ID_CARROT",
+    "name": {
+      "aliases": [
+        "红萝卜",
+        "紅蘿蔔",
+        "ニンジン",
+        "CROPS_ID_CARROT"
+      ],
+      "internal": "CROPS_ID_CARROT",
+      "ja": "ニンジン",
+      "review_status": "override",
+      "zh_hans": "红萝卜",
+      "zh_hant": "紅蘿蔔"
+    },
+    "numeric_id": 11,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CARROT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHAMOMILE"
+    ],
+    "id": "CROPS_ID_CHAMOMILE",
+    "name": {
+      "aliases": [
+        "洋甘菊",
+        "カモミール",
+        "CROPS_ID_CHAMOMILE"
+      ],
+      "internal": "CROPS_ID_CHAMOMILE",
+      "ja": "カモミール",
+      "review_status": "override",
+      "zh_hans": "洋甘菊",
+      "zh_hant": "洋甘菊"
+    },
+    "numeric_id": 6,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHAMOMILE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHERRIES"
+    ],
+    "id": "CROPS_ID_CHERRY_TREE",
+    "name": {
+      "aliases": [
+        "樱桃树",
+        "櫻桃樹",
+        "サクランボの木",
+        "CROPS_ID_CHERRY_TREE"
+      ],
+      "internal": "CROPS_ID_CHERRY_TREE",
+      "ja": "サクランボの木",
+      "review_status": "override",
+      "zh_hans": "樱桃树",
+      "zh_hant": "櫻桃樹"
+    },
+    "numeric_id": 101,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHERRIES"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHINESE_CABBAGE"
+    ],
+    "id": "CROPS_ID_CHINESE_CABBAGE",
+    "name": {
+      "aliases": [
+        "大白菜",
+        "ハクサイ",
+        "CROPS_ID_CHINESE_CABBAGE"
+      ],
+      "internal": "CROPS_ID_CHINESE_CABBAGE",
+      "ja": "ハクサイ",
+      "review_status": "override",
+      "zh_hans": "大白菜",
+      "zh_hant": "大白菜"
+    },
+    "numeric_id": 61,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHINESE_CABBAGE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHRYSANTHEMUM"
+    ],
+    "id": "CROPS_ID_CHRYSANTHEMUM",
+    "name": {
+      "aliases": [
+        "菊花",
+        "キク",
+        "CROPS_ID_CHRYSANTHEMUM"
+      ],
+      "internal": "CROPS_ID_CHRYSANTHEMUM",
+      "ja": "キク",
+      "review_status": "override",
+      "zh_hans": "菊花",
+      "zh_hant": "菊花"
+    },
+    "numeric_id": 51,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHRYSANTHEMUM"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CORN"
+    ],
+    "id": "CROPS_ID_CORN",
+    "name": {
+      "aliases": [
+        "玉米",
+        "トウモロコシ",
+        "CROPS_ID_CORN"
+      ],
+      "internal": "CROPS_ID_CORN",
+      "ja": "トウモロコシ",
+      "review_status": "override",
+      "zh_hans": "玉米",
+      "zh_hant": "玉米"
+    },
+    "numeric_id": 25,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CORN"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_COSMOS"
+    ],
+    "id": "CROPS_ID_COSMOS",
+    "name": {
+      "aliases": [
+        "波斯菊",
+        "コスモス",
+        "CROPS_ID_COSMOS"
+      ],
+      "internal": "CROPS_ID_COSMOS",
+      "ja": "コスモス",
+      "review_status": "override",
+      "zh_hans": "波斯菊",
+      "zh_hant": "波斯菊"
+    },
+    "numeric_id": 50,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_COSMOS"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CUCUMBER"
+    ],
+    "id": "CROPS_ID_CUCUMBER",
+    "name": {
+      "aliases": [
+        "小黄瓜",
+        "小黃瓜",
+        "キュウリ",
+        "CROPS_ID_CUCUMBER"
+      ],
+      "internal": "CROPS_ID_CUCUMBER",
+      "ja": "キュウリ",
+      "review_status": "override",
+      "zh_hans": "小黄瓜",
+      "zh_hant": "小黃瓜"
+    },
+    "numeric_id": 24,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CUCUMBER"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAFFODIL"
+    ],
+    "id": "CROPS_ID_DAFFODIL",
+    "name": {
+      "aliases": [
+        "水仙",
+        "スイセン",
+        "CROPS_ID_DAFFODIL"
+      ],
+      "internal": "CROPS_ID_DAFFODIL",
+      "ja": "スイセン",
+      "review_status": "override",
+      "zh_hans": "水仙",
+      "zh_hant": "水仙"
+    },
+    "numeric_id": 62,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DAFFODIL"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAHLIA"
+    ],
+    "id": "CROPS_ID_DAHLIA",
+    "name": {
+      "aliases": [
+        "大理花",
+        "ダリア",
+        "CROPS_ID_DAHLIA"
+      ],
+      "internal": "CROPS_ID_DAHLIA",
+      "ja": "ダリア",
+      "review_status": "override",
+      "zh_hans": "大理花",
+      "zh_hant": "大理花"
+    },
+    "numeric_id": 54,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DAHLIA"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAIKON"
+    ],
+    "id": "CROPS_ID_DAIKON",
+    "name": {
+      "aliases": [
+        "白萝卜",
+        "白蘿蔔",
+        "ダイコン",
+        "CROPS_ID_DAIKON"
+      ],
+      "internal": "CROPS_ID_DAIKON",
+      "ja": "ダイコン",
+      "review_status": "override",
+      "zh_hans": "白萝卜",
+      "zh_hant": "白蘿蔔"
+    },
+    "numeric_id": 57,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_JAPANESE_WHITE_RADISH"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DIANTHUS"
+    ],
+    "id": "CROPS_ID_DIANTHUS",
+    "name": {
+      "aliases": [
+        "瞿麦",
+        "瞿麥",
+        "なでしこ",
+        "CROPS_ID_DIANTHUS"
+      ],
+      "internal": "CROPS_ID_DIANTHUS",
+      "ja": "なでしこ",
+      "review_status": "override",
+      "zh_hans": "瞿麦",
+      "zh_hant": "瞿麥"
+    },
+    "numeric_id": 15,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DIANTHUS"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_EDAMAME"
+    ],
+    "id": "CROPS_ID_EDAMAME",
+    "name": {
+      "aliases": [
+        "毛豆",
+        "エダマメ",
+        "CROPS_ID_EDAMAME"
+      ],
+      "internal": "CROPS_ID_EDAMAME",
+      "ja": "エダマメ",
+      "review_status": "override",
+      "zh_hans": "毛豆",
+      "zh_hant": "毛豆"
+    },
+    "numeric_id": 34,
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_EDAMAME"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_EGGPLANT"
+    ],
+    "id": "CROPS_ID_EGGPLANT",
+    "name": {
+      "aliases": [
+        "茄子",
+        "ナス",
+        "CROPS_ID_EGGPLANT"
+      ],
+      "internal": "CROPS_ID_EGGPLANT",
+      "ja": "ナス",
+      "review_status": "override",
+      "zh_hans": "茄子",
+      "zh_hant": "茄子"
+    },
+    "numeric_id": 22,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_EGGPLANT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_FORGET_ME_NOT"
+    ],
+    "id": "CROPS_ID_FORGET_ME_NOT",
+    "name": {
+      "aliases": [
+        "勿忘我",
+        "勿忘草",
+        "CROPS_ID_FORGET_ME_NOT"
+      ],
+      "internal": "CROPS_ID_FORGET_ME_NOT",
+      "ja": "勿忘草",
+      "review_status": "override",
+      "zh_hans": "勿忘我",
+      "zh_hant": "勿忘我"
+    },
+    "numeric_id": 16,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_FORGET_ME_NOT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GARLIC"
+    ],
+    "id": "CROPS_ID_GARLIC",
+    "name": {
+      "aliases": [
+        "大蒜",
+        "ニンニク",
+        "CROPS_ID_GARLIC"
+      ],
+      "internal": "CROPS_ID_GARLIC",
+      "ja": "ニンニク",
+      "review_status": "override",
+      "zh_hans": "大蒜",
+      "zh_hant": "大蒜"
+    },
+    "numeric_id": 43,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GARLIC"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GINGER"
+    ],
+    "id": "CROPS_ID_GINGER",
+    "name": {
+      "aliases": [
+        "姜",
+        "薑",
+        "ショウガ",
+        "CROPS_ID_GINGER"
+      ],
+      "internal": "CROPS_ID_GINGER",
+      "ja": "ショウガ",
+      "review_status": "override",
+      "zh_hans": "姜",
+      "zh_hant": "薑"
+    },
+    "numeric_id": 33,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GINGER"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GRAPES"
+    ],
+    "id": "CROPS_ID_GRAPE_TREE",
+    "name": {
+      "aliases": [
+        "葡萄树",
+        "葡萄樹",
+        "ブドウの木",
+        "CROPS_ID_GRAPE_TREE"
+      ],
+      "internal": "CROPS_ID_GRAPE_TREE",
+      "ja": "ブドウの木",
+      "review_status": "override",
+      "zh_hans": "葡萄树",
+      "zh_hant": "葡萄樹"
+    },
+    "numeric_id": 109,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GRAPES"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GYPSOPHILA"
+    ],
+    "id": "CROPS_ID_GYPSOPHILA",
+    "name": {
+      "aliases": [
+        "满天星",
+        "滿天星",
+        "カスミソウ",
+        "CROPS_ID_GYPSOPHILA"
+      ],
+      "internal": "CROPS_ID_GYPSOPHILA",
+      "ja": "カスミソウ",
+      "review_status": "override",
+      "zh_hans": "满天星",
+      "zh_hant": "滿天星"
+    },
+    "numeric_id": 37,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GYPSOPHILA"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HIBISCUS"
+    ],
+    "id": "CROPS_ID_HIBISCUS",
+    "name": {
+      "aliases": [
+        "木槿",
+        "ハイビスカス",
+        "CROPS_ID_HIBISCUS"
+      ],
+      "internal": "CROPS_ID_HIBISCUS",
+      "ja": "ハイビスカス",
+      "review_status": "override",
+      "zh_hans": "木槿",
+      "zh_hant": "木槿"
+    },
+    "numeric_id": 39,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HIBISCUS"
+    ]
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_HIDING_GRASS",
+    "name": {
+      "aliases": [
+        "除魔南天竹",
+        "魔除けナンテン",
+        "CROPS_ID_HIDING_GRASS"
+      ],
+      "internal": "CROPS_ID_HIDING_GRASS",
+      "ja": "魔除けナンテン",
+      "review_status": "override",
+      "zh_hans": "除魔南天竹",
+      "zh_hant": "除魔南天竹"
+    },
+    "numeric_id": 510,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HOPS"
+    ],
+    "id": "CROPS_ID_HOPS",
+    "name": {
+      "aliases": [
+        "啤酒花",
+        "ホップ",
+        "CROPS_ID_HOPS"
+      ],
+      "internal": "CROPS_ID_HOPS",
+      "ja": "ホップ",
+      "review_status": "override",
+      "zh_hans": "啤酒花",
+      "zh_hant": "啤酒花"
+    },
+    "numeric_id": 36,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HOPS"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HYACINTH"
+    ],
+    "id": "CROPS_ID_HYACINTH",
+    "name": {
+      "aliases": [
+        "风信子",
+        "風信子",
+        "ヒヤシンス",
+        "CROPS_ID_HYACINTH"
+      ],
+      "internal": "CROPS_ID_HYACINTH",
+      "ja": "ヒヤシンス",
+      "review_status": "override",
+      "zh_hans": "风信子",
+      "zh_hant": "風信子"
+    },
+    "numeric_id": 13,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HYACINTH"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_IRIS"
+    ],
+    "id": "CROPS_ID_IRIS",
+    "name": {
+      "aliases": [
+        "鸢尾花",
+        "鳶尾花",
+        "アヤメ",
+        "CROPS_ID_IRIS"
+      ],
+      "internal": "CROPS_ID_IRIS",
+      "ja": "アヤメ",
+      "review_status": "override",
+      "zh_hans": "鸢尾花",
+      "zh_hant": "鳶尾花"
+    },
+    "numeric_id": 19,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_IRIS"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
+    ],
+    "id": "CROPS_ID_KIKURAGE",
+    "name": {
+      "aliases": [
+        "木耳",
+        "キクラゲ",
+        "CROPS_ID_KIKURAGE"
+      ],
+      "internal": "CROPS_ID_KIKURAGE",
+      "ja": "キクラゲ",
+      "review_status": "override",
+      "zh_hans": "木耳",
+      "zh_hant": "木耳"
+    },
+    "numeric_id": 56,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WOOD_EAR_MUSHROOM"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LAVENDER"
+    ],
+    "id": "CROPS_ID_LAVENDER",
+    "name": {
+      "aliases": [
+        "薰衣草",
+        "ラベンダー",
+        "CROPS_ID_LAVENDER"
+      ],
+      "internal": "CROPS_ID_LAVENDER",
+      "ja": "ラベンダー",
+      "review_status": "override",
+      "zh_hans": "薰衣草",
+      "zh_hant": "薰衣草"
+    },
+    "numeric_id": 31,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LAVENDER"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LEMON"
+    ],
+    "id": "CROPS_ID_LEMON_TREE",
+    "name": {
+      "aliases": [
+        "柠檬树",
+        "檸檬樹",
+        "レモンの木",
+        "CROPS_ID_LEMON_TREE"
+      ],
+      "internal": "CROPS_ID_LEMON_TREE",
+      "ja": "レモンの木",
+      "review_status": "override",
+      "zh_hans": "柠檬树",
+      "zh_hant": "檸檬樹"
+    },
+    "numeric_id": 105,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LEMON"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LETTUCE"
+    ],
+    "id": "CROPS_ID_LETTUCE",
+    "name": {
+      "aliases": [
+        "莴苣",
+        "萵苣",
+        "レタス",
+        "CROPS_ID_LETTUCE"
+      ],
+      "internal": "CROPS_ID_LETTUCE",
+      "ja": "レタス",
+      "review_status": "override",
+      "zh_hans": "莴苣",
+      "zh_hant": "萵苣"
+    },
+    "numeric_id": 10,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LETTUCE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
+    ],
+    "id": "CROPS_ID_LILY_OF_THE_VALLEY",
+    "name": {
+      "aliases": [
+        "铃兰",
+        "鈴蘭",
+        "スズラン",
+        "CROPS_ID_LILY_OF_THE_VALLEY"
+      ],
+      "internal": "CROPS_ID_LILY_OF_THE_VALLEY",
+      "ja": "スズラン",
+      "review_status": "override",
+      "zh_hans": "铃兰",
+      "zh_hant": "鈴蘭"
+    },
+    "numeric_id": 44,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LILY_OF_THE_VALLEY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LOTUS_ROOT"
+    ],
+    "id": "CROPS_ID_LOTUS_ROOT",
+    "name": {
+      "aliases": [
+        "莲藕",
+        "蓮藕",
+        "レンコン",
+        "CROPS_ID_LOTUS_ROOT"
+      ],
+      "internal": "CROPS_ID_LOTUS_ROOT",
+      "ja": "レンコン",
+      "review_status": "override",
+      "zh_hans": "莲藕",
+      "zh_hant": "蓮藕"
+    },
+    "numeric_id": 66,
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LOTUS_ROOT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ORANGE"
+    ],
+    "id": "CROPS_ID_MANDARIN_ORANGE_TREE",
+    "name": {
+      "aliases": [
+        "橘子树",
+        "橘子樹",
+        "ミカンの木",
+        "CROPS_ID_MANDARIN_ORANGE_TREE"
+      ],
+      "internal": "CROPS_ID_MANDARIN_ORANGE_TREE",
+      "ja": "ミカンの木",
+      "review_status": "override",
+      "zh_hans": "橘子树",
+      "zh_hant": "橘子樹"
+    },
+    "numeric_id": 104,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ORANGE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MANGO"
+    ],
+    "id": "CROPS_ID_MANGO_TREE",
+    "name": {
+      "aliases": [
+        "芒果树",
+        "芒果樹",
+        "マンゴーの木",
+        "CROPS_ID_MANGO_TREE"
+      ],
+      "internal": "CROPS_ID_MANGO_TREE",
+      "ja": "マンゴーの木",
+      "review_status": "override",
+      "zh_hans": "芒果树",
+      "zh_hant": "芒果樹"
+    },
+    "numeric_id": 113,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MANGO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MARIGOLD"
+    ],
+    "id": "CROPS_ID_MARIGOLD",
+    "name": {
+      "aliases": [
+        "万寿菊",
+        "萬壽菊",
+        "マリーゴールド",
+        "CROPS_ID_MARIGOLD"
+      ],
+      "internal": "CROPS_ID_MARIGOLD",
+      "ja": "マリーゴールド",
+      "review_status": "override",
+      "zh_hans": "万寿菊",
+      "zh_hant": "萬壽菊"
+    },
+    "numeric_id": 38,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MARIGOLD"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MELON"
+    ],
+    "id": "CROPS_ID_MELON",
+    "name": {
+      "aliases": [
+        "甜瓜",
+        "メロン",
+        "CROPS_ID_MELON"
+      ],
+      "internal": "CROPS_ID_MELON",
+      "ja": "メロン",
+      "review_status": "override",
+      "zh_hans": "甜瓜",
+      "zh_hant": "甜瓜"
+    },
+    "numeric_id": 41,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MELON"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MORNING_GLORY"
+    ],
+    "id": "CROPS_ID_MORNING_GLORY",
+    "name": {
+      "aliases": [
+        "牵牛花",
+        "牽牛花",
+        "アサガオ",
+        "CROPS_ID_MORNING_GLORY"
+      ],
+      "internal": "CROPS_ID_MORNING_GLORY",
+      "ja": "アサガオ",
+      "review_status": "override",
+      "zh_hans": "牵牛花",
+      "zh_hant": "牽牛花"
+    },
+    "numeric_id": 29,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MORNING_GLORY"
+    ]
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_MUD_SEEDS",
+    "name": {
+      "aliases": [
+        "泥土种子",
+        "泥土種子",
+        "泥の種",
+        "CROPS_ID_MUD_SEEDS"
+      ],
+      "internal": "CROPS_ID_MUD_SEEDS",
+      "ja": "泥の種",
+      "review_status": "override",
+      "zh_hans": "泥土种子",
+      "zh_hant": "泥土種子"
+    },
+    "numeric_id": 501,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MULBERRY_LEAF"
+    ],
+    "id": "CROPS_ID_MULBERRY",
+    "name": {
+      "aliases": [
+        "桑叶",
+        "桑葉",
+        "桑の葉",
+        "CROPS_ID_MULBERRY"
+      ],
+      "internal": "CROPS_ID_MULBERRY",
+      "ja": "桑の葉",
+      "review_status": "override",
+      "zh_hans": "桑叶",
+      "zh_hant": "桑葉"
+    },
+    "numeric_id": 67,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MULBERRY"
+    ]
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_AKEBI",
+    "name": {
+      "aliases": [
+        "木通",
+        "アケビ",
+        "CROPS_ID_OBJECT_AKEBI"
+      ],
+      "internal": "CROPS_ID_OBJECT_AKEBI",
+      "ja": "アケビ",
+      "review_status": "override",
+      "zh_hans": "木通",
+      "zh_hant": "木通"
+    },
+    "numeric_id": 2107,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
+    "name": {
+      "aliases": [
+        "竹笋",
+        "竹筍",
+        "タケノコ",
+        "CROPS_ID_OBJECT_BAMBOO_SHOOTS"
+      ],
+      "internal": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
+      "ja": "タケノコ",
+      "review_status": "override",
+      "zh_hans": "竹笋",
+      "zh_hant": "竹筍"
+    },
+    "numeric_id": 2100,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BANBOO",
+    "name": {
+      "aliases": [
+        "竹子",
+        "竹",
+        "CROPS_ID_OBJECT_BANBOO"
+      ],
+      "internal": "CROPS_ID_OBJECT_BANBOO",
+      "ja": "竹",
+      "review_status": "override",
+      "zh_hans": "竹子",
+      "zh_hant": "竹子"
+    },
+    "numeric_id": 1600,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BAYBERRY",
+    "name": {
+      "aliases": [
+        "杨梅",
+        "楊梅",
+        "ヤマモモ",
+        "CROPS_ID_OBJECT_BAYBERRY"
+      ],
+      "internal": "CROPS_ID_OBJECT_BAYBERRY",
+      "ja": "ヤマモモ",
+      "review_status": "override",
+      "zh_hans": "杨梅",
+      "zh_hant": "楊梅"
+    },
+    "numeric_id": 2103,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BEETLE",
+    "name": {
+      "aliases": [
+        "独角仙",
+        "獨角仙",
+        "カブトムシ",
+        "CROPS_ID_OBJECT_BEETLE"
+      ],
+      "internal": "CROPS_ID_OBJECT_BEETLE",
+      "ja": "カブトムシ",
+      "review_status": "override",
+      "zh_hans": "独角仙",
+      "zh_hant": "獨角仙"
+    },
+    "numeric_id": 2150,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BRACKEN",
+    "name": {
+      "aliases": [
+        "蕨",
+        "ワラビ",
+        "CROPS_ID_OBJECT_BRACKEN"
+      ],
+      "internal": "CROPS_ID_OBJECT_BRACKEN",
+      "ja": "ワラビ",
+      "review_status": "override",
+      "zh_hans": "蕨",
+      "zh_hant": "蕨"
+    },
+    "numeric_id": 2000,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
+    "name": {
+      "aliases": [
+        "蜂斗菜花苞",
+        "ふきのとう",
+        "CROPS_ID_OBJECT_BUTTERBUR_SCAPE"
+      ],
+      "internal": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
+      "ja": "ふきのとう",
+      "review_status": "override",
+      "zh_hans": "蜂斗菜花苞",
+      "zh_hant": "蜂斗菜花苞"
+    },
+    "numeric_id": 2101,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
+    "name": {
+      "aliases": [
+        "石蒜",
+        "彼岸花",
+        "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS"
+      ],
+      "internal": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
+      "ja": "彼岸花",
+      "review_status": "override",
+      "zh_hans": "石蒜",
+      "zh_hant": "石蒜"
+    },
+    "numeric_id": 2004,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_COD_BUD",
+    "name": {
+      "aliases": [
+        "楤木芽",
+        "タラの芽",
+        "CROPS_ID_OBJECT_COD_BUD"
+      ],
+      "internal": "CROPS_ID_OBJECT_COD_BUD",
+      "ja": "タラの芽",
+      "review_status": "override",
+      "zh_hans": "楤木芽",
+      "zh_hant": "楤木芽"
+    },
+    "numeric_id": 2200,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_COIN",
+    "name": {
+      "aliases": [
+        "被埋起来的硬币",
+        "被埋起來的硬幣",
+        "埋められたコイン",
+        "CROPS_ID_OBJECT_COIN"
+      ],
+      "internal": "CROPS_ID_OBJECT_COIN",
+      "ja": "埋められたコイン",
+      "review_status": "override",
+      "zh_hans": "被埋起来的硬币",
+      "zh_hant": "被埋起來的硬幣"
+    },
+    "numeric_id": 2201,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
+    "name": {
+      "aliases": [
+        "芒草",
+        "ススキ",
+        "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS"
+      ],
+      "internal": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
+      "ja": "ススキ",
+      "review_status": "override",
+      "zh_hans": "芒草",
+      "zh_hant": "芒草"
+    },
+    "numeric_id": 3000,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_DANDELION",
+    "name": {
+      "aliases": [
+        "蒲公英",
+        "タンポポ",
+        "CROPS_ID_OBJECT_DANDELION"
+      ],
+      "internal": "CROPS_ID_OBJECT_DANDELION",
+      "ja": "タンポポ",
+      "review_status": "override",
+      "zh_hans": "蒲公英",
+      "zh_hant": "蒲公英"
+    },
+    "numeric_id": 2001,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_DONG_QUAI",
+    "name": {
+      "aliases": [
+        "当归",
+        "當歸",
+        "トウキ",
+        "CROPS_ID_OBJECT_DONG_QUAI"
+      ],
+      "internal": "CROPS_ID_OBJECT_DONG_QUAI",
+      "ja": "トウキ",
+      "review_status": "override",
+      "zh_hans": "当归",
+      "zh_hant": "當歸"
+    },
+    "numeric_id": 2300,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_FALLEN_TREE",
+    "name": {
+      "aliases": [
+        "倒木",
+        "CROPS_ID_OBJECT_FALLEN_TREE"
+      ],
+      "internal": "CROPS_ID_OBJECT_FALLEN_TREE",
+      "ja": "倒木",
+      "review_status": "override",
+      "zh_hans": "倒木",
+      "zh_hant": "倒木"
+    },
+    "numeric_id": 1201,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_FUYUICHIGO",
+    "name": {
+      "aliases": [
+        "寒莓",
+        "フユイチゴ",
+        "CROPS_ID_OBJECT_FUYUICHIGO"
+      ],
+      "internal": "CROPS_ID_OBJECT_FUYUICHIGO",
+      "ja": "フユイチゴ",
+      "review_status": "override",
+      "zh_hans": "寒莓",
+      "zh_hant": "寒莓"
+    },
+    "numeric_id": 2112,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_GINKGO_NUT",
+    "name": {
+      "aliases": [
+        "银杏果",
+        "銀杏果",
+        "ギンナン",
+        "CROPS_ID_OBJECT_GINKGO_NUT"
+      ],
+      "internal": "CROPS_ID_OBJECT_GINKGO_NUT",
+      "ja": "ギンナン",
+      "review_status": "override",
+      "zh_hans": "银杏果",
+      "zh_hant": "銀杏果"
+    },
+    "numeric_id": 2113,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_GRASS",
+    "name": {
+      "aliases": [
+        "牧草",
+        "CROPS_ID_OBJECT_GRASS"
+      ],
+      "internal": "CROPS_ID_OBJECT_GRASS",
+      "ja": "牧草",
+      "review_status": "override",
+      "zh_hans": "牧草",
+      "zh_hant": "牧草"
+    },
+    "numeric_id": 1500,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_HORSETAIL",
+    "name": {
+      "aliases": [
+        "笔头菜",
+        "筆頭菜",
+        "つくし",
+        "CROPS_ID_OBJECT_HORSETAIL"
+      ],
+      "internal": "CROPS_ID_OBJECT_HORSETAIL",
+      "ja": "つくし",
+      "review_status": "override",
+      "zh_hans": "笔头菜",
+      "zh_hant": "筆頭菜"
+    },
+    "numeric_id": 2003,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK",
+    "name": {
+      "aliases": [
+        "巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK",
+      "ja": "巨岩",
+      "review_status": "override",
+      "zh_hans": "巨岩",
+      "zh_hant": "巨岩"
+    },
+    "numeric_id": 1400,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
+    "name": {
+      "aliases": [
+        "坚硬的巨岩",
+        "堅硬的巨岩",
+        "堅い巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK_HARD"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
+      "ja": "堅い巨岩",
+      "review_status": "override",
+      "zh_hans": "坚硬的巨岩",
+      "zh_hant": "堅硬的巨岩"
+    },
+    "numeric_id": 1401,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
+    "name": {
+      "aliases": [
+        "非常坚硬的巨岩",
+        "非常堅硬的巨岩",
+        "すごく堅い巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
+      "ja": "すごく堅い巨岩",
+      "review_status": "override",
+      "zh_hans": "非常坚硬的巨岩",
+      "zh_hant": "非常堅硬的巨岩"
+    },
+    "numeric_id": 1402,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
+    "name": {
+      "aliases": [
+        "三叶草",
+        "三葉草",
+        "ミツバ",
+        "CROPS_ID_OBJECT_JAPANESE_HONEYWORT"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
+      "ja": "ミツバ",
+      "review_status": "override",
+      "zh_hans": "三叶草",
+      "zh_hant": "三葉草"
+    },
+    "numeric_id": 2002,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
+    "name": {
+      "aliases": [
+        "山椒",
+        "CROPS_ID_OBJECT_JAPANESE_PEPPER"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
+      "ja": "山椒",
+      "review_status": "override",
+      "zh_hans": "山椒",
+      "zh_hant": "山椒"
+    },
+    "numeric_id": 2008,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_YAM",
+    "name": {
+      "aliases": [
+        "野山药",
+        "野山藥",
+        "自然薯",
+        "CROPS_ID_OBJECT_JAPANESE_YAM"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_YAM",
+      "ja": "自然薯",
+      "review_status": "override",
+      "zh_hans": "野山药",
+      "zh_hant": "野山藥"
+    },
+    "numeric_id": 2108,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_1"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
+      "ja": "木霊の岩",
+      "review_status": "override",
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3010,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_2"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
+      "ja": "木霊の岩",
+      "review_status": "override",
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3011,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_3"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
+      "ja": "木霊の岩",
+      "review_status": "override",
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3012,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_LILY",
+    "name": {
+      "aliases": [
+        "百合花",
+        "ユリ",
+        "CROPS_ID_OBJECT_LILY"
+      ],
+      "internal": "CROPS_ID_OBJECT_LILY",
+      "ja": "ユリ",
+      "review_status": "override",
+      "zh_hans": "百合花",
+      "zh_hant": "百合花"
+    },
+    "numeric_id": 2006,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_LILY_ROOT",
+    "name": {
+      "aliases": [
+        "百合根",
+        "ユリ根",
+        "CROPS_ID_OBJECT_LILY_ROOT"
+      ],
+      "internal": "CROPS_ID_OBJECT_LILY_ROOT",
+      "ja": "ユリ根",
+      "review_status": "override",
+      "zh_hans": "百合根",
+      "zh_hant": "百合根"
+    },
+    "numeric_id": 2007,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_MATSUTAKE",
+    "name": {
+      "aliases": [
+        "松茸",
+        "マツタケ",
+        "CROPS_ID_OBJECT_MATSUTAKE"
+      ],
+      "internal": "CROPS_ID_OBJECT_MATSUTAKE",
+      "ja": "マツタケ",
+      "review_status": "override",
+      "zh_hans": "松茸",
+      "zh_hant": "松茸"
+    },
+    "numeric_id": 2110,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_MUD_SEEDS",
+    "name": {
+      "aliases": [
+        "泥土种子（物品）",
+        "泥土種子（物品）",
+        "泥の種(オブジェクト)",
+        "CROPS_ID_OBJECT_MUD_SEEDS"
+      ],
+      "internal": "CROPS_ID_OBJECT_MUD_SEEDS",
+      "ja": "泥の種(オブジェクト)",
+      "review_status": "override",
+      "zh_hans": "泥土种子（物品）",
+      "zh_hant": "泥土種子（物品）"
+    },
+    "numeric_id": 500,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_PINE_CONE",
+    "name": {
+      "aliases": [
+        "松果",
+        "まつぼっくり",
+        "CROPS_ID_OBJECT_PINE_CONE"
+      ],
+      "internal": "CROPS_ID_OBJECT_PINE_CONE",
+      "ja": "まつぼっくり",
+      "review_status": "override",
+      "zh_hans": "松果",
+      "zh_hant": "松果"
+    },
+    "numeric_id": 2106,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_PURPLE_FLOWER",
+    "name": {
+      "aliases": [
+        "紫色的花",
+        "紫の花",
+        "CROPS_ID_OBJECT_PURPLE_FLOWER"
+      ],
+      "internal": "CROPS_ID_OBJECT_PURPLE_FLOWER",
+      "ja": "紫の花",
+      "review_status": "override",
+      "zh_hans": "紫色的花",
+      "zh_hant": "紫色的花"
+    },
+    "numeric_id": 2400,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_RICEFIELD_WEED",
+    "name": {
+      "aliases": [
+        "水田的杂草",
+        "水田的雜草",
+        "水田の雑草",
+        "CROPS_ID_OBJECT_RICEFIELD_WEED"
+      ],
+      "internal": "CROPS_ID_OBJECT_RICEFIELD_WEED",
+      "ja": "水田の雑草",
+      "review_status": "override",
+      "zh_hans": "水田的杂草",
+      "zh_hant": "水田的雜草"
+    },
+    "numeric_id": 1700,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK",
+    "name": {
+      "aliases": [
+        "岩石",
+        "岩",
+        "CROPS_ID_OBJECT_ROCK"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK",
+      "ja": "岩",
+      "review_status": "override",
+      "zh_hans": "岩石",
+      "zh_hant": "岩石"
+    },
+    "numeric_id": 1350,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+    "name": {
+      "aliases": [
+        "铜矿脉的岩石",
+        "銅礦脈的岩石",
+        "銅鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_COPPER_BIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+      "ja": "銅鉱脈の岩",
+      "review_status": "override",
+      "zh_hans": "铜矿脉的岩石",
+      "zh_hant": "銅礦脈的岩石"
+    },
+    "numeric_id": 1354,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+    "name": {
+      "aliases": [
+        "宝石矿脉的岩石",
+        "寶石礦脈的岩石",
+        "宝石鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_GEM_BIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+      "ja": "宝石鉱脈の岩",
+      "review_status": "override",
+      "zh_hans": "宝石矿脉的岩石",
+      "zh_hant": "寶石礦脈的岩石"
+    },
+    "numeric_id": 1358,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+    "name": {
+      "aliases": [
+        "金矿脉的岩石",
+        "金礦脈的岩石",
+        "金鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_GOLD_BIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+      "ja": "金鉱脈の岩",
+      "review_status": "override",
+      "zh_hans": "金矿脉的岩石",
+      "zh_hant": "金礦脈的岩石"
+    },
+    "numeric_id": 1356,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+    "name": {
+      "aliases": [
+        "铁矿脉的岩石",
+        "鐵礦脈的岩石",
+        "鉄鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_IRON_BIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+      "ja": "鉄鉱脈の岩",
+      "review_status": "override",
+      "zh_hans": "铁矿脉的岩石",
+      "zh_hant": "鐵礦脈的岩石"
+    },
+    "numeric_id": 1355,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+    "name": {
+      "aliases": [
+        "陨铁矿脉的岩石",
+        "隕鐵礦脈的岩石",
+        "隕鉄鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+      "ja": "隕鉄鉱脈の岩",
+      "review_status": "override",
+      "zh_hans": "陨铁矿脉的岩石",
+      "zh_hant": "隕鐵礦脈的岩石"
+    },
+    "numeric_id": 1357,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+      "ja": "石切場の岩",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1351,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+      "ja": "石切場の岩",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1352,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+      "ja": "石切場の岩",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1353,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_ROQUAT",
+    "name": {
+      "aliases": [
+        "枇杷",
+        "ビワ",
+        "CROPS_ID_OBJECT_ROQUAT"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROQUAT",
+      "ja": "ビワ",
+      "review_status": "override",
+      "zh_hans": "枇杷",
+      "zh_hant": "枇杷"
+    },
+    "numeric_id": 2105,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_RUBUS",
+    "name": {
+      "aliases": [
+        "树莓",
+        "樹莓",
+        "キイチゴ",
+        "CROPS_ID_OBJECT_RUBUS"
+      ],
+      "internal": "CROPS_ID_OBJECT_RUBUS",
+      "ja": "キイチゴ",
+      "review_status": "override",
+      "zh_hans": "树莓",
+      "zh_hant": "樹莓"
+    },
+    "numeric_id": 2104,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_SASANOKO",
+    "name": {
+      "aliases": [
+        "小竹笋",
+        "小竹筍",
+        "ササノコ",
+        "CROPS_ID_OBJECT_SASANOKO"
+      ],
+      "internal": "CROPS_ID_OBJECT_SASANOKO",
+      "ja": "ササノコ",
+      "review_status": "override",
+      "zh_hans": "小竹笋",
+      "zh_hant": "小竹筍"
+    },
+    "numeric_id": 2005,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STAG_BEETLE",
+    "name": {
+      "aliases": [
+        "锹形虫",
+        "鍬形蟲",
+        "クワガタムシ",
+        "CROPS_ID_OBJECT_STAG_BEETLE"
+      ],
+      "internal": "CROPS_ID_OBJECT_STAG_BEETLE",
+      "ja": "クワガタムシ",
+      "review_status": "override",
+      "zh_hans": "锹形虫",
+      "zh_hant": "鍬形蟲"
+    },
+    "numeric_id": 2151,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE",
+    "name": {
+      "aliases": [
+        "石头",
+        "石頭",
+        "石",
+        "CROPS_ID_OBJECT_STONE"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE",
+      "ja": "石",
+      "review_status": "override",
+      "zh_hans": "石头",
+      "zh_hant": "石頭"
+    },
+    "numeric_id": 1300,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_COPPER",
+    "name": {
+      "aliases": [
+        "铜矿脉的石头",
+        "銅礦脈的石頭",
+        "銅鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_COPPER"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_COPPER",
+      "ja": "銅鉱脈の石",
+      "review_status": "override",
+      "zh_hans": "铜矿脉的石头",
+      "zh_hant": "銅礦脈的石頭"
+    },
+    "numeric_id": 1307,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_GEM",
+    "name": {
+      "aliases": [
+        "宝石矿脉的石头",
+        "寶石礦脈的石頭",
+        "宝石鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_GEM"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_GEM",
+      "ja": "宝石鉱脈の石",
+      "review_status": "override",
+      "zh_hans": "宝石矿脉的石头",
+      "zh_hant": "寶石礦脈的石頭"
+    },
+    "numeric_id": 1311,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_GOLD",
+    "name": {
+      "aliases": [
+        "金矿脉的石头",
+        "金礦脈的石頭",
+        "金鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_GOLD"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_GOLD",
+      "ja": "金鉱脈の石",
+      "review_status": "override",
+      "zh_hans": "金矿脉的石头",
+      "zh_hant": "金礦脈的石頭"
+    },
+    "numeric_id": 1309,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_IRON",
+    "name": {
+      "aliases": [
+        "铁矿脉的石头",
+        "鐵礦脈的石頭",
+        "鉄鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_IRON"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_IRON",
+      "ja": "鉄鉱脈の石",
+      "review_status": "override",
+      "zh_hans": "铁矿脉的石头",
+      "zh_hant": "鐵礦脈的石頭"
+    },
+    "numeric_id": 1308,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+    "name": {
+      "aliases": [
+        "陨铁矿脉的石头",
+        "隕鐵礦脈的石頭",
+        "隕鉄鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_METEORIC_IRON"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+      "ja": "隕鉄鉱脈の石",
+      "review_status": "override",
+      "zh_hans": "陨铁矿脉的石头",
+      "zh_hant": "隕鐵礦脈的石頭"
+    },
+    "numeric_id": 1310,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A1"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1301,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A2"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1302,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A3"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1303,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B1"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1304,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B2"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1305,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B3"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+      "ja": "石切場の石",
+      "review_status": "override",
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1306,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STUMP",
+    "name": {
+      "aliases": [
+        "树桩",
+        "樹樁",
+        "切り株",
+        "CROPS_ID_OBJECT_STUMP"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP",
+      "ja": "切り株",
+      "review_status": "override",
+      "zh_hans": "树桩",
+      "zh_hant": "樹樁"
+    },
+    "numeric_id": 1202,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STUMP_HARD",
+    "name": {
+      "aliases": [
+        "坚硬的树桩",
+        "堅硬的樹樁",
+        "堅い切り株",
+        "CROPS_ID_OBJECT_STUMP_HARD"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP_HARD",
+      "ja": "堅い切り株",
+      "review_status": "override",
+      "zh_hans": "坚硬的树桩",
+      "zh_hant": "堅硬的樹樁"
+    },
+    "numeric_id": 1203,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
+    "name": {
+      "aliases": [
+        "非常坚硬的树桩",
+        "非常堅硬的樹樁",
+        "すごく堅い切り株",
+        "CROPS_ID_OBJECT_STUMP_VERY_HARD"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
+      "ja": "すごく堅い切り株",
+      "review_status": "override",
+      "zh_hans": "非常坚硬的树桩",
+      "zh_hant": "非常堅硬的樹樁"
+    },
+    "numeric_id": 1204,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TREE",
+    "name": {
+      "aliases": [
+        "栗子",
+        "クリ",
+        "CROPS_ID_OBJECT_TREE"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE",
+      "ja": "クリ",
+      "review_status": "override",
+      "zh_hans": "栗子",
+      "zh_hant": "栗子"
+    },
+    "numeric_id": 1000,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TREE_CEDAR",
+    "name": {
+      "aliases": [
+        "柳杉",
+        "スギ",
+        "CROPS_ID_OBJECT_TREE_CEDAR"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_CEDAR",
+      "ja": "スギ",
+      "review_status": "override",
+      "zh_hans": "柳杉",
+      "zh_hant": "柳杉"
+    },
+    "numeric_id": 1001,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TREE_HINOKI",
+    "name": {
+      "aliases": [
+        "桧木",
+        "檜木",
+        "ヒノキ",
+        "CROPS_ID_OBJECT_TREE_HINOKI"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_HINOKI",
+      "ja": "ヒノキ",
+      "review_status": "override",
+      "zh_hans": "桧木",
+      "zh_hant": "檜木"
+    },
+    "numeric_id": 1004,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TREE_OAK",
+    "name": {
+      "aliases": [
+        "槲树",
+        "槲樹",
+        "カシワ",
+        "CROPS_ID_OBJECT_TREE_OAK"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_OAK",
+      "ja": "カシワ",
+      "review_status": "override",
+      "zh_hans": "槲树",
+      "zh_hant": "槲樹"
+    },
+    "numeric_id": 1003,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TREE_PINE",
+    "name": {
+      "aliases": [
+        "松树",
+        "松樹",
+        "マツ",
+        "CROPS_ID_OBJECT_TREE_PINE"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_PINE",
+      "ja": "マツ",
+      "review_status": "override",
+      "zh_hans": "松树",
+      "zh_hant": "松樹"
+    },
+    "numeric_id": 1002,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_TWIG",
+    "name": {
+      "aliases": [
+        "树枝",
+        "樹枝",
+        "小枝",
+        "CROPS_ID_OBJECT_TWIG"
+      ],
+      "internal": "CROPS_ID_OBJECT_TWIG",
+      "ja": "小枝",
+      "review_status": "override",
+      "zh_hans": "树枝",
+      "zh_hant": "樹枝"
+    },
+    "numeric_id": 1200,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "override",
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 520,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "override",
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 521,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "override",
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 522,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WALKING_STONE",
+    "name": {
+      "aliases": [
+        "行走的石头（DUMMY）",
+        "行走的石頭（DUMMY）",
+        "歩く石（ダミー・翻訳不要）",
+        "CROPS_ID_OBJECT_WALKING_STONE"
+      ],
+      "internal": "CROPS_ID_OBJECT_WALKING_STONE",
+      "ja": "歩く石（ダミー・翻訳不要）",
+      "review_status": "override",
+      "zh_hans": "行走的石头（DUMMY）",
+      "zh_hant": "行走的石頭（DUMMY）"
+    },
+    "numeric_id": 3015,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WALNUT",
+    "name": {
+      "aliases": [
+        "胡桃",
+        "クルミ",
+        "CROPS_ID_OBJECT_WALNUT"
+      ],
+      "internal": "CROPS_ID_OBJECT_WALNUT",
+      "ja": "クルミ",
+      "review_status": "override",
+      "zh_hans": "胡桃",
+      "zh_hant": "胡桃"
+    },
+    "numeric_id": 2109,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WATER_HYACINTH",
+    "name": {
+      "aliases": [
+        "布袋莲",
+        "布袋蓮",
+        "ホテイアオイ",
+        "CROPS_ID_OBJECT_WATER_HYACINTH"
+      ],
+      "internal": "CROPS_ID_OBJECT_WATER_HYACINTH",
+      "ja": "ホテイアオイ",
+      "review_status": "override",
+      "zh_hans": "布袋莲",
+      "zh_hant": "布袋蓮"
+    },
+    "numeric_id": 2102,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WEED_COLOR_1",
+    "name": {
+      "aliases": [
+        "杂草",
+        "雜草",
+        "雑草",
+        "CROPS_ID_OBJECT_WEED_COLOR_1"
+      ],
+      "internal": "CROPS_ID_OBJECT_WEED_COLOR_1",
+      "ja": "雑草",
+      "review_status": "override",
+      "zh_hans": "杂草",
+      "zh_hant": "雜草"
+    },
+    "numeric_id": 1100,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WEED_COLOR_2",
+    "name": {
+      "aliases": [
+        "杂草",
+        "雜草",
+        "雑草",
+        "CROPS_ID_OBJECT_WEED_COLOR_2"
+      ],
+      "internal": "CROPS_ID_OBJECT_WEED_COLOR_2",
+      "ja": "雑草",
+      "review_status": "override",
+      "zh_hans": "杂草",
+      "zh_hant": "雜草"
+    },
+    "numeric_id": 1101,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [],
+    "id": "CROPS_ID_OBJECT_WOLFBERRY",
+    "name": {
+      "aliases": [
+        "枸杞",
+        "クコの実",
+        "CROPS_ID_OBJECT_WOLFBERRY"
+      ],
+      "internal": "CROPS_ID_OBJECT_WOLFBERRY",
+      "ja": "クコの実",
+      "review_status": "override",
+      "zh_hans": "枸杞",
+      "zh_hant": "枸杞"
+    },
+    "numeric_id": 2111,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_OLIVE"
+    ],
+    "id": "CROPS_ID_OLIVE",
+    "name": {
+      "aliases": [
+        "油橄榄",
+        "油橄欖",
+        "オリーブ",
+        "CROPS_ID_OLIVE"
+      ],
+      "internal": "CROPS_ID_OLIVE",
+      "ja": "オリーブ",
+      "review_status": "override",
+      "zh_hans": "油橄榄",
+      "zh_hant": "油橄欖"
+    },
+    "numeric_id": 49,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_OLIVE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ONION"
+    ],
+    "id": "CROPS_ID_ONION",
+    "name": {
+      "aliases": [
+        "洋葱",
+        "洋蔥",
+        "タマネギ",
+        "CROPS_ID_ONION"
+      ],
+      "internal": "CROPS_ID_ONION",
+      "ja": "タマネギ",
+      "review_status": "override",
+      "zh_hans": "洋葱",
+      "zh_hant": "洋蔥"
+    },
+    "numeric_id": 1,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ONION"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PANSY"
+    ],
+    "id": "CROPS_ID_PANSY",
+    "name": {
+      "aliases": [
+        "三色堇",
+        "パンジー",
+        "CROPS_ID_PANSY"
+      ],
+      "internal": "CROPS_ID_PANSY",
+      "ja": "パンジー",
+      "review_status": "override",
+      "zh_hans": "三色堇",
+      "zh_hant": "三色堇"
+    },
+    "numeric_id": 59,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PANSY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEA"
+    ],
+    "id": "CROPS_ID_PEA",
+    "name": {
+      "aliases": [
+        "豌豆",
+        "エンドウ豆",
+        "CROPS_ID_PEA"
+      ],
+      "internal": "CROPS_ID_PEA",
+      "ja": "エンドウ豆",
+      "review_status": "override",
+      "zh_hans": "豌豆",
+      "zh_hant": "豌豆"
+    },
+    "numeric_id": 9,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEA"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEACH"
+    ],
+    "id": "CROPS_ID_PEACH_TREE",
+    "name": {
+      "aliases": [
+        "桃子树",
+        "桃子樹",
+        "モモの木",
+        "CROPS_ID_PEACH_TREE"
+      ],
+      "internal": "CROPS_ID_PEACH_TREE",
+      "ja": "モモの木",
+      "review_status": "override",
+      "zh_hans": "桃子树",
+      "zh_hant": "桃子樹"
+    },
+    "numeric_id": 108,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEACH"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEAR"
+    ],
+    "id": "CROPS_ID_PEAR_TREE",
+    "name": {
+      "aliases": [
+        "梨子树",
+        "梨子樹",
+        "ナシの木",
+        "CROPS_ID_PEAR_TREE"
+      ],
+      "internal": "CROPS_ID_PEAR_TREE",
+      "ja": "ナシの木",
+      "review_status": "override",
+      "zh_hans": "梨子树",
+      "zh_hant": "梨子樹"
+    },
+    "numeric_id": 110,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEAR"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEPPER"
+    ],
+    "id": "CROPS_ID_PEPPER",
+    "name": {
+      "aliases": [
+        "青椒",
+        "ピーマン",
+        "CROPS_ID_PEPPER"
+      ],
+      "internal": "CROPS_ID_PEPPER",
+      "ja": "ピーマン",
+      "review_status": "override",
+      "zh_hans": "青椒",
+      "zh_hant": "青椒"
+    },
+    "numeric_id": 23,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEPPER"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PERSIMMON"
+    ],
+    "id": "CROPS_ID_PERSIMMON_TREE",
+    "name": {
+      "aliases": [
+        "柿子树",
+        "柿子樹",
+        "カキの木",
+        "CROPS_ID_PERSIMMON_TREE"
+      ],
+      "internal": "CROPS_ID_PERSIMMON_TREE",
+      "ja": "カキの木",
+      "review_status": "override",
+      "zh_hans": "柿子树",
+      "zh_hant": "柿子樹"
+    },
+    "numeric_id": 103,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PERSIMMON"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PINEAPPLE"
+    ],
+    "id": "CROPS_ID_PINEAPPLE",
+    "name": {
+      "aliases": [
+        "凤梨",
+        "鳳梨",
+        "パイナップル",
+        "CROPS_ID_PINEAPPLE"
+      ],
+      "internal": "CROPS_ID_PINEAPPLE",
+      "ja": "パイナップル",
+      "review_status": "override",
+      "zh_hans": "凤梨",
+      "zh_hant": "鳳梨"
+    },
+    "numeric_id": 42,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PINEAPPLE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PLUM"
+    ],
+    "id": "CROPS_ID_PLUM_TREE",
+    "name": {
+      "aliases": [
+        "梅子树",
+        "梅子樹",
+        "梅の木",
+        "CROPS_ID_PLUM_TREE"
+      ],
+      "internal": "CROPS_ID_PLUM_TREE",
+      "ja": "梅の木",
+      "review_status": "override",
+      "zh_hans": "梅子树",
+      "zh_hant": "梅子樹"
+    },
+    "numeric_id": 107,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PLUM"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_POPPY"
+    ],
+    "id": "CROPS_ID_POPPY",
+    "name": {
+      "aliases": [
+        "罂粟花",
+        "罌粟花",
+        "ポピー",
+        "CROPS_ID_POPPY"
+      ],
+      "internal": "CROPS_ID_POPPY",
+      "ja": "ポピー",
+      "review_status": "override",
+      "zh_hans": "罂粟花",
+      "zh_hant": "罌粟花"
+    },
+    "numeric_id": 7,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_POPPY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_POTATO"
+    ],
+    "id": "CROPS_ID_POTATO",
+    "name": {
+      "aliases": [
+        "马铃薯",
+        "馬鈴薯",
+        "ジャガイモ",
+        "CROPS_ID_POTATO"
+      ],
+      "internal": "CROPS_ID_POTATO",
+      "ja": "ジャガイモ",
+      "review_status": "override",
+      "zh_hans": "马铃薯",
+      "zh_hant": "馬鈴薯"
+    },
+    "numeric_id": 4,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_POTATO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PUMPKIN"
+    ],
+    "id": "CROPS_ID_PUMPKIN",
+    "name": {
+      "aliases": [
+        "南瓜",
+        "カボチャ",
+        "CROPS_ID_PUMPKIN"
+      ],
+      "internal": "CROPS_ID_PUMPKIN",
+      "ja": "カボチャ",
+      "review_status": "override",
+      "zh_hans": "南瓜",
+      "zh_hant": "南瓜"
+    },
+    "numeric_id": 32,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PUMPKIN"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_RADISH"
+    ],
+    "id": "CROPS_ID_RADISH",
+    "name": {
+      "aliases": [
+        "樱桃萝卜",
+        "櫻桃蘿蔔",
+        "ラディッシュ",
+        "CROPS_ID_RADISH"
+      ],
+      "internal": "CROPS_ID_RADISH",
+      "ja": "ラディッシュ",
+      "review_status": "override",
+      "zh_hans": "樱桃萝卜",
+      "zh_hant": "櫻桃蘿蔔"
+    },
+    "numeric_id": 18,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_RADISH"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_RICE"
+    ],
+    "id": "CROPS_ID_RICE",
+    "name": {
+      "aliases": [
+        "稻米",
+        "お米",
+        "CROPS_ID_RICE"
+      ],
+      "internal": "CROPS_ID_RICE",
+      "ja": "お米",
+      "review_status": "override",
+      "zh_hans": "稻米",
+      "zh_hant": "稻米"
+    },
+    "numeric_id": 63,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_RICE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ROSE"
+    ],
+    "id": "CROPS_ID_ROSE",
+    "name": {
+      "aliases": [
+        "玫瑰",
+        "バラ",
+        "CROPS_ID_ROSE"
+      ],
+      "internal": "CROPS_ID_ROSE",
+      "ja": "バラ",
+      "review_status": "override",
+      "zh_hans": "玫瑰",
+      "zh_hant": "玫瑰"
+    },
+    "numeric_id": 40,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ROSE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ROSEMARY"
+    ],
+    "id": "CROPS_ID_ROSEMARY",
+    "name": {
+      "aliases": [
+        "迷迭香",
+        "ローズマリー",
+        "CROPS_ID_ROSEMARY"
+      ],
+      "internal": "CROPS_ID_ROSEMARY",
+      "ja": "ローズマリー",
+      "review_status": "override",
+      "zh_hans": "迷迭香",
+      "zh_hant": "迷迭香"
+    },
+    "numeric_id": 60,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ROSEMARY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SESAME"
+    ],
+    "id": "CROPS_ID_SESAME",
+    "name": {
+      "aliases": [
+        "芝麻",
+        "ゴマ",
+        "CROPS_ID_SESAME"
+      ],
+      "internal": "CROPS_ID_SESAME",
+      "ja": "ゴマ",
+      "review_status": "override",
+      "zh_hans": "芝麻",
+      "zh_hant": "芝麻"
+    },
+    "numeric_id": 52,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SESAME"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
+    ],
+    "id": "CROPS_ID_SHIITAKE_MUSHROOM",
+    "name": {
+      "aliases": [
+        "香菇",
+        "シイタケ",
+        "CROPS_ID_SHIITAKE_MUSHROOM"
+      ],
+      "internal": "CROPS_ID_SHIITAKE_MUSHROOM",
+      "ja": "シイタケ",
+      "review_status": "override",
+      "zh_hans": "香菇",
+      "zh_hant": "香菇"
+    },
+    "numeric_id": 55,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SHIITAKE_MUSHROOM"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
+    ],
+    "id": "CROPS_ID_SHIMEJI",
+    "name": {
+      "aliases": [
+        "鸿喜菇",
+        "鴻喜菇",
+        "シメジ",
+        "CROPS_ID_SHIMEJI"
+      ],
+      "internal": "CROPS_ID_SHIMEJI",
+      "ja": "シメジ",
+      "review_status": "override",
+      "zh_hans": "鸿喜菇",
+      "zh_hant": "鴻喜菇"
+    },
+    "numeric_id": 53,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SHIMEJI_MUSHROOM"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SKUNK_CABBAGE"
+    ],
+    "id": "CROPS_ID_SKUNK_CABBAGE",
+    "name": {
+      "aliases": [
+        "水芭蕉",
+        "CROPS_ID_SKUNK_CABBAGE"
+      ],
+      "internal": "CROPS_ID_SKUNK_CABBAGE",
+      "ja": "水芭蕉",
+      "review_status": "override",
+      "zh_hans": "水芭蕉",
+      "zh_hant": "水芭蕉"
+    },
+    "numeric_id": 20,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SKUNK_CABBAGE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SPINACH"
+    ],
+    "id": "CROPS_ID_SPINACH",
+    "name": {
+      "aliases": [
+        "菠菜",
+        "ホウレンソウ",
+        "CROPS_ID_SPINACH"
+      ],
+      "internal": "CROPS_ID_SPINACH",
+      "ja": "ホウレンソウ",
+      "review_status": "override",
+      "zh_hans": "菠菜",
+      "zh_hant": "菠菜"
+    },
+    "numeric_id": 58,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SPINACH"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_STRAWBERRY"
+    ],
+    "id": "CROPS_ID_STRAWBERRY",
+    "name": {
+      "aliases": [
+        "草莓",
+        "イチゴ",
+        "CROPS_ID_STRAWBERRY"
+      ],
+      "internal": "CROPS_ID_STRAWBERRY",
+      "ja": "イチゴ",
+      "review_status": "override",
+      "zh_hans": "草莓",
+      "zh_hant": "草莓"
+    },
+    "numeric_id": 12,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_STRAWBERRY"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SUGARCANE"
+    ],
+    "id": "CROPS_ID_SUGARCANE",
+    "name": {
+      "aliases": [
+        "甘蔗",
+        "サトウキビ",
+        "CROPS_ID_SUGARCANE"
+      ],
+      "internal": "CROPS_ID_SUGARCANE",
+      "ja": "サトウキビ",
+      "review_status": "override",
+      "zh_hans": "甘蔗",
+      "zh_hant": "甘蔗"
+    },
+    "numeric_id": 28,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SUGAR_CANE"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SUNFLOWER"
+    ],
+    "id": "CROPS_ID_SUNFLOWER",
+    "name": {
+      "aliases": [
+        "向日葵",
+        "ヒマワリ",
+        "CROPS_ID_SUNFLOWER"
+      ],
+      "internal": "CROPS_ID_SUNFLOWER",
+      "ja": "ヒマワリ",
+      "review_status": "override",
+      "zh_hans": "向日葵",
+      "zh_hant": "向日葵"
+    },
+    "numeric_id": 30,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SUNFLOWER"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SWEET_POTATO"
+    ],
+    "id": "CROPS_ID_SWEET_POTATO",
+    "name": {
+      "aliases": [
+        "地瓜",
+        "サツマイモ",
+        "CROPS_ID_SWEET_POTATO"
+      ],
+      "internal": "CROPS_ID_SWEET_POTATO",
+      "ja": "サツマイモ",
+      "review_status": "override",
+      "zh_hans": "地瓜",
+      "zh_hant": "地瓜"
+    },
+    "numeric_id": 47,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SWEET_POTATO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TARO"
+    ],
+    "id": "CROPS_ID_TARO",
+    "name": {
+      "aliases": [
+        "芋头",
+        "芋頭",
+        "サトイモ",
+        "CROPS_ID_TARO"
+      ],
+      "internal": "CROPS_ID_TARO",
+      "ja": "サトイモ",
+      "review_status": "override",
+      "zh_hans": "芋头",
+      "zh_hant": "芋頭"
+    },
+    "numeric_id": 46,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TARO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TEA_TREE"
+    ],
+    "id": "CROPS_ID_TEA_TREE",
+    "name": {
+      "aliases": [
+        "茶叶",
+        "茶葉",
+        "お茶",
+        "CROPS_ID_TEA_TREE"
+      ],
+      "internal": "CROPS_ID_TEA_TREE",
+      "ja": "お茶",
+      "review_status": "override",
+      "zh_hans": "茶叶",
+      "zh_hant": "茶葉"
+    },
+    "numeric_id": 64,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TEA"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TOMATO"
+    ],
+    "id": "CROPS_ID_TOMATO",
+    "name": {
+      "aliases": [
+        "番茄",
+        "トマト",
+        "CROPS_ID_TOMATO"
+      ],
+      "internal": "CROPS_ID_TOMATO",
+      "ja": "トマト",
+      "review_status": "override",
+      "zh_hans": "番茄",
+      "zh_hant": "番茄"
+    },
+    "numeric_id": 21,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TOMATO"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TULIP"
+    ],
+    "id": "CROPS_ID_TULIP",
+    "name": {
+      "aliases": [
+        "郁金香",
+        "鬱金香",
+        "チューリップ",
+        "CROPS_ID_TULIP"
+      ],
+      "internal": "CROPS_ID_TULIP",
+      "ja": "チューリップ",
+      "review_status": "override",
+      "zh_hans": "郁金香",
+      "zh_hant": "鬱金香"
+    },
+    "numeric_id": 14,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TULIP"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TURNIP"
+    ],
+    "id": "CROPS_ID_TURNIP",
+    "name": {
+      "aliases": [
+        "大头菜",
+        "大頭菜",
+        "カブ",
+        "CROPS_ID_TURNIP"
+      ],
+      "internal": "CROPS_ID_TURNIP",
+      "ja": "カブ",
+      "review_status": "override",
+      "zh_hans": "大头菜",
+      "zh_hant": "大頭菜"
+    },
+    "numeric_id": 3,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TURNIP"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WASABI"
+    ],
+    "id": "CROPS_ID_WASABI",
+    "name": {
+      "aliases": [
+        "山葵",
+        "ワサビ",
+        "CROPS_ID_WASABI"
+      ],
+      "internal": "CROPS_ID_WASABI",
+      "ja": "ワサビ",
+      "review_status": "override",
+      "zh_hans": "山葵",
+      "zh_hant": "山葵"
+    },
+    "numeric_id": 65,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WASABI"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WATERMELON"
+    ],
+    "id": "CROPS_ID_WATERMELON",
+    "name": {
+      "aliases": [
+        "西瓜",
+        "スイカ",
+        "CROPS_ID_WATERMELON"
+      ],
+      "internal": "CROPS_ID_WATERMELON",
+      "ja": "スイカ",
+      "review_status": "override",
+      "zh_hans": "西瓜",
+      "zh_hant": "西瓜"
+    },
+    "numeric_id": 26,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WATERMELON"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WHEAT"
+    ],
+    "id": "CROPS_ID_WHEAT",
+    "name": {
+      "aliases": [
+        "小麦",
+        "小麥",
+        "CROPS_ID_WHEAT"
+      ],
+      "internal": "CROPS_ID_WHEAT",
+      "ja": "小麦",
+      "review_status": "override",
+      "zh_hans": "小麦",
+      "zh_hant": "小麥"
+    },
+    "numeric_id": 27,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WHEAT"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WHITE_ONION"
+    ],
+    "id": "CROPS_ID_WHITE_ONION",
+    "name": {
+      "aliases": [
+        "葱",
+        "蔥",
+        "白ネギ",
+        "CROPS_ID_WHITE_ONION"
+      ],
+      "internal": "CROPS_ID_WHITE_ONION",
+      "ja": "白ネギ",
+      "review_status": "override",
+      "zh_hans": "葱",
+      "zh_hant": "蔥"
+    },
+    "numeric_id": 5,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WHITE_ONION"
+    ]
+  },
+  {
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_YUZU"
+    ],
+    "id": "CROPS_ID_YUZU_TREE",
+    "name": {
+      "aliases": [
+        "柚子树",
+        "柚子樹",
+        "ユズの木",
+        "CROPS_ID_YUZU_TREE"
+      ],
+      "internal": "CROPS_ID_YUZU_TREE",
+      "ja": "ユズの木",
+      "review_status": "override",
+      "zh_hans": "柚子树",
+      "zh_hant": "柚子樹"
+    },
+    "numeric_id": 102,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_YUZU"
+    ]
+  }
+]
