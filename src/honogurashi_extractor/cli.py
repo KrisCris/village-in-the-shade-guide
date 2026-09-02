@@ -5,6 +5,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from .archive import FafullfsArchive
+from .table import read_table
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -24,6 +25,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     inspect_archive.add_argument("--game-dir", type=Path, required=True)
 
+    inspect_table = subcommands.add_parser(
+        "inspect-table", help="show the shape of one archived database table"
+    )
+    inspect_table.add_argument("--game-dir", type=Path, required=True)
+    inspect_table.add_argument("entry")
+
     return parser
 
 
@@ -34,6 +41,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"entries={len(archive.entries())}")
         for entry in archive.entries():
             print(f"{entry.name}\t{entry.size}")
+    elif args.command == "inspect-table":
+        archive = FafullfsArchive.open(args.game_dir / "data.dat")
+        table = read_table(archive.read_entry(args.entry))
+        print(
+            f"records={table.record_count} record_size={table.record_size} "
+            f"strings={len(table.string_pool)}"
+        )
     return 0
 
 
