@@ -1,5 +1,7 @@
 [
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_APPLE"
     ],
@@ -18,6 +20,8 @@
       "zh_hant": "蘋果樹"
     },
     "numeric_id": 100,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -29,6 +33,8 @@
     ]
   },
   {
+    "growth_days": 9,
+    "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ASPARAGUS"
     ],
@@ -47,6 +53,8 @@
       "zh_hant": "蘆筍"
     },
     "numeric_id": 17,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "spring"
     ],
@@ -55,6 +63,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BANANA"
     ],
@@ -73,12 +83,16 @@
       "zh_hant": "香蕉樹"
     },
     "numeric_id": 111,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": [
       "ITEM_ID_SEED_BANANA"
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_BIG_CHINESE_CABBAGE",
     "name": {
@@ -94,10 +108,14 @@
       "zh_hant": "巨大作物_大白菜"
     },
     "numeric_id": 603,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_BIG_CORN",
     "name": {
@@ -113,10 +131,14 @@
       "zh_hant": "巨大作物_玉米"
     },
     "numeric_id": 601,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_BIG_TARO",
     "name": {
@@ -133,10 +155,14 @@
       "zh_hant": "巨大作物_芋頭"
     },
     "numeric_id": 602,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_BIG_TURNIP",
     "name": {
@@ -153,10 +179,14 @@
       "zh_hant": "巨大作物_大頭菜"
     },
     "numeric_id": 600,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BLUEBERRY"
     ],
@@ -175,6 +205,8 @@
       "zh_hant": "藍莓"
     },
     "numeric_id": 35,
+    "regrow_days": 2,
+    "regrow_points": 200,
     "seasons": [
       "summer"
     ],
@@ -183,6 +215,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BUCKWHEAT"
     ],
@@ -201,6 +235,8 @@
       "zh_hant": "蕎麥"
     },
     "numeric_id": 45,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -209,6 +245,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CABBAGE"
     ],
@@ -227,6 +265,8 @@
       "zh_hant": "高麗菜"
     },
     "numeric_id": 2,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -235,6 +275,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CACAO"
     ],
@@ -253,12 +295,16 @@
       "zh_hant": "可可樹"
     },
     "numeric_id": 112,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": [
       "ITEM_ID_SEED_CACAO"
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARNATION"
     ],
@@ -276,6 +322,8 @@
       "zh_hant": "康乃馨"
     },
     "numeric_id": 8,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -284,6 +332,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARROT"
     ],
@@ -302,6 +352,8 @@
       "zh_hant": "紅蘿蔔"
     },
     "numeric_id": 11,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -310,6 +362,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHAMOMILE"
     ],
@@ -327,6 +381,8 @@
       "zh_hant": "洋甘菊"
     },
     "numeric_id": 6,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -335,6 +391,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHERRIES"
     ],
@@ -353,6 +411,8 @@
       "zh_hant": "櫻桃樹"
     },
     "numeric_id": 101,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -364,6 +424,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHINESE_CABBAGE"
     ],
@@ -381,6 +443,8 @@
       "zh_hant": "大白菜"
     },
     "numeric_id": 61,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -389,6 +453,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHRYSANTHEMUM"
     ],
@@ -406,6 +472,8 @@
       "zh_hant": "菊花"
     },
     "numeric_id": 51,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -414,6 +482,8 @@
     ]
   },
   {
+    "growth_days": 13,
+    "growth_points": 1300,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CORN"
     ],
@@ -431,6 +501,8 @@
       "zh_hant": "玉米"
     },
     "numeric_id": 25,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "summer"
     ],
@@ -439,6 +511,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_COSMOS"
     ],
@@ -456,6 +530,8 @@
       "zh_hant": "波斯菊"
     },
     "numeric_id": 50,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -464,6 +540,8 @@
     ]
   },
   {
+    "growth_days": 9,
+    "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CUCUMBER"
     ],
@@ -482,6 +560,8 @@
       "zh_hant": "小黃瓜"
     },
     "numeric_id": 24,
+    "regrow_days": 3,
+    "regrow_points": 300,
     "seasons": [
       "summer"
     ],
@@ -490,6 +570,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAFFODIL"
     ],
@@ -507,6 +589,8 @@
       "zh_hant": "水仙"
     },
     "numeric_id": 62,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -515,6 +599,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAHLIA"
     ],
@@ -532,6 +618,8 @@
       "zh_hant": "大理花"
     },
     "numeric_id": 54,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -540,6 +628,8 @@
     ]
   },
   {
+    "growth_days": 9,
+    "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAIKON"
     ],
@@ -558,6 +648,8 @@
       "zh_hant": "白蘿蔔"
     },
     "numeric_id": 57,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -566,6 +658,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DIANTHUS"
     ],
@@ -584,6 +678,8 @@
       "zh_hant": "瞿麥"
     },
     "numeric_id": 15,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -592,6 +688,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 650,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_EDAMAME"
     ],
@@ -609,6 +707,8 @@
       "zh_hant": "毛豆"
     },
     "numeric_id": 34,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "summer",
       "autumn"
@@ -618,6 +718,8 @@
     ]
   },
   {
+    "growth_days": 11,
+    "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_EGGPLANT"
     ],
@@ -635,6 +737,8 @@
       "zh_hant": "茄子"
     },
     "numeric_id": 22,
+    "regrow_days": 3,
+    "regrow_points": 300,
     "seasons": [
       "summer"
     ],
@@ -643,6 +747,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_FORGET_ME_NOT"
     ],
@@ -660,6 +766,8 @@
       "zh_hant": "勿忘我"
     },
     "numeric_id": 16,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -668,6 +776,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GARLIC"
     ],
@@ -685,6 +795,8 @@
       "zh_hant": "大蒜"
     },
     "numeric_id": 43,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -693,6 +805,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GINGER"
     ],
@@ -711,6 +825,8 @@
       "zh_hant": "薑"
     },
     "numeric_id": 33,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -719,6 +835,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GRAPES"
     ],
@@ -737,6 +855,8 @@
       "zh_hant": "葡萄樹"
     },
     "numeric_id": 109,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -748,6 +868,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GYPSOPHILA"
     ],
@@ -766,6 +888,8 @@
       "zh_hant": "滿天星"
     },
     "numeric_id": 37,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -774,6 +898,8 @@
     ]
   },
   {
+    "growth_days": 8,
+    "growth_points": 800,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HIBISCUS"
     ],
@@ -791,6 +917,8 @@
       "zh_hant": "木槿"
     },
     "numeric_id": 39,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -799,6 +927,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_HIDING_GRASS",
     "name": {
@@ -814,10 +944,14 @@
       "zh_hant": "除魔南天竹"
     },
     "numeric_id": 510,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": 14,
+    "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HOPS"
     ],
@@ -835,6 +969,8 @@
       "zh_hant": "啤酒花"
     },
     "numeric_id": 36,
+    "regrow_days": 3,
+    "regrow_points": 300,
     "seasons": [
       "summer"
     ],
@@ -843,6 +979,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HYACINTH"
     ],
@@ -861,6 +999,8 @@
       "zh_hant": "風信子"
     },
     "numeric_id": 13,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -869,6 +1009,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_IRIS"
     ],
@@ -887,6 +1029,8 @@
       "zh_hant": "鳶尾花"
     },
     "numeric_id": 19,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -895,6 +1039,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
     ],
@@ -912,6 +1058,8 @@
       "zh_hant": "木耳"
     },
     "numeric_id": 56,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -920,6 +1068,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LAVENDER"
     ],
@@ -937,6 +1087,8 @@
       "zh_hant": "薰衣草"
     },
     "numeric_id": 31,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -945,6 +1097,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LEMON"
     ],
@@ -963,6 +1117,8 @@
       "zh_hant": "檸檬樹"
     },
     "numeric_id": 105,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -974,6 +1130,8 @@
     ]
   },
   {
+    "growth_days": 11,
+    "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LETTUCE"
     ],
@@ -992,6 +1150,8 @@
       "zh_hant": "萵苣"
     },
     "numeric_id": 10,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -1000,6 +1160,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
     ],
@@ -1018,6 +1180,8 @@
       "zh_hant": "鈴蘭"
     },
     "numeric_id": 44,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -1026,6 +1190,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LOTUS_ROOT"
     ],
@@ -1044,6 +1210,8 @@
       "zh_hant": "蓮藕"
     },
     "numeric_id": 66,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn",
       "winter"
@@ -1053,6 +1221,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ORANGE"
     ],
@@ -1071,6 +1241,8 @@
       "zh_hant": "橘子樹"
     },
     "numeric_id": 104,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -1082,6 +1254,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MANGO"
     ],
@@ -1100,12 +1274,16 @@
       "zh_hant": "芒果樹"
     },
     "numeric_id": 113,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": [
       "ITEM_ID_SEED_MANGO"
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MARIGOLD"
     ],
@@ -1124,6 +1302,8 @@
       "zh_hant": "萬壽菊"
     },
     "numeric_id": 38,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -1132,6 +1312,8 @@
     ]
   },
   {
+    "growth_days": 14,
+    "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MELON"
     ],
@@ -1149,6 +1331,8 @@
       "zh_hant": "甜瓜"
     },
     "numeric_id": 41,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -1157,6 +1341,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MORNING_GLORY"
     ],
@@ -1175,6 +1361,8 @@
       "zh_hant": "牽牛花"
     },
     "numeric_id": 29,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -1183,6 +1371,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_MUD_SEEDS",
     "name": {
@@ -1199,10 +1389,14 @@
       "zh_hant": "泥土種子"
     },
     "numeric_id": 501,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MULBERRY_LEAF"
     ],
@@ -1221,6 +1415,8 @@
       "zh_hant": "桑葉"
     },
     "numeric_id": 67,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -1232,6 +1428,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_AKEBI",
     "name": {
@@ -1247,10 +1445,14 @@
       "zh_hant": "木通"
     },
     "numeric_id": 2107,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
     "name": {
@@ -1267,10 +1469,14 @@
       "zh_hant": "竹筍"
     },
     "numeric_id": 2100,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BANBOO",
     "name": {
@@ -1286,10 +1492,14 @@
       "zh_hant": "竹子"
     },
     "numeric_id": 1600,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BAYBERRY",
     "name": {
@@ -1306,10 +1516,14 @@
       "zh_hant": "楊梅"
     },
     "numeric_id": 2103,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BEETLE",
     "name": {
@@ -1326,10 +1540,14 @@
       "zh_hant": "獨角仙"
     },
     "numeric_id": 2150,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BRACKEN",
     "name": {
@@ -1345,10 +1563,14 @@
       "zh_hant": "蕨"
     },
     "numeric_id": 2000,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
     "name": {
@@ -1364,10 +1586,14 @@
       "zh_hant": "蜂斗菜花苞"
     },
     "numeric_id": 2101,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
     "name": {
@@ -1383,10 +1609,14 @@
       "zh_hant": "石蒜"
     },
     "numeric_id": 2004,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_COD_BUD",
     "name": {
@@ -1402,10 +1632,14 @@
       "zh_hant": "楤木芽"
     },
     "numeric_id": 2200,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_COIN",
     "name": {
@@ -1422,10 +1656,14 @@
       "zh_hant": "被埋起來的硬幣"
     },
     "numeric_id": 2201,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
     "name": {
@@ -1441,10 +1679,14 @@
       "zh_hant": "芒草"
     },
     "numeric_id": 3000,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_DANDELION",
     "name": {
@@ -1460,10 +1702,14 @@
       "zh_hant": "蒲公英"
     },
     "numeric_id": 2001,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_DONG_QUAI",
     "name": {
@@ -1480,10 +1726,14 @@
       "zh_hant": "當歸"
     },
     "numeric_id": 2300,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_FALLEN_TREE",
     "name": {
@@ -1498,10 +1748,14 @@
       "zh_hant": "倒木"
     },
     "numeric_id": 1201,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_FUYUICHIGO",
     "name": {
@@ -1517,10 +1771,14 @@
       "zh_hant": "寒莓"
     },
     "numeric_id": 2112,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_GINKGO_NUT",
     "name": {
@@ -1537,10 +1795,14 @@
       "zh_hant": "銀杏果"
     },
     "numeric_id": 2113,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_GRASS",
     "name": {
@@ -1555,10 +1817,14 @@
       "zh_hant": "牧草"
     },
     "numeric_id": 1500,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_HORSETAIL",
     "name": {
@@ -1575,10 +1841,14 @@
       "zh_hant": "筆頭菜"
     },
     "numeric_id": 2003,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK",
     "name": {
@@ -1593,10 +1863,14 @@
       "zh_hant": "巨岩"
     },
     "numeric_id": 1400,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
     "name": {
@@ -1613,10 +1887,14 @@
       "zh_hant": "堅硬的巨岩"
     },
     "numeric_id": 1401,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
     "name": {
@@ -1633,10 +1911,14 @@
       "zh_hant": "非常堅硬的巨岩"
     },
     "numeric_id": 1402,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
     "name": {
@@ -1653,10 +1935,14 @@
       "zh_hant": "三葉草"
     },
     "numeric_id": 2002,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
     "name": {
@@ -1671,10 +1957,14 @@
       "zh_hant": "山椒"
     },
     "numeric_id": 2008,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_YAM",
     "name": {
@@ -1691,10 +1981,14 @@
       "zh_hant": "野山藥"
     },
     "numeric_id": 2108,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
     "name": {
@@ -1711,10 +2005,14 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3010,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
     "name": {
@@ -1731,10 +2029,14 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3011,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
     "name": {
@@ -1751,10 +2053,14 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3012,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_LILY",
     "name": {
@@ -1770,10 +2076,14 @@
       "zh_hant": "百合花"
     },
     "numeric_id": 2006,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_LILY_ROOT",
     "name": {
@@ -1789,10 +2099,14 @@
       "zh_hant": "百合根"
     },
     "numeric_id": 2007,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_MATSUTAKE",
     "name": {
@@ -1808,10 +2122,14 @@
       "zh_hant": "松茸"
     },
     "numeric_id": 2110,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_MUD_SEEDS",
     "name": {
@@ -1828,10 +2146,14 @@
       "zh_hant": "泥土種子（物品）"
     },
     "numeric_id": 500,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_PINE_CONE",
     "name": {
@@ -1847,10 +2169,14 @@
       "zh_hant": "松果"
     },
     "numeric_id": 2106,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_PURPLE_FLOWER",
     "name": {
@@ -1866,10 +2192,14 @@
       "zh_hant": "紫色的花"
     },
     "numeric_id": 2400,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_RICEFIELD_WEED",
     "name": {
@@ -1886,10 +2216,14 @@
       "zh_hant": "水田的雜草"
     },
     "numeric_id": 1700,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK",
     "name": {
@@ -1905,10 +2239,14 @@
       "zh_hant": "岩石"
     },
     "numeric_id": 1350,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
     "name": {
@@ -1925,10 +2263,14 @@
       "zh_hant": "銅礦脈的岩石"
     },
     "numeric_id": 1354,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
     "name": {
@@ -1945,10 +2287,14 @@
       "zh_hant": "寶石礦脈的岩石"
     },
     "numeric_id": 1358,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
     "name": {
@@ -1965,10 +2311,14 @@
       "zh_hant": "金礦脈的岩石"
     },
     "numeric_id": 1356,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
     "name": {
@@ -1985,10 +2335,14 @@
       "zh_hant": "鐵礦脈的岩石"
     },
     "numeric_id": 1355,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
     "name": {
@@ -2005,10 +2359,14 @@
       "zh_hant": "隕鐵礦脈的岩石"
     },
     "numeric_id": 1357,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
     "name": {
@@ -2025,10 +2383,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1351,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
     "name": {
@@ -2045,10 +2407,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1352,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
     "name": {
@@ -2065,10 +2431,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1353,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_ROQUAT",
     "name": {
@@ -2084,10 +2454,14 @@
       "zh_hant": "枇杷"
     },
     "numeric_id": 2105,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_RUBUS",
     "name": {
@@ -2104,10 +2478,14 @@
       "zh_hant": "樹莓"
     },
     "numeric_id": 2104,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_SASANOKO",
     "name": {
@@ -2124,10 +2502,14 @@
       "zh_hant": "小竹筍"
     },
     "numeric_id": 2005,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STAG_BEETLE",
     "name": {
@@ -2144,10 +2526,14 @@
       "zh_hant": "鍬形蟲"
     },
     "numeric_id": 2151,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE",
     "name": {
@@ -2164,10 +2550,14 @@
       "zh_hant": "石頭"
     },
     "numeric_id": 1300,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_COPPER",
     "name": {
@@ -2184,10 +2574,14 @@
       "zh_hant": "銅礦脈的石頭"
     },
     "numeric_id": 1307,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_GEM",
     "name": {
@@ -2204,10 +2598,14 @@
       "zh_hant": "寶石礦脈的石頭"
     },
     "numeric_id": 1311,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_GOLD",
     "name": {
@@ -2224,10 +2622,14 @@
       "zh_hant": "金礦脈的石頭"
     },
     "numeric_id": 1309,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_IRON",
     "name": {
@@ -2244,10 +2646,14 @@
       "zh_hant": "鐵礦脈的石頭"
     },
     "numeric_id": 1308,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
     "name": {
@@ -2264,10 +2670,14 @@
       "zh_hant": "隕鐵礦脈的石頭"
     },
     "numeric_id": 1310,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
     "name": {
@@ -2284,10 +2694,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1301,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
     "name": {
@@ -2304,10 +2718,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1302,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
     "name": {
@@ -2324,10 +2742,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1303,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
     "name": {
@@ -2344,10 +2766,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1304,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
     "name": {
@@ -2364,10 +2790,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1305,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
     "name": {
@@ -2384,10 +2814,14 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1306,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STUMP",
     "name": {
@@ -2404,10 +2838,14 @@
       "zh_hant": "樹樁"
     },
     "numeric_id": 1202,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STUMP_HARD",
     "name": {
@@ -2424,10 +2862,14 @@
       "zh_hant": "堅硬的樹樁"
     },
     "numeric_id": 1203,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
     "name": {
@@ -2444,10 +2886,14 @@
       "zh_hant": "非常堅硬的樹樁"
     },
     "numeric_id": 1204,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TREE",
     "name": {
@@ -2463,10 +2909,14 @@
       "zh_hant": "栗子"
     },
     "numeric_id": 1000,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TREE_CEDAR",
     "name": {
@@ -2482,10 +2932,14 @@
       "zh_hant": "柳杉"
     },
     "numeric_id": 1001,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TREE_HINOKI",
     "name": {
@@ -2502,10 +2956,14 @@
       "zh_hant": "檜木"
     },
     "numeric_id": 1004,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TREE_OAK",
     "name": {
@@ -2522,10 +2980,14 @@
       "zh_hant": "槲樹"
     },
     "numeric_id": 1003,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TREE_PINE",
     "name": {
@@ -2542,10 +3004,14 @@
       "zh_hant": "松樹"
     },
     "numeric_id": 1002,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_TWIG",
     "name": {
@@ -2562,10 +3028,14 @@
       "zh_hant": "樹枝"
     },
     "numeric_id": 1200,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
     "name": {
@@ -2582,10 +3052,14 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 520,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
     "name": {
@@ -2602,10 +3076,14 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 521,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
     "name": {
@@ -2622,10 +3100,14 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 522,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WALKING_STONE",
     "name": {
@@ -2642,10 +3124,14 @@
       "zh_hant": "行走的石頭（DUMMY）"
     },
     "numeric_id": 3015,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WALNUT",
     "name": {
@@ -2661,10 +3147,14 @@
       "zh_hant": "胡桃"
     },
     "numeric_id": 2109,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WATER_HYACINTH",
     "name": {
@@ -2681,10 +3171,14 @@
       "zh_hant": "布袋蓮"
     },
     "numeric_id": 2102,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WEED_COLOR_1",
     "name": {
@@ -2701,10 +3195,14 @@
       "zh_hant": "雜草"
     },
     "numeric_id": 1100,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WEED_COLOR_2",
     "name": {
@@ -2721,10 +3219,14 @@
       "zh_hant": "雜草"
     },
     "numeric_id": 1101,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [],
     "id": "CROPS_ID_OBJECT_WOLFBERRY",
     "name": {
@@ -2740,10 +3242,14 @@
       "zh_hant": "枸杞"
     },
     "numeric_id": 2111,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [],
     "seed_item_ids": []
   },
   {
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_OLIVE"
     ],
@@ -2762,6 +3268,8 @@
       "zh_hant": "油橄欖"
     },
     "numeric_id": 49,
+    "regrow_days": 3,
+    "regrow_points": 300,
     "seasons": [
       "autumn"
     ],
@@ -2770,6 +3278,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ONION"
     ],
@@ -2788,6 +3298,8 @@
       "zh_hant": "洋蔥"
     },
     "numeric_id": 1,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -2796,6 +3308,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PANSY"
     ],
@@ -2813,6 +3327,8 @@
       "zh_hant": "三色堇"
     },
     "numeric_id": 59,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -2821,6 +3337,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEA"
     ],
@@ -2838,6 +3356,8 @@
       "zh_hant": "豌豆"
     },
     "numeric_id": 9,
+    "regrow_days": 2,
+    "regrow_points": 200,
     "seasons": [
       "spring"
     ],
@@ -2846,6 +3366,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEACH"
     ],
@@ -2864,6 +3386,8 @@
       "zh_hant": "桃子樹"
     },
     "numeric_id": 108,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -2875,6 +3399,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEAR"
     ],
@@ -2893,6 +3419,8 @@
       "zh_hant": "梨子樹"
     },
     "numeric_id": 110,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -2904,6 +3432,8 @@
     ]
   },
   {
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEPPER"
     ],
@@ -2921,6 +3451,8 @@
       "zh_hant": "青椒"
     },
     "numeric_id": 23,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "summer"
     ],
@@ -2929,6 +3461,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PERSIMMON"
     ],
@@ -2947,6 +3481,8 @@
       "zh_hant": "柿子樹"
     },
     "numeric_id": 103,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -2958,6 +3494,8 @@
     ]
   },
   {
+    "growth_days": 13,
+    "growth_points": 1300,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PINEAPPLE"
     ],
@@ -2976,6 +3514,8 @@
       "zh_hant": "鳳梨"
     },
     "numeric_id": 42,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -2984,6 +3524,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PLUM"
     ],
@@ -3002,6 +3544,8 @@
       "zh_hant": "梅子樹"
     },
     "numeric_id": 107,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -3013,6 +3557,8 @@
     ]
   },
   {
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POPPY"
     ],
@@ -3031,6 +3577,8 @@
       "zh_hant": "罌粟花"
     },
     "numeric_id": 7,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3039,6 +3587,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POTATO"
     ],
@@ -3057,6 +3607,8 @@
       "zh_hant": "馬鈴薯"
     },
     "numeric_id": 4,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3065,6 +3617,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PUMPKIN"
     ],
@@ -3082,6 +3636,8 @@
       "zh_hant": "南瓜"
     },
     "numeric_id": 32,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3090,6 +3646,8 @@
     ]
   },
   {
+    "growth_days": 8,
+    "growth_points": 800,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RADISH"
     ],
@@ -3108,6 +3666,8 @@
       "zh_hant": "櫻桃蘿蔔"
     },
     "numeric_id": 18,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3116,6 +3676,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RICE"
     ],
@@ -3133,6 +3695,8 @@
       "zh_hant": "稻米"
     },
     "numeric_id": 63,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -3143,6 +3707,8 @@
     ]
   },
   {
+    "growth_days": 9,
+    "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSE"
     ],
@@ -3160,6 +3726,8 @@
       "zh_hant": "玫瑰"
     },
     "numeric_id": 40,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3168,6 +3736,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSEMARY"
     ],
@@ -3185,6 +3755,8 @@
       "zh_hant": "迷迭香"
     },
     "numeric_id": 60,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -3193,6 +3765,8 @@
     ]
   },
   {
+    "growth_days": 9,
+    "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SESAME"
     ],
@@ -3210,6 +3784,8 @@
       "zh_hant": "芝麻"
     },
     "numeric_id": 52,
+    "regrow_days": 3,
+    "regrow_points": 300,
     "seasons": [
       "autumn"
     ],
@@ -3218,6 +3794,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
     ],
@@ -3235,6 +3813,8 @@
       "zh_hant": "香菇"
     },
     "numeric_id": 55,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -3243,6 +3823,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
     ],
@@ -3261,6 +3843,8 @@
       "zh_hant": "鴻喜菇"
     },
     "numeric_id": 53,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -3269,6 +3853,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SKUNK_CABBAGE"
     ],
@@ -3285,6 +3871,8 @@
       "zh_hant": "水芭蕉"
     },
     "numeric_id": 20,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3293,6 +3881,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SPINACH"
     ],
@@ -3310,6 +3900,8 @@
       "zh_hant": "菠菜"
     },
     "numeric_id": 58,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "winter"
     ],
@@ -3318,6 +3910,8 @@
     ]
   },
   {
+    "growth_days": 14,
+    "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_STRAWBERRY"
     ],
@@ -3335,6 +3929,8 @@
       "zh_hant": "草莓"
     },
     "numeric_id": 12,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "spring"
     ],
@@ -3343,6 +3939,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUGARCANE"
     ],
@@ -3360,6 +3958,8 @@
       "zh_hant": "甘蔗"
     },
     "numeric_id": 28,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3368,6 +3968,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUNFLOWER"
     ],
@@ -3385,6 +3987,8 @@
       "zh_hant": "向日葵"
     },
     "numeric_id": 30,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3393,6 +3997,8 @@
     ]
   },
   {
+    "growth_days": 7,
+    "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SWEET_POTATO"
     ],
@@ -3410,6 +4016,8 @@
       "zh_hant": "地瓜"
     },
     "numeric_id": 47,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -3418,6 +4026,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TARO"
     ],
@@ -3436,6 +4046,8 @@
       "zh_hant": "芋頭"
     },
     "numeric_id": 46,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "autumn"
     ],
@@ -3444,6 +4056,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TEA_TREE"
     ],
@@ -3462,6 +4076,8 @@
       "zh_hant": "茶葉"
     },
     "numeric_id": 64,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",
@@ -3473,6 +4089,8 @@
     ]
   },
   {
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TOMATO"
     ],
@@ -3490,6 +4108,8 @@
       "zh_hant": "番茄"
     },
     "numeric_id": 21,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "summer"
     ],
@@ -3498,6 +4118,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TULIP"
     ],
@@ -3516,6 +4138,8 @@
       "zh_hant": "鬱金香"
     },
     "numeric_id": 14,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3524,6 +4148,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TURNIP"
     ],
@@ -3542,6 +4168,8 @@
       "zh_hant": "大頭菜"
     },
     "numeric_id": 3,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring"
     ],
@@ -3550,6 +4178,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WASABI"
     ],
@@ -3567,6 +4197,8 @@
       "zh_hant": "山葵"
     },
     "numeric_id": 65,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer"
@@ -3576,6 +4208,8 @@
     ]
   },
   {
+    "growth_days": 11,
+    "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WATERMELON"
     ],
@@ -3593,6 +4227,8 @@
       "zh_hant": "西瓜"
     },
     "numeric_id": 26,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3601,6 +4237,8 @@
     ]
   },
   {
+    "growth_days": 4,
+    "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHEAT"
     ],
@@ -3618,6 +4256,8 @@
       "zh_hant": "小麥"
     },
     "numeric_id": 27,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3626,6 +4266,8 @@
     ]
   },
   {
+    "growth_days": 6,
+    "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHITE_ONION"
     ],
@@ -3644,6 +4286,8 @@
       "zh_hant": "蔥"
     },
     "numeric_id": 5,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "summer"
     ],
@@ -3652,6 +4296,8 @@
     ]
   },
   {
+    "growth_days": null,
+    "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_YUZU"
     ],
@@ -3670,6 +4316,8 @@
       "zh_hant": "柚子樹"
     },
     "numeric_id": 102,
+    "regrow_days": null,
+    "regrow_points": null,
     "seasons": [
       "spring",
       "summer",

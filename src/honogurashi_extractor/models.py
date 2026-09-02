@@ -31,6 +31,10 @@ class Crop:
     seed_item_ids: tuple[str, ...]
     harvest_item_ids: tuple[str, ...]
     seasons: tuple[str, ...] = ()
+    growth_points: int | None = None
+    growth_days: int | None = None
+    regrow_points: int | None = None
+    regrow_days: int | None = None
 
 
 @dataclass(frozen=True, slots=True)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import struct
 
 from honogurashi_extractor.localization import build_name
-from honogurashi_extractor.normalize import normalize_snapshot
+from honogurashi_extractor.normalize import _growth_data, normalize_snapshot
 from honogurashi_extractor.table import read_table
 from tests.fixtures.build_table import build_table
 
@@ -18,6 +18,14 @@ def _record(size: int, values: dict[int, int]) -> bytes:
     for offset, value in values.items():
         struct.pack_into("<I", result, offset, value)
     return bytes(result)
+
+
+def test_growth_thresholds_are_converted_to_watered_days():
+    one_harvest = _record(2108, {492: 100, 756: 200, 1020: 400, 1284: 600, 1548: 800})
+    repeating = _record(3180, {492: 240, 756: 480, 1020: 720, 1284: 960, 1548: 1200, 1812: 4, 1816: 3, 2084: 100, 2348: 400})
+
+    assert _growth_data(one_harvest) == (800, 8, None, None)
+    assert _growth_data(repeating) == (1200, 12, 400, 4)
 
 
 def test_official_names_and_aliases_are_preserved():

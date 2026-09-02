@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Mapping
+import math
 
 from .localization import build_name
 from .models import (
@@ -43,6 +44,48 @@ def _u32(record: bytes, offset: int) -> int:
     if offset + 4 > len(record):
         return 0
     return int.from_bytes(record[offset : offset + 4], "little")
+
+
+def _growth_data(record: bytes) -> tuple[int | None, int | None, int | None, int | None]:
+    """Decode verified crop growth thresholds.
+
+    A watered day contributes 100 growth points. Ordinary crops store their
+    initial visual-stage thresholds in 264-byte entries beginning at byte 488.
+    Repeating crops store a second threshold sequence at byte 2080.
+    """
+    thresholds: list[int] = []
+    previous = 0
+    offset = 492
+    while offset + 4 <= len(record):
+        value = _u32(record, offset)
+        if value <= previous or value > 10_000:
+            break
+        thresholds.append(value)
+        previous = value
+        offset += 264
+    if not thresholds:
+        return None, None, None, None
+    growth_points = thresholds[-1]
+    regrow_points = None
+    if len(record) >= 2616 and _u32(record, 1812) == 4 and _u32(record, 1816) in (2, 3):
+        regrow_thresholds: list[int] = []
+        previous = 0
+        offset = 2084
+        while offset + 4 <= len(record):
+            value = _u32(record, offset)
+            if value <= previous or value > 10_000:
+                break
+            regrow_thresholds.append(value)
+            previous = value
+            offset += 264
+        if regrow_thresholds:
+            regrow_points = regrow_thresholds[-1]
+    return (
+        growth_points,
+        math.ceil(growth_points / 100),
+        regrow_points,
+        math.ceil(regrow_points / 100) if regrow_points else None,
+    )
 
 
 def _name(group: tuple[str, ...], overrides: Mapping[str, str]):
@@ -158,6 +201,7 @@ def normalize_snapshot(
                     if seed.related_item_id:
                         harvests.append(seed.related_item_id)
             name = _name(group, overrides)
+            growth_points, growth_days, regrow_points, regrow_days = _growth_data(record)
             snapshot.crops[name.internal] = Crop(
                 id=name.internal,
                 numeric_id=crop_numeric_id,
@@ -165,6 +209,10 @@ def normalize_snapshot(
                 seed_item_ids=tuple(seeds),
                 harvest_item_ids=tuple(dict.fromkeys(harvests)),
                 seasons=tuple(dict.fromkeys(seasons or _seasons(group))),
+                growth_points=growth_points,
+                growth_days=growth_days,
+                regrow_points=regrow_points,
+                regrow_days=regrow_days,
             )
 
     process_table = tables.get("gimmickprocess")
