@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SidebarNav from '../components/SidebarNav.astro';
+interface Props { title: string; description?: string; }
+const { title, description = '《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title} · 静谧田园 Wiki</title>
+  </head>
+  <body>
+    <SiteHeader />
+    <div class="page">
+      <SidebarNav />
+      <main class="main" data-pagefind-body><slot /></main>
+    </div>
+  </body>
+</html>

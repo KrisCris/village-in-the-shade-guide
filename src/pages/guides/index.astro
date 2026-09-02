@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { guideCategories, guides } from '../../data/guideContent';
+---
+<BaseLayout title="中文攻略索引">
+  <p class="eyebrow">116 / 116 TOPICS</p><h1>完整攻略索引</h1>
+  <p class="lede">逐项覆盖 AppMedia 当前首页可发现的全部 116 个主题（含总览）。列表型文章连接到游戏数据表；流程型文章改写为紧凑的中文行动清单。</p>
+  {guideCategories.map((category) => {
+    const rows = guides.filter((guide) => guide.category === category);
+    if (!rows.length) return null;
+    return <section id={category}><div class="section-heading"><h2>{category}</h2><span>{rows.length} 篇</span></div><div class="guide-grid">{rows.map((guide) => <a class="card" href={`/guides/${guide.sourceId}/`}><strong>{guide.chineseTitle}</strong><small>{guide.title}</small><span>{guide.dataTarget ? '游戏数据覆盖' : '中文要点整理'} →</span></a>)}</div></section>;
+  })}
+</BaseLayout>
+<style>section{margin-top:3rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.5rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>

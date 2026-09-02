@@ -1,0 +1,967 @@
+{
+  "reviewedAt": "2026-09-02",
+  "sourceCount": 116,
+  "mappedCount": 116,
+  "mappings": [
+    {
+      "sourceId": "home",
+      "sourceUrl": "https://appmedia.jp/honogurashi",
+      "status": "reviewed",
+      "targets": [
+        "/guides/home/"
+      ]
+    },
+    {
+      "sourceId": "80192533",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80192533",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80192533/"
+      ]
+    },
+    {
+      "sourceId": "80192635",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80192635",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80192635/"
+      ]
+    },
+    {
+      "sourceId": "80192638",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80192638",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80192638/"
+      ]
+    },
+    {
+      "sourceId": "80193565",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80193565",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80193565/"
+      ]
+    },
+    {
+      "sourceId": "80197381",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80197381",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80197381/"
+      ]
+    },
+    {
+      "sourceId": "80199721",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80199721",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80199721/"
+      ]
+    },
+    {
+      "sourceId": "80231161",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80231161",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80231161/"
+      ]
+    },
+    {
+      "sourceId": "80233651",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80233651",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80233651/"
+      ]
+    },
+    {
+      "sourceId": "80234704",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80234704",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80234704/"
+      ]
+    },
+    {
+      "sourceId": "80236210",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80236210",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80236210/"
+      ]
+    },
+    {
+      "sourceId": "80241151",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80241151",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80241151/"
+      ]
+    },
+    {
+      "sourceId": "80241616",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80241616",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80241616/"
+      ]
+    },
+    {
+      "sourceId": "80242231",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80242231",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80242231/"
+      ]
+    },
+    {
+      "sourceId": "80254285",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80254285",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80254285/"
+      ]
+    },
+    {
+      "sourceId": "80254495",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80254495",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80254495/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80255137",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80255137",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80255137/"
+      ]
+    },
+    {
+      "sourceId": "80255662",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80255662",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80255662/"
+      ]
+    },
+    {
+      "sourceId": "80256400",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80256400",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80256400/"
+      ]
+    },
+    {
+      "sourceId": "80257273",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257273",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80257273/",
+        "/data/characters/"
+      ]
+    },
+    {
+      "sourceId": "80257300",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257300",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257300/"
+      ]
+    },
+    {
+      "sourceId": "80257375",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257375",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257375/"
+      ]
+    },
+    {
+      "sourceId": "80257660",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257660",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257660/"
+      ]
+    },
+    {
+      "sourceId": "80257663",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257663",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257663/"
+      ]
+    },
+    {
+      "sourceId": "80257666",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257666",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257666/"
+      ]
+    },
+    {
+      "sourceId": "80257669",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257669",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257669/"
+      ]
+    },
+    {
+      "sourceId": "80257672",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257672",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257672/"
+      ]
+    },
+    {
+      "sourceId": "80257675",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257675",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257675/"
+      ]
+    },
+    {
+      "sourceId": "80257678",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257678",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257678/"
+      ]
+    },
+    {
+      "sourceId": "80257681",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257681",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257681/"
+      ]
+    },
+    {
+      "sourceId": "80257684",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257684",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257684/"
+      ]
+    },
+    {
+      "sourceId": "80257687",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257687",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257687/"
+      ]
+    },
+    {
+      "sourceId": "80257690",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257690",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257690/"
+      ]
+    },
+    {
+      "sourceId": "80257693",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257693",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257693/"
+      ]
+    },
+    {
+      "sourceId": "80257696",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257696",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257696/"
+      ]
+    },
+    {
+      "sourceId": "80257699",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80257699",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80257699/"
+      ]
+    },
+    {
+      "sourceId": "80258017",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80258017",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80258017/"
+      ]
+    },
+    {
+      "sourceId": "80258122",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80258122",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80258122/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80258251",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80258251",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80258251/"
+      ]
+    },
+    {
+      "sourceId": "80258515",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80258515",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80258515/",
+        "/data/quests/"
+      ]
+    },
+    {
+      "sourceId": "80259478",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80259478",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80259478/"
+      ]
+    },
+    {
+      "sourceId": "80259895",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80259895",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80259895/",
+        "/data/crops/"
+      ]
+    },
+    {
+      "sourceId": "80260111",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80260111",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80260111/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80260486",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80260486",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80260486/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80261614",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80261614",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80261614/",
+        "/data/crops/"
+      ]
+    },
+    {
+      "sourceId": "80261650",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80261650",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80261650/"
+      ]
+    },
+    {
+      "sourceId": "80262439",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80262439",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80262439/",
+        "/data/fish/"
+      ]
+    },
+    {
+      "sourceId": "80262475",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80262475",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80262475/"
+      ]
+    },
+    {
+      "sourceId": "80262499",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80262499",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80262499/",
+        "/data/crops/"
+      ]
+    },
+    {
+      "sourceId": "80262517",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80262517",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80262517/",
+        "/data/livestock/"
+      ]
+    },
+    {
+      "sourceId": "80262751",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80262751",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80262751/"
+      ]
+    },
+    {
+      "sourceId": "80263369",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80263369",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80263369/"
+      ]
+    },
+    {
+      "sourceId": "80263390",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80263390",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80263390/"
+      ]
+    },
+    {
+      "sourceId": "80263435",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80263435",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80263435/",
+        "/data/processes/"
+      ]
+    },
+    {
+      "sourceId": "80263978",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80263978",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80263978/"
+      ]
+    },
+    {
+      "sourceId": "80264350",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80264350",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80264350/",
+        "/data/cooking-recipes/"
+      ]
+    },
+    {
+      "sourceId": "80264563",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80264563",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80264563/",
+        "/data/cooking-recipes/"
+      ]
+    },
+    {
+      "sourceId": "80264647",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80264647",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80264647/",
+        "/data/cooking-recipes/"
+      ]
+    },
+    {
+      "sourceId": "80265268",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80265268",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80265268/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80265340",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80265340",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80265340/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80265409",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80265409",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80265409/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80266021",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80266021",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80266021/",
+        "/data/machines/"
+      ]
+    },
+    {
+      "sourceId": "80266039",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80266039",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80266039/"
+      ]
+    },
+    {
+      "sourceId": "80266654",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80266654",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80266654/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80266735",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80266735",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80266735/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80266831",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80266831",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80266831/"
+      ]
+    },
+    {
+      "sourceId": "80267038",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80267038",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80267038/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80267335",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80267335",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80267335/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80267404",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80267404",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80267404/",
+        "/data/livestock/"
+      ]
+    },
+    {
+      "sourceId": "80267449",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80267449",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80267449/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80268682",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80268682",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80268682/"
+      ]
+    },
+    {
+      "sourceId": "80268703",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80268703",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80268703/"
+      ]
+    },
+    {
+      "sourceId": "80269213",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80269213",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80269213/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80269363",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80269363",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80269363/"
+      ]
+    },
+    {
+      "sourceId": "80269555",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80269555",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80269555/",
+        "/data/characters/"
+      ]
+    },
+    {
+      "sourceId": "80271097",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80271097",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80271097/",
+        "/data/items/"
+      ]
+    },
+    {
+      "sourceId": "80271502",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80271502",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80271502/"
+      ]
+    },
+    {
+      "sourceId": "80271730",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80271730",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80271730/"
+      ]
+    },
+    {
+      "sourceId": "80271772",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80271772",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80271772/",
+        "/data/crops/"
+      ]
+    },
+    {
+      "sourceId": "80271967",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80271967",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80271967/"
+      ]
+    },
+    {
+      "sourceId": "80272474",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80272474",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80272474/"
+      ]
+    },
+    {
+      "sourceId": "80273065",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80273065",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80273065/"
+      ]
+    },
+    {
+      "sourceId": "80275048",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80275048",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80275048/"
+      ]
+    },
+    {
+      "sourceId": "80278333",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80278333",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80278333/"
+      ]
+    },
+    {
+      "sourceId": "80278348",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80278348",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80278348/",
+        "/data/cooking-recipes/"
+      ]
+    },
+    {
+      "sourceId": "80278729",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80278729",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80278729/"
+      ]
+    },
+    {
+      "sourceId": "80280052",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80280052",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80280052/"
+      ]
+    },
+    {
+      "sourceId": "80280526",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80280526",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80280526/"
+      ]
+    },
+    {
+      "sourceId": "80281630",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80281630",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80281630/"
+      ]
+    },
+    {
+      "sourceId": "80284315",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80284315",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80284315/"
+      ]
+    },
+    {
+      "sourceId": "80287594",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80287594",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80287594/"
+      ]
+    },
+    {
+      "sourceId": "80292469",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80292469",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80292469/"
+      ]
+    },
+    {
+      "sourceId": "80292487",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80292487",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80292487/"
+      ]
+    },
+    {
+      "sourceId": "80298976",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80298976",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80298976/"
+      ]
+    },
+    {
+      "sourceId": "80299375",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80299375",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80299375/"
+      ]
+    },
+    {
+      "sourceId": "80306605",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80306605",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80306605/"
+      ]
+    },
+    {
+      "sourceId": "80307385",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80307385",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80307385/"
+      ]
+    },
+    {
+      "sourceId": "80307511",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80307511",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80307511/"
+      ]
+    },
+    {
+      "sourceId": "80308075",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80308075",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80308075/"
+      ]
+    },
+    {
+      "sourceId": "80309203",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309203",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309203/"
+      ]
+    },
+    {
+      "sourceId": "80309227",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309227",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309227/"
+      ]
+    },
+    {
+      "sourceId": "80309254",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309254",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309254/"
+      ]
+    },
+    {
+      "sourceId": "80309296",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309296",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309296/"
+      ]
+    },
+    {
+      "sourceId": "80309410",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309410",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309410/"
+      ]
+    },
+    {
+      "sourceId": "80309488",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309488",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309488/"
+      ]
+    },
+    {
+      "sourceId": "80309581",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309581",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80309581/",
+        "/data/machines/"
+      ]
+    },
+    {
+      "sourceId": "80309623",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80309623",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80309623/"
+      ]
+    },
+    {
+      "sourceId": "80310841",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80310841",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80310841/"
+      ]
+    },
+    {
+      "sourceId": "80313589",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80313589",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80313589/"
+      ]
+    },
+    {
+      "sourceId": "80316175",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80316175",
+      "status": "data-covered",
+      "targets": [
+        "/guides/80316175/",
+        "/data/crops/"
+      ]
+    },
+    {
+      "sourceId": "80320486",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80320486",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80320486/"
+      ]
+    },
+    {
+      "sourceId": "80335510",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80335510",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80335510/"
+      ]
+    },
+    {
+      "sourceId": "80336281",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80336281",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80336281/"
+      ]
+    },
+    {
+      "sourceId": "80336536",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80336536",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80336536/"
+      ]
+    },
+    {
+      "sourceId": "80336788",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80336788",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80336788/"
+      ]
+    },
+    {
+      "sourceId": "80337139",
+      "sourceUrl": "https://appmedia.jp/honogurashi/80337139",
+      "status": "reviewed",
+      "targets": [
+        "/guides/80337139/"
+      ]
+    }
+  ]
+}

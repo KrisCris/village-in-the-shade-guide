@@ -1,0 +1,37 @@
+{
+  "name": "village-in-the-shade-guide",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "test": "vitest run",
+    "check": "astro check",
+    "build:data": "node tools/build-site-data.mjs",
+    "content:catalog": "node tools/content/catalog-sources.mjs",
+    "content:outlines": "node tools/content/catalog-outlines.mjs",
+    "content:coverage": "node tools/content/build-coverage.mjs",
+    "content:check": "node tools/content/check-coverage.mjs",
+    "build": "npm run build:data && astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "verify": "npm run content:check && npm test && npm run check && npm run build"
+  },
+  "dependencies": {
+    "@astrojs/react": "latest",
+    "astro": "latest",
+    "opencc-js": "^1.4.2",
+    "react": "latest",
+    "react-dom": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "cheerio": "^1.2.0",
+    "pagefind": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EntityExplorer from '../../../components/table/EntityExplorer';
+import { getCatalog } from '../../../data/repository';
+import { kindLabels } from '../../../data/types';
+export function getStaticPaths() {
+  const catalog = getCatalog();
+  return Object.keys(catalog.counts).map((kind) => ({ params: { kind }, props: { kind } }));
+}
+const { kind } = Astro.props;
+const catalog = getCatalog();
+const rows = catalog.entities.filter((entity) => entity.kind === kind);
+const machineOptions = catalog.entities.filter((entity) => entity.kind === 'machines').map((entity) => ({ id: entity.id, name: entity.name.zh_hans }));
+const label = kindLabels[kind] ?? kind;
+---
+<BaseLayout title={label} description={`${label}完整数据表，支持中文、日文和内部 ID 搜索。`}>
+  <p class="eyebrow">DATA TABLE · {catalog.buildId}</p>
+  <h1>{label}</h1>
+  <p class="lede">共 {rows.length} 条。点击名称在侧栏展开详情，再点击材料、产物或机械可继续向下查看；也可打开独立页面分享。</p>
+  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} />
+</BaseLayout>

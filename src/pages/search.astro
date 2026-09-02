@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlobalSearch from '../components/search/GlobalSearch';
+---
+<BaseLayout title="搜索">
+  <p class="eyebrow">SEARCH</p><h1>全站搜索</h1>
+  <p class="lede">实体搜索支持简中、繁中、日文与内部 ID。下方全文搜索覆盖中文攻略正文。</p>
+  <GlobalSearch client:load prominent />
+  <section><h2>攻略全文搜索</h2><div id="pagefind-search"><p class="muted">输入关键词后加载攻略索引。</p><input id="guide-query" type="search" placeholder="搜索攻略正文" /><div id="guide-results"></div></div></section>
+</BaseLayout>
+<script is:inline>
+  const input = document.querySelector('#guide-query'); const output = document.querySelector('#guide-results');
+  input?.addEventListener('input', async () => {
+    const query = input.value.trim(); if (!query) { output.innerHTML = ''; return; }
+    try { const pagefind = await import('/pagefind/pagefind.js'); const search = await pagefind.search(query); const rows = await Promise.all(search.results.slice(0, 12).map((r) => r.data())); output.innerHTML = rows.map((r) => `<a class="result" href="${r.url}"><strong>${r.meta.title}</strong><span>${r.excerpt}</span></a>`).join('') || '<p>没有匹配攻略</p>'; } catch { output.innerHTML = '<p>全文索引在生产构建后可用。</p>'; }
+  });
+</script>
+<style>section{margin-top:3rem;max-width:780px}#guide-query{width:100%;min-height:48px;padding:.8rem;border:1px solid var(--border);border-radius:10px;background:var(--paper-raised);color:var(--ink)}#guide-results{display:grid;gap:.6rem;margin-top:.7rem}:global(.result){display:grid;gap:.3rem;padding:1rem;border:1px solid var(--border);border-radius:10px;background:var(--paper-raised);text-decoration:none}:global(.result span){color:var(--muted)}</style>
