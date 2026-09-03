@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import EntityDetail from '../../../components/entity/EntityDetail';
+import EntityPage from '../../../components/entity/EntityPage';
 import { getCatalog } from '../../../data/repository';
+import { buildEntityDetailModel } from '../../../domain/relations';
 export function getStaticPaths() {
   const catalog = getCatalog();
   return catalog.entities.map((entity) => ({ params: { kind: entity.kind, id: entity.id }, props: { entity } }));
 }
 const { entity } = Astro.props;
 const catalog = getCatalog();
+const initialModel = buildEntityDetailModel(entity, catalog, 'normal');
 ---
 <BaseLayout title={entity.name.zh_hans} description={`${entity.name.zh_hans}的价格、获取、材料、产物与关联数据。`}>
   <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><span>›</span><a href={`/data/${entity.kind}/`}>{entity.kind}</a><span>›</span><span>{entity.name.zh_hans}</span></nav>
-  <EntityDetail entity={entity} catalog={catalog} />
+  <EntityPage client:load initialEntity={entity} initialModel={initialModel} />
 </BaseLayout>
 <style>.crumb{display:flex;flex-wrap:wrap;gap:.5rem;color:var(--muted);font-size:.86rem;margin-bottom:1.5rem}.crumb a{color:var(--muted)}</style>

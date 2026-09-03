@@ -2,11 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EntityDetail from '../../components/entity/EntityDetail';
 import { getCatalog } from '../../data/repository';
+import { buildEntityDetailModel } from '../../domain/relations';
 import { guideIntro, guides, translateHeading } from '../../data/guideContent';
 export function getStaticPaths() { return guides.map((guide) => ({ params: { sourceId: guide.sourceId }, props: { guide } })); }
 const { guide } = Astro.props;
 const catalog = getCatalog();
 const character = catalog.entities.find((entity) => entity.kind === 'characters' && entity.name.ja === guide.title);
+const characterModel = character ? buildEntityDetailModel(character, catalog, 'normal') : null;
 const isSpoiler = guide.category === '剧情' || guide.category === '怪异';
 ---
 <BaseLayout title={guide.chineseTitle} description={`${guide.chineseTitle}：紧凑中文要点与游戏数据链接。`}>
@@ -14,7 +16,7 @@ const isSpoiler = guide.category === '剧情' || guide.category === '怪异';
   <p class="eyebrow">{guide.category} · REVIEWED 2026-09-02</p><h1>{guide.chineseTitle}</h1>
   <p class="original">日文主题：{guide.title}</p><p class="lede">{guideIntro(guide)}</p>
   {guide.dataTarget && <a class="data-cta card" href={guide.dataTarget}><span><strong>打开完整数据表</strong><small>支持搜索、筛选、排序与逐层展开关联</small></span><b>→</b></a>}
-  {character && <section><h2>游戏数据</h2><EntityDetail entity={character} catalog={catalog} /></section>}
+  {characterModel && <section><h2>游戏数据</h2><EntityDetail model={characterModel} /></section>}
   {guide.headings.length > 0 && <section><h2>要点清单</h2>
     {isSpoiler ? <details class="spoiler"><summary>展开含剧透的流程与应对要点</summary><ol>{guide.headings.map((heading) => <li>{translateHeading(heading)}</li>)}</ol></details> : <ol class="steps">{guide.headings.map((heading) => <li>{translateHeading(heading)}</li>)}</ol>}
   </section>}
