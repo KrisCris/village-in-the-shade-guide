@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildCatalog, rankEntities } from './repository';
+import { buildCatalog, rankEntities, retainAvailableIconPaths } from './repository';
 import { expandSearchRows } from './clientSearch';
 
 describe('data repository', () => {
@@ -32,6 +32,16 @@ describe('data repository', () => {
     expect(catalog.byId.ITEM_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.CROPS_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.PROCESS_ID_ONION_PICKLE.icon_path).toBe('/icons/generated/items/ITEM_ID_PICKLE.webp');
+  });
+
+  it('removes icon paths that are unavailable before entities reach the page', () => {
+    const copy = structuredClone(catalog);
+
+    retainAvailableIconPaths(copy, (path) => path.endsWith('ITEM_ID_ONION.webp'));
+
+    expect(copy.byId.ITEM_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
+    expect(copy.byId.ITEM_ID_PICKLE.icon_path).toBeNull();
+    expect(copy.byId.PROCESS_ID_ONION_PICKLE.icon_path).toBeNull();
   });
 
   it('keeps synthesized store and hunt display prefixes after alias normalization', () => {
