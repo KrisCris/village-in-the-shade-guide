@@ -20,8 +20,8 @@ export default function GlobalSearch({ prominent = false }: { prominent?: boolea
   };
   const results = useMemo(() => rankEntities(query, rows).slice(0, 12), [query, rows]);
   return <div className={`global-search ${prominent ? 'prominent' : ''}`}>
-    <label htmlFor="global-query">搜索物品、作物、机械、料理、角色或日文名</label>
-    <input id="global-query" type="search" value={query} onFocus={loadIndex} onChange={(event) => { setQuery(event.target.value); void loadIndex(); }} placeholder="例如：洋葱 / 洋蔥 / タマネギ" autoComplete="off" />
+    <label htmlFor="global-query">搜索物品、作物、机械、料理或角色</label>
+    <input id="global-query" type="search" value={query} onFocus={loadIndex} onChange={(event) => { setQuery(event.target.value); void loadIndex(); }} placeholder="洋葱 / yangcong / yc / タマネギ" autoComplete="off" />
     {query && <div className="search-results" role="listbox" aria-label="搜索结果">
       {loading && rows.length === 0 ? <p>正在读取搜索索引…</p> : results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={entityUrl(entity)} role="option">
         <span>{entity.name.zh_hans}</span><small>{entity.kind} · {entity.name.ja || entity.id}</small>

@@ -11,11 +11,20 @@ const { kind } = Astro.props;
 const catalog = getCatalog();
 const rows = catalog.entities.filter((entity) => entity.kind === kind);
 const machineOptions = catalog.entities.filter((entity) => entity.kind === 'machines').map((entity) => ({ id: entity.id, name: entity.name.zh_hans }));
+const referencedItemIds = kind === 'processes' ? new Set(rows.flatMap((entity) => {
+  const inputs = (entity.inputs ?? []) as Array<{ item_id: string }>;
+  const output = entity.output as { item_id?: string } | undefined;
+  return [...inputs.map((input) => input.item_id), ...(output?.item_id ? [output.item_id] : [])];
+})) : new Set<string>();
+const priceIndex = Object.fromEntries([...referencedItemIds].flatMap((id) => {
+  const item = catalog.byId[id];
+  return item ? [[id, { sell_price: item.sell_price, quality_eligible: item.quality_eligible }]] : [];
+}));
 const label = kindLabels[kind] ?? kind;
 ---
 <BaseLayout title={label} description={`${label}完整数据表，支持中文、日文和内部 ID 搜索。`}>
   <p class="eyebrow">DATA TABLE · {catalog.buildId}</p>
   <h1>{label}</h1>
   <p class="lede">共 {rows.length} 条。点击名称在侧栏展开详情，再点击材料、产物或机械可继续向下查看；也可打开独立页面分享。</p>
-  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} />
+  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} priceIndex={priceIndex} />
 </BaseLayout>
