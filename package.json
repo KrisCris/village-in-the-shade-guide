@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "test": "vitest run",
     "check": "astro check",
-    "build:data": "node tools/build-site-data.mjs",
+    "build:data": "tsx tools/build-site-data.ts",
     "content:catalog": "node tools/content/catalog-sources.mjs",
     "content:outlines": "node tools/content/catalog-outlines.mjs",
     "content:coverage": "node tools/content/build-coverage.mjs",
@@ -21,6 +21,7 @@
     "@astrojs/react": "latest",
     "astro": "latest",
     "opencc-js": "^1.4.2",
+    "pinyin-pro": "^3.29.3",
     "react": "latest",
     "react-dom": "latest",
     "zod": "latest"
@@ -32,6 +33,7 @@
     "@types/react-dom": "latest",
     "cheerio": "^1.2.0",
     "pagefind": "latest",
+    "tsx": "^4.23.13",
     "typescript": "latest",
     "vitest": "latest"
   }

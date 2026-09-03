@@ -4,10 +4,32 @@ import { expandSearchRows } from './clientSearch';
 
 describe('data repository', () => {
   const row = { id: 'CROPS_ID_ONION', name: { zh_hans: '洋葱', zh_hant: '洋蔥', ja: 'タマネギ', internal: 'CROPS_ID_ONION', aliases: ['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION'], review_status: 'override' } };
-  const catalog = buildCatalog({ '/entities/crops.json': [row] });
+  const catalog = buildCatalog({
+    '/entities/items.json': [
+      { id: 'ITEM_ID_ONION_SEED', name: { ...row.name, zh_hans: '洋葱种子', zh_hant: '洋蔥種子', aliases: ['洋葱种子'] } },
+      { id: 'ITEM_ID_ONION', name: { ...row.name, zh_hans: '洋葱收获物', zh_hant: '洋蔥收穫物', aliases: ['洋葱收获物'] } },
+      { id: 'ITEM_ID_PICKLE', name: { ...row.name, zh_hans: '洋葱泡菜', zh_hant: '洋蔥泡菜', aliases: ['洋葱泡菜'] } },
+    ],
+    '/entities/crops.json': [{ ...row, seed_item_ids: ['ITEM_ID_ONION_SEED'], harvest_item_ids: ['ITEM_ID_ONION'] }],
+    '/entities/processes.json': [{ id: 'PROCESS_ID_ONION_PICKLE', name: { ...row.name, zh_hans: '洋葱泡菜', aliases: ['洋葱泡菜'] }, inputs: [{ item_id: 'ITEM_ID_ONION', quantity: 1 }], output: { item_id: 'ITEM_ID_PICKLE', quantity: 1 } }],
+  });
 
-  it.each(['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION'])('finds aliases: %s', (query) => {
+  it.each(['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION', 'yangcong', 'yang cong', 'yc'])('finds aliases: %s', (query) => {
     expect(rankEntities(query, catalog.entities)[0]?.id).toBe(row.id);
+  });
+
+  it('propagates quality from crops and harvests but not seeds', () => {
+    expect(catalog.byId.CROPS_ID_ONION.quality_eligible).toBe(true);
+    expect(catalog.byId.ITEM_ID_ONION.quality_eligible).toBe(true);
+    expect(catalog.byId.ITEM_ID_ONION_SEED.quality_eligible).toBe(false);
+    expect(catalog.byId.PROCESS_ID_ONION_PICKLE.quality_eligible).toBe(true);
+    expect(catalog.byId.ITEM_ID_PICKLE.quality_eligible).toBe(true);
+  });
+
+  it('derives deterministic item icon paths without source icon IDs', () => {
+    expect(catalog.byId.ITEM_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
+    expect(catalog.byId.CROPS_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
+    expect(catalog.byId.PROCESS_ID_ONION_PICKLE.icon_path).toBe('/icons/generated/items/ITEM_ID_PICKLE.webp');
   });
 
   it('skips relation rows that do not own a display name', () => {
