@@ -16,9 +16,18 @@
 
 .\.venv\Scripts\python.exe -m honogurashi_extractor.cli audit `
   data/generated/build-24969282
+
+.\.venv\Scripts\python.exe -m honogurashi_extractor.cli extract-icons `
+  --game-dir "E:\Games\SteamLibrary\steamapps\common\Village in the Shade" `
+  --snapshot data/generated/build-24969282 `
+  --output public/icons/generated/items
 ```
 
 字段档案只为已经由至少两条真实记录确认的标量命名。作物和机械加工表含有可变长数组；它们按数组计数读取，不按某一行的固定偏移套用。中文名优先使用游戏内官方繁中，再转换为简中，同时保留繁中、日文和内部 ID 作为搜索别名。
+
+`extract-icons` 同样只读游戏文件：它用快照中的物品数字 ID 查询 `item.dat`、`icon.dat` 与 `texture.dat`，按图集坐标裁切并写成无损 WebP。当前构建共请求 2856 个物品图标，成功写出 286 个，2570 个物品在数据库中没有可用的直接图标映射，0 个已映射图标解码失败。网站对缺失文件自动使用对应分类的占位图，因此图标缺失不会影响数据页面或生产构建。
+
+当前 Steam 构建的纹理使用 `NMPLTEX1` 布局标记 102、BC7 数据与 YKCMP 方法 9；提取器也保留旧布局的块线性解码路径。游戏更新后应先运行 schema 校验和数据审计，再重新提取图标，不应沿用未经核对的偏移。
 
 ## 首次快照抽查
 
@@ -33,3 +42,7 @@
 7. 料理：洋葱汤 `COOKING_ID_013` 产出 1 份，原料为洋葱×2、奶酪×1，成品售价 306；[洋葱用途页](https://appmedia.jp/honogurashi/80320957) 同样记录洋葱汤需要洋葱×2。
 
 “日”是界面级显示值：将游戏分钟除以 1440 后向上取整。快照保留原始分钟，网站同时显示原始时长和换算天数，避免丢失精度。
+
+## 品质价格口径
+
+普通、铜星、银星、金星、品牌品质分别使用 1、1.25、1.5、1.75、2 倍基础售价。种子、树苗以及不具品质传播关系的原料保持固定价格；作物收获物及其可传播品质的加工产物使用全局品质。由于游戏最终显示时对非整数价格的取整规则尚未完全验证，网站保留计算结果并以 `≈` 标明小数估算值。

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Catalog, Entity } from '../../data/types';
+import { resolveCatalogEntity } from '../../data/entityLookup';
 import { buildEntityDetailModel } from '../../domain/relations';
 import { useQuality } from '../quality/qualityPreference';
 import EntityDetail from './EntityDetail';
@@ -28,7 +29,7 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
   }, [onClose]);
   const current = stack.at(-1)!;
   const title = useMemo(() => stack.map((e) => e.name.zh_hans).join(' › '), [stack]);
-  const model = useMemo(() => catalog ? buildEntityDetailModel(catalog.byId[current.id] ?? current, catalog, quality) : null, [catalog, current, quality]);
+  const model = useMemo(() => catalog ? buildEntityDetailModel(resolveCatalogEntity(catalog, current), catalog, quality) : null, [catalog, current, quality]);
   return <div className="drawer-backdrop" role="presentation" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
     <aside className="drawer" role="dialog" aria-modal="true" aria-label={title}>
       <header><button onClick={() => stack.length > 1 ? setStack(stack.slice(0, -1)) : onClose()}>{stack.length > 1 ? '← 返回' : '关闭'}</button><span>{title}</span><a href={`/data/${current.kind}/${encodeURIComponent(current.id)}/`}>独立页面 ↗</a></header>
