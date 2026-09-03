@@ -1,3 +1,7 @@
+import type { Catalog, Entity } from '../data/types';
+import type { Quality } from './quality';
+import { qualityPrice } from './quality';
+
 export type ProfitResult = {
   inputCost: number;
   outputValue: number;
@@ -6,6 +10,38 @@ export type ProfitResult = {
   perDay: number | null;
   harvests?: number;
 };
+
+function itemPrice(catalog: Catalog, itemId: string | undefined, field: 'buy_price' | 'sell_price', quality: Quality): number | null {
+  const item = itemId ? catalog.byId[itemId] : undefined;
+  if (!item) return null;
+  return qualityPrice(item[field], item.quality_eligible === true, quality)?.value ?? null;
+}
+
+export function calculateEntityProcessProfit(entity: Entity, catalog: Catalog, quality: Quality): ProfitResult | null {
+  if (entity.kind !== 'processes') return null;
+  const inputs = (entity.inputs ?? []) as Array<{ item_id?: string; quantity?: number }>;
+  const output = entity.output as { item_id?: string; quantity?: number } | undefined;
+  if (!output?.item_id) return null;
+  let inputCost = 0;
+  for (const input of inputs) {
+    const value = itemPrice(catalog, input.item_id, 'sell_price', quality);
+    if (value == null) return null;
+    inputCost += value * Number(input.quantity ?? 1);
+  }
+  const unitOutput = itemPrice(catalog, output.item_id, 'sell_price', quality);
+  if (unitOutput == null) return null;
+  return calculateProcessProfit({ inputCost, outputValue: unitOutput * Number(output.quantity ?? 1), durationMinutes: typeof entity.duration_minutes === 'number' ? entity.duration_minutes : null });
+}
+
+export function calculateEntityCropProfit(entity: Entity, catalog: Catalog, quality: Quality): ProfitResult | null {
+  if (entity.kind !== 'crops') return null;
+  const seedId = (entity.seed_item_ids as string[] | undefined)?.[0];
+  const harvestId = (entity.harvest_item_ids as string[] | undefined)?.[0];
+  const seedCost = itemPrice(catalog, seedId, 'buy_price', 'normal');
+  const harvestValue = itemPrice(catalog, harvestId, 'sell_price', quality);
+  if (seedCost == null || harvestValue == null) return null;
+  return calculateCropProfit({ seedCost, harvestValue, growthDays: typeof entity.growth_days === 'number' ? entity.growth_days : null, regrowDays: typeof entity.regrow_days === 'number' ? entity.regrow_days : null });
+}
 
 export function calculateProcessProfit(input: {
   inputCost: number;

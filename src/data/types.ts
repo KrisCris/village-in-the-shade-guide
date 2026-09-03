@@ -13,6 +13,9 @@ export type Entity = Record<string, unknown> & {
   name: Name;
   buy_price?: number | null;
   sell_price?: number | null;
+  quality_eligible?: boolean;
+  quality_source?: string | null;
+  icon_path?: string | null;
   searchText: string;
 };
 
