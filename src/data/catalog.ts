@@ -52,7 +52,14 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       const target = byId[String(entity.item_id ?? entity.certificate_item_id ?? '')];
       if (target) {
         const prefix = entity.kind === 'store-offers' ? '商店出售' : '狩猎报酬';
-        entity.name = withSearchAliases({ ...target.name, zh_hans: `${prefix}：${target.name.zh_hans}`, internal: entity.id, aliases: [...target.name.aliases, entity.id] });
+        const traditionalPrefix = entity.kind === 'store-offers' ? '商店出售' : '狩獵報酬';
+        entity.name = withSearchAliases({
+          ...target.name,
+          zh_hans: `${prefix}：${target.name.zh_hans}`,
+          zh_hant: `${traditionalPrefix}：${target.name.zh_hant || target.name.zh_hans}`,
+          internal: entity.id,
+          aliases: [...target.name.aliases, entity.id],
+        });
         setSearchText(entity);
       }
     }

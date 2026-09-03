@@ -12,6 +12,8 @@ describe('data repository', () => {
     ],
     '/entities/crops.json': [{ ...row, seed_item_ids: ['ITEM_ID_ONION_SEED'], harvest_item_ids: ['ITEM_ID_ONION'] }],
     '/entities/processes.json': [{ id: 'PROCESS_ID_ONION_PICKLE', name: { ...row.name, zh_hans: '洋葱泡菜', aliases: ['洋葱泡菜'] }, inputs: [{ item_id: 'ITEM_ID_ONION', quantity: 1 }], output: { item_id: 'ITEM_ID_PICKLE', quantity: 1 } }],
+    '/entities/store-offers.json': [{ id: 'STORE_OFFER_ONION', item_id: 'ITEM_ID_ONION' }],
+    '/entities/hunt-rewards.json': [{ id: 'HUNT_REWARD_ONION', item_id: 'ITEM_ID_ONION' }],
   });
 
   it.each(['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION', 'yangcong', 'yang cong', 'yc'])('finds aliases: %s', (query) => {
@@ -30,6 +32,11 @@ describe('data repository', () => {
     expect(catalog.byId.ITEM_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.CROPS_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.PROCESS_ID_ONION_PICKLE.icon_path).toBe('/icons/generated/items/ITEM_ID_PICKLE.webp');
+  });
+
+  it('keeps synthesized store and hunt display prefixes after alias normalization', () => {
+    expect(catalog.byId.STORE_OFFER_ONION.name.zh_hans).toBe('商店出售：洋葱收获物');
+    expect(catalog.byId.HUNT_REWARD_ONION.name.zh_hans).toBe('狩猎报酬：洋葱收获物');
   });
 
   it('skips relation rows that do not own a display name', () => {
