@@ -4,7 +4,6 @@ import { guideCategories, guides } from '../../data/guideContent';
 ---
 <BaseLayout title="中文攻略索引">
   <p class="eyebrow">116 / 116 TOPICS</p><h1>完整攻略索引</h1>
-  <p class="lede">逐项覆盖 AppMedia 当前首页可发现的全部 116 个主题（含总览）。列表型文章连接到游戏数据表；流程型文章改写为紧凑的中文行动清单。</p>
   {guideCategories.map((category) => {
     const rows = guides.filter((guide) => guide.category === category);
     if (!rows.length) return null;

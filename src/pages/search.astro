@@ -4,7 +4,6 @@ import GlobalSearch from '../components/search/GlobalSearch';
 ---
 <BaseLayout title="搜索">
   <p class="eyebrow">SEARCH</p><h1>全站搜索</h1>
-  <p class="lede">实体搜索支持简中、繁中、日文与内部 ID。下方全文搜索覆盖中文攻略正文。</p>
   <GlobalSearch client:load prominent />
   <section><h2>攻略全文搜索</h2><div id="pagefind-search"><p class="muted">输入关键词后加载攻略索引。</p><input id="guide-query" type="search" placeholder="搜索攻略正文" /><div id="guide-results"></div></div></section>
 </BaseLayout>

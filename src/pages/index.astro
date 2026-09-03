@@ -1,36 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlobalSearch from '../components/search/GlobalSearch';
+import ProfitRankings from '../components/home/ProfitRankings';
 import { getCatalog } from '../data/repository';
 import { kindLabels, primaryKinds } from '../data/types';
 const catalog = getCatalog();
 const featuredKinds = primaryKinds.map((kind) => ({ kind, label: kindLabels[kind], count: catalog.counts[kind] ?? 0 }));
-const processes = catalog.entities.filter((entity) => entity.kind === 'processes').map((entity) => {
-  const inputs = (entity.inputs ?? []) as Array<{ item_id: string; quantity: number }>;
-  const output = entity.output as { item_id: string; quantity: number } | undefined;
-  const input = inputs.reduce((sum, row) => sum + Number(catalog.byId[row.item_id]?.sell_price ?? 0) * row.quantity, 0);
-  const value = output ? Number(catalog.byId[output.item_id]?.sell_price ?? 0) * output.quantity : 0;
-  const days = Number(entity.duration_minutes ?? 0) / 1440;
-  return { ...entity, net: value - input, perDay: days > 0 ? (value - input) / days : 0 };
-}).filter((row) => row.perDay > 0).sort((a, b) => b.perDay - a.perDay).slice(0, 5);
-const crops = catalog.entities.filter((entity) => entity.kind === 'crops' && typeof entity.profit_per_day === 'number' && entity.profit_per_day > 0).sort((a, b) => Number(b.profit_per_day) - Number(a.profit_per_day)).slice(0, 5);
+const processes = catalog.entities.filter((entity) => entity.kind === 'processes');
+const crops = catalog.entities.filter((entity) => entity.kind === 'crops');
+const itemIds = new Set<string>();
+for (const crop of crops) {
+  for (const id of [...(crop.seed_item_ids as string[] | undefined ?? []), ...(crop.harvest_item_ids as string[] | undefined ?? [])]) itemIds.add(id);
+}
+for (const process of processes) {
+  for (const input of process.inputs as Array<{ item_id: string }> | undefined ?? []) itemIds.add(input.item_id);
+  const output = process.output as { item_id?: string } | undefined;
+  if (output?.item_id) itemIds.add(output.item_id);
+}
+const items = [...itemIds].flatMap((id) => catalog.byId[id] ? [catalog.byId[id]] : []);
 ---
 <BaseLayout title="中文版数据 Wiki 与攻略">
   <p class="eyebrow">Village in the Shade · Build 24969282</p>
-  <h1>把庭院生活，查得明明白白</h1>
-  <p class="lede">整合游戏原始数据与 AppMedia 日文攻略主题。查价格、季节、配方、机械加工、角色喜好与流程攻略；点任何关联项，可继续展开下一层。</p>
+  <h1>静谧田园资料库</h1>
   <GlobalSearch client:load prominent />
-  <section><div class="section-title"><div><p class="eyebrow">DATA</p><h2>常用资料库</h2></div><a href="/data/items/">查看全部分类 →</a></div>
-    <div class="grid">{featuredKinds.map(({ kind, label, count }) => <a class="category card" href={`/data/${kind}/`}><span>{label}</span><strong>{count}</strong><small>可搜索、筛选与展开</small></a>)}</div>
+  <section><div class="section-title"><h2>常用资料库</h2><a href="/data/items/">物品总表 →</a></div>
+    <div class="grid">{featuredKinds.map(({ kind, label, count }) => <a class="category card" href={`/data/${kind}/`}><span>{label}</span><strong>{count}</strong></a>)}</div>
   </section>
-  <section><div class="section-title"><div><p class="eyebrow">PROFIT</p><h2>加工日收益参考</h2></div><a href="/data/processes/?sort=profit">全部加工 →</a></div>
-    <div class="profit-list card">{processes.map((row, index) => <a href={`/data/processes/${encodeURIComponent(row.id)}/`}><b>{index + 1}</b><span>{row.name.zh_hans}<small>{row.name.ja}</small></span><strong>+{row.perDay.toFixed(1)} / 日</strong></a>)}</div>
-  </section>
-  <section><div class="section-title"><div><p class="eyebrow">SEASON PROFIT</p><h2>普通品质单格作物排行</h2></div><a href="/data/crops/?sort=profit">全部作物 →</a></div>
-    <div class="profit-list card">{crops.map((row, index) => <a href={`/data/crops/${encodeURIComponent(row.id)}/`}><b>{index + 1}</b><span>{row.name.zh_hans}<small>{(row.seasons as string[]).join(' · ')} · 首熟 {String(row.growth_days)} 日{row.regrow_days ? ` · 再生 ${String(row.regrow_days)} 日` : ''}</small></span><strong>+{Number(row.profit_per_day).toFixed(1)} / 日</strong></a>)}</div>
-  </section>
-  <section class="notice card"><div><p class="eyebrow">EDITORIAL NOTE</p><h2>数据与攻略分开标注</h2></div><p>价格、配方和关联优先来自本地游戏构建；叙事与玩法说明是对日文攻略主题的中文重写，不照搬原文。遇到尚未确认的生长时间等字段会明确显示“数据不足”。</p></section>
+  <ProfitRankings client:load crops={crops} processes={processes} items={items} />
 </BaseLayout>
 <style>
-  section{margin-top:3.5rem}.section-title{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.section-title h2{margin:.2rem 0;font-size:1.65rem}.section-title .eyebrow{margin:0}.category{display:grid;grid-template-columns:1fr auto;gap:.3rem;padding:1.1rem;color:var(--ink);text-decoration:none}.category:hover{border-color:var(--green);transform:translateY(-1px)}.category strong{font-size:1.6rem;color:var(--green)}.category small{grid-column:1/-1;color:var(--muted)}.profit-list a{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:.8rem;padding:.85rem 1rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border)}.profit-list a:last-child{border-bottom:0}.profit-list b{color:var(--vermilion)}.profit-list span{display:grid}.profit-list small{color:var(--muted)}.profit-list strong{color:var(--gold)}.notice{display:grid;grid-template-columns:minmax(180px,1fr) 2fr;gap:2rem;padding:1.5rem}.notice h2{margin:.2rem 0}.notice p:last-child{line-height:1.8;color:var(--muted)}@media(max-width:600px){.notice{grid-template-columns:1fr}.profit-list a{grid-template-columns:1.5rem 1fr}.profit-list strong{grid-column:2}}
+  section{margin-top:3.5rem}.section-title{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.section-title h2{margin:0;font-size:1.65rem}.category{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.3rem;padding:1.1rem;color:var(--ink);text-decoration:none}.category:hover{border-color:var(--green);transform:translateY(-1px)}.category strong{font-size:1.6rem;color:var(--green)}
 </style>

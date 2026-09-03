@@ -27,6 +27,10 @@ function isModifiedClick(event: MouseEvent) {
   return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
 }
 
+function rowFallback(row: Entity) {
+  return `/icons/fallback/${['items', 'crops', 'machines', 'processes'].includes(row.kind) ? row.kind : 'default'}.svg`;
+}
+
 export default function EntityExplorer({ rows, kind, machineOptions = [], priceIndex = {} }: {
   rows: Entity[];
   kind: string;
@@ -109,7 +113,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality) : '固定';
       return <tr key={row.id} tabIndex={0} aria-label={`打开${row.name.zh_hans}详情`} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
-        <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}>{row.name.zh_hans}<small>{row.name.ja}</small></a></td>
+        <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}><img src={row.icon_path || rowFallback(row)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = rowFallback(row); }} alt="" width="42" height="42" loading="lazy" /><span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
         <td>{(row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
         <td className="price">{metricText(metrics.buy, row.kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>
@@ -121,7 +125,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     {selected && <EntityDrawer initial={selected} onClose={() => setSelected(null)} />}
     <style>{`
       .toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:.8rem;padding:.8rem;margin:1.2rem 0}.toolbar label{display:grid;gap:.3rem;color:var(--muted);font-size:.78rem}.toolbar input,.toolbar select{min-height:42px;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);color:var(--ink)}.toolbar b{margin-left:auto;padding:.7rem;color:var(--green)}
-      .table-wrap{overflow:auto;max-height:calc(100vh - 250px)}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:block;color:var(--green);font-weight:750;text-decoration:none}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}code{font-size:.72rem;color:var(--muted)}
+      .table-wrap{overflow:auto;max-height:calc(100vh - 250px)}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:flex;align-items:center;gap:.65rem;color:var(--green);font-weight:750;text-decoration:none;min-width:180px}.entity-link img{flex:none;border-radius:7px;object-fit:contain;background:var(--paper-deep)}.entity-link span{display:grid}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}code{font-size:.72rem;color:var(--muted)}
       @media(max-width:700px){.toolbar>*{flex:1 1 140px}.toolbar b{margin-left:0}.table-wrap{max-height:none}th,td{min-width:100px}th:first-child,td:first-child{position:sticky;left:0;background:var(--paper-raised);z-index:1}}
     `}</style>
   </>;
