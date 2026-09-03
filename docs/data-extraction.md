@@ -1,6 +1,6 @@
 # 游戏数据提取与校验
 
-本项目只读 `Village in the Shade/data.dat`，不会修改游戏目录或存档。当前快照对应 Steam App `3934250`、构建 `24969282`；归档和每张数据表的 SHA-256 均写入 `manifest.json`，因此更新游戏后可以明确判断数据是否变化。
+本项目只读 `Village in the Shade/data.dat`；生成图标时还会读取 `data/texture*.dat`，不会修改游戏目录或存档。当前快照对应 Steam App `3934250`、构建 `24969282`；归档和每张数据表的 SHA-256 均写入 `manifest.json`，因此更新游戏后可以明确判断数据是否变化。
 
 ## 生成快照
 

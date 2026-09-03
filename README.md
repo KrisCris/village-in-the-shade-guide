@@ -32,7 +32,7 @@ npm run verify
 
 ## 从本地游戏重新提取
 
-提取器只读 `data.dat`。示例命令：
+提取过程只读本地游戏归档（`data.dat` 与图标所需的 `data/texture*.dat`），不会修改游戏目录。示例命令：
 
 ```powershell
 .\.venv\Scripts\python.exe -m honogurashi_extractor.cli verify-schemas `
