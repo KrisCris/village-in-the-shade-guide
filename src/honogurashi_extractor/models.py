@@ -21,6 +21,8 @@ class Item:
     buy_price: int | None
     sell_price: int
     related_item_id: str | None = None
+    icon_id: int | None = None
+    outline_icon_id: int | None = None
 
 
 @dataclass(frozen=True, slots=True)

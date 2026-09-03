@@ -64,3 +64,19 @@ def test_cli_accepts_snapshot_audit_request(tmp_path):
     args = build_parser().parse_args(["audit", str(tmp_path)])
 
     assert args.command == "audit"
+
+
+def test_cli_accepts_icon_extraction_request(tmp_path):
+    args = build_parser().parse_args(
+        [
+            "extract-icons",
+            "--game-dir",
+            str(tmp_path),
+            "--snapshot",
+            str(tmp_path / "snapshot"),
+            "--output",
+            str(tmp_path / "icons"),
+        ]
+    )
+
+    assert args.command == "extract-icons"

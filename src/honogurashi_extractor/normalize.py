@@ -147,6 +147,8 @@ def normalize_snapshot(
                 name=name,
                 buy_price=_u32(record, 292) or None,
                 sell_price=_u32(record, 296),
+                icon_id=_u32(record, 484) or None,
+                outline_icon_id=_u32(record, 492) or None,
             )
             snapshot.items[item.id] = item
             items_by_numeric[numeric_id] = item
@@ -164,6 +166,8 @@ def normalize_snapshot(
                     buy_price=item.buy_price,
                     sell_price=item.sell_price,
                     related_item_id=related.id,
+                    icon_id=item.icon_id,
+                    outline_icon_id=item.outline_icon_id,
                 )
                 snapshot.items[item.id] = replacement
                 items_by_numeric[numeric_id] = replacement

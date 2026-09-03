@@ -12,6 +12,7 @@ from .archive import FafullfsArchive
 from .audit import audit_snapshot
 from .diff import diff_snapshots
 from .manifest import Provenance, write_snapshot
+from .icons import extract_item_icons
 from .normalize import normalize_snapshot
 from .normalize_world import normalize_world
 from .probe import build_probe
@@ -65,6 +66,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     audit = subcommands.add_parser("audit", help="validate a generated snapshot")
     audit.add_argument("snapshot", type=Path)
+
+    extract_icons = subcommands.add_parser(
+        "extract-icons", help="extract item icons from the installed game"
+    )
+    extract_icons.add_argument("--game-dir", type=Path, required=True)
+    extract_icons.add_argument("--snapshot", type=Path, required=True)
+    extract_icons.add_argument("--output", type=Path, required=True)
 
     return parser
 
@@ -196,6 +204,12 @@ def main(argv: Sequence[str] | None = None) -> int:
                 f"ok table={schema.table} records={table.record_count} "
                 f"sizes={','.join(map(str, sorted(actual)))}"
             )
+    elif args.command == "extract-icons":
+        report = extract_item_icons(args.game_dir, args.snapshot, args.output)
+        print(
+            f"requested={report.requested} written={report.written} "
+            f"missing={report.missing_icon} failed={report.failed}"
+        )
     return 0
 
 
