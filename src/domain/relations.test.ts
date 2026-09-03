@@ -54,6 +54,19 @@ describe('relation groups', () => {
     expect(row.chips).toContain('2 日');
   });
 
+  it('resolves a process machine as a machine when an item shares its id', () => {
+    const item = entity('machine', 'items');
+    const machine = entity('machine', 'machines');
+    const output = entity('output', 'items', { sell_price: 100 });
+    const process = entity('process', 'processes', { machine_ids: ['machine'], inputs: [], output: { item_id: 'output', quantity: 1 } });
+    const data = catalog(item, machine, output, process);
+    data.byId.machine = item;
+
+    const usedMachine = buildRelationGroups(process, data, 'normal').find((group) => group.key === 'other')?.rows[0].entity;
+
+    expect(usedMachine).toBe(machine);
+  });
+
   it('builds crop facts and profit with the selected quality', () => {
     const seed = entity('seed', 'items', { buy_price: 40, sell_price: 0 });
     const harvest = entity('harvest', 'items', { sell_price: 63, quality_eligible: true });

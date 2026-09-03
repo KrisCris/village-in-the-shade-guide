@@ -35,12 +35,14 @@ export function calculateEntityProcessProfit(entity: Entity, catalog: Catalog, q
 
 export function calculateEntityCropProfit(entity: Entity, catalog: Catalog, quality: Quality): ProfitResult | null {
   if (entity.kind !== 'crops') return null;
+  const growthDays = typeof entity.growth_days === 'number' ? entity.growth_days : null;
+  if (growthDays == null || growthDays <= 0) return null;
   const seedId = (entity.seed_item_ids as string[] | undefined)?.[0];
   const harvestId = (entity.harvest_item_ids as string[] | undefined)?.[0];
   const seedCost = itemPrice(catalog, seedId, 'buy_price', 'normal');
   const harvestValue = itemPrice(catalog, harvestId, 'sell_price', quality);
   if (seedCost == null || harvestValue == null) return null;
-  return calculateCropProfit({ seedCost, harvestValue, growthDays: typeof entity.growth_days === 'number' ? entity.growth_days : null, regrowDays: typeof entity.regrow_days === 'number' ? entity.regrow_days : null });
+  return calculateCropProfit({ seedCost, harvestValue, growthDays, regrowDays: typeof entity.regrow_days === 'number' ? entity.regrow_days : null });
 }
 
 export function calculateProcessProfit(input: {

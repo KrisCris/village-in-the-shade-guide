@@ -1,4 +1,5 @@
 import type { Catalog, Entity } from '../data/types';
+import { findCatalogEntity } from '../data/entityLookup';
 import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
@@ -146,7 +147,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     addInputs(entity, 'materials', entity.kind === 'processes' ? '加工原料' : '配方材料');
     addOutput(entity, 'outputs');
     const machineIds = entity.machine_ids as string[] | undefined ?? (entity.machine_id ? [String(entity.machine_id)] : []);
-    for (const machineId of machineIds) add('other', catalog.byId[machineId], { chips: ['使用机械'] });
+    for (const machineId of machineIds) add('other', findCatalogEntity(catalog, machineId, 'machines'), { chips: ['使用机械'] });
   }
 
   if (entity.kind === 'characters') {

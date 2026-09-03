@@ -42,3 +42,13 @@ it('calculates crop profit with fixed seed cost and quality harvest value', () =
   const entity = { kind: 'crops', seed_item_ids: ['seed'], harvest_item_ids: ['harvest'], growth_days: 5 } as never;
   expect(calculateEntityCropProfit(entity, catalog, 'silver')).toMatchObject({ inputCost: 200, outputValue: 472.5, net: 272.5 });
 });
+
+it('does not invent crop profit when growth timing is unknown', () => {
+  const catalog = { byId: {
+    seed: { id: 'seed', kind: 'items', buy_price: 3000, quality_eligible: false },
+    harvest: { id: 'harvest', kind: 'items', sell_price: 120, quality_eligible: true },
+  } } as never;
+  const tree = { kind: 'crops', seed_item_ids: ['seed'], harvest_item_ids: ['harvest'] } as never;
+
+  expect(calculateEntityCropProfit(tree, catalog, 'normal')).toBeNull();
+});
