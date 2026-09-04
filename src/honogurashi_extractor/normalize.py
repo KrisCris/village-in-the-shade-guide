@@ -4,6 +4,7 @@ import re
 from collections.abc import Mapping
 import math
 
+from .icons import item_icon_id, item_outline_icon_id
 from .localization import build_name
 from .models import (
     Crop,
@@ -147,8 +148,8 @@ def normalize_snapshot(
                 name=name,
                 buy_price=_u32(record, 292) or None,
                 sell_price=_u32(record, 296),
-                icon_id=_u32(record, 484) or None,
-                outline_icon_id=_u32(record, 492) or None,
+                icon_id=item_icon_id(record) or None,
+                outline_icon_id=item_outline_icon_id(record) or None,
             )
             snapshot.items[item.id] = item
             items_by_numeric[numeric_id] = item

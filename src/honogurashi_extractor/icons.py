@@ -34,6 +34,14 @@ def _table_string(table: TableContainer, record: bytes, offset: int) -> str:
     return table.string_pool[start : start + size].decode("utf-8")
 
 
+def item_icon_id(record: bytes) -> int:
+    return _u32(record, len(record) - 52) if len(record) >= 52 else 0
+
+
+def item_outline_icon_id(record: bytes) -> int:
+    return _u32(record, len(record) - 44) if len(record) >= 44 else 0
+
+
 def icon_bounds(record: bytes) -> tuple[int, int, int, int]:
     if len(record) < 48:
         raise ValueError("icon record is truncated")
@@ -85,7 +93,7 @@ def extract_item_icons(
     for item in items:
         try:
             item_record = item_records.get(int(item["numeric_id"]))
-            icon_id = _u32(item_record, 484) if item_record else 0
+            icon_id = item_icon_id(item_record) if item_record else 0
             icon_record = icon_records.get(icon_id)
             if not icon_record:
                 missing_icon += 1

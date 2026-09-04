@@ -9,9 +9,13 @@ describe('data repository', () => {
       { id: 'ITEM_ID_ONION_SEED', name: { ...row.name, zh_hans: '洋葱种子', zh_hant: '洋蔥種子', aliases: ['洋葱种子'] } },
       { id: 'ITEM_ID_ONION', name: { ...row.name, zh_hans: '洋葱收获物', zh_hant: '洋蔥收穫物', aliases: ['洋葱收获物'] } },
       { id: 'ITEM_ID_PICKLE', name: { ...row.name, zh_hans: '洋葱泡菜', zh_hant: '洋蔥泡菜', aliases: ['洋葱泡菜'] } },
+      { id: 'ITEM_ID_COOKING_SOUP', name: { ...row.name, zh_hans: '洋葱汤', zh_hant: '洋蔥湯', aliases: ['洋葱汤'] } },
+      { id: 'ITEM_ID_FISH_CARP', name: { ...row.name, zh_hans: '鲤鱼', zh_hant: '鯉魚', aliases: ['鲤鱼'] } },
     ],
     '/entities/crops.json': [{ ...row, seed_item_ids: ['ITEM_ID_ONION_SEED'], harvest_item_ids: ['ITEM_ID_ONION'] }],
     '/entities/processes.json': [{ id: 'PROCESS_ID_ONION_PICKLE', name: { ...row.name, zh_hans: '洋葱泡菜', aliases: ['洋葱泡菜'] }, inputs: [{ item_id: 'ITEM_ID_ONION', quantity: 1 }], output: { item_id: 'ITEM_ID_PICKLE', quantity: 1 } }],
+    '/entities/cooking-recipes.json': [{ id: 'COOKING_ID_SOUP', name: { ...row.name, zh_hans: '洋葱汤', aliases: ['洋葱汤'] }, inputs: [], output: { item_id: 'ITEM_ID_COOKING_SOUP', quantity: 1 } }],
+    '/entities/fish.json': [{ id: 'ITEM_ID_FISH_CARP', name: { ...row.name, zh_hans: '鲤鱼', aliases: ['鲤鱼'] } }],
     '/entities/store-offers.json': [{ id: 'STORE_OFFER_ONION', item_id: 'ITEM_ID_ONION' }],
     '/entities/hunt-rewards.json': [{ id: 'HUNT_REWARD_ONION', item_id: 'ITEM_ID_ONION' }],
   });
@@ -32,6 +36,10 @@ describe('data repository', () => {
     expect(catalog.byId.ITEM_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.CROPS_ID_ONION.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
     expect(catalog.byId.PROCESS_ID_ONION_PICKLE.icon_path).toBe('/icons/generated/items/ITEM_ID_PICKLE.webp');
+    expect(catalog.entities.find((entity) => entity.kind === 'cooking-recipes')?.icon_path).toBe('/icons/generated/items/ITEM_ID_COOKING_SOUP.webp');
+    expect(catalog.entities.find((entity) => entity.kind === 'fish')?.icon_path).toBe('/icons/generated/items/ITEM_ID_FISH_CARP.webp');
+    expect(catalog.entities.find((entity) => entity.kind === 'store-offers')?.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
+    expect(catalog.entities.find((entity) => entity.kind === 'hunt-rewards')?.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
   });
 
   it('removes icon paths that are unavailable before entities reach the page', () => {

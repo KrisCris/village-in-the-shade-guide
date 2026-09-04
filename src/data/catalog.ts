@@ -21,11 +21,16 @@ function setSearchText(entity: Entity) {
 }
 
 function setIconPath(entity: Entity) {
+  const outputItemId = (entity.output as { item_id?: string } | undefined)?.item_id;
   const itemId = entity.kind === 'crops'
     ? (entity.harvest_item_ids as string[] | undefined)?.[0]
-    : entity.kind === 'processes'
-      ? (entity.output as { item_id?: string } | undefined)?.item_id
-      : entity.kind === 'items' || entity.kind === 'machines' ? entity.id : undefined;
+    : ['processes', 'craft-recipes', 'cooking-recipes'].includes(entity.kind)
+      ? outputItemId
+      : entity.kind === 'store-offers'
+        ? String(entity.item_id ?? '') || undefined
+        : entity.kind === 'hunt-rewards'
+          ? String(entity.certificate_item_id ?? entity.item_id ?? '') || undefined
+          : ['items', 'machines', 'fish'].includes(entity.kind) ? entity.id : undefined;
   if (itemId) entity.icon_path = `/icons/generated/items/${itemId}.webp`;
 }
 

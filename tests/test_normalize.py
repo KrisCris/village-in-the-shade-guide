@@ -66,6 +66,8 @@ def test_normalizes_crop_seed_and_processing_relationships():
                 292: 40,
                 296: 30,
                 356: 1,
+                444: 777,
+                452: 778,
             },
         ),
         _record(496, {0: 100010, 8: starts[1], 12: 20, 296: 63}),
@@ -119,9 +121,12 @@ def test_normalizes_crop_seed_and_processing_relationships():
 
     snapshot = normalize_snapshot(tables, {}, {"CROPS_ID_ONION": "洋葱"})
 
+    seed = snapshot.items["ITEM_ID_SEED_ONION"]
     crop = snapshot.crops["CROPS_ID_ONION"]
     process = snapshot.processes["GIMMICK_PROCESS_PICKLED_ONION"]
     assert crop.seed_item_ids == ("ITEM_ID_SEED_ONION",)
+    assert seed.icon_id == 777
+    assert seed.outline_icon_id == 778
     assert crop.harvest_item_ids == ("ITEM_ID_CROPS_ONION",)
     assert process.machine_ids == ("ITEM_ID_MACHINE_PICKLE", "ITEM_ID_MACHINE_PICKLE")
     assert process.inputs[0].item_id == "ITEM_ID_CROPS_ONION"
