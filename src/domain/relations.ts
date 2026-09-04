@@ -4,7 +4,7 @@ import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 
-export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'used-in' | 'other';
+export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'other';
 
 export type RelationRowModel = {
   key: string;
@@ -39,10 +39,11 @@ const groupLabels: Record<RelationGroupKey, string> = {
   acquisition: '获取方式',
   materials: '制作材料',
   outputs: '产出物',
+  machines: '加工机械',
   'used-in': '用于制作 / 加工',
-  other: '其他用途',
+  other: '其他关系',
 };
-const groupOrder: RelationGroupKey[] = ['acquisition', 'materials', 'outputs', 'used-in', 'other'];
+const groupOrder: RelationGroupKey[] = ['acquisition', 'materials', 'outputs', 'machines', 'used-in', 'other'];
 const seasons: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
 
 function numberText(value: number, approximate = false): string {
@@ -77,6 +78,10 @@ function recipeInputs(recipe: Entity): Array<{ item_id?: string; quantity?: numb
   return (recipe.inputs ?? []) as Array<{ item_id?: string; quantity?: number }>;
 }
 
+function recipeMachineIds(recipe: Entity): string[] {
+  return (recipe.machine_ids as string[] | undefined) ?? (recipe.machine_id ? [String(recipe.machine_id)] : []);
+}
+
 export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Quality): RelationGroup[] {
   const groups = new Map<RelationGroupKey, RelationRowModel[]>();
   const seen = new Set<string>();
@@ -109,13 +114,13 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
   const addInputs = (source: Entity, group: RelationGroupKey, context: string) => {
     for (const input of recipeInputs(source)) {
       if (!input.item_id) continue;
-      add(group, catalog.byId[input.item_id], { quantity: Number(input.quantity ?? 1), chips: [context] });
+      add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context] });
     }
   };
   const addOutput = (source: Entity, group: RelationGroupKey, context?: string) => {
     const output = itemQuantity(source.output);
     if (!output.item_id) return;
-    const outputEntity = catalog.byId[output.item_id];
+    const outputEntity = findCatalogEntity(catalog, output.item_id, 'items');
     const profit = source.kind === 'processes' ? calculateEntityProcessProfit(source, catalog, quality) : null;
     add(group, outputEntity, {
       quantity: Number(output.quantity ?? 1),
@@ -146,8 +151,9 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
   if (['processes', 'craft-recipes', 'cooking-recipes'].includes(entity.kind)) {
     addInputs(entity, 'materials', entity.kind === 'processes' ? '加工原料' : '配方材料');
     addOutput(entity, 'outputs');
-    const machineIds = entity.machine_ids as string[] | undefined ?? (entity.machine_id ? [String(entity.machine_id)] : []);
-    for (const machineId of machineIds) add('other', findCatalogEntity(catalog, machineId, 'machines'), { chips: ['使用机械'] });
+    for (const machineId of recipeMachineIds(entity)) {
+      add('machines', findCatalogEntity(catalog, machineId, 'machines'), { chips: [entity.kind === 'processes' ? '加工机械' : '制作工具'] });
+    }
   }
 
   if (entity.kind === 'characters') {
@@ -174,6 +180,18 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       if (reward) add('acquisition', source, { quantity: Number(reward.quantity ?? 1), chips: ['狩猎报酬'] });
     }
     if (['processes', 'craft-recipes', 'cooking-recipes'].includes(source.kind)) {
+      const output = itemQuantity(source.output);
+      if (output.item_id && subjectIds.has(output.item_id)) {
+        const sourceType = source.kind === 'processes' ? '机械加工' : source.kind === 'cooking-recipes' ? '料理' : '制作';
+        add('acquisition', source, {
+          quantity: Number(output.quantity ?? 1),
+          chips: [sourceType, durationChip(source.duration_minutes)],
+          key: source.id,
+        });
+        for (const machineId of recipeMachineIds(source)) {
+          add('machines', findCatalogEntity(catalog, machineId, 'machines'), { chips: [source.kind === 'processes' ? '加工机械' : '制作工具'] });
+        }
+      }
       const quantity = relationQuantity(source, subjectIds);
       if (quantity != null) add('used-in', source, { quantity, chips: [source.kind === 'processes' ? '机械加工' : source.kind === 'cooking-recipes' ? '料理' : '制作', durationChip(source.duration_minutes)] });
     }

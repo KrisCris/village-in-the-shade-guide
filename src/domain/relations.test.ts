@@ -62,9 +62,37 @@ describe('relation groups', () => {
     const data = catalog(item, machine, output, process);
     data.byId.machine = item;
 
-    const usedMachine = buildRelationGroups(process, data, 'normal').find((group) => group.key === 'other')?.rows[0].entity;
+    const usedMachine = buildRelationGroups(process, data, 'normal').find((group) => group.key === 'machines')?.rows[0].entity;
 
     expect(usedMachine).toBe(machine);
+  });
+
+  it('shows the silkworm box as a production source for raw silk', () => {
+    const rawSilk = entity('raw-silk', 'items', { sell_price: 125 });
+    const silkwormBox = entity('silkworm-box', 'machines');
+    const process = entity('raw-silk-process', 'processes', {
+      machine_ids: [silkwormBox.id], inputs: [], output: { item_id: rawSilk.id, quantity: 1 }, duration_minutes: 2820,
+    });
+
+    const groups = buildRelationGroups(rawSilk, catalog(rawSilk, silkwormBox, process), 'normal');
+
+    expect(groups.find((group) => group.key === 'machines')?.rows.map((row) => row.entity)).toEqual([silkwormBox]);
+    expect(groups.find((group) => group.key === 'acquisition')?.rows[0].entity).toBe(process);
+  });
+
+  it('deduplicates processing machines across output variants', () => {
+    const fishSauce = entity('fish-sauce', 'items', { sell_price: 140 });
+    const jar = entity('jar', 'machines');
+    const jarImproved = entity('jar-improved', 'machines');
+    const variants = Array.from({ length: 3 }, (_, index) => entity(`fish-sauce-${index}`, 'processes', {
+      machine_ids: [jar.id, jarImproved.id], inputs: [], output: { item_id: fishSauce.id, quantity: 1 },
+    }));
+
+    const group = buildRelationGroups(fishSauce, catalog(fishSauce, jar, jarImproved, ...variants), 'normal')
+      .find((candidate) => candidate.key === 'machines');
+
+    expect(group?.label).toBe('加工机械');
+    expect(group?.rows.map((row) => row.entity.id)).toEqual([jar.id, jarImproved.id]);
   });
 
   it('builds crop facts and profit with the selected quality', () => {
