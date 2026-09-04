@@ -42,6 +42,16 @@ describe('data repository', () => {
     expect(catalog.entities.find((entity) => entity.kind === 'hunt-rewards')?.icon_path).toBe('/icons/generated/items/ITEM_ID_ONION.webp');
   });
 
+  it('maps world-object crop records to canonical item icons by internal ID', () => {
+    const objectCatalog = buildCatalog({
+      '/entities/items.json': [{ ...row, id: 'ITEM_ID_OBJECT_BUTTERBUR_SCAPE' }],
+      '/entities/crops.json': [{ ...row, id: 'CROPS_ID_OBJECT_BUTTERBUR_SCAPE', seed_item_ids: [], harvest_item_ids: [] }],
+    });
+
+    expect(objectCatalog.entities.find((entity) => entity.kind === 'crops')?.icon_path)
+      .toBe('/icons/generated/items/ITEM_ID_OBJECT_BUTTERBUR_SCAPE.webp');
+  });
+
   it('removes icon paths that are unavailable before entities reach the page', () => {
     const copy = structuredClone(catalog);
 

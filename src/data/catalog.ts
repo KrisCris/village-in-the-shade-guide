@@ -20,10 +20,11 @@ function setSearchText(entity: Entity) {
   entity.searchText = normalizeSearch([entity.name.zh_hans, entity.name.zh_hant, entity.name.ja, entity.name.internal, ...entity.name.aliases].join(' '));
 }
 
-function setIconPath(entity: Entity) {
+export function iconItemIdFor(entity: Entity) {
   const outputItemId = (entity.output as { item_id?: string } | undefined)?.item_id;
-  const itemId = entity.kind === 'crops'
+  return entity.kind === 'crops'
     ? (entity.harvest_item_ids as string[] | undefined)?.[0]
+      ?? (entity.id.startsWith('CROPS_ID_OBJECT_') ? entity.id.replace(/^CROPS_ID_OBJECT_/, 'ITEM_ID_OBJECT_') : undefined)
     : ['processes', 'craft-recipes', 'cooking-recipes'].includes(entity.kind)
       ? outputItemId
       : entity.kind === 'store-offers'
@@ -31,7 +32,6 @@ function setIconPath(entity: Entity) {
         : entity.kind === 'hunt-rewards'
           ? String(entity.certificate_item_id ?? entity.item_id ?? '') || undefined
           : ['items', 'machines', 'fish'].includes(entity.kind) ? entity.id : undefined;
-  if (itemId) entity.icon_path = `/icons/generated/items/${itemId}.webp`;
 }
 
 export function buildCatalog(input: Record<string, unknown>, generatedAt = new Date().toISOString()): Catalog {
@@ -46,10 +46,15 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       const fallback: Name = { zh_hans: row.id, zh_hant: '', ja: '', internal: row.id, aliases: [row.id], review_status: 'internal' };
       const entity = { ...row, kind, name: withSearchAliases(row.name ?? fallback), searchText: '' } as Entity;
       setSearchText(entity);
-      setIconPath(entity);
       entities.push(entity);
       byId[entity.id] ??= entity;
     }
+  }
+
+  const itemIds = new Set(entities.filter((entity) => entity.kind === 'items').map((entity) => entity.id));
+  for (const entity of entities) {
+    const itemId = iconItemIdFor(entity);
+    if (itemId && itemIds.has(itemId)) entity.icon_path = `/icons/generated/items/${itemId}.webp`;
   }
 
   for (const entity of entities) {

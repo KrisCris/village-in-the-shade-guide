@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EntityExplorer from '../../../components/table/EntityExplorer';
 import { getCatalog } from '../../../data/repository';
+import { visibleRowsForKind } from '../../../data/catalogViews';
 import { kindLabels } from '../../../data/types';
 export function getStaticPaths() {
   const catalog = getCatalog();
@@ -9,7 +10,7 @@ export function getStaticPaths() {
 }
 const { kind } = Astro.props;
 const catalog = getCatalog();
-const rows = catalog.entities.filter((entity) => entity.kind === kind);
+const rows = visibleRowsForKind(catalog, kind);
 const machineOptions = catalog.entities.filter((entity) => entity.kind === 'machines').map((entity) => ({ id: entity.id, name: entity.name.zh_hans }));
 const referencedItemIds = kind === 'processes' ? new Set(rows.flatMap((entity) => {
   const inputs = (entity.inputs ?? []) as Array<{ item_id: string }>;
