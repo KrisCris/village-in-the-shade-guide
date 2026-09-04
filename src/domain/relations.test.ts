@@ -95,6 +95,23 @@ describe('relation groups', () => {
     expect(group?.rows.map((row) => row.entity.id)).toEqual([jar.id, jarImproved.id]);
   });
 
+  it('describes each reverse processing recipe with ingredients and profit', () => {
+    const carp = entity('carp', 'items', { sell_price: 60 });
+    const fishSauce = entity('fish-sauce', 'items', { sell_price: 140 });
+    const process = entity('fish-sauce-from-carp', 'processes', {
+      inputs: [{ item_id: carp.id, quantity: 1 }],
+      output: { item_id: fishSauce.id, quantity: 1 },
+      duration_minutes: 2880,
+    });
+
+    const row = buildRelationGroups(fishSauce, catalog(carp, fishSauce, process), 'normal')
+      .find((group) => group.key === 'acquisition')!.rows[0];
+
+    expect(row).toMatchObject({ buyLabel: '成本', sellLabel: '产值', note: '原料：carp ×1' });
+    expect(row.chips).toContain('净收益 +80');
+    expect(row.chips).toContain('日净收益 +40');
+  });
+
   it('builds crop facts and profit with the selected quality', () => {
     const seed = entity('seed', 'items', { buy_price: 40, sell_price: 0 });
     const harvest = entity('harvest', 'items', { sell_price: 63, quality_eligible: true });

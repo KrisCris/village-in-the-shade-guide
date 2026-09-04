@@ -12,6 +12,8 @@ export type RelationRowModel = {
   quantity?: number;
   buyPrice?: string;
   sellPrice?: string;
+  buyLabel?: string;
+  sellLabel?: string;
   fixedPrice: boolean;
   chips: string[];
   note?: string;
@@ -91,6 +93,8 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     note?: string;
     buyPrice?: string;
     sellPrice?: string;
+    buyLabel?: string;
+    sellLabel?: string;
     key?: string;
   } = {}) => {
     if (!target) return;
@@ -104,6 +108,8 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       quantity: options.quantity,
       buyPrice: options.buyPrice ?? priceText(target, 'buy_price', quality),
       sellPrice: options.sellPrice ?? priceText(target, 'sell_price', quality),
+      buyLabel: options.buyLabel,
+      sellLabel: options.sellLabel,
       fixedPrice: target.quality_eligible !== true,
       chips: [...new Set((options.chips ?? []).filter((chip): chip is string => Boolean(chip)))],
       note: options.note,
@@ -183,9 +189,26 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       const output = itemQuantity(source.output);
       if (output.item_id && subjectIds.has(output.item_id)) {
         const sourceType = source.kind === 'processes' ? '机械加工' : source.kind === 'cooking-recipes' ? '料理' : '制作';
+        const profit = source.kind === 'processes' ? calculateEntityProcessProfit(source, catalog, quality) : null;
+        const inputEntities = recipeInputs(source).flatMap((input) => {
+          const item = input.item_id ? findCatalogEntity(catalog, input.item_id, 'items') : undefined;
+          return item ? [{ item, quantity: Number(input.quantity ?? 1) }] : [];
+        });
+        const outputEntity = findCatalogEntity(catalog, output.item_id, 'items');
+        const inputQuality = inputEntities.some(({ item }) => item.quality_eligible === true);
         add('acquisition', source, {
           quantity: Number(output.quantity ?? 1),
-          chips: [sourceType, durationChip(source.duration_minutes)],
+          chips: [
+            sourceType,
+            durationChip(source.duration_minutes),
+            profit ? `净收益 ${profit.net >= 0 ? '+' : ''}${numberText(profit.net, !Number.isInteger(profit.net))}` : null,
+            profit?.perDay != null ? `日净收益 ${profit.perDay >= 0 ? '+' : ''}${numberText(profit.perDay, !Number.isInteger(profit.perDay))}` : null,
+          ],
+          note: inputEntities.length ? `原料：${inputEntities.map(({ item, quantity }) => `${item.name.zh_hans} ×${quantity}`).join(' + ')}` : undefined,
+          buyPrice: profit ? `${numberText(profit.inputCost, !Number.isInteger(profit.inputCost))} · ${inputQuality ? qualityLabel(quality) : '固定'}` : undefined,
+          sellPrice: profit ? `${numberText(profit.outputValue, !Number.isInteger(profit.outputValue))} · ${outputEntity?.quality_eligible ? qualityLabel(quality) : '固定'}` : undefined,
+          buyLabel: profit ? '成本' : undefined,
+          sellLabel: profit ? '产值' : undefined,
           key: source.id,
         });
         for (const machineId of recipeMachineIds(source)) {
