@@ -28,4 +28,28 @@ describe('EntityExplorer icons', () => {
     expect(html).not.toContain('/icons/fallback/default.svg');
     expect(html).toContain('林');
   });
+
+  it('renders one grouped product row with its recipe count', () => {
+    const product = {
+      id: 'ITEM_ID_FISH_SAUCE',
+      kind: 'items',
+      source_kind: 'processes',
+      name: { ...name, zh_hans: '鱼露', ja: '魚醤', internal: 'ITEM_ID_FISH_SAUCE' },
+      searchText: '鱼露 魚醤',
+      icon_path: '/icons/generated/items/ITEM_ID_FISH_SAUCE.webp',
+      variant_count: 22,
+      variant_ids: [],
+      variants: [],
+      machine_ids: [],
+      sell_price: 140,
+      net_profit: 80,
+      profit_per_day: 40,
+    } satisfies Entity;
+
+    const html = renderToStaticMarkup(<EntityExplorer rows={[product]} kind="processes" />);
+
+    expect(html.match(/<tr/g)).toHaveLength(2);
+    expect(html).toContain('22 种配方');
+    expect(html).toContain('鱼露');
+  });
 });

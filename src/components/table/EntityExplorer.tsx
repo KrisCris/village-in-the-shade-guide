@@ -39,7 +39,6 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
 }) {
   const [query, setQuery] = useState('');
   const [season, setSeason] = useState('');
-  const [scope, setScope] = useState('');
   const [machine, setMachine] = useState('');
   const [sort, setSort] = useState<SortField>('name');
   const [direction, setDirection] = useState<SortDirection>('asc');
@@ -51,7 +50,6 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     const params = new URLSearchParams(location.search);
     setQuery(params.get('q') ?? '');
     setSeason(params.get('season') ?? '');
-    setScope(params.get('scope') ?? '');
     setMachine(params.get('machine') ?? '');
     setSort(parseSort(params.get('sort')));
     setDirection(parseDirection(params.get('dir')));
@@ -64,23 +62,20 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     const update = (key: string, value: string, defaultValue = '') => value && value !== defaultValue ? params.set(key, value) : params.delete(key);
     update('q', query);
     update('season', season);
-    update('scope', scope);
     update('machine', machine);
     update('sort', sort, 'name');
     update('dir', direction, 'asc');
     history.replaceState(null, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
-  }, [query, season, scope, machine, sort, direction, urlReady]);
+  }, [query, season, machine, sort, direction, urlReady]);
 
   const shown = useMemo(() => {
     const needle = normalizeSearch(query);
     const filtered = rows
       .filter((row) => !needle || row.searchText.includes(needle))
       .filter((row) => !season || (row.seasons as string[] | undefined)?.includes(season))
-      .filter((row) => scope !== 'plantable' || ((row.seed_item_ids as string[] | undefined)?.length ?? 0) > 0)
-      .filter((row) => scope !== 'special' || ((row.seed_item_ids as string[] | undefined)?.length ?? 0) === 0)
       .filter((row) => !machine || (row.machine_ids as string[] | undefined)?.includes(machine));
     return sortEntities(filtered, sort, direction, quality, priceIndex);
-  }, [rows, query, season, scope, machine, sort, direction, quality, priceIndex]);
+  }, [rows, query, season, machine, sort, direction, quality, priceIndex]);
 
   const openFromRow = (row: Entity, event: MouseEvent<HTMLTableRowElement>) => {
     if ((event.target as HTMLElement).closest('a,button,input,select')) return;
@@ -101,7 +96,6 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     <div className="toolbar card">
       <label>页内搜索<input type="search" placeholder="名称、拼音、日文或 ID" value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       {kind === 'crops' && <>
-        <label>范围<select value={scope} onChange={(event) => setScope(event.target.value)}><option value="">全部</option><option value="plantable">可种植作物</option><option value="special">采集 / 特殊作物</option></select></label>
         <label>季节<select value={season} onChange={(event) => setSeason(event.target.value)}><option value="">全部</option>{Object.entries(seasonLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
       </>}
       {kind === 'processes' && <label>机械<select value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">全部机械</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>}
@@ -112,12 +106,16 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     <div className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{shown.map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality) : '固定';
+      const processGroup = row.source_kind === 'processes';
+      const duration = typeof row.duration_minutes === 'number'
+        ? `${Math.ceil(row.duration_minutes / 1440)} 日${typeof row.duration_max_minutes === 'number' && row.duration_max_minutes !== row.duration_minutes ? `–${Math.ceil(row.duration_max_minutes / 1440)} 日` : ''}`
+        : null;
       return <tr key={row.id} tabIndex={0} aria-label={`打开${row.name.zh_hans}详情`} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
         <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={row.icon_path} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = rowFallback(row); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
-        <td>{(row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
-        <td className="price">{metricText(metrics.buy, row.kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
+        <td>{processGroup ? `${row.variant_count} 种配方` : (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
+        <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>
-        <td>{typeof row.duration_minutes === 'number' ? `${Math.ceil(row.duration_minutes / 1440)} 日` : typeof row.growth_days === 'number' ? `${row.growth_days} 日${row.regrow_days ? ` / 再生 ${row.regrow_days} 日` : ''}` : '—'}</td>
+        <td>{duration ?? (typeof row.growth_days === 'number' ? `${row.growth_days} 日${row.regrow_days ? ` / 再生 ${row.regrow_days} 日` : ''}` : '—')}</td>
         <td className="price">{metricText(metrics.profit, row.quality_eligible ? qualityLabel(quality) : '固定')}</td>
         <td><code>{row.id}</code></td>
       </tr>;

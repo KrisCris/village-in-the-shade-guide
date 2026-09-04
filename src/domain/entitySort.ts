@@ -21,6 +21,19 @@ function indexedSellPrice(prices: PriceIndex, itemId: string | undefined, quanti
 }
 
 export function entityMetrics(row: Entity, quality: Quality, prices: PriceIndex = {}): EntityMetrics {
+  if (row.source_kind === 'processes') {
+    const variants = (row.variants ?? []) as Entity[];
+    const metrics = variants.map((variant) => entityMetrics(variant, quality, prices));
+    const known = (field: keyof EntityMetrics) => metrics.map((metric) => metric[field]).filter((value): value is number => value != null);
+    const buys = known('buy');
+    const sells = known('sell');
+    const profits = known('profit');
+    return {
+      buy: buys.length ? Math.min(...buys) : typeof row.buy_price === 'number' ? row.buy_price : null,
+      sell: sells.length ? Math.max(...sells) : qualityPrice(row.sell_price, row.quality_eligible === true, quality)?.value ?? null,
+      profit: profits.length ? Math.max(...profits) : typeof row.profit_per_day === 'number' ? row.profit_per_day : null,
+    };
+  }
   if (row.kind === 'processes') {
     const inputs = (row.inputs ?? []) as Array<{ item_id?: string; quantity?: number }>;
     const output = row.output as { item_id?: string; quantity?: number } | undefined;

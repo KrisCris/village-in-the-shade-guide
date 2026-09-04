@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EntityExplorer from '../../../components/table/EntityExplorer';
 import { getCatalog } from '../../../data/repository';
 import { visibleRowsForKind } from '../../../data/catalogViews';
+import { groupProcessesByOutput } from '../../../domain/processGroups';
 import { kindLabels } from '../../../data/types';
 export function getStaticPaths() {
   const catalog = getCatalog();
@@ -10,9 +11,10 @@ export function getStaticPaths() {
 }
 const { kind } = Astro.props;
 const catalog = getCatalog();
-const rows = visibleRowsForKind(catalog, kind);
+const rawRows = visibleRowsForKind(catalog, kind);
+const rows = kind === 'processes' ? groupProcessesByOutput(rawRows, catalog) : rawRows;
 const machineOptions = catalog.entities.filter((entity) => entity.kind === 'machines').map((entity) => ({ id: entity.id, name: entity.name.zh_hans }));
-const referencedItemIds = kind === 'processes' ? new Set(rows.flatMap((entity) => {
+const referencedItemIds = kind === 'processes' ? new Set(rawRows.flatMap((entity) => {
   const inputs = (entity.inputs ?? []) as Array<{ item_id: string }>;
   const output = entity.output as { item_id?: string } | undefined;
   return [...inputs.map((input) => input.item_id), ...(output?.item_id ? [output.item_id] : [])];
