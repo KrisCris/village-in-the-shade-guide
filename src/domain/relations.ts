@@ -205,7 +205,8 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       if (reward) add('acquisition', source, {quantity:reward.quantity, chips:['完成后获得',String(source.location || '')]});
     }
     if (source.kind === 'store-offers' && source.item_id && subjectIds.has(String(source.item_id))) {
-      add('acquisition', source, { buyPrice: priceText(catalog.byId[String(source.item_id)], 'buy_price', quality), chips: [String(source.location || '商店'), ...(source.conditions as string[] ?? [])] });
+      const saleSeasons = ((source.seasons ?? []) as string[]).map(s=>seasons[s] ?? s).join('、');
+      add('acquisition', source, { buyPrice: priceText(catalog.byId[String(source.item_id)], 'buy_price', quality), chips: [String(source.location || '商店'), ...(saleSeasons ? [`${saleSeasons}季出售`] : []), ...(source.conditions as string[] ?? [])] });
     }
     if (source.kind === 'crops' && ((source.harvest_item_ids as string[] | undefined) ?? []).some((id) => subjectIds.has(id))) {
       add('acquisition', source, { chips: [((source.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'), '种植收获'] });
@@ -284,7 +285,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   addFact('所需金额', entity.money_cost as number | undefined, true);
   addFact('条件', ((entity.conditions ?? []) as string[]).join('；'));
   addFact('卖出价', entitySellPrice(entity, catalog, quality), true);
-  addFact('生长季节', ((entity.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'));
+  addFact(entity.kind === 'store-offers' ? '出售季节' : entity.kind === 'fish' ? '出现季节' : '生长季节', ((entity.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'));
   addFact('首次成熟', typeof entity.growth_days === 'number' ? `${entity.growth_days} 日` : null);
   addFact('每次收获', typeof entity.harvest_quantity === 'number' ? `${entity.harvest_quantity} 个` : null);
   addFact('再次收获', typeof entity.regrow_days === 'number' ? `${entity.regrow_days} 日` : null);

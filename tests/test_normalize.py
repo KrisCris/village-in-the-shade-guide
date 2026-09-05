@@ -28,6 +28,23 @@ def test_growth_thresholds_are_converted_to_watered_days():
     assert _growth_data(repeating) == (1200, 12, 400, 4)
 
 
+def test_store_conditions_keep_year_season_and_exclusion_separate():
+    from honogurashi_extractor.normalize import _normalize_store
+    from honogurashi_extractor.models import Snapshot
+    from types import SimpleNamespace
+    table = read_table(build_table(records=[_record(108, {
+        0: 57, 16: 11170, 28: 1, 32: 526, 40: 1, 44: 86000,
+        52: 1, 56: 2,
+    })], strings=b"STORE_SALE_ID_GENERAL_0208\0"))
+    snapshot = Snapshot()
+    _normalize_store(table, {11170: SimpleNamespace(id="ITEM_ID_SEED_DAHLIA")}, snapshot)
+    offer = snapshot.store_offers["STORE_SALE_ID_GENERAL_0208"]
+    assert offer.seasons == ("autumn",)
+    assert offer.required_flags == (526,)
+    assert offer.excluded_flags == (86000,)
+    assert offer.conditions == ("第二年秋起", "尚未解锁此款外观")
+
+
 def test_official_names_and_aliases_are_preserved():
     name = build_name(
         ja="タマネギ",

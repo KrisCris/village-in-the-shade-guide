@@ -7,6 +7,13 @@ const seasons=[['spring','春'],['summer','夏'],['autumn','秋'],['winter','冬
 const activities=catalog.entities.filter(e=>e.kind==='activities');
 const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
 const inputs=(e:Entity)=>(e.inputs ?? []) as {item_id:string;quantity:number}[];
+const offers=catalog.entities.filter(e=>e.kind==='store-offers');
+const crops=catalog.entities.filter(e=>e.kind==='crops');
+const seedOffers=(id:string)=>{
+ const crop=crops.find(e=>((e.harvest_item_ids ?? []) as string[]).includes(id));
+ return crop?offers.filter(e=>((crop.seed_item_ids ?? []) as string[]).includes(String(e.item_id))):[];
+};
+const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.conditions ?? []) as string[]))].join('；');
 ---
 <BaseLayout title="四季留货与交付规划">
 <h1>四季留货与交付规划</h1>
@@ -25,11 +32,21 @@ const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_sea
 return <section id={season}><h2>{name}季</h2>
 <p><a href={`/data/crops/?season=${season}`}>本季种植</a> · <a href={`/data/fish/?season=${season}`}>本季鱼与钓点时段</a></p>
 <h3>生日安排</h3><p>{residents.map(e=><a class="birthday" href={entityUrl(e)}>{String(e.birthday_day)} 日 · {e.name.zh_hans}</a>)}</p>
+<h3>本季交付总需求</h3>
+<p>以下合计包含本季供奉与交付目录，不含礼物；已完成的组别可以扣除。种子开放较晚的物品要提前看年份，不能默认第一年就能凑齐。</p>
+<div class="needs reserves">{[...new Set(bundles.flatMap(e=>inputs(e).map(i=>i.item_id)))].map(id=>{
+const target=item(id);const uses=bundles.filter(e=>inputs(e).some(i=>i.item_id===id));const quantity=uses.flatMap(e=>inputs(e)).filter(i=>i.item_id===id).reduce((n,i)=>n+i.quantity,0);
+return target&&<a href={entityUrl(target)}>{target.icon_path&&<img src={target.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{uses.map(e=>e.name.zh_hans).join('、')}</small>{shopConditions(id)&&<small>种子：{shopConditions(id)}</small>}</span><b>×{quantity}</b></a>;
+})}</div>
 {season==='summer'&&<p>留一部分毛豆植株进入秋季，游戏种子说明明确写明入秋枯萎后转为黄豆。豆芽、毛豆与黄豆是不同收获选择，不能把三阶段产量直接相加。<a href="/data/crops/CROPS_ID_EDAMAME/">查看各阶段产量与用途</a>。</p>}
 {season==='autumn'&&<p>菌类也要纳入种植计划：香菇、滑菇使用栽培包，秋季生长，可重复收获。花卉要同时检查供奉与村长家交付需求，已完成的项目无需重复预留。</p>}
-{bundles.map(e=><article class="card"><h3><a href={entityUrl(e)}>{e.name.zh_hans}</a></h3><p>{String(e.location)}</p><div class="needs">{inputs(e).map(input=>{const target=item(input.item_id);return target&&<a href={entityUrl(target)}>{target.icon_path&&<img src={target.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}</span><b>×{input.quantity}</b></a>;})}</div></article>)}
+{bundles.map(e=><article class="card"><h3><a href={entityUrl(e)}>{e.name.zh_hans}</a></h3><p>{String(e.location)}</p><div class="needs">{inputs(e).map(input=>{const target=item(input.item_id);return target&&<a href={entityUrl(target)}>{target.icon_path&&<img src={target.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}</span><b>×{input.quantity}</b></a>;})}</div>{((e.rewards ?? []) as {item_id:string;quantity:number}[]).length>0&&<p>奖励：{((e.rewards ?? []) as {item_id:string;quantity:number}[]).map(r=>{const target=item(r.item_id);return target&&<a href={entityUrl(target)}>{target.name.zh_hans} ×{r.quantity}　</a>;})}</p>}</article>)}
 </section>})}
 <section><h2>全年保留目标</h2><p>建筑材料、加工交付、畜产品与稀有鱼不只属于一个季度。先选自己准备完成的项目，再累计所需数量；不要把所有未接取项目都当成当月硬性任务。</p><p><a href="/data/activities/?q=村长">村长家交付目录</a> · <a href="/data/activities/?q=建筑">建筑材料</a> · <a href="/data/characters/">角色喜恶与生日</a></p></section>
+<section><h2>第二、三年新增种子</h2>{[['第二年', [520,523,526]],['第三年',[521,524]]].map(([year,flags])=>{
+ const selected=offers.filter(e=>((e.required_flags ?? []) as number[]).some(f=>(flags as number[]).includes(f)));
+ return <article><h3>{String(year)}</h3><div class="needs reserves">{[...new Set(selected.map(e=>String(e.item_id)))].map(id=>{const target=item(id);const conditions=[...new Set(selected.filter(e=>e.item_id===id).flatMap(e=>e.conditions as string[]))];return target&&<a href={entityUrl(target)}>{target.icon_path&&<img src={target.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{conditions.join('；')}</small></span></a>;})}</div></article>;
+})}</section>
 <details><summary>数据来源</summary><p>供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。</p></details>
 </BaseLayout>
-<style>nav{display:flex;flex-wrap:wrap;gap:1rem}section{margin:2rem 0;scroll-margin-top:90px}li{margin:.7rem 0;line-height:1.8}.birthday{display:inline-block;margin-right:1rem;margin-bottom:.6rem}.card{padding:1rem;margin:.8rem 0}.card h3{margin:0}.card p{color:var(--muted)}.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.needs a{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none}.needs img{object-fit:contain}.needs b{color:var(--vermilion)}</style>
+<style>nav{display:flex;flex-wrap:wrap;gap:1rem}section{margin:2rem 0;scroll-margin-top:90px}li{margin:.7rem 0;line-height:1.8}.birthday{display:inline-block;margin-right:1rem;margin-bottom:.6rem}.card{padding:1rem;margin:.8rem 0}.card h3{margin:0}.card p{color:var(--muted)}.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.needs a{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none}.needs img{object-fit:contain;flex-shrink:0}.needs b{color:var(--vermilion);margin-left:auto}.needs small{display:block;font-size:.8rem;color:var(--muted);margin-top:.25rem}.reserves{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}.reserves a{background:var(--paper-raised);padding:.7rem;border-radius:8px}.reserves a:hover{background:var(--border)}</style>

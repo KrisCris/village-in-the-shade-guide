@@ -80,6 +80,11 @@ class StoreOffer:
     id: str
     numeric_id: int
     item_id: str
+    conditions: tuple[str, ...] = ()
+    location: str = ""
+    seasons: tuple[str, ...] = ()
+    required_flags: tuple[int, ...] = ()
+    excluded_flags: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

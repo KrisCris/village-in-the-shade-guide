@@ -313,7 +313,7 @@ def normalize_snapshot(
         overrides,
     )
     _normalize_cooking(tables.get("cooking"), items_by_numeric, snapshot, overrides)
-    _normalize_store(tables.get("storesales"), items_by_numeric, snapshot)
+    _normalize_store(tables.get("storesales"), items_by_numeric, snapshot, tables.get("gameflag"))
     normalize_harvest_quantities(tables.get("cropsharvest"), snapshot)
     return snapshot
 
@@ -369,12 +369,63 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
             snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)), _u32(record, 152) or None)
 
 
-def _normalize_store(table, items_by_numeric, snapshot):
+def _normalize_store(table, items_by_numeric, snapshot, flags=None):
     if not table:
         return
+    flag_names = {_u32(r,0): g for r,g in zip(flags.records, _string_groups(flags), strict=True)} if flags else {}
+    known = {
+        520: "第二年春起", 521: "第三年春起", 522: "第一年夏起",
+        523: "第二年夏起", 524: "第三年夏起", 525: "第一年秋起",
+        526: "第二年秋起", 527: "第一年冬起", 528: "首次出货后",
+        529: "夏季蔬菜出货后", 530: "水果累计出货50个且第一年秋起",
+        531: "获得犁后", 532: "首次参加品评会后", 533: "秋季品评会次日起",
+        534: "温室建筑解锁后", 535: "建造铁砧后", 536: "彩色小鸡售卖活动开放",
+        399: "安心生活模式", 6101: "随身背包已扩充至Lv2",
+        6102: "随身背包已扩充至Lv3", 6103: "已购买镰刀",
+        18704: "完成进入今野房间的居民事件", 6465: "六角好感度突破Lv6",
+        70003: "庙会场景开放",
+    }
+    season_names = ("spring", "summer", "autumn", "winter")
     for record, group in zip(table.records, _string_groups(table), strict=True):
         record_id = _u32(record, 0)
         item_id = _resolve_item(_u32(record, 16), items_by_numeric, snapshot, table="storesales", record_id=record_id, field="item")
         if item_id:
             internal = group[0]
-            snapshot.store_offers[internal] = StoreOffer(internal, record_id, item_id)
+            cursor = 28
+            conditions = []
+            flag_lists = []
+            for required in (True, False):
+                count = _u32(record,cursor)
+                cursor += 4
+                if count > (len(record) - cursor) // 8:
+                    raise ValueError(f"storesales {internal}: invalid flag count")
+                flag_lists.append(tuple(_u32(record, cursor + index * 8) for index in range(count)))
+                for index in range(count):
+                    flag = _u32(record,cursor + index*8)
+                    label = known.get(flag)
+                    if 86000 <= flag < 86200:
+                        conditions.append("已解锁此款外观" if required else "尚未解锁此款外观")
+                    elif 80000 <= flag < 81000:
+                        conditions.append("已解锁此制作配方" if required else "尚未解锁此制作配方")
+                    elif 560 <= flag <= 578:
+                        conditions.append("前一份限量商品已售出" if required else "本份限量商品尚未售出")
+                    elif label:
+                        conditions.append(label if required else "不满足：" + label)
+                    else:
+                        # Retain the raw predicate, including its polarity; an
+                        # unknown flag must never become an unconditional offer.
+                        raw_name = flag_names.get(flag, (str(flag),))[0]
+                        conditions.append(("需满足条件：" if required else "需未满足条件：") + raw_name)
+                cursor += count*8
+            season_count = _u32(record, cursor)
+            if season_count > 4 or cursor + 4 + season_count * 4 > len(record):
+                raise ValueError(f"storesales {internal}: invalid seasons")
+            seasons = tuple(season_names[_u32(record, cursor + 4 + i * 4)] for i in range(season_count))
+            location = next((label for key, label in {
+                "GENERAL": "田上杂货店", "VENDOR": "行商", "RESTAURANT": "六角食堂",
+                "CRAFT": "树木建设", "HUNTER": "狩猎商店",
+            }.items() if f"_{key}_" in internal), "商店")
+            snapshot.store_offers[internal] = StoreOffer(
+                internal, record_id, item_id, tuple(dict.fromkeys(conditions)), location,
+                seasons, flag_lists[0], flag_lists[1],
+            )

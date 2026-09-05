@@ -15,6 +15,14 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('shows shop seasons separately from unlock dates', () => {
+    const seed=entity('seed','items',{buy_price:80});
+    const offer=entity('offer','store-offers',{item_id:'seed',location:'田上杂货店',seasons:['autumn'],conditions:['第二年秋起']});
+    const data=catalog(seed,offer);
+    const row=buildRelationGroups(seed,data,'normal').find(g=>g.key==='acquisition')!.rows[0];
+    expect(row.chips).toEqual(['田上杂货店','秋季出售','第二年秋起']);
+    expect(buildEntityDetailModel(offer,data,'normal').facts).toContainEqual({label:'出售季节',value:'秋'});
+  });
   it('separates character tastes, exposes birthday and links gift recipients', () => {
     const apple = entity('apple', 'items', {sell_price: 20});
     const stone = entity('stone', 'items');
