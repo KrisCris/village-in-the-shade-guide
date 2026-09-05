@@ -6,7 +6,7 @@ import RelationRow from './RelationRow';
 export default function EntityDetail({ model, onOpen }: { model: EntityDetailModel; onOpen?: (entity: Entity) => void }) {
   const { entity, facts, profit, groups, locations } = model;
   return <article className="entity-detail">
-    <p className="eyebrow">{kindLabels[entity.kind] ?? entity.kind}</p>
+    <p className="eyebrow">{entity.category_name?.zh_hans || kindLabels[entity.kind] || entity.kind}</p>
     <h1>{entity.name.zh_hans}</h1>
     <p className="aliases">繁中：{entity.name.zh_hant || '—'}　日文：{entity.name.ja || '—'}</p>
 

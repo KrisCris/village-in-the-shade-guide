@@ -276,10 +276,15 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     perDay: result.perDay == null ? '数据不足' : numberText(result.perDay, inputEstimated || outputEstimated),
     ...(result.harvests ? { harvests: result.harvests } : {}),
   } : null;
-  const locations = ((entity.locations ?? []) as Array<{ location_id: string; name: { zh_hans: string; ja?: string } }>).map((location) => ({
-    id: location.location_id,
-    name: location.name.zh_hans,
-    secondary: location.name.ja || location.location_id,
-  }));
+  const places = (entity.locations ?? []) as Array<{ location_id: string; name: { zh_hans: string; ja?: string } }>;
+  const seasonNames: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+  const locations = places.flatMap((location) => {
+    const appearances = entity.appearances?.filter((entry) => entry.location_id === location.location_id) ?? [];
+    if (!appearances.length) return [{id: location.location_id, name: location.name.zh_hans, secondary: location.name.ja || location.location_id}];
+    return Object.entries(seasonNames).flatMap(([season, label]) => {
+      const times = [...new Set(appearances.filter((entry) => entry.season === season).map((entry) => entry.time_range))].filter(Boolean);
+      return times.length ? [{id: `${location.location_id}-${season}`, name: `${location.name.zh_hans} · ${label}`, secondary: times.join(' / ')}] : [];
+    });
+  });
   return { entity, quality, qualityName: qualityLabel(quality), facts, profit, groups: buildRelationGroups(entity, catalog, quality), locations };
 }
