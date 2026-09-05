@@ -1,0 +1,616 @@
+{
+  "groups": [
+    {
+      "id": "PLAYER_CROTHING_ID_1",
+      "name_ja": "デフォルト",
+      "item_numeric_ids": [
+        500000,
+        500001,
+        500002,
+        500003,
+        500004,
+        500005,
+        500006,
+        500007,
+        500008,
+        500009
+      ],
+      "unlock_flag": 0,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_2",
+      "name_ja": "カウボーイ",
+      "item_numeric_ids": [
+        500010,
+        500011,
+        500012,
+        500013,
+        500014,
+        500015,
+        500016,
+        500017,
+        500018,
+        500019
+      ],
+      "unlock_flag": 86000,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_3",
+      "name_ja": "スカート",
+      "item_numeric_ids": [
+        500020,
+        500021,
+        500022,
+        500023,
+        500024,
+        500025,
+        500026,
+        500027,
+        500028,
+        500029
+      ],
+      "unlock_flag": 86001,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_4",
+      "name_ja": "ダッフルコート",
+      "item_numeric_ids": [
+        500030,
+        500031,
+        500032,
+        500033,
+        500034,
+        500035,
+        500036,
+        500037,
+        500038,
+        500039
+      ],
+      "unlock_flag": 86002,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_5",
+      "name_ja": "ニットベスト",
+      "item_numeric_ids": [
+        500040,
+        500041,
+        500042,
+        500043,
+        500044,
+        500045,
+        500046,
+        500047,
+        500048,
+        500049
+      ],
+      "unlock_flag": 86003,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_6",
+      "name_ja": "パジャマ",
+      "item_numeric_ids": [
+        500050,
+        500051,
+        500052,
+        500053,
+        500054,
+        500055,
+        500056,
+        500057,
+        500058,
+        500059
+      ],
+      "unlock_flag": 86004,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_8",
+      "name_ja": "レインコート",
+      "item_numeric_ids": [
+        500070,
+        500071,
+        500072,
+        500073,
+        500074,
+        500075,
+        500076,
+        500077,
+        500078,
+        500079
+      ],
+      "unlock_flag": 86006,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_9",
+      "name_ja": "ワンピース",
+      "item_numeric_ids": [
+        500090,
+        500091,
+        500092,
+        500093,
+        500094,
+        500095,
+        500096,
+        500097,
+        500098,
+        500099
+      ],
+      "unlock_flag": 86007,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_10",
+      "name_ja": "スーツ",
+      "item_numeric_ids": [
+        500100,
+        500101,
+        500102,
+        500103,
+        500104,
+        500105,
+        500106,
+        500107,
+        500108,
+        500109
+      ],
+      "unlock_flag": 86008,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_11",
+      "name_ja": "フォーマル",
+      "item_numeric_ids": [
+        500110,
+        500111,
+        500112,
+        500113,
+        500114,
+        500115,
+        500116,
+        500117,
+        500118,
+        500119
+      ],
+      "unlock_flag": 86009,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_12",
+      "name_ja": "甚兵衛",
+      "item_numeric_ids": [
+        500120,
+        500121,
+        500122,
+        500123,
+        500124,
+        500125,
+        500126,
+        500127,
+        500128,
+        500129
+      ],
+      "unlock_flag": 86010,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_CROTHING_ID_13",
+      "name_ja": "探偵コート",
+      "item_numeric_ids": [
+        500080
+      ],
+      "unlock_flag": 86011,
+      "source": "playercrothing.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_01",
+      "name_ja": "麦わら帽子",
+      "item_numeric_ids": [
+        520010,
+        520011,
+        520012,
+        520013,
+        520014,
+        520015,
+        520016,
+        520017,
+        520018,
+        520019
+      ],
+      "unlock_flag": 86030,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_02",
+      "name_ja": "ベレー帽",
+      "item_numeric_ids": [
+        520020,
+        520021,
+        520022,
+        520023,
+        520024,
+        520025,
+        520026,
+        520027,
+        520028,
+        520029
+      ],
+      "unlock_flag": 86031,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_03",
+      "name_ja": "カウボーイハット",
+      "item_numeric_ids": [
+        520030
+      ],
+      "unlock_flag": 86032,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_04",
+      "name_ja": "探偵帽子",
+      "item_numeric_ids": [
+        520040
+      ],
+      "unlock_flag": 86033,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_05",
+      "name_ja": "ナイトキャップ",
+      "item_numeric_ids": [
+        520050,
+        520051,
+        520052,
+        520053,
+        520054,
+        520055,
+        520056,
+        520057,
+        520058,
+        520059
+      ],
+      "unlock_flag": 86034,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_06",
+      "name_ja": "春の花冠",
+      "item_numeric_ids": [
+        520060
+      ],
+      "unlock_flag": 86035,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_07",
+      "name_ja": "夏の花冠",
+      "item_numeric_ids": [
+        520070
+      ],
+      "unlock_flag": 86036,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_08",
+      "name_ja": "秋の花冠",
+      "item_numeric_ids": [
+        520080
+      ],
+      "unlock_flag": 86037,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_09",
+      "name_ja": "冬の花冠",
+      "item_numeric_ids": [
+        520090
+      ],
+      "unlock_flag": 86038,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_10",
+      "name_ja": "魔法使い帽子",
+      "item_numeric_ids": [
+        520100,
+        520101,
+        520102,
+        520103,
+        520104,
+        520105,
+        520106,
+        520107,
+        520108,
+        520109
+      ],
+      "unlock_flag": 86039,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_11",
+      "name_ja": "キャップ",
+      "item_numeric_ids": [
+        520110,
+        520111,
+        520112,
+        520113,
+        520114,
+        520115,
+        520116,
+        520117,
+        520118,
+        520119
+      ],
+      "unlock_flag": 86040,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_12",
+      "name_ja": "笠",
+      "item_numeric_ids": [
+        520120
+      ],
+      "unlock_flag": 86041,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_30",
+      "name_ja": "狐面",
+      "item_numeric_ids": [
+        520300
+      ],
+      "unlock_flag": 86060,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_31",
+      "name_ja": "般若面",
+      "item_numeric_ids": [
+        520310
+      ],
+      "unlock_flag": 86061,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_32",
+      "name_ja": "おかめ面",
+      "item_numeric_ids": [
+        520320
+      ],
+      "unlock_flag": 86062,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_37",
+      "name_ja": "天狗面",
+      "item_numeric_ids": [
+        520370
+      ],
+      "unlock_flag": 86067,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_34",
+      "name_ja": "音符バッジ",
+      "item_numeric_ids": [
+        520340,
+        520341,
+        520342,
+        520343,
+        520344,
+        520345,
+        520346,
+        520347,
+        520348,
+        520349
+      ],
+      "unlock_flag": 86064,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_35",
+      "name_ja": "蝶々",
+      "item_numeric_ids": [
+        520350,
+        520351,
+        520352,
+        520353,
+        520354,
+        520355,
+        520356,
+        520357,
+        520358,
+        520359
+      ],
+      "unlock_flag": 86065,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_36",
+      "name_ja": "お花",
+      "item_numeric_ids": [
+        520360,
+        520361,
+        520362,
+        520363,
+        520364,
+        520365,
+        520366,
+        520367,
+        520368,
+        520369
+      ],
+      "unlock_flag": 86066,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_50",
+      "name_ja": "りぼん１",
+      "item_numeric_ids": [
+        520500,
+        520501,
+        520502,
+        520503,
+        520504,
+        520505,
+        520506,
+        520507,
+        520508,
+        520509
+      ],
+      "unlock_flag": 86080,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_52",
+      "name_ja": "鈴",
+      "item_numeric_ids": [
+        520520
+      ],
+      "unlock_flag": 86082,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_53",
+      "name_ja": "ボンボン",
+      "item_numeric_ids": [
+        520530,
+        520531,
+        520532,
+        520533,
+        520534,
+        520535,
+        520536,
+        520537,
+        520538,
+        520539
+      ],
+      "unlock_flag": 86083,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_60",
+      "name_ja": "うさみみカチューシャ",
+      "item_numeric_ids": [
+        520600,
+        520601,
+        520602,
+        520603,
+        520604,
+        520605,
+        520606,
+        520607,
+        520608,
+        520609
+      ],
+      "unlock_flag": 86090,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_62",
+      "name_ja": "ヘッドドレス",
+      "item_numeric_ids": [
+        520620,
+        520621,
+        520622,
+        520623,
+        520624,
+        520625,
+        520626,
+        520627,
+        520628,
+        520629
+      ],
+      "unlock_flag": 86092,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_63",
+      "name_ja": "ヘッドフォン",
+      "item_numeric_ids": [
+        520630,
+        520631,
+        520632,
+        520633,
+        520634,
+        520635,
+        520636,
+        520637,
+        520638,
+        520639
+      ],
+      "unlock_flag": 86093,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_70",
+      "name_ja": "アイマスク",
+      "item_numeric_ids": [
+        520700
+      ],
+      "unlock_flag": 86100,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_71",
+      "name_ja": "ゴーグル",
+      "item_numeric_ids": [
+        520710,
+        520711,
+        520712,
+        520713,
+        520714,
+        520715,
+        520716,
+        520717,
+        520718,
+        520719
+      ],
+      "unlock_flag": 86101,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_72",
+      "name_ja": "メガネ",
+      "item_numeric_ids": [
+        520720,
+        520721,
+        520722,
+        520723,
+        520724,
+        520725,
+        520726,
+        520727,
+        520728,
+        520729
+      ],
+      "unlock_flag": 86102,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_73",
+      "name_ja": "サングラス",
+      "item_numeric_ids": [
+        520730
+      ],
+      "unlock_flag": 86103,
+      "source": "playerheadaccessory.dat"
+    },
+    {
+      "id": "PLAYER_HEAD_ACCESSORY_ID_74",
+      "name_ja": "モノクル",
+      "item_numeric_ids": [
+        520740
+      ],
+      "unlock_flag": 86104,
+      "source": "playerheadaccessory.dat"
+    }
+  ]
+}
