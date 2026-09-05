@@ -32,13 +32,13 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
                 "FISHING_ID_RIVER",
                 "川",
                 "7:00-12:00",
-                "7:00-12:00",
-                "7:00-12:00",
-                "7:00-12:00",
+                "18:00-0:00",
             ]
         )
         + "\0"
     ).encode()
+    morning_offset = fishing_group.index(b"7:00-12:00")
+    evening_offset = fishing_group.index(b"18:00-0:00")
     character_group = "CHARA_ID_RIN\0巫女\0リン\0\0\0\0凛\0".encode()
     tables = {
         "fish": read_table(
@@ -46,7 +46,25 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
         ),
         "fishing": read_table(
             build_table(
-                records=[_record(64, {0: 1, 8: 0, 12: 16, 24: 1, 44: 160000})],
+                records=[
+                    _record(
+                        116,
+                        {
+                            0: 1,
+                            8: 0,
+                            12: 16,
+                            40: 2,
+                            44: 160000,
+                            60: 0,
+                            68: morning_offset,
+                            72: len("7:00-12:00"),
+                            80: 160000,
+                            96: 2,
+                            104: evening_offset,
+                            108: len("18:00-0:00"),
+                        },
+                    )
+                ],
                 strings=fishing_group,
             )
         ),
@@ -70,3 +88,13 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
     assert world.characters["CHARA_ID_RIN"].gift_items[0].preference == 2
     assert world.fish[fish_item.id].locations[0].location_id == "FISHING_ID_RIVER"
     assert world.fish[fish_item.id].locations[0].name.zh_hans == "川"
+    assert [appearance.season for appearance in world.fish[fish_item.id].appearances] == [
+        "spring",
+        "autumn",
+    ]
+    assert [appearance.time_period for appearance in world.fish[fish_item.id].appearances] == [
+        "morning",
+        "evening",
+    ]
+    assert world.fish[fish_item.id].seasons == ("spring", "autumn")
+    assert world.fish[fish_item.id].time_periods == ("morning", "evening")

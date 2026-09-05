@@ -135,6 +135,14 @@ def normalize_snapshot(
     items_by_numeric: dict[int, Item] = {}
     item_groups_by_numeric: dict[int, tuple[str, ...]] = {}
     machine_by_gimmick_numeric: dict[int, str] = {}
+    category_labels = "未分类 种苗 素材 采集物 作物 畸形作物 花卉 果实 畜产品 加工品 调味料 料理 鱼类 畸形鱼 猎物 矿石 购买素材 机械 农具 动物用品 猎具 狩猎许可 狩猎证明 家畜 收纳 桌子 椅子 寝具 架子 照明 壁挂 地板与墙材 小物件 庭院树木 前发 后发 服装 围巾 饰品 包 夜间家具 咒物 废料 关键物品 药品 夜间物品".split()
+    categories = {}
+    category_table = tables.get("itemcategory")
+    if category_table:
+        for record, group in zip(category_table.records, _string_groups(category_table), strict=True):
+            category_id = _u32(record, 0)
+            translated = {group[0]: category_labels[category_id]} if category_id < len(category_labels) else {}
+            categories[category_id] = build_name(ja=group[1], zh_hant="", internal=group[0], overrides=translated)
 
     item_table = tables.get("item")
     if item_table:
@@ -150,6 +158,9 @@ def normalize_snapshot(
                 sell_price=_u32(record, 296),
                 icon_id=item_icon_id(record) or None,
                 outline_icon_id=item_outline_icon_id(record) or None,
+                category_numeric_id=_u32(record, 280),
+                category_id=categories[_u32(record, 280)].internal if _u32(record, 280) in categories else None,
+                category_name=categories.get(_u32(record, 280)),
             )
             snapshot.items[item.id] = item
             items_by_numeric[numeric_id] = item
@@ -169,6 +180,9 @@ def normalize_snapshot(
                     related_item_id=related.id,
                     icon_id=item.icon_id,
                     outline_icon_id=item.outline_icon_id,
+                    category_numeric_id=item.category_numeric_id,
+                    category_id=item.category_id,
+                    category_name=item.category_name,
                 )
                 snapshot.items[item.id] = replacement
                 items_by_numeric[numeric_id] = replacement

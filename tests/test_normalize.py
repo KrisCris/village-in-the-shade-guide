@@ -41,6 +41,34 @@ def test_official_names_and_aliases_are_preserved():
     assert name.review_status == "override"
 
 
+def test_item_category_comes_from_the_game_category_table():
+    item_group = _localized_group("ITEM_ID_CURSED_TEST", "呪物", "詛咒物")
+    category_group = "ITEM_CATEGORY_CURSE\0呪い\0".encode()
+    tables = {
+        "item": read_table(
+            build_table(
+                records=[_record(496, {0: 800000, 8: 0, 12: 19, 280: 41, 296: 100})],
+                strings=item_group,
+            )
+        ),
+        "itemcategory": read_table(
+            build_table(
+                records=[_record(52, {0: 41, 8: 0, 12: 19})],
+                strings=category_group,
+            )
+        ),
+    }
+
+    snapshot = normalize_snapshot(tables, {}, {})
+    item = snapshot.items["ITEM_ID_CURSED_TEST"]
+
+    assert item.category_numeric_id == 41
+    assert item.category_id == "ITEM_CATEGORY_CURSE"
+    assert item.category_name is not None
+    assert item.category_name.zh_hans == "咒物"
+    assert item.category_name.ja == "呪い"
+
+
 def test_normalizes_crop_seed_and_processing_relationships():
     item_groups = [
         _localized_group("ITEM_ID_SEED_ONION", "タマネギの種", "洋蔥種子"),

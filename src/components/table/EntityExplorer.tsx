@@ -7,6 +7,21 @@ import EntityDrawer from '../entity/EntityDrawer';
 import { useQuality } from '../quality/qualityPreference';
 
 const seasonLabels: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+const timeLabels: Record<string, string> = { morning: '早晨 07:00–12:00', day: '白天 12:00–18:00', evening: '夜晚 18:00–00:00', 'late-night': '深夜 00:00–06:00' };
+export function applyEntityFilters(rows: Entity[], filters: Record<string, string>) {
+  const needle = normalizeSearch(filters.query ?? '');
+  return rows.filter((row) => {
+    if (needle && !row.searchText.includes(needle)) return false;
+    if (filters.itemCategory && row.category_id !== filters.itemCategory) return false;
+    if (filters.machine && !(row.machine_ids as string[] | undefined)?.includes(filters.machine)) return false;
+    if (row.kind === 'fish' && (filters.season || filters.timePeriod || filters.fishingLocation)) {
+      return row.appearances?.some((entry) => (!filters.season || entry.season === filters.season)
+        && (!filters.timePeriod || entry.time_period === filters.timePeriod)
+        && (!filters.fishingLocation || entry.location_id === filters.fishingLocation)) ?? false;
+    }
+    return !filters.season || !!(row.seasons as string[] | undefined)?.includes(filters.season);
+  });
+}
 const sortFields: SortField[] = ['name', 'buy', 'sell', 'duration', 'profit'];
 
 function parseSort(value: string | null): SortField {
@@ -31,15 +46,20 @@ function rowFallback(row: Entity) {
   return `/icons/fallback/${['items', 'crops', 'machines', 'processes'].includes(row.kind) ? row.kind : 'default'}.svg`;
 }
 
-export default function EntityExplorer({ rows, kind, machineOptions = [], priceIndex = {} }: {
+export default function EntityExplorer({ rows, kind, machineOptions = [], fishingLocationOptions = [], itemCategoryOptions = [], priceIndex = {} }: {
   rows: Entity[];
   kind: string;
   machineOptions?: Array<{ id: string; name: string }>;
+  fishingLocationOptions?: Array<{ id: string; name: string }>;
+  itemCategoryOptions?: Array<{ id: string; name: string }>;
   priceIndex?: PriceIndex;
 }) {
   const [query, setQuery] = useState('');
   const [season, setSeason] = useState('');
   const [machine, setMachine] = useState('');
+  const [timePeriod, setTimePeriod] = useState('');
+  const [fishingLocation, setFishingLocation] = useState('');
+  const [itemCategory, setItemCategory] = useState('');
   const [sort, setSort] = useState<SortField>('name');
   const [direction, setDirection] = useState<SortDirection>('asc');
   const [urlReady, setUrlReady] = useState(false);
@@ -51,6 +71,9 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     setQuery(params.get('q') ?? '');
     setSeason(params.get('season') ?? '');
     setMachine(params.get('machine') ?? '');
+    setTimePeriod(params.get('period') ?? '');
+    setFishingLocation(params.get('location') ?? '');
+    setItemCategory(params.get('category') ?? '');
     setSort(parseSort(params.get('sort')));
     setDirection(parseDirection(params.get('dir')));
     setUrlReady(true);
@@ -63,19 +86,18 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
     update('q', query);
     update('season', season);
     update('machine', machine);
+    update('period', timePeriod);
+    update('location', fishingLocation);
+    update('category', itemCategory);
     update('sort', sort, 'name');
     update('dir', direction, 'asc');
     history.replaceState(null, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
-  }, [query, season, machine, sort, direction, urlReady]);
+  }, [query, season, machine, timePeriod, fishingLocation, itemCategory, sort, direction, urlReady]);
 
   const shown = useMemo(() => {
-    const needle = normalizeSearch(query);
-    const filtered = rows
-      .filter((row) => !needle || row.searchText.includes(needle))
-      .filter((row) => !season || (row.seasons as string[] | undefined)?.includes(season))
-      .filter((row) => !machine || (row.machine_ids as string[] | undefined)?.includes(machine));
+    const filtered = applyEntityFilters(rows, { query, season, machine, timePeriod, fishingLocation, itemCategory });
     return sortEntities(filtered, sort, direction, quality, priceIndex);
-  }, [rows, query, season, machine, sort, direction, quality, priceIndex]);
+  }, [rows, query, season, machine, timePeriod, fishingLocation, itemCategory, sort, direction, quality, priceIndex]);
 
   const openFromRow = (row: Entity, event: MouseEvent<HTMLTableRowElement>) => {
     if ((event.target as HTMLElement).closest('a,button,input,select')) return;
@@ -93,11 +115,17 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
   };
 
   return <>
+    {kind === 'fish' && <p className="fishing-hours">{Object.values(timeLabels).join(' · ')}<br /><small>06:00–07:00 无出没时段记录</small></p>}
     <div className="toolbar card">
       <label>页内搜索<input type="search" placeholder="名称、拼音、日文或 ID" value={query} onChange={(event) => setQuery(event.target.value)} /></label>
-      {kind === 'crops' && <>
+      {['crops', 'fish'].includes(kind) && <>
         <label>季节<select value={season} onChange={(event) => setSeason(event.target.value)}><option value="">全部</option>{Object.entries(seasonLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
       </>}
+      {kind === 'fish' && <>
+        <label>时段<select value={timePeriod} onChange={(event) => setTimePeriod(event.target.value)}><option value="">全部时段</option>{Object.entries(timeLabels).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>钓鱼点<select value={fishingLocation} onChange={(event) => setFishingLocation(event.target.value)}><option value="">全部钓鱼点</option>{fishingLocationOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>
+      </>}
+      {kind === 'items' && <label>类别<select value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">全部类别</option>{itemCategoryOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>}
       {kind === 'processes' && <label>机械<select value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">全部机械</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>}
       <label>排序字段<select value={sort} onChange={(event) => setSort(parseSort(event.target.value))}><option value="name">名称</option><option value="sell">产值</option><option value="buy">成本</option>{['processes', 'crops'].includes(kind) && <option value="profit">日净收益</option>}{kind === 'processes' && <option value="duration">加工时间</option>}</select></label>
       <label>方向<select value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></select></label>
@@ -112,7 +140,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], priceI
         : null;
       return <tr key={row.id} tabIndex={0} aria-label={`打开${row.name.zh_hans}详情`} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
         <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={row.icon_path} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = rowFallback(row); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
-        <td>{processGroup ? `${row.variant_count} 种配方` : (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
+        <td>{processGroup ? `${row.variant_count} 种配方` : row.category_name?.zh_hans || (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
         <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>
         <td>{duration ?? (typeof row.growth_days === 'number' ? `${row.growth_days} 日${row.regrow_days ? ` / 再生 ${row.regrow_days} 日` : ''}` : '—')}</td>

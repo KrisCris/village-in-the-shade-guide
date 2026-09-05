@@ -1,6 +1,21 @@
 [
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2070,
     "id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
     "name": {
       "aliases": [
@@ -15,11 +30,27 @@
       "zh_hant": "熟成桶"
     },
     "numeric_id": 400040,
+    "outline_icon_id": 5035,
     "related_item_id": null,
     "sell_price": 52
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2086,
     "id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
     "name": {
       "aliases": [
@@ -34,11 +65,27 @@
       "zh_hant": "熟成桶／改"
     },
     "numeric_id": 400041,
+    "outline_icon_id": 5051,
     "related_item_id": null,
     "sell_price": 98
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2095,
     "id": "ITEM_ID_GIMMICK_BEEHIVE",
     "name": {
       "aliases": [
@@ -53,11 +100,27 @@
       "zh_hant": "蜂箱"
     },
     "numeric_id": 402040,
+    "outline_icon_id": 5060,
     "related_item_id": null,
     "sell_price": 90
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2074,
     "id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
     "name": {
       "aliases": [
@@ -73,11 +136,27 @@
       "zh_hant": "熔爐"
     },
     "numeric_id": 400080,
+    "outline_icon_id": 5039,
     "related_item_id": null,
     "sell_price": 45
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2090,
     "id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
     "name": {
       "aliases": [
@@ -93,11 +172,27 @@
       "zh_hant": "熔爐／改"
     },
     "numeric_id": 400081,
+    "outline_icon_id": 5055,
     "related_item_id": null,
     "sell_price": 97
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2069,
     "id": "ITEM_ID_GIMMICK_BREWING_BARREL",
     "name": {
       "aliases": [
@@ -113,11 +208,27 @@
       "zh_hant": "釀造桶"
     },
     "numeric_id": 400030,
+    "outline_icon_id": 5034,
     "related_item_id": null,
     "sell_price": 62
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2085,
     "id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
     "name": {
       "aliases": [
@@ -133,11 +244,27 @@
       "zh_hant": "釀造桶／改"
     },
     "numeric_id": 400031,
+    "outline_icon_id": 5050,
     "related_item_id": null,
     "sell_price": 141
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2075,
     "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
     "name": {
       "aliases": [
@@ -153,11 +280,27 @@
       "zh_hant": "木炭窯"
     },
     "numeric_id": 400090,
+    "outline_icon_id": 5040,
     "related_item_id": null,
     "sell_price": 38
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2091,
     "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
     "name": {
       "aliases": [
@@ -173,11 +316,27 @@
       "zh_hant": "木炭窯／改"
     },
     "numeric_id": 400091,
+    "outline_icon_id": 5056,
     "related_item_id": null,
     "sell_price": 164
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2077,
     "id": "ITEM_ID_GIMMICK_COMPOSTER",
     "name": {
       "aliases": [
@@ -192,11 +351,27 @@
       "zh_hant": "堆肥桶"
     },
     "numeric_id": 400110,
+    "outline_icon_id": 5042,
     "related_item_id": null,
     "sell_price": 41
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2093,
     "id": "ITEM_ID_GIMMICK_COMPOSTER_02",
     "name": {
       "aliases": [
@@ -211,11 +386,27 @@
       "zh_hant": "堆肥桶／改"
     },
     "numeric_id": 400111,
+    "outline_icon_id": 5058,
     "related_item_id": null,
     "sell_price": 135
   },
   {
     "buy_price": 500,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2079,
     "id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
     "name": {
       "aliases": [
@@ -230,11 +421,27 @@
       "zh_hant": "工作台"
     },
     "numeric_id": 400130,
+    "outline_icon_id": 5044,
     "related_item_id": null,
     "sell_price": 375
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2071,
     "id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
     "name": {
       "aliases": [
@@ -249,11 +456,27 @@
       "zh_hant": "乾燥機"
     },
     "numeric_id": 400050,
+    "outline_icon_id": 5036,
     "related_item_id": null,
     "sell_price": 83
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2087,
     "id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
     "name": {
       "aliases": [
@@ -269,11 +492,27 @@
       "zh_hant": "乾燥機／改"
     },
     "numeric_id": 400051,
+    "outline_icon_id": 5052,
     "related_item_id": null,
     "sell_price": 164
   },
   {
     "buy_price": 1000,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2078,
     "id": "ITEM_ID_GIMMICK_DYEING_MACHINE",
     "name": {
       "aliases": [
@@ -287,11 +526,27 @@
       "zh_hant": "染色台"
     },
     "numeric_id": 400120,
+    "outline_icon_id": 5043,
     "related_item_id": null,
     "sell_price": 750
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2072,
     "id": "ITEM_ID_GIMMICK_FLOUR_MILL",
     "name": {
       "aliases": [
@@ -307,11 +562,27 @@
       "zh_hant": "研磨機"
     },
     "numeric_id": 400060,
+    "outline_icon_id": 5037,
     "related_item_id": null,
     "sell_price": 45
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2088,
     "id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
     "name": {
       "aliases": [
@@ -327,11 +598,27 @@
       "zh_hant": "研磨機／改"
     },
     "numeric_id": 400061,
+    "outline_icon_id": 5053,
     "related_item_id": null,
     "sell_price": 60
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2102,
     "id": "ITEM_ID_GIMMICK_FURNACE",
     "name": {
       "aliases": [
@@ -347,11 +634,27 @@
       "zh_hant": "爐灶"
     },
     "numeric_id": 403010,
+    "outline_icon_id": 5067,
     "related_item_id": null,
     "sell_price": 175
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2105,
     "id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
     "name": {
       "aliases": [
@@ -367,11 +670,27 @@
       "zh_hant": "炭烤爐"
     },
     "numeric_id": 403040,
+    "outline_icon_id": 5070,
     "related_item_id": null,
     "sell_price": 111
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2076,
     "id": "ITEM_ID_GIMMICK_LOOM",
     "name": {
       "aliases": [
@@ -387,11 +706,27 @@
       "zh_hant": "織布機"
     },
     "numeric_id": 400100,
+    "outline_icon_id": 5041,
     "related_item_id": null,
     "sell_price": 210
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2092,
     "id": "ITEM_ID_GIMMICK_LOOM_02",
     "name": {
       "aliases": [
@@ -407,11 +742,27 @@
       "zh_hant": "織布機／改"
     },
     "numeric_id": 400101,
+    "outline_icon_id": 5057,
     "related_item_id": null,
     "sell_price": 401
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2068,
     "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
     "name": {
       "aliases": [
@@ -427,11 +778,27 @@
       "zh_hant": "美乃滋加工機"
     },
     "numeric_id": 400020,
+    "outline_icon_id": 5033,
     "related_item_id": null,
     "sell_price": 31
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2084,
     "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
     "name": {
       "aliases": [
@@ -447,11 +814,27 @@
       "zh_hant": "美乃滋加工機／改"
     },
     "numeric_id": 400021,
+    "outline_icon_id": 5049,
     "related_item_id": null,
     "sell_price": 135
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2101,
     "id": "ITEM_ID_GIMMICK_MESSTIN",
     "name": {
       "aliases": [
@@ -467,11 +850,27 @@
       "zh_hant": "煮飯盒"
     },
     "numeric_id": 403000,
+    "outline_icon_id": 5066,
     "related_item_id": null,
     "sell_price": 66
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2067,
     "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
     "name": {
       "aliases": [
@@ -487,11 +886,27 @@
       "zh_hant": "牛奶加工機"
     },
     "numeric_id": 400010,
+    "outline_icon_id": 5032,
     "related_item_id": null,
     "sell_price": 69
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2083,
     "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
     "name": {
       "aliases": [
@@ -507,11 +922,27 @@
       "zh_hant": "牛奶加工機／改"
     },
     "numeric_id": 400011,
+    "outline_icon_id": 5048,
     "related_item_id": null,
     "sell_price": 202
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2073,
     "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
     "name": {
       "aliases": [
@@ -527,11 +958,27 @@
       "zh_hant": "榨油機"
     },
     "numeric_id": 400070,
+    "outline_icon_id": 5038,
     "related_item_id": null,
     "sell_price": 83
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2089,
     "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
     "name": {
       "aliases": [
@@ -547,11 +994,27 @@
       "zh_hant": "榨油機／改"
     },
     "numeric_id": 400071,
+    "outline_icon_id": 5054,
     "related_item_id": null,
     "sell_price": 305
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2096,
     "id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
     "name": {
       "aliases": [
@@ -567,11 +1030,27 @@
       "zh_hant": "樹液採集器"
     },
     "numeric_id": 402050,
+    "outline_icon_id": 5061,
     "related_item_id": null,
     "sell_price": 37
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2097,
     "id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
     "name": {
       "aliases": [
@@ -587,11 +1066,27 @@
       "zh_hant": "蠶箱"
     },
     "numeric_id": 402070,
+    "outline_icon_id": 5062,
     "related_item_id": null,
     "sell_price": 120
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2080,
     "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
     "name": {
       "aliases": [
@@ -607,11 +1102,27 @@
       "zh_hant": "煙燻機"
     },
     "numeric_id": 400140,
+    "outline_icon_id": 5045,
     "related_item_id": null,
     "sell_price": 62
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2094,
     "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
     "name": {
       "aliases": [
@@ -627,11 +1138,27 @@
       "zh_hant": "煙燻機／改"
     },
     "numeric_id": 400141,
+    "outline_icon_id": 5059,
     "related_item_id": null,
     "sell_price": 168
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2100,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
     "name": {
       "aliases": [
@@ -647,11 +1174,27 @@
       "zh_hant": "強化灑水器"
     },
     "numeric_id": 402120,
+    "outline_icon_id": 5065,
     "related_item_id": null,
     "sell_price": 565
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2099,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
     "name": {
       "aliases": [
@@ -667,11 +1210,27 @@
       "zh_hant": "普通灑水器"
     },
     "numeric_id": 402110,
+    "outline_icon_id": 5064,
     "related_item_id": null,
     "sell_price": 330
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2098,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
     "name": {
       "aliases": [
@@ -687,11 +1246,27 @@
       "zh_hant": "小型灑水器"
     },
     "numeric_id": 402100,
+    "outline_icon_id": 5063,
     "related_item_id": null,
     "sell_price": 120
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2066,
     "id": "ITEM_ID_GIMMICK_STORAGE_JAR",
     "name": {
       "aliases": [
@@ -707,11 +1282,27 @@
       "zh_hant": "醃菜桶"
     },
     "numeric_id": 400000,
+    "outline_icon_id": 5031,
     "related_item_id": null,
     "sell_price": 37
   },
   {
     "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "icon_id": 2082,
     "id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
     "name": {
       "aliases": [
@@ -727,6 +1318,7 @@
       "zh_hant": "醃菜桶／改"
     },
     "numeric_id": 400001,
+    "outline_icon_id": 5047,
     "related_item_id": null,
     "sell_price": 56
   }

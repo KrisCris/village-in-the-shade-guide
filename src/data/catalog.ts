@@ -17,7 +17,7 @@ function withSearchAliases(name: Name): Name {
 }
 
 function setSearchText(entity: Entity) {
-  entity.searchText = normalizeSearch([entity.name.zh_hans, entity.name.zh_hant, entity.name.ja, entity.name.internal, ...entity.name.aliases].join(' '));
+  entity.searchText = normalizeSearch([entity.name.zh_hans, entity.name.zh_hant, entity.name.ja, entity.name.internal, ...entity.name.aliases, ...(entity.category_name?.aliases ?? [])].join(' '));
 }
 
 export function iconItemIdFor(entity: Entity) {
@@ -45,6 +45,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     for (const row of rows) {
       const fallback: Name = { zh_hans: row.id, zh_hant: '', ja: '', internal: row.id, aliases: [row.id], review_status: 'internal' };
       const entity = { ...row, kind, name: withSearchAliases(row.name ?? fallback), searchText: '' } as Entity;
+      if (entity.category_name) entity.category_name = withSearchAliases(entity.category_name);
       setSearchText(entity);
       entities.push(entity);
       byId[entity.id] ??= entity;
@@ -52,6 +53,15 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
   }
 
   const itemIds = new Set(entities.filter((entity) => entity.kind === 'items').map((entity) => entity.id));
+  for (const fish of entities.filter((entity) => entity.kind === 'fish')) {
+    const item = entities.find((entity) => entity.kind === 'items' && entity.id === fish.id);
+    if (item) {
+      item.locations = fish.locations;
+      item.appearances = fish.appearances;
+      item.seasons = fish.seasons;
+      item.time_periods = fish.time_periods;
+    }
+  }
   for (const entity of entities) {
     const itemId = iconItemIdFor(entity);
     if (itemId && itemIds.has(itemId)) entity.icon_path = `/icons/generated/items/${itemId}.webp`;

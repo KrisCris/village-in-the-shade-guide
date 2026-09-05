@@ -7,6 +7,7 @@ from .localization import build_name
 from .models import (
     Character,
     Fish,
+    FishAppearance,
     FishLocation,
     GiftItem,
     HuntReward,
@@ -17,7 +18,7 @@ from .models import (
     WorldSnapshot,
 )
 from .probe import _string_groups
-from .table import TableContainer
+from .table import TableContainer, TableFormatError
 
 
 WEATHER_NAMES = {
@@ -56,6 +57,10 @@ def normalize_world(
     }
 
     locations_by_fish: dict[int, list[FishLocation]] = defaultdict(list)
+    appearances_by_fish: dict[int, list[FishAppearance]] = defaultdict(list)
+    seasons = ("spring", "summer", "autumn", "winter")
+    periods = {"7:00-12:00": "morning", "12:00-18:00": "day", "18:00-0:00": "evening", "0:00-6:00": "late-night"}
+    place_names = dict(zip((f"FISHING_ID_{i:02}" for i in range(1, 7)), ("下游（流水）", "下游（静水）", "中游（静水）", "中游（流水）", "上游", "涌泉池")))
     fishing = tables.get("fishing")
     if fishing:
         for record, group in zip(fishing.records, _string_groups(fishing), strict=True):
@@ -67,14 +72,24 @@ def normalize_world(
                 ja=group[1] if len(group) > 1 else group[0],
                 zh_hant="",
                 internal=group[0],
-                overrides=overrides,
+                overrides={**place_names, **overrides},
             )
             location = FishLocation(location_name.internal, location_name)
-            spawn_count = _u32(record, 24)
+            spawn_count = _u32(record, 40)
+            if 44 + spawn_count * 36 > len(record):
+                raise TableFormatError("fishing appearance records are truncated")
             for index in range(spawn_count):
-                fish_id = _u32(record, 28 + index * 36 + 16)
+                offset = 44 + index * 36
+                fish_id = _u32(record, offset)
+                season = _u32(record, offset + 16)
+                start = _u32(record, offset + 24)
+                length = _u32(record, offset + 28)
+                time_range = fishing.string_pool[start:start + length].decode("utf-8").rstrip("\0")
+                if season >= len(seasons) or time_range not in periods:
+                    raise TableFormatError(f"unknown fishing appearance: {season}, {time_range}")
                 if fish_id:
                     locations_by_fish[fish_id].append(location)
+                    appearances_by_fish[fish_id].append(FishAppearance(location.location_id, seasons[season], periods[time_range], time_range))
 
     fish_table = tables.get("fish")
     if fish_table:
@@ -88,6 +103,9 @@ def normalize_world(
                     item.name,
                     item.sell_price,
                     tuple(dict.fromkeys(locations_by_fish[numeric_id])),
+                    tuple(dict.fromkeys(appearances_by_fish[numeric_id])),
+                    tuple(s for s in seasons if any(a.season == s for a in appearances_by_fish[numeric_id])),
+                    tuple(p for p in periods.values() if any(a.time_period == p for a in appearances_by_fish[numeric_id])),
                 )
 
     gift_items: dict[int, list[GiftItem]] = defaultdict(list)

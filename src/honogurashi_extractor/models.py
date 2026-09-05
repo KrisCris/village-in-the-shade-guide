@@ -23,6 +23,9 @@ class Item:
     related_item_id: str | None = None
     icon_id: int | None = None
     outline_icon_id: int | None = None
+    category_numeric_id: int | None = None
+    category_id: str | None = None
+    category_name: LocalizedName | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -109,12 +112,23 @@ class FishLocation:
 
 
 @dataclass(frozen=True, slots=True)
+class FishAppearance:
+    location_id: str
+    season: str
+    time_period: str
+    time_range: str
+
+
+@dataclass(frozen=True, slots=True)
 class Fish:
     id: str
     numeric_id: int
     name: LocalizedName
     sell_price: int
     locations: tuple[FishLocation, ...]
+    appearances: tuple[FishAppearance, ...] = ()
+    seasons: tuple[str, ...] = ()
+    time_periods: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

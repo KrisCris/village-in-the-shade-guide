@@ -24,10 +24,11 @@ const priceIndex = Object.fromEntries([...referencedItemIds].flatMap((id) => {
   return item ? [[id, { sell_price: item.sell_price, quality_eligible: item.quality_eligible }]] : [];
 }));
 const label = kindLabels[kind] ?? kind;
+const fishingLocationOptions = [...new Map(rows.flatMap((row) => ((row.locations ?? []) as Array<{location_id: string; name: {zh_hans: string}}>).map((place) => [place.location_id, {id: place.location_id, name: place.name.zh_hans}] as const))).values()].sort((a, b) => a.id.localeCompare(b.id));
+const itemCategoryOptions = [...new Map([...rows].sort((a, b) => Number(a.category_numeric_id) - Number(b.category_numeric_id)).flatMap((row) => row.category_id && row.category_name ? [[row.category_id, {id: row.category_id, name: row.category_name.zh_hans}] as const] : [])).values()];
 ---
 <BaseLayout title={label} description={`${label}完整数据表，支持中文、日文和内部 ID 搜索。`}>
-  <p class="eyebrow">DATA TABLE · {catalog.buildId}</p>
   <h1>{label}</h1>
   <p class="muted">共 {rows.length} 条</p>
-  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} priceIndex={priceIndex} />
+  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} fishingLocationOptions={fishingLocationOptions} itemCategoryOptions={itemCategoryOptions} priceIndex={priceIndex} />
 </BaseLayout>

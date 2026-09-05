@@ -84,6 +84,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         archive = FafullfsArchive.open(archive_path)
         table_names = (
             "item",
+            "itemcategory",
             "crops",
             "craft",
             "cooking",

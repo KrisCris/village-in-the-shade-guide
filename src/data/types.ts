@@ -11,6 +11,10 @@ export type Entity = Record<string, unknown> & {
   id: string;
   kind: string;
   name: Name;
+  category_id?: string | null;
+  category_numeric_id?: number | null;
+  category_name?: Name | null;
+  appearances?: Array<{ location_id: string; season: string; time_period: string; time_range?: string }>;
   buy_price?: number | null;
   sell_price?: number | null;
   quality_eligible?: boolean;

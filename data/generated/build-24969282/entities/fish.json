@@ -1,7 +1,76 @@
 [
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_AMAGO_SALMON",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下游（流水）",
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "淡水石川鲑",
@@ -16,22 +85,141 @@
       "zh_hant": "淡水石川鮭"
     },
     "numeric_id": 160060,
-    "sell_price": 120
+    "seasons": [
+      "summer"
+    ],
+    "sell_price": 120,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_AMUR_MINNOW",
     "locations": [
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -39,13 +227,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -63,11 +252,90 @@
       "zh_hant": "拉氏大吻鱥"
     },
     "numeric_id": 160000,
-    "sell_price": 30
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 30,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_BITTERLING",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下游（静水）",
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中游（静水）",
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "黑腹鱊",
@@ -81,22 +349,87 @@
       "zh_hant": "黑腹鱊"
     },
     "numeric_id": 160010,
-    "sell_price": 30
+    "seasons": [
+      "autumn"
+    ],
+    "sell_price": 30,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
     "locations": [
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -114,22 +447,179 @@
       "zh_hant": "黑斑蛙"
     },
     "numeric_id": 160260,
-    "sell_price": 105
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 105,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_CARP",
     "locations": [
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -137,13 +627,14 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -162,22 +653,198 @@
       "zh_hant": "鯉魚"
     },
     "numeric_id": 160160,
-    "sell_price": 60
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 60,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_CATFISH",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -185,13 +852,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -199,13 +867,14 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       }
@@ -224,22 +893,179 @@
       "zh_hant": "鯰魚"
     },
     "numeric_id": 160170,
-    "sell_price": 120
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 120,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_CRUCIAN_CARP",
     "locations": [
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -247,13 +1073,14 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -272,22 +1099,144 @@
       "zh_hant": "鯽魚"
     },
     "numeric_id": 160150,
-    "sell_price": 60
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 60,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_DACE",
     "locations": [
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -295,13 +1244,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -320,11 +1270,126 @@
       "zh_hant": "珠星三塊魚"
     },
     "numeric_id": 160100,
-    "sell_price": 45
+    "seasons": [
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "sell_price": 45,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_DARK_CHUB",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中游（静水）",
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "特氏东瀛鲤",
@@ -339,11 +1404,122 @@
       "zh_hant": "特氏東瀛鯉"
     },
     "numeric_id": 160020,
-    "sell_price": 45
+    "seasons": [
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 45,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_DARK_SLEEPER",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下游（静水）",
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中游（静水）",
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "暗色沙塘鳢",
@@ -358,22 +1534,105 @@
       "zh_hant": "暗色沙塘鱧"
     },
     "numeric_id": 160200,
-    "sell_price": 60
+    "seasons": [
+      "winter"
+    ],
+    "sell_price": 60,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_EEL",
     "locations": [
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -381,13 +1640,14 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -406,22 +1666,106 @@
       "zh_hant": "鰻魚"
     },
     "numeric_id": 160110,
-    "sell_price": 315
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 315,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_FRESHWATER_CRAB",
     "locations": [
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       },
@@ -429,13 +1773,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -454,22 +1799,142 @@
       "zh_hant": "日本漢氏澤蟹"
     },
     "numeric_id": 160180,
-    "sell_price": 105
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 105,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_FRESHWATER_GOBY",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -477,13 +1942,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       }
@@ -502,11 +1968,63 @@
       "zh_hant": "吻鰕虎魚"
     },
     "numeric_id": 160130,
-    "sell_price": 30
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 30,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_01",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下游（流水）",
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "被诅咒的日本溪哥",
@@ -521,11 +2039,62 @@
       "zh_hant": "被詛咒的日本溪哥"
     },
     "numeric_id": 162000,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_02",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下游（静水）",
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "被诅咒的鲫鱼",
@@ -540,22 +2109,58 @@
       "zh_hant": "被詛咒的鯽魚"
     },
     "numeric_id": 162010,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_03",
     "locations": [
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -574,11 +2179,62 @@
       "zh_hant": "被詛咒的日本漢氏澤蟹"
     },
     "numeric_id": 162020,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_04",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "被诅咒的淡水石川鲑",
@@ -593,11 +2249,62 @@
       "zh_hant": "被詛咒的淡水石川鮭"
     },
     "numeric_id": 162030,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_05",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "被诅咒的香鱼",
@@ -612,22 +2319,58 @@
       "zh_hant": "被詛咒的香魚"
     },
     "numeric_id": 162040,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_GHOST_FISH_06",
     "locations": [
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -646,11 +2389,56 @@
       "zh_hant": "被詛咒的青蛙"
     },
     "numeric_id": 162050,
-    "sell_price": 99
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 99,
+    "time_periods": [
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "日本黑螯虾",
@@ -665,11 +2453,124 @@
       "zh_hant": "日本黑螯蝦"
     },
     "numeric_id": 160220,
-    "sell_price": 90
+    "seasons": [
+      "summer"
+    ],
+    "sell_price": 90,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "钝头杜父鱼",
@@ -684,11 +2585,116 @@
       "zh_hant": "鈍頭杜父魚"
     },
     "numeric_id": 160140,
-    "sell_price": 75
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 75,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_02",
+        "name": {
+          "aliases": [
+            "下游（静水）",
+            "下流(澱み)",
+            "FISHING_ID_02"
+          ],
+          "internal": "FISHING_ID_02",
+          "ja": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中游（静水）",
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "远东哲罗鱼",
@@ -703,22 +2709,141 @@
       "zh_hant": "遠東哲羅魚"
     },
     "numeric_id": 160280,
-    "sell_price": 330
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 330,
+    "time_periods": [
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
     "locations": [
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -726,13 +2851,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -751,22 +2877,71 @@
       "zh_hant": "日本石龜"
     },
     "numeric_id": 160250,
-    "sell_price": 150
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 150,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_LOACH",
     "locations": [
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -785,22 +2960,70 @@
       "zh_hant": "斑北鰍"
     },
     "numeric_id": 160210,
-    "sell_price": 120
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 120,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
     "locations": [
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -819,11 +3042,176 @@
       "zh_hant": "日本沼蝦"
     },
     "numeric_id": 160230,
-    "sell_price": 75
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 75,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_MITTEN_CRAB",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下游（流水）",
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "日本绒螯蟹",
@@ -838,22 +3226,142 @@
       "zh_hant": "日本絨螯蟹"
     },
     "numeric_id": 160190,
-    "sell_price": 150
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 150,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_PALE_CHUB",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -861,13 +3369,14 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -875,13 +3384,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -899,11 +3409,56 @@
       "zh_hant": "日本溪哥"
     },
     "numeric_id": 160090,
-    "sell_price": 105
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 105,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_RAINBOW_TROUT",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "虹鳟",
@@ -918,11 +3473,121 @@
       "zh_hant": "虹鱒"
     },
     "numeric_id": 160050,
-    "sell_price": 240
+    "seasons": [
+      "autumn"
+    ],
+    "sell_price": 240,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_SALMON",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_01",
+        "name": {
+          "aliases": [
+            "下游（流水）",
+            "下流(流れ)",
+            "FISHING_ID_01"
+          ],
+          "internal": "FISHING_ID_01",
+          "ja": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "鲑鱼",
@@ -937,22 +3602,69 @@
       "zh_hant": "鮭魚"
     },
     "numeric_id": 160270,
-    "sell_price": 270
+    "seasons": [
+      "winter"
+    ],
+    "sell_price": 270,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_SATSUKI_TROUT",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -960,13 +3672,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       }
@@ -985,11 +3698,55 @@
       "zh_hant": "石川鮭"
     },
     "numeric_id": 160080,
-    "sell_price": 225
+    "seasons": [
+      "spring"
+    ],
+    "sell_price": 225,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_03",
+        "name": {
+          "aliases": [
+            "中游（静水）",
+            "中流(澱み)",
+            "FISHING_ID_03"
+          ],
+          "internal": "FISHING_ID_03",
+          "ja": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "鳖",
@@ -1004,11 +3761,88 @@
       "zh_hant": "鱉"
     },
     "numeric_id": 160240,
-    "sell_price": 330
+    "seasons": [
+      "autumn"
+    ],
+    "sell_price": 330,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_SWEETFISH",
-    "locations": [],
+    "locations": [
+      {
+        "location_id": "FISHING_ID_04",
+        "name": {
+          "aliases": [
+            "中游（流水）",
+            "中流(流れ)",
+            "FISHING_ID_04"
+          ],
+          "internal": "FISHING_ID_04",
+          "ja": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
+          "zh_hant": ""
+        }
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "name": {
+          "aliases": [
+            "上游",
+            "上流",
+            "FISHING_ID_05"
+          ],
+          "internal": "FISHING_ID_05",
+          "ja": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
+          "zh_hant": ""
+        }
+      }
+    ],
     "name": {
       "aliases": [
         "香鱼",
@@ -1023,22 +3857,69 @@
       "zh_hant": "香魚"
     },
     "numeric_id": 160070,
-    "sell_price": 180
+    "seasons": [
+      "summer"
+    ],
+    "sell_price": 180,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
     "locations": [
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1057,22 +3938,106 @@
       "zh_hant": "小頭刺魚"
     },
     "numeric_id": 160120,
-    "sell_price": 90
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "sell_price": 90,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_CARP",
     "locations": [
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       }
@@ -1091,22 +4056,108 @@
       "zh_hant": "白化鯉魚"
     },
     "numeric_id": 161010,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_CATFISH",
     "locations": [
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1125,22 +4176,108 @@
       "zh_hant": "白化鯰魚"
     },
     "numeric_id": 161020,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_EEL",
     "locations": [
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       }
@@ -1159,22 +4296,108 @@
       "zh_hant": "白化鰻魚"
     },
     "numeric_id": 161000,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       }
@@ -1193,22 +4416,108 @@
       "zh_hant": "白化日本黑螯蝦"
     },
     "numeric_id": 161030,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
     "locations": [
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       }
@@ -1227,22 +4536,108 @@
       "zh_hant": "白化遠東哲羅魚"
     },
     "numeric_id": 161050,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
     "locations": [
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -1261,22 +4656,108 @@
       "zh_hant": "白化鱉"
     },
     "numeric_id": 161040,
-    "sell_price": 2500
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 2500,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_YAMAME_TROUT",
     "locations": [
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       }
@@ -1295,22 +4776,90 @@
       "zh_hant": "山女魚"
     },
     "numeric_id": 160030,
-    "sell_price": 150
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 150,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      }
+    ],
     "id": "ITEM_ID_FISHING_YAMATO_CHAR",
     "locations": [
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       }
@@ -1329,22 +4878,323 @@
       "zh_hant": "日本紅點鮭"
     },
     "numeric_id": 160040,
-    "sell_price": 135
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "sell_price": 135,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_TRASH_EMPTY_CAN",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -1352,13 +5202,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -1366,13 +5217,14 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1390,22 +5242,325 @@
       "zh_hant": "空罐"
     },
     "numeric_id": 600000,
-    "sell_price": 0
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 0,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening",
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_TRASH_PLASTIC_BAG",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -1413,13 +5568,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -1427,13 +5583,14 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1452,22 +5609,613 @@
       "zh_hant": "塑膠袋"
     },
     "numeric_id": 600010,
-    "sell_price": 0
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 0,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening",
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_TRASH_TWIG",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -1475,13 +6223,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -1489,13 +6238,14 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       },
@@ -1503,13 +6253,14 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -1517,13 +6268,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       },
@@ -1531,13 +6283,14 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1556,22 +6309,613 @@
       "zh_hant": "樹枝"
     },
     "numeric_id": 600030,
-    "sell_price": 1
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 1,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening",
+      "late-night"
+    ]
   },
   {
+    "appearances": [
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_01",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_02",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_03",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_04",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_05",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "spring",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "summer",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "autumn",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "morning",
+        "time_range": "7:00-12:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "day",
+        "time_range": "12:00-18:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "evening",
+        "time_range": "18:00-0:00"
+      },
+      {
+        "location_id": "FISHING_ID_06",
+        "season": "winter",
+        "time_period": "late-night",
+        "time_range": "0:00-6:00"
+      }
+    ],
     "id": "ITEM_ID_TRASH_WATER_PLANT",
     "locations": [
       {
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
+            "下游（流水）",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(流れ)",
+          "review_status": "override",
+          "zh_hans": "下游（流水）",
           "zh_hant": ""
         }
       },
@@ -1579,13 +6923,14 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
+            "下游（静水）",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "下流(澱み)",
+          "review_status": "override",
+          "zh_hans": "下游（静水）",
           "zh_hant": ""
         }
       },
@@ -1593,13 +6938,14 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
+            "中游（静水）",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(澱み)",
+          "review_status": "override",
+          "zh_hans": "中游（静水）",
           "zh_hant": ""
         }
       },
@@ -1607,13 +6953,14 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
+            "中游（流水）",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "source-ja",
-          "zh_hans": "中流(流れ)",
+          "review_status": "override",
+          "zh_hans": "中游（流水）",
           "zh_hant": ""
         }
       },
@@ -1621,13 +6968,14 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
+            "上游",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "source-ja",
-          "zh_hans": "上流",
+          "review_status": "override",
+          "zh_hans": "上游",
           "zh_hant": ""
         }
       },
@@ -1635,13 +6983,14 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
+            "涌泉池",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "source-ja",
-          "zh_hans": "湧水池",
+          "review_status": "override",
+          "zh_hans": "涌泉池",
           "zh_hant": ""
         }
       }
@@ -1658,6 +7007,18 @@
       "zh_hant": "水草"
     },
     "numeric_id": 600020,
-    "sell_price": 1
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "sell_price": 1,
+    "time_periods": [
+      "morning",
+      "day",
+      "evening",
+      "late-night"
+    ]
   }
 ]
