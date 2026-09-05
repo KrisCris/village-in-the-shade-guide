@@ -10,7 +10,8 @@
       "id": "LOSTBOOK_ID_10",
       "name": "《鬼的條紋布》",
       "item_numeric_id": 639210,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book61",
@@ -21,7 +22,8 @@
       "id": "LOSTBOOK_ID_61",
       "name": "《夜夜迴響的腳步聲》",
       "item_numeric_id": 639261,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book20",
@@ -32,7 +34,8 @@
       "id": "LOSTBOOK_ID_20",
       "name": "《破舊的日記》",
       "item_numeric_id": 639220,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book58",
@@ -43,7 +46,8 @@
       "id": "LOSTBOOK_ID_58",
       "name": "《遺失之物》",
       "item_numeric_id": 639258,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book00",
@@ -54,7 +58,8 @@
       "id": "LOSTBOOK_ID_00",
       "name": "《桃子的靈性》",
       "item_numeric_id": 639200,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_inari_shrine00",
@@ -93,7 +98,8 @@
       "id": "LOSTBOOK_ID_01",
       "name": "《伊邪那岐的敕令》",
       "item_numeric_id": 639201,
-      "prerequisite_flag": 16999
+      "prerequisite_flag": 16999,
+      "progress_label": "第6章结束"
     },
     {
       "anchor": "pop_lost_book02",
@@ -104,7 +110,8 @@
       "id": "LOSTBOOK_ID_02",
       "name": "《彼津村的起源》",
       "item_numeric_id": 639202,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book03",
@@ -115,7 +122,8 @@
       "id": "LOSTBOOK_ID_03",
       "name": "《戰敗而逃的君主大人》",
       "item_numeric_id": 639203,
-      "prerequisite_flag": 16999
+      "prerequisite_flag": 16999,
+      "progress_label": "第6章结束"
     },
     {
       "anchor": "pop_lost_book04",
@@ -126,7 +134,8 @@
       "id": "LOSTBOOK_ID_04",
       "name": "《平息災厄的人祭》",
       "item_numeric_id": 639204,
-      "prerequisite_flag": 13999
+      "prerequisite_flag": 13999,
+      "progress_label": "第3章结束"
     },
     {
       "anchor": "pop_lost_book05",
@@ -137,7 +146,8 @@
       "id": "LOSTBOOK_ID_05",
       "name": "《不信者的末路》",
       "item_numeric_id": 639205,
-      "prerequisite_flag": 13999
+      "prerequisite_flag": 13999,
+      "progress_label": "第3章结束"
     },
     {
       "anchor": "pop_lost_book06",
@@ -148,7 +158,8 @@
       "id": "LOSTBOOK_ID_06",
       "name": "《誘人入睡的桃香》",
       "item_numeric_id": 639206,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book07",
@@ -159,7 +170,8 @@
       "id": "LOSTBOOK_ID_07",
       "name": "《神從天而降》",
       "item_numeric_id": 639207,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book08",
@@ -170,7 +182,8 @@
       "id": "LOSTBOOK_ID_08",
       "name": "《無名之村的故事》",
       "item_numeric_id": 639208,
-      "prerequisite_flag": 15999
+      "prerequisite_flag": 15999,
+      "progress_label": "第5章结束"
     },
     {
       "anchor": "pop_lost_book09",
@@ -181,7 +194,8 @@
       "id": "LOSTBOOK_ID_09",
       "name": "《裂了一半的書》",
       "item_numeric_id": 639209,
-      "prerequisite_flag": 16999
+      "prerequisite_flag": 16999,
+      "progress_label": "第6章结束"
     },
     {
       "anchor": "pop_lost_book11",
@@ -192,7 +206,8 @@
       "id": "LOSTBOOK_ID_11",
       "name": "《鬼的奇蹟之歌》",
       "item_numeric_id": 639211,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book12",
@@ -203,7 +218,8 @@
       "id": "LOSTBOOK_ID_12",
       "name": "《鬼的劈岩柴刀》",
       "item_numeric_id": 639212,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book14",
@@ -214,7 +230,8 @@
       "id": "LOSTBOOK_ID_14",
       "name": "《招財之物》",
       "item_numeric_id": 639214,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book16",
@@ -225,7 +242,8 @@
       "id": "LOSTBOOK_ID_16",
       "name": "《消失於怪物背上的少女》",
       "item_numeric_id": 639216,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book17",
@@ -236,7 +254,8 @@
       "id": "LOSTBOOK_ID_17",
       "name": "《火災的新聞報導》",
       "item_numeric_id": 639217,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book21",
@@ -247,7 +266,8 @@
       "id": "LOSTBOOK_ID_21",
       "name": "《連續殺人事件的報導》",
       "item_numeric_id": 639221,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book23",
@@ -258,7 +278,8 @@
       "id": "LOSTBOOK_ID_23",
       "name": "《夜鳴的牛》",
       "item_numeric_id": 639223,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book24",
@@ -269,7 +290,8 @@
       "id": "LOSTBOOK_ID_24",
       "name": "《老鼠的寶藏》",
       "item_numeric_id": 639224,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book25",
@@ -280,7 +302,8 @@
       "id": "LOSTBOOK_ID_25",
       "name": "《虔誠的狐狸》",
       "item_numeric_id": 639225,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book26",
@@ -291,7 +314,8 @@
       "id": "LOSTBOOK_ID_26",
       "name": "《愚者的黃金》",
       "item_numeric_id": 639226,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book27",
@@ -302,7 +326,8 @@
       "id": "LOSTBOOK_ID_27",
       "name": "《池主傳》",
       "item_numeric_id": 639227,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book28",
@@ -313,7 +338,8 @@
       "id": "LOSTBOOK_ID_28",
       "name": "《誘人的燈火》",
       "item_numeric_id": 639228,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book29",
@@ -324,7 +350,8 @@
       "id": "LOSTBOOK_ID_29",
       "name": "《不倒翁的呼喚》",
       "item_numeric_id": 639229,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book30",
@@ -335,7 +362,8 @@
       "id": "LOSTBOOK_ID_30",
       "name": "《口傳故事「黑影」》",
       "item_numeric_id": 639230,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book31",
@@ -346,7 +374,8 @@
       "id": "LOSTBOOK_ID_31",
       "name": "《潛伏於地底的蛇》",
       "item_numeric_id": 639231,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book32",
@@ -357,7 +386,8 @@
       "id": "LOSTBOOK_ID_32",
       "name": "《生命之火》",
       "item_numeric_id": 639232,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book33",
@@ -368,7 +398,8 @@
       "id": "LOSTBOOK_ID_33",
       "name": "《斗笠妖怪》",
       "item_numeric_id": 639233,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book34",
@@ -379,7 +410,8 @@
       "id": "LOSTBOOK_ID_34",
       "name": "《口傳故事「白女」》",
       "item_numeric_id": 639234,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book35",
@@ -390,7 +422,8 @@
       "id": "LOSTBOOK_ID_35",
       "name": "《年幼的守護者》",
       "item_numeric_id": 639235,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book36",
@@ -401,7 +434,8 @@
       "id": "LOSTBOOK_ID_36",
       "name": "《神隱之子》",
       "item_numeric_id": 639236,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book37",
@@ -412,7 +446,8 @@
       "id": "LOSTBOOK_ID_37",
       "name": "《遺書》",
       "item_numeric_id": 639237,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book38",
@@ -423,7 +458,8 @@
       "id": "LOSTBOOK_ID_38",
       "name": "《向鬼發誓的惡童》",
       "item_numeric_id": 639238,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     },
     {
       "anchor": "pop_lost_book40",
@@ -434,7 +470,8 @@
       "id": "LOSTBOOK_ID_40",
       "name": "《風土病的報告書》",
       "item_numeric_id": 639240,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book41",
@@ -445,7 +482,8 @@
       "id": "LOSTBOOK_ID_41",
       "name": "《祭品儀式》",
       "item_numeric_id": 639241,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book42",
@@ -456,7 +494,8 @@
       "id": "LOSTBOOK_ID_42",
       "name": "《向鬼許下的心願》",
       "item_numeric_id": 639242,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book43",
@@ -467,7 +506,8 @@
       "id": "LOSTBOOK_ID_43",
       "name": "《「看到囉」妖怪》",
       "item_numeric_id": 639243,
-      "prerequisite_flag": 20301
+      "prerequisite_flag": 20301,
+      "progress_label": "怪异事件开始：手之目"
     },
     {
       "anchor": "pop_lost_book44",
@@ -478,7 +518,8 @@
       "id": "LOSTBOOK_ID_44",
       "name": "《獨眼不倒翁》",
       "item_numeric_id": 639244,
-      "prerequisite_flag": 20601
+      "prerequisite_flag": 20601,
+      "progress_label": "怪异事件开始：不倒翁跌倒了"
     },
     {
       "anchor": "pop_lost_book45",
@@ -489,7 +530,8 @@
       "id": "LOSTBOOK_ID_45",
       "name": "《黑色的霧》",
       "item_numeric_id": 639245,
-      "prerequisite_flag": 20801
+      "prerequisite_flag": 20801,
+      "progress_label": "怪异事件开始：煤灰精灵"
     },
     {
       "anchor": "pop_lost_book46",
@@ -500,7 +542,8 @@
       "id": "LOSTBOOK_ID_46",
       "name": "《使大地翻湧的大蛇》",
       "item_numeric_id": 639246,
-      "prerequisite_flag": 21201
+      "prerequisite_flag": 21201,
+      "progress_label": "怪异事件开始：夜间草原"
     },
     {
       "anchor": "pop_lost_book47",
@@ -511,7 +554,8 @@
       "id": "LOSTBOOK_ID_47",
       "name": "《蒙面的蠟燭商人》",
       "item_numeric_id": 639247,
-      "prerequisite_flag": 20901
+      "prerequisite_flag": 20901,
+      "progress_label": "怪异事件开始：面具"
     },
     {
       "anchor": "pop_lost_book48",
@@ -522,7 +566,8 @@
       "id": "LOSTBOOK_ID_48",
       "name": "《地藏菩薩和雨怪》",
       "item_numeric_id": 639248,
-      "prerequisite_flag": 20700
+      "prerequisite_flag": 20700,
+      "progress_label": "怪异事件开始：斗笠妖怪"
     },
     {
       "anchor": "pop_lost_book49",
@@ -533,7 +578,8 @@
       "id": "LOSTBOOK_ID_49",
       "name": "《雪夜女子與嬰兒》",
       "item_numeric_id": 639249,
-      "prerequisite_flag": 21251
+      "prerequisite_flag": 21251,
+      "progress_label": "怪异事件开始：雪女"
     },
     {
       "anchor": "pop_lost_book50",
@@ -544,7 +590,8 @@
       "id": "LOSTBOOK_ID_50",
       "name": "《風神、雷神與烏龜》",
       "item_numeric_id": 639250,
-      "prerequisite_flag": 21301
+      "prerequisite_flag": 21301,
+      "progress_label": "怪异事件开始：风神雷神"
     },
     {
       "anchor": "pop_lost_book51",
@@ -555,7 +602,8 @@
       "id": "LOSTBOOK_ID_51",
       "name": "《自地而出的神》",
       "item_numeric_id": 639251,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book52",
@@ -566,7 +614,8 @@
       "id": "LOSTBOOK_ID_52",
       "name": "《村長的日記》",
       "item_numeric_id": 639252,
-      "prerequisite_flag": 15999
+      "prerequisite_flag": 15999,
+      "progress_label": "第5章结束"
     },
     {
       "anchor": "pop_lost_book53",
@@ -577,7 +626,8 @@
       "id": "LOSTBOOK_ID_53",
       "name": "《巨大的白蘿蔔》",
       "item_numeric_id": 639253,
-      "prerequisite_flag": 13999
+      "prerequisite_flag": 13999,
+      "progress_label": "第3章结束"
     },
     {
       "anchor": "pop_lost_book54",
@@ -588,7 +638,8 @@
       "id": "LOSTBOOK_ID_54",
       "name": "《公布新規矩》",
       "item_numeric_id": 639254,
-      "prerequisite_flag": 13999
+      "prerequisite_flag": 13999,
+      "progress_label": "第3章结束"
     },
     {
       "anchor": "pop_lost_book55",
@@ -599,7 +650,8 @@
       "id": "LOSTBOOK_ID_55",
       "name": "《某個女孩的祕密》",
       "item_numeric_id": 639255,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book56",
@@ -610,7 +662,8 @@
       "id": "LOSTBOOK_ID_56",
       "name": "《無法返回的山路》",
       "item_numeric_id": 639256,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book57",
@@ -621,7 +674,8 @@
       "id": "LOSTBOOK_ID_57",
       "name": "《新規矩的公告》",
       "item_numeric_id": 639257,
-      "prerequisite_flag": 14999
+      "prerequisite_flag": 14999,
+      "progress_label": "第4章结束"
     },
     {
       "anchor": "pop_lost_book59",
@@ -632,7 +686,8 @@
       "id": "LOSTBOOK_ID_59",
       "name": "《願望成真的旅人》",
       "item_numeric_id": 639259,
-      "prerequisite_flag": 13000
+      "prerequisite_flag": 13000,
+      "progress_label": "第3章开始"
     }
   ]
 }
