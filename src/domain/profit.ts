@@ -42,7 +42,7 @@ export function calculateEntityCropProfit(entity: Entity, catalog: Catalog, qual
   const seedCost = itemPrice(catalog, seedId, 'buy_price', 'normal');
   const harvestValue = itemPrice(catalog, harvestId, 'sell_price', quality);
   if (seedCost == null || harvestValue == null) return null;
-  return calculateCropProfit({ seedCost, harvestValue, growthDays, regrowDays: typeof entity.regrow_days === 'number' ? entity.regrow_days : null });
+  return calculateCropProfit({ seedCost, harvestValue: harvestValue * Number(entity.harvest_quantity ?? 1), growthDays, regrowDays: typeof entity.regrow_days === 'number' ? entity.regrow_days : null });
 }
 
 export function calculateProcessProfit(input: {
@@ -68,9 +68,9 @@ export function calculateCropProfit(input: { seedCost: number; harvestValue: num
       ? 1 + Math.max(0, Math.floor((seasonDays - input.growthDays) / input.regrowDays))
       : Math.max(1, Math.floor(seasonDays / input.growthDays))
     : 1;
-  const harvests = Math.max(1, input.harvests ?? fittedHarvests);
+  const harvests = input.growthDays && input.growthDays > seasonDays ? 0 : Math.max(0, input.harvests ?? fittedHarvests);
   const outputValue = input.harvestValue * harvests;
-  const inputCost = input.seedCost * (input.regrowDays ? 1 : harvests);
+  const inputCost = input.seedCost * (input.regrowDays ? 1 : Math.max(1, harvests));
   const net = outputValue - inputCost;
   return { inputCost, outputValue, net, durationDays: input.growthDays ?? null, perDay: input.growthDays ? net / seasonDays : null, harvests };
 }

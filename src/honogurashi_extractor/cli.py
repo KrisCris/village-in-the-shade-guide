@@ -86,6 +86,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             "item",
             "itemcategory",
             "crops",
+            "cropsharvest",
             "craft",
             "cooking",
             "storesales",

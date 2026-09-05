@@ -6,6 +6,11 @@ it('uses sold inputs as processing opportunity cost', () => {
     .toMatchObject({ net: 40, perDay: 20 });
 });
 
+it('retains seed expense without inventing a harvest for a long-growing crop', () => {
+  expect(calculateCropProfit({seedCost:60,harvestValue:670,growthDays:50}))
+    .toMatchObject({harvests:0,inputCost:60,outputValue:0,net:-60});
+});
+
 it('calculates one-harvest crop net without inventing growth time', () => {
   expect(calculateCropProfit({ seedCost: 40, harvestValue: 63 })).toMatchObject({ net: 23, perDay: null });
 });

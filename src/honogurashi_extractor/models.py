@@ -40,6 +40,7 @@ class Crop:
     growth_days: int | None = None
     regrow_points: int | None = None
     regrow_days: int | None = None
+    harvest_quantity: int | None = None
 
 
 @dataclass(frozen=True, slots=True)

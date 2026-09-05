@@ -5,6 +5,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_APPLE"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_APPLE_TREE",
     "name": {
       "aliases": [
@@ -38,6 +39,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ASPARAGUS"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_ASPARAGUS",
     "name": {
       "aliases": [
@@ -68,6 +70,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BANANA"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_BANANA_TREE",
     "name": {
       "aliases": [
@@ -94,6 +97,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_BIG_CHINESE_CABBAGE",
     "name": {
       "aliases": [
@@ -117,6 +121,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_BIG_CORN",
     "name": {
       "aliases": [
@@ -140,6 +145,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_BIG_TARO",
     "name": {
       "aliases": [
@@ -164,6 +170,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_BIG_TURNIP",
     "name": {
       "aliases": [
@@ -190,6 +197,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BLUEBERRY"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_BLUEBERRY",
     "name": {
       "aliases": [
@@ -220,6 +228,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BUCKWHEAT"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_BUCKWHEAT",
     "name": {
       "aliases": [
@@ -250,6 +259,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CABBAGE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CABBAGE",
     "name": {
       "aliases": [
@@ -280,6 +290,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CACAO"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_CACAO_TREE",
     "name": {
       "aliases": [
@@ -308,6 +319,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARNATION"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CARNATION",
     "name": {
       "aliases": [
@@ -337,6 +349,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARROT"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CARROT",
     "name": {
       "aliases": [
@@ -367,6 +380,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHAMOMILE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CHAMOMILE",
     "name": {
       "aliases": [
@@ -396,6 +410,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHERRIES"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_CHERRY_TREE",
     "name": {
       "aliases": [
@@ -429,6 +444,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHINESE_CABBAGE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CHINESE_CABBAGE",
     "name": {
       "aliases": [
@@ -458,6 +474,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHRYSANTHEMUM"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_CHRYSANTHEMUM",
     "name": {
       "aliases": [
@@ -487,6 +504,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CORN"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_CORN",
     "name": {
       "aliases": [
@@ -516,6 +534,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_COSMOS"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_COSMOS",
     "name": {
       "aliases": [
@@ -545,6 +564,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CUCUMBER"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_CUCUMBER",
     "name": {
       "aliases": [
@@ -575,6 +595,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAFFODIL"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_DAFFODIL",
     "name": {
       "aliases": [
@@ -604,6 +625,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAHLIA"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_DAHLIA",
     "name": {
       "aliases": [
@@ -633,6 +655,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAIKON"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_DAIKON",
     "name": {
       "aliases": [
@@ -663,6 +686,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DIANTHUS"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_DIANTHUS",
     "name": {
       "aliases": [
@@ -693,6 +717,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_EDAMAME"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_EDAMAME",
     "name": {
       "aliases": [
@@ -723,6 +748,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_EGGPLANT"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_EGGPLANT",
     "name": {
       "aliases": [
@@ -752,6 +778,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_FORGET_ME_NOT"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_FORGET_ME_NOT",
     "name": {
       "aliases": [
@@ -781,6 +808,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GARLIC"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_GARLIC",
     "name": {
       "aliases": [
@@ -810,6 +838,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GINGER"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_GINGER",
     "name": {
       "aliases": [
@@ -840,6 +869,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GRAPES"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_GRAPE_TREE",
     "name": {
       "aliases": [
@@ -873,6 +903,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GYPSOPHILA"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_GYPSOPHILA",
     "name": {
       "aliases": [
@@ -903,6 +934,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HIBISCUS"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_HIBISCUS",
     "name": {
       "aliases": [
@@ -930,6 +962,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_HIDING_GRASS",
     "name": {
       "aliases": [
@@ -955,6 +988,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HOPS"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_HOPS",
     "name": {
       "aliases": [
@@ -984,6 +1018,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HYACINTH"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_HYACINTH",
     "name": {
       "aliases": [
@@ -1014,6 +1049,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_IRIS"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_IRIS",
     "name": {
       "aliases": [
@@ -1044,6 +1080,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_KIKURAGE",
     "name": {
       "aliases": [
@@ -1073,6 +1110,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LAVENDER"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_LAVENDER",
     "name": {
       "aliases": [
@@ -1102,6 +1140,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LEMON"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_LEMON_TREE",
     "name": {
       "aliases": [
@@ -1135,6 +1174,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LETTUCE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_LETTUCE",
     "name": {
       "aliases": [
@@ -1165,6 +1205,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_LILY_OF_THE_VALLEY",
     "name": {
       "aliases": [
@@ -1195,6 +1236,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LOTUS_ROOT"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_LOTUS_ROOT",
     "name": {
       "aliases": [
@@ -1226,6 +1268,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ORANGE"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_MANDARIN_ORANGE_TREE",
     "name": {
       "aliases": [
@@ -1259,6 +1302,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MANGO"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_MANGO_TREE",
     "name": {
       "aliases": [
@@ -1287,6 +1331,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MARIGOLD"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_MARIGOLD",
     "name": {
       "aliases": [
@@ -1317,6 +1362,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MELON"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_MELON",
     "name": {
       "aliases": [
@@ -1346,6 +1392,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MORNING_GLORY"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_MORNING_GLORY",
     "name": {
       "aliases": [
@@ -1374,6 +1421,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_MUD_SEEDS",
     "name": {
       "aliases": [
@@ -1400,6 +1448,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MULBERRY_LEAF"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_MULBERRY",
     "name": {
       "aliases": [
@@ -1431,6 +1480,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_AKEBI",
     "name": {
       "aliases": [
@@ -1454,6 +1504,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
     "name": {
       "aliases": [
@@ -1478,6 +1529,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BANBOO",
     "name": {
       "aliases": [
@@ -1501,6 +1553,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BAYBERRY",
     "name": {
       "aliases": [
@@ -1525,6 +1578,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BEETLE",
     "name": {
       "aliases": [
@@ -1549,6 +1603,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BRACKEN",
     "name": {
       "aliases": [
@@ -1572,6 +1627,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
     "name": {
       "aliases": [
@@ -1595,6 +1651,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
     "name": {
       "aliases": [
@@ -1618,6 +1675,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_COD_BUD",
     "name": {
       "aliases": [
@@ -1641,6 +1699,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_COIN",
     "name": {
       "aliases": [
@@ -1665,6 +1724,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
     "name": {
       "aliases": [
@@ -1688,6 +1748,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_DANDELION",
     "name": {
       "aliases": [
@@ -1711,6 +1772,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_DONG_QUAI",
     "name": {
       "aliases": [
@@ -1735,6 +1797,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_FALLEN_TREE",
     "name": {
       "aliases": [
@@ -1757,6 +1820,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_FUYUICHIGO",
     "name": {
       "aliases": [
@@ -1780,6 +1844,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_GINKGO_NUT",
     "name": {
       "aliases": [
@@ -1804,6 +1869,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_GRASS",
     "name": {
       "aliases": [
@@ -1826,6 +1892,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_HORSETAIL",
     "name": {
       "aliases": [
@@ -1850,6 +1917,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_HUGE_ROCK",
     "name": {
       "aliases": [
@@ -1872,6 +1940,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
     "name": {
       "aliases": [
@@ -1896,6 +1965,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
     "name": {
       "aliases": [
@@ -1920,6 +1990,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
     "name": {
       "aliases": [
@@ -1944,6 +2015,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
     "name": {
       "aliases": [
@@ -1966,6 +2038,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_JAPANESE_YAM",
     "name": {
       "aliases": [
@@ -1990,6 +2063,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
     "name": {
       "aliases": [
@@ -2014,6 +2088,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
     "name": {
       "aliases": [
@@ -2038,6 +2113,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
     "name": {
       "aliases": [
@@ -2062,6 +2138,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_LILY",
     "name": {
       "aliases": [
@@ -2085,6 +2162,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_LILY_ROOT",
     "name": {
       "aliases": [
@@ -2108,6 +2186,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_MATSUTAKE",
     "name": {
       "aliases": [
@@ -2131,6 +2210,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_MUD_SEEDS",
     "name": {
       "aliases": [
@@ -2155,6 +2235,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_PINE_CONE",
     "name": {
       "aliases": [
@@ -2178,6 +2259,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_PURPLE_FLOWER",
     "name": {
       "aliases": [
@@ -2201,6 +2283,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_RICEFIELD_WEED",
     "name": {
       "aliases": [
@@ -2225,6 +2308,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK",
     "name": {
       "aliases": [
@@ -2248,6 +2332,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
     "name": {
       "aliases": [
@@ -2272,6 +2357,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
     "name": {
       "aliases": [
@@ -2296,6 +2382,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
     "name": {
       "aliases": [
@@ -2320,6 +2407,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
     "name": {
       "aliases": [
@@ -2344,6 +2432,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
     "name": {
       "aliases": [
@@ -2368,6 +2457,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
     "name": {
       "aliases": [
@@ -2392,6 +2482,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
     "name": {
       "aliases": [
@@ -2416,6 +2507,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
     "name": {
       "aliases": [
@@ -2440,6 +2532,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_ROQUAT",
     "name": {
       "aliases": [
@@ -2463,6 +2556,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_RUBUS",
     "name": {
       "aliases": [
@@ -2487,6 +2581,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_SASANOKO",
     "name": {
       "aliases": [
@@ -2511,6 +2606,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STAG_BEETLE",
     "name": {
       "aliases": [
@@ -2535,6 +2631,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE",
     "name": {
       "aliases": [
@@ -2559,6 +2656,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_COPPER",
     "name": {
       "aliases": [
@@ -2583,6 +2681,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_GEM",
     "name": {
       "aliases": [
@@ -2607,6 +2706,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_GOLD",
     "name": {
       "aliases": [
@@ -2631,6 +2731,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_IRON",
     "name": {
       "aliases": [
@@ -2655,6 +2756,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
     "name": {
       "aliases": [
@@ -2679,6 +2781,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
     "name": {
       "aliases": [
@@ -2703,6 +2806,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
     "name": {
       "aliases": [
@@ -2727,6 +2831,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
     "name": {
       "aliases": [
@@ -2751,6 +2856,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
     "name": {
       "aliases": [
@@ -2775,6 +2881,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
     "name": {
       "aliases": [
@@ -2799,6 +2906,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
     "name": {
       "aliases": [
@@ -2823,6 +2931,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STUMP",
     "name": {
       "aliases": [
@@ -2847,6 +2956,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STUMP_HARD",
     "name": {
       "aliases": [
@@ -2871,6 +2981,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
     "name": {
       "aliases": [
@@ -2895,6 +3006,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TREE",
     "name": {
       "aliases": [
@@ -2918,6 +3030,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TREE_CEDAR",
     "name": {
       "aliases": [
@@ -2941,6 +3054,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TREE_HINOKI",
     "name": {
       "aliases": [
@@ -2965,6 +3079,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TREE_OAK",
     "name": {
       "aliases": [
@@ -2989,6 +3104,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TREE_PINE",
     "name": {
       "aliases": [
@@ -3013,6 +3129,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_TWIG",
     "name": {
       "aliases": [
@@ -3037,6 +3154,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
     "name": {
       "aliases": [
@@ -3061,6 +3179,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
     "name": {
       "aliases": [
@@ -3085,6 +3204,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
     "name": {
       "aliases": [
@@ -3109,6 +3229,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WALKING_STONE",
     "name": {
       "aliases": [
@@ -3133,6 +3254,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WALNUT",
     "name": {
       "aliases": [
@@ -3156,6 +3278,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WATER_HYACINTH",
     "name": {
       "aliases": [
@@ -3180,6 +3303,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WEED_COLOR_1",
     "name": {
       "aliases": [
@@ -3204,6 +3328,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WEED_COLOR_2",
     "name": {
       "aliases": [
@@ -3228,6 +3353,7 @@
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
+    "harvest_quantity": null,
     "id": "CROPS_ID_OBJECT_WOLFBERRY",
     "name": {
       "aliases": [
@@ -3253,6 +3379,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_OLIVE"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_OLIVE",
     "name": {
       "aliases": [
@@ -3283,6 +3410,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ONION"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_ONION",
     "name": {
       "aliases": [
@@ -3313,6 +3441,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PANSY"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_PANSY",
     "name": {
       "aliases": [
@@ -3342,6 +3471,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEA"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_PEA",
     "name": {
       "aliases": [
@@ -3371,6 +3501,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEACH"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_PEACH_TREE",
     "name": {
       "aliases": [
@@ -3404,6 +3535,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEAR"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_PEAR_TREE",
     "name": {
       "aliases": [
@@ -3437,6 +3569,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEPPER"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_PEPPER",
     "name": {
       "aliases": [
@@ -3466,6 +3599,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PERSIMMON"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_PERSIMMON_TREE",
     "name": {
       "aliases": [
@@ -3499,6 +3633,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PINEAPPLE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_PINEAPPLE",
     "name": {
       "aliases": [
@@ -3529,6 +3664,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PLUM"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_PLUM_TREE",
     "name": {
       "aliases": [
@@ -3562,6 +3698,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POPPY"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_POPPY",
     "name": {
       "aliases": [
@@ -3592,6 +3729,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POTATO"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_POTATO",
     "name": {
       "aliases": [
@@ -3622,6 +3760,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PUMPKIN"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_PUMPKIN",
     "name": {
       "aliases": [
@@ -3651,6 +3790,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RADISH"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_RADISH",
     "name": {
       "aliases": [
@@ -3681,6 +3821,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RICE"
     ],
+    "harvest_quantity": 10,
     "id": "CROPS_ID_RICE",
     "name": {
       "aliases": [
@@ -3712,6 +3853,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_ROSE",
     "name": {
       "aliases": [
@@ -3741,6 +3883,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSEMARY"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_ROSEMARY",
     "name": {
       "aliases": [
@@ -3770,6 +3913,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SESAME"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_SESAME",
     "name": {
       "aliases": [
@@ -3799,6 +3943,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_SHIITAKE_MUSHROOM",
     "name": {
       "aliases": [
@@ -3828,6 +3973,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_SHIMEJI",
     "name": {
       "aliases": [
@@ -3858,6 +4004,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SKUNK_CABBAGE"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_SKUNK_CABBAGE",
     "name": {
       "aliases": [
@@ -3886,6 +4033,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SPINACH"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_SPINACH",
     "name": {
       "aliases": [
@@ -3915,6 +4063,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_STRAWBERRY"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_STRAWBERRY",
     "name": {
       "aliases": [
@@ -3944,6 +4093,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUGARCANE"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_SUGARCANE",
     "name": {
       "aliases": [
@@ -3973,6 +4123,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUNFLOWER"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_SUNFLOWER",
     "name": {
       "aliases": [
@@ -4002,6 +4153,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SWEET_POTATO"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_SWEET_POTATO",
     "name": {
       "aliases": [
@@ -4031,6 +4183,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TARO"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_TARO",
     "name": {
       "aliases": [
@@ -4061,6 +4214,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TEA_TREE"
     ],
+    "harvest_quantity": 2,
     "id": "CROPS_ID_TEA_TREE",
     "name": {
       "aliases": [
@@ -4094,6 +4248,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TOMATO"
     ],
+    "harvest_quantity": 3,
     "id": "CROPS_ID_TOMATO",
     "name": {
       "aliases": [
@@ -4123,6 +4278,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TULIP"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_TULIP",
     "name": {
       "aliases": [
@@ -4153,6 +4309,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TURNIP"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_TURNIP",
     "name": {
       "aliases": [
@@ -4183,6 +4340,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WASABI"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_WASABI",
     "name": {
       "aliases": [
@@ -4213,6 +4371,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WATERMELON"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_WATERMELON",
     "name": {
       "aliases": [
@@ -4242,6 +4401,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHEAT"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_WHEAT",
     "name": {
       "aliases": [
@@ -4271,6 +4431,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHITE_ONION"
     ],
+    "harvest_quantity": 1,
     "id": "CROPS_ID_WHITE_ONION",
     "name": {
       "aliases": [
@@ -4301,6 +4462,7 @@
     "harvest_item_ids": [
       "ITEM_ID_CROPS_YUZU"
     ],
+    "harvest_quantity": null,
     "id": "CROPS_ID_YUZU_TREE",
     "name": {
       "aliases": [

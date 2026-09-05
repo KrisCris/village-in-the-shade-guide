@@ -2,6 +2,7 @@ import { Converter } from 'opencc-js';
 import { normalizeSearch } from './clientSearch';
 import { buildPinyinAliases } from './serverSearchAliases';
 import type { Catalog, Entity, Name } from './types';
+import { calculateCropProfit } from '../domain/profit';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
 const buildId = '24969282';
@@ -90,11 +91,12 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       entity.sell_price = harvest?.sell_price ?? null;
       const growthDays = Number(entity.growth_days ?? 0);
       const regrowDays = Number(entity.regrow_days ?? 0);
-      const harvests = growthDays > 0 ? (regrowDays > 0 ? 1 + Math.max(0, Math.floor((28 - growthDays) / regrowDays)) : Math.max(1, Math.floor(28 / growthDays))) : 0;
-      const totalSeedCost = Number(entity.buy_price ?? 0) * (regrowDays > 0 ? 1 : harvests);
-      entity.harvests_per_season = harvests || null;
-      entity.season_profit = harvests ? Number(entity.sell_price ?? 0) * harvests - totalSeedCost : null;
-      entity.profit_per_day = harvests ? Number(entity.season_profit) / 28 : null;
+      const profit = growthDays > 0 && entity.buy_price != null && entity.sell_price != null
+        ? calculateCropProfit({seedCost: Number(entity.buy_price), harvestValue: Number(entity.sell_price) * Number(entity.harvest_quantity ?? 1), growthDays, regrowDays})
+        : null;
+      entity.harvests_per_season = profit?.harvests ?? null;
+      entity.season_profit = profit?.net ?? null;
+      entity.profit_per_day = profit?.perDay ?? null;
       for (const target of [entity, ...(entity.harvest_item_ids as string[] | undefined ?? []).map((id) => byId[id])]) {
         if (target) {
           target.quality_eligible = true;

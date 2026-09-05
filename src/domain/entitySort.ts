@@ -51,7 +51,7 @@ export function entityMetrics(row: Entity, quality: Quality, prices: PriceIndex 
   if (row.kind === 'crops' && buy != null && sell != null) {
     const result = calculateCropProfit({
       seedCost: buy,
-      harvestValue: sell,
+      harvestValue: sell * Number(row.harvest_quantity ?? 1),
       growthDays: typeof row.growth_days === 'number' ? row.growth_days : null,
       regrowDays: typeof row.regrow_days === 'number' ? row.regrow_days : null,
     });

@@ -142,7 +142,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       add('acquisition', catalog.byId[seedId], { quantity: 1, chips: ['种子 / 树苗'] });
     }
     for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
-      add('outputs', catalog.byId[harvestId], { quantity: 1, chips: ['收获物'] });
+      add('outputs', catalog.byId[harvestId], { quantity: Number(entity.harvest_quantity ?? 1), chips: ['收获物'] });
     }
   }
 
@@ -252,6 +252,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   addFact('再生所需成长点', entity.regrow_points as number | null);
   addFact('加工时间', typeof entity.duration_minutes === 'number' ? `${entity.duration_minutes} 分钟（${durationChip(entity.duration_minutes)}）` : null);
   addFact('身份（日文）', entity.role_ja as string | null);
+  addFact('每次收获', typeof entity.harvest_quantity === 'number' ? `${entity.harvest_quantity} 个` : null);
   addFact('数据编号', entity.numeric_id as number | null);
   addFact('内部 ID', entity.id);
 

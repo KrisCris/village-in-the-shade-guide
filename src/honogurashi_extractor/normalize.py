@@ -5,6 +5,7 @@ from collections.abc import Mapping
 import math
 
 from .icons import item_icon_id, item_outline_icon_id
+from .harvest import normalize_harvest_quantities
 from .localization import build_name
 from .models import (
     Crop,
@@ -309,6 +310,7 @@ def normalize_snapshot(
     )
     _normalize_cooking(tables.get("cooking"), items_by_numeric, snapshot, overrides)
     _normalize_store(tables.get("storesales"), items_by_numeric, snapshot)
+    normalize_harvest_quantities(tables.get("cropsharvest"), snapshot)
     return snapshot
 
 
