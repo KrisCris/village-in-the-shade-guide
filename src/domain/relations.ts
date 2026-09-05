@@ -3,6 +3,7 @@ import { findCatalogEntity } from '../data/entityLookup';
 import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
+import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
 
@@ -141,6 +142,17 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       key: `${source.id}:${output.item_id}`,
     });
   };
+
+  for (const lesson of recipeLessons.lessons) {
+    const recipes=catalog.entities.filter(row=>row.kind==='cooking-recipes'&&row.unlock_flag===lesson.recipe_unlock_flag);
+    const person=catalog.entities.find(row=>row.kind==='characters'&&row.numeric_id===lesson.character_numeric_id);
+    const chips=[`好感度 Lv${lesson.friendship_level} 突破后`,'交谈传授食谱'];
+    if(entity.kind==='characters'&&entity.id===person?.id) {
+      for(const recipe of recipes)add('unlocks',recipe,{chips});
+    } else if(recipes.some(recipe=>recipe.id===entity.id||itemQuantity(recipe.output).item_id===entity.id)) {
+      add('unlocks',person,{chips,note:'需尚未取得此食谱；该村民的食谱赠送标记也须未触发。'});
+    }
+  }
 
   if (entity.kind === 'crops') {
     for (const seedId of entity.seed_item_ids as string[] | undefined ?? []) {

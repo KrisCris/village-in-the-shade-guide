@@ -1,0 +1,592 @@
+{
+  "lessons": [
+    {
+      "character_numeric_id": 1010,
+      "recipe_unlock_flag": 85003,
+      "friendship_level": 1,
+      "required_flag": 6400,
+      "excluded_flags": [
+        85003,
+        30007
+      ],
+      "talk_numeric_id": 201010060,
+      "script": "ai_chara_orphan",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1010,
+      "recipe_unlock_flag": 85067,
+      "friendship_level": 2,
+      "required_flag": 6401,
+      "excluded_flags": [
+        85067,
+        30007
+      ],
+      "talk_numeric_id": 201010061,
+      "script": "ai_chara_orphan",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1010,
+      "recipe_unlock_flag": 85076,
+      "friendship_level": 3,
+      "required_flag": 6402,
+      "excluded_flags": [
+        85076,
+        30007
+      ],
+      "talk_numeric_id": 201010062,
+      "script": "ai_chara_orphan",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1020,
+      "recipe_unlock_flag": 85042,
+      "friendship_level": 1,
+      "required_flag": 6410,
+      "excluded_flags": [
+        85042,
+        31007
+      ],
+      "talk_numeric_id": 201020060,
+      "script": "ai_chara_carpenter",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1020,
+      "recipe_unlock_flag": 85062,
+      "friendship_level": 2,
+      "required_flag": 6411,
+      "excluded_flags": [
+        85062,
+        31007
+      ],
+      "talk_numeric_id": 201020061,
+      "script": "ai_chara_carpenter",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1020,
+      "recipe_unlock_flag": 85070,
+      "friendship_level": 3,
+      "required_flag": 6412,
+      "excluded_flags": [
+        85070,
+        31007
+      ],
+      "talk_numeric_id": 201020062,
+      "script": "ai_chara_carpenter",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1030,
+      "recipe_unlock_flag": 85052,
+      "friendship_level": 1,
+      "required_flag": 6420,
+      "excluded_flags": [
+        85052,
+        32007
+      ],
+      "talk_numeric_id": 201030060,
+      "script": "ai_chara_lumberjack",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1030,
+      "recipe_unlock_flag": 85061,
+      "friendship_level": 2,
+      "required_flag": 6421,
+      "excluded_flags": [
+        85061,
+        32007
+      ],
+      "talk_numeric_id": 201030061,
+      "script": "ai_chara_lumberjack",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1030,
+      "recipe_unlock_flag": 85075,
+      "friendship_level": 3,
+      "required_flag": 6422,
+      "excluded_flags": [
+        85075,
+        32007
+      ],
+      "talk_numeric_id": 201030062,
+      "script": "ai_chara_lumberjack",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1040,
+      "recipe_unlock_flag": 85021,
+      "friendship_level": 1,
+      "required_flag": 6430,
+      "excluded_flags": [
+        85021,
+        33007
+      ],
+      "talk_numeric_id": 201040060,
+      "script": "ai_chara_village_head",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1040,
+      "recipe_unlock_flag": 85027,
+      "friendship_level": 2,
+      "required_flag": 6431,
+      "excluded_flags": [
+        85027,
+        33007
+      ],
+      "talk_numeric_id": 201040062,
+      "script": "ai_chara_village_head",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1040,
+      "recipe_unlock_flag": 85024,
+      "friendship_level": 3,
+      "required_flag": 6432,
+      "excluded_flags": [
+        85024,
+        33007
+      ],
+      "talk_numeric_id": 201040061,
+      "script": "ai_chara_village_head",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1050,
+      "recipe_unlock_flag": 85066,
+      "friendship_level": 1,
+      "required_flag": 6440,
+      "excluded_flags": [
+        85066,
+        34007
+      ],
+      "talk_numeric_id": 201050060,
+      "script": "ai_chara_hunter",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1050,
+      "recipe_unlock_flag": 85080,
+      "friendship_level": 2,
+      "required_flag": 6441,
+      "excluded_flags": [
+        85080,
+        34007
+      ],
+      "talk_numeric_id": 201050061,
+      "script": "ai_chara_hunter",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1050,
+      "recipe_unlock_flag": 85085,
+      "friendship_level": 3,
+      "required_flag": 6442,
+      "excluded_flags": [
+        85085,
+        34007
+      ],
+      "talk_numeric_id": 201050062,
+      "script": "ai_chara_hunter",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1060,
+      "recipe_unlock_flag": 85069,
+      "friendship_level": 1,
+      "required_flag": 6450,
+      "excluded_flags": [
+        85069,
+        35007
+      ],
+      "talk_numeric_id": 201060060,
+      "script": "ai_chara_general_store_manager",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1060,
+      "recipe_unlock_flag": 85081,
+      "friendship_level": 2,
+      "required_flag": 6451,
+      "excluded_flags": [
+        85081,
+        35007
+      ],
+      "talk_numeric_id": 201060061,
+      "script": "ai_chara_general_store_manager",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1060,
+      "recipe_unlock_flag": 85092,
+      "friendship_level": 3,
+      "required_flag": 6452,
+      "excluded_flags": [
+        85092,
+        35007
+      ],
+      "talk_numeric_id": 201060062,
+      "script": "ai_chara_general_store_manager",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1070,
+      "recipe_unlock_flag": 85053,
+      "friendship_level": 1,
+      "required_flag": 6460,
+      "excluded_flags": [
+        85053,
+        36007
+      ],
+      "talk_numeric_id": 201070060,
+      "script": "ai_chara_old_man",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1070,
+      "recipe_unlock_flag": 85079,
+      "friendship_level": 2,
+      "required_flag": 6461,
+      "excluded_flags": [
+        85079,
+        36007
+      ],
+      "talk_numeric_id": 201070061,
+      "script": "ai_chara_old_man",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1070,
+      "recipe_unlock_flag": 85091,
+      "friendship_level": 3,
+      "required_flag": 6462,
+      "excluded_flags": [
+        85091,
+        36007
+      ],
+      "talk_numeric_id": 201070062,
+      "script": "ai_chara_old_man",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1080,
+      "recipe_unlock_flag": 85097,
+      "friendship_level": 1,
+      "required_flag": 6470,
+      "excluded_flags": [
+        85097,
+        37007
+      ],
+      "talk_numeric_id": 201080061,
+      "script": "ai_chara_secretary",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1080,
+      "recipe_unlock_flag": 85043,
+      "friendship_level": 2,
+      "required_flag": 6471,
+      "excluded_flags": [
+        85043,
+        37007
+      ],
+      "talk_numeric_id": 201080060,
+      "script": "ai_chara_secretary",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1080,
+      "recipe_unlock_flag": 85100,
+      "friendship_level": 3,
+      "required_flag": 6472,
+      "excluded_flags": [
+        85100,
+        37007
+      ],
+      "talk_numeric_id": 201080062,
+      "script": "ai_chara_secretary",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1090,
+      "recipe_unlock_flag": 85006,
+      "friendship_level": 1,
+      "required_flag": 6480,
+      "excluded_flags": [
+        85006,
+        38007
+      ],
+      "talk_numeric_id": 201090060,
+      "script": "ai_chara_city_hall_staff",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1090,
+      "recipe_unlock_flag": 85013,
+      "friendship_level": 2,
+      "required_flag": 6481,
+      "excluded_flags": [
+        85013,
+        38007
+      ],
+      "talk_numeric_id": 201090061,
+      "script": "ai_chara_city_hall_staff",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1090,
+      "recipe_unlock_flag": 85022,
+      "friendship_level": 3,
+      "required_flag": 6482,
+      "excluded_flags": [
+        85022,
+        38007
+      ],
+      "talk_numeric_id": 201090062,
+      "script": "ai_chara_city_hall_staff",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1100,
+      "recipe_unlock_flag": 85104,
+      "friendship_level": 1,
+      "required_flag": 6490,
+      "excluded_flags": [
+        85104,
+        39007
+      ],
+      "talk_numeric_id": 201100062,
+      "script": "ai_chara_girl",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1100,
+      "recipe_unlock_flag": 85098,
+      "friendship_level": 2,
+      "required_flag": 6491,
+      "excluded_flags": [
+        85098,
+        39007
+      ],
+      "talk_numeric_id": 201100061,
+      "script": "ai_chara_girl",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1100,
+      "recipe_unlock_flag": 85031,
+      "friendship_level": 3,
+      "required_flag": 6492,
+      "excluded_flags": [
+        85031,
+        39007
+      ],
+      "talk_numeric_id": 201100060,
+      "script": "ai_chara_girl",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1110,
+      "recipe_unlock_flag": 85029,
+      "friendship_level": 1,
+      "required_flag": 6500,
+      "excluded_flags": [
+        85029,
+        40007
+      ],
+      "talk_numeric_id": 201110062,
+      "script": "ai_chara_young_man",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1110,
+      "recipe_unlock_flag": 85044,
+      "friendship_level": 2,
+      "required_flag": 6501,
+      "excluded_flags": [
+        85044,
+        40007
+      ],
+      "talk_numeric_id": 201110060,
+      "script": "ai_chara_young_man",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1110,
+      "recipe_unlock_flag": 85078,
+      "friendship_level": 3,
+      "required_flag": 6502,
+      "excluded_flags": [
+        85078,
+        40007
+      ],
+      "talk_numeric_id": 201110061,
+      "script": "ai_chara_young_man",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1120,
+      "recipe_unlock_flag": 85023,
+      "friendship_level": 1,
+      "required_flag": 6510,
+      "excluded_flags": [
+        85023,
+        41007
+      ],
+      "talk_numeric_id": 201120060,
+      "script": "ai_chara_boy",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1120,
+      "recipe_unlock_flag": 85059,
+      "friendship_level": 2,
+      "required_flag": 6511,
+      "excluded_flags": [
+        85059,
+        41007
+      ],
+      "talk_numeric_id": 201120061,
+      "script": "ai_chara_boy",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1120,
+      "recipe_unlock_flag": 85082,
+      "friendship_level": 3,
+      "required_flag": 6512,
+      "excluded_flags": [
+        85082,
+        41007
+      ],
+      "talk_numeric_id": 201120062,
+      "script": "ai_chara_boy",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1130,
+      "recipe_unlock_flag": 85014,
+      "friendship_level": 1,
+      "required_flag": 6520,
+      "excluded_flags": [
+        85014,
+        42007
+      ],
+      "talk_numeric_id": 201130060,
+      "script": "ai_chara_female_doctor",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1130,
+      "recipe_unlock_flag": 85073,
+      "friendship_level": 2,
+      "required_flag": 6521,
+      "excluded_flags": [
+        85073,
+        42007
+      ],
+      "talk_numeric_id": 201130061,
+      "script": "ai_chara_female_doctor",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1130,
+      "recipe_unlock_flag": 85102,
+      "friendship_level": 3,
+      "required_flag": 6522,
+      "excluded_flags": [
+        85102,
+        42007
+      ],
+      "talk_numeric_id": 201130062,
+      "script": "ai_chara_female_doctor",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1140,
+      "recipe_unlock_flag": 85012,
+      "friendship_level": 1,
+      "required_flag": 6530,
+      "excluded_flags": [
+        85012,
+        43007
+      ],
+      "talk_numeric_id": 201140060,
+      "script": "ai_chara_street_vendor",
+      "function": "recipe_talkStart1",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1140,
+      "recipe_unlock_flag": 85025,
+      "friendship_level": 2,
+      "required_flag": 6531,
+      "excluded_flags": [
+        85025,
+        43007
+      ],
+      "talk_numeric_id": 201140061,
+      "script": "ai_chara_street_vendor",
+      "function": "recipe_talkStart2",
+      "source": "charactertalk.dat + gameflag.dat"
+    },
+    {
+      "character_numeric_id": 1140,
+      "recipe_unlock_flag": 85028,
+      "friendship_level": 3,
+      "required_flag": 6532,
+      "excluded_flags": [
+        85028,
+        43007
+      ],
+      "talk_numeric_id": 201140062,
+      "script": "ai_chara_street_vendor",
+      "function": "recipe_talkStart3",
+      "source": "charactertalk.dat + gameflag.dat"
+    }
+  ]
+}

@@ -15,6 +15,15 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('links native friendship recipe lessons in both directions', () => {
+    const person=entity('CHARA_ID_ORPHAN','characters',{numeric_id:1010});
+    const recipe=entity('COOKING_ID_004','cooking-recipes',{unlock_flag:85003,output:{item_id:'meal',quantity:1}});
+    const meal=entity('meal','items');
+    const data=catalog(person,recipe,meal);
+    expect(buildRelationGroups(recipe,data,'normal').find(g=>g.key==='unlocks')?.rows).toContainEqual(expect.objectContaining({entity:person,chips:expect.arrayContaining(['好感度 Lv1 突破后','交谈传授食谱'])}));
+    expect(buildRelationGroups(person,data,'normal').find(g=>g.key==='unlocks')?.rows).toContainEqual(expect.objectContaining({entity:recipe}));
+    expect(buildRelationGroups(meal,data,'normal').find(g=>g.key==='unlocks')?.rows).toContainEqual(expect.objectContaining({entity:person}));
+  });
   it('shows shop seasons separately from unlock dates', () => {
     const seed=entity('seed','items',{buy_price:80});
     const offer=entity('offer','store-offers',{item_id:'seed',location:'田上杂货店',seasons:['autumn'],conditions:['第二年秋起']});
