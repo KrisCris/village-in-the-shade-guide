@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+const catalog=getCatalog();
+const mushrooms=catalog.entities.filter(e=>e.kind==='crops'&&e.cultivation_method==='菌类栽培');
+const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
+---
+<BaseLayout title="播种、跨季与菌类规划">
+<h1>播种、跨季与菌类规划</h1>
+<nav><a href="#order">种植优先级</a>　<a href="#soy">豆芽、毛豆、黄豆</a>　<a href="#rice">稻米</a>　<a href="#mushrooms">秋季蘑菇</a></nav>
+<section id="order"><h2>每季先决定种什么</h2><ol>
+<li>先从<a href="/guides/season-plan/">本季留货表</a>扣掉已经完成的供奉和交付，剩下的数量是保留目标；生日礼物另算。</li>
+<li>到<a href="/planner/">种植加工规划器</a>选择年份与季节。尚未解锁的种子不要纳入买种计划；手上已有的种子可切换为自有种子范围。</li>
+<li>资金紧张时先看“月内净收入”，不要只看所有加工结束后的总收益。原料已经在手时，比较加工增值；还没播种时，比较扣除种子成本后的收益。</li>
+<li>月底先看距换季剩余天数，再买种。普通季节作物不能默认跨季续长；稻米与毛豆按下方特殊安排处理。</li>
+</ol><p>规划器按一格种植区、一台加工机械计算，不包含肥料、机械购置费与技能加成。多台机器可以缩短排队，但不会把同一份收成变多。</p></section>
+<section id="soy"><h2>夏季毛豆要分成两批管理</h2><p><a href="/data/crops/CROPS_ID_EDAMAME/">毛豆</a>的同一批种植有不同收获选择：早期收豆芽，继续长成毛豆，或留待入秋转成黄豆。不是三个独立种子，也不能把三个阶段的产量全部相加。</p><ol>
+<li>需要豆芽时，单独划一小批提前收。原始收获表的早期门槛为 130 生长点、产量 1；不把它标成未经确认的“播种第二天必收”。</li>
+<li>以毛豆为目标的地块，首次门槛为 650 生长点、产量 2；再生长门槛为 400 点、产量 2。按普通每日 100 点折算约 7 日首次、4 日再收。</li>
+<li>夏末留出准备转黄豆的植株，不要把所有末茬毛豆收光。种子说明写明入秋枯萎后变黄豆，秋季状态的收获表为 6 个。</li>
+</ol><p>收益榜目前按毛豆的正常重复收获路径计算；准备留黄豆的地块应单独安排，不能同时领取榜中的完整毛豆收益。</p></section>
+<section id="rice"><h2>稻米属于跨季投入</h2><p><a href="/data/items/ITEM_ID_SEED_RICE/">稻苗</a>在春季种入水田，不需浇水。游戏物品说明给出的收获窗口是夏末至秋初，因此不适合作为春季快速回本作物。</p><p>生长表首次成熟为 5000 点；按每日 100 点的基础进度估算约 50 日。规划器会保留首轮收益，但不会把尚未收成的稻米或醋算进当月收入。</p><p>决定做<a href="/data/items/ITEM_ID_VINEGAR/">醋</a>时分两步看账：稻米已经在手，用醋售价减去所耗稻米的直接售价，得到加工增值；从稻苗开始种，则用整批最终收入减去稻苗成本。收成数量、机器排队与出售时间都要一并计算，不能拿一株苗的成本直接减一瓶醋的售价。</p></section>
+<section id="mushrooms"><h2>秋季栽培包也属于种植计划</h2><p>三种菌类使用可放置、可收回的栽培包，只在秋季生长，可以重复收获。栽培包不是每次收获都要重新购买的普通种子；采集到的其他蘑菇不能自动视为可种植。</p><div class="grid">{mushrooms.map(crop=>{const seed=item(((crop.seed_item_ids??[]) as string[])[0]);return <article class="card"><h3><a href={entityUrl(crop)}>{crop.icon_path&&<img src={crop.icon_path} width="56" height="56" alt=""/>}{crop.name.zh_hans}</a></h3><p>首次约 {String(crop.growth_days)} 日 · 再收约 {String(crop.regrow_days)} 日</p>{seed&&<p><a href={entityUrl(seed)}>{seed.name.zh_hans}</a> · 基础买价 {seed.buy_price}</p>}<p><a href={entityUrl(crop)}>查看收获、加工与交付用途 →</a></p></article>;})}</div><p>以上天数由生长点按基础进度折算。栽培包可收回不等于跨季持续生长，月底不要把下季的时间计作秋季产量。</p></section>
+<details><summary>数据来源</summary><p>crops.dat：生长阶段与再生长门槛；cropsharvest.dat：不同状态收获物及数量；item.dat：稻苗、毛豆种子与菌类栽培包说明。种植顺序是本站规划建议。</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.6rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem}.card{padding:1rem}.card h3{margin-top:0}.card h3 a{display:flex;align-items:center;gap:.6rem}.card img{object-fit:contain}nav{line-height:2}</style>
