@@ -20,8 +20,8 @@ const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+
 {outside.map(m=>{const p=project(m);return <a href={m.href} data-marker-kind={m.kind}><title>{m.label} · {m.x}, {m.y}</title><circle cx={p.x} cy={p.y} r={m.kind==='shrine'?23:16} fill={m.kind==='shrine'?'#db5034':'#ffe28a'} stroke="#282b21" stroke-width="4"/><text x={p.x+21} y={p.y+9} font-size="29" font-weight="bold" fill="#22251d" stroke="#fff5d9" stroke-width="5" paint-order="stroke">{m.kind==='shrine'?`神社 ${Number(m.anchor.slice(-2))+1}`:m.anchor.slice(-2)}</text></a>;})}
 </svg></div>
 <p>金色：图书；橙色：狐狸神社。数字为游戏锚点编号，不代表收集顺序或神社季度。</p>
-<h2>村庄图书</h2><p>“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a href={m.href}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
-<h2>独立区域图书</h2><div class="books">{inside.map(m=><a href={m.href}>{m.label}<small>{m.map.includes('2160')?'灌木丛（藪）':'山口（峠）'} · {m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
+<h2>村庄图书</h2><p>“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={m.href}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
+<h2>独立区域图书</h2><div class="books">{inside.map(m=><a id={m.anchor} href={m.href}>{m.label}<small>{m.map.includes('2160')?'附身草丛（藪）':'隘口（峠）'} · {m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
 <p>这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。</p>
 <details><summary>地图数据来源</summary><p>底图：minimap_01_spr_tc.nltx；位置：lostbook.dat 与 YMWR 地图锚点。世界坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）及 X/Y 偏移（348、−145）换算到原图像素。</p></details>
 </BaseLayout>

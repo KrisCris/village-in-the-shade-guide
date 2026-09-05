@@ -58,6 +58,17 @@ def test_official_names_and_aliases_are_preserved():
     assert name.review_status == "override"
 
 
+def test_item_descriptions_survive_related_item_linking():
+    strings=['ITEM_ID_SEED_TEST']+['種','','','','種子','']+['']*6
+    for text in ['夏天種在田裡','可以連續種植','入秋變成黃豆']:
+        strings.extend(['説明','','','',text,''])
+    blob=('\0'.join(strings)+'\0').encode()
+    tables={'item':read_table(build_table(records=[_record(496,{0:1,24:1})],strings=blob))}
+    item=normalize_snapshot(tables,{},{}).items['ITEM_ID_SEED_TEST']
+    assert item.related_item_id == item.id
+    assert item.description == '夏天種在田裡\n可以連續種植\n入秋變成黃豆'
+
+
 def test_item_category_comes_from_the_game_category_table():
     item_group = _localized_group("ITEM_ID_CURSED_TEST", "呪物", "詛咒物")
     category_group = "ITEM_CATEGORY_CURSE\0呪い\0".encode()

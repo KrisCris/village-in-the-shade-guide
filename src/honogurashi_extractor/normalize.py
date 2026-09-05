@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections.abc import Mapping
 import math
+from dataclasses import replace
 
 from .icons import item_icon_id, item_outline_icon_id
 from .harvest import normalize_harvest_quantities
@@ -162,6 +163,7 @@ def normalize_snapshot(
                 category_numeric_id=_u32(record, 280),
                 category_id=categories[_u32(record, 280)].internal if _u32(record, 280) in categories else None,
                 category_name=categories.get(_u32(record, 280)),
+                description="\n".join(group[i+4] or group[i] for i in (13,19,25) if len(group)>i+4 and (group[i+4] or group[i])),
             )
             snapshot.items[item.id] = item
             items_by_numeric[numeric_id] = item
@@ -172,19 +174,7 @@ def normalize_snapshot(
             item = items_by_numeric[numeric_id]
             related = items_by_numeric.get(related_id)
             if related:
-                replacement = Item(
-                    id=item.id,
-                    numeric_id=item.numeric_id,
-                    name=item.name,
-                    buy_price=item.buy_price,
-                    sell_price=item.sell_price,
-                    related_item_id=related.id,
-                    icon_id=item.icon_id,
-                    outline_icon_id=item.outline_icon_id,
-                    category_numeric_id=item.category_numeric_id,
-                    category_id=item.category_id,
-                    category_name=item.category_name,
-                )
+                replacement = replace(item, related_item_id=related.id)
                 snapshot.items[item.id] = replacement
                 items_by_numeric[numeric_id] = replacement
 

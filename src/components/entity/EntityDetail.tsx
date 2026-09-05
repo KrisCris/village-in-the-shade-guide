@@ -9,6 +9,10 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <p className="eyebrow">{entity.category_name?.zh_hans || kindLabels[entity.kind] || entity.kind}</p>
     <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={entity.icon_path} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
     <p className="aliases">繁中：{entity.name.zh_hant || '—'}　日文：{entity.name.ja || '—'}</p>
+    {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}
+
+    {entity.kind==='quests' && <section><h2>任务目标</h2><p>{String(entity.description ?? '')}</p><p>{String(entity.objective ?? '')}</p>{((entity.steps ?? []) as string[]).length>0&&<ol>{((entity.steps ?? []) as string[]).map((step,index)=><li key={index}>{step}</li>)}</ol>}</section>}
+    {Array.isArray(entity.map_locations)&&entity.map_locations.length>0&&<section><h2>拾取位置</h2>{(entity.map_locations as {label:string;x:number;y:number;anchor:string;progress:string}[]).map(location=><p key={location.anchor}><a href={`/guides/collection-map/#${location.anchor}`}>{location.label} · 图书 {location.anchor.slice(-2)} · 查看地图</a><br/><small>关联进度：{location.progress}</small></p>)}</section>}
 
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
     {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{model.processingPlans.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>

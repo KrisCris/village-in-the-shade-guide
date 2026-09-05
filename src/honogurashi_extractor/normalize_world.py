@@ -16,6 +16,7 @@ from .models import (
     ItemQuantity,
     Snapshot,
     WorldEntry,
+    Quest,
     WorldSnapshot,
 )
 from .probe import _string_groups
@@ -178,7 +179,7 @@ def normalize_world(
     _normalize_named(
         tables.get("facilityrelease"), world.facility_releases, overrides
     )
-    _normalize_named(tables.get("quest"), world.quests, overrides)
+    _normalize_quests(tables.get("quest"), world.quests, overrides)
     _normalize_named(tables.get("lostbook"), world.collectibles, overrides)
     _normalize_weather(tables.get("weather"), world.weather, overrides)
     _normalize_hunt_rewards(
@@ -195,6 +196,21 @@ def _normalize_named(table, output, overrides):
             continue
         name = _standard_name(group, overrides)
         output[name.internal] = WorldEntry(name.internal, _u32(record, 0), name)
+
+
+def _normalize_quests(table, output, overrides):
+    if not table:
+        return
+    for record, group in zip(table.records, _string_groups(table), strict=True):
+        name = _standard_name(group, overrides)
+        def text(offset):
+            if offset + 4 >= len(group):
+                return ""
+            return group[offset + 4] or group[offset]
+        # Five six-language blocks precede the ordered objective list. The
+        # second block is completion text, not the next action to perform.
+        output[name.internal] = Quest(name.internal, _u32(record,0), name,
+            text(13), text(19), tuple(text(i) for i in range(31, len(group), 6) if group[i]))
 
 
 def _normalize_weather(table, output, overrides):

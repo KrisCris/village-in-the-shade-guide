@@ -26,6 +26,7 @@ class Item:
     category_numeric_id: int | None = None
     category_id: str | None = None
     category_name: LocalizedName | None = None
+    description: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -168,6 +169,14 @@ class WorldEntry:
 
 
 @dataclass(frozen=True, slots=True)
+class Quest(WorldEntry):
+    description: str = ""
+    objective: str = ""
+    steps: tuple[str, ...] = ()
+    source: str = "quest.dat"
+
+
+@dataclass(frozen=True, slots=True)
 class Activity:
     id: str
     numeric_id: int
@@ -198,7 +207,7 @@ class WorldSnapshot:
     characters: dict[str, Character] = field(default_factory=dict)
     facilities: dict[str, WorldEntry] = field(default_factory=dict)
     facility_releases: dict[str, WorldEntry] = field(default_factory=dict)
-    quests: dict[str, WorldEntry] = field(default_factory=dict)
+    quests: dict[str, Quest] = field(default_factory=dict)
     collectibles: dict[str, WorldEntry] = field(default_factory=dict)
     hunt_rewards: dict[str, HuntReward] = field(default_factory=dict)
     weather: dict[str, WorldEntry] = field(default_factory=dict)

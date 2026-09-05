@@ -3,6 +3,7 @@ import { normalizeSearch } from './clientSearch';
 import { buildPinyinAliases } from './serverSearchAliases';
 import type { Catalog, Entity, Name } from './types';
 import { calculateCropProfit } from '../domain/profit';
+import mapMarkers from '../../data/sources/game-map-markers.json';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
 const buildId = '24969282';
@@ -12,9 +13,10 @@ function kindFromPath(path: string) {
 }
 
 function withSearchAliases(name: Name): Name {
-  const simplified = toSimplified(name.zh_hant || name.zh_hans);
+  const readable=(text:string)=>text.replace(/<cmd\b[^>]*>/g,'').replace(/^\s*[＋+]\s*/,'').trim();
+  const simplified = readable(toSimplified(name.zh_hant || name.zh_hans));
   const aliases = [...new Set([simplified, ...name.aliases, ...buildPinyinAliases(simplified), ...buildPinyinAliases(name.zh_hant)])];
-  return { ...name, zh_hans: simplified, aliases };
+  return { ...name, zh_hans: simplified, zh_hant: readable(name.zh_hant), ja: readable(name.ja), aliases };
 }
 
 function setSearchText(entity: Entity) {
@@ -49,6 +51,8 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if (entity.category_name) entity.category_name = withSearchAliases(entity.category_name);
       if (typeof entity.location === 'string') entity.location = toSimplified(entity.location);
       if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? toSimplified(condition) : condition);
+      for (const field of ['description','objective']) if(typeof entity[field]==='string') entity[field]=toSimplified(entity[field]);
+      if(Array.isArray(entity.steps))entity.steps=entity.steps.map(step=>typeof step==='string'?toSimplified(step):step);
       setSearchText(entity);
       entities.push(entity);
       byId[entity.id] ??= entity;
@@ -56,6 +60,14 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
   }
 
   const itemIds = new Set(entities.filter((entity) => entity.kind === 'items').map((entity) => entity.id));
+  for(const entity of entities.filter(e=>e.kind==='items')) {
+    const markers=mapMarkers.markers.filter(m=>'item_numeric_id' in m&&m.item_numeric_id===entity.numeric_id);
+    if(markers.length)entity.map_locations=markers.map(m=>({
+      label:m.map.includes('0000')?'村庄':m.map.includes('2160')?'附身草丛':'隘口',
+      x:m.x,y:m.y,anchor:m.anchor,
+      progress:'progress_label' in m?toSimplified(m.progress_label ?? ''):'',
+    }));
+  }
   for (const fish of entities.filter((entity) => entity.kind === 'fish')) {
     const item = entities.find((entity) => entity.kind === 'items' && entity.id === fish.id);
     if (item) {
@@ -89,6 +101,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     if (entity.kind === 'crops') {
       const seed = byId[(entity.seed_item_ids as string[] | undefined)?.[0] ?? ''];
       const harvest = byId[(entity.harvest_item_ids as string[] | undefined)?.[0] ?? ''];
+      entity.description = seed?.description ?? harvest?.description ?? '';
       entity.harvest_names = ((entity.harvest_item_ids ?? []) as string[]).map(id=>byId[id]?.name.zh_hans).filter(Boolean).join(' / ');
       entity.searchText += ' ' + ((entity.harvest_item_ids ?? []) as string[]).map(id=>byId[id]?.searchText ?? '').join(' ');
       entity.buy_price = seed?.buy_price ?? null;

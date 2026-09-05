@@ -30,6 +30,17 @@ def test_fishing_place_names_join_item_descriptions_to_spawn_ids_not_list_order(
     assert _fishing_place_names(fishing_table, item_table) == {'FISHING_ID_06': '岔路釣魚點'}
 
 
+def test_quest_steps_preserve_order_and_do_not_replace_them_with_completed_text():
+    groups=["QUEST_ID_TEST"]
+    for ja,zh in [("依頼","委託"),("完了","已完成"),("説明","說明"),("目的","目標"),("",""),("集める","收集酸酸的樹液兩份"),("渡す","交給蓮實")]:
+        groups.extend([ja,"","","",zh,""])
+    table=read_table(build_table(records=[_record(480,{0:1})],strings=("\0".join(groups)+"\0").encode()))
+    result=normalize_world({"quest":table},Snapshot(),{}).quests['QUEST_ID_TEST']
+    assert result.description == '說明'
+    assert result.objective == '目標'
+    assert result.steps == ('收集酸酸的樹液兩份','交給蓮實')
+
+
 def test_character_gift_and_fish_location_relations_use_stable_ids():
     onion = _item("ITEM_ID_CROPS_ONION", 100010, "洋葱")
     fish_item = _item("ITEM_ID_FISH_CARP", 160000, "鲤鱼")
