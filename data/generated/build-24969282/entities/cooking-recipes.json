@@ -1,5 +1,6 @@
 [
   {
+    "conditions": [],
     "id": "COOKING_ID_001",
     "inputs": [
       {
@@ -28,9 +29,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_001",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85000
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_002",
     "inputs": [
       {
@@ -60,9 +64,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_002",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85001
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_003",
     "inputs": [
       {
@@ -87,9 +94,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_003",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85002
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_004",
     "inputs": [
       {
@@ -126,9 +136,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_004",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85003
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_005",
     "inputs": [
       {
@@ -157,9 +170,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_005",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85004
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_006",
     "inputs": [
       {
@@ -197,9 +213,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_006",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85005
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_007",
     "inputs": [
       {
@@ -236,9 +255,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_007",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85006
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_008",
     "inputs": [
       {
@@ -275,9 +297,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_008",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85007
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_009",
     "inputs": [
       {
@@ -311,9 +336,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_009",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85008
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_010",
     "inputs": [
       {
@@ -351,9 +379,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_010",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85009
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_011",
     "inputs": [
       {
@@ -387,9 +418,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_011",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85010
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_012",
     "inputs": [
       {
@@ -418,9 +452,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_012",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85011
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_013",
     "inputs": [
       {
@@ -450,9 +487,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_013",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85012
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_014",
     "inputs": [
       {
@@ -490,9 +530,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_014",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85013
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_015",
     "inputs": [
       {
@@ -521,9 +564,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_015",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85014
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_016",
     "inputs": [
       {
@@ -560,9 +606,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_016",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85015
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_017",
     "inputs": [
       {
@@ -604,9 +653,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_017",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85016
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_018",
     "inputs": [
       {
@@ -640,9 +692,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_018",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85017
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_019",
     "inputs": [
       {
@@ -683,9 +738,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_019",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85018
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_020",
     "inputs": [
       {
@@ -726,9 +784,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_020",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85019
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_021",
     "inputs": [
       {
@@ -770,9 +831,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_021",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85020
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_022",
     "inputs": [
       {
@@ -809,9 +873,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_022",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85021
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_023",
     "inputs": [
       {
@@ -853,9 +920,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_023",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85022
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_024",
     "inputs": [
       {
@@ -896,9 +966,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_024",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85023
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_025",
     "inputs": [
       {
@@ -939,9 +1012,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_025",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85024
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_026",
     "inputs": [
       {
@@ -983,9 +1059,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_026",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85025
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_027",
     "inputs": [
       {
@@ -1026,9 +1105,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_027",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85026
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_028",
     "inputs": [
       {
@@ -1065,9 +1147,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_028",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85027
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_029",
     "inputs": [
       {
@@ -1096,9 +1181,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_029",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85028
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_030",
     "inputs": [
       {
@@ -1139,9 +1227,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_030",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85029
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_031",
     "inputs": [
       {
@@ -1170,9 +1261,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_031",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85030
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_032",
     "inputs": [
       {
@@ -1214,9 +1308,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_032",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85031
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_033",
     "inputs": [
       {
@@ -1257,9 +1354,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_033",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85032
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_034",
     "inputs": [
       {
@@ -1300,9 +1400,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_034",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85033
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_035",
     "inputs": [
       {
@@ -1340,9 +1443,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_035",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85034
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_036",
     "inputs": [
       {
@@ -1376,9 +1482,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_036",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85035
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_037",
     "inputs": [
       {
@@ -1411,9 +1520,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_037",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85036
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_038",
     "inputs": [
       {
@@ -1454,9 +1566,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_038",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85037
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_039",
     "inputs": [
       {
@@ -1493,9 +1608,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_039",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85038
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_040",
     "inputs": [
       {
@@ -1533,9 +1651,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_040",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85039
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_041",
     "inputs": [
       {
@@ -1568,9 +1689,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_041",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85040
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_042",
     "inputs": [
       {
@@ -1607,9 +1731,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_042",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85041
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_043",
     "inputs": [
       {
@@ -1651,9 +1778,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_043",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85042
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_044",
     "inputs": [
       {
@@ -1690,9 +1820,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_044",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85043
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_045",
     "inputs": [
       {
@@ -1734,9 +1867,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_045",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85044
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_046",
     "inputs": [
       {
@@ -1769,9 +1905,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_046",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85045
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_047",
     "inputs": [
       {
@@ -1800,9 +1939,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_047",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85046
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_048",
     "inputs": [
       {
@@ -1840,9 +1982,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_048",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85047
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_049",
     "inputs": [
       {
@@ -1884,9 +2029,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_049",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85048
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_050",
     "inputs": [
       {
@@ -1920,9 +2068,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_050",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85049
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_051",
     "inputs": [
       {
@@ -1960,9 +2111,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_051",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85050
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_052",
     "inputs": [
       {
@@ -2003,9 +2157,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_052",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85051
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_053",
     "inputs": [
       {
@@ -2046,9 +2203,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_053",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85052
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_054",
     "inputs": [
       {
@@ -2077,9 +2237,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_054",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85053
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_055",
     "inputs": [
       {
@@ -2120,9 +2283,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_055",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85054
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_056",
     "inputs": [
       {
@@ -2163,9 +2329,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_056",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85055
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_057",
     "inputs": [
       {
@@ -2206,9 +2375,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_057",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85056
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_058",
     "inputs": [
       {
@@ -2250,9 +2422,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_058",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85057
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_059",
     "inputs": [
       {
@@ -2293,9 +2468,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_059",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85058
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_060",
     "inputs": [
       {
@@ -2329,9 +2507,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_060",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85059
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_061",
     "inputs": [
       {
@@ -2372,9 +2553,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_061",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85060
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_062",
     "inputs": [
       {
@@ -2415,9 +2599,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_062",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85061
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_063",
     "inputs": [
       {
@@ -2458,9 +2645,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_063",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85062
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_064",
     "inputs": [
       {
@@ -2502,9 +2692,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_064",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85063
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_065",
     "inputs": [
       {
@@ -2534,9 +2727,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_065",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85064
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_066",
     "inputs": [
       {
@@ -2578,9 +2774,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_066",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85065
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_067",
     "inputs": [
       {
@@ -2618,9 +2817,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_067",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85066
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_068",
     "inputs": [
       {
@@ -2662,9 +2864,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_068",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85067
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_069",
     "inputs": [
       {
@@ -2697,9 +2902,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_069",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85068
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_070",
     "inputs": [
       {
@@ -2741,9 +2949,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_070",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85069
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_071",
     "inputs": [
       {
@@ -2785,9 +2996,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_071",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85070
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_072",
     "inputs": [
       {
@@ -2823,9 +3037,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_072",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85071
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_073",
     "inputs": [
       {
@@ -2867,9 +3084,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_073",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85072
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_074",
     "inputs": [
       {
@@ -2902,9 +3122,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_074",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85073
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_075",
     "inputs": [
       {
@@ -2933,9 +3156,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_075",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85074
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_076",
     "inputs": [
       {
@@ -2977,9 +3203,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_076",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85075
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_077",
     "inputs": [
       {
@@ -3016,9 +3245,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_077",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85076
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_078",
     "inputs": [
       {
@@ -3047,9 +3279,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_078",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85077
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_079",
     "inputs": [
       {
@@ -3078,9 +3313,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_079",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85078
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_080",
     "inputs": [
       {
@@ -3113,9 +3351,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_080",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85079
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_081",
     "inputs": [
       {
@@ -3152,9 +3393,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_081",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85080
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_082",
     "inputs": [
       {
@@ -3195,9 +3439,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_082",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85081
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_083",
     "inputs": [
       {
@@ -3230,9 +3477,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_083",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85082
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_084",
     "inputs": [
       {
@@ -3273,9 +3523,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_084",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85083
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_085",
     "inputs": [
       {
@@ -3316,9 +3569,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_085",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85084
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_086",
     "inputs": [
       {
@@ -3359,9 +3615,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_086",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85085
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_087",
     "inputs": [
       {
@@ -3402,9 +3661,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_087",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85086
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_088",
     "inputs": [
       {
@@ -3441,9 +3703,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_088",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85087
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_089",
     "inputs": [
       {
@@ -3476,9 +3741,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_089",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85088
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_090",
     "inputs": [
       {
@@ -3510,9 +3778,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_090",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85089
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_091",
     "inputs": [
       {
@@ -3553,9 +3824,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_091",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85090
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_092",
     "inputs": [
       {
@@ -3596,9 +3870,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_092",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85091
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_093",
     "inputs": [
       {
@@ -3628,9 +3905,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_093",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85092
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_094",
     "inputs": [
       {
@@ -3667,9 +3947,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_094",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85093
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_095",
     "inputs": [
       {
@@ -3710,9 +3993,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_095",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85094
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_096",
     "inputs": [
       {
@@ -3750,9 +4036,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_096",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85095
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_097",
     "inputs": [
       {
@@ -3789,9 +4078,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_097",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85096
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_098",
     "inputs": [
       {
@@ -3820,9 +4112,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_098",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85097
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_099",
     "inputs": [
       {
@@ -3851,9 +4146,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_099",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85098
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_100",
     "inputs": [
       {
@@ -3890,9 +4188,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_100",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85099
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_101",
     "inputs": [
       {
@@ -3926,9 +4227,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_101",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85100
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_102",
     "inputs": [
       {
@@ -3965,9 +4269,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_102",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85101
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_103",
     "inputs": [
       {
@@ -4004,9 +4311,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_103",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85102
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_104",
     "inputs": [
       {
@@ -4043,9 +4353,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_104",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85103
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_105",
     "inputs": [
       {
@@ -4086,9 +4399,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_105",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85104
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_107",
     "inputs": [
       {
@@ -4118,9 +4434,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_107",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85106
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_108",
     "inputs": [
       {
@@ -4161,9 +4480,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_108",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85107
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_109",
     "inputs": [
       {
@@ -4201,9 +4523,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_109",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85108
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_110",
     "inputs": [
       {
@@ -4232,9 +4557,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_110",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85109
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_111",
     "inputs": [
       {
@@ -4276,9 +4604,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_111",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85110
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_112",
     "inputs": [
       {
@@ -4316,9 +4647,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_112",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85111
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_113",
     "inputs": [
       {
@@ -4352,9 +4686,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_113",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85112
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_114",
     "inputs": [
       {
@@ -4396,9 +4733,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_114",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85113
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_115",
     "inputs": [
       {
@@ -4427,9 +4767,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_115",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85114
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_116",
     "inputs": [
       {
@@ -4467,9 +4810,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_116",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85115
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_117",
     "inputs": [
       {
@@ -4507,9 +4853,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_117",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85116
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_118",
     "inputs": [
       {
@@ -4538,9 +4887,12 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_118",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85117
   },
   {
+    "conditions": [],
     "id": "COOKING_ID_119",
     "inputs": [
       {
@@ -4573,6 +4925,8 @@
     "output": {
       "item_id": "ITEM_ID_COOKING_119",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 85118
   }
 ]

@@ -1,5 +1,6 @@
 [
   {
+    "conditions": [],
     "id": "CRAFT_CUSHION_MATURE_BROWN",
     "inputs": [
       {
@@ -29,9 +30,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CUSHION_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_CUSHION_MESH_BROWN",
     "inputs": [
       {
@@ -64,9 +68,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CUSHION_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_CUSHION_MODERN_BROWN",
     "inputs": [
       {
@@ -96,9 +103,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CUSHION_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_12",
     "inputs": [
       {
@@ -131,9 +141,12 @@
     "output": {
       "item_id": "ITEM_ID_ACCESSORY_30",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80017
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_13",
     "inputs": [
       {
@@ -166,9 +179,12 @@
     "output": {
       "item_id": "ITEM_ID_ACCESSORY_31",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80243
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_14",
     "inputs": [
       {
@@ -201,9 +217,12 @@
     "output": {
       "item_id": "ITEM_ID_ACCESSORY_32",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80244
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_15",
     "inputs": [
       {
@@ -236,9 +255,12 @@
     "output": {
       "item_id": "ITEM_ID_ACCESSORY_37",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80242
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_AGUNG_BARREL",
     "inputs": [
       {
@@ -267,9 +289,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80056
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_AGUNG_BARREL_02",
     "inputs": [
       {
@@ -302,9 +327,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80057
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BED_COOL_00",
     "inputs": [
       {
@@ -337,9 +365,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BED_MATURE_BROWN",
     "inputs": [
       {
@@ -373,9 +404,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BED_MESH_BROWN",
     "inputs": [
       {
@@ -404,9 +438,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BED_MODERN_00",
     "inputs": [
       {
@@ -440,9 +477,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BED_WOODEN_00",
     "inputs": [
       {
@@ -476,9 +516,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BEEHIVE",
     "inputs": [
       {
@@ -511,9 +554,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BEEHIVE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80011
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BENCH_COOL_BROWN",
     "inputs": [
       {
@@ -543,9 +589,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BENCH_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MATURE_BROWN",
     "inputs": [
       {
@@ -575,9 +624,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BENCH_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MESH_BROWN",
     "inputs": [
       {
@@ -611,9 +663,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BENCH_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MODERN_BROWN",
     "inputs": [
       {
@@ -643,9 +698,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BENCH_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BENCH_WOODEN_BROWN",
     "inputs": [
       {
@@ -671,9 +729,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BENCH_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BLAST_FURNACE",
     "inputs": [
       {
@@ -702,9 +763,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80008
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BLAST_FURNACE_02",
     "inputs": [
       {
@@ -737,9 +801,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80037
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BONFIRE",
     "inputs": [
       {
@@ -768,9 +835,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BONFIRE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80015
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_COOL_BROWN",
     "inputs": [
       {
@@ -799,9 +869,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_MATURE_BROWN",
     "inputs": [
       {
@@ -831,9 +904,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_WOODEN_BROWN",
     "inputs": [
       {
@@ -859,9 +935,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BOOKSHELF_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BREWING_BARREL",
     "inputs": [
       {
@@ -890,9 +969,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80052
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_BREWING_BARREL_02",
     "inputs": [
       {
@@ -925,9 +1007,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80053
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CARPET_COOL_S_00",
     "inputs": [
       {
@@ -952,9 +1037,12 @@
     "output": {
       "item_id": "ITEM_ID_CARPET_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MATURE_S_01",
     "inputs": [
       {
@@ -984,9 +1072,12 @@
     "output": {
       "item_id": "ITEM_ID_CARPET_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MESH_S_00",
     "inputs": [
       {
@@ -1015,9 +1106,12 @@
     "output": {
       "item_id": "ITEM_ID_CARPET_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MODERN_S_00",
     "inputs": [
       {
@@ -1047,9 +1141,12 @@
     "output": {
       "item_id": "ITEM_ID_CARPET_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_COOL_BROWN",
     "inputs": [
       {
@@ -1078,9 +1175,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHAIR_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MATURE_BROWN",
     "inputs": [
       {
@@ -1110,9 +1210,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHAIR_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MESH_BROWN",
     "inputs": [
       {
@@ -1145,9 +1248,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHAIR_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MODERN_BROWN",
     "inputs": [
       {
@@ -1177,9 +1283,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHAIR_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_WOODEN_BROWN",
     "inputs": [
       {
@@ -1205,9 +1314,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHAIR_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHARCOAL_KILN",
     "inputs": [
       {
@@ -1236,9 +1348,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80042
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHARCOAL_KILN_02",
     "inputs": [
       {
@@ -1271,9 +1386,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80043
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHEST_MESH_BROWN",
     "inputs": [
       {
@@ -1302,9 +1420,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHEST_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHEST_MODERN_BROWN",
     "inputs": [
       {
@@ -1334,9 +1455,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHEST_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CHEST_WOODEN_BROWN",
     "inputs": [
       {
@@ -1362,9 +1486,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CHEST_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80000
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CLOSET_MATURE_BROWN",
     "inputs": [
       {
@@ -1394,9 +1521,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CLOSET_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CLOSET_WOODEN_BROWN",
     "inputs": [
       {
@@ -1422,9 +1552,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CLOSET_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_COMPOSTER",
     "inputs": [
       {
@@ -1457,9 +1590,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_COMPOSTER",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80040
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_COMPOSTER_02",
     "inputs": [
       {
@@ -1492,9 +1628,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_COMPOSTER_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80041
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CUPBOARD_COOL_BROWN",
     "inputs": [
       {
@@ -1523,9 +1662,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CUPBOARD_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CUPBOARD_WOODEN_BROWN",
     "inputs": [
       {
@@ -1555,9 +1697,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_CUPBOARD_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_DEMON_MASK",
     "inputs": [
       {
@@ -1590,9 +1735,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSE_FURNITURE_DEMON_MASK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80247
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_FOX_MASK",
     "inputs": [
       {
@@ -1625,9 +1773,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSE_FURNITURE_FOX_MASK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80245
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_MASK_OF_OKAME",
     "inputs": [
       {
@@ -1660,9 +1811,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSE_FURNITURE_MASK_OF_OKAME",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80248
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_TENGU_MASK",
     "inputs": [
       {
@@ -1695,9 +1849,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSE_FURNITURE_TENGU_MASK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80246
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_COOL_BROWN",
     "inputs": [
       {
@@ -1726,9 +1883,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_MATURE_BROWN",
     "inputs": [
       {
@@ -1762,9 +1922,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_MODERN_BROWN",
     "inputs": [
       {
@@ -1798,9 +1961,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_WOODEN_BROWN",
     "inputs": [
       {
@@ -1830,9 +1996,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_LAMP_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_MATURE_BROWN",
     "inputs": [
       {
@@ -1862,9 +2031,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_MESH_BROWN",
     "inputs": [
       {
@@ -1893,9 +2065,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_MODERN_BROWN",
     "inputs": [
       {
@@ -1925,9 +2100,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DESK_WOODEN_BROWN",
     "inputs": [
       {
@@ -1953,9 +2131,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DESK_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_MESH_BROWN",
     "inputs": [
       {
@@ -1988,9 +2169,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DRESSER_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_MODERN_BROWN",
     "inputs": [
       {
@@ -2024,9 +2208,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DRESSER_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_WOODEN_BROWN",
     "inputs": [
       {
@@ -2056,9 +2243,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DRESSER_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DRYING_MACHINE",
     "inputs": [
       {
@@ -2091,9 +2281,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80054
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_DRYING_MACHINE_02",
     "inputs": [
       {
@@ -2127,9 +2320,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80055
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ENERGY_BAR",
     "inputs": [
       {
@@ -2157,9 +2353,12 @@
     "output": {
       "item_id": "ITEM_ID_ENERGY_BAR",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80013
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_BAMBOO",
     "inputs": [
       {
@@ -2184,9 +2383,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_BAMBOO",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80029
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_BRICK",
     "inputs": [
       {
@@ -2215,9 +2417,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_BRICK",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80027
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_GARDEN_IRON",
     "inputs": [
       {
@@ -2243,9 +2448,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_GARDEN_IRON",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80033
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_IRON",
     "inputs": [
       {
@@ -2271,9 +2479,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_IRON",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80032
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_MESH",
     "inputs": [
       {
@@ -2303,9 +2514,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_MESH",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80031
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_PLANK",
     "inputs": [
       {
@@ -2330,9 +2544,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_PLANK",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80028
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_PLANK_WHITE",
     "inputs": [
       {
@@ -2357,9 +2574,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_PLANK_WHITE",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80030
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_ROPE",
     "inputs": [
       {
@@ -2389,9 +2609,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_ROPE",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": 80026
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_STONE",
     "inputs": [
       {
@@ -2416,9 +2639,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_STONE",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FENCE_WOOD",
     "inputs": [
       {
@@ -2444,9 +2670,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FENCE_WOOD",
       "quantity": 2
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_L_FOLDED_FUTON",
     "inputs": [
       {
@@ -2475,9 +2704,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_L_FOLDED_FUTON",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80208
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_SEASON_EASTER_EGG",
     "inputs": [
       {
@@ -2510,9 +2742,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_SEASON_EASTER_EGG",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80210
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_S_BUNDLE_OF_FIREWOOD",
     "inputs": [
       {
@@ -2537,9 +2772,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_S_BUNDLE_OF_FIREWOOD",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80010
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_S_JAR",
     "inputs": [
       {
@@ -2568,9 +2806,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_S_JAR",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80207
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_ABACUS",
     "inputs": [
       {
@@ -2599,9 +2840,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_ABACUS",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80205
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
     "inputs": [
       {
@@ -2626,9 +2870,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80206
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_KOKEDAMA",
     "inputs": [
       {
@@ -2657,9 +2904,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_KOKEDAMA",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80203
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TEDDY_BEAR_BROWN",
     "inputs": [
       {
@@ -2688,9 +2938,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_TEDDY_BEAR_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80102
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_BRONZE",
     "inputs": [
       {
@@ -2720,9 +2973,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_BRONZE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80239
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_GOLD",
     "inputs": [
       {
@@ -2751,9 +3007,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_GOLD",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80241
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_SILVER",
     "inputs": [
       {
@@ -2783,9 +3042,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_TROPHY_SILVER",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80240
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_UNFINISHED_SCARF",
     "inputs": [
       {
@@ -2810,9 +3072,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_UNFINISHED_SCARF",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80202
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_VASE",
     "inputs": [
       {
@@ -2840,9 +3105,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_VASE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80200
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_CARVED_BEAR",
     "inputs": [
       {
@@ -2867,9 +3135,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_WOODEN_CARVED_BEAR",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80201
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_FISH",
     "inputs": [
       {
@@ -2898,9 +3169,12 @@
     "output": {
       "item_id": "ITEM_ID_FIGURINE_XS_WOODEN_FISH",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80204
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FLOOR_LAMP_WOODEN_BROWN",
     "inputs": [
       {
@@ -2930,9 +3204,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FLOOR_LAMP_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FLOUR_MILL",
     "inputs": [
       {
@@ -2962,9 +3239,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80046
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FLOUR_MILL_02",
     "inputs": [
       {
@@ -2998,9 +3278,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80047
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_FURNACE",
     "inputs": [
       {
@@ -3029,9 +3312,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_FURNACE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80250
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
     "inputs": [
       {
@@ -3056,9 +3342,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80226
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
     "inputs": [
       {
@@ -3092,9 +3381,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80224
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_MOSSY_STONE",
     "inputs": [
       {
@@ -3123,9 +3415,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_M_MOSSY_STONE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80220
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
     "inputs": [
       {
@@ -3150,9 +3445,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80222
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
     "inputs": [
       {
@@ -3177,9 +3475,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80223
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_BRANCH_PILE",
     "inputs": [
       {
@@ -3209,9 +3510,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_BRANCH_PILE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80212
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_POT",
     "inputs": [
       {
@@ -3236,9 +3540,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_POT",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80213
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
     "inputs": [
       {
@@ -3272,9 +3579,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
     "inputs": [
       {
@@ -3308,9 +3618,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
     "inputs": [
       {
@@ -3344,9 +3657,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
     "inputs": [
       {
@@ -3380,9 +3696,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
     "inputs": [
       {
@@ -3416,9 +3735,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
     "inputs": [
       {
@@ -3452,9 +3774,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
     "inputs": [
       {
@@ -3488,9 +3813,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
     "inputs": [
       {
@@ -3524,9 +3852,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
     "inputs": [
       {
@@ -3560,9 +3891,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
     "inputs": [
       {
@@ -3596,9 +3930,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80103
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_GARDEN_STONE",
     "inputs": [
       {
@@ -3631,9 +3968,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_GARDEN_STONE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80216
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_SIGNBOARD",
     "inputs": [
       {
@@ -3658,9 +3998,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_SIGNBOARD",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80218
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STACKED_STONE",
     "inputs": [
       {
@@ -3685,9 +4028,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_STACKED_STONE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80215
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STONE_LANTERN",
     "inputs": [
       {
@@ -3717,9 +4063,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_STONE_LANTERN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80219
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_WATER_LILY_POT",
     "inputs": [
       {
@@ -3752,9 +4101,12 @@
     "output": {
       "item_id": "ITEM_ID_GARDEN_FIGURINE_S_WATER_LILY_POT",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80217
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_BRICK",
     "inputs": [
       {
@@ -3779,9 +4131,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_BRICK",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80019
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_FALLEN_LEAVES",
     "inputs": [
       {
@@ -3807,9 +4162,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_FALLEN_LEAVES",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80024
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_FLOWER",
     "inputs": [
       {
@@ -3834,9 +4192,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_FLOWER",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80025
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_LOG",
     "inputs": [
       {
@@ -3861,9 +4222,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_LOG",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80021
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_STONE",
     "inputs": [
       {
@@ -3888,9 +4252,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_STONE",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_STRAW",
     "inputs": [
       {
@@ -3915,9 +4282,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_STRAW",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80018
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_BLACK_STONE",
     "inputs": [
       {
@@ -3946,9 +4316,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_BLACK_STONE",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80023
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_STONE",
     "inputs": [
       {
@@ -3973,9 +4346,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_STONE",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80020
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_WHITE_STONE",
     "inputs": [
       {
@@ -4004,9 +4380,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_TILE_WHITE_STONE",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": 80022
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_WOOD",
     "inputs": [
       {
@@ -4031,9 +4410,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GARDEN_FLOOR_WOOD",
       "quantity": 3
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_BAMBOO",
     "inputs": [
       {
@@ -4059,9 +4441,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_BAMBOO",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80029
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_BRICK",
     "inputs": [
       {
@@ -4091,9 +4476,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_BRICK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80027
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_GARDEN_IRON",
     "inputs": [
       {
@@ -4119,9 +4507,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_GARDEN_IRON",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80033
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_IRON",
     "inputs": [
       {
@@ -4147,9 +4538,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_IRON",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80032
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_MESH",
     "inputs": [
       {
@@ -4179,9 +4573,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_MESH",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80031
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_PLANK",
     "inputs": [
       {
@@ -4207,9 +4604,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_PLANK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80028
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_PLANK_WHITE",
     "inputs": [
       {
@@ -4235,9 +4635,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_PLANK_WHITE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80030
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_ROPE",
     "inputs": [
       {
@@ -4267,9 +4670,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_ROPE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80026
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_STONE",
     "inputs": [
       {
@@ -4295,9 +4701,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_STONE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_GATE_WOOD",
     "inputs": [
       {
@@ -4323,9 +4732,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_GATE_WOOD",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": null
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ITEM_PURIFYING_SALT",
     "inputs": [
       {
@@ -4355,9 +4767,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSED_PURIFYING_SALT",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80058
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_ITEM_STRAW_DOLL",
     "inputs": [
       {
@@ -4390,9 +4805,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSED_STRAW_DOLL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80060
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_JAPANESE_CHARCOAL_GRILL",
     "inputs": [
       {
@@ -4425,9 +4843,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80251
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_JAPANESE_DOLL",
     "inputs": [
       {
@@ -4460,9 +4881,12 @@
     "output": {
       "item_id": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80016
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_LOOM",
     "inputs": [
       {
@@ -4492,9 +4916,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_LOOM",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80038
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_LOOM_02",
     "inputs": [
       {
@@ -4528,9 +4955,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_LOOM_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80039
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE",
     "inputs": [
       {
@@ -4560,9 +4990,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80100
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE_02",
     "inputs": [
       {
@@ -4596,9 +5029,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80036
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_MESSTIN",
     "inputs": [
       {
@@ -4632,9 +5068,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_MESSTIN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80012
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE",
     "inputs": [
       {
@@ -4664,9 +5103,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80048
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE_02",
     "inputs": [
       {
@@ -4700,9 +5142,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80049
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE",
     "inputs": [
       {
@@ -4732,9 +5177,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80044
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE_02",
     "inputs": [
       {
@@ -4768,9 +5216,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80045
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SAP_EXTRACTOR",
     "inputs": [
       {
@@ -4785,7 +5236,7 @@
     "machine_id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
     "name": {
       "aliases": [
-        "树液採集器",
+        "树液采集器",
         "樹液採集器",
         "樹液採取器",
         "CRAFT_TABLE_SAP_EXTRACTOR"
@@ -4793,16 +5244,19 @@
       "internal": "CRAFT_TABLE_SAP_EXTRACTOR",
       "ja": "樹液採取器",
       "review_status": "auto",
-      "zh_hans": "树液採集器",
+      "zh_hans": "树液采集器",
       "zh_hant": "樹液採集器"
     },
     "numeric_id": 62,
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80006
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SERICULTURE_BOX",
     "inputs": [
       {
@@ -4831,9 +5285,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80034
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_COOL_BROWN",
     "inputs": [
       {
@@ -4862,9 +5319,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_MESH_BROWN",
     "inputs": [
       {
@@ -4893,9 +5353,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_WOODEN_BROWN",
     "inputs": [
       {
@@ -4925,9 +5388,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SIDE_DESK_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SMOKING_MACHINE",
     "inputs": [
       {
@@ -4961,9 +5427,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80050
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SMOKING_MACHINE_02",
     "inputs": [
       {
@@ -4997,9 +5466,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80051
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_LARGE",
     "inputs": [
       {
@@ -5032,9 +5504,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80067
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_MIDDLE",
     "inputs": [
       {
@@ -5063,9 +5538,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80066
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_SMALL",
     "inputs": [
       {
@@ -5094,9 +5572,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80065
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT",
     "inputs": [
       {
@@ -5122,9 +5603,12 @@
     "output": {
       "item_id": "ITEM_ID_SPRINKLING_BAIT",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80007
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT_HIGH_GRADE",
     "inputs": [
       {
@@ -5154,9 +5638,12 @@
     "output": {
       "item_id": "ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80063
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT_WHITE",
     "inputs": [
       {
@@ -5186,9 +5673,12 @@
     "output": {
       "item_id": "ITEM_ID_SPRINKLING_BAIT_WHITE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80064
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_STORAGE_JAR",
     "inputs": [
       {
@@ -5218,9 +5708,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80009
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_STORAGE_JAR_02",
     "inputs": [
       {
@@ -5254,9 +5747,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80035
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TABLE_COOL_BROWN",
     "inputs": [
       {
@@ -5285,9 +5781,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TABLE_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MATURE_BROWN",
     "inputs": [
       {
@@ -5317,9 +5816,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TABLE_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MESH_BROWN",
     "inputs": [
       {
@@ -5348,9 +5850,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TABLE_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MODERN_BROWN",
     "inputs": [
       {
@@ -5380,9 +5885,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TABLE_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TABLE_WOODEN_BROWN",
     "inputs": [
       {
@@ -5408,9 +5916,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TABLE_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TOOL_LANTERN",
     "inputs": [
       {
@@ -5444,9 +5955,12 @@
     "output": {
       "item_id": "ITEM_ID_TOOL_LANTERN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80110
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TORCH_BIG",
     "inputs": [
       {
@@ -5475,9 +5989,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TORCH_BIG",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80249
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TORCH_SMALL",
     "inputs": [
       {
@@ -5502,9 +6019,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_TORCH_SMALL",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80001
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_COOL_00",
     "inputs": [
       {
@@ -5537,9 +6057,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_BIG_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MATURE_BROWN",
     "inputs": [
       {
@@ -5573,9 +6096,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_BIG_MATURE_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80238
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MESH_BROWN",
     "inputs": [
       {
@@ -5604,9 +6130,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_BIG_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MODERN_00",
     "inputs": [
       {
@@ -5640,9 +6169,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_BIG_MODERN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80236
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_WOODEN_00",
     "inputs": [
       {
@@ -5676,9 +6208,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_BED_BIG_WOODEN_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80101
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
     "inputs": [
       {
@@ -5711,9 +6246,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
     "inputs": [
       {
@@ -5747,9 +6285,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
     "inputs": [
       {
@@ -5782,9 +6323,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
     "inputs": [
       {
@@ -5818,9 +6362,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
     "inputs": [
       {
@@ -5853,9 +6400,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PINK",
     "inputs": [
       {
@@ -5889,9 +6439,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_PINK",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
     "inputs": [
       {
@@ -5924,9 +6477,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_RED",
     "inputs": [
       {
@@ -5960,9 +6516,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_RED",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
     "inputs": [
       {
@@ -5995,9 +6554,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
     "inputs": [
       {
@@ -6031,9 +6593,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80104
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_PAINTING_BROWN",
     "inputs": [
       {
@@ -6063,9 +6628,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_PAINTING_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80105
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_TAPESTRY_BROWN",
     "inputs": [
       {
@@ -6095,9 +6663,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_TAPESTRY_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80231
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_WREATH_BROWN",
     "inputs": [
       {
@@ -6130,9 +6701,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_S_WREATH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80232
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_W_GARLAND_BROWN",
     "inputs": [
       {
@@ -6161,9 +6735,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_W_GARLAND_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80234
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_W_PAINTING_BROWN",
     "inputs": [
       {
@@ -6197,9 +6774,12 @@
     "output": {
       "item_id": "ITEM_ID_WALL_DECORATION_W_PAINTING_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80233
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_LAMP_COOL_BROWN",
     "inputs": [
       {
@@ -6233,9 +6813,12 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_WALL_LAMP_COOL_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80235
   },
   {
+    "conditions": [],
     "id": "CRAFT_TABLE_WALL_LAMP_MESH_BROWN",
     "inputs": [
       {
@@ -6269,6 +6852,8 @@
     "output": {
       "item_id": "ITEM_ID_GIMMICK_WALL_LAMP_MESH_BROWN",
       "quantity": 1
-    }
+    },
+    "source": "",
+    "unlock_flag": 80237
   }
 ]

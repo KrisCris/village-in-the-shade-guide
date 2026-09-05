@@ -4,7 +4,7 @@ import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 
-export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'other';
+export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other';
 
 export type RelationRowModel = {
   key: string;
@@ -45,8 +45,10 @@ const groupLabels: Record<RelationGroupKey, string> = {
   machines: '加工机械',
   'used-in': '用于制作 / 加工',
   other: '其他关系',
+  requirements: '建筑、供奉与交付用途',
+  unlocks: '解锁条件与能力',
 };
-const groupOrder: RelationGroupKey[] = ['acquisition', 'materials', 'outputs', 'machines', 'used-in', 'other'];
+const groupOrder: RelationGroupKey[] = ['acquisition', 'materials', 'outputs', 'machines', 'unlocks', 'used-in', 'requirements', 'other'];
 const seasons: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
 
 function numberText(value: number, approximate = false): string {
@@ -170,14 +172,26 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
   }
 
   if (entity.related_item_id) add('other', catalog.byId[String(entity.related_item_id)], { chips: ['关联物品'] });
+  if (entity.kind === 'activities') {
+    addInputs(entity, 'materials', String(entity.activity_type));
+    for (const reward of (entity.rewards ?? []) as Array<{item_id: string; quantity: number}>) add('outputs', catalog.byId[reward.item_id], {quantity: reward.quantity});
+    for (const id of (entity.prerequisites ?? []) as string[]) add('unlocks', catalog.byId[id], {chips:['前置能力']});
+  }
 
   const subjectIds = new Set<string>([entity.id]);
   if (entity.kind === 'crops') for (const id of entity.harvest_item_ids as string[] | undefined ?? []) subjectIds.add(id);
 
   for (const source of catalog.entities) {
     if (source.id === entity.id) continue;
+    if (source.kind === 'activities') {
+      const quantity = relationQuantity(source, subjectIds);
+      if (quantity != null) add(source.activity_type === '祠堂能力 / 配方解锁' ? 'unlocks' : 'requirements', source, {quantity, chips:[String(source.activity_type), String(source.location || ''), ...(source.conditions as string[] ?? [])]});
+      if (entity.unlock_flag && source.unlock_flag === entity.unlock_flag) add('unlocks', source, {chips:['解锁此配方', String(source.location || '')]});
+      const reward = ((source.rewards ?? []) as Array<{item_id: string; quantity: number}>).find((reward) => subjectIds.has(reward.item_id));
+      if (reward) add('acquisition', source, {quantity:reward.quantity, chips:['完成后获得',String(source.location || '')]});
+    }
     if (source.kind === 'store-offers' && source.item_id && subjectIds.has(String(source.item_id))) {
-      add('acquisition', source, { buyPrice: priceText(catalog.byId[String(source.item_id)], 'buy_price', quality), chips: ['商店'] });
+      add('acquisition', source, { buyPrice: priceText(catalog.byId[String(source.item_id)], 'buy_price', quality), chips: [String(source.location || '商店'), ...(source.conditions as string[] ?? [])] });
     }
     if (source.kind === 'crops' && ((source.harvest_item_ids as string[] | undefined) ?? []).some((id) => subjectIds.has(id))) {
       add('acquisition', source, { chips: [((source.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'), '种植收获'] });
@@ -189,6 +203,11 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     if (['processes', 'craft-recipes', 'cooking-recipes'].includes(source.kind)) {
       const output = itemQuantity(source.output);
       if (output.item_id && subjectIds.has(output.item_id)) {
+        if (source.unlock_flag) {
+          for (const condition of catalog.entities.filter((candidate) => candidate.kind === 'activities' && candidate.unlock_flag === source.unlock_flag)) {
+            add('unlocks', condition, {chips:['解锁制作配方', String(condition.location || ''), ...(condition.conditions as string[] ?? [])]});
+          }
+        }
         const sourceType = source.kind === 'processes' ? '机械加工' : source.kind === 'cooking-recipes' ? '料理' : '制作';
         const profit = source.kind === 'processes' ? calculateEntityProcessProfit(source, catalog, quality) : null;
         const inputEntities = recipeInputs(source).flatMap((input) => {
@@ -201,6 +220,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
           quantity: Number(output.quantity ?? 1),
           chips: [
             sourceType,
+            ...(source.conditions as string[] ?? []),
             durationChip(source.duration_minutes),
             profit ? `净收益 ${profit.net >= 0 ? '+' : ''}${numberText(profit.net, !Number.isInteger(profit.net))}` : null,
             profit?.perDay != null ? `日净收益 ${profit.perDay >= 0 ? '+' : ''}${numberText(profit.perDay, !Number.isInteger(profit.perDay))}` : null,
@@ -243,16 +263,19 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   const addFact = (label: string, value: string | number | null | undefined, price = false) => {
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
   };
-  if (entity.kind !== 'processes') addFact('买入价', priceText(entity, 'buy_price', quality), true);
+  if (!['processes','activities'].includes(entity.kind)) addFact('买入价', priceText(entity, 'buy_price', quality), true);
+  addFact('地点', entity.location as string | undefined);
+  addFact('所需金额', entity.money_cost as number | undefined, true);
+  addFact('条件', ((entity.conditions ?? []) as string[]).join('；'));
   addFact('卖出价', entitySellPrice(entity, catalog, quality), true);
   addFact('生长季节', ((entity.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'));
   addFact('首次成熟', typeof entity.growth_days === 'number' ? `${entity.growth_days} 日` : null);
+  addFact('每次收获', typeof entity.harvest_quantity === 'number' ? `${entity.harvest_quantity} 个` : null);
   addFact('再次收获', typeof entity.regrow_days === 'number' ? `${entity.regrow_days} 日` : null);
   addFact('成熟所需成长点', entity.growth_points as number | null);
   addFact('再生所需成长点', entity.regrow_points as number | null);
   addFact('加工时间', typeof entity.duration_minutes === 'number' ? `${entity.duration_minutes} 分钟（${durationChip(entity.duration_minutes)}）` : null);
   addFact('身份（日文）', entity.role_ja as string | null);
-  addFact('每次收获', typeof entity.harvest_quantity === 'number' ? `${entity.harvest_quantity} 个` : null);
   addFact('数据编号', entity.numeric_id as number | null);
   addFact('内部 ID', entity.id);
 

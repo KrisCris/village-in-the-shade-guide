@@ -29,7 +29,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {groups.map((group) => <section key={group.key}><h2>{group.label}</h2><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></section>)}
 
-    <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p></details>
+    <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>
     <style>{`
       .entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
       .processing-plan{padding:1rem;border:1px solid var(--border);border-radius:12px;margin:.7rem 0}.processing-plan h3{margin-top:0}.processing-plan h4{margin:.8rem 0 .4rem}

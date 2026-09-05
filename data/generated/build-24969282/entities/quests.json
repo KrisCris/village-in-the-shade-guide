@@ -1332,15 +1332,15 @@
     "name": {
       "aliases": [
         "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移动",
-        "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移動",
-        "<cmd CMD_INTERACTION_LONG_CANCEL> 鵺の皮で早駆け",
+        "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移動",
+        "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 鵺の皮で早駆け",
         "QUEST_ID_TUTORIAL_16"
       ],
       "internal": "QUEST_ID_TUTORIAL_16",
-      "ja": "<cmd CMD_INTERACTION_LONG_CANCEL> 鵺の皮で早駆け",
+      "ja": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 鵺の皮で早駆け",
       "review_status": "override",
       "zh_hans": "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移动",
-      "zh_hant": "<cmd CMD_INTERACTION_LONG_CANCEL> 用鵺皮快速移動"
+      "zh_hant": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移動"
     },
     "numeric_id": 88
   },

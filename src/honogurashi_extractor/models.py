@@ -68,6 +68,9 @@ class Recipe:
     machine_id: str | None
     inputs: tuple[ItemQuantity, ...]
     output: ItemQuantity
+    unlock_flag: int | None = None
+    conditions: tuple[str, ...] = ()
+    source: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -87,6 +90,7 @@ class Issue:
 
 @dataclass(slots=True)
 class Snapshot:
+    activities: dict[str, Activity] = field(default_factory=dict)
     items: dict[str, Item] = field(default_factory=dict)
     crops: dict[str, Crop] = field(default_factory=dict)
     machines: dict[str, Item] = field(default_factory=dict)
@@ -152,6 +156,22 @@ class WorldEntry:
     id: str
     numeric_id: int
     name: LocalizedName
+
+
+@dataclass(frozen=True, slots=True)
+class Activity:
+    id: str
+    numeric_id: int
+    name: LocalizedName
+    activity_type: str
+    inputs: tuple[ItemQuantity, ...] = ()
+    rewards: tuple[ItemQuantity, ...] = ()
+    conditions: tuple[str, ...] = ()
+    location: str = ""
+    money_cost: int | None = None
+    unlock_flag: int | None = None
+    prerequisites: tuple[str, ...] = ()
+    source: str = ""
 
 
 @dataclass(frozen=True, slots=True)

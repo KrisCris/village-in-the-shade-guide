@@ -15,6 +15,20 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('shows building and book-return requirements in both directions', () => {
+    const wood = entity('wood','items');
+    const building = entity('building','activities',{activity_type:'建筑',inputs:[{item_id:'wood',quantity:50}],money_cost:1000});
+    const data = catalog(wood,building);
+    expect(buildRelationGroups(wood,data,'normal').find(g=>g.key==='requirements')?.rows[0]).toMatchObject({entity:building,quantity:50});
+    expect(buildRelationGroups(building,data,'normal').find(g=>g.key==='materials')?.rows[0]).toMatchObject({entity:wood,quantity:50});
+  });
+
+  it('shows a machine recipe unlock directly on the machine item', () => {
+    const machine=entity('sprinkler','machines');
+    const recipe=entity('craft-sprinkler','craft-recipes',{output:{item_id:'sprinkler',quantity:1},unlock_flag:80065});
+    const skill=entity('skill','activities',{activity_type:'祠堂能力 / 配方解锁',unlock_flag:80065});
+    expect(buildRelationGroups(machine,catalog(machine,recipe,skill),'normal').find(g=>g.key==='unlocks')?.rows[0].entity).toBe(skill);
+  });
   it('embeds processing variants without a second same-name acquisition panel or fake purchase price', () => {
     const rice = entity('rice', 'items', { sell_price: 67 });
     const vinegar = entity('vinegar', 'items', { sell_price: 107 });

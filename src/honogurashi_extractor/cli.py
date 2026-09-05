@@ -15,6 +15,7 @@ from .manifest import Provenance, write_snapshot
 from .icons import extract_item_icons
 from .normalize import normalize_snapshot
 from .normalize_world import normalize_world
+from .normalize_activities import normalize_activities
 from .probe import build_probe
 from .schema import SchemaError, load_schema_file, verify_schema_evidence
 from .table import read_table
@@ -85,8 +86,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         table_names = (
             "item",
             "itemcategory",
+            "construction", "bundle", "bundlegroup", "subquestitem", "skilltree", "gameflag", "cropsharvest",
             "crops",
-            "cropsharvest",
             "craft",
             "cooking",
             "storesales",
@@ -132,6 +133,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             "weather",
         ):
             setattr(snapshot, attribute, getattr(world, attribute))
+        normalize_activities(tables, snapshot, overrides, archive)
         with archive_path.open("rb") as stream:
             archive_hash = hashlib.file_digest(stream, "sha256").hexdigest()
         provenance = Provenance(

@@ -340,7 +340,7 @@ def _normalize_craft(table, items_by_numeric, machines_by_numeric, snapshot, ove
                 machine_id = direct_machine.id if direct_machine else None
             if machine_id is None and numeric_machine_id:
                 snapshot.issues.append(Issue("craft", record_id, "machine", numeric_machine_id))
-            snapshot.craft_recipes[name.internal] = Recipe(name.internal, record_id, name, machine_id, tuple(inputs), ItemQuantity(output_id, _u32(record, 100)))
+            snapshot.craft_recipes[name.internal] = Recipe(name.internal, record_id, name, machine_id, tuple(inputs), ItemQuantity(output_id, _u32(record, 100)), _u32(record, 116) or None)
 
 
 def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
@@ -362,7 +362,7 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
                 internal=group[0],
                 overrides=overrides,
             )
-            snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)))
+            snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)), _u32(record, 152) or None)
 
 
 def _normalize_store(table, items_by_numeric, snapshot):

@@ -32,6 +32,7 @@ export type Catalog = {
 };
 
 export const kindLabels: Record<string, string> = {
+  activities: '用途与解锁',
   items: '全部物品', crops: '作物', machines: '机械', processes: '加工',
   'craft-recipes': '制作配方', 'cooking-recipes': '料理', 'store-offers': '商店商品',
   characters: '角色', fish: '鱼类', livestock: '动物', facilities: '设施',

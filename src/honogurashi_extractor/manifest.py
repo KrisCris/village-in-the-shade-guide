@@ -18,6 +18,7 @@ class Provenance:
 
 
 ENTITY_FILES = {
+    "activities": "activities.json",
     "items": "items.json",
     "crops": "crops.json",
     "machines": "machines.json",
