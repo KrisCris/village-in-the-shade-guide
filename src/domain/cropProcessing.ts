@@ -1,10 +1,10 @@
 import type {Catalog, Entity} from '../data/types';
 import {qualityPrice, type Quality} from './quality';
 
-export type CropProcessingResult = {crop: Entity; process: Entity; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; soldWithinMonth: number; monthNet: number};
+export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; soldWithinMonth: number; monthNet: number};
 
 /** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs. */
-export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Quality, days = 28): CropProcessingResult[] {
+export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Quality, days = 28, includeDirectSale = false): CropProcessingResult[] {
   const growth = Number(crop.growth_days);
   const quantity = Number(crop.harvest_quantity);
   const harvestId = (crop.harvest_item_ids as string[] | undefined)?.[0];
@@ -20,7 +20,7 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
   // Long-growing crops retain a first-cycle estimate, but no fictitious monthly sale.
   if (!dates.length) dates.push(growth);
   const seedCost = Number(seed.buy_price) * (regrow ? 1 : dates.length);
-  return catalog.entities.flatMap((process) => {
+  const options:CropProcessingResult[] = catalog.entities.flatMap((process) => {
     if (process.kind !== 'processes') return [];
     const inputs = (process.inputs ?? []) as Array<{item_id: string; quantity: number}>;
     const out = process.output as {item_id: string; quantity: number};
@@ -46,4 +46,11 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
       processingGain:revenue-harvested*rawPrice,machineDays:batches*batchDays,finishDay,
       soldWithinMonth,monthNet:soldWithinMonth*price+(dates[dates.length-1]<=days?stored*rawPrice:0)-seedCost}];
   });
+  if (includeDirectSale) {
+    const harvested=quantity*dates.length;
+    const revenue=harvested*rawPrice;
+    const soldWithinMonth=dates.filter(day=>day<=days).length*quantity;
+    options.push({crop,process:null,output:harvest,harvestCount:dates.length,harvested,batches:0,seedCost,revenue,net:revenue-seedCost,processingGain:0,machineDays:0,finishDay:dates[dates.length-1],soldWithinMonth,monthNet:soldWithinMonth*rawPrice-seedCost});
+  }
+  return options;
 }

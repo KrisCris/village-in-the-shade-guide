@@ -40,3 +40,16 @@ it('excludes unknown harvest quantities', () => {
   const {crop,catalog}=setup({harvest_quantity:null});
   expect(cropProcessingOptions(crop,catalog,'normal')).toEqual([]);
 });
+
+it('offers direct sale without inventing a machine or processing gain', () => {
+  const {crop,catalog}=setup();
+  catalog.entities=catalog.entities.filter(e=>e.kind!=='processes');
+  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toContainEqual(expect.objectContaining({
+    process:null,harvestCount:4,harvested:4,seedCost:40,revenue:120,net:80,monthNet:80,processingGain:0,machineDays:0,finishDay:28,
+  }));
+});
+
+it('retains seed expense but no cash revenue for direct sales after month end', () => {
+  const {crop,catalog}=setup({growth_days:50});
+  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toContainEqual(expect.objectContaining({process:null,net:20,monthNet:-10,finishDay:50}));
+});
