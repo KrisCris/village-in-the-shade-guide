@@ -1,6 +1,7 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { buildCatalog } from '../src/data/catalog';
+import {compactItemRow} from '../src/data/itemList';
 
 const source = 'data/generated/build-24969282/entities';
 const input: Record<string, unknown> = {};
@@ -12,6 +13,7 @@ const catalog = buildCatalog(input);
 const { byId, ...publicCatalog } = catalog;
 await mkdir('public', { recursive: true });
 await writeFile('public/game-data.json', JSON.stringify(publicCatalog));
+await writeFile('public/item-list.json',JSON.stringify(catalog.entities.filter(e=>e.kind==='items').map(compactItemRow)));
 const searchRows = catalog.entities.map((entity) => {
   const { name } = entity;
   const baseNames = new Set([entity.id, name.zh_hans, name.zh_hant, name.ja, name.internal]);

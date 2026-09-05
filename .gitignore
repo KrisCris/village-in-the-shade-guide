@@ -10,6 +10,7 @@ node_modules/
 dist/
 public/game-data.json
 public/search-index.json
+public/item-list.json
 public/icons/generated/
 output/
 data/raw/

@@ -14,6 +14,13 @@ const name = {
 };
 
 describe('EntityExplorer icons', () => {
+  it('renders only the first page while retaining the full result count', () => {
+    const rows=Array.from({length:250},(_,i)=>({id:`item-${i}`,kind:'items',name:{...name,zh_hans:`物品${i}`},searchText:`物品${i}`}));
+    const html=renderToStaticMarkup(<EntityExplorer rows={rows} kind="items"/>);
+    expect((html.match(/<tr /g)??[]).length).toBe(50);
+    expect(html).toContain('250 条');
+    expect(html).toContain('下一页');
+  });
   it('does not show a fake error icon for entities without a real image', () => {
     const character = {
       id: name.internal,

@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "npm run build:data",
     "dev": "astro dev",
     "test": "vitest run",
     "check": "astro check",

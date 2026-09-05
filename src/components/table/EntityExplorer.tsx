@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
 import type { Entity } from '../../data/types';
 import { entityUrl, normalizeSearch } from '../../data/clientSearch';
 import { qualityLabel } from '../../domain/quality';
 import { entityMetrics, sortEntities, type PriceIndex, type SortDirection, type SortField } from '../../domain/entitySort';
-import EntityDrawer from '../entity/EntityDrawer';
+const EntityDrawer=lazy(()=>import('../entity/EntityDrawer'));
 import { useQuality } from '../quality/qualityPreference';
 
 const seasonLabels: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
@@ -65,6 +65,8 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
   const [direction, setDirection] = useState<SortDirection>('asc');
   const [urlReady, setUrlReady] = useState(false);
   const [selected, setSelected] = useState<Entity | null>(null);
+  const [page,setPage]=useState(0);
+  const tableWrap=useRef<HTMLDivElement>(null);
   const [quality] = useQuality();
 
   useEffect(() => {
@@ -99,6 +101,10 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
     const filtered = applyEntityFilters(rows, { query, season, machine, timePeriod, fishingLocation, itemCategory });
     return sortEntities(filtered, sort, direction, quality, priceIndex);
   }, [rows, query, season, machine, timePeriod, fishingLocation, itemCategory, sort, direction, quality, priceIndex]);
+  const pageCount=Math.max(1,Math.ceil(shown.length/50));
+  const currentPage=Math.min(page,pageCount-1);
+  useEffect(()=>{setPage(0);tableWrap.current?.scrollTo({top:0});},[rows,query,season,machine,timePeriod,fishingLocation,itemCategory,sort,direction,quality]);
+  const changePage=(next:number)=>{setPage(next);tableWrap.current?.scrollTo({top:0});};
 
   const openFromRow = (row: Entity, event: MouseEvent<HTMLTableRowElement>) => {
     if ((event.target as HTMLElement).closest('a,button,input,select')) return;
@@ -132,7 +138,8 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
       <label>方向<select value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></select></label>
       <b>{shown.length} 条</b>
     </div>
-    <div className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{shown.map((row) => {
+    {pageCount>1&&<nav className="pagination" aria-label="列表分页"><button disabled={currentPage===0} onClick={()=>changePage(currentPage-1)}>上一页</button><span>第 {currentPage+1} / {pageCount} 页 · 每页 50 条</span><button disabled={currentPage===pageCount-1} onClick={()=>changePage(currentPage+1)}>下一页</button></nav>}
+    <div ref={tableWrap} className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{shown.slice(currentPage*50,(currentPage+1)*50).map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality) : '固定';
       const processGroup = row.source_kind === 'processes';
@@ -149,8 +156,9 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         <td><code>{row.id}</code></td>
       </tr>;
     })}</tbody></table></div>
-    {selected && <EntityDrawer initial={selected} onClose={() => setSelected(null)} />}
+    {selected && <Suspense fallback={<div role="status" className="detail-loading">正在打开详情…</div>}><EntityDrawer initial={selected} onClose={() => setSelected(null)} /></Suspense>}
     <style>{`
+      .pagination{display:flex;align-items:center;justify-content:flex-end;gap:1rem;margin:.6rem 0}.pagination button{padding:.5rem .8rem}.pagination button:disabled{opacity:.4}.detail-loading{position:fixed;right:1rem;bottom:1rem;z-index:70;background:var(--paper-raised);padding:1rem;border:1px solid var(--border);border-radius:8px}
       .toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:.8rem;padding:.8rem;margin:1.2rem 0}.toolbar label{display:grid;gap:.3rem;color:var(--muted);font-size:.78rem}.toolbar input,.toolbar select{min-height:42px;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);color:var(--ink)}.toolbar b{margin-left:auto;padding:.7rem;color:var(--green)}
       .table-wrap{overflow:auto;max-height:calc(100vh - 250px)}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:flex;align-items:center;gap:.65rem;color:var(--green);font-weight:750;text-decoration:none;min-width:180px}.entity-link img{flex:none;border-radius:7px;object-fit:contain;background:var(--paper-deep)}.entity-link span{display:grid}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}code{font-size:.72rem;color:var(--muted)}
       @media(max-width:700px){.toolbar>*{flex:1 1 140px}.toolbar b{margin-left:0}.table-wrap{max-height:none}th,td{min-width:100px}th:first-child,td:first-child{position:sticky;left:0;background:var(--paper-raised);z-index:1}}

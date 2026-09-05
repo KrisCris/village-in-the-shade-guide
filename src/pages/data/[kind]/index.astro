@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EntityExplorer from '../../../components/table/EntityExplorer';
+import ItemExplorer from '../../../components/table/ItemExplorer';
 import { getCatalog } from '../../../data/repository';
 import { visibleRowsForKind } from '../../../data/catalogViews';
 import { groupProcessesByOutput } from '../../../domain/processGroups';
@@ -31,5 +32,5 @@ const itemCategoryOptions = [...new Map([...rows].sort((a, b) => Number(a.catego
   <h1>{label}</h1>
   {['crops','processes'].includes(kind) && <p><a href="/planner/">种植与加工收益排行 →</a></p>}
   <p class="muted">共 {rows.length} 条</p>
-  <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} fishingLocationOptions={fishingLocationOptions} itemCategoryOptions={itemCategoryOptions} priceIndex={priceIndex} />
+  {kind==='items' ? <ItemExplorer client:load itemCategoryOptions={itemCategoryOptions}/> : <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} fishingLocationOptions={fishingLocationOptions} itemCategoryOptions={itemCategoryOptions} priceIndex={priceIndex} />}
 </BaseLayout>
