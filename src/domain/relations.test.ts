@@ -15,6 +15,17 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('embeds processing variants without a second same-name acquisition panel or fake purchase price', () => {
+    const rice = entity('rice', 'items', { sell_price: 67 });
+    const vinegar = entity('vinegar', 'items', { sell_price: 107 });
+    const process = entity('vinegar-process', 'processes', { buy_price: 67, inputs: [{item_id: 'rice', quantity: 1}], output: {item_id: 'vinegar', quantity: 1}, duration_minutes: 2820 });
+    const data = catalog(rice, vinegar, process);
+    const model = buildEntityDetailModel(vinegar, data, 'normal');
+    expect(model.processingPlans).toHaveLength(1);
+    expect(model.processingPlans[0].profit?.net).toBe('40');
+    expect(model.groups.flatMap(group => group.rows).some(row => row.entity.id === process.id)).toBe(false);
+    expect(model.processingPlans[0].facts.some(fact => fact.label === '买入价')).toBe(false);
+  });
   it('separates crop acquisition, harvest output and processing uses', () => {
     const seed = entity('seed', 'items', { buy_price: 40, sell_price: 0 });
     const harvest = entity('harvest', 'items', { sell_price: 63, quality_eligible: true });

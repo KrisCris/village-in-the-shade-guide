@@ -35,6 +35,7 @@ export type EntityDetailModel = {
   profit: EntityProfitModel | null;
   groups: RelationGroup[];
   locations: Array<{ id: string; name: string; secondary: string }>;
+  processingPlans: EntityDetailModel[];
 };
 
 const groupLabels: Record<RelationGroupKey, string> = {
@@ -106,7 +107,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       key,
       entity: target,
       quantity: options.quantity,
-      buyPrice: options.buyPrice ?? priceText(target, 'buy_price', quality),
+      buyPrice: options.buyPrice ?? (target.kind === 'processes' ? undefined : priceText(target, 'buy_price', quality)),
       sellPrice: options.sellPrice ?? priceText(target, 'sell_price', quality),
       buyLabel: options.buyLabel,
       sellLabel: options.sellLabel,
@@ -242,7 +243,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   const addFact = (label: string, value: string | number | null | undefined, price = false) => {
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
   };
-  addFact('买入价', priceText(entity, 'buy_price', quality), true);
+  if (entity.kind !== 'processes') addFact('买入价', priceText(entity, 'buy_price', quality), true);
   addFact('卖出价', entitySellPrice(entity, catalog, quality), true);
   addFact('生长季节', ((entity.seasons as string[] | undefined) ?? []).map((season) => seasons[season] ?? season).join('、'));
   addFact('首次成熟', typeof entity.growth_days === 'number' ? `${entity.growth_days} 日` : null);
@@ -286,5 +287,11 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
       return times.length ? [{id: `${location.location_id}-${season}`, name: `${location.name.zh_hans} · ${label}`, secondary: times.join(' / ')}] : [];
     });
   });
-  return { entity, quality, qualityName: qualityLabel(quality), facts, profit, groups: buildRelationGroups(entity, catalog, quality), locations };
+  const processingPlans = ['items','crops','machines'].includes(entity.kind) ? catalog.entities.filter((source) => source.kind === 'processes' && (itemQuantity(source.output).item_id === entity.id || (entity.harvest_item_ids as string[] | undefined)?.includes(itemQuantity(source.output).item_id ?? ''))).map((source) => buildEntityDetailModel(source, catalog, quality)) : [];
+  const embeddedIds = new Set(processingPlans.map((plan) => plan.entity.id));
+  const groups = buildRelationGroups(entity, catalog, quality).flatMap((group) => {
+    const rows = group.key === 'acquisition' ? group.rows.filter((row) => !embeddedIds.has(row.entity.id)) : group.rows;
+    return rows.length ? [{ ...group, rows }] : [];
+  });
+  return { entity, quality, qualityName: qualityLabel(quality), facts, profit, groups, locations, processingPlans };
 }

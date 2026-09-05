@@ -11,14 +11,19 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <p className="aliases">繁中：{entity.name.zh_hant || '—'}　日文：{entity.name.ja || '—'}</p>
 
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
+    {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{model.processingPlans.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
+      <h3>方案 {index + 1} · {Number(plan.entity.duration_minutes)} 分钟</h3>
+      {plan.profit && <div className="profit-grid"><span>原料直接售价<strong>{plan.profit.inputCost}</strong></span><span>产出价值<strong>{plan.profit.outputValue}</strong></span><span>加工增值<strong>{plan.profit.net}</strong></span><span>每日加工增值<strong>{plan.profit.perDay}</strong></span></div>}
+      {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)).map((group) => <div key={group.key}><h4>{group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></div>)}
+    </div>)}</section>}
 
-    {profit && <section><h2>收益</h2><div className="profit-grid">
-      <span>种子 / 原料成本<strong>{profit.inputCost}</strong></span>
+    {profit && <section><h2>{entity.kind === 'processes' ? '加工增值' : '种植收益'}</h2><div className="profit-grid">
+      <span>{entity.kind === 'processes' ? '原料直接售价' : '种子成本'}<strong>{profit.inputCost}</strong></span>
       <span>产出价值<strong>{profit.outputValue}</strong></span>
-      <span>净收益<strong>{profit.net}</strong></span>
-      <span>每日净收益<strong>{profit.perDay}</strong></span>
+      <span>{entity.kind === 'processes' ? '加工增值' : '净收益'}<strong>{profit.net}</strong></span>
+      <span>{entity.kind === 'processes' ? '每日加工增值' : '每日净收益'}<strong>{profit.perDay}</strong></span>
       {profit.harvests && <span>28 日内收获<strong>{profit.harvests} 次</strong></span>}
-    </div><p className="calculation-note">{entity.kind === 'processes' ? '净收益使用原料直接出售的机会成本。' : '按每天浇水、28 天完整季节、同一格地计算。'} 当前品质：{model.qualityName}。</p></section>}
+    </div><p className="calculation-note">{entity.kind === 'processes' ? '加工增值＝产出售价－原料直接售价。' : '按每天浇水、28 天完整季节、同一格地计算。'} 当前品质：{model.qualityName}。</p></section>}
 
     {locations.length > 0 && <section><h2>出现地点</h2><div className="location-list">{locations.map((location) => <div key={location.id}><span>{location.name}</span><small>{location.secondary}</small></div>)}</div></section>}
 
@@ -27,6 +32,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p></details>
     <style>{`
       .entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
+      .processing-plan{padding:1rem;border:1px solid var(--border);border-radius:12px;margin:.7rem 0}.processing-plan h3{margin-top:0}.processing-plan h4{margin:.8rem 0 .4rem}
       .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}.facts div{padding:.8rem;border-radius:10px;background:var(--paper-deep)}dt{font-size:.78rem;color:var(--muted)}dd{margin:.3rem 0 0;overflow-wrap:anywhere}
       .profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem}.profit-grid span{display:grid;gap:.4rem;padding:1rem;border:1px solid var(--border);border-radius:10px}.profit-grid strong{font-size:1.3rem;color:var(--gold)}.calculation-note{font-size:.86rem;color:var(--muted)}
       .location-list,.relation-list{display:grid;gap:.55rem}.location-list div{display:flex;justify-content:space-between;gap:1rem;padding:.8rem;border:1px solid var(--border);border-radius:10px}.location-list small{color:var(--muted)}
