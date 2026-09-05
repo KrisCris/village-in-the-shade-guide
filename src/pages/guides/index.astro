@@ -4,19 +4,25 @@ import { guideCategories, guides } from '../../data/guideContent';
 import {getCatalog} from '../../data/repository';
 const items=getCatalog().entities.filter(e=>e.kind==='items'&&e.category_id);
 const categories=[...new Map(items.map(e=>[e.category_id!,e])).values()].sort((a,b)=>Number(a.category_numeric_id)-Number(b.category_numeric_id));
+const planningGuides=[
+ ['四季留货与交付','/guides/season-plan/','CROPS'],
+ ['种植加工收益排行','/planner/','PROCESSED_PRODUCT'],
+ ['播种、跨季与菌类','/guides/cultivation-plan/','SEEDING'],
+ ['四季钓鱼与留货','/guides/fishing-plan/','FISH'],
+ ['料理材料与食谱','/guides/cooking-plan/','COOKING'],
+ ['畜牧产物与饲养','/guides/livestock-plan/','LIVESTOCK_PRODUCT'],
+ ['狩猎执照与材料','/guides/hunting-plan/','HUNTING_LICENSE'],
+ ['帮忙券与主线推进','/guides/progression/','FARM_TOOL'],
+ ['生日、送礼与食谱传授','/guides/residents/','FLOWER'],
+ ['图书、神社与夜间地图','/guides/collection-map/','CURSE'],
+ ['夜间交换与勾玉','/guides/night-preparation/','KEYITEM'],
+ ['祠堂能力与配方解锁','/guides/skills/','MACHINE'],
+ ['服装与装饰获取','/guides/appearance/','CLOTHES'],
+];
 ---
 <BaseLayout title="中文攻略索引">
   <h1>攻略</h1>
-  <p><a href="/guides/livestock-plan/">畜牧产物与饲养规划</a></p>
-  <p><a href="/guides/hunting-plan/">狩猎执照与材料规划</a></p>
-  <p><a href="/guides/cultivation-plan/">播种、跨季与菌类规划</a></p>
-  <p><a href="/guides/night-preparation/">夜间交换与勾玉准备</a></p>
-  <p><a href="/guides/cooking-plan/">料理材料与食谱规划</a></p>
-  <p><a href="/guides/fishing-plan/">四季钓鱼与留货规划</a></p>
-  <p><a href="/guides/skills/">祠堂能力与解锁规划</a></p>
-  <p><a href="/guides/season-plan/">四季留货与交付规划</a>　<a href="/planner/">种植加工收益排行</a>　<a href="/categories/">带图标的物品分类一览</a></p>
-  <p><a href="/guides/residents/">生日与送礼规划</a>　<a href="/guides/collection-map/">图书与狐狸神社地图</a></p>
-  <p><a href="/guides/progression/">帮忙券与主线推进</a>　<a href="/guides/appearance/">服装与装饰获取</a></p>
+  <div class="guide-grid planning">{planningGuides.map(([title,url,category])=>{const icon=items.find(e=>e.category_id===`ITEM_CATEGORY_${category}`&&e.icon_path)?.icon_path;return <a class="card" href={url}>{icon&&<img src={icon} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>;})}</div>
   <section id="数据"><h2>分类一览</h2><div class="guide-grid">{categories.map(category=>{const icon=items.find(e=>e.category_id===category.category_id&&e.icon_path)?.icon_path;return <a class="card" href={`/categories/${category.category_id}/`}>{icon&&<img src={icon} width="56" height="56" alt="" loading="lazy" />}<strong>{category.category_name?.zh_hans}</strong></a>;})}</div></section>
   {guideCategories.map((category) => {
     if(category==='数据')return null;
@@ -25,4 +31,5 @@ const categories=[...new Map(items.map(e=>[e.category_id!,e])).values()].sort((a
     return <section id={category}><div class="section-heading"><h2>{category}</h2></div><div class="guide-grid">{rows.map((guide) => <a class="card" href={guide.guideTarget ?? `/guides/${guide.sourceId}/`}><strong>{guide.chineseTitle}</strong>{!guide.guideTarget&&<small>{guide.title}</small>}</a>)}</div></section>;
   })}
 </BaseLayout>
+<style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}</style>
 <style>section{margin-top:3rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.5rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>
