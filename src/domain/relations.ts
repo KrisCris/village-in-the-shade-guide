@@ -104,6 +104,7 @@ function recipeMachineIds(recipe: Entity): string[] {
 export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Quality): RelationGroup[] {
   const groups = new Map<RelationGroupKey, RelationRowModel[]>();
   const seen = new Set<string>();
+  const soldItemIds = new Set(catalog.entities.filter(e=>e.kind==='store-offers').map(e=>e.item_id));
   const add = (group: RelationGroupKey, target: Entity | undefined, options: {
     quantity?: number;
     chips?: Array<string | null | undefined>;
@@ -123,7 +124,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       key,
       entity: target,
       quantity: options.quantity,
-      buyPrice: options.buyPrice ?? (target.kind === 'processes' ? undefined : priceText(target, 'buy_price', quality)),
+      buyPrice: options.buyPrice ?? (target.kind !== 'processes' && soldItemIds.has(target.id) ? priceText(target, 'buy_price', quality) : undefined),
       sellPrice: options.sellPrice ?? priceText(target, 'sell_price', quality),
       buyLabel: options.buyLabel,
       sellLabel: options.sellLabel,
@@ -334,7 +335,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
   };
   if (entity.kind === 'characters') addFact('生日', entity.birthday_season && entity.birthday_day ? `${seasons[String(entity.birthday_season)]} ${entity.birthday_day} 日` : '无生日数据');
-  if (!['processes','activities'].includes(entity.kind)) addFact('买入价', priceText(entity, 'buy_price', quality), true);
+  if (!['processes','activities'].includes(entity.kind) && catalog.entities.some(e=>e.kind==='store-offers'&&e.item_id===entity.id)) addFact('买入价', priceText(entity, 'buy_price', quality), true);
   addFact('地点', entity.location as string | undefined);
   addFact('栽培方式', entity.cultivation_method as string | undefined);
   addFact('所需金额', entity.money_cost as number | undefined, true);

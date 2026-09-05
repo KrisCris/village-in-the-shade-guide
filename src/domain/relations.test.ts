@@ -15,6 +15,12 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('does not present a database base price as proof an item can be bought', () => {
+    const blueprint=entity('blueprint','items',{buy_price:500,sell_price:0});
+    expect(buildEntityDetailModel(blueprint,catalog(blueprint),'normal').facts.some(f=>f.label==='买入价')).toBe(false);
+    const offer=entity('sale','store-offers',{item_id:'blueprint'});
+    expect(buildEntityDetailModel(blueprint,catalog(blueprint,offer),'normal').facts).toContainEqual({label:'买入价',value:'500 · 固定',price:true});
+  });
   it('links recipe documents to their native popup target, including recipe panels', () => {
     const document=entity('ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_VASE','items');
     const vase=entity('ITEM_ID_FIGURINE_XS_VASE','items');
@@ -112,7 +118,8 @@ describe('relation groups', () => {
     const process = entity('process', 'processes', { inputs: [{ item_id: 'harvest', quantity: 2 }], output: { item_id: 'jam', quantity: 1 }, duration_minutes: 2880 });
     const jam = entity('jam', 'items', { sell_price: 200, quality_eligible: true });
 
-    const groups = buildRelationGroups(crop, catalog(seed, harvest, crop, process, jam), 'silver');
+    const seedSale = entity('seed-sale','store-offers',{item_id:'seed'});
+    const groups = buildRelationGroups(crop, catalog(seed, harvest, crop, process, jam, seedSale), 'silver');
 
     expect(groups.map((group) => group.key)).toEqual(['acquisition', 'outputs', 'used-in']);
     expect(groups[0].rows[0]).toMatchObject({ entity: seed, quantity: 1, buyPrice: '40 · 固定' });
