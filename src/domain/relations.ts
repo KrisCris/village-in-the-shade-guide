@@ -4,7 +4,7 @@ import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 
-export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other';
+export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
 
 export type RelationRowModel = {
   key: string;
@@ -47,8 +47,11 @@ const groupLabels: Record<RelationGroupKey, string> = {
   other: '其他关系',
   requirements: '建筑、供奉与交付用途',
   unlocks: '解锁条件与能力',
+  likes: '喜爱的物品',
+  dislikes: '讨厌的物品',
+  'gift-recipients': '送礼喜好',
 };
-const groupOrder: RelationGroupKey[] = ['acquisition', 'materials', 'outputs', 'machines', 'unlocks', 'used-in', 'requirements', 'other'];
+const groupOrder: RelationGroupKey[] = ['likes', 'dislikes', 'acquisition', 'materials', 'outputs', 'machines', 'unlocks', 'used-in', 'requirements', 'gift-recipients', 'other'];
 const seasons: Record<string, string> = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
 
 function numberText(value: number, approximate = false): string {
@@ -143,7 +146,13 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     for (const seedId of entity.seed_item_ids as string[] | undefined ?? []) {
       add('acquisition', catalog.byId[seedId], { quantity: 1, chips: ['种子 / 树苗'] });
     }
-    for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
+    const stages = (entity.harvest_stages ?? []) as Array<{state:number;growth_points:number;item_id:string;quantity:number}>;
+    if (stages.length) {
+      for (const stage of stages.filter(s=>[1,4,9].includes(s.state))) add('outputs',catalog.byId[stage.item_id],{
+        quantity:stage.quantity,key:`${stage.state}:${stage.growth_points}:${stage.item_id}`,
+        chips:[stage.state===9 ? '入秋转化' : stage.state===4 ? '再次收获' : '初次生长',stage.state===9 ? '留株过季' : `成长点 ${stage.growth_points}`],
+      });
+    } else for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
       add('outputs', catalog.byId[harvestId], { quantity: Number(entity.harvest_quantity ?? 1), chips: ['收获物'] });
     }
   }
@@ -167,7 +176,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
 
   if (entity.kind === 'characters') {
     for (const gift of (entity.gift_items ?? []) as Array<{ item_id?: string; preference?: number }>) {
-      if (gift.item_id) add('other', catalog.byId[gift.item_id], { chips: [typeof gift.preference === 'number' ? `喜好等级 ${gift.preference}` : '礼物'] });
+      if (gift.item_id && (gift.preference === 1 || gift.preference === -1)) add(gift.preference === 1 ? 'likes' : 'dislikes', findCatalogEntity(catalog, gift.item_id, 'items'));
     }
   }
 
@@ -183,6 +192,11 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
 
   for (const source of catalog.entities) {
     if (source.id === entity.id) continue;
+    if (source.kind === 'characters') {
+      for (const gift of (source.gift_items ?? []) as Array<{item_id:string;preference:number}>) {
+        if (subjectIds.has(gift.item_id) && [1,-1].includes(gift.preference)) add('gift-recipients',source,{chips:[gift.preference === 1 ? '喜爱' : '讨厌']});
+      }
+    }
     if (source.kind === 'activities') {
       const quantity = relationQuantity(source, subjectIds);
       if (quantity != null) add(source.activity_type === '祠堂能力 / 配方解锁' ? 'unlocks' : 'requirements', source, {quantity, chips:[String(source.activity_type), String(source.location || ''), ...(source.conditions as string[] ?? [])]});
@@ -263,8 +277,10 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   const addFact = (label: string, value: string | number | null | undefined, price = false) => {
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
   };
+  if (entity.kind === 'characters') addFact('生日', entity.birthday_season && entity.birthday_day ? `${seasons[String(entity.birthday_season)]} ${entity.birthday_day} 日` : '无生日数据');
   if (!['processes','activities'].includes(entity.kind)) addFact('买入价', priceText(entity, 'buy_price', quality), true);
   addFact('地点', entity.location as string | undefined);
+  addFact('栽培方式', entity.cultivation_method as string | undefined);
   addFact('所需金额', entity.money_cost as number | undefined, true);
   addFact('条件', ((entity.conditions ?? []) as string[]).join('；'));
   addFact('卖出价', entitySellPrice(entity, catalog, quality), true);

@@ -60,6 +60,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
   const [timePeriod, setTimePeriod] = useState('');
   const [fishingLocation, setFishingLocation] = useState('');
   const [itemCategory, setItemCategory] = useState('');
+  const [categoryQuery, setCategoryQuery] = useState('');
   const [sort, setSort] = useState<SortField>('name');
   const [direction, setDirection] = useState<SortDirection>('asc');
   const [urlReady, setUrlReady] = useState(false);
@@ -125,7 +126,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         <label>时段<select value={timePeriod} onChange={(event) => setTimePeriod(event.target.value)}><option value="">全部时段</option>{Object.entries(timeLabels).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
         <label>钓鱼点<select value={fishingLocation} onChange={(event) => setFishingLocation(event.target.value)}><option value="">全部钓鱼点</option>{fishingLocationOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>
       </>}
-      {kind === 'items' && <label>类别<select value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">全部类别</option>{itemCategoryOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>}
+      {kind === 'items' && itemCategoryOptions.length>0 && <label>类别<input aria-label="搜索类别" placeholder="输入类别名称" value={categoryQuery} onChange={event=>setCategoryQuery(event.target.value)} /><select value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">全部类别</option>{itemCategoryOptions.filter(option=>option.id===itemCategory || option.name.includes(categoryQuery)).map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>}
       {kind === 'processes' && <label>机械<select value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">全部机械</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>}
       <label>排序字段<select value={sort} onChange={(event) => setSort(parseSort(event.target.value))}><option value="name">名称</option><option value="sell">产值</option><option value="buy">成本</option>{['processes', 'crops'].includes(kind) && <option value="profit">日净收益</option>}{kind === 'processes' && <option value="duration">加工时间</option>}</select></label>
       <label>方向<select value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></select></label>
@@ -140,7 +141,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         : null;
       return <tr key={row.id} tabIndex={0} aria-label={`打开${row.name.zh_hans}详情`} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
         <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={row.icon_path} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = rowFallback(row); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
-        <td>{processGroup ? `${row.variant_count} 种配方` : row.category_name?.zh_hans || (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}</td>
+        <td>{processGroup ? `${row.variant_count} 种配方` : row.category_name?.zh_hans || (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}{row.cultivation_method && <small>{String(row.cultivation_method)}</small>}{row.kind==='crops' && ((row.harvest_item_ids ?? []) as string[]).length>1 && <small>{String(row.harvest_names)}</small>}</td>
         <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>
         <td>{duration ?? (typeof row.growth_days === 'number' ? `${row.growth_days} 日${row.regrow_days ? ` / 再生 ${row.regrow_days} 日` : ''}` : '—')}</td>

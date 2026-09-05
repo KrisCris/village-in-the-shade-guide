@@ -7,7 +7,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
   const { entity, facts, profit, groups, locations } = model;
   return <article className="entity-detail">
     <p className="eyebrow">{entity.category_name?.zh_hans || kindLabels[entity.kind] || entity.kind}</p>
-    <h1>{entity.name.zh_hans}</h1>
+    <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={entity.icon_path} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
     <p className="aliases">繁中：{entity.name.zh_hant || '—'}　日文：{entity.name.ja || '—'}</p>
 
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>

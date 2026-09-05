@@ -15,6 +15,17 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('separates character tastes, exposes birthday and links gift recipients', () => {
+    const apple = entity('apple', 'items', {sell_price: 20});
+    const stone = entity('stone', 'items');
+    const person = entity('person', 'characters', {birthday_season:'summer',birthday_day:17,gift_items:[{item_id:'apple',preference:1},{item_id:'stone',preference:-1}]});
+    const data = catalog(apple,stone,person);
+    const model = buildEntityDetailModel(person,data,'normal');
+    expect(model.facts).toContainEqual({label:'生日',value:'夏 17 日'});
+    expect(model.groups.find(g=>g.key==='likes')?.rows[0].entity).toBe(apple);
+    expect(model.groups.find(g=>g.key==='dislikes')?.rows[0].entity).toBe(stone);
+    expect(buildRelationGroups(apple,data,'normal').find(g=>g.key==='gift-recipients')?.rows[0].entity).toBe(person);
+  });
   it('shows building and book-return requirements in both directions', () => {
     const wood = entity('wood','items');
     const building = entity('building','activities',{activity_type:'建筑',inputs:[{item_id:'wood',quantity:50}],money_cost:1000});

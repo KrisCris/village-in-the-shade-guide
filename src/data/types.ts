@@ -21,6 +21,7 @@ export type Entity = Record<string, unknown> & {
   quality_source?: string | null;
   icon_path?: string | null;
   searchText: string;
+  cultivation_method?: string;
 };
 
 export type Catalog = {

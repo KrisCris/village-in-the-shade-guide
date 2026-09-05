@@ -89,6 +89,8 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     if (entity.kind === 'crops') {
       const seed = byId[(entity.seed_item_ids as string[] | undefined)?.[0] ?? ''];
       const harvest = byId[(entity.harvest_item_ids as string[] | undefined)?.[0] ?? ''];
+      entity.harvest_names = ((entity.harvest_item_ids ?? []) as string[]).map(id=>byId[id]?.name.zh_hans).filter(Boolean).join(' / ');
+      entity.searchText += ' ' + ((entity.harvest_item_ids ?? []) as string[]).map(id=>byId[id]?.searchText ?? '').join(' ');
       entity.buy_price = seed?.buy_price ?? null;
       entity.sell_price = harvest?.sell_price ?? null;
       const growthDays = Number(entity.growth_days ?? 0);
