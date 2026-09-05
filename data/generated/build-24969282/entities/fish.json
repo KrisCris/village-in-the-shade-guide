@@ -44,30 +44,32 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       }
     ],
@@ -212,30 +214,32 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -309,30 +313,32 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -422,15 +428,16 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -612,30 +619,32 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -837,45 +846,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       }
     ],
@@ -1058,30 +1070,32 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -1229,30 +1243,32 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -1363,30 +1379,32 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -1478,45 +1496,48 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -1625,30 +1646,32 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -1758,30 +1781,32 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -1927,30 +1952,32 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       }
     ],
@@ -2013,15 +2040,16 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       }
     ],
@@ -2083,15 +2111,16 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       }
     ],
@@ -2153,15 +2182,16 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -2223,15 +2253,16 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       }
     ],
@@ -2293,15 +2324,16 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -2363,15 +2395,16 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -2427,15 +2460,16 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -2544,30 +2578,32 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -2653,45 +2689,48 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -2836,30 +2875,32 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -2934,15 +2975,16 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -3016,15 +3058,16 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -3170,45 +3213,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -3354,45 +3400,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -3447,15 +3496,16 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -3546,45 +3596,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -3657,30 +3710,32 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       }
     ],
@@ -3735,15 +3790,16 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -3816,30 +3872,32 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -3912,15 +3970,16 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -4030,15 +4089,16 @@
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       }
     ],
@@ -4150,15 +4210,16 @@
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -4270,15 +4331,16 @@
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       }
     ],
@@ -4390,15 +4452,16 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       }
     ],
@@ -4510,15 +4573,16 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       }
     ],
@@ -4630,15 +4694,16 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -4750,15 +4815,16 @@
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       }
     ],
@@ -4852,15 +4918,16 @@
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       }
     ],
@@ -5187,45 +5254,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -5553,45 +5623,48 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -6208,90 +6281,96 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],
@@ -6908,90 +6987,96 @@
         "location_id": "FISHING_ID_01",
         "name": {
           "aliases": [
-            "下游（流水）",
+            "岔路钓鱼点",
+            "岔路釣魚點",
             "下流(流れ)",
             "FISHING_ID_01"
           ],
           "internal": "FISHING_ID_01",
           "ja": "下流(流れ)",
-          "review_status": "override",
-          "zh_hans": "下游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "岔路钓鱼点",
+          "zh_hant": "岔路釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_02",
         "name": {
           "aliases": [
-            "下游（静水）",
+            "村中钓鱼点",
+            "村中釣魚點",
             "下流(澱み)",
             "FISHING_ID_02"
           ],
           "internal": "FISHING_ID_02",
           "ja": "下流(澱み)",
-          "review_status": "override",
-          "zh_hans": "下游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "村中钓鱼点",
+          "zh_hant": "村中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_03",
         "name": {
           "aliases": [
-            "中游（静水）",
+            "瀑布钓鱼点",
+            "瀑布釣魚點",
             "中流(澱み)",
             "FISHING_ID_03"
           ],
           "internal": "FISHING_ID_03",
           "ja": "中流(澱み)",
-          "review_status": "override",
-          "zh_hans": "中游（静水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "瀑布钓鱼点",
+          "zh_hant": "瀑布釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_04",
         "name": {
           "aliases": [
-            "中游（流水）",
+            "山中钓鱼点",
+            "山中釣魚點",
             "中流(流れ)",
             "FISHING_ID_04"
           ],
           "internal": "FISHING_ID_04",
           "ja": "中流(流れ)",
-          "review_status": "override",
-          "zh_hans": "中游（流水）",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "山中钓鱼点",
+          "zh_hant": "山中釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_05",
         "name": {
           "aliases": [
-            "上游",
+            "深山钓鱼点",
+            "深山釣魚點",
             "上流",
             "FISHING_ID_05"
           ],
           "internal": "FISHING_ID_05",
           "ja": "上流",
-          "review_status": "override",
-          "zh_hans": "上游",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "深山钓鱼点",
+          "zh_hant": "深山釣魚點"
         }
       },
       {
         "location_id": "FISHING_ID_06",
         "name": {
           "aliases": [
-            "涌泉池",
+            "采石场钓鱼点",
+            "採石場釣魚點",
             "湧水池",
             "FISHING_ID_06"
           ],
           "internal": "FISHING_ID_06",
           "ja": "湧水池",
-          "review_status": "override",
-          "zh_hans": "涌泉池",
-          "zh_hant": ""
+          "review_status": "auto",
+          "zh_hans": "采石场钓鱼点",
+          "zh_hant": "採石場釣魚點"
         }
       }
     ],

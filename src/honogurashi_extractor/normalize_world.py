@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Mapping
+import re
 
 from .localization import build_name
 from .models import (
@@ -19,6 +20,37 @@ from .models import (
 )
 from .probe import _string_groups
 from .table import TableContainer, TableFormatError
+
+
+def _fishing_place_names(fishing, items) -> dict[str, str]:
+    """Join exclusive night-fish descriptions to their actual spawn table.
+
+    fishing.dat's names describe water flow, not player-facing locations.
+    See docs/data-evidence/fishing-locations.md for the six cross-checks.
+    """
+    if not fishing or not items:
+        return {}
+    locations: dict[int, set[str]] = defaultdict(set)
+    for record, group in zip(fishing.records, _string_groups(fishing), strict=True):
+        count = _u32(record, 40)
+        if 44 + count * 36 > len(record):
+            raise TableFormatError("fishing appearance records are truncated")
+        for index in range(count):
+            locations[_u32(record, 44 + index * 36)].add(group[0])
+    names: dict[str, str] = {}
+    for record, group in zip(items.records, _string_groups(items), strict=True):
+        if not group[0].startswith('ITEM_ID_FISHING_GHOST_FISH_') or len(group) <= 17:
+            continue
+        match = re.fullmatch(r'深夜時可於(.+?)釣魚處釣到。', group[17])
+        places = locations[_u32(record, 0)]
+        if not match or len(places) != 1:
+            continue
+        place = match[1].replace('村裡', '村中').replace('山裡', '山中') + '釣魚點'
+        location_id = next(iter(places))
+        if location_id in names and names[location_id] != place:
+            raise TableFormatError(f"conflicting fishing location names: {location_id}")
+        names[location_id] = place
+    return names
 
 
 WEATHER_NAMES = {
@@ -60,8 +92,8 @@ def normalize_world(
     appearances_by_fish: dict[int, list[FishAppearance]] = defaultdict(list)
     seasons = ("spring", "summer", "autumn", "winter")
     periods = {"7:00-12:00": "morning", "12:00-18:00": "day", "18:00-0:00": "evening", "0:00-6:00": "late-night"}
-    place_names = dict(zip((f"FISHING_ID_{i:02}" for i in range(1, 7)), ("下游（流水）", "下游（静水）", "中游（静水）", "中游（流水）", "上游", "涌泉池")))
     fishing = tables.get("fishing")
+    place_names = _fishing_place_names(fishing, tables.get("item"))
     if fishing:
         for record, group in zip(fishing.records, _string_groups(fishing), strict=True):
             if not group:
@@ -70,9 +102,9 @@ def normalize_world(
             # season/time labels rather than the standard localization columns.
             location_name = build_name(
                 ja=group[1] if len(group) > 1 else group[0],
-                zh_hant="",
+                zh_hant=place_names.get(group[0], ""),
                 internal=group[0],
-                overrides={**place_names, **overrides},
+                overrides=overrides,
             )
             location = FishLocation(location_name.internal, location_name)
             spawn_count = _u32(record, 40)

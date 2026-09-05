@@ -3,7 +3,7 @@ from __future__ import annotations
 import struct
 
 from honogurashi_extractor.models import Item, LocalizedName, Snapshot
-from honogurashi_extractor.normalize_world import normalize_world
+from honogurashi_extractor.normalize_world import normalize_world, _fishing_place_names
 from honogurashi_extractor.table import read_table
 from tests.fixtures.build_table import build_table
 
@@ -20,6 +20,14 @@ def _item(internal: str, numeric_id: int, zh_hans: str) -> Item:
         zh_hans, zh_hans, zh_hans, internal, (zh_hans, internal), "override"
     )
     return Item(internal, numeric_id, name, None, 10)
+
+
+def test_fishing_place_names_join_item_descriptions_to_spawn_ids_not_list_order():
+    # Deliberately use a different table ID: the join must follow the spawn row.
+    item_strings = ['ITEM_ID_FISHING_GHOST_FISH_01'] + [''] * 16 + ['深夜時可於岔路釣魚處釣到。']
+    item_table = read_table(build_table(records=[_record(496, {0: 162000, 8: 0, 12: 27})], strings=('\0'.join(item_strings)+'\0').encode()))
+    fishing_table = read_table(build_table(records=[_record(80, {0: 6, 8: 0, 12: 13, 40: 1, 44: 162000})], strings=b'FISHING_ID_06\0internal label\0'))
+    assert _fishing_place_names(fishing_table, item_table) == {'FISHING_ID_06': '岔路釣魚點'}
 
 
 def test_character_gift_and_fish_location_relations_use_stable_ids():
