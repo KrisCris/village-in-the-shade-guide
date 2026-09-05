@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
+import rules from '../../../data/sources/game-rules.json';
 const catalog=getCatalog();
 const seasons=['spring','summer','autumn','winter'];
 const labels=['春','夏','秋','冬'];
@@ -9,6 +10,8 @@ const people=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_day).s
 <BaseLayout title="生日与送礼规划"><h1>生日与送礼规划</h1>
 <p>每天最多送一份礼物，每周最多两份。先确定要培养关系的村民，从喜爱清单中挑自己容易取得的物品；不要只看售价高低。具体礼物可点开查看获取方式、价格及其他用途。</p>
 <p>临近生日时提前留好礼物。游戏角色主表列出的喜爱和讨厌物品各有 4 件；未列出的物品不能直接视为喜爱。注视村民也可以在游戏里查看好感度与礼物喜好。</p>
+<section><h2>培养关系的顺序</h2><ol><li>每天路过目标村民时先交谈。游戏基础交谈增量为 +{rules.constants.NPC_LOVE_ADD_TALK.value}；无需先准备昂贵的礼物。</li><li>每周两份礼物优先选择下方喜爱物品，生日临近时提前存货。不要把每次礼物的品质、生日加成套成未经核实的统一倍数。</li><li>完成目标村民的委托，基础增量为 +{rules.constants.NPC_LOVE_ADD_QUEST_SUCCESS.value}。固定帮忙券可按<a href="/guides/progression/#help">帮忙券清单</a>提前准备，随机交付仍以自己的任务面板为准。</li><li>好感度到阶段上限后查看人物事件和回访目标；单纯继续堆礼物不等于已完成突破事件。</li></ol>
+<table><thead><tr><th>阶段</th><th>累计上限</th></tr></thead><tbody>{[1,2,3,4,5,6].map(level=><tr><td>Lv{level}</td><td>{rules.constants[`NPC_LOVE_LEVEL${level}_MAX` as keyof typeof rules.constants].value}</td></tr>)}</tbody></table></section>
 {people.map(person=><section><h2><a href={entityUrl(person)}>{person.name.zh_hans}</a> · {labels[seasons.indexOf(String(person.birthday_season))]} {String(person.birthday_day)} 日</h2>{[1,-1].map(preference=><div><h3>{preference===1?'喜爱':'讨厌'}</h3><div class="gifts">{((person.gift_items??[]) as {item_id:string;preference:number}[]).filter(g=>g.preference===preference).map(g=>{const item=catalog.entities.find(e=>e.kind==='items'&&e.id===g.item_id);return item&&<a href={entityUrl(item)}>{item.icon_path&&<img src={item.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{item.name.zh_hans}</span></a>;})}</div></div>)}</section>)}
 <h2>委托与食谱怎么安排</h2><p>交付委托与送礼是不同用途。收到带期限的委托后，以自己的任务面板为准，不将数据表里的候选物品写成某位村民固定会要的东西。食谱可通过反复吃同一道料理或村民传授获得；具体料理的次数、关系门槛仍需逐条核对，不能套用统一阈值。</p>
 <details><summary>游戏数据依据</summary><p>character.dat：喜爱物品偏移 200–224，讨厌物品 232–256，生日季节 420、日期 424。logtext.dat：LOG_ERROR_PRESENT_DAY_LIMIT、LOG_ERROR_PRESENT_WEEK_LIMIT。tips.dat：TIPS_51_INFO_VILLAGER、TIPS_38_RECIPE。</p></details>

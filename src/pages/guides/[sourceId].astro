@@ -3,9 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import EntityDetail from '../../components/entity/EntityDetail';
 import { getCatalog } from '../../data/repository';
 import { buildEntityDetailModel } from '../../domain/relations';
-import { guideIntro, guides, translateHeading } from '../../data/guideContent';
+import { guides, translateHeading } from '../../data/guideContent';
 export function getStaticPaths() { return guides.map((guide) => ({ params: { sourceId: guide.sourceId }, props: { guide } })); }
 const { guide } = Astro.props;
+if(guide.guideTarget)return Astro.redirect(guide.guideTarget);
 const catalog = getCatalog();
 const character = catalog.entities.find((entity) => entity.kind === 'characters' && entity.name.ja === guide.title);
 const characterModel = character ? buildEntityDetailModel(character, catalog, 'normal') : null;
@@ -13,11 +14,10 @@ const isSpoiler = guide.category === '剧情' || guide.category === '怪异';
 ---
 <BaseLayout title={guide.chineseTitle} description={`${guide.chineseTitle}：紧凑中文要点与游戏数据链接。`}>
   <nav class="crumb"><a href="/guides/">攻略</a><span>›</span><a href={`/guides/#${guide.category}`}>{guide.category}</a></nav>
-  <p class="eyebrow">{guide.category} · REVIEWED 2026-09-02</p><h1>{guide.chineseTitle}</h1>
-  <p class="original">日文主题：{guide.title}</p><p class="lede">{guideIntro(guide)}</p>
+  <p class="eyebrow">{guide.category}</p><h1>{guide.chineseTitle}</h1>
   {guide.dataTarget && <a class="data-cta card" href={guide.dataTarget}><span><strong>打开完整数据表</strong><small>支持搜索、筛选、排序与逐层展开关联</small></span><b>→</b></a>}
   {characterModel && <section><h2>游戏数据</h2><EntityDetail model={characterModel} /></section>}
-  {guide.headings.length > 0 && <section><h2>要点清单</h2>
+  {guide.headings.length > 0 && <section><h2>参考主题</h2><p>这一主题的详细条件尚未全部从游戏数据核对。以下是待补充范围，不作为已验证的操作步骤。</p>
     {isSpoiler ? <details class="spoiler"><summary>展开含剧透的流程与应对要点</summary><ol>{guide.headings.map((heading) => <li>{translateHeading(heading)}</li>)}</ol></details> : <ol class="steps">{guide.headings.map((heading) => <li>{translateHeading(heading)}</li>)}</ol>}
   </section>}
   <aside class="source-note"><strong>来源与口径</strong><p>本页按 AppMedia 对应主题重新整理，未复制原文；价格、名称、配方和关联以本地游戏数据为准。需要查看原页面时可前往 <a href={guide.url} rel="nofollow">AppMedia：{guide.title}</a>。</p></aside>

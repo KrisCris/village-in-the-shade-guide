@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+const catalog=getCatalog();
+const quests=catalog.entities.filter(e=>e.kind==='quests');
+const helps=quests.filter(e=>/^QUEST_ID_(BOY|CARPENTER|FEMALE_DOCTOR|GENERAL_STORE_MASTER|GIRL|HUNTER|OLD_MAN|ORPHAN|SECRETARY|STREET_VENDOR|WOODCUTTER|YOUNG_MAN)_01$/.test(e.id));
+const main=quests.filter(e=>e.id.startsWith('QUEST_ID_CHAIN_VILLAGE_RULES_'));
+const shrine=quests.find(e=>e.id==='QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST');
+---
+<BaseLayout title="帮忙券与主线推进"><h1>帮忙券与主线推进</h1>
+<nav><a href="#preparation">先准备什么</a>　<a href="#help">12 位村民的帮忙券</a>　<a href="#story">主线目标</a></nav>
+<section id="preparation"><h2>先准备什么</h2>
+<p>先做会打开道路或设施的目标，再把同一路线的采集委托一起完成。下面是按任务表安排的准备顺序，不是固定日期表。</p>
+<ol>
+<li>木助的帮忙券需要用铜十字镐清掉山中营地附近的落石。计划探索山中时，先准备工具升级；只采集附近物品而不报告，任务仍有后续。</li>
+<li>去采石场时为茶梅留出 5 个铜矿石。去山中时兼顾莲实的当归、裕太的 5 只蜜蜂和堇怜要的紫色花。</li>
+<li>洋需要山女鱼；出发前在<a href="/data/fish/?q=山女鱼">鱼类表</a>确认当前季节、时段和钓点。不要把六角的随机鱼类交付与这条固定帮忙券混在一起。</li>
+<li>今野需要木柴捆，先查<a href="/data/items/?q=木柴捆">制作材料</a>。驹子的任务是修复岔路祠堂；完成后还有报告、参拜步骤。</li>
+<li>每条任务采集或交付结束后，再查看是否需要回访人物或房间。“材料凑齐”不总是最后一步。</li>
+</ol></section>
+<section id="help"><h2>12 位村民的帮忙券</h2><div class="quest-grid">{helps.map(e=><article class="card"><h3><a href={entityUrl(e)}>{e.name.zh_hans}</a></h3><p>{String(e.objective)}</p><ol>{(e.steps as string[]).map(step=><li>{step}</li>)}</ol></article>)}</div></section>
+{shrine&&<section><h2>岔路祠堂修复</h2><p>{String(shrine.objective)}</p><ol>{(shrine.steps as string[]).map(step=><li>{step}</li>)}</ol><a href="/data/activities/?q=祠堂">祠堂能力与配方</a></section>}
+<section id="story"><h2>主线目标（剧透）</h2><p>按任务链分别展开。清单保留游戏内目标顺序，部分分支会因当前剧情状态而不同，不把后面的目标当成现在就该做的事。</p>{main.map(e=><details><summary>{e.name.zh_hans}</summary><p>{String(e.objective)}</p><ol>{(e.steps as string[]).map(step=><li>{step}</li>)}</ol><a href={entityUrl(e)}>任务详情</a></details>)}</section>
+<p><a href="/guides/season-plan/">四季供奉与留货数量</a> · <a href="/guides/collection-map/">图书地图与关联剧情进度</a> · <a href="/guides/residents/">生日和送礼</a></p>
+<details><summary>数据来源</summary><p>quest.dat 的官方中文任务目标与分步清单；本站只调整展示结构并给出准备顺序，未把日文攻略的日期或推测当成游戏条件。</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.4rem 0}.quest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}.card{padding:1rem}.card h3{margin-top:0}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

@@ -1,0 +1,53 @@
+{
+  "source": "gamedefine.dat",
+  "constants": {
+    "NPC_LOVE_LEVEL1_MAX": {
+      "value": 100,
+      "description_ja": "住人好感度ゲージLv1最大値"
+    },
+    "NPC_LOVE_LEVEL2_MAX": {
+      "value": 300,
+      "description_ja": "住人好感度ゲージLv2最大値"
+    },
+    "NPC_LOVE_LEVEL3_MAX": {
+      "value": 600,
+      "description_ja": "住人好感度ゲージLv3最大値"
+    },
+    "NPC_LOVE_LEVEL4_MAX": {
+      "value": 1000,
+      "description_ja": "住人好感度ゲージLv4最大値"
+    },
+    "NPC_LOVE_LEVEL5_MAX": {
+      "value": 1500,
+      "description_ja": "住人好感度ゲージLv5最大値"
+    },
+    "NPC_LOVE_LEVEL6_MAX": {
+      "value": 2100,
+      "description_ja": "住人好感度ゲージLv6最大値"
+    },
+    "NPC_LOVE_MAX": {
+      "value": 2100,
+      "description_ja": "住人好感度合計最大値"
+    },
+    "NPC_LOVE_ADD_TALK": {
+      "value": 10,
+      "description_ja": "会話による上昇量"
+    },
+    "NPC_LOVE_ADD_QUEST_SUCCESS": {
+      "value": 30,
+      "description_ja": "依頼を達成する"
+    },
+    "NPC_LOVE_ADD_SELECT_SUCCESS": {
+      "value": 30,
+      "description_ja": "選択肢を成功する"
+    },
+    "NPC_LOVE_ADD_NO_TALK": {
+      "value": 0,
+      "description_ja": "一度も会話しない"
+    },
+    "NPC_LOVE_ADD_ATTACK": {
+      "value": 0,
+      "description_ja": "道具を使用"
+    }
+  }
+}

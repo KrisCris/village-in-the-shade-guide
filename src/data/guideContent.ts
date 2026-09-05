@@ -2,7 +2,17 @@ import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
 import guideTranslations from '../../data/sources/guide-translations.json';
 
-export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string };
+export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string; guideTarget?: string };
+
+export function guideTarget(title: string) {
+  if (/好感度の上げ方|キャラ一覧/.test(title)) return '/guides/residents/';
+  if (/紛失図書|狐の社/.test(title)) return '/guides/collection-map/';
+  if (/毎日やるべきこと/.test(title)) return '/guides/season-plan/';
+  if (/序盤の進め方|攻略チャート一覧|依頼のやり方/.test(title)) return '/guides/progression/';
+  if (/キャラクリ変更/.test(title)) return '/guides/appearance/';
+  if (/おすすめの金策/.test(title)) return '/planner/';
+  return undefined;
+}
 
 const exactTitles: Record<string, string> = {
   'ほの暮しの庭攻略': '《静谧田园》攻略总览', '好感度の上げ方': '好感度提升方法', '機種ごとの違い': '各平台版本区别',
@@ -87,6 +97,7 @@ export const guides: GuideSource[] = sourceCatalog.sources.map((source) => ({
   chineseTitle: chineseTitle(source.title),
   headings: (outlineMap.get(source.sourceId) ?? []).filter((heading) => !/関連記事|サイト TOP|一覧まとめ|一覧データ|序盤必見|おすすめ$|効率・稼ぎ|注目アイテム|システム解説/.test(heading)),
   dataTarget: dataTarget(source.title),
+  guideTarget: guideTarget(source.title),
 }));
 
 export const guideCategories = ['总览', '系统与生活', '剧情', '怪异', '探索', '活动', '角色', '数据', '产品'];

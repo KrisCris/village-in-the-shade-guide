@@ -9,13 +9,13 @@ const categories=[...new Map(items.map(e=>[e.category_id!,e])).values()].sort((a
   <h1>攻略</h1>
   <p><a href="/guides/season-plan/">四季留货与交付规划</a>　<a href="/planner/">种植加工收益排行</a>　<a href="/categories/">带图标的物品分类一览</a></p>
   <p><a href="/guides/residents/">生日与送礼规划</a>　<a href="/guides/collection-map/">图书与狐狸神社地图</a></p>
-  <p><a href="/guides/appearance/">服装与装饰获取</a></p>
+  <p><a href="/guides/progression/">帮忙券与主线推进</a>　<a href="/guides/appearance/">服装与装饰获取</a></p>
   <section id="数据"><h2>分类一览</h2><div class="guide-grid">{categories.map(category=>{const icon=items.find(e=>e.category_id===category.category_id&&e.icon_path)?.icon_path;return <a class="card" href={`/categories/${category.category_id}/`}>{icon&&<img src={icon} width="56" height="56" alt="" loading="lazy" />}<strong>{category.category_name?.zh_hans}</strong></a>;})}</div></section>
   {guideCategories.map((category) => {
     if(category==='数据')return null;
     const rows = guides.filter((guide) => guide.category === category);
     if (!rows.length) return null;
-    return <section id={category}><div class="section-heading"><h2>{category}</h2><span>{rows.length} 篇</span></div><div class="guide-grid">{rows.map((guide) => <a class="card" href={`/guides/${guide.sourceId}/`}><strong>{guide.chineseTitle}</strong><small>{guide.title}</small><span>{guide.dataTarget ? '游戏数据覆盖' : '中文要点整理'} →</span></a>)}</div></section>;
+    return <section id={category}><div class="section-heading"><h2>{category}</h2></div><div class="guide-grid">{rows.map((guide) => <a class="card" href={guide.guideTarget ?? `/guides/${guide.sourceId}/`}><strong>{guide.chineseTitle}</strong>{!guide.guideTarget&&<small>{guide.title}</small>}</a>)}</div></section>;
   })}
 </BaseLayout>
 <style>section{margin-top:3rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.5rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>
