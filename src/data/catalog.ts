@@ -4,6 +4,7 @@ import { buildPinyinAliases } from './serverSearchAliases';
 import type { Catalog, Entity, Name } from './types';
 import { calculateCropProfit } from '../domain/profit';
 import mapMarkers from '../../data/sources/game-map-markers.json';
+import characterPortraits from '../../data/sources/official-character-portraits.json';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
 const buildId = '24969282';
@@ -48,6 +49,10 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     for (const row of rows) {
       const fallback: Name = { zh_hans: row.id, zh_hant: '', ja: '', internal: row.id, aliases: [row.id], review_status: 'internal' };
       const entity = { ...row, kind, name: withSearchAliases(row.name ?? fallback), searchText: '' } as Entity;
+      if(kind==='characters') {
+        const portrait=characterPortraits.portraits.find(p=>p.character_id===entity.id);
+        if(portrait){entity.icon_path=portrait.path;entity.portrait_source=portrait.source;}
+      }
       if (entity.category_name) entity.category_name = withSearchAliases(entity.category_name);
       if (typeof entity.location === 'string') entity.location = toSimplified(entity.location);
       if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? toSimplified(condition) : condition);

@@ -1,0 +1,102 @@
+{
+  "portraits": [
+    {
+      "character_id": "CHARA_ID_VILLAGE_HEAD",
+      "name_ja": "リン",
+      "path": "/portraits/official/CHARA_ID_VILLAGE_HEAD.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_01.png?1776043333"
+    },
+    {
+      "character_id": "CHARA_ID_HUNTER",
+      "name_ja": "コマコ",
+      "path": "/portraits/official/CHARA_ID_HUNTER.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_02.png?1776043350"
+    },
+    {
+      "character_id": "CHARA_ID_LUMBERJACK",
+      "name_ja": "シロージ",
+      "path": "/portraits/official/CHARA_ID_LUMBERJACK.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_03.png?1776043365"
+    },
+    {
+      "character_id": "CHARA_ID_CARPENTER",
+      "name_ja": "キスケ",
+      "path": "/portraits/official/CHARA_ID_CARPENTER.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_04.png?1776043358"
+    },
+    {
+      "character_id": "CHARA_ID_YOUNG_MAN",
+      "name_ja": "ユータ",
+      "path": "/portraits/official/CHARA_ID_YOUNG_MAN.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_05.png?1776043372"
+    },
+    {
+      "character_id": "CHARA_ID_GENERAL_STORE_MANAGER",
+      "name_ja": "サザンカ",
+      "path": "/portraits/official/CHARA_ID_GENERAL_STORE_MANAGER.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_06.png?1776043379"
+    },
+    {
+      "character_id": "CHARA_ID_OLD_MAN",
+      "name_ja": "ロッカク",
+      "path": "/portraits/official/CHARA_ID_OLD_MAN.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_07.png?1776043387"
+    },
+    {
+      "character_id": "CHARA_ID_GIRL",
+      "name_ja": "ヨウ",
+      "path": "/portraits/official/CHARA_ID_GIRL.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_08.png?1776043396"
+    },
+    {
+      "character_id": "CHARA_ID_FEMALE_DOCTOR",
+      "name_ja": "ハスミ",
+      "path": "/portraits/official/CHARA_ID_FEMALE_DOCTOR.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_09.png?1776043402"
+    },
+    {
+      "character_id": "CHARA_ID_BOY",
+      "name_ja": "スミレ",
+      "path": "/portraits/official/CHARA_ID_BOY.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_10.png?1776043411"
+    },
+    {
+      "character_id": "CHARA_ID_ORPHAN",
+      "name_ja": "トバリ",
+      "path": "/portraits/official/CHARA_ID_ORPHAN.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_11.png?1776043418"
+    },
+    {
+      "character_id": "CHARA_ID_SECRETARY",
+      "name_ja": "コンノ",
+      "path": "/portraits/official/CHARA_ID_SECRETARY.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_12.png?1776043426"
+    },
+    {
+      "character_id": "CHARA_ID_STREET_VENDOR",
+      "name_ja": "チナナ",
+      "path": "/portraits/official/CHARA_ID_STREET_VENDOR.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_13.png?1776043432"
+    },
+    {
+      "character_id": "CHARA_ID_CITY_HALL_STAFF",
+      "name_ja": "ナゴ",
+      "path": "/portraits/official/CHARA_ID_CITY_HALL_STAFF.png",
+      "source": "https://nippon1.jp/consumer/honogurashi/character.html",
+      "image_url": "https://nippon1.jp/consumer/honogurashi/img/character/chr_nav_14.png?1776043443"
+    }
+  ]
+}

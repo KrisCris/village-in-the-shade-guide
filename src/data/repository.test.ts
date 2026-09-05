@@ -3,6 +3,12 @@ import { buildCatalog, rankEntities, retainAvailableIconPaths } from './reposito
 import { expandSearchRows } from './clientSearch';
 
 describe('data repository', () => {
+  it('attaches attributed portraits by character ID without borrowing one for an unknown character', () => {
+    const data=buildCatalog({'/entities/characters.json':[{id:'CHARA_ID_OLD_MAN'},{id:'CHARA_ID_MOTHER'}]});
+    expect(data.byId.CHARA_ID_OLD_MAN.icon_path).toBe('/portraits/official/CHARA_ID_OLD_MAN.png');
+    expect(data.byId.CHARA_ID_OLD_MAN.portrait_source).toBe('https://nippon1.jp/consumer/honogurashi/character.html');
+    expect(data.byId.CHARA_ID_MOTHER.icon_path).toBeUndefined();
+  });
   const row = { id: 'CROPS_ID_ONION', name: { zh_hans: '洋葱', zh_hant: '洋蔥', ja: 'タマネギ', internal: 'CROPS_ID_ONION', aliases: ['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION'], review_status: 'override' } };
   const catalog = buildCatalog({
     '/entities/items.json': [
