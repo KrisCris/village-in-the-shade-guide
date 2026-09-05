@@ -30,7 +30,7 @@ const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.condi
 const bundles=activities.filter(e=>e.id.startsWith(`BUNDLE_ID_${season.toUpperCase()}_`) || (e.id.startsWith('BUNDLE_ID_VILLAGE_HEAD_')&&e.name.zh_hans.startsWith(`${name}季`)));
 const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_season===season).sort((a,b)=>Number(a.birthday_day)-Number(b.birthday_day));
 return <section id={season}><h2>{name}季</h2>
-<p><a href={`/data/crops/?season=${season}`}>本季种植</a> · <a href={`/data/fish/?season=${season}`}>本季鱼与钓点时段</a></p>
+<p><a href={`/data/crops/?season=${season}`}>本季种植</a> · <a href={`/data/fish/?season=${season}`}>本季鱼与钓点时段</a> · <a href={`/guides/fishing-plan/#${season}`}>本季钓鱼留货清单</a></p>
 <h3>生日安排</h3><p>{residents.map(e=><a class="birthday" href={entityUrl(e)}>{String(e.birthday_day)} 日 · {e.name.zh_hans}</a>)}</p>
 <h3>本季交付总需求</h3>
 <p>以下合计包含本季供奉与交付目录，不含礼物；已完成的组别可以扣除。种子开放较晚的物品要提前看年份，不能默认第一年就能凑齐。</p>

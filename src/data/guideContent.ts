@@ -5,6 +5,8 @@ import guideTranslations from '../../data/sources/guide-translations.json';
 export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string; guideTarget?: string };
 
 export function guideTarget(title: string) {
+  if (/料理の作り方|おすすめ料理/.test(title)) return '/guides/cooking-plan/';
+  if (/釣りのやり方/.test(title)) return '/guides/fishing-plan/';
   if (/おすすめスキル/.test(title)) return '/guides/skills/';
   if (/好感度の上げ方|キャラ一覧/.test(title)) return '/guides/residents/';
   if (/紛失図書|狐の社/.test(title)) return '/guides/collection-map/';
