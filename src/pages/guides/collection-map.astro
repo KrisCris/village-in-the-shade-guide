@@ -1,25 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import mapData from '../../../data/sources/game-map-markers.json';
+import exploration from '../../../data/sources/game-exploration-markers.json';
 import {getCatalog,entityUrl} from '../../data/repository';
 const catalog=getCatalog();
 const markers=mapData.markers.map(m=>{
  const item='item_numeric_id' in m?catalog.entities.find(e=>e.kind==='items'&&e.numeric_id===m.item_numeric_id):undefined;
  return {...m,label:item?.name.zh_hans ?? `狐狸神社 ${Number(m.anchor.slice(-2))+1}`,href:item?entityUrl(item):'/guides/season-plan/'};
 });
-const outside=markers.filter(m=>m.map.includes('map_0000_spr'));
+const outside=[...markers.filter(m=>m.map.includes('map_0000_spr')),...exploration.markers.map(m=>({...m,href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
+const markerColor=(kind:string)=>({book:'#ffe28a',shrine:'#db5034',treasure:'#79b6ff',exchange:'#bd91e8'}[kind]??'#fff');
+const markerLabel=(m:{kind:string;anchor:string;label:string})=>m.kind==='book'?m.anchor.slice(-2):m.label;
 const inside=markers.filter(m=>!m.map.includes('map_0000_spr'));
 const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+mapData.projection.offset_x,y:m.y/mapData.projection.scale_divisor+mapData.projection.offset_y});
 ---
-<BaseLayout title="遗失图书与狐狸神社地图"><h1>遗失图书与狐狸神社地图</h1>
-<p>55 本图书、4 个神社。点击标记查看物品与交付用途；图书开放进度见下方清单。</p>
+<BaseLayout title="图书、神社与夜间收集地图"><h1>图书、神社与夜间收集地图</h1>
+<p>55 本图书、4 个神社、8 个玉手箱生成点、1 个交换怪异生成点。夜间生成点不代表每天必定刷新。</p>
 <p><a href="/guides/season-plan/">狐狸神社四季供奉清单 →</a></p>
-<div class="map-controls"><label>放大 <input id="map-zoom" type="range" min="100" max="350" step="25" value="100" /></label><label><input id="show-books" type="checkbox" checked /> 图书</label><label><input id="show-shrines" type="checkbox" checked /> 神社</label><a href="/maps/minimap_01_spr_tc.webp" target="_blank" rel="noreferrer">原图</a></div>
+<div class="map-controls"><label>放大 <input id="map-zoom" type="range" min="100" max="350" step="25" value="100" /></label><label><input id="show-books" type="checkbox" checked /> 图书</label><label><input id="show-shrines" type="checkbox" checked /> 神社</label><label><input id="show-treasures" type="checkbox" checked /> 玉手箱</label><label><input id="show-exchanges" type="checkbox" checked /> 交换怪异</label><a href="/maps/minimap_01_spr_tc.webp" target="_blank" rel="noreferrer">原图</a></div>
 <div class="map-wrap"><svg id="collection-map" viewBox="650 500 2750 3200" role="img" aria-label="村庄遗失图书和神社地图">
 <image href="/maps/minimap_01_spr_tc.webp" width="4096" height="4096" />
-{outside.map(m=>{const p=project(m);return <a href={m.href} data-marker-kind={m.kind}><title>{m.label} · {m.x}, {m.y}</title><circle cx={p.x} cy={p.y} r={m.kind==='shrine'?23:16} fill={m.kind==='shrine'?'#db5034':'#ffe28a'} stroke="#282b21" stroke-width="4"/><text x={p.x+21} y={p.y+9} font-size="29" font-weight="bold" fill="#22251d" stroke="#fff5d9" stroke-width="5" paint-order="stroke">{m.kind==='shrine'?`神社 ${Number(m.anchor.slice(-2))+1}`:m.anchor.slice(-2)}</text></a>;})}
+{outside.map(m=>{const p=project(m);return <a href={m.href} data-marker-kind={m.kind}><title>{m.label} · {m.x}, {m.y}</title><circle cx={p.x} cy={p.y} r={m.kind==='book'?16:23} fill={markerColor(m.kind)} stroke="#282b21" stroke-width="4"/><text x={p.x+21} y={p.y+9} font-size="29" font-weight="bold" fill="#22251d" stroke="#fff5d9" stroke-width="5" paint-order="stroke">{markerLabel(m)}</text></a>;})}
 </svg></div>
-<p>金色：图书；橙色：狐狸神社。数字为游戏锚点编号，不代表收集顺序或神社季度。</p>
+<p>金色：图书；橙色：狐狸神社；蓝色：玉手箱；紫色：交换怪异。编号不代表收集顺序或神社季度。</p>
+<section id="treasures"><h2>玉手箱怎么收集</h2><p>玉手箱不是走过去直接打开的固定箱子：接近后会逃跑，需要先击倒，再靠近执行拾取。游戏脚本对静止状态下的箭矢攻击另作处理，会转入逃跑状态；不要把射出第一箭当成已经拿到奖励。</p><div class="books">{exploration.markers.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>怪异表将玉手箱关联到这些生成锚点；具体哪一次刷新、奖励内容仍由游戏当次状态决定。脚本通过 GameDropTreasureBox 发放奖励，这里不把未解出的奖励池写成固定物品。</p></section>
 <h2>村庄图书</h2><p>“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={m.href}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
 <h2>独立区域图书</h2><div class="books">{inside.map(m=><a id={m.anchor} href={m.href}>{m.label}<small>{m.map.includes('2160')?'附身草丛（藪）':'隘口（峠）'} · {m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
 <p>这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。</p>
@@ -28,6 +32,6 @@ const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+
 <script>
 const svg=document.querySelector<SVGSVGElement>('#collection-map');
 document.querySelector<HTMLInputElement>('#map-zoom')?.addEventListener('input',e=>{if(svg)svg.style.width=`${(e.target as HTMLInputElement).value}%`;});
-for(const [id,kind] of [['show-books','book'],['show-shrines','shrine']])document.getElementById(id)?.addEventListener('change',e=>{document.querySelectorAll<SVGAElement>(`[data-marker-kind="${kind}"]`).forEach(marker=>{marker.style.display=(e.target as HTMLInputElement).checked?'':'none';});});
+for(const [id,kind] of [['show-books','book'],['show-shrines','shrine'],['show-treasures','treasure'],['show-exchanges','exchange']])document.getElementById(id)?.addEventListener('change',e=>{document.querySelectorAll<SVGAElement>(`[data-marker-kind="${kind}"]`).forEach(marker=>{marker.style.display=(e.target as HTMLInputElement).checked?'':'none';});});
 </script>
 <style>.road-map{margin:1rem 0}.road-map summary{cursor:pointer}.road-map img{width:100%;height:auto}.map-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}.map-wrap svg{display:block;width:100%;min-width:680px;max-height:none}.map-wrap a:hover circle{fill:var(--green)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.5rem}.books a{padding:.6rem;background:var(--paper-raised);border-radius:8px;color:var(--ink);text-decoration:none}.books small{display:block;color:var(--muted)}p{line-height:1.7}</style>

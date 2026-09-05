@@ -7,6 +7,7 @@ const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
 const treasures=catalog.entities.filter(e=>e.kind==='items'&&Number(e.numeric_id)>=650000&&Number(e.numeric_id)<=650050);
 ---
 <BaseLayout title="夜间交换与勾玉准备"><h1>夜间交换与勾玉准备</h1>
+<p><a href="/guides/collection-map/">查看交换怪异与玉手箱地图</a></p>
 <p>准备解锁祠堂能力时，先查<a href="/guides/skills/">目标能力和配方</a>，再决定要找哪种勾玉。夜间带上可交换的余量物品，避免把供奉、交付任务的库存交出去。</p>
 <section><h2>遇到交换怪异时带什么</h2><p>下面是交换动作本身的条件，不是保证怪异每天出现的刷新表。先与对方交谈，再选中对应物品执行交付；每次交付消耗 1 个，奖励按下方“选择”或“随机”的方式获得，不会同时给出整张清单。</p>
 {exchanges.exchanges.map(exchange=><article class="card" id={exchange.id}><h3>{exchange.name}</h3><h4>交出以下任一种 ×1</h4><div class="items">{exchange.input_item_ids.map(id=>{const e=item(id);return e&&<a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="44" height="44" alt="" loading="lazy"/>}{e.name.zh_hans}</a>;})}</div><h4>奖励 · {exchange.reward_mode}</h4><div class="items">{exchange.reward_item_ids.map(id=>{const e=item(id);return e&&<a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="44" height="44" alt="" loading="lazy"/>}{e.name.zh_hans}</a>;})}</div></article>)}
