@@ -1,11 +1,13 @@
 [
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_APPLE"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_APPLE_TREE",
     "name": {
       "aliases": [
@@ -34,12 +36,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 9,
     "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ASPARAGUS"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "item_numeric_id": 100000,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "item_numeric_id": 100000,
+        "quantity": 1,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_ASPARAGUS",
     "name": {
       "aliases": [
@@ -65,12 +84,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BANANA"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_BANANA_TREE",
     "name": {
       "aliases": [
@@ -94,10 +115,12 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_BIG_CHINESE_CABBAGE",
     "name": {
       "aliases": [
@@ -118,10 +141,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_BIG_CORN",
     "name": {
       "aliases": [
@@ -142,10 +167,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_BIG_TARO",
     "name": {
       "aliases": [
@@ -167,10 +194,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_BIG_TURNIP",
     "name": {
       "aliases": [
@@ -192,12 +221,29 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": 10,
     "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BLUEBERRY"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "item_numeric_id": 100230,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "item_numeric_id": 100230,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_BLUEBERRY",
     "name": {
       "aliases": [
@@ -223,12 +269,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_BUCKWHEAT"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_BUCKWHEAT",
+        "item_numeric_id": 100270,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_BUCKWHEAT",
+        "item_numeric_id": 100271,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_BUCKWHEAT",
     "name": {
       "aliases": [
@@ -254,12 +317,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CABBAGE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "item_numeric_id": 100060,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_CABBAGE",
+        "item_numeric_id": 100061,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_CABBAGE",
     "name": {
       "aliases": [
@@ -285,12 +365,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CACAO"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_CACAO_TREE",
     "name": {
       "aliases": [
@@ -314,12 +396,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARNATION"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_CARNATION",
+        "item_numeric_id": 111070,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_CARNATION",
     "name": {
       "aliases": [
@@ -344,12 +436,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CARROT"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "item_numeric_id": 100080,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_CARROT",
     "name": {
       "aliases": [
@@ -375,12 +477,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHAMOMILE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_CHAMOMILE",
+        "item_numeric_id": 111000,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_CHAMOMILE",
     "name": {
       "aliases": [
@@ -405,12 +517,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHERRIES"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_CHERRY_TREE",
     "name": {
       "aliases": [
@@ -439,12 +553,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHINESE_CABBAGE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+        "item_numeric_id": 100360,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_CHINESE_CABBAGE",
     "name": {
       "aliases": [
@@ -469,12 +593,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CHRYSANTHEMUM"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_CHRYSANTHEMUM",
+        "item_numeric_id": 111190,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_CHRYSANTHEMUM",
     "name": {
       "aliases": [
@@ -499,12 +633,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 13,
     "growth_points": 1300,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CORN"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1300,
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "item_numeric_id": 100160,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "item_numeric_id": 100160,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_CORN",
     "name": {
       "aliases": [
@@ -529,12 +680,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_COSMOS"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_COSMOS",
+        "item_numeric_id": 111180,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_COSMOS",
     "name": {
       "aliases": [
@@ -559,12 +720,36 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 9,
     "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_CUCUMBER"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "item_numeric_id": 100150,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "item_numeric_id": 100150,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_CUCUMBER",
+        "item_numeric_id": 100151,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_CUCUMBER",
     "name": {
       "aliases": [
@@ -590,12 +775,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAFFODIL"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_DAFFODIL",
+        "item_numeric_id": 111200,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_DAFFODIL",
     "name": {
       "aliases": [
@@ -620,12 +815,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAHLIA"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_DAHLIA",
+        "item_numeric_id": 111170,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_DAHLIA",
     "name": {
       "aliases": [
@@ -650,12 +855,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 9,
     "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DAIKON"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_DAIKON",
+        "item_numeric_id": 100370,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_DAIKON",
+        "item_numeric_id": 100371,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_DAIKON",
     "name": {
       "aliases": [
@@ -681,12 +903,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_DIANTHUS"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_DIANTHUS",
+        "item_numeric_id": 111040,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_DIANTHUS",
     "name": {
       "aliases": [
@@ -712,12 +944,52 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 650,
     "harvest_item_ids": [
-      "ITEM_ID_CROPS_EDAMAME"
+      "ITEM_ID_CROPS_EDAMAME",
+      "ITEM_ID_CROPS_BEAN_SPROUTS",
+      "ITEM_ID_CROPS_SOYBEAN"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 130,
+        "item_id": "ITEM_ID_CROPS_BEAN_SPROUTS",
+        "item_numeric_id": 100450,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 650,
+        "item_id": "ITEM_ID_CROPS_EDAMAME",
+        "item_numeric_id": 100190,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_EDAMAME",
+        "item_numeric_id": 100190,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_SOYBEAN",
+        "item_numeric_id": 100330,
+        "quantity": 6,
+        "state": 9
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_SOYBEAN",
+        "item_numeric_id": 100331,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_EDAMAME",
     "name": {
       "aliases": [
@@ -735,20 +1007,36 @@
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
-      "summer",
-      "autumn"
+      "summer"
     ],
     "seed_item_ids": [
       "ITEM_ID_SEED_EDAMAME"
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 11,
     "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_EGGPLANT"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "item_numeric_id": 100120,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "item_numeric_id": 100120,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_EGGPLANT",
     "name": {
       "aliases": [
@@ -773,12 +1061,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_FORGET_ME_NOT"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_FORGET_ME_NOT",
+        "item_numeric_id": 111060,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_FORGET_ME_NOT",
     "name": {
       "aliases": [
@@ -803,12 +1101,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GARLIC"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "item_numeric_id": 100180,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_GARLIC",
     "name": {
       "aliases": [
@@ -833,12 +1141,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GINGER"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "item_numeric_id": 100170,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_GINGER",
+        "item_numeric_id": 100171,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_GINGER",
     "name": {
       "aliases": [
@@ -864,12 +1189,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GRAPES"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_GRAPE_TREE",
     "name": {
       "aliases": [
@@ -898,12 +1225,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_GYPSOPHILA"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_GYPSOPHILA",
+        "item_numeric_id": 111100,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_GYPSOPHILA",
     "name": {
       "aliases": [
@@ -929,12 +1266,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 8,
     "growth_points": 800,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HIBISCUS"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_HIBISCUS",
+        "item_numeric_id": 111130,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_HIBISCUS",
     "name": {
       "aliases": [
@@ -959,10 +1306,12 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_HIDING_GRASS",
     "name": {
       "aliases": [
@@ -983,12 +1332,29 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": 14,
     "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HOPS"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_HOPS",
+        "item_numeric_id": 100250,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_HOPS",
+        "item_numeric_id": 100250,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_HOPS",
     "name": {
       "aliases": [
@@ -1013,12 +1379,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_HYACINTH"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_HYACINTH",
+        "item_numeric_id": 111010,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_HYACINTH",
     "name": {
       "aliases": [
@@ -1044,12 +1420,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_IRIS"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_IRIS",
+        "item_numeric_id": 111020,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_IRIS",
     "name": {
       "aliases": [
@@ -1075,12 +1461,29 @@
     ]
   },
   {
+    "cultivation_method": "菌类栽培",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "item_numeric_id": 100320,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "item_numeric_id": 100320,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_KIKURAGE",
     "name": {
       "aliases": [
@@ -1105,12 +1508,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LAVENDER"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_LAVENDER",
+        "item_numeric_id": 111160,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_LAVENDER",
     "name": {
       "aliases": [
@@ -1135,12 +1548,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LEMON"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_LEMON_TREE",
     "name": {
       "aliases": [
@@ -1169,12 +1584,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 11,
     "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LETTUCE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_LETTUCE",
+        "item_numeric_id": 100070,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_LETTUCE",
     "name": {
       "aliases": [
@@ -1200,12 +1625,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_LILY_OF_THE_VALLEY",
+        "item_numeric_id": 111120,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_LILY_OF_THE_VALLEY",
     "name": {
       "aliases": [
@@ -1231,12 +1666,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LOTUS_ROOT"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
+        "item_numeric_id": 100420,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_LOTUS_ROOT",
     "name": {
       "aliases": [
@@ -1263,12 +1708,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ORANGE"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_MANDARIN_ORANGE_TREE",
     "name": {
       "aliases": [
@@ -1297,12 +1744,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MANGO"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_MANGO_TREE",
     "name": {
       "aliases": [
@@ -1326,12 +1775,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MARIGOLD"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_MARIGOLD",
+        "item_numeric_id": 111110,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_MARIGOLD",
     "name": {
       "aliases": [
@@ -1357,12 +1816,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 14,
     "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MELON"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_MELON",
+        "item_numeric_id": 100210,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_MELON",
     "name": {
       "aliases": [
@@ -1387,12 +1856,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MORNING_GLORY"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_MORNING_GLORY",
+        "item_numeric_id": 111090,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_MORNING_GLORY",
     "name": {
       "aliases": [
@@ -1418,10 +1897,12 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_MUD_SEEDS",
     "name": {
       "aliases": [
@@ -1443,12 +1924,58 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
-      "ITEM_ID_CROPS_MULBERRY_LEAF"
+      "ITEM_ID_CROPS_MULBERRY_LEAF",
+      "ITEM_ID_CROPS_MULBERRY"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 5
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 5
+      }
+    ],
     "id": "CROPS_ID_MULBERRY",
     "name": {
       "aliases": [
@@ -1477,10 +2004,12 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_AKEBI",
     "name": {
       "aliases": [
@@ -1501,10 +2030,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
     "name": {
       "aliases": [
@@ -1526,10 +2057,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BANBOO",
     "name": {
       "aliases": [
@@ -1550,10 +2083,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BAYBERRY",
     "name": {
       "aliases": [
@@ -1575,10 +2110,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BEETLE",
     "name": {
       "aliases": [
@@ -1600,10 +2137,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BRACKEN",
     "name": {
       "aliases": [
@@ -1624,10 +2163,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
     "name": {
       "aliases": [
@@ -1648,10 +2189,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
     "name": {
       "aliases": [
@@ -1672,10 +2215,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_COD_BUD",
     "name": {
       "aliases": [
@@ -1696,10 +2241,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_COIN",
     "name": {
       "aliases": [
@@ -1721,10 +2268,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
     "name": {
       "aliases": [
@@ -1745,10 +2294,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_DANDELION",
     "name": {
       "aliases": [
@@ -1769,10 +2320,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_DONG_QUAI",
     "name": {
       "aliases": [
@@ -1794,10 +2347,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_FALLEN_TREE",
     "name": {
       "aliases": [
@@ -1817,10 +2372,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_FUYUICHIGO",
     "name": {
       "aliases": [
@@ -1841,10 +2398,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_GINKGO_NUT",
     "name": {
       "aliases": [
@@ -1866,10 +2425,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_GRASS",
     "name": {
       "aliases": [
@@ -1889,10 +2450,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_HORSETAIL",
     "name": {
       "aliases": [
@@ -1914,10 +2477,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK",
     "name": {
       "aliases": [
@@ -1937,10 +2502,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
     "name": {
       "aliases": [
@@ -1962,10 +2529,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
     "name": {
       "aliases": [
@@ -1987,10 +2556,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
     "name": {
       "aliases": [
@@ -2012,10 +2583,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
     "name": {
       "aliases": [
@@ -2035,10 +2608,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_JAPANESE_YAM",
     "name": {
       "aliases": [
@@ -2060,10 +2635,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
     "name": {
       "aliases": [
@@ -2085,10 +2662,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
     "name": {
       "aliases": [
@@ -2110,10 +2689,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
     "name": {
       "aliases": [
@@ -2135,10 +2716,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_LILY",
     "name": {
       "aliases": [
@@ -2159,10 +2742,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_LILY_ROOT",
     "name": {
       "aliases": [
@@ -2183,10 +2768,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_MATSUTAKE",
     "name": {
       "aliases": [
@@ -2207,10 +2794,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_MUD_SEEDS",
     "name": {
       "aliases": [
@@ -2232,10 +2821,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_PINE_CONE",
     "name": {
       "aliases": [
@@ -2256,10 +2847,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_PURPLE_FLOWER",
     "name": {
       "aliases": [
@@ -2280,10 +2873,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_RICEFIELD_WEED",
     "name": {
       "aliases": [
@@ -2305,10 +2900,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK",
     "name": {
       "aliases": [
@@ -2329,10 +2926,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
     "name": {
       "aliases": [
@@ -2354,10 +2953,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
     "name": {
       "aliases": [
@@ -2379,10 +2980,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
     "name": {
       "aliases": [
@@ -2404,10 +3007,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
     "name": {
       "aliases": [
@@ -2429,10 +3034,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
     "name": {
       "aliases": [
@@ -2454,10 +3061,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
     "name": {
       "aliases": [
@@ -2479,10 +3088,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
     "name": {
       "aliases": [
@@ -2504,10 +3115,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
     "name": {
       "aliases": [
@@ -2529,10 +3142,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_ROQUAT",
     "name": {
       "aliases": [
@@ -2553,10 +3168,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_RUBUS",
     "name": {
       "aliases": [
@@ -2578,10 +3195,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_SASANOKO",
     "name": {
       "aliases": [
@@ -2603,10 +3222,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STAG_BEETLE",
     "name": {
       "aliases": [
@@ -2628,10 +3249,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE",
     "name": {
       "aliases": [
@@ -2653,10 +3276,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_COPPER",
     "name": {
       "aliases": [
@@ -2678,10 +3303,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_GEM",
     "name": {
       "aliases": [
@@ -2703,10 +3330,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_GOLD",
     "name": {
       "aliases": [
@@ -2728,10 +3357,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_IRON",
     "name": {
       "aliases": [
@@ -2753,10 +3384,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
     "name": {
       "aliases": [
@@ -2778,10 +3411,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
     "name": {
       "aliases": [
@@ -2803,10 +3438,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
     "name": {
       "aliases": [
@@ -2828,10 +3465,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
     "name": {
       "aliases": [
@@ -2853,10 +3492,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
     "name": {
       "aliases": [
@@ -2878,10 +3519,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
     "name": {
       "aliases": [
@@ -2903,10 +3546,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
     "name": {
       "aliases": [
@@ -2928,10 +3573,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STUMP",
     "name": {
       "aliases": [
@@ -2953,10 +3600,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STUMP_HARD",
     "name": {
       "aliases": [
@@ -2978,10 +3627,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
     "name": {
       "aliases": [
@@ -3003,10 +3654,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TREE",
     "name": {
       "aliases": [
@@ -3027,10 +3680,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TREE_CEDAR",
     "name": {
       "aliases": [
@@ -3051,10 +3706,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TREE_HINOKI",
     "name": {
       "aliases": [
@@ -3076,10 +3733,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TREE_OAK",
     "name": {
       "aliases": [
@@ -3101,10 +3760,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TREE_PINE",
     "name": {
       "aliases": [
@@ -3126,10 +3787,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_TWIG",
     "name": {
       "aliases": [
@@ -3151,10 +3814,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
     "name": {
       "aliases": [
@@ -3176,10 +3841,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
     "name": {
       "aliases": [
@@ -3201,10 +3868,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
     "name": {
       "aliases": [
@@ -3226,10 +3895,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WALKING_STONE",
     "name": {
       "aliases": [
@@ -3251,10 +3922,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WALNUT",
     "name": {
       "aliases": [
@@ -3275,10 +3948,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WATER_HYACINTH",
     "name": {
       "aliases": [
@@ -3300,10 +3975,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WEED_COLOR_1",
     "name": {
       "aliases": [
@@ -3325,10 +4002,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WEED_COLOR_2",
     "name": {
       "aliases": [
@@ -3350,10 +4029,12 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_OBJECT_WOLFBERRY",
     "name": {
       "aliases": [
@@ -3374,12 +4055,36 @@
     "seed_item_ids": []
   },
   {
+    "cultivation_method": "",
     "growth_days": 10,
     "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_OLIVE"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_OLIVE",
+        "item_numeric_id": 100340,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_OLIVE",
+        "item_numeric_id": 100340,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_OLIVE",
+        "item_numeric_id": 100341,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_OLIVE",
     "name": {
       "aliases": [
@@ -3405,12 +4110,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ONION"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "item_numeric_id": 100010,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_ONION",
+        "item_numeric_id": 100011,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_ONION",
     "name": {
       "aliases": [
@@ -3436,12 +4158,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PANSY"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_PANSY",
+        "item_numeric_id": 111210,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_PANSY",
     "name": {
       "aliases": [
@@ -3466,12 +4198,58 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
-      "ITEM_ID_CROPS_PEA"
+      "ITEM_ID_CROPS_PEA",
+      "ITEM_ID_CROPS_SNOW_PEAS"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 960,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 100,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 100,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 5
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 5
+      }
+    ],
     "id": "CROPS_ID_PEA",
     "name": {
       "aliases": [
@@ -3496,12 +4274,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEACH"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_PEACH_TREE",
     "name": {
       "aliases": [
@@ -3530,12 +4310,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEAR"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_PEAR_TREE",
     "name": {
       "aliases": [
@@ -3564,12 +4346,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 10,
     "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PEPPER"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "item_numeric_id": 100130,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "item_numeric_id": 100130,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_PEPPER",
     "name": {
       "aliases": [
@@ -3594,12 +4393,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PERSIMMON"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_PERSIMMON_TREE",
     "name": {
       "aliases": [
@@ -3628,12 +4429,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 13,
     "growth_points": 1300,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PINEAPPLE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1300,
+        "item_id": "ITEM_ID_CROPS_PINEAPPLE",
+        "item_numeric_id": 100220,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_PINEAPPLE",
     "name": {
       "aliases": [
@@ -3659,12 +4470,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PLUM"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_PLUM_TREE",
     "name": {
       "aliases": [
@@ -3693,12 +4506,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 5,
     "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POPPY"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_POPPY",
+        "item_numeric_id": 111050,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_POPPY",
     "name": {
       "aliases": [
@@ -3724,12 +4547,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_POTATO"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "item_numeric_id": 100040,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_POTATO",
     "name": {
       "aliases": [
@@ -3755,12 +4588,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_PUMPKIN"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_PUMPKIN",
+        "item_numeric_id": 100140,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_PUMPKIN",
     "name": {
       "aliases": [
@@ -3785,12 +4628,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 8,
     "growth_points": 800,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RADISH"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_RADISH",
+        "item_numeric_id": 100050,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_RADISH",
     "name": {
       "aliases": [
@@ -3816,12 +4669,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RICE"
     ],
     "harvest_quantity": 10,
+    "harvest_stages": [
+      {
+        "growth_points": 5000,
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "item_numeric_id": 100400,
+        "quantity": 10,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_RICE",
     "name": {
       "aliases": [
@@ -3839,21 +4702,29 @@
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
-      "spring",
-      "summer",
-      "autumn"
+      "spring"
     ],
     "seed_item_ids": [
       "ITEM_ID_SEED_RICE"
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 9,
     "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_ROSE",
+        "item_numeric_id": 111140,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_ROSE",
     "name": {
       "aliases": [
@@ -3878,12 +4749,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_ROSEMARY"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "item_numeric_id": 111220,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_ROSEMARY",
     "name": {
       "aliases": [
@@ -3908,12 +4789,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 9,
     "growth_points": 900,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SESAME"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_SESAME",
+        "item_numeric_id": 100350,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_SESAME",
+        "item_numeric_id": 100350,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_SESAME",
     "name": {
       "aliases": [
@@ -3938,12 +4836,29 @@
     ]
   },
   {
+    "cultivation_method": "菌类栽培",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "item_numeric_id": 100300,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "item_numeric_id": 100300,
+        "quantity": 1,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_SHIITAKE_MUSHROOM",
     "name": {
       "aliases": [
@@ -3968,12 +4883,29 @@
     ]
   },
   {
+    "cultivation_method": "菌类栽培",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+        "item_numeric_id": 100310,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+        "item_numeric_id": 100310,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
     "id": "CROPS_ID_SHIMEJI",
     "name": {
       "aliases": [
@@ -3999,12 +4931,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SKUNK_CABBAGE"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_SKUNK_CABBAGE",
+        "item_numeric_id": 111080,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_SKUNK_CABBAGE",
     "name": {
       "aliases": [
@@ -4028,12 +4970,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SPINACH"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_SPINACH",
+        "item_numeric_id": 100380,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_SPINACH",
+        "item_numeric_id": 100381,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_SPINACH",
     "name": {
       "aliases": [
@@ -4058,12 +5017,36 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 14,
     "growth_points": 1400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_STRAWBERRY"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "item_numeric_id": 100090,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "item_numeric_id": 100090,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_STRAWBERRY",
+        "item_numeric_id": 100091,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_STRAWBERRY",
     "name": {
       "aliases": [
@@ -4088,12 +5071,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUGARCANE"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_SUGARCANE",
+        "item_numeric_id": 100260,
+        "quantity": 2,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_SUGARCANE",
     "name": {
       "aliases": [
@@ -4118,12 +5111,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SUNFLOWER"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_SUNFLOWER",
+        "item_numeric_id": 111150,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_SUNFLOWER",
     "name": {
       "aliases": [
@@ -4148,12 +5151,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 7,
     "growth_points": 700,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SWEET_POTATO"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+        "item_numeric_id": 100290,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_SWEET_POTATO",
     "name": {
       "aliases": [
@@ -4178,12 +5191,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TARO"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TARO",
+        "item_numeric_id": 100280,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_TARO",
     "name": {
       "aliases": [
@@ -4209,12 +5232,36 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TEA_TREE"
     ],
     "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 5
+      }
+    ],
     "id": "CROPS_ID_TEA_TREE",
     "name": {
       "aliases": [
@@ -4243,12 +5290,36 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 12,
     "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TOMATO"
     ],
     "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "item_numeric_id": 100110,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "item_numeric_id": 100110,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_TOMATO",
+        "item_numeric_id": 100111,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_TOMATO",
     "name": {
       "aliases": [
@@ -4273,12 +5344,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TULIP"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_TULIP",
+        "item_numeric_id": 111030,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_TULIP",
     "name": {
       "aliases": [
@@ -4304,12 +5385,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_TURNIP"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "item_numeric_id": 100030,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_TURNIP",
     "name": {
       "aliases": [
@@ -4335,12 +5426,22 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WASABI"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_WASABI",
+        "item_numeric_id": 100410,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
     "id": "CROPS_ID_WASABI",
     "name": {
       "aliases": [
@@ -4366,12 +5467,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 11,
     "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WATERMELON"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_WATERMELON",
+        "item_numeric_id": 100200,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WATERMELON",
+        "item_numeric_id": 100201,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_WATERMELON",
     "name": {
       "aliases": [
@@ -4396,12 +5514,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 4,
     "growth_points": 400,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHEAT"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_WHEAT",
+        "item_numeric_id": 100240,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WHEAT",
+        "item_numeric_id": 100241,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_WHEAT",
     "name": {
       "aliases": [
@@ -4426,12 +5561,29 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": 6,
     "growth_points": 600,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WHITE_ONION"
     ],
     "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "item_numeric_id": 100100,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WHITE_ONION",
+        "item_numeric_id": 100101,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
     "id": "CROPS_ID_WHITE_ONION",
     "name": {
       "aliases": [
@@ -4457,12 +5609,14 @@
     ]
   },
   {
+    "cultivation_method": "",
     "growth_days": null,
     "growth_points": null,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_YUZU"
     ],
     "harvest_quantity": null,
+    "harvest_stages": [],
     "id": "CROPS_ID_YUZU_TREE",
     "name": {
       "aliases": [

@@ -1,7 +1,7 @@
 import struct
 import pytest
 
-from honogurashi_extractor.harvest import mature_quantity
+from honogurashi_extractor.harvest import mature_quantity, harvest_stages
 from honogurashi_extractor.table import TableFormatError
 
 
@@ -16,6 +16,9 @@ def record(low=3, high=3, chance=100):
 
 def test_alternative_harvest_actions_are_not_added_together():
     assert mature_quantity(record(), 100150) == 3
+
+def test_stage_reader_keeps_growth_threshold_and_deduplicates_actions():
+    assert harvest_stages(record()) == [{'state':1,'growth_points':900,'item_numeric_id':100150,'quantity':3}]
 
 
 def test_random_yield_or_unrelated_item_is_not_a_fixed_quantity():

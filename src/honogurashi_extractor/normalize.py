@@ -217,7 +217,10 @@ def normalize_snapshot(
                     if _u32(item_record, 356) != crop_numeric_id:
                         continue
                     seeds.append(seed.id)
-                    seasons.extend(_seasons(item_groups_by_numeric[seed.numeric_id]))
+                    # Only the growth description, not later flavour text about
+                    # the crop changing into another harvest in a later season.
+                    seed_group = item_groups_by_numeric[seed.numeric_id]
+                    seasons.extend(_seasons(tuple(seed_group[13:19])))
                     if seed.related_item_id:
                         harvests.append(seed.related_item_id)
             name = _name(group, overrides)
@@ -233,6 +236,7 @@ def normalize_snapshot(
                 growth_days=growth_days,
                 regrow_points=regrow_points,
                 regrow_days=regrow_days,
+                cultivation_method='菌类栽培' if seeds and any('栽培キット' in items_by_numeric[_u32(r,0)].name.ja for r in item_table.records if items_by_numeric[_u32(r,0)].id in seeds) else '',
             )
 
     process_table = tables.get("gimmickprocess")

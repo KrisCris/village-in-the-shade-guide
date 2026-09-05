@@ -140,16 +140,6 @@ def normalize_world(
                     tuple(p for p in periods.values() if any(a.time_period == p for a in appearances_by_fish[numeric_id])),
                 )
 
-    gift_items: dict[int, list[GiftItem]] = defaultdict(list)
-    presents = tables.get("characterpresent")
-    if presents:
-        for record in presents.records:
-            item = items_by_numeric.get(_u32(record, 16))
-            if item:
-                gift_items[_u32(record, 8)].append(
-                    GiftItem(item.id, _u32(record, 12))
-                )
-
     characters = tables.get("character")
     if characters:
         for record, group in zip(
@@ -163,12 +153,24 @@ def normalize_world(
                 overrides=overrides,
             )
             numeric_id = _u32(record, 0)
+            # characterpresent is a conditional hand-in event table, NOT taste.
+            # character.dat: four liked item IDs at 200, four disliked at 232.
+            gifts = tuple(
+                GiftItem(items_by_numeric[item_id].id, preference)
+                for start, preference in ((200, 1), (232, -1))
+                for offset in range(start, start + 32, 8)
+                if (item_id := _u32(record, offset)) in items_by_numeric
+            )
+            birthday_season, birthday_day = _u32(record, 420), _u32(record, 424)
+            has_birthday = birthday_season < 4 and 1 <= birthday_day <= 28
             world.characters[internal] = Character(
                 internal,
                 numeric_id,
                 name,
                 group[1] if len(group) > 1 else "",
-                tuple(gift_items[numeric_id]),
+                gifts,
+                seasons[birthday_season] if has_birthday else None,
+                birthday_day if has_birthday else None,
             )
 
     _normalize_named(tables.get("livestock"), world.livestock, overrides)

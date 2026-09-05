@@ -25,11 +25,11 @@
   "format": 1,
   "generated_files": {
     "entities/activities.json": "9df9ab205997fe03eddecdd2a4b169ff46455ef402b39064c1932eff8e6693c3",
-    "entities/characters.json": "06670a3a24e9064f358879a2bc5313f1ac5724028cdc10c6c94de8c85a5d8ac1",
+    "entities/characters.json": "faf4c7541e6507e46c6d9bffc0378e03d2ddcdd2d4c86034479b8ed96fd2f4fe",
     "entities/collectibles.json": "f4a0eb5020fbe33207f4c8b65edb564bedf45c9e3195c15a0e7ec4478bebcc8c",
     "entities/cooking-recipes.json": "3aabb5b16a9eeced6b4e942bbb164fefd8ef0dd9acb25e4a7a1a9f9deaa08a4f",
     "entities/craft-recipes.json": "c89d2f3c05fac53259c3007e471764adb0616f6bc0abbcf5d58766b880249394",
-    "entities/crops.json": "4290a95535869ebcea0bf1f9cd8621e0ffb00c03db1980379d18e7023e26be4c",
+    "entities/crops.json": "736e4275d051632fca637f706c2f7f434d8912df0245e932a37b813e9ecd9bab",
     "entities/facilities.json": "488391c7c3c8d65afbcc70f63ae2b784b55240f2ac624b0ebf91612867c2ca51",
     "entities/facility-releases.json": "08e04b18873d68fda60a4bf25e1f6fc94488270571dbc0db5723d58e5eb0094e",
     "entities/fish.json": "e79b8009c896465da2eb0fbd4ddf2f8c93cf9dca76aa3e6619313127ed15a23e",

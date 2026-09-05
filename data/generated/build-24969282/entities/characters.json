@@ -1,13 +1,39 @@
 [
   {
+    "birthday_day": 21,
+    "birthday_season": "spring",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_011",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_KEYITEM_PURPLE_FLOWER",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_065",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_SWEETFISH",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_SALMON",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_046",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_BRACKEN",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_BOY",
@@ -27,10 +53,40 @@
     "role_ja": "少年"
   },
   {
+    "birthday_day": 18,
+    "birthday_season": "spring",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_CROPS_TARO",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_SHOCHU_WHEAT",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_SHOCHU_SWEET_POTATO",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_BEEF_JERKY",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_093",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_094",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_LEMON",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_RASPBERRY",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_CARPENTER",
@@ -50,10 +106,40 @@
     "role_ja": "大工"
   },
   {
+    "birthday_day": 26,
+    "birthday_season": "autumn",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_NAGO_WALLET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_052",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_PICKLED_PLUMS",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_WINE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_TOURMALINE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_RHINOCEROS_BEETLE",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_STAG_BEETLE",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_CRUCIAN_CARP",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_CARP",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_CITY_HALL_STAFF",
@@ -74,18 +160,40 @@
     "role_ja": "市役所員"
   },
   {
+    "birthday_day": 3,
+    "birthday_season": "winter",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_OBJECT_SAP",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_097",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_103",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_KEYITEM_DONG_QUAI",
-        "preference": 2
+        "item_id": "ITEM_ID_CROPS_ROSE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_AMETHYST",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_YOGURT",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_FEMALE_DOCTOR",
@@ -106,14 +214,40 @@
     "role_ja": "女医"
   },
   {
+    "birthday_day": 20,
+    "birthday_season": "winter",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_092",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_OBJECT_COPPER_ORE",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_095",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_099",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_AMBER",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_075",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SOYBEAN",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_GENERAL_STORE_MANAGER",
@@ -133,6 +267,8 @@
     "role_ja": "雑貨屋"
   },
   {
+    "birthday_day": null,
+    "birthday_season": null,
     "gift_items": [],
     "id": "CHARA_ID_GHOST_GIRL",
     "name": {
@@ -149,14 +285,40 @@
     "role_ja": ""
   },
   {
+    "birthday_day": 12,
+    "birthday_season": "autumn",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_020",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_084",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_089",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TULIP",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_030",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_031",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_GIRL",
@@ -176,7 +338,42 @@
     "role_ja": "幼女"
   },
   {
-    "gift_items": [],
+    "birthday_day": 1,
+    "birthday_season": "autumn",
+    "gift_items": [
+      {
+        "item_id": "ITEM_ID_COOKING_017",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_055",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SUNFLOWER",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_FISHING_LOACH",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_PICKLED_PLUMS",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_MAYONNAISE",
+        "preference": -1
+      }
+    ],
     "id": "CHARA_ID_HUNTER",
     "name": {
       "aliases": [
@@ -195,10 +392,40 @@
     "role_ja": "狩人"
   },
   {
+    "birthday_day": 7,
+    "birthday_season": "summer",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_008",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_018",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_027",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_COSMOS",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_FOX_FUR",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_DRIED_MEAT",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_LUMBERJACK",
@@ -218,6 +445,8 @@
     "role_ja": "木こり"
   },
   {
+    "birthday_day": null,
+    "birthday_season": null,
     "gift_items": [],
     "id": "CHARA_ID_MOTHER",
     "name": {
@@ -234,10 +463,40 @@
     "role_ja": ""
   },
   {
+    "birthday_day": 15,
+    "birthday_season": "winter",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_009",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_LIVESTOCK_TRUFFLE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_PLUM_WINE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_008",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_028",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CHEESE",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ROSE",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_OLD_MAN",
@@ -257,10 +516,40 @@
     "role_ja": "おっさん"
   },
   {
+    "birthday_day": 17,
+    "birthday_season": "summer",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_041",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_RADISH",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_102",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_TOPAZ",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_CLUSTER_AMARYLLIS",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GINKGO_NUT",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_ORPHAN",
@@ -280,10 +569,40 @@
     "role_ja": "みなしご"
   },
   {
+    "birthday_day": 11,
+    "birthday_season": "summer",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_051",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_JAPANESE_SAKE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GOLD_ORE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_FOX_FUR",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_SECRETARY",
@@ -303,10 +622,40 @@
     "role_ja": "秘書"
   },
   {
+    "birthday_day": 24,
+    "birthday_season": "summer",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_066",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_HIBISCUS",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_BEER",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_COOKING_091",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_HORSETAIL",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_DANDELION",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_STREET_VENDOR",
@@ -326,14 +675,40 @@
     "role_ja": "露天商"
   },
   {
+    "birthday_day": 4,
+    "birthday_season": "spring",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_KEYITEM_RIN_LUNCH_BOX",
-        "preference": 2
+        "item_id": "ITEM_ID_JAM_ROSE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GOLD_ORE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_SAPPHIRE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_DANDELION",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_WATER_HYACINTH",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_PINE_CONE",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_ACORNS",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_VILLAGE_HEAD",
@@ -353,14 +728,40 @@
     "role_ja": "村長"
   },
   {
+    "birthday_day": 8,
+    "birthday_season": "autumn",
     "gift_items": [
       {
-        "item_id": "ITEM_ID_KEYITEM_HELP_TICKET",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_061",
+        "preference": 1
       },
       {
-        "item_id": "ITEM_ID_KEYITEM_HONEYBEE",
-        "preference": 2
+        "item_id": "ITEM_ID_COOKING_078",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_CROPS_SPINACH",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_RHINOCEROS_BEETLE",
+        "preference": 1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_GARNET",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_SAPPHIRE",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_AMETHYST",
+        "preference": -1
+      },
+      {
+        "item_id": "ITEM_ID_OBJECT_TOURMALINE",
+        "preference": -1
       }
     ],
     "id": "CHARA_ID_YOUNG_MAN",

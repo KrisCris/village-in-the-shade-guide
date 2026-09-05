@@ -78,7 +78,7 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
         ),
         "character": read_table(
             build_table(
-                records=[_record(684, {0: 1040, 8: 0, 12: 12})],
+                records=[_record(684, {0: 1040, 8: 0, 12: 12, 200: 100010, 208: 160000, 232: 160000, 420: 0, 424: 4})],
                 strings=character_group,
             )
         ),
@@ -93,7 +93,9 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
     world = normalize_world(tables, core, {})
 
     assert world.characters["CHARA_ID_RIN"].gift_items[0].item_id == onion.id
-    assert world.characters["CHARA_ID_RIN"].gift_items[0].preference == 2
+    assert [gift.preference for gift in world.characters["CHARA_ID_RIN"].gift_items] == [1, 1, -1]
+    assert world.characters["CHARA_ID_RIN"].birthday_season == "spring"
+    assert world.characters["CHARA_ID_RIN"].birthday_day == 4
     assert world.fish[fish_item.id].locations[0].location_id == "FISHING_ID_RIVER"
     assert world.fish[fish_item.id].locations[0].name.zh_hans == "川"
     assert [appearance.season for appearance in world.fish[fish_item.id].appearances] == [

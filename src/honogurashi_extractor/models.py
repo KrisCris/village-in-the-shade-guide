@@ -41,6 +41,8 @@ class Crop:
     regrow_points: int | None = None
     regrow_days: int | None = None
     harvest_quantity: int | None = None
+    harvest_stages: tuple[dict, ...] = ()
+    cultivation_method: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -149,6 +151,8 @@ class Character:
     name: LocalizedName
     role_ja: str
     gift_items: tuple[GiftItem, ...]
+    birthday_season: str | None = None
+    birthday_day: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
