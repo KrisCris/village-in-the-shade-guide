@@ -15,6 +15,17 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('shows night exchange rewards as choices and links the required offering back', () => {
+    const tofu=entity('ITEM_ID_TOFU','items');
+    const jewel=entity('ITEM_ID_SPECIAL_JEWELS_04','items');
+    const data=catalog(tofu,jewel);
+    const reward=buildRelationGroups(tofu,data,'normal').find(g=>g.key==='outputs')?.rows.find(r=>r.entity.id===jewel.id);
+    expect(reward?.chips).toContain('对话选择一种');
+    expect(reward?.quantity).toBeUndefined();
+    const cost=buildRelationGroups(jewel,data,'normal').find(g=>g.key==='acquisition')?.rows.find(r=>r.entity.id===tofu.id);
+    expect(cost?.quantity).toBe(1);
+    expect(cost?.chips).toContain('豆腐小僧交换');
+  });
   it('links interchangeable cooking ingredients and shows their prices', () => {
     const egg=entity('egg','items',{sell_price:40});
     const other=entity('other-egg','items',{sell_price:80});

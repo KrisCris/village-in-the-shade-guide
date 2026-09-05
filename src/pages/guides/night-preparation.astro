@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import exchanges from '../../../data/sources/game-night-exchanges.json';
+const catalog=getCatalog();
+const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
+const treasures=catalog.entities.filter(e=>e.kind==='items'&&Number(e.numeric_id)>=650000&&Number(e.numeric_id)<=650050);
+---
+<BaseLayout title="夜间交换与勾玉准备"><h1>夜间交换与勾玉准备</h1>
+<p>准备解锁祠堂能力时，先查<a href="/guides/skills/">目标能力和配方</a>，再决定要找哪种勾玉。夜间带上可交换的余量物品，避免把供奉、交付任务的库存交出去。</p>
+<section><h2>遇到交换怪异时带什么</h2><p>下面是交换动作本身的条件，不是保证怪异每天出现的刷新表。先与对方交谈，再选中对应物品执行交付；每次交付消耗 1 个，奖励按下方“选择”或“随机”的方式获得，不会同时给出整张清单。</p>
+{exchanges.exchanges.map(exchange=><article class="card" id={exchange.id}><h3>{exchange.name}</h3><h4>交出以下任一种 ×1</h4><div class="items">{exchange.input_item_ids.map(id=>{const e=item(id);return e&&<a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="44" height="44" alt="" loading="lazy"/>}{e.name.zh_hans}</a>;})}</div><h4>奖励 · {exchange.reward_mode}</h4><div class="items">{exchange.reward_item_ids.map(id=>{const e=item(id);return e&&<a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="44" height="44" alt="" loading="lazy"/>}{e.name.zh_hans}</a>;})}</div></article>)}
+<p>豆腐小僧和雷兽的对话可以选择勾玉种类，适合补指定缺口；猫又从六种物品中随机给出一种，不能保证得到铜镜或剑。鱼类是否可交付按游戏的物品特征判断，不能把所有名字带“鱼”的物品都算进去。</p></section>
+<section><h2>道路拾取与商店补缺</h2><div class="items">{treasures.map(e=><a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="52" height="52" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div><p>普通勾玉、双子勾玉和小孩勾玉的游戏说明均标明可在夜晚道路拾取；雨勾玉标明只在下雨的夜晚拾取。缺某种时点开物品查看已确认的商店与交换来源，不要把“雨夜拾取”误解成“所有获取途径都要下雨”。</p><p>夜间发光拾取点还会检查是否开灯；部分点位指定灯光类型。探索时先打开照明，找不到时不要只凭道路上有没有光点判断该处没有物品。</p></section>
+<details><summary>核对范围与游戏来源</summary><p>交换：ai_creature_horror_thunder_beast、tofu_boy、nekomata 的 sensorCheck 与 present 分支，已追踪交付扣除、选择和随机奖励；刷新日期、完整点位仍需另行核对。拾取照明：gimmick_event_kirakira 的 isVisibleCondition；物品说明：item.dat。</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0}.card{padding:1rem;margin:1rem 0}.card h3{margin-top:0}.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.5rem}.items a{display:flex;align-items:center;gap:.5rem;text-decoration:none}.items img{object-fit:contain}p{line-height:1.8}h4{font-size:1rem}</style>

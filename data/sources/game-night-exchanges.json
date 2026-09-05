@@ -1,0 +1,126 @@
+{
+  "exchanges": [
+    {
+      "id": "thunder_beast",
+      "name": "雷獸",
+      "input_item_ids": [
+        "ITEM_ID_CROPS_ASPARAGUS",
+        "ITEM_ID_CROPS_CABBAGE",
+        "ITEM_ID_CROPS_CARROT",
+        "ITEM_ID_CROPS_LETTUCE",
+        "ITEM_ID_CROPS_ONION",
+        "ITEM_ID_CROPS_PEA",
+        "ITEM_ID_CROPS_POTATO",
+        "ITEM_ID_CROPS_RADISH",
+        "ITEM_ID_CROPS_SNOW_PEAS",
+        "ITEM_ID_CROPS_STRAWBERRY",
+        "ITEM_ID_CROPS_TURNIP",
+        "ITEM_ID_CROPS_WHITE_ONION"
+      ],
+      "input_quantity": 1,
+      "reward_item_ids": [
+        "ITEM_ID_SPECIAL_JEWELS_01",
+        "ITEM_ID_SPECIAL_JEWELS_02",
+        "ITEM_ID_SPECIAL_JEWELS_03",
+        "ITEM_ID_SPECIAL_JEWELS_04"
+      ],
+      "reward_mode": "对话选择一种",
+      "condition": "先交谈完成首次交换对话，再选中所需物品交付；该怪异须已出现",
+      "source": "data/script/ai_creature_horror_thunder_beast.lub",
+      "source_sha256": "afdf9e9bddd3abf4e68f2f5131c60efc5fb0154d1b022458622a0482bddcf213",
+      "functions": {
+        "sensorCheck": [
+          28,
+          57
+        ],
+        "present": [
+          114,
+          203
+        ]
+      }
+    },
+    {
+      "id": "tofu_boy",
+      "name": "豆腐小僧",
+      "input_item_ids": [
+        "ITEM_ID_TOFU"
+      ],
+      "input_quantity": 1,
+      "reward_item_ids": [
+        "ITEM_ID_SPECIAL_JEWELS_01",
+        "ITEM_ID_SPECIAL_JEWELS_02",
+        "ITEM_ID_SPECIAL_JEWELS_03",
+        "ITEM_ID_SPECIAL_JEWELS_04"
+      ],
+      "reward_mode": "对话选择一种",
+      "condition": "先交谈完成首次交换对话，再选中所需物品交付；该怪异须已出现",
+      "source": "data/script/ai_creature_horror_tofu_boy.lub",
+      "source_sha256": "ed6b566e64dbdfa3a294a1e4cf25176cb07d5b863af12f2eeff58371704ed3b4",
+      "functions": {
+        "sensorCheck": [
+          28,
+          57
+        ],
+        "present": [
+          114,
+          201
+        ]
+      }
+    },
+    {
+      "id": "nekomata",
+      "name": "猫又",
+      "input_item_ids": [
+        "ITEM_ID_FISHING_AMAGO_SALMON",
+        "ITEM_ID_FISHING_AMUR_MINNOW",
+        "ITEM_ID_FISHING_BITTERLING",
+        "ITEM_ID_FISHING_CARP",
+        "ITEM_ID_FISHING_CATFISH",
+        "ITEM_ID_FISHING_CRUCIAN_CARP",
+        "ITEM_ID_FISHING_DACE",
+        "ITEM_ID_FISHING_DARK_CHUB",
+        "ITEM_ID_FISHING_DARK_SLEEPER",
+        "ITEM_ID_FISHING_EEL",
+        "ITEM_ID_FISHING_FRESHWATER_GOBY",
+        "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+        "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+        "ITEM_ID_FISHING_LOACH",
+        "ITEM_ID_FISHING_PALE_CHUB",
+        "ITEM_ID_FISHING_RAINBOW_TROUT",
+        "ITEM_ID_FISHING_SALMON",
+        "ITEM_ID_FISHING_SATSUKI_TROUT",
+        "ITEM_ID_FISHING_SWEETFISH",
+        "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+        "ITEM_ID_FISHING_WHITE_CARP",
+        "ITEM_ID_FISHING_WHITE_CATFISH",
+        "ITEM_ID_FISHING_WHITE_EEL",
+        "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+        "ITEM_ID_FISHING_YAMAME_TROUT",
+        "ITEM_ID_FISHING_YAMATO_CHAR"
+      ],
+      "input_quantity": 1,
+      "reward_item_ids": [
+        "ITEM_ID_SPECIAL_JEWELS_01",
+        "ITEM_ID_SPECIAL_JEWELS_02",
+        "ITEM_ID_SPECIAL_JEWELS_03",
+        "ITEM_ID_SPECIAL_JEWELS_04",
+        "ITEM_ID_SPECIAL_MIRROR_01",
+        "ITEM_ID_SPECIAL_SWORD"
+      ],
+      "reward_mode": "随机一种",
+      "condition": "先交谈完成首次交换对话，再选中所需物品交付；该怪异须已出现",
+      "source": "data/script/ai_creature_horror_nekomata.lub",
+      "source_sha256": "192312d816c1e683b480dd1a3b0eede8c11b137ba459e8e87e9895750a6f3eb9",
+      "functions": {
+        "sensorCheck": [
+          28,
+          58
+        ],
+        "present": [
+          114,
+          188
+        ]
+      }
+    }
+  ]
+}

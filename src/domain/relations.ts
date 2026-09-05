@@ -4,6 +4,7 @@ import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
+import nightExchanges from '../../data/sources/game-night-exchanges.json';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
 
@@ -137,6 +138,15 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context,option ? `${option.feature_name}（示例，可替换）` : null] });
     }
   };
+  for (const exchange of nightExchanges.exchanges) {
+    const chips=[`${exchange.name}交换`,exchange.reward_mode];
+    if(exchange.input_item_ids.includes(entity.id)) for(const id of exchange.reward_item_ids) {
+      add('outputs',findCatalogEntity(catalog,id,'items'),{chips,note:exchange.condition,key:`exchange:${exchange.id}:${id}`});
+    }
+    if(exchange.reward_item_ids.includes(entity.id)) for(const id of exchange.input_item_ids) {
+      add('acquisition',findCatalogEntity(catalog,id,'items'),{quantity:exchange.input_quantity,chips,note:exchange.condition,key:`exchange:${exchange.id}:${id}`});
+    }
+  }
   const addOutput = (source: Entity, group: RelationGroupKey, context?: string) => {
     const output = itemQuantity(source.output);
     if (!output.item_id) return;
