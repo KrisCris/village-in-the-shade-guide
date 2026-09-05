@@ -3,6 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CropPlanner from '../components/table/CropPlanner';
 import {getCatalog} from '../data/repository';
 const catalog=getCatalog();
-const entities=catalog.entities.filter(e=>['items','crops','processes'].includes(e.kind));
+const entities=catalog.entities.filter(e=>['items','crops','processes','store-offers'].includes(e.kind));
 ---
 <BaseLayout title="种植与加工收益"><h1>种植与加工收益</h1><CropPlanner client:load entities={entities}/></BaseLayout>
