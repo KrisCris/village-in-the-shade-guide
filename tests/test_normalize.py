@@ -58,6 +58,23 @@ def test_official_names_and_aliases_are_preserved():
     assert name.review_status == "override"
 
 
+def test_cooking_category_ingredients_use_native_item_features():
+    groups = [_localized_group(f"ITEM_{i}", f"物品{i}", f"物品{i}") for i in range(1, 5)]
+    records = []
+    cursor = 0
+    for i, group in enumerate(groups, 1):
+        records.append(_record(496, {0:i, 8:cursor, 344:1, 348:11 if i < 3 else 12}))
+        cursor += len(group)
+    tables = {
+        "item": read_table(build_table(records=records, strings=b"".join(groups))),
+        "cooking": read_table(build_table(records=[_record(176, {0:1,24:4,32:1,52:1,60:11,68:2})], strings=b"COOKING_TEST\0")),
+    }
+    snapshot = normalize_snapshot(tables, {}, {})
+    assert snapshot.items['ITEM_1'].feature_ids == (11,)
+    option = snapshot.cooking_recipes['COOKING_TEST'].ingredient_options[0]
+    assert option == {'slot':0, 'default_item_id':'ITEM_1', 'feature_numeric_id':11, 'feature_name':'蛋类', 'quantity':2, 'item_ids':['ITEM_1','ITEM_2']}
+
+
 def test_item_descriptions_survive_related_item_linking():
     strings=['ITEM_ID_SEED_TEST']+['種','','','','種子','']+['']*6
     for text in ['夏天種在田裡','可以連續種植','入秋變成黃豆']:

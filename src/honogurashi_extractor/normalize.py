@@ -152,12 +152,16 @@ def normalize_snapshot(
             numeric_id = _u32(record, 0)
             item_groups_by_numeric[numeric_id] = group
             name = _name(group, overrides)
+            feature_count = _u32(record, 344)
+            if feature_count > (len(record) - 348) // 8:
+                raise ValueError(f"item {name.internal}: invalid feature count")
             item = Item(
                 id=name.internal,
                 numeric_id=numeric_id,
                 name=name,
                 buy_price=_u32(record, 292) or None,
                 sell_price=_u32(record, 296),
+                feature_ids=tuple(_u32(record, 348 + i * 8) for i in range(feature_count)),
                 icon_id=item_icon_id(record) or None,
                 outline_icon_id=item_outline_icon_id(record) or None,
                 category_numeric_id=_u32(record, 280),
@@ -343,10 +347,20 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
     for record, group in zip(table.records, _string_groups(table), strict=True):
         record_id = _u32(record, 0)
         inputs = []
+        options = []
         for index, offset in enumerate((52, 72, 92, 112, 132)):
             item_id = _resolve_item(_u32(record, offset), items_by_numeric, snapshot, table="cooking", record_id=record_id, field=f"inputs[{index}]")
             if item_id:
                 inputs.append(ItemQuantity(item_id, _u32(record, offset + 16)))
+                feature = _u32(record, offset + 8)
+                if feature:
+                    options.append({
+                        'slot': index, 'default_item_id': item_id,
+                        'feature_numeric_id': feature,
+                        'feature_name': {11:'蛋类',12:'奶类',13:'肉类',14:'小鱼类',15:'鱼类'}.get(feature, f'材料类别 {feature}'),
+                        'quantity': _u32(record, offset + 16),
+                        'item_ids': [item.id for item in items_by_numeric.values() if feature in item.feature_ids],
+                    })
         output_id = _resolve_item(_u32(record, 24), items_by_numeric, snapshot, table="cooking", record_id=record_id, field="output")
         if output_id:
             output_name = snapshot.items[output_id].name
@@ -356,7 +370,7 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
                 internal=group[0],
                 overrides=overrides,
             )
-            snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)), _u32(record, 152) or None)
+            snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)), _u32(record, 152) or None, ingredient_options=tuple(options))
 
 
 def _normalize_store(table, items_by_numeric, snapshot, flags=None):

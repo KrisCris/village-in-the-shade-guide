@@ -2,6 +2,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_001",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_MITSUBA",
@@ -36,6 +37,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_002",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 2,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -71,6 +86,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_003",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 2,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -101,6 +130,31 @@
   {
     "conditions": [],
     "id": "COOKING_ID_004",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 2,
+        "slot": 0
+      },
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -143,6 +197,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_005",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_SAUSAGE",
@@ -177,6 +232,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_006",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -220,6 +276,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_007",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -262,6 +319,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_008",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -304,6 +362,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_009",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -343,6 +402,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_010",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -386,6 +459,34 @@
   {
     "conditions": [],
     "id": "COOKING_ID_011",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "feature_name": "鱼类",
+        "feature_numeric_id": 15,
+        "item_ids": [
+          "ITEM_ID_FISHING_YAMAME_TROUT",
+          "ITEM_ID_FISHING_YAMATO_CHAR",
+          "ITEM_ID_FISHING_RAINBOW_TROUT",
+          "ITEM_ID_FISHING_AMAGO_SALMON",
+          "ITEM_ID_FISHING_SWEETFISH",
+          "ITEM_ID_FISHING_SATSUKI_TROUT",
+          "ITEM_ID_FISHING_DACE",
+          "ITEM_ID_FISHING_EEL",
+          "ITEM_ID_FISHING_CRUCIAN_CARP",
+          "ITEM_ID_FISHING_CARP",
+          "ITEM_ID_FISHING_CATFISH",
+          "ITEM_ID_FISHING_SALMON",
+          "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+          "ITEM_ID_FISHING_WHITE_EEL",
+          "ITEM_ID_FISHING_WHITE_CARP",
+          "ITEM_ID_FISHING_WHITE_CATFISH",
+          "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
@@ -425,6 +526,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_012",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_ASPARAGUS",
@@ -459,6 +561,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_013",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_ONION",
@@ -494,6 +597,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_014",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_ONION",
@@ -537,6 +641,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_015",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PEA",
@@ -571,6 +676,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_016",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 3
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TURNIP",
@@ -613,6 +738,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_017",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_POTATO",
@@ -660,6 +798,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_018",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_POTATO",
@@ -699,6 +838,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_019",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CURRYPOWDER",
@@ -745,6 +885,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_020",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CURRYPOWDER",
@@ -791,6 +932,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_021",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RADISH",
@@ -838,6 +980,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_022",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CABBAGE",
@@ -880,6 +1042,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_023",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_PORK",
@@ -927,6 +1090,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_024",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
@@ -973,6 +1156,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_025",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_LETTUCE",
@@ -1019,6 +1203,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_026",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TOMATO",
@@ -1066,6 +1251,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_027",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_BEEF",
@@ -1112,6 +1298,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_028",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CHEESE",
@@ -1154,6 +1341,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_029",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TOMATO",
@@ -1188,6 +1376,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_030",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_EGGPLANT",
@@ -1234,6 +1423,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_031",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PEPPER",
@@ -1268,6 +1477,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_032",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PUMPKIN",
@@ -1315,6 +1537,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_033",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 3
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PUMPKIN",
@@ -1361,6 +1603,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_034",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BUTTERBUR_SCAPE",
@@ -1407,6 +1650,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_035",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CUCUMBER",
@@ -1450,6 +1694,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_036",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CORN",
@@ -1489,6 +1746,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_037",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CORN",
@@ -1527,6 +1785,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_038",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CORN",
@@ -1573,6 +1832,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_039",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -1615,6 +1894,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_040",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_PORK",
@@ -1658,6 +1938,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_041",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_GARLIC",
@@ -1696,6 +1977,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_042",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_BEEF",
@@ -1738,6 +2020,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_043",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_TURKEY",
@@ -1785,6 +2068,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_044",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_LAMB",
@@ -1827,6 +2111,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_045",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -1874,6 +2159,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_046",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
@@ -1912,6 +2198,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_047",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_EDAMAME",
@@ -1946,6 +2233,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_048",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BUCKWHEAT_FLOUR",
@@ -1989,6 +2277,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_049",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BUCKWHEAT_FLOUR",
@@ -2036,6 +2325,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_050",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2075,6 +2378,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_051",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2118,6 +2422,34 @@
   {
     "conditions": [],
     "id": "COOKING_ID_052",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "feature_name": "鱼类",
+        "feature_numeric_id": 15,
+        "item_ids": [
+          "ITEM_ID_FISHING_YAMAME_TROUT",
+          "ITEM_ID_FISHING_YAMATO_CHAR",
+          "ITEM_ID_FISHING_RAINBOW_TROUT",
+          "ITEM_ID_FISHING_AMAGO_SALMON",
+          "ITEM_ID_FISHING_SWEETFISH",
+          "ITEM_ID_FISHING_SATSUKI_TROUT",
+          "ITEM_ID_FISHING_DACE",
+          "ITEM_ID_FISHING_EEL",
+          "ITEM_ID_FISHING_CRUCIAN_CARP",
+          "ITEM_ID_FISHING_CARP",
+          "ITEM_ID_FISHING_CATFISH",
+          "ITEM_ID_FISHING_SALMON",
+          "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+          "ITEM_ID_FISHING_WHITE_EEL",
+          "ITEM_ID_FISHING_WHITE_CARP",
+          "ITEM_ID_FISHING_WHITE_CATFISH",
+          "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -2164,6 +2496,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_053",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -2210,6 +2556,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_054",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_MATSUTAKE_MUSHROOM",
@@ -2244,6 +2591,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_055",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
@@ -2290,6 +2657,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_056",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
@@ -2336,6 +2717,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_057",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TOMATO",
@@ -2382,6 +2764,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_058",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
@@ -2429,6 +2812,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_059",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2475,6 +2878,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_060",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 3,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -2514,6 +2931,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_061",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_WINE",
@@ -2560,6 +2978,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_062",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
@@ -2606,6 +3037,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_063",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_BEEF",
@@ -2652,6 +3084,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_064",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PUMPKIN",
@@ -2699,6 +3132,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_065",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FISHING_SWEETFISH",
@@ -2734,6 +3168,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_066",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2781,6 +3216,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_067",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 2,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
@@ -2824,6 +3279,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_068",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2871,6 +3346,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_069",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 2,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -2909,6 +3404,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_070",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 3
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -2956,6 +3465,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_071",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_MOCHI",
@@ -3003,6 +3513,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_072",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -3044,6 +3555,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_073",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FISHING_EEL",
@@ -3091,6 +3603,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_074",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_ASPARAGUS",
@@ -3129,6 +3642,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_075",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_MOCHI",
@@ -3163,6 +3677,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_076",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAYBERRY",
@@ -3210,6 +3725,31 @@
   {
     "conditions": [],
     "id": "COOKING_ID_077",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 0
+      },
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -3252,6 +3792,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_078",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_WATERMELON",
@@ -3286,6 +3827,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_079",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_MELON",
@@ -3320,6 +3862,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_080",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PEACH",
@@ -3358,6 +3901,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_081",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_BLUEBERRY",
@@ -3400,6 +3956,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_082",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_STRAWBERRY",
@@ -3446,6 +4003,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_083",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_MANGO",
@@ -3484,6 +4042,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_084",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_STRAWBERRY",
@@ -3530,6 +4089,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_085",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_MANGO",
@@ -3576,6 +4136,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_086",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CHESTNUT",
@@ -3622,6 +4183,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_087",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_GRAPES",
@@ -3668,6 +4230,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_088",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_APPLE",
@@ -3710,6 +4273,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_089",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_ORANGE",
@@ -3748,6 +4324,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_090",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
@@ -3785,6 +4374,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_091",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CACAO",
@@ -3831,6 +4421,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_092",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PERSIMMON",
@@ -3877,6 +4468,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_093",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_LEMON",
@@ -3912,6 +4504,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_094",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_LEMON",
@@ -3954,6 +4547,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_095",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CACAO",
@@ -4000,6 +4594,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_096",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
@@ -4043,6 +4638,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_097",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4085,6 +4693,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_098",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_BANANA",
@@ -4119,6 +4728,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_099",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_CACAO",
@@ -4153,6 +4763,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_100",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4195,6 +4806,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_101",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4234,6 +4846,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_102",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4276,6 +4889,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_103",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 3
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4318,6 +4944,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_104",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_MATCHA",
@@ -4360,6 +4987,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_105",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 3
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_PEACH",
@@ -4406,6 +5046,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_107",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -4441,6 +5082,20 @@
   {
     "conditions": [],
     "id": "COOKING_ID_108",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -4487,6 +5142,31 @@
   {
     "conditions": [],
     "id": "COOKING_ID_109",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "feature_name": "蛋类",
+        "feature_numeric_id": 11,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+          "ITEM_ID_LIVESTOCK_DUCK_EGG",
+          "ITEM_ID_LIVESTOCK_TURKEY_EGG"
+        ],
+        "quantity": 1,
+        "slot": 0
+      },
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -4530,6 +5210,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_110",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_TEA_TREE",
@@ -4564,6 +5257,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_111",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_RICE",
@@ -4611,6 +5305,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_112",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 1,
+        "slot": 1
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_TOFU",
@@ -4654,6 +5368,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_113",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_POTATO",
@@ -4693,6 +5408,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_114",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 2,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
@@ -4740,6 +5475,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_115",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_LEMON",
@@ -4774,6 +5510,31 @@
   {
     "conditions": [],
     "id": "COOKING_ID_116",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
+        "feature_name": "小鱼类",
+        "feature_numeric_id": 14,
+        "item_ids": [
+          "ITEM_ID_FISHING_AMUR_MINNOW",
+          "ITEM_ID_FISHING_BITTERLING",
+          "ITEM_ID_FISHING_DARK_CHUB",
+          "ITEM_ID_FISHING_YAMAME_TROUT",
+          "ITEM_ID_FISHING_YAMATO_CHAR",
+          "ITEM_ID_FISHING_SWEETFISH",
+          "ITEM_ID_FISHING_PALE_CHUB",
+          "ITEM_ID_FISHING_DACE",
+          "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+          "ITEM_ID_FISHING_FRESHWATER_GOBY",
+          "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+          "ITEM_ID_FISHING_CRUCIAN_CARP",
+          "ITEM_ID_FISHING_DARK_SLEEPER",
+          "ITEM_ID_FISHING_LOACH"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FISHING_YAMAME_TROUT",
@@ -4817,6 +5578,26 @@
   {
     "conditions": [],
     "id": "COOKING_ID_117",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+        "feature_name": "肉类",
+        "feature_numeric_id": 13,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_BEEF",
+          "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+          "ITEM_ID_LIVESTOCK_CHICKEN",
+          "ITEM_ID_LIVESTOCK_TURKEY",
+          "ITEM_ID_LIVESTOCK_PORK",
+          "ITEM_ID_LIVESTOCK_LAMB",
+          "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+          "ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT",
+          "ITEM_ID_HUNTING_LARGE_ANIMAL_GAME_MEAT"
+        ],
+        "quantity": 2,
+        "slot": 2
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_FLOUR",
@@ -4860,6 +5641,7 @@
   {
     "conditions": [],
     "id": "COOKING_ID_118",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_APPLE",
@@ -4894,6 +5676,19 @@
   {
     "conditions": [],
     "id": "COOKING_ID_119",
+    "ingredient_options": [
+      {
+        "default_item_id": "ITEM_ID_LIVESTOCK_COW_MILK",
+        "feature_name": "奶类",
+        "feature_numeric_id": 12,
+        "item_ids": [
+          "ITEM_ID_LIVESTOCK_COW_MILK",
+          "ITEM_ID_LIVESTOCK_GOAT_MILK"
+        ],
+        "quantity": 1,
+        "slot": 0
+      }
+    ],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_COW_MILK",

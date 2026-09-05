@@ -15,6 +15,17 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('links interchangeable cooking ingredients and shows their prices', () => {
+    const egg=entity('egg','items',{sell_price:40});
+    const other=entity('other-egg','items',{sell_price:80});
+    const recipe=entity('omelet','cooking-recipes',{inputs:[{item_id:'egg',quantity:2}],ingredient_options:[{slot:0,default_item_id:'egg',feature_name:'蛋类',quantity:2,item_ids:['egg','other-egg']}]});
+    const data=catalog(egg,other,recipe);
+    expect(buildRelationGroups(other,data,'normal').find(g=>g.key==='used-in')?.rows[0].quantity).toBe(2);
+    const model=buildEntityDetailModel(recipe,data,'normal');
+    expect(model.ingredientOptions[0].label).toBe('蛋类 ×2（任选）');
+    expect(model.ingredientOptions[0].rows.map(r=>r.entity.id)).toEqual(['egg','other-egg']);
+    expect(model.ingredientOptions[0].rows[1].sellPrice).toBe('80 · 固定');
+  });
   it('links native friendship recipe lessons in both directions', () => {
     const person=entity('CHARA_ID_ORPHAN','characters',{numeric_id:1010});
     const recipe=entity('COOKING_ID_004','cooking-recipes',{unlock_flag:85003,output:{item_id:'meal',quantity:1}});

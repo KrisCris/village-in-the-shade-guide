@@ -27,6 +27,7 @@ class Item:
     category_id: str | None = None
     category_name: LocalizedName | None = None
     description: str = ""
+    feature_ids: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -74,6 +75,7 @@ class Recipe:
     unlock_flag: int | None = None
     conditions: tuple[str, ...] = ()
     source: str = ""
+    ingredient_options: tuple[dict, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

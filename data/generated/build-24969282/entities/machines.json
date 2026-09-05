@@ -16,6 +16,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工肉類和黃豆的機器。\n能夠製作熟成肉或味噌。\n放入材料後，經過三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2070,
     "id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
     "name": {
@@ -52,6 +53,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工肉類和黃豆的機器。\n一次最多可放入3個材料。\n放入材料後，經過三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2086,
     "id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
     "name": {
@@ -88,6 +90,7 @@
     },
     "category_numeric_id": 17,
     "description": "飼養蜜蜂用的飼養箱。\n放入花即可採集到蜂蜜，\n視花卉種類，需要花費一天到四天的時間。",
+    "feature_ids": [],
     "icon_id": 2095,
     "id": "ITEM_ID_GIMMICK_BEEHIVE",
     "name": {
@@ -124,6 +127,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工玻璃片、礦石類和黏土的裝置。\n12小時即可製作出玻璃、金屬棒、磚頭。\n需要木炭或煤炭才會運轉。",
+    "feature_ids": [],
     "icon_id": 2074,
     "id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
     "name": {
@@ -161,6 +165,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工玻璃片、礦石類和黏土的裝置。\n一次最多可放入3個材料。\n需要木炭或煤炭才會運轉。",
+    "feature_ids": [],
     "icon_id": 2090,
     "id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
     "name": {
@@ -198,6 +203,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工作物和水果的容器。\n能夠製作高湯或酒。\n放入材料後，經過兩、三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2069,
     "id": "ITEM_ID_GIMMICK_BREWING_BARREL",
     "name": {
@@ -235,6 +241,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工作物和水果的容器。\n一次最多可放入3個材料。\n放入材料後，經過兩、三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2085,
     "id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
     "name": {
@@ -272,6 +279,7 @@
     },
     "category_numeric_id": 17,
     "description": "將木材製成木炭的裝置。\n必須放入5個木材類物品。\n放入材料後，經過30分鐘就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2075,
     "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
     "name": {
@@ -309,6 +317,7 @@
     },
     "category_numeric_id": 17,
     "description": "將木材製成木炭的裝置。\n一次最多可放入3個材料。\n放入材料後，經過30分鐘就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2091,
     "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
     "name": {
@@ -346,6 +355,7 @@
     },
     "category_numeric_id": 17,
     "description": "將各種有機物加工成肥料的容器。\n根據放入的東西，會改變肥料的品質。\n放入材料後，經過一、兩天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2077,
     "id": "ITEM_ID_GIMMICK_COMPOSTER",
     "name": {
@@ -382,6 +392,7 @@
     },
     "category_numeric_id": 17,
     "description": "將各種有機物加工成肥料的容器。\n一次最多可放入3個材料。\n放入材料後，經過一、兩天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2093,
     "id": "ITEM_ID_GIMMICK_COMPOSTER_02",
     "name": {
@@ -418,6 +429,7 @@
     },
     "category_numeric_id": 17,
     "description": "可製作各種道具和家具的工作台。\n只要有設計圖，能製作的東西就會慢慢增加。\n可使用周圍8格內收納箱中的材料。",
+    "feature_ids": [],
     "icon_id": 2079,
     "id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
     "name": {
@@ -454,6 +466,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工水果、肉類和花朵的機器。\n能夠製作果乾、肉乾等等。\n放入材料後，經過兩、三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2071,
     "id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
     "name": {
@@ -490,6 +503,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工水果、肉類和花朵的機器。\n一次最多可放入3個材料。\n放入材料後，經過兩、三天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2087,
     "id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
     "name": {
@@ -527,6 +541,7 @@
     },
     "category_numeric_id": 17,
     "description": "可改變家具顏色的工作台。\n要改變顏色必須要有染料。\n可使用周圍8格內收納箱中的材料。",
+    "feature_ids": [],
     "icon_id": 2078,
     "id": "ITEM_ID_GIMMICK_DYEING_MACHINE",
     "name": {
@@ -562,6 +577,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工小麥、甘蔗和岩鹽的機器。\n能夠製作麵粉、砂糖、鹽等等。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2072,
     "id": "ITEM_ID_GIMMICK_FLOUR_MILL",
     "name": {
@@ -599,6 +615,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工小麥、甘蔗和岩鹽的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2088,
     "id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
     "name": {
@@ -636,6 +653,7 @@
     },
     "category_numeric_id": 17,
     "description": "固定式的大型烹飪設備。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。",
+    "feature_ids": [],
     "icon_id": 2102,
     "id": "ITEM_ID_GIMMICK_FURNACE",
     "name": {
@@ -673,6 +691,7 @@
     },
     "category_numeric_id": 17,
     "description": "用炭火燒烤食物的爐具。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。",
+    "feature_ids": [],
     "icon_id": 2105,
     "id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
     "name": {
@@ -710,6 +729,7 @@
     },
     "category_numeric_id": 17,
     "description": "紡織生絲、羊毛和喀什米爾山羊毛的機器。\n能夠製作布。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2076,
     "id": "ITEM_ID_GIMMICK_LOOM",
     "name": {
@@ -747,6 +767,7 @@
     },
     "category_numeric_id": 17,
     "description": "紡織生絲、羊毛和喀什米爾山羊毛的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2092,
     "id": "ITEM_ID_GIMMICK_LOOM_02",
     "name": {
@@ -784,6 +805,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工蛋類的機器。\n能夠製作美乃滋。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2068,
     "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
     "name": {
@@ -821,6 +843,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工蛋類的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2084,
     "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
     "name": {
@@ -858,6 +881,7 @@
     },
     "category_numeric_id": 17,
     "description": "攜帶式的煮飯器具。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。",
+    "feature_ids": [],
     "icon_id": 2101,
     "id": "ITEM_ID_GIMMICK_MESSTIN",
     "name": {
@@ -895,6 +919,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工奶類、黃豆的機器。\n能夠製作鮮奶油、起司、豆腐等等。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2067,
     "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
     "name": {
@@ -932,6 +957,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工奶類、黃豆的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2083,
     "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
     "name": {
@@ -969,6 +995,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工黃豆、芝麻、花朵和骨頭等物品的機器。\n能夠製作油類或染料。\n放入材料後，經過幾天後就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2073,
     "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
     "name": {
@@ -1006,6 +1033,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工黃豆、芝麻、花朵和骨頭等物品的機器。\n一次最多可放入3個材料。\n放入材料後，經過幾天後就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2089,
     "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
     "name": {
@@ -1043,6 +1071,7 @@
     },
     "category_numeric_id": 17,
     "description": "設置於樹上，用來採集樹液的容器。\n可設置於樹上，\n每三天可以採集一次樹液。",
+    "feature_ids": [],
     "icon_id": 2096,
     "id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
     "name": {
@@ -1080,6 +1109,7 @@
     },
     "category_numeric_id": 17,
     "description": "用來飼養蠶的飼養箱。\n放入桑葉即可採集到生絲。\n產出生絲需要花費兩天時間。",
+    "feature_ids": [],
     "icon_id": 2097,
     "id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
     "name": {
@@ -1117,6 +1147,7 @@
     },
     "category_numeric_id": 17,
     "description": "煙燻肉、蛋和魚等物品的機器。\n能夠製作煙燻肉、煙燻蛋、煙燻魚。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2080,
     "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
     "name": {
@@ -1154,6 +1185,7 @@
     },
     "category_numeric_id": 17,
     "description": "煙燻肉、蛋和魚等物品的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2094,
     "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
     "name": {
@@ -1191,6 +1223,7 @@
     },
     "category_numeric_id": 17,
     "description": "會自動澆水的機器。\n朝周圍3格田地澆水。\n用過一次後，就再也離不開它了。",
+    "feature_ids": [],
     "icon_id": 2100,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
     "name": {
@@ -1228,6 +1261,7 @@
     },
     "category_numeric_id": 17,
     "description": "會自動澆水的機器。\n朝周圍2格田地澆水。\n早晨的工作會輕鬆很多。",
+    "feature_ids": [],
     "icon_id": 2099,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
     "name": {
@@ -1265,6 +1299,7 @@
     },
     "category_numeric_id": 17,
     "description": "會自動澆水的機器。\n朝周圍1格田地澆水。\n早晨的工作會稍微輕鬆一點。",
+    "feature_ids": [],
     "icon_id": 2098,
     "id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
     "name": {
@@ -1302,6 +1337,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工作物、水果、魚和牛奶的容器。\n能夠製作醃漬物、果醬、發酵食品等等。\n放入材料後，經過幾天後就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2066,
     "id": "ITEM_ID_GIMMICK_STORAGE_JAR",
     "name": {
@@ -1339,6 +1375,7 @@
     },
     "category_numeric_id": 17,
     "description": "加工作物、水果、魚和牛奶的容器。\n一次最多可放入3個材料。\n放入材料後，經過幾天後就會加工完成。",
+    "feature_ids": [],
     "icon_id": 2082,
     "id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
     "name": {

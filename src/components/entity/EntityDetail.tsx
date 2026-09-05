@@ -34,6 +34,8 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {groups.map((group) => <section key={group.key}><h2>{group.label}</h2><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></section>)}
 
+    {model.ingredientOptions.length>0&&<section><h2>可替换材料</h2>{model.ingredientOptions.map((option,index)=><details key={index}><summary>{option.label} · {option.rows.length} 种</summary><div className="relation-list">{option.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></details>)}</section>}
+
     <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>
     <style>{`
       .entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}

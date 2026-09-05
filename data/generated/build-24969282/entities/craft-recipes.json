@@ -2,6 +2,7 @@
   {
     "conditions": [],
     "id": "CRAFT_CUSHION_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CASHMERE_CLOTH",
@@ -37,6 +38,7 @@
   {
     "conditions": [],
     "id": "CRAFT_CUSHION_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_SILK",
@@ -75,6 +77,7 @@
   {
     "conditions": [],
     "id": "CRAFT_CUSHION_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -110,6 +113,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_12",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
@@ -148,6 +152,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_13",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
@@ -186,6 +191,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_14",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
@@ -224,6 +230,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ACCESSORY_15",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
@@ -262,6 +269,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_AGUNG_BARREL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -296,6 +304,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_AGUNG_BARREL_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
@@ -334,6 +343,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BED_COOL_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -372,6 +382,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BED_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -411,6 +422,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BED_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -445,6 +457,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BED_MODERN_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -484,6 +497,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BED_WOODEN_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -523,6 +537,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BEEHIVE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -561,6 +576,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BENCH_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -596,6 +612,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -631,6 +648,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -670,6 +688,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BENCH_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -705,6 +724,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BENCH_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -736,6 +756,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BLAST_FURNACE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -770,6 +791,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BLAST_FURNACE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
@@ -808,6 +830,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BONFIRE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -842,6 +865,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -876,6 +900,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -911,6 +936,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BOOKSHELF_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -942,6 +968,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BREWING_BARREL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -976,6 +1003,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_BREWING_BARREL_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL",
@@ -1014,6 +1042,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CARPET_COOL_S_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -1044,6 +1073,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MATURE_S_01",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_WOOL",
@@ -1079,6 +1109,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MESH_S_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -1113,6 +1144,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CARPET_MODERN_S_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -1148,6 +1180,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1182,6 +1215,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -1217,6 +1251,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -1255,6 +1290,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -1290,6 +1326,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHAIR_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1321,6 +1358,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHARCOAL_KILN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BRICK",
@@ -1355,6 +1393,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHARCOAL_KILN_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
@@ -1393,6 +1432,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHEST_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -1427,6 +1467,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHEST_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -1462,6 +1503,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CHEST_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1493,6 +1535,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CLOSET_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -1528,6 +1571,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CLOSET_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1559,6 +1603,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_COMPOSTER",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_MOSS",
@@ -1597,6 +1642,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_COMPOSTER_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_COMPOSTER",
@@ -1635,6 +1681,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CUPBOARD_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1669,6 +1716,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CUPBOARD_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1704,6 +1752,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_DEMON_MASK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
@@ -1742,6 +1791,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_FOX_MASK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
@@ -1780,6 +1830,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_MASK_OF_OKAME",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_BLUE_DEBRIS",
@@ -1818,6 +1869,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_CURSE_FURNITURE_TENGU_MASK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSED_RED_DEBRIS",
@@ -1856,6 +1908,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -1890,6 +1943,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -1929,6 +1983,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -1968,6 +2023,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_LAMP_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2003,6 +2059,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -2038,6 +2095,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -2072,6 +2130,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -2107,6 +2166,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DESK_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2138,6 +2198,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -2176,6 +2237,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -2215,6 +2277,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DRESSING_TABLE_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2250,6 +2313,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DRYING_MACHINE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2288,6 +2352,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_DRYING_MACHINE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
@@ -2327,6 +2392,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ENERGY_BAR",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_GRASS_FRUIT",
@@ -2360,6 +2426,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_BAMBOO",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -2390,6 +2457,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_BRICK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BRICK",
@@ -2424,6 +2492,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_GARDEN_IRON",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -2455,6 +2524,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_IRON",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -2486,6 +2556,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_MESH",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -2521,6 +2592,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_PLANK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -2551,6 +2623,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_PLANK_WHITE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -2581,6 +2654,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_ROPE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_FIBER",
@@ -2616,6 +2690,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -2646,6 +2721,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FENCE_WOOD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2677,6 +2753,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_L_FOLDED_FUTON",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -2711,6 +2788,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_SEASON_EASTER_EGG",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
@@ -2749,6 +2827,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_S_BUNDLE_OF_FIREWOOD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -2779,6 +2858,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_S_JAR",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CLAY",
@@ -2813,6 +2893,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_ABACUS",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -2847,6 +2928,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -2877,6 +2959,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_KOKEDAMA",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_MOSS",
@@ -2911,6 +2994,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TEDDY_BEAR_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -2945,6 +3029,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_BRONZE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -2980,6 +3065,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_GOLD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -3014,6 +3100,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_TROPHY_SILVER",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -3049,6 +3136,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_UNFINISHED_SCARF",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_LIVESTOCK_WOOL",
@@ -3079,6 +3167,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_VASE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GLASS_ROD",
@@ -3112,6 +3201,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_CARVED_BEAR",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -3142,6 +3232,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FIGURINE_XS_WOODEN_FISH",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -3176,6 +3267,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FLOOR_LAMP_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -3211,6 +3303,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FLOUR_MILL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -3246,6 +3339,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FLOUR_MILL_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL",
@@ -3285,6 +3379,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_FURNACE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3319,6 +3414,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_HAY",
@@ -3349,6 +3445,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -3388,6 +3485,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_MOSSY_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE_HARD",
@@ -3422,6 +3520,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -3452,6 +3551,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -3482,6 +3582,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_BRANCH_PILE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -3517,6 +3618,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_POT",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CLAY",
@@ -3547,6 +3649,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLACK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3586,6 +3689,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BLUE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3625,6 +3729,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3664,6 +3769,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_GREEN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3703,6 +3809,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_ORANGE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3742,6 +3849,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PINK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3781,6 +3889,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_PURPLE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3820,6 +3929,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_RED",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3859,6 +3969,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_WHITE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3898,6 +4009,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_FLOWER_WAGON_YELLOW",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -3937,6 +4049,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_GARDEN_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -3975,6 +4088,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_SIGNBOARD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -4005,6 +4119,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STACKED_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4035,6 +4150,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_STONE_LANTERN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE_HARD",
@@ -4070,6 +4186,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FIGURINE_S_WATER_LILY_POT",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CLAY",
@@ -4108,6 +4225,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_BRICK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BRICK",
@@ -4138,6 +4256,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_FALLEN_LEAVES",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_FIBER",
@@ -4169,6 +4288,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_FLOWER",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CROPS_GYPSOPHILA",
@@ -4199,6 +4319,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_LOG",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -4229,6 +4350,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4259,6 +4381,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_STRAW",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_HAY",
@@ -4289,6 +4412,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_BLACK_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4323,6 +4447,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4353,6 +4478,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_TILE_WHITE_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4387,6 +4513,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GARDEN_FLOOR_WOOD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -4417,6 +4544,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_BAMBOO",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -4448,6 +4576,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_BRICK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_BRICK",
@@ -4483,6 +4612,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_GARDEN_IRON",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -4514,6 +4644,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_IRON",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -4545,6 +4676,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_MESH",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -4580,6 +4712,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_PLANK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -4611,6 +4744,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_PLANK_WHITE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -4642,6 +4776,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_ROPE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_FIBER",
@@ -4677,6 +4812,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_STONE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_STONE",
@@ -4708,6 +4844,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_GATE_WOOD",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -4739,6 +4876,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ITEM_PURIFYING_SALT",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_SALT",
@@ -4774,6 +4912,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_ITEM_STRAW_DOLL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_FIBER",
@@ -4812,6 +4951,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_JAPANESE_CHARCOAL_GRILL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_CLAY",
@@ -4850,6 +4990,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_JAPANESE_DOLL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_BODY",
@@ -4888,6 +5029,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_LOOM",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -4923,6 +5065,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_LOOM_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_LOOM",
@@ -4962,6 +5105,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -4997,6 +5141,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_MAYONNAISE_PROCESSING_MACHINE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
@@ -5036,6 +5181,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_MESSTIN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_BONFIRE",
@@ -5075,6 +5221,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_SALT",
@@ -5110,6 +5257,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_MILK_PROCESSING_MACHINE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
@@ -5149,6 +5297,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -5184,6 +5333,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_OIL_EXTRACTION_MACHINE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
@@ -5223,6 +5373,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SAP_EXTRACTOR",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5258,6 +5409,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SERICULTURE_BOX",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5292,6 +5444,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5326,6 +5479,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -5360,6 +5514,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SIDE_DESK_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5395,6 +5550,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SMOKING_MACHINE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5434,6 +5590,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SMOKING_MACHINE_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
@@ -5473,6 +5630,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_LARGE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GOLD_INGOT",
@@ -5511,6 +5669,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_MIDDLE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_IRON_INGOT",
@@ -5545,6 +5704,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLER_SMALL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_COPPER_INGOT",
@@ -5579,6 +5739,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_GRASS_FRUIT",
@@ -5610,6 +5771,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT_HIGH_GRADE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_ACORNS",
@@ -5645,6 +5807,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_SPRINKLING_BAIT_WHITE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_FISHING_FRESHWATER_CRAB",
@@ -5680,6 +5843,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_STORAGE_JAR",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5715,6 +5879,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_STORAGE_JAR_02",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR",
@@ -5754,6 +5919,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TABLE_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5788,6 +5954,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -5823,6 +5990,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -5857,6 +6025,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TABLE_MODERN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -5892,6 +6061,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TABLE_WOODEN_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5923,6 +6093,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TOOL_LANTERN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -5962,6 +6133,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TORCH_BIG",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -5996,6 +6168,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TORCH_SMALL",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -6026,6 +6199,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_COOL_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -6064,6 +6238,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MATURE_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -6103,6 +6278,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_BAMBOO",
@@ -6137,6 +6313,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_MODERN_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -6176,6 +6353,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_TWIN_BED_WOODEN_00",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -6215,6 +6393,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLACK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6253,6 +6432,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BLUE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6292,6 +6472,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6330,6 +6511,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_GREEN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6369,6 +6551,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_ORANGE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6407,6 +6590,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PINK",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6446,6 +6630,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_PURPLE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6484,6 +6669,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_RED",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6523,6 +6709,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_WHITE",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6561,6 +6748,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_DRIED_FLOWER_YELLOW",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_DRIED_FLOWER",
@@ -6600,6 +6788,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_PAINTING_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",
@@ -6635,6 +6824,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_TAPESTRY_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_CLOTH",
@@ -6670,6 +6860,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_S_WREATH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_PINE_CONE",
@@ -6708,6 +6899,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_W_GARLAND_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_RAW_SILK",
@@ -6742,6 +6934,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_DECORATION_W_PAINTING_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_HARD",
@@ -6781,6 +6974,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_LAMP_COOL_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD",
@@ -6820,6 +7014,7 @@
   {
     "conditions": [],
     "id": "CRAFT_TABLE_WALL_LAMP_MESH_BROWN",
+    "ingredient_options": [],
     "inputs": [
       {
         "item_id": "ITEM_ID_OBJECT_WOOD_EASY",

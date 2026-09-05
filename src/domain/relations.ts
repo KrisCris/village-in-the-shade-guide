@@ -37,6 +37,7 @@ export type EntityDetailModel = {
   groups: RelationGroup[];
   locations: Array<{ id: string; name: string; secondary: string }>;
   processingPlans: EntityDetailModel[];
+  ingredientOptions: Array<{label:string;rows:RelationRowModel[]}>;
 };
 
 const groupLabels: Record<RelationGroupKey, string> = {
@@ -80,7 +81,12 @@ function itemQuantity(value: unknown): { item_id?: string; quantity?: number } {
 
 function relationQuantity(candidate: Entity, targetIds: Set<string>): number | undefined {
   const input = ((candidate.inputs ?? []) as Array<{ item_id?: string; quantity?: number }>).find((row) => row.item_id && targetIds.has(row.item_id));
-  return input ? Number(input.quantity ?? 1) : undefined;
+  const alternative = ingredientOptions(candidate).find(row=>row.item_ids.some(id=>targetIds.has(id)));
+  return input ? Number(input.quantity ?? 1) : alternative?.quantity;
+}
+
+function ingredientOptions(entity: Entity): Array<{slot:number;default_item_id:string;feature_name:string;quantity:number;item_ids:string[]}> {
+  return (entity.ingredient_options ?? []) as ReturnType<typeof ingredientOptions>;
 }
 
 function recipeInputs(recipe: Entity): Array<{ item_id?: string; quantity?: number }> {
@@ -127,7 +133,8 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
   const addInputs = (source: Entity, group: RelationGroupKey, context: string) => {
     for (const input of recipeInputs(source)) {
       if (!input.item_id) continue;
-      add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context] });
+      const option=ingredientOptions(source).find(row=>row.default_item_id===input.item_id);
+      add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context,option ? `${option.feature_name}（示例，可替换）` : null] });
     }
   };
   const addOutput = (source: Entity, group: RelationGroupKey, context?: string) => {
@@ -346,5 +353,12 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     const rows = group.key === 'acquisition' ? group.rows.filter((row) => !embeddedIds.has(row.entity.id)) : group.rows;
     return rows.length ? [{ ...group, rows }] : [];
   });
-  return { entity, quality, qualityName: qualityLabel(quality), facts, profit, groups, locations, processingPlans };
+  const alternatives=ingredientOptions(entity).map(option=>({
+    label:`${option.feature_name} ×${option.quantity}（任选）`,
+    rows:option.item_ids.flatMap(id=>{
+      const item=findCatalogEntity(catalog,id,'items');
+      return item ? [{key:`${option.slot}:${id}`,entity:item,quantity:option.quantity,sellPrice:priceText(item,'sell_price',quality),fixedPrice:item.quality_eligible!==true,chips:['单个直接售价']}] : [];
+    }),
+  }));
+  return { entity, quality, qualityName: qualityLabel(quality), facts, profit, groups, locations, processingPlans, ingredientOptions:alternatives };
 }
