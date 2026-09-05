@@ -1,0 +1,289 @@
+{
+  "animals": [
+    {
+      "livestock_id": "LIVESTOCK_ID_CHICKEN",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_CHICKEN_EGG",
+        "ITEM_ID_LIVESTOCK_BIRD_FEATHER"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130040,
+          "weight": 97
+        },
+        {
+          "item_numeric_id": 130180,
+          "weight": 3
+        }
+      ],
+      "source": "livestock.dat:1; adult_id@68; production array@112"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_CHICK",
+      "adult_id": "LIVESTOCK_ID_CHICKEN",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:2; adult_id@68; production array@112"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_DUCK",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_DUCK_EGG",
+        "ITEM_ID_LIVESTOCK_BIRD_FEATHER"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130060,
+          "weight": 97
+        },
+        {
+          "item_numeric_id": 130180,
+          "weight": 3
+        }
+      ],
+      "source": "livestock.dat:3; adult_id@68; production array@120"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_DUCK_CHICK",
+      "adult_id": "LIVESTOCK_ID_DUCK",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:4; adult_id@68; production array@120"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_TURKEY",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_TURKEY_EGG",
+        "ITEM_ID_LIVESTOCK_BIRD_FEATHER"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130080,
+          "weight": 97
+        },
+        {
+          "item_numeric_id": 130180,
+          "weight": 3
+        }
+      ],
+      "source": "livestock.dat:5; adult_id@68; production array@112"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_TURKEY_CHICK",
+      "adult_id": "LIVESTOCK_ID_TURKEY",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:6; adult_id@68; production array@112"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COW",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_COW_MILK"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130000,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:7; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_CALF",
+      "adult_id": "LIVESTOCK_ID_COW",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:8; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_SHEEP",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_WOOL"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130120,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:9; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_LAMB",
+      "adult_id": "LIVESTOCK_ID_SHEEP",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:10; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_GOAT",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_GOAT_MILK"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130020,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:11; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_BABY_GOAT",
+      "adult_id": "LIVESTOCK_ID_GOAT",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:12; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_CASHMERE_GOAT",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_CASHMERE_WOOL"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130140,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:13; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+      "adult_id": "LIVESTOCK_ID_CASHMERE_GOAT",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:14; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_PIG",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_TRUFFLE"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130100,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:15; adult_id@68; production array@120"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_PIGLET",
+      "adult_id": "LIVESTOCK_ID_PIG",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:16; adult_id@68; production array@112"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_HORSE",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_HORSE_TAIL"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 130160,
+          "weight": 100
+        }
+      ],
+      "source": "livestock.dat:17; adult_id@68; production array@120"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_BABY_HORSE",
+      "adult_id": "LIVESTOCK_ID_HORSE",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:18; adult_id@68; production array@120"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_RED",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:19; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:20; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:21; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:22; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:23; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:24; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+      "adult_id": "LIVESTOCK_ID_ROOSTER",
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:25; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_ROOSTER",
+      "adult_id": null,
+      "product_item_ids": [
+        "ITEM_ID_LIVESTOCK_BIRD_FEATHER"
+      ],
+      "raw_candidates": [
+        {
+          "item_numeric_id": 0,
+          "weight": 97
+        },
+        {
+          "item_numeric_id": 130180,
+          "weight": 3
+        }
+      ],
+      "source": "livestock.dat:30; adult_id@68; production array@104"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_GHOST_COW",
+      "adult_id": null,
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:100; adult_id@68; production array@128"
+    },
+    {
+      "livestock_id": "LIVESTOCK_ID_DOG",
+      "adult_id": null,
+      "product_item_ids": [],
+      "raw_candidates": [],
+      "source": "livestock.dat:200; adult_id@68; production array@144"
+    }
+  ]
+}

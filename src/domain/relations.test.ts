@@ -224,4 +224,15 @@ describe('relation groups', () => {
     expect(source).toMatchObject({quantity:30});
     expect(source?.note).toContain('不是同时取得');
   });
+
+  it('links animal production and juvenile growth without inventing drop quantities', () => {
+    const chick=entity('LIVESTOCK_ID_CHICK','livestock');
+    const chicken=entity('LIVESTOCK_ID_CHICKEN','livestock');
+    const egg=entity('ITEM_ID_LIVESTOCK_CHICKEN_EGG','items');
+    const data=catalog(chick,chicken,egg);
+    expect(buildRelationGroups(chick,data,'normal').find(g=>g.key==='unlocks')?.rows[0].entity).toBe(chicken);
+    const source=buildRelationGroups(egg,data,'normal').find(g=>g.key==='acquisition')?.rows.find(r=>r.entity===chicken);
+    expect(source?.chips).toContain('畜产品来源');
+    expect(source?.quantity).toBeUndefined();
+  });
 });

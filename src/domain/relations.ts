@@ -6,6 +6,7 @@ import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profi
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappaExchange from '../../data/sources/game-kappa-exchange.json';
+import livestockProducts from '../../data/sources/game-livestock-products.json';
 import recipeDocuments from '../../data/sources/game-recipe-documents.json';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
@@ -140,6 +141,14 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context,option ? `${option.feature_name}（示例，可替换）` : null] });
     }
   };
+  for (const animal of livestockProducts.animals) {
+    if (entity.id===animal.livestock_id) {
+      if(animal.adult_id) add('unlocks',findCatalogEntity(catalog,animal.adult_id,'livestock'),{chips:['长大后的家畜'],key:`adult:${animal.adult_id}`});
+      for(const id of animal.product_item_ids) add('outputs',findCatalogEntity(catalog,id,'items'),{chips:['可能产出的畜产品'],key:`livestock-product:${id}`});
+    }
+    if(entity.id===animal.adult_id) add('acquisition',findCatalogEntity(catalog,animal.livestock_id,'livestock'),{chips:['由幼畜长大'],key:`juvenile:${animal.livestock_id}`});
+    if(animal.product_item_ids.some(id=>id===entity.id)) add('acquisition',findCatalogEntity(catalog,animal.livestock_id,'livestock'),{chips:['畜产品来源'],note:'产出候选；不是每次同时产出整张清单',key:`livestock:${animal.livestock_id}`});
+  }
   for (const reward of kappaExchange.rewards) {
     const chips=['河童阶段奖励',reward.condition];
     const note=kappaExchange.condition;

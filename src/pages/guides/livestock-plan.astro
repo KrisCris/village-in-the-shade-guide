@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import production from '../../../data/sources/game-livestock-products.json';
+const catalog=getCatalog();
+const get=(id:string)=>catalog.entities.find(e=>e.id===id&&(e.kind==='items'||e.kind==='livestock'));
+const adults=production.animals.filter(a=>a.product_item_ids.length);
+---
+<BaseLayout title="畜牧产物与饲养规划"><h1>畜牧产物与饲养规划</h1>
+<nav><a href="#daily">每日照料</a>　<a href="#products">按产物选家畜</a>　<a href="#young">幼畜长大</a></nav>
+<section><h2>先准备设施，再选产物</h2><ol><li>先核对<a href="/data/activities/?q=建筑">鸡舍、畜舍等建筑材料</a>和自己的可用空间，别把全部资金先花在动物上。</li><li>按准备交付、制作或加工的目标选动物。下方产物可以继续点开，查看用途；需要牛奶和需要羊毛，对应的饲养目标不同。</li><li>先保留<a href="/data/activities/">交付目录</a>与<a href="/guides/residents/">生日礼物</a>用量，再安排料理与加工。料理标注“蛋类”“奶类”时可以使用其允许的替代品，见<a href="/guides/cooking-plan/#ingredients">材料对照表</a>。</li></ol></section>
+<section id="daily"><h2>每天按这个顺序照料</h2><ol><li>注视家畜，检查进食状态与亲密度；先处理没有吃饭的动物。</li><li>摸摸家畜。游戏教程明确说明每天抚摸能提高亲密度，并帮助获得更优质的畜产品。</li><li>收取可领取的产物，把今日要交的部分分开保留，再加工余量。</li><li>需要集中附近家畜时使用家畜呼笛；它让附近已饲养的家畜靠近主角，不是召唤未拥有的动物。</li></ol></section>
+<section id="products"><h2>按产物选择家畜</h2><div class="grid">{adults.map(animal=>{const adult=get(animal.livestock_id);return adult&&<article class="card"><h3><a href={entityUrl(adult)}>{adult.name.zh_hans}</a></h3><div class="products">{animal.product_item_ids.map(id=>{const product=get(id);return product&&<a href={entityUrl(product)}>{product.icon_path&&<img src={product.icon_path} width="52" height="52" alt="" loading="lazy"/>}{product.name.zh_hans}</a>;})}</div><p>产物候选，不代表每次同时取得所有物品。</p></article>;})}</div><p>公鸡的普通产出表包含空结果与鸟的羽毛，不能按母鸡每天产蛋的方式估算收益。猪的产物表指向松露，马指向马尾毛；具体产出操作和状态以家畜面板为准。</p></section>
+<section id="young"><h2>幼畜长大后是什么</h2><div class="grid">{production.animals.filter(a=>a.adult_id).map(animal=>{const young=get(animal.livestock_id),adult=get(animal.adult_id!);return young&&adult&&<p class="card"><a href={entityUrl(young)}>{young.name.zh_hans}</a> → <a href={entityUrl(adult)}>{adult.name.zh_hans}</a></p>;})}</div><p>幼畜的原始产物表为空，不把成年期产物提前计入幼畜收益。七种彩色小鸡都指向公鸡，不应按不同颜色虚构七种不同产物。</p></section>
+<details><summary>游戏数据来源</summary><p>livestock.dat：幼畜的成年家畜编号、变长产物表；tips.dat 的 TIPS_23_HOW_TO_LIVESTOCK、TIPS_50_INFO_LIVESTOCK、TIPS_54_WHISTLE_LIVESTOCK：照料、状态查看与呼笛。产物概率、数量与饲养状态尚未完整联动，因此不提供承诺式日产收益。</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem}.card{padding:1rem;margin:0}.card h3{margin-top:0}.card p{font-size:.85rem;color:var(--muted)}.products a{display:flex;align-items:center;gap:.6rem;margin:.5rem 0;text-decoration:none}.products img{object-fit:contain}nav{line-height:2}</style>
