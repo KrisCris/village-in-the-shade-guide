@@ -5,6 +5,7 @@ import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
+import recipeDocuments from '../../data/sources/game-recipe-documents.json';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
 
@@ -146,6 +147,12 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     if(exchange.reward_item_ids.includes(entity.id)) for(const id of exchange.input_item_ids) {
       add('acquisition',findCatalogEntity(catalog,id,'items'),{quantity:exchange.input_quantity,chips,note:exchange.condition,key:`exchange:${exchange.id}:${id}`});
     }
+  }
+  for(const document of recipeDocuments.documents) {
+    if(entity.id===document.target_item_id||itemQuantity(entity.output).item_id===document.target_item_id) {
+      add('unlocks',findCatalogEntity(catalog,document.document_item_id,'items'),{chips:['取得设计图后可制作','玉手箱奖励候选']});
+    }
+    if(entity.id===document.document_item_id) add('unlocks',findCatalogEntity(catalog,document.target_item_id,'items'),{chips:['解锁此物品的制作配方']});
   }
   const addOutput = (source: Entity, group: RelationGroupKey, context?: string) => {
     const output = itemQuantity(source.output);

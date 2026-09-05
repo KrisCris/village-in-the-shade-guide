@@ -4,12 +4,13 @@ import {getCatalog,entityUrl} from '../../data/repository';
 import {buildRelationGroups} from '../../domain/relations';
 import nativeGroups from '../../../data/sources/game-appearance-groups.json';
 const catalog=getCatalog();
-const rows=catalog.entities.filter(e=>e.kind==='items'&&['ITEM_CATEGORY_ORNAMENTS','ITEM_CATEGORY_CLOTHES','ITEM_CATEGORY_COLLAR'].includes(e.category_id??''));
+const rows=catalog.entities.filter(e=>e.kind==='items'&&['ITEM_CATEGORY_ORNAMENTS','ITEM_CATEGORY_CLOTHES','ITEM_CATEGORY_COLLAR','ITEM_CATEGORY_BACK_HAIRSTYLE','ITEM_CATEGORY_FRONT_HAIRSTYLE'].includes(e.category_id??''));
 const groups=nativeGroups.groups.map(group=>({id:group.id,flag:group.unlock_flag,source:group.source,variants:rows.filter(item=>group.item_numeric_ids.includes(Number(item.numeric_id)))})).filter(group=>group.variants.length);
 const grouped=new Set(groups.flatMap(group=>group.variants.map(item=>item.id)));
 for(const item of rows.filter(item=>!grouped.has(item.id)))groups.push({id:item.id,flag:-1,source:'item.dat',variants:[item]});
 ---
 <BaseLayout title="服装与装饰获取"><h1>服装与装饰获取</h1>
+<p>发型也列在下方。玉手箱奖励表包含部分发型和设计图，可先查看<a href="/guides/collection-map/#treasures">生成点与奖励候选</a>，再安排夜间收集。</p>
 <p>先取得款式，再查看同款配色。服装与头饰按游戏外观表归组；下列来源注明实际发放或出售的物品，不代表每种配色都单独出售。</p>
 <div class="styles">{groups.map(group=>{const {variants}=group;const icon=variants.find(e=>e.icon_path)?.icon_path;const sources=variants.flatMap(e=>buildRelationGroups(e,catalog,'normal').filter(g=>['acquisition','unlocks'].includes(g.key)).flatMap(g=>g.rows).map(source=>({item:e,source})));return <details class="card" id={group.id}><summary>{icon&&<img src={icon} width="52" height="52" alt="" loading="lazy" />}<strong>{variants[0].name.zh_hans.split('／')[0]}</strong><small>{variants.length} 种</small></summary>
 <h2>款式获取</h2>{sources.length?<ul>{sources.map(({item,source})=><li><a href={entityUrl(source.entity)}>{source.entity.name.zh_hans}</a>：<a href={entityUrl(item)}>{item.name.zh_hans}</a>{source.chips.length&&<span> · {source.chips.join('；')}</span>}</li>)}</ul>:<p>{group.flag===0?'初始款式，无额外款式解锁标记。':'尚未确认取得此款式的事件或奖励。'}</p>}

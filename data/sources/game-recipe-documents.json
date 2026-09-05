@@ -1,0 +1,184 @@
+{
+  "documents": [
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_VASE",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_VASE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_24",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_WOODEN_CARVED_BEAR",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_WOODEN_CARVED_BEAR",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_25",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_UNFINISHED_SCARF",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_UNFINISHED_SCARF",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_26",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_KOKEDAMA",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_KOKEDAMA",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_27",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_WOODEN_FISH",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_WOODEN_FISH",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_28",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_ABACUS",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_ABACUS",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_29",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_BAMBOO_CRAFT_DRAGONFLY",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_30",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_ROPHY_BRONZE",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_TROPHY_BRONZE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_63",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_TROPHY_SILVER",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_TROPHY_SILVER",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_64",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_TROPHY_GOLD",
+      "target_item_id": "ITEM_ID_FIGURINE_XS_TROPHY_GOLD",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_65",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_S_JAR",
+      "target_item_id": "ITEM_ID_FIGURINE_S_JAR",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_31",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_L_FOLDED_FUTON",
+      "target_item_id": "ITEM_ID_FIGURINE_L_FOLDED_FUTON",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_32",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_FIGURINE_SEASON_EASTER_EGG",
+      "target_item_id": "ITEM_ID_FIGURINE_SEASON_EASTER_EGG",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_34",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_BRANCH_PILE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_BRANCH_PILE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_36",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_FLOWER_POT",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_FLOWER_POT",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_37",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_STACKED_STONE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_STACKED_STONE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_39",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_GARDEN_STONE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_GARDEN_STONE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_40",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_WATER_LILY_POT",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_WATER_LILY_POT",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_41",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_SIGNBOARD",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_SIGNBOARD",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_42",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_S_STONE_LANTERN",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_S_STONE_LANTERN",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_43",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_MOSSY_STONE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_M_MOSSY_STONE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_44",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_LARGE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_46",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_M_STEPPING_STONE_SMALL",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_47",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_L_SHRUB_AND_ROCK",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_48",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+      "target_item_id": "ITEM_ID_GARDEN_FIGURINE_L_HAY_ROLL_PILE",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_50",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_S_TAPESTRY_BROWN",
+      "target_item_id": "ITEM_ID_WALL_DECORATION_S_TAPESTRY_BROWN",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_55",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_S_WREATH_BROWN",
+      "target_item_id": "ITEM_ID_WALL_DECORATION_S_WREATH_BROWN",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_56",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_W_PAINTING_BROWN",
+      "target_item_id": "ITEM_ID_WALL_DECORATION_W_PAINTING_BROWN",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_57",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_WALL_DECORATION_W_GARLAND_BROWN",
+      "target_item_id": "ITEM_ID_WALL_DECORATION_W_GARLAND_BROWN",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_58",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    },
+    {
+      "document_item_id": "ITEM_ID_CRAFT_RECIPE_TORCH_BIG",
+      "target_item_id": "ITEM_ID_GIMMICK_TORCH_BIG",
+      "popup_id": "INTANGEBLE_ID_CRAFT_RECIPE_66",
+      "source": "treasurebox.dat:8,16 → intangeble.dat:84"
+    }
+  ]
+}

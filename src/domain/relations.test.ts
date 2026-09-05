@@ -15,6 +15,14 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('links recipe documents to their native popup target, including recipe panels', () => {
+    const document=entity('ITEM_ID_CRAFT_RECIPE_FIGURINE_XS_VASE','items');
+    const vase=entity('ITEM_ID_FIGURINE_XS_VASE','items');
+    const recipe=entity('make-vase','craft-recipes',{output:{item_id:vase.id,quantity:1}});
+    const data=catalog(document,vase,recipe);
+    expect(buildRelationGroups(recipe,data,'normal').find(g=>g.key==='unlocks')?.rows[0].entity.id).toBe(document.id);
+    expect(buildRelationGroups(document,data,'normal').find(g=>g.key==='unlocks')?.rows[0].entity.id).toBe(vase.id);
+  });
   it('does not label treasure candidates as guaranteed rewards', () => {
     const item=entity('vase-recipe','items');
     const pool=entity('pool','activities',{reward_candidates:[item.id]});
