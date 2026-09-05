@@ -193,6 +193,7 @@ class Activity:
     prerequisites: tuple[str, ...] = ()
     source: str = ""
     description: str = ""
+    reward_candidates: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)

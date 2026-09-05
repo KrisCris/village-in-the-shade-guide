@@ -4,6 +4,8 @@ import mapData from '../../../data/sources/game-map-markers.json';
 import exploration from '../../../data/sources/game-exploration-markers.json';
 import {getCatalog,entityUrl} from '../../data/repository';
 const catalog=getCatalog();
+const treasurePool=catalog.entities.find(e=>e.id==='TREASUREBOX_REWARD_POOL');
+const treasureRewards=((treasurePool?.reward_candidates??[]) as string[]).map(id=>catalog.entities.find(e=>e.kind==='items'&&e.id===id)).filter(Boolean);
 const markers=mapData.markers.map(m=>{
  const item='item_numeric_id' in m?catalog.entities.find(e=>e.kind==='items'&&e.numeric_id===m.item_numeric_id):undefined;
  return {...m,label:item?.name.zh_hans ?? `狐狸神社 ${Number(m.anchor.slice(-2))+1}`,href:item?entityUrl(item):'/guides/season-plan/'};
@@ -23,7 +25,7 @@ const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+
 {outside.map(m=>{const p=project(m);return <a href={m.href} data-marker-kind={m.kind}><title>{m.label} · {m.x}, {m.y}</title><circle cx={p.x} cy={p.y} r={m.kind==='book'?16:23} fill={markerColor(m.kind)} stroke="#282b21" stroke-width="4"/><text x={p.x+21} y={p.y+9} font-size="29" font-weight="bold" fill="#22251d" stroke="#fff5d9" stroke-width="5" paint-order="stroke">{markerLabel(m)}</text></a>;})}
 </svg></div>
 <p>金色：图书；橙色：狐狸神社；蓝色：玉手箱；紫色：交换怪异。编号不代表收集顺序或神社季度。</p>
-<section id="treasures"><h2>玉手箱怎么收集</h2><p>玉手箱不是走过去直接打开的固定箱子：接近后会逃跑，需要先击倒，再靠近执行拾取。游戏脚本对静止状态下的箭矢攻击另作处理，会转入逃跑状态；不要把射出第一箭当成已经拿到奖励。</p><div class="books">{exploration.markers.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>怪异表将玉手箱关联到这些生成锚点；具体哪一次刷新、奖励内容仍由游戏当次状态决定。脚本通过 GameDropTreasureBox 发放奖励，这里不把未解出的奖励池写成固定物品。</p></section>
+<section id="treasures"><h2>玉手箱怎么收集</h2><p>玉手箱不是走过去直接打开的固定箱子：接近后会逃跑，需要先击倒，再靠近执行拾取。游戏脚本对静止状态下的箭矢攻击另作处理，会转入逃跑状态；不要把射出第一箭当成已经拿到奖励。</p><div class="books">{exploration.markers.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>怪异表将玉手箱关联到这些生成锚点；奖励表收录下列 {treasureRewards.length} 种候选物品。不是每次全部获得，抽选与数量条件仍需核对。</p><details><summary>查看奖励候选：设计图、外观与物品</summary><div class="books">{treasureRewards.map(e=>e&&<a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="40" height="40" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details></section>
 <h2>村庄图书</h2><p>“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={m.href}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
 <h2>独立区域图书</h2><div class="books">{inside.map(m=><a id={m.anchor} href={m.href}>{m.label}<small>{m.map.includes('2160')?'附身草丛（藪）':'隘口（峠）'} · {m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
 <p>这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。</p>

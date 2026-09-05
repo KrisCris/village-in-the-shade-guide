@@ -15,6 +15,13 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('does not label treasure candidates as guaranteed rewards', () => {
+    const item=entity('vase-recipe','items');
+    const pool=entity('pool','activities',{reward_candidates:[item.id]});
+    const data=catalog(item,pool);
+    expect(buildRelationGroups(item,data,'normal').find(g=>g.key==='acquisition')?.rows[0].chips).toContain('奖励候选，非必得');
+    expect(buildRelationGroups(pool,data,'normal').find(g=>g.key==='outputs')?.rows[0].quantity).toBeUndefined();
+  });
   it('shows night exchange rewards as choices and links the required offering back', () => {
     const tofu=entity('ITEM_ID_TOFU','items');
     const jewel=entity('ITEM_ID_SPECIAL_JEWELS_04','items');

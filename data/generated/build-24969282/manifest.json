@@ -3,7 +3,7 @@
   "archive_sha256": "26a9ff9915972cda48c8b58298897d0b8642f3b2bd0f9b17ea5f1a2081b51805",
   "build_id": "24969282",
   "counts": {
-    "activities": 331,
+    "activities": 332,
     "characters": 16,
     "collectibles": 55,
     "cooking_recipes": 118,
@@ -24,7 +24,7 @@
   "extractor_version": "0.1.0",
   "format": 1,
   "generated_files": {
-    "entities/activities.json": "55d8a0299663f3e29973a76bef8580d8199f9c4d804372352fbab47bfc2425c1",
+    "entities/activities.json": "0cd142f2f62eb7098fb1c688f00fdb7569a7b8dc9ad1b0485b577ad4f9d5df1e",
     "entities/characters.json": "faf4c7541e6507e46c6d9bffc0378e03d2ddcdd2d4c86034479b8ed96fd2f4fe",
     "entities/collectibles.json": "f4a0eb5020fbe33207f4c8b65edb564bedf45c9e3195c15a0e7ec4478bebcc8c",
     "entities/cooking-recipes.json": "8f0293efbe6ce92546a125fb0cf4aa1a18ec9bcfcbeeae701c45615b0671355e",

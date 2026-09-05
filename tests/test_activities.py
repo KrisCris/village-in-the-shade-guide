@@ -28,6 +28,16 @@ def test_building_materials_and_money_are_separate():
     assert [(q.item_id,q.quantity) for q in activity.inputs]==[('wood',50)]
 
 
+def test_treasure_pool_keeps_candidates_distinct_from_guaranteed_rewards():
+    state=snapshot()
+    row=struct.pack('<13I',1,0,230000,0,0,0,1,30,0,0,0,0,0)
+    native=read_table(build_table(records=[row],strings=b''))
+    normalize_activities({'treasurebox':native},state,{})
+    pool=state.activities['TREASUREBOX_REWARD_POOL']
+    assert pool.reward_candidates==('wood',)
+    assert pool.rewards==()
+
+
 @pytest.mark.parametrize('size',[480,576,624])
 def test_lost_book_item_reference_is_relative_to_variable_record_tail(size):
     state=snapshot()

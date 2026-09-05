@@ -213,6 +213,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
   if (entity.kind === 'activities') {
     addInputs(entity, 'materials', String(entity.activity_type));
     for (const reward of (entity.rewards ?? []) as Array<{item_id: string; quantity: number}>) add('outputs', catalog.byId[reward.item_id], {quantity: reward.quantity});
+    for (const id of (entity.reward_candidates ?? []) as string[]) add('outputs',findCatalogEntity(catalog,id,'items'),{chips:['奖励候选，非必得']});
     for (const id of (entity.prerequisites ?? []) as string[]) add('unlocks', catalog.byId[id], {chips:['前置能力']});
   }
 
@@ -227,6 +228,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       }
     }
     if (source.kind === 'activities') {
+      if(((source.reward_candidates ?? []) as string[]).some(id=>subjectIds.has(id))) add('acquisition',source,{chips:['奖励候选，非必得',String(source.location || '')]});
       const quantity = relationQuantity(source, subjectIds);
       if (quantity != null) add(source.activity_type === '祠堂能力 / 配方解锁' ? 'unlocks' : 'requirements', source, {quantity, chips:[String(source.activity_type), String(source.location || ''), ...(source.conditions as string[] ?? [])]});
       if (entity.unlock_flag && source.unlock_flag === entity.unlock_flag) add('unlocks', source, {chips:['解锁此配方', String(source.location || '')]});

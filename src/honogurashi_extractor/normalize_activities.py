@@ -7,6 +7,14 @@ from .probe import _string_groups
 def normalize_activities(tables, snapshot, overrides, archive=None):
     """Decode item relations from fixed, cross-checked database fields."""
     items = {item.numeric_id: item.id for item in snapshot.items.values()}
+    treasure = tables.get('treasurebox')
+    if treasure:
+        candidates = tuple(dict.fromkeys(items[_u32(r,8)] for r in treasure.records if _u32(r,8) in items))
+        name = build_name(ja='玉手箱の報酬候補',zh_hant='玉手箱獎勵候選',internal='TREASUREBOX_REWARD_POOL',overrides={})
+        snapshot.activities[name.internal] = Activity(name.internal,0,name,'随机奖励候选',
+            reward_candidates=candidates,location='夜间玉手箱',
+            conditions=('奖励候选池；并非每次全部获得，数量与抽选条件尚未核对',),
+            source='treasurebox.dat:8 物品 ID；GameDropTreasureBox 由击倒后的拾取动作调用')
     def rows(name):
         table = tables.get(name)
         return zip(table.records, _string_groups(table), strict=True) if table else []
@@ -55,5 +63,5 @@ def normalize_activities(tables, snapshot, overrides, archive=None):
         name = build_name(ja="図書返却："+group[1], zh_hant="圖書歸還："+group[5], internal=internal, overrides=overrides)
         snapshot.activities[internal] = Activity(internal,_u32(record,0),name,"图书归还",inputs=(ItemQuantity(item_id,1),),location="图书馆",source="lostbook.dat:记录末尾前52字节")
     # Wiki leads and string references in scripts are not executable-condition
-    # evidence. Restaurant counts, friendship thresholds and night pickup pools
+    # evidence. Restaurant counts and night pickup pools
     # remain absent until their game-side control flow is decoded.
