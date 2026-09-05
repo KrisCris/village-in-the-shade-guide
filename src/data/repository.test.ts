@@ -3,6 +3,14 @@ import { buildCatalog, rankEntities, retainAvailableIconPaths } from './reposito
 import { expandSearchRows } from './clientSearch';
 
 describe('data repository', () => {
+  it('uses the livestock record variant item icon, not a name guess', () => {
+    const data=buildCatalog({'/entities/livestock.json':[{id:'LIVESTOCK_ID_CHICKEN'}],'/entities/items.json':[{id:'ITEM_ID_LIVESTOCK_CHICKEN_WHITE'}]});
+    expect(data.byId.LIVESTOCK_ID_CHICKEN.icon_path).toBe('/icons/generated/items/ITEM_ID_LIVESTOCK_CHICKEN_WHITE.webp');
+  });
+  it('uses the native dog icon even without a purchasable dog item', () => {
+    const data=buildCatalog({'/entities/livestock.json':[{id:'LIVESTOCK_ID_DOG'}]});
+    expect(data.byId.LIVESTOCK_ID_DOG.icon_path).toBe('/icons/generated/livestock/LIVESTOCK_ID_DOG.webp');
+  });
   it('attaches attributed portraits by character ID without borrowing one for an unknown character', () => {
     const data=buildCatalog({'/entities/characters.json':[{id:'CHARA_ID_OLD_MAN'},{id:'CHARA_ID_MOTHER'}]});
     expect(data.byId.CHARA_ID_OLD_MAN.icon_path).toBe('/portraits/official/CHARA_ID_OLD_MAN.png');

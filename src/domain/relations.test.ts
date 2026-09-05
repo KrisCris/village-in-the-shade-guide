@@ -234,5 +234,7 @@ describe('relation groups', () => {
     const source=buildRelationGroups(egg,data,'normal').find(g=>g.key==='acquisition')?.rows.find(r=>r.entity===chicken);
     expect(source?.chips).toContain('畜产品来源');
     expect(source?.quantity).toBeUndefined();
+    const white=entity('ITEM_ID_LIVESTOCK_CHICKEN_WHITE','items');
+    expect(buildRelationGroups(white,catalog(white,egg), 'normal').find(g=>g.key==='outputs')?.rows[0].entity).toBe(egg);
   });
 });

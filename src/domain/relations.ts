@@ -142,10 +142,11 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     }
   };
   for (const animal of livestockProducts.animals) {
-    if (entity.id===animal.livestock_id) {
+    if (entity.id===animal.livestock_id || animal.variant_item_ids.some(id=>id===entity.id)) {
       if(animal.adult_id) add('unlocks',findCatalogEntity(catalog,animal.adult_id,'livestock'),{chips:['长大后的家畜'],key:`adult:${animal.adult_id}`});
       for(const id of animal.product_item_ids) add('outputs',findCatalogEntity(catalog,id,'items'),{chips:['可能产出的畜产品'],key:`livestock-product:${id}`});
     }
+    if(entity.id===animal.livestock_id) for(const id of animal.variant_item_ids) add('other',findCatalogEntity(catalog,id,'items'),{chips:['游戏内家畜款式'],key:`livestock-variant:${id}`});
     if(entity.id===animal.adult_id) add('acquisition',findCatalogEntity(catalog,animal.livestock_id,'livestock'),{chips:['由幼畜长大'],key:`juvenile:${animal.livestock_id}`});
     if(animal.product_item_ids.some(id=>id===entity.id)) add('acquisition',findCatalogEntity(catalog,animal.livestock_id,'livestock'),{chips:['畜产品来源'],note:'产出候选；不是每次同时产出整张清单',key:`livestock:${animal.livestock_id}`});
   }
