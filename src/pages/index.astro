@@ -23,6 +23,7 @@ const items = [...itemIds].flatMap((id) => catalog.byId[id] ? [catalog.byId[id]]
   <p class="eyebrow">Village in the Shade · Build 24969282</p>
   <h1>静谧田园资料库</h1>
   <GlobalSearch client:load prominent />
+  <p><a href="/planner/">按季节比较种植与加工收益 →</a></p>
   <section><div class="section-title"><h2>常用资料库</h2><a href="/data/items/">物品总表 →</a></div>
     <div class="grid">{featuredKinds.map(({ kind, label, count }) => <a class="category card" href={`/data/${kind}/`}><span>{label}</span><strong>{count}</strong></a>)}</div>
   </section>

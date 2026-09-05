@@ -29,6 +29,7 @@ const itemCategoryOptions = [...new Map([...rows].sort((a, b) => Number(a.catego
 ---
 <BaseLayout title={label} description={`${label}完整数据表，支持中文、日文和内部 ID 搜索。`}>
   <h1>{label}</h1>
+  {['crops','processes'].includes(kind) && <p><a href="/planner/">种植与加工收益排行 →</a></p>}
   <p class="muted">共 {rows.length} 条</p>
   <EntityExplorer client:load rows={rows} kind={kind} machineOptions={machineOptions} fishingLocationOptions={fishingLocationOptions} itemCategoryOptions={itemCategoryOptions} priceIndex={priceIndex} />
 </BaseLayout>
