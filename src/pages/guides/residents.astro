@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+const catalog=getCatalog();
+const seasons=['spring','summer','autumn','winter'];
+const labels=['春','夏','秋','冬'];
+const people=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_day).sort((a,b)=>seasons.indexOf(String(a.birthday_season))-seasons.indexOf(String(b.birthday_season))||Number(a.birthday_day)-Number(b.birthday_day));
+---
+<BaseLayout title="生日与送礼规划"><h1>生日与送礼规划</h1>
+<p>每天最多送一份礼物，每周最多两份。先确定要培养关系的村民，从喜爱清单中挑自己容易取得的物品；不要只看售价高低。具体礼物可点开查看获取方式、价格及其他用途。</p>
+<p>临近生日时提前留好礼物。游戏角色主表列出的喜爱和讨厌物品各有 4 件；未列出的物品不能直接视为喜爱。注视村民也可以在游戏里查看好感度与礼物喜好。</p>
+{people.map(person=><section><h2><a href={entityUrl(person)}>{person.name.zh_hans}</a> · {labels[seasons.indexOf(String(person.birthday_season))]} {String(person.birthday_day)} 日</h2>{[1,-1].map(preference=><div><h3>{preference===1?'喜爱':'讨厌'}</h3><div class="gifts">{((person.gift_items??[]) as {item_id:string;preference:number}[]).filter(g=>g.preference===preference).map(g=>{const item=catalog.entities.find(e=>e.kind==='items'&&e.id===g.item_id);return item&&<a href={entityUrl(item)}>{item.icon_path&&<img src={item.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{item.name.zh_hans}</span></a>;})}</div></div>)}</section>)}
+<h2>委托与食谱怎么安排</h2><p>交付委托与送礼是不同用途。收到带期限的委托后，以自己的任务面板为准，不将数据表里的候选物品写成某位村民固定会要的东西。食谱可通过反复吃同一道料理或村民传授获得；具体料理的次数、关系门槛仍需逐条核对，不能套用统一阈值。</p>
+<details><summary>游戏数据依据</summary><p>character.dat：喜爱物品偏移 200–224，讨厌物品 232–256，生日季节 420、日期 424。logtext.dat：LOG_ERROR_PRESENT_DAY_LIMIT、LOG_ERROR_PRESENT_WEEK_LIMIT。tips.dat：TIPS_51_INFO_VILLAGER、TIPS_38_RECIPE。</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;border-top:1px solid var(--border);padding-top:1rem}.gifts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.5rem}.gifts a{display:flex;align-items:center;gap:.5rem;padding:.5rem;color:var(--ink);text-decoration:none;background:var(--paper-raised);border-radius:10px}.gifts img{object-fit:contain}h3{font-size:1rem}p{line-height:1.8}</style>

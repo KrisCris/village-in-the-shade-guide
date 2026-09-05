@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import mapData from '../../../data/sources/game-map-markers.json';
+import {getCatalog,entityUrl} from '../../data/repository';
+const catalog=getCatalog();
+const markers=mapData.markers.map(m=>{
+ const item='item_numeric_id' in m?catalog.entities.find(e=>e.kind==='items'&&e.numeric_id===m.item_numeric_id):undefined;
+ return {...m,label:item?.name.zh_hans ?? `狐狸神社 ${Number(m.anchor.slice(-2))+1}`,href:item?entityUrl(item):'/guides/season-plan/'};
+});
+const outside=markers.filter(m=>m.map.includes('map_0000_spr'));
+const inside=markers.filter(m=>!m.map.includes('map_0000_spr'));
+---
+<BaseLayout title="遗失图书与狐狸神社地图"><h1>遗失图书与狐狸神社地图</h1>
+<p>55 本图书、4 个神社。下图是游戏世界坐标示意图，不是道路图；位置不代表当前剧情已开放。点击标记查看物品与交付用途。</p>
+<p><a href="/guides/season-plan/">狐狸神社四季供奉清单 →</a></p>
+<div class="map-wrap"><svg viewBox="0 0 34560 34560" role="img" aria-label="村庄遗失图书和神社坐标图">
+<rect width="34560" height="34560" fill="var(--paper-raised)"/>
+{[0,5760,11520,17280,23040,28800,34560].map(p=><g><path d={`M ${p} 0 V 34560 M 0 ${p} H 34560`} stroke="var(--border)" stroke-width="25"/><text x={p+80} y="700" font-size="450" fill="var(--muted)">{p}</text></g>)}
+{outside.map(m=><a href={m.href}><title>{m.label} · {m.x}, {m.y}</title><circle cx={m.x} cy={m.y} r={m.kind==='shrine'?300:170} fill={m.kind==='shrine'?'var(--vermilion)':'var(--gold)'} stroke="var(--paper)" stroke-width="35"/><text x={m.x+210} y={m.y+100} font-size="360" fill="var(--ink)">{m.kind==='shrine'?'神社':m.anchor.slice(-2)}</text></a>)}
+</svg></div>
+<p>金色：图书（数字为游戏锚点编号）；橙色：狐狸神社。书名与位置来自 lostbook.dat 和地图锚点，不按攻略站列表顺序配对。</p>
+<h2>村庄图书</h2><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a href={m.href}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small></a>)}</div>
+<h2>独立区域图书</h2><div class="books">{inside.map(m=><a href={m.href}>{m.label}<small>{m.map.includes('2160')?'灌木丛（藪）':'山口（峠）'} · {m.x}, {m.y}</small></a>)}</div>
+<p>这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。</p>
+</BaseLayout>
+<style>.map-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}.map-wrap svg{display:block;width:100%;min-width:680px;max-height:none}.map-wrap a:hover circle{fill:var(--green)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.5rem}.books a{padding:.6rem;background:var(--paper-raised);border-radius:8px;color:var(--ink);text-decoration:none}.books small{display:block;color:var(--muted)}p{line-height:1.7}</style>

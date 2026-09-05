@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import type {Entity} from '../../data/types';
+const catalog=getCatalog();
+const seasons=[['spring','春'],['summer','夏'],['autumn','秋'],['winter','冬']];
+const activities=catalog.entities.filter(e=>e.kind==='activities');
+const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
+const inputs=(e:Entity)=>(e.inputs ?? []) as {item_id:string;quantity:number}[];
+---
+<BaseLayout title="四季留货与交付规划">
+<h1>四季留货与交付规划</h1>
+<nav>{seasons.map(([id,name])=><a href={`#${id}`}>{name}季</a>)}<a href="#daily">每天怎么安排</a></nav>
+<p>先留供奉与交付所需，再出售或加工余量。下列数量直接来自游戏交付表；没有确认年份或截止日期的条目，不视为“第一年必须完成”。</p>
+<section id="daily"><h2>每天怎么安排</h2><ol>
+<li>先查当前委托截止日与本季生日，准备今天要交的物品；随机委托以存档里的对象和数量为准。</li>
+<li>处理田地收获，按下方清单分出供奉、交付和礼物库存。月底播种前查看首次成熟时间，避免只看售价。</li>
+<li>把剩余作物安排加工；原料已在手时比较“加工增值”，决定种什么时比较“种植到加工收益”。<a href="/planner/">打开收益规划器</a>。</li>
+<li>按缺货清单决定外出目标：山菜优先补本季供品；鱼按季节、时段和钓点安排，不为不出现的鱼空等。</li>
+<li>出货前再检查建筑、料理、交付用途。尚未凑齐一组的供品不要混进可出售库存。</li>
+</ol></section>
+{seasons.map(([season,name])=>{
+const bundles=activities.filter(e=>e.id.startsWith(`BUNDLE_ID_${season.toUpperCase()}_`) || (e.id.startsWith('BUNDLE_ID_VILLAGE_HEAD_')&&e.name.zh_hans.startsWith(`${name}季`)));
+const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_season===season).sort((a,b)=>Number(a.birthday_day)-Number(b.birthday_day));
+return <section id={season}><h2>{name}季</h2>
+<p><a href={`/data/crops/?season=${season}`}>本季种植</a> · <a href={`/data/fish/?season=${season}`}>本季鱼与钓点时段</a></p>
+<h3>生日安排</h3><p>{residents.map(e=><a class="birthday" href={entityUrl(e)}>{String(e.birthday_day)} 日 · {e.name.zh_hans}</a>)}</p>
+{season==='summer'&&<p>留一部分毛豆植株进入秋季，游戏种子说明明确写明入秋枯萎后转为黄豆。豆芽、毛豆与黄豆是不同收获选择，不能把三阶段产量直接相加。<a href="/data/crops/CROPS_ID_EDAMAME/">查看各阶段产量与用途</a>。</p>}
+{season==='autumn'&&<p>菌类也要纳入种植计划：香菇、滑菇使用栽培包，秋季生长，可重复收获。花卉要同时检查供奉与村长家交付需求，已完成的项目无需重复预留。</p>}
+{bundles.map(e=><article class="card"><h3><a href={entityUrl(e)}>{e.name.zh_hans}</a></h3><p>{String(e.location)}</p><div class="needs">{inputs(e).map(input=>{const target=item(input.item_id);return target&&<a href={entityUrl(target)}>{target.icon_path&&<img src={target.icon_path} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}</span><b>×{input.quantity}</b></a>;})}</div></article>)}
+</section>})}
+<section><h2>全年保留目标</h2><p>建筑材料、加工交付、畜产品与稀有鱼不只属于一个季度。先选自己准备完成的项目，再累计所需数量；不要把所有未接取项目都当成当月硬性任务。</p><p><a href="/data/activities/?q=村长">村长家交付目录</a> · <a href="/data/activities/?q=建筑">建筑材料</a> · <a href="/data/characters/">角色喜恶与生日</a></p></section>
+<details><summary>数据来源</summary><p>供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。</p></details>
+</BaseLayout>
+<style>nav{display:flex;flex-wrap:wrap;gap:1rem}section{margin:2rem 0;scroll-margin-top:90px}li{margin:.7rem 0;line-height:1.8}.birthday{display:inline-block;margin-right:1rem;margin-bottom:.6rem}.card{padding:1rem;margin:.8rem 0}.card h3{margin:0}.card p{color:var(--muted)}.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.needs a{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none}.needs img{object-fit:contain}.needs b{color:var(--vermilion)}</style>

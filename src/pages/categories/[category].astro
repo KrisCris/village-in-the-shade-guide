@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityExplorer from '../../components/table/EntityExplorer';
+import {getCatalog} from '../../data/repository';
+export function getStaticPaths(){return [...new Set(getCatalog().entities.filter(e=>e.kind==='items'&&e.category_id).map(e=>e.category_id))].map(category=>({params:{category}}));}
+const rows=getCatalog().entities.filter(e=>e.kind==='items'&&e.category_id===Astro.params.category);
+const title=rows[0]?.category_name?.zh_hans ?? '物品';
+---
+<BaseLayout title={`${title}一览`}><a href="/categories/">← 物品分类</a><h1>{title}一览</h1><EntityExplorer rows={rows} kind="items" client:load /></BaseLayout>

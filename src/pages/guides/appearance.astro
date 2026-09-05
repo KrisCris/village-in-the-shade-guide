@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import {buildRelationGroups} from '../../domain/relations';
+const catalog=getCatalog();
+const rows=catalog.entities.filter(e=>e.kind==='items'&&['ITEM_CATEGORY_ORNAMENTS','ITEM_CATEGORY_CLOTHES','ITEM_CATEGORY_COLLAR'].includes(e.category_id??''));
+const names=[...new Set(rows.map(e=>e.name.zh_hans.split('／')[0]))];
+---
+<BaseLayout title="服装与装饰获取"><h1>服装与装饰获取</h1>
+<p>按款式合并颜色。展开后查看每个配色已识别的商店、制作或奖励来源；点击物品可查材料和解锁条件。</p>
+<div class="styles">{names.map(name=>{const variants=rows.filter(e=>e.name.zh_hans.split('／')[0]===name);const icon=variants.find(e=>e.icon_path)?.icon_path;return <details class="card"><summary>{icon&&<img src={icon} width="52" height="52" alt="" loading="lazy" />}<strong>{name}</strong><small>{variants.length} 种</small></summary>{variants.map(e=>{const sources=buildRelationGroups(e,catalog,'normal').filter(g=>['acquisition','unlocks'].includes(g.key)).flatMap(g=>g.rows);return <div class="variant"><a href={entityUrl(e)}>{e.name.zh_hans}</a><small>{sources.length?sources.map(s=>[s.entity.name.zh_hans,...s.chips].join(' · ')).join('；'):'获取条件尚未解码，不代表无法获得'}</small></div>;})}</details>;})}</div>
+</BaseLayout>
+<style>.styles{display:grid;gap:.7rem}.card{padding:.7rem 1rem}summary{display:flex;align-items:center;gap:.8rem;cursor:pointer}summary img{object-fit:contain}summary small{margin-left:auto;color:var(--muted)}.variant{display:grid;gap:.3rem;margin:.6rem 0;padding:.5rem;border-top:1px solid var(--border)}.variant small{color:var(--muted);line-height:1.6}</style>
