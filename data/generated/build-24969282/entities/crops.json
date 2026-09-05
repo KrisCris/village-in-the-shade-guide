@@ -1462,8 +1462,8 @@
   },
   {
     "cultivation_method": "菌类栽培",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 11,
+    "growth_points": 1100,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
     ],
@@ -1498,8 +1498,8 @@
       "zh_hant": "木耳"
     },
     "numeric_id": 56,
-    "regrow_days": null,
-    "regrow_points": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "autumn"
     ],
@@ -1667,8 +1667,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_LOTUS_ROOT"
     ],
@@ -1925,8 +1925,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_MULBERRY_LEAF",
       "ITEM_ID_CROPS_MULBERRY"
@@ -2795,8 +2795,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 2,
+    "growth_points": 200,
     "harvest_item_ids": [],
     "harvest_quantity": null,
     "harvest_stages": [],
@@ -4670,8 +4670,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 50,
+    "growth_points": 5000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_RICE"
     ],
@@ -4837,8 +4837,8 @@
   },
   {
     "cultivation_method": "菌类栽培",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 12,
+    "growth_points": 1200,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
     ],
@@ -4873,8 +4873,8 @@
       "zh_hant": "香菇"
     },
     "numeric_id": 55,
-    "regrow_days": null,
-    "regrow_points": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "autumn"
     ],
@@ -4884,8 +4884,8 @@
   },
   {
     "cultivation_method": "菌类栽培",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 8,
+    "growth_points": 800,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
     ],
@@ -4921,8 +4921,8 @@
       "zh_hant": "鴻喜菇"
     },
     "numeric_id": 53,
-    "regrow_days": null,
-    "regrow_points": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
     "seasons": [
       "autumn"
     ],
@@ -4932,8 +4932,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 5,
+    "growth_points": 500,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_SKUNK_CABBAGE"
     ],
@@ -5427,8 +5427,8 @@
   },
   {
     "cultivation_method": "",
-    "growth_days": null,
-    "growth_points": null,
+    "growth_days": 10,
+    "growth_points": 1000,
     "harvest_item_ids": [
       "ITEM_ID_CROPS_WASABI"
     ],

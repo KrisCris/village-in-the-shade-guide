@@ -50,39 +50,43 @@ def _u32(record: bytes, offset: int) -> int:
 
 
 def _growth_data(record: bytes) -> tuple[int | None, int | None, int | None, int | None]:
-    """Decode verified crop growth thresholds.
+    """Read crop.dat's variable arrays and 264-byte visual-stage records.
 
-    A watered day contributes 100 growth points. Ordinary crops store their
-    initial visual-stage thresholds in 264-byte entries beginning at byte 488.
-    Repeating crops store a second threshold sequence at byte 2080.
+    State 1 is initial growth; state 4 is regrowth. Other states (including
+    withered and cursed crops) must not contribute to cultivation duration.
+    Day estimates retain the ordinary 100-growth-points-per-day baseline.
     """
-    thresholds: list[int] = []
-    previous = 0
-    offset = 492
-    while offset + 4 <= len(record):
-        value = _u32(record, offset)
-        if value <= previous or value > 10_000:
-            break
-        thresholds.append(value)
-        previous = value
-        offset += 264
-    if not thresholds:
-        return None, None, None, None
-    growth_points = thresholds[-1]
-    regrow_points = None
-    if len(record) >= 2616 and _u32(record, 1812) == 4 and _u32(record, 1816) in (2, 3):
-        regrow_thresholds: list[int] = []
-        previous = 0
-        offset = 2084
-        while offset + 4 <= len(record):
-            value = _u32(record, offset)
-            if value <= previous or value > 10_000:
-                break
-            regrow_thresholds.append(value)
-            previous = value
-            offset += 264
-        if regrow_thresholds:
-            regrow_points = regrow_thresholds[-1]
+    missing = (None, None, None, None)
+    cursor = 76
+    for width in (4, 4, 4, 8):
+        if cursor + 4 > len(record):
+            return missing
+        cursor += 4 + width * _u32(record, cursor)
+        if cursor > len(record):
+            return missing
+    cursor += 96
+    if cursor + 4 > len(record):
+        return missing
+    state_count = _u32(record, cursor)
+    cursor += 4
+    points_by_state: dict[int, int] = {}
+    for _ in range(state_count):
+        if cursor + 8 > len(record):
+            return missing
+        state, count = _u32(record, cursor), _u32(record, cursor + 4)
+        cursor += 8
+        if cursor + count * 264 > len(record):
+            return missing
+        thresholds = [_u32(record, cursor + i * 264) for i in range(count)]
+        cursor += count * 264
+        if state in (1, 4) and thresholds and thresholds[-1] > 0:
+            if thresholds[0] != 0 or any(a >= b for a, b in zip(thresholds, thresholds[1:])):
+                return missing
+            points_by_state[state] = thresholds[-1]
+    growth_points = points_by_state.get(1)
+    if growth_points is None:
+        return missing
+    regrow_points = points_by_state.get(4)
     return (
         growth_points,
         math.ceil(growth_points / 100),

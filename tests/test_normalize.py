@@ -21,11 +21,22 @@ def _record(size: int, values: dict[int, int]) -> bytes:
 
 
 def test_growth_thresholds_are_converted_to_watered_days():
-    one_harvest = _record(2108, {492: 100, 756: 200, 1020: 400, 1284: 600, 1548: 800})
-    repeating = _record(3180, {492: 240, 756: 480, 1020: 720, 1284: 960, 1548: 1200, 1812: 4, 1816: 3, 2084: 100, 2348: 400})
+    header = {76: 1, 84: 1, 92: 1, 100: 2, 216: 1, 220: 1, 224: 6}
+    one_harvest = _record(2108, {**header, 492: 100, 756: 200, 1020: 400, 1284: 600, 1548: 800})
+    repeating = _record(3180, {**header, 216: 2, 492: 240, 756: 480, 1020: 720, 1284: 960, 1548: 1200, 1812: 4, 1816: 3, 2084: 100, 2348: 400})
 
     assert _growth_data(one_harvest) == (800, 8, None, None)
     assert _growth_data(repeating) == (1200, 12, 400, 4)
+
+
+def test_growth_reads_variable_arrays_and_stage_counts_for_mushrooms():
+    mushroom = _record(2632, {
+        76: 1, 84: 1, 92: 0, 96: 2, 212: 2,
+        216: 1, 220: 5, 488: 200, 752: 400, 1016: 600, 1280: 800,
+        1544: 4, 1548: 4, 1816: 100, 2080: 200, 2344: 400,
+    })
+    assert _growth_data(mushroom) == (800, 8, 400, 4)
+    assert _growth_data(mushroom[:1500]) == (None, None, None, None)
 
 
 def test_store_conditions_keep_year_season_and_exclusion_separate():
