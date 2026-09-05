@@ -1,5 +1,11 @@
 {
   "source": "lostbook.dat + named anchors in map_1_00.dat YMWR heads",
+  "projection": {
+    "offset_x": 348.0,
+    "offset_y": -145.0,
+    "scale_divisor": 8.274,
+    "source": "gamedefine.dat: MINIMAP_OFFSET_X/Y, MINIMAP_ZOOM_RATE"
+  },
   "markers": [
     {
       "anchor": "pop_lost_book10",

@@ -21,6 +21,9 @@ for name in ('minimap_01_spr_tc', 'minimap_11_spr_tc'):
 
 flags = read_table(archive.read_entry('data/database/gameflag.dat'))
 flag_names = {struct.unpack_from('<I',r)[0]: g[0] for r,g in zip(flags.records,_string_groups(flags))}
+defines = read_table(archive.read_entry('data/database/gamedefine.dat'))
+values = {g[1]: float(g[4]) for g in _string_groups(defines) if len(g)>4 and g[1] in ('MINIMAP_OFFSET_X','MINIMAP_OFFSET_Y','MINIMAP_ZOOM_RATE')}
+projection = dict(offset_x=values['MINIMAP_OFFSET_X'],offset_y=values['MINIMAP_OFFSET_Y'],scale_divisor=values['MINIMAP_ZOOM_RATE'],source='gamedefine.dat: MINIMAP_OFFSET_X/Y, MINIMAP_ZOOM_RATE')
 
 def progress_label(flag):
     name = flag_names.get(flag, '')
@@ -50,5 +53,5 @@ for entry in maps.entries():
             raise ValueError(f'Unmatched book anchor: {match[0]!r}')
         markers.append(dict(anchor=match[0][:-1].decode(),map=entry.name,x=x,y=y,kind='book' if book else 'shrine',**(book or {})))
 output = Path('data/sources/game-map-markers.json')
-output.write_text(json.dumps(dict(source='lostbook.dat + named anchors in map_1_00.dat YMWR heads',markers=markers),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+output.write_text(json.dumps(dict(source='lostbook.dat + named anchors in map_1_00.dat YMWR heads',projection=projection,markers=markers),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'map markers: {len(markers)}; books: {sum(m["kind"]=="book" for m in markers)}')
