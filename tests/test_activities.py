@@ -42,3 +42,14 @@ def test_delivery_candidate_does_not_invent_a_recipient_or_deadline():
     assert activity.inputs[0].quantity==2
     assert activity.location==''
     assert '以当次委托为准' in activity.conditions[0]
+
+
+def test_skill_retains_native_effect_description():
+    state=snapshot()
+    row=bytearray(200)
+    struct.pack_into('<III',row,0,1,0,0)
+    struct.pack_into('<I',row,12,10)
+    strings='\0'.join(['SKILL_TEST','内部名','畝の技術','','','','田壟技術','','畝にできる','','','','再敲擊一次田地即可形成田壟',''])+'\0'
+    skills=read_table(build_table(records=[bytes(row)],strings=strings.encode()))
+    normalize_activities({'skilltree':skills},state,{})
+    assert state.activities['SKILL_TEST'].description=='再敲擊一次田地即可形成田壟'

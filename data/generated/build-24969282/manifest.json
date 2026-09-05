@@ -24,7 +24,7 @@
   "extractor_version": "0.1.0",
   "format": 1,
   "generated_files": {
-    "entities/activities.json": "9df9ab205997fe03eddecdd2a4b169ff46455ef402b39064c1932eff8e6693c3",
+    "entities/activities.json": "55d8a0299663f3e29973a76bef8580d8199f9c4d804372352fbab47bfc2425c1",
     "entities/characters.json": "faf4c7541e6507e46c6d9bffc0378e03d2ddcdd2d4c86034479b8ed96fd2f4fe",
     "entities/collectibles.json": "f4a0eb5020fbe33207f4c8b65edb564bedf45c9e3195c15a0e7ec4478bebcc8c",
     "entities/cooking-recipes.json": "3aabb5b16a9eeced6b4e942bbb164fefd8ef0dd9acb25e4a7a1a9f9deaa08a4f",

@@ -2,6 +2,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_AUTUMN_01",
     "inputs": [
       {
@@ -45,6 +46,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_AUTUMN_02",
     "inputs": [
       {
@@ -88,6 +90,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_AUTUMN_03",
     "inputs": [
       {
@@ -131,6 +134,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_AUTUMN_04",
     "inputs": [
       {
@@ -175,6 +179,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_01_01",
     "inputs": [
       {
@@ -208,6 +213,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_01_02",
     "inputs": [
       {
@@ -245,6 +251,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_02_01",
     "inputs": [
       {
@@ -282,6 +289,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_02_02",
     "inputs": [
       {
@@ -319,6 +327,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_03_01",
     "inputs": [
       {
@@ -356,6 +365,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_03_02",
     "inputs": [
       {
@@ -393,6 +403,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_04_01",
     "inputs": [
       {
@@ -430,6 +441,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_04_02",
     "inputs": [
       {
@@ -467,6 +479,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_05_01",
     "inputs": [
       {
@@ -504,6 +517,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SHRINE_REPAIR_05_02",
     "inputs": [
       {
@@ -541,6 +555,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SPRING_01",
     "inputs": [
       {
@@ -584,6 +599,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SPRING_02",
     "inputs": [
       {
@@ -627,6 +643,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SPRING_03",
     "inputs": [
       {
@@ -670,6 +687,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SPRING_04",
     "inputs": [
       {
@@ -714,6 +732,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SUMMER_01",
     "inputs": [
       {
@@ -757,6 +776,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SUMMER_02",
     "inputs": [
       {
@@ -800,6 +820,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SUMMER_03",
     "inputs": [
       {
@@ -843,6 +864,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_SUMMER_04",
     "inputs": [
       {
@@ -887,6 +909,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_01_01",
     "inputs": [
       {
@@ -921,6 +944,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_01_02",
     "inputs": [
       {
@@ -955,6 +979,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_01_03",
     "inputs": [
       {
@@ -989,6 +1014,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_02_01",
     "inputs": [
       {
@@ -1032,6 +1058,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_02_02",
     "inputs": [
       {
@@ -1075,6 +1102,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_02_03",
     "inputs": [
       {
@@ -1118,6 +1146,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_02_04",
     "inputs": [
       {
@@ -1161,6 +1190,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_03_01",
     "inputs": [
       {
@@ -1204,6 +1234,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_03_02",
     "inputs": [
       {
@@ -1247,6 +1278,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_03_03",
     "inputs": [
       {
@@ -1290,6 +1322,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_03_04",
     "inputs": [
       {
@@ -1333,6 +1366,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_04_01",
     "inputs": [
       {
@@ -1376,6 +1410,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_04_02",
     "inputs": [
       {
@@ -1419,6 +1454,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_04_03",
     "inputs": [
       {
@@ -1462,6 +1498,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_04_04",
     "inputs": [
       {
@@ -1505,6 +1542,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_05_01",
     "inputs": [
       {
@@ -1549,6 +1587,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_05_02",
     "inputs": [
       {
@@ -1592,6 +1631,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_05_03",
     "inputs": [
       {
@@ -1634,6 +1674,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_05_04",
     "inputs": [
       {
@@ -1676,6 +1717,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_06_01",
     "inputs": [
       {
@@ -1719,6 +1761,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_06_02",
     "inputs": [
       {
@@ -1763,6 +1806,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_06_03",
     "inputs": [
       {
@@ -1806,6 +1850,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_06_04",
     "inputs": [
       {
@@ -1849,6 +1894,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_07_01",
     "inputs": [
       {
@@ -1888,6 +1934,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_07_02",
     "inputs": [
       {
@@ -1931,6 +1978,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_07_03",
     "inputs": [
       {
@@ -1970,6 +2018,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_07_04",
     "inputs": [
       {
@@ -2013,6 +2062,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_08_01",
     "inputs": [
       {
@@ -2057,6 +2107,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_08_02",
     "inputs": [
       {
@@ -2101,6 +2152,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_08_03",
     "inputs": [
       {
@@ -2145,6 +2197,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_08_04",
     "inputs": [
       {
@@ -2189,6 +2242,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_09_01",
     "inputs": [
       {
@@ -2232,6 +2286,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_09_02",
     "inputs": [
       {
@@ -2276,6 +2331,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_09_03",
     "inputs": [
       {
@@ -2319,6 +2375,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_VILLAGE_HEAD_09_04",
     "inputs": [
       {
@@ -2363,6 +2420,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_WINTER_01",
     "inputs": [
       {
@@ -2402,6 +2460,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_WINTER_02",
     "inputs": [
       {
@@ -2445,6 +2504,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_WINTER_03",
     "inputs": [
       {
@@ -2488,6 +2548,7 @@
   {
     "activity_type": "供奉 / 交付目录",
     "conditions": [],
+    "description": "",
     "id": "BUNDLE_ID_WINTER_04",
     "inputs": [
       {
@@ -2534,6 +2595,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_AUSTERE_FLOORBOARD",
     "inputs": [
       {
@@ -2570,6 +2632,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_ANVIL",
     "inputs": [
       {
@@ -2607,6 +2670,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_AVIARY_LV2",
     "inputs": [
       {
@@ -2648,6 +2712,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_BARN",
     "inputs": [
       {
@@ -2688,6 +2753,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_BIRD_BATH",
     "inputs": [
       {
@@ -2724,6 +2790,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_FISH_TANK_LV1",
     "inputs": [
       {
@@ -2765,6 +2832,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_LIVESTOCK_HOUSE_LV1",
     "inputs": [
       {
@@ -2805,6 +2873,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_SILO",
     "inputs": [
       {
@@ -2837,6 +2906,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_STABLE",
     "inputs": [
       {
@@ -2874,6 +2944,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_BUILD_WELL",
     "inputs": [
       {
@@ -2910,6 +2981,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_DOG_HOUSE",
     "inputs": [
       {
@@ -2942,6 +3014,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_GREENHOUSE",
     "inputs": [
       {
@@ -2982,6 +3055,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_MAKEOVER_BASEMENT",
     "inputs": [
       {
@@ -3021,6 +3095,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_MAKEOVER_BRIGHT_WALL",
     "inputs": [
       {
@@ -3057,6 +3132,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_MAKEOVER_COLD_WALL",
     "inputs": [
       {
@@ -3093,6 +3169,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_MAKEOVER_NORMAL_WALL",
     "inputs": [
       {
@@ -3129,6 +3206,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_MAKEOVER_STYLISH_WALL",
     "inputs": [
       {
@@ -3166,6 +3244,7 @@
     "conditions": [
       "建筑工程"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_ORDINARY_FLOORBOARD",
     "inputs": [
       {
@@ -3202,6 +3281,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_ANVIL",
     "inputs": [],
     "location": "树木建设",
@@ -3230,6 +3310,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_AVIARY",
     "inputs": [],
     "location": "树木建设",
@@ -3258,6 +3339,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_BARN",
     "inputs": [],
     "location": "树木建设",
@@ -3285,6 +3367,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_BIRD_BATH",
     "inputs": [],
     "location": "树木建设",
@@ -3312,6 +3395,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_DOG_HOUSE",
     "inputs": [],
     "location": "树木建设",
@@ -3339,6 +3423,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_FISH_TANK",
     "inputs": [],
     "location": "树木建设",
@@ -3367,6 +3452,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_GREENHOUSE",
     "inputs": [],
     "location": "树木建设",
@@ -3394,6 +3480,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_LIVESTOCK_HOUSE",
     "inputs": [],
     "location": "树木建设",
@@ -3421,6 +3508,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_SILO",
     "inputs": [],
     "location": "树木建设",
@@ -3448,6 +3536,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_STABLE",
     "inputs": [],
     "location": "树木建设",
@@ -3476,6 +3565,7 @@
     "conditions": [
       "搬迁"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RELOCATION_WELL",
     "inputs": [],
     "location": "树木建设",
@@ -3503,6 +3593,7 @@
     "conditions": [
       "新建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_REMOVE_RUBBLE_BEHIND_RANCH",
     "inputs": [],
     "location": "树木建设",
@@ -3531,6 +3622,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_AVIARY_LV2",
     "inputs": [
       {
@@ -3572,6 +3664,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_AVIARY_LV3",
     "inputs": [
       {
@@ -3613,6 +3706,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_FISH_TANK_LV2",
     "inputs": [
       {
@@ -3654,6 +3748,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_LIVESTOCK_HOUSE_LV2",
     "inputs": [
       {
@@ -3694,6 +3789,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_LIVESTOCK_HOUSE_LV3",
     "inputs": [
       {
@@ -3734,6 +3830,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_BRICK",
     "inputs": [
       {
@@ -3774,6 +3871,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_JAPANESE_STYLE",
     "inputs": [
       {
@@ -3811,6 +3909,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LOG_HOUSE",
     "inputs": [
       {
@@ -3851,6 +3950,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV2",
     "inputs": [
       {
@@ -3887,6 +3987,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV3",
     "inputs": [
       {
@@ -3924,6 +4025,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV4",
     "inputs": [
       {
@@ -3960,6 +4062,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_PLASTER",
     "inputs": [
       {
@@ -4000,6 +4103,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_THATCHED",
     "inputs": [
       {
@@ -4040,6 +4144,7 @@
     "conditions": [
       "改建"
     ],
+    "description": "",
     "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_WESTERN",
     "inputs": [
       {
@@ -4078,6 +4183,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_00",
     "inputs": [
       {
@@ -4109,6 +4215,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_01",
     "inputs": [
       {
@@ -4140,6 +4247,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_02",
     "inputs": [
       {
@@ -4171,6 +4279,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_03",
     "inputs": [
       {
@@ -4202,6 +4311,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_04",
     "inputs": [
       {
@@ -4233,6 +4343,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_05",
     "inputs": [
       {
@@ -4264,6 +4375,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_06",
     "inputs": [
       {
@@ -4295,6 +4407,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_07",
     "inputs": [
       {
@@ -4326,6 +4439,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_08",
     "inputs": [
       {
@@ -4357,6 +4471,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_09",
     "inputs": [
       {
@@ -4388,6 +4503,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_10",
     "inputs": [
       {
@@ -4419,6 +4535,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_11",
     "inputs": [
       {
@@ -4450,6 +4567,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_12",
     "inputs": [
       {
@@ -4481,6 +4599,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_14",
     "inputs": [
       {
@@ -4512,6 +4631,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_16",
     "inputs": [
       {
@@ -4543,6 +4663,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_17",
     "inputs": [
       {
@@ -4574,6 +4695,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_20",
     "inputs": [
       {
@@ -4605,6 +4727,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_21",
     "inputs": [
       {
@@ -4636,6 +4759,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_23",
     "inputs": [
       {
@@ -4667,6 +4791,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_24",
     "inputs": [
       {
@@ -4698,6 +4823,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_25",
     "inputs": [
       {
@@ -4729,6 +4855,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_26",
     "inputs": [
       {
@@ -4760,6 +4887,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_27",
     "inputs": [
       {
@@ -4791,6 +4919,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_28",
     "inputs": [
       {
@@ -4822,6 +4951,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_29",
     "inputs": [
       {
@@ -4853,6 +4983,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_30",
     "inputs": [
       {
@@ -4884,6 +5015,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_31",
     "inputs": [
       {
@@ -4915,6 +5047,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_32",
     "inputs": [
       {
@@ -4946,6 +5079,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_33",
     "inputs": [
       {
@@ -4977,6 +5111,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_34",
     "inputs": [
       {
@@ -5008,6 +5143,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_35",
     "inputs": [
       {
@@ -5039,6 +5175,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_36",
     "inputs": [
       {
@@ -5070,6 +5207,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_37",
     "inputs": [
       {
@@ -5101,6 +5239,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_38",
     "inputs": [
       {
@@ -5132,6 +5271,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_40",
     "inputs": [
       {
@@ -5163,6 +5303,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_41",
     "inputs": [
       {
@@ -5194,6 +5335,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_42",
     "inputs": [
       {
@@ -5225,6 +5367,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_43",
     "inputs": [
       {
@@ -5256,6 +5399,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_44",
     "inputs": [
       {
@@ -5287,6 +5431,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_45",
     "inputs": [
       {
@@ -5318,6 +5463,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_46",
     "inputs": [
       {
@@ -5349,6 +5495,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_47",
     "inputs": [
       {
@@ -5380,6 +5527,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_48",
     "inputs": [
       {
@@ -5411,6 +5559,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_49",
     "inputs": [
       {
@@ -5442,6 +5591,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_50",
     "inputs": [
       {
@@ -5473,6 +5623,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_51",
     "inputs": [
       {
@@ -5504,6 +5655,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_52",
     "inputs": [
       {
@@ -5535,6 +5687,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_53",
     "inputs": [
       {
@@ -5566,6 +5719,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_54",
     "inputs": [
       {
@@ -5597,6 +5751,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_55",
     "inputs": [
       {
@@ -5628,6 +5783,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_56",
     "inputs": [
       {
@@ -5659,6 +5815,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_57",
     "inputs": [
       {
@@ -5690,6 +5847,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_58",
     "inputs": [
       {
@@ -5721,6 +5879,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_59",
     "inputs": [
       {
@@ -5752,6 +5911,7 @@
   {
     "activity_type": "图书归还",
     "conditions": [],
+    "description": "",
     "id": "RETURN_LOSTBOOK_ID_61",
     "inputs": [
       {
@@ -5783,8 +5943,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "再敲擊一次田地即可形成「田壟」",
     "id": "SKILL_NODE_AGRICULTURE_UNLOCK_FURROW",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5813,8 +5974,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "可在多個收納箱之間移動內容物",
     "id": "SKILL_NODE_CONNECT_CHEST",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5843,8 +6005,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「熟成桶」的製作方式",
     "id": "SKILL_NODE_CRAFT_AGUNG_BARREL",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5872,8 +6035,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「熟成桶／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_AGUNG_BARREL_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5901,8 +6065,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「竹子柵欄」、「竹子柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_BAMBOO_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5932,8 +6097,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「熔爐／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_BLAST_FURNACE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5961,8 +6127,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「釀造桶」的製作方式",
     "id": "SKILL_NODE_CRAFT_BREWING_BARREL",
     "inputs": [],
     "location": "岔路祠堂",
@@ -5990,8 +6157,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「釀造桶／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_BREWING_BARREL_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6019,8 +6187,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「磚頭柵欄」、「磚頭柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_BRICK_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6049,8 +6218,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「木炭窯」的製作方式",
     "id": "SKILL_NODE_CRAFT_CHARCOAL_KILN",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6078,8 +6248,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「木炭窯／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_CHARCOAL_KILN_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6107,8 +6278,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "有25%的機率可採集到2個採集物",
     "id": "SKILL_NODE_CRAFT_COLLECTION_UP",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6138,8 +6310,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「堆肥桶」的製作方式",
     "id": "SKILL_NODE_CRAFT_COMPOSTER",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6167,8 +6340,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「堆肥桶／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_COMPOSTER_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6196,8 +6370,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「乾燥機」的製作方式",
     "id": "SKILL_NODE_CRAFT_DRYING_MACHINE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6225,8 +6400,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「乾燥機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_DRYING_MACHINE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6254,8 +6430,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外黑石磚地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_BLACK_STONE_TILE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6283,8 +6460,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外磚頭地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_BRICK",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6312,8 +6490,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外落葉地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_FALLEN_LEAVES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6343,8 +6522,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外花朵地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_FLOWER",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6372,8 +6552,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外原木地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_LOG",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6401,8 +6582,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外石磚地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_STONE_TILE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6430,8 +6612,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外稻草地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_STRAW",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6459,8 +6642,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「戶外白石磚地板」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOOR_WHITE_STONE_TILE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6488,8 +6672,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「研磨機」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOUR_MILL",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6518,8 +6703,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「研磨機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_FLOUR_MILL_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6548,8 +6734,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「鐵製花園柵欄」、「鐵製花園柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_GARDEN_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6578,8 +6765,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「鐵製柵欄」、「鐵製柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_IRON_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6608,8 +6796,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「織布機」的製作方式",
     "id": "SKILL_NODE_CRAFT_LOOM",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6638,8 +6827,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「織布機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_LOOM_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6668,8 +6858,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「美乃滋加工機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_MAYONNAISE_PROCESSING_MACHINE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6698,8 +6889,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「網子柵欄」、「網子柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_MESH_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6728,8 +6920,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「牛奶加工機」的製作方式",
     "id": "SKILL_NODE_CRAFT_MILK_PROCESSING_MACHINE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6758,8 +6951,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「牛奶加工機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_MILK_PROCESSING_MACHINE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6789,8 +6983,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「榨油機」的製作方式",
     "id": "SKILL_NODE_CRAFT_OIL_EXTRACTION_MACHINE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6819,8 +7014,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「榨油機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_OIL_EXTRACTION_MACHINE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6849,8 +7045,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「木板柵欄」、「木板柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_PLANK_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6879,8 +7076,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「淨化鹽」的製作方式",
     "id": "SKILL_NODE_CRAFT_PURIFY_SALT",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6909,8 +7107,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「繩子柵欄」、「繩子柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_ROPE_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6939,8 +7138,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「蠶箱」的製作方式",
     "id": "SKILL_NODE_CRAFT_SERICULTURE_BOX",
     "inputs": [],
     "location": "岔路祠堂",
@@ -6969,8 +7169,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「煙燻機」的製作方式",
     "id": "SKILL_NODE_CRAFT_SMOKING_MACHINE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7000,8 +7201,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「煙燻機／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_SMOKING_MACHINE_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7030,8 +7232,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「強化灑水器」的製作方式",
     "id": "SKILL_NODE_CRAFT_SPRINKLER_LARGE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7059,8 +7262,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「普通灑水器」的製作方式",
     "id": "SKILL_NODE_CRAFT_SPRINKLER_MIDDLE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7089,8 +7293,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「小型灑水器」的製作方式",
     "id": "SKILL_NODE_CRAFT_SPRINKLER_SMALL",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7118,8 +7323,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「優質魚餌」的製作方式",
     "id": "SKILL_NODE_CRAFT_SPRINKLING_BAIT_HIGH_GRADE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7148,8 +7354,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「白色魚餌」的製作方式",
     "id": "SKILL_NODE_CRAFT_SPRINKLING_BAIT_WHITE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7179,8 +7386,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「醃菜桶／改」的製作方式",
     "id": "SKILL_NODE_CRAFT_STORAGE_JAR_LV2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7209,8 +7417,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「稻草人偶」的製作方式",
     "id": "SKILL_NODE_CRAFT_STRAW_DOLL",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7238,8 +7447,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "解鎖「白色木板柵欄」、「白色木板柵欄門」的製作方式",
     "id": "SKILL_NODE_CRAFT_WHITE_PLANK_SERIES",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7268,8 +7478,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "作物的售價提昇5%",
     "id": "SKILL_NODE_CROPS_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7299,8 +7510,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "作物的售價提昇10%",
     "id": "SKILL_NODE_CROPS_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7329,8 +7541,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "作物加工品的售價提昇5%",
     "id": "SKILL_NODE_CROPS_PROCESSED_PRODUCTS_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7359,8 +7572,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "作物加工品的售價提昇10%",
     "id": "SKILL_NODE_CROPS_PROCESSED_PRODUCTS_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7389,8 +7603,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "魚類的售價提昇5%",
     "id": "SKILL_NODE_FISH_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7419,8 +7634,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "魚類的售價提昇10%",
     "id": "SKILL_NODE_FISH_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7449,8 +7665,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "將可使用鐮刀收穫作物。",
     "id": "SKILL_NODE_HARVEST_SICKLE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7478,8 +7695,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "狩獵報酬物的售價提昇5%",
     "id": "SKILL_NODE_HUNTING_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7508,8 +7726,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "狩獵報酬物的售價提昇10%",
     "id": "SKILL_NODE_HUNTING_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7538,8 +7757,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "寶石的售價提昇5%",
     "id": "SKILL_NODE_JEWELRY_DROP_PLUS_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7569,8 +7789,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "寶石的售價提昇10%",
     "id": "SKILL_NODE_JEWELRY_DROP_PLUS_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7599,8 +7820,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "動物親密度更容易上昇",
     "id": "SKILL_NODE_LIVESTOCK_LOVERATE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7629,8 +7851,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "動物親密度更加容易上昇",
     "id": "SKILL_NODE_LIVESTOCK_LOVERATE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7660,8 +7883,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "畜產品加工品的售價提昇5%",
     "id": "SKILL_NODE_LIVESTOCK_PROCESSED_PRODUCTS_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7690,8 +7914,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "畜產品加工品的售價提昇10%",
     "id": "SKILL_NODE_LIVESTOCK_PROCESSED_PRODUCTS_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7720,8 +7945,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "畜產品的售價提昇5%",
     "id": "SKILL_NODE_LIVESTOCK_PRODUCTS_PRICE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7751,8 +7977,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "畜產品的售價提昇10%",
     "id": "SKILL_NODE_LIVESTOCK_PRODUCTS_PRICE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7781,8 +8008,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "在採石場發現礦脈的機率提昇3%",
     "id": "SKILL_NODE_MINE_APPEARANCE_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7811,8 +8039,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "在採石場發現礦脈的機率提昇5%",
     "id": "SKILL_NODE_MINE_APPEARANCE_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7841,8 +8070,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "採掘石頭時，可額外獲得1個石頭",
     "id": "SKILL_NODE_MINE_DROP_PLUS_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7872,8 +8102,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "採掘石頭時，可額外獲得2個石頭",
     "id": "SKILL_NODE_MINE_DROP_PLUS_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7902,8 +8133,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "在深夜時將更容易獲得「鏡」與「劍」",
     "id": "SKILL_NODE_RARE_NIGHT_ITEM_RATE_UP",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7932,8 +8164,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "將這座祠堂讓給你",
     "id": "SKILL_NODE_SKILL_TREE_RELEASE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7959,8 +8192,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "減少揮動鐮刀時的體力消耗量",
     "id": "SKILL_NODE_STAMINA_REDUCTION_SICKLE",
     "inputs": [],
     "location": "岔路祠堂",
@@ -7989,8 +8223,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "樹木成長速度提昇5%",
     "id": "SKILL_NODE_TREE_GROWTH_UP_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8020,8 +8255,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "樹木成長速度提昇10%",
     "id": "SKILL_NODE_TREE_GROWTH_UP_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8050,8 +8286,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "居民好感度更容易上昇",
     "id": "SKILL_NODE_VILLAGER_EXCHANGE_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8080,8 +8317,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "居民好感度更加容易上昇",
     "id": "SKILL_NODE_VILLAGER_EXCHANGE_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8111,8 +8349,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "砍伐樹木時，可額外獲得1個木材",
     "id": "SKILL_NODE_WOOD_DROP_PLUS_1",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8141,8 +8380,9 @@
   {
     "activity_type": "祠堂能力 / 配方解锁",
     "conditions": [
-      "消耗物品及前置能力的判定待核对"
+      "消耗物品对应关系待核对"
     ],
+    "description": "砍伐樹木時，可額外獲得2個木材",
     "id": "SKILL_NODE_WOOD_DROP_PLUS_2",
     "inputs": [],
     "location": "岔路祠堂",
@@ -8173,6 +8413,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_00",
     "inputs": [
       {
@@ -8205,6 +8446,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_01",
     "inputs": [
       {
@@ -8237,6 +8479,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_02",
     "inputs": [
       {
@@ -8270,6 +8513,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_03",
     "inputs": [
       {
@@ -8302,6 +8546,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_04",
     "inputs": [
       {
@@ -8334,6 +8579,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_05",
     "inputs": [
       {
@@ -8366,6 +8612,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_06",
     "inputs": [
       {
@@ -8399,6 +8646,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_07",
     "inputs": [
       {
@@ -8431,6 +8679,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_08",
     "inputs": [
       {
@@ -8463,6 +8712,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_09",
     "inputs": [
       {
@@ -8495,6 +8745,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_10",
     "inputs": [
       {
@@ -8528,6 +8779,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_11",
     "inputs": [
       {
@@ -8560,6 +8812,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_12",
     "inputs": [
       {
@@ -8593,6 +8846,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_13",
     "inputs": [
       {
@@ -8625,6 +8879,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_14",
     "inputs": [
       {
@@ -8657,6 +8912,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_15",
     "inputs": [
       {
@@ -8689,6 +8945,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_16",
     "inputs": [
       {
@@ -8721,6 +8978,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_COLLECTION_17",
     "inputs": [
       {
@@ -8753,6 +9011,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_00",
     "inputs": [
       {
@@ -8786,6 +9045,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_01",
     "inputs": [
       {
@@ -8818,6 +9078,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_02",
     "inputs": [
       {
@@ -8851,6 +9112,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_03",
     "inputs": [
       {
@@ -8884,6 +9146,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_04",
     "inputs": [
       {
@@ -8916,6 +9179,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_05",
     "inputs": [
       {
@@ -8948,6 +9212,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_06",
     "inputs": [
       {
@@ -8980,6 +9245,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_07",
     "inputs": [
       {
@@ -9012,6 +9278,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_08",
     "inputs": [
       {
@@ -9044,6 +9311,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_09",
     "inputs": [
       {
@@ -9076,6 +9344,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_10",
     "inputs": [
       {
@@ -9109,6 +9378,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_11",
     "inputs": [
       {
@@ -9141,6 +9411,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_12",
     "inputs": [
       {
@@ -9173,6 +9444,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_13",
     "inputs": [
       {
@@ -9205,6 +9477,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_14",
     "inputs": [
       {
@@ -9238,6 +9511,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_15",
     "inputs": [
       {
@@ -9270,6 +9544,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_16",
     "inputs": [
       {
@@ -9302,6 +9577,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_17",
     "inputs": [
       {
@@ -9335,6 +9611,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_18",
     "inputs": [
       {
@@ -9367,6 +9644,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_19",
     "inputs": [
       {
@@ -9399,6 +9677,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_20",
     "inputs": [
       {
@@ -9431,6 +9710,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_21",
     "inputs": [
       {
@@ -9463,6 +9743,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_22",
     "inputs": [
       {
@@ -9495,6 +9776,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_23",
     "inputs": [
       {
@@ -9527,6 +9809,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_24",
     "inputs": [
       {
@@ -9560,6 +9843,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_25",
     "inputs": [
       {
@@ -9592,6 +9876,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_26",
     "inputs": [
       {
@@ -9624,6 +9909,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_27",
     "inputs": [
       {
@@ -9656,6 +9942,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_28",
     "inputs": [
       {
@@ -9688,6 +9975,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_29",
     "inputs": [
       {
@@ -9720,6 +10008,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_30",
     "inputs": [
       {
@@ -9752,6 +10041,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_31",
     "inputs": [
       {
@@ -9784,6 +10074,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_32",
     "inputs": [
       {
@@ -9816,6 +10107,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_33",
     "inputs": [
       {
@@ -9848,6 +10140,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_34",
     "inputs": [
       {
@@ -9880,6 +10173,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_CROPS_35",
     "inputs": [
       {
@@ -9912,6 +10206,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_00",
     "inputs": [
       {
@@ -9944,6 +10239,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_01",
     "inputs": [
       {
@@ -9976,6 +10272,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_02",
     "inputs": [
       {
@@ -10008,6 +10305,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_03",
     "inputs": [
       {
@@ -10041,6 +10339,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_04",
     "inputs": [
       {
@@ -10074,6 +10373,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_05",
     "inputs": [
       {
@@ -10106,6 +10406,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_06",
     "inputs": [
       {
@@ -10138,6 +10439,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_07",
     "inputs": [
       {
@@ -10171,6 +10473,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_08",
     "inputs": [
       {
@@ -10203,6 +10506,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_09",
     "inputs": [
       {
@@ -10235,6 +10539,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_10",
     "inputs": [
       {
@@ -10268,6 +10573,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_11",
     "inputs": [
       {
@@ -10301,6 +10607,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_12",
     "inputs": [
       {
@@ -10334,6 +10641,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_13",
     "inputs": [
       {
@@ -10367,6 +10675,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_14",
     "inputs": [
       {
@@ -10400,6 +10709,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_15",
     "inputs": [
       {
@@ -10433,6 +10743,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_16",
     "inputs": [
       {
@@ -10466,6 +10777,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_17",
     "inputs": [
       {
@@ -10499,6 +10811,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_18",
     "inputs": [
       {
@@ -10531,6 +10844,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_19",
     "inputs": [
       {
@@ -10563,6 +10877,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_20",
     "inputs": [
       {
@@ -10595,6 +10910,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_FISH_21",
     "inputs": [
       {
@@ -10627,6 +10943,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_00",
     "inputs": [
       {
@@ -10659,6 +10976,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_01",
     "inputs": [
       {
@@ -10691,6 +11009,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_02",
     "inputs": [
       {
@@ -10723,6 +11042,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_03",
     "inputs": [
       {
@@ -10755,6 +11075,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_04",
     "inputs": [
       {
@@ -10787,6 +11108,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_05",
     "inputs": [
       {
@@ -10819,6 +11141,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_06",
     "inputs": [
       {
@@ -10851,6 +11174,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_07",
     "inputs": [
       {
@@ -10884,6 +11208,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_LIVESTOCK_08",
     "inputs": [
       {
@@ -10917,6 +11242,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_00",
     "inputs": [
       {
@@ -10949,6 +11275,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_01",
     "inputs": [
       {
@@ -10981,6 +11308,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_02",
     "inputs": [
       {
@@ -11013,6 +11341,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_03",
     "inputs": [
       {
@@ -11045,6 +11374,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_04",
     "inputs": [
       {
@@ -11077,6 +11407,7 @@
     "conditions": [
       "交付物候选；委托人和截止日以当次委托为准"
     ],
+    "description": "",
     "id": "SUBQUEST_ITEM_ID_MATERIAL_05",
     "inputs": [
       {

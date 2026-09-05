@@ -44,8 +44,9 @@ def normalize_activities(tables, snapshot, overrides, archive=None):
         name = build_name(ja=group[2], zh_hant=group[6], internal=group[0], overrides=overrides)
         snapshot.activities[name.internal] = Activity(name.internal, _u32(record,0), name, "祠堂能力 / 配方解锁",
             location="岔路祠堂", unlock_flag=_u32(record,80),
-            conditions=("消耗物品及前置能力的判定待核对",),
+            conditions=("消耗物品对应关系待核对",),
             prerequisites=tuple(skills[_u32(record,o)] for o in (48,56,64) if _u32(record,o) in skills),
+            description=group[12] if len(group)>12 and group[12] else group[8] if len(group)>8 else "",
             source="skilltree.dat:48–80；92–112 的消耗列尚未确认对应物品")
     for record, group in rows("lostbook"):
         item_id = items.get(_u32(record,len(record)-52))

@@ -190,6 +190,7 @@ class Activity:
     unlock_flag: int | None = None
     prerequisites: tuple[str, ...] = ()
     source: str = ""
+    description: str = ""
 
 
 @dataclass(frozen=True, slots=True)
