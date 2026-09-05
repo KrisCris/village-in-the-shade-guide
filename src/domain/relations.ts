@@ -5,6 +5,7 @@ import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
+import kappaExchange from '../../data/sources/game-kappa-exchange.json';
 import recipeDocuments from '../../data/sources/game-recipe-documents.json';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
@@ -139,6 +140,12 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       add(group, findCatalogEntity(catalog, input.item_id, 'items'), { quantity: Number(input.quantity ?? 1), chips: [context,option ? `${option.feature_name}（示例，可替换）` : null] });
     }
   };
+  for (const reward of kappaExchange.rewards) {
+    const chips=['河童阶段奖励',reward.condition];
+    const note=kappaExchange.condition;
+    if(entity.id===kappaExchange.input_item_id) add('outputs',findCatalogEntity(catalog,reward.item_id,'items'),{quantity:reward.quantity,chips,note,key:`kappa:${reward.item_id}`});
+    if(entity.id===reward.item_id) add('acquisition',findCatalogEntity(catalog,kappaExchange.input_item_id,'items'),{quantity:kappaExchange.input_quantity,chips,note,key:'kappa:cucumber'});
+  }
   for (const exchange of nightExchanges.exchanges) {
     const chips=[`${exchange.name}交换`,exchange.reward_mode];
     if(exchange.input_item_ids.includes(entity.id)) for(const id of exchange.reward_item_ids) {

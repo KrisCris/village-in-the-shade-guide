@@ -212,4 +212,16 @@ describe('relation groups', () => {
     expect(model.facts).toContainEqual({ label: '卖出价', value: '≈94.50 · 银★', price: true });
     expect(model.profit).toMatchObject({ inputCost: '200', outputValue: '≈472.50', net: '≈272.50' });
   });
+
+  it('links cumulative kappa deliveries without promising all rewards together', () => {
+    const cucumber=entity('ITEM_ID_CROPS_CUCUMBER','items');
+    const mirror=entity('ITEM_ID_SPECIAL_MIRROR_01','items');
+    const data=catalog(cucumber,mirror);
+    const output=buildRelationGroups(cucumber,data,'normal').find(g=>g.key==='outputs')?.rows.find(r=>r.entity===mirror);
+    expect(output).toMatchObject({quantity:7});
+    expect(output?.chips).toContain('河童阶段奖励');
+    const source=buildRelationGroups(mirror,data,'normal').find(g=>g.key==='acquisition')?.rows.find(r=>r.entity===cucumber);
+    expect(source).toMatchObject({quantity:30});
+    expect(source?.note).toContain('不是同时取得');
+  });
 });
