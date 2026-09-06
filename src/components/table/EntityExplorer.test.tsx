@@ -14,12 +14,13 @@ const name = {
 };
 
 describe('EntityExplorer icons', () => {
-  it('renders only the first page while retaining the full result count', () => {
+  it('renders an initial batch with a load-more fallback and full result count', () => {
     const rows=Array.from({length:250},(_,i)=>({id:`item-${i}`,kind:'items',name:{...name,zh_hans:`物品${i}`},searchText:`物品${i}`}));
     const html=renderToStaticMarkup(<EntityExplorer rows={rows} kind="items"/>);
     expect((html.match(/<tr /g)??[]).length).toBe(50);
     expect(html).toContain('250 条');
-    expect(html).toContain('下一页');
+    expect(html).toContain('加载更多');
+    expect(html).not.toContain('下一页');
   });
   it('does not show a fake error icon for entities without a real image', () => {
     const character = {
@@ -69,14 +70,16 @@ describe('EntityExplorer icons', () => {
     expect(html).toContain('夜晚 18:00–00:00');
     expect(html).toContain('深夜 00:00–06:00');
     expect(html).toContain('钓鱼点');
-    expect(html).toContain('下游（流水）');
+    expect(html).toContain('全部钓鱼点');
   });
 
   it('renders the actual game category filter for all items', () => {
     const html = renderToStaticMarkup(<EntityExplorer rows={[]} kind="items" itemCategoryOptions={[{ id: 'ITEM_CATEGORY_CURSE', name: '咒物' }]} />);
 
     expect(html).toContain('类别');
-    expect(html).toContain('咒物');
+    expect(html).toContain('全部类别');
+    expect(html).not.toContain('<select');
+    expect(html).not.toContain('输入类别名称');
   });
 
   it('requires one fish appearance to match season, period, and location together', () => {

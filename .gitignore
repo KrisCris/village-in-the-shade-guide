@@ -21,6 +21,7 @@ dist/
 public/game-data.json
 public/search-index.json
 public/item-list.json
+public/planner-data.json
 # Web-sized icons ARE versioned: CI cannot read the local game install.
 output/
 data/raw/

@@ -4,21 +4,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GlobalSearch from '../components/search/GlobalSearch';
 import ProfitRankings from '../components/home/ProfitRankings';
 import { getCatalog } from '../data/repository';
+import {calculateEntityCropProfit,calculateEntityProcessProfit} from '../domain/profit';
+import {QUALITY_VALUES} from '../domain/quality';
+import {compactItemRow} from '../data/itemList';
 import { kindLabels, primaryKinds } from '../data/types';
 const catalog = getCatalog();
 const featuredKinds = primaryKinds.map((kind) => ({ kind, label: kindLabels[kind], count: catalog.counts[kind] ?? 0 }));
 const processes = catalog.entities.filter((entity) => entity.kind === 'processes');
 const crops = catalog.entities.filter((entity) => entity.kind === 'crops');
-const itemIds = new Set<string>();
-for (const crop of crops) {
-  for (const id of [...(crop.seed_item_ids as string[] | undefined ?? []), ...(crop.harvest_item_ids as string[] | undefined ?? [])]) itemIds.add(id);
-}
-for (const process of processes) {
-  for (const input of process.inputs as Array<{ item_id: string }> | undefined ?? []) itemIds.add(input.item_id);
-  const output = process.output as { item_id?: string } | undefined;
-  if (output?.item_id) itemIds.add(output.item_id);
-}
-const items = [...itemIds].flatMap((id) => catalog.byId[id] ? [catalog.byId[id]] : []);
+const rankings=Object.fromEntries(QUALITY_VALUES.map(quality=>{
+  const rank=(rows:typeof crops,calculate:typeof calculateEntityCropProfit)=>rows
+    .map(entity=>({entity,profit:calculate(entity,catalog,quality)}))
+    .filter(row=>row.profit?.perDay!=null&&row.profit.perDay>0)
+    .sort((a,b)=>b.profit!.perDay!-a.profit!.perDay!).slice(0,5)
+    .map(row=>({entity:compactItemRow(row.entity),perDay:row.profit!.perDay!}));
+  return [quality,{crops:rank(crops,calculateEntityCropProfit),processes:rank(processes,calculateEntityProcessProfit)}];
+}));
 ---
 <BaseLayout title="中文版数据 Wiki 与攻略">
   <p class="eyebrow">Village in the Shade · Build 24969282</p>
@@ -28,7 +29,7 @@ const items = [...itemIds].flatMap((id) => catalog.byId[id] ? [catalog.byId[id]]
   <section><div class="section-title"><h2>常用资料库</h2><a href={withBase("/data/items/")}>物品总表 →</a></div>
     <div class="grid">{featuredKinds.map(({ kind, label, count }) => <a class="category card" href={withBase(`/data/${kind}/`)}><span>{label}</span><strong>{count}</strong></a>)}</div>
   </section>
-  <ProfitRankings client:load crops={crops} processes={processes} items={items} />
+  <ProfitRankings client:load rankings={rankings} />
 </BaseLayout>
 <style>
   section{margin-top:3.5rem}.section-title{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.section-title h2{margin:0;font-size:1.65rem}.category{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.3rem;padding:1.1rem;color:var(--ink);text-decoration:none}.category:hover{border-color:var(--green);transform:translateY(-1px)}.category strong{font-size:1.6rem;color:var(--green)}

@@ -1,8 +1,6 @@
 import { withBase } from '../../lib/sitePath';
-import { useMemo } from 'react';
-import type { Catalog, Entity } from '../../data/types';
+import type { Entity } from '../../data/types';
 import { entityUrl } from '../../data/clientSearch';
-import { calculateEntityCropProfit, calculateEntityProcessProfit } from '../../domain/profit';
 import { qualityLabel } from '../../domain/quality';
 import { useQuality } from '../quality/qualityPreference';
 
@@ -30,27 +28,10 @@ function Ranking({ title, link, rows, quality }: { title: string; link: string; 
   </section>;
 }
 
-export default function ProfitRankings({ crops, processes, items }: { crops: Entity[]; processes: Entity[]; items: Entity[] }) {
-  const [quality] = useQuality();
-  const catalog = useMemo<Catalog>(() => ({
-    buildId: '24969282',
-    generatedAt: '',
-    entities: [...items, ...crops, ...processes],
-    byId: Object.fromEntries([...items, ...crops, ...processes].map((entity) => [entity.id, entity])),
-    counts: {},
-  }), [crops, processes, items]);
-  const cropRows = useMemo(() => crops
-    .map((entity) => ({ entity, profit: calculateEntityCropProfit(entity, catalog, quality) }))
-    .filter((row): row is { entity: Entity; profit: NonNullable<typeof row.profit> } => row.profit?.perDay != null && row.profit.perDay > 0)
-    .sort((left, right) => right.profit.perDay! - left.profit.perDay!)
-    .slice(0, 5)
-    .map(({ entity, profit }) => ({ entity, perDay: profit.perDay! })), [catalog, crops, quality]);
-  const processRows = useMemo(() => processes
-    .map((entity) => ({ entity, profit: calculateEntityProcessProfit(entity, catalog, quality) }))
-    .filter((row): row is { entity: Entity; profit: NonNullable<typeof row.profit> } => row.profit?.perDay != null && row.profit.perDay > 0)
-    .sort((left, right) => right.profit.perDay! - left.profit.perDay!)
-    .slice(0, 5)
-    .map(({ entity, profit }) => ({ entity, perDay: profit.perDay! })), [catalog, processes, quality]);
+type RankingRow={entity:Entity;perDay:number};
+export default function ProfitRankings({rankings}:{rankings:Record<string,{crops:RankingRow[];processes:RankingRow[]}>}) {
+  const [quality]=useQuality();
+  const {crops:cropRows,processes:processRows}=rankings[quality];
   const label = qualityLabel(quality);
 
   return <div className="rankings">

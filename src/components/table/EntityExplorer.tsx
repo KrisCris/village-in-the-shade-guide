@@ -1,5 +1,7 @@
+import {useProgressiveRows} from './useProgressiveRows';
+import SearchableSelect from '../controls/SearchableSelect';
 import { withBase } from '../../lib/sitePath';
-import { lazy, Suspense, useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react';
 import type { Entity } from '../../data/types';
 import { entityUrl, normalizeSearch } from '../../data/clientSearch';
 import { qualityLabel } from '../../domain/quality';
@@ -24,6 +26,7 @@ export function applyEntityFilters(rows: Entity[], filters: Record<string, strin
   });
 }
 const sortFields: SortField[] = ['name', 'buy', 'sell', 'duration', 'profit'];
+const emptyPriceIndex: PriceIndex = {};
 
 function parseSort(value: string | null): SortField {
   return sortFields.includes(value as SortField) ? value as SortField : 'name';
@@ -47,7 +50,7 @@ function rowFallback(row: Entity) {
   return `/icons/fallback/${['items', 'crops', 'machines', 'processes'].includes(row.kind) ? row.kind : 'default'}.svg`;
 }
 
-export default function EntityExplorer({ rows, kind, machineOptions = [], fishingLocationOptions = [], itemCategoryOptions = [], priceIndex = {} }: {
+export default function EntityExplorer({ rows, kind, machineOptions = [], fishingLocationOptions = [], itemCategoryOptions = [], priceIndex = emptyPriceIndex }: {
   rows: Entity[];
   kind: string;
   machineOptions?: Array<{ id: string; name: string }>;
@@ -61,13 +64,10 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
   const [timePeriod, setTimePeriod] = useState('');
   const [fishingLocation, setFishingLocation] = useState('');
   const [itemCategory, setItemCategory] = useState('');
-  const [categoryQuery, setCategoryQuery] = useState('');
   const [sort, setSort] = useState<SortField>('name');
   const [direction, setDirection] = useState<SortDirection>('asc');
   const [urlReady, setUrlReady] = useState(false);
   const [selected, setSelected] = useState<Entity | null>(null);
-  const [page,setPage]=useState(0);
-  const tableWrap=useRef<HTMLDivElement>(null);
   const [quality] = useQuality();
 
   useEffect(() => {
@@ -102,10 +102,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
     const filtered = applyEntityFilters(rows, { query, season, machine, timePeriod, fishingLocation, itemCategory });
     return sortEntities(filtered, sort, direction, quality, priceIndex);
   }, [rows, query, season, machine, timePeriod, fishingLocation, itemCategory, sort, direction, quality, priceIndex]);
-  const pageCount=Math.max(1,Math.ceil(shown.length/50));
-  const currentPage=Math.min(page,pageCount-1);
-  useEffect(()=>{setPage(0);},[rows,query,season,machine,timePeriod,fishingLocation,itemCategory,sort,direction,quality]);
-  const changePage=(next:number)=>{setPage(next);tableWrap.current?.scrollIntoView({block:'start'});};
+  const {visible,sentinel,more,loadMore}=useProgressiveRows(shown);
 
   const openFromRow = (row: Entity, event: MouseEvent<HTMLTableRowElement>) => {
     if ((event.target as HTMLElement).closest('a,button,input,select')) return;
@@ -127,20 +124,19 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
     <div className="toolbar card">
       <label>页内搜索<input type="search" placeholder="名称、拼音、日文或 ID" value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       {['crops', 'fish'].includes(kind) && <>
-        <label>季节<select value={season} onChange={(event) => setSeason(event.target.value)}><option value="">全部</option>{Object.entries(seasonLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+        <label>季节<SearchableSelect value={season} onChange={(event) => setSeason(event.target.value)}><option value="">全部</option>{Object.entries(seasonLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</SearchableSelect></label>
       </>}
       {kind === 'fish' && <>
-        <label>时段<select value={timePeriod} onChange={(event) => setTimePeriod(event.target.value)}><option value="">全部时段</option>{Object.entries(timeLabels).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
-        <label>钓鱼点<select value={fishingLocation} onChange={(event) => setFishingLocation(event.target.value)}><option value="">全部钓鱼点</option>{fishingLocationOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>
+        <label>时段<SearchableSelect value={timePeriod} onChange={(event) => setTimePeriod(event.target.value)}><option value="">全部时段</option>{Object.entries(timeLabels).map(([id, name]) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label>
+        <label>钓鱼点<SearchableSelect value={fishingLocation} onChange={(event) => setFishingLocation(event.target.value)}><option value="">全部钓鱼点</option>{fishingLocationOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label>
       </>}
-      {kind === 'items' && itemCategoryOptions.length>0 && <label>类别<input aria-label="搜索类别" placeholder="输入类别名称" value={categoryQuery} onChange={event=>setCategoryQuery(event.target.value)} /><select value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">全部类别</option>{itemCategoryOptions.filter(option=>option.id===itemCategory || option.name.includes(categoryQuery)).map(({id, name}) => <option key={id} value={id}>{name}</option>)}</select></label>}
-      {kind === 'processes' && <label>机械<select value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">全部机械</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>}
-      <label>排序字段<select value={sort} onChange={(event) => setSort(parseSort(event.target.value))}><option value="name">名称</option><option value="sell">产值</option><option value="buy">成本</option>{['processes', 'crops'].includes(kind) && <option value="profit">日净收益</option>}{kind === 'processes' && <option value="duration">加工时间</option>}</select></label>
-      <label>方向<select value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></select></label>
+      {kind === 'items' && itemCategoryOptions.length>0 && <label>类别<SearchableSelect value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">全部类别</option>{itemCategoryOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label>}
+      {kind === 'processes' && <label>机械<SearchableSelect value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">全部机械</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</SearchableSelect></label>}
+      <label>排序字段<SearchableSelect value={sort} onChange={(event) => setSort(parseSort(event.target.value))}><option value="name">名称</option><option value="sell">产值</option><option value="buy">成本</option>{['processes', 'crops'].includes(kind) && <option value="profit">日净收益</option>}{kind === 'processes' && <option value="duration">加工时间</option>}</SearchableSelect></label>
+      <label>方向<SearchableSelect value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></SearchableSelect></label>
       <b>{shown.length} 条</b>
     </div>
-    {pageCount>1&&<nav className="pagination" aria-label="列表分页"><button disabled={currentPage===0} onClick={()=>changePage(currentPage-1)}>上一页</button><span>第 {currentPage+1} / {pageCount} 页 · 每页 50 条</span><button disabled={currentPage===pageCount-1} onClick={()=>changePage(currentPage+1)}>下一页</button></nav>}
-    <div ref={tableWrap} className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{shown.slice(currentPage*50,(currentPage+1)*50).map((row) => {
+    <div className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{visible.map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality) : '固定';
       const processGroup = row.source_kind === 'processes';
@@ -157,9 +153,10 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         <td><code>{row.id}</code></td>
       </tr>;
     })}</tbody></table></div>
+    <div ref={sentinel} className="load-more">{more&&<button onClick={loadMore}>加载更多（已显示 {visible.length} / {shown.length}）</button>}</div>
     {selected && <Suspense fallback={<div role="status" className="detail-loading">正在打开详情…</div>}><EntityDrawer initial={selected} onClose={() => setSelected(null)} /></Suspense>}
     <style>{`
-      .pagination{display:flex;align-items:center;justify-content:flex-end;gap:1rem;margin:.6rem 0}.pagination button{padding:.5rem .8rem}.pagination button:disabled{opacity:.4}.detail-loading{position:fixed;right:1rem;bottom:1rem;z-index:70;background:var(--paper-raised);padding:1rem;border:1px solid var(--border);border-radius:8px}
+      .load-more{display:flex;justify-content:center;padding:1rem}.detail-loading{position:fixed;right:1rem;bottom:1rem;z-index:70;background:var(--paper-raised);padding:1rem;border:1px solid var(--border);border-radius:8px}
       .toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:.8rem;padding:.8rem;margin:1.2rem 0}.toolbar label{display:grid;gap:.3rem;color:var(--muted);font-size:.78rem}.toolbar input,.toolbar select{min-height:42px;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);color:var(--ink)}.toolbar b{margin-left:auto;padding:.7rem;color:var(--green)}
       .table-wrap{overflow-x:auto;overflow-y:hidden;scroll-margin-top:6rem}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:flex;align-items:center;gap:.65rem;color:var(--green);font-weight:750;text-decoration:none;min-width:180px}.entity-link img{flex:none;border-radius:7px;object-fit:contain;background:var(--paper-deep)}.entity-link span{display:grid}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}code{font-size:.72rem;color:var(--muted)}
       @media(max-width:700px){.toolbar>*{flex:1 1 140px}.toolbar b{margin-left:0}th,td{min-width:100px}th:first-child,td:first-child{position:sticky;left:0;background:var(--paper-raised);z-index:1}}
