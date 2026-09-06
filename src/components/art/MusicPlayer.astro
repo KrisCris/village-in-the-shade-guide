@@ -1,0 +1,71 @@
+---
+import {withBase} from '../../lib/sitePath';
+---
+<div class="music-player">
+  <button class="music-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐">♫</button>
+  <details class="music-settings">
+    <summary aria-label="音乐音量" title="音乐音量">⌄</summary>
+    <div class="music-popover"><label>音乐音量<input class="music-volume" type="range" min="0" max="1" step="0.05" value="0.3" /></label><small role="status">主旋律 · 点击音符播放</small></div>
+  </details>
+  <audio preload="none" loop data-src={withBase('/audio/main-theme.mp3')}></audio>
+</div>
+<script>
+  const player=document.querySelector<HTMLElement>('.music-player');
+  if(player){
+    const audio=player.querySelector('audio')!;
+    const toggle=player.querySelector<HTMLButtonElement>('.music-toggle')!;
+    const volume=player.querySelector<HTMLInputElement>('.music-volume')!;
+    const status=player.querySelector<HTMLElement>('[role="status"]')!;
+    const key='village-music';
+    let savedTime=0,wanted=false;
+    try{
+      const state=JSON.parse(sessionStorage.getItem(key)||'null');
+      if(state){
+        if(Number.isFinite(state.volume))volume.value=String(Math.max(0,Math.min(1,state.volume)));
+        if(Number.isFinite(state.time))savedTime=Math.max(0,state.time);
+        wanted=state.playing===true;
+      }
+    }catch{/* Storage may be unavailable in private browsing. */}
+    audio.volume=Number(volume.value);
+    const save=()=>{try{sessionStorage.setItem(key,JSON.stringify({volume:audio.volume,time:audio.currentTime||savedTime,playing:wanted}));}catch{/* Optional preference. */}};
+    const update=()=>{
+      const playing=!audio.paused;
+      toggle.setAttribute('aria-pressed',String(playing));
+      toggle.setAttribute('aria-label',playing?'暂停背景音乐':'播放背景音乐');
+      toggle.title=playing?'暂停背景音乐':'播放背景音乐';
+      status.textContent=playing?'主旋律 · 正在播放':'主旋律 · 点击音符播放';
+    };
+    const play=async()=>{
+      if(!audio.getAttribute('src'))audio.src=audio.dataset.src!;
+      else if(audio.error)audio.load();
+      try{await audio.play();wanted=true;save();}
+      catch{wanted=false;update();status.textContent='请点击音符播放音乐';save();}
+    };
+    audio.addEventListener('loadedmetadata',()=>{
+      if(savedTime>0&&Number.isFinite(audio.duration))audio.currentTime=savedTime%audio.duration;
+      savedTime=0;
+    });
+    audio.addEventListener('play',update);audio.addEventListener('pause',update);
+    audio.addEventListener('error',()=>{wanted=false;update();status.textContent='音乐暂时无法加载，请重试';save();});
+    toggle.addEventListener('click',()=>{
+      if(audio.paused)void play();
+      else{wanted=false;audio.pause();save();}
+    });
+    volume.addEventListener('input',()=>{audio.volume=Number(volume.value);save();});
+    const hide=()=>save();
+    const show=(event:PageTransitionEvent)=>{if(event.persisted&&wanted&&audio.paused)void play();};
+    window.addEventListener('pagehide',hide);
+    window.addEventListener('pageshow',show);
+    if(wanted)void play();
+    if(import.meta.hot)import.meta.hot.dispose(()=>{save();audio.pause();window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);});
+  }
+</script>
+<style>
+  .music-player{display:flex;align-items:center;position:relative;color:var(--ink)}
+  .music-toggle{font-size:1.35rem;line-height:1;padding:.55rem .6rem;background:transparent;border:1px solid var(--border);border-radius:50%;color:inherit;cursor:pointer}
+  .music-toggle[aria-pressed="true"]{color:var(--green);box-shadow:0 0 12px color-mix(in srgb,var(--green) 18%,transparent)}
+  summary{cursor:pointer;list-style:none;padding:.4rem .2rem}summary::-webkit-details-marker{display:none}
+  .music-popover{position:absolute;right:0;top:calc(100% + .8rem);width:210px;padding:1rem;background:var(--paper);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px #0002}
+  label{display:grid;gap:.6rem;font-size:.85rem}input{width:100%;accent-color:var(--green)}small{display:block;margin-top:.7rem;font-size:.72rem;color:var(--muted)}
+  @media(max-width:520px){.music-toggle{padding:.4rem;font-size:1.15rem}summary{padding:.3rem .1rem}}
+</style>

@@ -7,7 +7,7 @@
 .wiki-page .sidebar nav{gap:.1rem}
 .wiki-page .sidebar nav>a{padding-block:.4rem}
 .interior-scene-veil{position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:color-mix(in srgb,var(--paper) 64%,transparent);background-image:radial-gradient(color-mix(in srgb,var(--ink) 12%,transparent) .7px,transparent .9px);background-size:4px 4px}
-[data-theme="night"] .interior-scene-veil{background-image:radial-gradient(rgb(0 0 0 / 10%) .55px,transparent .8px)}
+[data-theme="night"] .interior-scene-veil{background-image:radial-gradient(rgb(177 191 170 / 5%) .6px,transparent .85px)}
 .dynamic-interior .table-wrap table{table-layout:fixed;min-width:1050px}
 .dynamic-interior .table-wrap th:first-child{width:25%}
 .dynamic-interior .table-wrap th:last-child{width:23%}

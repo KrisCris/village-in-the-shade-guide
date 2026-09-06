@@ -5,6 +5,7 @@ import '../styles/interior.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SidebarNav from '../components/SidebarNav.astro';
 import SeasonScene from '../components/art/SeasonScene.astro';
+import FallingLeaves from '../components/art/FallingLeaves.astro';
 interface Props { title: string; description?: string; immersive?: boolean; }
 const { title, description = '《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略', immersive=false } = Astro.props;
 const dynamicInterior = !immersive;
@@ -25,6 +26,7 @@ const dynamicInterior = !immersive;
   <body class:list={[immersive?'home-page':'wiki-page', {'dynamic-interior':dynamicInterior}]}>
     <a class="skip-link" href="#main-content">跳至正文</a>
     <SiteHeader />
+    {!immersive && <FallingLeaves />}
     {dynamicInterior ? <><SeasonScene /><div class="interior-scene-veil" aria-hidden="true"></div></> : !immersive&&<div class="interior-scenery" aria-hidden="true"><img class="interior-mountains" src={withBase('/art/mountains-spring.webp')} alt="" loading="lazy"/><img class="interior-foliage" src={withBase('/art/pine-spring.webp')} alt="" width="256" height="312" loading="lazy"/></div>}
     <div class:list={['page',{'immersive-page':immersive}]}>
       {!immersive&&<SidebarNav />}
