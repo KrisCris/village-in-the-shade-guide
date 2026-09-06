@@ -30,12 +30,6 @@ npm run preview
 
 `dist/` 是最终静态站点，包含 Pagefind 搜索索引。Astro 在构建时生成 HTML，React 处理筛选、排序与侧栏等交互；上线后**无需 Node 后端或数据库**。开发服务器按需编译的耗时不代表静态托管性能。
 
-## GitHub Pages
-
-[部署工作流](.github/workflows/deploy.yml) 在推送 `master` 后自动检查、构建和部署，也可手动运行。首次把仓库推送到 GitHub，并在 **Settings → Pages → Source** 选择 **GitHub Actions**。
-
-工作流自动读取域名与仓库子路径，不需硬编码用户名。只上传 `dist/`，不提交 `gh-pages` 分支。详见 [部署与排错](docs/deployment.md)。
-
 ## 开发与数据更新
 
 ```sh

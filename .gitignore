@@ -3,6 +3,7 @@
 # Private development plans, specifications and agent reports
 /.superpowers/
 /docs/superpowers/
+/docs/deployment.md
 # Dependencies and caches
 .venv/
 .pytest_cache/
