@@ -1,4 +1,6 @@
 .worktrees/
+.local/
+# Dependencies and caches
 .venv/
 .pytest_cache/
 __pycache__/
@@ -6,13 +8,29 @@ __pycache__/
 *.egg-info/
 node_modules/
 .astro/
+.cache/
+.ruff_cache/
+.mypy_cache/
 .playwright-cli/
+# Rebuilt by npm run build:data / npm run build
 dist/
 public/game-data.json
 public/search-index.json
 public/item-list.json
-public/icons/generated/
+# Web-sized icons ARE versioned: CI cannot read the local game install.
 output/
 data/raw/
 data/extracted/
 *.probe.json
+# Secrets and machine-specific settings
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tsbuildinfo
