@@ -8,8 +8,15 @@ import {calculateEntityCropProfit,calculateEntityProcessProfit} from '../domain/
 import {QUALITY_VALUES} from '../domain/quality';
 import {compactItemRow} from '../data/itemList';
 import { kindLabels, primaryKinds } from '../data/types';
+import SeasonScene from '../components/art/SeasonScene.astro';
+import HomePortraits from '../components/art/HomePortraits';
+import {entityUrl} from '../data/clientSearch';
+import '../styles/home.css';
 const catalog = getCatalog();
-const featuredKinds = primaryKinds.map((kind) => ({ kind, label: kindLabels[kind], count: catalog.counts[kind] ?? 0 }));
+const featuredKinds = primaryKinds.map((kind) => ({ kind, label: kindLabels[kind], count: catalog.counts[kind] ?? 0, icon:catalog.entities.find(e=>e.kind===kind&&e.icon_path)?.icon_path }));
+const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.icon_path);
+const seasons=['春','夏','秋','冬'];
+const seasonIds=['spring','summer','autumn','winter'];
 const processes = catalog.entities.filter((entity) => entity.kind === 'processes');
 const crops = catalog.entities.filter((entity) => entity.kind === 'crops');
 const rankings=Object.fromEntries(QUALITY_VALUES.map(quality=>{
@@ -21,16 +28,38 @@ const rankings=Object.fromEntries(QUALITY_VALUES.map(quality=>{
   return [quality,{crops:rank(crops,calculateEntityCropProfit),processes:rank(processes,calculateEntityProcessProfit)}];
 }));
 ---
-<BaseLayout title="中文版数据 Wiki 与攻略">
-  <p class="eyebrow">Village in the Shade · Build 24969282</p>
-  <h1>静谧田园资料库</h1>
-  <GlobalSearch client:load prominent />
-  <p><a href={withBase("/planner/")}>按季节比较种植与加工收益 →</a></p>
-  <section><div class="section-title"><h2>常用资料库</h2><a href={withBase("/data/items/")}>物品总表 →</a></div>
-    <div class="grid">{featuredKinds.map(({ kind, label, count }) => <a class="category card" href={withBase(`/data/${kind}/`)}><span>{label}</span><strong>{count}</strong></a>)}</div>
+<BaseLayout title="中文版数据 Wiki 与攻略" immersive>
+  <SeasonScene />
+  <section class="home-chapter hero-chapter" id="chapter-spring" data-season-chapter>
+    <div class="hero-copy">
+      <p class="hero-kicker"><img class="hero-game-logo" src={withBase('/art/logo-japanese.png')} width="1280" height="360" alt="ほの暮しの庭" /><span>中文 WIKI</span></p>
+      <h1>静谧<span>田园</span><i aria-hidden="true">暮らし</i></h1>
+      <GlobalSearch client:load prominent />
+      <div class="hero-actions"><a class="primary-link" href={withBase('/categories/')}>打开资料库 <span>↗</span></a><a href={withBase('/planner/')}>种植与加工规划 →</a></div>
+    </div>
+    <HomePortraits client:visible />
+    <a class="scroll-cue" href="#chapter-summer">向下探索 <span>↓</span></a>
   </section>
-  <ProfitRankings client:load rankings={rankings} />
+  <section class="home-chapter" id="chapter-summer" data-season-chapter>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">壹 · 田园手册</p><h2>资料库</h2></div><a href={withBase('/categories/')}>分类一览 ↗</a></div>
+    <div class="art-categories">{featuredKinds.map(({kind,label,count,icon},i)=><a class="art-category" href={withBase(`/data/${kind}/`)} data-reveal style={`--reveal-delay:${i%4*50}ms`}><span class="category-number">0{i+1}</span>{icon&&<img src={withBase(icon)} width="100" height="100" alt="" loading="lazy"/>}<h3>{label}</h3><span class="category-count">{count.toLocaleString()} 条 <b>↗</b></span></a>)}<a class="art-category all-categories" href={withBase('/categories/')} data-reveal><span class="category-number">08</span><span class="category-seal" aria-hidden="true">物</span><h3>分类一览</h3><span class="category-count">按游戏类别查找 <b>↗</b></span></a></div>
+  </section>
+  <section class="home-chapter" id="chapter-autumn" data-season-chapter>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">贰 · 四季耕作</p><h2>每一季的打算</h2></div><a href={withBase('/planner/')}>收益规划器 ↗</a></div>
+    <div class="season-cards">{seasons.map((name,i)=><a href={withBase(`/data/crops/?season=${seasonIds[i]}`)} class="season-card" data-reveal><img src={withBase(`/art/tree-${seasonIds[i]}.webp`)} width="128" height="156" alt="" loading="lazy"/><span>{name}<small>季作物 →</small></span></a>)}</div>
+    <div class="guide-ribbon" data-reveal><a href={withBase('/guides/season-plan/')}>四季留货规划 <span>供奉 · 委托 · 留种 ↗</span></a><a href={withBase('/planner/')}>种植到加工 <span>成本 · 增值 · 日收益 ↗</span></a></div>
+    <div data-reveal><ProfitRankings client:visible rankings={rankings}/></div>
+  </section>
+  <section class="home-chapter village-chapter" id="chapter-winter" data-season-chapter>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">叁 · 村中往来</p><h2>熟悉的面孔</h2></div><a href={withBase('/guides/residents/')}>生日与送礼 ↗</a></div>
+    <div class="resident-gallery" data-reveal>{residents.map(e=><a href={withBase(entityUrl(e))}><img src={withBase(e.icon_path!)} alt="" width="120" height="120" loading="lazy"/><span>{e.name.zh_hans}</span></a>)}</div>
+    <a class="map-feature" href={withBase('/guides/collection-map/')} data-reveal><div class="map-art"><img src={withBase('/maps/minimap_01_spr_tc.webp')} width="4096" height="4096" alt="游戏内村庄地图" loading="lazy"/></div><div class="map-copy"><p class="eyebrow">探索与收集</p><h2>循着地图，<br/>走进村庄。</h2><span>图书 · 狐狸神社 · 收集位置 ↗</span></div></a>
+    <a class="all-guides" href={withBase('/guides/')}>全部攻略 <span>↗</span></a>
+  </section>
 </BaseLayout>
-<style>
-  section{margin-top:3.5rem}.section-title{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.section-title h2{margin:0;font-size:1.65rem}.category{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.3rem;padding:1.1rem;color:var(--ink);text-decoration:none}.category:hover{border-color:var(--green);transform:translateY(-1px)}.category strong{font-size:1.6rem;color:var(--green)}
-</style>
+<script>
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target);}}),{threshold:.08});
+    document.querySelectorAll('[data-reveal]').forEach(element=>{element.classList.add('reveal-ready');observer.observe(element);});
+  }
+</script>

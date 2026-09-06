@@ -4,6 +4,8 @@
 - `public/icons/generated/livestock/`：游戏原生家畜图标。其余家畜按数据记录复用物品图标。
 - `public/maps/`：游戏小地图。标注来源和投影参数见 `data/sources/game-map-markers.json`，其他探索点见 `data/sources/game-exploration-markers.json`。
 - `public/game-icon.png`：站点标识所用的游戏图像。
+- `public/art/logo-japanese.png`：Steam 商店公开的[日文游戏 Logo](https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3934250/5216176cad5ee3c3edcdcbd62a58a8bca7264125/logo_japanese_2x.png)，首页按原比例展示。
+- `public/art/`：从游戏原始纹理提取的山峦、云雾、四季树木与灌木，提取入口为 `tools/extract-scenery.py`，逐图引用与裁切范围见 `data/sources/site-scenery.json`。夏季山峦复用原生春季背景，树木和灌木使用夏季版本。首页为装饰性组合，不是游戏地图的还原；背景季节不改变资料筛选。
 - `public/portraits/official/`：发行商公开人物页头像，来源见 `data/sources/official-character-portraits.json`。
 - `public/icons/fallback/`：站点异常兜底图形，不代表对应物品的实际外观。
 

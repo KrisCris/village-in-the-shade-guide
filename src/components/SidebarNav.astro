@@ -3,7 +3,8 @@ import { withBase } from '../lib/sitePath';
 import { kindLabels, primaryKinds } from '../data/types';
 ---
 <aside class="sidebar">
-  <nav aria-label="主要分类">
+  <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">资料库与攻略<span aria-hidden="true">⌄</span></button>
+  <nav id="sidebar-links" aria-label="主要分类">
     <p>资料库</p>
     <a href={withBase("/categories/")}>分类一览</a>
     {primaryKinds.map((kind) => <a href={withBase(`/data/${kind}/`)}>{kindLabels[kind]}</a>)}
@@ -16,10 +17,25 @@ import { kindLabels, primaryKinds } from '../data/types';
     <a href={withBase("/guides/#探索")}>探索收集</a>
   </nav>
 </aside>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.mobile-nav-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
+    });
+  });
+</script>
 <style>
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }
+  .mobile-nav-toggle { display: none; }
   nav { position: sticky; top: 86px; display: grid; gap: .25rem; }
   p { margin: 1rem .7rem .35rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
   a { padding: .58rem .7rem; border-radius: 8px; color: var(--ink); text-decoration: none; } a:hover { background: var(--green-soft); color: var(--green); }
-  @media (max-width: 800px) { .sidebar { display: none; } }
+  @media (max-width: 800px) {
+    .sidebar { border-right: 0; border-bottom: 1px solid var(--border); padding: .6rem 1rem; }
+    .mobile-nav-toggle { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--paper-raised); color: var(--ink); font: inherit; cursor: pointer; }
+    .mobile-nav-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+    nav { display: none; position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: .5rem; }
+    .mobile-nav-toggle[aria-expanded="true"] + nav { display: grid; }
+    p { grid-column: 1 / -1; }
+  }
 </style>

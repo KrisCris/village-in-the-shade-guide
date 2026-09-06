@@ -1,7 +1,7 @@
 @import './tokens.css';
 * { box-sizing: border-box; }
 html { background: var(--paper); color: var(--ink); scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background-image: radial-gradient(rgb(83 73 50 / 5%) 1px, transparent 1px); background-size: 20px 20px; }
+body { margin: 0; min-width: 320px; isolation:isolate; background-image: radial-gradient(rgb(83 73 50 / 5%) 1px, transparent 1px); background-size: 4px 4px; }
 a { color: var(--green); text-decoration-thickness: .08em; text-underline-offset: .18em; }
 button, input, select { font: inherit; }
 select { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; padding: .45rem .65rem; background: var(--paper-raised); color: var(--ink); }
@@ -9,6 +9,7 @@ select { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; 
 .quality-selector label { font-size: .88rem; font-weight: 700; }
 button, .button { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; padding: .55rem .8rem; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
 button:hover, .button:hover { border-color: var(--green); }
+button,.button,a.card{transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}button:active,.button:active{transform:translateY(1px)}
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--vermilion) 75%, white); outline-offset: 2px; }
 .page { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); max-width: var(--max); margin: 0 auto; min-height: calc(100vh - 64px); }
 .main { padding: 2rem clamp(1rem, 3vw, 3.5rem) 6rem; min-width: 0; }
@@ -21,6 +22,11 @@ h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .25rem 0 1rem; }
 .pill { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; background: var(--green-soft); padding: .3rem .65rem; font-size: .82rem; color: var(--green); }
 .muted { color: var(--muted); }
 .price { font-variant-numeric: tabular-nums; color: var(--gold); font-weight: 750; }
+.skip-link{position:fixed;top:-100px;left:1rem;z-index:120;padding:1rem;background:var(--paper-raised)}.skip-link:focus{top:1rem}
+.immersive-page{display:block;max-width:none}.immersive-page>.main{padding:0 0 4rem}.wiki-art{position:fixed;right:-70px;top:90px;width:350px;z-index:-1;opacity:.12;pointer-events:none;display:flex;align-items:end}.wiki-art img{width:65%;height:auto;object-fit:contain}.wiki-art img+img{margin-left:-25%}.wiki-page .main{background:color-mix(in srgb,var(--paper) 70%,transparent)}
+.site-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;max-width:var(--max);margin:auto;padding:1.6rem 2rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted)}.site-footer a{color:var(--muted);text-decoration:none}
+.drawer{animation:drawer-arrive .3s cubic-bezier(.2,.7,.2,1)}.drawer-backdrop{animation:veil-arrive .2s ease}.drawer-body{animation:content-arrive .25s ease}.entity-link img,.category-grid img{transition:transform .25s}.entity-link:hover img,.category-grid a:hover img{transform:translateY(-3px) rotate(-4deg)}.category-grid a:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+@keyframes drawer-arrive{from{transform:translateX(5%);opacity:0}to{transform:none;opacity:1}}@keyframes veil-arrive{from{opacity:0}to{opacity:1}}@keyframes content-arrive{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
 @media (max-width: 800px) { .page { display: block; } .main { padding-top: 1.25rem; } }
 @media (max-width: 760px) { .site-header nav { order: 3; width: 100%; justify-content: center; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation:none!important; } }

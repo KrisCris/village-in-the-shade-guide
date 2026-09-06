@@ -3,15 +3,19 @@ import type { Entity } from '../../data/types';
 import { kindLabels } from '../../data/types';
 import type { EntityDetailModel } from '../../domain/relations';
 import RelationRow from './RelationRow';
+import AnimatedPortrait from '../art/AnimatedPortrait';
+import {portraits} from '../art/portraitCatalog';
 
 export default function EntityDetail({ model, onOpen }: { model: EntityDetailModel; onOpen?: (entity: Entity) => void }) {
   const { entity, facts, profit, groups, locations } = model;
+  const portrait=entity.kind==='characters'?portraits.find(p=>p.id===entity.id):undefined;
   return <article className="entity-detail">
+    <div className={`entity-intro ${portrait?'has-portrait':''}`}><div>
     <p className="eyebrow">{entity.category_name?.zh_hans || kindLabels[entity.kind] || entity.kind}</p>
     <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={withBase(entity.icon_path)} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
     <p className="aliases">繁中：{entity.name.zh_hant || '—'}　日文：{entity.name.ja || '—'}</p>
-    {typeof entity.portrait_source==='string'&&<small>头像：<a href={withBase(entity.portrait_source)} target="_blank" rel="noreferrer">发行商官方人物页</a></small>}
     {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}
+    </div>{portrait&&<AnimatedPortrait key={entity.id} portrait={portrait} controls/>}</div>
 
     {entity.kind==='quests' && <section><h2>任务目标</h2><p>{String(entity.description ?? '')}</p><p>{String(entity.objective ?? '')}</p>{((entity.steps ?? []) as string[]).length>0&&<ol>{((entity.steps ?? []) as string[]).map((step,index)=><li key={index}>{step}</li>)}</ol>}</section>}
     {Array.isArray(entity.map_locations)&&entity.map_locations.length>0&&<section><h2>拾取位置</h2>{(entity.map_locations as {label:string;x:number;y:number;anchor:string;progress:string}[]).map(location=><p key={location.anchor}><a href={withBase(`/guides/collection-map/#${location.anchor}`)}>{location.label} · 图书 {location.anchor.slice(-2)} · 查看地图</a><br/><small>关联进度：{location.progress}</small></p>)}</section>}
@@ -37,7 +41,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {model.ingredientOptions.length>0&&<section><h2>可替换材料</h2>{model.ingredientOptions.map((option,index)=><details key={index}><summary>{option.label} · {option.rows.length} 种</summary><div className="relation-list">{option.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></details>)}</section>}
 
-    <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>
+    {import.meta.env.DEV && <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>}
     <style>{`
       .entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
       .processing-plan{padding:1rem;border:1px solid var(--border);border-radius:12px;margin:.7rem 0}.processing-plan h3{margin-top:0}.processing-plan h4{margin:.8rem 0 .4rem}

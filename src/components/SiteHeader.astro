@@ -1,17 +1,20 @@
 ---
 import { withBase } from '../lib/sitePath';
 import QualitySelector from './quality/QualitySelector';
+import ThemeSwitch from './art/ThemeSwitch.astro';
 ---
 
 <header class="site-header">
   <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
-  <nav aria-label="页首导航"><a href={withBase("/data/crops/")}>数据</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/search/")}>搜索</a></nav>
-  <QualitySelector client:load />
+  <nav aria-label="页首导航"><a href={withBase("/categories/")}>资料库</a><a href={withBase("/planner/")}>收益规划</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/search/")}>搜索</a></nav>
+  <div class="header-controls"><ThemeSwitch /><QualitySelector client:load /></div>
 </header>
 <style>
   .site-header { position: sticky; top: 0; z-index: 30; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 max(1rem, calc((100vw - var(--max))/2 + 1rem)); border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(14px); }
   .brand { display: flex; align-items: center; gap: .7rem; color: var(--ink); text-decoration: none; }
   .brand span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50% 45% 50% 40%; background: var(--green); color: var(--paper-raised); font-family: serif; }
   nav { display: flex; gap: 1.2rem; } nav a { color: var(--ink); text-decoration: none; font-size: .92rem; }
+  .header-controls{display:flex;align-items:center;gap:.8rem}nav a{position:relative;padding:.55rem 0}nav a::after{content:'';height:1px;background:var(--green);position:absolute;bottom:0;left:0;right:0;transform:scaleX(0);transform-origin:left;transition:transform .25s}nav a:hover::after{transform:scaleX(1)}
+  @media(max-width:520px){.brand strong{font-size:.8rem}.brand{gap:.4rem}.header-controls{gap:.4rem}.site-header{gap:.3rem}.header-controls :global(.quality-selector label){display:none}.header-controls :global(.theme-switch){padding:.35rem .5rem}}
   @media (max-width: 760px) { .site-header { height: auto; min-height: 64px; flex-wrap: wrap; padding-top: .55rem; padding-bottom: .55rem; } }
 </style>

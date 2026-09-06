@@ -1,0 +1,374 @@
+{
+  "build_id": "24969282",
+  "note": "Native game scenery, web-sized. Homepage composition is decorative, not a geographic reconstruction. Summer mountain background reuses spring because this background set has no summer variant.",
+  "assets": [
+    {
+      "file": "/art/mountains-spring.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_06_spr.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/ridge-spring.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_07_spr.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/tree-spring.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010000_00_tex01_spr.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/pine-spring.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010040_00_tex01_spr.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/shrub-spring.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_9017/bli_9017_tex_spr.nltx",
+      "source_size": [
+        1024,
+        1024
+      ],
+      "crop": [
+        0,
+        390,
+        490,
+        760
+      ],
+      "size": [
+        490,
+        370
+      ]
+    },
+    {
+      "file": "/art/mountains-summer.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_06_spr.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/ridge-summer.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_07_spr.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/tree-summer.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010000_00_tex01_sum.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/pine-summer.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010040_00_tex01_sum.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/shrub-summer.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_9017/bli_9017_tex_sum.nltx",
+      "source_size": [
+        1024,
+        1024
+      ],
+      "crop": [
+        0,
+        390,
+        490,
+        760
+      ],
+      "size": [
+        490,
+        370
+      ]
+    },
+    {
+      "file": "/art/mountains-autumn.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_06_aut.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/ridge-autumn.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_07_aut.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/tree-autumn.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010000_00_tex01_aut.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/pine-autumn.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010040_00_tex01_aut.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/shrub-autumn.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_9017/bli_9017_tex_aut.nltx",
+      "source_size": [
+        1024,
+        1024
+      ],
+      "crop": [
+        0,
+        390,
+        490,
+        760
+      ],
+      "size": [
+        490,
+        370
+      ]
+    },
+    {
+      "file": "/art/mountains-winter.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_06_win.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/ridge-winter.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_07_win.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1600,
+        800
+      ]
+    },
+    {
+      "file": "/art/tree-winter.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010000_00_tex01_win.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/pine-winter.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_obj_0100/obj_010040_00_tex01_win.nltx",
+      "source_size": [
+        512,
+        512
+      ],
+      "crop": [
+        256,
+        200,
+        512,
+        512
+      ],
+      "size": [
+        256,
+        312
+      ]
+    },
+    {
+      "file": "/art/shrub-winter.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_9017/bli_9017_tex_win.nltx",
+      "source_size": [
+        1024,
+        1024
+      ],
+      "crop": [
+        0,
+        390,
+        490,
+        760
+      ],
+      "size": [
+        490,
+        370
+      ]
+    },
+    {
+      "file": "/art/clouds.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_09_spr.nltx",
+      "source_size": [
+        2048,
+        512
+      ],
+      "crop": null,
+      "size": [
+        1200,
+        300
+      ]
+    },
+    {
+      "file": "/art/haze.webp",
+      "archive": "data/texture_1_00.dat",
+      "entry": "data/texture/fairy_bli_8100/bg_8100_10_spr.nltx",
+      "source_size": [
+        2048,
+        1024
+      ],
+      "crop": null,
+      "size": [
+        1200,
+        600
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+---
+import {withBase} from '../../lib/sitePath';
+import {SEASONS} from '../../domain/scenery';
+---
+<div class="season-scene" aria-hidden="true" data-scene>
+  <div class="scene-sky"></div><div class="scene-sun"></div><div class="scene-moon"></div>
+  <img class="scene-clouds" src={withBase('/art/clouds.webp')} alt="" width="1200" height="300" />
+  {SEASONS.map((season,index)=><div class="season-layer" data-scene-layer={season} style={`opacity:${index===0?1:0}`}>
+    <img class="scene-mountains" src={withBase(`/art/mountains-${season}.webp`)} alt="" width="1600" height="800" loading={index===0?'eager':'lazy'} decoding="async"/>
+    <img class="scene-ridge" src={withBase(`/art/ridge-${season}.webp`)} alt="" width="1600" height="800" loading={index===0?'eager':'lazy'} decoding="async"/>
+    <div class="scene-tree tree-left"><img src={withBase(`/art/pine-${season}.webp`)} alt="" width="256" height="312" loading={index===0?'eager':'lazy'}/></div>
+    <div class="scene-tree tree-right"><img src={withBase(`/art/tree-${season}.webp`)} alt="" width="256" height="312" loading={index===0?'eager':'lazy'}/></div>
+    <img class="scene-shrub" src={withBase(`/art/shrub-${season}.webp`)} alt="" width="490" height="370" loading={index===0?'eager':'lazy'}/>
+  </div>)}
+  <img class="scene-haze" src={withBase('/art/haze.webp')} alt="" width="1200" height="600" />
+  <div class="scene-light"></div>
+  <div class="scene-motes">{Array.from({length:16},(_,index)=><i style={`--i:${index};--x:${(index*37+9)%100}%;--delay:${-index*1.7}s;--duration:${14+index%7}s;--size:${3+index%4}px`}/>)}</div>
+  <div class="scene-vignette"></div>
+</div>
+<script>
+  import {SEASONS,seasonFrame} from '../../domain/scenery';
+  const scene=document.querySelector<HTMLElement>('[data-scene]');
+  if(scene){
+    const root=document.documentElement;
+    const chapters=[...document.querySelectorAll<HTMLElement>('[data-season-chapter]')];
+    const layers=[...scene.querySelectorAll<HTMLElement>('[data-scene-layer]')];
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    let scheduled=false;
+    const update=()=>{
+      scheduled=false;
+      const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+window.scrollY-window.innerHeight*.32);
+      const frame=seasonFrame(window.scrollY,stops);
+      const dominant=frame.mix<.5?frame.from:frame.to;
+      layers.forEach((layer,index)=>{layer.style.opacity=String(reduced.matches?(index===dominant?1:0):(index===frame.from?1-frame.mix:0)+(index===frame.to?frame.mix:0));});
+      // Winter is the final frame (from===to), so its opacity stays fully visible.
+      if(frame.from===frame.to)layers[frame.from].style.opacity='1';
+      root.dataset.season=SEASONS[dominant];
+      scene.style.setProperty('--drift',reduced.matches?'0px':`${Math.min(window.scrollY*.035,90)}px`);
+    };
+    const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};
+    window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
+    reduced.addEventListener('change',schedule);
+    document.addEventListener('visibilitychange',()=>scene.classList.toggle('paused',document.hidden));
+    const sizeObserver=new ResizeObserver(schedule);chapters.forEach(chapter=>sizeObserver.observe(chapter));
+    update();
+  }
+</script>
+<style>
+  .season-scene{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;--drift:0px;--sky:#d8e3c7;--sky-top:#abbfae;background:var(--sky);transition:background 1.2s}
+  .scene-sky,.scene-light,.scene-vignette{position:absolute;inset:0}.scene-sky{background:linear-gradient(var(--sky-top),var(--sky) 68%);transition:background 1.2s}
+  .scene-sun,.scene-moon{position:absolute;right:20%;top:16%;width:90px;height:90px;border-radius:50%;background:#fff4ce;box-shadow:0 0 80px 45px #f8edc747;transition:opacity 1.2s,transform 1.2s}.scene-moon{opacity:0;background:#dfebdc;box-shadow:0 0 55px 15px #bdd8cf24;transform:translateY(30px)}
+  .scene-clouds{position:absolute;top:12%;left:8%;width:85%;height:28%;object-fit:fill;opacity:.46;animation:cloud-drift 40s ease-in-out infinite alternate}
+  .season-layer{position:absolute;inset:0;will-change:opacity}.scene-mountains{position:absolute;width:110%;height:65%;left:-5%;bottom:0;object-fit:fill;transform:translateY(calc(var(--drift) * -.35));opacity:.48}
+  .scene-ridge{position:absolute;width:125%;height:62%;left:-12%;bottom:-8%;object-fit:fill;transform:translateY(calc(var(--drift) * -.6));opacity:.75}
+  .scene-tree{position:absolute;bottom:-5%;width:clamp(200px,26vw,430px);transform:translateY(calc(var(--drift) * -.2));filter:drop-shadow(0 15px 20px #15261655)}.scene-tree img{width:100%;height:auto;transform-origin:50% 100%;animation:tree-sway 12s ease-in-out infinite alternate}.tree-left{left:-9%;width:clamp(180px,23vw,380px)}.tree-right{right:-3%;width:clamp(250px,31vw,500px)}.tree-right img{animation-delay:-5s}.scene-shrub{position:absolute;bottom:-16%;right:12%;width:35%;max-width:580px;transform:rotate(-7deg);opacity:.9}
+  .scene-haze{position:absolute;width:130%;height:48%;left:-15%;bottom:-8%;opacity:.45;animation:mist-drift 22s ease-in-out infinite alternate}
+  .scene-light{background:linear-gradient(90deg,#f3f0dfbc 0%,#f3f0df77 38%,transparent 78%);transition:background 1s}.scene-vignette{background:linear-gradient(0deg,var(--paper) 0%,transparent 38%);opacity:.8}
+  .scene-motes i{position:absolute;left:var(--x);top:-20px;width:var(--size);height:calc(var(--size) * 1.5);border-radius:70% 10% 70% 20%;background:#f7ded5;opacity:0;animation:mote-fall var(--duration) linear var(--delay) infinite}
+  :global([data-season=summer]) .season-scene{--sky:#dce4b8;--sky-top:#8eb9a8}:global([data-season=autumn]) .season-scene{--sky:#f2dcad;--sky-top:#c5b8a3}:global([data-season=winter]) .season-scene{--sky:#e3e9e5;--sky-top:#b5c5ce}
+  :global([data-season=summer]) .scene-motes i{background:#d3e19a;border-radius:50%;height:var(--size)}:global([data-season=autumn]) .scene-motes i{background:#b27635}:global([data-season=winter]) .scene-motes i{background:#fff;border-radius:50%;height:var(--size)}
+  :global([data-theme=night]) .season-scene{--sky:#233434;--sky-top:#101b2a}:global([data-theme=night]) .season-layer{filter:brightness(.53) saturate(.7) hue-rotate(12deg)}:global([data-theme=night]) .scene-sun{opacity:0;transform:translateY(30px)}:global([data-theme=night]) .scene-moon{opacity:1;transform:none}:global([data-theme=night]) .scene-clouds{opacity:.17}:global([data-theme=night]) .scene-light{background:linear-gradient(90deg,#10221cc7,#12251d55 42%,transparent)}:global([data-theme=night]) .scene-motes i{background:#dcebac;box-shadow:0 0 10px #d6f096;height:var(--size);border-radius:50%;animation-name:firefly-drift}
+  @keyframes tree-sway{from{transform:rotate(-1deg)}to{transform:rotate(1.2deg)}}@keyframes cloud-drift{to{transform:translateX(5%)}}@keyframes mist-drift{to{transform:translateX(6%) scale(1.04)}}@keyframes mote-fall{0%{transform:translate3d(0,-20px,0) rotate(0);opacity:0}10%,80%{opacity:.6}100%{transform:translate3d(100px,105vh,0) rotate(260deg);opacity:0}}@keyframes firefly-drift{0%,100%{transform:translate3d(0,80vh,0);opacity:0}30%{opacity:.65}70%{transform:translate3d(-50px,35vh,0);opacity:.2}}
+  .paused *{animation-play-state:paused!important}@media(max-width:760px){.tree-left{left:-24%}.tree-right{right:-22%;bottom:0}.scene-mountains{height:57%}.scene-ridge{height:48%}.scene-light{background:linear-gradient(90deg,#f3f0dfb8,#f3f0df60 75%,transparent)}.scene-sun,.scene-moon{right:14%;top:21%;width:65px;height:65px}.scene-motes i:nth-child(n+9){display:none}}
+  @media(prefers-reduced-motion:reduce){.season-scene *{animation:none!important;transition:none!important;will-change:auto}.scene-motes{display:none}}
+</style>
