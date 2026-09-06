@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { useMemo } from 'react';
 import type { Catalog, Entity } from '../../data/types';
 import { entityUrl } from '../../data/clientSearch';
@@ -16,12 +17,12 @@ function fallback(entity: Entity) {
 
 function Ranking({ title, link, rows, quality }: { title: string; link: string; rows: Array<{ entity: Entity; perDay: number }>; quality: string }) {
   return <section>
-    <div className="section-title"><h2>{title}</h2><a href={link}>查看全部 →</a></div>
+    <div className="section-title"><h2>{title}</h2><a href={withBase(link)}>查看全部 →</a></div>
     <div className="profit-list card">{rows.map(({ entity, perDay }, index) => {
       const placeholder = fallback(entity);
-      return <a key={entity.id} href={entityUrl(entity)}>
+      return <a key={entity.id} href={withBase(entityUrl(entity))}>
         <b>{index + 1}</b>
-        <img src={entity.icon_path || placeholder} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = placeholder; }} alt="" width="44" height="44" loading="lazy" />
+        <img src={withBase(entity.icon_path || placeholder)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(placeholder); }} alt="" width="44" height="44" loading="lazy" />
         <span>{entity.name.zh_hans}<small>{entity.name.ja}</small></span>
         <strong>{metric(perDay)}<small>{quality}</small></strong>
       </a>;

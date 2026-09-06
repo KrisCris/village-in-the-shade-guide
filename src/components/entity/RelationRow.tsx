@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { useState, type MouseEvent } from 'react';
 import { entityUrl } from '../../data/clientSearch';
 import type { Entity } from '../../data/types';
@@ -14,8 +15,8 @@ export default function RelationRow({ row, onOpen }: { row: RelationRowModel; on
     event.preventDefault();
     onOpen(row.entity);
   };
-  return <a className={`relation-row ${hasIcon ? 'has-icon' : 'no-icon'}`} href={entityUrl(row.entity)} onClick={handleClick}>
-    {hasIcon && <img src={row.entity.icon_path!} onError={() => setHasIcon(false)} alt="" width="52" height="52" loading="lazy" />}
+  return <a className={`relation-row ${hasIcon ? 'has-icon' : 'no-icon'}`} href={withBase(entityUrl(row.entity))} onClick={handleClick}>
+    {hasIcon && <img src={withBase(row.entity.icon_path!)} onError={() => setHasIcon(false)} alt="" width="52" height="52" loading="lazy" />}
     <span className="relation-name"><strong>{row.entity.name.zh_hans}</strong><small>{row.entity.name.ja || row.entity.id}</small></span>
     {row.quantity != null && <b className="relation-quantity">×{row.quantity}</b>}
     <span className="relation-values">{row.buyPrice && <small>{row.buyLabel ?? '买入'} {row.buyPrice}</small>}{row.sellPrice && <small>{row.sellLabel ?? '卖出'} {row.sellPrice}</small>}</span>

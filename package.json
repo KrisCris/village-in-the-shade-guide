@@ -9,6 +9,7 @@
     "test": "vitest run",
     "check": "astro check",
     "build:data": "tsx tools/build-site-data.ts",
+    "check:build": "node tools/check-built-links.mjs",
     "content:catalog": "node tools/content/catalog-sources.mjs",
     "content:outlines": "node tools/content/catalog-outlines.mjs",
     "content:coverage": "node tools/content/build-coverage.mjs",

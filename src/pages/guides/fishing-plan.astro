@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 import type {Entity} from '../../data/types';
@@ -11,19 +12,19 @@ const required=fish.filter(e=>uses(e.id).length);
 const seasons=[['spring','春'],['summer','夏'],['autumn','秋'],['winter','冬']];
 ---
 <BaseLayout title="四季钓鱼与留货规划"><h1>四季钓鱼与留货规划</h1>
-<nav>{seasons.map(([id,name])=><a href={`#${id}`}>{name}季</a>)}<a href="/data/fish/">全部鱼类筛选</a></nav>
+<nav>{seasons.map(([id,name])=><a href={withBase(`#${id}`)}>{name}季</a>)}<a href={withBase("/data/fish/")}>全部鱼类筛选</a></nav>
 <p>先钓有期限的委托，再补尚未完成的交付目录。下面按鱼在本季的实际出现记录列出留货目标；不是要求每季重复交一次，完成过的目录可以划出自己的计划。</p>
 <p>早：7:00–12:00；中：12:00–18:00；晚：18:00–次日 0:00；深夜：0:00–6:00。6:00–7:00 未归入这四组出现记录。</p>
-<ol><li>出门前选定一个未完成的交付组，确认缺的鱼与数量；不要只看鱼价决定去哪里。</li><li>在下方找当前季节可钓的目标，把同一钓点、同一时段的鱼一起补齐。道路未开放时先做<a href="/guides/progression/#help">帮忙券与道路解锁</a>。</li><li>钓到后先留够交付数量。剩余鱼再考虑做料理或加工；料理标注“鱼类”的材料可用其他同类鱼，不必消耗稀有鱼。</li></ol>
+<ol><li>出门前选定一个未完成的交付组，确认缺的鱼与数量；不要只看鱼价决定去哪里。</li><li>在下方找当前季节可钓的目标，把同一钓点、同一时段的鱼一起补齐。道路未开放时先做<a href={withBase("/guides/progression/#help")}>帮忙券与道路解锁</a>。</li><li>钓到后先留够交付数量。剩余鱼再考虑做料理或加工；料理标注“鱼类”的材料可用其他同类鱼，不必消耗稀有鱼。</li></ol>
 {seasons.map(([season,name])=><section id={season}><h2>{name}季要留的鱼</h2><div class="fish-grid">{required.filter(e=>e.appearances?.some(a=>a.season===season)).map(e=>{
  const needs=uses(e.id);const locations=(e.locations??[]) as {location_id:string;name:{zh_hans:string}}[];
- return <article class="card"><h3><a href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="56" height="56" alt="" loading="lazy"/>}{e.name.zh_hans}</a></h3>
+ return <article class="card"><h3><a href={withBase(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="56" height="56" alt="" loading="lazy"/>}{e.name.zh_hans}</a></h3>
  <p>未完成项目合计留 <strong>{needs.reduce((n,i)=>n+i.quantity,0)}</strong> 条</p>
- <ul>{needs.map(({bundle,quantity})=><li><a href={entityUrl(bundle)}>{bundle.name.zh_hans}</a> ×{quantity} · {String(bundle.location)}</li>)}</ul>
+ <ul>{needs.map(({bundle,quantity})=><li><a href={withBase(entityUrl(bundle))}>{bundle.name.zh_hans}</a> ×{quantity} · {String(bundle.location)}</li>)}</ul>
  <dl>{locations.flatMap(location=>{const times=e.appearances?.filter(a=>a.season===season&&a.location_id===location.location_id).map(a=>a.time_range)??[];return times.length?[<div><dt>{location.name.zh_hans}</dt><dd>{[...new Set(times)].join(' / ')}</dd></div>]:[];})}</dl>
  </article>;
 })}</div></section>)}
-<section><h2>固定帮忙券与随机交付分开准备</h2><p>洋的帮忙券需要山女鱼，可从<a href="/data/fish/?q=山女鱼">山女鱼详情</a>确认季节和钓点。六角等村民的交付委托则应以当前任务面板的物品、数量、截止日期为准，不把某一次委托当作永久固定需求。</p></section>
+<section><h2>固定帮忙券与随机交付分开准备</h2><p>洋的帮忙券需要山女鱼，可从<a href={withBase("/data/fish/?q=山女鱼")}>山女鱼详情</a>确认季节和钓点。六角等村民的交付委托则应以当前任务面板的物品、数量、截止日期为准，不把某一次委托当作永久固定需求。</p></section>
 <details><summary>游戏数据来源</summary><p>鱼与时段：fish.dat、fishing.dat 的出现记录；固定留货：bundle.dat、bundlegroup.dat。这里不包含尚未接到的随机交付，也不将未确认的道路条件推定为已解锁。</p></details>
 </BaseLayout>
 <style>nav{display:flex;gap:1rem;flex-wrap:wrap}section{margin:2rem 0;scroll-margin-top:90px}.fish-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}.card{padding:1rem}.card h3{margin:0}.card h3 a{display:flex;align-items:center;gap:.7rem}.card img{object-fit:contain}li,p{line-height:1.8}dl div{margin-top:.5rem}dd{margin:0;color:var(--muted);font-size:.9rem}strong{color:var(--gold)}</style>

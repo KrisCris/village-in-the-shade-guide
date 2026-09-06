@@ -1,10 +1,11 @@
+import { withBase } from '../../lib/sitePath';
 import {useEffect,useState} from 'react';
 import type {Entity} from '../../data/types';
 import EntityExplorer from './EntityExplorer';
 
 let pending:Promise<Entity[]>|undefined;
 function loadRows() {
- return pending??=fetch('/item-list.json').then(response=>{
+ return pending??=fetch(withBase('/item-list.json')).then(response=>{
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   return response.json() as Promise<Entity[]>;
  }).catch(error=>{pending=undefined;throw error;});

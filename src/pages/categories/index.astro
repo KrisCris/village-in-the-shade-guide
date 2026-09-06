@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCatalog } from '../../data/repository';
 const items = getCatalog().entities.filter(e=>e.kind==='items' && e.category_id);
@@ -9,7 +10,7 @@ const categories = [...new Map(items.map(e=>[e.category_id!,e])).values()].sort(
   <div class="category-grid">{categories.map(category=>{
     const rows=items.filter(e=>e.category_id===category.category_id);
     const icon=rows.find(e=>e.icon_path)?.icon_path;
-    return <a class="card" href={`/categories/${category.category_id}/`}>{icon && <img src={icon} width="64" height="64" alt="" loading="lazy" />}<span><strong>{category.category_name?.zh_hans}</strong><small>{rows.length} 件</small></span></a>;
+    return <a class="card" href={withBase(`/categories/${category.category_id}/`)}>{icon && <img src={withBase(icon)} width="64" height="64" alt="" loading="lazy" />}<span><strong>{category.category_name?.zh_hans}</strong><small>{rows.length} 件</small></span></a>;
   })}</div>
 </BaseLayout>
 <style>.category-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.7rem}.category-grid a{display:flex;align-items:center;gap:.8rem;padding:.8rem;color:var(--ink);text-decoration:none}.category-grid img{object-fit:contain}.category-grid span{display:grid;gap:.35rem}.category-grid small{color:var(--muted)}</style>

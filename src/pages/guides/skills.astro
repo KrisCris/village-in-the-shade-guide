@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 const catalog=getCatalog();
@@ -11,11 +12,11 @@ const priorities=[
 ];
 ---
 <BaseLayout title="祠堂能力与解锁规划"><h1>祠堂能力与解锁规划</h1>
-<p>先完成<a href="/guides/progression/">岔路祠堂的修复任务</a>。以下按当前目标安排优先级；学习前还需在游戏中确认已开放的节点和消耗。</p>
-<section><h2>按目标选择</h2>{priorities.map(group=><article class="card"><h3>{group.title}</h3><p>{group.why}</p><ul>{group.ids.map(id=>{const skill=skills.find(e=>e.id===id);return skill&&<li><a href={`#${id}`}>{skill.name.zh_hans}</a>：{String(skill.description)}</li>;})}</ul></article>)}</section>
+<p>先完成<a href={withBase("/guides/progression/")}>岔路祠堂的修复任务</a>。以下按当前目标安排优先级；学习前还需在游戏中确认已开放的节点和消耗。</p>
+<section><h2>按目标选择</h2>{priorities.map(group=><article class="card"><h3>{group.title}</h3><p>{group.why}</p><ul>{group.ids.map(id=>{const skill=skills.find(e=>e.id===id);return skill&&<li><a href={withBase(`#${id}`)}>{skill.name.zh_hans}</a>：{String(skill.description)}</li>;})}</ul></article>)}</section>
 <section><h2>能力与配方一览</h2><p>前置栏显示游戏表中的连接节点；多个连接不据此推定必须全部学习。消耗物品的列对应尚未确认，暂不显示推测数量。</p>
 <label>查找能力或配方<input id="skill-search" type="search" placeholder="名称、效果或拼音" /></label>
-<div class="skills">{skills.map(skill=>{const recipes=catalog.entities.filter(e=>['craft-recipes','cooking-recipes'].includes(e.kind)&&Number(e.unlock_flag)>0&&e.unlock_flag===skill.unlock_flag);return <article class="card skill" id={skill.id} data-search={`${skill.searchText} ${skill.description}`}><h3><a href={entityUrl(skill)}>{skill.name.zh_hans}</a></h3><p>{String(skill.description)}</p><p>前置：{((skill.prerequisites??[]) as string[]).length?((skill.prerequisites??[]) as string[]).map(id=>{const previous=skills.find(e=>e.id===id);return previous&&<a class="previous" href={`#${id}`}>{previous.name.zh_hans}</a>;}):'无'}</p>{recipes.length>0&&<div class="recipes">{recipes.map(recipe=><a href={entityUrl(recipe)}>{recipe.icon_path&&<img src={recipe.icon_path} alt="" width="40" height="40" loading="lazy"/>}{recipe.name.zh_hans} · 材料与用途</a>)}</div>}</article>;})}</div></section>
+<div class="skills">{skills.map(skill=>{const recipes=catalog.entities.filter(e=>['craft-recipes','cooking-recipes'].includes(e.kind)&&Number(e.unlock_flag)>0&&e.unlock_flag===skill.unlock_flag);return <article class="card skill" id={skill.id} data-search={`${skill.searchText} ${skill.description}`}><h3><a href={withBase(entityUrl(skill))}>{skill.name.zh_hans}</a></h3><p>{String(skill.description)}</p><p>前置：{((skill.prerequisites??[]) as string[]).length?((skill.prerequisites??[]) as string[]).map(id=>{const previous=skills.find(e=>e.id===id);return previous&&<a class="previous" href={withBase(`#${id}`)}>{previous.name.zh_hans}</a>;}):'无'}</p>{recipes.length>0&&<div class="recipes">{recipes.map(recipe=><a href={withBase(entityUrl(recipe))}>{recipe.icon_path&&<img src={withBase(recipe.icon_path)} alt="" width="40" height="40" loading="lazy"/>}{recipe.name.zh_hans} · 材料与用途</a>)}</div>}</article>;})}</div></section>
 </BaseLayout>
 <script>
 import {normalizeSearch} from '../../data/clientSearch';

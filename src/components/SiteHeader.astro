@@ -1,10 +1,11 @@
 ---
+import { withBase } from '../lib/sitePath';
 import QualitySelector from './quality/QualitySelector';
 ---
 
 <header class="site-header">
-  <a class="brand" href="/"><img src="/game-icon.png" width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
-  <nav aria-label="页首导航"><a href="/data/crops/">数据</a><a href="/guides/">攻略</a><a href="/search/">搜索</a></nav>
+  <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
+  <nav aria-label="页首导航"><a href={withBase("/data/crops/")}>数据</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/search/")}>搜索</a></nav>
   <QualitySelector client:load />
 </header>
 <style>

@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent } from 'react';
 import type { Catalog, Entity } from '../../data/types';
 import { resolveCatalogEntity } from '../../data/entityLookup';
@@ -15,7 +16,7 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
   const [quality] = useQuality();
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/game-data.json', { signal: controller.signal }).then((response) => {
+    fetch(withBase('/game-data.json'), { signal: controller.signal }).then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }).then((data) => {
@@ -78,7 +79,7 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
   return <div className="drawer-backdrop" role="presentation" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
     <aside className="drawer" role="dialog" aria-modal="true" aria-label={title} style={{ width }}>
       <div className="drawer-resizer" role="separator" aria-label="调整详情栏宽度" aria-orientation="vertical" aria-valuemin={DRAWER_MIN_WIDTH} aria-valuenow={width} tabIndex={0} onPointerDown={startResize} onPointerMove={moveResize} onPointerUp={finishResize} onPointerCancel={finishResize} onKeyDown={resizeWithKeyboard} />
-      <header><button onClick={() => stack.length > 1 ? setStack(stack.slice(0, -1)) : onClose()}>{stack.length > 1 ? '← 返回' : '关闭'}</button><span>{title}</span><a href={`/data/${current.kind}/${encodeURIComponent(current.id)}/`}>独立页面 ↗</a></header>
+      <header><button onClick={() => stack.length > 1 ? setStack(stack.slice(0, -1)) : onClose()}>{stack.length > 1 ? '← 返回' : '关闭'}</button><span>{title}</span><a href={withBase(`/data/${current.kind}/${encodeURIComponent(current.id)}/`)}>独立页面 ↗</a></header>
       <div className="drawer-body" key={current.id}>{model ? <EntityDetail model={model} onOpen={(next) => setStack([...stack, next])} /> : <p>{loadFailed ? '关联数据读取失败，请打开独立页面查看基础数据。' : '正在读取关联数据…'}</p>}</div>
     </aside>
     <style>{`

@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 import {buildRelationGroups} from '../../domain/relations';
@@ -10,11 +11,11 @@ const grouped=new Set(groups.flatMap(group=>group.variants.map(item=>item.id)));
 for(const item of rows.filter(item=>!grouped.has(item.id)))groups.push({id:item.id,flag:-1,source:'item.dat',variants:[item]});
 ---
 <BaseLayout title="服装与装饰获取"><h1>服装与装饰获取</h1>
-<p>发型也列在下方。玉手箱奖励表包含部分发型和设计图，可先查看<a href="/guides/collection-map/#treasures">生成点与奖励候选</a>，再安排夜间收集。</p>
+<p>发型也列在下方。玉手箱奖励表包含部分发型和设计图，可先查看<a href={withBase("/guides/collection-map/#treasures")}>生成点与奖励候选</a>，再安排夜间收集。</p>
 <p>先取得款式，再查看同款配色。服装与头饰按游戏外观表归组；下列来源注明实际发放或出售的物品，不代表每种配色都单独出售。</p>
-<div class="styles">{groups.map(group=>{const {variants}=group;const icon=variants.find(e=>e.icon_path)?.icon_path;const sources=variants.flatMap(e=>buildRelationGroups(e,catalog,'normal').filter(g=>['acquisition','unlocks'].includes(g.key)).flatMap(g=>g.rows).map(source=>({item:e,source})));return <details class="card" id={group.id}><summary>{icon&&<img src={icon} width="52" height="52" alt="" loading="lazy" />}<strong>{variants[0].name.zh_hans.split('／')[0]}</strong><small>{variants.length} 种</small></summary>
-<h2>款式获取</h2>{sources.length?<ul>{sources.map(({item,source})=><li><a href={entityUrl(source.entity)}>{source.entity.name.zh_hans}</a>：<a href={entityUrl(item)}>{item.name.zh_hans}</a>{source.chips.length&&<span> · {source.chips.join('；')}</span>}</li>)}</ul>:<p>{group.flag===0?'初始款式，无额外款式解锁标记。':'尚未确认取得此款式的事件或奖励。'}</p>}
-<h2>配色</h2><div class="variants">{variants.map(e=><a class="variant" href={entityUrl(e)}>{e.icon_path&&<img src={e.icon_path} width="44" height="44" alt="" loading="lazy"/>}<span>{e.name.zh_hans}</span></a>)}</div>
+<div class="styles">{groups.map(group=>{const {variants}=group;const icon=variants.find(e=>e.icon_path)?.icon_path;const sources=variants.flatMap(e=>buildRelationGroups(e,catalog,'normal').filter(g=>['acquisition','unlocks'].includes(g.key)).flatMap(g=>g.rows).map(source=>({item:e,source})));return <details class="card" id={group.id}><summary>{icon&&<img src={withBase(icon)} width="52" height="52" alt="" loading="lazy" />}<strong>{variants[0].name.zh_hans.split('／')[0]}</strong><small>{variants.length} 种</small></summary>
+<h2>款式获取</h2>{sources.length?<ul>{sources.map(({item,source})=><li><a href={withBase(entityUrl(source.entity))}>{source.entity.name.zh_hans}</a>：<a href={withBase(entityUrl(item))}>{item.name.zh_hans}</a>{source.chips.length&&<span> · {source.chips.join('；')}</span>}</li>)}</ul>:<p>{group.flag===0?'初始款式，无额外款式解锁标记。':'尚未确认取得此款式的事件或奖励。'}</p>}
+<h2>配色</h2><div class="variants">{variants.map(e=><a class="variant" href={withBase(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="44" height="44" alt="" loading="lazy"/>}<span>{e.name.zh_hans}</span></a>)}</div>
 <details><summary>数据来源</summary><small>{group.source} · {group.id}{group.flag>0&&` · 款式解锁标记 ${group.flag}`}</small></details>
 </details>;})}</div>
 </BaseLayout>

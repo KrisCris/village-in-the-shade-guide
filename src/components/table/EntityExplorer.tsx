@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
 import type { Entity } from '../../data/types';
 import { entityUrl, normalizeSearch } from '../../data/clientSearch';
@@ -147,7 +148,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         ? `${Math.ceil(row.duration_minutes / 1440)} 日${typeof row.duration_max_minutes === 'number' && row.duration_max_minutes !== row.duration_minutes ? `–${Math.ceil(row.duration_max_minutes / 1440)} 日` : ''}`
         : null;
       return <tr key={row.id} tabIndex={0} aria-label={`打开${row.name.zh_hans}详情`} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
-        <td><a className="entity-link" href={entityUrl(row)} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={row.icon_path} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = rowFallback(row); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
+        <td><a className="entity-link" href={withBase(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}<small>{row.name.ja}</small></span></a></td>
         <td>{processGroup ? `${row.variant_count} 种配方` : row.category_name?.zh_hans || (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ?? value).join('、') || kind}{row.cultivation_method && <small>{String(row.cultivation_method)}</small>}{row.kind==='crops' && ((row.harvest_item_ids ?? []) as string[]).length>1 && <small>{String(row.harvest_names)}</small>}</td>
         <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality) : '固定')}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>

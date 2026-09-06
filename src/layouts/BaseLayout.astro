@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../lib/sitePath';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SidebarNav from '../components/SidebarNav.astro';
@@ -11,7 +12,7 @@ const { title, description = '《静谧田园》（Village in the Shade）中文
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <link rel="icon" href="/game-icon.png" />
+    <link rel="icon" href={withBase("/game-icon.png")} />
     <title>{title} · 静谧田园 Wiki</title>
   </head>
   <body>

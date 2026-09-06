@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import {useMemo, useState} from 'react';
 import type {Catalog, Entity} from '../../data/types';
 import {cropProcessingOptions} from '../../domain/cropProcessing';
@@ -32,7 +33,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
     {!ownedSeeds&&<p className="planner-note">已按年份与出售季节排除 {seasonal.length-candidates.length} 种不在商店开放范围内的作物；出货、品评会等额外条件仍需满足。已有库存或从其他途径拿到种子时，切换“已有种子”。</p>}
     <p className="planner-note">价格按当前品质计算，未叠加祠堂出货术等售价加成。</p>
     <div className="planner-table"><table><thead><tr>{['作物 → 产物','收获次数 / 总量','种子总成本','加工增值','整批最终净收益','当月现金净收入','机器占用天数','全部售完需时'].map(t=><th key={t}>{t}</th>)}</tr></thead><tbody>{rows.map(row=><tr key={row.crop.id+(row.process?.id??'direct-sale')} tabIndex={0} onClick={event=>{if (!(event.target as HTMLElement).closest('button')) setSelected(row.crop);}} onKeyDown={event=>{if(event.target===event.currentTarget && ['Enter',' '].includes(event.key)){event.preventDefault();setSelected(row.crop);}}}>
-      <td>{row.crop.icon_path&&<img src={row.crop.icon_path} alt="" width={36} height={36} style={{objectFit:'contain',verticalAlign:'middle',marginRight:8}}/>}<button onClick={()=>setSelected(row.crop)}>{row.crop.name.zh_hans}</button>{row.process?<> → <button onClick={()=>setSelected(row.output)}>{row.output.name.zh_hans}</button></>:<span> · 直接出售</span>}</td>
+      <td>{row.crop.icon_path&&<img src={withBase(row.crop.icon_path)} alt="" width={36} height={36} style={{objectFit:'contain',verticalAlign:'middle',marginRight:8}}/>}<button onClick={()=>setSelected(row.crop)}>{row.crop.name.zh_hans}</button>{row.process?<> → <button onClick={()=>setSelected(row.output)}>{row.output.name.zh_hans}</button></>:<span> · 直接出售</span>}</td>
       <td>{row.harvestCount} 次 / {row.harvested} 个</td><td>{fmt(row.seedCost)}</td><td>{fmt(row.processingGain)}</td><td>{fmt(row.net)}</td><td>{fmt(row.monthNet)}</td><td>{fmt(row.machineDays)}</td><td>{fmt(row.finishDay)} 天{row.finishDay>28?' · 跨月':''}</td>
     </tr>)}</tbody></table></div>
     {!ownedSeeds&&<details><summary>本季种子的商店与开放条件</summary><table><thead><tr><th>作物</th><th>商店</th><th>条件</th></tr></thead><tbody>{candidates.map(crop=><tr key={crop.id}><td><button onClick={()=>setSelected(crop)}>{crop.name.zh_hans}</button></td><td>{availability.get(crop.id)?.locations.join(' / ')}</td><td>{availability.get(crop.id)?.conditions.join('；')||'无额外条件'}</td></tr>)}</tbody></table></details>}

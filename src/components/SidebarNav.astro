@@ -1,18 +1,19 @@
 ---
+import { withBase } from '../lib/sitePath';
 import { kindLabels, primaryKinds } from '../data/types';
 ---
 <aside class="sidebar">
   <nav aria-label="主要分类">
     <p>资料库</p>
-    <a href="/categories/">分类一览</a>
-    {primaryKinds.map((kind) => <a href={`/data/${kind}/`}>{kindLabels[kind]}</a>)}
+    <a href={withBase("/categories/")}>分类一览</a>
+    {primaryKinds.map((kind) => <a href={withBase(`/data/${kind}/`)}>{kindLabels[kind]}</a>)}
     <p>攻略</p>
-    <a href="/guides/season-plan/">四季留货规划</a>
-    <a href="/guides/residents/">生日与送礼</a>
-    <a href="/guides/collection-map/">图书与神社地图</a>
-    <a href="/guides/#系统与生活">新手与系统</a>
-    <a href="/guides/#剧情">剧情流程</a>
-    <a href="/guides/#探索">探索收集</a>
+    <a href={withBase("/guides/season-plan/")}>四季留货规划</a>
+    <a href={withBase("/guides/residents/")}>生日与送礼</a>
+    <a href={withBase("/guides/collection-map/")}>图书与神社地图</a>
+    <a href={withBase("/guides/#系统与生活")}>新手与系统</a>
+    <a href={withBase("/guides/#剧情")}>剧情流程</a>
+    <a href={withBase("/guides/#探索")}>探索收集</a>
   </nav>
 </aside>
 <style>

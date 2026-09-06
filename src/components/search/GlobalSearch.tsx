@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { useMemo, useRef, useState } from 'react';
 import type { Entity } from '../../data/types';
 import { entityUrl, expandSearchRows, rankEntities } from '../../data/clientSearch';
@@ -11,7 +12,7 @@ export default function GlobalSearch({ prominent = false }: { prominent?: boolea
   const loadIndex = () => {
     if (!request.current) {
       setLoading(true);
-      request.current = fetch('/search-index.json')
+      request.current = fetch(withBase('/search-index.json'))
         .then((response) => response.json())
         .then((data: { rows: CompactSearchRow[] }) => setRows(expandSearchRows(data.rows)))
         .finally(() => setLoading(false));
@@ -23,7 +24,7 @@ export default function GlobalSearch({ prominent = false }: { prominent?: boolea
     <label htmlFor="global-query">搜索物品、作物、机械、料理或角色</label>
     <input id="global-query" type="search" value={query} onFocus={loadIndex} onChange={(event) => { setQuery(event.target.value); void loadIndex(); }} placeholder="洋葱 / yangcong / yc / タマネギ" autoComplete="off" />
     {query && <div className="search-results" role="listbox" aria-label="搜索结果">
-      {loading && rows.length === 0 ? <p>正在读取搜索索引…</p> : results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={entityUrl(entity)} role="option">
+      {loading && rows.length === 0 ? <p>正在读取搜索索引…</p> : results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={withBase(entityUrl(entity))} role="option">
         <span>{entity.name.zh_hans}</span><small>{entity.kind} · {entity.name.ja || entity.id}</small>
       </a>) : <p>没有匹配项</p>}
     </div>}

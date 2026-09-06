@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 const catalog=getCatalog();
@@ -9,16 +10,16 @@ const features=[...new Map(choices.map(({option})=>[option.feature_numeric_id,op
 const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
 ---
 <BaseLayout title="料理材料与食谱规划"><h1>料理材料与食谱规划</h1>
-<nav><a href="#ingredients">可替换材料</a>　<a href="/guides/residents/#recipes">村民传授食谱</a>　<a href="/data/cooking-recipes/">全部料理配方</a></nav>
+<nav><a href="#ingredients">可替换材料</a>　<a href={withBase("/guides/residents/#recipes")}>村民传授食谱</a>　<a href={withBase("/data/cooking-recipes/")}>全部料理配方</a></nav>
 <section><h2>先决定用途，再备材料</h2><ol>
-<li>为送礼做料理时，先在<a href="/guides/residents/">角色喜好与生日表</a>选定目标，再点料理查看配方。不要为尚未学会的菜一次囤齐所有材料。</li>
-<li>为交付做料理时，先按<a href="/data/activities/?q=料理">交付目录</a>留够成品数量；目录所需与自己的日常消耗分开。</li>
+<li>为送礼做料理时，先在<a href={withBase("/guides/residents/")}>角色喜好与生日表</a>选定目标，再点料理查看配方。不要为尚未学会的菜一次囤齐所有材料。</li>
+<li>为交付做料理时，先按<a href={withBase("/data/activities/?q=料理")}>交付目录</a>留够成品数量；目录所需与自己的日常消耗分开。</li>
 <li>材料写“蛋类、奶类、肉类、鱼类、小鱼类”时，可以从对应清单挑已有余量的材料。详情里的默认物品只是示例，不代表只能用那一种。</li>
 <li>稀有鱼、即将交任务的鱼先留存。做烤鱼等允许类别替换的菜时，先考虑容易补充、没有待办用途的鱼。</li>
 </ol></section>
-<section><h2>按目标取得食谱</h2><p>村民传授的 42 道食谱分布在 14 位居民的好感度 Lv1、Lv2、Lv3 突破之后。先去<a href="/guides/residents/#recipes">食谱对照表</a>找想做的菜，再决定培养谁；达到点数上限后还要完成对应人物事件并回去交谈。</p><p>餐厅反复吃同一道菜也是游戏教程写明的食谱取得方式。未核实每道菜的次数条件，因此这里不统一标为“吃 3 次”。已经掌握的食谱以游戏内料理菜单为准。</p></section>
+<section><h2>按目标取得食谱</h2><p>村民传授的 42 道食谱分布在 14 位居民的好感度 Lv1、Lv2、Lv3 突破之后。先去<a href={withBase("/guides/residents/#recipes")}>食谱对照表</a>找想做的菜，再决定培养谁；达到点数上限后还要完成对应人物事件并回去交谈。</p><p>餐厅反复吃同一道菜也是游戏教程写明的食谱取得方式。未核实每道菜的次数条件，因此这里不统一标为“吃 3 次”。已经掌握的食谱以游戏内料理菜单为准。</p></section>
 <section id="ingredients"><h2>五种可替换材料</h2><p>以下分类来自游戏物品特征与料理材料栏。每道菜的用量各不相同，点开配方可查看数量及全局品质下的材料售价。</p>
-{features.map(feature=>{const related=choices.filter(c=>c.option.feature_numeric_id===feature.feature_numeric_id);return <article class="card"><h3>{feature.feature_name}</h3><div class="ingredients">{feature.item_ids.map(id=>{const entry=item(id);return entry&&<a href={entityUrl(entry)}>{entry.icon_path&&<img src={entry.icon_path} width="44" height="44" alt="" loading="lazy"/>}{entry.name.zh_hans}</a>;})}</div><details><summary>用于 {related.length} 道配方</summary><div class="ingredients">{related.map(({recipe,option})=><a href={entityUrl(recipe)}>{recipe.icon_path&&<img src={recipe.icon_path} width="40" height="40" alt="" loading="lazy"/>}{recipe.name.zh_hans} · {feature.feature_name} ×{option.quantity}</a>)}</div></details></article>;})}
+{features.map(feature=>{const related=choices.filter(c=>c.option.feature_numeric_id===feature.feature_numeric_id);return <article class="card"><h3>{feature.feature_name}</h3><div class="ingredients">{feature.item_ids.map(id=>{const entry=item(id);return entry&&<a href={withBase(entityUrl(entry))}>{entry.icon_path&&<img src={withBase(entry.icon_path)} width="44" height="44" alt="" loading="lazy"/>}{entry.name.zh_hans}</a>;})}</div><details><summary>用于 {related.length} 道配方</summary><div class="ingredients">{related.map(({recipe,option})=><a href={withBase(entityUrl(recipe))}>{recipe.icon_path&&<img src={withBase(recipe.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{recipe.name.zh_hans} · {feature.feature_name} ×{option.quantity}</a>)}</div></details></article>;})}
 </section>
 <details><summary>游戏数据来源</summary><p>cooking.dat：材料栏的物品特征与数量；item.dat、itemfeature.dat：可替换物品；charactertalk.dat、gameflag.dat：村民食谱传授条件；tips.dat 的 TIPS_38_RECIPE：食谱学习途径。</p></details>
 </BaseLayout>

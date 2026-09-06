@@ -1,3 +1,4 @@
+import { withBase } from '../../lib/sitePath';
 import { useEffect, useMemo, useState } from 'react';
 import type { Catalog, Entity } from '../../data/types';
 import { resolveCatalogEntity } from '../../data/entityLookup';
@@ -17,7 +18,7 @@ export default function EntityPage({ initialEntity, initialModel }: { initialEnt
   const [quality] = useQuality();
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/game-data.json', { signal: controller.signal })
+    fetch(withBase('/game-data.json'), { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json();
