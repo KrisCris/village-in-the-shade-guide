@@ -2,7 +2,7 @@ name: Deploy Wiki to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -44,7 +44,7 @@ jobs:
 
   deploy:
     # Manual runs from feature branches must not overwrite the live site.
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
