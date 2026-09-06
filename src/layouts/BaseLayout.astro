@@ -1,10 +1,13 @@
 ---
 import { withBase } from '../lib/sitePath';
 import '../styles/global.css';
+import '../styles/interior.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SidebarNav from '../components/SidebarNav.astro';
+import SeasonScene from '../components/art/SeasonScene.astro';
 interface Props { title: string; description?: string; immersive?: boolean; }
 const { title, description = '《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略', immersive=false } = Astro.props;
+const dynamicInterior = !immersive;
 ---
 <!doctype html>
 <html lang="zh-CN" data-season="spring">
@@ -19,10 +22,10 @@ const { title, description = '《静谧田园》（Village in the Shade）中文
     <link rel="icon" href={withBase("/game-icon.png")} />
     <title>{title} · 静谧田园 Wiki</title>
   </head>
-  <body class:list={[immersive?'home-page':'wiki-page']}>
+  <body class:list={[immersive?'home-page':'wiki-page', {'dynamic-interior':dynamicInterior}]}>
     <a class="skip-link" href="#main-content">跳至正文</a>
     <SiteHeader />
-    {!immersive&&<div class="wiki-art" aria-hidden="true"><img src={withBase('/art/pine-spring.webp')} alt="" width="256" height="312" loading="lazy"/><img src={withBase('/art/tree-autumn.webp')} alt="" width="256" height="312" loading="lazy"/></div>}
+    {dynamicInterior ? <><SeasonScene /><div class="interior-scene-veil" aria-hidden="true"></div></> : !immersive&&<div class="interior-scenery" aria-hidden="true"><img class="interior-mountains" src={withBase('/art/mountains-spring.webp')} alt="" loading="lazy"/><img class="interior-foliage" src={withBase('/art/pine-spring.webp')} alt="" width="256" height="312" loading="lazy"/></div>}
     <div class:list={['page',{'immersive-page':immersive}]}>
       {!immersive&&<SidebarNav />}
       <main class="main" id="main-content" data-pagefind-body><slot /></main>

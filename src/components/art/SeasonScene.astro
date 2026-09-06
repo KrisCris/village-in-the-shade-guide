@@ -19,6 +19,7 @@ import {SEASONS} from '../../domain/scenery';
 </div>
 <script>
   import {SEASONS,seasonFrame} from '../../domain/scenery';
+  import {listSceneFrame} from '../../domain/listScene';
   const scene=document.querySelector<HTMLElement>('[data-scene]');
   if(scene){
     const root=document.documentElement;
@@ -26,22 +27,56 @@ import {SEASONS} from '../../domain/scenery';
     const layers=[...scene.querySelectorAll<HTMLElement>('[data-scene-layer]')];
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
     let scheduled=false;
+    let idleTime=0;
+    const fitsViewport=()=>document.documentElement.scrollHeight<=innerHeight+2;
     const update=()=>{
       scheduled=false;
       const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+window.scrollY-window.innerHeight*.32);
-      const frame=seasonFrame(window.scrollY,stops);
+      let frame=seasonFrame(window.scrollY,stops);
+      if (!chapters.length) {
+        const list=document.querySelector<HTMLElement>('[data-scene-total]');
+        const rows=list?.querySelector('tbody')?.rows;
+        const total=Number(list?.dataset.sceneTotal || 0);
+        frame=listSceneFrame(0,0,total);
+        if(!list){
+          const extent=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+          frame=seasonFrame(window.scrollY,[0,extent/3,extent*2/3,extent]);
+        }
+        if(rows?.length && total && window.scrollY>0){
+          // Track the reading line in row coordinates. No scrollHeight or loaded-row denominator:
+          // loading another batch cannot move a season boundary. Binary search avoids scanning all rows.
+          const line=innerHeight*.85;
+          let low=0,high=rows.length-1;
+          while(low<high){const mid=Math.floor((low+high)/2);if(rows[mid].getBoundingClientRect().bottom<line)low=mid+1;else high=mid;}
+          const rect=rows[low].getBoundingClientRect();
+          frame=listSceneFrame(low,(line-rect.top)/Math.max(1,rect.height),total);
+          if(total<=800 && rows.length===total && rows[rows.length-1].getBoundingClientRect().bottom<=innerHeight)frame=listSceneFrame(total-1,1,total);
+        }
+        if(fitsViewport()&&!reduced.matches){
+          const phase=idleTime/10000;
+          const from=Math.floor(phase)%4;
+          // Hold for eight seconds, then blend for two seconds into the next season.
+          frame={from,to:(from+1)%4,mix:Math.max(0,(phase%1-.8)/.2)};
+        }
+      }
       const dominant=frame.mix<.5?frame.from:frame.to;
       layers.forEach((layer,index)=>{layer.style.opacity=String(reduced.matches?(index===dominant?1:0):(index===frame.from?1-frame.mix:0)+(index===frame.to?frame.mix:0));});
       // Winter is the final frame (from===to), so its opacity stays fully visible.
       if(frame.from===frame.to)layers[frame.from].style.opacity='1';
       root.dataset.season=SEASONS[dominant];
-      scene.style.setProperty('--drift',reduced.matches?'0px':`${Math.min(window.scrollY*.035,90)}px`);
+      scene.style.setProperty('--drift',reduced.matches||!chapters.length?'0px':`${Math.min(window.scrollY*.035,90)}px`);
     };
     const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};
     window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
     reduced.addEventListener('change',schedule);
     document.addEventListener('visibilitychange',()=>scene.classList.toggle('paused',document.hidden));
     const sizeObserver=new ResizeObserver(schedule);chapters.forEach(chapter=>sizeObserver.observe(chapter));
+    if(!chapters.length){
+      const main=document.querySelector('main');
+      if(main){sizeObserver.observe(main);new MutationObserver(schedule).observe(main,{childList:true,subtree:true,attributes:true,attributeFilter:['data-scene-total']});}
+      const timer=setInterval(()=>{if(!document.hidden&&!reduced.matches&&fitsViewport()){idleTime+=100;schedule();}},100);
+      window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+    }
     update();
   }
 </script>

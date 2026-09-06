@@ -1,13 +1,13 @@
 ---
 import { withBase } from '../lib/sitePath';
-import { kindLabels, primaryKinds } from '../data/types';
+import { databaseLinks } from '../data/navigation';
 ---
 <aside class="sidebar">
   <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">资料库与攻略<span aria-hidden="true">⌄</span></button>
   <nav id="sidebar-links" aria-label="主要分类">
     <p>资料库</p>
-    <a href={withBase("/categories/")}>分类一览</a>
-    {primaryKinds.map((kind) => <a href={withBase(`/data/${kind}/`)}>{kindLabels[kind]}</a>)}
+    {databaseLinks.map(link => <a href={withBase(link.href)}>{link.label}</a>)}
+    <a class="planner-link" href={withBase('/planner/')}>收益规划</a>
     <p>攻略</p>
     <a href={withBase("/guides/season-plan/")}>四季留货规划</a>
     <a href={withBase("/guides/residents/")}>生日与送礼</a>
@@ -27,6 +27,7 @@ import { kindLabels, primaryKinds } from '../data/types';
 <style>
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }
   .mobile-nav-toggle { display: none; }
+  .planner-link { margin-top: .75rem; }
   nav { position: sticky; top: 86px; display: grid; gap: .25rem; }
   p { margin: 1rem .7rem .35rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
   a { padding: .58rem .7rem; border-radius: 8px; color: var(--ink); text-decoration: none; } a:hover { background: var(--green-soft); color: var(--green); }

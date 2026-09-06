@@ -136,7 +136,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
       <label>方向<SearchableSelect value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">升序</option><option value="desc">降序</option></SearchableSelect></label>
       <b>{shown.length} 条</b>
     </div>
-    <div className="table-wrap card"><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{visible.map((row) => {
+    <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>名称</th><th>季节 / 类型</th><th>成本</th><th>产值</th><th>时间</th><th>日净收益</th><th>数据 ID</th></tr></thead><tbody>{visible.map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality) : '固定';
       const processGroup = row.source_kind === 'processes';

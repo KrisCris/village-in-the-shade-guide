@@ -1,0 +1,77 @@
+/* Shared interior treatment. Homepage artwork and character portraits stay separate. */
+.wiki-page{display:flex;flex-direction:column;min-height:100svh}
+.wiki-page>.page{flex:1;width:100%;min-height:0}
+.wiki-page>.site-footer{width:100%;margin:0 auto;padding-block:1rem}
+.wiki-page .main{padding-bottom:2rem}
+.wiki-page .sidebar{padding-block:.75rem}
+.wiki-page .sidebar nav{gap:.1rem}
+.wiki-page .sidebar nav>a{padding-block:.4rem}
+.interior-scene-veil{position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:color-mix(in srgb,var(--paper) 64%,transparent);background-image:radial-gradient(color-mix(in srgb,var(--ink) 12%,transparent) .7px,transparent .9px);background-size:4px 4px}
+[data-theme="night"] .interior-scene-veil{background-image:radial-gradient(rgb(0 0 0 / 10%) .55px,transparent .8px)}
+.dynamic-interior .table-wrap table{table-layout:fixed;min-width:1050px}
+.dynamic-interior .table-wrap th:first-child{width:25%}
+.dynamic-interior .table-wrap th:last-child{width:23%}
+.dynamic-interior .table-wrap td:last-child{overflow-wrap:anywhere}
+.wiki-page.dynamic-interior .main{background:transparent;border:0}
+.wiki-page.dynamic-interior .sidebar{background:color-mix(in srgb,var(--paper) 72%,transparent)}
+.dynamic-interior .database-grid .card{background:color-mix(in srgb,var(--paper-raised) 91%,transparent);min-height:145px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.dynamic-interior .database-grid .card:hover{transform:translateY(-5px);box-shadow:0 10px 32px color-mix(in srgb,var(--green) 24%,transparent),inset 0 0 0 1px var(--green)}
+.wiki-page {
+  --panel-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 7%, transparent);
+  background-color: var(--paper);
+}
+.interior-scenery { position: fixed; inset: 64px 0 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.interior-mountains { position: absolute; width: 100%; height: 46vh; min-height: 240px; object-fit: cover; object-position: center; opacity: .2; mask-image: linear-gradient(#000, transparent); }
+.interior-foliage { position: absolute; right: -55px; bottom: -30px; width: clamp(180px, 24vw, 340px); height: auto; opacity: .16; }
+.wiki-page .main {
+  background: linear-gradient(120deg, color-mix(in srgb, var(--paper-raised) 76%, transparent), color-mix(in srgb, var(--paper) 92%, transparent) 60%);
+  border-inline: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
+}
+.wiki-page .main h1 { letter-spacing: .055em; padding-bottom: .8rem; margin-bottom: 1.5rem; position: relative; }
+.wiki-page .main h1::after { content: ''; display: block; width: 80px; height: 3px; margin-top: .85rem; background: linear-gradient(90deg, var(--vermilion) 0 25%, var(--border) 25%); }
+.wiki-page .main h2 { padding-bottom: .65rem; border-bottom: 1px solid var(--border); position: relative; }
+.wiki-page .main h2::after { content: ''; position: absolute; width: 28px; height: 2px; background: var(--green); bottom: -1px; left: 0; }
+.wiki-page .main :is(p, li) { line-height: 1.8; }
+.wiki-page .eyebrow { letter-spacing: .18em; }
+.wiki-page .sidebar { background: color-mix(in srgb, var(--paper) 65%, transparent); }
+.wiki-page .sidebar nav > p { color: var(--vermilion); }
+.wiki-page .sidebar nav > a { border-left: 2px solid transparent; transition: background-color .2s, border-color .2s; }
+.wiki-page .sidebar nav > a:hover { border-left-color: var(--green); }
+.wiki-page .card {
+  border-radius: 4px 16px 4px 4px;
+  background: linear-gradient(135deg, var(--paper-raised), color-mix(in srgb, var(--paper-raised) 86%, var(--paper-deep)));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ink) 5%, transparent), var(--panel-shadow);
+}
+.wiki-page a.card:hover { transform: translateY(-3px); border-color: var(--green); box-shadow: var(--shadow); }
+.wiki-page :is(.database-grid, .guide-grid, .category-grid) a img { transition: transform .25s ease; }
+.wiki-page :is(.database-grid, .guide-grid, .category-grid) a:hover img { transform: translateY(-2px) rotate(-3deg); }
+.wiki-page .planner-controls {
+  padding: 1rem 1.2rem; background: var(--paper-raised); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 5px; gap: 1rem;
+}
+.wiki-page .planner-controls + .planner-controls { margin-top: .6rem; }
+.wiki-page .toolbar.card { border-left: 3px solid var(--green); border-radius: 5px; }
+.wiki-page .table-wrap th { background: color-mix(in srgb, var(--green-soft) 70%, var(--paper-raised)); }
+.wiki-page .planner-note { padding-left: .85rem; border-left: 2px solid var(--border); }
+.wiki-page table { font-variant-numeric: tabular-nums; }
+.wiki-page thead { background: color-mix(in srgb, var(--green-soft) 70%, var(--paper-raised)); }
+.wiki-page tbody tr { transition: background-color .16s; }
+.wiki-page tbody tr:nth-child(even) { background: color-mix(in srgb, var(--green-soft) 15%, transparent); }
+.wiki-page tbody tr:hover { background: color-mix(in srgb, var(--green-soft) 50%, transparent); }
+.wiki-page :is(.planner-table, .table-wrap) { border: 1px solid var(--border); border-radius: 8px; background: var(--paper-raised); box-shadow: var(--panel-shadow); }
+.wiki-page .global-search.prominent { padding: 1.2rem; border: 1px solid var(--border); border-top: 3px solid var(--green); border-radius: 4px 16px 4px 4px; background: var(--paper-raised); box-shadow: var(--panel-shadow); }
+.wiki-page .global-search input { box-shadow: none; }
+.wiki-page #pagefind-search { padding: 1.2rem; background: color-mix(in srgb, var(--paper-raised) 80%, transparent); border: 1px solid var(--border); border-radius: 6px; }
+.wiki-page .main details { border: 1px solid var(--border); border-radius: 5px; padding: .85rem 1rem; background: color-mix(in srgb, var(--paper-raised) 75%, transparent); }
+.wiki-page .main summary { cursor: pointer; color: var(--green); }
+.wiki-page .main details[open] > summary { margin-bottom: .7rem; }
+.wiki-page .drawer { box-shadow: -16px 0 60px #0003; border-left: 1px solid var(--border); }
+@media (prefers-reduced-motion: no-preference) {
+  .wiki-page .main > h1 { animation: interior-title-in .35s ease-out; }
+  @keyframes interior-title-in { from { opacity: .5; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+}
+@media (max-width: 800px) {
+  .wiki-page .main { border-inline: 0; }
+  .wiki-page .main h1 { margin-bottom: 1rem; }
+  .interior-foliage { opacity: .09; }
+  .wiki-page .planner-controls { padding: .8rem; }
+}

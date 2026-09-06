@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {withBase} from '../../lib/sitePath';
+import {getCatalog} from '../../data/repository';
+import {databaseLinks} from '../../data/navigation';
+const catalog = getCatalog();
+const categoryIcons = ['CROPS', 'FISH', 'MATERIAL', 'COOKING'].map(category =>
+  catalog.entities.find(entity => entity.kind === 'items' && entity.category_id === `ITEM_CATEGORY_${category}` && entity.icon_path)?.icon_path
+);
+const cards = databaseLinks.map(link => ({...link,
+  icon: link.href === '/data/items/'
+    ? catalog.byId['ITEM_ID_TOOL_BAG_LV2']?.icon_path
+    : catalog.entities.find(entity => entity.kind === link.kind && entity.icon_path)?.icon_path,
+}));
+---
+<BaseLayout title="资料库">
+  <h1>资料库</h1>
+  <div class="database-grid">
+    {cards.map(card => <a class="card" href={withBase(card.href)}>
+      {card.href === '/categories/'
+        ? <div class="category-icons" aria-hidden="true">{categoryIcons.map(icon => icon && <img src={withBase(icon)} width="34" height="34" alt="" />)}</div>
+        : card.icon && <img src={withBase(card.icon)} width="72" height="72" alt="" />}
+      <strong>{card.label}</strong><span aria-hidden="true">↗</span>
+    </a>)}
+  </div>
+</BaseLayout>
+<style>
+  .database-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem}
+  .database-grid a{display:flex;align-items:center;gap:1rem;padding:1.2rem;color:var(--ink);text-decoration:none;min-height:120px}
+  .database-grid img{object-fit:contain;flex-shrink:0}
+  .category-icons{display:grid;grid-template-columns:repeat(2,34px);gap:4px;width:72px;height:72px;flex-shrink:0}
+  .database-grid strong{font-size:1.15rem}
+  .database-grid span{margin-left:auto;color:var(--green)}
+  .database-grid a:hover{border-color:var(--green)}
+</style>
