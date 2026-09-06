@@ -1,5 +1,8 @@
 .worktrees/
 .local/
+# Private development plans, specifications and agent reports
+/.superpowers/
+/docs/superpowers/
 # Dependencies and caches
 .venv/
 .pytest_cache/
