@@ -2,7 +2,7 @@
 
 - `public/icons/generated/items/`：从游戏构建 `24969282` 的物品表、图标表和纹理引用中提取的物品裁切图。鱼类和配方按对应物品 ID 复用。
 - `public/icons/generated/livestock/`：游戏原生家畜图标。其余家畜按数据记录复用物品图标。
-- `public/maps/`：游戏小地图。标注来自游戏数据，核对记录见 `docs/data-evidence/`。
+- `public/maps/`：游戏小地图。标注来源和投影参数见 `data/sources/game-map-markers.json`，其他探索点见 `data/sources/game-exploration-markers.json`。
 - `public/game-icon.png`：站点标识所用的游戏图像。
 - `public/portraits/official/`：发行商公开人物页头像，来源见 `data/sources/official-character-portraits.json`。
 - `public/icons/fallback/`：站点异常兜底图形，不代表对应物品的实际外观。
