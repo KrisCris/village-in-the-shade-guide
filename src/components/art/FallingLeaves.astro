@@ -1,6 +1,6 @@
 <canvas class="falling-leaves" aria-hidden="true"></canvas>
 <script>
-  import {LeafWorld,type Ledge} from '../../domain/leaves';
+  import {LeafWorld,particleViewport,type Ledge} from '../../domain/leaves';
   import {onPageMount} from '../../lib/pageLifecycle';
   const dispose=onPageMount(()=>{
   const canvas=document.querySelector<HTMLCanvasElement>('.falling-leaves');
@@ -11,6 +11,7 @@
       const reduced=matchMedia('(prefers-reduced-motion: reduce)');
       let world:LeafWorld,frame=0,last=0,spawnClock=0,geometryClock=0,statsClock=0,transitionLeft=0;
       let width=innerWidth,height=innerHeight,dirty=true,targets:HTMLElement[]=[],ledges:Ledge[]=[];
+      let viewport=particleViewport(width,height),spawnRate=viewport.spawnRate,speedScale=viewport.speedScale;
       let textAreas:DOMRect[]=[];
       const ids=new WeakMap<Node,number[]>();let nextId=0;
       const colors=[['#f8c4d7','#efb1c8','#ffe2e9'],['#70974e','#a4b868','#527c4a'],['#c74f3f','#de733e','#aa353c'],['#e4edf0','#f5f5ed','#cbdfe8']];
@@ -131,6 +132,7 @@
       };
       const resize=()=>{
         width=innerWidth;height=innerHeight;
+        viewport=particleViewport(width,height);
         const scale=Math.min(devicePixelRatio||1,1.5);
         canvas.width=Math.round(width*scale);canvas.height=Math.round(height*scale);ctx.setTransform(scale,0,0,scale,0,0);dirty=true;
       };
@@ -139,16 +141,18 @@
         frame=0;
         if(document.hidden||reduced.matches)return;
         const dt=Math.min((now-(last||now))/1000,1/30);last=now;
-        geometryClock+=dt;spawnClock+=dt;statsClock+=dt;
+        const adapt=1-Math.exp(-2*dt);
+        spawnRate+=(viewport.spawnRate-spawnRate)*adapt;speedScale+=(viewport.speedScale-speedScale)*adapt;
+        geometryClock+=dt;spawnClock+=dt*spawnRate;statsClock+=dt;
         if(dirty||geometryClock>.25){geometry();geometryClock=0;}
         // A gentle trickle; 800 is the pool ceiling, not a burst of 800 particles.
         const season=Math.max(0,seasons.indexOf(document.documentElement.dataset.season||'spring'));
         transitionLeft=Math.max(0,transitionLeft-dt);
-        if(spawnClock>.45&&transitionLeft===0){
-          spawnClock=0;
+        if(spawnClock>=1&&transitionLeft===0){
+          spawnClock%=1;
           world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);
         }
-        const nextSeason=world.step(dt,width,height,ledges);
+        const nextSeason=world.step(dt,width,height,ledges,speedScale);
         if(nextSeason!==undefined){
           transitionLeft=1.6;spawnClock=0;
           document.documentElement.dataset.season=seasons[nextSeason];

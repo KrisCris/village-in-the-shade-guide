@@ -1,4 +1,10 @@
 export type Ledge={id:number;left:number;right:number;top:number};
+/** CSS-pixel viewport: consistent coverage and travel time, bounded for extreme sizes. */
+export function particleViewport(width:number,height:number){
+  const w=Number.isFinite(width)?Math.max(1,width):1280;
+  const h=Number.isFinite(height)?Math.max(1,height):800;
+  return {spawnRate:Math.max(.4,Math.min(10,(1/.45)*w*h/(1280*800))),speedScale:Math.max(.5,Math.min(2.2,h/800))};
+}
 export type Leaf={id:number;x:number;y:number;vx:number;vy:number;r:number;angle:number;season:number;cycle:number;resting:boolean;platform:number;dx:number;dy:number;cooldown:number;restAge:number;fadeAge:number;fadeAt:number;opacity:number};
 
 /** Seasonal particles linger on UI edges, then fade back into a finite pool. */
@@ -33,7 +39,7 @@ export class LeafWorld {
       leaf.vx=Math.max(-480,Math.min(480,dx*12));leaf.vy=Math.max(-130,Math.min(180,dy*8))-45;
     }
   }
-  step(dt:number,width:number,height:number,ledges:Ledge[]){
+  step(dt:number,width:number,height:number,ledges:Ledge[],speedScale=1){
     dt=Math.min(dt,1/30);
     this.time+=dt;
     const platforms=new Map(ledges.map(p=>[p.id,p]));
@@ -58,7 +64,7 @@ export class LeafWorld {
       const phase=this.time*(.7+(leaf.id%7)*.035)+leaf.id*2.399;
       const breeze=Math.sin(phase)*22+Math.sin(this.time*.24+leaf.id)*7;
       leaf.vx+=(breeze-leaf.vx)*(1-Math.exp(-1.1*dt));
-      const terminal=1.2*(leaf.season===3?17+3*Math.cos(phase):23+7*Math.cos(phase*2));
+      const terminal=speedScale*1.2*(leaf.season===3?17+3*Math.cos(phase):23+7*Math.cos(phase*2));
       leaf.vy+=(terminal-leaf.vy)*(1-Math.exp(-1.4*dt));
       leaf.x+=leaf.vx*dt;leaf.y+=leaf.vy*dt;
       // Side winds cannot prematurely discard the particles needed for a bottom exit.
