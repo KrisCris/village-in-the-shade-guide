@@ -1,6 +1,7 @@
 ---
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SeasonNav from '../../components/art/SeasonNav.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 import type {Entity} from '../../data/types';
 const catalog=getCatalog();
@@ -17,8 +18,10 @@ const seedOffers=(id:string)=>{
 const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.conditions ?? []) as string[]))].join('；');
 ---
 <BaseLayout title="四季留货与交付规划">
+<div class="season-guide">
 <h1>四季留货与交付规划</h1>
-<nav>{seasons.map(([id,name])=><a href={withBase(`#${id}`)}>{name}季</a>)}<a href="#daily">每天怎么安排</a></nav>
+<SeasonNav />
+<nav><a href="#daily">每天怎么安排</a></nav>
 <p>先留供奉与交付所需，再出售或加工余量。下列数量直接来自游戏交付表；没有确认年份或截止日期的条目，不视为“第一年必须完成”。</p>
 <section id="daily"><h2>每天怎么安排</h2><ol>
 <li>先查当前委托截止日与本季生日，准备今天要交的物品；随机委托以存档里的对象和数量为准。</li>
@@ -49,5 +52,7 @@ return target&&<a href={withBase(entityUrl(target))}>{target.icon_path&&<img src
  return <article><h3>{String(year)}</h3><div class="needs reserves">{[...new Set(selected.map(e=>String(e.item_id)))].map(id=>{const target=item(id);const conditions=[...new Set(selected.filter(e=>e.item_id===id).flatMap(e=>e.conditions as string[]))];return target&&<a href={withBase(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{conditions.join('；')}</small></span></a>;})}</div></article>;
 })}</section>
 <details><summary>数据来源</summary><p>供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。</p></details>
+</div>
 </BaseLayout>
+<style>@media(min-width:801px){.season-guide{padding-right:64px}}</style>
 <style>nav{display:flex;flex-wrap:wrap;gap:1rem}section{margin:2rem 0;scroll-margin-top:90px}li{margin:.7rem 0;line-height:1.8}.birthday{display:inline-block;margin-right:1rem;margin-bottom:.6rem}.card{padding:1rem;margin:.8rem 0}.card h3{margin:0}.card p{color:var(--muted)}.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.needs a{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none}.needs img{object-fit:contain;flex-shrink:0}.needs b{color:var(--vermilion);margin-left:auto}.needs small{display:block;font-size:.8rem;color:var(--muted);margin-top:.25rem}.reserves{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}.reserves a{background:var(--paper-raised);padding:.7rem;border-radius:8px}.reserves a:hover{background:var(--border)}</style>

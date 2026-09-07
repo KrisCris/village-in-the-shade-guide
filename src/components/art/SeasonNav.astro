@@ -1,0 +1,44 @@
+<nav class="season-nav" aria-label="四季留货导航">
+  {['春','夏','秋','冬'].map((name,index)=><a href={`#${['spring','summer','autumn','winter'][index]}`} aria-label={`${name}季留货`}>{name}</a>)}
+</nav>
+<script>
+  const nav=document.querySelector<HTMLElement>('.season-nav');
+  if(nav){
+    const links=[...nav.querySelectorAll<HTMLAnchorElement>('a')];
+    const sections=links.map(link=>document.getElementById(link.hash.slice(1))!);
+    const header=document.querySelector<HTMLElement>('.site-header')!;
+    let frame=0,offset=0;
+    const update=()=>{
+      frame=0;
+      let current=0;
+      sections.forEach((section,index)=>{if(section.getBoundingClientRect().top<=offset+24)current=index;});
+      links.forEach((link,index)=>{if(index===current)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+    };
+    const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
+    const measure=()=>{
+      const headerHeight=header.getBoundingClientRect().height;
+      nav.style.setProperty('--season-header',`${headerHeight}px`);
+      offset=headerHeight+(matchMedia('(max-width: 800px)').matches?nav.getBoundingClientRect().height:0)+16;
+      sections.forEach(section=>section.style.scrollMarginTop=`${offset}px`);
+      schedule();
+    };
+    const click=(event:MouseEvent)=>{
+      const link=(event.target as Element).closest<HTMLAnchorElement>('a');
+      if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;
+      event.preventDefault();
+      const section=sections[links.indexOf(link)];
+      history.pushState(null,'',link.hash);
+      section.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    };
+    const observer=new ResizeObserver(measure);observer.observe(header);observer.observe(nav);
+    nav.addEventListener('click',click);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',measure);
+    measure();
+    if(import.meta.hot)import.meta.hot.dispose(()=>{observer.disconnect();cancelAnimationFrame(frame);nav.removeEventListener('click',click);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',measure);});
+  }
+</script>
+<style>
+  .season-nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:28;display:flex;flex-direction:column;gap:4px;padding:8px;border:1px solid var(--border);border-radius:100px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px)}
+  a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-family:serif;font-size:1.45rem;color:var(--muted);text-decoration:none;transition:background .2s,color .2s}
+  a:hover{color:var(--ink);background:var(--green-soft)}a[aria-current]{background:var(--green);color:var(--paper)}a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  @media(max-width:800px){.season-nav{position:sticky;top:var(--season-header,106px);transform:none;flex-direction:row;justify-content:center;width:fit-content;max-width:100%;margin:0 auto 1rem;padding:6px 12px;gap:16px}a{width:38px;height:38px}}
+</style>
