@@ -1,4 +1,20 @@
 /* Shared UI palettes; each page keeps its own scenery and seasonal timing. */
+/* Animate the shared tokens, including gradients/color-mix, without replacing hover/reveal transitions. */
+@property --paper{syntax:"<color>";inherits:true;initial-value:#f0ede3;}
+@property --paper-raised{syntax:"<color>";inherits:true;initial-value:#faf6ef;}
+@property --paper-deep{syntax:"<color>";inherits:true;initial-value:#e1e5d4;}
+@property --ink{syntax:"<color>";inherits:true;initial-value:#2d4033;}
+@property --muted{syntax:"<color>";inherits:true;initial-value:#5b6554;}
+@property --green{syntax:"<color>";inherits:true;initial-value:#426346;}
+@property --green-soft{syntax:"<color>";inherits:true;initial-value:#dfe7d3;}
+@property --vermilion{syntax:"<color>";inherits:true;initial-value:#88465a;}
+@property --gold{syntax:"<color>";inherits:true;initial-value:#805b27;}
+@property --border{syntax:"<color>";inherits:true;initial-value:#b8c1a7;}
+:root{
+  transition-property:--paper,--paper-raised,--paper-deep,--ink,--muted,--green,--green-soft,--vermilion,--gold,--border;
+  transition-duration:1.6s;
+  transition-timing-function:ease-in-out;
+}
 :root[data-season="spring"] {
   --paper:#f0ede3;--paper-raised:#faf6ef;--paper-deep:#e1e5d4;
   --ink:#2d4033;--muted:#5b6554;--green:#426346;--green-soft:#dfe7d3;
@@ -47,20 +63,6 @@
   --vermilion:#cdb8dc;--gold:#d2c6a3;--border:#526d81;
   --shadow:0 12px 35px #030b164d;
 }
-/* Background properties interpolate when inherited palette tokens change. */
-.wiki-page,
-.wiki-page :where(.site-header,.sidebar,.site-footer,.interior-scene-veil,.card,.toolbar,.table-wrap,.planner-controls,.drawer,.drawer-header,.drawer-body,input,select,button,th,td,h1,h2,h3,p,a,small,summary) {
-  transition-property:color,background-color,border-color,box-shadow;
-  transition-duration:.8s;
-  transition-timing-function:ease;
-}
-.wiki-page .card,.wiki-page a img {transition-property:color,background-color,border-color,box-shadow,transform;transition-duration:.8s,.8s,.8s,.8s,.25s}
 .wiki-page .card{background:color-mix(in srgb,var(--paper-raised) 94%,var(--paper-deep))}
 .wiki-page .interior-scene-veil{transition:background-color 1.6s}
-@media(prefers-reduced-motion:reduce){.wiki-page,.wiki-page *{transition-duration:.01ms!important}}
-
-/* Do not override reveal/hover transforms or the portrait animations. */
-.home-page :where(.site-header,.site-footer,h1,h2,h3,p,input,button,.primary-link,.season-card,.guide-ribbon a,.resident-gallery,.map-feature){
-  transition:color .8s ease,background-color .8s ease,border-color .8s ease,box-shadow .8s ease;
-}
-@media(prefers-reduced-motion:reduce){.home-page *{transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){:root,.home-page *,.wiki-page,.wiki-page *{transition-duration:.01ms!important}}
