@@ -30,8 +30,11 @@ import {SEASONS} from '../../domain/scenery';
     const update=()=>{
       if(chapters.length){
         const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+scrollY-innerHeight*.32);
-        const frame=seasonFrame(scrollY,stops);
+        const frame=seasonFrame(scrollY,stops,innerHeight*.5);
         const dominant=frame.mix<.5?frame.from:frame.to;
+        root.dataset.seasonFrom=SEASONS[reduced.matches?dominant:frame.from];
+        root.dataset.seasonTo=SEASONS[reduced.matches?dominant:frame.to];
+        root.style.setProperty('--season-mix',`${reduced.matches?0:frame.mix*100}%`);
         layers.forEach((layer,index)=>{layer.style.opacity=String(reduced.matches?(index===dominant?1:0):(index===frame.from?1-frame.mix:0)+(index===frame.to?frame.mix:0));});
         root.dataset.season=SEASONS[dominant];
         scene.style.setProperty('--drift',reduced.matches?'0px':`${Math.min(scrollY*.035,90)}px`);
@@ -46,6 +49,7 @@ import {SEASONS} from '../../domain/scenery';
     document.addEventListener('visibilitychange',visibility);
     update();visibility();
     return()=>{
+      if(chapters.length){delete root.dataset.seasonFrom;delete root.dataset.seasonTo;root.style.removeProperty('--season-mix');}
       window.removeEventListener('season-bottom-exit',update);
       window.removeEventListener('scroll',update);window.removeEventListener('resize',update);reduced.removeEventListener('change',update);
       document.removeEventListener('visibilitychange',visibility);
@@ -55,6 +59,12 @@ import {SEASONS} from '../../domain/scenery';
   if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
+  :global(:root:has(.home-page)[data-season-from]) .season-scene{
+    --sky:color-mix(in srgb,var(--from-sky) calc(100% - var(--season-mix,0%)),var(--to-sky));
+    --sky-top:color-mix(in srgb,var(--from-sky-top) calc(100% - var(--season-mix,0%)),var(--to-sky-top));
+    transition:none;
+  }
+  :global(.home-page) .scene-sky{transition:none}
   .season-scene{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;--drift:0px;--sky:#d8e3c7;--sky-top:#abbfae;background:var(--sky);transition:background 1.2s}
   .scene-sky,.scene-light,.scene-vignette{position:absolute;inset:0}.scene-sky{background:linear-gradient(var(--sky-top),var(--sky) 68%);transition:background 1.2s}
   .scene-sun,.scene-moon{position:absolute;right:20%;top:16%;width:90px;height:90px;border-radius:50%;background:#fff4ce;box-shadow:0 0 80px 45px #f8edc747;transition:opacity 1.2s,transform 1.2s}.scene-moon{opacity:0;background:#dfebdc;box-shadow:0 0 55px 15px #bdd8cf24;transform:translateY(30px)}
