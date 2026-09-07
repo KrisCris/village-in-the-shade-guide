@@ -19,6 +19,8 @@ import {SEASONS} from '../../domain/scenery';
 </div>
 <script>
   import {SEASONS,seasonFrame} from '../../domain/scenery';
+  import {onPageMount} from '../../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   const scene=document.querySelector<HTMLElement>('[data-scene]');
   if(scene){
     const layers=[...scene.querySelectorAll<HTMLElement>('[data-scene-layer]')];
@@ -42,13 +44,15 @@ import {SEASONS} from '../../domain/scenery';
     window.addEventListener('season-bottom-exit',update);
     if(chapters.length){window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);reduced.addEventListener('change',update);}
     document.addEventListener('visibilitychange',visibility);
-    if(import.meta.hot)import.meta.hot.dispose(()=>{
+    update();visibility();
+    return()=>{
       window.removeEventListener('season-bottom-exit',update);
       window.removeEventListener('scroll',update);window.removeEventListener('resize',update);reduced.removeEventListener('change',update);
       document.removeEventListener('visibilitychange',visibility);
-    });
-    update();visibility();
+    };
   }
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
   .season-scene{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;--drift:0px;--sky:#d8e3c7;--sky-top:#abbfae;background:var(--sky);transition:background 1.2s}

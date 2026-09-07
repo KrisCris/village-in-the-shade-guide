@@ -18,11 +18,15 @@ import { databaseLinks } from '../data/navigation';
   </nav>
 </aside>
 <script>
+  import {onPageMount} from '../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   document.querySelectorAll<HTMLButtonElement>('.mobile-nav-toggle').forEach(button => {
     button.addEventListener('click', () => {
       button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
     });
   });
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }

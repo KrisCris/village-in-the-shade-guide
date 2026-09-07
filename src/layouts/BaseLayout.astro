@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../lib/sitePath';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import '../styles/interior.css';
 import '../styles/season-palettes.css';
@@ -14,11 +15,12 @@ const dynamicInterior = !immersive;
 <!doctype html>
 <html lang="zh-CN" data-season="spring">
   <head>
+    <ClientRouter fallback="swap" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ece8db" />
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';})();
     </script>
     <link rel="icon" href={withBase("/game-icon.png")} />

@@ -33,8 +33,12 @@ const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+
 <details><summary>地图数据来源</summary><p>底图：minimap_01_spr_tc.nltx；位置：lostbook.dat 与 YMWR 地图锚点。世界坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）及 X/Y 偏移（348、−145）换算到原图像素。</p></details>
 </BaseLayout>
 <script>
+import {onPageMount} from '../../lib/pageLifecycle';
+const dispose=onPageMount(()=>{
 const svg=document.querySelector<SVGSVGElement>('#collection-map');
 document.querySelector<HTMLInputElement>('#map-zoom')?.addEventListener('input',e=>{if(svg)svg.style.width=`${(e.target as HTMLInputElement).value}%`;});
 for(const [id,kind] of [['show-books','book'],['show-shrines','shrine'],['show-treasures','treasure'],['show-exchanges','exchange']])document.getElementById(id)?.addEventListener('change',e=>{document.querySelectorAll<SVGAElement>(`[data-marker-kind="${kind}"]`).forEach(marker=>{marker.style.display=(e.target as HTMLInputElement).checked?'':'none';});});
+});
+if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>.road-map{margin:1rem 0}.road-map summary{cursor:pointer}.road-map img{width:100%;height:auto}.map-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}.map-wrap svg{display:block;width:100%;min-width:680px;max-height:none}.map-wrap a:hover circle{fill:var(--green)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.5rem}.books a{padding:.6rem;background:var(--paper-raised);border-radius:8px;color:var(--ink);text-decoration:none}.books small{display:block;color:var(--muted)}p{line-height:1.7}</style>

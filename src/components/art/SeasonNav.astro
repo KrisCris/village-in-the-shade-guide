@@ -2,6 +2,8 @@
   {['春','夏','秋','冬'].map((name,index)=><a href={`#${['spring','summer','autumn','winter'][index]}`} aria-label={`${name}季留货`}>{name}</a>)}
 </nav>
 <script>
+  import {onPageMount} from '../../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   const nav=document.querySelector<HTMLElement>('.season-nav');
   if(nav){
     const links=[...nav.querySelectorAll<HTMLAnchorElement>('a')];
@@ -27,14 +29,16 @@
       if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;
       event.preventDefault();
       const section=sections[links.indexOf(link)];
-      history.pushState(null,'',link.hash);
+      history.pushState(history.state,'',link.hash);
       section.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
     };
     const observer=new ResizeObserver(measure);observer.observe(header);observer.observe(nav);
     nav.addEventListener('click',click);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',measure);
     measure();
-    if(import.meta.hot)import.meta.hot.dispose(()=>{observer.disconnect();cancelAnimationFrame(frame);nav.removeEventListener('click',click);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',measure);});
+    return()=>{observer.disconnect();cancelAnimationFrame(frame);nav.removeEventListener('click',click);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',measure);};
   }
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
   .season-nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:28;display:flex;flex-direction:column;gap:4px;padding:8px;border:1px solid var(--border);border-radius:100px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px)}

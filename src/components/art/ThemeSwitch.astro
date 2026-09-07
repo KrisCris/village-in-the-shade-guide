@@ -4,6 +4,8 @@
 </button>
 <script>
   import {resolveTheme} from '../../domain/scenery';
+  import {onPageMount} from '../../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   const root=document.documentElement;
   const button=document.querySelector<HTMLButtonElement>('[data-theme-switch]');
   const sync=()=>button?.setAttribute('aria-checked',String(root.dataset.theme==='night'));
@@ -14,9 +16,13 @@
     try{localStorage.setItem('village-theme',next);}catch{/* Theme works without storage. */}
     sync();
   });
-  window.addEventListener('storage',event=>{
+  const storage=(event:StorageEvent)=>{
     if(event.key==='village-theme'){root.dataset.theme=resolveTheme(event.newValue,matchMedia('(prefers-color-scheme: dark)').matches);sync();}
+  };
+  window.addEventListener('storage',storage);
+  return()=>window.removeEventListener('storage',storage);
   });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
   .theme-switch{display:flex;align-items:center;gap:.5rem;border-radius:100px;padding:.4rem .8rem;min-height:40px;white-space:nowrap;font-size:.8rem;background:transparent}

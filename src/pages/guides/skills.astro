@@ -20,8 +20,15 @@ const priorities=[
 </BaseLayout>
 <script>
 import {normalizeSearch} from '../../data/clientSearch';
+import {onPageMount} from '../../lib/pageLifecycle';
+const dispose=onPageMount(()=>{
 const input=document.querySelector<HTMLInputElement>('#skill-search');
+if(!input)return;
 input?.addEventListener('input',()=>{const query=normalizeSearch(input.value);document.querySelectorAll<HTMLElement>('.skill').forEach(card=>card.hidden=!normalizeSearch(card.dataset.search??'').includes(query));});
-window.addEventListener('hashchange',()=>{const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(target?.classList.contains('skill')){target.hidden=false;target.scrollIntoView();}});
+const reveal=()=>{const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(target?.classList.contains('skill')){target.hidden=false;target.scrollIntoView();}};
+window.addEventListener('hashchange',reveal);
+return()=>window.removeEventListener('hashchange',reveal);
+});
+if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>section{margin:2rem 0}.card{padding:1rem;margin:.7rem 0}.card h3{margin:0 0 .5rem}.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.6rem}.skill{scroll-margin-top:90px}.skill[hidden]{display:none}.previous{margin-right:.6rem}.recipes a{display:flex;align-items:center;gap:.5rem}.recipes img{object-fit:contain}p,li{line-height:1.7}label{display:grid;gap:.5rem;max-width:400px}input{padding:.7rem;background:var(--paper-raised);color:var(--ink);border:1px solid var(--border);border-radius:8px}</style>

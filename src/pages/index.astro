@@ -58,8 +58,13 @@ const rankings=Object.fromEntries(QUALITY_VALUES.map(quality=>{
   </section>
 </BaseLayout>
 <script>
+  import {onPageMount} from '../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target);}}),{threshold:.08});
     document.querySelectorAll('[data-reveal]').forEach(element=>{element.classList.add('reveal-ready');observer.observe(element);});
+    return()=>observer.disconnect();
   }
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>

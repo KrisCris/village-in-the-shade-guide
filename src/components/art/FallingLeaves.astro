@@ -1,6 +1,8 @@
 <canvas class="falling-leaves" aria-hidden="true"></canvas>
 <script>
   import {LeafWorld,type Ledge} from '../../domain/leaves';
+  import {onPageMount} from '../../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
   const canvas=document.querySelector<HTMLCanvasElement>('.falling-leaves');
   if(canvas){
     const context=canvas.getContext('2d');
@@ -186,15 +188,17 @@
       const show=()=>{refresh();resize();resume();};
       window.addEventListener('pagehide',hide);
       window.addEventListener('pageshow',show);
-      if(import.meta.hot)import.meta.hot.dispose(()=>{
+      refresh();resize();resume();
+      return()=>{
         if(frame)cancelAnimationFrame(frame);observer.disconnect();
         window.removeEventListener('pointermove',sweep);window.removeEventListener('scroll',scrolled);window.removeEventListener('resize',resize);
         document.removeEventListener('visibilitychange',resume);reduced.removeEventListener('change',motion);
         window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);
-      });
-      refresh();resize();resume();
+      };
     }
   }
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
 <style>
   .falling-leaves{position:fixed;inset:0;width:100%;height:100%;z-index:25;pointer-events:none}
