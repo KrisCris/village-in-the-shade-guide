@@ -51,7 +51,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
       .relation-row{display:grid;grid-template-columns:minmax(130px,1fr) auto minmax(130px,auto);align-items:center;gap:.35rem .8rem;padding:.65rem .8rem;border:1px solid var(--border);border-radius:10px;background:var(--paper-raised);color:var(--ink);text-decoration:none}.relation-row.has-icon{grid-template-columns:52px minmax(130px,1fr) auto minmax(130px,auto)}
       .relation-row:hover{border-color:var(--green);background:var(--green-soft)}.relation-row img{border-radius:8px;object-fit:contain;background:var(--paper-deep)}.relation-name{display:grid}.relation-name small,.relation-values small,.relation-note{color:var(--muted)}.relation-values{display:grid;text-align:right}.relation-quantity{color:var(--vermilion)}.relation-chips{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:.35rem}.relation-chips small{padding:.18rem .45rem;border-radius:999px;background:var(--paper-deep);color:var(--muted)}
       .relation-row.no-icon .relation-chips{grid-column:1/-1}
-      details{margin-top:2rem;padding:1rem;border:1px dashed var(--border);border-radius:10px}code{font-size:.78rem}
+      .entity-detail details{margin-top:2rem;padding:1rem;border:1px dashed var(--border);border-radius:10px}code{font-size:.78rem}
       @media(max-width:620px){.relation-row{grid-template-columns:1fr auto}.relation-row.has-icon{grid-template-columns:48px 1fr auto}.relation-row img{width:48px;height:48px}.relation-values{grid-column:1/-1;text-align:left}.relation-row.has-icon .relation-values,.relation-row.has-icon .relation-chips{grid-column:2/-1}.relation-row.no-icon .relation-chips{grid-column:1/-1}}
     `}</style>
   </article>;
