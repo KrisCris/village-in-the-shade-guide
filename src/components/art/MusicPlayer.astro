@@ -17,17 +17,17 @@ import {withBase} from '../../lib/sitePath';
     const volume=player.querySelector<HTMLInputElement>('.music-volume')!;
     const status=player.querySelector<HTMLElement>('[role="status"]')!;
     const key='village-music';
-    let savedTime=0,wanted=false;
+    let savedTime=0,wanted=true,blocked=false;
     try{
-      const state=JSON.parse(sessionStorage.getItem(key)||'null');
+      const state=JSON.parse(localStorage.getItem(key)||'null');
       if(state){
         if(Number.isFinite(state.volume))volume.value=String(Math.max(0,Math.min(1,state.volume)));
         if(Number.isFinite(state.time))savedTime=Math.max(0,state.time);
-        wanted=state.playing===true;
+        wanted=state.playing!==false;
       }
     }catch{/* Storage may be unavailable in private browsing. */}
     audio.volume=Number(volume.value);
-    const save=()=>{try{sessionStorage.setItem(key,JSON.stringify({volume:audio.volume,time:audio.currentTime||savedTime,playing:wanted}));}catch{/* Optional preference. */}};
+    const save=()=>{try{localStorage.setItem(key,JSON.stringify({volume:audio.volume,time:savedTime||audio.currentTime,playing:wanted}));}catch{/* Optional preference. */}};
     const update=()=>{
       const playing=!audio.paused;
       toggle.setAttribute('aria-pressed',String(playing));
@@ -38,26 +38,37 @@ import {withBase} from '../../lib/sitePath';
     const play=async()=>{
       if(!audio.getAttribute('src'))audio.src=audio.dataset.src!;
       else if(audio.error)audio.load();
-      try{await audio.play();wanted=true;save();}
-      catch{wanted=false;update();status.textContent='请点击音符播放音乐';save();}
+      try{await audio.play();blocked=false;if(!wanted)audio.pause();save();}
+      catch(error){
+        blocked=error instanceof DOMException&&error.name==='NotAllowedError';
+        update();status.textContent=blocked?'点击页面后开始播放 · 可随时暂停':'音乐暂时无法播放，请点击音符重试';
+        // Browser policy is not a user preference. Only the toggle changes wanted.
+        save();
+      }
     };
     audio.addEventListener('loadedmetadata',()=>{
       if(savedTime>0&&Number.isFinite(audio.duration))audio.currentTime=savedTime%audio.duration;
       savedTime=0;
     });
     audio.addEventListener('play',update);audio.addEventListener('pause',update);
-    audio.addEventListener('error',()=>{wanted=false;update();status.textContent='音乐暂时无法加载，请重试';save();});
+    audio.addEventListener('error',()=>{update();status.textContent='音乐暂时无法加载，请重试';});
     toggle.addEventListener('click',()=>{
-      if(audio.paused)void play();
+      if(audio.paused){wanted=true;void play();}
       else{wanted=false;audio.pause();save();}
     });
     volume.addEventListener('input',()=>{audio.volume=Number(volume.value);save();});
+    const activate=(event:Event)=>{
+      if(!event.isTrusted||!blocked||!wanted||!audio.paused)return;
+      if(event.target instanceof Element&&event.target.closest('.music-player'))return;
+      blocked=false;void play();
+    };
+    document.addEventListener('click',activate);document.addEventListener('keydown',activate);
     const hide=()=>save();
     const show=(event:PageTransitionEvent)=>{if(event.persisted&&wanted&&audio.paused)void play();};
     window.addEventListener('pagehide',hide);
     window.addEventListener('pageshow',show);
     if(wanted)void play();
-    if(import.meta.hot)import.meta.hot.dispose(()=>{save();audio.pause();window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);});
+    if(import.meta.hot)import.meta.hot.dispose(()=>{save();audio.pause();document.removeEventListener('click',activate);document.removeEventListener('keydown',activate);window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);});
   }
 </script>
 <style>
