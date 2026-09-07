@@ -19,65 +19,35 @@ import {SEASONS} from '../../domain/scenery';
 </div>
 <script>
   import {SEASONS,seasonFrame} from '../../domain/scenery';
-  import {listSceneFrame} from '../../domain/listScene';
   const scene=document.querySelector<HTMLElement>('[data-scene]');
   if(scene){
+    const layers=[...scene.querySelectorAll<HTMLElement>('[data-scene-layer]')];
     const root=document.documentElement;
     const chapters=[...document.querySelectorAll<HTMLElement>('[data-season-chapter]')];
-    const layers=[...scene.querySelectorAll<HTMLElement>('[data-scene-layer]')];
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-    let scheduled=false;
-    let idleTime=0;
-    const fitsViewport=()=>document.documentElement.scrollHeight<=innerHeight+2;
     const update=()=>{
-      scheduled=false;
-      const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+window.scrollY-window.innerHeight*.32);
-      let frame=seasonFrame(window.scrollY,stops);
-      if (!chapters.length) {
-        const list=document.querySelector<HTMLElement>('[data-scene-total]');
-        const rows=list?.querySelector('tbody')?.rows;
-        const total=Number(list?.dataset.sceneTotal || 0);
-        frame=listSceneFrame(0,0,total);
-        if(!list){
-          const extent=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-          frame=seasonFrame(window.scrollY,[0,extent/3,extent*2/3,extent]);
-        }
-        if(rows?.length && total && window.scrollY>0){
-          // Track the reading line in row coordinates. No scrollHeight or loaded-row denominator:
-          // loading another batch cannot move a season boundary. Binary search avoids scanning all rows.
-          const line=innerHeight*.85;
-          let low=0,high=rows.length-1;
-          while(low<high){const mid=Math.floor((low+high)/2);if(rows[mid].getBoundingClientRect().bottom<line)low=mid+1;else high=mid;}
-          const rect=rows[low].getBoundingClientRect();
-          frame=listSceneFrame(low,(line-rect.top)/Math.max(1,rect.height),total);
-          if(total<=800 && rows.length===total && rows[rows.length-1].getBoundingClientRect().bottom<=innerHeight)frame=listSceneFrame(total-1,1,total);
-        }
-        if(fitsViewport()&&!reduced.matches){
-          const phase=idleTime/10000;
-          const from=Math.floor(phase)%4;
-          // Hold for eight seconds, then blend for two seconds into the next season.
-          frame={from,to:(from+1)%4,mix:Math.max(0,(phase%1-.8)/.2)};
-        }
+      if(chapters.length){
+        const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+scrollY-innerHeight*.32);
+        const frame=seasonFrame(scrollY,stops);
+        const dominant=frame.mix<.5?frame.from:frame.to;
+        layers.forEach((layer,index)=>{layer.style.opacity=String(reduced.matches?(index===dominant?1:0):(index===frame.from?1-frame.mix:0)+(index===frame.to?frame.mix:0));});
+        root.dataset.season=SEASONS[dominant];
+        scene.style.setProperty('--drift',reduced.matches?'0px':`${Math.min(scrollY*.035,90)}px`);
+        return;
       }
-      const dominant=frame.mix<.5?frame.from:frame.to;
-      layers.forEach((layer,index)=>{layer.style.opacity=String(reduced.matches?(index===dominant?1:0):(index===frame.from?1-frame.mix:0)+(index===frame.to?frame.mix:0));});
-      // Winter is the final frame (from===to), so its opacity stays fully visible.
-      if(frame.from===frame.to)layers[frame.from].style.opacity='1';
-      root.dataset.season=SEASONS[dominant];
-      scene.style.setProperty('--drift',reduced.matches||!chapters.length?'0px':`${Math.min(window.scrollY*.035,90)}px`);
+      const season=Math.max(0,SEASONS.indexOf(root.dataset.season as typeof SEASONS[number]));
+      layers.forEach((layer,index)=>{layer.style.opacity=index===season?'1':'0';});
     };
-    const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};
-    window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
-    reduced.addEventListener('change',schedule);
-    document.addEventListener('visibilitychange',()=>scene.classList.toggle('paused',document.hidden));
-    const sizeObserver=new ResizeObserver(schedule);chapters.forEach(chapter=>sizeObserver.observe(chapter));
-    if(!chapters.length){
-      const main=document.querySelector('main');
-      if(main){sizeObserver.observe(main);new MutationObserver(schedule).observe(main,{childList:true,subtree:true,attributes:true,attributeFilter:['data-scene-total']});}
-      const timer=setInterval(()=>{if(!document.hidden&&!reduced.matches&&fitsViewport()){idleTime+=100;schedule();}},100);
-      window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
-    }
-    update();
+    const visibility=()=>scene.classList.toggle('paused',document.hidden);
+    window.addEventListener('season-bottom-exit',update);
+    if(chapters.length){window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);reduced.addEventListener('change',update);}
+    document.addEventListener('visibilitychange',visibility);
+    if(import.meta.hot)import.meta.hot.dispose(()=>{
+      window.removeEventListener('season-bottom-exit',update);
+      window.removeEventListener('scroll',update);window.removeEventListener('resize',update);reduced.removeEventListener('change',update);
+      document.removeEventListener('visibilitychange',visibility);
+    });
+    update();visibility();
   }
 </script>
 <style>
@@ -95,6 +65,9 @@ import {SEASONS} from '../../domain/scenery';
   :global([data-season=summer]) .scene-motes i{background:#d3e19a;border-radius:50%;height:var(--size)}:global([data-season=autumn]) .scene-motes i{background:#b27635}:global([data-season=winter]) .scene-motes i{background:#fff;border-radius:50%;height:var(--size)}
   :global([data-theme=night]) .season-scene{--sky:#233434;--sky-top:#101b2a}:global([data-theme=night]) .season-layer{filter:brightness(.53) saturate(.7) hue-rotate(12deg)}:global([data-theme=night]) .scene-sun{opacity:0;transform:translateY(30px)}:global([data-theme=night]) .scene-moon{opacity:1;transform:none}:global([data-theme=night]) .scene-clouds{opacity:.17}:global([data-theme=night]) .scene-light{background:linear-gradient(90deg,#10221cc7,#12251d55 42%,transparent)}:global([data-theme=night]) .scene-motes i{background:#dcebac;box-shadow:0 0 10px #d6f096;height:var(--size);border-radius:50%;animation-name:firefly-drift}
   @keyframes tree-sway{from{transform:rotate(-1deg)}to{transform:rotate(1.2deg)}}@keyframes cloud-drift{to{transform:translateX(5%)}}@keyframes mist-drift{to{transform:translateX(6%) scale(1.04)}}@keyframes mote-fall{0%{transform:translate3d(0,-20px,0) rotate(0);opacity:0}10%,80%{opacity:.6}100%{transform:translate3d(100px,105vh,0) rotate(260deg);opacity:0}}@keyframes firefly-drift{0%,100%{transform:translate3d(0,80vh,0);opacity:0}30%{opacity:.65}70%{transform:translate3d(-50px,35vh,0);opacity:.2}}
+  .season-layer{transition:opacity 1.6s ease}.scene-motes{display:none}
+  :global(.home-page) .season-layer{transition:none}:global(.home-page) .scene-motes{display:block}
+  @media(prefers-reduced-motion:reduce){:global(.home-page) .scene-motes{display:none}}
   .scene-moon{mask-image:radial-gradient(circle at 72% 30%,transparent 0 47%,#000 48%);box-shadow:none}
   .paused *{animation-play-state:paused!important}@media(max-width:760px){.tree-left{left:-24%}.tree-right{right:-22%;bottom:0}.scene-mountains{height:57%}.scene-ridge{height:48%}.scene-light{background:linear-gradient(90deg,#f3f0dfb8,#f3f0df60 75%,transparent)}.scene-sun,.scene-moon{right:14%;top:21%;width:65px;height:65px}.scene-motes i:nth-child(n+9){display:none}}
   @media(prefers-reduced-motion:reduce){.season-scene *{animation:none!important;transition:none!important;will-change:auto}.scene-motes{display:none}}

@@ -7,31 +7,91 @@
     if(context){
       const ctx=context;
       const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-      let world=new LeafWorld(800),frame=0,last=0,spawnClock=0,geometryClock=0,statsClock=0;
+      let world:LeafWorld,frame=0,last=0,spawnClock=0,geometryClock=0,statsClock=0,transitionLeft=0;
       let width=innerWidth,height=innerHeight,dirty=true,targets:HTMLElement[]=[],ledges:Ledge[]=[];
       let textAreas:DOMRect[]=[];
-      const ids=new WeakMap<HTMLElement,number>();let nextId=0;
-      const colors=[['#adbd73','#d6ad9c','#9cab5e'],['#70974e','#a4b868','#527c4a'],['#bf7440','#d6a455','#9f5233'],['#b8bda4','#939f91','#c9cab5']];
+      const ids=new WeakMap<Node,number[]>();let nextId=0;
+      const colors=[['#f8c4d7','#efb1c8','#ffe2e9'],['#70974e','#a4b868','#527c4a'],['#c74f3f','#de733e','#aa353c'],['#e4edf0','#f5f5ed','#cbdfe8']];
       // Cache the painted leaves once, not hundreds of paths on every frame.
-      const sprites=colors.map(palette=>palette.map(color=>{
-        const tile=document.createElement('canvas');tile.width=48;tile.height=32;
-        const p=tile.getContext('2d')!;p.translate(24,16);
-        p.beginPath();p.moveTo(-17,0);p.bezierCurveTo(-8,-15,10,-12,17,0);p.bezierCurveTo(4,11,-7,12,-17,0);
-        const fill=p.createLinearGradient(-10,-8,10,10);fill.addColorStop(0,color);fill.addColorStop(1,'#586044');p.fillStyle=fill;p.fill();
-        p.strokeStyle='#e0d4a66b';p.lineWidth=.8;p.beginPath();p.moveTo(-19,2);p.lineTo(15,-1);p.moveTo(-6,1);p.lineTo(0,-7);p.moveTo(2,0);p.lineTo(7,6);p.stroke();
+      const sprites=colors.map((palette,season)=>palette.map(color=>{
+        const tile=document.createElement('canvas');tile.width=48;tile.height=48;
+        const p=tile.getContext('2d')!;p.translate(24,24);
+        p.beginPath();
+        if(season===0){
+          // Single notched sakura petal, not a whole blossom.
+          p.moveTo(0,17);p.bezierCurveTo(-17,6,-17,-13,-5,-15);p.quadraticCurveTo(-1,-14,0,-8);p.quadraticCurveTo(4,-16,9,-13);p.bezierCurveTo(20,-4,10,11,0,17);
+        }else if(season===1){
+          p.moveTo(-17,0);p.bezierCurveTo(-8,-15,10,-12,17,0);p.bezierCurveTo(4,11,-7,12,-17,0);
+        }else if(season===2){
+          const points=[[0,-20],[5,-9],[9,-13],[9,-3],[18,-7],[15,1],[20,3],[7,10],[3,10],[1,18],[-1,18],[-2,10],[-9,11],[-19,3],[-14,1],[-18,-7],[-8,-3],[-9,-13],[-4,-9]];
+          points.forEach(([x,y],i)=>i?p.lineTo(x,y):p.moveTo(x,y));p.closePath();
+        }else{
+          p.strokeStyle=color;p.lineWidth=1.6;p.lineCap='round';
+          for(let i=0;i<6;i++){p.save();p.rotate(i*Math.PI/3);p.moveTo(0,0);p.lineTo(0,-16);p.moveTo(0,-10);p.lineTo(-4,-13);p.moveTo(0,-10);p.lineTo(4,-13);p.restore();}p.stroke();return tile;
+        }
+        const fill=p.createLinearGradient(-10,-12,10,14);fill.addColorStop(0,color);fill.addColorStop(1,season===0?'#e6a1bb':season===2?'#923d31':'#586044');p.fillStyle=fill;p.fill();
+        if(season!==0){p.strokeStyle='#eed7a47a';p.lineWidth=.8;p.beginPath();if(season===1){p.moveTo(-17,0);p.lineTo(15,0);}else{p.moveTo(0,16);p.lineTo(0,-14);p.moveTo(0,6);p.lineTo(-12,-2);p.moveTo(0,6);p.lineTo(12,-2);}p.stroke();}
         return tile;
       }));
+      const paintedPixels=sprites.map(palette=>palette.map(tile=>{
+        const data=tile.getContext('2d')!.getImageData(0,0,48,48).data;
+        const pixels:{x:number;y:number}[]=[];
+        for(let y=0;y<48;y++)for(let x=0;x<48;x++)if(data[(y*48+x)*4+3]>32)pixels.push({x:x-23.5,y:y-23.5});
+        return pixels;
+      }));
+      const contactBottom=(leaf:import('../../domain/leaves').Leaf)=>{
+        const sin=Math.sin(leaf.angle),cos=Math.cos(leaf.angle);
+        let bottom=0;
+        for(const pixel of paintedPixels[leaf.season][leaf.id%3])bottom=Math.max(bottom,pixel.x*sin+pixel.y*cos);
+        return bottom*leaf.r*2.8/48;
+      };
+      world=new LeafWorld(800,contactBottom);
+      const imageBounds=new WeakMap<HTMLImageElement,{source:string;left:number;top:number;right:number}>();
       const refresh=()=>{
-        targets=[...document.querySelectorAll<HTMLElement>('.toolbar,.planner-controls,.global-search,#pagefind-search,.database-grid>a,.guide-grid>a,.table-wrap')];
+        targets=[...document.querySelectorAll<HTMLElement>('.toolbar,.planner-controls,.global-search,#pagefind-search,.card,.database-grid>a,.guide-grid>a,.needs>a,.table-wrap,main button,main input,main select,main textarea,main img,main video,main summary,main th,main td,.sidebar button,.sidebar a')];
         dirty=true;
       };
       const geometry=()=>{
         ledges=[];
+        const edges=new Set<string>();
+        const edge=(node:Node,rect:DOMRect,index=0)=>{
+          if(rect.width<3||rect.top<0||rect.top>height)return;
+          const key=`${Math.round(rect.left)}:${Math.round(rect.right)}:${Math.round(rect.top)}`;
+          if(edges.has(key))return;edges.add(key);
+          let list=ids.get(node);if(!list){list=[];ids.set(node,list);}if(!list[index])list[index]=++nextId;
+          ledges.push({id:list[index],left:rect.left,right:rect.right,top:rect.top});
+        };
         for(const target of targets){
           const rect=target.getBoundingClientRect();
           if(!target.isConnected || rect.width<30 || rect.top<0 || rect.top>height+30)continue;
-          if(!ids.has(target))ids.set(target,++nextId);
-          ledges.push({id:ids.get(target)!,left:rect.left+6,right:rect.right-6,top:rect.top});
+          if(!target.checkVisibility())continue;
+          const style=getComputedStyle(target);
+          if(target instanceof HTMLImageElement&&target.complete&&target.naturalWidth){
+            let bounds=imageBounds.get(target);
+            if(!bounds||bounds.source!==target.currentSrc){
+              try{
+                const probe=document.createElement('canvas');probe.width=probe.height=128;
+                const p=probe.getContext('2d')!;p.drawImage(target,0,0,128,128);
+                const pixels=p.getImageData(0,0,128,128).data;
+                let left=128,right=0,top=128;
+                for(let y=0;y<128;y++)for(let x=0;x<128;x++)if(pixels[(y*128+x)*4+3]>32){left=Math.min(left,x);right=Math.max(right,x+1);top=Math.min(top,y);}
+                bounds={source:target.currentSrc,left:left/128,right:right/128,top:top/128};imageBounds.set(target,bounds);
+              }catch{continue;}
+            }
+            const insetLeft=parseFloat(style.paddingLeft)+parseFloat(style.borderLeftWidth),insetTop=parseFloat(style.paddingTop)+parseFloat(style.borderTopWidth);
+            const contentWidth=rect.width-insetLeft-parseFloat(style.paddingRight)-parseFloat(style.borderRightWidth);
+            const contentHeight=rect.height-insetTop-parseFloat(style.paddingBottom)-parseFloat(style.borderBottomWidth);
+            const scale=Math.min(contentWidth/target.naturalWidth,contentHeight/target.naturalHeight);
+            const imageWidth=style.objectFit==='contain'?target.naturalWidth*scale:contentWidth;
+            const imageHeight=style.objectFit==='contain'?target.naturalHeight*scale:contentHeight;
+            edge(target,new DOMRect(rect.left+insetLeft+(contentWidth-imageWidth)/2+bounds.left*imageWidth,rect.top+insetTop+(contentHeight-imageHeight)/2+bounds.top*imageHeight,(bounds.right-bounds.left)*imageWidth,imageHeight));
+            continue;
+          }
+          // Transparent layout boxes have no physical surface. Their text lines
+          // below are separate colliders; padding must not become an invisible shelf.
+          const painted=style.backgroundColor!=='rgba(0, 0, 0, 0)'&&style.backgroundColor!=='transparent';
+          const bordered=parseFloat(style.borderTopWidth)>0&&style.borderTopStyle!=='none';
+          if(painted||bordered||target instanceof HTMLInputElement||target instanceof HTMLSelectElement)edge(target,rect);
         }
         // Text is a foreground safety layer, not another shelf to bury in leaves.
         // Cache visible line boxes with the other geometry, never read layout per leaf.
@@ -48,7 +108,21 @@
           while(walker.nextNode()){
             const text=walker.currentNode;if(!text.textContent?.trim())continue;
             const range=document.createRange();range.selectNodeContents(text);
-            for(const rect of range.getClientRects())if(rect.width&&rect.bottom>0&&rect.top<height)textAreas.push(rect);
+            let index=0;
+            for(const rect of range.getClientRects()){
+              if(rect.width&&rect.bottom>0&&rect.top<height){
+                textAreas.push(rect);
+                const style=getComputedStyle(text.parentElement!);
+                ctx.save();ctx.font=`${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+                const metrics=ctx.measureText(text.textContent!);ctx.restore();
+                const fontAscent=metrics.fontBoundingBoxAscent||metrics.actualBoundingBoxAscent;
+                const fontDescent=metrics.fontBoundingBoxDescent||metrics.actualBoundingBoxDescent;
+                const baseline=rect.top+(rect.height-fontAscent-fontDescent)/2+fontAscent;
+                const inkTop=Math.max(rect.top,baseline-metrics.actualBoundingBoxAscent);
+                edge(text,new DOMRect(rect.left,inkTop,rect.width,rect.bottom-inkTop),index);
+              }
+              index++;
+            }
           }
         }
         dirty=false;
@@ -66,25 +140,36 @@
         geometryClock+=dt;spawnClock+=dt;statsClock+=dt;
         if(dirty||geometryClock>.25){geometry();geometryClock=0;}
         // A gentle trickle; 800 is the pool ceiling, not a burst of 800 particles.
-        if(spawnClock>.45){
+        const season=Math.max(0,seasons.indexOf(document.documentElement.dataset.season||'spring'));
+        transitionLeft=Math.max(0,transitionLeft-dt);
+        if(spawnClock>.45&&transitionLeft===0){
           spawnClock=0;
-          const season=Math.max(0,seasons.indexOf(document.documentElement.dataset.season||'spring'));
           world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);
         }
-        world.step(dt,width,height,ledges);
+        const nextSeason=world.step(dt,width,height,ledges);
+        if(nextSeason!==undefined){
+          transitionLeft=1.6;spawnClock=0;
+          document.documentElement.dataset.season=seasons[nextSeason];
+          window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:nextSeason}));
+        }
         ctx.clearRect(0,0,width,height);
         for(const leaf of world.active){
           if(leaf.y < -20)continue;
           ctx.save();ctx.translate(leaf.x,leaf.y);ctx.rotate(leaf.angle);
-          const flutter=leaf.resting?1:.35+Math.abs(Math.sin(now*.00065+leaf.id))*.65;
-          ctx.globalAlpha=.88;ctx.drawImage(sprites[leaf.season][leaf.id%3],-leaf.r*1.7,-leaf.r*flutter,leaf.r*3.4,leaf.r*2*flutter);ctx.restore();
+          const flutter=leaf.resting||leaf.season===3?1:.35+Math.abs(Math.sin(now*.00065+leaf.id))*.65;
+          ctx.globalAlpha=.88*leaf.opacity;ctx.drawImage(sprites[leaf.season][leaf.id%3],-leaf.r*1.4,-leaf.r*1.4*flutter,leaf.r*2.8,leaf.r*2.8*flutter);ctx.restore();
         }
         for(const rect of textAreas)ctx.clearRect(rect.left-2,rect.top-1,rect.width+4,rect.height+2);
         if(import.meta.env.DEV&&statsClock>1){canvas.dataset.leaves=String(world.active.length);canvas.dataset.resting=String(world.active.filter(l=>l.resting).length);statsClock=0;}
         frame=requestAnimationFrame(draw);
       };
       const resume=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;if(!document.hidden&&!reduced.matches)frame=requestAnimationFrame(draw);};
-      const motion=()=>{if(reduced.matches){world=new LeafWorld(800);ctx.clearRect(0,0,width,height);}resume();};
+      const reset=()=>{
+        world=new LeafWorld(800,contactBottom);spawnClock=0;transitionLeft=0;ctx.clearRect(0,0,width,height);
+        document.documentElement.dataset.season='spring';
+        window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:0}));
+      };
+      const motion=()=>{if(reduced.matches)reset();resume();};
       let pointer:{x:number;y:number;time:number}|undefined;
       const sweep=(event:PointerEvent)=>{
         if(event.pointerType==='touch')return;
@@ -97,7 +182,7 @@
       document.addEventListener('visibilitychange',resume);reduced.addEventListener('change',motion);
       const observer=new MutationObserver(refresh);
       const main=document.querySelector('main');if(main)observer.observe(main,{childList:true,subtree:true});
-      const hide=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;world=new LeafWorld(800);ctx.clearRect(0,0,width,height);};
+      const hide=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;reset();};
       const show=()=>{refresh();resize();resume();};
       window.addEventListener('pagehide',hide);
       window.addEventListener('pageshow',show);
