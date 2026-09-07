@@ -12,6 +12,11 @@
 .dynamic-interior .table-wrap th:first-child{width:25%}
 .dynamic-interior .table-wrap th:last-child{width:23%}
 .dynamic-interior .table-wrap td:last-child{overflow-wrap:anywhere}
+@media(max-width:700px){
+  .dynamic-interior .table-wrap table{min-width:820px}
+  .dynamic-interior .table-wrap th:first-child{width:168px}
+  .dynamic-interior .table-wrap th:last-child{width:180px}
+}
 .wiki-page.dynamic-interior .main{background:transparent;border:0}
 .wiki-page.dynamic-interior .sidebar{background:color-mix(in srgb,var(--paper) 72%,transparent)}
 .dynamic-interior .database-grid .card{background:color-mix(in srgb,var(--paper-raised) 91%,transparent);min-height:145px;transition:transform .3s,box-shadow .3s,border-color .3s}

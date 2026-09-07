@@ -72,11 +72,12 @@ import {withBase} from '../../lib/sitePath';
   }
 </script>
 <style>
-  .music-player{display:flex;align-items:center;position:relative;color:var(--ink)}
+  .music-player{display:flex;flex:none;align-items:center;position:relative;color:var(--ink)}
   .music-toggle{font-size:1.35rem;line-height:1;padding:.55rem .6rem;background:transparent;border:1px solid var(--border);border-radius:50%;color:inherit;cursor:pointer}
   .music-toggle[aria-pressed="true"]{color:var(--green);box-shadow:0 0 12px color-mix(in srgb,var(--green) 18%,transparent)}
   summary{cursor:pointer;list-style:none;padding:.4rem .2rem}summary::-webkit-details-marker{display:none}
   .music-popover{position:absolute;right:0;top:calc(100% + .8rem);width:210px;padding:1rem;background:var(--paper);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px #0002}
   label{display:grid;gap:.6rem;font-size:.85rem}input{width:100%;accent-color:var(--green)}small{display:block;margin-top:.7rem;font-size:.72rem;color:var(--muted)}
   @media(max-width:520px){.music-toggle{padding:.4rem;font-size:1.15rem}summary{padding:.3rem .1rem}}
+  .music-toggle{flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;display:grid;place-items:center}
 </style>
