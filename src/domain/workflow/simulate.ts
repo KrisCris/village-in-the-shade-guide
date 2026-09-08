@@ -32,6 +32,7 @@ export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResu
  if(nodes.some(n=>n.quantity===0&&n.kind!=='sale'))return invalid('非出售节点的数量必须大于零。');
  if(plan.plots.some(r=>!r.id||!whole(r.capacity))||plan.machines.some(r=>!r.id||!whole(r.count)||!whole(r.capacity)||!whole(r.count*r.capacity))||new Set([...plan.plots,...plan.machines].map(r=>r.id)).size!==plan.plots.length+plan.machines.length)return invalid('土地或机器资源容量无效，或资源编号重复。');
  if(plan.machines.reduce((sum,r)=>sum+r.count*r.capacity,0)>500)return invalid('最多同时安排 500 批加工。');
+ if(nodes.some(n=>(n.kind==='reserve'||n.kind==='delivery')&&(!Array.isArray(n.requirements)||!n.requirements.length||n.requirements.some(a=>!a||typeof a.itemId!=='string'||!a.itemId||!whole(a.quantity,1)))))return invalid('留货 / 交付需求必须包含有效物品和正整数数量。');
  if(hasCycle(nodes,plan.edges))return invalid('连线包含循环，或连接了不存在的节点。');
  const accepted:typeof plan.edges=[];
  for(const edge of plan.edges) {
@@ -118,7 +119,7 @@ export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResu
   const capacity=n.kind==='plant'?resource.capacity:plan.machines.find(r=>r.id===n.resourceId)!.count*resource.capacity;
   if(occupied(resource.id)+n.quantity>capacity){stop(n,'已有作物 / 在制品超过资源容量。');continue;}
   const itemId=crop?.itemId??recipe!.itemId,yieldCount=crop?.yield??recipe!.yield;
-  jobs.push({nodeId:n.id,resourceId:resource.id,kind:n.kind,finishDay:plan.startDay+n.remainingDays!,itemId,quantity:n.quantity*yieldCount,slots:n.quantity,regrow:crop?.regrow??0,lastDay:Math.min(n.endDay??Infinity,Math.ceil(plan.startDay/28)*28)});
+  jobs.push({nodeId:n.id,resourceId:resource.id,kind:n.kind,finishDay:plan.startDay+n.remainingDays!,itemId,quantity:n.quantity*yieldCount,slots:n.quantity,regrow:crop?.regrow??0,lastDay:Math.ceil(plan.startDay/28)*28});
   initialized.add(n.id);started.set(n.id,n.quantity);
  }
  const protectDemands=(reportDeficits:boolean)=>{
@@ -175,8 +176,8 @@ export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResu
   for(const n of nodes)if(active(n)&&n.quantity>0) {
    if(n.kind==='plant') {
     if(jobs.some(j=>j.nodeId===n.id)||!n.repeat&&(day!==n.startDay||started.has(n.id)||initialized.has(n.id)))continue;
-    const crop=crops.get(n.id)!,lastDay=Math.min(n.endDay??Infinity,Math.ceil(day/28)*28);
-    if(!crop.seasons.includes(seasonAt(day))||day+crop.growth>lastDay){warn(n,'当前日期无法在允许季节 / 结束日期内完成首轮收获。');continue;}
+    const crop=crops.get(n.id)!,lastDay=Math.ceil(day/28)*28;
+    if(!crop.seasons.includes(seasonAt(day))||day+crop.growth>lastDay){warn(n,'当前日期无法在允许季节内完成首轮收获。');continue;}
     const resource=plan.plots.find(r=>r.id===n.resourceId)!;
     if(occupied(resource.id)+n.quantity>resource.capacity){warn(n,`土地容量不足：需要 ${n.quantity} 格，可用 ${resource.capacity-occupied(resource.id)} 格。`);continue;}
     // Alternative seed IDs represent equivalent seeds; consume connected stock in stable order.

@@ -19,7 +19,7 @@ it('regrowth keeps its plot without charging additional seeds',()=>{
  const es=entities.map(e=>e.id==='crop'?{...e,regrow_days:2}:e);
  const r=simulatePlan(plan([plant('plant',{repeat:true,endDay:12})]),es);
  expect(r.events.filter(e=>e.kind==='plant')).toHaveLength(1);
- expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8,10,12]);
+ expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8,10,12,14]);
  expect(r.spending).toBe(10);
 });
 it('shared plots block a fixed-day second planting without retrying it',()=>{
@@ -75,10 +75,10 @@ it('returns explainable issues for cycles and invalid quantities',()=>{
  const r=simulatePlan(plan([plant()]),entities.map(e=>e.id==='crop'?{...e,growth_days:null}:e));
  expect(r.events.filter(e=>e.kind==='plant')).toHaveLength(0);expect(r.issues.length).toBeGreaterThan(0);
 });
-it('keeps regrowing land occupied through its end day even between final harvests',()=>{
+it('keeps regrowing land occupied after the final allowed start date',()=>{
  const es=entities.map(e=>e.id==='crop'?{...e,regrow_days:3}:e);
  const r=simulatePlan(plan([plant('regrow',{endDay:13}),plant('new',{startDay:12})]),es);
- expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8,11]);
+ expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8,11,14]);
  expect(r.events.filter(e=>e.nodeId==='new'&&e.kind==='plant')).toHaveLength(0);
 });
 it('does not silently deliver after a missed fixed deadline',()=>{
@@ -134,8 +134,8 @@ it('respects season and year store availability and reports unverified unlock co
 it('fixed dates do not retry failed purchases but repeated planting can wait for cash',()=>{
  const nodes=[node('stock','inventory',{itemId:'crop-item'}),node('sale','sale',{itemId:'crop-item'}),plant('plant',{repeat:true,endDay:10}),node('buy','purchase',{itemId:'salt'})];
  const r=simulatePlan(plan(nodes,[['stock','sale']],{initialCash:0}),entities);
- expect(r.events.filter(e=>e.kind==='purchase').map(e=>[e.nodeId,e.day])).toEqual([['plant',6]]);
- expect(r.events.filter(e=>e.kind==='plant').map(e=>e.day)).toEqual([6]);
+ expect(r.events.filter(e=>e.kind==='purchase').map(e=>[e.nodeId,e.day])).toEqual([['plant',6],['plant',9]]);
+ expect(r.events.filter(e=>e.kind==='plant').map(e=>e.day)).toEqual([6,9]);
 });
 it('immediate settlement funds same-day sowing and quality changes sale price only',()=>{
  const r=simulatePlan(plan([node('stock','inventory',{itemId:'crop-item'}),node('sale','sale',{itemId:'crop-item'}),plant()],[['stock','sale']],{initialCash:0,days:1,settlementDays:0,quality:'gold'}),entities);
@@ -175,4 +175,23 @@ it('treats undated targets and future delivery deficits as pending progress with
  const r=simulatePlan(plan([node('reserve','reserve',{requirements:[{itemId:'pork',quantity:1}]}),node('undated','delivery',{requirements:[{itemId:'salt',quantity:1}]}),node('dated','delivery',{requirements:[{itemId:'salt',quantity:1}],dueDay:7})],[],{days:3}),entities);
  expect(r.events.filter(e=>e.kind==='warning').map(e=>[e.nodeId,e.day])).toEqual([['dated',7]]);
  expect(r.demandProgress.undated).toEqual([{itemId:'salt',quantity:0}]);
+});
+it.each([null,{},[null],[{}]].map(requirements=>({requirements})))('returns issues for connected malformed demand requirements %j',({requirements})=>{
+ for(const kind of ['reserve','delivery'] as const) {
+  const p=plan([node('source','inventory',{itemId:'pork'}),node('demand',kind,{requirements:requirements as never})],[['source','demand']]);
+  expect(simulatePlan(p,entities).issues.length).toBeGreaterThan(0);
+ }
+});
+it('allows planting on the final start date and harvests afterward without restarting',()=>{
+ const r=simulatePlan(plan([plant('plant',{startDay:5,endDay:5,repeat:true})]),entities);
+ expect(r.events.filter(e=>e.kind==='plant').map(e=>e.day)).toEqual([5]);
+ expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8]);
+ expect(r.spending).toBe(10);
+});
+it('continues new and existing regrowing crops after endDay through the season boundary',()=>{
+ const es=entities.map(e=>e.id==='crop'?{...e,regrow_days:2}:e);
+ const r=simulatePlan(plan([plant('new',{endDay:5}),plant('existing',{endDay:5,remainingDays:1})],[],{days:27,plots:[{id:'plot',label:'田',capacity:2}]}),es);
+ expect(r.events.filter(e=>e.kind==='harvest'&&e.nodeId==='new').map(e=>e.day)).toEqual([8,10,12,14,16,18,20,22,24,26,28]);
+ expect(r.events.filter(e=>e.kind==='harvest'&&e.nodeId==='existing').map(e=>e.day)).toEqual([6,8,10,12,14,16,18,20,22,24,26,28]);
+ expect(r.spending).toBe(10);expect(r.inProgress).toEqual([]);
 });

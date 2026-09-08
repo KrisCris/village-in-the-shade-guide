@@ -16,7 +16,11 @@ export function inputItems(node:WorkflowNode,entities:Entity[]):string[] {
   const inputs=entities.find(e=>e.id===node.recipeId)?.inputs;
   return Array.isArray(inputs)?inputs.map(i=>i?.item_id).filter((id):id is string=>typeof id==='string'):[];
  }
- if(node.kind==='reserve'||node.kind==='delivery')return (node.requirements??[]).map(a=>a.itemId);
+ if(node.kind==='reserve'||node.kind==='delivery') {
+  const requirements=node.requirements;
+  if(!Array.isArray(requirements)||requirements.some(a=>!a||typeof a.itemId!=='string'))return [];
+  return requirements.map(a=>a.itemId);
+ }
  if(node.kind==='sale'||node.kind==='consume')return node.itemId?[node.itemId]:[];
  return [];
 }

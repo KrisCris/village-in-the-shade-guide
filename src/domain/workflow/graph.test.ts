@@ -13,3 +13,7 @@ it('rejects an item-compatible cycle',()=>{
  const nodes=[node('a','process',{recipeId:'loop'}),node('b','process',{recipeId:'loop'})];
  expect(canConnect(nodes,[{id:'e',source:'a',target:'b'}],'b','a',es)).toBe(false);
 });
+it.each([null,{},[null],[{}]].map(requirements=>({requirements})))('safely rejects malformed demand requirements %j',({requirements})=>{
+ const nodes=[node('a','inventory',{itemId:'pork'}),node('b','reserve',{requirements:requirements as never})];
+ expect(canConnect(nodes,[],'a','b',entities)).toBe(false);
+});
