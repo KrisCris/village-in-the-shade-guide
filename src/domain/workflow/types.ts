@@ -1,0 +1,12 @@
+import type {Quality} from '../quality';
+export type NodeKind = 'purchase'|'inventory'|'plant'|'process'|'reserve'|'delivery'|'consume'|'sale';
+export type Amount = {itemId:string;quantity:number};
+export type WorkflowNode = {id:string;kind:NodeKind;label:string;position:{x:number;y:number};quantity:number;startDay:number;repeat:boolean;autoBuy:boolean;priority:number;itemId?:string;cropId?:string;recipeId?:string;resourceId?:string;endDay?:number;dueDay?:number;requirements?:Amount[];sourceId?:string;remainingDays?:number};
+export type WorkflowEdge = {id:string;source:string;target:string};
+export type PlotResource = {id:string;label:string;capacity:number};
+export type MachineResource = {id:string;label:string;machineId:string;count:number;capacity:number};
+export type WorkflowPlan = {version:1;name:string;startDay:number;days:number;initialCash:number;quality:Quality;settlementDays:number;plots:PlotResource[];machines:MachineResource[];nodes:WorkflowNode[];edges:WorkflowEdge[]};
+export type PlanEvent = {day:number;nodeId:string;kind:'purchase'|'plant'|'harvest'|'process'|'complete'|'reserve'|'delivery'|'consume'|'sale'|'receipt'|'warning';message:string;itemId?:string;quantity?:number;amount?:number};
+export type StockRow = {nodeId:string;itemId:string;quantity:number;reserved:boolean};
+export type DayResult = {day:number;cash:number;income:number;spending:number;pendingRevenue:number;events:PlanEvent[];stock:StockRow[]};
+export type SimulationResult = {days:DayResult[];events:PlanEvent[];issues:string[];income:number;spending:number;cash:number;pendingRevenue:number;stock:StockRow[];inProgress:Array<{nodeId:string;finishDay:number;itemId:string;quantity:number}>;demandProgress:Record<string,Amount[]>};
