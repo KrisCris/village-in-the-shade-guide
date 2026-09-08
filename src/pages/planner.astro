@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AsyncCropPlanner from '../components/table/AsyncCropPlanner';
+import {withBase} from '../lib/sitePath';
 ---
-<BaseLayout title="种植与加工收益"><h1>种植与加工收益</h1><AsyncCropPlanner client:load/></BaseLayout>
+<BaseLayout title="种植与加工收益"><h1>种植与加工收益</h1><p><a href={withBase('/planner/workflow/')}>打开农场生产工作流 →</a> 自由安排月中买种、续种、多级加工和供奉留货，按天查看结果。</p><AsyncCropPlanner client:load/></BaseLayout>
