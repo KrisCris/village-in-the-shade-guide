@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { withBase } from "../../lib/sitePath";
+import WorkflowIcon from "./WorkflowIcon";
 import type { Entity } from "../../data/types";
 import { normalizeSearch } from "../../data/clientSearch";
 
@@ -109,42 +111,151 @@ export function EntityPicker({
   onChange: (id: string) => void;
 }) {
   const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const root = useRef<HTMLDivElement>(null),
+    input = useRef<HTMLInputElement>(null),
+    trigger = useRef<HTMLButtonElement>(null);
+  const id = useId();
+  const selected = entities.find((e) => e.id === value);
   const options = useMemo(() => {
     const q = normalizeSearch(query);
-    const found = entities
+    return entities
       .filter(
         (e) =>
           !q || normalizeSearch(e.searchText || e.name.zh_hans).includes(q),
       )
       .slice(0, 80);
-    const selected = entities.find((e) => e.id === value);
-    return selected && !found.some((e) => e.id === value)
-      ? [selected, ...found]
-      : found;
-  }, [entities, query, value]);
+  }, [entities, query]);
+  useEffect(() => {
+    if (!open) return;
+    input.current?.focus();
+    const close = (e: PointerEvent) => {
+      if (!root.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [open]);
+  const choose = (id: string) => {
+    onChange(id);
+    setOpen(false);
+    setQuery("");
+    trigger.current?.focus();
+  };
   return (
-    <div className="wf-picker">
-      <label className="wf-field">
-        搜索{label}
-        <input
-          aria-label={`搜索${label}`}
-          value={query}
-          placeholder="名称 / 拼音"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </label>
-      <label className="wf-field">
+    <div className="wf-picker" ref={root}>
+      <label className="wf-picker-label" id={`${id}-label`}>
         {label}
-        <select value={value ?? ""} onChange={(e) => onChange(e.target.value)}>
-          <option value="">请选择</option>
-          {options.map((e) => (
-            <option key={e.id} value={e.id}>
-              {e.name.zh_hans}
-            </option>
-          ))}
-        </select>
       </label>
-      {options.length >= 80 && <small>显示前 80 项，可搜索缩小范围</small>}
+      <button
+        type="button"
+        className="wf-picker-trigger"
+        ref={trigger}
+        aria-labelledby={`${id}-label ${id}-value`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={`${id}-options`}
+        onClick={() => {
+          setOpen(!open);
+          setActive(0);
+        }}
+      >
+        {selected?.icon_path && (
+          <img
+            src={withBase(selected.icon_path)}
+            width={24}
+            height={24}
+            alt=""
+          />
+        )}
+        <span id={`${id}-value`}>
+          {selected?.name.zh_hans ?? "搜索并选择…"}
+        </span>
+        <WorkflowIcon name="chevron" size={13} />
+      </button>
+      {open && (
+        <div className="wf-picker-popover">
+          <input
+            ref={input}
+            role="combobox"
+            aria-label={`搜索${label}`}
+            aria-expanded="true"
+            aria-controls={`${id}-options`}
+            aria-autocomplete="list"
+            aria-activedescendant={
+              options[active] ? `${id}-${active}` : undefined
+            }
+            placeholder="输入名称 / 拼音"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setActive(0);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                e.stopPropagation();
+                setOpen(false);
+                trigger.current?.focus();
+              }
+              if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+                e.preventDefault();
+                const next = Math.max(
+                  0,
+                  Math.min(
+                    options.length - 1,
+                    active + (e.key === "ArrowDown" ? 1 : -1),
+                  ),
+                );
+                setActive(next);
+                document
+                  .getElementById(`${id}-${next}`)
+                  ?.scrollIntoView({ block: "nearest" });
+              }
+              if (e.key === "Enter" && options[active]) {
+                e.preventDefault();
+                choose(options[active].id);
+              }
+            }}
+          />
+          <div
+            className="wf-picker-options"
+            id={`${id}-options`}
+            role="listbox"
+            aria-label={label}
+          >
+            {options.map((e, i) => (
+              <button
+                key={e.id}
+                id={`${id}-${i}`}
+                className={i === active ? "active" : ""}
+                type="button"
+                role="option"
+                aria-selected={e.id === value}
+                tabIndex={-1}
+                onMouseEnter={() => setActive(i)}
+                onClick={() => choose(e.id)}
+              >
+                {e.icon_path ? (
+                  <img
+                    src={withBase(e.icon_path)}
+                    width={24}
+                    height={24}
+                    alt=""
+                  />
+                ) : (
+                  <WorkflowIcon name="inventory" size={20} />
+                )}
+                <span>{e.name.zh_hans}</span>
+                {e.id === value && <WorkflowIcon name="check" size={13} />}
+              </button>
+            ))}
+            {!options.length && <p className="wf-note">没有匹配的项目</p>}
+          </div>
+          {options.length === 80 && (
+            <small>显示前 80 项，输入名称可继续筛选</small>
+          )}
+        </div>
+      )}
     </div>
   );
 }

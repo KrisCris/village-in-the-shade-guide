@@ -56,7 +56,7 @@ export function createDemandNodes(
       ...newNode("delivery", day, i),
       label: e.name.zh_hans,
       sourceId: e.id,
-      position: { x: 960 + (i % 2) * 300, y: 40 + Math.floor(i / 2) * 210 },
+      position: { x: 960 + (i % 3) * 310, y: 40 + Math.floor(i / 3) * 230 },
       requirements: (
         (e.inputs ?? []) as { item_id: string; quantity: number }[]
       ).map((a) => ({ itemId: a.item_id, quantity: a.quantity })),

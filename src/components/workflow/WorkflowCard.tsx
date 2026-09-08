@@ -2,6 +2,8 @@ import { Handle, Position, type NodeProps, type Node } from "@xyflow/react";
 import type { WorkflowNode } from "../../domain/workflow/types";
 import { nodeLabels } from "../../domain/workflowEditor";
 import { formatDay } from "../../domain/workflow/date";
+import { memo } from "react";
+import WorkflowIcon from "./WorkflowIcon";
 export type CardData = {
   node: WorkflowNode;
   subtitle: string;
@@ -11,7 +13,10 @@ export type CardData = {
   problems: number;
 };
 export type FlowNode = Node<CardData, "operation">;
-export default function WorkflowCard({ data, selected }: NodeProps<FlowNode>) {
+export default memo(function WorkflowCard({
+  data,
+  selected,
+}: NodeProps<FlowNode>) {
   const n = data.node;
   return (
     <div className={`wf-node kind-${n.kind} ${selected ? "selected" : ""}`}>
@@ -19,15 +24,36 @@ export default function WorkflowCard({ data, selected }: NodeProps<FlowNode>) {
         <Handle type="target" position={Position.Left} aria-label="连接输入" />
       )}
       <div className="wf-node-top">
-        <span>{nodeLabels[n.kind]}</span>
-        {n.repeat && <b>{n.kind === "plant" ? "↻ 自动续种" : "↻ 循环"}</b>}
+        <span>
+          <WorkflowIcon name={n.kind} size={14} />
+          {nodeLabels[n.kind]}
+        </span>
+        {n.repeat && (
+          <b>
+            <WorkflowIcon name="repeat" size={12} />
+            {n.kind === "plant" ? "自动续种" : "循环"}
+          </b>
+        )}
       </div>
       <div className="wf-node-name">
-        {data.icon && <img src={data.icon} width={32} height={32} alt="" />}
+        <span className="wf-node-art">
+          {data.icon ? (
+            <img
+              src={data.icon}
+              width={36}
+              height={36}
+              alt=""
+              draggable={false}
+            />
+          ) : (
+            <WorkflowIcon name={n.kind} size={25} />
+          )}
+        </span>
         <strong>{n.label}</strong>
       </div>
       <p>{data.subtitle || "点击设置物品与数量"}</p>
-      <small>
+      <small className="wf-node-date">
+        <WorkflowIcon name="calendar" size={12} />
         {formatDay(n.startDay)} 起{n.autoBuy ? " · 缺种补买" : ""}
         {n.remainingDays !== undefined ? " · 已在进行" : ""}
       </small>
@@ -42,4 +68,4 @@ export default function WorkflowCard({ data, selected }: NodeProps<FlowNode>) {
       )}
     </div>
   );
-}
+});

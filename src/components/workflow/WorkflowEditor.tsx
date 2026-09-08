@@ -7,11 +7,6 @@ import {
   type KeyboardEvent,
 } from "react";
 import {
-  Background,
-  Controls,
-  MiniMap,
-  ReactFlow,
-  SelectionMode,
   type NodeChange,
   type Connection,
   type ReactFlowInstance,
@@ -40,12 +35,14 @@ import { formatDay, seasonAt } from "../../domain/workflow/date";
 import { withBase } from "../../lib/sitePath";
 import NodeInspector from "./NodeInspector";
 import PlanResources from "./PlanResources";
-import PlanResults from "./PlanResults";
-import WorkflowCard, { type FlowNode } from "./WorkflowCard";
+import { type FlowNode } from "./WorkflowCard";
+import WorkflowCanvas from "./WorkflowCanvas";
+import WorkflowTimeline from "./WorkflowTimeline";
+import WorkflowIcon from "./WorkflowIcon";
+import WorkflowPanel from "./WorkflowPanel";
 import { EntityPicker } from "./fields";
 
 const STORAGE = "village-production-plan-v1";
-const nodeTypes = { operation: WorkflowCard };
 function load(entities: Entity[]) {
   try {
     const saved = localStorage.getItem(STORAGE);
@@ -72,10 +69,79 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const [source, setSource] = useState(""),
     [target, setTarget] = useState("");
   const [cropChoice, setCropChoice] = useState("");
+  const [panel, setPanel] = useState<
+    "nodes" | "resources" | "connections" | "help" | null
+  >(() => (window.innerWidth > 700 ? "nodes" : null));
+  const [inspectorOpen, setInspectorOpen] = useState(false);
+  const [panelWidth, setPanelWidth] = useState(340);
+  const [mode, setMode] = useState<"hand" | "select">("hand");
+  const [zoom, setZoom] = useState(1);
+  const [nodeQuery, setNodeQuery] = useState("");
+  const [focused, setFocused] = useState(false);
+  const app = useRef<HTMLDivElement>(null);
+  const canvas = useRef<HTMLDivElement>(null);
   const clipboard = useRef<Pick<WorkflowPlan, "nodes" | "edges"> | null>(null);
   const [hasClipboard, setHasClipboard] = useState(false);
   const file = useRef<HTMLInputElement>(null);
   const flow = useRef<ReactFlowInstance<FlowNode> | null>(null);
+  const previousCount = useRef(plan.nodes.length);
+  const frameNodes = (next: WorkflowNode[]) => {
+    const production = next.filter((n) => !n.sourceId);
+    flow.current?.fitView({
+      nodes: (production.length ? production : next).map((n) => ({ id: n.id })),
+      padding: 0.2,
+      maxZoom: 1,
+      duration: 200,
+    });
+  };
+  useEffect(() => {
+    const removed = plan.nodes.length < previousCount.current;
+    previousCount.current = plan.nodes.length;
+    if (!removed || !plan.nodes.length) return;
+    const timer = setTimeout(() => {
+      const bounds = canvas.current?.getBoundingClientRect();
+      if (!bounds) return;
+      const visible = [
+        ...(canvas.current?.querySelectorAll(".react-flow__node") ?? []),
+      ].some((el) => {
+        const r = el.getBoundingClientRect(),
+          x = r.x + r.width / 2,
+          y = r.y + r.height / 2;
+        return (
+          x > bounds.left + 65 &&
+          x < bounds.right - 30 &&
+          y > bounds.top + 30 &&
+          y < bounds.bottom - 65
+        );
+      });
+      if (!visible) frameNodes(plan.nodes);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [plan.nodes]);
+  useEffect(() => {
+    const element = canvas.current;
+    if (!element) return;
+    let previous = { width: element.clientWidth, height: element.clientHeight };
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      if (flow.current && previous.width && previous.height) {
+        const viewport = flow.current.getViewport();
+        flow.current.setViewport({
+          ...viewport,
+          x: viewport.x + (width - previous.width) / 2,
+          y: viewport.y + (height - previous.height) / 2,
+        });
+      }
+      previous = { width, height };
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!notice || saveBlocked) return;
+    const timer = setTimeout(() => setNotice(""), 8000);
+    return () => clearTimeout(timer);
+  }, [notice, saveBlocked]);
   const byId = useMemo(
     () =>
       new Map(entities.filter((e) => e.kind === "items").map((e) => [e.id, e])),
@@ -120,7 +186,11 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     return () => clearTimeout(timer);
   }, [plan, saveBlocked]);
   useEffect(() => {
-    if (!Number.isFinite(day) || day < plan.startDay || day >= plan.startDay + plan.days)
+    if (
+      !Number.isFinite(day) ||
+      day < plan.startDay ||
+      day >= plan.startDay + plan.days
+    )
       setDay(plan.startDay);
   }, [plan.startDay, plan.days, day]);
   const undo = () => {
@@ -194,6 +264,15 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       )
     )
       return;
+    if (e.key === "Escape") {
+      setPanel(null);
+      setInspectorOpen(false);
+      setFocused(false);
+    }
+    if (!e.ctrlKey && !e.metaKey && e.key.toLowerCase() === "h")
+      setMode("hand");
+    if (!e.ctrlKey && !e.metaKey && e.key.toLowerCase() === "v")
+      setMode("select");
     const mod = e.ctrlKey || e.metaKey;
     if (mod && ["c", "v", "z", "y", "a"].includes(e.key.toLowerCase())) {
       e.preventDefault();
@@ -238,15 +317,55 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     });
     setNotice("连线已添加，结果已更新。");
   };
-  const add = (kind: NodeKind) => {
+  const visiblePosition = () => {
+    const rect = canvas.current?.getBoundingClientRect();
+    return rect && flow.current
+      ? flow.current.screenToFlowPosition({
+          x: rect.left + rect.width * 0.43,
+          y: rect.top + rect.height * 0.35,
+        })
+      : { x: 80, y: 80 };
+  };
+  const add = (kind: NodeKind, droppedPosition?: { x: number; y: number }) => {
+    const position = droppedPosition ?? visiblePosition();
+    if (!droppedPosition) {
+      for (let i = 0; i < plan.nodes.length; i++) {
+        if (
+          !plan.nodes.some(
+            (n) =>
+              Math.abs(n.position.x - position.x) < 280 &&
+              Math.abs(n.position.y - position.y) < 220,
+          )
+        )
+          break;
+        position.y += 240;
+      }
+    }
     if (plan.nodes.length >= 200) {
       setNotice("每份计划最多 200 个节点。");
       return;
     }
-    const n = newNode(kind, day, plan.nodes.length);
+    const n = { ...newNode(kind, day, plan.nodes.length), position };
     if (kind === "plant") n.resourceId = plan.plots[0]?.id;
     change({ ...plan, nodes: [...plan.nodes, n] });
     setSelected([n.id]);
+    setTimeout(
+      () =>
+        flow.current?.fitView({
+          nodes: [{ id: n.id }],
+          padding: {
+            left: "90px",
+            right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
+            top: "70px",
+            bottom: "100px",
+          },
+          maxZoom: 1,
+          duration: 200,
+        }),
+      100,
+    );
+    setInspectorOpen(true);
+    setPanel(null);
   };
   const linkDemands = (
     nodes: WorkflowNode[],
@@ -295,12 +414,14 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       itemId = (crop.harvest_item_ids as string[] | undefined)?.[0];
     if (!seedId || !itemId) return;
     const quantity = Math.min(6, plan.plots[0]?.capacity ?? 6);
+    const origin = visiblePosition();
+    const y = Math.min(origin.y, ...plan.nodes.map((n) => n.position.y - 290));
     const buy = {
       ...newNode("purchase", day),
       label: `购买${byId.get(seedId)?.name.zh_hans ?? "种子"}`,
       itemId: seedId,
       quantity,
-      position: { x: 30, y: 40 },
+      position: { x: origin.x - 330, y },
     };
     const plant = {
       ...newNode("plant", day),
@@ -308,13 +429,13 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       cropId: crop.id,
       resourceId: plan.plots[0]?.id,
       quantity,
-      position: { x: 340, y: 40 },
+      position: { x: origin.x, y },
     };
     const sale = {
       ...newNode("sale", day),
       label: `出售${crop.name.zh_hans}`,
       itemId,
-      position: { x: 650, y: 40 },
+      position: { x: origin.x + 330, y },
     };
     const nodes = [...plan.nodes, buy, plant, sale],
       edges = [
@@ -332,11 +453,20 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       ),
     });
     setSelected([plant.id]);
+    setNotice("");
+    setPanel(null);
+    setInspectorOpen(true);
     setTimeout(
       () =>
         flow.current?.fitView({
           nodes: [{ id: buy.id }, { id: plant.id }, { id: sale.id }],
-          padding: 0.2,
+          padding: {
+            left: "90px",
+            right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
+            top: "80px",
+            bottom: "100px",
+          },
+          maxZoom: 1,
           duration: 250,
         }),
       100,
@@ -352,97 +482,174 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             c.selected ? ids.add(c.id) : ids.delete(c.id);
         return [...ids];
       });
-    const positions = changes.filter((c) => c.type === "position");
-    if (positions.length)
-      setPlan((p) => ({
-        ...p,
-        nodes: p.nodes.map((n) => {
-          const c = positions.find(
-            (c) => c.type === "position" && c.id === n.id,
-          );
-          return c?.type === "position" && c.position
-            ? { ...n, position: c.position }
-            : n;
-        }),
-      }));
   }, []);
+  const commitPositions = (dragged: FlowNode[]) => {
+    const positions = new Map(dragged.map((n) => [n.id, n.position]));
+    if (
+      !plan.nodes.some((n) => {
+        const p = positions.get(n.id);
+        return p && (p.x !== n.position.x || p.y !== n.position.y);
+      })
+    )
+      return;
+    change({
+      ...plan,
+      nodes: plan.nodes.map((n) =>
+        positions.has(n.id) ? { ...n, position: positions.get(n.id)! } : n,
+      ),
+    });
+  };
   const focus = (id: string) => {
     setSelected([id]);
+    setInspectorOpen(true);
+    setPanel(null);
     flow.current?.fitView({
       nodes: [{ id }],
-      padding: 0.8,
+      padding: {
+        left: "90px",
+        right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
+        top: "80px",
+        bottom: "100px",
+      },
       maxZoom: 1.2,
       duration: 250,
     });
   };
-  const nodes: FlowNode[] = plan.nodes.map((n) => {
-    const entity = entities.find(
-      (e) =>
-        e.kind === (n.kind === "plant" ? "crops" : "processes") &&
-        e.id === (n.cropId ?? n.recipeId),
+  const nodes: FlowNode[] = useMemo(
+    () =>
+      plan.nodes.map((n) => {
+        const entity = entities.find(
+          (e) =>
+            e.kind === (n.kind === "plant" ? "crops" : "processes") &&
+            e.id === (n.cropId ?? n.recipeId),
+        );
+        const events = result.events.filter(
+          (e) => e.nodeId === n.id && e.day === day,
+        );
+        const problems = events.filter((e) => e.kind === "warning").length;
+        const subtitle = ["reserve", "delivery"].includes(n.kind)
+          ? (n.requirements ?? [])
+              .slice(0, 3)
+              .map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
+              .join(" · ") +
+            (n.requirements && n.requirements.length > 3
+              ? ` 等 ${n.requirements.length} 项`
+              : "")
+          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "未设置")} · ${n.quantity === 0 ? "剩余全部" : `${n.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}`}`;
+        const completed = result.demandProgress[n.id]
+          ? (result.days.find((d) => d.day === day)?.stock ?? []).filter(
+              (s) => s.nodeId === n.id && s.reserved,
+            )
+          : undefined;
+        const icon =
+          entity?.icon_path ??
+          (n.itemId ? byId.get(n.itemId)?.icon_path : undefined);
+        return {
+          id: n.id,
+          type: "operation",
+          position: n.position,
+          selected: selected.includes(n.id),
+          data: {
+            node: n,
+            subtitle,
+            icon: icon ? withBase(icon) : undefined,
+            problems,
+            today: events.length
+              ? `${((day - 1) % 28) + 1} 日 · ${
+                  problems
+                    ? `${problems} 项缺口`
+                    : events
+                        .map(
+                          (e) =>
+                            ({
+                              purchase: "买入",
+                              plant: "播种",
+                              harvest: "收获",
+                              process: "投料",
+                              complete: "完成",
+                              reserve: "留货",
+                              delivery: "交付",
+                              consume: "消耗",
+                              sale: "出货",
+                              receipt: "到账",
+                              warning: "缺口",
+                            })[e.kind],
+                        )
+                        .filter((v, i, a) => a.indexOf(v) === i)
+                        .join(" / ")
+                }`
+              : "",
+            progress: completed
+              ? `当日已备 ${completed.reduce((s, a) => s + a.quantity, 0)} / ${(n.requirements ?? []).reduce((s, a) => s + a.quantity, 0)} 个`
+              : undefined,
+          },
+        };
+      }),
+    [plan.nodes, entities, result, day, selected, byId],
+  );
+  const edges = useMemo(
+    () =>
+      plan.edges.map((e) => ({
+        ...e,
+        selected: selectedEdges.includes(e.id),
+        type: "smoothstep",
+        style: { stroke: "var(--wf-edge)", strokeWidth: 1.7 },
+      })),
+    [plan.edges, selectedEdges],
+  );
+  const arrange = () => {
+    const incoming = new Map(
+      plan.nodes.map((n) => [
+        n.id,
+        plan.edges.filter((e) => e.target === n.id).map((e) => e.source),
+      ]),
     );
-    const events = result.events.filter(
-      (e) => e.nodeId === n.id && e.day === day,
+    const depth = new Map<string, number>();
+    const pending = new Set(plan.nodes.map((n) => n.id));
+    while (pending.size) {
+      let advanced = false;
+      for (const id of pending) {
+        const parents = incoming.get(id) ?? [];
+        if (parents.some((p) => pending.has(p))) continue;
+        depth.set(
+          id,
+          parents.length
+            ? Math.max(...parents.map((p) => (depth.get(p) ?? 0) + 1))
+            : 0,
+        );
+        pending.delete(id);
+        advanced = true;
+      }
+      if (!advanced) break;
+    }
+    const connected = new Set(plan.edges.flatMap((e) => [e.source, e.target]));
+    const rows = new Map<number, number>();
+    const positions = new Map<string, { x: number; y: number }>();
+    for (const n of plan.nodes.filter((n) => connected.has(n.id))) {
+      const col = depth.get(n.id) ?? 0,
+        row = rows.get(col) ?? 0;
+      rows.set(col, row + 1);
+      positions.set(n.id, { x: 100 + col * 360, y: 80 + row * 250 });
+    }
+    const base = connected.size ? Math.max(...rows.values()) * 250 + 140 : 80;
+    plan.nodes
+      .filter((n) => !connected.has(n.id))
+      .forEach((n, i) =>
+        positions.set(n.id, {
+          x: 100 + (i % 3) * 320,
+          y: base + Math.floor(i / 3) * 230,
+        }),
+      );
+    change({
+      ...plan,
+      nodes: plan.nodes.map((n) => ({ ...n, position: positions.get(n.id)! })),
+    });
+    setTimeout(
+      () => flow.current?.fitView({ padding: 0.18, maxZoom: 1, duration: 250 }),
+      100,
     );
-    const problems = events.filter((e) => e.kind === "warning").length;
-    const subtitle = ["reserve", "delivery"].includes(n.kind)
-      ? (n.requirements ?? [])
-          .slice(0, 3)
-          .map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
-          .join(" · ") +
-        (n.requirements && n.requirements.length > 3
-          ? ` 等 ${n.requirements.length} 项`
-          : "")
-      : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "未设置")} · ${n.quantity === 0 ? "剩余全部" : `${n.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}`}`;
-    const completed = result.demandProgress[n.id]
-      ? (result.days.find((d) => d.day === day)?.stock ?? []).filter(
-          (s) => s.nodeId === n.id && s.reserved,
-        )
-      : undefined;
-    const icon =
-      entity?.icon_path ??
-      (n.itemId ? byId.get(n.itemId)?.icon_path : undefined);
-    return {
-      id: n.id,
-      type: "operation",
-      position: n.position,
-      selected: selected.includes(n.id),
-      data: {
-        node: n,
-        subtitle,
-        icon: icon ? withBase(icon) : undefined,
-        problems,
-        today: events.length
-          ? `${((day - 1) % 28) + 1} 日 · ${
-              problems
-                ? `${problems} 项缺口`
-                : events
-                    .map(
-                      (e) =>
-                        ({
-                          purchase: "买入",
-                          plant: "播种",
-                          harvest: "收获",
-                          process: "投料",
-                          complete: "完成",
-                          reserve: "留货",
-                          delivery: "交付",
-                          consume: "消耗",
-                          sale: "出货",
-                          receipt: "到账",
-                          warning: "缺口",
-                        })[e.kind],
-                    )
-                    .filter((v, i, a) => a.indexOf(v) === i)
-                    .join(" / ")
-            }`
-          : "",
-        progress: completed
-          ? `当日已备 ${completed.reduce((s, a) => s + a.quantity, 0)} / ${(n.requirements ?? []).reduce((s, a) => s + a.quantity, 0)} 个`
-          : undefined,
-      },
-    };
-  });
+    setNotice("已按连线顺序整理节点，可撤销恢复原位置。");
+  };
   const download = () => {
     const blob = new Blob([JSON.stringify(plan, null, 2)], {
       type: "application/json",
@@ -458,41 +665,107 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     selected.length === 1
       ? plan.nodes.find((n) => n.id === selected[0])
       : undefined;
+  const descriptions: Record<NodeKind, string> = {
+    purchase: "购买种子与原料",
+    inventory: "使用手头已有物品",
+    plant: "播种、收获与自动续种",
+    process: "原料投入与多级加工",
+    reserve: "为后续用途保留物品",
+    delivery: "供奉、村长与任务交付",
+    consume: "料理、送礼与日常使用",
+    sale: "出货并计算到账收入",
+  };
+  const togglePanel = (next: typeof panel) => {
+    setPanel(panel === next ? null : next);
+    setInspectorOpen(false);
+  };
+  const crops = entities.filter(
+    (e) =>
+      e.kind === "crops" &&
+      Number(e.growth_days) > 0 &&
+      Number(e.harvest_quantity) > 0 &&
+      ((e.seasons ?? []) as string[]).includes(seasonAt(day)),
+  );
   return (
     <div
-      className="wf-app"
+      ref={app}
+      className={`wf-app ${focused ? "wf-focused" : ""}`}
       tabIndex={0}
       onKeyDown={keyboard}
       aria-label="农场工作流编辑器"
     >
       <header className="wf-heading">
-        <div>
-          <span className="wf-eyebrow">FARM PRODUCTION PLAN</span>
-          <h1>农场生产工作流</h1>
-          <p>把种植、加工和留货连起来，按天安排每一轮生产。</p>
+        <div className="wf-identity">
+          <span className="wf-brand-mark">
+            <WorkflowIcon name="plant" size={24} />
+          </span>
+          <div>
+            <div className="wf-breadcrumb">
+              <a href={withBase("/planner/")}>收益规划</a>
+              <span>/</span>
+              <h1>生产工作流</h1>
+            </div>
+            <input
+              className="wf-plan-name"
+              aria-label="计划名称"
+              value={plan.name}
+              maxLength={150}
+              onChange={(e) => change({ ...plan, name: e.target.value })}
+            />
+          </div>
         </div>
-        <a href={withBase("/planner/")}>收益排行 ↗</a>
-      </header>
-      <div className="wf-topbar">
-        <input
-          className="wf-plan-name"
-          aria-label="计划名称"
-          value={plan.name}
-          maxLength={150}
-          onChange={(e) => change({ ...plan, name: e.target.value })}
-        />
-        <small role="status">{saveStatus}</small>
-        <button
-          onClick={() => {
-            change(createPlan(entities));
-            setSelected([]);
-            setNotice("已新建计划，可撤销返回上一份。");
-          }}
-        >
-          新建
-        </button>
-        <button onClick={download}>导出计划</button>
-        <button onClick={() => file.current?.click()}>导入计划</button>
+        <small className="wf-save" role="status">
+          <WorkflowIcon name="check" size={13} />
+          {saveStatus}
+        </small>
+        <div className="wf-heading-actions">
+          <button
+            aria-label="计划设置"
+            onClick={() => togglePanel("resources")}
+            aria-pressed={panel === "resources"}
+          >
+            <WorkflowIcon name="settings" />
+            <span>计划设置</span>
+          </button>
+          <button
+            className="wf-icon-button"
+            title={focused ? "退出专注模式（Esc）" : "专注模式"}
+            aria-label={focused ? "退出专注模式" : "专注模式"}
+            aria-pressed={focused}
+            onClick={() => setFocused(!focused)}
+          >
+            <WorkflowIcon name="expand" />
+          </button>
+          <details className="wf-file-menu">
+            <summary title="计划文件" aria-label="计划文件">
+              <WorkflowIcon name="more" />
+            </summary>
+            <div>
+              <button
+                onClick={() => {
+                  const next = createPlan(entities);
+                  change(next);
+                  setTimeout(() => frameNodes(next.nodes), 100);
+                  setSelected([]);
+                  setInspectorOpen(false);
+                  setPanel("nodes");
+                  setNotice("已新建计划，可撤销返回上一份。");
+                }}
+              >
+                <WorkflowIcon name="plus" />
+                新建计划
+              </button>
+              <button onClick={download}>
+                <WorkflowIcon name="download" />
+                导出计划
+              </button>
+              <button onClick={() => file.current?.click()}>
+                <WorkflowIcon name="upload" />
+                导入计划
+              </button>
+            </div>
+          </details>
+        </div>
         <input
           type="file"
           hidden
@@ -505,236 +778,513 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             try {
               if (picked.size > 2_000_000)
                 throw new Error("计划文件不能超过 2 MB");
-              change(parsePlan(await picked.text()));
+              const next = parsePlan(await picked.text());
+              change(next);
+              setTimeout(() => frameNodes(next.nodes), 100);
               setSelected([]);
+              setPanel(null);
+              setInspectorOpen(false);
               setNotice("计划已导入。");
             } catch (error) {
               setNotice(error instanceof Error ? error.message : "导入失败");
             }
           }}
         />
-      </div>
-      <PlanResources plan={plan} entities={entities} onChange={change} />
-      <div className="wf-toolbar">
-        <div className="wf-node-tools">
-          {(Object.keys(nodeLabels) as NodeKind[]).map((kind) => (
-            <button key={kind} onClick={() => add(kind)}>
-              ＋ {nodeLabels[kind]}
-            </button>
-          ))}
+      </header>
+      <div className="wf-context-bar">
+        <button className="wf-period" onClick={() => togglePanel("resources")}>
+          <WorkflowIcon name="calendar" size={15} />
+          {formatDay(plan.startDay)} 起 · {plan.days} 天
+          <WorkflowIcon name="chevron" size={12} />
+        </button>
+        <span className="wf-resource-summary">
+          {plan.plots.reduce((s, p) => s + p.capacity, 0)} 格土地<span>·</span>
+          {plan.machines.reduce((s, m) => s + m.count, 0)} 台机器
+        </span>
+        <div className="wf-cash-summary">
+          <span>
+            期末现金{" "}
+            <b>
+              {result.cash.toLocaleString(undefined, {
+                maximumFractionDigits: 0,
+              })}
+            </b>
+          </span>
+          <span>
+            现金净流入{" "}
+            <b>
+              {(result.income - result.spending).toLocaleString(undefined, {
+                maximumFractionDigits: 0,
+              })}
+            </b>
+          </span>
         </div>
-        <div className="wf-edit-tools">
-          <button disabled={!past.length} onClick={undo}>
-            撤销
-          </button>
-          <button disabled={!future.length} onClick={redo}>
-            重做
-          </button>
-          <button disabled={!selected.length} onClick={copy}>
-            复制
-          </button>
-          <button disabled={!hasClipboard} onClick={paste}>
-            粘贴
-          </button>
-          <button
-            disabled={!selected.length && !selectedEdges.length}
-            onClick={() => remove()}
-          >
-            删除选中
-          </button>
-        </div>
       </div>
-      <div className="wf-status" role="status">
-        {notice ||
-          "拖动空白处框选，鼠标中键 / 右键平移；拖动节点端点连接。Ctrl/Cmd+C、V 复制粘贴；Z 撤销。"}
-      </div>
-      <div className="wf-workspace">
-        <div className="wf-canvas">
-          <ReactFlow<FlowNode>
+      <div className="wf-stage">
+        <div ref={canvas} className="wf-canvas">
+          <WorkflowCanvas
             nodes={nodes}
-            edges={plan.edges.map((e) => ({
-              ...e,
-              selected: selectedEdges.includes(e.id),
-              style: { stroke: "var(--wf-green)", strokeWidth: 2 },
-            }))}
-            nodeTypes={nodeTypes}
-            onInit={(instance) => {
-              flow.current = instance;
-            }}
-            onNodesChange={onNodesChange}
-            onEdgesChange={(changes) => {
-              setSelectedEdges((current) => {
-                const next = new Set(current);
-                for (const c of changes)
-                  if (c.type === "select")
-                    c.selected ? next.add(c.id) : next.delete(c.id);
-                return [...next];
-              });
-            }}
+            edges={edges}
+            mode={mode}
+            flow={flow}
+            onSelect={onNodesChange}
+            onEdgesSelect={setSelectedEdges}
+            onCommit={commitPositions}
             onConnect={connect}
-            isValidConnection={(c) =>
+            isValid={(c) =>
               canConnect(plan.nodes, plan.edges, c.source, c.target, entities)
             }
-            onNodeDragStart={() => {
-              setPast((p) => [...p.slice(-49), plan]);
-              setFuture([]);
+            onInspect={() => {
+              setInspectorOpen(true);
+              setPanel(null);
             }}
-            selectionOnDrag
-            selectionMode={SelectionMode.Partial}
-            panOnDrag={[1, 2]}
-            selectionKeyCode={null}
-            multiSelectionKeyCode={["Control", "Meta", "Shift"]}
-            deleteKeyCode={null}
-            fitView
-            fitViewOptions={{ maxZoom: 1, padding: 0.15 }}
-            minZoom={0.15}
-            maxZoom={1.7}
-            aria-label="生产流程画布"
-          >
-            <Background color="var(--wf-grid)" gap={22} />
-            <Controls showInteractive={false} />
-            <MiniMap pannable zoomable nodeColor="var(--wf-green)" />
-          </ReactFlow>
-          {!plan.nodes.some((n) => n.kind === "plant") && (
-            <div className="wf-canvas-hint">
-              添加种植流程，或从上方选择节点开始。
-              <br />
-              右侧的供奉 / 交付卡片可以连接产物，也可以删除。
-            </div>
-          )}
-        </div>
-        {current ? (
-          <NodeInspector
-            node={current}
-            plan={plan}
-            entities={entities}
-            onChange={(n) =>
-              change({
-                ...plan,
-                nodes: plan.nodes.map((v) => (v.id === n.id ? n : v)),
-              })
-            }
-            onDelete={() => remove([current.id])}
+            onDropNode={add}
+            onZoom={setZoom}
           />
-        ) : (
-          <aside className="wf-inspector">
-            <div className="wf-panel-title">
-              {selected.length
-                ? `已框选 ${selected.length} 个节点`
-                : "从一条种植流程开始"}
+        </div>
+        <nav className="wf-rail" aria-label="工作流工具">
+          <button
+            className={panel === "nodes" ? "active" : ""}
+            aria-label="添加节点"
+            title="添加节点"
+            aria-pressed={panel === "nodes"}
+            onClick={() => togglePanel("nodes")}
+          >
+            <WorkflowIcon name="plus" size={22} />
+            <span>节点</span>
+          </button>
+          <button
+            className={mode === "hand" ? "active" : ""}
+            aria-label="平移画布"
+            title="平移画布（H / 按住空格）"
+            aria-pressed={mode === "hand"}
+            onClick={() => setMode("hand")}
+          >
+            <WorkflowIcon name="hand" />
+            <span>平移</span>
+          </button>
+          <button
+            className={mode === "select" ? "active" : ""}
+            aria-label="框选节点"
+            title="框选节点（V / 按住 Shift）"
+            aria-pressed={mode === "select"}
+            onClick={() => setMode("select")}
+          >
+            <WorkflowIcon name="select" />
+            <span>框选</span>
+          </button>
+          <hr />
+          <button
+            aria-label="连线管理"
+            title="连线管理"
+            aria-pressed={panel === "connections"}
+            onClick={() => togglePanel("connections")}
+          >
+            <WorkflowIcon name="link" />
+          </button>
+          <button
+            aria-label="操作帮助"
+            title="操作帮助与计算范围"
+            aria-pressed={panel === "help"}
+            onClick={() => togglePanel("help")}
+          >
+            <WorkflowIcon name="help" />
+          </button>
+        </nav>
+        {panel === "nodes" && (
+          <aside className="wf-library wf-floating" aria-label="节点库">
+            <div className="wf-floating-header">
+              <strong>添加节点</strong>
+              <button
+                className="wf-icon-button"
+                aria-label="关闭节点库"
+                onClick={() => setPanel(null)}
+              >
+                <WorkflowIcon name="close" size={16} />
+              </button>
             </div>
-            {selected.length > 1 && (
+            <div className="wf-library-content">
+              <div className="wf-starter">
+                <div className="wf-starter-title">
+                  <WorkflowIcon name="plant" size={17} />
+                  <strong>从一条种植流程开始</strong>
+                </div>
+                <p>买种 → 种植 → 出售，一次连好。</p>
+                <div className="wf-crop-picks">
+                  {crops.slice(0, 4).map((c) => (
+                    <button
+                      key={c.id}
+                      title={`${c.name.zh_hans} · ${c.growth_days} 天生长`}
+                      aria-label={`选择${c.name.zh_hans}`}
+                      aria-pressed={cropChoice === c.id}
+                      onClick={() => setCropChoice(c.id)}
+                    >
+                      {c.icon_path && (
+                        <img
+                          src={withBase(c.icon_path)}
+                          alt=""
+                          width={28}
+                          height={28}
+                        />
+                      )}
+                      <span>{c.name.zh_hans}</span>
+                    </button>
+                  ))}
+                </div>
+                <EntityPicker
+                  label="快速添加的作物"
+                  entities={crops}
+                  value={cropChoice}
+                  onChange={setCropChoice}
+                />
+                <button
+                  className="wf-primary"
+                  disabled={!cropChoice}
+                  onClick={starter}
+                >
+                  <WorkflowIcon name="plus" size={16} />
+                  添加种植流程
+                </button>
+              </div>
+              <div className="wf-library-search">
+                <WorkflowIcon name="search" size={16} />
+                <input
+                  aria-label="搜索节点类型"
+                  placeholder="搜索节点类型…"
+                  value={nodeQuery}
+                  onChange={(e) => setNodeQuery(e.target.value)}
+                />
+              </div>
+              <p className="wf-library-caption">点击添加，或拖入画布</p>
+              <div className="wf-node-catalog">
+                {(Object.keys(nodeLabels) as NodeKind[])
+                  .filter((kind) =>
+                    (nodeLabels[kind] + descriptions[kind]).includes(nodeQuery),
+                  )
+                  .map((kind) => (
+                    <button
+                      className={`kind-${kind}`}
+                      key={kind}
+                      draggable
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData(
+                          "application/village-node",
+                          kind,
+                        );
+                        e.dataTransfer.effectAllowed = "copy";
+                      }}
+                      onClick={() => add(kind)}
+                    >
+                      <span className="wf-type-icon">
+                        <WorkflowIcon name={kind} size={19} />
+                      </span>
+                      <span>
+                        <b>{nodeLabels[kind]}</b>
+                        <small>{descriptions[kind]}</small>
+                      </span>
+                      <WorkflowIcon name="plus" size={13} />
+                    </button>
+                  ))}
+              </div>
+              <button className="wf-demand-button" onClick={generateDemands}>
+                <WorkflowIcon name="delivery" size={16} />
+                补充当季留货节点
+              </button>
               <p className="wf-note">
-                复制将保留选中节点之间的连线。新副本的日期可分别修改。
+                供奉与交付需求已自动带入，可连接产物，也可删除暂时不做的项目。
               </p>
-            )}
-            <EntityPicker
-              label="快速添加的作物"
-              entities={entities.filter(
-                (e) =>
-                  e.kind === "crops" &&
-                  Number(e.growth_days) > 0 &&
-                  Number(e.harvest_quantity) > 0 &&
-                  ((e.seasons ?? []) as string[]).includes(seasonAt(day)),
-              )}
-              value={cropChoice}
-              onChange={setCropChoice}
-            />
-            <button
-              className="wf-primary"
-              disabled={!cropChoice}
-              onClick={starter}
-            >
-              添加买种 → 种植 → 出售
-            </button>
-            <p className="wf-note">
-              默认一轮，点击种植节点勾选“自动续种”可循环。需要时同时启用缺种补买。
-            </p>
-            <hr />
-            <button onClick={generateDemands}>
-              补充所选日期所在季节的留货
-            </button>
-            <p className="wf-note">
-              按现有供奉与村长交付目录生成，不推定第一年必须完成。已存在的组不会重复添加。
-            </p>
-            <a href={withBase("/guides/season-plan/")}>查看四季留货来源 ↗</a>
+            </div>
           </aside>
         )}
-      </div>
-      <details className="wf-connections">
-        <summary>连线管理（也可用下拉框连接） · {plan.edges.length} 条</summary>
-        <div className="wf-link-form">
-          <label>
-            来源
-            <select value={source} onChange={(e) => setSource(e.target.value)}>
-              <option value="">选择来源</option>
-              {plan.nodes.map((n) => (
-                <option key={n.id} value={n.id}>
-                  {n.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <span>→</span>
-          <label>
-            去向
-            <select value={target} onChange={(e) => setTarget(e.target.value)}>
-              <option value="">选择去向</option>
-              {plan.nodes.map((n) => (
-                <option key={n.id} value={n.id}>
-                  {n.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            disabled={!source || !target}
-            onClick={() => connect({ source, target })}
+        {(panel === "resources" ||
+          panel === "connections" ||
+          panel === "help" ||
+          (inspectorOpen && current)) && (
+          <WorkflowPanel
+            width={panelWidth}
+            onWidth={setPanelWidth}
+            onClose={() => {
+              setInspectorOpen(false);
+              setPanel(null);
+            }}
+            icon={
+              panel === "resources"
+                ? "settings"
+                : panel === "connections"
+                  ? "link"
+                  : panel === "help"
+                    ? "help"
+                    : (current?.kind ?? "settings")
+            }
+            title={
+              panel === "resources"
+                ? "计划设置"
+                : panel === "connections"
+                  ? "连线管理"
+                  : panel === "help"
+                    ? "操作指南"
+                    : "节点设置"
+            }
           >
-            连接
+            {panel === "resources" ? (
+              <PlanResources
+                plan={plan}
+                entities={entities}
+                onChange={change}
+              />
+            ) : panel === "connections" ? (
+              <>
+                {" "}
+                <details className="wf-connections" open>
+                  <summary>
+                    连线管理（也可用下拉框连接） · {plan.edges.length} 条
+                  </summary>
+                  <div className="wf-link-form">
+                    <label>
+                      来源
+                      <select
+                        value={source}
+                        onChange={(e) => setSource(e.target.value)}
+                      >
+                        <option value="">选择来源</option>
+                        {plan.nodes.map((n) => (
+                          <option key={n.id} value={n.id}>
+                            {n.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <span>→</span>
+                    <label>
+                      去向
+                      <select
+                        value={target}
+                        onChange={(e) => setTarget(e.target.value)}
+                      >
+                        <option value="">选择去向</option>
+                        {plan.nodes.map((n) => (
+                          <option key={n.id} value={n.id}>
+                            {n.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <button
+                      disabled={!source || !target}
+                      onClick={() => connect({ source, target })}
+                    >
+                      连接
+                    </button>
+                  </div>
+                  <ul>
+                    {plan.edges.map((e) => (
+                      <li key={e.id}>
+                        {plan.nodes.find((n) => n.id === e.source)?.label} →{" "}
+                        {plan.nodes.find((n) => n.id === e.target)?.label}
+                        <button
+                          aria-label="删除此连线"
+                          onClick={() =>
+                            change({
+                              ...plan,
+                              edges: plan.edges.filter((v) => v.id !== e.id),
+                            })
+                          }
+                        >
+                          ×
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </>
+            ) : panel === "help" ? (
+              <>
+                <div className="wf-shortcuts">
+                  <h3>把农场安排在一张画布上</h3>
+                  <p>
+                    拖动节点移动位置，从右侧圆点拖到另一个节点的左侧圆点连接产物。
+                  </p>
+                  <dl>
+                    <dt>移动画布</dt>
+                    <dd>左键拖动空白处 · H</dd>
+                    <dt>框选节点</dt>
+                    <dd>框选工具 · Shift 拖动</dd>
+                    <dt>临时平移</dt>
+                    <dd>按住空格拖动</dd>
+                    <dt>复制 / 粘贴</dt>
+                    <dd>Ctrl / ⌘ + C / V</dd>
+                    <dt>撤销 / 重做</dt>
+                    <dd>Ctrl / ⌘ + Z / Shift Z</dd>
+                    <dt>查看每日安排</dt>
+                    <dd>底部选择日期，展开生产日程</dd>
+                  </dl>
+                  <p>
+                    选中种植节点可勾选自动续种、缺种补买。每次购买和播种都会出现在日程上。
+                  </p>
+                </div>
+                <details className="wf-assumptions" open>
+                  <summary>计算假设与范围</summary>
+                  <p>
+                    每天统一操作一次。播种日加生长天数为收获日；加工按 24
+                    小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数与容量可在资源设置中调整。
+                  </p>
+                  <p>
+                    适种季节和商店供应使用现有资料。额外解锁、天气、肥料、体力、价格整数舍入及混合品质继承未完整模拟。统一品质是当前计划的估算假设。未知生长、产量、配方或价格不会被当成零。
+                  </p>
+                  <p>
+                    已有库存不重复扣买入成本。自动补买产生真实购买事件和现金支出；无期限的供奉与交付仅作为备货目标。此版本不会自动推荐最优方案，保存的计划结构可用于后续推荐。
+                  </p>
+                </details>
+              </>
+            ) : (
+              current && (
+                <NodeInspector
+                  key={current.id}
+                  node={current}
+                  plan={plan}
+                  entities={entities}
+                  onChange={(n) =>
+                    change({
+                      ...plan,
+                      nodes: plan.nodes.map((v) => (v.id === n.id ? n : v)),
+                    })
+                  }
+                  onDelete={() => remove([current.id])}
+                />
+              )
+            )}
+          </WorkflowPanel>
+        )}
+        <div className="wf-canvas-footer">
+          <div className="wf-view-tools">
+            <button
+              className="wf-icon-button"
+              aria-label="缩小画布"
+              title="缩小"
+              onClick={() => flow.current?.zoomOut({ duration: 150 })}
+            >
+              <WorkflowIcon name="minus" size={16} />
+            </button>
+            <button
+              className="wf-zoom-value"
+              aria-label="重置为百分之百缩放"
+              title="重置为 100%"
+              onClick={() => flow.current?.zoomTo(1, { duration: 150 })}
+            >
+              {Math.round(zoom * 100)}%
+            </button>
+            <button
+              className="wf-icon-button"
+              aria-label="放大画布"
+              title="放大"
+              onClick={() => flow.current?.zoomIn({ duration: 150 })}
+            >
+              <WorkflowIcon name="plus" size={16} />
+            </button>
+            <i />
+            <button
+              className="wf-icon-button"
+              aria-label="适应全部节点"
+              title="适应全部节点"
+              onClick={() =>
+                flow.current?.fitView({
+                  padding: 0.2,
+                  maxZoom: 1,
+                  duration: 250,
+                })
+              }
+            >
+              <WorkflowIcon name="fit" size={17} />
+            </button>
+            <button
+              className="wf-icon-button"
+              aria-label="整理节点布局"
+              title="按连线顺序整理布局（可撤销）"
+              onClick={arrange}
+            >
+              <WorkflowIcon name="layout" size={17} />
+            </button>
+          </div>
+          <span className="wf-pan-hint">
+            {mode === "hand"
+              ? "拖动空白处平移 · Shift 框选"
+              : "拖动空白处框选 · 空格平移"}
+          </span>
+        </div>
+        <div className="wf-history-tools">
+          {selected.length > 0 && (
+            <>
+              <span>已选 {selected.length}</span>
+              <button
+                className="wf-icon-button"
+                aria-label="复制选中节点"
+                title="复制（Ctrl / ⌘ + C）"
+                onClick={copy}
+              >
+                <WorkflowIcon name="copy" size={16} />
+              </button>
+            </>
+          )}
+          <button
+            className="wf-icon-button"
+            aria-label="粘贴节点"
+            title="粘贴（Ctrl / ⌘ + V）"
+            disabled={!hasClipboard}
+            onClick={paste}
+          >
+            <WorkflowIcon name="paste" size={16} />
+          </button>
+          {(selected.length > 0 || selectedEdges.length > 0) && (
+            <button
+              className="wf-icon-button wf-danger"
+              aria-label="删除选中"
+              title="删除选中"
+              onClick={() => remove()}
+            >
+              <WorkflowIcon name="trash" size={16} />
+            </button>
+          )}
+          <i />
+          <button
+            className="wf-icon-button"
+            aria-label="撤销"
+            title="撤销（Ctrl / ⌘ + Z）"
+            disabled={!past.length}
+            onClick={undo}
+          >
+            <WorkflowIcon name="undo" size={16} />
+          </button>
+          <button
+            className="wf-icon-button"
+            aria-label="重做"
+            title="重做（Ctrl / ⌘ + Shift + Z）"
+            disabled={!future.length}
+            onClick={redo}
+          >
+            <WorkflowIcon name="redo" size={16} />
           </button>
         </div>
-        <ul>
-          {plan.edges.map((e) => (
-            <li key={e.id}>
-              {plan.nodes.find((n) => n.id === e.source)?.label} →{" "}
-              {plan.nodes.find((n) => n.id === e.target)?.label}
-              <button
-                aria-label="删除此连线"
-                onClick={() =>
-                  change({
-                    ...plan,
-                    edges: plan.edges.filter((v) => v.id !== e.id),
-                  })
-                }
-              >
-                ×
-              </button>
-            </li>
-          ))}
-        </ul>
-      </details>
-      <PlanResults
+        {notice && (
+          <div className="wf-toast" role="status">
+            <span>{notice}</span>
+            <button
+              className="wf-icon-button"
+              aria-label="关闭提示"
+              onClick={() => setNotice("")}
+            >
+              <WorkflowIcon name="close" size={14} />
+            </button>
+          </div>
+        )}
+      </div>
+      <WorkflowTimeline
         result={result}
         plan={plan}
         entities={entities}
-        selectedDay={day}
+        day={day}
         onDay={setDay}
         onNode={focus}
       />
-      <details className="wf-assumptions">
-        <summary>计算假设与范围</summary>
-        <p>
-          每天统一操作一次。播种日加生长天数为收获日；加工按 24
-          小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数与容量可在资源设置中调整。
-        </p>
-        <p>
-          适种季节和商店供应使用现有资料。额外解锁、天气、肥料、体力、价格整数舍入及混合品质继承未完整模拟。统一品质是当前计划的估算假设。未知生长、产量、配方或价格不会被当成零。
-        </p>
-        <p>
-          已有库存不重复扣买入成本。自动补买产生真实购买事件和现金支出；无期限的供奉与交付仅作为备货目标。此版本不会自动推荐最优方案，保存的计划结构可用于后续推荐。
-        </p>
-      </details>
     </div>
   );
 }

@@ -31,6 +31,7 @@ export default function PlanResults({
   selectedDay,
   onDay,
   onNode,
+  compact = false,
 }: {
   result: SimulationResult;
   plan: WorkflowPlan;
@@ -38,6 +39,7 @@ export default function PlanResults({
   selectedDay: number;
   onDay: (n: number) => void;
   onNode: (id: string) => void;
+  compact?: boolean;
 }) {
   const [onlyProblems, setOnlyProblems] = useState(false);
   const months = [
@@ -82,73 +84,81 @@ export default function PlanResults({
           ))}
         </div>
       )}
-      <div className="wf-panel-title">
-        <h2>每日安排</h2>
-        <div className="wf-month-nav">
-          <button
-            aria-label="上个月"
-            disabled={month <= 0}
-            onClick={() => selectMonth(month - 1)}
-          >
-            ‹
-          </button>
-          <span>
-            {currentMonth !== undefined
-              ? formatDay(currentMonth * 28 + 1).replace("1日", "月")
-              : ""}
-          </span>
-          <button
-            aria-label="下个月"
-            disabled={month >= months.length - 1}
-            onClick={() => selectMonth(month + 1)}
-          >
-            ›
-          </button>
-        </div>
-      </div>
-      <p className="wf-note">
-        每一轮购买、播种和收获都会单独列出。点击日期查看当天清单，点击操作定位节点。
-      </p>
-      <div className="wf-calendar">
-        {days.length > 0 &&
-          Array.from({ length: (days[0].day - 1) % 28 }, (_, i) => (
-            <div key={`blank-${i}`} className="wf-day-empty" />
-          ))}
-        {days.map((d) => {
-          const sow = d.events.filter((e) => e.kind === "plant"),
-            buy = d.events.filter((e) => e.kind === "purchase"),
-            harvest = d.events.filter((e) => e.kind === "harvest"),
-            warnings = d.events.filter((e) => e.kind === "warning");
-          return (
-            <button
-              className={`wf-day ${d.day === daily?.day ? "active" : ""}`}
-              key={d.day}
-              onClick={() => onDay(d.day)}
-              aria-label={`${formatDay(d.day)}，${buy.length} 次购买，${sow.length} 次播种，${harvest.length} 次收获`}
-            >
-              <b>{((d.day - 1) % 28) + 1}</b>
-              <div>
-                {buy.length > 0 && (
-                  <span className="wf-tag buy">买入 {buy.length}</span>
-                )}
-                {sow.length > 0 && (
-                  <span className="wf-tag plant">播种 {sow.length}</span>
-                )}
-                {harvest.length > 0 && (
-                  <span className="wf-tag harvest">收获 {harvest.length}</span>
-                )}
-                {d.events.some((e) => e.kind === "process") && (
-                  <span className="wf-tag">加工</span>
-                )}
-                {warnings.length > 0 && (
-                  <span className="wf-tag warn">缺口 {warnings.length}</span>
-                )}
-              </div>
-              <small>余额 {number(d.cash)}</small>
-            </button>
-          );
-        })}
-      </div>
+      {!compact && (
+        <>
+          <div className="wf-panel-title">
+            <h2>每日安排</h2>
+            <div className="wf-month-nav">
+              <button
+                aria-label="上个月"
+                disabled={month <= 0}
+                onClick={() => selectMonth(month - 1)}
+              >
+                ‹
+              </button>
+              <span>
+                {currentMonth !== undefined
+                  ? formatDay(currentMonth * 28 + 1).replace("1日", "季")
+                  : ""}
+              </span>
+              <button
+                aria-label="下个月"
+                disabled={month >= months.length - 1}
+                onClick={() => selectMonth(month + 1)}
+              >
+                ›
+              </button>
+            </div>
+          </div>
+          <p className="wf-note">
+            每一轮购买、播种和收获都会单独列出。点击日期查看当天清单，点击操作定位节点。
+          </p>
+          <div className="wf-calendar">
+            {days.length > 0 &&
+              Array.from({ length: (days[0].day - 1) % 28 }, (_, i) => (
+                <div key={`blank-${i}`} className="wf-day-empty" />
+              ))}
+            {days.map((d) => {
+              const sow = d.events.filter((e) => e.kind === "plant"),
+                buy = d.events.filter((e) => e.kind === "purchase"),
+                harvest = d.events.filter((e) => e.kind === "harvest"),
+                warnings = d.events.filter((e) => e.kind === "warning");
+              return (
+                <button
+                  className={`wf-day ${d.day === daily?.day ? "active" : ""}`}
+                  key={d.day}
+                  onClick={() => onDay(d.day)}
+                  aria-label={`${formatDay(d.day)}，${buy.length} 次购买，${sow.length} 次播种，${harvest.length} 次收获`}
+                >
+                  <b>{((d.day - 1) % 28) + 1}</b>
+                  <div>
+                    {buy.length > 0 && (
+                      <span className="wf-tag buy">买入 {buy.length}</span>
+                    )}
+                    {sow.length > 0 && (
+                      <span className="wf-tag plant">播种 {sow.length}</span>
+                    )}
+                    {harvest.length > 0 && (
+                      <span className="wf-tag harvest">
+                        收获 {harvest.length}
+                      </span>
+                    )}
+                    {d.events.some((e) => e.kind === "process") && (
+                      <span className="wf-tag">加工</span>
+                    )}
+                    {warnings.length > 0 && (
+                      <span className="wf-tag warn">
+                        缺口 {warnings.length}
+                      </span>
+                    )}
+                  </div>
+                  <small>余额 {number(d.cash)}</small>
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
       {daily && (
         <div className="wf-daily">
           <div className="wf-panel-title">

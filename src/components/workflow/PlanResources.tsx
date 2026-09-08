@@ -14,7 +14,7 @@ export default function PlanResources({
   onChange: (p: WorkflowPlan) => void;
 }) {
   return (
-    <details className="wf-resources">
+    <details className="wf-resources" open>
       <summary>
         计划资源与计算设置{" "}
         <span>
