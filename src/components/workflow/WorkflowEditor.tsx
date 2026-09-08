@@ -120,7 +120,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     return () => clearTimeout(timer);
   }, [plan, saveBlocked]);
   useEffect(() => {
-    if (day < plan.startDay || day >= plan.startDay + plan.days)
+    if (!Number.isFinite(day) || day < plan.startDay || day >= plan.startDay + plan.days)
       setDay(plan.startDay);
   }, [plan.startDay, plan.days, day]);
   const undo = () => {

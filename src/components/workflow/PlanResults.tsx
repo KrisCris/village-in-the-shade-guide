@@ -39,19 +39,21 @@ export default function PlanResults({
   onDay: (n: number) => void;
   onNode: (id: string) => void;
 }) {
-  const [month, setMonth] = useState(0);
   const [onlyProblems, setOnlyProblems] = useState(false);
   const months = [
     ...new Set(result.days.map((d) => Math.floor((d.day - 1) / 28))),
   ];
-  const currentMonth = months[Math.min(month, Math.max(0, months.length - 1))];
+  const month = Math.max(0, months.indexOf(Math.floor((selectedDay - 1) / 28)));
+  const currentMonth = months[month];
   const days = result.days.filter(
     (d) => Math.floor((d.day - 1) / 28) === currentMonth,
   );
   const daily = days.find((d) => d.day === selectedDay) ?? days[0];
   const selectMonth = (index: number) => {
-    setMonth(index);
-    onDay(Math.max(plan.startDay, months[index] * 28 + 1));
+    const firstDay = result.days.find(
+      (d) => Math.floor((d.day - 1) / 28) === months[index],
+    );
+    if (firstDay) onDay(firstDay.day);
   };
   const name = (id: string) =>
     entities.find((e) => e.kind === "items" && e.id === id)?.name.zh_hans ?? id;

@@ -68,6 +68,30 @@ it('initial planted and processing work charges no inputs and occupies resources
  expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([7]);
  expect(r.events.filter(e=>e.nodeId==='new'&&e.kind==='plant')).toHaveLength(0);
 });
+it.each([{startDay:27,remainingDays:3},{startDay:29,remainingDays:1}])('blocks existing crops outside their current allowed season: %j',({startDay,remainingDays})=>{
+ const es=entities.map(e=>e.id==='crop'?{...e,seasons:['spring']}:e);
+ const r=simulatePlan(plan([plant('existing',{startDay,remainingDays})],[],{startDay,days:8}),es);
+ expect(r.events.filter(e=>e.kind==='harvest')).toEqual([]);
+ expect(r.stock).toEqual([]);expect(r.inProgress).toEqual([]);expect(r.spending).toBe(0);
+ expect(r.issues.some(i=>i.includes('季节'))).toBe(true);
+});
+it('does not let an invalid existing crop occupy another existing crop plot',()=>{
+ const es=entities.map(e=>e.id==='crop'?{...e,seasons:['spring']}:e);
+ const r=simulatePlan(plan([plant('a-invalid',{startDay:27,remainingDays:3}),plant('b-valid',{startDay:27,remainingDays:1})],[],{startDay:27,days:4}),es);
+ expect(r.events.filter(e=>e.kind==='harvest').map(e=>[e.nodeId,e.day])).toEqual([['b-valid',28]]);
+ expect(r.issues.some(i=>i.includes('容量'))).toBe(false);
+ expect(r.spending).toBe(0);
+});
+it('finishes valid existing crops after their last allowed start date without buying seeds',()=>{
+ const r=simulatePlan(plan([plant('existing',{startDay:5,endDay:5,remainingDays:3})]),entities);
+ expect(r.events.filter(e=>e.kind==='harvest').map(e=>e.day)).toEqual([8]);
+ expect(r.spending).toBe(0);expect(r.issues).toEqual([]);
+});
+it('allows existing processing work to complete across a season boundary',()=>{
+ const r=simulatePlan(plan([node('old','process',{recipeId:'recipe',resourceId:'machine-resource',startDay:27,remainingDays:3})],[],{startDay:27,days:4}),entities);
+ expect(r.events.filter(e=>e.kind==='complete').map(e=>[e.day,e.quantity])).toEqual([[30,2]]);
+ expect(r.spending).toBe(0);expect(r.issues).toEqual([]);
+});
 it('returns explainable issues for cycles and invalid quantities',()=>{
  const cyclic=plan([node('a','process',{recipeId:'recipe'}),node('b','process',{recipeId:'recipe'})],[['a','b'],['b','a']]);
  expect(simulatePlan(cyclic,entities).issues.length).toBeGreaterThan(0);

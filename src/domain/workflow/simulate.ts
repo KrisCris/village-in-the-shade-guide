@@ -115,11 +115,13 @@ export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResu
  for(const n of nodes.filter(n=>n.remainingDays!==undefined&&!disabled.has(n.id))) {
   if(n.kind!=='plant'&&n.kind!=='process')continue;
   const crop=crops.get(n.id),recipe=recipes.get(n.id);
+  const finishDay=plan.startDay+n.remainingDays!,lastDay=Math.ceil(plan.startDay/28)*28;
+  if(crop&&(!crop.seasons.includes(seasonAt(plan.startDay))||finishDay>lastDay)){stop(n,'已有作物无法在当前允许季节内完成首轮收获；跨季生长尚不支持。');continue;}
   const resource=n.kind==='plant'?plan.plots.find(r=>r.id===n.resourceId)!:plan.machines.find(r=>r.id===n.resourceId)!;
   const capacity=n.kind==='plant'?resource.capacity:plan.machines.find(r=>r.id===n.resourceId)!.count*resource.capacity;
   if(occupied(resource.id)+n.quantity>capacity){stop(n,'已有作物 / 在制品超过资源容量。');continue;}
   const itemId=crop?.itemId??recipe!.itemId,yieldCount=crop?.yield??recipe!.yield;
-  jobs.push({nodeId:n.id,resourceId:resource.id,kind:n.kind,finishDay:plan.startDay+n.remainingDays!,itemId,quantity:n.quantity*yieldCount,slots:n.quantity,regrow:crop?.regrow??0,lastDay:Math.ceil(plan.startDay/28)*28});
+  jobs.push({nodeId:n.id,resourceId:resource.id,kind:n.kind,finishDay,itemId,quantity:n.quantity*yieldCount,slots:n.quantity,regrow:crop?.regrow??0,lastDay});
   initialized.add(n.id);started.set(n.id,n.quantity);
  }
  const protectDemands=(reportDeficits:boolean)=>{

@@ -3,4 +3,4 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsyncWorkflowPlanner from '../../components/workflow/AsyncWorkflowPlanner';
 ---
 <BaseLayout title="农场生产工作流" description="按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。"><AsyncWorkflowPlanner client:only="react"><p slot="fallback">正在打开农场生产工作流…</p></AsyncWorkflowPlanner></BaseLayout>
-<style is:global>body:has(.wf-app) .main{max-width:none;min-width:0;width:100%;background:var(--paper)}body:has(.wf-app) .page{max-width:1800px}body:has(.wf-app) .falling-leaves{display:none}body:has(.wf-app) .main .wf-heading h1{margin-bottom:0;padding-bottom:0}body:has(.wf-app) .main .wf-heading h1::after{display:none}</style>
+<style is:global>body.wiki-page:has(.wf-app) .main{max-width:none;min-width:0;width:100%;background:var(--paper)}body:has(.wf-app) .page{max-width:1800px}body:has(.wf-app) .falling-leaves{display:none}body:has(.wf-app) .main .wf-heading h1{margin-bottom:0;padding-bottom:0}body:has(.wf-app) .main .wf-heading h1::after{display:none}</style>

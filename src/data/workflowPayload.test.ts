@@ -78,3 +78,20 @@ it("retains shop offers for inventory and consumption items outside production r
     }).map((e) => e.id),
   ).toContain("gift-shop");
 });
+it("retains excluded unlock flags alongside shop offer conditions", () => {
+  const result = workflowPayload({
+    entities: [e("offer", "store-offers", {
+      item_id: "seed",
+      excluded_flags: [999999],
+      conditions: ["玩家解锁条件"],
+    })],
+    byId: {},
+    counts: {},
+    buildId: "test",
+    generatedAt: "",
+  });
+  expect(result.find((e) => e.id === "offer")).toMatchObject({
+    excluded_flags: [999999],
+    conditions: ["玩家解锁条件"],
+  });
+});
