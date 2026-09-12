@@ -42,3 +42,7 @@ Desktop.ini
 *.tsbuildinfo
 
 tools/save-probes/__pycache__/
+
+# Private save fixtures stay local; see tests/gamesave/README.md.
+/tests/gamesave/*
+!/tests/gamesave/README.md

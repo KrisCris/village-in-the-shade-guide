@@ -6,6 +6,7 @@
   "scripts": {
     "predev": "npm run build:data",
     "dev": "astro dev",
+    "pretest": "npm run build:data",
     "test": "vitest run",
     "check": "astro check",
     "build:data": "tsx tools/build-site-data.ts",
