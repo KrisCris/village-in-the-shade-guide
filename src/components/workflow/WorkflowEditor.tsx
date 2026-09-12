@@ -31,6 +31,11 @@ import {
 } from "../../domain/workflowEditor";
 import { simulatePlan } from "../../domain/workflow/simulate";
 import { canConnect } from "../../domain/workflow/graph";
+import {
+  canConnectDraft,
+  resolveIntent,
+  autoAmount,
+} from "../../domain/workflow/intent";
 import { formatDay, seasonAt } from "../../domain/workflow/date";
 import { withBase } from "../../lib/sitePath";
 import NodeInspector from "./NodeInspector";
@@ -46,7 +51,22 @@ const STORAGE = "village-production-plan-v1";
 function load(entities: Entity[]) {
   try {
     const saved = localStorage.getItem(STORAGE);
-    return { plan: saved ? parsePlan(saved) : createPlan(entities), error: "" };
+    const plan = saved ? parsePlan(saved) : createPlan(entities);
+    const migrated = !!saved && !JSON.parse(saved).planningMode;
+    if (migrated && !localStorage.getItem(`${STORAGE}-before-intent`)) {
+      try {
+        localStorage.setItem(`${STORAGE}-before-intent`, saved!);
+      } catch {
+        /* Existing import remains usable when backup storage is full. */
+      }
+    }
+    return {
+      plan,
+      error: "",
+      migrationNotice: migrated
+        ? "旧方案已升级，保留手动日期、数量及机器设置。可在节点中恢复自动跟随上游；"
+        : "",
+    };
   } catch {
     return {
       plan: createPlan(entities),
@@ -58,7 +78,16 @@ function load(entities: Entity[]) {
 export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const [initial] = useState(() => load(entities));
   const [plan, setPlan] = useState(initial.plan);
-  const [notice, setNotice] = useState(initial.error);
+  const [hasLegacyBackup] = useState(() => {
+    try {
+      return !!localStorage.getItem(`${STORAGE}-before-intent`);
+    } catch {
+      return false;
+    }
+  });
+  const [notice, setNotice] = useState(
+    initial.error || initial.migrationNotice || "",
+  );
   const [saveBlocked, setSaveBlocked] = useState(!!initial.error);
   const [saveStatus, setSaveStatus] = useState("");
   const [past, setPast] = useState<WorkflowPlan[]>([]),
@@ -189,10 +218,10 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     if (
       !Number.isFinite(day) ||
       day < plan.startDay ||
-      day >= plan.startDay + plan.days
+      day > (result.intent?.finishDay ?? plan.startDay + plan.days - 1)
     )
       setDay(plan.startDay);
-  }, [plan.startDay, plan.days, day]);
+  }, [plan.startDay, plan.days, day, result.intent?.finishDay]);
   const undo = () => {
     if (!past.length) return;
     setFuture((f) => [plan, ...f]);
@@ -307,8 +336,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       setNotice("每份计划最多 500 条连线。");
       return;
     }
-    if (!canConnect(plan.nodes, plan.edges, c.source, c.target, entities)) {
-      setNotice("无法连接：请检查物品是否匹配、是否重复或形成循环。");
+    if (!canConnectDraft(plan.nodes, plan.edges, c.source, c.target)) {
+      setNotice("无法连接：请检查节点方向、重复连线或循环。");
       return;
     }
     change({
@@ -325,6 +354,49 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           y: rect.top + rect.height * 0.35,
         })
       : { x: 80, y: 80 };
+  };
+  const frameSelection = (targets: WorkflowNode[], reservePanel = false) => {
+    const element = canvas.current,
+      instance = flow.current;
+    if (!element || !instance || !targets.length) return;
+    const left = 90,
+      right = reservePanel && window.innerWidth > 800 ? panelWidth + 40 : 50,
+      top = 35,
+      bottom = 70;
+    const x = Math.min(...targets.map((n) => n.position.x)),
+      y = Math.min(...targets.map((n) => n.position.y));
+    const width =
+      Math.max(
+        ...targets.map(
+          (n) =>
+            n.position.x + (instance.getNode(n.id)?.measured?.width ?? 264),
+        ),
+      ) - x;
+    const height =
+      Math.max(
+        ...targets.map(
+          (n) =>
+            n.position.y + (instance.getNode(n.id)?.measured?.height ?? 240),
+        ),
+      ) - y;
+    const availableWidth = element.clientWidth - left - right,
+      availableHeight = element.clientHeight - top - bottom;
+    const zoom = Math.max(
+      0.2,
+      Math.min(
+        1,
+        availableWidth / Math.max(1, width),
+        availableHeight / Math.max(1, height),
+      ),
+    );
+    instance.setViewport(
+      {
+        x: left + (availableWidth - width * zoom) / 2 - x * zoom,
+        y: top + (availableHeight - height * zoom) / 2 - y * zoom,
+        zoom,
+      },
+      { duration: 200 },
+    );
   };
   const add = (kind: NodeKind, droppedPosition?: { x: number; y: number }) => {
     const position = droppedPosition ?? visiblePosition();
@@ -346,24 +418,9 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       return;
     }
     const n = { ...newNode(kind, day, plan.nodes.length), position };
-    if (kind === "plant") n.resourceId = plan.plots[0]?.id;
     change({ ...plan, nodes: [...plan.nodes, n] });
     setSelected([n.id]);
-    setTimeout(
-      () =>
-        flow.current?.fitView({
-          nodes: [{ id: n.id }],
-          padding: {
-            left: "90px",
-            right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
-            top: "70px",
-            bottom: "100px",
-          },
-          maxZoom: 1,
-          duration: 200,
-        }),
-      100,
-    );
+    setTimeout(() => frameSelection([n], true), 100);
     setInspectorOpen(true);
     setPanel(null);
   };
@@ -413,7 +470,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const seedId = (crop.seed_item_ids as string[] | undefined)?.[0],
       itemId = (crop.harvest_item_ids as string[] | undefined)?.[0];
     if (!seedId || !itemId) return;
-    const quantity = Math.min(6, plan.plots[0]?.capacity ?? 6);
+    const quantity = 100;
     const origin = visiblePosition();
     const y = Math.min(origin.y, ...plan.nodes.map((n) => n.position.y - 290));
     const buy = {
@@ -427,14 +484,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       ...newNode("plant", day),
       label: `种植${crop.name.zh_hans}`,
       cropId: crop.id,
-      resourceId: plan.plots[0]?.id,
       quantity,
       position: { x: origin.x, y },
     };
     const sale = {
       ...newNode("sale", day),
-      label: `出售${crop.name.zh_hans}`,
-      itemId,
+      label: "出售产物",
       position: { x: origin.x + 330, y },
     };
     const nodes = [...plan.nodes, buy, plant, sale],
@@ -456,21 +511,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     setNotice("");
     setPanel(null);
     setInspectorOpen(true);
-    setTimeout(
-      () =>
-        flow.current?.fitView({
-          nodes: [{ id: buy.id }, { id: plant.id }, { id: sale.id }],
-          padding: {
-            left: "90px",
-            right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
-            top: "80px",
-            bottom: "100px",
-          },
-          maxZoom: 1,
-          duration: 250,
-        }),
-      100,
-    );
+    setTimeout(() => frameSelection([buy, plant, sale], true), 100);
   };
   const onNodesChange = useCallback((changes: NodeChange<FlowNode>[]) => {
     const selection = changes.filter((c) => c.type === "select");
@@ -503,21 +544,18 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     setSelected([id]);
     setInspectorOpen(true);
     setPanel(null);
-    flow.current?.fitView({
-      nodes: [{ id }],
-      padding: {
-        left: "90px",
-        right: window.innerWidth > 800 ? `${panelWidth + 40}px` : "50px",
-        top: "80px",
-        bottom: "100px",
-      },
-      maxZoom: 1.2,
-      duration: 250,
-    });
+    const target = plan.nodes.find((n) => n.id === id);
+    if (target) frameSelection([target], true);
   };
   const nodes: FlowNode[] = useMemo(
     () =>
-      plan.nodes.map((n) => {
+      plan.nodes.map((stored) => {
+        const n = {
+          ...stored,
+          ...result.intent?.resolvedNodes.find((n) => n.id === stored.id),
+          position: stored.position,
+        };
+        const projection = result.intent?.nodes[n.id];
         const entity = entities.find(
           (e) =>
             e.kind === (n.kind === "plant" ? "crops" : "processes") &&
@@ -535,7 +573,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             (n.requirements && n.requirements.length > 3
               ? ` 等 ${n.requirements.length} 项`
               : "")
-          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "未设置")} · ${n.quantity === 0 ? "剩余全部" : `${n.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}`}`;
+          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "连接后自动识别")} · ${projection?.quantity ? `${projection.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}` : autoAmount(n) ? "跟随上游" : `${n.quantity} 个`}`;
         const completed = result.demandProgress[n.id]
           ? (result.days.find((d) => d.day === day)?.stock ?? []).filter(
               (s) => s.nodeId === n.id && s.reserved,
@@ -551,6 +589,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           selected: selected.includes(n.id),
           data: {
             node: n,
+            projection,
             subtitle,
             icon: icon ? withBase(icon) : undefined,
             problems,
@@ -562,6 +601,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                         .map(
                           (e) =>
                             ({
+                              inventory: "库存",
                               purchase: "买入",
                               plant: "播种",
                               harvest: "收获",
@@ -593,9 +633,20 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         ...e,
         selected: selectedEdges.includes(e.id),
         type: "smoothstep",
+        label:
+          (result.intent?.edgeTransfers[e.id]
+            ?.map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
+            .join(" · ") ?? "等待分配") +
+          (result.intent?.edgeSchedule[e.id]?.length
+            ? ` · ${formatDay(result.intent.edgeSchedule[e.id][0].day)}${result.intent.edgeSchedule[e.id].at(-1)!.day !== result.intent.edgeSchedule[e.id][0].day ? " 起" : ""}`
+            : ""),
+        labelStyle: { fill: "var(--ink-muted)", fontSize: 11 },
+        labelBgStyle: { fill: "var(--paper-raised)", fillOpacity: 0.95 },
+        labelBgPadding: [6, 4] as [number, number],
+        labelBgBorderRadius: 5,
         style: { stroke: "var(--wf-edge)", strokeWidth: 1.7 },
       })),
-    [plan.edges, selectedEdges],
+    [plan.edges, selectedEdges, result, byId],
   );
   const arrange = () => {
     const incoming = new Map(
@@ -665,6 +716,32 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     selected.length === 1
       ? plan.nodes.find((n) => n.id === selected[0])
       : undefined;
+  const inference = useMemo(
+    () => resolveIntent(plan, entities),
+    [computationKey, entities],
+  );
+  const comparison = useMemo(() => {
+    if (current?.kind !== "process" || current.machineCount === undefined)
+      return undefined;
+    const fast = simulatePlan(
+      {
+        ...plan,
+        nodes: plan.nodes.map((n) =>
+          n.id === current.id ? { ...n, machineCount: undefined } : n,
+        ),
+      },
+      entities,
+    );
+    return {
+      delay: Math.max(
+        0,
+        (result.intent?.nodes[current.id]?.finishDay ?? 0) -
+          (fast.intent?.nodes[current.id]?.finishDay ?? 0),
+      ),
+      incomeDifference: result.income - fast.income,
+      machines: fast.intent?.nodes[current.id]?.machines ?? 0,
+    };
+  }, [current?.id, computationKey, entities, result]);
   const descriptions: Record<NodeKind, string> = {
     purchase: "购买种子与原料",
     inventory: "使用手头已有物品",
@@ -755,6 +832,26 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                 <WorkflowIcon name="plus" />
                 新建计划
               </button>
+              {hasLegacyBackup && (
+                <button
+                  onClick={() => {
+                    const raw = localStorage.getItem(
+                      `${STORAGE}-before-intent`,
+                    );
+                    if (!raw) return;
+                    const url = URL.createObjectURL(
+                      new Blob([raw], { type: "application/json" }),
+                    );
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "农场计划-升级前备份.json";
+                    a.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                  }}
+                >
+                  导出升级前备份
+                </button>
+              )}
               <button onClick={download}>
                 <WorkflowIcon name="download" />
                 导出计划
@@ -797,25 +894,34 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           {formatDay(plan.startDay)} 起 · {plan.days} 天
           <WorkflowIcon name="chevron" size={12} />
         </button>
-        <span className="wf-resource-summary">
-          {plan.plots.reduce((s, p) => s + p.capacity, 0)} 格土地<span>·</span>
-          {plan.machines.reduce((s, m) => s + m.count, 0)} 台机器
+        <span
+          className="wf-resource-summary"
+          title="按同时占用推算的需求，机器购置费用另计"
+        >
+          需要 {result.intent?.land ?? 0} 格土地<span>·</span>
+          {Object.values(result.intent?.nodes ?? {}).reduce(
+            (sum, p) => sum + p.machines,
+            0,
+          )}{" "}
+          台机器
         </span>
         <div className="wf-cash-summary">
-          <span>
-            期末现金{" "}
+          <span title="支出发生时不依赖尚未到账的收入">
+            启动资金{" "}
+            <b>{(result.intent?.startupFunds ?? 0).toLocaleString()}</b>
+          </span>
+          <span title="本期实际到账减去购买支出">
+            本期收支{" "}
             <b>
-              {result.cash.toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
+              {result.cash >= 0 ? "+" : ""}
+              {result.cash.toLocaleString()}
             </b>
           </span>
-          <span>
-            现金净流入{" "}
+          <span title="包含期末之后的加工与到账">
+            最终收支{" "}
             <b>
-              {(result.income - result.spending).toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
+              {(result.intent?.finalDelta ?? result.cash) >= 0 ? "+" : ""}
+              {(result.intent?.finalDelta ?? result.cash).toLocaleString()}
             </b>
           </span>
         </div>
@@ -832,7 +938,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             onCommit={commitPositions}
             onConnect={connect}
             isValid={(c) =>
-              canConnect(plan.nodes, plan.edges, c.source, c.target, entities)
+              canConnectDraft(plan.nodes, plan.edges, c.source, c.target)
             }
             onInspect={() => {
               setInspectorOpen(true);
@@ -1081,6 +1187,22 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                       <li key={e.id}>
                         {plan.nodes.find((n) => n.id === e.source)?.label} →{" "}
                         {plan.nodes.find((n) => n.id === e.target)?.label}
+                        {!!result.intent?.edgeSchedule[e.id]?.length && (
+                          <details>
+                            <summary>
+                              {result.intent.edgeSchedule[e.id].length}{" "}
+                              批分配明细
+                            </summary>
+                            <ul>
+                              {result.intent.edgeSchedule[e.id].map((a, i) => (
+                                <li key={i}>
+                                  {formatDay(a.day)} · {itemName(a.itemId)} ×
+                                  {a.quantity}
+                                </li>
+                              ))}
+                            </ul>
+                          </details>
+                        )}
                         <button
                           aria-label="删除此连线"
                           onClick={() =>
@@ -1126,7 +1248,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   <summary>计算假设与范围</summary>
                   <p>
                     每天统一操作一次。播种日加生长天数为收获日；加工按 24
-                    小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数与容量可在资源设置中调整。
+                    小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数在计划设置中调整，机器台数与并行容量在加工节点中调整。
                   </p>
                   <p>
                     适种季节和商店供应使用现有资料。额外解锁、天气、肥料、体力、价格整数舍入及混合品质继承未完整模拟。统一品质是当前计划的估算假设。未知生长、产量、配方或价格不会被当成零。
@@ -1141,6 +1263,10 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                 <NodeInspector
                   key={current.id}
                   node={current}
+                  resolved={inference.nodes.find((n) => n.id === current.id)}
+                  projection={result.intent?.nodes[current.id]}
+                  choices={inference.choices[current.id]}
+                  comparison={comparison}
                   plan={plan}
                   entities={entities}
                   onChange={(n) =>

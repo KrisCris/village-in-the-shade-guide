@@ -1,15 +1,17 @@
-import { useState } from "react";
 import type { Entity } from "../../data/types";
 import type {
   SimulationResult,
   WorkflowPlan,
   PlanEvent,
+  StockRow,
 } from "../../domain/workflow/types";
 import { formatDay } from "../../domain/workflow/date";
+import { withBase } from "../../lib/sitePath";
 
 const labels: Record<PlanEvent["kind"], string> = {
-  purchase: "买种 / 买入",
-  plant: "播种 / 补种",
+  inventory: "已有库存",
+  purchase: "买入",
+  plant: "播种",
   harvest: "收获",
   process: "投料",
   complete: "加工完成",
@@ -18,12 +20,11 @@ const labels: Record<PlanEvent["kind"], string> = {
   consume: "消耗",
   sale: "出货",
   receipt: "到账",
-  warning: "未能执行",
+  warning: "需处理",
 };
 const number = (n: number) =>
-  Number.isInteger(n)
-    ? n.toLocaleString()
-    : `≈${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+  n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+const signed = (n: number) => `${n >= 0 ? "+" : ""}${number(n)}`;
 export default function PlanResults({
   result,
   plan,
@@ -31,7 +32,6 @@ export default function PlanResults({
   selectedDay,
   onDay,
   onNode,
-  compact = false,
 }: {
   result: SimulationResult;
   plan: WorkflowPlan;
@@ -41,203 +41,330 @@ export default function PlanResults({
   onNode: (id: string) => void;
   compact?: boolean;
 }) {
-  const [onlyProblems, setOnlyProblems] = useState(false);
-  const months = [
-    ...new Set(result.days.map((d) => Math.floor((d.day - 1) / 28))),
-  ];
-  const month = Math.max(0, months.indexOf(Math.floor((selectedDay - 1) / 28)));
-  const currentMonth = months[month];
-  const days = result.days.filter(
-    (d) => Math.floor((d.day - 1) / 28) === currentMonth,
-  );
-  const daily = days.find((d) => d.day === selectedDay) ?? days[0];
-  const selectMonth = (index: number) => {
-    const firstDay = result.days.find(
-      (d) => Math.floor((d.day - 1) / 28) === months[index],
-    );
-    if (firstDay) onDay(firstDay.day);
-  };
-  const name = (id: string) =>
-    entities.find((e) => e.kind === "items" && e.id === id)?.name.zh_hans ?? id;
+  const daily =
+    result.days.find((d) => d.day === selectedDay) ?? result.days[0];
+  const catalog = new Map(entities.map((e) => [e.id, e]));
+  const name = (id: string) => catalog.get(id)?.name.zh_hans ?? id;
   const nodeName = (id: string) =>
     plan.nodes.find((n) => n.id === id)?.label ?? "计划";
+  const next = result.days.find(
+    (d) =>
+      d.day > (daily?.day ?? selectedDay) &&
+      d.events.some((e) => e.kind !== "warning"),
+  );
+  const shopping = new Map<
+    string,
+    { quantity: number; amount: number; replant: number }
+  >();
+  for (const e of daily?.events ?? [])
+    if (e.kind === "purchase" && e.itemId) {
+      const current = shopping.get(e.itemId) ?? {
+        quantity: 0,
+        amount: 0,
+        replant: 0,
+      };
+      current.quantity += e.quantity ?? 0;
+      current.amount += e.amount ?? 0;
+      if (e.reason === "replant") current.replant += e.quantity ?? 0;
+      shopping.set(e.itemId, current);
+    }
+  const groupStock = (rows: StockRow[]) => {
+    const grouped = new Map<string, number>();
+    for (const row of rows)
+      grouped.set(row.itemId, (grouped.get(row.itemId) ?? 0) + row.quantity);
+    return [...grouped];
+  };
+  const item = (id: string) => (
+    <span className="wf-item-inline">
+      {catalog.get(id)?.icon_path && (
+        <img
+          src={withBase(catalog.get(id)!.icon_path!)}
+          width={24}
+          height={24}
+          alt=""
+        />
+      )}
+      {name(id)}
+    </span>
+  );
+  const tasks = plan.nodes.filter((n) =>
+    ["reserve", "delivery"].includes(n.kind),
+  );
+  const machineNeeds = new Map<string, number>();
+  for (const p of Object.values(result.intent?.nodes ?? {}))
+    if (p.machines)
+      machineNeeds.set(
+        p.machineId ?? "配方所需机器",
+        (machineNeeds.get(p.machineId ?? "配方所需机器") ?? 0) + p.machines,
+      );
+  const visibleEvents = (daily?.events ?? []).filter(
+    (e) => e.kind !== "purchase",
+  );
   return (
-    <section className="wf-results" aria-label="每日推演结果">
-      <div className="wf-metrics">
-        {[
-          ["到账收入", result.income],
-          ["实际支出", result.spending],
-          ["现金净流入", result.income - result.spending],
-          ["期末现金", result.cash],
-          ["待到账", result.pendingRevenue],
-        ].map(([label, value]) => (
-          <div key={label}>
-            <small>{label}</small>
-            <strong>{number(Number(value))}</strong>
-          </div>
-        ))}
-      </div>
-      {result.issues.length > 0 && (
-        <div className="wf-error" role="status">
-          {result.issues.slice(0, 8).map((issue, i) => (
-            <p key={i}>{issue}</p>
-          ))}
-        </div>
-      )}
-      {!compact && (
-        <>
-          <div className="wf-panel-title">
-            <h2>每日安排</h2>
-            <div className="wf-month-nav">
-              <button
-                aria-label="上个月"
-                disabled={month <= 0}
-                onClick={() => selectMonth(month - 1)}
-              >
-                ‹
-              </button>
-              <span>
-                {currentMonth !== undefined
-                  ? formatDay(currentMonth * 28 + 1).replace("1日", "季")
-                  : ""}
-              </span>
-              <button
-                aria-label="下个月"
-                disabled={month >= months.length - 1}
-                onClick={() => selectMonth(month + 1)}
-              >
-                ›
-              </button>
-            </div>
-          </div>
-          <p className="wf-note">
-            每一轮购买、播种和收获都会单独列出。点击日期查看当天清单，点击操作定位节点。
-          </p>
-          <div className="wf-calendar">
-            {days.length > 0 &&
-              Array.from({ length: (days[0].day - 1) % 28 }, (_, i) => (
-                <div key={`blank-${i}`} className="wf-day-empty" />
-              ))}
-            {days.map((d) => {
-              const sow = d.events.filter((e) => e.kind === "plant"),
-                buy = d.events.filter((e) => e.kind === "purchase"),
-                harvest = d.events.filter((e) => e.kind === "harvest"),
-                warnings = d.events.filter((e) => e.kind === "warning");
-              return (
-                <button
-                  className={`wf-day ${d.day === daily?.day ? "active" : ""}`}
-                  key={d.day}
-                  onClick={() => onDay(d.day)}
-                  aria-label={`${formatDay(d.day)}，${buy.length} 次购买，${sow.length} 次播种，${harvest.length} 次收获`}
-                >
-                  <b>{((d.day - 1) % 28) + 1}</b>
-                  <div>
-                    {buy.length > 0 && (
-                      <span className="wf-tag buy">买入 {buy.length}</span>
-                    )}
-                    {sow.length > 0 && (
-                      <span className="wf-tag plant">播种 {sow.length}</span>
-                    )}
-                    {harvest.length > 0 && (
-                      <span className="wf-tag harvest">
-                        收获 {harvest.length}
-                      </span>
-                    )}
-                    {d.events.some((e) => e.kind === "process") && (
-                      <span className="wf-tag">加工</span>
-                    )}
-                    {warnings.length > 0 && (
-                      <span className="wf-tag warn">
-                        缺口 {warnings.length}
-                      </span>
-                    )}
-                  </div>
-                  <small>余额 {number(d.cash)}</small>
-                </button>
-              );
-            })}
-          </div>
-        </>
-      )}
+    <section className="wf-results wf-intent-results" aria-label="每日推演结果">
       {daily && (
         <div className="wf-daily">
           <div className="wf-panel-title">
-            <h3>{formatDay(daily.day)}</h3>
-            <label className="wf-check">
-              <input
-                type="checkbox"
-                checked={onlyProblems}
-                onChange={(e) => setOnlyProblems(e.target.checked)}
-              />
-              只看未完成
-            </label>
+            <h3>
+              {formatDay(daily.day)}
+              {daily.day > (result.intent?.periodEnd ?? Infinity) && (
+                <small> · 期末后续</small>
+              )}
+            </h3>
+            {next && (
+              <button onClick={() => onDay(next.day)}>
+                下次操作 · {formatDay(next.day)} →
+              </button>
+            )}
           </div>
-          <ul className="wf-events">
-            {daily.events
-              .filter((e) => !onlyProblems || e.kind === "warning")
-              .map((e, i) => (
-                <li key={i} className={e.kind === "warning" ? "warning" : ""}>
-                  <span
-                    className={`wf-tag ${e.kind === "purchase" ? "buy" : e.kind === "plant" ? "plant" : ""}`}
-                  >
-                    {labels[e.kind]}
-                  </span>
-                  <button onClick={() => onNode(e.nodeId)}>
-                    {nodeName(e.nodeId)}
-                  </button>
-                  <span>{e.message}</span>
-                  {e.amount !== undefined && <b>{number(e.amount)}</b>}
-                </li>
-              ))}
-          </ul>
-          {!daily.events.length && (
-            <p className="wf-note">这一天没有操作，作物和机器继续等待。</p>
-          )}
-          <details>
-            <summary>当天库存 · {daily.stock.length} 项</summary>
-            <div className="wf-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>所在节点</th>
-                    <th>物品</th>
-                    <th>数量</th>
-                    <th>用途</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {daily.stock.map((s, i) => (
-                    <tr key={i}>
-                      <td>
-                        <button onClick={() => onNode(s.nodeId)}>
-                          {nodeName(s.nodeId)}
-                        </button>
-                      </td>
-                      <td>{name(s.itemId)}</td>
-                      <td>{s.quantity}</td>
-                      <td>{s.reserved ? "已留货" : "可用 / 待加工"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="wf-daily-cash">
+            <div>
+              <small>今日支出</small>
+              <b>{number(daily.spending)}</b>
             </div>
-          </details>
+            <div>
+              <small>今日到账</small>
+              <b>{number(daily.income)}</b>
+            </div>
+            <div>
+              <small>较期初累计增减</small>
+              <b>{signed(daily.cash)}</b>
+            </div>
+            <div>
+              <small>已出货待到账</small>
+              <b>{number(daily.pendingRevenue)}</b>
+            </div>
+          </div>
+          <section className="wf-shopping">
+            <h4>
+              今日要买{" "}
+              <small>
+                {shopping.size
+                  ? `${[...shopping.values()].reduce((s, a) => s + a.quantity, 0)} 个 · ${number(daily.spending)}`
+                  : "无需购买"}
+              </small>
+            </h4>
+            {[...shopping].map(([id, a]) => (
+              <div key={id}>
+                {item(id)}
+                <b>×{a.quantity}</b>
+                <span>{number(a.amount)}</span>
+                {a.replant > 0 && <small>其中续种补买 {a.replant} 个</small>}
+              </div>
+            ))}
+          </section>
+          <ul className="wf-events">
+            {visibleEvents.map((e, i) => (
+              <li key={i} className={e.kind === "warning" ? "warning" : ""}>
+                <span
+                  className={`wf-tag ${e.kind === "plant" ? "plant" : e.kind === "harvest" ? "harvest" : ""}`}
+                >
+                  {labels[e.kind]}
+                </span>
+                <button onClick={() => onNode(e.nodeId)}>
+                  {nodeName(e.nodeId)}
+                </button>
+                <span>{e.message}</span>
+              </li>
+            ))}
+          </ul>
+          {!visibleEvents.length && (
+            <p className="wf-note">
+              {shopping.size
+                ? "按采购清单买入后，后续安排会在对应日期列出。"
+                : "这一天无需操作。可以直接跳到下一次操作。"}
+            </p>
+          )}
+          <div className="wf-operation-totals">
+            {(["plant", "harvest", "complete", "sale", "reserve"] as const).map(
+              (kind) => {
+                const count = daily.events
+                  .filter((e) => e.kind === kind)
+                  .reduce((s, e) => s + (e.quantity ?? 0), 0);
+                return count > 0 ? (
+                  <span key={kind}>
+                    {labels[kind]}{" "}
+                    <b>
+                      {number(count)}
+                      {kind === "plant" ? " 格" : " 个"}
+                    </b>
+                  </span>
+                ) : null;
+              },
+            )}
+          </div>
+          <section className="wf-stock-overview">
+            <h4>当日结束时的物品</h4>
+            <div className="wf-stock-columns">
+              {(["usable", "reserved", "waiting"] as const).map((state) => {
+                const rows = groupStock(
+                  daily.stock.filter(
+                    (s) =>
+                      (s.state ?? (s.reserved ? "reserved" : "usable")) ===
+                      state,
+                  ),
+                );
+                return (
+                  <div key={state}>
+                    <h5>
+                      {
+                        {
+                          usable: "可用库存",
+                          reserved: "已留货",
+                          waiting: "等待投料 / 使用",
+                        }[state]
+                      }
+                    </h5>
+                    {rows.length ? (
+                      rows.map(([id, q]) => (
+                        <p key={id}>
+                          {item(id)}
+                          <b>×{q}</b>
+                        </p>
+                      ))
+                    ) : (
+                      <small>暂无</small>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+          {!!tasks.length && (
+            <details className="wf-daily-tasks">
+              <summary>留货与交付目标 · {tasks.length} 项</summary>
+              {tasks.map((n) => {
+                const history = result.events.filter(
+                  (e) => e.nodeId === n.id && e.day <= daily.day,
+                );
+                const delivered = history.some((e) => e.kind === "delivery");
+                const amounts = (n.requirements ?? []).map((a) => ({
+                  ...a,
+                  held: history
+                    .filter(
+                      (e) => e.kind === "reserve" && e.itemId === a.itemId,
+                    )
+                    .reduce((s, e) => s + (e.quantity ?? 0), 0),
+                }));
+                const ready =
+                  amounts.length > 0 &&
+                  amounts.every((a) => a.held >= a.quantity);
+                const projection = result.intent?.nodes[n.id];
+                return (
+                  <div className="wf-status-row" key={n.id}>
+                    <button onClick={() => onNode(n.id)}>{n.label}</button>
+                    <strong>
+                      {delivered ? " 已交付" : ready ? " 已备齐" : " 待备货"}
+                    </strong>
+                    <p>
+                      {amounts
+                        .map((a) => `${name(a.itemId)} ${a.held}/${a.quantity}`)
+                        .join(" · ")}
+                    </p>
+                    <small>
+                      {!plan.edges.some((e) => e.target === n.id)
+                        ? "尚未安排来源"
+                        : projection?.readyDay !== undefined
+                          ? `${formatDay(projection.readyDay)} 可备齐`
+                          : "仍有缺口，查看来源或增加安排"}
+                    </small>
+                  </div>
+                );
+              })}
+            </details>
+          )}
+          {!!daily.inProgress?.length && (
+            <details open>
+              <summary>生长 / 加工中 · {daily.inProgress.length} 批</summary>
+              <ul className="wf-progress-list">
+                {daily.inProgress.map((job, i) => (
+                  <li key={i}>
+                    <button onClick={() => onNode(job.nodeId)}>
+                      {nodeName(job.nodeId)}
+                    </button>
+                    <span>
+                      {name(job.itemId)} ×{job.quantity}
+                    </span>
+                    <small>{formatDay(job.finishDay)} 完成</small>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
         </div>
       )}
-      <details>
-        <summary>期末仍在生长 / 加工 · {result.inProgress.length} 项</summary>
-        <ul>
-          {result.inProgress.map((p, i) => (
-            <li key={i}>
-              {nodeName(p.nodeId)} · {name(p.itemId)} ×{p.quantity} · 预计{" "}
-              {formatDay(p.finishDay)} 完成
-            </li>
+      <aside className="wf-plan-outcome">
+        <h3>这份计划能带来什么</h3>
+        <div className="wf-metrics">
+          {[
+            ["本期收支增减", signed(result.cash)],
+            [
+              "后续全部到账后",
+              signed(result.intent?.finalDelta ?? result.cash),
+            ],
+            ["至少准备资金", number(result.intent?.startupFunds ?? 0)],
+            ["同时需要土地", `${result.intent?.land ?? 0} 格`],
+            [
+              "本期留存数量",
+              `${result.stock.filter((s) => s.reserved).reduce((s, a) => s + a.quantity, 0)} 个`,
+            ],
+            ["期末已出货待到账", number(result.pendingRevenue)],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <small>{label}</small>
+              <strong>{value}</strong>
+            </div>
           ))}
-        </ul>
-      </details>
-      <p className="wf-note">
-        现金净流入只计算本期到账与支出；库存、留货和在制品不计为现金收入。当前结果为所设时间范围的合计。
-      </p>
+        </div>
+        {!!machineNeeds.size && (
+          <details>
+            <summary>机器需求 · 按型号查看</summary>
+            {[...machineNeeds].map(([id, count]) => (
+              <p className="wf-machine-need" key={id}>
+                {catalog.get(id)?.name.zh_hans ?? id}
+                <b>{count} 台</b>
+              </p>
+            ))}
+          </details>
+        )}
+        <p className="wf-note">
+          资金需求按先投入、后回款推算。收支不含库存估值和机器购置费用。
+        </p>
+        {(result.intent?.finishDay ?? 0) >
+          (result.intent?.periodEnd ?? Infinity) && (
+          <button
+            className="wf-future-link"
+            onClick={() => onDay(result.intent!.finishDay)}
+          >
+            查看最后到账 / 完成日 · {formatDay(result.intent!.finishDay)} →
+          </button>
+        )}
+        {!!result.issues.length && (
+          <details className="wf-error" open>
+            <summary>{result.issues.length} 项需处理</summary>
+            {result.issues.map((issue, i) => (
+              <p key={i}>{issue}</p>
+            ))}
+          </details>
+        )}
+        {Object.entries(result.intent?.nodes ?? {}).some(
+          ([, p]) => p.notices.length > 0,
+        ) && (
+          <details>
+            <summary>待配置与余料去向</summary>
+            {Object.entries(result.intent?.nodes ?? {})
+              .filter(([, p]) => p.notices.length > 0)
+              .map(([id, p]) => (
+                <div className="wf-status-row" key={id}>
+                  <button onClick={() => onNode(id)}>{nodeName(id)}</button>
+                  {p.notices.map((message, i) => (
+                    <p key={i}>{message}</p>
+                  ))}
+                </div>
+              ))}
+          </details>
+        )}
+      </aside>
     </section>
   );
 }

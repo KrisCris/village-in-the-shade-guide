@@ -1,6 +1,26 @@
 import { expect, it } from "vitest";
 import type { Catalog, Entity } from "./types";
 import { workflowPayload } from "./workflowPayload";
+import { buildCatalog } from "./catalog";
+import machines from "../../data/generated/build-24969282/entities/machines.json";
+import processes from "../../data/generated/build-24969282/entities/processes.json";
+import capacities from "../../data/sources/game-machine-capacities.json";
+
+it("delivers verified slot counts for every device used by the game processing recipes", () => {
+  const payload = workflowPayload(buildCatalog({ "/entities/machines.json": machines }));
+  const referenced = new Set(processes.flatMap(recipe => recipe.machine_ids));
+  expect(new Set(capacities.machines.map(machine => machine.item_id))).toEqual(referenced);
+  for (const id of referenced) {
+    expect(payload.find(e => e.id === id)?.capacity).toBe(
+      capacities.machines.find(machine => machine.item_id === id)!.capacity,
+    );
+  }
+  expect(payload.find(e => e.id === "ITEM_ID_GIMMICK_AGUNG_BARREL")?.capacity).toBe(1);
+  expect(payload.find(e => e.id === "ITEM_ID_GIMMICK_AGUNG_BARREL_02")?.capacity).toBe(3);
+  for (const id of ["ITEM_ID_GIMMICK_BEEHIVE", "ITEM_ID_GIMMICK_SAP_EXTRACTOR", "ITEM_ID_GIMMICK_SERICULTURE_BOX"])
+    expect(payload.find(e => e.id === id)?.capacity).toBe(1);
+  expect(payload.find(e => e.id === "ITEM_ID_GIMMICK_CRAFT_TABLE")?.capacity).toBeUndefined();
+});
 const e = (id: string, kind: string, extra = {}): Entity => ({
   id,
   kind,

@@ -15,7 +15,7 @@ export function workflowPayload(catalog: Catalog): Entity[] {
     ),
   ].map((e) => ({
     ...compactItemRow(e),
-    ...(e.kind === "machines" ? { description: e.description } : {}),
+    ...(e.kind === "machines" ? { description: e.description, capacity: e.capacity } : {}),
     ...(e.kind === "store-offers" ? { excluded_flags: e.excluded_flags } : {}),
   }));
 }

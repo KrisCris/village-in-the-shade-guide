@@ -1,5 +1,5 @@
 import { Handle, Position, type NodeProps, type Node } from "@xyflow/react";
-import type { WorkflowNode } from "../../domain/workflow/types";
+import type { WorkflowNode, NodeProjection } from "../../domain/workflow/types";
 import { nodeLabels } from "../../domain/workflowEditor";
 import { formatDay } from "../../domain/workflow/date";
 import { memo } from "react";
@@ -10,6 +10,7 @@ export type CardData = {
   icon?: string;
   today: string;
   progress?: string;
+  projection?: NodeProjection;
   problems: number;
 };
 export type FlowNode = Node<CardData, "operation">;
@@ -28,7 +29,7 @@ export default memo(function WorkflowCard({
           <WorkflowIcon name={n.kind} size={14} />
           {nodeLabels[n.kind]}
         </span>
-        {n.repeat && (
+        {n.repeat && ["plant", "purchase"].includes(n.kind) && (
           <b>
             <WorkflowIcon name="repeat" size={12} />
             {n.kind === "plant" ? "自动续种" : "循环"}
@@ -54,9 +55,25 @@ export default memo(function WorkflowCard({
       <p>{data.subtitle || "点击设置物品与数量"}</p>
       <small className="wf-node-date">
         <WorkflowIcon name="calendar" size={12} />
-        {formatDay(n.startDay)} 起{n.autoBuy ? " · 缺种补买" : ""}
+        {data.projection?.firstDay !== undefined
+          ? `${formatDay(data.projection.firstDay)}${data.projection.finishDay !== data.projection.firstDay ? ` → ${formatDay(data.projection.finishDay!)}` : ""}`
+          : n.dateMode === "manual"
+            ? `${formatDay(n.startDay)} 起`
+            : "原料齐备后自动安排"}
         {n.remainingDays !== undefined ? " · 已在进行" : ""}
       </small>
+      {data.projection && (
+        <div className={`wf-node-status ${data.projection.status}`}>
+          {data.projection.notices[0] ??
+            (n.kind === "plant"
+              ? `需 ${data.projection.land} 格土地 · 收获 ${data.projection.outputQuantity} 个`
+              : n.kind === "process"
+                ? `${data.projection.machines} 台机器 · 产出 ${data.projection.outputQuantity} 个`
+                : data.projection.delivered
+                  ? "已交付"
+                  : "数量与日期随上游推算")}
+        </div>
+      )}
       {data.progress && <div className="wf-node-progress">{data.progress}</div>}
       {data.today && (
         <div className={`wf-node-today ${data.problems ? "has-problems" : ""}`}>

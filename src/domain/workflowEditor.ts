@@ -26,7 +26,9 @@ export function newNode(kind: NodeKind, day: number, index = 0): WorkflowNode {
     quantity: kind === "sale" ? 0 : 1,
     startDay: day,
     repeat: ["process", "sale"].includes(kind),
-    autoBuy: false,
+    autoBuy: kind === "plant",
+    amountMode: ["purchase", "inventory"].includes(kind) ? "manual" : "auto",
+    dateMode: ["purchase", "inventory"].includes(kind) ? "manual" : "auto",
     priority: ["reserve", "delivery"].includes(kind) ? 0 : 10,
     position: {
       x: 80 + (index % 3) * 290,
@@ -65,13 +67,14 @@ export function createDemandNodes(
 export function createPlan(entities: Entity[]): WorkflowPlan {
   return {
     version: 1,
+    planningMode: "intent",
     name: "我的农场生产计划",
     startDay: 1,
     days: 28,
-    initialCash: 3000,
+    initialCash: 0,
     quality: "normal",
     settlementDays: 1,
-    plots: [{ id: "field-a", label: "A 地块", capacity: 24 }],
+    plots: [],
     machines: [],
     nodes: createDemandNodes(entities, 1),
     edges: [],
@@ -133,6 +136,10 @@ const node = z.object({
   cropId: id.optional(),
   recipeId: id.optional(),
   resourceId: id.optional(),
+  machineId: id.optional(),
+  amountMode: z.enum(["auto", "manual"]).optional(),
+  dateMode: z.enum(["auto", "manual"]).optional(),
+  machineCount: z.number().int().min(1).max(10000).optional(),
   endDay: day.optional(),
   dueDay: day.optional(),
   requirements: z.array(amount).max(100).optional(),
@@ -141,6 +148,7 @@ const node = z.object({
 });
 const schema = z.object({
   version: z.literal(1),
+  planningMode: z.literal("intent").optional(),
   name: z.string().max(150),
   startDay: day,
   days: z.number().int().min(1).max(112),
@@ -215,6 +223,26 @@ export function parsePlan(raw: string): WorkflowPlan {
       throw new Error("非出售节点的数量必须大于零");
     if (n.endDay !== undefined && n.endDay < n.startDay)
       throw new Error("结束日期不能早于开始日期");
+  }
+  if (!plan.planningMode) {
+    plan = {
+      ...plan,
+      planningMode: "intent",
+      nodes: plan.nodes.map((n) => {
+        const machine = plan.machines.find((m) => m.id === n.resourceId);
+        return {
+          ...n,
+          amountMode: n.kind === "sale" && n.quantity === 0 ? "auto" : "manual",
+          dateMode: "manual",
+          ...(n.kind === "process" && machine
+            ? {
+                machineCount: machine.count,
+                machineId: machine.machineId,
+              }
+            : {}),
+        };
+      }),
+    };
   }
   return plan;
 }

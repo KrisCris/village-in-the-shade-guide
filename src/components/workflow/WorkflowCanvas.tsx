@@ -12,6 +12,7 @@ import {
   MiniMap,
   ReactFlow,
   SelectionMode,
+  useKeyPress,
   type Connection,
   type Edge,
   type NodeChange,
@@ -22,6 +23,8 @@ import type { NodeKind } from "../../domain/workflow/types";
 
 const nodeTypes = { operation: WorkflowCard };
 const multiKeys = ["Control", "Meta", "Shift"];
+// MiniMap uses these dimensions for both its SVG and pointer-to-world conversion.
+const miniMapSize = { width: 150, height: 84 };
 type Props = {
   nodes: FlowNode[];
   edges: Edge[];
@@ -53,6 +56,7 @@ export default memo(function WorkflowCanvas({
   onZoom,
 }: Props) {
   const [liveNodes, setLiveNodes] = useState(nodes);
+  const spacePressed = useKeyPress("Space");
   const [fitOptions] = useState(() => ({
     maxZoom: 1,
     padding: 0.18,
@@ -90,6 +94,9 @@ export default memo(function WorkflowCanvas({
   );
   return (
     <ReactFlow<FlowNode>
+      className={
+        mode === "hand" || spacePressed ? "wf-flow-pan" : "wf-flow-select"
+      }
       nodes={liveNodes}
       edges={edges}
       nodeTypes={nodeTypes}
@@ -154,6 +161,8 @@ export default memo(function WorkflowCanvas({
     >
       <Background color="var(--wf-grid)" gap={24} size={1} />
       <MiniMap
+        style={miniMapSize}
+        ariaLabel="流程小地图：拖动移动视野，滚轮缩放"
         pannable
         zoomable
         nodeColor="var(--green)"

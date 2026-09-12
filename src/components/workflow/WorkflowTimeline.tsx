@@ -35,9 +35,11 @@ export default function WorkflowTimeline({
   const warnings =
     daily?.events.filter((e) => e.kind === "warning").length ?? 0;
   const nextMonth = (offset: number) => {
-    const d = result.days.find(
-      (d) => Math.floor((d.day - 1) / 28) === month + offset,
-    );
+    const months = [
+      ...new Set(result.days.map((d) => Math.floor((d.day - 1) / 28))),
+    ];
+    const target = months[months.indexOf(month) + offset];
+    const d = result.days.find((d) => Math.floor((d.day - 1) / 28) === target);
     if (d) onDay(d.day);
   };
   useEffect(() => {
@@ -103,16 +105,27 @@ export default function WorkflowTimeline({
           className="wf-timeline-summary"
           onClick={() => setExpanded(!expanded)}
         >
-          {formatDay(day)} · {daily?.events.length ?? 0} 项操作
+          {formatDay(day)} · 买入{" "}
+          {daily?.events
+            .filter((e) => e.kind === "purchase")
+            .reduce((s, e) => s + (e.quantity ?? 0), 0) ?? 0}{" "}
+          个 · 累计 {(daily?.cash ?? 0) >= 0 ? "+" : ""}
+          {(daily?.cash ?? 0).toLocaleString()}
           {warnings ? ` · ${warnings} 项未完成` : ""}
           <WorkflowIcon name="chevron" size={14} />
         </button>
       </div>
       <div className="wf-day-strip">
         {days.map((d) => {
-          const buy = d.events.filter((e) => e.kind === "purchase").length;
-          const sow = d.events.filter((e) => e.kind === "plant").length;
-          const harvest = d.events.filter((e) => e.kind === "harvest").length;
+          const buy = d.events
+            .filter((e) => e.kind === "purchase")
+            .reduce((s, e) => s + (e.quantity ?? 0), 0);
+          const sow = d.events
+            .filter((e) => e.kind === "plant")
+            .reduce((s, e) => s + (e.quantity ?? 0), 0);
+          const harvest = d.events
+            .filter((e) => e.kind === "harvest")
+            .reduce((s, e) => s + (e.quantity ?? 0), 0);
           const warning = d.events.some((e) => e.kind === "warning");
           return (
             <button
@@ -120,7 +133,7 @@ export default function WorkflowTimeline({
               ref={d.day === day ? active : undefined}
               className={`wf-strip-day ${d.day === day ? "active" : ""}`}
               aria-pressed={d.day === day}
-              aria-label={`${formatDay(d.day)}，买入 ${buy} 次，播种 ${sow} 次，收获 ${harvest} 次${warning ? "，有未完成操作" : ""}`}
+              aria-label={`${formatDay(d.day)}，买入 ${buy} 个，播种 ${sow} 格，收获 ${harvest} 个${warning ? "，有未完成操作" : ""}`}
               title={`${formatDay(d.day)} · 买入 ${buy} / 播种 ${sow} / 收获 ${harvest}`}
               onClick={() => onDay(d.day)}
               onDoubleClick={() => setExpanded(true)}
@@ -133,16 +146,19 @@ export default function WorkflowTimeline({
                 {buy > 0 && (
                   <i className="buy">
                     <WorkflowIcon name="purchase" size={12} />
+                    <em>{buy}</em>
                   </i>
                 )}
                 {sow > 0 && (
                   <i className="plant">
                     <WorkflowIcon name="plant" size={12} />
+                    <em>{sow}</em>
                   </i>
                 )}
                 {harvest > 0 && (
                   <i className="harvest">
                     <WorkflowIcon name="harvest" size={12} />
+                    <em>{harvest}</em>
                   </i>
                 )}
                 {!buy && !sow && !harvest && (

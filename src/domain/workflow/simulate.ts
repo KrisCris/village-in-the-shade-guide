@@ -1,3 +1,4 @@
+import {simulateIntentPlan} from './intentSimulation';
 import type {Entity} from '../../data/types';
 import {QUALITY_VALUES,qualityPrice} from '../quality';
 import {seedAvailability} from '../seedAvailability';
@@ -21,6 +22,7 @@ function grouped(amounts:Amount[]):Amount[] {
 
 /** Bounded, deterministic daily simulation. Each buffer belongs to exactly one node. */
 export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResult {
+ if(plan?.planningMode==='intent')return simulateIntentPlan(plan,entities);
  const result=empty();
  const invalid=(message:string)=>{result.issues.push(message);return result;};
  if(!plan||plan.version!==1||!whole(plan.startDay,1)||!whole(plan.days,1)||plan.days>112||!Number.isSafeInteger(plan.startDay+plan.days)||!finite(plan.initialCash)||!whole(plan.settlementDays)||plan.settlementDays>7||!QUALITY_VALUES.includes(plan.quality))return invalid('方案日期、天数、现金、品质或结算延迟无效。');
