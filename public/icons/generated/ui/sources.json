@@ -1,0 +1,585 @@
+[
+  {
+    "file": "rank-1.webp",
+    "icon_id": 1023,
+    "texture": "data/texture/itemicon_rank01.nltx",
+    "bounds": [
+      0,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "rank-2.webp",
+    "icon_id": 1024,
+    "texture": "data/texture/itemicon_rank01.nltx",
+    "bounds": [
+      128,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "rank-3.webp",
+    "icon_id": 1025,
+    "texture": "data/texture/itemicon_rank01.nltx",
+    "bounds": [
+      0,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "rank-4.webp",
+    "icon_id": 1026,
+    "texture": "data/texture/itemicon_rank01.nltx",
+    "bounds": [
+      128,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "health.webp",
+    "icon_id": 1028,
+    "texture": "data/texture/sys_0100_icon_000.nltx",
+    "bounds": [
+      0,
+      0,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "stamina.webp",
+    "icon_id": 1029,
+    "texture": "data/texture/sys_0100_icon_000.nltx",
+    "bounds": [
+      64,
+      0,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1075.webp",
+    "icon_id": 1075,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      128,
+      64,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1077.webp",
+    "icon_id": 1077,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      256,
+      64,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1079.webp",
+    "icon_id": 1079,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      0,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1080.webp",
+    "icon_id": 1080,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      64,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1081.webp",
+    "icon_id": 1081,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      128,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1082.webp",
+    "icon_id": 1082,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      192,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1083.webp",
+    "icon_id": 1083,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      256,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1084.webp",
+    "icon_id": 1084,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      320,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1085.webp",
+    "icon_id": 1085,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      384,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1087.webp",
+    "icon_id": 1087,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      512,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1088.webp",
+    "icon_id": 1088,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      576,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1089.webp",
+    "icon_id": 1089,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      640,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1091.webp",
+    "icon_id": 1091,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      768,
+      128,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1092.webp",
+    "icon_id": 1092,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      0,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1093.webp",
+    "icon_id": 1093,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      64,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1094.webp",
+    "icon_id": 1094,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      128,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1095.webp",
+    "icon_id": 1095,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      192,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1096.webp",
+    "icon_id": 1096,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      256,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "shrine-1097.webp",
+    "icon_id": 1097,
+    "texture": "data/texture/sys_0100_icon_050.nltx",
+    "bounds": [
+      320,
+      192,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "friendship.webp",
+    "icon_id": 4172,
+    "texture": "data/texture/sys_0100_icon_010.nltx",
+    "bounds": [
+      64,
+      0,
+      64,
+      64
+    ]
+  },
+  {
+    "file": "livestock-2.webp",
+    "icon_id": 7167,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-1.webp",
+    "icon_id": 7170,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-30.webp",
+    "icon_id": 7173,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      384,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-4.webp",
+    "icon_id": 7174,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      256,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-3.webp",
+    "icon_id": 7176,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      384,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-6.webp",
+    "icon_id": 7178,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      512,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-5.webp",
+    "icon_id": 7179,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      640,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-19.webp",
+    "icon_id": 7180,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-20.webp",
+    "icon_id": 7181,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      128,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-21.webp",
+    "icon_id": 7182,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      256,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-22.webp",
+    "icon_id": 7183,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      384,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-23.webp",
+    "icon_id": 7184,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      512,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-24.webp",
+    "icon_id": 7185,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      640,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-25.webp",
+    "icon_id": 7186,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      768,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-200.webp",
+    "icon_id": 7187,
+    "texture": "data/texture/itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      896,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-8.webp",
+    "icon_id": 7194,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-7.webp",
+    "icon_id": 7197,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-18.webp",
+    "icon_id": 7200,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      512,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-17.webp",
+    "icon_id": 7203,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      512,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-10.webp",
+    "icon_id": 7206,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      256,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-9.webp",
+    "icon_id": 7208,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      384,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-12.webp",
+    "icon_id": 7210,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      512,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-11.webp",
+    "icon_id": 7213,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      640,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-14.webp",
+    "icon_id": 7216,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-13.webp",
+    "icon_id": 7217,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      512,
+      768,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-16.webp",
+    "icon_id": 7218,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      896,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-15.webp",
+    "icon_id": 7220,
+    "texture": "data/texture/itemicon_ani01_02.nltx",
+    "bounds": [
+      512,
+      896,
+      128,
+      128
+    ]
+  }
+]

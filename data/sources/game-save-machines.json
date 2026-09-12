@@ -1,0 +1,8233 @@
+{
+  "source": "gimmick.dat first settingArg level=2 gives 3 jobs, otherwise 1 (GimmickProcessHaveEmptySlot); gimmickprocess.dat native processing recipes",
+  "machines": [
+    {
+      "id": 240010000,
+      "itemId": 400000,
+      "capacity": 1,
+      "script": "gimmick_storage_jar",
+      "level": "1"
+    },
+    {
+      "id": 240010100,
+      "itemId": 400001,
+      "capacity": 3,
+      "script": "gimmick_storage_jar_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240020000,
+      "itemId": 400010,
+      "capacity": 1,
+      "script": "gimmick_milk_processing_machine",
+      "level": "1"
+    },
+    {
+      "id": 240020100,
+      "itemId": 400011,
+      "capacity": 3,
+      "script": "gimmick_milk_processing_machine_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240030000,
+      "itemId": 400020,
+      "capacity": 1,
+      "script": "gimmick_mayonnaise_processing_machine",
+      "level": "1"
+    },
+    {
+      "id": 240030100,
+      "itemId": 400021,
+      "capacity": 3,
+      "script": "gimmick_mayonnaise_processing_machine_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240040000,
+      "itemId": 400030,
+      "capacity": 1,
+      "script": "gimmick_brewing_barrel",
+      "level": "1"
+    },
+    {
+      "id": 240040100,
+      "itemId": 400031,
+      "capacity": 3,
+      "script": "gimmick_brewing_barrel_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240050000,
+      "itemId": 400040,
+      "capacity": 1,
+      "script": "gimmick_agung_barrel",
+      "level": "1"
+    },
+    {
+      "id": 240050100,
+      "itemId": 400041,
+      "capacity": 3,
+      "script": "gimmick_agung_barrel_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240060000,
+      "itemId": 400050,
+      "capacity": 1,
+      "script": "gimmick_drying_machine",
+      "level": "1"
+    },
+    {
+      "id": 240060100,
+      "itemId": 400051,
+      "capacity": 3,
+      "script": "gimmick_drying_machine_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240070000,
+      "itemId": 400060,
+      "capacity": 1,
+      "script": "gimmick_flour_mill",
+      "level": "1"
+    },
+    {
+      "id": 240070100,
+      "itemId": 400061,
+      "capacity": 3,
+      "script": "gimmick_flour_mill_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240080000,
+      "itemId": 400070,
+      "capacity": 1,
+      "script": "gimmick_oil_extraction_machine",
+      "level": "1"
+    },
+    {
+      "id": 240080100,
+      "itemId": 400071,
+      "capacity": 3,
+      "script": "gimmick_oil_extraction_machine_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240090000,
+      "itemId": 400080,
+      "capacity": 1,
+      "script": "gimmick_blast_furnace",
+      "level": "1"
+    },
+    {
+      "id": 240090100,
+      "itemId": 400081,
+      "capacity": 3,
+      "script": "gimmick_blast_furnace_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240100000,
+      "itemId": 400090,
+      "capacity": 1,
+      "script": "gimmick_charcoal_kiln",
+      "level": "1"
+    },
+    {
+      "id": 240100100,
+      "itemId": 400091,
+      "capacity": 3,
+      "script": "gimmick_charcoal_kiln_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240110000,
+      "itemId": 400100,
+      "capacity": 1,
+      "script": "gimmick_loom",
+      "level": "1"
+    },
+    {
+      "id": 240110100,
+      "itemId": 400101,
+      "capacity": 3,
+      "script": "gimmick_loom_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240120000,
+      "itemId": 400110,
+      "capacity": 1,
+      "script": "gimmick_composter",
+      "level": "1"
+    },
+    {
+      "id": 240120100,
+      "itemId": 400111,
+      "capacity": 3,
+      "script": "gimmick_composter_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240150000,
+      "itemId": 400140,
+      "capacity": 1,
+      "script": "gimmick_smoking_machine",
+      "level": "1"
+    },
+    {
+      "id": 240150100,
+      "itemId": 400141,
+      "capacity": 3,
+      "script": "gimmick_smoking_machine_Lv2",
+      "level": "2"
+    },
+    {
+      "id": 240240000,
+      "itemId": 402040,
+      "capacity": 1,
+      "script": "gimmick_beehive",
+      "level": "1"
+    },
+    {
+      "id": 240250000,
+      "itemId": 402050,
+      "capacity": 1,
+      "script": "gimmick_sap_extractor",
+      "level": ""
+    },
+    {
+      "id": 240270000,
+      "itemId": 402070,
+      "capacity": 1,
+      "script": "gimmick_sericulture_box",
+      "level": "1"
+    }
+  ],
+  "processes": [
+    {
+      "id": 1000,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100000,
+          "count": 1
+        }
+      ],
+      "output": 200000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1001,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100010,
+          "count": 1
+        }
+      ],
+      "output": 200010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1002,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100020,
+          "count": 1
+        }
+      ],
+      "output": 200020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1003,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100030,
+          "count": 1
+        }
+      ],
+      "output": 200030,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1004,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100040,
+          "count": 1
+        }
+      ],
+      "output": 200040,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1005,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100050,
+          "count": 1
+        }
+      ],
+      "output": 200050,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1006,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100060,
+          "count": 1
+        }
+      ],
+      "output": 200060,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1007,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100070,
+          "count": 1
+        }
+      ],
+      "output": 200070,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1008,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100080,
+          "count": 1
+        }
+      ],
+      "output": 200080,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1009,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100100,
+          "count": 1
+        }
+      ],
+      "output": 200090,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1010,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100110,
+          "count": 1
+        }
+      ],
+      "output": 200100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1011,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100120,
+          "count": 1
+        }
+      ],
+      "output": 200110,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1012,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100130,
+          "count": 1
+        }
+      ],
+      "output": 200120,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1013,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100140,
+          "count": 1
+        }
+      ],
+      "output": 200130,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1014,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100150,
+          "count": 1
+        }
+      ],
+      "output": 200140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1015,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100160,
+          "count": 1
+        }
+      ],
+      "output": 200150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1016,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100170,
+          "count": 1
+        }
+      ],
+      "output": 200160,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1017,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100180,
+          "count": 1
+        }
+      ],
+      "output": 200170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1018,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100190,
+          "count": 1
+        }
+      ],
+      "output": 200180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1019,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100280,
+          "count": 1
+        }
+      ],
+      "output": 200190,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1020,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100290,
+          "count": 1
+        }
+      ],
+      "output": 200200,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1021,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100300,
+          "count": 1
+        }
+      ],
+      "output": 200210,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1022,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100310,
+          "count": 1
+        }
+      ],
+      "output": 200220,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1023,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100320,
+          "count": 1
+        }
+      ],
+      "output": 200230,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1024,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100340,
+          "count": 1
+        }
+      ],
+      "output": 200240,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1025,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100360,
+          "count": 1
+        }
+      ],
+      "output": 200250,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1026,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100370,
+          "count": 1
+        }
+      ],
+      "output": 200260,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1027,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100380,
+          "count": 1
+        }
+      ],
+      "output": 200270,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1028,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100410,
+          "count": 1
+        }
+      ],
+      "output": 200280,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1029,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100420,
+          "count": 1
+        }
+      ],
+      "output": 200290,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1030,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100450,
+          "count": 1
+        }
+      ],
+      "output": 200300,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1031,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100460,
+          "count": 1
+        }
+      ],
+      "output": 200310,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1032,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100090,
+          "count": 1
+        }
+      ],
+      "output": 200400,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1033,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100200,
+          "count": 1
+        }
+      ],
+      "output": 200410,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1034,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100210,
+          "count": 1
+        }
+      ],
+      "output": 200420,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1035,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100220,
+          "count": 1
+        }
+      ],
+      "output": 200430,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1036,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100230,
+          "count": 1
+        }
+      ],
+      "output": 200440,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1037,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122000,
+          "count": 1
+        }
+      ],
+      "output": 200450,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1038,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122010,
+          "count": 1
+        }
+      ],
+      "output": 200460,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1039,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122030,
+          "count": 1
+        }
+      ],
+      "output": 200470,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1040,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122040,
+          "count": 1
+        }
+      ],
+      "output": 200480,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1041,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122050,
+          "count": 1
+        }
+      ],
+      "output": 200490,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1042,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122060,
+          "count": 1
+        }
+      ],
+      "output": 200500,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1043,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122070,
+          "count": 1
+        }
+      ],
+      "output": 200510,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1044,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122080,
+          "count": 1
+        }
+      ],
+      "output": 200520,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1045,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122090,
+          "count": 1
+        }
+      ],
+      "output": 200530,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1046,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122100,
+          "count": 1
+        }
+      ],
+      "output": 200540,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1047,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122110,
+          "count": 1
+        }
+      ],
+      "output": 200550,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1048,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122120,
+          "count": 1
+        }
+      ],
+      "output": 200560,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1049,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 111140,
+          "count": 1
+        }
+      ],
+      "output": 200580,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1050,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 122020,
+          "count": 1
+        }
+      ],
+      "output": 200600,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1051,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100400,
+          "count": 1
+        }
+      ],
+      "output": 200610,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1052,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 200620,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1053,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 130000,
+          "count": 1
+        }
+      ],
+      "output": 200630,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1054,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160000,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1055,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160010,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1056,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160020,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1057,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160030,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1058,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160040,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1059,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160050,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1060,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160060,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1061,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160070,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1062,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160080,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1063,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160090,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1064,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160100,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1065,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160110,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1066,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160120,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1067,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160130,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1068,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160140,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1069,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160150,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1070,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160160,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1071,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160170,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1072,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160200,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1073,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160210,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1074,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160270,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1075,
+      "machines": [
+        240010000,
+        240010100
+      ],
+      "inputs": [
+        {
+          "itemId": 160280,
+          "count": 1
+        }
+      ],
+      "output": 200640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1076,
+      "machines": [
+        240020000,
+        240020100
+      ],
+      "inputs": [
+        {
+          "itemId": 130020,
+          "count": 1
+        }
+      ],
+      "output": 201000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1077,
+      "machines": [
+        240020000,
+        240020100
+      ],
+      "inputs": [
+        {
+          "itemId": 130000,
+          "count": 1
+        }
+      ],
+      "output": 201010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1078,
+      "machines": [
+        240020000,
+        240020100
+      ],
+      "inputs": [
+        {
+          "itemId": 201010,
+          "count": 1
+        }
+      ],
+      "output": 201020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1079,
+      "machines": [
+        240020000,
+        240020100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 201030,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1080,
+      "machines": [
+        240030000,
+        240030100
+      ],
+      "inputs": [
+        {
+          "itemId": 130040,
+          "count": 1
+        }
+      ],
+      "output": 201500,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1081,
+      "machines": [
+        240030000,
+        240030100
+      ],
+      "inputs": [
+        {
+          "itemId": 130060,
+          "count": 1
+        }
+      ],
+      "output": 201500,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1082,
+      "machines": [
+        240030000,
+        240030100
+      ],
+      "inputs": [
+        {
+          "itemId": 130080,
+          "count": 1
+        }
+      ],
+      "output": 201500,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1083,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100000,
+          "count": 1
+        }
+      ],
+      "output": 202000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1084,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100010,
+          "count": 1
+        }
+      ],
+      "output": 202010,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1085,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100020,
+          "count": 1
+        }
+      ],
+      "output": 202020,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1086,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100030,
+          "count": 1
+        }
+      ],
+      "output": 202030,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1087,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100040,
+          "count": 1
+        }
+      ],
+      "output": 202040,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1088,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100050,
+          "count": 1
+        }
+      ],
+      "output": 202050,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1089,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100060,
+          "count": 1
+        }
+      ],
+      "output": 202060,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1090,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100070,
+          "count": 1
+        }
+      ],
+      "output": 202070,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1091,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100080,
+          "count": 1
+        }
+      ],
+      "output": 202080,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1092,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100100,
+          "count": 1
+        }
+      ],
+      "output": 202090,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1093,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100110,
+          "count": 1
+        }
+      ],
+      "output": 202100,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1094,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100120,
+          "count": 1
+        }
+      ],
+      "output": 202110,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1095,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100130,
+          "count": 1
+        }
+      ],
+      "output": 202120,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1096,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100140,
+          "count": 1
+        }
+      ],
+      "output": 202130,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1097,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100150,
+          "count": 1
+        }
+      ],
+      "output": 202140,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1098,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100160,
+          "count": 1
+        }
+      ],
+      "output": 202150,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1099,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100170,
+          "count": 1
+        }
+      ],
+      "output": 202160,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1100,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100180,
+          "count": 1
+        }
+      ],
+      "output": 202170,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1101,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100190,
+          "count": 1
+        }
+      ],
+      "output": 202180,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1102,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100280,
+          "count": 1
+        }
+      ],
+      "output": 202190,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1103,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100300,
+          "count": 1
+        }
+      ],
+      "output": 202200,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1104,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100310,
+          "count": 1
+        }
+      ],
+      "output": 202210,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1105,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100320,
+          "count": 1
+        }
+      ],
+      "output": 202220,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1106,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100340,
+          "count": 1
+        }
+      ],
+      "output": 202230,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1107,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100360,
+          "count": 1
+        }
+      ],
+      "output": 202240,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1108,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100370,
+          "count": 1
+        }
+      ],
+      "output": 202250,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1109,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100380,
+          "count": 1
+        }
+      ],
+      "output": 202260,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1110,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100410,
+          "count": 1
+        }
+      ],
+      "output": 202270,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1111,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100420,
+          "count": 1
+        }
+      ],
+      "output": 202280,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1112,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100090,
+          "count": 1
+        }
+      ],
+      "output": 203000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1113,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100200,
+          "count": 1
+        }
+      ],
+      "output": 203010,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1114,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100210,
+          "count": 1
+        }
+      ],
+      "output": 203020,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1115,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100220,
+          "count": 1
+        }
+      ],
+      "output": 203030,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1116,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100230,
+          "count": 1
+        }
+      ],
+      "output": 203040,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1117,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122000,
+          "count": 1
+        }
+      ],
+      "output": 203050,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1118,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122010,
+          "count": 1
+        }
+      ],
+      "output": 203060,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1119,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122030,
+          "count": 1
+        }
+      ],
+      "output": 203070,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1120,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122040,
+          "count": 1
+        }
+      ],
+      "output": 203080,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1121,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122050,
+          "count": 1
+        }
+      ],
+      "output": 203090,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1122,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122060,
+          "count": 1
+        }
+      ],
+      "output": 203100,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1123,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122080,
+          "count": 1
+        }
+      ],
+      "output": 203110,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1124,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122090,
+          "count": 1
+        }
+      ],
+      "output": 203120,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1125,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122100,
+          "count": 1
+        }
+      ],
+      "output": 203130,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1126,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122110,
+          "count": 1
+        }
+      ],
+      "output": 203140,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1127,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122120,
+          "count": 1
+        }
+      ],
+      "output": 203150,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1128,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122070,
+          "count": 1
+        }
+      ],
+      "output": 203200,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1129,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 122020,
+          "count": 1
+        }
+      ],
+      "output": 203210,
+      "count": 1,
+      "minutes": 3600
+    },
+    {
+      "id": 1130,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100250,
+          "count": 1
+        }
+      ],
+      "output": 203220,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1131,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100400,
+          "count": 1
+        }
+      ],
+      "output": 203230,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1132,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100240,
+          "count": 1
+        }
+      ],
+      "output": 203240,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1133,
+      "machines": [
+        240040000,
+        240040100
+      ],
+      "inputs": [
+        {
+          "itemId": 100290,
+          "count": 1
+        }
+      ],
+      "output": 203250,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1134,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131000,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1135,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131010,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1136,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131020,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1137,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131030,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1138,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131040,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1139,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131050,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1140,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 131060,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1141,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 150000,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1142,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 150010,
+          "count": 1
+        }
+      ],
+      "output": 204000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1143,
+      "machines": [
+        240050000,
+        240050100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 204010,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1144,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100090,
+          "count": 1
+        }
+      ],
+      "output": 205500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1145,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100200,
+          "count": 1
+        }
+      ],
+      "output": 205510,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1146,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100210,
+          "count": 1
+        }
+      ],
+      "output": 205520,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1147,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100220,
+          "count": 1
+        }
+      ],
+      "output": 205530,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1148,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100230,
+          "count": 1
+        }
+      ],
+      "output": 205540,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1149,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122000,
+          "count": 1
+        }
+      ],
+      "output": 205550,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1150,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122010,
+          "count": 1
+        }
+      ],
+      "output": 205560,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1151,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122030,
+          "count": 1
+        }
+      ],
+      "output": 205570,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1152,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122040,
+          "count": 1
+        }
+      ],
+      "output": 205580,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1153,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122050,
+          "count": 1
+        }
+      ],
+      "output": 205590,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1154,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122070,
+          "count": 1
+        }
+      ],
+      "output": 205600,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1155,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122080,
+          "count": 1
+        }
+      ],
+      "output": 205610,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1156,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122090,
+          "count": 1
+        }
+      ],
+      "output": 205620,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1157,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122100,
+          "count": 1
+        }
+      ],
+      "output": 205630,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1158,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122110,
+          "count": 1
+        }
+      ],
+      "output": 205640,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1159,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 122120,
+          "count": 1
+        }
+      ],
+      "output": 205650,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1160,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160000,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1161,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160010,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1162,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160020,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1163,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160030,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1164,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160040,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1165,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160050,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1166,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160060,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1167,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160070,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1168,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160080,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1169,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160090,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1170,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160100,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1171,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160110,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1172,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160120,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1173,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160130,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1174,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160140,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1175,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160150,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1176,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160160,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1177,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160170,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1178,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160200,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1179,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160210,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1180,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160270,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1181,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 160280,
+          "count": 1
+        }
+      ],
+      "output": 206000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1182,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 150000,
+          "count": 1
+        }
+      ],
+      "output": 206010,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1183,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 150010,
+          "count": 1
+        }
+      ],
+      "output": 206010,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1184,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 131000,
+          "count": 1
+        }
+      ],
+      "output": 206020,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1185,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 131040,
+          "count": 1
+        }
+      ],
+      "output": 206030,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1186,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100300,
+          "count": 1
+        }
+      ],
+      "output": 206040,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1187,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100310,
+          "count": 1
+        }
+      ],
+      "output": 206050,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1188,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 100320,
+          "count": 1
+        }
+      ],
+      "output": 206060,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1189,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111000,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1190,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111010,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1191,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111020,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1192,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111030,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1193,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111040,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1194,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111050,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1195,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111060,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1196,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111070,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1197,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111080,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1198,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111090,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1199,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111100,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1200,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111110,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1201,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111120,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1202,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111130,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1203,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111140,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1204,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111150,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1205,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111160,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1206,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111170,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1207,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111180,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1208,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111190,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1209,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111200,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1210,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111210,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1211,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 111220,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1212,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 140130,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1213,
+      "machines": [
+        240060000,
+        240060100
+      ],
+      "inputs": [
+        {
+          "itemId": 140160,
+          "count": 1
+        }
+      ],
+      "output": 206500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1214,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 100270,
+          "count": 1
+        }
+      ],
+      "output": 207000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1215,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 100240,
+          "count": 1
+        }
+      ],
+      "output": 207010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1216,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 100390,
+          "count": 1
+        }
+      ],
+      "output": 207020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1217,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 240050,
+          "count": 1
+        }
+      ],
+      "output": 207030,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1218,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 100260,
+          "count": 1
+        }
+      ],
+      "output": 207040,
+      "count": 2,
+      "minutes": 1380
+    },
+    {
+      "id": 1219,
+      "machines": [
+        240070000,
+        240070100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 207050,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1220,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 100160,
+          "count": 1
+        }
+      ],
+      "output": 209000,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1221,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 100350,
+          "count": 1
+        }
+      ],
+      "output": 209010,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1222,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 100340,
+          "count": 1
+        }
+      ],
+      "output": 209020,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1223,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 130100,
+          "count": 1
+        }
+      ],
+      "output": 209030,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1224,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 209040,
+      "count": 2,
+      "minutes": 4320
+    },
+    {
+      "id": 1225,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111030,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1226,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111070,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1227,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111140,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1228,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111210,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1229,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140160,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1230,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111050,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209110,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1231,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111110,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209110,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1232,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111150,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209120,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1233,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140060,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209120,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1234,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140330,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209130,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1235,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111010,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1236,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111060,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1237,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111220,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1238,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111020,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1239,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111090,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1240,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111160,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1241,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 211000,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209160,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1242,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 230100,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209160,
+      "count": 3,
+      "minutes": 1380
+    },
+    {
+      "id": 1243,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111000,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1244,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111080,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1245,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111100,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1246,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111120,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1247,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111200,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1248,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140130,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1249,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111040,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1250,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111130,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1251,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111170,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1252,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111180,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1253,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111190,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1254,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 230050,
+          "count": 1
+        },
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 209190,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1255,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111030,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1256,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111070,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1257,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111140,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1258,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111210,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1259,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140160,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209100,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1260,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111050,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209110,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1261,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111110,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209110,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1262,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111150,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209120,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1263,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140060,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209120,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1264,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140330,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209130,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1265,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111010,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1266,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111060,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1267,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111220,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209140,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1268,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111020,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1269,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111090,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1270,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111160,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209150,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1271,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 211000,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209160,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1272,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 230100,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209160,
+      "count": 3,
+      "minutes": 1380
+    },
+    {
+      "id": 1273,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111000,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1274,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111080,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1275,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111100,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1276,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111120,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1277,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111200,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1278,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 140130,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209170,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1279,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111040,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1280,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111130,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1281,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111170,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1282,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111180,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1283,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 111190,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209180,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1284,
+      "machines": [
+        240080000,
+        240080100
+      ],
+      "inputs": [
+        {
+          "itemId": 230050,
+          "count": 1
+        },
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 209190,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1285,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240000,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210000,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1286,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240000,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210000,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1287,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240010,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210010,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1288,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240010,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210010,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1289,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240020,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210020,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1290,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240020,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210020,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1291,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240030,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210030,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1292,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240030,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210030,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1293,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240040,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210040,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1294,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 240040,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210040,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1295,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 230050,
+          "count": 5
+        },
+        {
+          "itemId": 211000,
+          "count": 1
+        }
+      ],
+      "output": 210060,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1296,
+      "machines": [
+        240090000,
+        240090100
+      ],
+      "inputs": [
+        {
+          "itemId": 230050,
+          "count": 5
+        },
+        {
+          "itemId": 230100,
+          "count": 1
+        }
+      ],
+      "output": 210060,
+      "count": 1,
+      "minutes": 710
+    },
+    {
+      "id": 1297,
+      "machines": [
+        240100000,
+        240100100
+      ],
+      "inputs": [
+        {
+          "itemId": 230000,
+          "count": 5
+        }
+      ],
+      "output": 211000,
+      "count": 1,
+      "minutes": 30
+    },
+    {
+      "id": 1298,
+      "machines": [
+        240100000,
+        240100100
+      ],
+      "inputs": [
+        {
+          "itemId": 230001,
+          "count": 5
+        }
+      ],
+      "output": 211000,
+      "count": 1,
+      "minutes": 30
+    },
+    {
+      "id": 1299,
+      "machines": [
+        240100000,
+        240100100
+      ],
+      "inputs": [
+        {
+          "itemId": 230002,
+          "count": 5
+        }
+      ],
+      "output": 211000,
+      "count": 1,
+      "minutes": 30
+    },
+    {
+      "id": 1300,
+      "machines": [
+        240110000,
+        240110100
+      ],
+      "inputs": [
+        {
+          "itemId": 221500,
+          "count": 1
+        }
+      ],
+      "output": 212000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1301,
+      "machines": [
+        240110000,
+        240110100
+      ],
+      "inputs": [
+        {
+          "itemId": 130120,
+          "count": 1
+        }
+      ],
+      "output": 212010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1302,
+      "machines": [
+        240110000,
+        240110100
+      ],
+      "inputs": [
+        {
+          "itemId": 130140,
+          "count": 1
+        }
+      ],
+      "output": 212020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1303,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 145000,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1304,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 145020,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1305,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140010,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1306,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140020,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1307,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140030,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1308,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140040,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1309,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140050,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1310,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140060,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1311,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140070,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1312,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140100,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1313,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140110,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1314,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140120,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1315,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140130,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1316,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140140,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1317,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140150,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1318,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140160,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1319,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140180,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1320,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140190,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1321,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140200,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1322,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100000,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1323,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100010,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1324,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100020,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1325,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100030,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1326,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100040,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1327,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100050,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1328,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100060,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1329,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100070,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1330,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100080,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1331,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100090,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1332,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100100,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1333,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100110,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1334,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100120,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1335,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100130,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1336,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100140,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1337,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100150,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1338,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100160,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1339,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100170,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1340,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100180,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1341,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100190,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1342,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100200,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1343,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100210,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1344,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100220,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1345,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100230,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1346,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100240,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1347,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100250,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1348,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100260,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1349,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100270,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1350,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100280,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1351,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100290,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1352,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100300,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1353,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100310,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1354,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100320,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1355,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100330,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1356,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100340,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1357,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100350,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1358,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100360,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1359,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100370,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1360,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100380,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1361,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100390,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1362,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100400,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1363,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100410,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1364,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100420,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1365,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100430,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1366,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100440,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1367,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100450,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1368,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 100460,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1369,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140220,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1370,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140230,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1371,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140240,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1372,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140250,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1373,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140260,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1374,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140000,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1375,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140320,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1376,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140370,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1377,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140300,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1378,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140310,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1379,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140340,
+          "count": 1
+        }
+      ],
+      "output": 20010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1380,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 140350,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1381,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160000,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1382,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160010,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1383,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160020,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1384,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160030,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1385,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160040,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1386,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160050,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 2,
+      "minutes": 1380
+    },
+    {
+      "id": 1387,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160060,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1388,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160070,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1389,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160080,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 2,
+      "minutes": 1380
+    },
+    {
+      "id": 1390,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160090,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1391,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160100,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1392,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160110,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 3,
+      "minutes": 1380
+    },
+    {
+      "id": 1393,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160120,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1394,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160130,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1395,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160140,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1396,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160150,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1397,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160160,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1398,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160170,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1399,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160180,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1400,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160190,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1401,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160200,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1402,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160210,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1403,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160220,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1404,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160230,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1405,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160240,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 3,
+      "minutes": 1380
+    },
+    {
+      "id": 1406,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160250,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1407,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160260,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1408,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160270,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 2,
+      "minutes": 1380
+    },
+    {
+      "id": 1409,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 160280,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 3,
+      "minutes": 1380
+    },
+    {
+      "id": 1410,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161000,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1411,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161010,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1412,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161020,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1413,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161030,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1414,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161040,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1415,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 161050,
+          "count": 1
+        }
+      ],
+      "output": 20020,
+      "count": 10,
+      "minutes": 1380
+    },
+    {
+      "id": 1416,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150000,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1417,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150010,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 5,
+      "minutes": 2880
+    },
+    {
+      "id": 1418,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150030,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 3,
+      "minutes": 2880
+    },
+    {
+      "id": 1419,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150100,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 10,
+      "minutes": 2880
+    },
+    {
+      "id": 1420,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150200,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 10,
+      "minutes": 2880
+    },
+    {
+      "id": 1421,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150300,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 20,
+      "minutes": 2880
+    },
+    {
+      "id": 1422,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150310,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 20,
+      "minutes": 2880
+    },
+    {
+      "id": 1423,
+      "machines": [
+        240120000,
+        240120100
+      ],
+      "inputs": [
+        {
+          "itemId": 150020,
+          "count": 1
+        }
+      ],
+      "output": 20030,
+      "count": 1,
+      "minutes": 2880
+    },
+    {
+      "id": 1424,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 150000,
+          "count": 1
+        },
+        {
+          "itemId": 207030,
+          "count": 1
+        }
+      ],
+      "output": 208000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1425,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 150010,
+          "count": 1
+        },
+        {
+          "itemId": 207030,
+          "count": 1
+        }
+      ],
+      "output": 208000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1426,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 131040,
+          "count": 1
+        },
+        {
+          "itemId": 207030,
+          "count": 1
+        }
+      ],
+      "output": 208010,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1427,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160000,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1428,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160010,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1429,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160020,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1430,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160030,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1431,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160040,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1432,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160050,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1433,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160060,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1434,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160070,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1435,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160080,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1436,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160090,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1437,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160100,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1438,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160110,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1439,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160120,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1440,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160130,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1441,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160140,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1442,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160150,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1443,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160160,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1444,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160170,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1445,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160200,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1446,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160210,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1447,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160270,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1448,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 160280,
+          "count": 1
+        }
+      ],
+      "output": 208020,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1449,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 201000,
+          "count": 1
+        }
+      ],
+      "output": 208030,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1450,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 130040,
+          "count": 1
+        }
+      ],
+      "output": 208040,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1451,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 130060,
+          "count": 1
+        }
+      ],
+      "output": 208040,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1452,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 130080,
+          "count": 1
+        }
+      ],
+      "output": 208040,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1453,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 131020,
+          "count": 1
+        },
+        {
+          "itemId": 207030,
+          "count": 1
+        }
+      ],
+      "output": 208050,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1454,
+      "machines": [
+        240150000,
+        240150100
+      ],
+      "inputs": [
+        {
+          "itemId": 131030,
+          "count": 1
+        },
+        {
+          "itemId": 207030,
+          "count": 1
+        }
+      ],
+      "output": 208060,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1455,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111000,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4600
+    },
+    {
+      "id": 1456,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111010,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3600
+    },
+    {
+      "id": 1457,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111020,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1458,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111030,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4460
+    },
+    {
+      "id": 1459,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111040,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1460,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111050,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 1380
+    },
+    {
+      "id": 1461,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111060,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4460
+    },
+    {
+      "id": 1462,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111070,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3880
+    },
+    {
+      "id": 1463,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111080,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3600
+    },
+    {
+      "id": 1464,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111090,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4860
+    },
+    {
+      "id": 1465,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111100,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4260
+    },
+    {
+      "id": 1466,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111110,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4170
+    },
+    {
+      "id": 1467,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111120,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3450
+    },
+    {
+      "id": 1468,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111130,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 2300
+    },
+    {
+      "id": 1469,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111140,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 1150
+    },
+    {
+      "id": 1470,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111150,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 2590
+    },
+    {
+      "id": 1471,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111160,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3450
+    },
+    {
+      "id": 1472,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111170,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 1720
+    },
+    {
+      "id": 1473,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111180,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4600
+    },
+    {
+      "id": 1474,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111190,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 3740
+    },
+    {
+      "id": 1475,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111200,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 2590
+    },
+    {
+      "id": 1476,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111210,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 4860
+    },
+    {
+      "id": 1477,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 111220,
+          "count": 1
+        }
+      ],
+      "output": 221000,
+      "count": 1,
+      "minutes": 2300
+    },
+    {
+      "id": 1478,
+      "machines": [
+        240240000
+      ],
+      "inputs": [
+        {
+          "itemId": 221000,
+          "count": 1
+        }
+      ],
+      "output": 221010,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1479,
+      "machines": [
+        240270000
+      ],
+      "inputs": [
+        {
+          "itemId": 100430,
+          "count": 1
+        }
+      ],
+      "output": 221500,
+      "count": 1,
+      "minutes": 2820
+    },
+    {
+      "id": 1480,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140300,
+      "count": 1,
+      "minutes": 4320
+    },
+    {
+      "id": 1481,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140310,
+      "count": 1,
+      "minutes": 4320
+    },
+    {
+      "id": 1482,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140320,
+      "count": 1,
+      "minutes": 4320
+    },
+    {
+      "id": 1483,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140340,
+      "count": 1,
+      "minutes": 4320
+    },
+    {
+      "id": 1484,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140350,
+      "count": 1,
+      "minutes": 4320
+    },
+    {
+      "id": 1485,
+      "machines": [
+        240250000
+      ],
+      "inputs": [],
+      "output": 140370,
+      "count": 1,
+      "minutes": 4320
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "source": "gamedefine.dat",
+  "build": "24969282",
+  "constants": {
+    "MONEY_MAX": {
+      "value": 99999999,
+      "description_ja": "所持金の最大値"
+    },
+    "ITEM_STACK_MIN": {
+      "value": 0,
+      "description_ja": "同種アイテムをスタックできる最小数"
+    },
+    "ITEM_STACK_MAX": {
+      "value": 999,
+      "description_ja": "同種アイテムをスタックできる最大数"
+    },
+    "LIVESTOCK_LOVE_RATE_MIN": {
+      "value": 0,
+      "description_ja": "家畜の友好度の最低値"
+    },
+    "LIVESTOCK_LOVE_RATE_MAX": {
+      "value": 2000,
+      "description_ja": "家畜の友好度の最大値"
+    },
+    "LIVESTOCK_LOVE_RATE_MAX_EASY": {
+      "value": 1500,
+      "description_ja": "ニワトリ等の友好度の最大値"
+    },
+    "LIVESTOCK_MOOD_RATE_MIN": {
+      "value": 0,
+      "description_ja": "家畜の機嫌度の最低値"
+    },
+    "LIVESTOCK_MOOD_RATE_MAX": {
+      "value": 255,
+      "description_ja": "家畜の機嫌度の最大値"
+    },
+    "LIVESTOCK_FOOD_VALUE_MIN": {
+      "value": 0,
+      "description_ja": "家畜の食料値の最低値"
+    },
+    "LIVESTOCK_FOOD_VALUE_MAX": {
+      "value": 1,
+      "description_ja": "家畜の食料値の最大値"
+    },
+    "NPC_LOVE_LEVEL1_MAX": {
+      "value": 100,
+      "description_ja": "住人好感度ゲージLv1最大値"
+    },
+    "NPC_LOVE_LEVEL2_MAX": {
+      "value": 300,
+      "description_ja": "住人好感度ゲージLv2最大値"
+    },
+    "NPC_LOVE_LEVEL3_MAX": {
+      "value": 600,
+      "description_ja": "住人好感度ゲージLv3最大値"
+    },
+    "NPC_LOVE_LEVEL4_MAX": {
+      "value": 1000,
+      "description_ja": "住人好感度ゲージLv4最大値"
+    },
+    "NPC_LOVE_LEVEL5_MAX": {
+      "value": 1500,
+      "description_ja": "住人好感度ゲージLv5最大値"
+    },
+    "NPC_LOVE_LEVEL6_MAX": {
+      "value": 2100,
+      "description_ja": "住人好感度ゲージLv6最大値"
+    },
+    "NPC_LOVE_MAX": {
+      "value": 2100,
+      "description_ja": "住人好感度合計最大値"
+    },
+    "LIVESTOCK_MOOD_RATE_MAX_WITH_GHOST": {
+      "value": 100,
+      "description_ja": "家畜の機嫌度の最大値（おばけ牛がいる場合）"
+    },
+    "ITEM_RANK_NORMAL": {
+      "value": 0,
+      "description_ja": "ノーマルランク"
+    },
+    "ITEM_RANK_COPPER": {
+      "value": 1,
+      "description_ja": "銅ランク"
+    },
+    "ITEM_RANK_SILVER": {
+      "value": 2,
+      "description_ja": "銀ランク"
+    },
+    "ITEM_RANK_GOLD": {
+      "value": 3,
+      "description_ja": "金ランク"
+    },
+    "ITEM_RANK_BRAND": {
+      "value": 4,
+      "description_ja": "ブランド"
+    },
+    "PLAYER_STATUS_HP_MAX_VALUE": {
+      "value": 40,
+      "description_ja": "HPの最大値"
+    },
+    "PLAYER_STATUS_HP_INITIAL_VALUE": {
+      "value": 12,
+      "description_ja": "HPの初期値"
+    },
+    "PLAYER_STATUS_HP_HEART_MAX": {
+      "value": 4,
+      "description_ja": "HPハート1個の最大値"
+    },
+    "PLAYER_STATUS_HP_HEART_COUNT": {
+      "value": 10,
+      "description_ja": "HPハートの総数"
+    },
+    "PLAYER_STATUS_ST_MAX_VALUE": {
+      "value": 950,
+      "description_ja": "スタミナの最大値"
+    },
+    "PLAYER_STATUS_ST_INITIAL_VALUE": {
+      "value": 190,
+      "description_ja": "スタミナの初期値"
+    },
+    "PLAYER_STATUS_ST_GAUGE_MAX": {
+      "value": 190,
+      "description_ja": "スタミナゲージ１本の最大値"
+    },
+    "PLAYER_STATUS_ST_GAUGE_COUNT": {
+      "value": 5,
+      "description_ja": "スタミナゲージ１本の総数"
+    }
+  }
+}

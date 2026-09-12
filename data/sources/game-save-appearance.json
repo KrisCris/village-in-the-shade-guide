@@ -1,0 +1,2022 @@
+{
+  "source": "native appearance tables",
+  "tables": {
+    "playercrothing": [
+      {
+        "id": 1,
+        "name_ja": "デフォルト",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500000
+          },
+          {
+            "color": 1,
+            "itemId": 500001
+          },
+          {
+            "color": 2,
+            "itemId": 500002
+          },
+          {
+            "color": 3,
+            "itemId": 500003
+          },
+          {
+            "color": 4,
+            "itemId": 500004
+          },
+          {
+            "color": 5,
+            "itemId": 500005
+          },
+          {
+            "color": 6,
+            "itemId": 500006
+          },
+          {
+            "color": 7,
+            "itemId": 500007
+          },
+          {
+            "color": 8,
+            "itemId": 500008
+          },
+          {
+            "color": 9,
+            "itemId": 500009
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 2,
+        "name_ja": "カウボーイ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500010
+          },
+          {
+            "color": 1,
+            "itemId": 500011
+          },
+          {
+            "color": 2,
+            "itemId": 500012
+          },
+          {
+            "color": 3,
+            "itemId": 500013
+          },
+          {
+            "color": 4,
+            "itemId": 500014
+          },
+          {
+            "color": 5,
+            "itemId": 500015
+          },
+          {
+            "color": 6,
+            "itemId": 500016
+          },
+          {
+            "color": 7,
+            "itemId": 500017
+          },
+          {
+            "color": 8,
+            "itemId": 500018
+          },
+          {
+            "color": 9,
+            "itemId": 500019
+          }
+        ],
+        "unlockFlag": 86000
+      },
+      {
+        "id": 3,
+        "name_ja": "スカート",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500020
+          },
+          {
+            "color": 1,
+            "itemId": 500021
+          },
+          {
+            "color": 2,
+            "itemId": 500022
+          },
+          {
+            "color": 3,
+            "itemId": 500023
+          },
+          {
+            "color": 4,
+            "itemId": 500024
+          },
+          {
+            "color": 5,
+            "itemId": 500025
+          },
+          {
+            "color": 6,
+            "itemId": 500026
+          },
+          {
+            "color": 7,
+            "itemId": 500027
+          },
+          {
+            "color": 8,
+            "itemId": 500028
+          },
+          {
+            "color": 9,
+            "itemId": 500029
+          }
+        ],
+        "unlockFlag": 86001
+      },
+      {
+        "id": 4,
+        "name_ja": "ダッフルコート",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500030
+          },
+          {
+            "color": 1,
+            "itemId": 500031
+          },
+          {
+            "color": 2,
+            "itemId": 500032
+          },
+          {
+            "color": 3,
+            "itemId": 500033
+          },
+          {
+            "color": 4,
+            "itemId": 500034
+          },
+          {
+            "color": 5,
+            "itemId": 500035
+          },
+          {
+            "color": 6,
+            "itemId": 500036
+          },
+          {
+            "color": 7,
+            "itemId": 500037
+          },
+          {
+            "color": 8,
+            "itemId": 500038
+          },
+          {
+            "color": 9,
+            "itemId": 500039
+          }
+        ],
+        "unlockFlag": 86002
+      },
+      {
+        "id": 5,
+        "name_ja": "ニットベスト",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500040
+          },
+          {
+            "color": 1,
+            "itemId": 500041
+          },
+          {
+            "color": 2,
+            "itemId": 500042
+          },
+          {
+            "color": 3,
+            "itemId": 500043
+          },
+          {
+            "color": 4,
+            "itemId": 500044
+          },
+          {
+            "color": 5,
+            "itemId": 500045
+          },
+          {
+            "color": 6,
+            "itemId": 500046
+          },
+          {
+            "color": 7,
+            "itemId": 500047
+          },
+          {
+            "color": 8,
+            "itemId": 500048
+          },
+          {
+            "color": 9,
+            "itemId": 500049
+          }
+        ],
+        "unlockFlag": 86003
+      },
+      {
+        "id": 6,
+        "name_ja": "パジャマ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500050
+          },
+          {
+            "color": 1,
+            "itemId": 500051
+          },
+          {
+            "color": 2,
+            "itemId": 500052
+          },
+          {
+            "color": 3,
+            "itemId": 500053
+          },
+          {
+            "color": 4,
+            "itemId": 500054
+          },
+          {
+            "color": 5,
+            "itemId": 500055
+          },
+          {
+            "color": 6,
+            "itemId": 500056
+          },
+          {
+            "color": 7,
+            "itemId": 500057
+          },
+          {
+            "color": 8,
+            "itemId": 500058
+          },
+          {
+            "color": 9,
+            "itemId": 500059
+          }
+        ],
+        "unlockFlag": 86004
+      },
+      {
+        "id": 8,
+        "name_ja": "レインコート",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500070
+          },
+          {
+            "color": 1,
+            "itemId": 500071
+          },
+          {
+            "color": 2,
+            "itemId": 500072
+          },
+          {
+            "color": 3,
+            "itemId": 500073
+          },
+          {
+            "color": 4,
+            "itemId": 500074
+          },
+          {
+            "color": 5,
+            "itemId": 500075
+          },
+          {
+            "color": 6,
+            "itemId": 500076
+          },
+          {
+            "color": 7,
+            "itemId": 500077
+          },
+          {
+            "color": 8,
+            "itemId": 500078
+          },
+          {
+            "color": 9,
+            "itemId": 500079
+          }
+        ],
+        "unlockFlag": 86006
+      },
+      {
+        "id": 9,
+        "name_ja": "ワンピース",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500090
+          },
+          {
+            "color": 1,
+            "itemId": 500091
+          },
+          {
+            "color": 2,
+            "itemId": 500092
+          },
+          {
+            "color": 3,
+            "itemId": 500093
+          },
+          {
+            "color": 4,
+            "itemId": 500094
+          },
+          {
+            "color": 5,
+            "itemId": 500095
+          },
+          {
+            "color": 6,
+            "itemId": 500096
+          },
+          {
+            "color": 7,
+            "itemId": 500097
+          },
+          {
+            "color": 8,
+            "itemId": 500098
+          },
+          {
+            "color": 9,
+            "itemId": 500099
+          }
+        ],
+        "unlockFlag": 86007
+      },
+      {
+        "id": 10,
+        "name_ja": "スーツ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500100
+          },
+          {
+            "color": 1,
+            "itemId": 500101
+          },
+          {
+            "color": 2,
+            "itemId": 500102
+          },
+          {
+            "color": 3,
+            "itemId": 500103
+          },
+          {
+            "color": 4,
+            "itemId": 500104
+          },
+          {
+            "color": 5,
+            "itemId": 500105
+          },
+          {
+            "color": 6,
+            "itemId": 500106
+          },
+          {
+            "color": 7,
+            "itemId": 500107
+          },
+          {
+            "color": 8,
+            "itemId": 500108
+          },
+          {
+            "color": 9,
+            "itemId": 500109
+          }
+        ],
+        "unlockFlag": 86008
+      },
+      {
+        "id": 11,
+        "name_ja": "フォーマル",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500110
+          },
+          {
+            "color": 1,
+            "itemId": 500111
+          },
+          {
+            "color": 2,
+            "itemId": 500112
+          },
+          {
+            "color": 3,
+            "itemId": 500113
+          },
+          {
+            "color": 4,
+            "itemId": 500114
+          },
+          {
+            "color": 5,
+            "itemId": 500115
+          },
+          {
+            "color": 6,
+            "itemId": 500116
+          },
+          {
+            "color": 7,
+            "itemId": 500117
+          },
+          {
+            "color": 8,
+            "itemId": 500118
+          },
+          {
+            "color": 9,
+            "itemId": 500119
+          }
+        ],
+        "unlockFlag": 86009
+      },
+      {
+        "id": 12,
+        "name_ja": "甚兵衛",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500120
+          },
+          {
+            "color": 1,
+            "itemId": 500121
+          },
+          {
+            "color": 2,
+            "itemId": 500122
+          },
+          {
+            "color": 3,
+            "itemId": 500123
+          },
+          {
+            "color": 4,
+            "itemId": 500124
+          },
+          {
+            "color": 5,
+            "itemId": 500125
+          },
+          {
+            "color": 6,
+            "itemId": 500126
+          },
+          {
+            "color": 7,
+            "itemId": 500127
+          },
+          {
+            "color": 8,
+            "itemId": 500128
+          },
+          {
+            "color": 9,
+            "itemId": 500129
+          }
+        ],
+        "unlockFlag": 86010
+      },
+      {
+        "id": 13,
+        "name_ja": "探偵コート",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 500080
+          }
+        ],
+        "unlockFlag": 86011
+      }
+    ],
+    "playerheadaccessory": [
+      {
+        "id": 1,
+        "name_ja": "なし",
+        "variants": [],
+        "unlockFlag": 0
+      },
+      {
+        "id": 2,
+        "name_ja": "麦わら帽子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520010
+          },
+          {
+            "color": 1,
+            "itemId": 520011
+          },
+          {
+            "color": 2,
+            "itemId": 520012
+          },
+          {
+            "color": 3,
+            "itemId": 520013
+          },
+          {
+            "color": 4,
+            "itemId": 520014
+          },
+          {
+            "color": 5,
+            "itemId": 520015
+          },
+          {
+            "color": 6,
+            "itemId": 520016
+          },
+          {
+            "color": 7,
+            "itemId": 520017
+          },
+          {
+            "color": 8,
+            "itemId": 520018
+          },
+          {
+            "color": 9,
+            "itemId": 520019
+          }
+        ],
+        "unlockFlag": 86030
+      },
+      {
+        "id": 3,
+        "name_ja": "ベレー帽",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520020
+          },
+          {
+            "color": 1,
+            "itemId": 520021
+          },
+          {
+            "color": 2,
+            "itemId": 520022
+          },
+          {
+            "color": 3,
+            "itemId": 520023
+          },
+          {
+            "color": 4,
+            "itemId": 520024
+          },
+          {
+            "color": 5,
+            "itemId": 520025
+          },
+          {
+            "color": 6,
+            "itemId": 520026
+          },
+          {
+            "color": 7,
+            "itemId": 520027
+          },
+          {
+            "color": 8,
+            "itemId": 520028
+          },
+          {
+            "color": 9,
+            "itemId": 520029
+          }
+        ],
+        "unlockFlag": 86031
+      },
+      {
+        "id": 4,
+        "name_ja": "カウボーイハット",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520030
+          }
+        ],
+        "unlockFlag": 86032
+      },
+      {
+        "id": 5,
+        "name_ja": "探偵帽子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520040
+          }
+        ],
+        "unlockFlag": 86033
+      },
+      {
+        "id": 6,
+        "name_ja": "ナイトキャップ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520050
+          },
+          {
+            "color": 1,
+            "itemId": 520051
+          },
+          {
+            "color": 2,
+            "itemId": 520052
+          },
+          {
+            "color": 3,
+            "itemId": 520053
+          },
+          {
+            "color": 4,
+            "itemId": 520054
+          },
+          {
+            "color": 5,
+            "itemId": 520055
+          },
+          {
+            "color": 6,
+            "itemId": 520056
+          },
+          {
+            "color": 7,
+            "itemId": 520057
+          },
+          {
+            "color": 8,
+            "itemId": 520058
+          },
+          {
+            "color": 9,
+            "itemId": 520059
+          }
+        ],
+        "unlockFlag": 86034
+      },
+      {
+        "id": 7,
+        "name_ja": "春の花冠",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520060
+          }
+        ],
+        "unlockFlag": 86035
+      },
+      {
+        "id": 8,
+        "name_ja": "夏の花冠",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520070
+          }
+        ],
+        "unlockFlag": 86036
+      },
+      {
+        "id": 9,
+        "name_ja": "秋の花冠",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520080
+          }
+        ],
+        "unlockFlag": 86037
+      },
+      {
+        "id": 10,
+        "name_ja": "冬の花冠",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520090
+          }
+        ],
+        "unlockFlag": 86038
+      },
+      {
+        "id": 11,
+        "name_ja": "魔法使い帽子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520100
+          },
+          {
+            "color": 1,
+            "itemId": 520101
+          },
+          {
+            "color": 2,
+            "itemId": 520102
+          },
+          {
+            "color": 3,
+            "itemId": 520103
+          },
+          {
+            "color": 4,
+            "itemId": 520104
+          },
+          {
+            "color": 5,
+            "itemId": 520105
+          },
+          {
+            "color": 6,
+            "itemId": 520106
+          },
+          {
+            "color": 7,
+            "itemId": 520107
+          },
+          {
+            "color": 8,
+            "itemId": 520108
+          },
+          {
+            "color": 9,
+            "itemId": 520109
+          }
+        ],
+        "unlockFlag": 86039
+      },
+      {
+        "id": 12,
+        "name_ja": "キャップ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520110
+          },
+          {
+            "color": 1,
+            "itemId": 520111
+          },
+          {
+            "color": 2,
+            "itemId": 520112
+          },
+          {
+            "color": 3,
+            "itemId": 520113
+          },
+          {
+            "color": 4,
+            "itemId": 520114
+          },
+          {
+            "color": 5,
+            "itemId": 520115
+          },
+          {
+            "color": 6,
+            "itemId": 520116
+          },
+          {
+            "color": 7,
+            "itemId": 520117
+          },
+          {
+            "color": 8,
+            "itemId": 520118
+          },
+          {
+            "color": 9,
+            "itemId": 520119
+          }
+        ],
+        "unlockFlag": 86040
+      },
+      {
+        "id": 13,
+        "name_ja": "笠",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520120
+          }
+        ],
+        "unlockFlag": 86041
+      },
+      {
+        "id": 14,
+        "name_ja": "狐面",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520300
+          }
+        ],
+        "unlockFlag": 86060
+      },
+      {
+        "id": 15,
+        "name_ja": "般若面",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520310
+          }
+        ],
+        "unlockFlag": 86061
+      },
+      {
+        "id": 16,
+        "name_ja": "おかめ面",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520320
+          }
+        ],
+        "unlockFlag": 86062
+      },
+      {
+        "id": 17,
+        "name_ja": "天狗面",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520370
+          }
+        ],
+        "unlockFlag": 86067
+      },
+      {
+        "id": 18,
+        "name_ja": "音符バッジ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520340
+          },
+          {
+            "color": 1,
+            "itemId": 520341
+          },
+          {
+            "color": 2,
+            "itemId": 520342
+          },
+          {
+            "color": 3,
+            "itemId": 520343
+          },
+          {
+            "color": 4,
+            "itemId": 520344
+          },
+          {
+            "color": 5,
+            "itemId": 520345
+          },
+          {
+            "color": 6,
+            "itemId": 520346
+          },
+          {
+            "color": 7,
+            "itemId": 520347
+          },
+          {
+            "color": 8,
+            "itemId": 520348
+          },
+          {
+            "color": 9,
+            "itemId": 520349
+          }
+        ],
+        "unlockFlag": 86064
+      },
+      {
+        "id": 19,
+        "name_ja": "蝶々",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520350
+          },
+          {
+            "color": 1,
+            "itemId": 520351
+          },
+          {
+            "color": 2,
+            "itemId": 520352
+          },
+          {
+            "color": 3,
+            "itemId": 520353
+          },
+          {
+            "color": 4,
+            "itemId": 520354
+          },
+          {
+            "color": 5,
+            "itemId": 520355
+          },
+          {
+            "color": 6,
+            "itemId": 520356
+          },
+          {
+            "color": 7,
+            "itemId": 520357
+          },
+          {
+            "color": 8,
+            "itemId": 520358
+          },
+          {
+            "color": 9,
+            "itemId": 520359
+          }
+        ],
+        "unlockFlag": 86065
+      },
+      {
+        "id": 20,
+        "name_ja": "お花",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520360
+          },
+          {
+            "color": 1,
+            "itemId": 520361
+          },
+          {
+            "color": 2,
+            "itemId": 520362
+          },
+          {
+            "color": 3,
+            "itemId": 520363
+          },
+          {
+            "color": 4,
+            "itemId": 520364
+          },
+          {
+            "color": 5,
+            "itemId": 520365
+          },
+          {
+            "color": 6,
+            "itemId": 520366
+          },
+          {
+            "color": 7,
+            "itemId": 520367
+          },
+          {
+            "color": 8,
+            "itemId": 520368
+          },
+          {
+            "color": 9,
+            "itemId": 520369
+          }
+        ],
+        "unlockFlag": 86066
+      },
+      {
+        "id": 21,
+        "name_ja": "りぼん１",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520500
+          },
+          {
+            "color": 1,
+            "itemId": 520501
+          },
+          {
+            "color": 2,
+            "itemId": 520502
+          },
+          {
+            "color": 3,
+            "itemId": 520503
+          },
+          {
+            "color": 4,
+            "itemId": 520504
+          },
+          {
+            "color": 5,
+            "itemId": 520505
+          },
+          {
+            "color": 6,
+            "itemId": 520506
+          },
+          {
+            "color": 7,
+            "itemId": 520507
+          },
+          {
+            "color": 8,
+            "itemId": 520508
+          },
+          {
+            "color": 9,
+            "itemId": 520509
+          }
+        ],
+        "unlockFlag": 86080
+      },
+      {
+        "id": 22,
+        "name_ja": "鈴",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520520
+          }
+        ],
+        "unlockFlag": 86082
+      },
+      {
+        "id": 23,
+        "name_ja": "ボンボン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520530
+          },
+          {
+            "color": 1,
+            "itemId": 520531
+          },
+          {
+            "color": 2,
+            "itemId": 520532
+          },
+          {
+            "color": 3,
+            "itemId": 520533
+          },
+          {
+            "color": 4,
+            "itemId": 520534
+          },
+          {
+            "color": 5,
+            "itemId": 520535
+          },
+          {
+            "color": 6,
+            "itemId": 520536
+          },
+          {
+            "color": 7,
+            "itemId": 520537
+          },
+          {
+            "color": 8,
+            "itemId": 520538
+          },
+          {
+            "color": 9,
+            "itemId": 520539
+          }
+        ],
+        "unlockFlag": 86083
+      },
+      {
+        "id": 24,
+        "name_ja": "うさみみカチューシャ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520600
+          },
+          {
+            "color": 1,
+            "itemId": 520601
+          },
+          {
+            "color": 2,
+            "itemId": 520602
+          },
+          {
+            "color": 3,
+            "itemId": 520603
+          },
+          {
+            "color": 4,
+            "itemId": 520604
+          },
+          {
+            "color": 5,
+            "itemId": 520605
+          },
+          {
+            "color": 6,
+            "itemId": 520606
+          },
+          {
+            "color": 7,
+            "itemId": 520607
+          },
+          {
+            "color": 8,
+            "itemId": 520608
+          },
+          {
+            "color": 9,
+            "itemId": 520609
+          }
+        ],
+        "unlockFlag": 86090
+      },
+      {
+        "id": 25,
+        "name_ja": "ヘッドドレス",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520620
+          },
+          {
+            "color": 1,
+            "itemId": 520621
+          },
+          {
+            "color": 2,
+            "itemId": 520622
+          },
+          {
+            "color": 3,
+            "itemId": 520623
+          },
+          {
+            "color": 4,
+            "itemId": 520624
+          },
+          {
+            "color": 5,
+            "itemId": 520625
+          },
+          {
+            "color": 6,
+            "itemId": 520626
+          },
+          {
+            "color": 7,
+            "itemId": 520627
+          },
+          {
+            "color": 8,
+            "itemId": 520628
+          },
+          {
+            "color": 9,
+            "itemId": 520629
+          }
+        ],
+        "unlockFlag": 86092
+      },
+      {
+        "id": 26,
+        "name_ja": "ヘッドフォン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520630
+          },
+          {
+            "color": 1,
+            "itemId": 520631
+          },
+          {
+            "color": 2,
+            "itemId": 520632
+          },
+          {
+            "color": 3,
+            "itemId": 520633
+          },
+          {
+            "color": 4,
+            "itemId": 520634
+          },
+          {
+            "color": 5,
+            "itemId": 520635
+          },
+          {
+            "color": 6,
+            "itemId": 520636
+          },
+          {
+            "color": 7,
+            "itemId": 520637
+          },
+          {
+            "color": 8,
+            "itemId": 520638
+          },
+          {
+            "color": 9,
+            "itemId": 520639
+          }
+        ],
+        "unlockFlag": 86093
+      },
+      {
+        "id": 27,
+        "name_ja": "アイマスク",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520700
+          }
+        ],
+        "unlockFlag": 86100
+      },
+      {
+        "id": 28,
+        "name_ja": "ゴーグル",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520710
+          },
+          {
+            "color": 1,
+            "itemId": 520711
+          },
+          {
+            "color": 2,
+            "itemId": 520712
+          },
+          {
+            "color": 3,
+            "itemId": 520713
+          },
+          {
+            "color": 4,
+            "itemId": 520714
+          },
+          {
+            "color": 5,
+            "itemId": 520715
+          },
+          {
+            "color": 6,
+            "itemId": 520716
+          },
+          {
+            "color": 7,
+            "itemId": 520717
+          },
+          {
+            "color": 8,
+            "itemId": 520718
+          },
+          {
+            "color": 9,
+            "itemId": 520719
+          }
+        ],
+        "unlockFlag": 86101
+      },
+      {
+        "id": 29,
+        "name_ja": "メガネ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520720
+          },
+          {
+            "color": 1,
+            "itemId": 520721
+          },
+          {
+            "color": 2,
+            "itemId": 520722
+          },
+          {
+            "color": 3,
+            "itemId": 520723
+          },
+          {
+            "color": 4,
+            "itemId": 520724
+          },
+          {
+            "color": 5,
+            "itemId": 520725
+          },
+          {
+            "color": 6,
+            "itemId": 520726
+          },
+          {
+            "color": 7,
+            "itemId": 520727
+          },
+          {
+            "color": 8,
+            "itemId": 520728
+          },
+          {
+            "color": 9,
+            "itemId": 520729
+          }
+        ],
+        "unlockFlag": 86102
+      },
+      {
+        "id": 30,
+        "name_ja": "サングラス",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520730
+          }
+        ],
+        "unlockFlag": 86103
+      },
+      {
+        "id": 31,
+        "name_ja": "モノクル",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 520740
+          }
+        ],
+        "unlockFlag": 86104
+      }
+    ],
+    "playerneckaccessory": [
+      {
+        "id": 1,
+        "name_ja": "アクセサリなし",
+        "variants": [],
+        "unlockFlag": 0
+      },
+      {
+        "id": 2,
+        "name_ja": "スカーフ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 510000
+          },
+          {
+            "color": 1,
+            "itemId": 510001
+          },
+          {
+            "color": 2,
+            "itemId": 510002
+          },
+          {
+            "color": 3,
+            "itemId": 510003
+          },
+          {
+            "color": 4,
+            "itemId": 510004
+          },
+          {
+            "color": 5,
+            "itemId": 510005
+          },
+          {
+            "color": 6,
+            "itemId": 510006
+          },
+          {
+            "color": 7,
+            "itemId": 510007
+          },
+          {
+            "color": 8,
+            "itemId": 510008
+          },
+          {
+            "color": 9,
+            "itemId": 510009
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 3,
+        "name_ja": "マフラー",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 510010
+          },
+          {
+            "color": 1,
+            "itemId": 510011
+          },
+          {
+            "color": 2,
+            "itemId": 510012
+          },
+          {
+            "color": 3,
+            "itemId": 510013
+          },
+          {
+            "color": 4,
+            "itemId": 510014
+          },
+          {
+            "color": 5,
+            "itemId": 510015
+          },
+          {
+            "color": 6,
+            "itemId": 510016
+          },
+          {
+            "color": 7,
+            "itemId": 510017
+          },
+          {
+            "color": 8,
+            "itemId": 510018
+          },
+          {
+            "color": 9,
+            "itemId": 510019
+          }
+        ],
+        "unlockFlag": 86020
+      },
+      {
+        "id": 4,
+        "name_ja": "もこもこ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 510020
+          }
+        ],
+        "unlockFlag": 86021
+      }
+    ],
+    "playerbackaccessory": [
+      {
+        "id": 1,
+        "name_ja": "鞄なし",
+        "variants": [],
+        "unlockFlag": 0
+      }
+    ],
+    "playerfronthairstyle": [
+      {
+        "id": 1,
+        "name_ja": "通常",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540000
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 2,
+        "name_ja": "パッツン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540001
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 3,
+        "name_ja": "短髪",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540002
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 4,
+        "name_ja": "斜め分け",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540003
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 5,
+        "name_ja": "片側",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540004
+          }
+        ],
+        "unlockFlag": 86120
+      },
+      {
+        "id": 6,
+        "name_ja": "クロス",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540005
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 7,
+        "name_ja": "センター分け",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540006
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 8,
+        "name_ja": "センター分け_ハネ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540007
+          }
+        ],
+        "unlockFlag": 86121
+      },
+      {
+        "id": 9,
+        "name_ja": "重め",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540008
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 10,
+        "name_ja": "オールバック",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540009
+          }
+        ],
+        "unlockFlag": 86122
+      },
+      {
+        "id": 11,
+        "name_ja": "センター分け_ウェーブ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540010
+          }
+        ],
+        "unlockFlag": 86123
+      },
+      {
+        "id": 12,
+        "name_ja": "センター分け_フラット",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540011
+          }
+        ],
+        "unlockFlag": 86124
+      },
+      {
+        "id": 13,
+        "name_ja": "七三分け",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540012
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 14,
+        "name_ja": "オン眉",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540013
+          }
+        ],
+        "unlockFlag": 86125
+      },
+      {
+        "id": 15,
+        "name_ja": "七三分け_サイドあり",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540014
+          }
+        ],
+        "unlockFlag": 86126
+      },
+      {
+        "id": 16,
+        "name_ja": "サイド三つ編み",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540015
+          }
+        ],
+        "unlockFlag": 86127
+      },
+      {
+        "id": 17,
+        "name_ja": "もこもこ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540016
+          }
+        ],
+        "unlockFlag": 86128
+      },
+      {
+        "id": 18,
+        "name_ja": "バラバラパッツン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540017
+          }
+        ],
+        "unlockFlag": 86129
+      },
+      {
+        "id": 19,
+        "name_ja": "ウェーブ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540018
+          }
+        ],
+        "unlockFlag": 86130
+      }
+    ],
+    "playerbackhairstyle": [
+      {
+        "id": 1,
+        "name_ja": "ふたば",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540100
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 2,
+        "name_ja": "アホ毛",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540101
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 3,
+        "name_ja": "ツインテール",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540102
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 4,
+        "name_ja": "下結び",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540103
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 5,
+        "name_ja": "ポニーテール",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540104
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 6,
+        "name_ja": "ちょんぼ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540105
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 7,
+        "name_ja": "お団子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540106
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 8,
+        "name_ja": "つの",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540107
+          }
+        ],
+        "unlockFlag": 86150
+      },
+      {
+        "id": 9,
+        "name_ja": "ロング",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540108
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 12,
+        "name_ja": "ハーフツイン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540111
+          }
+        ],
+        "unlockFlag": 86152
+      },
+      {
+        "id": 13,
+        "name_ja": "ウルフ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540112
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 14,
+        "name_ja": "サイドテール",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540113
+          }
+        ],
+        "unlockFlag": 86153
+      },
+      {
+        "id": 15,
+        "name_ja": "ベリーショート",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540114
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 16,
+        "name_ja": "クセ毛短髪",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540115
+          }
+        ],
+        "unlockFlag": 86154
+      },
+      {
+        "id": 17,
+        "name_ja": "サイドお団子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540116
+          }
+        ],
+        "unlockFlag": 86155
+      },
+      {
+        "id": 18,
+        "name_ja": "三つ編み",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540117
+          }
+        ],
+        "unlockFlag": 86156
+      },
+      {
+        "id": 19,
+        "name_ja": "ツイン三つ編み",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540118
+          }
+        ],
+        "unlockFlag": 86157
+      },
+      {
+        "id": 20,
+        "name_ja": "ツインお団子",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540119
+          }
+        ],
+        "unlockFlag": 86158
+      },
+      {
+        "id": 21,
+        "name_ja": "お嬢様ツイン",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540120
+          }
+        ],
+        "unlockFlag": 86159
+      },
+      {
+        "id": 24,
+        "name_ja": "ロングウェーブ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540123
+          }
+        ],
+        "unlockFlag": 86161
+      },
+      {
+        "id": 25,
+        "name_ja": "アフロ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540124
+          }
+        ],
+        "unlockFlag": 86162
+      },
+      {
+        "id": 26,
+        "name_ja": "パッツンロング",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540125
+          }
+        ],
+        "unlockFlag": 86163
+      },
+      {
+        "id": 27,
+        "name_ja": "ボブ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540126
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 28,
+        "name_ja": "クセ毛ボブ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540127
+          }
+        ],
+        "unlockFlag": 0
+      },
+      {
+        "id": 29,
+        "name_ja": "サムライポニテ",
+        "variants": [
+          {
+            "color": 0,
+            "itemId": 540128
+          }
+        ],
+        "unlockFlag": 86164
+      }
+    ]
+  }
+}

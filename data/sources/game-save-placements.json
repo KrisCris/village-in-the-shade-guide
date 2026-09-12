@@ -1,0 +1,7082 @@
+{
+  "source": "livestockplacement.dat; mapgroup.dat; native 0x14013BB50/0x14013AD30 availability, 0x1401050A0 base position",
+  "placements": [
+    {
+      "id": 1,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200001,
+      "mapGroup": 1,
+      "x": 58590,
+      "y": 1260,
+      "requires": [
+        100
+      ],
+      "excludes": [
+        104,
+        116
+      ]
+    },
+    {
+      "id": 2,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200001,
+      "mapGroup": 1,
+      "x": 58680,
+      "y": 1350,
+      "requires": [
+        100
+      ],
+      "excludes": [
+        104,
+        116
+      ]
+    },
+    {
+      "id": 3,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200001,
+      "mapGroup": 1,
+      "x": 58770,
+      "y": 1440,
+      "requires": [
+        100
+      ],
+      "excludes": [
+        104,
+        116
+      ]
+    },
+    {
+      "id": 4,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200001,
+      "mapGroup": 1,
+      "x": 58680,
+      "y": 1080,
+      "requires": [
+        100
+      ],
+      "excludes": [
+        104,
+        116
+      ]
+    },
+    {
+      "id": 5,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200001,
+      "mapGroup": 1,
+      "x": 58860,
+      "y": 1260,
+      "requires": [
+        100
+      ],
+      "excludes": [
+        104,
+        116
+      ]
+    },
+    {
+      "id": 6,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 69885,
+      "y": 81495,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 7,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70020,
+      "y": 81630,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 8,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70110,
+      "y": 81720,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 9,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70245,
+      "y": 81855,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 10,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70065,
+      "y": 81405,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 11,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70200,
+      "y": 81495,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 12,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70335,
+      "y": 81630,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 13,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70470,
+      "y": 81720,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 14,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210001,
+      "mapGroup": 1,
+      "x": 70155,
+      "y": 81675,
+      "requires": [
+        100,
+        116
+      ],
+      "excludes": [
+        104,
+        120
+      ]
+    },
+    {
+      "id": 15,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81740,
+      "y": 92720,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 16,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 92880,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 17,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 92925,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 18,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81450,
+      "y": 93060,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 19,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81900,
+      "y": 92970,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 20,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 93060,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 21,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81560,
+      "y": 93220,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 22,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 82060,
+      "y": 93125,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 23,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_9",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81830,
+      "y": 93170,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 24,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_10",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 93375,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 25,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_11",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 93330,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 26,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_12",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 81920,
+      "y": 93530,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 27,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220001,
+      "mapGroup": 1,
+      "x": 82215,
+      "y": 93285,
+      "requires": [
+        100,
+        120
+      ],
+      "excludes": [
+        104
+      ]
+    },
+    {
+      "id": 28,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200002,
+      "mapGroup": 1,
+      "x": 990,
+      "y": 70380,
+      "requires": [
+        101
+      ],
+      "excludes": [
+        105,
+        117
+      ]
+    },
+    {
+      "id": 29,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200002,
+      "mapGroup": 1,
+      "x": 1080,
+      "y": 70470,
+      "requires": [
+        101
+      ],
+      "excludes": [
+        105,
+        117
+      ]
+    },
+    {
+      "id": 30,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200002,
+      "mapGroup": 1,
+      "x": 1170,
+      "y": 70560,
+      "requires": [
+        101
+      ],
+      "excludes": [
+        105,
+        117
+      ]
+    },
+    {
+      "id": 31,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200002,
+      "mapGroup": 1,
+      "x": 1080,
+      "y": 70200,
+      "requires": [
+        101
+      ],
+      "excludes": [
+        105,
+        117
+      ]
+    },
+    {
+      "id": 32,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200002,
+      "mapGroup": 1,
+      "x": 1260,
+      "y": 70380,
+      "requires": [
+        101
+      ],
+      "excludes": [
+        105,
+        117
+      ]
+    },
+    {
+      "id": 33,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81405,
+      "y": 81495,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 34,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 81630,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 35,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81630,
+      "y": 81720,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 36,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 81855,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 37,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 81405,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 38,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 81495,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 39,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 81630,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 40,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 81720,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 41,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210002,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 81675,
+      "requires": [
+        101,
+        117
+      ],
+      "excludes": [
+        105,
+        121
+      ]
+    },
+    {
+      "id": 42,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93260,
+      "y": 92720,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 43,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93240,
+      "y": 92880,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 44,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93060,
+      "y": 92925,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 45,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 92970,
+      "y": 93060,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 46,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93420,
+      "y": 92970,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 47,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93195,
+      "y": 93060,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 48,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93080,
+      "y": 93220,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 49,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93580,
+      "y": 93125,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 50,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_9",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93350,
+      "y": 93170,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 51,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_10",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 93375,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 52,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_11",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93510,
+      "y": 93330,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 53,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_12",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93440,
+      "y": 93530,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 54,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220002,
+      "mapGroup": 1,
+      "x": 93735,
+      "y": 93285,
+      "requires": [
+        101,
+        121
+      ],
+      "excludes": [
+        105
+      ]
+    },
+    {
+      "id": 55,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200003,
+      "mapGroup": 1,
+      "x": 12510,
+      "y": 70380,
+      "requires": [
+        102
+      ],
+      "excludes": [
+        106,
+        118
+      ]
+    },
+    {
+      "id": 56,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200003,
+      "mapGroup": 1,
+      "x": 12600,
+      "y": 70470,
+      "requires": [
+        102
+      ],
+      "excludes": [
+        106,
+        118
+      ]
+    },
+    {
+      "id": 57,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200003,
+      "mapGroup": 1,
+      "x": 12690,
+      "y": 70560,
+      "requires": [
+        102
+      ],
+      "excludes": [
+        106,
+        118
+      ]
+    },
+    {
+      "id": 58,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200003,
+      "mapGroup": 1,
+      "x": 12600,
+      "y": 70200,
+      "requires": [
+        102
+      ],
+      "excludes": [
+        106,
+        118
+      ]
+    },
+    {
+      "id": 59,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200003,
+      "mapGroup": 1,
+      "x": 12780,
+      "y": 70380,
+      "requires": [
+        102
+      ],
+      "excludes": [
+        106,
+        118
+      ]
+    },
+    {
+      "id": 60,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81405,
+      "y": 69975,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 61,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 70110,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 62,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81630,
+      "y": 70200,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 63,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 70335,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 64,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 69885,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 65,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 69975,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 66,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 70110,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 67,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 70200,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 68,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210003,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 70155,
+      "requires": [
+        102,
+        118
+      ],
+      "excludes": [
+        106,
+        122
+      ]
+    },
+    {
+      "id": 69,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93260,
+      "y": 81200,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 70,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93240,
+      "y": 81360,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 71,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93060,
+      "y": 81405,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 72,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 92970,
+      "y": 81540,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 73,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93420,
+      "y": 81450,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 74,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93195,
+      "y": 81540,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 75,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93080,
+      "y": 81700,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 76,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93580,
+      "y": 81605,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 77,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_9",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93350,
+      "y": 81650,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 78,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_10",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 81855,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 79,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_11",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93510,
+      "y": 81810,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 80,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_12",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93440,
+      "y": 82010,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 81,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220003,
+      "mapGroup": 1,
+      "x": 93735,
+      "y": 81765,
+      "requires": [
+        102,
+        122
+      ],
+      "excludes": [
+        106
+      ]
+    },
+    {
+      "id": 82,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200004,
+      "mapGroup": 1,
+      "x": 24030,
+      "y": 70380,
+      "requires": [
+        103
+      ],
+      "excludes": [
+        107,
+        119
+      ]
+    },
+    {
+      "id": 83,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200004,
+      "mapGroup": 1,
+      "x": 24120,
+      "y": 70470,
+      "requires": [
+        103
+      ],
+      "excludes": [
+        107,
+        119
+      ]
+    },
+    {
+      "id": 84,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200004,
+      "mapGroup": 1,
+      "x": 24210,
+      "y": 70560,
+      "requires": [
+        103
+      ],
+      "excludes": [
+        107,
+        119
+      ]
+    },
+    {
+      "id": 85,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200004,
+      "mapGroup": 1,
+      "x": 24120,
+      "y": 70200,
+      "requires": [
+        103
+      ],
+      "excludes": [
+        107,
+        119
+      ]
+    },
+    {
+      "id": 86,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200004,
+      "mapGroup": 1,
+      "x": 24300,
+      "y": 70380,
+      "requires": [
+        103
+      ],
+      "excludes": [
+        107,
+        119
+      ]
+    },
+    {
+      "id": 87,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81405,
+      "y": 58455,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 88,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 58590,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 89,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81630,
+      "y": 58680,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 90,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 58815,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 91,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 58365,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 92,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 58455,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 93,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 58590,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 94,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 58680,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 95,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210004,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 58635,
+      "requires": [
+        103,
+        119
+      ],
+      "excludes": [
+        107,
+        123
+      ]
+    },
+    {
+      "id": 96,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_1",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93260,
+      "y": 69680,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 97,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_2",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93240,
+      "y": 69840,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 98,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_3",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93060,
+      "y": 69885,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 99,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_4",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 92970,
+      "y": 70020,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 100,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_5",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93420,
+      "y": 69930,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 101,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_6",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93195,
+      "y": 70020,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 102,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_7",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93080,
+      "y": 70180,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 103,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_8",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93580,
+      "y": 70085,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 104,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_9",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93350,
+      "y": 70130,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 105,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_10",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 70335,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 106,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_11",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93510,
+      "y": 70290,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 107,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_12",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93440,
+      "y": 70490,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 108,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220004,
+      "mapGroup": 1,
+      "x": 93735,
+      "y": 70245,
+      "requires": [
+        103,
+        123
+      ],
+      "excludes": [
+        107
+      ]
+    },
+    {
+      "id": 109,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200101,
+      "mapGroup": 1,
+      "x": 71730,
+      "y": 58500,
+      "requires": [
+        100,
+        104
+      ],
+      "excludes": [
+        116
+      ]
+    },
+    {
+      "id": 110,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200101,
+      "mapGroup": 1,
+      "x": 71640,
+      "y": 58590,
+      "requires": [
+        100,
+        104
+      ],
+      "excludes": [
+        116
+      ]
+    },
+    {
+      "id": 111,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200101,
+      "mapGroup": 1,
+      "x": 71550,
+      "y": 58680,
+      "requires": [
+        100,
+        104
+      ],
+      "excludes": [
+        116
+      ]
+    },
+    {
+      "id": 112,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200101,
+      "mapGroup": 1,
+      "x": 71460,
+      "y": 58770,
+      "requires": [
+        100,
+        104
+      ],
+      "excludes": [
+        116
+      ]
+    },
+    {
+      "id": 113,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_1_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200101,
+      "mapGroup": 1,
+      "x": 71325,
+      "y": 58635,
+      "requires": [
+        100,
+        104
+      ],
+      "excludes": [
+        116
+      ]
+    },
+    {
+      "id": 114,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 47250,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 115,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81900,
+      "y": 47340,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 116,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81810,
+      "y": 47430,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 117,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 47520,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 118,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 47115,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 119,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 47205,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 120,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 47295,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 121,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 47385,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 122,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_1_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210101,
+      "mapGroup": 1,
+      "x": 81450,
+      "y": 47430,
+      "requires": [
+        100,
+        104,
+        116
+      ],
+      "excludes": [
+        120
+      ]
+    },
+    {
+      "id": 123,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93780,
+      "y": 58680,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 124,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93890,
+      "y": 58835,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 125,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 94050,
+      "y": 58950,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 126,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 58880,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 127,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 58995,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 128,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93960,
+      "y": 59130,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 129,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93555,
+      "y": 59040,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 130,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93690,
+      "y": 59130,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 131,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_9_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 59265,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 132,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_10_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93400,
+      "y": 59150,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 133,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_11_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93465,
+      "y": 59310,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 134,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_12_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 59420,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 135,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_1_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220101,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 59265,
+      "requires": [
+        100,
+        104,
+        120
+      ],
+      "excludes": []
+    },
+    {
+      "id": 136,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200102,
+      "mapGroup": 1,
+      "x": 71730,
+      "y": 46980,
+      "requires": [
+        101,
+        105
+      ],
+      "excludes": [
+        117
+      ]
+    },
+    {
+      "id": 137,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200102,
+      "mapGroup": 1,
+      "x": 71640,
+      "y": 47070,
+      "requires": [
+        101,
+        105
+      ],
+      "excludes": [
+        117
+      ]
+    },
+    {
+      "id": 138,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200102,
+      "mapGroup": 1,
+      "x": 71550,
+      "y": 47160,
+      "requires": [
+        101,
+        105
+      ],
+      "excludes": [
+        117
+      ]
+    },
+    {
+      "id": 139,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200102,
+      "mapGroup": 1,
+      "x": 71460,
+      "y": 47250,
+      "requires": [
+        101,
+        105
+      ],
+      "excludes": [
+        117
+      ]
+    },
+    {
+      "id": 140,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_2_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200102,
+      "mapGroup": 1,
+      "x": 71325,
+      "y": 47115,
+      "requires": [
+        101,
+        105
+      ],
+      "excludes": [
+        117
+      ]
+    },
+    {
+      "id": 141,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 35730,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 142,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81900,
+      "y": 35820,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 143,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81810,
+      "y": 35910,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 144,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 36000,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 145,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 35595,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 146,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 35685,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 147,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 35775,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 148,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 35865,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 149,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_2_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210102,
+      "mapGroup": 1,
+      "x": 81450,
+      "y": 35910,
+      "requires": [
+        101,
+        105,
+        117
+      ],
+      "excludes": [
+        121
+      ]
+    },
+    {
+      "id": 150,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93780,
+      "y": 47160,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 151,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93890,
+      "y": 47315,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 152,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 94050,
+      "y": 47430,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 153,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 47360,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 154,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 47475,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 155,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93960,
+      "y": 47610,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 156,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93555,
+      "y": 47520,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 157,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93690,
+      "y": 47610,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 158,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_9_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 47745,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 159,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_10_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93400,
+      "y": 47630,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 160,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_11_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93465,
+      "y": 47790,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 161,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_12_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 47900,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 162,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_2_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220102,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 47745,
+      "requires": [
+        101,
+        105,
+        121
+      ],
+      "excludes": []
+    },
+    {
+      "id": 163,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200103,
+      "mapGroup": 1,
+      "x": 71730,
+      "y": 35460,
+      "requires": [
+        102,
+        106
+      ],
+      "excludes": [
+        118
+      ]
+    },
+    {
+      "id": 164,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200103,
+      "mapGroup": 1,
+      "x": 71640,
+      "y": 35550,
+      "requires": [
+        102,
+        106
+      ],
+      "excludes": [
+        118
+      ]
+    },
+    {
+      "id": 165,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200103,
+      "mapGroup": 1,
+      "x": 71550,
+      "y": 35640,
+      "requires": [
+        102,
+        106
+      ],
+      "excludes": [
+        118
+      ]
+    },
+    {
+      "id": 166,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200103,
+      "mapGroup": 1,
+      "x": 71460,
+      "y": 35730,
+      "requires": [
+        102,
+        106
+      ],
+      "excludes": [
+        118
+      ]
+    },
+    {
+      "id": 167,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_3_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200103,
+      "mapGroup": 1,
+      "x": 71325,
+      "y": 35595,
+      "requires": [
+        102,
+        106
+      ],
+      "excludes": [
+        118
+      ]
+    },
+    {
+      "id": 168,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 24210,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 169,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81900,
+      "y": 24300,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 170,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81810,
+      "y": 24390,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 171,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 24480,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 172,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 24075,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 173,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 24165,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 174,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 24255,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 175,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 24345,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 176,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_3_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210103,
+      "mapGroup": 1,
+      "x": 81450,
+      "y": 24390,
+      "requires": [
+        102,
+        106,
+        118
+      ],
+      "excludes": [
+        122
+      ]
+    },
+    {
+      "id": 177,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93780,
+      "y": 35640,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 178,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93890,
+      "y": 35795,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 179,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 94050,
+      "y": 35910,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 180,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 35840,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 181,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 35955,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 182,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93960,
+      "y": 36090,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 183,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93555,
+      "y": 36000,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 184,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93690,
+      "y": 36090,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 185,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_9_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 36225,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 186,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_10_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93400,
+      "y": 36110,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 187,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_11_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93465,
+      "y": 36270,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 188,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_12_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 36380,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 189,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_3_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220103,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 36225,
+      "requires": [
+        102,
+        106,
+        122
+      ],
+      "excludes": []
+    },
+    {
+      "id": 190,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200104,
+      "mapGroup": 1,
+      "x": 71730,
+      "y": 23940,
+      "requires": [
+        103,
+        107
+      ],
+      "excludes": [
+        119
+      ]
+    },
+    {
+      "id": 191,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200104,
+      "mapGroup": 1,
+      "x": 71640,
+      "y": 24030,
+      "requires": [
+        103,
+        107
+      ],
+      "excludes": [
+        119
+      ]
+    },
+    {
+      "id": 192,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200104,
+      "mapGroup": 1,
+      "x": 71550,
+      "y": 24120,
+      "requires": [
+        103,
+        107
+      ],
+      "excludes": [
+        119
+      ]
+    },
+    {
+      "id": 193,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211200104,
+      "mapGroup": 1,
+      "x": 71460,
+      "y": 24210,
+      "requires": [
+        103,
+        107
+      ],
+      "excludes": [
+        119
+      ]
+    },
+    {
+      "id": 194,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV1_4_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211200104,
+      "mapGroup": 1,
+      "x": 71325,
+      "y": 24075,
+      "requires": [
+        103,
+        107
+      ],
+      "excludes": [
+        119
+      ]
+    },
+    {
+      "id": 195,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81990,
+      "y": 12690,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 196,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81900,
+      "y": 12780,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 197,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81810,
+      "y": 12870,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 198,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 12960,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 199,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81855,
+      "y": 12555,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 200,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81765,
+      "y": 12645,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 201,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 12735,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 202,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 12825,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 203,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV2_4_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211210104,
+      "mapGroup": 1,
+      "x": 81450,
+      "y": 12870,
+      "requires": [
+        103,
+        107,
+        119
+      ],
+      "excludes": [
+        123
+      ]
+    },
+    {
+      "id": 204,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_1_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93780,
+      "y": 24120,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 205,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_2_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93890,
+      "y": 24275,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 206,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_3_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 94050,
+      "y": 24390,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 207,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_4_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 24320,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 208,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_5_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 24435,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 209,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_6_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93960,
+      "y": 24570,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 210,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_7_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93555,
+      "y": 24480,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 211,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_8_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93690,
+      "y": 24570,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 212,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_9_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93825,
+      "y": 24705,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 213,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_10_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93400,
+      "y": 24590,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 214,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_11_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93465,
+      "y": 24750,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 215,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_12_MIRROR",
+      "houseType": 0,
+      "special": false,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93670,
+      "y": 24860,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 216,
+      "code": "LIVESTOCK_PLACEMENT_ID_LIVESTOCK_HOUSE_LV3_4_MIRROR_HORROR",
+      "houseType": 0,
+      "special": true,
+      "mapId": 211220104,
+      "mapGroup": 1,
+      "x": 93285,
+      "y": 24705,
+      "requires": [
+        103,
+        107,
+        123
+      ],
+      "excludes": []
+    },
+    {
+      "id": 217,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100001,
+      "mapGroup": 1,
+      "x": 58725,
+      "y": 47475,
+      "requires": [
+        108
+      ],
+      "excludes": [
+        112,
+        124
+      ]
+    },
+    {
+      "id": 218,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100001,
+      "mapGroup": 1,
+      "x": 58870,
+      "y": 47520,
+      "requires": [
+        108
+      ],
+      "excludes": [
+        112,
+        124
+      ]
+    },
+    {
+      "id": 219,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100001,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 47565,
+      "requires": [
+        108
+      ],
+      "excludes": [
+        112,
+        124
+      ]
+    },
+    {
+      "id": 220,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100001,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 47430,
+      "requires": [
+        108
+      ],
+      "excludes": [
+        112,
+        124
+      ]
+    },
+    {
+      "id": 221,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69615,
+      "y": 12375,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 222,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69705,
+      "y": 12285,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 223,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69750,
+      "y": 12195,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 224,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69660,
+      "y": 12105,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 225,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69570,
+      "y": 12105,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 226,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69525,
+      "y": 12195,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 227,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69435,
+      "y": 12285,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 228,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110001,
+      "mapGroup": 1,
+      "x": 69525,
+      "y": 12330,
+      "requires": [
+        108,
+        124
+      ],
+      "excludes": [
+        112,
+        128
+      ]
+    },
+    {
+      "id": 229,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 675,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 230,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81810,
+      "y": 765,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 231,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81630,
+      "y": 765,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 232,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81720,
+      "y": 855,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 233,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 810,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 234,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81610,
+      "y": 920,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 235,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81730,
+      "y": 990,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 236,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81495,
+      "y": 945,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 237,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_9",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81585,
+      "y": 1035,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 238,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_10",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81675,
+      "y": 1125,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 239,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_11",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81405,
+      "y": 1030,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 240,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_12",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120001,
+      "mapGroup": 1,
+      "x": 81540,
+      "y": 1170,
+      "requires": [
+        108,
+        128
+      ],
+      "excludes": [
+        112
+      ]
+    },
+    {
+      "id": 241,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100002,
+      "mapGroup": 1,
+      "x": 58725,
+      "y": 35955,
+      "requires": [
+        109
+      ],
+      "excludes": [
+        113,
+        125
+      ]
+    },
+    {
+      "id": 242,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100002,
+      "mapGroup": 1,
+      "x": 58870,
+      "y": 36000,
+      "requires": [
+        109
+      ],
+      "excludes": [
+        113,
+        125
+      ]
+    },
+    {
+      "id": 243,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100002,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 36045,
+      "requires": [
+        109
+      ],
+      "excludes": [
+        113,
+        125
+      ]
+    },
+    {
+      "id": 244,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100002,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 35910,
+      "requires": [
+        109
+      ],
+      "excludes": [
+        113,
+        125
+      ]
+    },
+    {
+      "id": 245,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69615,
+      "y": 855,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 246,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69705,
+      "y": 765,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 247,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69750,
+      "y": 675,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 248,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69660,
+      "y": 585,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 249,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69570,
+      "y": 585,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 250,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69525,
+      "y": 675,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 251,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69435,
+      "y": 765,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 252,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110002,
+      "mapGroup": 1,
+      "x": 69525,
+      "y": 810,
+      "requires": [
+        109,
+        125
+      ],
+      "excludes": [
+        113,
+        129
+      ]
+    },
+    {
+      "id": 253,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 1080,
+      "y": 92835,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 254,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 1170,
+      "y": 92925,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 255,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 990,
+      "y": 92925,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 256,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 1080,
+      "y": 93015,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 257,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 900,
+      "y": 92970,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 258,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 970,
+      "y": 93080,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 259,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 1090,
+      "y": 93150,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 260,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 855,
+      "y": 93105,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 261,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_9",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 945,
+      "y": 93195,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 262,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_10",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 1035,
+      "y": 93285,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 263,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_11",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 765,
+      "y": 93190,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 264,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_12",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120002,
+      "mapGroup": 1,
+      "x": 900,
+      "y": 93330,
+      "requires": [
+        109,
+        129
+      ],
+      "excludes": [
+        113
+      ]
+    },
+    {
+      "id": 265,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100003,
+      "mapGroup": 1,
+      "x": 58725,
+      "y": 24435,
+      "requires": [
+        110
+      ],
+      "excludes": [
+        114,
+        126
+      ]
+    },
+    {
+      "id": 266,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100003,
+      "mapGroup": 1,
+      "x": 58870,
+      "y": 24480,
+      "requires": [
+        110
+      ],
+      "excludes": [
+        114,
+        126
+      ]
+    },
+    {
+      "id": 267,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100003,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 24525,
+      "requires": [
+        110
+      ],
+      "excludes": [
+        114,
+        126
+      ]
+    },
+    {
+      "id": 268,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100003,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 24390,
+      "requires": [
+        110
+      ],
+      "excludes": [
+        114,
+        126
+      ]
+    },
+    {
+      "id": 269,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 495,
+      "y": 81495,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 270,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 585,
+      "y": 81405,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 271,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 630,
+      "y": 81315,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 272,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 540,
+      "y": 81225,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 273,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 450,
+      "y": 81225,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 274,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 405,
+      "y": 81315,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 275,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 315,
+      "y": 81405,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 276,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110003,
+      "mapGroup": 1,
+      "x": 405,
+      "y": 81450,
+      "requires": [
+        110,
+        126
+      ],
+      "excludes": [
+        114,
+        130
+      ]
+    },
+    {
+      "id": 277,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12600,
+      "y": 92835,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 278,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12690,
+      "y": 92925,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 279,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12510,
+      "y": 92925,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 280,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12600,
+      "y": 93015,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 281,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12420,
+      "y": 92970,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 282,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12490,
+      "y": 93080,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 283,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12610,
+      "y": 93150,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 284,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12375,
+      "y": 93105,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 285,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_9",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12465,
+      "y": 93195,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 286,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_10",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12555,
+      "y": 93285,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 287,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_11",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12285,
+      "y": 93190,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 288,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_12",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120003,
+      "mapGroup": 1,
+      "x": 12420,
+      "y": 93330,
+      "requires": [
+        110,
+        130
+      ],
+      "excludes": [
+        114
+      ]
+    },
+    {
+      "id": 289,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100004,
+      "mapGroup": 1,
+      "x": 58725,
+      "y": 12915,
+      "requires": [
+        111
+      ],
+      "excludes": [
+        115,
+        127
+      ]
+    },
+    {
+      "id": 290,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100004,
+      "mapGroup": 1,
+      "x": 58870,
+      "y": 12960,
+      "requires": [
+        111
+      ],
+      "excludes": [
+        115,
+        127
+      ]
+    },
+    {
+      "id": 291,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100004,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 13005,
+      "requires": [
+        111
+      ],
+      "excludes": [
+        115,
+        127
+      ]
+    },
+    {
+      "id": 292,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100004,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 12870,
+      "requires": [
+        111
+      ],
+      "excludes": [
+        115,
+        127
+      ]
+    },
+    {
+      "id": 293,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 12015,
+      "y": 81495,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 294,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 12105,
+      "y": 81405,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 295,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 12150,
+      "y": 81315,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 296,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 12060,
+      "y": 81225,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 297,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 11970,
+      "y": 81225,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 298,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 11925,
+      "y": 81315,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 299,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 11835,
+      "y": 81405,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 300,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110004,
+      "mapGroup": 1,
+      "x": 11925,
+      "y": 81450,
+      "requires": [
+        111,
+        127
+      ],
+      "excludes": [
+        115,
+        131
+      ]
+    },
+    {
+      "id": 301,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_1",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24120,
+      "y": 92835,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 302,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_2",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24210,
+      "y": 92925,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 303,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_3",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24030,
+      "y": 92925,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 304,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_4",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24120,
+      "y": 93015,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 305,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_5",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 23940,
+      "y": 92970,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 306,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_6",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24010,
+      "y": 93080,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 307,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_7",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24130,
+      "y": 93150,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 308,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_8",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 23895,
+      "y": 93105,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 309,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_9",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 23985,
+      "y": 93195,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 310,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_10",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 24075,
+      "y": 93285,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 311,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_11",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 23805,
+      "y": 93190,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 312,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_12",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120004,
+      "mapGroup": 1,
+      "x": 23940,
+      "y": 93330,
+      "requires": [
+        111,
+        131
+      ],
+      "excludes": [
+        115
+      ]
+    },
+    {
+      "id": 313,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100101,
+      "mapGroup": 1,
+      "x": 35100,
+      "y": 69840,
+      "requires": [
+        108,
+        112
+      ],
+      "excludes": [
+        124
+      ]
+    },
+    {
+      "id": 314,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100101,
+      "mapGroup": 1,
+      "x": 35055,
+      "y": 69885,
+      "requires": [
+        108,
+        112
+      ],
+      "excludes": [
+        124
+      ]
+    },
+    {
+      "id": 315,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100101,
+      "mapGroup": 1,
+      "x": 35010,
+      "y": 69930,
+      "requires": [
+        108,
+        112
+      ],
+      "excludes": [
+        124
+      ]
+    },
+    {
+      "id": 316,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_1_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100101,
+      "mapGroup": 1,
+      "x": 35010,
+      "y": 69795,
+      "requires": [
+        108,
+        112
+      ],
+      "excludes": [
+        124
+      ]
+    },
+    {
+      "id": 317,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23580,
+      "y": 81450,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 318,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23535,
+      "y": 81360,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 319,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23625,
+      "y": 81270,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 320,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23715,
+      "y": 81270,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 321,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23760,
+      "y": 81315,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 322,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23850,
+      "y": 81405,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 323,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23805,
+      "y": 81495,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 324,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_1_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110101,
+      "mapGroup": 1,
+      "x": 23715,
+      "y": 81540,
+      "requires": [
+        108,
+        112,
+        124
+      ],
+      "excludes": [
+        128
+      ]
+    },
+    {
+      "id": 325,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35775,
+      "y": 93555,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 326,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35685,
+      "y": 93645,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 327,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35865,
+      "y": 93645,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 328,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35775,
+      "y": 93735,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 329,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35980,
+      "y": 93710,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 330,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35890,
+      "y": 93800,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 331,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35795,
+      "y": 93845,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 332,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 36000,
+      "y": 93825,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 333,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_9_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 35955,
+      "y": 93915,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 334,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_10_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 36110,
+      "y": 93845,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 335,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_11_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 36065,
+      "y": 93980,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 336,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_1_12_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120101,
+      "mapGroup": 1,
+      "x": 36160,
+      "y": 93940,
+      "requires": [
+        108,
+        112,
+        128
+      ],
+      "excludes": []
+    },
+    {
+      "id": 337,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100102,
+      "mapGroup": 1,
+      "x": 46620,
+      "y": 69840,
+      "requires": [
+        109,
+        113
+      ],
+      "excludes": [
+        125
+      ]
+    },
+    {
+      "id": 338,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100102,
+      "mapGroup": 1,
+      "x": 46575,
+      "y": 69885,
+      "requires": [
+        109,
+        113
+      ],
+      "excludes": [
+        125
+      ]
+    },
+    {
+      "id": 339,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100102,
+      "mapGroup": 1,
+      "x": 46530,
+      "y": 69930,
+      "requires": [
+        109,
+        113
+      ],
+      "excludes": [
+        125
+      ]
+    },
+    {
+      "id": 340,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_2_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100102,
+      "mapGroup": 1,
+      "x": 46530,
+      "y": 69795,
+      "requires": [
+        109,
+        113
+      ],
+      "excludes": [
+        125
+      ]
+    },
+    {
+      "id": 341,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35100,
+      "y": 81450,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 342,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35055,
+      "y": 81360,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 343,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35145,
+      "y": 81270,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 344,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35235,
+      "y": 81270,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 345,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35280,
+      "y": 81315,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 346,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35370,
+      "y": 81405,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 347,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35325,
+      "y": 81495,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 348,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_2_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110102,
+      "mapGroup": 1,
+      "x": 35235,
+      "y": 81540,
+      "requires": [
+        109,
+        113,
+        125
+      ],
+      "excludes": [
+        129
+      ]
+    },
+    {
+      "id": 349,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47295,
+      "y": 93555,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 350,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47205,
+      "y": 93645,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 351,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47385,
+      "y": 93645,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 352,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47295,
+      "y": 93735,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 353,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47500,
+      "y": 93710,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 354,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47410,
+      "y": 93800,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 355,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47315,
+      "y": 93845,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 356,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47520,
+      "y": 93825,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 357,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_9_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47475,
+      "y": 93915,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 358,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_10_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47630,
+      "y": 93845,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 359,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_11_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47585,
+      "y": 93980,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 360,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_2_12_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120102,
+      "mapGroup": 1,
+      "x": 47680,
+      "y": 93940,
+      "requires": [
+        109,
+        113,
+        129
+      ],
+      "excludes": []
+    },
+    {
+      "id": 361,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100103,
+      "mapGroup": 1,
+      "x": 58140,
+      "y": 69840,
+      "requires": [
+        110,
+        114
+      ],
+      "excludes": [
+        126
+      ]
+    },
+    {
+      "id": 362,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100103,
+      "mapGroup": 1,
+      "x": 58095,
+      "y": 69885,
+      "requires": [
+        110,
+        114
+      ],
+      "excludes": [
+        126
+      ]
+    },
+    {
+      "id": 363,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100103,
+      "mapGroup": 1,
+      "x": 58050,
+      "y": 69930,
+      "requires": [
+        110,
+        114
+      ],
+      "excludes": [
+        126
+      ]
+    },
+    {
+      "id": 364,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_3_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100103,
+      "mapGroup": 1,
+      "x": 58050,
+      "y": 69795,
+      "requires": [
+        110,
+        114
+      ],
+      "excludes": [
+        126
+      ]
+    },
+    {
+      "id": 365,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46620,
+      "y": 81450,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 366,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46575,
+      "y": 81360,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 367,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46665,
+      "y": 81270,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 368,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46755,
+      "y": 81270,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 369,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46800,
+      "y": 81315,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 370,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46890,
+      "y": 81405,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 371,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46845,
+      "y": 81495,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 372,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_3_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110103,
+      "mapGroup": 1,
+      "x": 46755,
+      "y": 81540,
+      "requires": [
+        110,
+        114,
+        126
+      ],
+      "excludes": [
+        130
+      ]
+    },
+    {
+      "id": 373,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 93555,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 374,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58725,
+      "y": 93645,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 375,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58905,
+      "y": 93645,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 376,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58815,
+      "y": 93735,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 377,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 59020,
+      "y": 93710,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 378,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58930,
+      "y": 93800,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 379,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58835,
+      "y": 93845,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 380,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 59040,
+      "y": 93825,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 381,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_9_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 58995,
+      "y": 93915,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 382,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_10_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 59150,
+      "y": 93845,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 383,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_11_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 59105,
+      "y": 93980,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 384,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_3_12_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120103,
+      "mapGroup": 1,
+      "x": 59200,
+      "y": 93940,
+      "requires": [
+        110,
+        114,
+        130
+      ],
+      "excludes": []
+    },
+    {
+      "id": 385,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100104,
+      "mapGroup": 1,
+      "x": 69660,
+      "y": 69840,
+      "requires": [
+        111,
+        115
+      ],
+      "excludes": [
+        127
+      ]
+    },
+    {
+      "id": 386,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100104,
+      "mapGroup": 1,
+      "x": 69615,
+      "y": 69885,
+      "requires": [
+        111,
+        115
+      ],
+      "excludes": [
+        127
+      ]
+    },
+    {
+      "id": 387,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100104,
+      "mapGroup": 1,
+      "x": 69570,
+      "y": 69930,
+      "requires": [
+        111,
+        115
+      ],
+      "excludes": [
+        127
+      ]
+    },
+    {
+      "id": 388,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV1_4_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211100104,
+      "mapGroup": 1,
+      "x": 69570,
+      "y": 69795,
+      "requires": [
+        111,
+        115
+      ],
+      "excludes": [
+        127
+      ]
+    },
+    {
+      "id": 389,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58140,
+      "y": 81450,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 390,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58095,
+      "y": 81360,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 391,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58185,
+      "y": 81270,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 392,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58275,
+      "y": 81270,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 393,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58320,
+      "y": 81315,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 394,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58410,
+      "y": 81405,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 395,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58365,
+      "y": 81495,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 396,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV2_4_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211110104,
+      "mapGroup": 1,
+      "x": 58275,
+      "y": 81540,
+      "requires": [
+        111,
+        115,
+        127
+      ],
+      "excludes": [
+        131
+      ]
+    },
+    {
+      "id": 397,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_1_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70335,
+      "y": 93555,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 398,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_2_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70245,
+      "y": 93645,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 399,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_3_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70425,
+      "y": 93645,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 400,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_4_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70335,
+      "y": 93735,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 401,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_5_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70540,
+      "y": 93710,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 402,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_6_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70450,
+      "y": 93800,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 403,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_7_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70355,
+      "y": 93845,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 404,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_8_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70560,
+      "y": 93825,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 405,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_9_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70515,
+      "y": 93915,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 406,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_10_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70670,
+      "y": 93845,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 407,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_11_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70625,
+      "y": 93980,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 408,
+      "code": "LIVESTOCK_PLACEMENT_ID_AVIARY_LV3_4_12_MIRROR",
+      "houseType": 1,
+      "special": false,
+      "mapId": 211120104,
+      "mapGroup": 1,
+      "x": 70720,
+      "y": 93940,
+      "requires": [
+        111,
+        115,
+        131
+      ],
+      "excludes": []
+    },
+    {
+      "id": 409,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_1",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145
+      ],
+      "excludes": [
+        146
+      ]
+    },
+    {
+      "id": 410,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_2",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145
+      ],
+      "excludes": [
+        146
+      ]
+    },
+    {
+      "id": 411,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_3",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145
+      ],
+      "excludes": [
+        146
+      ]
+    },
+    {
+      "id": 412,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_1_MIRROR",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145,
+        146
+      ],
+      "excludes": []
+    },
+    {
+      "id": 413,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_2_MIRROR",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145,
+        146
+      ],
+      "excludes": []
+    },
+    {
+      "id": 414,
+      "code": "LIVESTOCK_PLACEMENT_ID_STABLE_3_MIRROR",
+      "houseType": 2,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [
+        145,
+        146
+      ],
+      "excludes": []
+    },
+    {
+      "id": 415,
+      "code": "LIVESTOCK_PLACEMENT_ID_DOG_HOUSE",
+      "houseType": 3,
+      "special": false,
+      "mapId": 100000001,
+      "mapGroup": 1,
+      "x": 0,
+      "y": 0,
+      "requires": [],
+      "excludes": []
+    }
+  ]
+}

@@ -1,0 +1,669 @@
+{
+  "source": "livestock.dat; native love level 0x14010AA80 tests feature11, divides by300/400, clamps at5",
+  "animals": [
+    {
+      "id": 1,
+      "code": "LIVESTOCK_ID_CHICKEN",
+      "name": "雞",
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 618,
+          "icon": 7170,
+          "itemId": 700020
+        },
+        {
+          "index": 1,
+          "texture": 620,
+          "icon": 7171,
+          "itemId": 700021
+        },
+        {
+          "index": 2,
+          "texture": 621,
+          "icon": 7172,
+          "itemId": 700022
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "code": "LIVESTOCK_ID_CHICK",
+      "name": "小雞",
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 5,
+      "adultId": 1,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 608,
+          "icon": 7167,
+          "itemId": 700010
+        },
+        {
+          "index": 1,
+          "texture": 609,
+          "icon": 7168,
+          "itemId": 700011
+        },
+        {
+          "index": 2,
+          "texture": 610,
+          "icon": 7169,
+          "itemId": 700012
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "code": "LIVESTOCK_ID_DUCK",
+      "name": "鴨",
+      "houseType": 1,
+      "features": [
+        7,
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 625,
+          "icon": 7176,
+          "itemId": 700040
+        },
+        {
+          "index": 1,
+          "texture": 626,
+          "icon": 7177,
+          "itemId": 700041
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "code": "LIVESTOCK_ID_DUCK_CHICK",
+      "name": "小鴨",
+      "houseType": 1,
+      "features": [
+        7,
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 7,
+      "adultId": 3,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 623,
+          "icon": 7174,
+          "itemId": 700030
+        },
+        {
+          "index": 1,
+          "texture": 624,
+          "icon": 7175,
+          "itemId": 700031
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "code": "LIVESTOCK_ID_TURKEY",
+      "name": "火雞",
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 0,
+          "icon": 7179,
+          "itemId": 700060
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "code": "LIVESTOCK_ID_TURKEY_CHICK",
+      "name": "小火雞",
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 10,
+      "adultId": 5,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 0,
+          "icon": 7178,
+          "itemId": 700050
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "code": "LIVESTOCK_ID_COW",
+      "name": "牛",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 630,
+          "icon": 7197,
+          "itemId": 700080
+        },
+        {
+          "index": 1,
+          "texture": 632,
+          "icon": 7198,
+          "itemId": 700081
+        },
+        {
+          "index": 2,
+          "texture": 633,
+          "icon": 7199,
+          "itemId": 700082
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "code": "LIVESTOCK_ID_CALF",
+      "name": "小牛",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 14,
+      "adultId": 7,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 627,
+          "icon": 7194,
+          "itemId": 700070
+        },
+        {
+          "index": 1,
+          "texture": 628,
+          "icon": 7195,
+          "itemId": 700071
+        },
+        {
+          "index": 2,
+          "texture": 629,
+          "icon": 7196,
+          "itemId": 700072
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "code": "LIVESTOCK_ID_SHEEP",
+      "name": "綿羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 636,
+          "icon": 7208,
+          "itemId": 700100
+        },
+        {
+          "index": 1,
+          "texture": 637,
+          "icon": 7209,
+          "itemId": 700101
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "code": "LIVESTOCK_ID_LAMB",
+      "name": "小綿羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 10,
+      "adultId": 9,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 634,
+          "icon": 7206,
+          "itemId": 700090
+        },
+        {
+          "index": 1,
+          "texture": 635,
+          "icon": 7207,
+          "itemId": 700091
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "code": "LIVESTOCK_ID_GOAT",
+      "name": "山羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 641,
+          "icon": 7213,
+          "itemId": 700120
+        },
+        {
+          "index": 1,
+          "texture": 642,
+          "icon": 7214,
+          "itemId": 700121
+        },
+        {
+          "index": 2,
+          "texture": 643,
+          "icon": 7215,
+          "itemId": 700122
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "code": "LIVESTOCK_ID_BABY_GOAT",
+      "name": "小山羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 10,
+      "adultId": 11,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 638,
+          "icon": 7210,
+          "itemId": 700110
+        },
+        {
+          "index": 1,
+          "texture": 639,
+          "icon": 7211,
+          "itemId": 700111
+        },
+        {
+          "index": 2,
+          "texture": 640,
+          "icon": 7212,
+          "itemId": 700112
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "code": "LIVESTOCK_ID_CASHMERE_GOAT",
+      "name": "喀什米爾山羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 644,
+          "icon": 7217,
+          "itemId": 700140
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "code": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+      "name": "喀什米爾小山羊",
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 12,
+      "adultId": 13,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 0,
+          "icon": 7216,
+          "itemId": 700130
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "code": "LIVESTOCK_ID_PIG",
+      "name": "豬",
+      "houseType": 0,
+      "features": [
+        9,
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 647,
+          "icon": 7220,
+          "itemId": 700160
+        },
+        {
+          "index": 1,
+          "texture": 648,
+          "icon": 7221,
+          "itemId": 700161
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "code": "LIVESTOCK_ID_PIGLET",
+      "name": "小豬",
+      "houseType": 0,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 10,
+      "adultId": 15,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 645,
+          "icon": 7218,
+          "itemId": 700150
+        },
+        {
+          "index": 1,
+          "texture": 646,
+          "icon": 7219,
+          "itemId": 700151
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "code": "LIVESTOCK_ID_HORSE",
+      "name": "馬",
+      "houseType": 2,
+      "features": [
+        8,
+        10
+      ],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 653,
+          "icon": 7203,
+          "itemId": 700180
+        },
+        {
+          "index": 1,
+          "texture": 654,
+          "icon": 7204,
+          "itemId": 700181
+        },
+        {
+          "index": 2,
+          "texture": 656,
+          "icon": 7205,
+          "itemId": 700182
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "code": "LIVESTOCK_ID_BABY_HORSE",
+      "name": "小馬",
+      "houseType": 2,
+      "features": [
+        8,
+        10
+      ],
+      "heartUnit": 400,
+      "growDays": 20,
+      "adultId": 17,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 649,
+          "icon": 7200,
+          "itemId": 700170
+        },
+        {
+          "index": 1,
+          "texture": 650,
+          "icon": 7201,
+          "itemId": 700171
+        },
+        {
+          "index": 2,
+          "texture": 652,
+          "icon": 7202,
+          "itemId": 700172
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_RED",
+      "name": "彩色小雞／紅色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 611,
+          "icon": 7180,
+          "itemId": 700013
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+      "name": "彩色小雞／橘色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 612,
+          "icon": 7181,
+          "itemId": 700014
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+      "name": "彩色小雞／綠色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 613,
+          "icon": 7182,
+          "itemId": 700015
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+      "name": "彩色小雞／水藍色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 614,
+          "icon": 7183,
+          "itemId": 700016
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+      "name": "彩色小雞／藍色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 615,
+          "icon": 7184,
+          "itemId": 700017
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+      "name": "彩色小雞／紫色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 616,
+          "icon": 7185,
+          "itemId": 700018
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "code": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+      "name": "彩色小雞／灰色",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 5,
+      "adultId": 30,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 617,
+          "icon": 7186,
+          "itemId": 700019
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "code": "LIVESTOCK_ID_ROOSTER",
+      "name": "公雞",
+      "houseType": 1,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 622,
+          "icon": 7173,
+          "itemId": 700023
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "code": "LIVESTOCK_ID_GHOST_COW",
+      "name": "牛鬼",
+      "houseType": 0,
+      "features": [
+        1,
+        4,
+        5
+      ],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": []
+    },
+    {
+      "id": 200,
+      "code": "LIVESTOCK_ID_DOG",
+      "name": "狗",
+      "houseType": 3,
+      "features": [
+        4,
+        5,
+        6,
+        10,
+        12
+      ],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 0,
+          "icon": 7187,
+          "itemId": 0
+        }
+      ]
+    }
+  ]
+}

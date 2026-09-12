@@ -1,0 +1,881 @@
+{
+  "source": "quest.dat title@52, description@148, checkInfo count@296 stride52; native 0x1401338E0 completes checks when checkLevel exceeds each threshold; GameHideQuest 0x14045B980 state0; GameOpen quest 0x14013CF50 state1; completed state3",
+  "quests": [
+    {
+      "id": 1,
+      "name": "成為彼津村的一員。",
+      "description": "林所說的生活目標。",
+      "steps": []
+    },
+    {
+      "id": 2,
+      "name": "規矩之一，夜間十一點後禁止外出。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "打破規矩，在深夜外出吧",
+          "level": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "規矩之二，要為村子盡一份力。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "用完所有的「幫忙券」吧",
+          "level": 0
+        },
+        {
+          "name": "告訴林已經幫完所有的忙了吧",
+          "level": 1
+        },
+        {
+          "name": "將委託物品交付至村長宅邸的目錄吧",
+          "level": 2
+        },
+        {
+          "name": "去向林報告已經收集完委託清單了吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "規矩之三，別靠近陌生人。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "去向林借圖書館的鑰匙吧",
+          "level": 0
+        },
+        {
+          "name": "收集兩份酸酸的樹液吧",
+          "level": 2
+        },
+        {
+          "name": "把兩份酸酸的樹液交給蓮實吧",
+          "level": 3
+        },
+        {
+          "name": "在暗夜中去尋找名護的錢包吧",
+          "level": 5
+        },
+        {
+          "name": "跟帷和駒子一起追雞吧",
+          "level": 6
+        },
+        {
+          "name": "去圖書館看看吧",
+          "level": 7
+        },
+        {
+          "name": "在深夜找出遺失的書，並交給名護吧",
+          "level": 8
+        },
+        {
+          "name": "去鐘樓看看吧",
+          "level": 10
+        },
+        {
+          "name": "試著吹出奇蹟的呼笛？吧",
+          "level": 11
+        },
+        {
+          "name": "對雞吹奏奇蹟的呼笛？吧",
+          "level": 13
+        },
+        {
+          "name": "在深夜前往桃樹所在之處吧",
+          "level": 15
+        },
+        {
+          "name": "砍掉木珠的樹",
+          "level": 16
+        },
+        {
+          "name": "把錢包還給名護吧",
+          "level": 17
+        },
+        {
+          "name": "去找名護領取謝禮吧",
+          "level": 18
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "規矩之四，別揭露他人祕密。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "去今野的房間偷出鑰匙吧",
+          "level": 0
+        },
+        {
+          "name": "在深夜前往帷的家吧",
+          "level": 1
+        },
+        {
+          "name": "揭露林的祕密吧",
+          "level": 2
+        },
+        {
+          "name": "調查林消失的走廊吧",
+          "level": 3
+        },
+        {
+          "name": "照常過日子吧",
+          "level": 5
+        },
+        {
+          "name": "試著追尋狐狸吧",
+          "level": 6
+        },
+        {
+          "name": "前往林所在的診所吧",
+          "level": 7
+        },
+        {
+          "name": "待在林身旁吧",
+          "level": 8
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "規矩之五，不得擅自出村。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "在深夜提著燈籠探索隘口吧",
+          "level": 0
+        },
+        {
+          "name": "在深夜於隘口最深處和堇怜碰面吧",
+          "level": 1
+        },
+        {
+          "name": "去診所打聽消息吧",
+          "level": 2
+        },
+        {
+          "name": "幫助堇怜吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "規矩之六，別回應山裡傳來的聲音。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "去深山的大橋看看洋在不在吧",
+          "level": 0
+        },
+        {
+          "name": "再次前往深山大橋的另一頭吧",
+          "level": 2
+        },
+        {
+          "name": "在廢棄屋裡尋找聲音來源吧",
+          "level": 3
+        },
+        {
+          "name": "去餐廳找六角談談吧",
+          "level": 4
+        },
+        {
+          "name": "去大橋的另一頭尋找聲音來源吧",
+          "level": 6
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "規矩之七，別尋找遺失的物品。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "用金條改良斧頭吧",
+          "level": 0
+        },
+        {
+          "name": "在下午5點之前前往附身草叢吧",
+          "level": 2
+        },
+        {
+          "name": "與茶梅一起穿越草叢吧",
+          "level": 3
+        },
+        {
+          "name": "在下午5點之前前往附身草叢吧",
+          "level": 5
+        },
+        {
+          "name": "與駒子一起穿越草叢吧",
+          "level": 6
+        },
+        {
+          "name": "在下午5點之前前往附身草叢吧",
+          "level": 8
+        },
+        {
+          "name": "在草叢裡尋找神器吧",
+          "level": 10
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "規矩之八，願望需要相應的代價。",
+      "description": "流傳於彼津村，必須遵守的規矩之一。",
+      "steps": [
+        {
+          "name": "回彼津村吧",
+          "level": 0
+        },
+        {
+          "name": "要協助木助守護彼津村嗎？",
+          "level": 2
+        },
+        {
+          "name": "在深夜前往大洞吧",
+          "level": 3
+        },
+        {
+          "name": "殺死土地神",
+          "level": 5
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "？？？？？？",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 11,
+      "name": "幫忙駒子",
+      "description": "交出幫忙券，接下了駒子的委託。",
+      "steps": [
+        {
+          "name": "收集材料，修復岔路的祠堂吧",
+          "level": 0
+        },
+        {
+          "name": "告訴駒子祠堂已經修好了吧",
+          "level": 1
+        },
+        {
+          "name": "去岔路的祠堂參拜吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "幫忙帷",
+      "description": "交出幫忙券，接下了帷的委託。",
+      "steps": [
+        {
+          "name": "打掃村長宅邸的倉庫吧",
+          "level": 0
+        },
+        {
+          "name": "告訴帷已經打掃完畢了吧",
+          "level": 1
+        },
+        {
+          "name": "再去一次倉庫吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "幫忙堇怜",
+      "description": "交出幫忙券，接下了堇怜的委託。",
+      "steps": [
+        {
+          "name": "去山裡採集紫色的花吧",
+          "level": 0
+        },
+        {
+          "name": "把紫色的花交給堇怜吧",
+          "level": 1
+        },
+        {
+          "name": "去堇怜的家吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "幫忙琪娜娜",
+      "description": "交出幫忙券，接下了琪娜娜的委託。",
+      "steps": [
+        {
+          "name": "去通往隘口的路尋找琪娜娜的石頭吧",
+          "level": 0
+        },
+        {
+          "name": "把石頭搬到琪娜娜那裡吧",
+          "level": 1
+        },
+        {
+          "name": "去見琪娜娜吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "幫忙洋",
+      "description": "交出幫忙券，接下了洋的委託。",
+      "steps": [
+        {
+          "name": "幫洋釣山女魚吧",
+          "level": 0
+        },
+        {
+          "name": "把山女魚交給洋吧",
+          "level": 1
+        },
+        {
+          "name": "去見在餐廳裡的六角吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "幫忙茶梅",
+      "description": "交出幫忙券，接下了茶梅的委託。",
+      "steps": [
+        {
+          "name": "找來5個銅礦石吧",
+          "level": 0
+        },
+        {
+          "name": "把5個銅礦石交給茶梅吧",
+          "level": 1
+        },
+        {
+          "name": "去見茶梅吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "幫忙裕太",
+      "description": "交出幫忙券，接下了裕太的委託。",
+      "steps": [
+        {
+          "name": "去山裡捕捉5隻蜜蜂吧",
+          "level": 0
+        },
+        {
+          "name": "把5隻蜜蜂交給裕太吧",
+          "level": 1
+        },
+        {
+          "name": "去裕太的家吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "幫忙六角",
+      "description": "交出幫忙券，接下了六角的委託。",
+      "steps": [
+        {
+          "name": "把林的便當送過去吧",
+          "level": 0
+        },
+        {
+          "name": "向六角報告便當已經送達了吧",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "幫忙今野",
+      "description": "交出幫忙券，接下了今野的委託。",
+      "steps": [
+        {
+          "name": "製作木柴捆吧",
+          "level": 0
+        },
+        {
+          "name": "把木柴捆拿到今野的房間吧",
+          "level": 1
+        },
+        {
+          "name": "去今野的房間吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "幫忙蓮實",
+      "description": "交出幫忙券，接下了蓮實的委託。",
+      "steps": [
+        {
+          "name": "到山裡採集當歸吧",
+          "level": 0
+        },
+        {
+          "name": "在樟樹診所把當歸交給蓮實吧",
+          "level": 1
+        },
+        {
+          "name": "去樟樹診所吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "幫忙木助",
+      "description": "交出幫忙券，接下了木助的委託。",
+      "steps": [
+        {
+          "name": "破壞山裡營地附近的落石吧",
+          "level": 0
+        },
+        {
+          "name": "向木助報告已經破壞落石了吧",
+          "level": 1
+        },
+        {
+          "name": "去樹木建設前吧",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "幫忙四郎治",
+      "description": "交出幫忙券，接下了四郎治的委託。",
+      "steps": [
+        {
+          "name": "去查看陷阱的狀況吧",
+          "level": 0
+        },
+        {
+          "name": "去向四郎治報告吧",
+          "level": 1
+        },
+        {
+          "name": "把狩獵證明放進獵人哨站的繳交箱吧",
+          "level": 2
+        },
+        {
+          "name": "前往深山吧",
+          "level": 4
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "<cmd CMD_UNIT_MOVE_STICK>移動",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 24,
+      "name": "<cmd CMD_INTERACTION_HARVEST>動作",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 25,
+      "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 26,
+      "name": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋轉",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 27,
+      "name": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 28,
+      "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍2",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 29,
+      "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍3",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 32,
+      "name": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地圖",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 33,
+      "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至樹木處",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 34,
+      "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧頭砍倒樹木",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 35,
+      "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字鎬敲碎所有石頭",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 36,
+      "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至田地",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 37,
+      "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用鋤頭鋤地",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 38,
+      "name": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移動選擇要翻整的位置",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 39,
+      "name": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播種",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 40,
+      "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至水邊",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 41,
+      "name": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺汲水",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 42,
+      "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 43,
+      "name": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺對種子澆水",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 44,
+      "name": "用心照料種下的蔬菜",
+      "description": "被木助拜託幫忙了。",
+      "steps": []
+    },
+    {
+      "id": 45,
+      "name": "對田地澆水",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 46,
+      "name": "收穫作物",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 47,
+      "name": "將蔬菜供奉於祭壇吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 48,
+      "name": "試著吹手哨吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 49,
+      "name": "試著照樂譜吹手哨",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 50,
+      "name": "向村民打招呼吧　0/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 51,
+      "name": "向村民打招呼吧　1/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 52,
+      "name": "向村民打招呼吧　2/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 53,
+      "name": "向村民打招呼吧　3/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 54,
+      "name": "向村民打招呼吧　4/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 55,
+      "name": "向村民打招呼吧　5/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 56,
+      "name": "向村民打招呼吧　6/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 57,
+      "name": "向村民打招呼吧　7/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 58,
+      "name": "向村民打招呼吧　8/8",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 60,
+      "name": "吃掉筆頭菜",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 61,
+      "name": "查看商品",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 62,
+      "name": "將想要的商品記下來吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 63,
+      "name": "檢視筆記吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 65,
+      "name": "把墓地打掃乾淨吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": [
+        {
+          "name": "割掉所有雜草吧",
+          "level": 0
+        },
+        {
+          "name": "向林報告吧",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "name": "若帷遇上危險，保護好她",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 86,
+      "name": "再繼續修繕祠堂吧",
+      "description": "把位於岔路的祠堂修得更氣派吧。",
+      "steps": []
+    },
+    {
+      "id": 87,
+      "name": "試著使用鵺皮",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 88,
+      "name": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移動",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 89,
+      "name": "<cmd CMD_INTERACTION_SQUARE>嘗試使用劈岩柴刀",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 90,
+      "name": "嘗試使用奇蹟的呼笛",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 92,
+      "name": "帶著神器回到大洞",
+      "description": "想起了某一天許下的約定。",
+      "steps": []
+    },
+    {
+      "id": 93,
+      "name": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斬帷",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 103,
+      "name": "移動至柴刀處",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 104,
+      "name": "撿起柴刀",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 109,
+      "name": "移開岩石",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 110,
+      "name": "移開岩石吧",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 112,
+      "name": "試著製作收納箱吧",
+      "description": "林說這個很方便，建議製作。",
+      "steps": [
+        {
+          "name": "用工作台製作收納箱吧",
+          "level": 0
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "name": "試著製作兵糧丸吧",
+      "description": "據蓮實所說，這是以前的應急糧食。",
+      "steps": [
+        {
+          "name": "用工作台製作兵糧丸吧",
+          "level": 0
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "name": "AM 10:00　評鑑會",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 115,
+      "name": "AM 10:00　賞花",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 116,
+      "name": "PM 4:00　廟會日",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 117,
+      "name": "AM 10:00　收穫祭典",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 118,
+      "name": "PM 8:00　年終祭典",
+      "description": "！這個任務沒有這個字串！",
+      "steps": []
+    },
+    {
+      "id": 119,
+      "name": "修復岔路祠堂的委託",
+      "description": "修好位於岔路的破舊祠堂吧。",
+      "steps": [
+        {
+          "name": "修復祠堂吧",
+          "level": 0
+        },
+        {
+          "name": "進一步修復祠堂吧",
+          "level": 2
+        },
+        {
+          "name": "更進一步地修復祠堂吧",
+          "level": 4
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "name": "尋找三件神器",
+      "description": "若想擊退土地神，必須湊齊三件神器。",
+      "steps": []
+    }
+  ]
+}

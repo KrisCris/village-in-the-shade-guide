@@ -1,0 +1,2842 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "x": 0,
+      "y": 0,
+      "icon": 1075,
+      "skill": 0,
+      "parents": [],
+      "level": 1,
+      "showFlags": [],
+      "flag": 6239,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "解鎖祠堂",
+      "description": "將這座祠堂讓給你"
+    },
+    {
+      "id": 2,
+      "x": 1,
+      "y": 1,
+      "icon": 1080,
+      "skill": 301,
+      "parents": [
+        1
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 6204,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "田壟技術",
+      "description": "再敲擊一次田地即可形成「田壟」"
+    },
+    {
+      "id": 3,
+      "x": -1,
+      "y": 1,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        1
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80018,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "戶外稻草地板",
+      "description": "解鎖「戶外稻草地板」的製作方式"
+    },
+    {
+      "id": 4,
+      "x": 2,
+      "y": 2,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        2
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80040,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "name": "堆肥桶",
+      "description": "解鎖「堆肥桶」的製作方式"
+    },
+    {
+      "id": 5,
+      "x": 0,
+      "y": 2,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        1
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80019,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      "name": "戶外磚頭地板",
+      "description": "解鎖「戶外磚頭地板」的製作方式"
+    },
+    {
+      "id": 6,
+      "x": -2,
+      "y": 2,
+      "icon": 1091,
+      "skill": 0,
+      "parents": [
+        3
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80058,
+      "horrorOnly": true,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "name": "淨化鹽",
+      "description": "解鎖「淨化鹽」的製作方式"
+    },
+    {
+      "id": 7,
+      "x": 3,
+      "y": 3,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        4
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80044,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        0,
+        0,
+        3,
+        1,
+        0
+      ],
+      "name": "榨油機",
+      "description": "解鎖「榨油機」的製作方式"
+    },
+    {
+      "id": 8,
+      "x": 1,
+      "y": 3,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        2
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80020,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "name": "戶外石磚地板",
+      "description": "解鎖「戶外石磚地板」的製作方式"
+    },
+    {
+      "id": 9,
+      "x": -1,
+      "y": 3,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        3
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80046,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "name": "研磨機",
+      "description": "解鎖「研磨機」的製作方式"
+    },
+    {
+      "id": 10,
+      "x": -3,
+      "y": 3,
+      "icon": 1091,
+      "skill": 0,
+      "parents": [
+        6
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80060,
+      "horrorOnly": true,
+      "costs": [
+        2,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "name": "稻草人偶",
+      "description": "解鎖「稻草人偶」的製作方式"
+    },
+    {
+      "id": 11,
+      "x": 4,
+      "y": 4,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        7
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80021,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "name": "戶外原木地板",
+      "description": "解鎖「戶外原木地板」的製作方式"
+    },
+    {
+      "id": 12,
+      "x": 2,
+      "y": 4,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        4
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80048,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "name": "牛奶加工機",
+      "description": "解鎖「牛奶加工機」的製作方式"
+    },
+    {
+      "id": 13,
+      "x": 0,
+      "y": 4,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        5
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80027,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "name": "磚頭柵欄與柵欄門",
+      "description": "解鎖「磚頭柵欄」、「磚頭柵欄門」的製作方式"
+    },
+    {
+      "id": 14,
+      "x": -2,
+      "y": 4,
+      "icon": 1095,
+      "skill": 0,
+      "parents": [
+        9
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80042,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "name": "木炭窯",
+      "description": "解鎖「木炭窯」的製作方式"
+    },
+    {
+      "id": 15,
+      "x": -4,
+      "y": 4,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        10
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80035,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "name": "醃菜桶／改",
+      "description": "解鎖「醃菜桶／改」的製作方式"
+    },
+    {
+      "id": 16,
+      "x": 5,
+      "y": 5,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        11
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80041,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        2,
+        2,
+        1,
+        0
+      ],
+      "name": "堆肥桶／改",
+      "description": "解鎖「堆肥桶／改」的製作方式"
+    },
+    {
+      "id": 17,
+      "x": 3,
+      "y": 5,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        12
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80038,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        2,
+        1,
+        1,
+        0
+      ],
+      "name": "織布機",
+      "description": "解鎖「織布機」的製作方式"
+    },
+    {
+      "id": 18,
+      "x": 1,
+      "y": 5,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        8
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80022,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        0
+      ],
+      "name": "戶外白石磚地板",
+      "description": "解鎖「戶外白石磚地板」的製作方式"
+    },
+    {
+      "id": 19,
+      "x": -3,
+      "y": 5,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        14
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80026,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "繩子柵欄與柵欄門",
+      "description": "解鎖「繩子柵欄」、「繩子柵欄門」的製作方式"
+    },
+    {
+      "id": 20,
+      "x": -5,
+      "y": 5,
+      "icon": 1080,
+      "skill": 20000201,
+      "parents": [
+        15
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 6200,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        1,
+        2,
+        0,
+        1,
+        0
+      ],
+      "name": "鐮刀技術",
+      "description": "減少揮動鐮刀時的體力消耗量"
+    },
+    {
+      "id": 21,
+      "x": 4,
+      "y": 6,
+      "icon": 1085,
+      "skill": 20000502,
+      "parents": [
+        17,
+        11
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 6210,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        0,
+        1,
+        3,
+        0,
+        0
+      ],
+      "name": "樹木培育術",
+      "description": "樹木成長速度提昇5%"
+    },
+    {
+      "id": 22,
+      "x": 2,
+      "y": 6,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        18
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80023,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "戶外黑石磚地板",
+      "description": "解鎖「戶外黑石磚地板」的製作方式"
+    },
+    {
+      "id": 23,
+      "x": 0,
+      "y": 6,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        13
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80028,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "name": "木板柵欄與柵欄門",
+      "description": "解鎖「木板柵欄」、「木板柵欄門」的製作方式"
+    },
+    {
+      "id": 24,
+      "x": -2,
+      "y": 6,
+      "icon": 1089,
+      "skill": 20000504,
+      "parents": [
+        14
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 6212,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        1,
+        0,
+        2,
+        0
+      ],
+      "name": "礦脈探查術",
+      "description": "在採石場發現礦脈的機率提昇3%"
+    },
+    {
+      "id": 25,
+      "x": -4,
+      "y": 6,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        15,
+        19
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80034,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        1,
+        1,
+        1,
+        0
+      ],
+      "name": "蠶箱",
+      "description": "解鎖「蠶箱」的製作方式"
+    },
+    {
+      "id": 26,
+      "x": 5,
+      "y": 7,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        16,
+        21
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80050,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        3,
+        0,
+        1,
+        0
+      ],
+      "name": "煙燻機",
+      "description": "解鎖「煙燻機」的製作方式"
+    },
+    {
+      "id": 27,
+      "x": 3,
+      "y": 7,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        22,
+        17
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80029,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "name": "竹子柵欄與柵欄門",
+      "description": "解鎖「竹子柵欄」、「竹子柵欄門」的製作方式"
+    },
+    {
+      "id": 28,
+      "x": 1,
+      "y": 7,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        18
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80030,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "白色木板柵欄與柵欄門",
+      "description": "解鎖「白色木板柵欄」、「白色木板柵欄門」的製作方式"
+    },
+    {
+      "id": 29,
+      "x": -1,
+      "y": 7,
+      "icon": 1084,
+      "skill": 20000301,
+      "parents": [
+        23,
+        9
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 6207,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      "name": "野草採取術",
+      "description": "有25%的機率可採集到2個採集物"
+    },
+    {
+      "id": 30,
+      "x": -3,
+      "y": 7,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        24
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80031,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "網子柵欄與柵欄門",
+      "description": "解鎖「網子柵欄」、「網子柵欄門」的製作方式"
+    },
+    {
+      "id": 31,
+      "x": -5,
+      "y": 7,
+      "icon": 1084,
+      "skill": 20000501,
+      "parents": [
+        20
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6209,
+      "horrorOnly": true,
+      "costs": [
+        1,
+        1,
+        1,
+        3,
+        0,
+        0
+      ],
+      "name": "鏡與劍探查術",
+      "description": "在深夜時將更容易獲得「鏡」與「劍」"
+    },
+    {
+      "id": 32,
+      "x": 4,
+      "y": 8,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        21
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80036,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        1,
+        3,
+        0,
+        2,
+        0
+      ],
+      "name": "美乃滋加工機／改",
+      "description": "解鎖「美乃滋加工機／改」的製作方式"
+    },
+    {
+      "id": 33,
+      "x": 2,
+      "y": 8,
+      "icon": 1083,
+      "skill": 20000506,
+      "parents": [
+        28
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 6214,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ],
+      "name": "動物友好術",
+      "description": "動物親密度更容易上昇"
+    },
+    {
+      "id": 34,
+      "x": 0,
+      "y": 8,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        23
+      ],
+      "level": 1,
+      "showFlags": [],
+      "flag": 80065,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        0,
+        0,
+        4,
+        0,
+        0
+      ],
+      "name": "小型灑水器",
+      "description": "解鎖「小型灑水器」的製作方式"
+    },
+    {
+      "id": 35,
+      "x": -2,
+      "y": 8,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        24
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80032,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        2,
+        0,
+        1,
+        0,
+        0
+      ],
+      "name": "鐵製柵欄與柵欄門",
+      "description": "解鎖「鐵製柵欄」、「鐵製柵欄門」的製作方式"
+    },
+    {
+      "id": 36,
+      "x": -4,
+      "y": 8,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        25
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80047,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        3,
+        2,
+        1,
+        1
+      ],
+      "name": "研磨機／改",
+      "description": "解鎖「研磨機／改」的製作方式"
+    },
+    {
+      "id": 37,
+      "x": 5,
+      "y": 9,
+      "icon": 1085,
+      "skill": 20000503,
+      "parents": [
+        26
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6211,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        2,
+        2,
+        0,
+        1
+      ],
+      "name": "樹木培育術＋",
+      "description": "樹木成長速度提昇10%"
+    },
+    {
+      "id": 38,
+      "x": 3,
+      "y": 9,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        27,
+        32
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80049,
+      "horrorOnly": false,
+      "costs": [
+        5,
+        0,
+        2,
+        1,
+        2,
+        0
+      ],
+      "name": "牛奶加工機／改",
+      "description": "解鎖「牛奶加工機／改」的製作方式"
+    },
+    {
+      "id": 39,
+      "x": 1,
+      "y": 9,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        28
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80025,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "戶外花朵地板",
+      "description": "解鎖「戶外花朵地板」的製作方式"
+    },
+    {
+      "id": 40,
+      "x": -3,
+      "y": 9,
+      "icon": 1097,
+      "skill": 0,
+      "parents": [
+        30
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80063,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        1,
+        0,
+        3,
+        0,
+        0
+      ],
+      "name": "優質魚餌",
+      "description": "解鎖「優質魚餌」的製作方式"
+    },
+    {
+      "id": 41,
+      "x": -5,
+      "y": 9,
+      "icon": 1095,
+      "skill": 0,
+      "parents": [
+        31
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80043,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        3,
+        0,
+        0,
+        1,
+        1
+      ],
+      "name": "木炭窯／改",
+      "description": "解鎖「木炭窯／改」的製作方式"
+    },
+    {
+      "id": 42,
+      "x": 4,
+      "y": 10,
+      "icon": 1079,
+      "skill": 20000401,
+      "parents": [
+        32
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6216,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        1,
+        0,
+        2,
+        0,
+        1
+      ],
+      "name": "作物加工品出貨術",
+      "description": "作物加工品的售價提昇5%"
+    },
+    {
+      "id": 43,
+      "x": 2,
+      "y": 10,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        33
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80052,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "name": "釀造桶",
+      "description": "解鎖「釀造桶」的製作方式"
+    },
+    {
+      "id": 44,
+      "x": 0,
+      "y": 10,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        34,
+        39
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80024,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "戶外落葉地板",
+      "description": "解鎖「戶外落葉地板」的製作方式"
+    },
+    {
+      "id": 45,
+      "x": -2,
+      "y": 10,
+      "icon": 1096,
+      "skill": 0,
+      "parents": [
+        35
+      ],
+      "level": 2,
+      "showFlags": [],
+      "flag": 80037,
+      "horrorOnly": false,
+      "costs": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        0
+      ],
+      "name": "熔爐／改",
+      "description": "解鎖「熔爐／改」的製作方式"
+    },
+    {
+      "id": 46,
+      "x": -4,
+      "y": 10,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        40
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80054,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "name": "乾燥機",
+      "description": "解鎖「乾燥機」的製作方式"
+    },
+    {
+      "id": 47,
+      "x": 5,
+      "y": 11,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        37
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80051,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        3,
+        0,
+        1,
+        0
+      ],
+      "name": "煙燻機／改",
+      "description": "解鎖「煙燻機／改」的製作方式"
+    },
+    {
+      "id": 48,
+      "x": 3,
+      "y": 11,
+      "icon": 1082,
+      "skill": 20000405,
+      "parents": [
+        38,
+        43
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6218,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        1,
+        2,
+        0,
+        1
+      ],
+      "name": "畜產品出貨術",
+      "description": "畜產品的售價提昇5%"
+    },
+    {
+      "id": 49,
+      "x": 1,
+      "y": 11,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        39
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80056,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        3,
+        0,
+        1,
+        0
+      ],
+      "name": "熟成桶",
+      "description": "解鎖「熟成桶」的製作方式"
+    },
+    {
+      "id": 50,
+      "x": -1,
+      "y": 11,
+      "icon": 1092,
+      "skill": 0,
+      "parents": [
+        29
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 80033,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        1,
+        2,
+        0,
+        0,
+        0
+      ],
+      "name": "花園柵欄與柵欄門",
+      "description": "解鎖「鐵製花園柵欄」、「鐵製花園柵欄門」的製作方式"
+    },
+    {
+      "id": 51,
+      "x": -3,
+      "y": 11,
+      "icon": 1088,
+      "skill": 20000407,
+      "parents": [
+        40
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 6220,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        0,
+        3,
+        0,
+        0
+      ],
+      "name": "魚類出貨術",
+      "description": "魚類的售價提昇5%"
+    },
+    {
+      "id": 52,
+      "x": -5,
+      "y": 11,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        46
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80055,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        0,
+        0,
+        3,
+        1,
+        0
+      ],
+      "name": "乾燥機／改",
+      "description": "解鎖「乾燥機／改」的製作方式"
+    },
+    {
+      "id": 53,
+      "x": 4,
+      "y": 12,
+      "icon": 1094,
+      "skill": 0,
+      "parents": [
+        42
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80039,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        2,
+        2,
+        1,
+        0
+      ],
+      "name": "織布機／改",
+      "description": "解鎖「織布機／改」的製作方式"
+    },
+    {
+      "id": 54,
+      "x": 2,
+      "y": 12,
+      "icon": 1082,
+      "skill": 20000403,
+      "parents": [
+        43
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6224,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        2,
+        1,
+        1,
+        0
+      ],
+      "name": "畜產品加工品出貨術",
+      "description": "畜產品加工品的售價提昇5%"
+    },
+    {
+      "id": 55,
+      "x": 0,
+      "y": 12,
+      "icon": 1081,
+      "skill": 20000508,
+      "parents": [
+        44
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 6226,
+      "horrorOnly": false,
+      "costs": [
+        4,
+        0,
+        2,
+        0,
+        1,
+        0
+      ],
+      "name": "友好術",
+      "description": "居民好感度更容易上昇"
+    },
+    {
+      "id": 56,
+      "x": -2,
+      "y": 12,
+      "icon": 1089,
+      "skill": 20000304,
+      "parents": [
+        45,
+        51
+      ],
+      "level": 3,
+      "showFlags": [],
+      "flag": 6228,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "name": "採掘技術",
+      "description": "採掘石頭時，可額外獲得1個石頭"
+    },
+    {
+      "id": 57,
+      "x": -4,
+      "y": 12,
+      "icon": 1079,
+      "skill": 20000411,
+      "parents": [
+        46,
+        51
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6230,
+      "horrorOnly": false,
+      "costs": [
+        4,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "name": "作物出貨術",
+      "description": "作物的售價提昇5%"
+    },
+    {
+      "id": 58,
+      "x": 5,
+      "y": 13,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        47
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 80045,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        4,
+        0,
+        4,
+        1,
+        1
+      ],
+      "name": "榨油機／改",
+      "description": "解鎖「榨油機／改」的製作方式"
+    },
+    {
+      "id": 59,
+      "x": 3,
+      "y": 13,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        48
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80053,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        0,
+        3,
+        1,
+        0
+      ],
+      "name": "釀造桶／改",
+      "description": "解鎖「釀造桶／改」的製作方式"
+    },
+    {
+      "id": 60,
+      "x": 1,
+      "y": 13,
+      "icon": 1085,
+      "skill": 20000302,
+      "parents": [
+        49
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6232,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        1,
+        3,
+        1,
+        0
+      ],
+      "name": "樹木砍伐術",
+      "description": "砍伐樹木時，可額外獲得1個木材"
+    },
+    {
+      "id": 61,
+      "x": -1,
+      "y": 13,
+      "icon": 1087,
+      "skill": 20000413,
+      "parents": [
+        50
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6234,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        2,
+        1,
+        1,
+        0
+      ],
+      "name": "獵物出貨術",
+      "description": "狩獵報酬物的售價提昇5%"
+    },
+    {
+      "id": 62,
+      "x": -3,
+      "y": 13,
+      "icon": 1088,
+      "skill": 20000408,
+      "parents": [
+        51
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6221,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        1,
+        0,
+        6,
+        2,
+        1
+      ],
+      "name": "魚類出貨術＋",
+      "description": "魚類的售價提昇10%"
+    },
+    {
+      "id": 63,
+      "x": 4,
+      "y": 14,
+      "icon": 1079,
+      "skill": 20000402,
+      "parents": [
+        53
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6217,
+      "horrorOnly": false,
+      "costs": [
+        4,
+        0,
+        0,
+        4,
+        2,
+        0
+      ],
+      "name": "作物加工品出貨術＋",
+      "description": "作物加工品的售價提昇10%"
+    },
+    {
+      "id": 64,
+      "x": 2,
+      "y": 14,
+      "icon": 1083,
+      "skill": 20000507,
+      "parents": [
+        54,
+        60
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6215,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        3,
+        2,
+        1,
+        1,
+        0
+      ],
+      "name": "動物友好術＋",
+      "description": "動物親密度更加容易上昇"
+    },
+    {
+      "id": 65,
+      "x": 0,
+      "y": 14,
+      "icon": 1077,
+      "skill": 302,
+      "parents": [
+        55
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6236,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        2,
+        1,
+        2,
+        0
+      ],
+      "name": "收納箱連結術",
+      "description": "可在多個收納箱之間移動內容物"
+    },
+    {
+      "id": 66,
+      "x": -2,
+      "y": 14,
+      "icon": 1089,
+      "skill": 20000415,
+      "parents": [
+        56,
+        61
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 6237,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        3,
+        0,
+        1,
+        0,
+        1
+      ],
+      "name": "寶石出貨術",
+      "description": "寶石的售價提昇5%"
+    },
+    {
+      "id": 67,
+      "x": -4,
+      "y": 14,
+      "icon": 1079,
+      "skill": 20000412,
+      "parents": [
+        57
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6231,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        0,
+        5,
+        1,
+        2
+      ],
+      "name": "作物出貨術＋",
+      "description": "作物的售價提昇10%"
+    },
+    {
+      "id": 68,
+      "x": 3,
+      "y": 15,
+      "icon": 1082,
+      "skill": 20000406,
+      "parents": [
+        59
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6219,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        5,
+        0,
+        2,
+        2,
+        1
+      ],
+      "name": "畜產品出貨術＋",
+      "description": "畜產品的售價提昇10%"
+    },
+    {
+      "id": 69,
+      "x": 1,
+      "y": 15,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        60,
+        65
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 80066,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        3,
+        3,
+        1,
+        0
+      ],
+      "name": "普通灑水器",
+      "description": "解鎖「普通灑水器」的製作方式"
+    },
+    {
+      "id": 70,
+      "x": -3,
+      "y": 15,
+      "icon": 1097,
+      "skill": 0,
+      "parents": [
+        62,
+        66
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 80064,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        0,
+        4,
+        1,
+        0
+      ],
+      "name": "白色魚餌",
+      "description": "解鎖「白色魚餌」的製作方式"
+    },
+    {
+      "id": 71,
+      "x": 2,
+      "y": 16,
+      "icon": 1085,
+      "skill": 20000303,
+      "parents": [
+        64
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6233,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        2,
+        5,
+        0,
+        2,
+        1
+      ],
+      "name": "樹木砍伐術＋",
+      "description": "砍伐樹木時，可額外獲得2個木材"
+    },
+    {
+      "id": 72,
+      "x": 0,
+      "y": 16,
+      "icon": 1081,
+      "skill": 20000509,
+      "parents": [
+        65,
+        69
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6227,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        0,
+        3,
+        2,
+        0,
+        2
+      ],
+      "name": "友好術＋",
+      "description": "居民好感度更加容易上昇"
+    },
+    {
+      "id": 73,
+      "x": -2,
+      "y": 16,
+      "icon": 1089,
+      "skill": 20000505,
+      "parents": [
+        66
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6213,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        3,
+        0,
+        2,
+        0,
+        2
+      ],
+      "name": "礦脈探查術＋",
+      "description": "在採石場發現礦脈的機率提昇5%"
+    },
+    {
+      "id": 74,
+      "x": 1,
+      "y": 17,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        69
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 80057,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        0,
+        4,
+        0,
+        3,
+        0
+      ],
+      "name": "熟成桶／改",
+      "description": "解鎖「熟成桶／改」的製作方式"
+    },
+    {
+      "id": 75,
+      "x": -1,
+      "y": 17,
+      "icon": 1087,
+      "skill": 20000414,
+      "parents": [
+        61
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6235,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        7,
+        0,
+        0,
+        2,
+        1
+      ],
+      "name": "獵物出貨術＋",
+      "description": "狩獵報酬物的售價提昇10%"
+    },
+    {
+      "id": 76,
+      "x": -3,
+      "y": 17,
+      "icon": 1089,
+      "skill": 20000416,
+      "parents": [
+        70
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6238,
+      "horrorOnly": false,
+      "costs": [
+        2,
+        0,
+        5,
+        0,
+        2,
+        1
+      ],
+      "name": "寶石出貨術＋",
+      "description": "寶石的售價提昇10%"
+    },
+    {
+      "id": 77,
+      "x": 2,
+      "y": 18,
+      "icon": 1082,
+      "skill": 20000404,
+      "parents": [
+        71
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6225,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        4,
+        2,
+        0,
+        2,
+        2
+      ],
+      "name": "畜產品加工品出貨術＋",
+      "description": "畜產品加工品的售價提昇10%"
+    },
+    {
+      "id": 78,
+      "x": 0,
+      "y": 18,
+      "icon": 1093,
+      "skill": 0,
+      "parents": [
+        72
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 80067,
+      "horrorOnly": false,
+      "costs": [
+        0,
+        0,
+        3,
+        4,
+        1,
+        2
+      ],
+      "name": "強化灑水器",
+      "description": "解鎖「強化灑水器」的製作方式"
+    },
+    {
+      "id": 79,
+      "x": -2,
+      "y": 18,
+      "icon": 1089,
+      "skill": 20000305,
+      "parents": [
+        73
+      ],
+      "level": 5,
+      "showFlags": [],
+      "flag": 6229,
+      "horrorOnly": false,
+      "costs": [
+        4,
+        0,
+        4,
+        0,
+        2,
+        0
+      ],
+      "name": "採掘技術＋",
+      "description": "採掘石頭時，可額外獲得2個石頭"
+    },
+    {
+      "id": 80,
+      "x": -5,
+      "y": 13,
+      "icon": 1080,
+      "skill": 0,
+      "parents": [
+        52
+      ],
+      "level": 4,
+      "showFlags": [],
+      "flag": 90099,
+      "horrorOnly": false,
+      "costs": [
+        3,
+        2,
+        3,
+        0,
+        1,
+        0
+      ],
+      "name": "強化鐮刀",
+      "description": "將可使用鐮刀收穫作物。"
+    }
+  ],
+  "groups": [
+    {
+      "id": 12,
+      "name": "協助林",
+      "bundles": [
+        40,
+        41,
+        42
+      ],
+      "flag": 6663,
+      "event": "100020210000",
+      "reward": 0
+    },
+    {
+      "id": 13,
+      "name": "交付蔬菜",
+      "bundles": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "flag": 6664,
+      "event": "0",
+      "reward": 990006
+    },
+    {
+      "id": 14,
+      "name": "交付水果",
+      "bundles": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "flag": 6665,
+      "event": "0",
+      "reward": 990007
+    },
+    {
+      "id": 15,
+      "name": "交付花卉",
+      "bundles": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "flag": 6666,
+      "event": "0",
+      "reward": 990008
+    },
+    {
+      "id": 16,
+      "name": "交付加工品",
+      "bundles": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "flag": 6667,
+      "event": "0",
+      "reward": 990009
+    },
+    {
+      "id": 17,
+      "name": "交付畜產品",
+      "bundles": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "flag": 6668,
+      "event": "0",
+      "reward": 990010
+    },
+    {
+      "id": 18,
+      "name": "交付狩獵品",
+      "bundles": [
+        63,
+        64,
+        65,
+        66
+      ],
+      "flag": 6669,
+      "event": "0",
+      "reward": 990011
+    },
+    {
+      "id": 19,
+      "name": "交付漁產品",
+      "bundles": [
+        67,
+        68,
+        69,
+        70
+      ],
+      "flag": 6670,
+      "event": "0",
+      "reward": 990012
+    },
+    {
+      "id": 20,
+      "name": "交付奢侈品",
+      "bundles": [
+        71,
+        72,
+        73,
+        74
+      ],
+      "flag": 6671,
+      "event": "0",
+      "reward": 990013
+    }
+  ],
+  "bundles": [
+    {
+      "id": 40,
+      "name": "木材的訂單",
+      "items": [
+        {
+          "itemId": 230000,
+          "rank": 0,
+          "count": 20
+        },
+        {
+          "itemId": 230001,
+          "rank": 0,
+          "count": 10
+        }
+      ],
+      "reward": 0,
+      "rewardCount": 0
+    },
+    {
+      "id": 41,
+      "name": "石材的訂單",
+      "items": [
+        {
+          "itemId": 230020,
+          "rank": 0,
+          "count": 15
+        },
+        {
+          "itemId": 230100,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 0,
+      "rewardCount": 0
+    },
+    {
+      "id": 42,
+      "name": "食品的訂單",
+      "items": [
+        {
+          "itemId": 130040,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 201500,
+          "rank": 0,
+          "count": 2
+        }
+      ],
+      "reward": 0,
+      "rewardCount": 0
+    },
+    {
+      "id": 43,
+      "name": "春季蔬菜",
+      "items": [
+        {
+          "itemId": 100000,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100080,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100060,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452020,
+      "rewardCount": 1
+    },
+    {
+      "id": 44,
+      "name": "夏季蔬菜",
+      "items": [
+        {
+          "itemId": 100110,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100140,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100180,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452040,
+      "rewardCount": 1
+    },
+    {
+      "id": 45,
+      "name": "秋季蔬菜",
+      "items": [
+        {
+          "itemId": 100270,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100300,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100340,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452080,
+      "rewardCount": 1
+    },
+    {
+      "id": 46,
+      "name": "冬季蔬菜",
+      "items": [
+        {
+          "itemId": 100420,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100360,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100380,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452150,
+      "rewardCount": 1
+    },
+    {
+      "id": 47,
+      "name": "春季水果",
+      "items": [
+        {
+          "itemId": 100090,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122020,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452000,
+      "rewardCount": 1
+    },
+    {
+      "id": 48,
+      "name": "夏季水果",
+      "items": [
+        {
+          "itemId": 100200,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 100210,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122030,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452070,
+      "rewardCount": 1
+    },
+    {
+      "id": 49,
+      "name": "秋季水果",
+      "items": [
+        {
+          "itemId": 122090,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122080,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122100,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453120,
+      "rewardCount": 1
+    },
+    {
+      "id": 50,
+      "name": "冬季水果",
+      "items": [
+        {
+          "itemId": 122000,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122110,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 122120,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452140,
+      "rewardCount": 1
+    },
+    {
+      "id": 51,
+      "name": "春季花卉",
+      "items": [
+        {
+          "itemId": 111010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111050,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111070,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 520060,
+      "rewardCount": 1
+    },
+    {
+      "id": 52,
+      "name": "夏季花卉",
+      "items": [
+        {
+          "itemId": 111100,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111140,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111130,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 520070,
+      "rewardCount": 1
+    },
+    {
+      "id": 53,
+      "name": "秋季花卉",
+      "items": [
+        {
+          "itemId": 111170,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111180,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111190,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 520080,
+      "rewardCount": 1
+    },
+    {
+      "id": 54,
+      "name": "冬季花卉",
+      "items": [
+        {
+          "itemId": 111200,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111210,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 111220,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 520090,
+      "rewardCount": 1
+    },
+    {
+      "id": 55,
+      "name": "醃漬物",
+      "items": [
+        {
+          "itemId": 200010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 200140,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 200250,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453410,
+      "rewardCount": 1
+    },
+    {
+      "id": 56,
+      "name": "酒",
+      "items": [
+        {
+          "itemId": 203200,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 203220,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 203230,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 451710,
+      "rewardCount": 1
+    },
+    {
+      "id": 57,
+      "name": "調味料",
+      "items": [
+        {
+          "itemId": 221000,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 204010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 207040,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453440,
+      "rewardCount": 1
+    },
+    {
+      "id": 58,
+      "name": "加工品",
+      "items": [
+        {
+          "itemId": 211000,
+          "rank": 0,
+          "count": 20
+        },
+        {
+          "itemId": 210000,
+          "rank": 0,
+          "count": 15
+        },
+        {
+          "itemId": 206500,
+          "rank": 0,
+          "count": 10
+        }
+      ],
+      "reward": 451620,
+      "rewardCount": 1
+    },
+    {
+      "id": 59,
+      "name": "蛋",
+      "items": [
+        {
+          "itemId": 130040,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130060,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130080,
+          "rank": 0,
+          "count": 3
+        }
+      ],
+      "reward": 451300,
+      "rewardCount": 1
+    },
+    {
+      "id": 60,
+      "name": "畜產品",
+      "items": [
+        {
+          "itemId": 130000,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130020,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130100,
+          "rank": 0,
+          "count": 3
+        }
+      ],
+      "reward": 453400,
+      "rewardCount": 1
+    },
+    {
+      "id": 61,
+      "name": "家畜毛",
+      "items": [
+        {
+          "itemId": 130120,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130140,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 130160,
+          "rank": 0,
+          "count": 3
+        }
+      ],
+      "reward": 451430,
+      "rewardCount": 1
+    },
+    {
+      "id": 62,
+      "name": "家畜肉",
+      "items": [
+        {
+          "itemId": 131020,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 131040,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 131000,
+          "rank": 0,
+          "count": 1
+        }
+      ],
+      "reward": 451440,
+      "rewardCount": 1
+    },
+    {
+      "id": 63,
+      "name": "小動物的材料",
+      "items": [
+        {
+          "itemId": 150000,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 150020,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453310,
+      "rewardCount": 1
+    },
+    {
+      "id": 64,
+      "name": "小動物的稀有材料",
+      "items": [
+        {
+          "itemId": 150070,
+          "rank": 0,
+          "count": 2
+        },
+        {
+          "itemId": 150080,
+          "rank": 0,
+          "count": 2
+        },
+        {
+          "itemId": 150040,
+          "rank": 0,
+          "count": 2
+        }
+      ],
+      "reward": 451250,
+      "rewardCount": 1
+    },
+    {
+      "id": 65,
+      "name": "大型動物的材料",
+      "items": [
+        {
+          "itemId": 150010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 150030,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453340,
+      "rewardCount": 1
+    },
+    {
+      "id": 66,
+      "name": "大型動物的稀有材料",
+      "items": [
+        {
+          "itemId": 150100,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 150200,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 150300,
+          "rank": 0,
+          "count": 1
+        }
+      ],
+      "reward": 452060,
+      "rewardCount": 1
+    },
+    {
+      "id": 67,
+      "name": "小型魚",
+      "items": [
+        {
+          "itemId": 160010,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 160020,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 160130,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 452010,
+      "rewardCount": 1
+    },
+    {
+      "id": 68,
+      "name": "中型魚",
+      "items": [
+        {
+          "itemId": 160190,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 160060,
+          "rank": 0,
+          "count": 3
+        },
+        {
+          "itemId": 160210,
+          "rank": 0,
+          "count": 3
+        }
+      ],
+      "reward": 453000,
+      "rewardCount": 1
+    },
+    {
+      "id": 69,
+      "name": "大型魚",
+      "items": [
+        {
+          "itemId": 160270,
+          "rank": 0,
+          "count": 2
+        },
+        {
+          "itemId": 160110,
+          "rank": 0,
+          "count": 2
+        },
+        {
+          "itemId": 160280,
+          "rank": 0,
+          "count": 1
+        }
+      ],
+      "reward": 452130,
+      "rewardCount": 1
+    },
+    {
+      "id": 70,
+      "name": "夢幻之魚",
+      "items": [
+        {
+          "itemId": 161040,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 161020,
+          "rank": 0,
+          "count": 1
+        },
+        {
+          "itemId": 161050,
+          "rank": 0,
+          "count": 1
+        }
+      ],
+      "reward": 453430,
+      "rewardCount": 1
+    },
+    {
+      "id": 71,
+      "name": "高品質作物",
+      "items": [
+        {
+          "itemId": 100400,
+          "rank": 4,
+          "count": 5
+        },
+        {
+          "itemId": 100390,
+          "rank": 4,
+          "count": 5
+        },
+        {
+          "itemId": 100330,
+          "rank": 4,
+          "count": 5
+        }
+      ],
+      "reward": 451700,
+      "rewardCount": 1
+    },
+    {
+      "id": 72,
+      "name": "高品質畜產品",
+      "items": [
+        {
+          "itemId": 130000,
+          "rank": 4,
+          "count": 5
+        },
+        {
+          "itemId": 130040,
+          "rank": 4,
+          "count": 5
+        },
+        {
+          "itemId": 130100,
+          "rank": 4,
+          "count": 5
+        }
+      ],
+      "reward": 453420,
+      "rewardCount": 1
+    },
+    {
+      "id": 73,
+      "name": "高品質家畜毛",
+      "items": [
+        {
+          "itemId": 130120,
+          "rank": 4,
+          "count": 5
+        },
+        {
+          "itemId": 130140,
+          "rank": 4,
+          "count": 3
+        },
+        {
+          "itemId": 130160,
+          "rank": 4,
+          "count": 5
+        }
+      ],
+      "reward": 451730,
+      "rewardCount": 1
+    },
+    {
+      "id": 74,
+      "name": "稀有寶石",
+      "items": [
+        {
+          "itemId": 241050,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 241080,
+          "rank": 0,
+          "count": 5
+        },
+        {
+          "itemId": 241110,
+          "rank": 0,
+          "count": 5
+        }
+      ],
+      "reward": 453330,
+      "rewardCount": 1
+    }
+  ],
+  "catalogFlag": 12036,
+  "introFlags": [
+    12032,
+    12033
+  ]
+}
