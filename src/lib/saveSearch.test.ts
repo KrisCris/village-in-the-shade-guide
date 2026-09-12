@@ -16,4 +16,10 @@ describe('save editor search uses catalog phonetics', () => {
     expect(text).toContain('cyjq');
     expect(text).toContain('money_');
   });
+  it('matches simplified and traditional input for the same shrine recipe', () => {
+    const text = buildSaveSearchText('户外砖头地板');
+    for (const query of ['户外砖头', '戶外磚頭', 'hwztdb', 'huwai']) {
+      expect(text).toContain(normalizeSearch(query));
+    }
+  });
 });

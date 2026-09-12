@@ -20,7 +20,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('native shrine tree', () => {
   it('includes the recipe nodes, original coordinates and complete dependency graph', () => {
     expect(UNLOCKS.nodes).toHaveLength(80);
     expect(UNLOCKS.nodes.filter(n => n.skill)).toHaveLength(31);
-    expect(UNLOCKS.nodes.find(n => n.id === 5)).toMatchObject({ name: '戶外磚頭地板', x: 0, y: 2, parents: [1], flag: 80019 });
+    expect(UNLOCKS.nodes.find(n => n.id === 5)).toMatchObject({ name: '户外砖头地板', x: 0, y: 2, parents: [1], flag: 80019 });
     expect(UNLOCKS.nodes.find(n => n.id === 21)?.parents).toEqual([17, 11]);
     for (const n of UNLOCKS.nodes) {
       expect(PROGRESSION.flags.some(f => f.id === n.flag)).toBe(true);

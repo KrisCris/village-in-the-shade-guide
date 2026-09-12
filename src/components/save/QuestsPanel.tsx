@@ -4,8 +4,9 @@ import type { SaveField, SaveModel } from '../../lib/saveModel';
 import { rawFieldFor } from '../../lib/saveModel';
 import { readSigned } from '../../lib/ser';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
+import { simplifySaveText } from '../../lib/saveText';
 
-const questText = (text: string) => text.replace(/<[^>]+>/g, '').trim();
+const questText = (text: string) => simplifySaveText(text.replace(/<[^>]+>/g, '').trim());
 const stateLabel = (state: number) => state === 0 ? '隐藏' : state === 3 ? '已完成' : '进行中';
 
 function QuestStateBadge({ state }: { state: number }) {
@@ -33,7 +34,7 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
     return (node ? model.doc.children(node) : []).filter((_, index) => index % 2 === 1).flatMap(pointer => {
       const id = model.doc.resolve('p/dataID_', pointer), state = model.doc.resolve('p/state_', pointer), check = model.doc.resolve('p/checkLevel_', pointer);
       const info = id && data.quests.find(quest => quest.id === Number(readSigned(model.doc, id)));
-      return info && state && check ? [{ info, title: questText(info.name) || info.name, searchText: buildSaveSearchText(questText(info.name), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
+      return info && state && check ? [{ info, title: questText(info.name) || simplifySaveText(info.name), searchText: buildSaveSearchText(questText(info.name), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
     });
   }, [model]);
   const visible = quests.filter(quest => (showInternal || !quest.internal) && quest.searchText.includes(normalizeSearch(search)));

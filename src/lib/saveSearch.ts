@@ -1,7 +1,8 @@
-import { normalizeSearch } from '../data/clientSearch';
+import { normalizeSearch as normalizeCatalogSearch } from '../data/clientSearch';
 import { buildPinyinAliases } from '../data/serverSearchAliases';
+import { simplifySaveText } from './saveText';
 
-export { normalizeSearch };
+export const normalizeSearch = (value: string) => normalizeCatalogSearch(simplifySaveText(value));
 
 // Reuse the catalog's phonetic rules; index labels once rather than on each keypress.
 const aliases = new Map<string, string>();

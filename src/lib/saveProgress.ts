@@ -1,8 +1,9 @@
 import data from '../../data/sources/game-save-progression.json';
+import { simplifySaveEntry } from './saveText';
 import { builtChild, captureBuilt, encodeSigned, readSigned, SerTag, type SerBuiltNode, type SerDocument } from './ser';
 import { buildDeliveryEdits, type DeliveryEdits } from './saveDeliveries';
 
-export const PROGRESSION = data;
+export const PROGRESSION = { ...data, skills: data.skills.map(simplifySaveEntry), flags: data.flags.map(simplifySaveEntry), recipes: data.recipes.map(simplifySaveEntry) };
 export interface ProgressEdits { encyclopedia?: Record<string, boolean>; skills?: Record<string, boolean>; flags?: Record<string, boolean>; deliveries?: DeliveryEdits }
 export type ProgressToggleGroup = Exclude<keyof ProgressEdits, 'deliveries'>;
 export function progressCount(edits: ProgressEdits): number { return Object.values(edits).reduce((sum, group) => sum + Object.keys(group ?? {}).length, 0); }

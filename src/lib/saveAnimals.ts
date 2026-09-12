@@ -1,8 +1,9 @@
 import data from '../../data/sources/game-save-animals.json';
+import { simplifySaveEntry } from './saveText';
 import places from '../../data/sources/game-save-placements.json';
 import { flagEnabled } from './saveProgress';
 import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, readSigned, readString, type SerBuiltNode, type SerDocument, type SerNode } from './ser';
-export const ANIMALS = data.animals;
+export const ANIMALS = data.animals.map(simplifySaveEntry);
 export interface AnimalEdits { moves?: Record<string, number>; added?: Record<string, { species: number; name: string; variant?: number }> }
 export function animalEditCount(edits: AnimalEdits) { return Object.keys(edits.moves ?? {}).length + Object.keys(edits.added ?? {}).length; }
 export function animalResidents(doc: SerDocument, edits: AnimalEdits = {}) {

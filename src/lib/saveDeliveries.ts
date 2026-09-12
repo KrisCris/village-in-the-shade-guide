@@ -1,7 +1,8 @@
 import data from '../../data/sources/game-save-unlocks.json';
+import { simplifySaveEntry } from './saveText';
 import { encodeSigned, readSigned, type SerDocument } from './ser';
 
-export const UNLOCKS = data;
+export const UNLOCKS = { ...data, nodes: data.nodes.map(simplifySaveEntry), groups: data.groups.map(simplifySaveEntry), bundles: data.bundles.map(simplifySaveEntry) };
 export type DeliveryEdits = Record<string, number>;
 export function readDeliveries(doc: SerDocument) {
   const root = doc.resolve('bundleList_');
