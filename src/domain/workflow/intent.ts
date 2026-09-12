@@ -1,6 +1,10 @@
 import type { Entity } from "../../data/types";
 import type { WorkflowNode, WorkflowPlan, WorkflowEdge } from "./types";
 import { hasCycle, stringArray } from "./graph";
+import { nodeLabels } from "../workflowEditor";
+
+export const autoLabel = (n: WorkflowNode) =>
+  n.labelMode === "auto" || (n.labelMode !== "manual" && n.label === nodeLabels[n.kind]);
 
 export function canConnectDraft(
   nodes: WorkflowNode[],
@@ -107,6 +111,10 @@ export function resolveIntent(plan: WorkflowPlan, entities: Entity[]) {
   for (const n of nodes) {
     choices[n.id] = candidates(n, true);
     notices[n.id] = [];
+    if (autoLabel(n)) {
+      const item = catalog.get(n.cropId ?? n.recipeId ?? n.itemId ?? "");
+      n.label = item ? `${nodeLabels[n.kind]} ${item.name.zh_hans}` : nodeLabels[n.kind];
+    }
   }
   for (const e of plan.edges) {
     const source = byId.get(e.source),

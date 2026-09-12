@@ -5,7 +5,9 @@ import type {
   NodeProjection,
 } from "../../domain/workflow/types";
 import { nodeLabels } from "../../domain/workflowEditor";
-import { autoAmount, autoDate } from "../../domain/workflow/intent";
+import { autoAmount, autoDate, autoLabel } from "../../domain/workflow/intent";
+import type { WorkflowAssistance as Advice } from "../../domain/workflow/assistance";
+import WorkflowAssistance from "./WorkflowAssistance";
 import { formatDay } from "../../domain/workflow/date";
 import { DateField, EntityPicker, NumberField } from "./fields";
 
@@ -17,6 +19,8 @@ export default function NodeInspector({
   comparison,
   plan,
   entities,
+  advice,
+  onAction,
   onChange,
   onDelete,
 }: {
@@ -27,6 +31,8 @@ export default function NodeInspector({
   comparison?: { delay: number; incomeDifference: number; machines: number };
   plan: WorkflowPlan;
   entities: Entity[];
+  advice?: Advice;
+  onAction?: (key: string) => void;
   onChange: (n: WorkflowNode) => void;
   onDelete: () => void;
 }) {
@@ -99,14 +105,24 @@ export default function NodeInspector({
           ))}
         </div>
       )}
+      {advice && onAction && <WorkflowAssistance key={node.id} advice={advice} onAction={onAction} />}
       <label className="wf-field">
         节点名称
         <input
-          value={node.label}
+          value={autoLabel(node) ? resolved.label : node.label}
           maxLength={200}
-          onChange={(e) => patch({ label: e.target.value })}
+          onChange={(e) => patch({ label: e.target.value, labelMode: "manual" })}
         />
       </label>
+      <div className="wf-auto-hint">
+        <span>{autoLabel(node) ? "名称跟随所选物品" : "自定义名称"}</span>
+        {!autoLabel(node) && !demand && <button onClick={() => patch({ label: nodeLabels[node.kind], labelMode: "auto" })}>恢复自动命名</button>}
+      </div>
+      {!root && !demand && node.remainingDays === undefined && (!autoAmount(node) || !autoDate(node)) && (
+        <button className="wf-restore-auto" onClick={() => patch({ amountMode: "auto", dateMode: "auto" })}>
+          恢复自动数量与日期
+        </button>
+      )}
       {!demand && (
         <>
           <EntityPicker

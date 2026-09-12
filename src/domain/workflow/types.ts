@@ -13,6 +13,7 @@ export type WorkflowNode = {
   id: string;
   kind: NodeKind;
   label: string;
+  labelMode?: "auto" | "manual";
   position: { x: number; y: number };
   quantity: number;
   startDay: number;

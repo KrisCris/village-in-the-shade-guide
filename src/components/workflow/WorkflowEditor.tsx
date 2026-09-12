@@ -30,6 +30,7 @@ import {
   uid,
 } from "../../domain/workflowEditor";
 import { simulatePlan } from "../../domain/workflow/simulate";
+import { getWorkflowAssistance, applyWorkflowAssistance, updateWorkflowNode } from "../../domain/workflow/assistance";
 import { canConnect } from "../../domain/workflow/graph";
 import {
   canConnectDraft,
@@ -720,6 +721,24 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     () => resolveIntent(plan, entities),
     [computationKey, entities],
   );
+  const advice = useMemo(
+    () => current ? getWorkflowAssistance(plan, entities, current.id, result) : undefined,
+    [computationKey, current?.id, entities, result],
+  );
+  const assist = (key: string) => {
+    if (!current) return;
+    try {
+      const applied = applyWorkflowAssistance(plan, entities, current.id, key, result);
+      change(applied.plan);
+      setSelected([applied.focusId]);
+      setInspectorOpen(true);
+      setNotice(applied.message);
+      const affected = applied.plan.nodes.filter(n => n.id === applied.focusId || !plan.nodes.some(old => old.id === n.id));
+      setTimeout(() => frameSelection(affected, true), 100);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "暂时不能执行这项操作。");
+    }
+  };
   const comparison = useMemo(() => {
     if (current?.kind !== "process" || current.machineCount === undefined)
       return undefined;
@@ -1153,7 +1172,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                         onChange={(e) => setSource(e.target.value)}
                       >
                         <option value="">选择来源</option>
-                        {plan.nodes.map((n) => (
+                        {inference.nodes.map((n) => (
                           <option key={n.id} value={n.id}>
                             {n.label}
                           </option>
@@ -1168,7 +1187,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                         onChange={(e) => setTarget(e.target.value)}
                       >
                         <option value="">选择去向</option>
-                        {plan.nodes.map((n) => (
+                        {inference.nodes.map((n) => (
                           <option key={n.id} value={n.id}>
                             {n.label}
                           </option>
@@ -1185,8 +1204,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   <ul>
                     {plan.edges.map((e) => (
                       <li key={e.id}>
-                        {plan.nodes.find((n) => n.id === e.source)?.label} →{" "}
-                        {plan.nodes.find((n) => n.id === e.target)?.label}
+                        {inference.nodes.find((n) => n.id === e.source)?.label} →{" "}
+                        {inference.nodes.find((n) => n.id === e.target)?.label}
                         {!!result.intent?.edgeSchedule[e.id]?.length && (
                           <details>
                             <summary>
@@ -1269,10 +1288,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   comparison={comparison}
                   plan={plan}
                   entities={entities}
+                  advice={advice}
+                  onAction={assist}
                   onChange={(n) =>
                     change({
                       ...plan,
-                      nodes: plan.nodes.map((v) => (v.id === n.id ? n : v)),
+                      nodes: plan.nodes.map((v) => (v.id === n.id ? updateWorkflowNode(v, n, entities) : v)),
                     })
                   }
                   onDelete={() => remove([current.id])}
@@ -1405,7 +1426,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       </div>
       <WorkflowTimeline
         result={result}
-        plan={plan}
+        plan={{ ...plan, nodes: inference.nodes }}
         entities={entities}
         day={day}
         onDay={setDay}

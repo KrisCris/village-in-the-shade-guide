@@ -23,6 +23,7 @@ export function newNode(kind: NodeKind, day: number, index = 0): WorkflowNode {
     id: uid(),
     kind,
     label: nodeLabels[kind],
+    labelMode: "auto",
     quantity: kind === "sale" ? 0 : 1,
     startDay: day,
     repeat: ["process", "sale"].includes(kind),
@@ -57,6 +58,7 @@ export function createDemandNodes(
     .map((e, i) => ({
       ...newNode("delivery", day, i),
       label: e.name.zh_hans,
+      labelMode: "manual" as const,
       sourceId: e.id,
       position: { x: 960 + (i % 3) * 310, y: 40 + Math.floor(i / 3) * 230 },
       requirements: (
@@ -123,6 +125,7 @@ const node = z.object({
     "sale",
   ]),
   label: z.string().max(200),
+  labelMode: z.enum(["auto", "manual"]).optional(),
   position: z.object({
     x: z.number().min(-100000).max(100000),
     y: z.number().min(-100000).max(100000),
