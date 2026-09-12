@@ -7,7 +7,7 @@ import MusicPlayer from './art/MusicPlayer.astro';
 
 <header class="site-header">
   <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
-  <nav aria-label="页首导航"><a href={withBase("/data/")}>资料库</a><a href={withBase("/planner/")}>收益规划</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/search/")}>搜索</a></nav>
+  <nav aria-label="页首导航"><a href={withBase("/data/")}>资料库</a><a href={withBase("/planner/")}>收益规划</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/save-editor/")}>存档工具</a><a href={withBase("/search/")}>搜索</a></nav>
   <div class="header-controls"><MusicPlayer /><ThemeSwitch /><QualitySelector client:load /></div>
 </header>
 <style>

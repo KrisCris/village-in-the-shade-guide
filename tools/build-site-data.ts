@@ -21,4 +21,44 @@ const searchRows = catalog.entities.map((entity) => {
   return [entity.id, entity.kind, name.zh_hans, name.zh_hant || '', name.ja || '', extraAliases];
 });
 await writeFile('public/search-index.json', JSON.stringify({ buildId: catalog.buildId, rows: searchRows }));
-console.log(`site-data entities=${catalog.entities.length} search-index=${searchRows.length}`);
+
+// Numeric-id lookup for the save editor: saves store these IDs, and the full
+// catalog is far too large to download just to label a few of them.
+const saveEditorKinds = ['items', 'characters', 'livestock', 'crops', 'weather', 'facilities'];
+// Almost every icon sits under the same folder with the same extension, so the
+// table stores bare stems and the reader puts the path back together. Anything
+// that lives elsewhere (character portraits) is stored as a full path, told
+// apart by its leading slash.
+const iconBase = '/icons/generated/items/';
+const iconExt = '.webp';
+const saveEditorNames: Record<string, Record<string, string>> = {};
+const saveEditorIcons: Record<string, Record<string, string>> = {};
+const categories: Record<string, string> = {};
+const itemCategories: Record<string, string> = {};
+for (const entity of catalog.entities) {
+  const numericId = entity.numeric_id;
+  if (!saveEditorKinds.includes(entity.kind) || typeof numericId !== 'number') continue;
+  const key = String(numericId);
+  (saveEditorNames[entity.kind] ??= {})[key] = entity.name.zh_hans || entity.name.ja || entity.id;
+  if (entity.kind === 'items' && typeof entity.category_id === 'string') {
+    itemCategories[key] = entity.category_id;
+    const categoryName = entity.category_name as { zh_hans?: string; ja?: string } | undefined;
+    categories[entity.category_id] = categoryName?.zh_hans || categoryName?.ja || entity.category_id;
+  }
+  const icon = entity.icon_path;
+  if (typeof icon !== 'string' || !icon) continue;
+  (saveEditorIcons[entity.kind] ??= {})[key] = icon.startsWith(iconBase) && icon.endsWith(iconExt)
+    ? icon.slice(iconBase.length, -iconExt.length)
+    : icon;
+}
+await writeFile(
+  'public/save-editor-names.json',
+  JSON.stringify({ iconBase, iconExt, names: saveEditorNames, icons: saveEditorIcons, categories, itemCategories }),
+);
+
+const count = (tables: Record<string, Record<string, string>>) =>
+  Object.values(tables).reduce((sum, bucket) => sum + Object.keys(bucket).length, 0);
+console.log(
+  `site-data entities=${catalog.entities.length} search-index=${searchRows.length}`
+  + ` save-editor-names=${count(saveEditorNames)} save-editor-icons=${count(saveEditorIcons)}`,
+);

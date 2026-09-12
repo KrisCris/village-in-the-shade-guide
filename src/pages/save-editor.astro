@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SaveEditor from '../components/save/SaveEditor';
+import '../styles/save-editor.css';
+---
+
+<BaseLayout title="存档编辑器" description="在浏览器本地检查并修改《静谧田园》游戏存档">
+  <section class="save-page-heading">
+    <p class="eyebrow">工具 · 本地处理</p>
+    <h1>存档编辑器</h1>
+    <p>
+      修改角色、物品、畜牧和任务进度。
+      文件只在浏览器里处理，不会上传服务器；导出的是一个新的副本，你上传的文件不会被改动。
+    </p>
+  </section>
+  <SaveEditor client:load />
+  <section class="save-safety card">
+    <h2>使用前请注意</h2>
+    <ul>
+      <li>先退出游戏再导出、替换存档，并自己留一份原文件备份。</li>
+      <li>
+        存档在 <code>%APPDATA%\Nippon Ichi Software, Inc\Honogurashinoniwa\&lt;SteamID&gt;\</code>。
+        同一个槽位轮流写入 <code>save.001</code>–<code>save.005</code>，可以选择 <code>.systemsave</code> 确认当前使用的文件。
+        修改后，游戏选档界面的名字和时长可能仍显示旧值，进入游戏后才能看到更新。
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
