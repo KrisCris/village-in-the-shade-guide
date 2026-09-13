@@ -1,10 +1,58 @@
 import { describe, it, expect } from "vitest";
 import farmland from "../../../data/sources/game-farmland.json";
-import { mapCell, sourceCell, farmlandPlots, farmlandUsage } from "./farmland";
+import {
+  mapCell,
+  sourceCell,
+  farmlandPlots,
+  farmlandUsage,
+  farmlandShapes,
+} from "./farmland";
 import { node, plan, entities } from "./test-helpers";
 import { simulatePlan } from "./simulate";
 import { parsePlan } from "../workflowEditor";
 describe("game map farmland orientation", () => {
+  it("folds internal mirrored greenhouse terrain into the regular map without losing cells", () => {
+    expect(farmlandShapes.some((s) => s.id.includes("_mirror"))).toBe(false);
+    for (const mirror of farmland.shapes.filter((s) =>
+      s.id.includes("_mirror"),
+    )) {
+      const selection = {
+        shapeId: mirror.id,
+        cells: mirror.cells.map((c) => c.join(",")),
+      };
+      const plots = farmlandPlots(selection);
+      expect(plots[0].shapeId).toBe(mirror.id.replace("_mirror", ""));
+      expect(plots[0].cells).toHaveLength(mirror.count);
+    }
+  });
+  it("merges duplicate greenhouse selections and migrates map-derived quantities once", () => {
+    const regular = farmland.shapes.find(
+      (s) => s.count === 100 && !s.id.includes("_mirror"),
+    )!;
+    const mirror = farmland.shapes.find(
+      (s) => s.count === 100 && s.id.includes("_mirror"),
+    )!;
+    const selection = {
+      plots: [regular, mirror].map((s) => ({
+        shapeId: s.id,
+        cells: s.cells.map((c) => c.join(",")),
+      })),
+    };
+    const parsed = parsePlan(
+      JSON.stringify(
+        plan([
+          node("p", "plant", {
+            quantity: 200,
+            amountMode: "manual",
+            farmlandSelection: selection,
+          }),
+        ]),
+      ),
+    );
+    expect(parsed.nodes[0].quantity).toBe(100);
+    expect(farmlandPlots(parsed.nodes[0].farmlandSelection)).toHaveLength(1);
+    expect(parsePlan(JSON.stringify(parsed))).toEqual(parsed);
+  });
   it("reads old selections and combines maps without duplicate or nonexistent cells", () => {
     const first = farmland.shapes[0],
       second = farmland.shapes[1];

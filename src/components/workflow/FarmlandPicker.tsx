@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState, useId } from "react";
-import farmland from "../../../data/sources/game-farmland.json";
 import {
   mapCell,
   sourceCell,
   farmlandPlots,
+  farmlandShapes,
   type farmlandUsage,
 } from "../../domain/workflow/farmland";
 import type { FarmlandSelection } from "../../domain/workflow/types";
 import { formatDay } from "../../domain/workflow/date";
 import WorkflowIcon from "./WorkflowIcon";
-const shapes = farmland.shapes;
+const shapes = farmlandShapes;
 export default function FarmlandPicker({
   value,
   onApply,

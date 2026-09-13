@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { farmlandPlots } from "./workflow/farmland";
 import type { Entity } from "../data/types";
 import type {
   WorkflowPlan,
@@ -267,5 +268,26 @@ export function parsePlan(raw: string): WorkflowPlan {
       }),
     };
   }
-  return plan;
+  return {
+    ...plan,
+    nodes: plan.nodes.map((n) => {
+      const selected = n.farmlandSelection;
+      if (!selected) return n;
+      const original = "plots" in selected ? selected.plots : [selected];
+      if (!original.some((p) => p.shapeId.includes("_mirror"))) return n;
+      const plots = farmlandPlots(selected);
+      const count = plots.reduce((sum, p) => sum + p.cells.length, 0);
+      const oldCount = original.reduce(
+        (sum, p) => sum + new Set(p.cells).size,
+        0,
+      );
+      return {
+        ...n,
+        farmlandSelection: { plots },
+        ...(count && n.amountMode !== "auto" && n.quantity === oldCount
+          ? { quantity: count }
+          : {}),
+      };
+    }),
+  };
 }

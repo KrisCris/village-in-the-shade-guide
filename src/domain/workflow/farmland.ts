@@ -26,17 +26,33 @@ export const sourceCell = (
 const validCells = new Map(
   data.shapes.map((s) => [s.id, new Set(s.cells.map((c) => c.join(",")))]),
 );
+// map.dat labels MAP_ID_GREENHOUSE_01_MIRROR as 温室_01(反転).
+// Its normalized terrain maps onto the regular greenhouse by transposing axes.
+// It is an internal orientation variant, not additional capacity in the planner.
+const aliases = new Map(
+  data.shapes
+    .filter((s) => s.map_ids.includes("MAP_ID_GREENHOUSE_01_MIRROR"))
+    .map((s) => [s.id, s.id.replace("_mirror", "")]),
+);
+export const farmlandShapes = data.shapes.filter((s) => !aliases.has(s.id));
 /** Read legacy single-map selections and canonicalize multi-map selections. */
 export function farmlandPlots(
   value?: FarmlandSelection,
 ): FarmlandPlotSelection[] {
   const plots = new Map<string, Set<string>>();
   for (const plot of value ? ("plots" in value ? value.plots : [value]) : []) {
-    const valid = validCells.get(plot.shapeId);
+    const shapeId = aliases.get(plot.shapeId) ?? plot.shapeId;
+    const valid = validCells.get(shapeId);
     if (!valid) continue;
-    const cells = plots.get(plot.shapeId) ?? new Set<string>();
-    for (const cell of plot.cells) if (valid.has(cell)) cells.add(cell);
-    if (cells.size) plots.set(plot.shapeId, cells);
+    const cells = plots.get(shapeId) ?? new Set<string>();
+    for (const cell of plot.cells) {
+      if (!validCells.get(plot.shapeId)?.has(cell)) continue;
+      const canonical = aliases.has(plot.shapeId)
+        ? cell.split(",").reverse().join(",")
+        : cell;
+      if (valid.has(canonical)) cells.add(canonical);
+    }
+    if (cells.size) plots.set(shapeId, cells);
   }
   return [...plots].map(([shapeId, cells]) => ({ shapeId, cells: [...cells] }));
 }
