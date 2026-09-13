@@ -1,11 +1,20 @@
 ---
 import { withBase } from '../lib/sitePath';
 import PageSettings from './PageSettings.astro';
+const navigation = [
+  { href: '/data/', label: '资料库' },
+  { href: '/planner/', label: '收益规划' },
+  { href: '/planner/workflow/', label: '工作流' },
+  { href: '/guides/', label: '攻略' },
+  { href: '/save-editor/', label: '存档工具' },
+  { href: '/search/', label: '搜索' },
+];
+const current = navigation.filter(item => Astro.url.pathname.startsWith(withBase(item.href))).sort((a,b)=>b.href.length-a.href.length)[0]?.href;
 ---
 
 <header class="site-header">
   <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
-  <nav aria-label="页首导航"><a href={withBase("/data/")}>资料库</a><a href={withBase("/planner/")}>收益规划</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/save-editor/")}>存档工具</a><a href={withBase("/search/")}>搜索</a></nav>
+  <nav aria-label="页首导航">{navigation.map(item=><a href={withBase(item.href)} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a>)}</nav>
   <div class="header-controls"><PageSettings /></div>
 </header>
 <style>
@@ -17,6 +26,8 @@ import PageSettings from './PageSettings.astro';
   .brand span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50% 45% 50% 40%; background: var(--green); color: var(--paper-raised); font-family: serif; }
   nav { display: flex; gap: 1.2rem; } nav a { color: var(--ink); text-decoration: none; font-size: .92rem; }
   .header-controls{display:flex;align-items:center;gap:.8rem}nav a{position:relative;padding:.55rem 0}nav a::after{content:'';height:1px;background:var(--green);position:absolute;bottom:0;left:0;right:0;transform:scaleX(0);transform-origin:left;transition:transform .25s}nav a:hover::after{transform:scaleX(1)}
+  nav a[aria-current="page"]{color:var(--green);font-weight:700}nav a[aria-current="page"]::after{transform:scaleX(1)}nav a{white-space:nowrap}
+  @media(max-width:520px){nav{gap:.5rem}nav a{font-size:.82rem}}
   @media(max-width:520px){.brand strong{font-size:.8rem}.brand{gap:.4rem}.header-controls{gap:.4rem}.site-header{gap:.3rem}.header-controls :global(.quality-selector label){display:none}.header-controls :global(.theme-switch){padding:.35rem .5rem}}
   @media (max-width: 760px) { .site-header { height: auto; min-height: 64px; flex-wrap: wrap; padding-top: .55rem; padding-bottom: .55rem; } }
 </style>

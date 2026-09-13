@@ -8,6 +8,7 @@ import { databaseLinks } from '../data/navigation';
     <p>资料库</p>
     {databaseLinks.map(link => <a href={withBase(link.href)}>{link.label}</a>)}
     <a class="planner-link" href={withBase('/planner/')}>收益规划</a>
+    <a href={withBase('/planner/workflow/')}>生产工作流</a>
     <p>攻略</p>
     <a href={withBase("/guides/season-plan/")}>四季留货规划</a>
     <a href={withBase("/guides/residents/")}>生日与送礼</a>

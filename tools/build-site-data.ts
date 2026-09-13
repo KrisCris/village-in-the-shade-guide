@@ -2,6 +2,7 @@ import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { buildCatalog } from '../src/data/catalog';
 import {plannerPayload} from '../src/data/plannerPayload';
+import {workflowPayload} from '../src/data/workflowPayload';
 
 const source = 'data/generated/build-24969282/entities';
 const input: Record<string, unknown> = {};
@@ -14,6 +15,7 @@ const { byId, ...publicCatalog } = catalog;
 await mkdir('public', { recursive: true });
 await writeFile('public/game-data.json', JSON.stringify(publicCatalog));
 await writeFile('public/planner-data.json',JSON.stringify(plannerPayload(catalog)));
+await writeFile('public/workflow-data.json',JSON.stringify(workflowPayload(catalog)));
 const searchRows = catalog.entities.map((entity) => {
   const { name } = entity;
   const baseNames = new Set([entity.id, name.zh_hans, name.zh_hant, name.ja, name.internal]);

@@ -6,6 +6,7 @@ import { calculateCropProfit } from '../domain/profit';
 import mapMarkers from '../../data/sources/game-map-markers.json';
 import characterPortraits from '../../data/sources/official-character-portraits.json';
 import livestockProducts from '../../data/sources/game-livestock-products.json';
+import machineCapacities from '../../data/sources/game-machine-capacities.json';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
 const buildId = '24969282';
@@ -51,6 +52,9 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     for (const row of rows) {
       const fallback: Name = { zh_hans: row.id, zh_hant: '', ja: '', internal: row.id, aliases: [row.id], review_status: 'internal' };
       const entity = { ...row, kind, name: withSearchAliases(row.name ?? fallback), searchText: '' } as Entity;
+      if (kind === 'machines') {
+        entity.capacity = machineCapacities.machines.find(machine => machine.item_id === entity.id)?.capacity;
+      }
       if(kind==='characters') {
         const portrait=characterPortraits.portraits.find(p=>p.character_id===entity.id);
         if(portrait){entity.icon_path=portrait.path;entity.portrait_source=portrait.source;}

@@ -1,0 +1,246 @@
+{
+  "build_id": "24969282",
+  "source": "gimmick.dat first settingArg; gimmickprocess.dat machine references; item.dat IDs",
+  "native_rule": "GimmickProcessPushItem 0x14026EFC4-0x14026F01B: first settingArg value \"2\" => 3 slots, otherwise 1",
+  "unit": "simultaneous recipe batches per device",
+  "sha256": {
+    "gimmick.dat": "6233740e8984cfa44d5300a6e580ffc446325ece882b3fa29a75fe284108eb64",
+    "gimmickprocess.dat": "cac2fe3ccaa946b2a5ab9386b363b0dcee12ff8130e4b658a39ef75db91efc0d",
+    "item.dat": "1f5284529fbc126ef3b207ee617ea78c2b23b2688cbcff00cfebb9b5eb1a4880",
+    "village.exe": "7dc5ad614541fb7708e42036df7b7da85053ab4959f6ed2e9dfe1330aedbd381"
+  },
+  "machines": [
+    {
+      "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+      "gimmick_id": "GIMMICK_ID_AGUNG_BARREL",
+      "gimmick_numeric_id": 240050000,
+      "script": "gimmick_agung_barrel",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+      "gimmick_id": "GIMMICK_ID_AGUNG_BARREL_LV2",
+      "gimmick_numeric_id": 240050100,
+      "script": "gimmick_agung_barrel_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_BEEHIVE",
+      "gimmick_id": "GIMMICK_ID_BEEHIVE",
+      "gimmick_numeric_id": 240240000,
+      "script": "gimmick_beehive",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+      "gimmick_id": "GIMMICK_ID_BLAST_FURNACE",
+      "gimmick_numeric_id": 240090000,
+      "script": "gimmick_blast_furnace",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+      "gimmick_id": "GIMMICK_ID_BLAST_FURNACE_LV2",
+      "gimmick_numeric_id": 240090100,
+      "script": "gimmick_blast_furnace_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL",
+      "gimmick_id": "GIMMICK_ID_BREWING_BARREL",
+      "gimmick_numeric_id": 240040000,
+      "script": "gimmick_brewing_barrel",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+      "gimmick_id": "GIMMICK_ID_BREWING_BARREL_LV2",
+      "gimmick_numeric_id": 240040100,
+      "script": "gimmick_brewing_barrel_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+      "gimmick_id": "GIMMICK_ID_CHARCOAL_KILN",
+      "gimmick_numeric_id": 240100000,
+      "script": "gimmick_charcoal_kiln",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+      "gimmick_id": "GIMMICK_ID_CHARCOAL_KILN_LV2",
+      "gimmick_numeric_id": 240100100,
+      "script": "gimmick_charcoal_kiln_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_COMPOSTER",
+      "gimmick_id": "GIMMICK_ID_COMPOSTER",
+      "gimmick_numeric_id": 240120000,
+      "script": "gimmick_composter",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_COMPOSTER_02",
+      "gimmick_id": "GIMMICK_ID_COMPOSTER_LV2",
+      "gimmick_numeric_id": 240120100,
+      "script": "gimmick_composter_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+      "gimmick_id": "GIMMICK_ID_DRYING_MACHINE",
+      "gimmick_numeric_id": 240060000,
+      "script": "gimmick_drying_machine",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+      "gimmick_id": "GIMMICK_ID_DRYING_MACHINE_LV2",
+      "gimmick_numeric_id": 240060100,
+      "script": "gimmick_drying_machine_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL",
+      "gimmick_id": "GIMMICK_ID_FLOUR_MILL",
+      "gimmick_numeric_id": 240070000,
+      "script": "gimmick_flour_mill",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+      "gimmick_id": "GIMMICK_ID_FLOUR_MILL_LV2",
+      "gimmick_numeric_id": 240070100,
+      "script": "gimmick_flour_mill_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_LOOM",
+      "gimmick_id": "GIMMICK_ID_LOOM",
+      "gimmick_numeric_id": 240110000,
+      "script": "gimmick_loom",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_LOOM_02",
+      "gimmick_id": "GIMMICK_ID_LOOM_LV2",
+      "gimmick_numeric_id": 240110100,
+      "script": "gimmick_loom_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+      "gimmick_id": "GIMMICK_ID_MAYONNAISE_PROCESSING_MACHINE",
+      "gimmick_numeric_id": 240030000,
+      "script": "gimmick_mayonnaise_processing_machine",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+      "gimmick_id": "GIMMICK_ID_MAYONNAISE_PROCESSING_MACHINE_LV2",
+      "gimmick_numeric_id": 240030100,
+      "script": "gimmick_mayonnaise_processing_machine_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+      "gimmick_id": "GIMMICK_ID_MILK_PROCESSING_MACHINE",
+      "gimmick_numeric_id": 240020000,
+      "script": "gimmick_milk_processing_machine",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+      "gimmick_id": "GIMMICK_ID_MILK_PROCESSING_MACHINE_LV2",
+      "gimmick_numeric_id": 240020100,
+      "script": "gimmick_milk_processing_machine_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+      "gimmick_id": "GIMMICK_ID_OIL_EXTRACTION_MACHINE",
+      "gimmick_numeric_id": 240080000,
+      "script": "gimmick_oil_extraction_machine",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+      "gimmick_id": "GIMMICK_ID_OIL_EXTRACTION_MACHINE_LV2",
+      "gimmick_numeric_id": 240080100,
+      "script": "gimmick_oil_extraction_machine_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+      "gimmick_id": "GIMMICK_ID_SAP_EXTRACTOR",
+      "gimmick_numeric_id": 240250000,
+      "script": "gimmick_sap_extractor",
+      "level": null,
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+      "gimmick_id": "GIMMICK_ID_SERICULTURE_BOX",
+      "gimmick_numeric_id": 240270000,
+      "script": "gimmick_sericulture_box",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+      "gimmick_id": "GIMMICK_ID_SMOKING_MACHINE",
+      "gimmick_numeric_id": 240150000,
+      "script": "gimmick_smoking_machine",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+      "gimmick_id": "GIMMICK_ID_SMOKING_MACHINE_LV2",
+      "gimmick_numeric_id": 240150100,
+      "script": "gimmick_smoking_machine_Lv2",
+      "level": "2",
+      "capacity": 3
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR",
+      "gimmick_id": "GIMMICK_ID_STORAGE_JAR",
+      "gimmick_numeric_id": 240010000,
+      "script": "gimmick_storage_jar",
+      "level": "1",
+      "capacity": 1
+    },
+    {
+      "item_id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+      "gimmick_id": "GIMMICK_ID_STORAGE_JAR_LV2",
+      "gimmick_numeric_id": 240010100,
+      "script": "gimmick_storage_jar_Lv2",
+      "level": "2",
+      "capacity": 3
+    }
+  ]
+}

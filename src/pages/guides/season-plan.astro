@@ -20,6 +20,7 @@ const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.condi
 <BaseLayout title="四季留货与交付规划">
 <div class="season-guide">
 <h1>四季留货与交付规划</h1>
+<p><a href={withBase('/planner/workflow/')}>在生产工作流中安排留货 →</a> 自动生成供奉与交付需求节点，可删除已完成项目，并连接种植或加工产物。</p>
 <SeasonNav />
 <nav><a href="#daily">每天怎么安排</a></nav>
 <p>先留供奉与交付所需，再出售或加工余量。下列数量直接来自游戏交付表；没有确认年份或截止日期的条目，不视为“第一年必须完成”。</p>
