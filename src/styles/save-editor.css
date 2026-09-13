@@ -304,6 +304,17 @@ body:has(.save-editor) .falling-leaves { display: none !important; }
 .save-editor .save-delivery-bundle { margin:0; }
 .save-editor .save-animal-slots { grid-template-columns:repeat(auto-fit,minmax(min(100%,112px),1fr)); }
 .save-editor .save-items { margin:0; }
+.save-editor .save-animals { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr)); column-gap:1.2rem; row-gap:0; align-items:start; }
+.save-editor .save-animals[data-masonry=true] { grid-auto-rows:1px; grid-auto-flow:dense; }
+.save-animal-tile { min-width:0; padding-bottom:1.2rem; }
+.save-animals > .save-animal-notice { grid-column:1 / -1; }
+.save-editor .save-animals .save-container-head { justify-content:space-between; }
+.save-editor .save-animals .save-animal-slots { grid-template-columns:repeat(auto-fill,minmax(min(100%,104px),1fr)); }
+.save-animal-house { container:save-animal-house / inline-size; }
+.save-editor .save-animal-house .save-animal-slots { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.save-editor .save-animal-stable .save-animal-slots { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@container save-animal-house (max-width:450px) { .save-editor .save-animal-house .save-animal-slots { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@container save-workspace (max-width:800px) { .save-editor .save-animals { grid-template-columns:1fr; } }
 .save-editor .save-progress { padding:0; }
 .save-editor .save-progress-tabs { display:flex; flex-wrap:wrap; gap:2px; width:fit-content; padding:3px; margin:0 0 1rem; border:1px solid var(--border); border-radius:9px; background:var(--paper-deep); }
 .save-editor .save-progress-tabs button { border:0; min-height:30px; padding:.25rem .7rem; background:transparent; color:var(--muted); font-size:.8rem; }

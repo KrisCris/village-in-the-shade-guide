@@ -6,9 +6,22 @@ import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel, pendingChanges } from './saveModel';
 import { ANIMALS, animalHouses, animalResidents } from './saveAnimals';
 import { readFloat, readSigned } from './ser';
+import places from '../../data/sources/game-save-placements.json';
 let model: ReturnType<typeof parseSaveModel>;
 beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
 describe.skipIf(!hasPrivateSaveFixtures)('animal placement rules', () => {
+  it('keeps multiple constructed buildings and the stable in separate groups', () => {
+    const flags = Object.fromEntries(places.placements.flatMap(place => place.requires).filter(Boolean).map(flag => [flag, true]));
+    const expanded = parseSaveModel(decodeSave(exportSave(model, [], {}, { flags }), 'expanded-houses'));
+    const houses = animalHouses(expanded.doc);
+    expect(houses.filter(house => house.type === 0).length).toBeGreaterThan(1);
+    expect(houses.filter(house => house.type === 1).length).toBeGreaterThan(1);
+    expect(new Set(houses.map(house => house.id)).size).toBe(houses.length);
+    const stable = houses.find(house => house.type === 2)!;
+    expect(stable.title).toBe('马棚 1');
+    expect(stable.slots.map(slot => slot.id)).toEqual([412, 413, 414]);
+    expect(() => exportSave(expanded, [], {}, {}, {}, { moves: { 1: 412 } })).toThrow();
+  });
   it('derives four barn and eight aviary positions from construction flags', () => {
     const houses = animalHouses(model.doc);
     expect(houses.map(house => [house.type, house.slots.length])).toEqual([[0, 4], [1, 8]]);

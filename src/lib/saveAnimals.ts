@@ -16,18 +16,19 @@ export function animalResidents(doc: SerDocument, edits: AnimalEdits = {}) {
   });
 }
 export function animalHouses(doc: SerDocument) {
-  const enabled = places.placements.filter(place => place.houseType < 2 && !place.special && place.mapGroup === 1 && place.requires.every(flag => !flag || flagEnabled(doc, flag)) && place.excludes.every(flag => !flag || !flagEnabled(doc, flag)));
+  const enabled = places.placements.filter(place => place.houseType < 3 && !place.special && place.mapGroup === 1 && place.requires.every(flag => !flag || flagEnabled(doc, flag)) && place.excludes.every(flag => !flag || !flagEnabled(doc, flag)));
   const groups = new Map<number, typeof enabled>();
   for (const place of enabled) groups.set(place.mapId, [...(groups.get(place.mapId) ?? []), place]);
-  const counts = [0, 0];
-  return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: `${slots[0].houseType === 0 ? '畜舍' : '禽舍'} ${++counts[slots[0].houseType]}`, slots }));
+  const counts = [0, 0, 0];
+  return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: `${['畜舍', '禽舍', '马棚'][slots[0].houseType]} ${++counts[slots[0].houseType]}`, slots }));
 }
 
 export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint) {
   if (!animalEditCount(edits)) return { subtrees: new Map<number, SerBuiltNode>(), seed };
   const list = doc.resolve('livestockList_');
   if (!list) throw new Error('存档缺少动物记录。');
-  const residents = animalResidents(doc), slots = animalHouses(doc).flatMap(house => house.slots);
+  // Stable positions are scene bone attachments, not ordinary x/y placements.
+  const residents = animalResidents(doc), slots = animalHouses(doc).filter(house => house.type < 2).flatMap(house => house.slots);
   const occupied = new Set<number>();
   const built = captureBuilt(doc, list);
   const applyLeaves = (node: SerNode, target: SerBuiltNode) => { const payload = leafEdits.get(node.offset); if (payload) target.payload = payload; doc.children(node).forEach((child, index) => applyLeaves(child, target.children![index])); };

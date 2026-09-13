@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { ANIMALS, animalHouses, animalResidents, type AnimalEdits } from '../../lib/saveAnimals';
 import type { SaveField, SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
@@ -9,6 +9,7 @@ import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 
 export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onField }: { model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
   const houses = animalHouses(model.doc), residents = animalResidents(model.doc, edits);
+  const grid = useRef<HTMLDivElement>(null);
   const rows = model.sections.find(section => section.id === 'barn')?.tables[0]?.rows ?? [];
   const [selected, setSelected] = useState<number | null>(null), [adding, setAdding] = useState<number | null>(null), [species, setSpecies] = useState(''), [name, setName] = useState('');
   const [query, setQuery] = useState('');
@@ -16,6 +17,23 @@ export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onFi
   const tableRow = detail && rows[detail.index];
   const speciesName = (id: number) => names.names?.livestock?.[id] ?? ANIMALS.find(animal => animal.id === id)?.name ?? String(id);
   const loose = residents.filter(resident => !houses.some(house => house.slots.some(slot => slot.id === resident.placement)));
+  const layoutKey = houses.map(house => `${house.id}:${house.slots.length}`).join('|') + `:${loose.length}`;
+  useLayoutEffect(() => {
+    const root = grid.current;
+    if (!root || typeof ResizeObserver === 'undefined') return;
+    const tiles = Array.from(root.querySelectorAll<HTMLElement>(':scope > .save-animal-tile'));
+    const layout = () => {
+      for (const tile of tiles) {
+        const panel = tile.firstElementChild;
+        if (panel) tile.style.gridRowEnd = `span ${Math.ceil(panel.getBoundingClientRect().height + parseFloat(getComputedStyle(tile).paddingBottom))}`;
+      }
+      root.dataset.masonry = 'true';
+    };
+    const observer = new ResizeObserver(layout);
+    for (const tile of tiles) if (tile.firstElementChild) observer.observe(tile.firstElementChild);
+    layout();
+    return () => observer.disconnect();
+  }, [layoutKey]);
   const canAdd = residents.some(resident => ANIMALS.some(a => a.id === resident.species && a.id < 100 && a.houseType < 2));
   const variantFor = (id: number, index = 0) => ANIMALS.find(a => a.id === id)?.variants.find(v => v.index === index);
   const variantName = (id: number, index = 0) => { const v = variantFor(id, index); return v?.itemId ? names.names?.items?.[v.itemId] ?? speciesName(id) : speciesName(id); };
@@ -29,15 +47,16 @@ export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onFi
     onEdit({ ...edits, moves });
   }
   const animalButton = (resident: typeof residents[number]) => <button type="button" className={`save-animal-card${resident.index === selected ? ' active' : ''}`} key={resident.index} onClick={() => setSelected(resident.index)}>{portrait(resident.species, resident.variant)}<b>{drafts[rows[resident.index]?.cells[0]?.offset ?? -1] ?? resident.name}</b><small>{variantName(resident.species, resident.variant)}</small></button>;
-  return <div className="save-animals">
-    {!canAdd && houses.length > 0 && <p className="save-notice">先在游戏中领养一只普通家畜或家禽，再添加新伙伴。</p>}
-    {houses.map(house => <section className="save-container-panel" key={house.id}><header className="save-container-head"><h3>{house.title}</h3><small>{house.slots.length} 个安置位置</small></header><div className="save-animal-slots">{house.slots.map((slot, index) => {
+  const housePanel = (house: typeof houses[number]) => <section className={`save-container-panel save-animal-house${house.type === 2 ? ' save-animal-stable' : ''}`} key={house.id}><header className="save-container-head"><h3>{house.title}</h3><small>{house.slots.length} 个安置位置</small></header><div className="save-animal-slots">{house.slots.map((slot, index) => {
       const resident = residents.find(resident => resident.placement === slot.id), addition = edits.added?.[slot.id];
-      return <div key={slot.id} className="save-animal-position"><small>位置 {index + 1}</small>{resident ? animalButton(resident) : addition ? <div className="save-animal-card">{portrait(addition.species, addition.variant)}<b>{addition.name}</b><small>新增 · {variantName(addition.species, addition.variant)}</small><button type="button" onClick={() => { const added = { ...edits.added }; delete added[slot.id]; onEdit({ ...edits, added }); }}>撤销新增</button></div> : <button type="button" className="save-animal-card empty" disabled={!canAdd} onClick={() => { setAdding(slot.id); setSpecies(''); setName(''); setQuery(''); }}><span>＋</span><small>添加动物</small></button>}</div>;
-    })}</div></section>)}
-    {loose.length > 0 && <section className="save-container-panel"><h3>其他伙伴</h3><div className="save-animal-slots">{loose.map(animalButton)}</div></section>}
+      return <div key={slot.id} className="save-animal-position"><small>位置 {index + 1}</small>{resident ? animalButton(resident) : addition ? <div className="save-animal-card">{portrait(addition.species, addition.variant)}<b>{addition.name}</b><small>新增 · {variantName(addition.species, addition.variant)}</small><button type="button" onClick={() => { const added = { ...edits.added }; delete added[slot.id]; onEdit({ ...edits, added }); }}>撤销新增</button></div> : house.type >= 2 ? <div className="save-animal-card empty"><small>空位</small></div> : <button type="button" className="save-animal-card empty" disabled={!canAdd} onClick={() => { setAdding(slot.id); setSpecies(''); setName(''); setQuery(''); }}><span>＋</span><small>添加动物</small></button>}</div>;
+    })}</div></section>;
+  return <div className="save-animals" ref={grid}>
+    {!canAdd && houses.length > 0 && <div className="save-animal-tile save-animal-notice"><p className="save-notice">先在游戏中领养一只普通家畜或家禽，再添加新伙伴。</p></div>}
+    {houses.map(house => <div className="save-animal-tile" key={house.id}>{housePanel(house)}</div>)}
+    {loose.length > 0 && <div className="save-animal-tile"><section className="save-container-panel"><header className="save-container-head"><h3>其他伙伴</h3><small>{loose.length} 位伙伴</small></header><div className="save-animal-slots">{loose.map(animalButton)}</div></section></div>}
     {detail && tableRow && <SaveDialog title={`${detail.name} · ${speciesName(detail.species)}`} onClose={() => setSelected(null)}><div className="save-animal-fields">{tableRow.cells.filter(field => field && !field.readOnly).map(field => field && <label key={field.offset}><span>{field.label}</span><SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onField} /></label>)}</div>
-      {houses.some(house => house.slots.some(slot => slot.id === detail.placement)) && <label className="save-animal-move"><span>安置位置</span><select aria-label="安置位置" value={detail.placement} onChange={event => move(Number(event.target.value))}>{houses.filter(house => house.type === ANIMALS.find(animal => animal.id === detail.species)?.houseType).map(house => <optgroup key={house.id} label={house.title}>{house.slots.filter(slot => !edits.added?.[slot.id]).map((slot, index) => <option value={slot.id} key={slot.id}>位置 {index + 1}{residents.find(resident => resident.placement === slot.id && resident.index !== detail.index) ? ' · 交换位置' : ''}</option>)}</optgroup>)}</select></label>}
+      {houses.some(house => house.type < 2 && house.slots.some(slot => slot.id === detail.placement)) && <label className="save-animal-move"><span>安置位置</span><select aria-label="安置位置" value={detail.placement} onChange={event => move(Number(event.target.value))}>{houses.filter(house => house.type < 2 && house.type === ANIMALS.find(animal => animal.id === detail.species)?.houseType).map(house => <optgroup key={house.id} label={house.title}>{house.slots.filter(slot => !edits.added?.[slot.id]).map((slot, index) => <option value={slot.id} key={slot.id}>位置 {index + 1}{residents.find(resident => resident.placement === slot.id && resident.index !== detail.index) ? ' · 交换位置' : ''}</option>)}</optgroup>)}</select></label>}
     </SaveDialog>}
     {adding !== null && <SaveDialog title="添加动物" onClose={() => setAdding(null)}><div className="save-animal-picker">
       <input type="search" className="save-animal-search" aria-label="搜索动物品种" placeholder="搜索品种、拼音或首字母" value={query} onChange={e => setQuery(e.target.value)} />
