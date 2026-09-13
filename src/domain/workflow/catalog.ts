@@ -1,12 +1,15 @@
 import type { Entity } from "../../data/types";
 
 // These are wardrobe unlock categories, distinct from placeable furniture/accessories.
+// GameAddInventoryItem -> 0x140268AE0 -> 0x1401488A0 checks categories 34–39
+// via 0x1401653C0, unlocks the appearance via 0x140164ED0, then skips the backpack.
 const wardrobe = new Set([
   "ITEM_CATEGORY_ORNAMENTS",
   "ITEM_CATEGORY_CLOTHES",
   "ITEM_CATEGORY_FRONT_HAIRSTYLE",
   "ITEM_CATEGORY_BACK_HAIRSTYLE",
   "ITEM_CATEGORY_COLLAR",
+  "ITEM_CATEGORY_BAG",
 ]);
 export const selectableEntity = (e: Entity) =>
   e.kind !== "items" || !wardrobe.has(e.category_id ?? "");

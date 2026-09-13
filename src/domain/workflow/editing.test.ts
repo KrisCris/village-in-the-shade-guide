@@ -143,6 +143,9 @@ describe("workflow editing", () => {
   });
   it("keeps placeable small objects but filters wardrobe unlocks", () => {
     expect(
+      selectableEntity(entity("bag", "items", { category_id: "ITEM_CATEGORY_BAG" })),
+    ).toBe(false);
+    expect(
       selectableEntity(
         entity("hat", "items", { category_id: "ITEM_CATEGORY_ORNAMENTS" }),
       ),
