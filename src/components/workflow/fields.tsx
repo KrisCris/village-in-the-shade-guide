@@ -113,37 +113,37 @@ export function EntityPicker({
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
-  const root = useRef<HTMLDivElement>(null),
+  const dialog = useRef<HTMLDialogElement>(null),
     input = useRef<HTMLInputElement>(null),
     trigger = useRef<HTMLButtonElement>(null);
   const id = useId();
   const selected = entities.find((e) => e.id === value);
-  const options = useMemo(() => {
+  const matches = useMemo(() => {
     const q = normalizeSearch(query);
     return entities
       .filter(
         (e) =>
           !q || normalizeSearch(e.searchText || e.name.zh_hans).includes(q),
-      )
-      .slice(0, 80);
+      );
   }, [entities, query]);
+  const options = matches.slice(0, 80);
   useEffect(() => {
     if (!open) return;
+    const panel = dialog.current;
+    panel?.showModal();
     input.current?.focus();
-    const close = (e: PointerEvent) => {
-      if (!root.current?.contains(e.target as Node)) setOpen(false);
+    return () => {
+      panel?.close();
+      trigger.current?.focus({ preventScroll: true });
     };
-    document.addEventListener("pointerdown", close);
-    return () => document.removeEventListener("pointerdown", close);
   }, [open]);
   const choose = (id: string) => {
     onChange(id);
     setOpen(false);
     setQuery("");
-    trigger.current?.focus();
   };
   return (
-    <div className="wf-picker" ref={root}>
+    <div className="wf-picker">
       <label className="wf-picker-label" id={`${id}-label`}>
         {label}
       </label>
@@ -152,11 +152,12 @@ export function EntityPicker({
         className="wf-picker-trigger"
         ref={trigger}
         aria-labelledby={`${id}-label ${id}-value`}
-        aria-haspopup="listbox"
+        aria-haspopup="dialog"
         aria-expanded={open}
-        aria-controls={`${id}-options`}
+        aria-controls={`${id}-dialog`}
         onClick={() => {
-          setOpen(!open);
+          setOpen(true);
+          setQuery("");
           setActive(0);
         }}
       >
@@ -174,7 +175,34 @@ export function EntityPicker({
         <WorkflowIcon name="chevron" size={13} />
       </button>
       {open && (
-        <div className="wf-picker-popover">
+        <dialog
+          ref={dialog}
+          id={`${id}-dialog`}
+          className="wf-picker-dialog"
+          aria-labelledby={`${id}-title`}
+          onCancel={(e) => {
+            e.preventDefault();
+            setOpen(false);
+          }}
+          onKeyDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            if (e.target !== e.currentTarget) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            if (e.clientX < rect.left || e.clientX > rect.right ||
+                e.clientY < rect.top || e.clientY > rect.bottom) setOpen(false);
+          }}
+        >
+          <header className="wf-picker-heading">
+            <div>
+              <h2 id={`${id}-title`}>选择{label === "快速添加的作物" ? "作物" : label}</h2>
+              <span>点击一项即可选用，支持名称和拼音搜索</span>
+            </div>
+            <button type="button" aria-label="关闭选择面板" onClick={() => setOpen(false)}>
+              <WorkflowIcon name="close" size={20} />
+            </button>
+          </header>
+          <div className="wf-picker-search">
+            <WorkflowIcon name="search" size={20} />
           <input
             ref={input}
             role="combobox"
@@ -195,7 +223,6 @@ export function EntityPicker({
               if (e.key === "Escape") {
                 e.stopPropagation();
                 setOpen(false);
-                trigger.current?.focus();
               }
               if (e.key === "ArrowDown" || e.key === "ArrowUp") {
                 e.preventDefault();
@@ -217,6 +244,11 @@ export function EntityPicker({
               }
             }}
           />
+          </div>
+          <div className="wf-picker-summary" role="status">
+            <span>{query ? `找到 ${matches.length} 项` : `共 ${entities.length} 项`}</span>
+            {selected && <span>当前选择：{selected.name.zh_hans}</span>}
+          </div>
           <div
             className="wf-picker-options"
             id={`${id}-options`}
@@ -238,8 +270,8 @@ export function EntityPicker({
                 {e.icon_path ? (
                   <img
                     src={withBase(e.icon_path)}
-                    width={24}
-                    height={24}
+                    width={36}
+                    height={36}
                     alt=""
                   />
                 ) : (
@@ -251,10 +283,11 @@ export function EntityPicker({
             ))}
             {!options.length && <p className="wf-note">没有匹配的项目</p>}
           </div>
-          {options.length === 80 && (
-            <small>显示前 80 项，输入名称可继续筛选</small>
-          )}
-        </div>
+          <footer className="wf-picker-footer">
+            <span>{matches.length > 80 ? "显示前 80 项，搜索可查找其余项目" : "↑ ↓ 选择 · Enter 确认"}</span>
+            <span>Esc 关闭</span>
+          </footer>
+        </dialog>
       )}
     </div>
   );
