@@ -140,7 +140,7 @@
       const seasons=['spring','summer','autumn','winter'];
       const draw=(now:number)=>{
         frame=0;
-        if(document.hidden||reduced.matches)return;
+        if(document.hidden||reduced.matches||document.documentElement.dataset.particles==='off')return;
         const dt=Math.min((now-(last||now))/1000,1/30);last=now;
         const adapt=1-Math.exp(-2*dt);
         spawnRate+=(viewport.spawnRate-spawnRate)*adapt;speedScale+=(viewport.speedScale-speedScale)*adapt;
@@ -171,7 +171,7 @@
         if(import.meta.env.DEV&&statsClock>1){canvas.dataset.leaves=String(world.active.length);canvas.dataset.resting=String(world.active.filter(l=>l.resting).length);statsClock=0;}
         frame=requestAnimationFrame(draw);
       };
-      const resume=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;if(!document.hidden&&!reduced.matches)frame=requestAnimationFrame(draw);};
+      const resume=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;if(!document.hidden&&!reduced.matches&&document.documentElement.dataset.particles!=='off')frame=requestAnimationFrame(draw);};
       const reset=()=>{
         world=new LeafWorld(800,contactBottom);spawnClock=0;transitionLeft=0;ctx.clearRect(0,0,width,height);
         const fixed=fixedSeason();document.documentElement.dataset.season=fixed==='auto'?'spring':fixed;
@@ -188,6 +188,7 @@
       window.addEventListener('pointermove',sweep,{passive:true});
       window.addEventListener('scroll',scrolled,{passive:true});window.addEventListener('resize',resize);
       document.addEventListener('visibilitychange',resume);reduced.addEventListener('change',motion);
+      window.addEventListener('particles-preference-change',resume);
       const observer=new MutationObserver(refresh);
       const main=document.querySelector('main');if(main)observer.observe(main,{childList:true,subtree:true});
       const hide=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;reset();};
@@ -199,6 +200,7 @@
         if(frame)cancelAnimationFrame(frame);observer.disconnect();
         window.removeEventListener('pointermove',sweep);window.removeEventListener('scroll',scrolled);window.removeEventListener('resize',resize);
         document.removeEventListener('visibilitychange',resume);reduced.removeEventListener('change',motion);
+        window.removeEventListener('particles-preference-change',resume);
         window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);
       };
     }
