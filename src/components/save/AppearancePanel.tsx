@@ -4,18 +4,25 @@ import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import HairColorPicker from './HairColorPicker';
 import { flagEnabled, type ProgressEdits } from '../../lib/saveProgress';
+import { useState } from 'react';
 
 export default function AppearancePanel({ model, drafts, names, onChange, progress, onUnlock }: {
   progress: ProgressEdits; onUnlock: (flag: number) => void;
   model: SaveModel; drafts: Record<number, string>; names: SaveNameTables; onChange: (field: SaveField, value: string) => void;
 }) {
+  const [category, setCategory] = useState(APPEARANCE_FIELDS[0].kind);
   const fields = collectFields(model);
   const field = (path: string) => { const node = model.doc.resolve(`pPlayerStatus_/p/${path}`); return node ? fields.get(node.offset) : undefined; };
   const axes = ['x', 'y', 'z'].map(axis => field(`hairColorHsv_/${axis}`));
   const color = axes.map(axis => Number(axis ? drafts[axis.offset] ?? axis.value : 0));
-  return <section className="save-group"><h3>外观</h3>
-    {axes.every(Boolean) && <HairColorPicker value={color} onChange={(axis, value) => onChange(axes[axis]!, String(value))} />}
-    {APPEARANCE_FIELDS.map(spec => {
+  return <section className="save-group save-appearance-panel">
+    <header className="save-appearance-panel-head"><h3>外观</h3>
+      {axes.every(Boolean) && <HairColorPicker value={color} onChange={(axis, value) => onChange(axes[axis]!, String(value))} />}
+    </header>
+    <nav className="save-appearance-tabs" aria-label="外观分类">
+      {APPEARANCE_FIELDS.map(spec => <button key={spec.kind} type="button" aria-pressed={category === spec.kind} onClick={() => setCategory(spec.kind)}>{spec.label}</button>)}
+    </nav>
+    {APPEARANCE_FIELDS.filter(spec => spec.kind === category).map(spec => {
       const id = field(spec.idPath), colorField = spec.colorPath ? field(spec.colorPath) : undefined;
       if (!id) return null;
       const selectedId = Number(drafts[id.offset] ?? id.value);

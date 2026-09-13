@@ -79,7 +79,38 @@ export default function SaveEditor() {
   const [storageError, setStorageError] = useState('');
   const [riskAcknowledged, setRiskAcknowledged] = useState(false);
   const [reviewing, setReviewing] = useState(false);
+  const [maximized, setMaximized] = useState(false);
+  const editorRoot = useRef<HTMLElement>(null);
   const loadGeneration = useRef(0);
+
+  useEffect(() => {
+    if (!maximized || !editorRoot.current) return;
+    const position = { left: window.scrollX, top: window.scrollY };
+    const outside: { element: HTMLElement; inert: boolean }[] = [];
+    // Keep keyboard focus out of the website behind the maximized editor.
+    let branch: HTMLElement = editorRoot.current;
+    while (branch.parentElement) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling !== branch && sibling instanceof HTMLElement) {
+          outside.push({ element: sibling, inert: sibling.inert });
+          sibling.inert = true;
+        }
+      }
+      if (branch.parentElement === document.body) break;
+      branch = branch.parentElement;
+    }
+    document.documentElement.classList.add('save-editor-maximized');
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !event.defaultPrevented && !document.querySelector('dialog[open]')) setMaximized(false);
+    };
+    window.addEventListener('keydown', escape);
+    return () => {
+      window.removeEventListener('keydown', escape);
+      document.documentElement.classList.remove('save-editor-maximized');
+      outside.forEach(({ element, inert }) => { element.inert = inert; });
+      window.scrollTo({ ...position, behavior: 'instant' });
+    };
+  }, [maximized]);
 
   useEffect(() => { loadSaveNames().then(setNames); }, []);
   useEffect(() => {
@@ -257,8 +288,19 @@ export default function SaveEditor() {
   }
 
   const section = model?.sections.find((entry) => entry.id === tab);
+  const workspace = {
+    basic: ['基础信息', '管理名字、金钱、日期与天气。'],
+    player: ['玩家', '调整生命与体力，选择角色外观。'],
+    items: ['物品', '整理物品容器，管理设备加工与特殊设施。'],
+    barn: ['畜牧', '查看伙伴与安置位置，点击卡片编辑。'],
+    npc: ['NPC', '查看村民关系，调整好感度。'],
+    brand: ['品牌名', '为作物和畜产品管理品牌名称。'],
+    quests: ['任务', '查找任务，在右侧查看进度与修改项。'],
+    progress: ['收集与解锁', '管理图鉴、制作配方、神龛技能与交付委托。'],
+    raw: ['完整字段树', '按名称或路径查找存档字段。'],
+  }[tab];
 
-  return <section className="save-editor" aria-label="游戏存档编辑器">
+  return <section ref={editorRoot} className={`save-editor${maximized ? ' is-maximized' : ''}`} aria-label="游戏存档编辑器">
     <div className={`save-dropzone${model ? ' loaded' : ''}`}>
       <label className="save-file-label">
         <span className="save-file-icon" aria-hidden="true">↑</span>
@@ -330,6 +372,7 @@ export default function SaveEditor() {
         {error && <p role="alert" className="save-status error">{error}</p>}
       </SaveDialog>}
 
+      <div className="save-editor-toolbar">
       <nav className="save-tabs" aria-label="存档字段分类">
         {model.sections.map((entry) => <button
           type="button"
@@ -341,13 +384,28 @@ export default function SaveEditor() {
         <button type="button" className={tab === 'progress' ? 'active' : ''} onClick={() => setTab('progress')}>收集与解锁</button>
         <button type="button" className={tab === 'raw' ? 'active' : ''} onClick={() => setTab('raw')}>完整字段树</button>
       </nav>
+      {maximized && <button type="button" className="save-toolbar-action" disabled={!editCount || busy} onClick={() => setReviewing(true)} aria-label={`导出 ${editCount} 处修改`} title={`导出 ${editCount} 处修改`}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg>
+      </button>}
+      <button type="button" className="save-toolbar-action save-maximize" aria-label={maximized ? '退出全屏' : '全屏编辑'} title={maximized ? '退出全屏（Esc）' : '全屏编辑'} aria-pressed={maximized} onClick={() => setMaximized(value => !value)}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d={maximized ? 'M9 3v6H3m18 0h-6V3M3 15h6v6m6 0v-6h6' : 'M9 3H3v6m12-6h6v6M3 15v6h6m6 0h6v-6'} />
+        </svg>
+      </button>
+      </div>
 
+      <div className="save-editor-content" data-section={tab}>
+      <div className="save-panel-content">
+      <header className="save-workspace-heading">
+        <div><h2>{workspace[0]}</h2><p>{workspace[1]}</p></div>
+        <span className="save-workspace-file">{model.save.fileName}</span>
+      </header>
+      <div className="save-workspace-body">
       {tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress} /> : tab === 'raw'
         ? <RawTree model={model} doc={model.doc} drafts={drafts} names={names} onChange={updateField} />
         : tab === 'barn' ? <AnimalsPanel model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
         : tab === 'items'
         ? <>
-          <p className="save-tab-description">{section?.description}</p>
           <ItemsPanel
             model={model}
             machines={machines}
@@ -360,20 +418,27 @@ export default function SaveEditor() {
           />
         </>
         : section && <>
-          <p className="save-tab-description">{section.description}</p>
-          {tab === 'player' && <StatusPanel model={model} drafts={drafts} onChange={updateField} />}
+          {tab === 'player' && <div className="save-player-layout">
+            <StatusPanel model={model} drafts={drafts} onChange={updateField} />
+            <AppearancePanel model={model} drafts={drafts} names={names} onChange={updateField} progress={progress} onUnlock={id => updateProgress('flags', String(id), true)} />
+          </div>}
+          <div className="save-overview-layout">
           <SaveFieldTable groups={section.groups.filter(group => tab !== 'player' || !['外观', '状态', '工具范围等级'].includes(group.title))} drafts={drafts} names={names} onChange={updateField} />
-          {tab === 'player' && <AppearancePanel model={model} drafts={drafts} names={names} onChange={updateField} progress={progress} onUnlock={id => updateProgress('flags', String(id), true)} />}
+          </div>
           {section.tables.map((table) => <SaveDataTable
             key={table.id}
             table={table}
             drafts={drafts}
             names={names}
             onChange={updateField}
+            cards={tab === 'npc' || tab === 'brand'}
           />)}
           {section.groups.length === 0 && section.tables.length === 0
             && <p className="save-tab-empty">这个存档里没有这一类字段。</p>}
         </>}
+      </div>
+      </div>
+      </div>
     </>}
 
     {!model && !error && <div className="save-empty">
