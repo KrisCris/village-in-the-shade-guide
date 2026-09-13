@@ -22,6 +22,7 @@ const dynamicInterior = !immersive;
     <meta name="google-site-verification" content="Q8Z9UGOo12W6iNMjAKeC86wq4Wu6IEM8plWaLC8FXG4" />
     <meta name="theme-color" content="#ece8db" />
     <script is:inline data-astro-rerun>
+      (()=>{let season;try{season=localStorage.getItem('village-season');}catch{}const preference=['spring','summer','autumn','winter'].includes(season)?season:'auto';document.documentElement.dataset.seasonPreference=preference;if(preference!=='auto')document.documentElement.dataset.season=preference;})();
       (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';})();
     </script>
     <link rel="icon" href={withBase("/game-icon.png")} />

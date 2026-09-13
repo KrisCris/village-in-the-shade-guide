@@ -20,6 +20,7 @@ import {SEASONS} from '../../domain/scenery';
 <script>
   import {SEASONS,seasonFrame} from '../../domain/scenery';
   import {onPageMount} from '../../lib/pageLifecycle';
+  import {fixedSeason} from '../../lib/seasonPreference';
   const dispose=onPageMount(()=>{
   const scene=document.querySelector<HTMLElement>('[data-scene]');
   if(scene){
@@ -28,6 +29,15 @@ import {SEASONS} from '../../domain/scenery';
     const chapters=[...document.querySelectorAll<HTMLElement>('[data-season-chapter]')];
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
     const update=()=>{
+      const fixed=fixedSeason();
+      if(fixed!=='auto'){
+        root.dataset.season=fixed;
+        root.dataset.seasonFrom=fixed;root.dataset.seasonTo=fixed;
+        root.style.setProperty('--season-mix','0%');
+        layers.forEach(layer=>{layer.style.opacity=layer.dataset.sceneLayer===fixed?'1':'0';});
+        return;
+      }
+      if(!chapters.length){delete root.dataset.seasonFrom;delete root.dataset.seasonTo;root.style.removeProperty('--season-mix');}
       if(chapters.length){
         const stops=chapters.map((chapter,index)=>index===0?0:chapter.getBoundingClientRect().top+scrollY-innerHeight*.32);
         const frame=seasonFrame(scrollY,stops,innerHeight*.5);
@@ -45,12 +55,14 @@ import {SEASONS} from '../../domain/scenery';
     };
     const visibility=()=>scene.classList.toggle('paused',document.hidden);
     window.addEventListener('season-bottom-exit',update);
+    window.addEventListener('season-preference-change',update);
     if(chapters.length){window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);reduced.addEventListener('change',update);}
     document.addEventListener('visibilitychange',visibility);
     update();visibility();
     return()=>{
       if(chapters.length){delete root.dataset.seasonFrom;delete root.dataset.seasonTo;root.style.removeProperty('--season-mix');}
       window.removeEventListener('season-bottom-exit',update);
+      window.removeEventListener('season-preference-change',update);
       window.removeEventListener('scroll',update);window.removeEventListener('resize',update);reduced.removeEventListener('change',update);
       document.removeEventListener('visibilitychange',visibility);
     };
