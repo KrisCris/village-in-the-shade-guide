@@ -9,6 +9,9 @@ export type NodeKind =
   | "consume"
   | "sale";
 export type Amount = { itemId: string; quantity: number };
+export type FarmlandPlotSelection = { shapeId: string; cells: string[] };
+export type FarmlandSelection =
+  FarmlandPlotSelection | { plots: FarmlandPlotSelection[] };
 export type WorkflowNode = {
   id: string;
   kind: NodeKind;
@@ -35,7 +38,7 @@ export type WorkflowNode = {
   remainingDays?: number;
   needsConfirmation?: boolean;
   seasonProtection?: boolean;
-  farmlandSelection?: {shapeId:string;cells:string[]};
+  farmlandSelection?: FarmlandSelection;
 };
 export type WorkflowEdge = { id: string; source: string; target: string };
 export type PlotResource = { id: string; label: string; capacity: number };

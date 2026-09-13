@@ -19,6 +19,7 @@ import { formatDay } from "../../domain/workflow/date";
 import { DateField, EntityPicker, NumberField } from "./fields";
 import DemandDetails from "./DemandDetails";
 import FarmlandPicker from "./FarmlandPicker";
+import { farmlandUsage } from "../../domain/workflow/farmland";
 import { withBase } from "../../lib/sitePath";
 
 export default function NodeInspector({
@@ -259,14 +260,6 @@ export default function NodeInspector({
           使用季节稻草人 / 温室保护（允许跨季生长）
         </label>
       )}
-      {node.kind === "plant" && (
-        <FarmlandPicker
-          value={node.farmlandSelection}
-          onApply={(quantity, farmlandSelection) =>
-            patch({ quantity, farmlandSelection, amountMode: "manual" })
-          }
-        />
-      )}
       {node.kind === "process" && recipe && (
         <p className="wf-note">
           {((recipe.inputs ?? []) as { item_id: string; quantity: number }[])
@@ -280,7 +273,14 @@ export default function NodeInspector({
         </p>
       )}
       {!demand && (
-        <>
+        <div
+          className={
+            node.kind === "plant"
+              ? "wf-inspector-section wf-plant-scale"
+              : undefined
+          }
+        >
+          {node.kind === "plant" && <h3>种植规模</h3>}
           {!root && (
             <label className="wf-check">
               <input
@@ -289,9 +289,14 @@ export default function NodeInspector({
                 onChange={(e) =>
                   patch({
                     amountMode: e.target.checked ? "auto" : "manual",
+                    ...(node.kind === "plant" && e.target.checked
+                      ? { farmlandSelection: undefined }
+                      : {}),
                     quantity: Math.max(
                       1,
-                      projection?.quantity ?? node.quantity,
+                      (node.kind === "plant"
+                        ? projection?.land
+                        : projection?.quantity) ?? node.quantity,
                     ),
                   })
                 }
@@ -303,7 +308,10 @@ export default function NodeInspector({
                   : "使用分配到的全部物品"}
             </label>
           )}
-          {(root || !autoAmount(node) || node.remainingDays !== undefined) && (
+          {(node.kind === "plant" ||
+            root ||
+            !autoAmount(node) ||
+            node.remainingDays !== undefined) && (
             <NumberField
               label={
                 node.kind === "plant"
@@ -314,17 +322,43 @@ export default function NodeInspector({
                       ? "每次买入数量"
                       : "数量"
               }
-              value={node.quantity}
+              value={
+                node.kind === "plant" && autoAmount(node)
+                  ? projection?.land || node.quantity
+                  : node.quantity
+              }
               min={1}
-              onChange={(quantity) => patch({ quantity, amountMode: "manual" })}
+              onChange={(quantity) =>
+                patch({
+                  quantity,
+                  amountMode: "manual",
+                  ...(node.kind === "plant"
+                    ? { farmlandSelection: undefined }
+                    : {}),
+                })
+              }
             />
+          )}
+          {node.kind === "plant" && (
+            <FarmlandPicker
+              value={node.farmlandSelection}
+              usage={farmlandUsage(plan, node, result, entities)}
+              onApply={(quantity, farmlandSelection) =>
+                patch({ quantity, farmlandSelection, amountMode: "manual" })
+              }
+            />
+          )}
+          {node.kind === "plant" && node.farmlandSelection && (
+            <p className="wf-note">
+              格数来自地图选区；手动改数量或跟随全部种子会解除地图分配。
+            </p>
           )}
           {!root && autoAmount(node) && (
             <p className="wf-note">
               留货先分配，固定数量其次，剩余原料再分给本节点。数量随上游变化。
             </p>
           )}
-        </>
+        </div>
       )}
       {!root && (
         <label className="wf-check">

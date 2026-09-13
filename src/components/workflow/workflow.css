@@ -1772,6 +1772,7 @@ body .wf-app .wf-property-content details {
 }
 .wf-app .wf-farm-dialog {
   width: min(960px, calc(100vw - 32px));
+  overflow-y: auto;
 }
 .wf-app .wf-farm-trigger {
   width: 100%;
@@ -1779,6 +1780,7 @@ body .wf-app .wf-property-content details {
 }
 .wf-farm-toolbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 0 24px 14px;
   flex-shrink: 0;
@@ -1786,11 +1788,14 @@ body .wf-app .wf-property-content details {
 .wf-farm-toolbar select {
   flex: 1;
 }
+@media (max-width: 600px) {
+  .wf-farm-toolbar select { flex-basis: 100%; width: 100%; }
+}
 .wf-farm-toolbar button {
   white-space: nowrap;
 }
 .wf-farm-grid-wrap {
-  min-height: 0;
+  min-height: 120px;
   overflow: auto;
   padding: 12px 24px;
   background: var(--paper);
@@ -1812,6 +1817,70 @@ body .wf-app .wf-property-content details {
 .wf-farm-grid rect.chosen {
   fill: var(--green);
   stroke: var(--paper-raised);
+}
+.wf-farm-grid rect.conflict {
+  stroke: var(--vermilion);
+  stroke-width: 2;
+}
+.wf-farm-grid rect.unknown {
+  stroke: var(--gold);
+  stroke-dasharray: 3 2;
+  stroke-width: 2;
+}
+.wf-farm-grid rect.separate {
+  stroke: var(--indigo, #729aaf);
+  stroke-width: 2;
+}
+.wf-farm-grid rect.chosen {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+.wf-farm-maps,
+.wf-farm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0 24px 10px;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+.wf-farm-maps:empty {
+  display: none;
+}
+.wf-farm-maps button.active {
+  border-color: var(--green);
+  color: var(--green);
+}
+.wf-farm-legend .conflict,
+.wf-farm-occupancy .conflict,
+.wf-farm-warning {
+  color: var(--vermilion);
+}
+.wf-farm-legend .unknown,
+.wf-farm-occupancy .unknown {
+  color: var(--gold);
+}
+.wf-farm-legend .separate {
+  color: var(--indigo, #729aaf);
+}
+.wf-farm-occupancy {
+  padding: 8px 24px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.wf-farm-occupancy ul {
+  margin: 6px 0;
+  padding-left: 18px;
+  max-height: 80px;
+  overflow: auto;
+}
+.wf-farm-warning {
+  padding: 4px 24px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.wf-plant-scale .wf-farm-trigger {
+  margin-top: 0;
 }
 .wf-farm-grid rect:focus-visible {
   stroke: var(--vermilion);
