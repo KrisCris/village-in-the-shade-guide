@@ -7,7 +7,7 @@ const kana = /[ぁ-ゖァ-ヺ]/;
 
 describe('Chinese guide content', () => {
   it('has a kana-free Chinese title and checklist for every source', () => {
-    expect(guides.length + characterGuideRedirects.length).toBe(112);
+    expect(guides.length + characterGuideRedirects.length).toBe(111);
     for (const guide of guides) {
       expect(guide.chineseTitle, guide.sourceId).not.toMatch(kana);
       for (const heading of guide.headings) expect(translateHeading(heading), `${guide.sourceId}: ${heading}`).not.toMatch(kana);
@@ -19,6 +19,11 @@ describe('Chinese guide content', () => {
     const productIds = sourceCatalog.sources.filter((source) => source.category === '产品').map((source) => source.sourceId);
     expect(productIds).toHaveLength(4);
     expect(characterGuideRedirects.some((row) => productIds.includes(row.sourceId))).toBe(false);
+  });
+  it('does not publish the obsolete overview article or its category', () => {
+    expect(guideCategories).not.toContain('总览');
+    expect(guides.some((guide) => guide.category === '总览' || guide.sourceId === 'home')).toBe(false);
+    expect(characterGuideRedirects.some((row) => row.sourceId === 'home')).toBe(false);
   });
   it('retires all 14 individual character guides in favor of matching native routes', () => {
     expect(characterGuideRedirects).toHaveLength(14);
