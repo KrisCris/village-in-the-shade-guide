@@ -1,16 +1,17 @@
 ---
 import { withBase } from '../lib/sitePath';
-import QualitySelector from './quality/QualitySelector';
-import ThemeSwitch from './art/ThemeSwitch.astro';
-import MusicPlayer from './art/MusicPlayer.astro';
+import PageSettings from './PageSettings.astro';
 ---
 
 <header class="site-header">
   <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
   <nav aria-label="页首导航"><a href={withBase("/data/")}>资料库</a><a href={withBase("/planner/")}>收益规划</a><a href={withBase("/guides/")}>攻略</a><a href={withBase("/save-editor/")}>存档工具</a><a href={withBase("/search/")}>搜索</a></nav>
-  <div class="header-controls"><MusicPlayer /><ThemeSwitch /><QualitySelector client:load /></div>
+  <div class="header-controls"><PageSettings /></div>
 </header>
 <style>
+  .header-controls{flex-wrap:wrap;justify-content:flex-end}
+  .header-controls :global(.season-selector .sr-only){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  @media(max-width:1000px){.site-header{height:auto!important;min-height:64px;flex-wrap:wrap;padding-block:.55rem}.header-controls{max-width:100%}}
   .site-header { position: sticky; top: 0; z-index: 30; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 max(1rem, calc((100vw - var(--max))/2 + 1rem)); border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(14px); }
   .brand { display: flex; align-items: center; gap: .7rem; color: var(--ink); text-decoration: none; }
   .brand span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50% 45% 50% 40%; background: var(--green); color: var(--paper-raised); font-family: serif; }

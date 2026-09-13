@@ -1,6 +1,7 @@
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
 import guideTranslations from '../../data/sources/guide-translations.json';
+import characters from '../../data/generated/build-24969282/entities/characters.json';
 
 export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string; guideTarget?: string };
 
@@ -100,7 +101,13 @@ export function dataTarget(title: string) {
 }
 
 const outlineMap = new Map(sourceOutlines.outlines.map((row) => [row.sourceId, row.headings]));
-export const guides: GuideSource[] = sourceCatalog.sources.map((source) => ({
+// Retired character articles are compatibility routes only, never guide content.
+export const characterGuideRedirects = sourceCatalog.sources.flatMap((source) => {
+  const character = characters.find((row) => row.name.ja === source.title);
+  return character ? [{ sourceId: source.sourceId, target: `/data/characters/${character.id}/` }] : [];
+});
+const retiredCharacterIds = new Set(characterGuideRedirects.map((row) => row.sourceId));
+export const guides: GuideSource[] = sourceCatalog.sources.filter((source) => !['产品', '总览'].includes(source.category) && !retiredCharacterIds.has(source.sourceId)).map((source) => ({
   ...source,
   chineseTitle: chineseTitle(source.title),
   headings: (outlineMap.get(source.sourceId) ?? []).filter((heading) => !/関連記事|サイト TOP|一覧まとめ|一覧データ|序盤必見|おすすめ$|効率・稼ぎ|注目アイテム|システム解説/.test(heading)),
@@ -108,7 +115,7 @@ export const guides: GuideSource[] = sourceCatalog.sources.map((source) => ({
   guideTarget: guideTarget(source.title),
 }));
 
-export const guideCategories = ['总览', '系统与生活', '剧情', '怪异', '探索', '活动', '角色', '数据', '产品'];
+export const guideCategories = ['系统与生活', '剧情', '怪异', '探索', '活动', '角色', '数据'];
 
 export function guideIntro(guide: GuideSource) {
   const intros: Record<string, string> = {
