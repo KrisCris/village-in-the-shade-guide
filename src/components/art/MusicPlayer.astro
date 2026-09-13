@@ -2,7 +2,7 @@
 import {withBase} from '../../lib/sitePath';
 ---
 <div class="music-player" transition:persist="background-music">
-  <button class="music-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐">♫</button>
+  <button class="music-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="play-icon" d="m9 5 11 7-11 7Z"/><path class="pause-icon" d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg></button>
   <div class="music-settings">
     <div class="music-popover"><label>音乐音量<input class="music-volume" type="range" min="0" max="1" step="0.05" value="0.05" /></label><small role="status">主旋律 · 点击音符播放</small></div>
   </div>
@@ -16,13 +16,13 @@ import {withBase} from '../../lib/sitePath';
     const volume=player.querySelector<HTMLInputElement>('.music-volume')!;
     const status=player.querySelector<HTMLElement>('[role="status"]')!;
     const key='village-music';
-    let savedTime=0,wanted=true,blocked=false;
+    let savedTime=0,wanted=false,blocked=false;
     try{
       const state=JSON.parse(localStorage.getItem(key)||'null');
       if(state){
         if(Number.isFinite(state.volume))volume.value=String(Math.max(0,Math.min(1,state.volume)));
         if(Number.isFinite(state.time))savedTime=Math.max(0,state.time);
-        wanted=state.playing!==false;
+        // A fresh visit starts silent; page swaps retain the active audio element.
       }
     }catch{/* Storage may be unavailable in private browsing. */}
     audio.volume=Number(volume.value);
@@ -71,7 +71,7 @@ import {withBase} from '../../lib/sitePath';
   }
 </script>
 <style>
-  .music-player .music-popover{position:static;width:auto;padding:0;border:0;box-shadow:none;background:transparent}.music-settings{min-width:0;flex:1}.music-player{gap:.8rem}.music-player .music-volume{min-height:28px}.music-player .music-toggle::after{content:'▶';font-size:1rem}.music-player .music-toggle[aria-pressed=true]::after{content:'Ⅱ'}.music-player .music-toggle{font-size:0!important}
+  .music-player .music-popover{position:static;width:auto;padding:0;border:0;box-shadow:none;background:transparent}.music-settings{min-width:0;flex:1}.music-player{gap:.8rem}.music-player .music-volume{min-height:28px}.music-toggle svg{display:block;width:20px;height:20px;fill:currentColor}.pause-icon{display:none}.music-toggle[aria-pressed=true] .pause-icon{display:block}.music-toggle[aria-pressed=true] .play-icon{display:none}
   .music-player{display:flex;flex:none;align-items:center;position:relative;color:var(--ink)}
   .music-toggle{font-size:1.35rem;line-height:1;padding:.55rem .6rem;background:transparent;border:1px solid var(--border);border-radius:50%;color:inherit;cursor:pointer}
   .music-toggle[aria-pressed="true"]{color:var(--green);box-shadow:0 0 12px color-mix(in srgb,var(--green) 18%,transparent)}
