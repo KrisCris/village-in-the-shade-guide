@@ -8,6 +8,9 @@ import {portraits} from '../art/portraitCatalog';
 
 export default function EntityDetail({ model, onOpen }: { model: EntityDetailModel; onOpen?: (entity: Entity) => void }) {
   const { entity, facts, profit, groups, locations } = model;
+  const machines=groups.find(group=>group.key==='machines');
+  const machineIds=(rows:NonNullable<typeof machines>['rows'])=>[...new Set(rows.map(row=>`${row.entity.kind}:${row.entity.id}`))].sort().join('|');
+  const sharedMachines=machineIds(machines?.rows??[]);
   const portrait=entity.kind==='characters'?portraits.find(p=>p.id===entity.id):undefined;
   return <article className="entity-detail">
     <div className={`entity-intro ${portrait?'has-portrait':''}`}><div>
@@ -21,10 +24,11 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     {Array.isArray(entity.map_locations)&&entity.map_locations.length>0&&<section><h2>拾取位置</h2>{(entity.map_locations as {label:string;x:number;y:number;anchor:string;progress:string}[]).map(location=><p key={location.anchor}><a href={withBase(`/guides/collection-map/#${location.anchor}`)}>{location.label} · 图书 {location.anchor.slice(-2)} · 查看地图</a><br/><small>关联进度：{location.progress}</small></p>)}</section>}
 
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
+    {machines&&<section><h2>{machines.label}</h2><div className="relation-list">{machines.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></section>}
     {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{model.processingPlans.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
       <h3>方案 {index + 1} · {Number(plan.entity.duration_minutes)} 分钟</h3>
       {plan.profit && <div className="profit-grid"><span>原料直接售价<strong>{plan.profit.inputCost}</strong></span><span>产出价值<strong>{plan.profit.outputValue}</strong></span><span>加工增值<strong>{plan.profit.net}</strong></span><span>每日加工增值<strong>{plan.profit.perDay}</strong></span></div>}
-      {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)).map((group) => <div key={group.key}><h4>{group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></div>)}
+      {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)&&(group.key!=='machines'||machineIds(group.rows)!==sharedMachines)).map((group) => <div key={group.key}><h4>{group.key==='machines'?'本方案适用机械':group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></div>)}
     </div>)}</section>}
 
     {profit && <section><h2>{entity.kind === 'processes' ? '加工增值' : '种植收益'}</h2><div className="profit-grid">
@@ -37,7 +41,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {locations.length > 0 && <section><h2>出现地点</h2><div className="location-list">{locations.map((location) => <div key={location.id}><span>{location.name}</span><small>{location.secondary}</small></div>)}</div></section>}
 
-    {groups.map((group) => <section key={group.key}><h2>{group.label}</h2><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></section>)}
+    {groups.filter(group=>group.key!=='machines').map((group) => <section key={group.key}><h2>{group.label}</h2><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></section>)}
 
     {model.ingredientOptions.length>0&&<section><h2>可替换材料</h2>{model.ingredientOptions.map((option,index)=><details key={index}><summary>{option.label} · {option.rows.length} 种</summary><div className="relation-list">{option.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></details>)}</section>}
 
@@ -51,6 +55,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
       .relation-row{display:grid;grid-template-columns:minmax(130px,1fr) auto minmax(130px,auto);align-items:center;gap:.35rem .8rem;padding:.65rem .8rem;border:1px solid var(--border);border-radius:10px;background:var(--paper-raised);color:var(--ink);text-decoration:none}.relation-row.has-icon{grid-template-columns:52px minmax(130px,1fr) auto minmax(130px,auto)}
       .relation-row:hover{border-color:var(--green);background:var(--green-soft)}.relation-row img{border-radius:8px;object-fit:contain;background:var(--paper-deep)}.relation-name{display:grid}.relation-name small,.relation-values small,.relation-note{color:var(--muted)}.relation-values{display:grid;text-align:right}.relation-quantity{color:var(--vermilion)}.relation-chips{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:.35rem}.relation-chips small{padding:.18rem .45rem;border-radius:999px;background:var(--paper-deep);color:var(--muted)}
       .relation-row.no-icon .relation-chips{grid-column:1/-1}
+      .relation-row .relation-note{grid-column:1/-1;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.65;margin-top:.3rem;padding-top:.5rem;border-top:1px solid var(--border)}
       .entity-detail details{margin-top:2rem;padding:1rem;border:1px dashed var(--border);border-radius:10px}code{font-size:.78rem}
       @media(max-width:620px){.relation-row{grid-template-columns:1fr auto}.relation-row.has-icon{grid-template-columns:48px 1fr auto}.relation-row img{width:48px;height:48px}.relation-values{grid-column:1/-1;text-align:left}.relation-row.has-icon .relation-values,.relation-row.has-icon .relation-chips{grid-column:2/-1}.relation-row.no-icon .relation-chips{grid-column:1/-1}}
     `}</style>

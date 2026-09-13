@@ -9,6 +9,19 @@ const model = {
   facts:[], groups:[], locations:[], ingredientOptions:[], processingPlans:[], profit:null,
 } as unknown as EntityDetailModel;
 
+it('shows machines before plans and repeats only a different applicable set',()=>{
+  const row=(id:string)=>({key:id,entity:{...model.entity,id,kind:'machines',name:{...model.entity.name,zh_hans:id}},chips:[],fixedPrice:false});
+  const group=(ids:string[])=>({key:'machines' as const,label:'加工机械',rows:ids.map(row)});
+  const example={...model,groups:[group(['机械甲','机械乙'])],processingPlans:[
+    {...model,entity:{...model.entity,id:'plan1',duration_minutes:30},groups:[group(['机械乙','机械甲'])]},
+    {...model,entity:{...model.entity,id:'plan2',duration_minutes:60},groups:[group(['机械甲'])]},
+  ]} as EntityDetailModel;
+  const html=renderToStaticMarkup(<EntityDetail model={example}/>);
+  expect(html.indexOf('<h2>加工机械')).toBeLessThan(html.indexOf('<h2>加工方案'));
+  expect(html.match(/<h2>加工机械/g)).toHaveLength(1);
+  expect(html.match(/<h4>本方案适用机械/g)).toHaveLength(1);
+});
+
 it('keeps diagnostic details available during development',()=>{
   const html=renderToStaticMarkup(<EntityDetail model={model}/>);
   expect(html).toContain('别名与数据来源');
