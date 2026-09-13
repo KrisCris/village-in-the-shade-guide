@@ -1,12 +1,13 @@
 import { useMemo, useState } from 'react';
-import type { SaveContainer, SaveSlot, SlotAssignment, SlotEdits } from '../../lib/saveItems';
+import { SHIPPING_BOX_ID, type SaveContainer, type SaveSlot, type SlotAssignment, type SlotEdits } from '../../lib/saveItems';
 import type { SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
 import ItemGrid, { itemLabel, type GridSlot, type SlotView } from './ItemGrid';
 import SlotEditor from './SlotEditor';
 import ToolsPanel from './ToolsPanel';
 import MachinePanel from './MachinePanel';
-import { machineSpec, type MachineEdit, type MachineEdits } from '../../lib/saveMachines';
+import DeviceBrowser, { SpecialContents, specialTitle } from './DeviceBrowser';
+import { specialSpec, type MachineEdit, type MachineEdits } from '../../lib/saveMachines';
 
 interface ItemsPanelProps {
   model: SaveModel;
@@ -21,14 +22,6 @@ interface ItemsPanelProps {
 
 /** Pinned below the container view, exactly like the game's own screen. */
 const PINNED = new Set(['inventoryItemList_', 'toolItemList_']);
-
-const KIND_LABELS: Record<SaveContainer['kind'], string> = {
-  backpack: '背包',
-  tool: '工具栏',
-  storage: '收纳箱',
-  machine: '设备',
-  system: '系统箱',
-};
 
 function resolve(slot: SaveSlot, drafts: Record<number, string>, slotEdits: SlotEdits): GridSlot {
   if (Object.prototype.hasOwnProperty.call(slotEdits, slot.pointer)) {
@@ -49,11 +42,10 @@ function resolve(slot: SaveSlot, drafts: Record<number, string>, slotEdits: Slot
   return { slot, view, state: dirty ? 'edited' : 'clean' };
 }
 
-function describe(container: SaveContainer, names: SaveNameTables): string {
-  const machine = machineSpec(container);
-  if (machine) return `${itemLabel(names, String(machine.itemId))} · ${machine.capacity} 个加工栏位`;
-  const parts = [`${container.used}/${container.slots.length} 格`];
-  if (container.previewItemId) parts.push(`内有 ${itemLabel(names, container.previewItemId)}`);
+function describe(container: SaveContainer, names: SaveNameTables, drafts: Record<number, string>, slotEdits: SlotEdits): string {
+  const occupied = container.slots.map(slot => resolve(slot, drafts, slotEdits).view).filter(view => view !== null);
+  const parts = [`${occupied.length}/${container.slots.length} 格`];
+  if (occupied[0]) parts.push(`内有 ${itemLabel(names, occupied[0].itemId)}`);
   return parts.join(' · ');
 }
 
@@ -77,7 +69,9 @@ function ContainerView({
 export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit, onDraft, machines, onMachine }: ItemsPanelProps) {
   const containers = model.containers;
   const pinned = containers.filter((container) => PINNED.has(container.id));
-  const switchable = containers.filter((container) => !PINNED.has(container.id));
+  const switchable = containers.filter((container) => container.kind === 'storage' || container.id === SHIPPING_BOX_ID)
+    .sort((a, b) => Number(b.id === SHIPPING_BOX_ID) - Number(a.id === SHIPPING_BOX_ID));
+  const [tab, setTab] = useState('storage');
   const [openId, setOpenId] = useState(switchable[0]?.id ?? '');
   const [selected, setSelected] = useState<number | null>(null);
 
@@ -91,15 +85,6 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
   const active = selected === null ? null : byPointer.get(selected);
   const activeSlot = active?.slots.find((slot) => slot.pointer === selected) ?? null;
   const activeView = activeSlot ? resolve(activeSlot, drafts, slotEdits) : null;
-
-  const grouped = useMemo(() => {
-    const groups: { label: string; items: SaveContainer[] }[] = [];
-    for (const kind of ['storage', 'machine', 'system'] as const) {
-      const items = switchable.filter((container) => container.kind === kind);
-      if (items.length) groups.push({ label: KIND_LABELS[kind], items });
-    }
-    return groups;
-  }, [switchable]);
 
   function applyToSlot(value: SlotAssignment | null | undefined): void {
     if (!activeSlot) return;
@@ -128,7 +113,7 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
   const editor = (container: SaveContainer) =>
     active === container && activeSlot && activeView
       ? <SlotEditor
-        container={container}
+        container={specialSpec(container) ? { ...container, title: specialTitle(container, names) } : container}
         slot={activeSlot}
         view={activeView.view}
         state={activeView.state}
@@ -140,37 +125,41 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
       />
       : null;
 
-  return <div className="save-items">
-    {open && <section className="save-container-panel">
+  return <div className="save-items" data-view={tab}>
+    <div className="save-device-tabs" aria-label="物品分类">{[['storage', '物品容器'], ['machines', '加工设备'], ['special', '特殊容器']].map(([id, title]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setSelected(null); }}>{title}</button>)}</div>
+    {tab === 'machines' && <DeviceBrowser model={model} names={names} edits={machines}>{container => <MachinePanel key={container.id} model={model} container={container} edits={machines} names={names} onChange={onMachine} />}</DeviceBrowser>}
+    {tab === 'special' && <DeviceBrowser model={model} names={names} edits={machines} special occupancy={container => container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length}>{container => container.kind === 'system' || specialSpec(container)?.kind === 'shared' ? <>
+      <ContainerView container={container} drafts={drafts} slotEdits={slotEdits} names={names} selected={selected} onSelect={setSelected} />{editor(container)}
+    </> : <SpecialContents model={model} container={container} names={names} />}</DeviceBrowser>}
+    {tab === 'storage' && !open && <p className="save-device-hint">存档中没有收纳箱。</p>}
+    {tab === 'storage' && open && <section className="save-container-panel">
       <header className="save-container-head">
         <label className="save-container-switch">
           <span>容器</span>
           <select value={open.id} onChange={(event) => { setOpenId(event.target.value); setSelected(null); }}>
-            {grouped.map((group) => <optgroup key={group.label} label={group.label}>
-              {group.items.map((container) => <option key={container.id} value={container.id}>
-                {(container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title}（{describe(container, names)}）
+            {switchable.map((container) => <option key={container.id} value={container.id}>
+                {(container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title}（{describe(container, names, drafts, slotEdits)}）
               </option>)}
-            </optgroup>)}
           </select>
         </label>
         {open.kind === 'storage' && open.nameOffset !== undefined && <label className="save-container-name">
           <span>箱子名称</span><input aria-label="箱子名称" value={drafts[open.nameOffset] ?? open.customName} placeholder={open.title}
             onChange={event => onDraft(open.nameOffset!, event.target.value)} />
         </label>}
-        {open.kind !== 'machine' && <p className="save-container-meta">{open.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {open.slots.length} 格已占用</p>}
+        <p className="save-container-meta">{open.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {open.slots.length} 格已占用</p>
       </header>
-      {open.kind === 'machine' ? <MachinePanel key={open.id} model={model} container={open} edits={machines} names={names} onChange={onMachine} /> : <ContainerView
+      <ContainerView
         container={open}
         drafts={drafts}
         slotEdits={slotEdits}
         names={names}
         selected={selected}
         onSelect={setSelected}
-      />}
-      {open.kind !== 'machine' && editor(open)}
+      />
+      {editor(open)}
     </section>}
 
-    {pinned.map((container) => container.kind === 'tool' ? <ToolsPanel key={container.id} container={container} drafts={drafts} names={names} onDraft={onDraft} /> : <section className="save-container-panel pinned" key={container.id}>
+    {tab === 'storage' && <div className="save-carried-items">{pinned.filter(container => container.kind !== 'tool').map((container) => <section className="save-container-panel pinned" key={container.id}>
       <header className="save-container-head">
         <h3>{container.title}</h3>
         <p className="save-container-meta">{container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {container.slots.length} 格已占用</p>
@@ -184,6 +173,7 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
         onSelect={setSelected}
       />
       {editor(container)}
-    </section>)}
+    </section>)}</div>}
+    {tab === 'storage' && <div className="save-equipment-tools">{pinned.filter(container => container.kind === 'tool').map(container => <ToolsPanel key={container.id} container={container} drafts={drafts} names={names} onDraft={onDraft} />)}</div>}
   </div>;
 }

@@ -17,7 +17,8 @@ import SystemSaveHint from './SystemSaveHint';
 import QuestsPanel from './QuestsPanel';
 import AnimalsPanel from './AnimalsPanel';
 import { animalEditCount, type AnimalEdits } from '../../lib/saveAnimals';
-import type { MachineEdits, MachineEdit } from '../../lib/saveMachines';
+import { deviceIdentity, machineSpec, specialSpec, type MachineEdits, type MachineEdit } from '../../lib/saveMachines';
+import { specialTitle } from './DeviceBrowser';
 import RawTree from './RawTree';
 import ProgressPanel from './ProgressPanel';
 import { progressCount, PROGRESSION, type ProgressEdits } from '../../lib/saveProgress';
@@ -47,7 +48,7 @@ function slotStructuralSummaries(model: SaveModel, slotEdits: SlotEdits, names: 
       const before = slot.item ? show(slot.item.itemId, slot.item.count) : '空';
       lines.push({
         key: slot.pointer,
-        label: `${container.title} 第 ${slot.index + 1} 格`,
+        label: `${specialSpec(container) ? `${specialTitle(container, names)} #${deviceIdentity(model.doc, container)}` : container.title} 第 ${slot.index + 1} 格`,
         text: `${before} → ${assignment ? show(assignment.itemId, assignment.count) : '清空'}`,
       });
     }
@@ -302,7 +303,11 @@ export default function SaveEditor() {
         <p>待写入的修改（{editCount}）</p>
         <ul>
           {animalEditCount(animals) > 0 && <li><b>动物安置</b><span>{Object.keys(animals.moves ?? {}).length} 处移动，{Object.keys(animals.added ?? {}).length} 只新增</span><button type="button" onClick={() => setAnimals({})}>撤销安置修改</button></li>}
-          {Object.entries(machines).map(([key, edit]) => <li key={key}><b>加工栏位 {Number(key.split('/')[1]) + 1}</b><span>{edit.recipeId !== undefined ? '加入加工任务' : '已有任务'} → {edit.finish ? '立即完成' : '开始计时'}</span><button type="button" onClick={() => updateMachine(key)}>撤销</button></li>)}
+          {Object.entries(machines).map(([key, edit]) => {
+            const container = model.containers.find(entry => entry.id === key.split('/')[0]);
+            const spec = container && machineSpec(container);
+            return <li key={key}><b>{container && spec ? `${itemLabel(names, String(spec.itemId))} #${deviceIdentity(model.doc, container)} · ` : ''}加工栏位 {Number(key.split('/')[1]) + 1}</b><span>{edit.recipeId !== undefined ? '加入加工任务' : '已有任务'} → {edit.finish ? '立即完成' : '开始计时'}</span><button type="button" onClick={() => updateMachine(key)}>撤销</button></li>;
+          })}
           {Object.entries(progress).flatMap(([group, entries]) => Object.entries(entries ?? {}).map(([id, enabled]) => <li key={`${group}-${id}`}>
             <b>{group === 'encyclopedia' ? '图鉴' : group === 'skills' ? '技能' : group === 'deliveries' ? '交付' : '解锁'}</b>
             <span>{group === 'deliveries' ? `${UNLOCKS.bundles.find(b => b.id === Number(id.split(':')[0]))?.name} · ${itemLabel(names, String(UNLOCKS.bundles.find(b => b.id === Number(id.split(':')[0]))?.items[Number(id.split(':')[1])]?.itemId))}` : group === 'encyclopedia' ? itemLabel(names, id) : group === 'skills' ? PROGRESSION.skills.find(skill => String(skill.id) === id)?.name : Number(id) === UNLOCKS.catalogFlag ? '村长家的交付目录' : UNLOCKS.nodes.find(n => String(n.flag) === id)?.name ?? PROGRESSION.flags.find(flag => String(flag.id) === id)?.name} → {group === 'deliveries' ? `已交付 ${enabled} 件` : enabled ? '已解锁' : '未解锁'}</span>

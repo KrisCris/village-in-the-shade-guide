@@ -5,6 +5,11 @@ import { lookupIcon, lookupName, type SaveNameTables } from './saveNames';
 const tables: SaveNameTables = JSON.parse(readFileSync('public/save-editor-names.json', 'utf8'));
 
 describe('save editor name tables', () => {
+  it('normalizes display labels without changing item IDs or source tables', () => {
+    const input = { names: { items: { '42': '樹液採集器' } } };
+    expect(lookupName(input, 'items', '42')).toBe('树液采集器');
+    expect(input.names.items['42']).toBe('樹液採集器');
+  });
   it('labels the IDs the save actually stores', () => {
     expect(lookupName(tables, 'items', '230000')).toBe('木材');
     expect(lookupName(tables, 'characters', '1010')).toBe('帷');

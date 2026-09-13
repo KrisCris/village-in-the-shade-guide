@@ -1,4 +1,5 @@
 import { withBase } from './sitePath';
+import { simplifySaveText } from './saveText';
 import type { LookupKind } from './saveModel';
 
 /**
@@ -24,13 +25,15 @@ let pending: Promise<SaveNameTables> | null = null;
 export function loadSaveNames(): Promise<SaveNameTables> {
   pending ??= fetch(withBase('/save-editor-names.json'))
     .then((response) => (response.ok ? response.json() : {}))
+    .then((tables: SaveNameTables) => ({ ...tables, names: Object.fromEntries(Object.entries(tables.names ?? {}).map(([kind, entries]) => [kind, Object.fromEntries(Object.entries(entries).map(([id, name]) => [id, simplifySaveText(name)]))])) }))
     .catch(() => ({}));
   return pending;
 }
 
 export function lookupName(tables: SaveNameTables, kind: LookupKind | undefined, value: string): string | null {
   if (!kind) return null;
-  return tables.names?.[kind]?.[value.trim()] ?? null;
+  const name = tables.names?.[kind]?.[value.trim()];
+  return name ? simplifySaveText(name) : null;
 }
 
 /** Site-root-relative icon URL for an ID, or null when the catalog has none. */

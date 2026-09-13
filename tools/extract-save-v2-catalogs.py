@@ -1,6 +1,7 @@
 """Reproduce v2 editor catalogs from read-only game archives. Never touches saves."""
 import argparse
 import json
+import re
 import struct
 from pathlib import Path
 from honogurashi_extractor.archive import FafullfsArchive
@@ -56,10 +57,16 @@ write('animals', dict(source='livestock.dat; native love level 0x14010AA80 tests
 
 t = table('gimmick')
 machines = []
+special_containers = []
 for row, strings in zip(t.records, _string_groups(t), strict=True):
     script = strings[7] if len(strings) > 7 else ''
     level = strings[strings.index('level') + 1] if 'level' in strings else ''
-    machines.append(dict(id=u64(row, 0), itemId=u32(row, len(row) - 48), capacity=3 if level == '2' else 1, script=script, level=level))
+    mode = 'extractor' if script == 'gimmick_sap_extractor' else 'collector' if script == 'gimmick_collection_machine' else 'processing'
+    machines.append(dict(id=u64(row, 0), itemId=u32(row, len(row) - 48), capacity=3 if level == '2' else 1, script=script, level=level, mode=mode, family=re.sub(r'_Lv\d+$', '', script, flags=re.I)))
+    special_scripts = {'gimmick_shinto_altar': 'display', 'gimmick_table': 'display', 'gimmick_craft_table': 'workbench', 'gimmick_architecture_anvil': 'anvil'}
+    kind = 'shared' if strings[0] == 'GIMMICK_ID_SHARED_BOX' else 'quest' if strings[0] == 'GIMMICK_ID_NPC_QUEST_YUTA_BEEHIVE' else special_scripts.get(script)
+    if kind:
+        special_containers.append(dict(id=u64(row, 0), itemId=u32(row, len(row) - 48), kind=kind, script=script))
 processes = []
 for row in table('gimmickprocess').records:
     count = u32(row, 24)
@@ -67,8 +74,8 @@ for row in table('gimmickprocess').records:
     inputs = [dict(itemId=u64(row, offset + index * 12), count=u32(row, offset + index * 12 + 8)) for index in range(2) if u64(row, offset + index * 12)]
     processes.append(dict(id=u64(row, 0), machines=[u64(row, 28 + index * 8) for index in range(count)], inputs=inputs, output=u64(row, offset + 24), count=u32(row, offset + 32), minutes=u32(row, offset + 36)))
 process_machine_ids = {id for recipe in processes for id in recipe['machines']}
-machines = [machine for machine in machines if machine['id'] in process_machine_ids]
-write('machines', dict(source='gimmick.dat and gimmickprocess.dat; native 0x14026EF20 eight internal material entries per job, durations in seconds', machines=machines, processes=processes))
+machines = [machine for machine in machines if machine['id'] in process_machine_ids or machine['mode'] == 'collector']
+write('machines', dict(source='gimmick.dat and gimmickprocess.dat; native 0x14026EF20 eight internal material entries per job, durations in seconds', machines=machines, specialContainers=special_containers, processes=processes))
 
 origins = {}
 for row in table('mapgroup').records:

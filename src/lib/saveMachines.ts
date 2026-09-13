@@ -7,6 +7,25 @@ export interface MachineEdit { recipeId?: number; finish: boolean }
 export type MachineEdits = Record<string, MachineEdit>;
 export const machineSpec = (container: SaveContainer) => data.machines.find(machine => machine.id === container.dataId);
 const object = (doc: SerDocument, container: SaveContainer) => doc.resolve(`gimmickList_/${container.id.replace('gimmick-', '')}/p`);
+export const specialSpec = (container: SaveContainer) => data.specialContainers.find(entry => entry.id === container.dataId);
+export function deviceIdentity(doc: SerDocument, container: SaveContainer): string {
+  const node = object(doc, container), id = node && doc.resolve('uniqueID_', node);
+  return id ? String(readSigned(doc, id)) : container.id;
+}
+export function deviceEnabled(doc: SerDocument, container: SaveContainer): boolean {
+  const node = object(doc, container), enabled = node && doc.resolve('isEnabled_', node);
+  return !!enabled && readSigned(doc, enabled) !== 0n;
+}
+export function displayedItem(doc: SerDocument, container: SaveContainer): number {
+  if (specialSpec(container)?.script !== 'gimmick_shinto_altar') return 0;
+  const node = object(doc, container);
+  return node ? mapValue(doc, doc.resolve('statusIDValueMap_', node), 'itemID') : 0;
+}
+export function gameDuration(seconds: number): string {
+  const minutes = Math.ceil(Math.max(0, seconds) / 60);
+  const days = Math.floor(minutes / 1440), hours = Math.floor(minutes % 1440 / 60), rest = minutes % 60;
+  return [days && `${days}天`, hours && `${hours}小时`, (rest || !minutes) && `${rest}分钟`].filter(Boolean).join(' ');
+}
 const packedKey = (key: string) => [...key].reduce((value, character, index) => value | (BigInt(character.charCodeAt(0)) << BigInt(index * 8)), 0n);
 function mapValue(doc: SerDocument, node: SerNode | undefined, key: string): number {
   const children = node ? doc.children(node) : [];
@@ -18,7 +37,7 @@ function mapValue(doc: SerDocument, node: SerNode | undefined, key: string): num
 }
 export function machineJobs(doc: SerDocument, container: SaveContainer, edits: MachineEdits = {}) {
   const spec = machineSpec(container), node = object(doc, container);
-  if (!spec || !node) return [];
+  if (!spec || spec.mode === 'collector' || !node) return [];
   const time = doc.resolve('timeValue_', node), duration = doc.resolve('createTime_', node), clock = doc.resolve('gameTime_/second_');
   if (!time || !duration || !clock || time.size !== 24 || duration.size !== 24) return [];
   const starts = doc.payload(time), lengths = doc.payload(duration);
@@ -28,8 +47,10 @@ export function machineJobs(doc: SerDocument, container: SaveContainer, edits: M
     const recipe = edit?.recipeId === undefined ? undefined : data.processes.find(recipe => recipe.id === edit.recipeId);
     const seconds = recipe ? recipe.minutes * 60 : Number(new DataView(lengths.buffer, lengths.byteOffset).getBigInt64(index * 8, true));
     const start = Number(new DataView(starts.buffer, starts.byteOffset).getBigInt64(index * 8, true));
-    const remaining = edit?.finish ? 0 : recipe ? seconds : Math.max(0, seconds - (now - start));
-    return { index, seconds, remaining, output: recipe?.output ?? mapValue(doc, doc.resolve('statusIDValueMap_', node), `itemID${index}`), count: recipe?.count ?? mapValue(doc, doc.resolve('statusValueMap_', node), `itemVal${index}`), inputs: recipe?.inputs ?? container.slots.slice(index * 8, index * 8 + 8).flatMap(slot => slot.item ? [{ itemId: Number(slot.item.itemId), count: Number(slot.item.count) }] : []), edited: !!edit };
+    const remaining = edit?.finish ? 0 : recipe ? seconds : Math.min(seconds, Math.max(0, seconds - (now - start)));
+    // ExtractorPopItem constructs one output from the first item template, not itemVal0.
+    const template = spec.mode === 'extractor' ? container.slots[0]?.item : null;
+    return { index, seconds, remaining, output: template ? Number(template.itemId) : recipe?.output ?? mapValue(doc, doc.resolve('statusIDValueMap_', node), `itemID${index}`), count: template ? 1 : recipe?.count ?? mapValue(doc, doc.resolve('statusValueMap_', node), `itemVal${index}`), inputs: spec.mode === 'extractor' ? [] : recipe?.inputs ?? container.slots.slice(index * 8, index * 8 + 8).flatMap(slot => slot.item ? [{ itemId: Number(slot.item.itemId), count: Number(slot.item.count) }] : []), edited: !!edit };
   });
 }
 
@@ -69,6 +90,7 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
       if (!edit) continue;
       let seconds = job.seconds;
       if (edit.recipeId !== undefined) {
+        if (machineSpec(container)?.mode !== 'processing') throw new Error('自动采集设备不能手动添加配方。');
         if (job.seconds !== 0) throw new Error('请先在游戏中领取已有加工品，再向空栏位加入配方。');
         const recipe = data.processes.find(recipe => recipe.id === edit.recipeId && recipe.machines.includes(container.dataId!));
         if (!recipe || recipe.minutes <= 0 || recipe.inputs.length > 8) throw new Error('这台设备不能加工所选配方。');
@@ -84,7 +106,7 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
       if (edit.finish) new DataView(starts.buffer).setBigInt64(job.index * 8, BigInt(now - seconds), true);
     }
     const jobs = machineJobs(doc, container, edits);
-    values.inProc = Number(jobs.some(job => job.seconds > 0 && job.remaining > 0));
+    values.inProc = machineSpec(container)?.mode === 'extractor' ? 1 : Number(jobs.some(job => job.seconds > 0 && job.remaining > 0));
     values.procEnd = Number(jobs.some(job => job.seconds > 0 && job.remaining === 0));
     payloads.set(time.offset, starts); payloads.set(duration.offset, lengths);
     subtrees.set(doc.resolve('statusValueMap_', node)!.offset, updatedMap(doc, doc.resolve('statusValueMap_', node)!, values, 4));

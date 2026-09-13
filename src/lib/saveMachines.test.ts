@@ -4,11 +4,45 @@ import { readFileSync } from 'node:fs';
 import { describe, it, expect } from 'vitest';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
-import { MACHINES, machineJobs, machineSpec } from './saveMachines';
+import { MACHINES, machineJobs, machineSpec, specialSpec, deviceIdentity, deviceEnabled, displayedItem, gameDuration } from './saveMachines';
 import { readSigned } from './ser';
 let model: ReturnType<typeof parseSaveModel>;
-beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
 describe.skipIf(!hasPrivateSaveFixtures)('native processing machine jobs', () => {
+  beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
+  it('separates each actual machine from placement, crafting, quest and shared containers', () => {
+    const devices = model.containers.filter(c => machineSpec(c) && deviceEnabled(model.doc, c));
+    expect(devices).toHaveLength(163);
+    expect(new Set(devices.map(c => deviceIdentity(model.doc, c))).size).toBe(devices.length);
+    const special = model.containers.filter(c => specialSpec(c));
+    expect(special).toHaveLength(16);
+    expect(special.every(c => !machineSpec(c))).toBe(true);
+    const altar = model.containers.find(c => c.id === 'gimmick-589')!;
+    expect(specialSpec(altar)).toMatchObject({ kind: 'display', itemId: 454000 });
+    expect(displayedItem(model.doc, altar)).toBe(0);
+    expect(machineJobs(model.doc, altar)).toEqual([]);
+    const unknown = { ...altar, dataId: -123 };
+    expect(machineSpec(unknown)).toBeUndefined(); expect(specialSpec(unknown)).toBeUndefined();
+  });
+  it('reads extractor output from the item template and preserves it on completion', () => {
+    const container = model.containers.find(c => machineSpec(c)?.mode === 'extractor' && machineJobs(model.doc, c)[0]?.remaining > 0)!;
+    const job = machineJobs(model.doc, container)[0];
+    expect(job).toMatchObject({ output: Number(container.slots[0].item!.itemId), count: 1, inputs: [] });
+    const key = `${container.id}/0`;
+    const restored = parseSaveModel(decodeSave(exportSave(model, [], {}, {}, { [key]: { finish: true } }), 'edited'));
+    const next = restored.containers.find(c => c.id === container.id)!;
+    expect(machineJobs(restored.doc, next)[0]).toMatchObject({ ...job, remaining: 0 });
+    expect(next.slots.map(slot => slot.item && [slot.item.itemId, slot.item.count])).toEqual(container.slots.map(slot => slot.item && [slot.item.itemId, slot.item.count]));
+    const recipe = MACHINES.processes.find(r => r.machines.includes(container.dataId!))!;
+    expect(() => exportSave(model, [], {}, {}, { [key]: { recipeId: recipe.id, finish: false } })).toThrow('自动采集');
+  });
+  it('does not invent timed jobs for livestock collectors', () => {
+    const collectors = model.containers.filter(c => machineSpec(c)?.mode === 'collector');
+    expect(collectors).toHaveLength(2);
+    for (const container of collectors) {
+      expect(machineJobs(model.doc, container)).toEqual([]);
+      expect(() => exportSave(model, [], {}, {}, { [`${container.id}/0`]: { finish: true } })).toThrow('栏位');
+    }
+  });
   it('finishes an existing job without emptying it or changing its ingredients', () => {
     const container = model.containers.find(container => machineJobs(model.doc, container).some(job => job.remaining > 0))!;
     const job = machineJobs(model.doc, container).find(job => job.remaining > 0)!;
@@ -38,4 +72,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('native processing machine jobs', () =>
     expect(maxes).toContain('1500'); expect(maxes).toContain('2000');
     expect(maxes[0]).toBe('2000');
   });
+});
+
+it('formats game time without implying a live wall-clock countdown', () => {
+  expect(gameDuration(259200)).toBe('3天');
+  expect(gameDuration(63480)).toBe('17小时 38分钟');
+  expect(gameDuration(1)).toBe('1分钟');
+  expect(gameDuration(0)).toBe('0分钟');
 });

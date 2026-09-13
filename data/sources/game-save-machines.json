@@ -1,208 +1,2413 @@
 {
-  "source": "gimmick.dat first settingArg level=2 gives 3 jobs, otherwise 1 (GimmickProcessHaveEmptySlot); gimmickprocess.dat native processing recipes",
+  "source": "gimmick.dat and gimmickprocess.dat; native 0x14026EF20 eight internal material entries per job, durations in seconds",
   "machines": [
+    {
+      "id": 203000000,
+      "itemId": 30040,
+      "capacity": 1,
+      "script": "gimmick_collection_machine",
+      "level": "",
+      "mode": "collector",
+      "family": "gimmick_collection_machine"
+    },
     {
       "id": 240010000,
       "itemId": 400000,
       "capacity": 1,
       "script": "gimmick_storage_jar",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_storage_jar"
     },
     {
       "id": 240010100,
       "itemId": 400001,
       "capacity": 3,
       "script": "gimmick_storage_jar_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_storage_jar"
     },
     {
       "id": 240020000,
       "itemId": 400010,
       "capacity": 1,
       "script": "gimmick_milk_processing_machine",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_milk_processing_machine"
     },
     {
       "id": 240020100,
       "itemId": 400011,
       "capacity": 3,
       "script": "gimmick_milk_processing_machine_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_milk_processing_machine"
     },
     {
       "id": 240030000,
       "itemId": 400020,
       "capacity": 1,
       "script": "gimmick_mayonnaise_processing_machine",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_mayonnaise_processing_machine"
     },
     {
       "id": 240030100,
       "itemId": 400021,
       "capacity": 3,
       "script": "gimmick_mayonnaise_processing_machine_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_mayonnaise_processing_machine"
     },
     {
       "id": 240040000,
       "itemId": 400030,
       "capacity": 1,
       "script": "gimmick_brewing_barrel",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_brewing_barrel"
     },
     {
       "id": 240040100,
       "itemId": 400031,
       "capacity": 3,
       "script": "gimmick_brewing_barrel_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_brewing_barrel"
     },
     {
       "id": 240050000,
       "itemId": 400040,
       "capacity": 1,
       "script": "gimmick_agung_barrel",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_agung_barrel"
     },
     {
       "id": 240050100,
       "itemId": 400041,
       "capacity": 3,
       "script": "gimmick_agung_barrel_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_agung_barrel"
     },
     {
       "id": 240060000,
       "itemId": 400050,
       "capacity": 1,
       "script": "gimmick_drying_machine",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_drying_machine"
     },
     {
       "id": 240060100,
       "itemId": 400051,
       "capacity": 3,
       "script": "gimmick_drying_machine_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_drying_machine"
     },
     {
       "id": 240070000,
       "itemId": 400060,
       "capacity": 1,
       "script": "gimmick_flour_mill",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_flour_mill"
     },
     {
       "id": 240070100,
       "itemId": 400061,
       "capacity": 3,
       "script": "gimmick_flour_mill_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_flour_mill"
     },
     {
       "id": 240080000,
       "itemId": 400070,
       "capacity": 1,
       "script": "gimmick_oil_extraction_machine",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_oil_extraction_machine"
     },
     {
       "id": 240080100,
       "itemId": 400071,
       "capacity": 3,
       "script": "gimmick_oil_extraction_machine_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_oil_extraction_machine"
     },
     {
       "id": 240090000,
       "itemId": 400080,
       "capacity": 1,
       "script": "gimmick_blast_furnace",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_blast_furnace"
     },
     {
       "id": 240090100,
       "itemId": 400081,
       "capacity": 3,
       "script": "gimmick_blast_furnace_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_blast_furnace"
     },
     {
       "id": 240100000,
       "itemId": 400090,
       "capacity": 1,
       "script": "gimmick_charcoal_kiln",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_charcoal_kiln"
     },
     {
       "id": 240100100,
       "itemId": 400091,
       "capacity": 3,
       "script": "gimmick_charcoal_kiln_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_charcoal_kiln"
     },
     {
       "id": 240110000,
       "itemId": 400100,
       "capacity": 1,
       "script": "gimmick_loom",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_loom"
     },
     {
       "id": 240110100,
       "itemId": 400101,
       "capacity": 3,
       "script": "gimmick_loom_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_loom"
     },
     {
       "id": 240120000,
       "itemId": 400110,
       "capacity": 1,
       "script": "gimmick_composter",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_composter"
     },
     {
       "id": 240120100,
       "itemId": 400111,
       "capacity": 3,
       "script": "gimmick_composter_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_composter"
     },
     {
       "id": 240150000,
       "itemId": 400140,
       "capacity": 1,
       "script": "gimmick_smoking_machine",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_smoking_machine"
     },
     {
       "id": 240150100,
       "itemId": 400141,
       "capacity": 3,
       "script": "gimmick_smoking_machine_Lv2",
-      "level": "2"
+      "level": "2",
+      "mode": "processing",
+      "family": "gimmick_smoking_machine"
     },
     {
       "id": 240240000,
       "itemId": 402040,
       "capacity": 1,
       "script": "gimmick_beehive",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_beehive"
     },
     {
       "id": 240250000,
       "itemId": 402050,
       "capacity": 1,
       "script": "gimmick_sap_extractor",
-      "level": ""
+      "level": "",
+      "mode": "extractor",
+      "family": "gimmick_sap_extractor"
     },
     {
       "id": 240270000,
       "itemId": 402070,
       "capacity": 1,
       "script": "gimmick_sericulture_box",
-      "level": "1"
+      "level": "1",
+      "mode": "processing",
+      "family": "gimmick_sericulture_box"
+    }
+  ],
+  "specialContainers": [
+    {
+      "id": 112080000,
+      "itemId": 0,
+      "kind": "anvil",
+      "script": "gimmick_architecture_anvil"
+    },
+    {
+      "id": 240140000,
+      "itemId": 400130,
+      "kind": "workbench",
+      "script": "gimmick_craft_table"
+    },
+    {
+      "id": 240140001,
+      "itemId": 400130,
+      "kind": "workbench",
+      "script": "gimmick_craft_table"
+    },
+    {
+      "id": 243000000,
+      "itemId": 430000,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000001,
+      "itemId": 430001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000002,
+      "itemId": 430002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000003,
+      "itemId": 430003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000004,
+      "itemId": 430004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000005,
+      "itemId": 430005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000006,
+      "itemId": 430006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000007,
+      "itemId": 430007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000008,
+      "itemId": 430008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000009,
+      "itemId": 430009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000100,
+      "itemId": 430010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000101,
+      "itemId": 430011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000102,
+      "itemId": 430012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000103,
+      "itemId": 430013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000104,
+      "itemId": 430014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000105,
+      "itemId": 430015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000106,
+      "itemId": 430016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000107,
+      "itemId": 430017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000108,
+      "itemId": 430018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000109,
+      "itemId": 430019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000200,
+      "itemId": 430020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000201,
+      "itemId": 430021,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000202,
+      "itemId": 430022,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000203,
+      "itemId": 430023,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000204,
+      "itemId": 430024,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000205,
+      "itemId": 430025,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000206,
+      "itemId": 430026,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000207,
+      "itemId": 430027,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000208,
+      "itemId": 430028,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000209,
+      "itemId": 430029,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000300,
+      "itemId": 430030,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000301,
+      "itemId": 430031,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000302,
+      "itemId": 430032,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000303,
+      "itemId": 430033,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000304,
+      "itemId": 430034,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000305,
+      "itemId": 430035,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000306,
+      "itemId": 430036,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000307,
+      "itemId": 430037,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000308,
+      "itemId": 430038,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000309,
+      "itemId": 430039,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000400,
+      "itemId": 430040,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000401,
+      "itemId": 430041,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000402,
+      "itemId": 430042,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000403,
+      "itemId": 430043,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000404,
+      "itemId": 430044,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000405,
+      "itemId": 430045,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000406,
+      "itemId": 430046,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000407,
+      "itemId": 430047,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000408,
+      "itemId": 430048,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000409,
+      "itemId": 430049,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000500,
+      "itemId": 430050,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000501,
+      "itemId": 430051,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000502,
+      "itemId": 430052,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000503,
+      "itemId": 430053,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000504,
+      "itemId": 430054,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000505,
+      "itemId": 430055,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000506,
+      "itemId": 430056,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000507,
+      "itemId": 430057,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000508,
+      "itemId": 430058,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000509,
+      "itemId": 430059,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000600,
+      "itemId": 430060,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000601,
+      "itemId": 430061,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000602,
+      "itemId": 430062,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000603,
+      "itemId": 430063,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000604,
+      "itemId": 430064,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000605,
+      "itemId": 430065,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000606,
+      "itemId": 430066,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000607,
+      "itemId": 430067,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000608,
+      "itemId": 430068,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000609,
+      "itemId": 430069,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000700,
+      "itemId": 430070,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000701,
+      "itemId": 430071,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000702,
+      "itemId": 430072,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000703,
+      "itemId": 430073,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000704,
+      "itemId": 430074,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000705,
+      "itemId": 430075,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000706,
+      "itemId": 430076,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000707,
+      "itemId": 430077,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000708,
+      "itemId": 430078,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000709,
+      "itemId": 430079,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000800,
+      "itemId": 430080,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000801,
+      "itemId": 430081,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000802,
+      "itemId": 430082,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000803,
+      "itemId": 430083,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000804,
+      "itemId": 430084,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000805,
+      "itemId": 430085,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000806,
+      "itemId": 430086,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000807,
+      "itemId": 430087,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000808,
+      "itemId": 430088,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000809,
+      "itemId": 430089,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000900,
+      "itemId": 430090,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000901,
+      "itemId": 430091,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000902,
+      "itemId": 430092,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000903,
+      "itemId": 430093,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000904,
+      "itemId": 430094,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000905,
+      "itemId": 430095,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000906,
+      "itemId": 430096,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000907,
+      "itemId": 430097,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000908,
+      "itemId": 430098,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243000909,
+      "itemId": 430099,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010000,
+      "itemId": 431000,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010001,
+      "itemId": 431001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010002,
+      "itemId": 431002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010003,
+      "itemId": 431003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010004,
+      "itemId": 431004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010005,
+      "itemId": 431005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010006,
+      "itemId": 431006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010007,
+      "itemId": 431007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010008,
+      "itemId": 431008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010009,
+      "itemId": 431009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010100,
+      "itemId": 431010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010101,
+      "itemId": 431011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010102,
+      "itemId": 431012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010103,
+      "itemId": 431013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010104,
+      "itemId": 431014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010105,
+      "itemId": 431015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010106,
+      "itemId": 431016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010107,
+      "itemId": 431017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010108,
+      "itemId": 431018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010109,
+      "itemId": 431019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010200,
+      "itemId": 431020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010201,
+      "itemId": 431021,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010202,
+      "itemId": 431022,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010203,
+      "itemId": 431023,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010204,
+      "itemId": 431024,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010205,
+      "itemId": 431025,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010206,
+      "itemId": 431026,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010207,
+      "itemId": 431027,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010208,
+      "itemId": 431028,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010209,
+      "itemId": 431029,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010300,
+      "itemId": 431030,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010301,
+      "itemId": 431031,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010302,
+      "itemId": 431032,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010303,
+      "itemId": 431033,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010304,
+      "itemId": 431034,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010305,
+      "itemId": 431035,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010306,
+      "itemId": 431036,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010307,
+      "itemId": 431037,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010308,
+      "itemId": 431038,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010309,
+      "itemId": 431039,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010400,
+      "itemId": 431040,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010401,
+      "itemId": 431041,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010402,
+      "itemId": 431042,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010403,
+      "itemId": 431043,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010404,
+      "itemId": 431044,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010405,
+      "itemId": 431045,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010406,
+      "itemId": 431046,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010407,
+      "itemId": 431047,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010408,
+      "itemId": 431048,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010409,
+      "itemId": 431049,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010500,
+      "itemId": 431050,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010501,
+      "itemId": 431051,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010502,
+      "itemId": 431052,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010503,
+      "itemId": 431053,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010504,
+      "itemId": 431054,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010505,
+      "itemId": 431055,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010506,
+      "itemId": 431056,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010507,
+      "itemId": 431057,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010508,
+      "itemId": 431058,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010509,
+      "itemId": 431059,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010600,
+      "itemId": 431060,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010601,
+      "itemId": 431061,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010602,
+      "itemId": 431062,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010603,
+      "itemId": 431063,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010604,
+      "itemId": 431064,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010605,
+      "itemId": 431065,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010606,
+      "itemId": 431066,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010607,
+      "itemId": 431067,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010608,
+      "itemId": 431068,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010609,
+      "itemId": 431069,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010700,
+      "itemId": 431070,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010701,
+      "itemId": 431071,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010702,
+      "itemId": 431072,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010703,
+      "itemId": 431073,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010704,
+      "itemId": 431074,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010705,
+      "itemId": 431075,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010706,
+      "itemId": 431076,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010707,
+      "itemId": 431077,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010708,
+      "itemId": 431078,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010709,
+      "itemId": 431079,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010800,
+      "itemId": 431080,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010801,
+      "itemId": 431081,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010802,
+      "itemId": 431082,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010803,
+      "itemId": 431083,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010804,
+      "itemId": 431084,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010805,
+      "itemId": 431085,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010806,
+      "itemId": 431086,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010807,
+      "itemId": 431087,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010808,
+      "itemId": 431088,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010809,
+      "itemId": 431089,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010900,
+      "itemId": 431090,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010901,
+      "itemId": 431091,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010902,
+      "itemId": 431092,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010903,
+      "itemId": 431093,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010904,
+      "itemId": 431094,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010905,
+      "itemId": 431095,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010906,
+      "itemId": 431096,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010907,
+      "itemId": 431097,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010908,
+      "itemId": 431098,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243010909,
+      "itemId": 431099,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020000,
+      "itemId": 432000,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020001,
+      "itemId": 432001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020002,
+      "itemId": 432002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020003,
+      "itemId": 432003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020004,
+      "itemId": 432004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020005,
+      "itemId": 432005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020006,
+      "itemId": 432006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020007,
+      "itemId": 432007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020008,
+      "itemId": 432008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020009,
+      "itemId": 432009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020100,
+      "itemId": 432010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020101,
+      "itemId": 432011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020102,
+      "itemId": 432012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020103,
+      "itemId": 432013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020104,
+      "itemId": 432014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020105,
+      "itemId": 432015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020106,
+      "itemId": 432016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020107,
+      "itemId": 432017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020108,
+      "itemId": 432018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020109,
+      "itemId": 432019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020200,
+      "itemId": 432020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020201,
+      "itemId": 432021,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020202,
+      "itemId": 432022,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020203,
+      "itemId": 432023,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020204,
+      "itemId": 432024,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020205,
+      "itemId": 432025,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020206,
+      "itemId": 432026,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020207,
+      "itemId": 432027,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020208,
+      "itemId": 432028,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020209,
+      "itemId": 432029,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020300,
+      "itemId": 432030,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020301,
+      "itemId": 432031,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020302,
+      "itemId": 432032,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020303,
+      "itemId": 432033,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020304,
+      "itemId": 432034,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020305,
+      "itemId": 432035,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020306,
+      "itemId": 432036,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020307,
+      "itemId": 432037,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020308,
+      "itemId": 432038,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020309,
+      "itemId": 432039,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020400,
+      "itemId": 432040,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020401,
+      "itemId": 432041,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020402,
+      "itemId": 432042,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020403,
+      "itemId": 432043,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020404,
+      "itemId": 432044,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020405,
+      "itemId": 432045,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020406,
+      "itemId": 432046,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020407,
+      "itemId": 432047,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020408,
+      "itemId": 432048,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243020409,
+      "itemId": 432049,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030000,
+      "itemId": 433000,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030001,
+      "itemId": 433001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030002,
+      "itemId": 433002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030003,
+      "itemId": 433003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030004,
+      "itemId": 433004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030005,
+      "itemId": 433005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030006,
+      "itemId": 433006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030007,
+      "itemId": 433007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030008,
+      "itemId": 433008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030009,
+      "itemId": 433009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030100,
+      "itemId": 433010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030101,
+      "itemId": 433011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030102,
+      "itemId": 433012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030103,
+      "itemId": 433013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030104,
+      "itemId": 433014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030105,
+      "itemId": 433015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030106,
+      "itemId": 433016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030107,
+      "itemId": 433017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030108,
+      "itemId": 433018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030109,
+      "itemId": 433019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030200,
+      "itemId": 433020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030201,
+      "itemId": 433021,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030202,
+      "itemId": 433022,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030203,
+      "itemId": 433023,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030204,
+      "itemId": 433024,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030205,
+      "itemId": 433025,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030206,
+      "itemId": 433026,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030207,
+      "itemId": 433027,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030208,
+      "itemId": 433028,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030209,
+      "itemId": 433029,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030300,
+      "itemId": 433030,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030301,
+      "itemId": 433031,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030302,
+      "itemId": 433032,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030303,
+      "itemId": 433033,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030304,
+      "itemId": 433034,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030305,
+      "itemId": 433035,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030306,
+      "itemId": 433036,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030307,
+      "itemId": 433037,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030308,
+      "itemId": 433038,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030309,
+      "itemId": 433039,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030400,
+      "itemId": 433040,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030401,
+      "itemId": 433041,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030402,
+      "itemId": 433042,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030403,
+      "itemId": 433043,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030404,
+      "itemId": 433044,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030405,
+      "itemId": 433045,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030406,
+      "itemId": 433046,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030407,
+      "itemId": 433047,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030408,
+      "itemId": 433048,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243030409,
+      "itemId": 433049,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040000,
+      "itemId": 434000,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040001,
+      "itemId": 434001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040002,
+      "itemId": 434002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040003,
+      "itemId": 434003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040004,
+      "itemId": 434004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040005,
+      "itemId": 434005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040006,
+      "itemId": 434006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040007,
+      "itemId": 434007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040008,
+      "itemId": 434008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040009,
+      "itemId": 434009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040100,
+      "itemId": 434010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040101,
+      "itemId": 434011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040102,
+      "itemId": 434012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040103,
+      "itemId": 434013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040104,
+      "itemId": 434014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040105,
+      "itemId": 434015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040106,
+      "itemId": 434016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040107,
+      "itemId": 434017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040108,
+      "itemId": 434018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040109,
+      "itemId": 434019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040200,
+      "itemId": 434020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040201,
+      "itemId": 434021,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040202,
+      "itemId": 434022,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040203,
+      "itemId": 434023,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040204,
+      "itemId": 434024,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040205,
+      "itemId": 434025,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040206,
+      "itemId": 434026,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040207,
+      "itemId": 434027,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040208,
+      "itemId": 434028,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040209,
+      "itemId": 434029,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040300,
+      "itemId": 434030,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040301,
+      "itemId": 434031,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040302,
+      "itemId": 434032,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040303,
+      "itemId": 434033,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040304,
+      "itemId": 434034,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040305,
+      "itemId": 434035,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040306,
+      "itemId": 434036,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040307,
+      "itemId": 434037,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040308,
+      "itemId": 434038,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040309,
+      "itemId": 434039,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040400,
+      "itemId": 434040,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040401,
+      "itemId": 434041,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040402,
+      "itemId": 434042,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040403,
+      "itemId": 434043,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040404,
+      "itemId": 434044,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040405,
+      "itemId": 434045,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040406,
+      "itemId": 434046,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040407,
+      "itemId": 434047,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040408,
+      "itemId": 434048,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 243040409,
+      "itemId": 434049,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 245600000,
+      "itemId": 454000,
+      "kind": "display",
+      "script": "gimmick_shinto_altar"
+    },
+    {
+      "id": 490390000,
+      "itemId": 0,
+      "kind": "shared",
+      "script": "gimmick_chest"
+    },
+    {
+      "id": 671200000,
+      "itemId": 0,
+      "kind": "quest",
+      "script": ""
     }
   ],
   "processes": [
