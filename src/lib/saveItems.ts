@@ -7,8 +7,8 @@
  * entry in `save.004`: identical tags, names and sizes. So one grid renders
  * them all.
  *
- * The in-world boxes are not the root-level `shippingBoxItemList_` family (those
- * are empty in every save). They are entries of `gimmickList_` that carry an
+ * The in-world boxes are separate from the root-level `shippingBoxItemList_`.
+ * They are entries of `gimmickList_` that carry an
  * `itemList_`; a 収納箱 is `pData_/dataID == 241000000` with 30 slots and a
  * player-assigned `name_`. Machines (beehives, tapped trees, drying racks) are
  * the same shape with fewer slots.
@@ -32,6 +32,9 @@ const STORAGE_BOX_IDS = new Set([241000000, 241000400]);
 
 /** The game draws ten slots per row; keep the grid the same shape. */
 export const GRID_COLUMNS = 10;
+export const SHIPPING_BOX_ID = 'shippingBoxItemList_';
+// SER offsets are u32. Virtual shipping slots use a disjoint, session-stable range.
+const SHIPPING_SLOT_BASE = 0x1_0000_0000;
 
 export type ContainerKind = 'backpack' | 'tool' | 'storage' | 'machine' | 'system';
 
@@ -50,7 +53,7 @@ export interface SaveSlotItem {
 
 export interface SaveSlot {
   index: number;
-  /** Header offset of the pointer node that owns the slot; the slot's identity. */
+  /** Pointer header offset, or a virtual shipping-slot ID above the u32 range. */
   pointer: number;
   item: SaveSlotItem | null;
 }
@@ -180,8 +183,17 @@ export function collectContainers(doc: SerDocument): SaveContainer[] {
   const system: SaveContainer[] = [];
   for (const entry of ROOT_LISTS) {
     const list = doc.resolve(entry.path);
-    if (list && doc.children(list).length > 0) {
-      system.push(buildContainer(doc, list, entry.path, 'system', entry.title));
+    if (list && (entry.path === SHIPPING_BOX_ID || doc.children(list).length > 0)) {
+      const container = buildContainer(doc, list, entry.path, 'system', entry.title);
+      if (entry.path === SHIPPING_BOX_ID) {
+        // CTask_Menu_ShippingBox 0x1403D066F: at least 30 cells, then another row
+        // after every complete ten items. Empty UI cells are not saved eagerly.
+        const visibleSlots = Math.max(30, (Math.floor(container.slots.length / GRID_COLUMNS) + 1) * GRID_COLUMNS);
+        for (let index = container.slots.length; index < visibleSlots; index++) {
+          container.slots.push({ index, pointer: SHIPPING_SLOT_BASE + index, item: null });
+        }
+      }
+      system.push(container);
     }
   }
 
@@ -246,6 +258,7 @@ export function buildSlotEdits(
   doc: SerDocument,
   containers: SaveContainer[],
   edits: SlotEdits,
+  leafPayload: (node: SerNode) => Uint8Array | undefined = () => undefined,
 ): SlotBuildResult {
   const subtrees = new Map<number, SerBuiltNode>();
   const entries = Object.entries(edits);
@@ -257,7 +270,9 @@ export function buildSlotEdits(
 
   for (const [key, assignment] of entries) {
     const offset = Number(key);
-    const pointer = doc.node(offset);
+    const virtual = containers.find(container => container.id === SHIPPING_BOX_ID)?.slots.find(slot => slot.pointer === offset && offset >= SHIPPING_SLOT_BASE);
+    if (offset >= SHIPPING_SLOT_BASE && !virtual) throw new Error('出货箱栏位无效。');
+    const pointer = virtual ? { tag: SerTag.Pointer, nameOffset: -1, name: String(virtual.index), ref: NULL_REF } : doc.node(offset);
     if (pointer.tag !== SerTag.Pointer) throw new Error(`格子 ${offset} 不是一个物品指针。`);
 
     if (assignment === null) {
@@ -283,6 +298,31 @@ export function buildSlotEdits(
     setScalar(child(item, 'rank_'), assignment.rank, 'rank_');
     setScalar(child(item, 'qualityUpValue_'), assignment.quality, '品质加成');
     subtrees.set(offset, built);
+  }
+
+  const additions = [...subtrees.keys()].filter(offset => offset >= SHIPPING_SLOT_BASE);
+  if (additions.length) {
+    const list = doc.resolve(SHIPPING_BOX_ID)!;
+    const capture = (node: SerNode): SerBuiltNode => {
+      const replacement = subtrees.get(node.offset);
+      if (replacement) { subtrees.delete(node.offset); return replacement; }
+      const built = captureBuilt(doc, node);
+      const patchLeaves = (source: SerNode, target: SerBuiltNode): void => {
+        const payload = leafPayload(source);
+        if (payload) target.payload = payload;
+        if (target.children) doc.children(source).forEach((child, index) => patchLeaves(child, target.children![index]));
+      };
+      patchLeaves(node, built);
+      return built;
+    };
+    const children = doc.children(list).map(capture);
+    const last = Math.max(...additions) - SHIPPING_SLOT_BASE;
+    for (let index = children.length; index <= last; index++) {
+      const key = SHIPPING_SLOT_BASE + index;
+      children.push(subtrees.get(key) ?? nullPointer(-1, String(index)));
+      subtrees.delete(key);
+    }
+    subtrees.set(list.offset, { tag: list.tag, nameOffset: list.nameOffset, name: list.name, ref: children.length, children });
   }
 
   const idSeed = handedOut > 0 && seedNode

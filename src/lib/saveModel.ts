@@ -572,7 +572,11 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   if (Object.keys(processing.slots).some(key => Object.hasOwn(slots, key))) throw new Error("加工栏位同时存在物品修改，请撤销物品修改。");
   slots = { ...slots, ...processing.slots };
   validateCuratedChanges(model, changes, slots);
-  const { subtrees, idSeed } = buildSlotEdits(model.doc, model.containers, slots);
+  const changedLeaves = new Map(changes.map(change => [change.field.offset, change]));
+  const { subtrees, idSeed } = buildSlotEdits(model.doc, model.containers, slots, node => {
+    const change = changedLeaves.get(node.offset);
+    return change ? payloadFor(model.doc, change.field, change.after) : undefined;
+  });
   const seedNode = model.doc.resolve('statusUniqueIDGenerator_/idSeed_');
   const seed = idSeed ? new DataView(idSeed.payload.buffer).getBigInt64(0, true) : seedNode ? readSigned(model.doc, seedNode) : 0n;
   const animalLeaves = new Map(changes.filter(change => { const list = model.doc.resolve('livestockList_'); return list && change.field.offset >= list.offset && change.field.offset < list.end; }).map(change => [change.field.offset, payloadFor(model.doc, change.field, change.after)]));
