@@ -52,6 +52,22 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     expect(describeGameTime(0n)).toBe('第 1 年 春 1 日 07:00');
   });
 
+  it('exports game clock edits without changing elapsed play time', () => {
+    const model = load('save.004');
+    const clock = field(model, '游戏内累计秒数');
+    expect(clock.readOnly).not.toBe(true);
+    const after = String(7344000 + 86400 + 3600);
+    const changes = pendingChanges(model, { [clock.offset]: after });
+    expect(changes).toHaveLength(1);
+    const reread = parseSaveModel(decodeSave(exportSave(model, changes), 'clock-edited'));
+    expect(field(reread, '游戏内累计秒数').value).toBe(after);
+    expect(describeGameTime(BigInt(after))).toBe('第 1 年 冬 3 日 08:00');
+    for (const unit of ['天', '小时', '分', '秒']) {
+      expect(field(reread, `游玩时长 · ${unit}`).value).toBe(field(model, `游玩时长 · ${unit}`).value);
+    }
+    expect(() => exportSave(model, pendingChanges(model, { [clock.offset]: '-1' }))).toThrow(/游戏内累计秒数/);
+  }, 30_000);
+
   it('lists inventory, livestock, npc and brand rows from the real tree', () => {
     const model = load('save.004');
     const backpack = model.containers.find((entry) => entry.id === 'inventoryItemList_')!;
@@ -79,6 +95,19 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     const brands = section(model, 'brand').tables.find((table) => table.id === 'brandCropsNameMap_')!;
     expect(brands.rows.map((row) => row.cells[1]!.value)).toEqual(['金克拉小麦', '上帝压狗']);
   });
+
+  it('edits elapsed play time independently and clears fractional ticks', () => {
+    const model = load('save.004');
+    const drafts = Object.fromEntries([['小时', '123'], ['分', '45'], ['秒', '6']].map(([unit, value]) => [field(model, `游玩时长 · ${unit}`).offset, value]));
+    const changes = pendingChanges(model, drafts);
+    expect(changes).toHaveLength(3);
+    const reread = parseSaveModel(decodeSave(exportSave(model, changes), 'play-time-edited'));
+    for (const [unit, value] of [['小时', '123'], ['分', '45'], ['秒', '6']]) expect(field(reread, `游玩时长 · ${unit}`).value).toBe(value);
+    expect(field(reread, '游戏内累计秒数').value).toBe('7344000');
+    expect(readSigned(reread.doc, reread.doc.resolve('playTime_/frame_')!)).toBe(0n);
+    expect(readSigned(reread.doc, reread.doc.resolve('playTime_/wholeframe_')!)).toBe(readSigned(model.doc, model.doc.resolve('playTime_/wholeframe_')!));
+    for (const [unit, value] of [['小时', '10000'], ['分', '60'], ['秒', '-1']]) expect(() => exportSave(model, pendingChanges(model, { [field(model, `游玩时长 · ${unit}`).offset]: value }))).toThrow();
+  }, 30_000);
 
   it('produces stable shapes across all five slot saves', () => {
     for (const name of ['save.001', 'save.002', 'save.003', 'save.004', 'save.005']) {

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { identifySave, readSession, restoreOriginal, SESSION_KEY, storeOriginal, type SaveIdentity } from '../../lib/saveSession';
 import { decodeSave } from '../../lib/saveEditor';
 import {
+  describeGameTime,
   exportSave,
   parseSaveModel,
   pendingChanges,
@@ -26,6 +27,7 @@ import { UNLOCKS } from '../../lib/saveDeliveries';
 import SaveDialog from './SaveDialog';
 import SaveDataTable from './SaveDataTable';
 import SaveFieldTable from './SaveFieldTable';
+import BasicPanel from './BasicPanel';
 import AppearancePanel from './AppearancePanel';
 import StatusPanel from './StatusPanel';
 import { TOOLS, TOOL_RANGE_FIELDS, undoToolDraft } from '../../lib/saveTools';
@@ -288,6 +290,8 @@ export default function SaveEditor() {
   }
 
   const section = model?.sections.find((entry) => entry.id === tab);
+  const clockOffset = model?.doc.resolve('gameTime_/second_')?.offset;
+  const clockDraft = clockOffset === undefined ? undefined : drafts[clockOffset];
   const workspace = {
     basic: ['基础信息', '管理名字、金钱、日期与天气。'],
     player: ['玩家', '调整生命与体力，选择角色外观。'],
@@ -334,7 +338,7 @@ export default function SaveEditor() {
         </button>
       </div>
 
-      <div className="save-notice-grid">{model.summary.filter(line => !line.startsWith('SER')).map((line) => <p key={line}>{line}</p>)}</div>
+      <div className="save-notice-grid">{model.summary.filter(line => !line.startsWith('SER')).map((line) => <p key={line}>{line.startsWith('游戏时间：') && clockDraft !== undefined ? `游戏时间：${/^\d+$/.test(clockDraft) ? describeGameTime(BigInt(clockDraft)) : '待填写'}。` : line}</p>)}</div>
       {reviewing && <SaveDialog title="检查并导出修改" onClose={() => setReviewing(false)}>
       {risks.length > 0 && <div className="save-risk-notice">
         {risks.map(risk => <p key={risk}>{risk}</p>)}
@@ -422,9 +426,9 @@ export default function SaveEditor() {
             <StatusPanel model={model} drafts={drafts} onChange={updateField} />
             <AppearancePanel model={model} drafts={drafts} names={names} onChange={updateField} progress={progress} onUnlock={id => updateProgress('flags', String(id), true)} />
           </div>}
-          <div className="save-overview-layout">
+          {tab === 'basic' ? <BasicPanel groups={section.groups} drafts={drafts} names={names} onChange={updateField} /> : <div className="save-overview-layout">
           <SaveFieldTable groups={section.groups.filter(group => tab !== 'player' || !['外观', '状态', '工具范围等级'].includes(group.title))} drafts={drafts} names={names} onChange={updateField} />
-          </div>
+          </div>}
           {section.tables.map((table) => <SaveDataTable
             key={table.id}
             table={table}

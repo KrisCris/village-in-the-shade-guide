@@ -13,6 +13,7 @@ import { buildAnimalEdits, type AnimalEdits } from './saveAnimals';
 import animals from '../../data/sources/game-save-animals.json';
 import { linkedToolDrafts } from './saveTools';
 import { SAVE_RULES } from './saveRules';
+import { GAME_SEASONS, splitGameTime } from './saveTime';
 import { validateCuratedChanges } from './saveValidation';
 import { decodeSave, encodeSave, type DecodedSave } from './saveEditor';
 import { buildSlotEdits, collectContainers, type SaveContainer, type SlotEdits } from './saveItems';
@@ -127,11 +128,11 @@ const BASIC_GROUPS: { title: string; specs: ScalarSpec[] }[] = [
   {
     title: '时间',
     specs: [
-      { path: 'gameTime_/second_', label: '游戏内累计秒数', readOnly: true, min: 0n, note: '决定年份、季节、日期和时刻。' },
+      { path: 'gameTime_/second_', label: '游戏内累计秒数', min: 0n, note: '决定年份、季节、日期和时刻。' },
       { path: 'playTime_/date_', label: '游玩时长 · 天', readOnly: true, min: 0n },
-      { path: 'playTime_/hour_', label: '游玩时长 · 小时', readOnly: true, min: 0n },
-      { path: 'playTime_/minute_', label: '游玩时长 · 分', readOnly: true, min: 0n, max: 59n },
-      { path: 'playTime_/second_', label: '游玩时长 · 秒', readOnly: true, min: 0n, max: 59n },
+      { path: 'playTime_/hour_', label: '游玩时长 · 小时', min: 0n, max: 9999n },
+      { path: 'playTime_/minute_', label: '游玩时长 · 分', min: 0n, max: 59n },
+      { path: 'playTime_/second_', label: '游玩时长 · 秒', min: 0n, max: 59n },
     ],
   },
   {
@@ -323,25 +324,10 @@ function brandTable(doc: SerDocument, path: string, title: string, lookup: Looku
 
 /* ------------------------------------------------------------- game clock -- */
 
-const SECONDS_PER_DAY = 86400;
-const DAYS_PER_SEASON = 28;
-const SEASONS = ['春', '夏', '秋', '冬'];
-/** Day 1 begins at 07:00, so a whole-day remainder of 0 reads as 07:00. */
-const DAY_START_SECONDS = 7 * 3600;
-
 export function describeGameTime(totalSeconds: bigint): string {
-  if (totalSeconds < 0n) return '—';
-  const seconds = Number(totalSeconds);
-  const days = Math.floor(seconds / SECONDS_PER_DAY);
-  const rest = seconds - days * SECONDS_PER_DAY;
-  const year = Math.floor(days / (DAYS_PER_SEASON * SEASONS.length)) + 1;
-  const dayOfYear = days % (DAYS_PER_SEASON * SEASONS.length);
-  const season = SEASONS[Math.floor(dayOfYear / DAYS_PER_SEASON)];
-  const day = (dayOfYear % DAYS_PER_SEASON) + 1;
-  const clock = (rest + DAY_START_SECONDS) % SECONDS_PER_DAY;
-  const hh = String(Math.floor(clock / 3600)).padStart(2, '0');
-  const mm = String(Math.floor((clock % 3600) / 60)).padStart(2, '0');
-  return `第 ${year} 年 ${season} ${day} 日 ${hh}:${mm}`;
+  const date = splitGameTime(String(totalSeconds));
+  if (!date) return '—';
+  return `第 ${date.year} 年 ${GAME_SEASONS[Number(date.season)]} ${date.day} 日 ${date.hour.padStart(2, '0')}:${date.minute.padStart(2, '0')}`;
 }
 
 /* ------------------------------------------------------------------ model -- */
@@ -601,6 +587,15 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
     // current value merely because it exceeds the original maximum.
     const isCurrentStatus = ['hp_', 'st_'].some(key => model.doc.resolve(`pPlayerStatus_/p/${key}/this->value_`)?.offset === change.field.offset);
     payloads.set(change.field.offset, payloadFor(model.doc, isCurrentStatus ? { ...change.field, max: undefined } : change.field, change.after));
+  }
+  // CTimer carries fractional ticks into second_. A newly chosen whole-second
+  // duration starts with no remainder; wholeframe_ is an independent counter.
+  if (['hour_', 'minute_', 'second_'].some(key => {
+    const node = model.doc.resolve(`playTime_/${key}`);
+    return node && changedLeaves.has(node.offset);
+  })) {
+    const fraction = model.doc.resolve('playTime_/frame_');
+    if (fraction && !changedLeaves.has(fraction.offset)) payloads.set(fraction.offset, encodeSigned(0n, fraction.size));
   }
   if (idSeed) payloads.set(idSeed.offset, idSeed.payload);
   if (livestock.seed !== seed) { if (!seedNode) throw new Error('存档缺少唯一 ID 生成器。'); payloads.set(seedNode.offset, encodeSigned(livestock.seed, seedNode.size)); }
