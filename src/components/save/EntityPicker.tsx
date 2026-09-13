@@ -4,6 +4,14 @@ import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 
+// Native 0x1401653C0 / 0x14014890E: categories 34–39 unlock appearance,
+// then return before inserting into the inventory. Keep the name/icon catalog intact.
+const APPEARANCE_CATEGORIES = new Set([
+  'ITEM_CATEGORY_FRONT_HAIRSTYLE', 'ITEM_CATEGORY_BACK_HAIRSTYLE',
+  'ITEM_CATEGORY_CLOTHES', 'ITEM_CATEGORY_COLLAR',
+  'ITEM_CATEGORY_ORNAMENTS', 'ITEM_CATEGORY_BAG',
+]);
+
 export default function EntityPicker({ names, kind, value, onChange, allowedIds, label = '选择物品' }: {
   names: SaveNameTables; kind: LookupKind; value: string;
   onChange: (id: string) => void; allowedIds?: ReadonlySet<string>; label?: string;
@@ -14,7 +22,9 @@ export default function EntityPicker({ names, kind, value, onChange, allowedIds,
   const root = useRef<HTMLUListElement>(null);
   const sentinel = useRef<HTMLLIElement>(null);
   const deferred = useDeferredValue(query);
-  const indexed = useMemo(() => Object.entries(names.names?.[kind] ?? {}).map(([id, name]) => ({ id, name, searchText: buildSaveSearchText(name, id) })), [names, kind]);
+  const indexed = useMemo(() => Object.entries(names.names?.[kind] ?? {})
+    .filter(([id]) => kind !== 'items' || !APPEARANCE_CATEGORIES.has(names.itemCategories?.[id] ?? ''))
+    .map(([id, name]) => ({ id, name, searchText: buildSaveSearchText(name, id) })), [names, kind]);
   const matches = useMemo(() => indexed
     .filter(({ id, searchText }) => (!allowedIds || allowedIds.has(id))
       && (!category || names.itemCategories?.[id] === category)
@@ -32,7 +42,7 @@ export default function EntityPicker({ names, kind, value, onChange, allowedIds,
   return <div className={`save-slot-picker${kind !== 'items' ? ' compact' : ''}`} role="group" aria-label={label}>
     {kind === 'items' && <select aria-label="物品分类" value={category} onChange={event => setCategory(event.target.value)}>
       <option value="">全部分类</option>
-      {Object.entries(names.categories ?? {}).map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+      {Object.entries(names.categories ?? {}).filter(([id]) => !APPEARANCE_CATEGORIES.has(id)).map(([id, name]) => <option key={id} value={id}>{name}</option>)}
     </select>}
     <input autoFocus className="save-slot-search" aria-label={`搜索${label}`} placeholder="名称、拼音、首字母或 ID" value={query} onChange={event => setQuery(event.target.value)} />
     <ul className="save-slot-options" ref={root}>
