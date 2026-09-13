@@ -30,6 +30,7 @@ import {
   uid,
 } from "../../domain/workflowEditor";
 import { simulatePlan } from "../../domain/workflow/simulate";
+import { layoutWorkflow, traceSelection } from "../../domain/workflow/layout";
 import {
   getWorkflowAssistance,
   applyWorkflowAssistance,
@@ -627,6 +628,10 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const target = plan.nodes.find((n) => n.id === id);
     if (target) frameSelection([target], true);
   };
+  const traced = useMemo(
+    () => traceSelection(plan, selected),
+    [plan.nodes, plan.edges, selected],
+  );
   const nodes: FlowNode[] = useMemo(
     () =>
       plan.nodes.map((stored) => {
@@ -667,6 +672,11 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           type: "operation",
           position: n.position,
           selected: selected.includes(n.id),
+          className: traced.active
+            ? traced.nodes.has(n.id)
+              ? "wf-chain-related"
+              : "wf-chain-muted"
+            : "",
           data: {
             node: n,
             onAdd: (nodeId, side) => setAddMenu({ nodeId, side }),
@@ -706,7 +716,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           },
         };
       }),
-    [plan.nodes, entities, result, day, selected, byId],
+    [plan.nodes, entities, result, day, selected, byId, traced],
   );
   const edges = useMemo(
     () =>
@@ -714,7 +724,20 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         ...e,
         selected: selectedEdges.includes(e.id),
         type: "workflow",
-        data: { onInsert: (edgeId: string) => setAddMenu({ edgeId }) },
+        className: traced.active
+          ? traced.edges.has(e.id)
+            ? "wf-chain-related"
+            : "wf-chain-muted"
+          : "",
+        zIndex: traced.active && traced.edges.has(e.id) ? 1 : 0,
+        data: {
+          focus: traced.active
+            ? traced.edges.has(e.id)
+              ? "related"
+              : "muted"
+            : "",
+          onInsert: (edgeId: string) => setAddMenu({ edgeId }),
+        },
         label:
           (result.intent?.edgeTransfers[e.id]
             ?.map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
@@ -728,60 +751,35 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         labelBgBorderRadius: 5,
         style: { stroke: "var(--wf-edge)", strokeWidth: 1.7 },
       })),
-    [plan.edges, selectedEdges, result, byId],
+    [plan.edges, selectedEdges, result, byId, traced],
   );
   const arrange = () => {
-    const incoming = new Map(
-      plan.nodes.map((n) => [
-        n.id,
-        plan.edges.filter((e) => e.target === n.id).map((e) => e.source),
-      ]),
+    const bounds = canvas.current?.getBoundingClientRect();
+    const sizes = new Map(
+      plan.nodes.map((n) => {
+        const measured = flow.current?.getNode(n.id)?.measured;
+        return [
+          n.id,
+          { width: measured?.width ?? 264, height: measured?.height ?? 260 },
+        ] as const;
+      }),
     );
-    const depth = new Map<string, number>();
-    const pending = new Set(plan.nodes.map((n) => n.id));
-    while (pending.size) {
-      let advanced = false;
-      for (const id of pending) {
-        const parents = incoming.get(id) ?? [];
-        if (parents.some((p) => pending.has(p))) continue;
-        depth.set(
-          id,
-          parents.length
-            ? Math.max(...parents.map((p) => (depth.get(p) ?? 0) + 1))
-            : 0,
-        );
-        pending.delete(id);
-        advanced = true;
-      }
-      if (!advanced) break;
-    }
-    const connected = new Set(plan.edges.flatMap((e) => [e.source, e.target]));
-    const rows = new Map<number, number>();
-    const positions = new Map<string, { x: number; y: number }>();
-    for (const n of plan.nodes.filter((n) => connected.has(n.id))) {
-      const col = depth.get(n.id) ?? 0,
-        row = rows.get(col) ?? 0;
-      rows.set(col, row + 1);
-      positions.set(n.id, { x: 100 + col * 360, y: 80 + row * 250 });
-    }
-    const base = connected.size ? Math.max(...rows.values()) * 250 + 140 : 80;
-    plan.nodes
-      .filter((n) => !connected.has(n.id))
-      .forEach((n, i) =>
-        positions.set(n.id, {
-          x: 100 + (i % 3) * 320,
-          y: base + Math.floor(i / 3) * 230,
-        }),
-      );
+    const arranged = layoutWorkflow(
+      plan,
+      sizes,
+      bounds ? bounds.width / bounds.height : 1.6,
+    );
     change({
       ...plan,
-      nodes: plan.nodes.map((n) => ({ ...n, position: positions.get(n.id)! })),
+      nodes: arranged.nodes,
     });
     setTimeout(
       () => flow.current?.fitView({ padding: 0.18, maxZoom: 1, duration: 250 }),
       100,
     );
-    setNotice("已按连线顺序整理节点，可撤销恢复原位置。");
+    setNotice(
+      `已将 ${arranged.groupCount} 组独立流程分别整理并紧凑排布，可撤销恢复原位置。`,
+    );
   };
   const download = () => {
     const blob = new Blob([JSON.stringify(plan, null, 2)], {
@@ -1492,7 +1490,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             <button
               className="wf-icon-button"
               aria-label="整理节点布局"
-              title="按连线顺序整理布局（可撤销）"
+              title="按独立流程分组整理布局（可撤销）"
               onClick={arrange}
             >
               <WorkflowIcon name="layout" size={17} />
@@ -1508,6 +1506,21 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           {selected.length > 0 && (
             <>
               <span>已选 {selected.length}</span>
+              <button
+                aria-label="聚焦所选链路"
+                title="放大查看选中节点的完整上下游"
+                onClick={() =>
+                  frameSelection(
+                    plan.nodes.filter((n) => traced.nodes.has(n.id)),
+                    !!(inspectorOpen && current) ||
+                      ["resources", "connections", "help"].includes(
+                        panel ?? "",
+                      ),
+                  )
+                }
+              >
+                <WorkflowIcon name="fit" size={16} /> 聚焦链路
+              </button>
               <button
                 className="wf-icon-button"
                 aria-label="复制选中节点"

@@ -19,7 +19,7 @@ export default function WorkflowEdge(props: EdgeProps) {
       />
       <EdgeLabelRenderer>
         <div
-          className="wf-edge-middle nodrag nopan"
+          className={`wf-edge-middle nodrag nopan ${props.data?.focus ? `wf-chain-${props.data.focus}` : ""}`}
           style={{
             transform: `translate(-50%, -50%) translate(${x}px,${y}px)`,
           }}

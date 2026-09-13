@@ -1598,6 +1598,37 @@ body .wf-app .wf-property-content details {
   color: var(--ink);
   font-size: 11px;
 }
+.wf-app .react-flow__node.wf-chain-muted {
+  opacity: 0.3;
+}
+.wf-app .react-flow__node.wf-chain-related .wf-node {
+  border-color: var(--green);
+}
+.wf-app .react-flow__edge.wf-chain-muted {
+  opacity: 0.16;
+}
+.wf-app .react-flow__edge.wf-chain-related .react-flow__edge-path {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+.wf-edge-middle.wf-chain-muted {
+  opacity: 0.16;
+}
+.wf-edge-middle.wf-chain-muted > span {
+  visibility: hidden;
+}
+.wf-edge-middle.wf-chain-muted:hover {
+  opacity: 1;
+}
+.wf-edge-middle.wf-chain-muted:hover > span {
+  visibility: visible;
+}
+.wf-edge-middle.wf-chain-related {
+  z-index: 1;
+}
+.wf-edge-middle.wf-chain-related > span {
+  border-color: var(--green);
+}
 .wf-edge-middle > span {
   position: absolute;
   bottom: 26px;
