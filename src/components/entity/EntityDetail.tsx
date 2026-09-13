@@ -26,9 +26,9 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
     {machines&&<section><h2>{machines.label}</h2><div className="relation-list">{machines.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></section>}
     {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{model.processingPlans.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
-      <h3>方案 {index + 1} · {Number(plan.entity.duration_minutes)} 分钟</h3>
+      <div className="plan-heading"><h3>方案 {index + 1}</h3><span>{Number(plan.entity.duration_minutes)} 分钟</span></div>
       {plan.profit && <div className="profit-grid"><span>原料直接售价<strong>{plan.profit.inputCost}</strong></span><span>产出价值<strong>{plan.profit.outputValue}</strong></span><span>加工增值<strong>{plan.profit.net}</strong></span><span>每日加工增值<strong>{plan.profit.perDay}</strong></span></div>}
-      {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)&&(group.key!=='machines'||machineIds(group.rows)!==sharedMachines)).map((group) => <div key={group.key}><h4>{group.key==='machines'?'本方案适用机械':group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></div>)}
+      {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)&&(group.key!=='machines'||machineIds(group.rows)!==sharedMachines)).map((group) => <div key={group.key}><h4>{group.key==='machines'?'本方案适用机械':group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} compact />)}</div></div>)}
     </div>)}</section>}
 
     {profit && <section><h2>{entity.kind === 'processes' ? '加工增值' : '种植收益'}</h2><div className="profit-grid">
@@ -58,6 +58,25 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
       .relation-row .relation-note{grid-column:1/-1;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.65;margin-top:.3rem;padding-top:.5rem;border-top:1px solid var(--border)}
       .entity-detail details{margin-top:2rem;padding:1rem;border:1px dashed var(--border);border-radius:10px}code{font-size:.78rem}
       @media(max-width:620px){.relation-row{grid-template-columns:1fr auto}.relation-row.has-icon{grid-template-columns:48px 1fr auto}.relation-row img{width:48px;height:48px}.relation-values{grid-column:1/-1;text-align:left}.relation-row.has-icon .relation-values,.relation-row.has-icon .relation-chips{grid-column:2/-1}.relation-row.no-icon .relation-chips{grid-column:1/-1}}
+      .entity-detail .processing-plan{container-type:inline-size;padding:.8rem 1rem}
+      .processing-plan .plan-heading{display:flex;align-items:center;justify-content:space-between;gap:.7rem;margin-bottom:.5rem}
+      .processing-plan .plan-heading h3{font-size:1rem;margin:0}.processing-plan .plan-heading>span{font-size:.75rem;color:var(--muted);white-space:nowrap}
+      .processing-plan .profit-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;background:var(--paper-deep);border-radius:8px;padding:.25rem}
+      .processing-plan .profit-grid>span{padding:.4rem .5rem;border:0;border-radius:0;font-size:.75rem;gap:.2rem;min-width:0;overflow-wrap:anywhere}
+      .processing-plan .profit-grid strong{font-size:1.05rem}
+      .entity-detail .processing-plan h4{font-size:.78rem;margin:.7rem 0 .25rem;color:var(--muted)}
+      .processing-plan .relation-list{gap:0}
+      .processing-plan .relation-row{grid-template-columns:minmax(0,1fr) auto minmax(70px,auto);border:0;border-bottom:1px solid var(--border);border-radius:0;padding:.4rem 0;background:transparent;gap:.2rem .5rem;font-size:.8rem}
+      .processing-plan .relation-row:last-child{border-bottom:0}
+      .processing-plan .relation-row.has-icon{grid-template-columns:32px minmax(0,1fr) auto minmax(70px,auto)}
+      .processing-plan .relation-row img{width:32px;height:32px}
+      .processing-plan .relation-row .relation-name{min-width:0;overflow-wrap:anywhere}
+      .processing-plan .relation-row .relation-name small{font-size:.67rem}
+      .processing-plan .relation-row .relation-values{grid-column:-2/-1;grid-row:1;text-align:right;font-size:.72rem}
+      .processing-plan .relation-row .relation-quantity{grid-column:-3/-2;grid-row:1}
+      .processing-plan .relation-row .relation-chips{grid-column:1/-1;font-size:.7rem}
+      .processing-plan .relation-row .relation-note{font-size:.72rem;padding-top:.25rem;margin-top:0}
+      @container(max-width:520px){.processing-plan .profit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     `}</style>
   </article>;
 }

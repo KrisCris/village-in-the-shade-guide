@@ -8,8 +8,9 @@ function isModifiedClick(event: MouseEvent) {
   return event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
 }
 
-export default function RelationRow({ row, onOpen }: { row: RelationRowModel; onOpen?: (entity: Entity) => void }) {
+export default function RelationRow({ row, onOpen, compact=false }: { row: RelationRowModel; onOpen?: (entity: Entity) => void; compact?:boolean }) {
   const [hasIcon, setHasIcon] = useState(Boolean(row.entity.icon_path));
+  const chips=compact?row.chips.filter(chip=>chip!=='加工原料'):row.chips;
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!onOpen || isModifiedClick(event)) return;
     event.preventDefault();
@@ -20,7 +21,7 @@ export default function RelationRow({ row, onOpen }: { row: RelationRowModel; on
     <span className="relation-name"><strong>{row.entity.name.zh_hans}</strong><small>{row.entity.name.ja || row.entity.id}</small></span>
     {row.quantity != null && <b className="relation-quantity">×{row.quantity}</b>}
     <span className="relation-values">{row.buyPrice && <small>{row.buyLabel ?? '买入'} {row.buyPrice}</small>}{row.sellPrice && <small>{row.sellLabel ?? '卖出'} {row.sellPrice}</small>}</span>
-    {row.chips.length > 0 && <span className="relation-chips">{row.chips.map((chip) => <small key={chip}>{chip}</small>)}</span>}
+    {chips.length > 0 && <span className="relation-chips">{chips.map((chip) => <small key={chip}>{chip}</small>)}</span>}
     {row.note && <small className="relation-note">{row.note}</small>}
   </a>;
 }
