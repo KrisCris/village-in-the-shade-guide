@@ -12,6 +12,7 @@ export type CardData = {
   progress?: string;
   projection?: NodeProjection;
   problems: number;
+  onAdd?: (id: string, side: "input" | "output") => void;
 };
 export type FlowNode = Node<CardData, "operation">;
 export default memo(function WorkflowCard({
@@ -22,7 +23,15 @@ export default memo(function WorkflowCard({
   return (
     <div className={`wf-node kind-${n.kind} ${selected ? "selected" : ""}`}>
       {!["purchase", "inventory"].includes(n.kind) && (
-        <Handle type="target" position={Position.Left} aria-label="连接输入" />
+        <Handle
+          type="target"
+          position={Position.Left}
+          aria-label="连接输入"
+          onClick={(e) => {
+            e.stopPropagation();
+            data.onAdd?.(n.id, "input");
+          }}
+        />
       )}
       <div className="wf-node-top">
         <span>
@@ -81,7 +90,39 @@ export default memo(function WorkflowCard({
         </div>
       )}
       {!["reserve", "delivery", "consume", "sale"].includes(n.kind) && (
-        <Handle type="source" position={Position.Right} aria-label="连接产物" />
+        <Handle
+          type="source"
+          position={Position.Right}
+          aria-label="连接产物"
+          onClick={(e) => {
+            e.stopPropagation();
+            data.onAdd?.(n.id, "output");
+          }}
+        />
+      )}
+      {!["purchase", "inventory"].includes(n.kind) && (
+        <button
+          className="wf-node-add input nodrag nopan"
+          aria-label="添加前置节点"
+          onClick={(e) => {
+            e.stopPropagation();
+            data.onAdd?.(n.id, "input");
+          }}
+        >
+          <WorkflowIcon name="plus" size={14} />
+        </button>
+      )}
+      {!["reserve", "delivery", "consume", "sale"].includes(n.kind) && (
+        <button
+          className="wf-node-add output nodrag nopan"
+          aria-label="添加后续节点"
+          onClick={(e) => {
+            e.stopPropagation();
+            data.onAdd?.(n.id, "output");
+          }}
+        >
+          <WorkflowIcon name="plus" size={14} />
+        </button>
       )}
     </div>
   );

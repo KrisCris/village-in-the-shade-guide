@@ -33,6 +33,9 @@ export type WorkflowNode = {
   requirements?: Amount[];
   sourceId?: string;
   remainingDays?: number;
+  needsConfirmation?: boolean;
+  seasonProtection?: boolean;
+  farmlandSelection?: {shapeId:string;cells:string[]};
 };
 export type WorkflowEdge = { id: string; source: string; target: string };
 export type PlotResource = { id: string; label: string; capacity: number };

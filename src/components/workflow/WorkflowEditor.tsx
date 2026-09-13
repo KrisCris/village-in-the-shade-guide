@@ -30,14 +30,18 @@ import {
   uid,
 } from "../../domain/workflowEditor";
 import { simulatePlan } from "../../domain/workflow/simulate";
-import { getWorkflowAssistance, applyWorkflowAssistance, updateWorkflowNode } from "../../domain/workflow/assistance";
+import {
+  getWorkflowAssistance,
+  applyWorkflowAssistance,
+  updateWorkflowNode,
+} from "../../domain/workflow/assistance";
 import { canConnect } from "../../domain/workflow/graph";
 import {
   canConnectDraft,
   resolveIntent,
   autoAmount,
 } from "../../domain/workflow/intent";
-import { formatDay, seasonAt } from "../../domain/workflow/date";
+import { formatDay } from "../../domain/workflow/date";
 import { withBase } from "../../lib/sitePath";
 import NodeInspector from "./NodeInspector";
 import PlanResources from "./PlanResources";
@@ -47,6 +51,11 @@ import WorkflowTimeline from "./WorkflowTimeline";
 import WorkflowIcon from "./WorkflowIcon";
 import WorkflowPanel from "./WorkflowPanel";
 import { EntityPicker } from "./fields";
+import {
+  addConnectedNode,
+  prepareDemand,
+  type AddAnchor,
+} from "../../domain/workflow/editing";
 
 const STORAGE = "village-production-plan-v1";
 function load(entities: Entity[]) {
@@ -347,14 +356,53 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     });
     setNotice("连线已添加，结果已更新。");
   };
-  const visiblePosition = () => {
+  const visiblePosition = (occupied = plan.nodes) => {
     const rect = canvas.current?.getBoundingClientRect();
-    return rect && flow.current
-      ? flow.current.screenToFlowPosition({
-          x: rect.left + rect.width * 0.43,
-          y: rect.top + rect.height * 0.35,
-        })
-      : { x: 80, y: 80 };
+    const instance = flow.current;
+    if (!rect || !instance) return { x: 80, y: 80 };
+    const scale = instance.getZoom(),
+      w = 280 * scale,
+      h = 260 * scale;
+    const left = rect.left + 80,
+      top = rect.top + 25;
+    const right = Math.max(
+      left,
+      rect.right - (window.innerWidth > 800 ? panelWidth + 40 : 30) - w,
+    );
+    const bottom = Math.max(top, rect.bottom - 70 - h);
+    const candidates: Array<{ x: number; y: number; score: number }> = [];
+    for (let y = top; y <= bottom + 1; y += Math.max(50, h / 2))
+      for (let x = left; x <= right + 1; x += Math.max(50, w / 2)) {
+        const position = instance.screenToFlowPosition({ x, y });
+        const overlaps = occupied.reduce(
+          (s, n) =>
+            s +
+            Math.max(
+              0,
+              Math.min(position.x + 280, n.position.x + 280) -
+                Math.max(position.x, n.position.x),
+            ) *
+              Math.max(
+                0,
+                Math.min(
+                  position.y + 260,
+                  n.position.y +
+                    (instance.getNode(n.id)?.measured?.height ?? 260),
+                ) - Math.max(position.y, n.position.y),
+              ),
+          0,
+        );
+        candidates.push({
+          ...position,
+          score:
+            overlaps * 10000 +
+            Math.hypot(x - (left + right) / 2, y - (top + bottom) / 2),
+        });
+      }
+    const best = candidates.sort((a, b) => a.score - b.score)[0];
+    return best
+      ? { x: best.x, y: best.y }
+      : instance.screenToFlowPosition({ x: left, y: top });
   };
   const frameSelection = (targets: WorkflowNode[], reservePanel = false) => {
     const element = canvas.current,
@@ -401,19 +449,6 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   };
   const add = (kind: NodeKind, droppedPosition?: { x: number; y: number }) => {
     const position = droppedPosition ?? visiblePosition();
-    if (!droppedPosition) {
-      for (let i = 0; i < plan.nodes.length; i++) {
-        if (
-          !plan.nodes.some(
-            (n) =>
-              Math.abs(n.position.x - position.x) < 280 &&
-              Math.abs(n.position.y - position.y) < 220,
-          )
-        )
-          break;
-        position.y += 240;
-      }
-    }
     if (plan.nodes.length >= 200) {
       setNotice("每份计划最多 200 个节点。");
       return;
@@ -421,9 +456,55 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const n = { ...newNode(kind, day, plan.nodes.length), position };
     change({ ...plan, nodes: [...plan.nodes, n] });
     setSelected([n.id]);
-    setTimeout(() => frameSelection([n], true), 100);
     setInspectorOpen(true);
     setPanel(null);
+  };
+  const [addMenu, setAddMenu] = useState<AddAnchor | null>(null);
+  const insertNode = (kind: NodeKind) => {
+    if (!addMenu) return;
+    try {
+      const added = addConnectedNode(
+        plan,
+        entities,
+        kind,
+        visiblePosition(),
+        addMenu,
+      );
+      change(added.plan);
+      setSelected([added.addedId]);
+      setInspectorOpen(true);
+      setPanel(null);
+      setAddMenu(null);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "无法新增节点");
+    }
+  };
+  const prepare = () => {
+    if (!current) return;
+    try {
+      const prepared = prepareDemand(
+        plan,
+        entities,
+        current.id,
+        result,
+        visiblePosition(),
+      );
+      const occupied = [...plan.nodes];
+      prepared.plan.nodes = prepared.plan.nodes.map((n) => {
+        if (plan.nodes.some((old) => old.id === n.id)) return n;
+        const placed = { ...n, position: visiblePosition(occupied) };
+        occupied.push(placed);
+        return placed;
+      });
+      change(prepared.plan);
+      setNotice(
+        prepared.unresolved.length
+          ? `已生成可推算的前置流程；${[...new Set(prepared.unresolved)].join("、")} 仍需确认来源，尚未计入可交付数量。`
+          : "已按剩余缺口生成前置流程，可一次撤销。",
+      );
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "无法准备前置流程");
+    }
   };
   const linkDemands = (
     nodes: WorkflowNode[],
@@ -473,25 +554,24 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     if (!seedId || !itemId) return;
     const quantity = 100;
     const origin = visiblePosition();
-    const y = Math.min(origin.y, ...plan.nodes.map((n) => n.position.y - 290));
     const buy = {
       ...newNode("purchase", day),
       label: `购买${byId.get(seedId)?.name.zh_hans ?? "种子"}`,
       itemId: seedId,
       quantity,
-      position: { x: origin.x - 330, y },
+      position: origin,
     };
     const plant = {
       ...newNode("plant", day),
       label: `种植${crop.name.zh_hans}`,
       cropId: crop.id,
       quantity,
-      position: { x: origin.x, y },
+      position: visiblePosition([...plan.nodes, buy]),
     };
     const sale = {
       ...newNode("sale", day),
       label: "出售产物",
-      position: { x: origin.x + 330, y },
+      position: visiblePosition([...plan.nodes, buy, plant]),
     };
     const nodes = [...plan.nodes, buy, plant, sale],
       edges = [
@@ -512,7 +592,6 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     setNotice("");
     setPanel(null);
     setInspectorOpen(true);
-    setTimeout(() => frameSelection([buy, plant, sale], true), 100);
   };
   const onNodesChange = useCallback((changes: NodeChange<FlowNode>[]) => {
     const selection = changes.filter((c) => c.type === "select");
@@ -574,7 +653,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             (n.requirements && n.requirements.length > 3
               ? ` 等 ${n.requirements.length} 项`
               : "")
-          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "连接后自动识别")} · ${projection?.quantity ? `${projection.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}` : autoAmount(n) ? "跟随上游" : `${n.quantity} 个`}`;
+          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "连接后自动识别")} · ${projection?.quantity ? `${n.kind === "plant" ? projection.land : projection.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}` : autoAmount(n) ? "跟随上游" : `${n.quantity} 个`}`;
         const completed = result.demandProgress[n.id]
           ? (result.days.find((d) => d.day === day)?.stock ?? []).filter(
               (s) => s.nodeId === n.id && s.reserved,
@@ -590,6 +669,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           selected: selected.includes(n.id),
           data: {
             node: n,
+            onAdd: (nodeId, side) => setAddMenu({ nodeId, side }),
             projection,
             subtitle,
             icon: icon ? withBase(icon) : undefined,
@@ -633,7 +713,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       plan.edges.map((e) => ({
         ...e,
         selected: selectedEdges.includes(e.id),
-        type: "smoothstep",
+        type: "workflow",
+        data: { onInsert: (edgeId: string) => setAddMenu({ edgeId }) },
         label:
           (result.intent?.edgeTransfers[e.id]
             ?.map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
@@ -641,7 +722,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           (result.intent?.edgeSchedule[e.id]?.length
             ? ` · ${formatDay(result.intent.edgeSchedule[e.id][0].day)}${result.intent.edgeSchedule[e.id].at(-1)!.day !== result.intent.edgeSchedule[e.id][0].day ? " 起" : ""}`
             : ""),
-        labelStyle: { fill: "var(--ink-muted)", fontSize: 11 },
+        labelStyle: { fill: "var(--ink)", fontSize: 11 },
         labelBgStyle: { fill: "var(--paper-raised)", fillOpacity: 0.95 },
         labelBgPadding: [6, 4] as [number, number],
         labelBgBorderRadius: 5,
@@ -722,21 +803,37 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     [computationKey, entities],
   );
   const advice = useMemo(
-    () => current ? getWorkflowAssistance(plan, entities, current.id, result) : undefined,
+    () =>
+      current
+        ? getWorkflowAssistance(plan, entities, current.id, result)
+        : undefined,
     [computationKey, current?.id, entities, result],
   );
   const assist = (key: string) => {
     if (!current) return;
     try {
-      const applied = applyWorkflowAssistance(plan, entities, current.id, key, result);
+      const applied = applyWorkflowAssistance(
+        plan,
+        entities,
+        current.id,
+        key,
+        result,
+      );
+      const occupied = [...plan.nodes];
+      applied.plan.nodes = applied.plan.nodes.map((n) => {
+        if (plan.nodes.some((old) => old.id === n.id)) return n;
+        const placed = { ...n, position: visiblePosition(occupied) };
+        occupied.push(placed);
+        return placed;
+      });
       change(applied.plan);
       setSelected([applied.focusId]);
       setInspectorOpen(true);
       setNotice(applied.message);
-      const affected = applied.plan.nodes.filter(n => n.id === applied.focusId || !plan.nodes.some(old => old.id === n.id));
-      setTimeout(() => frameSelection(affected, true), 100);
     } catch (error) {
-      setNotice(error instanceof Error ? error.message : "暂时不能执行这项操作。");
+      setNotice(
+        error instanceof Error ? error.message : "暂时不能执行这项操作。",
+      );
     }
   };
   const comparison = useMemo(() => {
@@ -779,8 +876,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     (e) =>
       e.kind === "crops" &&
       Number(e.growth_days) > 0 &&
-      Number(e.harvest_quantity) > 0 &&
-      ((e.seasons ?? []) as string[]).includes(seasonAt(day)),
+      Number(e.harvest_quantity) > 0,
   );
   return (
     <div
@@ -790,6 +886,50 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       onKeyDown={keyboard}
       aria-label="农场工作流编辑器"
     >
+      {addMenu && (
+        <div
+          className="wf-add-menu wf-floating"
+          role="dialog"
+          aria-label="连接新节点"
+          onKeyDown={(e) => {
+            e.stopPropagation();
+            if (e.key === "Escape") setAddMenu(null);
+          }}
+        >
+          <div className="wf-floating-header">
+            <strong>
+              {addMenu.edgeId
+                ? "插入流程节点"
+                : addMenu.side === "input"
+                  ? "添加前置节点"
+                  : "添加后续节点"}
+            </strong>
+            <button aria-label="关闭新增菜单" onClick={() => setAddMenu(null)}>
+              <WorkflowIcon name="close" />
+            </button>
+          </div>
+          <p>添加后自动连接，物品和日期沿流程推算。</p>
+          <div>
+            {(Object.keys(nodeLabels) as NodeKind[])
+              .filter((kind) =>
+                addMenu.edgeId
+                  ? ["plant", "process"].includes(kind)
+                  : addMenu.side === "input"
+                    ? !["sale", "consume", "delivery", "reserve"].includes(kind)
+                    : !["purchase", "inventory"].includes(kind),
+              )
+              .map((kind) => (
+                <button key={kind} onClick={() => insertNode(kind)}>
+                  <WorkflowIcon name={kind} />
+                  <span>
+                    {nodeLabels[kind]}
+                    <small>{descriptions[kind]}</small>
+                  </span>
+                </button>
+              ))}
+          </div>
+        </div>
+      )}
       <header className="wf-heading">
         <div className="wf-identity">
           <span className="wf-brand-mark">
@@ -1204,7 +1344,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   <ul>
                     {plan.edges.map((e) => (
                       <li key={e.id}>
-                        {inference.nodes.find((n) => n.id === e.source)?.label} →{" "}
+                        {inference.nodes.find((n) => n.id === e.source)?.label}{" "}
+                        →{" "}
                         {inference.nodes.find((n) => n.id === e.target)?.label}
                         {!!result.intent?.edgeSchedule[e.id]?.length && (
                           <details>
@@ -1282,6 +1423,9 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                 <NodeInspector
                   key={current.id}
                   node={current}
+                  result={result}
+                  selectedDay={day}
+                  onPrepare={prepare}
                   resolved={inference.nodes.find((n) => n.id === current.id)}
                   projection={result.intent?.nodes[current.id]}
                   choices={inference.choices[current.id]}
@@ -1293,7 +1437,9 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   onChange={(n) =>
                     change({
                       ...plan,
-                      nodes: plan.nodes.map((v) => (v.id === n.id ? updateWorkflowNode(v, n, entities) : v)),
+                      nodes: plan.nodes.map((v) =>
+                        v.id === n.id ? updateWorkflowNode(v, n, entities) : v,
+                      ),
                     })
                   }
                   onDelete={() => remove([current.id])}

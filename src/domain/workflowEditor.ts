@@ -148,6 +148,9 @@ const node = z.object({
   requirements: z.array(amount).max(100).optional(),
   sourceId: id.optional(),
   remainingDays: z.number().int().min(0).max(112).optional(),
+  needsConfirmation: z.boolean().optional(),
+  seasonProtection: z.boolean().optional(),
+  farmlandSelection: z.object({shapeId:z.string().max(150),cells:z.array(z.string().regex(/^\d+,\d+$/)).max(10000)}).optional(),
 });
 const schema = z.object({
   version: z.literal(1),

@@ -1,0 +1,43 @@
+import {
+  BaseEdge,
+  EdgeLabelRenderer,
+  getSmoothStepPath,
+  type EdgeProps,
+} from "@xyflow/react";
+import WorkflowIcon from "./WorkflowIcon";
+export default function WorkflowEdge(props: EdgeProps) {
+  const [path, x, y] = getSmoothStepPath(props);
+  const onInsert = props.data?.onInsert as
+    ((id: string, position: { x: number; y: number }) => void) | undefined;
+  return (
+    <>
+      <BaseEdge
+        id={props.id}
+        path={path}
+        style={props.style}
+        interactionWidth={28}
+      />
+      <EdgeLabelRenderer>
+        <div
+          className="wf-edge-middle nodrag nopan"
+          style={{
+            transform: `translate(-50%, -50%) translate(${x}px,${y}px)`,
+          }}
+        >
+          <span>{props.label}</span>
+          <button
+            type="button"
+            aria-label="在连线中插入节点"
+            title="插入节点并自动连接"
+            onClick={(e) => {
+              e.stopPropagation();
+              onInsert?.(props.id, { x, y });
+            }}
+          >
+            <WorkflowIcon name="plus" size={14} />
+          </button>
+        </div>
+      </EdgeLabelRenderer>
+    </>
+  );
+}

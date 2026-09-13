@@ -3,6 +3,12 @@ import { withBase } from "../../lib/sitePath";
 import WorkflowIcon from "./WorkflowIcon";
 import type { Entity } from "../../data/types";
 import { normalizeSearch } from "../../data/clientSearch";
+import {
+  selectableEntity,
+  categoryKey,
+  categoryLabel,
+  seasonNames,
+} from "../../domain/workflow/catalog";
 
 export function NumberField({
   label,
@@ -113,6 +119,23 @@ export function EntityPicker({
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const [category, setCategory] = useState("");
+  const [season, setSeason] = useState("");
+  const [visibleCount, setVisibleCount] = useState(60);
+  const choices = useMemo(() => entities.filter(selectableEntity), [entities]);
+  const categories = useMemo(
+    () => [
+      ...new Map(
+        choices.map((e) => [categoryKey(e), categoryLabel(e)]),
+      ).entries(),
+    ],
+    [choices],
+  );
+  const hasCrops = choices.some(
+    (e) =>
+      (!category || categoryKey(e) === category) &&
+      ((e.seasons ?? []) as string[]).length > 0,
+  );
   const dialog = useRef<HTMLDialogElement>(null),
     input = useRef<HTMLInputElement>(null),
     trigger = useRef<HTMLButtonElement>(null);
@@ -120,13 +143,24 @@ export function EntityPicker({
   const selected = entities.find((e) => e.id === value);
   const matches = useMemo(() => {
     const q = normalizeSearch(query);
-    return entities
-      .filter(
-        (e) =>
-          !q || normalizeSearch(e.searchText || e.name.zh_hans).includes(q),
-      );
-  }, [entities, query]);
-  const options = matches.slice(0, 80);
+    return choices.filter(
+      (e) =>
+        (!category || categoryKey(e) === category) &&
+        (!season || ((e.seasons ?? []) as string[]).includes(season)) &&
+        (!q || normalizeSearch(e.searchText || e.name.zh_hans).includes(q)),
+    );
+  }, [choices, query, category, season]);
+  const options = matches.slice(0, visibleCount);
+  useEffect(() => {
+    setActive(0);
+    setVisibleCount(60);
+  }, [query, category, season]);
+  useEffect(() => {
+    if (open)
+      document
+        .getElementById(`${id}-${active}`)
+        ?.scrollIntoView({ block: "nearest" });
+  }, [active]);
   useEffect(() => {
     if (!open) return;
     const panel = dialog.current;
@@ -158,6 +192,9 @@ export function EntityPicker({
         onClick={() => {
           setOpen(true);
           setQuery("");
+          setCategory("");
+          setSeason("");
+          setVisibleCount(60);
           setActive(0);
         }}
       >
@@ -188,65 +225,119 @@ export function EntityPicker({
           onClick={(e) => {
             if (e.target !== e.currentTarget) return;
             const rect = e.currentTarget.getBoundingClientRect();
-            if (e.clientX < rect.left || e.clientX > rect.right ||
-                e.clientY < rect.top || e.clientY > rect.bottom) setOpen(false);
+            if (
+              e.clientX < rect.left ||
+              e.clientX > rect.right ||
+              e.clientY < rect.top ||
+              e.clientY > rect.bottom
+            )
+              setOpen(false);
           }}
         >
           <header className="wf-picker-heading">
             <div>
-              <h2 id={`${id}-title`}>选择{label === "快速添加的作物" ? "作物" : label}</h2>
+              <h2 id={`${id}-title`}>
+                选择{label === "快速添加的作物" ? "作物" : label}
+              </h2>
               <span>点击一项即可选用，支持名称和拼音搜索</span>
             </div>
-            <button type="button" aria-label="关闭选择面板" onClick={() => setOpen(false)}>
+            <button
+              type="button"
+              aria-label="关闭选择面板"
+              onClick={() => setOpen(false)}
+            >
               <WorkflowIcon name="close" size={20} />
             </button>
           </header>
           <div className="wf-picker-search">
             <WorkflowIcon name="search" size={20} />
-          <input
-            ref={input}
-            role="combobox"
-            aria-label={`搜索${label}`}
-            aria-expanded="true"
-            aria-controls={`${id}-options`}
-            aria-autocomplete="list"
-            aria-activedescendant={
-              options[active] ? `${id}-${active}` : undefined
-            }
-            placeholder="输入名称 / 拼音"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setActive(0);
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") {
-                e.stopPropagation();
-                setOpen(false);
+            <input
+              ref={input}
+              role="combobox"
+              aria-label={`搜索${label}`}
+              aria-expanded="true"
+              aria-controls={`${id}-options`}
+              aria-autocomplete="list"
+              aria-activedescendant={
+                options[active] ? `${id}-${active}` : undefined
               }
-              if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-                e.preventDefault();
-                const next = Math.max(
-                  0,
-                  Math.min(
-                    options.length - 1,
-                    active + (e.key === "ArrowDown" ? 1 : -1),
-                  ),
-                );
-                setActive(next);
-                document
-                  .getElementById(`${id}-${next}`)
-                  ?.scrollIntoView({ block: "nearest" });
-              }
-              if (e.key === "Enter" && options[active]) {
-                e.preventDefault();
-                choose(options[active].id);
-              }
-            }}
-          />
+              placeholder="输入名称 / 拼音"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setActive(0);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  e.stopPropagation();
+                  setOpen(false);
+                }
+                if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+                  e.preventDefault();
+                  const next = Math.max(
+                    0,
+                    Math.min(
+                      matches.length - 1,
+                      active + (e.key === "ArrowDown" ? 1 : -1),
+                    ),
+                  );
+                  setActive(next);
+                  if (next >= visibleCount)
+                    setVisibleCount((count) => count + 60);
+                  document
+                    .getElementById(`${id}-${next}`)
+                    ?.scrollIntoView({ block: "nearest" });
+                }
+                if (e.key === "Enter" && options[active]) {
+                  e.preventDefault();
+                  choose(options[active].id);
+                }
+              }}
+            />
+          </div>
+          <div className="wf-picker-filters">
+            {categories.length > 1 && (
+              <label>
+                类型
+                <select
+                  aria-label="筛选物品类型"
+                  value={category}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                    setSeason("");
+                  }}
+                >
+                  <option value="">全部类型</option>
+                  {categories.map(([key, name]) => (
+                    <option key={key} value={key}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+            {hasCrops && (
+              <label>
+                生长季节
+                <select
+                  aria-label="筛选作物季节"
+                  value={season}
+                  onChange={(e) => setSeason(e.target.value)}
+                >
+                  <option value="">全部季节</option>
+                  {Object.entries(seasonNames).map(([key, name]) => (
+                    <option key={key} value={key}>
+                      {name}季
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
           </div>
           <div className="wf-picker-summary" role="status">
-            <span>{query ? `找到 ${matches.length} 项` : `共 ${entities.length} 项`}</span>
+            <span>
+              共 {matches.length} 项 · 已显示 {options.length} 项
+            </span>
             {selected && <span>当前选择：{selected.name.zh_hans}</span>}
           </div>
           <div
@@ -254,6 +345,11 @@ export function EntityPicker({
             id={`${id}-options`}
             role="listbox"
             aria-label={label}
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              if (el.scrollTop + el.clientHeight >= el.scrollHeight - 140)
+                setVisibleCount((n) => Math.min(matches.length, n + 60));
+            }}
           >
             {options.map((e, i) => (
               <button
@@ -277,14 +373,27 @@ export function EntityPicker({
                 ) : (
                   <WorkflowIcon name="inventory" size={20} />
                 )}
-                <span>{e.name.zh_hans}</span>
+                <span>
+                  {e.name.zh_hans}
+                  <small className="wf-option-type">
+                    {e.kind === "crops"
+                      ? ((e.seasons ?? []) as string[])
+                          .map((s) => seasonNames[s] ?? s)
+                          .join(" / ")
+                      : categoryLabel(e)}
+                  </small>
+                </span>
                 {e.id === value && <WorkflowIcon name="check" size={13} />}
               </button>
             ))}
             {!options.length && <p className="wf-note">没有匹配的项目</p>}
           </div>
           <footer className="wf-picker-footer">
-            <span>{matches.length > 80 ? "显示前 80 项，搜索可查找其余项目" : "↑ ↓ 选择 · Enter 确认"}</span>
+            <span>
+              {options.length < matches.length
+                ? "向下滚动加载更多 · ↑ ↓ 选择 · Enter 确认"
+                : "↑ ↓ 选择 · Enter 确认"}
+            </span>
             <span>Esc 关闭</span>
           </footer>
         </dialog>

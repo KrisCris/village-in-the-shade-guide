@@ -232,6 +232,7 @@ export function simulateIntentPlan(
   }
   for (const n of nodes) {
     for (const message of resolved.notices[n.id]) block(n, message);
+    if(n.needsConfirmation) block(n, '尚未确认取得这些物品；在库存节点确认准备完毕后才计入计划。', 'draft');
     if (
       ["purchase", "inventory", "sale", "consume"].includes(n.kind) &&
       !catalog.has(n.itemId ?? "")
@@ -469,7 +470,7 @@ export function simulateIntentPlan(
       itemId = kind === "plant" ? c!.item : r!.item,
       yieldCount = kind === "plant" ? c!.yield : r!.yield;
     const finishDay = day + duration,
-      lastDay = Math.ceil(day / 28) * 28;
+      lastDay = n.seasonProtection ? Math.max(periodEnd, finishDay) : Math.ceil(day / 28) * 28;
     jobs.push({
       nodeId: n.id,
       kind,
@@ -572,7 +573,7 @@ export function simulateIntentPlan(
         if (day !== plan.startDay) continue;
         const c = crops.get(n.id);
         if (
-          c &&
+          c && !n.seasonProtection &&
           (!c.seasons.includes(seasonAt(day)) ||
             day + n.remainingDays > Math.ceil(day / 28) * 28)
         ) {
@@ -651,12 +652,12 @@ export function simulateIntentPlan(
           continue;
         if (day > Math.min(periodEnd, n.endDay ?? periodEnd)) continue;
         const lastDay = Math.min(
-          Math.ceil(day / 28) * 28,
+          n.seasonProtection ? Infinity : Math.ceil(day / 28) * 28,
           started.has(n.id)
             ? Math.min(periodEnd, n.endDay ?? periodEnd)
             : Infinity,
         );
-        if (!c.seasons.includes(seasonAt(day)) || day + c.growth > lastDay) {
+        if ((!n.seasonProtection && !c.seasons.includes(seasonAt(day))) || day + c.growth > lastDay) {
           if (!started.has(n.id) && c.seeds.some((id) => get(n, id) > 0))
             notice(n, "种植季节不符，或本季已不足以完成首次收获。", "blocked");
           continue;

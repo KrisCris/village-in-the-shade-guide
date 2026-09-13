@@ -1,15 +1,25 @@
 import type { Entity } from "../../data/types";
+import { useMemo } from "react";
 import type {
   WorkflowNode,
   WorkflowPlan,
   NodeProjection,
+  SimulationResult,
 } from "../../domain/workflow/types";
 import { nodeLabels } from "../../domain/workflowEditor";
-import { autoAmount, autoDate, autoLabel } from "../../domain/workflow/intent";
+import {
+  autoAmount,
+  autoDate,
+  autoLabel,
+  resolveIntent,
+} from "../../domain/workflow/intent";
 import type { WorkflowAssistance as Advice } from "../../domain/workflow/assistance";
 import WorkflowAssistance from "./WorkflowAssistance";
 import { formatDay } from "../../domain/workflow/date";
 import { DateField, EntityPicker, NumberField } from "./fields";
+import DemandDetails from "./DemandDetails";
+import FarmlandPicker from "./FarmlandPicker";
+import { withBase } from "../../lib/sitePath";
 
 export default function NodeInspector({
   node,
@@ -23,6 +33,9 @@ export default function NodeInspector({
   onAction,
   onChange,
   onDelete,
+  result,
+  selectedDay,
+  onPrepare,
 }: {
   node: WorkflowNode;
   resolved?: WorkflowNode;
@@ -35,6 +48,9 @@ export default function NodeInspector({
   onAction?: (key: string) => void;
   onChange: (n: WorkflowNode) => void;
   onDelete: () => void;
+  result?: SimulationResult;
+  selectedDay?: number;
+  onPrepare?: () => void;
 }) {
   const patch = (p: Partial<WorkflowNode>) => onChange({ ...node, ...p });
   const demand = ["reserve", "delivery"].includes(node.kind),
@@ -61,9 +77,34 @@ export default function NodeInspector({
     items = entities.filter((e) => e.kind === "items");
   const name = (id: string) =>
     items.find((e) => e.id === id)?.name.zh_hans ?? id;
+  const seasonsByItem = useMemo(() => {
+    const map = new Map<string, string[]>();
+    for (const crop of entities.filter((e) => e.kind === "crops"))
+      for (const id of (crop.harvest_item_ids ?? []) as string[])
+        map.set(id, [
+          ...new Set([
+            ...(map.get(id) ?? []),
+            ...((crop.seasons ?? []) as string[]),
+          ]),
+        ]);
+    return map;
+  }, [entities]);
   const crop = entities.find((e) => e.id === resolved.cropId),
     recipe = entities.find((e) => e.id === resolved.recipeId);
   const inferred = !node[field] && !!resolved[field];
+  const resetProjection = node[field]
+    ? resolveIntent(
+        {
+          ...plan,
+          nodes: plan.nodes.map((n) =>
+            n.id === node.id ? { ...n, [field]: undefined } : n,
+          ),
+        },
+        entities,
+      ).nodes.find((n) => n.id === node.id)
+    : undefined;
+  const canReset =
+    !!resetProjection?.[field] && resetProjection[field] === resolved[field];
   const candidates =
     !root && choices.length
       ? all.filter(
@@ -81,7 +122,25 @@ export default function NodeInspector({
           删除节点
         </button>
       </div>
-      {projection && (
+      {demand && result && onPrepare && (
+        <DemandDetails
+          node={node}
+          result={result}
+          day={selectedDay ?? plan.startDay}
+          entities={entities}
+          onPrepare={onPrepare}
+        />
+      )}
+      {node.needsConfirmation && (
+        <section className="wf-projection draft">
+          <strong>这些物品还未确认取得</strong>
+          <p>准备好后填写实际数量与可用日期，再计入流程。</p>
+          <button onClick={() => patch({ needsConfirmation: false })}>
+            已准备好，计入库存
+          </button>
+        </section>
+      )}
+      {projection && !demand && (
         <div className={`wf-projection ${projection.status}`}>
           <strong>
             {projection.firstDay !== undefined
@@ -94,7 +153,7 @@ export default function NodeInspector({
           {projection.quantity > 0 && (
             <span>
               {node.kind === "plant"
-                ? `播种共 ${projection.quantity} 格 · 收获 ${projection.outputQuantity} 个`
+                ? `占地 ${projection.land} 格 · 累计播种 ${Math.ceil(projection.quantity / Math.max(1, projection.land))} 轮 · 收获 ${projection.outputQuantity} 个`
                 : node.kind === "process"
                   ? `加工 ${projection.quantity} 批 · 产出 ${projection.outputQuantity} 个`
                   : `已安排 ${projection.quantity} 个`}
@@ -105,29 +164,51 @@ export default function NodeInspector({
           ))}
         </div>
       )}
-      {advice && onAction && <WorkflowAssistance key={node.id} advice={advice} onAction={onAction} />}
+      {advice && onAction && (
+        <WorkflowAssistance key={node.id} advice={advice} onAction={onAction} />
+      )}
       <label className="wf-field">
         节点名称
         <input
           value={autoLabel(node) ? resolved.label : node.label}
           maxLength={200}
-          onChange={(e) => patch({ label: e.target.value, labelMode: "manual" })}
+          onChange={(e) =>
+            patch({ label: e.target.value, labelMode: "manual" })
+          }
         />
       </label>
       <div className="wf-auto-hint">
         <span>{autoLabel(node) ? "名称跟随所选物品" : "自定义名称"}</span>
-        {!autoLabel(node) && !demand && <button onClick={() => patch({ label: nodeLabels[node.kind], labelMode: "auto" })}>恢复自动命名</button>}
+        {!autoLabel(node) && !demand && (
+          <button
+            onClick={() =>
+              patch({ label: nodeLabels[node.kind], labelMode: "auto" })
+            }
+          >
+            恢复自动命名
+          </button>
+        )}
       </div>
-      {!root && !demand && node.remainingDays === undefined && (!autoAmount(node) || !autoDate(node)) && (
-        <button className="wf-restore-auto" onClick={() => patch({ amountMode: "auto", dateMode: "auto" })}>
-          恢复自动数量与日期
-        </button>
-      )}
+      {!root &&
+        !demand &&
+        node.remainingDays === undefined &&
+        (!autoAmount(node) || !autoDate(node)) && (
+          <button
+            className="wf-restore-auto"
+            onClick={() => patch({ amountMode: "auto", dateMode: "auto" })}
+          >
+            恢复自动数量与日期
+          </button>
+        )}
       {!demand && (
         <>
           <EntityPicker
             label={label}
-            entities={candidates}
+            entities={candidates.map((e) =>
+              e.kind === "items"
+                ? { ...e, seasons: seasonsByItem.get(e.id) ?? [] }
+                : e,
+            )}
             value={resolved[field]}
             onChange={(id) => patch({ [field]: id })}
           />
@@ -142,8 +223,18 @@ export default function NodeInspector({
                     : "连接后自动推算"}
             </span>
             {node[field] && (
-              <button onClick={() => patch({ [field]: undefined })}>
-                恢复自动
+              <button
+                disabled={!canReset}
+                title={
+                  canReset
+                    ? "根据现有连线自动识别，保留当前物品"
+                    : "现有连线无法唯一识别此项，保留你的选择"
+                }
+                onClick={() => {
+                  if (canReset) patch({ [field]: undefined });
+                }}
+              >
+                {canReset ? "恢复自动识别" : "需指定物品"}
               </button>
             )}
           </div>
@@ -157,6 +248,24 @@ export default function NodeInspector({
             ? `天然再生：每 ${crop.regrow_days} 天再收获，不消耗种子。`
             : ""}
         </p>
+      )}
+      {node.kind === "plant" && (
+        <label className="wf-check">
+          <input
+            type="checkbox"
+            checked={!!node.seasonProtection}
+            onChange={(e) => patch({ seasonProtection: e.target.checked })}
+          />
+          使用季节稻草人 / 温室保护（允许跨季生长）
+        </label>
+      )}
+      {node.kind === "plant" && (
+        <FarmlandPicker
+          value={node.farmlandSelection}
+          onApply={(quantity, farmlandSelection) =>
+            patch({ quantity, farmlandSelection, amountMode: "manual" })
+          }
+        />
       )}
       {node.kind === "process" && recipe && (
         <p className="wf-note">
@@ -436,7 +545,19 @@ export default function NodeInspector({
           </p>
           {(node.requirements ?? []).map((a, i) => (
             <div className="wf-requirement" key={`${a.itemId}-${i}`}>
-              <span>{name(a.itemId)}</span>
+              <span className="wf-item-inline">
+                {items.find((e) => e.id === a.itemId)?.icon_path && (
+                  <img
+                    src={withBase(
+                      items.find((e) => e.id === a.itemId)!.icon_path!,
+                    )}
+                    width={28}
+                    height={28}
+                    alt=""
+                  />
+                )}
+                {name(a.itemId)}
+              </span>
               <NumberField
                 label="需求数量"
                 min={1}

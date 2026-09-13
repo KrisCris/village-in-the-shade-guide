@@ -347,23 +347,6 @@ export default function PlanResults({
             ))}
           </details>
         )}
-        {Object.entries(result.intent?.nodes ?? {}).some(
-          ([, p]) => p.notices.length > 0,
-        ) && (
-          <details>
-            <summary>待配置与余料去向</summary>
-            {Object.entries(result.intent?.nodes ?? {})
-              .filter(([, p]) => p.notices.length > 0)
-              .map(([id, p]) => (
-                <div className="wf-status-row" key={id}>
-                  <button onClick={() => onNode(id)}>{nodeName(id)}</button>
-                  {p.notices.map((message, i) => (
-                    <p key={i}>{message}</p>
-                  ))}
-                </div>
-              ))}
-          </details>
-        )}
       </aside>
     </section>
   );

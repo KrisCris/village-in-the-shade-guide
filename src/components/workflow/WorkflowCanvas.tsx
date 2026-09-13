@@ -19,9 +19,11 @@ import {
   type ReactFlowInstance,
 } from "@xyflow/react";
 import WorkflowCard, { type FlowNode } from "./WorkflowCard";
+import WorkflowEdge from './WorkflowEdge';
 import type { NodeKind } from "../../domain/workflow/types";
 
 const nodeTypes = { operation: WorkflowCard };
+const edgeTypes = { workflow: WorkflowEdge };
 const multiKeys = ["Control", "Meta", "Shift"];
 // MiniMap uses these dimensions for both its SVG and pointer-to-world conversion.
 const miniMapSize = { width: 150, height: 84 };
@@ -100,6 +102,7 @@ export default memo(function WorkflowCanvas({
       nodes={liveNodes}
       edges={edges}
       nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
       onInit={(instance) => {
         flow.current = instance;
         onZoom(instance.getZoom());

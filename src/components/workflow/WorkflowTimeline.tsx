@@ -109,8 +109,8 @@ export default function WorkflowTimeline({
           {daily?.events
             .filter((e) => e.kind === "purchase")
             .reduce((s, e) => s + (e.quantity ?? 0), 0) ?? 0}{" "}
-          个 · 累计 {(daily?.cash ?? 0) >= 0 ? "+" : ""}
-          {(daily?.cash ?? 0).toLocaleString()}
+          个 · 今日支出 -{(daily?.spending ?? 0).toLocaleString()}
+          {(daily?.income ?? 0) > 0 ? ` · 到账 +${daily!.income.toLocaleString()}` : ""}
           {warnings ? ` · ${warnings} 项未完成` : ""}
           <WorkflowIcon name="chevron" size={14} />
         </button>
