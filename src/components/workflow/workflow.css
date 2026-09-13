@@ -1789,7 +1789,10 @@ body .wf-app .wf-property-content details {
   flex: 1;
 }
 @media (max-width: 600px) {
-  .wf-farm-toolbar select { flex-basis: 100%; width: 100%; }
+  .wf-farm-toolbar select {
+    flex-basis: 100%;
+    width: 100%;
+  }
 }
 .wf-farm-toolbar button {
   white-space: nowrap;
@@ -1808,30 +1811,32 @@ body .wf-app .wf-property-content details {
   touch-action: none;
   user-select: none;
 }
-.wf-farm-grid rect {
+.wf-farm-cell {
   fill: var(--green-soft);
   stroke: var(--border);
   stroke-width: 1;
+}
+.wf-farm-grid .wf-farm-cell {
   cursor: crosshair;
 }
-.wf-farm-grid rect.chosen {
+.wf-farm-cell.chosen {
   fill: var(--green);
   stroke: var(--paper-raised);
 }
-.wf-farm-grid rect.conflict {
+.wf-farm-cell.conflict {
   stroke: var(--vermilion);
   stroke-width: 2;
 }
-.wf-farm-grid rect.unknown {
+.wf-farm-cell.unknown {
   stroke: var(--gold);
   stroke-dasharray: 3 2;
   stroke-width: 2;
 }
-.wf-farm-grid rect.separate {
+.wf-farm-cell.separate {
   stroke: var(--indigo, #729aaf);
   stroke-width: 2;
 }
-.wf-farm-grid rect.chosen {
+.wf-farm-cell.chosen {
   stroke: var(--green);
   stroke-width: 3;
 }
@@ -1851,24 +1856,34 @@ body .wf-app .wf-property-content details {
   border-color: var(--green);
   color: var(--green);
 }
-.wf-farm-legend .conflict,
 .wf-farm-occupancy .conflict,
 .wf-farm-warning {
   color: var(--vermilion);
 }
-.wf-farm-legend .unknown,
 .wf-farm-occupancy .unknown {
   color: var(--gold);
 }
-.wf-farm-legend .separate {
-  color: var(--indigo, #729aaf);
+.wf-farm-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
 }
-.wf-farm-occupancy {
+.wf-farm-legend svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+body .wf-app .wf-farm-dialog details.wf-farm-occupancy {
   padding: 8px 24px;
+  margin: 0;
   font-size: 12px;
   flex-shrink: 0;
 }
-.wf-farm-occupancy ul {
+.wf-app .wf-farm-occupancy > summary {
+  margin: 0;
+  padding: 0;
+}
+.wf-app .wf-farm-occupancy ul {
   margin: 6px 0;
   padding-left: 18px;
   max-height: 80px;

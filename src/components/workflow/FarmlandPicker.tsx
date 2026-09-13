@@ -232,11 +232,39 @@ export default function FarmlandPicker({
               </button>
             ))}
           </div>
-          <div className="wf-farm-legend">
-            <span>绿色：本次选择</span>
-            <span className="conflict">斜纹：同时占用</span>
-            <span className="unknown">虚线：待排期</span>
-            <span className="separate">蓝边：其他时段</span>
+          <div className="wf-farm-legend" role="list" aria-label="田块状态图例">
+            {[
+              ["", "未分配"],
+              ["chosen", "本次选择"],
+              ["conflict", "同时占用"],
+              ["unknown", "待排期"],
+              ["separate", "其他时段"],
+            ].map(([state, label]) => (
+              <span key={label} role="listitem">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="3"
+                    className={`wf-farm-cell ${state}`}
+                    style={
+                      state === "conflict"
+                        ? { fill: `url(#${hatchId})` }
+                        : undefined
+                    }
+                  />
+                </svg>
+                {label}
+              </span>
+            ))}
           </div>
           <div className="wf-farm-grid-wrap">
             <svg
@@ -292,7 +320,7 @@ export default function FarmlandPicker({
                   width={20}
                   height={20}
                   rx={3}
-                  className={`${preview.has(key(x, y)) ? "chosen" : ""} ${cellStatus(x, y)}`}
+                  className={`wf-farm-cell ${preview.has(key(x, y)) ? "chosen" : ""} ${cellStatus(x, y)}`}
                   style={
                     cellStatus(x, y) === "conflict"
                       ? { fill: `url(#${hatchId})` }
