@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { mapEditCount, mapBuildingFlags, type MapEdits } from '../../lib/saveMap';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { identifySave, readSession, restoreOriginal, SESSION_KEY, storeOriginal, type SaveIdentity } from '../../lib/saveSession';
 import { decodeSave } from '../../lib/saveEditor';
 import {
@@ -13,6 +14,7 @@ import {
 import type { SaveSlot, SlotAssignment, SlotEdits } from '../../lib/saveItems';
 import { loadSaveNames, lookupName, type SaveNameTables } from '../../lib/saveNames';
 import { itemLabel } from './ItemGrid';
+import { addMaterials, transferSlots, type MaterialRequest } from '../../lib/saveInventory';
 import ItemsPanel from './ItemsPanel';
 import SystemSaveHint from './SystemSaveHint';
 import QuestsPanel from './QuestsPanel';
@@ -32,6 +34,8 @@ import AppearancePanel from './AppearancePanel';
 import StatusPanel from './StatusPanel';
 import { TOOLS, TOOL_RANGE_FIELDS, undoToolDraft } from '../../lib/saveTools';
 import { achievementWarnings } from '../../lib/saveValidation';
+
+const MapPanel = lazy(() => import('./MapPanel'));
 
 interface StructuralLine {
   key: number;
@@ -68,6 +72,7 @@ export default function SaveEditor() {
   const [model, setModel] = useState<SaveModel | null>(null);
   const [drafts, setDrafts] = useState<Record<number, string>>({});
   const [slotEdits, setSlotEdits] = useState<SlotEdits>({});
+  const [map, setMap] = useState<MapEdits>({});
   const [animals, setAnimals] = useState<AnimalEdits>({});
   const [machines, setMachines] = useState<MachineEdits>({});
   const [progress, setProgress] = useState<ProgressEdits>({});
@@ -84,6 +89,7 @@ export default function SaveEditor() {
   const [maximized, setMaximized] = useState(false);
   const editorRoot = useRef<HTMLElement>(null);
   const loadGeneration = useRef(0);
+  const fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!maximized || !editorRoot.current) return;
@@ -130,7 +136,7 @@ export default function SaveEditor() {
         const slots = new Set(parsed.containers.flatMap(container => container.slots.map(slot => slot.pointer)));
         if (Object.keys(session.slots).some(offset => !slots.has(Number(offset)))) throw new Error('暂存草稿中的格子已无法匹配，请重新选择原始存档。');
         setModel(parsed); setIdentity(session.identity); setDrafts(session.drafts);
-        setSlotEdits(session.slots); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setTab(session.tab); setNotice('已恢复本次浏览会话的存档和未导出修改。');
+        setSlotEdits(session.slots); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(session.map ?? {}); setTab(session.tab); setNotice('已恢复本次浏览会话的存档和未导出修改。');
       } catch (caught) {
         if (!cancelled) setStorageError(caught instanceof Error ? caught.message : '无法恢复暂存草稿。');
       } finally { if (!cancelled) setRestoring(false); }
@@ -141,14 +147,14 @@ export default function SaveEditor() {
     if (!model || !identity || restoring) return;
     const persist = () => {
       try {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 2, identity, drafts, slots: slotEdits, progress, machines, animals, tab }));
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 2, identity, drafts, slots: slotEdits, progress, machines, animals, map, tab }));
         setStorageError('');
       } catch { setStorageError('浏览器无法暂存草稿；离开前请导出修改副本。'); }
     };
     persist();
     window.addEventListener('pagehide', persist);
     return () => window.removeEventListener('pagehide', persist);
-  }, [model, identity, drafts, slotEdits, progress, machines, animals, tab, restoring]);
+  }, [model, identity, drafts, slotEdits, progress, machines, animals, map, tab, restoring]);
 
   const changeState = useMemo(() => {
     if (!model) return { changes: [], error: '' };
@@ -175,7 +181,7 @@ export default function SaveEditor() {
 
   const slotEditCount = Object.keys(slotEdits).length;
   const progressEditCount = progressCount(progress);
-  const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals);
+  const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals) + mapEditCount(map);
   function updateMachine(key: string, value?: MachineEdit) { setMachines(current => { const next = { ...current }; if (value) next[key] = value; else delete next[key]; return next; }); }
   function updateProgress(group: keyof ProgressEdits, id: string, value: boolean | number | undefined) {
     setProgress(current => {
@@ -196,6 +202,11 @@ export default function SaveEditor() {
   async function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
+    await loadFile(file);
+    event.target.value = '';
+  }
+
+  async function loadFile(file: File) {
     loadGeneration.current++;
     setBusy(true);
     setError('');
@@ -221,6 +232,7 @@ export default function SaveEditor() {
       setProgress({});
       setMachines({});
       setAnimals({});
+      setMap({});
       setTab('basic');
       setNotice(`已读取 ${file.name}。`);
     } catch (caught) {
@@ -231,6 +243,14 @@ export default function SaveEditor() {
     }
   }
 
+  async function chooseSave() {
+    const picker = (window as unknown as { showOpenFilePicker?: (options: unknown) => Promise<Array<{ getFile(): Promise<File> }>> }).showOpenFilePicker;
+    if (!picker) { fileInput.current?.click(); return; }
+    try {
+      const [handle] = await picker({ id: 'honogurashi-save', multiple: false, types: [{ description: '游戏存档', accept: { 'application/octet-stream': ['.001', '.002', '.003', '.004', '.005'] } }] });
+      await loadFile(await handle.getFile());
+    } catch (caught) { if ((caught as Error).name !== 'AbortError') fileInput.current?.click(); }
+  }
   function updateField(field: SaveField, value: string) {
     setDrafts((current) => ({ ...current, [field.offset]: value }));
     setError('');
@@ -265,6 +285,25 @@ export default function SaveEditor() {
     });
   }
 
+  function applySlots(next: SlotEdits) {
+    setSlotEdits(next);
+    setDrafts(current => {
+      const clean = { ...current };
+      for (const container of model!.containers) for (const slot of container.slots) {
+        if (!Object.hasOwn(next, slot.pointer) || !slot.item) continue;
+        for (const key of [slot.item.itemIdOffset, slot.item.countOffset, slot.item.rankOffset, slot.item.qualityOffset]) delete clean[key];
+      }
+      return clean;
+    });
+  }
+  function insertMaterials(materials: MaterialRequest[]) {
+    try { applySlots(addMaterials(model!.containers, drafts, slotEdits, materials)); setError(''); setNotice('材料已加入背包草稿，导出后生效。'); }
+    catch (caught) { setError((caught as Error).message); }
+  }
+  function transfer(from: number, to: number) {
+    try { applySlots(transferSlots(model!.containers, drafts, slotEdits, from, to)); setError(''); }
+    catch (caught) { setError((caught as Error).message); }
+  }
   function onDownload() {
     if (!model || !editCount) return;
     if (changeState.error) { setError(changeState.error); return; }
@@ -273,7 +312,7 @@ export default function SaveEditor() {
     setError('');
     setNotice('正在生成修改副本…');
     try {
-      const packed = exportSave(model, changes, slotEdits, progress, machines, animals);
+      const packed = exportSave(model, changes, slotEdits, progress, machines, animals, map);
       const url = URL.createObjectURL(new Blob([packed.buffer as ArrayBuffer], { type: 'application/octet-stream' }));
       const anchor = document.createElement('a');
       anchor.href = url;
@@ -301,20 +340,22 @@ export default function SaveEditor() {
     brand: ['品牌名', '为作物和畜产品管理品牌名称。'],
     quests: ['任务', '查找任务，在右侧查看进度与修改项。'],
     progress: ['收集与解锁', '管理图鉴、制作配方、神龛技能与交付委托。'],
+    map: ['地图', '编辑田地与设施布局，导入或导出布局预设。'],
     raw: ['完整字段树', '按名称或路径查找存档字段。'],
   }[tab];
 
   return <section ref={editorRoot} className={`save-editor${maximized ? ' is-maximized' : ''}`} aria-label="游戏存档编辑器">
     <div className={`save-dropzone${model ? ' loaded' : ''}`}>
-      <label className="save-file-label">
+      <div className="save-file-label">
         <span className="save-file-icon" aria-hidden="true">↑</span>
         <span>
-          <strong>选择游戏存档</strong>
+          <button type="button" disabled={busy || restoring} onClick={chooseSave}>选择游戏存档</button>
           <small>save.001–save.005；文件只在浏览器里处理，不会上传</small>
         </span>
-        <input type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
-      </label>
+        <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
+      </div>
     </div>
+    <details className="save-system-hint"><summary>Windows / Steam 存档位置</summary><p>首次选择时，把下面的路径粘贴到文件窗口地址栏。支持的浏览器会记住上次选择的位置。</p><code>%APPDATA%\Nippon Ichi Software, Inc\Honogurashinoniwa\</code><button type="button" onClick={async () => { try { await navigator.clipboard.writeText('%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\'); setNotice('已复制存档目录。'); } catch { setError('复制失败，请手动复制上面的目录。'); } }}>复制目录</button><p>网页无法直接指定或自动读取 AppData 私人目录，需要你在文件窗口中选择一次。</p></details>
     <SystemSaveHint />
     {busy && <p className="save-status" role="status">{notice}</p>}
     {!busy && notice && <p className="save-status success" role="status">{notice}</p>}
@@ -348,6 +389,7 @@ export default function SaveEditor() {
       <div className="save-changes">
         <p>待写入的修改（{editCount}）</p>
         <ul>
+          {mapEditCount(map) > 0 && <li><b>地图布局</b><span>{mapEditCount(map)} 处修改</span><button type="button" onClick={() => setMap({})}>撤销地图修改</button></li>}
           {animalEditCount(animals) > 0 && <li><b>动物安置</b><span>{Object.keys(animals.moves ?? {}).length} 处移动，{Object.keys(animals.added ?? {}).length} 只新增</span><button type="button" onClick={() => setAnimals({})}>撤销安置修改</button></li>}
           {Object.entries(machines).map(([key, edit]) => {
             const container = model.containers.find(entry => entry.id === key.split('/')[0]);
@@ -384,6 +426,7 @@ export default function SaveEditor() {
           className={tab === entry.id ? 'active' : ''}
           onClick={() => setTab(entry.id)}
         >{entry.label}</button>)}
+        <button type="button" className={tab === 'map' ? 'active' : ''} onClick={() => setTab('map')}>地图</button>
         <button type="button" className={tab === 'quests' ? 'active' : ''} onClick={() => setTab('quests')}>任务</button>
         <button type="button" className={tab === 'progress' ? 'active' : ''} onClick={() => setTab('progress')}>收集与解锁</button>
         <button type="button" className={tab === 'raw' ? 'active' : ''} onClick={() => setTab('raw')}>完整字段树</button>
@@ -405,15 +448,16 @@ export default function SaveEditor() {
         <span className="save-workspace-file">{model.save.fileName}</span>
       </header>
       <div className="save-workspace-body">
-      {tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress} /> : tab === 'raw'
+      {tab === 'map' ? <Suspense fallback={<p>正在读取地图…</p>}><MapPanel model={model} edits={map} names={names} onChange={setMap} /></Suspense> : tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel onMaterials={insertMaterials} model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress} /> : tab === 'raw'
         ? <RawTree model={model} doc={model.doc} drafts={drafts} names={names} onChange={updateField} />
-        : tab === 'barn' ? <AnimalsPanel model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
+        : tab === 'barn' ? <AnimalsPanel progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
         : tab === 'items'
         ? <>
           <ItemsPanel
             model={model}
             machines={machines}
             onMachine={updateMachine}
+            onTransfer={transfer}
             drafts={drafts}
             slotEdits={slotEdits}
             names={names}

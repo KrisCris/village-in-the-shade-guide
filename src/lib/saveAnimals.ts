@@ -1,7 +1,7 @@
 import data from '../../data/sources/game-save-animals.json';
 import { simplifySaveEntry } from './saveText';
 import places from '../../data/sources/game-save-placements.json';
-import { flagEnabled } from './saveProgress';
+import { flagEnabled, type ProgressEdits } from './saveProgress';
 import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, readSigned, readString, type SerBuiltNode, type SerDocument, type SerNode } from './ser';
 export const ANIMALS = data.animals.map(simplifySaveEntry);
 export interface AnimalEdits { moves?: Record<string, number>; added?: Record<string, { species: number; name: string; variant?: number }> }
@@ -15,20 +15,20 @@ export function animalResidents(doc: SerDocument, edits: AnimalEdits = {}) {
     return { index, pointer, species, variant, placement: edits.moves?.[index] ?? Number(readSigned(doc, get('pPlacementData_/dataID'))), name: readString(doc, get('name_')) };
   });
 }
-export function animalHouses(doc: SerDocument) {
-  const enabled = places.placements.filter(place => place.houseType < 3 && !place.special && place.mapGroup === 1 && place.requires.every(flag => !flag || flagEnabled(doc, flag)) && place.excludes.every(flag => !flag || !flagEnabled(doc, flag)));
+export function animalHouses(doc: SerDocument, progress: ProgressEdits = {}) {
+  const enabled = places.placements.filter(place => place.houseType < 3 && !place.special && place.mapGroup === 1 && place.requires.every(flag => !flag || flagEnabled(doc, flag, progress)) && place.excludes.every(flag => !flag || !flagEnabled(doc, flag, progress)));
   const groups = new Map<number, typeof enabled>();
   for (const place of enabled) groups.set(place.mapId, [...(groups.get(place.mapId) ?? []), place]);
   const counts = [0, 0, 0];
   return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: `${['畜舍', '禽舍', '马棚'][slots[0].houseType]} ${++counts[slots[0].houseType]}`, slots }));
 }
 
-export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint) {
+export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint, progress: ProgressEdits = {}) {
   if (!animalEditCount(edits)) return { subtrees: new Map<number, SerBuiltNode>(), seed };
   const list = doc.resolve('livestockList_');
   if (!list) throw new Error('存档缺少动物记录。');
   // Stable positions are scene bone attachments, not ordinary x/y placements.
-  const residents = animalResidents(doc), slots = animalHouses(doc).filter(house => house.type < 2).flatMap(house => house.slots);
+  const residents = animalResidents(doc), slots = animalHouses(doc, progress).filter(house => house.type < 2).flatMap(house => house.slots);
   const occupied = new Set<number>();
   const built = captureBuilt(doc, list);
   const applyLeaves = (node: SerNode, target: SerBuiltNode) => { const payload = leafEdits.get(node.offset); if (payload) target.payload = payload; doc.children(node).forEach((child, index) => applyLeaves(child, target.children![index])); };
@@ -57,6 +57,7 @@ export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits
     const variant = animal?.variants.find(v => v.index === (addition.variant ?? 0));
     const donor = residents.find(resident => resident.species === addition.species) ?? residents.find(resident => ANIMALS.some(a => a.id === resident.species && a.id < 100 && a.houseType < 2));
     if (!animal || !variant || !donor || !addition.name.trim()) throw new Error('请填写名字，并选择有效的动物品种。');
+    if (Array.from(addition.name).length > 5) throw new Error('动物名字最多 5 个字符。');
     const target = captureBuilt(doc, donor.pointer); target.pointer = 'self';
     target.nameOffset = -1; target.name = String(built.children!.length);
     for (const name of ['statusValueMap_', 'statusIDValueMap_', 'statusTableValueMap_']) {

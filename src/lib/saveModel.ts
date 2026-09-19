@@ -1,3 +1,4 @@
+import { applyMapEdits, mapBuildingFlags, type MapEdits } from './saveMap';
 /**
  * Typed view over a decoded save.
  *
@@ -32,7 +33,7 @@ import {
   type SerNode,
 } from './ser';
 
-export type SaveSectionId = 'basic' | 'player' | 'items' | 'barn' | 'npc' | 'brand' | 'progress' | 'quests' | 'raw';
+export type SaveSectionId = 'basic' | 'player' | 'items' | 'barn' | 'npc' | 'brand' | 'progress' | 'quests' | 'raw' | 'map';
 export type FieldType = 'int' | 'float' | 'bool' | 'string' | 'bytes';
 /** Entity kind in `public/save-editor-names.json`, used to label an ID field. */
 export type LookupKind = 'items' | 'characters' | 'livestock' | 'crops' | 'weather' | 'facilities';
@@ -464,7 +465,10 @@ export type SaveDrafts = Readonly<Record<number, string>>;
 function payloadFor(doc: SerDocument, field: SaveField, raw: string): Uint8Array {
   const node = doc.node(field.offset);
   const value = raw.trim();
-  if (field.type === 'string') return encodeString(raw);
+  if (field.type === 'string') {
+    if ((node.name === 'name_' || node.name === 'dogName_' || field.label === '品牌名') && Array.from(raw).length > 5) throw new Error(`${field.label}最多 5 个字符。`);
+    return encodeString(raw);
+  }
   if (field.type === 'bytes') return fromHex(raw, node.size, field.label);
   if (field.type === 'float') {
     const parsed = Number(value);
@@ -553,7 +557,8 @@ export function pendingChanges(model: SaveModel, drafts: SaveDrafts): SaveChange
  * Value edits that land inside a slot being replaced or emptied are dropped:
  * the node they addressed will not be written out at all.
  */
-export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotEdits = {}, progress: ProgressEdits = {}, machines: MachineEdits = {}, animalEdits: AnimalEdits = {}): Uint8Array {
+export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotEdits = {}, progress: ProgressEdits = {}, machines: MachineEdits = {}, animalEdits: AnimalEdits = {}, mapEdits: MapEdits = {}): Uint8Array {
+  progress = { ...progress, flags: { ...progress.flags, ...mapBuildingFlags(mapEdits).flags } };
   const processing = buildMachineEdits(model.doc, model.containers, machines);
   if (Object.keys(processing.slots).some(key => Object.hasOwn(slots, key))) throw new Error("加工栏位同时存在物品修改，请撤销物品修改。");
   slots = { ...slots, ...processing.slots };
@@ -566,7 +571,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   const seedNode = model.doc.resolve('statusUniqueIDGenerator_/idSeed_');
   const seed = idSeed ? new DataView(idSeed.payload.buffer).getBigInt64(0, true) : seedNode ? readSigned(model.doc, seedNode) : 0n;
   const animalLeaves = new Map(changes.filter(change => { const list = model.doc.resolve('livestockList_'); return list && change.field.offset >= list.offset && change.field.offset < list.end; }).map(change => [change.field.offset, payloadFor(model.doc, change.field, change.after)]));
-  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed);
+  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress);
   livestock.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   const progression = buildProgressEdits(model.doc, progress);
   processing.subtrees.forEach((node, offset) => subtrees.set(offset, node));
@@ -599,7 +604,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   }
   if (idSeed) payloads.set(idSeed.offset, idSeed.payload);
   if (livestock.seed !== seed) { if (!seedNode) throw new Error('存档缺少唯一 ID 生成器。'); payloads.set(seedNode.offset, encodeSigned(livestock.seed, seedNode.size)); }
-  const ser = serializeSer(model.doc, { payloads, subtrees });
+  const ser = applyMapEdits(new SerDocument(serializeSer(model.doc, { payloads, subtrees })), mapEdits);
   if (ser.length > model.save.data.length) {
     throw new Error(`改动后的数据 ${ser.length} 字节，超过了存档缓冲区的 ${model.save.data.length} 字节。`);
   }

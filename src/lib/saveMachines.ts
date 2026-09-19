@@ -3,7 +3,7 @@ import type { SaveContainer, SlotEdits, SlotAssignment } from './saveItems';
 import { builtChild, captureBuilt, encodeSigned, readSigned, SerTag, type SerBuiltNode, type SerDocument, type SerNode } from './ser';
 
 export const MACHINES = data;
-export interface MachineEdit { recipeId?: number; finish: boolean }
+export interface MachineEdit { recipeId?: number; finish: boolean; rank?: number }
 export type MachineEdits = Record<string, MachineEdit>;
 export const machineSpec = (container: SaveContainer) => data.machines.find(machine => machine.id === container.dataId);
 const object = (doc: SerDocument, container: SaveContainer) => doc.resolve(`gimmickList_/${container.id.replace('gimmick-', '')}/p`);
@@ -50,7 +50,7 @@ export function machineJobs(doc: SerDocument, container: SaveContainer, edits: M
     const remaining = edit?.finish ? 0 : recipe ? seconds : Math.min(seconds, Math.max(0, seconds - (now - start)));
     // ExtractorPopItem constructs one output from the first item template, not itemVal0.
     const template = spec.mode === 'extractor' ? container.slots[0]?.item : null;
-    return { index, seconds, remaining, output: template ? Number(template.itemId) : recipe?.output ?? mapValue(doc, doc.resolve('statusIDValueMap_', node), `itemID${index}`), count: template ? 1 : recipe?.count ?? mapValue(doc, doc.resolve('statusValueMap_', node), `itemVal${index}`), inputs: spec.mode === 'extractor' ? [] : recipe?.inputs ?? container.slots.slice(index * 8, index * 8 + 8).flatMap(slot => slot.item ? [{ itemId: Number(slot.item.itemId), count: Number(slot.item.count) }] : []), edited: !!edit };
+    return { index, seconds, remaining, output: template ? Number(template.itemId) : recipe?.output ?? mapValue(doc, doc.resolve('statusIDValueMap_', node), `itemID${index}`), count: template ? 1 : recipe?.count ?? mapValue(doc, doc.resolve('statusValueMap_', node), `itemVal${index}`), rank: edit?.rank ?? Number(template?.rank ?? container.slots.slice(index * 8, index * 8 + 8).find(slot => slot.item)?.item?.rank ?? 0), inputs: spec.mode === 'extractor' ? [] : recipe?.inputs ?? container.slots.slice(index * 8, index * 8 + 8).flatMap(slot => slot.item ? [{ itemId: Number(slot.item.itemId), count: Number(slot.item.count), rank: Number(slot.item.rank) }] : []), edited: !!edit };
   });
 }
 
@@ -88,6 +88,7 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
     for (const job of machineJobs(doc, container)) {
       const edit = edits[`${container.id}/${job.index}`];
       if (!edit) continue;
+      if (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)) throw new Error('材料品质无效。');
       let seconds = job.seconds;
       if (edit.recipeId !== undefined) {
         if (machineSpec(container)?.mode !== 'processing') throw new Error('自动采集设备不能手动添加配方。');
@@ -96,17 +97,23 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
         if (!recipe || recipe.minutes <= 0 || recipe.inputs.length > 8) throw new Error('这台设备不能加工所选配方。');
         const buffer = container.slots.slice(job.index * 8, job.index * 8 + 8);
         if (buffer.length !== 8 || buffer.some(slot => slot.item)) throw new Error('加工材料缓冲区不为空或格式未知。');
-        buffer.forEach((slot, index) => { const input = recipe.inputs[index]; slots[slot.pointer] = input ? { itemId: String(input.itemId), count: String(input.count), rank: '0', quality: '0' } : null; });
+        buffer.forEach((slot, index) => { const input = recipe.inputs[index]; slots[slot.pointer] = input ? { itemId: String(input.itemId), count: String(input.count), rank: String(edit.rank ?? 0), quality: '0' } : null; });
         seconds = recipe.minutes * 60;
         ids[`itemID${job.index}`] = recipe.output; values[`itemVal${job.index}`] = recipe.count;
         new DataView(lengths.buffer).setBigInt64(job.index * 8, BigInt(seconds), true);
         new DataView(starts.buffer).setBigInt64(job.index * 8, BigInt(now), true);
       }
+      if (edit.rank !== undefined && edit.recipeId === undefined) {
+        const buffer = machineSpec(container)?.mode === 'extractor' ? container.slots.slice(0, 1) : container.slots.slice(job.index * 8, job.index * 8 + 8);
+        for (const slot of buffer) if (slot.item) payloads.set(slot.item.rankOffset, encodeSigned(BigInt(edit.rank), doc.node(slot.item.rankOffset).size));
+      }
       if (!seconds) throw new Error('空加工栏位不能立即完成。');
       if (edit.finish) new DataView(starts.buffer).setBigInt64(job.index * 8, BigInt(now - seconds), true);
     }
     const jobs = machineJobs(doc, container, edits);
-    values.inProc = machineSpec(container)?.mode === 'extractor' ? 1 : Number(jobs.some(job => job.seconds > 0 && job.remaining > 0));
+    // Lua setup uses inProc for the lid/stone and distant UI even after time expires.
+    // It denotes occupied jobs, not merely jobs whose countdown is still running.
+    values.inProc = machineSpec(container)?.mode === 'extractor' ? 1 : Number(jobs.some(job => job.seconds > 0));
     values.procEnd = Number(jobs.some(job => job.seconds > 0 && job.remaining === 0));
     payloads.set(time.offset, starts); payloads.set(duration.offset, lengths);
     subtrees.set(doc.resolve('statusValueMap_', node)!.offset, updatedMap(doc, doc.resolve('statusValueMap_', node)!, values, 4));

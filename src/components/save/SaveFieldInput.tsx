@@ -19,6 +19,7 @@ interface SaveFieldInputProps {
 export default function SaveFieldInput({ field, draft, names, onChange, compact }: SaveFieldInputProps) {
   const value = draft ?? field.value;
   const [picking, setPicking] = useState(false);
+  const nameField = field.type === 'string' && /名字|名称|品牌名|name_|dogName_/i.test(field.label);
   const dirty = value !== field.value;
   const resolved = lookupName(names, field.lookup, value);
 
@@ -26,7 +27,8 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
     return <span className="save-cell readonly" title={field.note}>
       <SaveIcon names={names} kind={field.lookup} value={value} size={22} />
       <span className="save-cell-value">{resolved || value || '—'}</span>
-      {resolved && <small className="save-cell-name">ID {value}</small>}
+      {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}/5 字符</small>}
+    {resolved && <small className="save-cell-name">ID {value}</small>}
     </span>;
   }
 
@@ -62,8 +64,11 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
       size={compact ? 10 : undefined}
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={field.label}
+      aria-description={nameField ? '名称最多 5 个字符，导出时检查。' : undefined}
+      aria-invalid={nameField && Array.from(value).length > 5 || undefined}
       spellCheck={false}
     />
+    {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}/5 字符</small>}
     {resolved && <small className="save-cell-name">
       <SaveIcon names={names} kind={field.lookup} value={value} size={18} />
       {resolved}

@@ -1,0 +1,50 @@
+import { SAVE_RULES } from './saveRules';
+import type { SaveContainer, SaveSlot, SlotAssignment, SlotEdits } from './saveItems';
+
+export interface MaterialRequest { itemId: number; count: number; rank?: number }
+
+export function slotValue(slot: SaveSlot, drafts: Record<number, string>, edits: SlotEdits): SlotAssignment | null {
+  if (Object.hasOwn(edits, slot.pointer)) return edits[slot.pointer];
+  const item = slot.item;
+  return item ? { sourcePointer: slot.pointer, itemId: drafts[item.itemIdOffset] ?? item.itemId, count: drafts[item.countOffset] ?? item.count,
+    rank: drafts[item.rankOffset] ?? item.rank, quality: drafts[item.qualityOffset] ?? item.quality } : null;
+}
+
+/** Compute all assignments before changing state: insufficient room changes nothing. */
+export function addMaterials(containers: SaveContainer[], drafts: Record<number, string>, edits: SlotEdits, materials: MaterialRequest[]): SlotEdits {
+  const backpack = containers.find(c => c.kind === 'backpack');
+  if (!backpack) throw new Error('此存档没有背包。');
+  const next = { ...edits };
+  for (const material of materials) {
+    if (!Number.isSafeInteger(material.itemId) || material.itemId <= 0 || !Number.isSafeInteger(material.count) || material.count < 0 || !Number.isInteger(material.rank ?? 0) || (material.rank ?? 0) < 0 || (material.rank ?? 0) > 4) throw new Error('材料或品质无效。');
+    let remaining = material.count;
+    const itemId = String(material.itemId), rank = String(material.rank ?? 0);
+    for (const slot of backpack.slots) {
+      const value = slotValue(slot, drafts, next);
+      if (!remaining || !value || value.itemId !== itemId || value.rank !== rank || value.quality !== '0') continue;
+      const room = Math.max(0, SAVE_RULES.stackMax - Number(value.count));
+      const amount = Math.min(room, remaining);
+      if (amount) next[slot.pointer] = { ...value, count: String(Number(value.count) + amount) };
+      remaining -= amount;
+    }
+    for (const slot of backpack.slots) {
+      if (!remaining || slotValue(slot, drafts, next)) continue;
+      const amount = Math.min(SAVE_RULES.stackMax, remaining);
+      next[slot.pointer] = { itemId, rank, quality: '0', count: String(amount) };
+      remaining -= amount;
+    }
+    if (remaining) throw new Error('背包空间不足，未加入任何材料。请先腾出空位。');
+  }
+  return next;
+}
+
+export function transferSlots(containers: SaveContainer[], drafts: Record<number, string>, edits: SlotEdits, from: number, to: number): SlotEdits {
+  const permitted = containers.filter(c => c.kind === 'backpack' || c.kind === 'storage' || c.id === 'shippingBoxItemList_');
+  const slots = permitted.flatMap(c => c.slots);
+  const source = slots.find(s => s.pointer === from), target = slots.find(s => s.pointer === to);
+  if (!source || !target) throw new Error('只能在背包、收纳箱和出货箱之间移动物品。');
+  if (from === to) return edits;
+  const a = slotValue(source, drafts, edits), b = slotValue(target, drafts, edits);
+  if (!a) throw new Error('来源格子为空。');
+  return { ...edits, [from]: b, [to]: a };
+}

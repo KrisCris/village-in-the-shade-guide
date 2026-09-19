@@ -124,7 +124,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     const model = load('save.003');
     const barn = section(model, 'barn').tables[0];
     const drafts = {
-      [field(model, '玩家名字').offset]: '新的玩家名字',
+      [field(model, '玩家名字').offset]: '新玩家名字',
       [field(model, '持有金钱').offset]: '12345',
       [barn.rows[1].cells[0]!.offset]: 'Q',
       [barn.rows[1].cells[2]!.offset]: '800',
@@ -136,7 +136,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     expect(packed.length).toBe(model.save.original.length);
 
     const reread = parseSaveModel(decodeSave(packed, 'edited'));
-    expect(field(reread, '玩家名字').value).toBe('新的玩家名字');
+    expect(field(reread, '玩家名字').value).toBe('新玩家名字');
     expect(field(reread, '持有金钱').value).toBe('12345');
     const rebuiltBarn = section(reread, 'barn').tables[0];
     expect(rebuiltBarn.rows[1].cells[0]!.value).toBe('Q');

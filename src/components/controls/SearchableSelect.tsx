@@ -56,10 +56,10 @@ export default function SearchableSelect({id, value, onChange, children}: {
     document.addEventListener('pointerdown',outside);
     return ()=>{window.removeEventListener('resize',place);window.removeEventListener('scroll',place,true);document.removeEventListener('pointerdown',outside);};
   },[open]);
-  useEffect(()=>{popup.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({block:'nearest'});},[active]);
+  useEffect(()=>{popup.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({block:'nearest'});},[active,open,query]);
   return <>
     <button id={id} ref={trigger} type="button" className="search-select-trigger" aria-label={label || undefined} aria-haspopup="listbox" aria-expanded={open} aria-controls={open?listId:undefined}
-      onClick={()=>{setQuery('');setActive(0);setOpen(!open);}} onKeyDown={event=>{if(['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();setQuery('');setActive(0);setOpen(true);}}}>
+      onClick={()=>{setQuery('');setActive(Math.max(0,options.findIndex(option=>option.value===String(value))));setOpen(!open);}} onKeyDown={event=>{if(['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();setQuery('');setActive(Math.max(0,options.findIndex(option=>option.value===String(value))));setOpen(true);}}}>
       <span>{selected?.label ?? '选择'}</span><span aria-hidden="true">⌄</span>
     </button>
     {open&&createPortal(<div ref={popup} className="search-select-popup" style={{position:'fixed',...position}} onKeyDown={event=>{
@@ -75,7 +75,7 @@ export default function SearchableSelect({id, value, onChange, children}: {
     }}>
       <input ref={input} type="search" role="combobox" aria-label={`搜索${label}`} aria-expanded="true" aria-controls={listId} aria-autocomplete="list" aria-activedescendant={filtered[active]?`${listId}-${active}`:undefined} placeholder="搜索名称或拼音" value={query} onChange={event=>{setQuery(event.target.value);setActive(0);}}/>
       <div id={listId} role="listbox" aria-label={label} className="search-select-options">{filtered.map((option,index)=><div key={option.value} id={`${listId}-${index}`} data-index={index} role="option" aria-selected={option.value===String(value)} className={active===index?'active':''} onPointerMove={()=>setActive(index)} onClick={()=>choose(option.value)}>{option.label}{option.value===String(value)&&<span aria-hidden="true"> ✓</span>}</div>)}{!filtered.length&&<p role="status">无匹配选项</p>}</div>
-    </div>,document.body)}
+    </div>,trigger.current?.closest('dialog') ?? document.body)}
     <style>{`.search-select-trigger{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:42px;min-width:5rem;width:100%;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);color:var(--ink);font:inherit;text-align:left;cursor:pointer}.search-select-popup{z-index:100;display:flex;flex-direction:column;box-sizing:border-box;padding:.4rem;background:var(--paper-raised);color:var(--ink);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 28px #0006}.search-select-popup input{box-sizing:border-box;flex:none;width:100%;min-width:0;padding:.6rem;border:1px solid var(--border);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit}.search-select-options{overflow-y:auto;overscroll-behavior:contain;min-height:0;margin-top:.3rem}.search-select-options [role=option]{padding:.55rem .6rem;border-radius:5px;cursor:pointer}.search-select-options .active{background:var(--green-soft)}.search-select-options [aria-selected=true]{color:var(--green);font-weight:700}.search-select-options p{padding:.4rem;color:var(--muted)}`}</style>
   </>;
 }

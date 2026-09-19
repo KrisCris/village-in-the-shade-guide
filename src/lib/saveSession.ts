@@ -1,3 +1,4 @@
+import { parseMapPreset, type MapEdits } from './saveMap';
 import type { AnimalEdits } from './saveAnimals';
 import type { MachineEdits } from './saveMachines';
 import type { ProgressEdits } from './saveProgress';
@@ -14,6 +15,7 @@ export interface SaveSession {
   progress?: ProgressEdits;
   machines?: MachineEdits;
   animals?: AnimalEdits;
+  map?: MapEdits;
   tab: SaveSectionId;
 }
 
@@ -35,15 +37,16 @@ export function readSession(storage: Storage): SaveSession | null {
   const value = JSON.parse(raw) as SaveSession;
   if (value.version !== 2 || !value.identity || typeof value.identity.name !== 'string'
     || !Number.isSafeInteger(value.identity.size) || !/^[a-f0-9]{64}$/.test(value.identity.sha256)
-    || !value.drafts || !value.slots || !['basic', 'player', 'items', 'barn', 'npc', 'brand', 'progress', 'quests', 'raw'].includes(value.tab)
+    || !value.drafts || !value.slots || !['basic', 'player', 'items', 'barn', 'npc', 'brand', 'progress', 'quests', 'raw', 'map'].includes(value.tab)
     || Object.entries(value.drafts).some(([offset, draft]) => !/^\d+$/.test(offset) || typeof draft !== 'string')
     || Object.entries(value.slots).some(([offset, slot]) => !/^\d+$/.test(offset) || (slot !== null &&
-      (!slot || ['itemId', 'count', 'rank', 'quality'].some(key => typeof slot[key as keyof typeof slot] !== 'string'))))) {
+      (!slot || (slot.sourcePointer !== undefined && !Number.isSafeInteger(slot.sourcePointer)) || ['itemId', 'count', 'rank', 'quality'].some(key => typeof slot[key as keyof typeof slot] !== 'string'))))) {
     throw new Error('暂存草稿格式不兼容，请重新选择原始存档。');
   }
   if (value.progress && Object.entries(value.progress).some(([group, entries]) => !['encyclopedia', 'skills', 'flags', 'deliveries'].includes(group) || !entries || Object.entries(entries).some(([id, checked]) => group === 'deliveries' ? !/^\d+:[0-2]$/.test(id) || !Number.isSafeInteger(checked) || Number(checked) < 0 : !/^\d+$/.test(id) || typeof checked !== 'boolean'))) throw new Error('暂存的收集记录格式不兼容。');
-  if (value.machines && Object.entries(value.machines).some(([key, edit]) => !/^gimmick-\d+\/[0-2]$/.test(key) || !edit || typeof edit.finish !== 'boolean' || (edit.recipeId !== undefined && !Number.isSafeInteger(edit.recipeId)))) throw new Error('暂存的加工记录格式不兼容。');
+  if (value.machines && Object.entries(value.machines).some(([key, edit]) => !/^gimmick-\d+\/[0-2]$/.test(key) || !edit || typeof edit.finish !== 'boolean' || (edit.recipeId !== undefined && !Number.isSafeInteger(edit.recipeId)) || (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)))) throw new Error('暂存的加工记录格式不兼容。');
   if (value.animals && (Object.values(value.animals.moves ?? {}).some(id => !Number.isSafeInteger(id)) || Object.values(value.animals.added ?? {}).some(animal => !animal || !Number.isSafeInteger(animal.species) || typeof animal.name !== 'string' || (animal.variant !== undefined && (!Number.isInteger(animal.variant) || animal.variant < 0 || animal.variant > 2))))) throw new Error('暂存的动物记录格式不兼容。');
+  if (value.map) parseMapPreset(JSON.stringify({ version: 1, game: 'honogurashi', edits: value.map }));
   return value;
 }
 

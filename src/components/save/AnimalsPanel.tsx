@@ -1,3 +1,4 @@
+import type { ProgressEdits } from '../../lib/saveProgress';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { ANIMALS, animalHouses, animalResidents, type AnimalEdits } from '../../lib/saveAnimals';
 import type { SaveField, SaveModel } from '../../lib/saveModel';
@@ -7,8 +8,8 @@ import SaveDialog from './SaveDialog';
 import SaveFieldInput from './SaveFieldInput';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 
-export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onField }: { model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
-  const houses = animalHouses(model.doc), residents = animalResidents(model.doc, edits);
+export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onField, progress }: { progress?: ProgressEdits; model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
+  const houses = animalHouses(model.doc, progress), residents = animalResidents(model.doc, edits);
   const grid = useRef<HTMLDivElement>(null);
   const rows = model.sections.find(section => section.id === 'barn')?.tables[0]?.rows ?? [];
   const [selected, setSelected] = useState<number | null>(null), [adding, setAdding] = useState<number | null>(null), [species, setSpecies] = useState(''), [name, setName] = useState('');

@@ -231,6 +231,8 @@ export type SerEdits = ReadonlyMap<number, Uint8Array>;
  * document.
  */
 export interface SerBuiltNode {
+  /** Retained nodes in a rebuilt list keep incoming aliases; clones must omit this. */
+  originalOffset?: number;
   tag: number;
   nameOffset: number;
   /** Carried along so `builtChild` can address fields by name. */
@@ -261,12 +263,12 @@ function normalize(edits: SerEdits | SerEditSet): { payloads: SerEdits; subtrees
 }
 
 /** Copy a subtree into the in-memory form so its fields can be patched. */
-export function captureBuilt(doc: SerDocument, node: SerNode): SerBuiltNode {
-  const base = { tag: node.tag, nameOffset: node.nameOffset, name: node.name };
+export function captureBuilt(doc: SerDocument, node: SerNode, retainOffsets = false): SerBuiltNode {
+  const base = { tag: node.tag, nameOffset: node.nameOffset, name: node.name, ...(retainOffsets ? { originalOffset: node.offset } : {}) };
   if (!NODE_LIST_TAGS.has(node.tag)) {
     return { ...base, payload: Uint8Array.from(doc.payload(node)) };
   }
-  const children = doc.children(node).map((child) => captureBuilt(doc, child));
+  const children = doc.children(node).map((child) => captureBuilt(doc, child, retainOffsets));
   if (node.tag === SerTag.Pointer) {
     const pointer = node.ref === NULL_REF ? 'null' : node.ref === node.offset ? 'self' : node.ref;
     return { ...base, pointer, children };
@@ -348,6 +350,7 @@ function planOffsets(
   const builtOffset = new Map<SerBuiltNode, number>();
 
   const assignBuilt = (node: SerBuiltNode, position: number): number => {
+    if (node.originalOffset !== undefined) offset.set(node.originalOffset, position);
     builtOffset.set(node, position);
     const body = position + HEADER_SIZE + (COUNTED_TAGS.has(node.tag) ? 4 : 0);
     if (NODE_LIST_TAGS.has(node.tag)) {

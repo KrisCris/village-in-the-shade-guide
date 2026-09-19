@@ -12,7 +12,7 @@ export default function SaveDialog({ title, onClose, children, compact = false }
     return () => dialog.close();
   }, []);
   return <dialog ref={ref} className={`save-dialog${compact ? ' compact' : ''}`} aria-labelledby={heading}
-    onKeyDownCapture={event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); onClose(); } }}
+    onKeyDownCapture={event => { if (event.key === 'Escape' && !(event.target instanceof Element && event.target.closest('.search-select-popup'))) { event.preventDefault(); event.stopPropagation(); onClose(); } }}
     onCancel={event => { event.preventDefault(); onClose(); }}
     onClick={event => { if (event.target === event.currentTarget) {
       const rect = event.currentTarget.getBoundingClientRect();

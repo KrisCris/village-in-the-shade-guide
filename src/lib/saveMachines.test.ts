@@ -66,6 +66,19 @@ describe.skipIf(!hasPrivateSaveFixtures)('native processing machine jobs', () =>
     expect(() => exportSave(model, [], {}, {}, { [`${container.id}/3`]: { finish: true } })).toThrow('栏位');
     expect(() => exportSave(model, [], {}, {}, { [`${container.id}/${job.index}`]: { recipeId: -1, finish: false } })).toThrow('配方');
   });
+  it('preserves the lid and distant UI state on completion and writes material ranks', () => {
+    const container = model.containers.find(c => machineSpec(c)?.mode === 'processing' && machineJobs(model.doc, c).some(j => j.seconds > 0))!;
+    const job = machineJobs(model.doc, container).find(j => j.seconds > 0)!;
+    const restored = parseSaveModel(decodeSave(exportSave(model, [], {}, {}, { [`${container.id}/${job.index}`]: { finish: true, rank: 3 } }), 'copy'));
+    const next = restored.containers.find(c => c.id === container.id)!;
+    expect(machineJobs(restored.doc, next)[job.index]).toMatchObject({ remaining: 0, rank: 3 });
+    expect(next.slots.slice(job.index * 8, job.index * 8 + 8).filter(s => s.item).every(s => s.item!.rank === '3')).toBe(true);
+    const map = restored.doc.resolve(`gimmickList_/${container.id.replace('gimmick-', '')}/p/statusValueMap_`)!;
+    const children = restored.doc.children(map);
+    const packed = [...'inProc'].reduce((n, c, i) => n | BigInt(c.charCodeAt(0)) << BigInt(i * 8), 0n);
+    const index = children.findIndex((n, i) => i % 2 === 0 && readSigned(restored.doc, restored.doc.resolve('id_', n)!) === packed);
+    expect(readSigned(restored.doc, children[index + 1])).toBe(1n);
+  });
   it('uses species and feature 11 for five animal hearts, including the dog', () => {
     const animals = model.sections.find(section => section.id === 'barn')!.tables[0];
     const maxes = animals.rows.map(row => row.cells.find(field => field?.control === 'animal-friendship')?.max);

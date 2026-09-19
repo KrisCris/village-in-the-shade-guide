@@ -1,3 +1,4 @@
+import type { MaterialRequest } from '../../lib/saveInventory';
 import { useMemo, useState } from 'react';
 import { readDeliveries, UNLOCKS } from '../../lib/saveDeliveries';
 import { flagEnabled, type ProgressEdits } from '../../lib/saveProgress';
@@ -8,7 +9,8 @@ import SaveIcon from './SaveIcon';
 import { itemLabel } from './ItemGrid';
 
 const ranks = ['普通', '铜星', '银星', '金星', '品牌'];
-export default function DeliveryPanel({ model, names, edits, onReplace }: {
+export default function DeliveryPanel({ model, names, edits, onReplace, onMaterials }: {
+  onMaterials: (materials: MaterialRequest[]) => void;
   model: SaveModel; names: SaveNameTables; edits: ProgressEdits; onReplace: (edits: ProgressEdits) => void;
 }) {
   const [selected, setSelected] = useState(13), [query, setQuery] = useState('');
@@ -48,7 +50,7 @@ export default function DeliveryPanel({ model, names, edits, onReplace }: {
           <SaveIcon names={names} kind="items" value={String(item.itemId)} size={44} /><span><strong>{itemLabel(names, String(item.itemId))}</strong><small>{row ? `${ranks[row.rank] ?? '未知品质'}${row.rank > 0 ? '及以上' : ''}` : '此存档没有该项记录'}</small></span>
           <span className="save-delivery-count"><small>已交付</small><span><input type="number" min="0" max={item.count} step="1" disabled={!row} aria-label={`${b.name} · ${itemLabel(names, String(item.itemId))}已交付数量`} value={count(key)} onChange={e => { const n = e.target.valueAsNumber; if (Number.isInteger(n)) change({ [key]: Math.max(0, Math.min(item.count, n)) }); }} /><span>/ {item.count}</span></span></span>
         </label>; })}</div>
-        <footer><div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(b.reward)} size={28} /><small>奖励：{itemLabel(names, String(b.reward))} × {b.rewardCount}</small></div><div className="save-delivery-buttons"><button type="button" onClick={() => fill(b.id, true)}>留最后一件</button><button type="button" onClick={() => fill(b.id, false)}>标记完成</button>{b.items.some((_, i) => edits.deliveries?.[`${b.id}:${i}`] !== undefined) && <button type="button" onClick={() => change(Object.fromEntries(b.items.map((_, i) => [`${b.id}:${i}`, undefined])))}>撤销</button>}</div></footer>
+        <footer><div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(b.reward)} size={28} /><small>奖励：{itemLabel(names, String(b.reward))} × {b.rewardCount}</small></div><div className="save-delivery-buttons"><button type="button" disabled={complete(b.id) || b.items.some((_, i) => !rows.has(`${b.id}:${i}`))} onClick={() => onMaterials(b.items.map((item, i) => ({ itemId: item.itemId, rank: item.rank, count: Math.max(0, item.count - count(`${b.id}:${i}`)) })))}>剩余材料加入背包</button><button type="button" onClick={() => fill(b.id, true)}>留最后一件</button><button type="button" onClick={() => fill(b.id, false)}>标记完成</button>{b.items.some((_, i) => edits.deliveries?.[`${b.id}:${i}`] !== undefined) && <button type="button" onClick={() => change(Object.fromEntries(b.items.map((_, i) => [`${b.id}:${i}`, undefined])))}>撤销</button>}</div></footer>
       </article>)}</div>
     </section>
   </div>;

@@ -1,3 +1,4 @@
+import type { MaterialRequest } from '../../lib/saveInventory';
 import { useEffect, useMemo, useState } from 'react';
 import { PROGRESSION, flagEnabled, readEncyclopedia, readSkills, type ProgressEdits, type ProgressToggleGroup } from '../../lib/saveProgress';
 import ShrinePanel from './ShrinePanel';
@@ -11,7 +12,8 @@ import SaveIcon from './SaveIcon';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { useProgressiveRows } from '../table/useProgressiveRows';
 
-export default function ProgressPanel({ model, edits, names, onChange, onReplace }: {
+export default function ProgressPanel({ model, edits, names, onChange, onReplace, onMaterials }: {
+  onMaterials: (materials: MaterialRequest[]) => void;
   model: SaveModel; edits: ProgressEdits; names: SaveNameTables; onChange: (group: ProgressToggleGroup, id: string, value: boolean | undefined) => void; onReplace: (edits: ProgressEdits) => void;
 }) {
   const [tab, setTab] = useState('encyclopedia'), [query, setQuery] = useState(''), [category, setCategory] = useState(''), [filter, setFilter] = useState('all');
@@ -39,7 +41,7 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
   };
   return <section className="save-progress">
     <nav className="save-progress-tabs" aria-label="收集与解锁分类">{[['encyclopedia', '图鉴'], ['recipes', '配方'], ['shrine', '神龛技能树'], ['deliveries', '交付委托']].map(([id, name]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setCategory(''); setQuery(''); }}>{name}</button>)}</nav>
-    {tab === 'shrine' ? <ShrinePanel model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
+    {tab === 'shrine' ? <ShrinePanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
     <div className="save-progress-toolbar">
       <input type="search" aria-label="搜索收集项目" placeholder="名称、拼音或首字母" value={query} onChange={event => setQuery(event.target.value)} />
       {tab !== 'skills' && <select aria-label="收集项目分类" value={category} onChange={event => setCategory(event.target.value)}><option value="">全部分类</option>

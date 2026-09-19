@@ -205,6 +205,8 @@ export function collectContainers(doc: SerDocument): SaveContainer[] {
 /* ----------------------------------------------------------- slot editing -- */
 
 export interface SlotAssignment {
+  /** Original template for moves, retaining item-specific status fields. */
+  sourcePointer?: number;
   itemId: string;
   count: string;
   rank: string;
@@ -281,7 +283,8 @@ export function buildSlotEdits(
       continue;
     }
 
-    const donor = findDonor(doc, containers, offset);
+    if (assignment.sourcePointer !== undefined && !containers.some(c => c.slots.some(s => s.pointer === assignment.sourcePointer && s.item))) throw new Error('移动物品的来源模板无效。');
+    const donor = assignment.sourcePointer === undefined ? findDonor(doc, containers, offset) : doc.node(assignment.sourcePointer);
     if (!donor) throw new Error('这个存档里没有任何已占用的格子可以作为新物品的模板。');
     const built = captureBuilt(doc, donor);
     // Keep the slot's own name ("0", "1", …) rather than the donor's.

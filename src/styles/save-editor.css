@@ -770,3 +770,5 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
   .save-device-card { padding:.6rem .4rem; }
   .save-device-detail-body { padding:.65rem; }
 }
+
+.save-machine-search{box-sizing:border-box;width:100%;padding:.65rem .8rem;border:1px solid var(--border);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;margin:.7rem 0}.save-batch-machines{padding:1rem;border:1px solid var(--border);border-radius:10px;margin-bottom:1rem}.save-batch-machines summary{cursor:pointer;font-weight:600}.save-slot[draggable=true]{cursor:grab}

@@ -26,13 +26,14 @@ interface ItemGridProps {
   names: SaveNameTables;
   selected: number | null;
   onSelect: (pointer: number) => void;
+  onTransfer?: (from: number, to: number) => void;
 }
 
 export function itemLabel(names: SaveNameTables, itemId: string): string {
   return lookupName(names, 'items', itemId) ?? `#${itemId}`;
 }
 
-export default function ItemGrid({ container, slots, names, selected, onSelect }: ItemGridProps) {
+export default function ItemGrid({ container, slots, names, selected, onSelect, onTransfer }: ItemGridProps) {
   const columns = Math.min(GRID_COLUMNS, Math.max(1, container.slots.length));
   const [focusIndex, setFocusIndex] = useState(0);
   return <div className="save-grid-scroll">
@@ -46,6 +47,10 @@ export default function ItemGrid({ container, slots, names, selected, onSelect }
         return <button
           type="button"
           key={slot.pointer}
+          draggable={!!view && !!onTransfer}
+          onDragStart={event => { event.dataTransfer.setData('application/x-village-slot', String(slot.pointer)); event.dataTransfer.effectAllowed = 'move'; }}
+          onDragOver={event => { if (onTransfer && event.dataTransfer.types.includes('application/x-village-slot')) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; } }}
+          onDrop={event => { const source = event.dataTransfer.getData('application/x-village-slot'); if (!onTransfer || !/^\d+$/.test(source)) return; event.preventDefault(); onTransfer(Number(source), slot.pointer); }}
           className={classes.join(' ')}
           tabIndex={slot.index === Math.min(focusIndex, slots.length - 1) ? 0 : -1}
           onFocus={() => setFocusIndex(slot.index)}
