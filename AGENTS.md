@@ -28,6 +28,17 @@ Use Node.js 24 LTS and `npm ci`.
 
 Follow nearby code: two-space indentation for TypeScript/Astro and four spaces for Python. Use PascalCase component filenames and camelCase functions. Keep TypeScript strict; preserve game IDs verbatim. Use `withBase` from `src/lib/sitePath.ts` for internal links, asset URLs, and fetches. No dedicated formatter or lint script is configured; avoid unrelated reformatting.
 
+## UI, Large Lists & Loading Performance
+
+- Every new page element must be usable, visually polished, and consistent with the existing UI. Reuse themed components, spacing, typography, and interaction patterns. Check desktop and mobile layouts, keyboard access, and visible focus states.
+- Do not expose unstyled browser-default controls, such as white inputs with black text, native-looking dropdowns, or default buttons. Use the project's themed inputs, searchable dropdowns, and buttons. Keep semantic HTML and accessibility behavior underneath the custom appearance.
+- Pages with many entries, such as the full game-item catalog, must use incremental scroll loading and lazy loading where appropriate. Add search and category filters when the data supports categorization; apply them to the full dataset, not only the rendered rows.
+- Assess initial HTML size, transferred data, DOM size, and rendering cost. Do not render an entire large dataset into Astro's static HTML. Load list data, details, and heavy UI on demand; render entries in batches or virtualize them as needed. Validate loading and scrolling in a production preview, not only the dev server.
+
+## Player-Facing Copy
+
+When writing or revising page text, use the `no-ai-slop` skill and review its checklist. Write direct, natural language using established game terminology. Explain what players can do and the verified conditions. Remove generic introductions, inflated claims, repetitive sentence patterns, and AI-sounding filler. Keep labels and instructions concise without removing necessary caveats.
+
 ## Testing Guidelines
 
 Use colocated `*.test.ts` / `*.test.tsx` Vitest tests and `tests/test_*.py` pytest tests. Cover changed behavior, edge cases, and reverse entity relationships. No numeric coverage threshold is configured. Run `verify` before merging; report unavailable game-dependent checks explicitly. Check responsive UI changes in a browser.
