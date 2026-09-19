@@ -62,7 +62,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if(kind==='livestock') entity.icon_path=livestockProducts.animals.find(a=>a.livestock_id===entity.id)?.icon_path;
       if (entity.category_name) entity.category_name = withSearchAliases(entity.category_name);
       if (typeof entity.location === 'string') entity.location = toSimplified(entity.location);
-      if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? toSimplified(condition) : condition);
+      if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? toSimplified(condition).replace('尚未解锁此款外观', '仅在尚未拥有此款外观时出售，购买后解锁').replace('尚未解锁此制作配方', '仅在尚未学会此配方时出售') : condition);
       for (const field of ['description','objective']) if(typeof entity[field]==='string') entity[field]=toSimplified(entity[field]);
       if(Array.isArray(entity.steps))entity.steps=entity.steps.map(step=>typeof step==='string'?toSimplified(step):step);
       setSearchText(entity);

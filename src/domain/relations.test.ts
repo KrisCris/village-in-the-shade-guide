@@ -15,6 +15,17 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('opens the same product detail from each process and retains every recipe', () => {
+    const product = entity('flour', 'items', { sell_price: 50 });
+    const grain = entity('wheat', 'items', { sell_price: 10 });
+    const first = entity('mill-1', 'processes', { inputs: [{ item_id: 'wheat', quantity: 1 }], output: { item_id: 'flour', quantity: 1 }, duration_minutes: 60 });
+    const second = entity('mill-2', 'processes', { ...first, id: 'mill-2', duration_minutes: 30 });
+    const data = catalog(product, grain, first, second);
+    const direct = buildEntityDetailModel(product, data, 'normal');
+    expect(buildEntityDetailModel(first, data, 'normal')).toEqual(direct);
+    expect(buildEntityDetailModel(second, data, 'normal')).toEqual(direct);
+    expect(direct.processingPlans.map(p => p.entity.id)).toEqual(['mill-1', 'mill-2']);
+  });
   it('does not present a database base price as proof an item can be bought', () => {
     const blueprint=entity('blueprint','items',{buy_price:500,sell_price:0});
     expect(buildEntityDetailModel(blueprint,catalog(blueprint),'normal').facts.some(f=>f.label==='买入价')).toBe(false);

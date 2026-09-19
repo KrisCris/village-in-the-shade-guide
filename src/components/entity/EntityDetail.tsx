@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import SearchableSelect from '../controls/SearchableSelect';
+import { useProgressiveRows } from '../table/useProgressiveRows';
 import { withBase } from '../../lib/sitePath';
 import type { Entity } from '../../data/types';
 import { kindLabels } from '../../data/types';
@@ -8,7 +11,20 @@ import {portraits} from '../art/portraitCatalog';
 
 export default function EntityDetail({ model, onOpen }: { model: EntityDetailModel; onOpen?: (entity: Entity) => void }) {
   const { entity, facts, profit, groups, locations } = model;
+  const [ingredient, setIngredient] = useState('');
+  const [sort, setSort] = useState('default');
+  const partialPlans = (model.totalProcessingPlans ?? model.processingPlans.length) > model.processingPlans.length;
+  useEffect(() => { setIngredient(''); setSort('default'); }, [entity.id]);
+  const materials = [...new Map(model.processingPlans.flatMap(plan => plan.groups.filter(g => g.key === 'materials').flatMap(g => g.rows.map(r => [r.entity.id, r.entity.name.zh_hans] as const)))).entries()];
+  const plans = model.processingPlans.filter(plan => !ingredient || plan.groups.some(g => g.key === 'materials' && g.rows.some(r => r.entity.id === ingredient))).slice().sort((a, b) => {
+    if (sort === 'default') return 0;
+    if (sort === 'duration') return Number(a.entity.duration_minutes) - Number(b.entity.duration_minutes);
+    const score = (plan: EntityDetailModel) => Number(plan.profit?.[sort as 'net' | 'perDay']?.replace(/[≈,]/g, '') ?? NaN);
+    const av = score(a), bv = score(b);
+    return (Number.isFinite(bv) ? bv : -Infinity) - (Number.isFinite(av) ? av : -Infinity);
+  });
   const machines=groups.find(group=>group.key==='machines');
+  const planRows = useProgressiveRows(plans, 12, `${entity.id}:${ingredient}:${sort}`);
   const machineIds=(rows:NonNullable<typeof machines>['rows'])=>[...new Set(rows.map(row=>`${row.entity.kind}:${row.entity.id}`))].sort().join('|');
   const sharedMachines=machineIds(machines?.rows??[]);
   const portrait=entity.kind==='characters'?portraits.find(p=>p.id===entity.id):undefined;
@@ -25,11 +41,11 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     <section><h2>基础数据</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
     {machines&&<section><h2>{machines.label}</h2><div className="relation-list">{machines.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></section>}
-    {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{model.processingPlans.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
+    {model.processingPlans?.length > 0 && <section><h2>加工方案</h2>{partialPlans && <p>先显示 {model.processingPlans.length} / {model.totalProcessingPlans} 个方案；完整数据载入后可筛选与排序。</p>}{!partialPlans && model.processingPlans.length > 1 && <div className="plan-filters"><label>原材料<SearchableSelect value={ingredient} onChange={e => setIngredient(e.target.value)}><option value="">全部原材料</option>{materials.map(([id, name]) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label><label>排序<SearchableSelect value={sort} onChange={e => setSort(e.target.value)}><option value="default">游戏顺序</option><option value="net">加工增值从高到低</option><option value="perDay">每日增值从高到低</option><option value="duration">耗时从短到长</option></SearchableSelect></label><span>{plans.length} 个方案</span></div>}{planRows.visible.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
       <div className="plan-heading"><h3>方案 {index + 1}</h3><span>{Number(plan.entity.duration_minutes)} 分钟</span></div>
       {plan.profit && <div className="profit-grid"><span>原料直接售价<strong>{plan.profit.inputCost}</strong></span><span>产出价值<strong>{plan.profit.outputValue}</strong></span><span>加工增值<strong>{plan.profit.net}</strong></span><span>每日加工增值<strong>{plan.profit.perDay}</strong></span></div>}
       {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)&&(group.key!=='machines'||machineIds(group.rows)!==sharedMachines)).map((group) => <div key={group.key}><h4>{group.key==='machines'?'本方案适用机械':group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} compact />)}</div></div>)}
-    </div>)}</section>}
+    </div>)}<div ref={planRows.sentinel}>{planRows.more && <button type="button" className="load-more" onClick={planRows.loadMore}>加载更多加工方案（{planRows.visible.length} / {plans.length}）</button>}</div></section>}
 
     {profit && <section><h2>{entity.kind === 'processes' ? '加工增值' : '种植收益'}</h2><div className="profit-grid">
       <span>{entity.kind === 'processes' ? '原料直接售价' : '种子成本'}<strong>{profit.inputCost}</strong></span>
@@ -47,7 +63,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {import.meta.env.DEV && <details><summary>别名与数据来源</summary><p>{entity.name.aliases.join(' · ')}</p><p>游戏数据构建 24969282；中文由游戏内繁体中文转换并保留日文和内部 ID。</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>}
     <style>{`
-      .entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
+      .plan-filters{display:flex;flex-wrap:wrap;align-items:end;gap:1rem}.plan-filters label{display:grid;gap:.4rem;min-width:160px}.entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
       .processing-plan{padding:1rem;border:1px solid var(--border);border-radius:12px;margin:.7rem 0}.processing-plan h3{margin-top:0}.processing-plan h4{margin:.8rem 0 .4rem}
       .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}.facts div{padding:.8rem;border-radius:10px;background:var(--paper-deep)}dt{font-size:.78rem;color:var(--muted)}dd{margin:.3rem 0 0;overflow-wrap:anywhere}
       .profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem}.profit-grid span{display:grid;gap:.4rem;padding:1rem;border:1px solid var(--border);border-radius:10px}.profit-grid strong{font-size:1.3rem;color:var(--gold)}.calculation-note{font-size:.86rem;color:var(--muted)}

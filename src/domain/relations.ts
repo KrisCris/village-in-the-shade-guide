@@ -41,6 +41,8 @@ export type EntityDetailModel = {
   groups: RelationGroup[];
   locations: Array<{ id: string; name: string; secondary: string }>;
   processingPlans: EntityDetailModel[];
+  /** Static first batch; the client resolves the complete catalog before filtering. */
+  totalProcessingPlans?: number;
   ingredientOptions: Array<{label:string;rows:RelationRowModel[]}>;
 };
 
@@ -329,7 +331,12 @@ function entitySellPrice(entity: Entity, catalog: Catalog, quality: Quality): st
   return outputEntity ? priceText(outputEntity, 'sell_price', quality, Number(output.quantity ?? 1)) : undefined;
 }
 
-export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality: Quality): EntityDetailModel {
+export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality: Quality, processOnly = false): EntityDetailModel {
+  if (entity.kind === 'processes') {
+    const output = itemQuantity(entity.output).item_id;
+    const item = output && catalog.entities.find(row => row.kind === 'items' && row.id === output);
+    if (item && !processOnly) return buildEntityDetailModel(item, catalog, quality);
+  }
   const facts: EntityFact[] = [];
   const addFact = (label: string, value: string | number | null | undefined, price = false) => {
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
@@ -384,7 +391,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
       return times.length ? [{id: `${location.location_id}-${season}`, name: `${location.name.zh_hans} · ${label}`, secondary: times.join(' / ')}] : [];
     });
   });
-  const processingPlans = ['items','crops','machines'].includes(entity.kind) ? catalog.entities.filter((source) => source.kind === 'processes' && (itemQuantity(source.output).item_id === entity.id || (entity.harvest_item_ids as string[] | undefined)?.includes(itemQuantity(source.output).item_id ?? ''))).map((source) => buildEntityDetailModel(source, catalog, quality)) : [];
+  const processingPlans = ['items','crops','machines'].includes(entity.kind) ? catalog.entities.filter((source) => source.kind === 'processes' && (itemQuantity(source.output).item_id === entity.id || (entity.harvest_item_ids as string[] | undefined)?.includes(itemQuantity(source.output).item_id ?? ''))).map((source) => buildEntityDetailModel(source, catalog, quality, true)) : [];
   const embeddedIds = new Set(processingPlans.map((plan) => plan.entity.id));
   const groups = buildRelationGroups(entity, catalog, quality).flatMap((group) => {
     const rows = group.key === 'acquisition' ? group.rows.filter((row) => !embeddedIds.has(row.entity.id)) : group.rows;
