@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import {
   FARM_BOUNDS,
   FARM_CELLS,
@@ -31,6 +31,8 @@ export interface MapCanvasProps {
   labels: boolean;
   brush: number;
   selected?: string;
+  selection: string[];
+  onSelect: (sprites: SceneSprite[]) => void;
   ghost?: SpriteArt;
   previewValid: boolean;
   focus: { bounds: number[]; revision: number };
@@ -58,6 +60,10 @@ export default function MapCanvas(props: MapCanvasProps) {
   const latest = useRef({ props, camera, size });
   latest.current = { props, camera, size };
   const gesture = useRef<{
+    id: number;
+    touch: boolean;
+    start: Point;
+    points: Point[];
     x: number;
     y: number;
     lastX: number;
@@ -68,6 +74,11 @@ export default function MapCanvas(props: MapCanvasProps) {
     lastCell?: number;
   } | null>(null);
   const space = useRef(false);
+  const touches = useRef(new Map<number, Point>());
+  const multiTouch = useRef(false);
+  const miniPointer = useRef<number | null>(null);
+  const [marquee, setMarquee] = useState<{ start: Point; end: Point } | null>(null);
+  const [touchTrail, setTouchTrail] = useState<Point[]>([]);
   useEffect(() => {
     const element = viewport.current!;
     const observer = new ResizeObserver((entries) => {
@@ -193,8 +204,8 @@ export default function MapCanvas(props: MapCanvasProps) {
         ctx.arc(sprite.x, sprite.y, 12, 0, Math.PI * 2);
         ctx.fill();
       }
-      if (sprite.edited || props.selected === sprite.key)
-        diamond(sprite.x, sprite.y, '', props.selected === sprite.key ? '#fff2aa' : '#f0bf5e');
+      if (sprite.edited || (props.selected === sprite.key || props.selection.includes(sprite.key)))
+        diamond(sprite.x, sprite.y, '', (props.selected === sprite.key || props.selection.includes(sprite.key)) ? '#fff2aa' : '#f0bf5e');
     }
     const target = hover && pickCell(hover);
     if (target && props.tool !== 'pan') {
@@ -235,6 +246,12 @@ export default function MapCanvas(props: MapCanvasProps) {
         ctx.fillText(region.name, x, y);
       }
     }
+    if (marquee) {
+      ctx.fillStyle = '#9ad6bb33'; ctx.strokeStyle = '#fff2aa'; ctx.lineWidth = 1.5 / camera.zoom;
+      ctx.fillRect(marquee.start.x, marquee.start.y, marquee.end.x - marquee.start.x, marquee.end.y - marquee.start.y);
+      ctx.strokeRect(marquee.start.x, marquee.start.y, marquee.end.x - marquee.start.x, marquee.end.y - marquee.start.y);
+    }
+    for (const p of touchTrail) diamond(p.x, p.y, '#9ad6bb55', '#fff2aa');
     setLoading(pending);
     return () => {
       disposed = true;
@@ -252,6 +269,9 @@ export default function MapCanvas(props: MapCanvasProps) {
     props.facilities,
     props.labels,
     props.selected,
+    props.selection,
+    marquee,
+    touchTrail,
     props.ghost,
     props.previewValid,
     props.tool,
@@ -293,6 +313,98 @@ export default function MapCanvas(props: MapCanvasProps) {
     });
     props.onChoose(p, hit);
   }
+  function panBy(dx: number, dy: number) {
+    // Capture the delta before React runs the updater; gesture coordinates are mutable.
+    setCamera(c => ({ ...c, x: c.x - dx / c.zoom, y: c.y - dy / c.zoom }));
+  }
+  function pointerDown(e: ReactPointerEvent<HTMLCanvasElement>) {
+    if (e.pointerType !== 'touch' && e.button !== 0 && e.button !== 1) return;
+    e.preventDefault();
+    e.currentTarget.focus({ preventScroll: true });
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const touch = e.pointerType === 'touch';
+    if (touch) {
+      touches.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (touches.current.size > 1) {
+        multiTouch.current = true;
+        gesture.current = null;
+        setMarquee(null); setTouchTrail([]);
+        return;
+      }
+      if (multiTouch.current) return;
+    } else if (gesture.current) return;
+    const pan = props.tool === 'pan' || space.current || e.button === 1;
+    const paint = !pan && !['inspect', 'place'].includes(props.tool);
+    const p = position(e);
+    gesture.current = { id: e.pointerId, touch, start: p, points: [p], x: e.clientX, y: e.clientY,
+      lastX: e.clientX, lastY: e.clientY, pan, paint, moved: false, lastCell: pickCell(p)?.id };
+    if (paint && !touch) { props.onStroke(true); choose(p); }
+    if (paint && touch) setTouchTrail([p]);
+  }
+  function pointerMove(e: ReactPointerEvent<HTMLCanvasElement>) {
+    const old = touches.current.get(e.pointerId);
+    if (old) {
+      const dx = e.clientX - old.x, dy = e.clientY - old.y;
+      touches.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (multiTouch.current) {
+        if (touches.current.size >= 2) panBy(dx / touches.current.size, dy / touches.current.size);
+        return;
+      }
+    }
+    const p = position(e);
+    setHover(p); props.onHover(p);
+    const g = gesture.current;
+    if (!g || g.id !== e.pointerId) return;
+    if (Math.hypot(e.clientX - g.x, e.clientY - g.y) > 5) g.moved = true;
+    if (g.pan) panBy(e.clientX - g.lastX, e.clientY - g.lastY);
+    else if (g.paint) {
+      // Sample the entire segment so fast brush strokes do not skip cells.
+      const previous = position({ clientX: g.lastX, clientY: g.lastY });
+      const steps = Math.ceil(Math.hypot(p.x - previous.x, p.y - previous.y) / 20);
+      for (let i = 1; i <= steps; i++) {
+        const point = { x: previous.x + (p.x - previous.x) * i / steps, y: previous.y + (p.y - previous.y) * i / steps };
+        const cell = pickCell(point);
+        if (cell && cell.id !== g.lastCell) {
+          g.lastCell = cell.id;
+          if (g.touch) g.points.push(point); else choose(point);
+        }
+      }
+      if (g.touch) setTouchTrail([...g.points]);
+    } else if (props.tool === 'inspect' && g.moved) setMarquee({ start: g.start, end: p });
+    g.lastX = e.clientX; g.lastY = e.clientY;
+  }
+  function endPointer(e: ReactPointerEvent<HTMLCanvasElement>, cancelled: boolean) {
+    touches.current.delete(e.pointerId);
+    if (multiTouch.current) {
+      if (!touches.current.size) multiTouch.current = false;
+      return;
+    }
+    const g = gesture.current;
+    if (!g || g.id !== e.pointerId) return;
+    gesture.current = null;
+    setMarquee(null); setTouchTrail([]);
+    if (g.paint) {
+      // Delay touch edits until release, so adding a second finger never paints the map.
+      if (g.touch && !cancelled) { props.onStroke(true); for (const p of g.points) choose(p); }
+      if (!g.touch || !cancelled) props.onStroke(false);
+    } else if (!cancelled && !g.pan) {
+      if (!g.moved) choose(position(e));
+      else if (props.tool === 'inspect') {
+        const p = position(e), a = g.start;
+        props.onSelect(props.sprites.filter(s => (s.kind === 'crop' ? props.plants : props.facilities) &&
+          s.x >= Math.min(a.x,p.x) && s.x <= Math.max(a.x,p.x) && s.y >= Math.min(a.y,p.y) && s.y <= Math.max(a.y,p.y)));
+      }
+    }
+  }
+  function locateMinimap(e: ReactPointerEvent<HTMLButtonElement>) {
+    const svg = e.currentTarget.querySelector('svg')!;
+    const matrix = svg.getScreenCTM();
+    if (!matrix) return;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(matrix.inverse());
+    const b = props.art.bounds;
+    const x = Math.max(b[0], Math.min(b[2], p.x)), y = Math.max(b[1], Math.min(b[3], p.y));
+    setCamera(c => ({ ...c, x, y }));
+  }
   const zoom = (factor: number) =>
     setCamera((c) =>
       zoomCamera(c, factor, { x: size.width / 2, y: size.height / 2 }, size.width, size.height)
@@ -304,7 +416,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         className={props.tool === 'pan' ? 'is-pan' : ''}
         tabIndex={0}
         role="application"
-        aria-label="农场地图。拖动浏览，滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。"
+        aria-label="农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。"
         onContextMenu={(e) => e.preventDefault()}
         onKeyDown={(e) => {
           if (e.key === ' ') {
@@ -342,60 +454,11 @@ export default function MapCanvas(props: MapCanvasProps) {
         onBlur={() => {
           space.current = false;
         }}
-        onPointerDown={(e) => {
-          e.currentTarget.focus({ preventScroll: true });
-          e.currentTarget.setPointerCapture(e.pointerId);
-          const pan = props.tool === 'pan' || space.current || e.button !== 0,
-            paint = !pan && !['inspect', 'place'].includes(props.tool);
-          gesture.current = {
-            x: e.clientX,
-            y: e.clientY,
-            lastX: e.clientX,
-            lastY: e.clientY,
-            pan,
-            paint,
-            moved: false
-          };
-          if (paint) {
-            props.onStroke(true);
-            const p = position(e);
-            gesture.current.lastCell = pickCell(p)?.id;
-            choose(p);
-          }
-        }}
-        onPointerMove={(e) => {
-          const p = position(e);
-          setHover(p);
-          props.onHover(p);
-          const g = gesture.current;
-          if (!g) return;
-          if (Math.hypot(e.clientX - g.x, e.clientY - g.y) > 5) g.moved = true;
-          if (g.pan || (props.tool === 'inspect' && g.moved))
-            setCamera((c) => ({
-              ...c,
-              x: c.x - (e.clientX - g.lastX) / c.zoom,
-              y: c.y - (e.clientY - g.lastY) / c.zoom
-            }));
-          else if (g.paint) {
-            const cell = pickCell(p);
-            if (cell && cell.id !== g.lastCell) {
-              g.lastCell = cell.id;
-              choose(p);
-            }
-          }
-          g.lastX = e.clientX;
-          g.lastY = e.clientY;
-        }}
-        onPointerUp={(e) => {
-          const g = gesture.current;
-          gesture.current = null;
-          if (g?.paint) props.onStroke(false);
-          else if (g && !g.pan && !g.moved) choose(position(e));
-        }}
-        onPointerCancel={() => {
-          if (gesture.current?.paint) props.onStroke(false);
-          gesture.current = null;
-        }}
+        onPointerDown={pointerDown}
+        onPointerMove={pointerMove}
+        onPointerUp={(e) => endPointer(e, false)}
+        onPointerCancel={(e) => endPointer(e, true)}
+        onLostPointerCapture={(e) => endPointer(e, true)}
         onPointerLeave={() => {
           if (!gesture.current) {
             setHover(null);
@@ -409,20 +472,19 @@ export default function MapCanvas(props: MapCanvasProps) {
       <button
         type="button"
         className="farm-minimap"
-        aria-label="农场总览，点击定位"
-        onClick={(e) => {
-          const box = e.currentTarget.getBoundingClientRect(),
-            b = props.art.bounds;
-          if (e.detail === 0) {
-            setCamera(fitCamera(homeBounds, size.width, size.height));
-            return;
-          }
-          setCamera((c) => ({
-            ...c,
-            x: b[0] + ((e.clientX - box.left) / box.width) * (b[2] - b[0]),
-            y: b[1] + ((e.clientY - box.top) / box.height) * (b[3] - b[1])
-          }));
+        aria-label="农场总览，拖动定位，回车查看全貌"
+        onPointerDown={(e) => {
+          if (miniPointer.current !== null) return;
+          e.preventDefault();
+          miniPointer.current = e.pointerId;
+          e.currentTarget.setPointerCapture(e.pointerId);
+          locateMinimap(e);
         }}
+        onPointerMove={(e) => { if (miniPointer.current === e.pointerId) locateMinimap(e); }}
+        onPointerUp={(e) => { if (miniPointer.current === e.pointerId) { locateMinimap(e); miniPointer.current = null; } }}
+        onPointerCancel={() => { miniPointer.current = null; }}
+        onLostPointerCapture={() => { miniPointer.current = null; }}
+        onClick={(e) => { if (e.detail === 0) setCamera(fitCamera(homeBounds, size.width, size.height)); }}
       >
         <svg
           viewBox={`${props.art.bounds[0]} ${props.art.bounds[1]} ${props.art.bounds[2] - props.art.bounds[0]} ${props.art.bounds[3] - props.art.bounds[1]}`}
@@ -468,7 +530,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           部分素材加载失败，请刷新重试。
         </span>
       )}
-      <div className="farm-canvas-hint">拖动浏览 · 滚轮缩放 · 空格临时平移</div>
+      <div className="farm-canvas-hint">左键选择／框选 · 中键平移 · 双指平移 · 滚轮缩放</div>
     </div>
   );
 }

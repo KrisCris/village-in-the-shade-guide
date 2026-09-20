@@ -513,3 +513,11 @@
     gap: 0.25rem;
   }
 }
+
+.farm-editor .farm-minimap { touch-action: none; cursor: move; }
+.farm-viewport canvas:active { cursor: crosshair; }
+.farm-viewport canvas.is-pan:active { cursor: grabbing; }
+.farm-multi-selection { display: grid; gap: 8px; margin-top: 12px; }
+.farm-multi-selection > div { max-height: 180px; overflow: auto; display: grid; gap: 4px; }
+
+.farm-compass, .farm-loading { pointer-events: none; }

@@ -80,6 +80,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     [facilities, setFacilities] = useState(true),
     [labels, setLabels] = useState(true);
   const [mature, setMature] = useState(false);
+  const [selection, setSelection] = useState<string[]>([]);
+  const [selectionLimit, setSelectionLimit] = useState(40);
   const [selected, setSelected] = useState<string>(),
     [hover, setHover] = useState<Point | null>(null),
     [selectedPoint, setSelectedPoint] = useState<Point | null>(null);
@@ -96,7 +98,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
   function changeRoom(id: string) {
     const next = rooms.find(r => r.id === id);
-    setRoomId(id); setSelected(undefined); setSelectedPoint(null); setMoving(''); setHover(null); setTool('inspect');
+    setRoomId(id); setSelection([]); setSelected(undefined); setSelectedPoint(null); setMoving(''); setHover(null); setTool('inspect');
     setFocus(f => ({ bounds: next?.bounds ?? FARM_BOUNDS, revision: f.revision + 1 }));
     setMessage(next ? `${next.name} · ${next.description}` : '选择一块田地开始，或滚轮放大查看。');
   }
@@ -259,6 +261,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     const cell = pickCell(p);
     setSelectedPoint(p);
     if (tool === 'inspect') {
+      setSelection([]);
       setSelected(sprite?.key);
       setMessage(sprite ? nameOf(sprite) : cell ? '此处可选择种植或放置工具。' : '道路、河岸与固定地形。');
       return;
@@ -556,6 +559,13 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   <p>选择种植、设施等工具后，地图会显示落点预览。</p>
                 </>
               )}
+              {selection.length > 0 && <div className="farm-multi-selection">
+                <strong>已框选 {selection.length} 个物体</strong>
+                <div>{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}
+                  aria-pressed={selected === s.key} onClick={() => setSelected(s.key)}>{nameOf(s)}</button>)}</div>
+                {selection.length > selectionLimit && <button type="button" onClick={() => setSelectionLimit(n => n + 40)}>显示更多</button>}
+                <button type="button" onClick={() => { setSelection([]); setSelected(undefined); }}>取消框选</button>
+              </div>}
               {selectedPoint && (
                 <small>
                   位置 {Math.round(chosen?.x ?? selectedPoint.x)}, {Math.round(chosen?.y ?? selectedPoint.y)}
@@ -606,6 +616,11 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           labels={labels}
           brush={brush}
           selected={selected}
+          selection={selection}
+          onSelect={(items) => {
+            setSelectionLimit(40); setSelection(items.map(s => s.key)); setSelected(items[0]?.key);
+            setMessage(`已框选 ${items.length} 个物体。点击列表查看详情。`);
+          }}
           ghost={tool === 'place' ? spriteArt(art, 'object', template, season, undefined, objects.find(o => o.uid === moving || (!moving && o.id === template))?.angle) : undefined}
           previewValid={previewValid}
           focus={focus}
