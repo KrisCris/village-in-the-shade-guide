@@ -6,6 +6,7 @@ import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { deviceEnabled, deviceIdentity, displayedItem, MACHINES, machineJobs, machineSpec, specialSpec, type MachineEdits } from '../../lib/saveMachines';
 import SaveIcon from './SaveIcon';
 import { itemLabel } from './ItemGrid';
+import { ITEM_RANKS } from '../../lib/saveRules';
 
 const SPECIAL_LABELS: Record<string, string> = { shared: '共享箱', display: '摆放设施', workbench: '工作台', anvil: '工具改造', quest: '任务设施', system: '专用物品箱' };
 export function specialTitle(container: SaveContainer, names: SaveNameTables): string {
@@ -17,14 +18,14 @@ function ProductProgress({ job, names }: { job: ReturnType<typeof machineJobs>[n
   const occupied = job.seconds > 0;
   const ready = occupied && job.remaining === 0;
   const percent = occupied ? Math.max(0, Math.min(100, (1 - job.remaining / job.seconds) * 100)) : 0;
-  const label = `加工栏位 ${job.index + 1}：${occupied ? `${itemLabel(names, String(job.output))} × ${job.count}，${ready ? '可以领取' : `进度 ${Math.round(percent)}%`}` : '空闲，可添加任务'}`;
+  const label = `加工栏位 ${job.index + 1}：${occupied ? `${itemLabel(names, String(job.output))} × ${job.count}，${ITEM_RANKS.find(rank => rank.value === job.rank)?.label ?? '未知品质'}，${ready ? '可以领取' : `进度 ${Math.round(percent)}%`}` : '空闲，可添加任务'}`;
   return <span className={`save-product-ring ${occupied ? ready ? 'is-ready' : 'is-working' : 'is-idle'}`} title={label}
     role={occupied ? 'progressbar' : 'img'} aria-label={label} aria-valuemin={occupied ? 0 : undefined} aria-valuemax={occupied ? 100 : undefined} aria-valuenow={occupied ? Math.round(percent) : undefined}>
     <svg viewBox="0 0 40 40" aria-hidden="true">
       <circle className="save-product-ring-track" cx="20" cy="20" r="17" pathLength="100" />
       {occupied && <circle className="save-product-ring-fill" cx="20" cy="20" r="17" pathLength="100" strokeDasharray="100" strokeDashoffset={100 - percent} transform="rotate(-90 20 20)" />}
     </svg>
-    {occupied ? <SaveIcon names={names} kind="items" value={String(job.output)} size={26} /> : <span className="save-product-ring-empty" aria-hidden="true">+</span>}
+    {occupied ? <SaveIcon names={names} kind="items" value={String(job.output)} size={26} rank={job.rank} /> : <span className="save-product-ring-empty" aria-hidden="true">+</span>}
     {ready && <span className="save-product-ring-ready" aria-hidden="true">✓</span>}
   </span>;
 }

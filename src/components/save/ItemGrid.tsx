@@ -2,7 +2,7 @@ import { GRID_COLUMNS, type SaveContainer, type SaveSlot } from '../../lib/saveI
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { useState } from 'react';
-import { withBase } from '../../lib/sitePath';
+import { ITEM_RANKS } from '../../lib/saveRules';
 
 /** What a slot currently shows, after drafts and pending assignments. */
 export interface SlotView {
@@ -63,17 +63,16 @@ export default function ItemGrid({ container, slots, names, selected, onSelect, 
             buttons?.[next]?.focus();
           }}
           onClick={() => onSelect(slot.pointer)}
-          aria-label={view ? `第 ${slot.index + 1} 格：${name} ×${view.count}` : `第 ${slot.index + 1} 格：空`}
+          aria-label={view ? `第 ${slot.index + 1} 格：${name}，${ITEM_RANKS.find(rank => rank.value === Number(view.rank))?.label ?? '未知品质'} ×${view.count}` : `第 ${slot.index + 1} 格：空`}
         >
           <span className="save-slot-index">{slot.index + 1}</span>
           {view
             ? <>
               <span className="save-slot-art">
-                <SaveIcon names={names} kind="items" value={view.itemId} size={38} />
-                <span className="save-slot-count">{view.count}</span>
+                <SaveIcon names={names} kind="items" value={view.itemId} size={56} rank={Number(view.rank)} />
               </span>
               <span className="save-slot-name" title={name}>{name}</span>
-              {Number(view.rank) > 0 && Number(view.rank) <= 4 && <img className="save-slot-quality" src={withBase(`/icons/generated/ui/rank-${view.rank}.webp`)} width={18} height={18} alt="物品等级" />}
+              <span className="save-slot-count">{view.count}</span>
             </>
             : <span className="save-slot-plus" aria-hidden="true">＋</span>}
         </button>;

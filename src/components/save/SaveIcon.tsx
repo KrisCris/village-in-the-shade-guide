@@ -1,6 +1,8 @@
 import { withBase } from '../../lib/sitePath';
 import type { LookupKind } from '../../lib/saveModel';
 import { lookupIcon, type SaveNameTables } from '../../lib/saveNames';
+import { ITEM_RANKS } from '../../lib/saveRules';
+import RankIcon from './RankIcon';
 
 const FALLBACKS: Partial<Record<LookupKind, string>> = {
   items: '/icons/fallback/items.svg',
@@ -14,6 +16,7 @@ interface SaveIconProps {
   value: string;
   size: number;
   className?: string;
+  rank?: number;
 }
 
 /**
@@ -21,11 +24,11 @@ interface SaveIconProps {
  * for that kind at all (weather, facilities), so callers can drop it in
  * unconditionally.
  */
-export default function SaveIcon({ names, kind, value, size, className }: SaveIconProps) {
+export default function SaveIcon({ names, kind, value, size, className, rank }: SaveIconProps) {
   const src = kind === 'livestock' && value !== '100' ? withBase(`/icons/generated/ui/livestock-${value}.webp`) : lookupIcon(names, kind, value);
   if (!src) return null;
   const fallback = FALLBACKS[kind as LookupKind];
-  return <img
+  const icon = <img
     className={className ? `save-icon ${className}` : 'save-icon'}
     src={src}
     alt=""
@@ -37,4 +40,10 @@ export default function SaveIcon({ names, kind, value, size, className }: SaveIc
       ? (event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(fallback); }
       : undefined}
   />;
+  if (rank === undefined) return icon;
+  const quality = ITEM_RANKS.find(entry => entry.value === rank);
+  return <span className="save-ranked-icon" style={{ width: size, height: size }} title={quality?.label ?? '未知品质'}>
+    {icon}
+    <RankIcon className="save-rank-badge" rank={rank} />
+  </span>;
 }

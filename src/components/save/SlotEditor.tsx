@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { SaveContainer, SaveSlot, SlotAssignment } from '../../lib/saveItems';
 import type { SaveNameTables } from '../../lib/saveNames';
 import { ITEM_RANKS, SAVE_RULES } from '../../lib/saveRules';
-import { withBase } from '../../lib/sitePath';
+import RankPicker from './RankPicker';
 import { itemLabel, type SlotState, type SlotView } from './ItemGrid';
 import EntityPicker from './EntityPicker';
 import SaveDialog from './SaveDialog';
@@ -31,7 +31,7 @@ export default function SlotEditor({ container, slot, view, state, names, onAppl
       <div className="save-slot-field save-slot-item">
         <label htmlFor="slot-item">物品</label>
         <button type="button" id="slot-item" className="save-slot-chosen" onClick={() => setPicking(open => !open)} aria-expanded={picking}>
-          <SaveIcon names={names} kind="items" value={value.itemId} size={32} />
+          <SaveIcon names={names} kind="items" value={value.itemId} size={48} rank={Number(value.rank)} />
           <span>{value.itemId ? itemLabel(names, value.itemId) : '选择物品'}<small>{value.itemId}</small></span>
         </button>
       </div>
@@ -39,11 +39,7 @@ export default function SlotEditor({ container, slot, view, state, names, onAppl
         <input id="slot-count" type="number" min={1} max={SAVE_RULES.stackMax} step={1} value={value.count} onChange={event => patch({ count: event.target.value })} />
         <small>每叠最多 {SAVE_RULES.stackMax}</small>
       </div>
-      <fieldset className="save-rank-picker"><legend>物品等级</legend>
-        {ITEM_RANKS.map(rank => <button type="button" key={rank.value} aria-pressed={value.rank === String(rank.value)} onClick={() => patch({ rank: String(rank.value) })}>
-          {rank.value > 0 && <img src={withBase(`/icons/generated/ui/rank-${rank.value}.webp`)} width={24} height={24} alt="" />}{rank.label}
-        </button>)}
-      </fieldset>
+      <RankPicker label="物品等级" value={Number(value.rank)} onChange={rank => patch({ rank: String(rank) })} />
     </div>
     {picking && <SaveDialog title="选择物品" onClose={() => setPicking(false)}><EntityPicker names={names} kind="items" value={value.itemId} onChange={itemId => { patch({ itemId }); setPicking(false); }} /></SaveDialog>}
     <div className="save-slot-actions">

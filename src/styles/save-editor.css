@@ -112,9 +112,9 @@
 .save-container-meta { margin: 0; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
 
 .save-grid-scroll { overflow-x: auto; }
-.save-grid { display: grid; gap: .3rem; min-width: 540px; }
+.save-grid { display: grid; gap: .3rem; min-width: 740px; }
 
-.save-slot { position: relative; display: grid; align-content: center; justify-items: center; gap: .1rem; min-height: 78px; padding: .8rem .15rem .3rem; border: 1px solid var(--border); border-radius: 5px; background: var(--paper); color: var(--ink); cursor: pointer; font: inherit; text-align: center; overflow: hidden; }
+.save-slot { position: relative; display: grid; align-content: center; justify-items: center; gap: .1rem; min-height: 116px; padding: 1.1rem .25rem 1.35rem; border: 1px solid var(--border); border-radius: 5px; background: var(--paper); color: var(--ink); cursor: pointer; font: inherit; text-align: center; overflow: hidden; }
 .save-slot:hover { border-color: var(--green); background: color-mix(in srgb, var(--green) 8%, var(--paper)); }
 .save-slot:focus-visible { outline: 2px solid var(--green); outline-offset: 1px; }
 .save-slot.selected { border-color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
@@ -124,8 +124,7 @@
 .save-slot-index { position: absolute; top: .18rem; left: .3rem; color: var(--muted); font-size: .6rem; font-variant-numeric: tabular-nums; }
 .save-slot-name { width: 100%; padding: 0 .1rem; font-size: .6rem; line-height: 1.18; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .save-slot-art { position: relative; display: grid; place-items: center; }
-.save-slot-count { position: absolute; right: -.3rem; bottom: -.15rem; padding: 0 .22rem; border-radius: 3px; background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--paper); font-size: .64rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
-.save-slot-quality { position: absolute; top: .15rem; right: .3rem; color: var(--gold); font-size: .66rem; }
+.save-slot-count { position: absolute; right: .3rem; bottom: .25rem; padding: 0 .22rem; border-radius: 3px; background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--paper); font-size: .72rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
 .save-slot-plus { color: var(--muted); font-size: 1rem; }
 
 /* icons ------------------------------------------------------------------- */
@@ -146,8 +145,8 @@
 .save-slot-field { display: grid; align-content: start; gap: .25rem; min-width: 0; }
 .save-slot-field label { color: var(--muted); font-size: .72rem; letter-spacing: .06em; }
 .save-slot-field input { width: 100%; min-width: 0; border: 1px solid var(--border); border-radius: 3px; background: var(--paper); color: var(--ink); padding: .45rem .55rem; font: inherit; font-size: .88rem; }
-.save-slot-chosen { display: flex; align-items: center; gap: .5rem; min-height: 2.5rem; text-align: left; border: 1px solid var(--border); border-radius: 3px; background: var(--paper-raised); color: var(--ink); padding: .3rem .55rem; cursor: pointer; font: inherit; }
-.save-slot-chosen > span { display: grid; gap: .1rem; min-width: 0; }
+.save-slot-chosen { display: flex; align-items: center; gap: 1rem; min-height: 2.5rem; text-align: left; border: 1px solid var(--border); border-radius: 3px; background: var(--paper-raised); color: var(--ink); padding: .3rem .55rem; cursor: pointer; font: inherit; }
+.save-slot-chosen > span:not(.save-ranked-icon) { display: grid; gap: .1rem; min-width: 0; }
 .save-slot-chosen:hover { border-color: var(--green); }
 .save-slot-chosen small { color: var(--muted); font-size: .68rem; font-variant-numeric: tabular-nums; }
 .save-slot-picker { padding: 0 .8rem .8rem; }
@@ -388,8 +387,9 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-slot-field > input, .save-slot-chosen { min-height: 48px; }
 .save-rank-picker { align-content: start; align-items: start; margin: 0; gap: .35rem; }
 .save-rank-picker legend { color: var(--muted); margin-bottom: .45rem; padding: 0; font-weight: 400; font-size: .72rem; }
-.save-rank-picker button { min-height: 36px; padding: .35rem .5rem; font-size: .78rem; white-space: nowrap; }
-.save-rank-picker img { width: 18px; height: 18px; object-fit: contain; }
+.save-rank-picker button { min-height: 52px; justify-content: center; gap: .45rem; padding: .4rem .65rem; font-size: .82rem; white-space: nowrap; }
+.save-rank-icon { display: block; flex: none; overflow: hidden; }
+.save-rank-picker .save-rank-icon { width: 24px; height: auto; }
 .save-slot-actions { padding: 0 1rem 1rem; }
 .save-slot-chosen { padding: .4rem .65rem; }
 .save-appearance legend { padding-inline: .4rem; }
@@ -593,11 +593,18 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-machine-job p { margin:0; }
 .save-machine-output { display:flex; align-items:center; gap:.7rem; min-height:64px; }
 .save-machine-inputs,.save-machine-job small { color:var(--muted); font-size:.85rem; }
+.save-machine-inputs ul { display:flex; flex-wrap:wrap; gap:.6rem; padding:0; margin:.4rem 0 0; list-style:none; }
+.save-machine-inputs li { display:flex; align-items:center; gap:.6rem; min-height:40px; padding:.3rem .6rem; border:1px solid var(--border); border-radius:8px; background:var(--paper-raised); color:var(--ink); }
+.save-ranked-icon { position:relative; display:inline-flex; flex-shrink:0; vertical-align:middle; }
+.save-ranked-icon > .save-icon { width:100%; height:100%; object-fit:contain; }
+.save-ranked-icon > .save-rank-badge { position:absolute; right:-3px; top:-3px; width:16px; height:auto; filter:drop-shadow(0 1px 1px #0009); pointer-events:none; }
+.save-slot .save-rank-badge { right:-3px; }
+.save-rank-picker button:focus-visible { outline:2px solid var(--green); outline-offset:3px; }
 .save-machine-job progress { width:100%; accent-color:var(--green); height:8px; }
 .save-machine-undo { margin-top:auto; }
 .save-recipe-options { display:grid; gap:.5rem; margin-top:1rem; }
 .save-recipe-options button { display:flex; align-items:center; text-align:left; gap:.75rem; }
-.save-recipe-options span { display:grid; gap:.3rem; }
+.save-recipe-options button > span:not(.save-ranked-icon) { display:grid; gap:.3rem; }
 .save-recipe-options small { font-size:.8rem; color:var(--muted); }
 .save-machine-search { width:100%; }
 .save-bounded-slider { display:grid; gap:.4rem; min-width:110px; }
@@ -735,12 +742,13 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-product-ring > svg { position:absolute; inset:0; width:100%; height:100%; fill:none; stroke-width:3; }
 .save-product-ring-track { stroke:color-mix(in srgb,var(--muted) 24%,var(--paper)); }
 .save-product-ring-fill { stroke:currentColor; }
-.save-product-ring > img { width:65%; height:65%; object-fit:contain; }
+.save-product-ring > .save-ranked-icon { max-width:65%; max-height:65%; }
+.save-product-ring .save-rank-badge { width:12px; height:auto; right:-4px; top:-4px; }
 .save-product-ring.is-working { color:#a86a18; }
 .save-product-ring.is-ready { color:#32714d; }
 .save-product-ring.is-idle .save-product-ring-track { stroke-dasharray:3 4; }
 .save-product-ring-empty { color:var(--muted); font-size:1rem; line-height:1; }
-.save-product-ring-ready { position:absolute; right:-1px; bottom:-1px; display:grid; place-items:center; width:13px; height:13px; border:2px solid var(--paper); border-radius:50%; background:#32714d; color:#fff; font-size:8px; line-height:1; }
+.save-product-ring-ready { position:absolute; left:-1px; top:-1px; display:grid; place-items:center; width:13px; height:13px; border:2px solid var(--paper); border-radius:50%; background:#32714d; color:#fff; font-size:8px; line-height:1; }
 :root[data-theme=night] .save-product-ring.is-working { color:#edbf78; }
 :root[data-theme=night] .save-product-ring.is-ready { color:#9fdbb3; }
 :root[data-theme=night] .save-product-ring-ready { background:#9fdbb3; color:#173729; }
@@ -760,6 +768,8 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-collected-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:.65rem; }
 .save-collected-grid > div { display:flex; align-items:center; gap:.6rem; padding:.7rem; background:var(--paper); border:1px solid var(--border); border-radius:8px; font-size:.85rem; }
 .save-collected-grid small { display:block; margin-top:.3rem; color:var(--muted); }
+.save-collected-grid > div:has(.save-rank-picker) { flex-wrap:wrap; }
+.save-collected-grid .save-rank-picker { flex-basis:100%; }
 .save-device-browser .save-machine-job button:disabled { opacity:.55; }
 @media(max-width:520px) {
   .save-device-toolbar { padding:.75rem; gap:.5rem; }
