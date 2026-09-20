@@ -545,3 +545,11 @@
   .farm-palette { flex: none; height: 410px; max-height: none; }
   .farm-palette > :not(.farm-palette-scroll) { flex-shrink: 0; }
 }
+.farm-growth { display: grid; gap: .65rem; padding-top: 1rem; border-top: 1px solid var(--line, #a7bdae); }
+.farm-growth p { margin: 0; }
+.farm-growth label { display: grid; gap: .4rem; }
+.farm-growth-stages { display: flex; flex-wrap: wrap; gap: .4rem; }
+.farm-growth-stages button { flex: 1 1 5rem; }
+.farm-growth input[type=range] { width: 100%; accent-color: var(--accent, #326957); }
+.farm-growth input[type=number] { width: 100%; padding: .55rem; border: 1px solid var(--line, #a7bdae); border-radius: .5rem; color: inherit; background: transparent; }
+.farm-tool-note { font-size: .85rem; line-height: 1.6; }

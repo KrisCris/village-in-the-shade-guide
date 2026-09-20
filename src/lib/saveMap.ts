@@ -9,7 +9,7 @@ import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, null
 
 export const MAP_DATA = data;
 export const MAP_CROPS = crops.filter(c => c.seed_item_ids.length && c.harvest_item_ids.length);
-export interface CellPaint { crop?: number | null; watered?: boolean; soil?: number }
+export interface CellPaint { crop?: number | null; watered?: boolean; soil?: number; growth?: number; form?: number }
 export interface ObjectPlacement { scene: number; cell: number; template: number; move?: string; angle?: number }
 export interface MapEdits { cells?: Record<string, CellPaint>; objects?: ObjectPlacement[]; removed?: string[] }
 export const mapEditCount = (edits: MapEdits) => Object.keys(edits.cells ?? {}).length + (edits.objects?.length ?? 0) + (edits.removed?.length ?? 0);
@@ -27,28 +27,33 @@ export function mapBuildingFlags(edits: MapEdits, doc?: SerDocument): ProgressEd
   }
   return { flags };
 }
-/** Move residents to the corresponding upgraded room, or another available house. */
+/** Preview and export share the same placement migration; an upgrade keeps its residents. */
 export function mapAnimalEdits(doc: SerDocument, edits: MapEdits, animalEdits: AnimalEdits, progress: ProgressEdits): AnimalEdits {
-  const residents=animalResidents(doc,animalEdits), houses=animalHouses(doc,progress).filter(h=>h.type<2);
-  const slots=houses.flatMap(h=>h.slots), available=new Set(slots.map(s=>s.id));
-  const occupied=new Set([...residents.filter(r=>available.has(r.placement)).map(r=>r.placement),...Object.keys(animalEdits.added??{}).map(Number)]);
-  const moves={...animalEdits.moves};
+  const residents=animalResidents(doc,animalEdits), slots=animalHouses(doc,progress).filter(h=>h.type<2).flatMap(h=>h.slots);
+  const available=new Set(slots.map(s=>s.id)), buildings=draftObjects(doc,edits).filter(o=>o.spec?.building);
+  const occupied=new Set([...residents.filter(r=>available.has(r.placement)).map(r=>r.placement),...Object.keys(animalEdits.added??{}).map(Number).filter(id=>available.has(id))]);
+  const moves={...animalEdits.moves},added={...animalEdits.added};
   const objects=mapObjects(doc);
-  const removingStable=objects.some(o=>edits.removed?.includes(o.uid)&&o.spec?.code.includes('ARCHITECTURE_STABLE'));
-  if(removingStable&&residents.some(r=>ANIMALS.some(a=>a.id===r.species&&a.houseType===2))&&!draftObjects(doc,edits).some(o=>o.spec?.code.includes('ARCHITECTURE_STABLE')))
+  if(objects.some(o=>edits.removed?.includes(o.uid)&&o.spec?.code.includes('ARCHITECTURE_STABLE'))&&residents.some(r=>ANIMALS.some(a=>a.id===r.species&&a.houseType===2))&&!buildings.some(o=>o.spec?.code.includes('ARCHITECTURE_STABLE')))
     throw new Error('马厩里还有马，请保留一座马厩后再导出。');
-  for(const resident of residents) {
-    const old=places.placements.find(p=>p.id===resident.placement);
-    if(!old || old.special || old.houseType>=2 || available.has(resident.placement))continue;
-    const affected=objects.find(o=>o.spec?.mapId===old.mapId&&(edits.removed?.includes(o.uid)||edits.objects?.some(e=>e.move===o.uid&&e.template!==o.id)));
-    if(!affected)continue;
-    const upgrade=edits.objects?.find(e=>e.move===affected.uid), mapId=data.objects.find(s=>s.id===upgrade?.template)?.mapId;
-    const type=ANIMALS.find(a=>a.id===resident.species)?.houseType;
-    const target=slots.find(s=>s.mapId===mapId&&s.houseType===type&&!occupied.has(s.id))??slots.find(s=>s.houseType===type&&!occupied.has(s.id));
-    if(!target)throw new Error(`清理建筑前，请为「${resident.name}」保留一处可用的畜舍栏位。`);
-    moves[resident.index]=target.id;occupied.add(target.id);
+  function relocate(placement:number,species:number,name:string) {
+    const old=places.placements.find(p=>p.id===placement);
+    if(!old||old.special||old.houseType>=2||available.has(placement))return placement;
+    const oldSpec=data.objects.find(s=>s.mapId===old.mapId);
+    const corresponding=buildings.find(o=>o.spec?.buildingFamily===oldSpec?.buildingFamily&&o.spec?.slot===oldSpec?.slot);
+    const affected=corresponding&&corresponding.spec?.mapId!==old.mapId || objects.some(o=>o.spec?.mapId===old.mapId&&edits.removed?.includes(o.uid));
+    if(!affected)return placement;
+    const type=ANIMALS.find(a=>a.id===species)?.houseType;
+    const candidates=slots.filter(s=>s.houseType===type&&(!corresponding||s.mapId===corresponding.spec?.mapId));
+    const ordinal=places.placements.filter(p=>p.mapId===old.mapId&&!p.special).findIndex(p=>p.id===placement);
+    const preferred=candidates[ordinal];
+    const target=preferred&&!occupied.has(preferred.id)?preferred:candidates.find(s=>!occupied.has(s.id));
+    if(!target)throw new Error(`建筑内没有足够栏位安置「${name}」，请先调整动物位置。`);
+    occupied.add(target.id);return target.id;
   }
-  return {...animalEdits,moves};
+  for(const resident of residents){const target=relocate(resident.placement,resident.species,resident.name);if(target!==resident.placement)moves[resident.index]=target;}
+  for(const [placement,animal] of Object.entries(animalEdits.added??{})){const target=relocate(Number(placement),animal.species,animal.name);if(target!==Number(placement)){delete added[placement];added[target]=animal;}}
+  return {...animalEdits,moves,added};
 }
 export function areaAvailable(doc: SerDocument, area: number) {
   return (!(area & 2) || flagEnabled(doc, 147)) && (!(area & 4) || flagEnabled(doc, 148));
@@ -89,7 +94,8 @@ export function parseMapPreset(text: string): MapEdits {
   if (e.cells !== undefined && (!e.cells || Array.isArray(e.cells) || typeof e.cells !== 'object')) throw new Error('预设田地列表无效。');
   if (Object.keys(e.cells ?? {}).length > 5000 || (e.objects?.length ?? 0) > 1000) throw new Error('布局预设超出编辑上限。');
   for (const [key, paint] of Object.entries(e.cells ?? {})) {
-    if (!/^\d+:\d+$/.test(key) || !paint || typeof paint !== 'object' || Array.isArray(paint) || Object.keys(paint).some(k => !['crop', 'soil', 'watered'].includes(k)) || (paint.crop !== undefined && paint.crop !== null && !MAP_CROPS.some(c => c.numeric_id === paint.crop)) || (paint.soil !== undefined && ![0, 1, 2].includes(paint.soil)) || (paint.watered !== undefined && typeof paint.watered !== 'boolean')) throw new Error('预设含无效田地。');
+    if (!/^\d+:\d+$/.test(key) || !paint || typeof paint !== 'object' || Array.isArray(paint) || Object.keys(paint).some(k => !['crop', 'soil', 'watered', 'growth', 'form'].includes(k)) || (paint.crop !== undefined && paint.crop !== null && !MAP_CROPS.some(c => c.numeric_id === paint.crop)) || (paint.soil !== undefined && ![0, 1, 2, 3].includes(paint.soil)) || (paint.watered !== undefined && typeof paint.watered !== 'boolean')) throw new Error('预设含无效田地。');
+    if(paint.growth!==undefined&&(!Number.isSafeInteger(paint.growth)||paint.growth<0||paint.growth>1_000_000)||paint.form!==undefined&&(!Number.isSafeInteger(paint.form)||paint.form<1||paint.form>10))throw new Error('无效的生长状态。');
   }
   if (e.objects !== undefined && !Array.isArray(e.objects)) throw new Error('预设物体列表无效。');
   for (const object of e.objects ?? []) if (!object || ![object.scene, object.cell, object.template].every(Number.isSafeInteger) || (object.move !== undefined && !/^\d+$/.test(object.move))) throw new Error('预设含无效物体。');
@@ -114,15 +120,30 @@ export function objectFootprint(object: {spec?: typeof data.objects[number];x:nu
   ]];
 }
 export function matureTreeAt(doc: SerDocument, edits: MapEdits, id: number, scene: number) {
-  if (edits.cells?.[`${scene}:${id}`]?.crop !== undefined) return false;
-  const cell=mapCells(doc).find(c=>c.id===id);
-  if (!cell) return false;
-  const crop=crops.find(c=>c.numeric_id===cell.crop);
-  const entity=(artData.crops as Record<string,{model:string;states?:Record<string,number[][]>}>)[cell.crop];
-  if (!crop || !crop.id.startsWith('CROPS_ID_OBJECT_TREE')) return false;
-  const growth=doc.resolve('p/pCropsStatus_/p/growth_/this->value_',cell.node),form=doc.resolve('p/pCropsStatus_/p/formID_',cell.node);
-  const stages=entity?.states?.['1'];
-  return !!growth && (!form || Number(readSigned(doc,form))===1) && !!stages?.length && Number(readSigned(doc,growth))>=stages.at(-1)![0];
+  const state=cropGrowth(doc,edits,scene,id);
+  if(state)return state.crop.id.startsWith('CROPS_ID_OBJECT_TREE')&&state.form===1&&state.maximum>0&&state.growth>=state.maximum;
+  return false;
+
+}
+export const CROP_FORMS:Record<number,string>={1:'正常生长',2:'枯萎',3:'异变',4:'再收获生长',5:'再次收获生长',6:'树桩',7:'树桩',8:'坑洞',9:'枯萎可收获',10:'等待收获季节'};
+export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number) {
+  const cell=mapCells(doc).find(c=>c.id===id),paint=edits.cells?.[`${scene}:${id}`];
+  const crop=crops.find(c=>c.numeric_id===(paint?.crop!==undefined?paint.crop:cell?.crop));
+  if(!crop||paint?.soil===0)return null;
+  const entity=(artData.crops as Record<string,{states?:Record<string,number[][]>}>)[crop.numeric_id];
+  const forms=entity?.states??{},read=(path:string,fallback:number)=>{const n=cell&&doc.resolve(`p/pCropsStatus_/p/${path}`,cell.node);return n?Number(readSigned(doc,n)):fallback;};
+  const form=paint?.form??(paint?.crop!==undefined?1:read('formID_',1)),growth=paint?.growth??(paint?.crop!==undefined?0:read('growth_/this->value_',0));
+  const stages=forms[form]??[],maximum=stages.at(-1)?.[0]??0;
+  const stage=Math.max(0,stages.findLastIndex(s=>s[0]<=growth));
+  const growing=[1,4,5].includes(form)&&maximum>0;
+  return {crop,form,growth,forms,stages,stage,maximum,days:growing?Math.ceil(Math.max(0,maximum-growth)/100):null};
+}
+export function cropSoils(id:number):number[]{return (data.cropRules as Record<string,{soils:number[]}>)[id]?.soils??[];}
+export function cropPlacementProblem(id:number,soil:number) {
+  const allowed=cropSoils(id);
+  if(allowed.length&&!allowed.includes(soil))return allowed.includes(3)?'这种作物需要水田，请先使用水渠／水田工具。':'这种作物不能种在水田，请先改为耕地或田垄。';
+  if(!allowed.length&&soil===3)return '这种作物不能种在水田。';
+  return null;
 }
 export function placementProblem(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): string | null {
   const spec=data.objects.find(s=>s.id===placement.template),terrain=sceneCells(placement.scene);
@@ -139,7 +160,11 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   if (fs.includes('PLACEMENT_MYHOUSE_ONLY') && !data.scenes.find(s=>s.id===placement.scene)?.code.includes('MYHOUSE')) return '只能放在自宅。';
   if (fs.includes('TREE') && !matureTreeAt(doc,edits,target.id,placement.scene)) return '树液采集器需要放在成熟树木所在的地块。';
   if (fs.includes('PLACEMENT_ARC_LIVESTOCK_ONLY') && !/LIVESTOCK|AVIARY/.test(data.scenes.find(s=>s.id===placement.scene)?.code??'')) return '只能放在畜舍或鸡舍内。';
-  const mask=spec.building?4:fs.includes('PLACEMENT_WALL_ONLY')?128:fs.includes('PLACEMENT_GARDEN_ONLY')?64:fs.includes('PLACEMENT_FARMING_ONLY')?1:2;
+  const specialMask=fs.includes('PLACEMENT_FISHING')?256:fs.includes('PLACEMENT_BIND_TRAP')?512:fs.includes('PLACEMENT_BOX_TRAP')?1024:fs.includes('PLACEMENT_SPRINKLING_BAIT')?2048:0;
+  if(specialMask&&(!(target.mask&specialMask)||(target.mask&4096)&&fs.includes('TRAP')))return fs.includes('PLACEMENT_FISHING')?'捕蟹笼只能放在允许设笼的钓鱼水域。':'这里不是这种陷阱或鱼饵的可放置地点。';
+  const soil=edits.cells?.[`${placement.scene}:${target.id}`]?.soil??mapCells(doc).find(c=>c.id===target.id)?.soil;
+  if(soil===3&&!spec.building&&!fs.includes('SCARECROW'))return '水田内不能放置这类设施，请先恢复平地。';
+  const mask=specialMask|| (spec.building?4:fs.includes('PLACEMENT_WALL_ONLY')?128:fs.includes('PLACEMENT_GARDEN_ONLY')?64:fs.includes('PLACEMENT_FARMING_ONLY')?1:2);
   const polygons=footprint(spec,target,placement.angle??45);
   const points=polygons.flat();
   const parity=(Math.round(target.x/45)+Math.round(target.y/45))%2;
@@ -177,7 +202,9 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
 export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): MapEdits {
   const original=placement.move?draftObjects(doc,edits).find(o=>o.uid===placement.move):undefined;
   placement={...placement,angle:placement.angle??original?.angle??45};
-  const base={...edits,objects:(edits.objects??[]).filter(e=>!placement.move || e.move!==placement.move)};
+  const draftIndex=placement.move?.startsWith('new:')?Number(placement.move.slice(4)):undefined;
+  const base={...edits,objects:(edits.objects??[]).filter((e,i)=>draftIndex!==undefined?i!==draftIndex:!placement.move || e.move!==placement.move)};
+  if(draftIndex!==undefined)placement={...placement,move:undefined};
   const problem=placementProblem(doc,base,placement);if(problem)throw new Error(problem);
   const spec=data.objects.find(s=>s.id===placement.template)!,p=landPosition(placement.cell),polygons=footprint(spec,p,placement.angle??45);
   let next:MapEdits={...base,cells:{...base.cells},removed:[...(base.removed??[])]};
@@ -218,7 +245,7 @@ export type ClearLayer = 'crops' | 'floor' | 'objects' | 'reset';
 export function clearMapArea(doc: SerDocument, edits: MapEdits, scene: number, cellIds: number[], keys: string[], layer: ClearLayer): MapEdits {
   const ids=new Set(cellIds),next:MapEdits={...edits,cells:{...edits.cells},removed:[...(edits.removed??[])]};
   if(layer==='crops'||layer==='reset')for(const c of sceneCells(scene))if(ids.has(c.id)&&(c.mask&1)&&areaAvailable(doc,c.area))
-    next.cells![`${scene}:${c.id}`]=layer==='reset'?{crop:null,soil:0,watered:false}:{...next.cells![`${scene}:${c.id}`],crop:null};
+    next.cells![`${scene}:${c.id}`]=layer==='reset'?{crop:null,soil:0,watered:false}:{...next.cells![`${scene}:${c.id}`],crop:null,growth:undefined,form:undefined};
   const remove=new Set<string>();
   for(const o of draftObjects(doc,edits)) {
     const key=o.uid.startsWith('new:')?o.uid:`object:${o.uid}`;
@@ -300,9 +327,21 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   }
   for (const [key, paint] of Object.entries(edits.cells ?? {})) {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);
-    if (!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area)) throw new Error('目标不在已开放的可耕作区域。');
+    const growthOnly=paint.crop===undefined&&paint.soil===undefined&&paint.watered===undefined&&(paint.growth!==undefined||paint.form!==undefined);
+    if (!growthOnly&&(!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area))) throw new Error('目标不在已开放的可耕作区域。');
+    const oldCell=cells.find(c=>c.id===id),cropId=paint.crop!==undefined?paint.crop:oldCell?.crop;
+    const soil=paint.soil??oldCell?.soil??1;
+    if(cropId&&paint.soil!==0&&(paint.crop!==undefined||paint.soil!==undefined)){const problem=cropPlacementProblem(cropId,soil);if(problem)throw new Error(problem);}
+    if(paint.growth!==undefined||paint.form!==undefined){const state=cropGrowth(doc,edits,sceneId,id);if(!state||!state.stages.length||state.growth>state.maximum)throw new Error('此作物不支持所选生长阶段。');}
     const clearingOnly = paint.crop === null && paint.soil === undefined && paint.watered === undefined;
-    if (!clearingOnly && paint.soil!==0 && occupied.some(o => o.blocksPlacement && !o.spec?.floor && objectFootprint(o).some(poly=>containsPoint(poly,terrain)))) throw new Error('田地被设施占用。');
+    if(growthOnly){
+      if(!oldCell)throw new Error('此处没有可修改的作物。');
+      const built=world.children![doc.children(cellList).findIndex(n=>n.offset===oldCell.node.offset)];
+      if(paint.growth!==undefined)patch(built,'p/pCropsStatus_/p/growth_/this->value_',paint.growth);
+      if(paint.form!==undefined)patch(built,'p/pCropsStatus_/p/formID_',paint.form);
+      continue;
+    }
+    if (!clearingOnly && paint.soil!==0 && occupied.some(o => o.blocksPlacement && !o.spec?.floor && objectFootprint(o).some(poly=>containsPoint(poly,terrain!)))) throw new Error('田地被设施占用。');
     let entry = cells.find(c => c.id === id);
     if(paint.soil===0) {
       if(entry) {
@@ -337,6 +376,8 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
       for (const name of ['effects_', 'nowDays_']) { const n = builtChild(built, `p/pFarmlandStatus_/p/${name}`); if (n) { n.children = []; n.ref = 0; } }
       const parent = builtChild(built, 'p')!; const sub = parent.children!.findIndex(n => n.name === 'pSubCropsStatus_'); if (sub >= 0) parent.children![sub] = nullPointer(parent.children![sub].nameOffset, 'pSubCropsStatus_');
     }
+    if(paint.growth!==undefined)patch(built,'p/pCropsStatus_/p/growth_/this->value_',paint.growth);
+    if(paint.form!==undefined)patch(built,'p/pCropsStatus_/p/formID_',paint.form);
     if (paint.soil !== undefined) patch(built, 'p/pFarmlandStatus_/p/pData_/dataID', paint.soil);
     if (paint.watered !== undefined) patch(built, 'p/pFarmlandStatus_/p/water_/this->value_', paint.watered ? 1 : 0);
   }

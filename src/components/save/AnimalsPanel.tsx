@@ -1,3 +1,4 @@
+import { mapAnimalEdits, type MapEdits } from '../../lib/saveMap';
 import type { ProgressEdits } from '../../lib/saveProgress';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { ANIMALS, animalHouses, animalResidents, type AnimalEdits } from '../../lib/saveAnimals';
@@ -8,7 +9,16 @@ import SaveDialog from './SaveDialog';
 import SaveFieldInput from './SaveFieldInput';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 
-export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onField, progress }: { progress?: ProgressEdits; model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
+export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, onEdit: changeEdits, onField, progress, mapEdits = {} }: { mapEdits?: MapEdits; progress?: ProgressEdits; model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
+  let edits=rawEdits, migrationError='';
+  try { edits=mapAnimalEdits(model.doc,mapEdits,rawEdits,progress??{}); } catch(error) { migrationError=(error as Error).message; }
+  function onEdit(next:AnimalEdits) {
+    // Persist only user changes, so undoing a map upgrade also undoes its automatic migration.
+    const moves={...rawEdits.moves},added={...rawEdits.added};
+    for(const key of new Set([...Object.keys(edits.moves??{}),...Object.keys(next.moves??{})]))if(edits.moves?.[key]!==next.moves?.[key]){if(next.moves?.[key]===undefined)delete moves[key];else moves[key]=next.moves[key];}
+    for(const key of new Set([...Object.keys(edits.added??{}),...Object.keys(next.added??{})]))if(edits.added?.[key]!==next.added?.[key]){if(next.added?.[key]===undefined){delete added[key];const original=Object.entries(rawEdits.added??{}).find(([,value])=>value===edits.added?.[key]);if(original)delete added[original[0]];}else added[key]=next.added[key];}
+    changeEdits({...rawEdits,moves,added});
+  }
   const houses = animalHouses(model.doc, progress), residents = animalResidents(model.doc, edits);
   const grid = useRef<HTMLDivElement>(null);
   const rows = model.sections.find(section => section.id === 'barn')?.tables[0]?.rows ?? [];
@@ -53,6 +63,7 @@ export default function AnimalsPanel({ model, names, edits, drafts, onEdit, onFi
       return <div key={slot.id} className="save-animal-position"><small>位置 {index + 1}</small>{resident ? animalButton(resident) : addition ? <div className="save-animal-card">{portrait(addition.species, addition.variant)}<b>{addition.name}</b><small>新增 · {variantName(addition.species, addition.variant)}</small><button type="button" onClick={() => { const added = { ...edits.added }; delete added[slot.id]; onEdit({ ...edits, added }); }}>撤销新增</button></div> : house.type >= 2 ? <div className="save-animal-card empty"><small>空位</small></div> : <button type="button" className="save-animal-card empty" disabled={!canAdd} onClick={() => { setAdding(slot.id); setSpecies(''); setName(''); setQuery(''); }}><span>＋</span><small>添加动物</small></button>}</div>;
     })}</div></section>;
   return <div className="save-animals" ref={grid}>
+    {migrationError&&<p role="alert">{migrationError}</p>}
     {!canAdd && houses.length > 0 && <div className="save-animal-tile save-animal-notice"><p className="save-notice">先在游戏中领养一只普通家畜或家禽，再添加新伙伴。</p></div>}
     {houses.map(house => <div className="save-animal-tile" key={house.id}>{housePanel(house)}</div>)}
     {loose.length > 0 && <div className="save-animal-tile"><section className="save-container-panel"><header className="save-container-head"><h3>其他伙伴</h3><small>{loose.length} 位伙伴</small></header><div className="save-animal-slots">{loose.map(animalButton)}</div></section></div>}

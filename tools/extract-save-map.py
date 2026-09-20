@@ -28,6 +28,19 @@ for row in table('mapgroup').records:
     for i in range(u32(row, 32)):
         o = 36 + i * 16
         origins[u64(row, o)] = [u32(row, o + 8), u32(row, o + 12)]
+# isPlacementGimmick 0x1401db250 selects mapgroundelement trap/fishing masks by category.
+placement_masks = {kind: 0 for kind in range(1,6)}
+for r in table('mapgroundelement').records:
+    kind=u32(r,60)
+    if kind in placement_masks: placement_masks[kind] |= u64(r,24)
+def compact_mask(m):
+    return (m & 199) | (128 if m & (3 << 32) else 0) | sum(bit for kind,bit in [(3,256),(2,512),(1,1024),(5,2048)] if m & placement_masks[kind]) | (4096 if m & (1<<40) else 0)
+crop_rules = {}
+for r in table('crops').records:
+    cursor=84
+    for width in (4,4,4): cursor += 4+width*u32(r,cursor)
+    count=u32(r,cursor); cursor+=4
+    crop_rules[str(u64(r,0))] = dict(soils=[u64(r,cursor+i*8) for i in range(count)])
 scenes = []
 for row, strings in zip(table('map').records, _string_groups(table('map')), strict=True):
     mid = u64(row, 0)
@@ -57,8 +70,8 @@ for row, strings in zip(table('map').records, _string_groups(table('map')), stri
             # Keep the intersection on seams: never manufacture placement permission.
             cells[key] = cells.get(key, mask) & mask
     # Indoor wall anchors live in the two high-word direction bits.
-    usable = [[x, y, (m & 71) | (128 if m & (3 << 32) else 0), (m >> 36) & 7]
-              for (x, y), m in sorted(cells.items()) if m & (71 | (3 << 32))]
+    usable = [[x, y, compact_mask(m), (m >> 36) & 7]
+              for (x, y), m in sorted(cells.items()) if compact_mask(m)]
     if usable:
         scenes.append(dict(id=mid, code=strings[0], label=strings[1], origin=origins[mid], cells=usable))
 items = {i['numeric_id']: i for i in json.loads(Path('data/generated/build-24969282/entities/items.json').read_text(encoding='utf-8'))}
@@ -130,7 +143,7 @@ for row, strings in zip(gt.records, _string_groups(gt), strict=True):
             if building and polygons:
                 # build_base's largest no-placement rectangle defines construction extent.
                 polygons = [max(polygons,key=lambda ps:abs(sum(ps[i][0]*ps[(i+1)%len(ps)][1]-ps[(i+1)%len(ps)][0]*ps[i][1] for i in range(len(ps)))))]
-            if u32(row,120): polygons = [[[-x,y] for x,y in ps] for ps in polygons]
+            if u32(row,120) or strings[0]=='GIMMICK_ID_ARCHITECTURE_DOG_HOUSE': polygons = [[[-x,y] for x,y in ps] for ps in polygons]
             shapes[str(angle)] = polygons
     floor = 'TILE' in fs or 'PLACEMENT_CARPET' in fs
     category = 'building' if building else 'floor' if floor else 'machine' if any(m['id']==id for m in json.loads(Path('data/sources/game-save-machines.json').read_text(encoding='utf-8'))['machines']) else 'furniture'
@@ -139,5 +152,5 @@ for row, strings in zip(gt.records, _string_groups(gt), strict=True):
         floor=floor,features=fs,featureIds=feature_ids,rotations=rotations,storage=storage,shapes=shapes,replacement=replacement,category=category,
         limit=construction['limit'] if construction else 0,mirror=bool(u32(row,120)),script=strings[8]))
     objects[-1].update(compatibility.get(id,{}))
-args.output.write_text(json.dumps(dict(source='YMWR masks; mapgroup; gimmick variable feature vector/rotation list; construction; native FAD collision polygons',scenes=scenes,objects=objects,construction=constructs),ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
+args.output.write_text(json.dumps(dict(source='YMWR masks; mapgroup; gimmick variable feature vector/rotation list; construction; native FAD collision polygons',scenes=scenes,objects=objects,construction=constructs,cropRules=crop_rules),ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 print(f'{len(scenes)} scenes, {len(objects)} object definitions')

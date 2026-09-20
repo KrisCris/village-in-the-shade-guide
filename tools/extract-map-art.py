@@ -166,7 +166,7 @@ def main():
 
     metadata['soils'] = {}
     for id, (record, _) in table('farmland').items():
-        if id not in (1, 2):
+        if id not in (1, 2, 3):
             continue
         image = texture_image(struct.unpack_from('<I', record, 24)[0])
         x, y, left, _, _, top, _, bottom, right, _ = struct.unpack_from('<10I', record, 48)
@@ -238,7 +238,8 @@ def main():
         if id not in wanted and id not in fixture_ids and not any(k in strings[0] for k in ('ARCHITECTURE', 'INDOOR')):
             continue
         anime_id, initial = struct.unpack_from('<I', r, 80)[0], struct.unpack_from('<I', r, 112)[0]
-        mirror = bool(struct.unpack_from('<I', r, 120)[0])
+        # Doghouse has no directional variants; the in-game entrance faces southwest (user reference).
+        mirror = bool(struct.unpack_from('<I', r, 120)[0]) or strings[0]=='GIMMICK_ID_ARCHITECTURE_DOG_HOUSE'
         # Furnishings override the base animation atlas independently of season.
         furniture_rep = gimmick_features(r, feature_ids)[1]
         if furniture_rep not in replacement:

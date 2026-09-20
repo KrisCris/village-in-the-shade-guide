@@ -175,8 +175,8 @@ export function buildFarmScene(
     if (!crop) continue;
     const formNode = cell && doc.resolve('p/pCropsStatus_/p/formID_', cell.node);
     const growthNode = cell && doc.resolve('p/pCropsStatus_/p/growth_/this->value_', cell.node);
-    const form = edit?.crop !== undefined ? 1 : formNode ? Number(readSigned(doc, formNode)) : 1;
-    const growth = edit?.crop !== undefined ? 0 : growthNode ? Number(readSigned(doc, growthNode)) : 0;
+    const form = edit?.form ?? (edit?.crop !== undefined ? 1 : formNode ? Number(readSigned(doc, formNode)) : 1);
+    const growth = edit?.growth ?? (edit?.crop !== undefined ? 0 : growthNode ? Number(readSigned(doc, growthNode)) : 0);
     const sequence = cropSequence(art.crops[crop], form, growth, mature);
     result.push({
       ...p,
@@ -223,6 +223,8 @@ export function buildFarmScene(
       result.push({
         ...p,
         key: `new:${edits.objects!.indexOf(e)}`,
+        uid: `new:${edits.objects!.indexOf(e)}`,
+        movable: true,
         id: e.template,
         kind: 'object',
         art: spriteArt(art, 'object', e.template, season, undefined, e.angle ?? original.find(o => o.id === e.template)?.angle),

@@ -33,6 +33,7 @@ export interface MapCanvasProps {
   brush: number;
   selected?: string;
   selection: string[];
+  onCancel: () => void;
   onSelect: (sprites: SceneSprite[], cells: number[]) => void;
   selectedCells: number[];
   onRotate: () => void;
@@ -421,7 +422,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         tabIndex={0}
         role="application"
         aria-label="农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。"
-        onContextMenu={(e) => e.preventDefault()}
+        onContextMenu={(e) => { e.preventDefault(); props.onCancel(); }}
         onKeyDown={(e) => {
           if(e.key.toLowerCase()==='r'){e.preventDefault();props.onRotate();}
           if (e.key === ' ') {
