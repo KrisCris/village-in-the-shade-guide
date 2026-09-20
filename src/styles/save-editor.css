@@ -11,7 +11,7 @@
 .save-appearance-options button:disabled { opacity: .45; cursor: default; }
 .save-color-picker { display: flex; gap: 1rem; align-items: center; }
 .save-color-picker input { width: 72px; height: 40px; padding: 2px; border: 1px solid var(--border); border-radius: 6px; }
-.save-rank-picker { border: 0; display: flex; gap: .35rem; flex-wrap: wrap; padding: 0; }
+.save-rank-picker { border: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: min(100%, 300px); gap: .35rem; padding: 0; }
 .save-rank-picker button { display: flex; gap: .3rem; align-items: center; }
 .save-slot-picker > select { max-width: 100%; padding: .5rem; margin-bottom: .5rem; color: var(--ink); background: var(--paper); border: 1px solid var(--border); border-radius: 6px; }
 .save-friendship { width: min(210px, 100%); display: grid; gap: .25rem; }
@@ -387,7 +387,9 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-slot-field > input, .save-slot-chosen { min-height: 48px; }
 .save-rank-picker { align-content: start; align-items: start; margin: 0; gap: .35rem; }
 .save-rank-picker legend { color: var(--muted); margin-bottom: .45rem; padding: 0; font-weight: 400; font-size: .72rem; }
-.save-rank-picker button { min-height: 52px; justify-content: center; gap: .45rem; padding: .4rem .65rem; font-size: .82rem; white-space: nowrap; }
+.save-rank-picker button { min-width: 0; min-height: 48px; flex-direction: column; justify-content: center; gap: .25rem; padding: .4rem .1rem; font-size: .72rem; white-space: nowrap; }
+.save-rank-choice-art { display: flex; align-items: center; justify-content: center; width: 24px; height: 40px; }
+.save-rank-choice-label { display: block; }
 .save-rank-icon { display: block; flex: none; overflow: hidden; }
 .save-rank-picker .save-rank-icon { width: 24px; height: auto; }
 .save-slot-actions { padding: 0 1rem 1rem; }
@@ -725,7 +727,16 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-device-toolbar select { max-width:100%; flex:0 1 175px; }
 .save-device-toolbar > span { font-size:.75rem; color:var(--muted); white-space:nowrap; }
 .save-device-scroll { height:clamp(280px,46dvh,480px); overflow:auto; overscroll-behavior:contain; scrollbar-gutter:stable; padding:0 1rem 1rem; }
-.save-device-group h3 { display:flex; align-items:center; gap:.6rem; font-size:.9rem; margin:0; padding:1rem 0 .65rem; }
+.save-device-group h3 { display:flex; align-items:center; flex-wrap:wrap; gap:.6rem; font-size:.9rem; margin:0; }
+.save-device-group-heading { display:flex; align-items:center; justify-content:space-between; gap:.6rem; padding:.8rem 0 .65rem; }
+.save-device-batch-trigger { flex:none; min-height:36px; padding:.35rem .65rem; border:1px solid var(--border); border-radius:7px; background:var(--paper-raised); color:var(--ink); cursor:pointer; font:inherit; font-size:.75rem; }
+.save-device-batch-trigger[aria-expanded=true] { border-color:var(--green); background:var(--green-soft); }
+.save-device-batch-trigger:focus-visible { outline:2px solid var(--green); outline-offset:2px; }
+.save-batch-panel { display:grid; gap:1rem; }
+.save-batch-panel p { margin:0; color:var(--muted); font-size:.82rem; line-height:1.6; }
+.save-batch-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
+.save-batch-recipe { display:grid; gap:.8rem; padding-top:1rem; border-top:1px solid var(--border); }
+.save-batch-recipe > label { display:grid; gap:.5rem; }
 .save-device-group h3 small { color:var(--muted); font-weight:400; font-size:.72rem; }
 .save-device-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:.65rem; align-items:stretch; }
 .save-device-card { display:flex; flex-direction:column; align-items:center; min-width:0; padding:.65rem .7rem .6rem; gap:.25rem; border:1px solid var(--border); background:var(--paper); color:var(--ink); border-radius:9px; cursor:pointer; text-align:center; }

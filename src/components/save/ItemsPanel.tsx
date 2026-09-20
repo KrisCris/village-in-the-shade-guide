@@ -130,7 +130,7 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
 
   return <div className="save-items" data-view={tab}>
     <div className="save-device-tabs" aria-label="物品分类">{[['storage', '物品容器'], ['machines', '加工设备'], ['special', '特殊容器']].map(([id, title]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setSelected(null); }}>{title}</button>)}</div>
-    {tab === 'machines' && <><BatchMachines model={model} edits={machines} names={names} onChange={onMachine} /><DeviceBrowser model={model} names={names} edits={machines}>{container => <MachinePanel drafts={drafts} onDraft={onDraft} key={container.id} model={model} container={container} edits={machines} names={names} onChange={onMachine} />}</DeviceBrowser></>}
+    {tab === 'machines' && <DeviceBrowser model={model} names={names} edits={machines} renderBatch={family => <BatchMachines family={family} model={model} edits={machines} names={names} onChange={onMachine} drafts={drafts} onDraft={onDraft} />}>{container => <MachinePanel drafts={drafts} onDraft={onDraft} key={container.id} model={model} container={container} edits={machines} names={names} onChange={onMachine} />}</DeviceBrowser>}
     {tab === 'special' && <DeviceBrowser model={model} names={names} edits={machines} special occupancy={container => container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length}>{container => container.kind === 'system' || specialSpec(container)?.kind === 'shared' ? <>
       <ContainerView container={container} drafts={drafts} slotEdits={slotEdits} names={names} selected={selected} onSelect={setSelected} />{editor(container)}
     </> : <SpecialContents model={model} container={container} names={names} />}</DeviceBrowser>}

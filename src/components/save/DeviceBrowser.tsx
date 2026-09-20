@@ -30,13 +30,15 @@ function ProductProgress({ job, names }: { job: ReturnType<typeof machineJobs>[n
   </span>;
 }
 
-export default function DeviceBrowser({ model, names, edits, special = false, occupancy, children }: {
+export default function DeviceBrowser({ model, names, edits, special = false, occupancy, renderBatch, children }: {
   model: SaveModel; names: SaveNameTables; edits: MachineEdits; special?: boolean;
   occupancy?: (container: SaveContainer) => number;
+  renderBatch?: (family: string) => ReactNode;
   children: (container: SaveContainer) => ReactNode;
 }) {
   const [search, setSearch] = useState(''), [category, setCategory] = useState('all'), [status, setStatus] = useState('all');
   const [selected, setSelected] = useState('');
+  const [batchFamily, setBatchFamily] = useState('');
   const label = special ? '特殊容器' : '加工设备';
   const entries = useMemo(() => model.containers.flatMap(container => {
     const spec = machineSpec(container), extra = specialSpec(container);
@@ -74,8 +76,10 @@ export default function DeviceBrowser({ model, names, edits, special = false, oc
       {groups.map(([family, group]) => {
         const members = shown.filter(entry => entry.family === family);
         return members.length ? <section className="save-device-group" key={family}>
-          <h3>{group}<small>{members.length} {special ? '个' : '台'}</small></h3>
-          <div className="save-device-grid">{members.map(entry => <button type="button" key={entry.container.id} data-device-id={entry.container.id} className="save-device-card" aria-expanded={selected === entry.container.id} aria-controls="save-device-detail" onClick={() => setSelected(entry.container.id)}>
+          <header className="save-device-group-heading"><h3>{group}<small>{members.length} {special ? '个' : '台'}</small></h3>
+            {!special && renderBatch && <button type="button" className="save-device-batch-trigger" aria-label={`批量设置${group}`} aria-expanded={batchFamily === family} aria-controls="save-device-detail" onClick={() => { setSelected(''); setBatchFamily(current => current === family ? '' : family); }}>批量设置</button>}
+          </header>
+          <div className="save-device-grid">{members.map(entry => <button type="button" key={entry.container.id} data-device-id={entry.container.id} className="save-device-card" aria-expanded={selected === entry.container.id} aria-controls="save-device-detail" onClick={() => { setBatchFamily(''); setSelected(entry.container.id); }}>
             <span className="save-device-art">{entry.icon ? <SaveIcon names={names} kind="items" value={String(entry.icon)} size={52} /> : <span className="save-device-symbol" aria-hidden="true">{entry.family === 'anvil' ? '⚒' : '▣'}</span>}</span>
             <strong>{entry.title}</strong><small className="save-device-id">{entry.container.dataId !== null ? `#${entry.identity}` : '共用物品栏'}</small>
             <span className={`save-device-products${!special && !entry.collector ? ' is-processing' : ''}`}>{special ? <span>{(occupancy?.(entry.container) ?? entry.container.used) ? `${occupancy?.(entry.container) ?? entry.container.used} 格有物品` : entry.family === 'display' && displayedItem(model.doc, entry.container) ? itemLabel(names, String(displayedItem(model.doc, entry.container))) : '暂无物品'}</span> : entry.collector ? <span>{entry.container.used ? `已收集 ${entry.container.used} 格物品` : '等待收集畜产品'}</span> : entry.jobs.map(job => <ProductProgress key={job.index} job={job} names={names} />)}</span>
@@ -84,7 +88,10 @@ export default function DeviceBrowser({ model, names, edits, special = false, oc
       })}
       {!shown.length && <p className="save-device-empty">{entries.length ? '没有符合条件的项目。' : `存档中没有${label}。`}</p>}
     </div>
-    {active ? <section className="save-device-detail" id="save-device-detail" aria-label={`${active.title}详情`}>
+    {batchFamily && renderBatch ? <section className="save-device-detail" id="save-device-detail" aria-label={`${groups.find(([family]) => family === batchFamily)?.[1]}批量设置`}>
+      <header><div><h3>{groups.find(([family]) => family === batchFamily)?.[1]} · 批量设置</h3><p>本类别全部已放置设备，包含各升级型号。</p></div><button type="button" aria-label="关闭批量设置" onClick={() => setBatchFamily('')}>×</button></header>
+      <div className="save-device-detail-body" key={batchFamily}>{renderBatch(batchFamily)}</div>
+    </section> : active ? <section className="save-device-detail" id="save-device-detail" aria-label={`${active.title}详情`}>
       <header><div><h3>{active.title}</h3><p>{active.container.dataId !== null ? `${special ? '容器' : '设备'} ID ${active.identity} · 设施 ID ${active.container.dataId}` : '专用物品箱'}</p></div><button type="button" aria-label="关闭设备详情" onClick={() => setSelected('')}>×</button></header>
       <div className="save-device-detail-body">{children(active.container)}</div>
     </section> : <p className="save-device-hint">选择上方{special ? '容器' : '设备'}，在这里查看{special ? '内容' : '加工详情'}。</p>}
