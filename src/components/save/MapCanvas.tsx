@@ -18,6 +18,9 @@ import { withBase } from '../../lib/sitePath';
 
 export interface MapCanvasProps {
   art: MapArt;
+  terrain?: typeof FARM_CELLS;
+  regions?: { name: string; bounds: number[] }[];
+  homeBounds?: number[];
   season: number;
   sprites: SceneSprite[];
   ground: SceneGround[];
@@ -37,10 +40,15 @@ export interface MapCanvasProps {
 }
 
 export default function MapCanvas(props: MapCanvasProps) {
+  const terrain = props.terrain ?? FARM_CELLS;
+  const regions = props.regions ?? FARM_REGIONS;
+  const homeBounds = props.homeBounds ?? FARM_BOUNDS;
+  const backgroundFile = props.art.background ?? `${props.art.seasons[props.season]}.webp`;
+  const pickCell = (p: Point) => pickFarmCell(p, terrain);
   const canvas = useRef<HTMLCanvasElement>(null),
     viewport = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 800, height: 700 });
-  const [camera, setCamera] = useState<Camera>(() => fitCamera(FARM_BOUNDS, 800, 700));
+  const [camera, setCamera] = useState<Camera>(() => fitCamera(homeBounds, 800, 700));
   const [hover, setHover] = useState<Point | null>(null),
     [version, redraw] = useState(0),
     [loading, setLoading] = useState(0);
@@ -97,7 +105,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     canvas.current!.width = Math.round(size.width * ratio);
     canvas.current!.height = Math.round(size.height * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.fillStyle = '#263f3b';
+    ctx.fillStyle = props.art.background ? '#111816' : '#263f3b';
     ctx.fillRect(0, 0, size.width, size.height);
     ctx.translate(size.width / 2, size.height / 2);
     ctx.scale(camera.zoom, camera.zoom);
@@ -122,7 +130,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (!failed.current.has(path)) pending++;
       return undefined;
     }
-    const background = image(`${props.art.seasons[props.season]}.webp`),
+    const background = image(backgroundFile),
       bounds = props.art.bounds;
     if (background)
       ctx.drawImage(background, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
@@ -157,7 +165,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
     }
     if (props.grid && camera.zoom > 0.12)
-      for (const c of FARM_CELLS) {
+      for (const c of terrain) {
         if (c.x < left - 45 || c.x > right + 45 || c.y < top - 45 || c.y > bottom + 45) continue;
         diamond(c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
       }
@@ -188,12 +196,12 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (sprite.edited || props.selected === sprite.key)
         diamond(sprite.x, sprite.y, '', props.selected === sprite.key ? '#fff2aa' : '#f0bf5e');
     }
-    const target = hover && pickFarmCell(hover);
+    const target = hover && pickCell(hover);
     if (target && props.tool !== 'pan') {
       const color = props.previewValid ? '#fff1a0' : '#ff8a79';
       if (!['inspect', 'place'].includes(props.tool)) {
         const radius = (props.brush - 1) / 2;
-        for (const c of FARM_CELLS)
+        for (const c of terrain)
           if (
             Math.abs((c.x + c.y - target.x - target.y) / 90) <= radius &&
             Math.abs((c.y - c.x - target.y + target.x) / 90) <= radius &&
@@ -207,7 +215,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       ctx.font = `600 ${13 / camera.zoom}px system-ui`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      for (const region of FARM_REGIONS) {
+      for (const region of regions) {
         const x = (region.bounds[0] + region.bounds[2]) / 2,
           y = region.bounds[1] + 180;
         if (
@@ -233,6 +241,9 @@ export default function MapCanvas(props: MapCanvasProps) {
     };
   }, [
     props.art,
+    terrain,
+    regions,
+    backgroundFile,
     props.season,
     props.sprites,
     props.ground,
@@ -310,7 +321,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           }
           if (e.key === 'Home') {
             e.preventDefault();
-            setCamera(fitCamera(FARM_BOUNDS, size.width, size.height));
+            setCamera(fitCamera(homeBounds, size.width, size.height));
           }
           if (e.key.startsWith('Arrow')) {
             e.preventDefault();
@@ -348,7 +359,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           if (paint) {
             props.onStroke(true);
             const p = position(e);
-            gesture.current.lastCell = pickFarmCell(p)?.id;
+            gesture.current.lastCell = pickCell(p)?.id;
             choose(p);
           }
         }}
@@ -366,7 +377,7 @@ export default function MapCanvas(props: MapCanvasProps) {
               y: c.y - (e.clientY - g.lastY) / c.zoom
             }));
           else if (g.paint) {
-            const cell = pickFarmCell(p);
+            const cell = pickCell(p);
             if (cell && cell.id !== g.lastCell) {
               g.lastCell = cell.id;
               choose(p);
@@ -403,7 +414,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           const box = e.currentTarget.getBoundingClientRect(),
             b = props.art.bounds;
           if (e.detail === 0) {
-            setCamera(fitCamera(FARM_BOUNDS, size.width, size.height));
+            setCamera(fitCamera(homeBounds, size.width, size.height));
             return;
           }
           setCamera((c) => ({
@@ -418,7 +429,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           aria-hidden="true"
         >
           <image
-            href={withBase(`/maps/farm/${props.art.seasons[props.season]}.webp`)}
+            href={withBase(`/maps/farm/${backgroundFile}`)}
             x={props.art.bounds[0]}
             y={props.art.bounds[1]}
             width={props.art.bounds[2] - props.art.bounds[0]}
@@ -443,7 +454,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         <button type="button" aria-label="缩小地图" onClick={() => zoom(1 / 1.35)}>
           −
         </button>
-        <button type="button" onClick={() => setCamera(fitCamera(FARM_BOUNDS, size.width, size.height))}>
+        <button type="button" onClick={() => setCamera(fitCamera(homeBounds, size.width, size.height))}>
           全貌
         </button>
       </div>

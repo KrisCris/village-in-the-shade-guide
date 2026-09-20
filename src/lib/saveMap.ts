@@ -42,8 +42,12 @@ export function mapObjects(doc: SerDocument) {
     const x = doc.resolve('p/pos_/x', node), y = doc.resolve('p/pos_/y', node);
     if (!x || !y || !scalar(doc, node, 'p/isEnabled_')) return [];
     const number = (key: string) => { const n = doc.resolve(`p/baseAABB_/${key}`, node); return n ? readFloat(doc, n) : 0; };
-    return [{ node, id, spec, uid: String(scalar(doc, node, 'p/uniqueID_')), x: readFloat(doc, x), y: readFloat(doc, y),
-      bounds: [number('l'), number('t'), number('r'), number('b')], movable: !!spec && scalar(doc, node, 'p/tag_/id_') === 0 }];
+    const angleNode = doc.resolve('p/angle_', node);
+    return [{ node, id, spec, uid: String(scalar(doc, node, 'p/uniqueID_')), x: readFloat(doc, x), y: readFloat(doc, y), angle: angleNode ? readFloat(doc, angleNode) : 0,
+      bounds: [number('l'), number('t'), number('r'), number('b')], movable: !!spec && scalar(doc, node, 'p/tag_/id_') === 0,
+      // Fixed indoor geometry uses YMWR placement masks. Effect actors (notably
+      // room lights) have room-sized visual AABBs, not furniture collision boxes.
+      blocksPlacement: spec ? !spec.floor : id >= 100000000 && id < 200000000 }];
   });
 }
 
@@ -95,7 +99,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
       const p = landPosition(c.id), edit = edits.cells?.[`${placement.scene}:${c.id}`];
       return (edit?.crop !== undefined ? edit.crop : c.crop) && p.x >= box.l && p.x <= box.r && p.y >= box.t && p.y <= box.b;
     })) throw new Error('物体占地内有作物，请先清除或选择空地。');
-    if (!donor.spec?.floor && occupied.some(o => o.uid !== moving?.uid && !o.spec?.floor && box.l < o.x + Math.max(o.bounds[2], 22) && box.r > o.x + Math.min(o.bounds[0], -22) && box.t < o.y + Math.max(o.bounds[3], 22) && box.b > o.y + Math.min(o.bounds[1], -22))) throw new Error('物体占地与现有设施重叠。');
+    if (!donor.spec?.floor && occupied.some(o => o.uid !== moving?.uid && o.blocksPlacement && box.l < o.x + Math.max(o.bounds[2], 22) && box.r > o.x + Math.min(o.bounds[0], -22) && box.t < o.y + Math.max(o.bounds[3], 22) && box.b > o.y + Math.min(o.bounds[1], -22))) throw new Error('物体占地与现有设施重叠。');
     const terrain = sceneCells(placement.scene);
     // Sample every valid grid parity point within the conservative saved bounds.
     for (let x = Math.ceil(box.l / 45) * 45; x <= box.r; x += 45) for (let y = Math.ceil(box.t / 45) * 45; y <= box.b; y += 45) {
@@ -122,7 +126,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);
     if (!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area)) throw new Error('目标不在已开放的可耕作区域。');
     const clearingOnly = paint.crop === null && paint.soil === undefined && paint.watered === undefined;
-    if (!clearingOnly && occupied.some(o => !o.spec?.floor && terrain.x >= o.x + Math.min(o.bounds[0], -22) && terrain.x <= o.x + Math.max(o.bounds[2], 22) && terrain.y >= o.y + Math.min(o.bounds[1], -22) && terrain.y <= o.y + Math.max(o.bounds[3], 22))) throw new Error('田地被设施占用。');
+    if (!clearingOnly && occupied.some(o => o.blocksPlacement && terrain.x >= o.x + Math.min(o.bounds[0], -22) && terrain.x <= o.x + Math.max(o.bounds[2], 22) && terrain.y >= o.y + Math.min(o.bounds[1], -22) && terrain.y <= o.y + Math.max(o.bounds[3], 22))) throw new Error('田地被设施占用。');
     let entry = cells.find(c => c.id === id);
     const donor = cells.find(c => c.soil && c.crop && MAP_CROPS.some(crop => crop.numeric_id === c.crop));
     if (!donor) throw new Error('请先在游戏中耕地并种下一株作物，作为田地模板。');

@@ -66,6 +66,18 @@
   background: var(--paper);
   border-bottom: 1px solid var(--border);
 }
+.farm-room-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  padding: .65rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.farm-room-switch > label { font-size: .8rem; color: var(--muted); }
+.farm-room-switch > .search-select-trigger { width: min(100%, 340px); }
+.farm-floor-tabs { display: flex; gap: .4rem; }
+.farm-floor-tabs button { min-height: 44px; }
 .farm-regions button {
   flex: 1;
   text-align: left;

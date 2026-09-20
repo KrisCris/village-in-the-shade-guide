@@ -1,6 +1,7 @@
 import { MAP_DATA, landPosition, mapCells, mapObjects, sceneCells, type MapEdits } from './saveMap';
 import { readSigned, type SerDocument } from './ser';
 import { splitGameTime } from './saveTime';
+import { flagEnabled } from './saveProgress';
 
 export interface SpriteArt {
   file: string;
@@ -13,13 +14,24 @@ export interface ArtEntity {
   model: string;
   seasons: Record<string, SpriteArt>[];
   states?: Record<string, number[][]>;
+  initial?: number;
+  directional?: boolean;
+  mirror?: boolean;
+  replacement?: number;
+  hidden?: boolean;
+  mapId?: number;
 }
+export interface RoomFixture extends Point { id: number; require: number; art: SpriteArt }
+export interface RoomArt { file: string; bounds: number[]; fixtures?: RoomFixture[] }
 export interface MapArt {
   bounds: number[];
   seasons: string[];
   crops: Record<string, ArtEntity>;
   objects: Record<string, ArtEntity>;
   soils?: Record<string, SpriteArt>;
+  rooms?: Record<string, RoomArt[]>;
+  background?: string;
+  fixtures?: RoomFixture[];
 }
 export interface SceneGround extends Point {
   id: number;
@@ -100,7 +112,8 @@ export function zoomCamera(
   };
 }
 const cellIndex = new Map(FARM_CELLS.map((c) => [`${c.x},${c.y}`, c]));
-export function pickFarmCell(p: Point) {
+export function pickFarmCell(p: Point, cells = FARM_CELLS) {
+  const index = cells === FARM_CELLS ? cellIndex : new Map(cells.map(c => [`${c.x},${c.y}`, c]));
   const x = Math.round(p.x / 45) * 45,
     y = Math.round(p.y / 45) * 45;
   return [
@@ -110,7 +123,7 @@ export function pickFarmCell(p: Point) {
     [x, y - 45],
     [x, y + 45]
   ]
-    .map(([a, b]) => cellIndex.get(`${a},${b}`))
+    .map(([a, b]) => index.get(`${a},${b}`))
     .filter((c) => c && Math.abs(c.x - p.x) + Math.abs(c.y - p.y) <= 45.01)
     .sort((a, b) => Math.hypot(a!.x - p.x, a!.y - p.y) - Math.hypot(b!.x - p.x, b!.y - p.y))[0];
 }
@@ -122,22 +135,26 @@ export function cropSequence(entity: ArtEntity | undefined, state: number, growt
   const stages = entity?.states?.[mature ? 1 : state] ?? entity?.states?.[1];
   return mature ? stages?.at(-1)?.[1] : stages?.findLast((s) => s[0] <= growth)?.[1];
 }
-export function spriteArt(art: MapArt, kind: 'crop' | 'object', id: number, season: number, form?: number) {
+export function spriteArt(art: MapArt, kind: 'crop' | 'object', id: number, season: number, form?: number, angle = 45) {
   const frames = (kind === 'crop' ? art.crops : art.objects)[id]?.seasons[season];
   if (!frames) return undefined;
-  const preferred = kind === 'crop' ? cropSequence(art.crops[id], 1, 0, true) : 100;
+  const entity = art.objects[id];
+  const preferred = kind === 'crop' ? cropSequence(art.crops[id], 1, 0, true) : entity?.directional ? 110 + angleCode(angle) : entity?.initial ?? 100;
   return (
     (form !== undefined ? frames[form] : undefined) ??
     (preferred !== undefined ? frames[preferred] : undefined) ??
     Object.values(frames).at(-1)
   );
 }
+/** Game angles are degrees clockwise in screen-world coordinates; codes use the numeric keypad. */
+export function angleCode(angle: number) { return [6,3,2,1,4,7,8,9][((Math.round(angle / 45) % 8) + 8) % 8]; }
 export function buildFarmScene(
   doc: SerDocument,
   edits: MapEdits,
   art: MapArt,
   season: number,
-  mature = false
+  mature = false,
+  scene = FARM_SCENE
 ): SceneSprite[] {
   const within = (p: Point) =>
     p.x >= art.bounds[0] && p.y >= art.bounds[1] && p.x <= art.bounds[2] && p.y <= art.bounds[3];
@@ -145,7 +162,7 @@ export function buildFarmScene(
   const ids = new Set([
     ...existing.keys(),
     ...Object.keys(edits.cells ?? {})
-      .filter((k) => k.startsWith(`${FARM_SCENE}:`))
+      .filter((k) => k.startsWith(`${scene}:`))
       .map((k) => Number(k.split(':')[1]))
   ]);
   const result: SceneSprite[] = [];
@@ -153,7 +170,7 @@ export function buildFarmScene(
     const p = landPosition(id);
     if (!within(p)) continue;
     const cell = existing.get(id),
-      edit = edits.cells?.[`${FARM_SCENE}:${id}`];
+      edit = edits.cells?.[`${scene}:${id}`];
     const crop = edit?.crop !== undefined ? edit.crop : cell?.crop;
     if (!crop) continue;
     const formNode = cell && doc.resolve('p/pCropsStatus_/p/formID_', cell.node);
@@ -173,9 +190,15 @@ export function buildFarmScene(
     });
   }
   const original = mapObjects(doc);
+  for (const [index, fixture] of (art.fixtures ?? []).entries()) {
+    if (fixture.require >= 0 && !flagEnabled(doc, fixture.require)) continue;
+    if (original.some(o => o.id === fixture.id && Math.hypot(o.x-fixture.x,o.y-fixture.y) < 5)) continue;
+    result.push({key:`fixture:${scene}:${index}`,id:fixture.id,x:fixture.x,y:fixture.y,kind:'object',art:fixture.art,edited:false,floor:false,movable:false});
+  }
   for (const obj of original) {
     // Event markers are invisible trigger/sparkle actors, not placed facilities.
     if (obj.id >= 500000000 && !obj.spec) continue;
+    if (art.objects[obj.id]?.hidden) continue;
     const move = edits.objects?.findLast((e) => e.move === obj.uid);
     const p = move ? landPosition(move.cell) : obj;
     if (!within(p)) continue;
@@ -186,14 +209,14 @@ export function buildFarmScene(
       uid: obj.uid,
       id: obj.id,
       kind: 'object',
-      art: spriteArt(art, 'object', obj.id, season),
+      art: spriteArt(art, 'object', obj.id, season, undefined, obj.angle),
       edited: !!move,
       floor: !!obj.spec?.floor,
       movable: obj.movable
     });
   }
   edits.objects
-    ?.filter((e) => !e.move && e.scene === FARM_SCENE)
+    ?.filter((e) => !e.move && e.scene === scene)
     .forEach((e, i) => {
       const p = landPosition(e.cell),
         spec = MAP_DATA.objects.find((s) => s.id === e.template);
@@ -202,7 +225,7 @@ export function buildFarmScene(
         key: `new:${i}`,
         id: e.template,
         kind: 'object',
-        art: spriteArt(art, 'object', e.template, season),
+        art: spriteArt(art, 'object', e.template, season, undefined, original.find(o => o.id === e.template)?.angle),
         edited: true,
         floor: !!spec?.floor
       });
@@ -210,11 +233,11 @@ export function buildFarmScene(
   return result.sort((a, b) => Number(b.floor) - Number(a.floor) || a.y - b.y || a.x - b.x);
 }
 
-export function farmGround(doc: SerDocument, edits: MapEdits): SceneGround[] {
+export function farmGround(doc: SerDocument, edits: MapEdits, scene = FARM_SCENE): SceneGround[] {
   const existing = new Map(mapCells(doc).map((c) => [c.id, c]));
-  return FARM_CELLS.flatMap((cell) => {
+  return sceneCells(scene).flatMap((cell) => {
     const original = existing.get(cell.id),
-      edit = edits.cells?.[`${FARM_SCENE}:${cell.id}`];
+      edit = edits.cells?.[`${scene}:${cell.id}`];
     const soil = edit?.soil ?? original?.soil;
     if (!soil) return [];
     const n = original && doc.resolve('p/pFarmlandStatus_/p/water_/this->value_', original.node);

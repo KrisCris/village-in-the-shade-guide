@@ -1,6 +1,4 @@
 import {
-  lazy,
-  Suspense,
   useEffect,
   useMemo,
   useRef,
@@ -17,6 +15,7 @@ import {
   parseMapPreset,
   mapEditCount,
   landPosition,
+  sceneCells,
   type MapEdits,
   type CellPaint
 } from '../../lib/saveMap';
@@ -24,7 +23,6 @@ import {
   buildFarmScene,
   farmGround,
   FARM_BOUNDS,
-  FARM_CELLS,
   FARM_REGIONS,
   FARM_SCENE,
   pickFarmCell,
@@ -42,7 +40,8 @@ import { itemLabel } from './ItemGrid';
 import MapCanvas from './MapCanvas';
 import '../../styles/save-map.css';
 
-const IndoorMapPanel = lazy(() => import('./IndoorMapPanel'));
+import SearchableSelect from '../controls/SearchableSelect';
+import { availableMapRooms } from '../../lib/saveMapRooms';
 const TOOLS = [
   ['inspect', '↖', '选择'],
   ['pan', '✥', '平移'],
@@ -87,8 +86,20 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const [focus, setFocus] = useState({ bounds: FARM_BOUNDS, revision: 0 }),
     [message, setMessage] = useState('选择一块田地开始，或滚轮放大查看。');
   const [past, setPast] = useState<MapEdits[]>([]),
-    [future, setFuture] = useState<MapEdits[]>([]),
-    [indoor, setIndoor] = useState(false);
+    [future, setFuture] = useState<MapEdits[]>([]);
+  const [roomId, setRoomId] = useState('outdoor');
+  const rooms = useMemo(() => art ? availableMapRooms(model.doc, art) : [], [model, art]);
+  const room = rooms.find(r => r.id === roomId);
+  const sceneId = room?.scene ?? FARM_SCENE;
+  const viewArt = useMemo(() => art && room ? { ...art, bounds: room.bounds, background: room.file, fixtures: room.fixtures } : art, [art, room]);
+  const terrain = useMemo(() => sceneCells(sceneId).filter(c => !room || (c.x >= room.bounds[0] && c.x <= room.bounds[2] && c.y >= room.bounds[1] && c.y <= room.bounds[3])), [sceneId, room]);
+  const pickCell = (p: Point) => pickFarmCell(p, terrain);
+  function changeRoom(id: string) {
+    const next = rooms.find(r => r.id === id);
+    setRoomId(id); setSelected(undefined); setSelectedPoint(null); setMoving(''); setHover(null); setTool('inspect');
+    setFocus(f => ({ bounds: next?.bounds ?? FARM_BOUNDS, revision: f.revision + 1 }));
+    setMessage(next ? `${next.name} · ${next.description}` : '选择一块田地开始，或滚轮放大查看。');
+  }
   useEffect(() => {
     const controller = new AbortController();
     fetch(withBase('/maps/farm/manifest.json'), { signal: controller.signal })
@@ -113,12 +124,12 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     [objects]
   );
   const sprites = useMemo(
-    () => (art ? buildFarmScene(model.doc, edits, art, season, mature) : []),
-    [model, edits, art, season, mature]
+    () => (viewArt ? buildFarmScene(model.doc, edits, viewArt, season, mature, sceneId) : []),
+    [model, edits, viewArt, season, mature, sceneId]
   );
-  const ground = useMemo(() => farmGround(model.doc, edits), [model, edits]);
+  const ground = useMemo(() => farmGround(model.doc, edits, sceneId).filter(c => !room || terrain.some(t => t.id === c.id)), [model, edits, sceneId, room, terrain]);
   const chosen = sprites.find((s) => s.key === selected),
-    target = hover && pickFarmCell(hover);
+    target = hover && pickCell(hover);
   const spec = templates.find((s) => s.id === template);
   const occupied = useMemo(
     () =>
@@ -140,7 +151,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   function blocked(point: Point) {
     return occupied.some(
       (o) =>
-        !o.spec?.floor &&
+        o.blocksPlacement &&
         point.x >= o.x + Math.min(o.bounds[0], -22) &&
         point.x <= o.x + Math.max(o.bounds[2], 22) &&
         point.y >= o.y + Math.min(o.bounds[1], -22) &&
@@ -168,7 +179,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       occupied.some(
         (o) =>
           o.uid !== moving &&
-          !o.spec?.floor &&
+          o.blocksPlacement &&
           box.l < o.x + Math.max(o.bounds[2], 22) &&
           box.r > o.x + Math.min(o.bounds[0], -22) &&
           box.t < o.y + Math.max(o.bounds[3], 22) &&
@@ -183,7 +194,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           (Math.round(target.x / 45) + Math.round(target.y / 45)) % 2
         )
           continue;
-        const c = FARM_CELLS.find((c) => c.x === x && c.y === y);
+        const c = terrain.find((c) => c.x === x && c.y === y);
         if (!c || !(c.mask & mask) || !areaAvailable(model.doc, c.area)) return false;
       }
     return true;
@@ -208,12 +219,12 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             name: names.names?.crops?.[c.numeric_id] ?? c.name.zh_hans,
             kind: 'crop' as const
           }))
-        : templates.map((t) => ({
+        : templates.filter(t => !room || !t.building).map((t) => ({
             id: t.id,
             name: t.itemId ? itemLabel(names, String(t.itemId)) : t.name,
             kind: 'object' as const
           })),
-    [tool, templates, names]
+    [tool, templates, names, room]
   );
   const indexed = useMemo(
     () => palette.map((p) => ({ ...p, searchText: buildSaveSearchText(`${p.name} ${p.id}`) })),
@@ -245,7 +256,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     );
   }
   function choose(p: Point, sprite?: SceneSprite) {
-    const cell = pickFarmCell(p);
+    const cell = pickCell(p);
     setSelectedPoint(p);
     if (tool === 'inspect') {
       setSelected(sprite?.key);
@@ -265,7 +276,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
         ...current.current,
         objects: [
           ...(current.current.objects ?? []).filter((o) => !moving || o.move !== moving),
-          { scene: FARM_SCENE, cell: cell.id, template, ...(moving ? { move: moving } : {}) }
+          { scene: sceneId, cell: cell.id, template, ...(moving ? { move: moving } : {}) }
         ]
       };
       try {
@@ -290,7 +301,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             ? { watered: true }
             : { soil: tool === 'ridge' ? 2 : 1 };
     const radius = (brush - 1) / 2;
-    const targets = FARM_CELLS.filter(
+    const targets = terrain.filter(
       (c) =>
         Math.abs((c.x + c.y - cell.x - cell.y) / 90) <= radius &&
         Math.abs((c.y - c.x - cell.y + cell.x) / 90) <= radius &&
@@ -308,8 +319,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
         ...current.current.cells,
         ...Object.fromEntries(
           targets.map((c) => [
-            `${FARM_SCENE}:${c.id}`,
-            { ...current.current.cells?.[`${FARM_SCENE}:${c.id}`], ...paint }
+            `${sceneId}:${c.id}`,
+            { ...current.current.cells?.[`${sceneId}:${c.id}`], ...paint }
           ])
         )
       }
@@ -381,8 +392,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     >
       <header className="farm-header">
         <div>
-          <strong>农场布局</strong>
-          <span>三块田地 · 游戏原始场景</span>
+          <strong>{room ? room.name : '农场布局'}</strong>
+          <span>{room ? room.description : '三块田地 · 游戏原始场景'}</span>
         </div>
         <button
           type="button"
@@ -394,7 +405,15 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           ⛶ 全屏
         </button>
       </header>
-      <nav className="farm-regions" aria-label="定位田地">
+      <div className="farm-room-switch">
+        <label htmlFor="farm-room-select">所在位置</label>
+        <SearchableSelect id="farm-room-select" value={roomId} onChange={e => changeRoom(e.target.value)}>
+          <option value="outdoor">室外 · 三块田地</option>
+          {rooms.map(r => <option key={r.id} value={r.id}>{r.name} · {r.description}</option>)}
+        </SearchableSelect>
+        {room && <div className="farm-floor-tabs" role="group" aria-label="房屋楼层">{rooms.filter(r => r.scene === room.scene || (room.name.startsWith('我的家') && r.name.startsWith('我的家'))).map(r => <button type="button" key={r.id} aria-pressed={r.id === roomId} onClick={() => changeRoom(r.id)}>{r.name.startsWith('我的家') ? r.name.split(' · ')[1] : '室内全貌'}</button>)}</div>}
+      </div>
+      {!room && <nav className="farm-regions" aria-label="定位田地">
         <button
           type="button"
           onClick={() => setFocus((f) => ({ bounds: FARM_BOUNDS, revision: f.revision + 1 }))}
@@ -415,11 +434,11 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             </small>
           </button>
         ))}
-      </nav>
+      </nav>}
       <div className="farm-workspace">
         <aside className="farm-sidebar">
           <div className="farm-tools" role="group" aria-label="地图工具">
-            {TOOLS.map(([id, icon, label]) => (
+            {TOOLS.filter(([id]) => !room || terrain.some(c => c.mask & 1) || ['inspect', 'pan', 'place'].includes(id)).map(([id, icon, label]) => (
               <button type="button" key={id} aria-pressed={tool === id} onClick={() => changeTool(id)}>
                 <span aria-hidden="true">{icon}</span>
                 {label}
@@ -517,8 +536,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                           ...current.current,
                           cells: {
                             ...current.current.cells,
-                            [`${FARM_SCENE}:${chosen.cell}`]: {
-                              ...current.current.cells?.[`${FARM_SCENE}:${chosen.cell}`],
+                            [`${sceneId}:${chosen.cell}`]: {
+                              ...current.current.cells?.[`${sceneId}:${chosen.cell}`],
                               crop: null
                             }
                           }
@@ -533,7 +552,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
               ) : (
                 <>
                   <strong>从真实场景开始</strong>
-                  <p>点击上方田地名称定位。放大后，点击作物或设施查看详情。</p>
+                  <p>{room ? '点击家具查看详情，选择移动后点击新位置。' : '点击上方田地名称定位。放大后，点击作物或设施查看详情。'}</p>
                   <p>选择种植、设施等工具后，地图会显示落点预览。</p>
                 </>
               )}
@@ -545,22 +564,22 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             </div>
           )}
           <details className="farm-layer-options">
-            <summary>季节与图层</summary>
-            <div className="farm-seasons">
+            <summary>{room ? '图层' : '季节与图层'}</summary>
+            {!room && <><div className="farm-seasons">
               {['春', '夏', '秋', '冬'].map((s, i) => (
                 <button type="button" key={s} aria-pressed={season === i} onClick={() => setSeason(i)}>
                   {s}
                 </button>
               ))}
             </div>
-            <small>仅切换预览，不修改存档季节。</small>
+            <small>仅切换预览，不修改存档季节。</small></>}
             {[
               ['成熟预览（不改变生长进度）', mature, setMature],
               ['网格', grid, setGrid],
               ['地名', labels, setLabels],
               ['作物与树木', plants, setPlants],
               ['建筑与设施', facilities, setFacilities]
-            ].map(([label, value, set]) => (
+            ].filter(([label]) => !room || ['网格','建筑与设施'].includes(String(label)) || terrain.some(c => c.mask & 1) && label !== '地名').map(([label, value, set]) => (
               <label key={String(label)}>
                 <input
                   type="checkbox"
@@ -573,7 +592,10 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           </details>
         </aside>
         <MapCanvas
-          art={art}
+          art={viewArt!}
+          terrain={terrain}
+          regions={room ? [] : FARM_REGIONS}
+          homeBounds={room?.bounds ?? FARM_BOUNDS}
           season={season}
           sprites={sprites}
           ground={ground}
@@ -584,7 +606,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           labels={labels}
           brush={brush}
           selected={selected}
-          ghost={tool === 'place' ? spriteArt(art, 'object', template, season) : undefined}
+          ghost={tool === 'place' ? spriteArt(art, 'object', template, season, undefined, objects.find(o => o.uid === moving || (!moving && o.id === template))?.angle) : undefined}
           previewValid={previewValid}
           focus={focus}
           onHover={setHover}
@@ -655,14 +677,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           input.value = '';
         }}
       />
-      <details className="farm-indoor" onToggle={(e) => setIndoor(e.currentTarget.open)}>
-        <summary>室内布局（格子视图）</summary>
-        {indoor && (
-          <Suspense fallback={<p>载入室内布局…</p>}>
-            <IndoorMapPanel model={model} edits={edits} names={names} onChange={onChange} />
-          </Suspense>
-        )}
-      </details>
+
     </section>
   );
 }

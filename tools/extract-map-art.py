@@ -5,10 +5,11 @@ import argparse
 import hashlib
 import json
 import struct
+import zlib
 from functools import lru_cache
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.map_art import FairyBank, ground_image
@@ -44,6 +45,73 @@ def main():
              3: FairyBank(fairy.read_entry('data/fairy/resident_2.fad'))}
     metadata: dict = {'source': 'Steam build 24969282, YMWR ground tiles and FAD scene nodes',
                       'bounds': BOUNDS, 'scale': .5, 'seasons': list(SEASONS), 'crops': {}, 'objects': {}}
+    specs = json.loads((ROOT/'data/sources/game-save-map.json').read_text(encoding='utf-8'))
+    metadata['rooms'] = {}
+    room_maps = table('map')
+    (dest/'rooms').mkdir(exist_ok=True)
+    room_cache = {}
+    fixture_cache = {}
+    gimmicks = table('gimmick')
+    for scene in specs['scenes']:
+        if 'OPENWORLD' in scene['code']:
+            continue
+        path = room_maps[scene['id']][1][2]
+        if path not in room_cache:
+            head = maps.read_entry(path+'.head')
+            if head.startswith(b'YKCMP_V1'):
+                head = zlib.decompress(head[20:])
+            cols, rows = struct.unpack_from('<2I', head, 52)
+            header = struct.unpack_from('<19I', head)
+            start = 76+header[3]*72+header[12]*112+header[8]*84
+            fixtures = []
+            for i in range(header[11]):
+                offset = start+i*208
+                id, x, y, angle = struct.unpack_from('<4i', head, offset)
+                if id not in gimmicks:
+                    raise ValueError(f'Unknown YMWR fixture at {path}:{offset}: {id}')
+                scale = struct.unpack_from('<f', head, offset+16)[0]
+                mirror = bool(struct.unpack_from('<I', head, offset+20)[0])
+                require = struct.unpack_from('<i', head, offset+36)[0]
+                fixtures.append(dict(id=id, x=x, y=y, angle=angle, scale=scale, mirror=mirror, require=require))
+            fixture_cache[path] = fixtures
+            mat = maps.read_entry(path+'.mat')
+            count, size = struct.unpack_from('<II', mat)
+            base = 8+count*8+size
+            tiles = [(i % cols, i // cols) for i in range(cols*rows)
+                     if struct.unpack_from('<I', mat, base+i*12+4)[0]]
+            bounds = (min(x for x,y in tiles)*256, min(y for x,y in tiles)*256,
+                      (max(x for x,y in tiles)+1)*256, (max(y for x,y in tiles)+1)*256)
+            image = ground_image(mat, bounds, cols)
+            # Upstairs shares a YMWR map with the ground floor. Separate the two
+            # disconnected rooms at the native terrain gap, never rotate them.
+            cuts = [bounds]
+            if scene['code'] in ('MAP_ID_MYHOUSE_LV3_01', 'MAP_ID_MYHOUSE_LV4_01'):
+                axis = 0 if 'LV3' in scene['code'] else 1
+                coords = sorted({c[axis]*45 for c in scene['cells']})
+                lo, hi = max(zip(coords, coords[1:]), key=lambda p: p[1]-p[0])
+                split = (lo+hi)//2
+                first, second = list(bounds), list(bounds)
+                first[axis+2], second[axis] = split, split
+                cuts = [tuple(first), tuple(second)] if axis == 0 else [tuple(second), tuple(first)]
+            floors = []
+            for index, cut in enumerate(cuts):
+                crop = image.crop((cut[0]-bounds[0], cut[1]-bounds[1], cut[2]-bounds[0], cut[3]-bounds[1]))
+                rgb = crop.convert('RGB').split()
+                tight = ImageChops.lighter(ImageChops.lighter(rgb[0], rgb[1]), rgb[2]).point(lambda p: 255 if p > 8 else 0).getbbox()
+                if not tight:
+                    raise ValueError(f'Empty room {path} floor {index}')
+                cropped = crop.crop(tight)
+                local = [cut[0]+tight[0],cut[1]+tight[1],cut[0]+tight[2],cut[1]+tight[3]]
+                file = f'rooms/{Path(path).stem}-{index}.webp'
+                cropped.save(dest/file, quality=92, method=4)
+                floors.append({'file': file, 'bounds': local})
+            room_cache[path] = floors
+        metadata['rooms'][str(scene['id'])] = [
+            {**floor, 'bounds': [v+scene['origin'][i%2] for i,v in enumerate(floor['bounds'])],
+             'fixtures': [{**f, 'x': f['x']+scene['origin'][0], 'y': f['y']+scene['origin'][1]}
+                          for f in fixture_cache[path] if floor['bounds'][0]-80 <= f['x'] <= floor['bounds'][2]+80
+                          and floor['bounds'][1]-80 <= f['y'] <= floor['bounds'][3]+80]}
+            for floor in room_cache[path]]
     if not args.skip_ground:
         for season in SEASONS:
             print('Ground', season, flush=True)
@@ -87,7 +155,7 @@ def main():
         metadata['soils'][str(id)] = save_sprite((image.crop((left, top, right, bottom)), (left-x, top-y)))
 
     @lru_cache(maxsize=None)
-    def export(anime_id, reps, frames_requested=()):
+    def export(anime_id, reps, frames_requested=(), mirror=False, furniture_rep=0):
         if anime_id not in anime:
             return None
         record, strings = anime[anime_id]
@@ -101,10 +169,15 @@ def main():
         seasons = []
         for rep in reps:
             mapping = replacements(rep)
+            mapping.update(replacements(furniture_rep))
             resolve = lambda name: texture_image(mapping[name]) if name in mapping and mapping[name] in texture else None
             variants = {}
             for frame in frames:
-                sprite = save_sprite(bank.render(model, frame, resolve))
+                rendered = bank.render(model, frame, resolve)
+                if rendered and mirror:
+                    image, (x, y) = rendered
+                    rendered = (image.transpose(Image.Transpose.FLIP_LEFT_RIGHT), (-x-image.width, y))
+                sprite = save_sprite(rendered)
                 if sprite:
                     variants[str(frame)] = sprite
             seasons.append(variants)
@@ -140,16 +213,46 @@ def main():
         if result:
             metadata['crops'][str(id)] = {**result, 'states': states}
     print('Crop art', len(metadata['crops']), flush=True)
-    specs = json.loads((ROOT/'data/sources/game-save-map.json').read_text(encoding='utf-8'))
     wanted = {o['id'] for o in specs['objects']}
-    for index, (id, (r, strings)) in enumerate(table('gimmick').items()):
-        if id not in wanted and 'ARCHITECTURE' not in strings[0]:
+    furnishings = {o['id'] for o in specs['objects'] if o['itemId']}
+    fixture_ids = {f['id'] for fixtures in fixture_cache.values() for f in fixtures}
+    for index, (id, (r, strings)) in enumerate(gimmicks.items()):
+        if id not in wanted and id not in fixture_ids and not any(k in strings[0] for k in ('ARCHITECTURE', 'INDOOR')):
             continue
-        result = export(struct.unpack_from('<I', r, 80)[0], tuple(struct.unpack_from('<4I', r, 88)))
+        anime_id, initial = struct.unpack_from('<I', r, 80)[0], struct.unpack_from('<I', r, 112)[0]
+        mirror = bool(struct.unpack_from('<I', r, 120)[0])
+        # Furnishings override the base animation atlas independently of season.
+        furniture_rep = struct.unpack_from('<I', r, len(r)-72)[0] if id in furnishings else 0
+        if furniture_rep not in replacement:
+            furniture_rep = 0
+        record, anim_strings = anime.get(anime_id, (b'', ()))
+        bank = banks.get(struct.unpack_from('<I', record, 24)[0]) if record else None
+        ids = bank.sequence_ids(anim_strings[2]) if bank and anim_strings[2] in bank.entries else []
+        directional = initial == 110 and any(i in ids for i in (111,113,117,119))
+        frames = tuple(i for i in ([110,111,112,113,114,116,117,118,119] if directional else [initial]) if i in ids)
+        result = export(anime_id, tuple(struct.unpack_from('<4I', r, 88)), frames, mirror, furniture_rep)
         if result:
-            metadata['objects'][str(id)] = result
+            metadata['objects'][str(id)] = {**result, 'initial': initial, 'directional': directional, 'mirror': mirror, 'replacement': furniture_rep,
+                                           'mapId': int(strings[strings.index('mapID')+1]) if 'mapID' in strings and strings[strings.index('mapID')+1].isdigit() else 0,
+                                           'hidden': 'INDOOR_MYHOUSE_LIGHT' in strings[0] or 'FLOORMASK' in strings[0] or 'FLOOR_MASK' in strings[0]}
         if index % 100 == 0:
             print('Object art', index, len(metadata['objects']), flush=True)
+    for floors in metadata['rooms'].values():
+        for floor in floors:
+            visible = []
+            for fixture in floor['fixtures']:
+                entity = metadata['objects'].get(str(fixture['id']))
+                if not entity or entity['hidden']:
+                    continue
+                variants = entity['seasons'][0]
+                sprite = variants.get(str(entity['initial'])) or next(iter(variants.values()))
+                if fixture['mirror']:
+                    image = Image.open(dest/sprite['file']).convert('RGBA')
+                    sprite = save_sprite((image.transpose(Image.Transpose.FLIP_LEFT_RIGHT), (-sprite['x']-sprite['w'],sprite['y'])))
+                scale = fixture['scale']
+                fixture['art'] = {**sprite, **{k: sprite[k]*scale for k in ('x','y','w','h')}}
+                visible.append(fixture)
+            floor['fixtures'] = visible
     (ROOT/'data/sources/game-map-art.json').write_text(json.dumps(metadata, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
     (dest/'manifest.json').write_text(json.dumps(metadata, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
     print('Complete', len(metadata['crops']), 'crops;', len(metadata['objects']), 'objects', flush=True)

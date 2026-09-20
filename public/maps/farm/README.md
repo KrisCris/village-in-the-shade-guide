@@ -22,3 +22,10 @@ assumption that `formID` is a growth-stage index.
 
 Scene rendering omits animated weather, characters, dynamic lighting and event
 sparkles. Original archives and player saves are not included.
+
+Indoor rooms use each native YMWR map and its static fixture records. Shared
+multi-floor maps are split at their terrain gap without changing world positions.
+Only the house upgrade and rooms enabled by the loaded save are offered in the UI.
+Gimmick initial sequences, mirror pivots and per-furniture texture replacements
+are preserved; direction variants follow the saved angle. Effect masks are not
+drawn as ordinary opaque sprites or treated as furniture collision bounds.
