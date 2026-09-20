@@ -243,13 +243,10 @@ export default function SaveEditor() {
     }
   }
 
-  async function chooseSave() {
-    const picker = (window as unknown as { showOpenFilePicker?: (options: unknown) => Promise<Array<{ getFile(): Promise<File> }>> }).showOpenFilePicker;
-    if (!picker) { fileInput.current?.click(); return; }
-    try {
-      const [handle] = await picker({ id: 'honogurashi-save', multiple: false, types: [{ description: '游戏存档', accept: { 'application/octet-stream': ['.001', '.002', '.003', '.004', '.005'] } }] });
-      await loadFile(await handle.getFile());
-    } catch (caught) { if ((caught as Error).name !== 'AbortError') fileInput.current?.click(); }
+  function chooseSave() {
+    // File System Access blocks protected folders, including the game's AppData directory.
+    // Use a file input so importing only grants access to the selected file's contents.
+    fileInput.current?.click();
   }
   function updateField(field: SaveField, value: string) {
     setDrafts((current) => ({ ...current, [field.offset]: value }));
@@ -355,7 +352,7 @@ export default function SaveEditor() {
         <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
       </div>
     </div>
-    <details className="save-system-hint"><summary>Windows / Steam 存档位置</summary><p>首次选择时，把下面的路径粘贴到文件窗口地址栏。支持的浏览器会记住上次选择的位置。</p><code>%APPDATA%\Nippon Ichi Software, Inc\Honogurashinoniwa\</code><button type="button" onClick={async () => { try { await navigator.clipboard.writeText('%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\'); setNotice('已复制存档目录。'); } catch { setError('复制失败，请手动复制上面的目录。'); } }}>复制目录</button><p>网页无法直接指定或自动读取 AppData 私人目录，需要你在文件窗口中选择一次。</p></details>
+    <details className="save-system-hint"><summary>Windows / Steam 存档位置</summary><p>选择存档时，把下面的路径粘贴到文件窗口地址栏。</p><code>%APPDATA%\Nippon Ichi Software, Inc\Honogurashinoniwa\</code><button type="button" onClick={async () => { try { await navigator.clipboard.writeText('%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\'); setNotice('已复制存档目录。'); } catch { setError('复制失败，请手动复制上面的目录。'); } }}>复制目录</button><p>网页无法直接指定或自动读取 AppData 私人目录，需要你在文件窗口中选择一次。</p></details>
     <SystemSaveHint />
     {busy && <p className="save-status" role="status">{notice}</p>}
     {!busy && notice && <p className="save-status success" role="status">{notice}</p>}
