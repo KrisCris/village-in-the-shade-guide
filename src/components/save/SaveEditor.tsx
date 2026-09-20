@@ -447,7 +447,7 @@ export default function SaveEditor() {
       <div className="save-workspace-body">
       {tab === 'map' ? <Suspense fallback={<p>正在读取地图…</p>}><MapPanel model={model} edits={map} names={names} onChange={setMap} /></Suspense> : tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel onMaterials={insertMaterials} model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress} /> : tab === 'raw'
         ? <RawTree model={model} doc={model.doc} drafts={drafts} names={names} onChange={updateField} />
-        : tab === 'barn' ? <AnimalsPanel progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
+        : tab === 'barn' ? <AnimalsPanel progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map, model.doc).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
         : tab === 'items'
         ? <>
           <ItemsPanel

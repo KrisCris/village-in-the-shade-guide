@@ -61,6 +61,38 @@ class FairyBank:
         start = struct.unpack_from('<I', data, 64)[0]
         return [struct.unpack_from('<H', data, start+i*32)[0] for i in range(count)]
 
+    def shapes(self, name: str, sequence: int) -> list[dict]:
+        """Read collision rectangles with their native hierarchy and pivots."""
+        pos, size = self.entries[name]
+        data = self.data[pos:pos+size]
+        count = struct.unpack_from('<H', data, 40)[0]
+        seq, _, nodes, keys = struct.unpack_from('<4I', data, 64)
+        offset = next((seq+i*32 for i in range(count) if struct.unpack_from('<H', data, seq+i*32)[0] == sequence), None)
+        if offset is None:
+            return []
+        shapes, visited = [], set()
+        def walk(index, parent):
+            if index < 0 or index in visited:
+                return
+            visited.add(index)
+            node = nodes+index*32
+            child, sibling, count, key = struct.unpack_from('<4i', data, node+8)
+            transform = parent
+            if count:
+                offset = keys+key*160
+                f = struct.unpack_from('<26f', data, offset+4)
+                co, si = math.cos(f[13]), math.sin(f[13])
+                transform = multiply(parent, (f[11]*co, f[11]*si, -f[12]*si, f[12]*co, f[9], f[10]))
+                flags = struct.unpack_from('<I', data, offset+132)[0]
+                if flags & 0x100 and f[5] > 0 and f[6] > 0:
+                    corners = [point(transform, x-f[7], y-f[8]) for x,y in [(0,0),(f[5],0),(f[5],f[6]),(0,f[6])]]
+                    shapes.append({'name': data[node:node+8].rstrip(b'\0').decode('ascii',errors='replace'),
+                                   'flags': flags, 'points': [[round(x,4),round(y,4)] for x,y in corners]})
+            walk(child, transform)
+            walk(sibling, parent)
+        walk(struct.unpack_from('<i', data, offset+8)[0], IDENTITY)
+        return shapes
+
     def render(self, name: str, sequence: int, replacement: Callable[[str], Image.Image | None] | None = None):
         pos, size = self.entries[name]
         data = self.data[pos:pos+size]

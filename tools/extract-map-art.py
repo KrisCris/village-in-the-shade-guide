@@ -12,6 +12,7 @@ from pathlib import Path
 from PIL import Image, ImageChops
 
 from honogurashi_extractor.archive import FafullfsArchive
+from honogurashi_extractor.gimmick import gimmick_features
 from honogurashi_extractor.map_art import FairyBank, ground_image
 from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.table import read_table
@@ -22,10 +23,23 @@ SEASONS = ('spr', 'sum', 'aut', 'win')
 BOUNDS = (7936, 18688, 14336, 27648)
 
 
+def save_rules(metadata):
+    """Keep texture URLs and seasonal frames out of the save serializer bundle."""
+    rules = {
+        'rooms': {key: [{'bounds': floor['bounds']} for floor in floors] for key, floors in metadata['rooms'].items()},
+        'crops': {key: {'model': value['model'], 'states': value.get('states', {})} for key, value in metadata['crops'].items()},
+        'objects': {key: {'initial': value['initial'], 'directional': value['directional'],
+                         'seasons': [{seq: {k: frame[k] for k in ('x','y','w','h')} for seq, frame in value['seasons'][0].items()}]}
+                    for key, value in metadata['objects'].items()}
+    }
+    (ROOT/'data/sources/game-map-rules.json').write_text(json.dumps(rules,separators=(',',':'))+'\n',encoding='utf-8')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--skip-ground', action='store_true')
+    parser.add_argument('--update-objects', action='store_true')
     args = parser.parse_args()
     dest = ROOT/'public/maps/farm'
     dest.mkdir(parents=True, exist_ok=True)
@@ -40,19 +54,23 @@ def main():
         return {struct.unpack_from('<I', r)[0]: (r, s) for r, s in zip(t.records, _string_groups(t))}
 
     anime, replacement, texture = table('anime'), table('animereplacetexture'), table('texture')
+    feature_ids = set(table('gimmickfeature'))
     replacement_pool = read_table(archive.read_entry('data/database/animereplacetexture.dat')).string_pool
     banks = {2: FairyBank(fairy.read_entry('data/fairy/resident.fad')),
              3: FairyBank(fairy.read_entry('data/fairy/resident_2.fad'))}
     metadata: dict = {'source': 'Steam build 24969282, YMWR ground tiles and FAD scene nodes',
                       'bounds': BOUNDS, 'scale': .5, 'seasons': list(SEASONS), 'crops': {}, 'objects': {}}
     specs = json.loads((ROOT/'data/sources/game-save-map.json').read_text(encoding='utf-8'))
-    metadata['rooms'] = {}
+    if args.update_objects:
+        metadata = json.loads((dest/'manifest.json').read_text(encoding='utf-8'))
+    else:
+        metadata['rooms'] = {}
     room_maps = table('map')
     (dest/'rooms').mkdir(exist_ok=True)
     room_cache = {}
     fixture_cache = {}
     gimmicks = table('gimmick')
-    for scene in specs['scenes']:
+    for scene in ([] if args.update_objects else specs['scenes']):
         if 'OPENWORLD' in scene['code']:
             continue
         path = room_maps[scene['id']][1][2]
@@ -184,7 +202,7 @@ def main():
         bank.textures.clear()
         return {'model': model, 'seasons': seasons} if any(seasons) else None
 
-    for id, (r, _) in table('crops').items():
+    for id, (r, _) in ([] if args.update_objects else table('crops').items()):
         # Variable-length prerequisite lists precede the animation reference.
         # Validate the full animation + four seasonal replacement tuple.
         offset = next((o for o in range(112, 256, 4)
@@ -222,14 +240,16 @@ def main():
         anime_id, initial = struct.unpack_from('<I', r, 80)[0], struct.unpack_from('<I', r, 112)[0]
         mirror = bool(struct.unpack_from('<I', r, 120)[0])
         # Furnishings override the base animation atlas independently of season.
-        furniture_rep = struct.unpack_from('<I', r, len(r)-72)[0] if id in furnishings else 0
+        furniture_rep = gimmick_features(r, feature_ids)[1]
         if furniture_rep not in replacement:
             furniture_rep = 0
         record, anim_strings = anime.get(anime_id, (b'', ()))
         bank = banks.get(struct.unpack_from('<I', record, 24)[0]) if record else None
         ids = bank.sequence_ids(anim_strings[2]) if bank and anim_strings[2] in bank.entries else []
-        directional = initial == 110 and any(i in ids for i in (111,113,117,119))
-        frames = tuple(i for i in ([110,111,112,113,114,116,117,118,119] if directional else [initial]) if i in ids)
+        initial = initial or (100 if 100 in ids else 1)
+        directions = struct.unpack_from('<'+'I'*struct.unpack_from('<I',r,124)[0],r,128)
+        directional = any(initial+i in ids for i in directions)
+        frames = tuple(i for i in ([initial,*[initial+i for i in directions]] if directional else [initial]) if i in ids)
         result = export(anime_id, tuple(struct.unpack_from('<4I', r, 88)), frames, mirror, furniture_rep)
         if result:
             metadata['objects'][str(id)] = {**result, 'initial': initial, 'directional': directional, 'mirror': mirror, 'replacement': furniture_rep,
@@ -237,7 +257,7 @@ def main():
                                            'hidden': 'INDOOR_MYHOUSE_LIGHT' in strings[0] or 'FLOORMASK' in strings[0] or 'FLOOR_MASK' in strings[0]}
         if index % 100 == 0:
             print('Object art', index, len(metadata['objects']), flush=True)
-    for floors in metadata['rooms'].values():
+    for floors in ([] if args.update_objects else metadata['rooms'].values()):
         for floor in floors:
             visible = []
             for fixture in floor['fixtures']:
@@ -255,6 +275,7 @@ def main():
             floor['fixtures'] = visible
     (ROOT/'data/sources/game-map-art.json').write_text(json.dumps(metadata, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
     (dest/'manifest.json').write_text(json.dumps(metadata, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
+    save_rules(metadata)
     print('Complete', len(metadata['crops']), 'crops;', len(metadata['objects']), 'objects', flush=True)
 
 

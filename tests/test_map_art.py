@@ -28,6 +28,8 @@ def test_fad_preserves_parent_anchor_and_front_to_back_layers():
         if i == 0:
             floats[9:11] = [10, 20]
         struct.pack_into('<26f', chunk, offset+4, *floats)
+        if i == 1:
+            struct.pack_into('<I', chunk, offset+132, 0x60100)
     data = bytearray(112)+chunk
     data[80:88] = b'test_map'
     struct.pack_into('<III', data, 88, len(chunk), 2, 112)
@@ -37,6 +39,8 @@ def test_fad_preserves_parent_anchor_and_front_to_back_layers():
     assert anchor == (9, 19)
     assert image.getpixel((0, 0)) == (255, 0, 0, 255)
     assert bank.render('test_map', 99) is None
+    assert bank.shapes('test_map', 1) == [{'name': '', 'flags': 0x60100, 'points': [[9,19],[11,19],[11,21],[9,21]]}]
+    assert bank.shapes('test_map', 99) == []
 
 
 def test_ground_index_uses_relative_offsets_and_verifies_coordinates(monkeypatch):

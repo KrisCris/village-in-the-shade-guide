@@ -1,3 +1,4 @@
+import { inSelection, selectionPolygon } from '../../lib/saveMapGeometry';
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import {
   FARM_BOUNDS,
@@ -32,7 +33,9 @@ export interface MapCanvasProps {
   brush: number;
   selected?: string;
   selection: string[];
-  onSelect: (sprites: SceneSprite[]) => void;
+  onSelect: (sprites: SceneSprite[], cells: number[]) => void;
+  selectedCells: number[];
+  onRotate: () => void;
   ghost?: SpriteArt;
   previewValid: boolean;
   focus: { bounds: number[]; revision: number };
@@ -248,9 +251,9 @@ export default function MapCanvas(props: MapCanvasProps) {
     }
     if (marquee) {
       ctx.fillStyle = '#9ad6bb33'; ctx.strokeStyle = '#fff2aa'; ctx.lineWidth = 1.5 / camera.zoom;
-      ctx.fillRect(marquee.start.x, marquee.start.y, marquee.end.x - marquee.start.x, marquee.end.y - marquee.start.y);
-      ctx.strokeRect(marquee.start.x, marquee.start.y, marquee.end.x - marquee.start.x, marquee.end.y - marquee.start.y);
+      const points=selectionPolygon(marquee.start,marquee.end);ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);points.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();ctx.fill();ctx.stroke();
     }
+    for(const c of terrain)if(props.selectedCells.includes(c.id))diamond(c.x,c.y,'#9ad6bb22','#fff2aa');
     for (const p of touchTrail) diamond(p.x, p.y, '#9ad6bb55', '#fff2aa');
     setLoading(pending);
     return () => {
@@ -270,6 +273,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     props.labels,
     props.selected,
     props.selection,
+    props.selectedCells,
     marquee,
     touchTrail,
     props.ghost,
@@ -392,7 +396,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       else if (props.tool === 'inspect') {
         const p = position(e), a = g.start;
         props.onSelect(props.sprites.filter(s => (s.kind === 'crop' ? props.plants : props.facilities) &&
-          s.x >= Math.min(a.x,p.x) && s.x <= Math.max(a.x,p.x) && s.y >= Math.min(a.y,p.y) && s.y <= Math.max(a.y,p.y)));
+          inSelection(s,a,p)), terrain.filter(c=>inSelection(c,a,p)).map(c=>c.id));
       }
     }
   }
@@ -419,6 +423,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         aria-label="农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。"
         onContextMenu={(e) => e.preventDefault()}
         onKeyDown={(e) => {
+          if(e.key.toLowerCase()==='r'){e.preventDefault();props.onRotate();}
           if (e.key === ' ') {
             e.preventDefault();
             space.current = true;

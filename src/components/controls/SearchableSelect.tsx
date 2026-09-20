@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 import { normalizeSearch } from '../../data/clientSearch';
 
 /** Keeps option markup at call sites, but search and selection share one popup. */
-export default function SearchableSelect({id, value, onChange, children}: {
-  id?: string; value: string | number; children: ReactNode;
+export default function SearchableSelect({id, value, onChange, children, 'aria-label': accessibleLabel}: {
+  id?: string; value: string | number; children: ReactNode; 'aria-label'?: string;
   onChange: (event: {target: {value: string}}) => void;
 }) {
   const generatedId=useId();
@@ -29,8 +29,8 @@ export default function SearchableSelect({id, value, onChange, children}: {
   useEffect(()=>{
     const element=trigger.current;
     const parent=element?.closest('label');
-    setLabel(parent?.firstChild?.textContent ?? (id ? document.querySelector(`label[for="${CSS.escape(id)}"]`)?.textContent : '') ?? '选择');
-  },[id]);
+    setLabel(accessibleLabel ?? parent?.firstChild?.textContent ?? (id ? document.querySelector(`label[for="${CSS.escape(id)}"]`)?.textContent : '') ?? '选择');
+  },[id,accessibleLabel]);
   useEffect(()=>{
     if(!open)return;
     let disposed=false;

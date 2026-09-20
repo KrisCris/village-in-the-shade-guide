@@ -1,3 +1,4 @@
+import { containsPoint } from '../../lib/saveMapGeometry';
 import {
   useEffect,
   useMemo,
@@ -8,13 +9,18 @@ import {
 } from 'react';
 import {
   MAP_DATA,
+  addMapPlacement,
+  placementProblem,
+  draftObjects,
+  objectFootprint,
+  clearMapArea,
+  type ClearLayer,
   MAP_CROPS,
-  mapObjects,
   areaAvailable,
   applyMapEdits,
   parseMapPreset,
   mapEditCount,
-  landPosition,
+  landId,
   sceneCells,
   type MapEdits,
   type CellPaint
@@ -50,7 +56,7 @@ const TOOLS = [
   ['water', '◉', '浇水'],
   ['soil', '▱', '耕地'],
   ['ridge', '≋', '田垄'],
-  ['clear', '⌫', '清除作物']
+  ['clear', '⌫', '清理']
 ];
 interface Props {
   model: SaveModel;
@@ -80,6 +86,10 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     [facilities, setFacilities] = useState(true),
     [labels, setLabels] = useState(true);
   const [mature, setMature] = useState(false);
+  const [category, setCategory] = useState('machine'), [cropSeason, setCropSeason] = useState('-1'), [machineFilter, setMachineFilter] = useState('');
+  const [angle, setAngle] = useState(45), [clearLayer, setClearLayer] = useState<ClearLayer>('crops');
+  const [selectedCells, setSelectedCells] = useState<number[]>([]);
+  const [resetArea, setResetArea] = useState('1');
   const [selection, setSelection] = useState<string[]>([]);
   const [selectionLimit, setSelectionLimit] = useState(40);
   const [selected, setSelected] = useState<string>(),
@@ -90,7 +100,14 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const [past, setPast] = useState<MapEdits[]>([]),
     [future, setFuture] = useState<MapEdits[]>([]);
   const [roomId, setRoomId] = useState('outdoor');
-  const rooms = useMemo(() => art ? availableMapRooms(model.doc, art) : [], [model, art]);
+  const rooms = useMemo(() => art ? availableMapRooms(model.doc, art, edits) : [], [model, art, edits]);
+  useEffect(()=>{
+    if(roomId==='outdoor'||rooms.some(r=>r.id===roomId))return;
+    const [scene,floor]=roomId.split(':').map(Number),old=MAP_DATA.objects.find(s=>s.mapId===scene);
+    const next=rooms.find(r=>r.floor===floor&&(old?.code.includes('MYHOUSE')?r.name.startsWith('我的家'):MAP_DATA.objects.some(s=>s.mapId===r.scene&&s.buildingFamily===old?.buildingFamily&&s.slot===old?.slot)));
+    setRoomId(next?.id??'outdoor');setSelection([]);setSelectedCells([]);setSelected(undefined);
+    setFocus(f=>({bounds:next?.bounds??FARM_BOUNDS,revision:f.revision+1}));
+  },[rooms,roomId]);
   const room = rooms.find(r => r.id === roomId);
   const sceneId = room?.scene ?? FARM_SCENE;
   const viewArt = useMemo(() => art && room ? { ...art, bounds: room.bounds, background: room.file, fixtures: room.fixtures } : art, [art, room]);
@@ -98,7 +115,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
   function changeRoom(id: string) {
     const next = rooms.find(r => r.id === id);
-    setRoomId(id); setSelection([]); setSelected(undefined); setSelectedPoint(null); setMoving(''); setHover(null); setTool('inspect');
+    setRoomId(id); setSelection([]); setSelectedCells([]); setSelected(undefined); setSelectedPoint(null); setMoving(''); setHover(null); setTool('inspect');
     setFocus(f => ({ bounds: next?.bounds ?? FARM_BOUNDS, revision: f.revision + 1 }));
     setMessage(next ? `${next.name} · ${next.description}` : '选择一块田地开始，或滚轮放大查看。');
   }
@@ -115,16 +132,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       });
     return () => controller.abort();
   }, []);
-  const objects = useMemo(() => mapObjects(model.doc), [model]);
-  const templates = useMemo(
-    () =>
-      MAP_DATA.objects.filter((spec) =>
-        objects.some(
-          (o) => o.movable && (o.id === spec.id || (spec.building && o.spec?.family === spec.family))
-        )
-      ),
-    [objects]
-  );
+  const templates = MAP_DATA.objects;
   const sprites = useMemo(
     () => (viewArt ? buildFarmScene(model.doc, edits, viewArt, season, mature, sceneId) : []),
     [model, edits, viewArt, season, mature, sceneId]
@@ -132,82 +140,18 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const ground = useMemo(() => farmGround(model.doc, edits, sceneId).filter(c => !room || terrain.some(t => t.id === c.id)), [model, edits, sceneId, room, terrain]);
   const chosen = sprites.find((s) => s.key === selected),
     target = hover && pickCell(hover);
-  const spec = templates.find((s) => s.id === template);
-  const occupied = useMemo(
-    () =>
-      objects
-        .map((o) => {
-          const move = edits.objects?.findLast((e) => e.move === o.uid);
-          return { ...o, ...(move ? landPosition(move.cell) : {}) };
-        })
-        .concat(
-          (edits.objects ?? [])
-            .filter((e) => !e.move)
-            .flatMap((e) => {
-              const donor = objects.find((o) => o.id === e.template);
-              return donor ? [{ ...donor, ...landPosition(e.cell), uid: `new:${e.cell}` }] : [];
-            })
-        ),
-    [objects, edits.objects]
-  );
+  const occupied = useMemo(()=>draftObjects(model.doc,edits),[model,edits]);
   function blocked(point: Point) {
-    return occupied.some(
-      (o) =>
-        o.blocksPlacement &&
-        point.x >= o.x + Math.min(o.bounds[0], -22) &&
-        point.x <= o.x + Math.max(o.bounds[2], 22) &&
-        point.y >= o.y + Math.min(o.bounds[1], -22) &&
-        point.y <= o.y + Math.max(o.bounds[3], 22) &&
-        o.uid !== moving
-    );
+    return occupied.some(o=>o.uid!==moving && !o.spec?.floor && o.blocksPlacement && objectFootprint(o).some(poly=>containsPoint(poly,point)));
   }
-  function canPlace() {
-    if (!target || !spec) return false;
-    const donor = objects.find(
-      (o) => o.movable && (o.id === template || (spec.building && o.spec?.family === spec.family))
-    );
-    if (!donor) return false;
-    const [l, t, r, b] = donor.bounds,
-      mask = spec.building ? 4 : 2;
-    const box = {
-      l: target.x + Math.min(l, -22),
-      t: target.y + Math.min(t, -22),
-      r: target.x + Math.max(r, 22),
-      b: target.y + Math.max(b, 22)
-    };
-    if (!spec.floor && sprites.some(s => s.kind === 'crop' && s.x >= box.l && s.x <= box.r && s.y >= box.t && s.y <= box.b)) return false;
-    if (
-      !spec.floor &&
-      occupied.some(
-        (o) =>
-          o.uid !== moving &&
-          o.blocksPlacement &&
-          box.l < o.x + Math.max(o.bounds[2], 22) &&
-          box.r > o.x + Math.min(o.bounds[0], -22) &&
-          box.t < o.y + Math.max(o.bounds[3], 22) &&
-          box.b > o.y + Math.min(o.bounds[1], -22)
-      )
-    )
-      return false;
-    for (let x = Math.ceil(box.l / 45) * 45; x <= box.r; x += 45)
-      for (let y = Math.ceil(box.t / 45) * 45; y <= box.b; y += 45) {
-        if (
-          (Math.round(x / 45) + Math.round(y / 45)) % 2 !==
-          (Math.round(target.x / 45) + Math.round(target.y / 45)) % 2
-        )
-          continue;
-        const c = terrain.find((c) => c.x === x && c.y === y);
-        if (!c || !(c.mask & mask) || !areaAvailable(model.doc, c.area)) return false;
-      }
-    return true;
+  function placementId(id=template) {
+    const spec=templates.find(s=>s.id===id);
+    if(!spec?.building || moving || !spec.mapId)return id;
+    return templates.find(s=>s.buildingFamily===spec.buildingFamily && s.level===spec.level && s.mirror===spec.mirror && !occupied.some(o=>o.spec?.buildingFamily===s.buildingFamily&&o.spec.slot===s.slot))?.id??id;
   }
-  const previewValid =
-    !!target &&
-    areaAvailable(model.doc, target.area) &&
-    (tool === 'inspect' ||
-      tool === 'pan' ||
-      (!!(target.mask & (tool === 'place' ? (spec?.building ? 4 : 2) : 1)) &&
-        (tool === 'place' ? canPlace() : !blocked(target))));
+  const previewValid=!!target && areaAvailable(model.doc,target.area) && (tool==='place'
+    ? !placementProblem(model.doc,{...edits,objects:(edits.objects??[]).filter(e=>!moving||e.move!==moving)},{scene:sceneId,cell:target.id,template:placementId(),angle,...(moving?{move:moving}:{})})
+    : tool==='inspect'||tool==='pan'||tool==='clear'||!!(target.mask&1)&&!blocked(target));
   const nameOf = (s: SceneSprite) =>
     s.kind === 'crop'
       ? (names.names?.crops?.[s.id] ?? `作物 ${s.id}`)
@@ -216,17 +160,17 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const palette = useMemo(
     () =>
       tool === 'plant'
-        ? MAP_CROPS.map((c) => ({
+        ? MAP_CROPS.filter(c=>cropSeason==='-1'||c.seasons.some(s=>s===['spring','summer','autumn','winter'][Number(cropSeason)])).map((c) => ({
             id: c.numeric_id,
             name: names.names?.crops?.[c.numeric_id] ?? c.name.zh_hans,
             kind: 'crop' as const
           }))
-        : templates.filter(t => !room || !t.building).map((t) => ({
+        : templates.filter(t => !t.code.includes('ARCHITECTURE_MYHOUSE_') && (!room || !t.building) && t.category===category && (!t.building || t.slot===1&&!t.mirror) && (category!=='machine'||!machineFilter||t.script===machineFilter)).map((t) => ({
             id: t.id,
-            name: t.itemId ? itemLabel(names, String(t.itemId)) : t.name,
+            name: t.building ? `${t.name}${t.level>1?` · ${t.level} 级`:''}` : t.itemId ? itemLabel(names, String(t.itemId)) : t.name,
             kind: 'object' as const
           })),
-    [tool, templates, names, room]
+    [tool, names, room, cropSeason, category, machineFilter]
   );
   const indexed = useMemo(
     () => palette.map((p) => ({ ...p, searchText: buildSaveSearchText(`${p.name} ${p.id}`) })),
@@ -249,11 +193,11 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     setLimit(40);
     setMessage(
       next === 'place'
-        ? '选择设施，再点击地图放置。新增设施使用存档中的同型模板。'
+        ? '选择物体后点击地图放置，按 R 切换朝向。'
         : next === 'plant'
           ? '选择作物，再点击或拖动种植。新增作物从种子开始生长。'
           : next === 'inspect'
-            ? '点击查看作物或设施；拖动空白处浏览地图。'
+            ? '点击选择，拖动框选；中键或双指平移。'
             : '在地图上点击或拖动使用工具。'
     );
   }
@@ -261,7 +205,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     const cell = pickCell(p);
     setSelectedPoint(p);
     if (tool === 'inspect') {
-      setSelection([]);
+      setSelection([]); setSelectedCells([]);
       setSelected(sprite?.key);
       setMessage(sprite ? nameOf(sprite) : cell ? '此处可选择种植或放置工具。' : '道路、河岸与固定地形。');
       return;
@@ -275,14 +219,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
         setMessage('先从左侧选择设施。');
         return;
       }
-      const next = {
-        ...current.current,
-        objects: [
-          ...(current.current.objects ?? []).filter((o) => !moving || o.move !== moving),
-          { scene: sceneId, cell: cell.id, template, ...(moving ? { move: moving } : {}) }
-        ]
-      };
       try {
+        const next=addMapPlacement(model.doc,current.current,{scene:sceneId,cell:cell.id,template:placementId(),angle,...(moving?{move:moving}:{})});
         applyMapEdits(model.doc, next);
         commit(next);
         setMessage(moving ? '设施已移动，可撤销。' : '设施已加入草稿，可继续放置。');
@@ -308,13 +246,17 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       (c) =>
         Math.abs((c.x + c.y - cell.x - cell.y) / 90) <= radius &&
         Math.abs((c.y - c.x - cell.y + cell.x) / 90) <= radius &&
-        c.mask & 1 &&
+        (tool==='clear'||c.mask & 1) &&
         areaAvailable(model.doc, c.area) &&
-        !blocked(c)
+        (tool==='clear'||!blocked(c))
     );
     if (!targets.length) {
       setMessage('这里不能耕作，或已被设施占用。');
       return;
+    }
+    if(tool==='clear') {
+      const next=clearMapArea(model.doc,current.current,sceneId,targets.map(c=>c.id),[],clearLayer);
+      commit(next);setMessage(`已清理 ${targets.length} 格，可整笔撤销。`);return;
     }
     const next = {
       ...current.current,
@@ -330,6 +272,42 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     };
     commit(next);
     setMessage(`已修改 ${targets.length} 格。可撤销，导出存档前会核验布局。`);
+  }
+  function clearSelection(layer: ClearLayer) {
+    commit(clearMapArea(model.doc,current.current,sceneId,selectedCells,selection,layer));
+    setSelected(undefined);setSelection([]);setSelectedCells([]);setMessage('选区已批量清理，可撤销。');
+  }
+  function paintSelection(paint: CellPaint) {
+    const cells=terrain.filter(c=>selectedCells.includes(c.id)&&(c.mask&1)&&areaAvailable(model.doc,c.area)&&!blocked(c));
+    if(!cells.length){setMessage('选区内没有可耕作的空地。');return;}
+    commit({...current.current,cells:{...current.current.cells,...Object.fromEntries(cells.map(c=>[`${sceneId}:${c.id}`,{...current.current.cells?.[`${sceneId}:${c.id}`],...paint}]))}});
+    setMessage(`已批量处理 ${cells.length} 格，可整次撤销。`);
+  }
+  function rotate() {
+    const active=tool==='place'?templates.find(s=>s.id===template):templates.find(s=>s.id===chosen?.id);
+    if(!active)return;
+    const existing=chosen?.uid?occupied.find(o=>o.uid===chosen.uid):undefined;
+    const originalDraft=chosen?.key.startsWith('new:')?current.current.objects?.[Number(chosen.key.slice(4))]:undefined;
+    const degrees:Record<number,number>={1:135,3:45,7:-135,9:-45,2:90,4:180,6:0,8:-90};
+    const options=active.rotations.map(c=>degrees[c]);
+    const currentAngle=tool==='place'?angle:originalDraft?.angle??existing?.angle??45;
+    const nextAngle=options.length?options[(options.indexOf(currentAngle)+1)%options.length]:currentAngle;
+    const variant=active.reverse?templates.find(s=>s.id===active.reverse):undefined;
+    if(!variant&&options.length<2){setMessage('这件物体没有其他朝向。');return;}
+    if(tool==='place'){setAngle(nextAngle);if(variant)setTemplate(variant.id);return;}
+    try {
+      const base=originalDraft?{...current.current,objects:current.current.objects!.filter(e=>e!==originalDraft)}:current.current;
+      const cell=originalDraft?.cell??(chosen&&pickCell(chosen)?.id);
+      if(!cell)return;
+      commit(addMapPlacement(model.doc,base,{scene:sceneId,cell,template:variant?.id??active.id,angle:nextAngle,...(existing?{move:existing.uid}:{})}));
+      setMessage('朝向已修改，可撤销。');
+    }catch(e){setMessage((e as Error).message);}
+  }
+  function upgrade(id:number) {
+    if(!chosen?.uid)return;
+    const cell=landId(chosen.x,chosen.y);
+    try {commit(addMapPlacement(model.doc,current.current,{scene:sceneId,cell,template:id,move:chosen.uid,angle:occupied.find(o=>o.uid===chosen.uid)?.angle??45}));setMessage('建筑升级已加入草稿，可撤销。');}
+    catch(e){setMessage((e as Error).message);}
   }
   function finishStroke(start: boolean) {
     if (start) {
@@ -441,7 +419,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       <div className="farm-workspace">
         <aside className="farm-sidebar">
           <div className="farm-tools" role="group" aria-label="地图工具">
-            {TOOLS.filter(([id]) => !room || terrain.some(c => c.mask & 1) || ['inspect', 'pan', 'place'].includes(id)).map(([id, icon, label]) => (
+            {TOOLS.filter(([id]) => !room || terrain.some(c => c.mask & 1) || ['inspect', 'pan', 'place', 'clear'].includes(id)).map(([id, icon, label]) => (
               <button type="button" key={id} aria-pressed={tool === id} onClick={() => changeTool(id)}>
                 <span aria-hidden="true">{icon}</span>
                 {label}
@@ -458,9 +436,20 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
               ))}
             </div>
           )}
+          {tool==='clear' && <div className="farm-clear-options"><label>清理层级</label><SearchableSelect value={clearLayer} onChange={e=>setClearLayer(e.target.value as ClearLayer)}>
+            <option value="crops">作物与树木</option><option value="floor">地板／道路</option><option value="objects">设施与建筑</option><option value="reset">全部清空并恢复平地</option>
+          </SearchableSelect><small>拖动清理选定层级，每笔都可撤销。</small>
+            {!room&&<><label htmlFor="farm-reset-area">整块田地</label><SearchableSelect id="farm-reset-area" value={resetArea} onChange={e=>setResetArea(e.target.value)}>{FARM_REGIONS.map(r=><option key={r.id} value={r.id}>{r.name}</option>)}</SearchableSelect>
+            <button type="button" onClick={()=>{const cells=terrain.filter(c=>c.area===Number(resetArea)&&areaAvailable(model.doc,c.area));commit(clearMapArea(model.doc,current.current,sceneId,cells.map(c=>c.id),[],'reset'));setMessage('这块田地已恢复平地，可撤销。');}}>清空整块田地并恢复平地</button></>}
+          </div>}
           {['plant', 'place'].includes(tool) ? (
             <div className="farm-palette">
               <label htmlFor="farm-palette-search">{tool === 'plant' ? '选择作物' : '选择设施'}</label>
+              {tool==='plant'?<SearchableSelect aria-label="作物季节" value={cropSeason} onChange={e=>{setCropSeason(e.target.value);setLimit(40);}}>
+                <option value="-1">全部季节</option>{['春','夏','秋','冬'].map((s,i)=><option key={i} value={i}>{s}</option>)}
+              </SearchableSelect>:<><div className="farm-category-tabs">{[['machine','加工设备'],['building','建筑'],['floor','地板／道路'],['furniture','家具／装饰']].filter(([id])=>!room||id!=='building').map(([id,label])=><button type="button" key={id} aria-pressed={category===id} onClick={()=>{setCategory(id);setMachineFilter('');setSearch('');setLimit(40);}}>{label}</button>)}</div>
+              {category==='machine'&&<SearchableSelect aria-label="设备类别" value={machineFilter} onChange={e=>{setMachineFilter(e.target.value);setLimit(40);}}><option value="">全部设备类别</option>{Array.from(new Map(templates.filter(t=>t.category==='machine').map(t=>[t.script,t])).values()).map(t=><option key={t.script} value={t.script}>{t.name}</option>)}</SearchableSelect>}
+              <button type="button" onClick={rotate}>↻ 旋转（R）</button></>}
               <input
                 id="farm-palette-search"
                 placeholder="名称、拼音或 ID"
@@ -470,6 +459,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   setLimit(40);
                 }}
               />
+              {tool==='plant'&&selectedCells.length>0&&<button type="button" onClick={()=>paintSelection({crop,soil:1})}>种植到选区（{selectedCells.length} 格）</button>}
               <div
                 className="farm-palette-scroll"
                 onScroll={(e) => {
@@ -487,7 +477,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                         key={p.id}
                         aria-pressed={(tool === 'plant' ? crop : template) === p.id}
                         onClick={() => {
-                          p.kind === 'crop' ? setCrop(p.id) : setTemplate(p.id);
+                          p.kind === 'crop' ? setCrop(p.id) : setTemplate(p.id);setAngle(templates.find(t=>t.id===p.id)?.building?0:45);
                           setMoving('');
                         }}
                         title={p.name}
@@ -525,26 +515,20 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                         setTool('place');
                         setTemplate(chosen.id);
                         setMoving(chosen.uid!);
+                        setAngle(occupied.find(o=>o.uid===chosen.uid)?.angle??45);
                         setMessage('点击新的位置移动这件设施。按 Esc 取消。');
                       }}
                     >
                       移动这件设施
                     </button>
                   )}
-                  {chosen.kind === 'crop' && chosen.cell && (
+                  {chosen.kind==='object'&&<button type="button" onClick={rotate}>↻ 调整朝向（R）</button>}
+                  {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-upgrades">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>升级为 {t.name} · {t.level} 级</button>)}</div>}
+                  {!selection.length && chosen.kind === 'crop' && chosen.cell && (
                     <button
                       type="button"
                       onClick={() => {
-                        commit({
-                          ...current.current,
-                          cells: {
-                            ...current.current.cells,
-                            [`${sceneId}:${chosen.cell}`]: {
-                              ...current.current.cells?.[`${sceneId}:${chosen.cell}`],
-                              crop: null
-                            }
-                          }
-                        });
+                        commit(clearMapArea(model.doc,current.current,sceneId,[chosen.cell!],[],'crops'));
                         setSelected(undefined);
                       }}
                     >
@@ -559,12 +543,14 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   <p>选择种植、设施等工具后，地图会显示落点预览。</p>
                 </>
               )}
-              {selection.length > 0 && <div className="farm-multi-selection">
-                <strong>已框选 {selection.length} 个物体</strong>
+              {(selection.length > 0 || selectedCells.length > 0) && <div className="farm-multi-selection">
+                <strong>已框选 {selectedCells.length} 格 · {selection.length} 个物体</strong>
+                <div className="farm-bulk-actions">{[['crops','清除作物'],['floor','清除地板'],['objects','清除设施'],['reset','全部重置为平地']].map(([id,label])=><button type="button" key={id} onClick={()=>clearSelection(id as ClearLayer)}>{label}</button>)}</div>
+                <div className="farm-bulk-actions"><button type="button" onClick={()=>paintSelection({watered:true})}>批量浇水</button><button type="button" onClick={()=>paintSelection({soil:1})}>批量耕地</button><button type="button" onClick={()=>paintSelection({soil:2})}>批量田垄</button><button type="button" onClick={()=>changeTool('plant')}>在选区种植…</button></div>
                 <div>{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}
                   aria-pressed={selected === s.key} onClick={() => setSelected(s.key)}>{nameOf(s)}</button>)}</div>
                 {selection.length > selectionLimit && <button type="button" onClick={() => setSelectionLimit(n => n + 40)}>显示更多</button>}
-                <button type="button" onClick={() => { setSelection([]); setSelected(undefined); }}>取消框选</button>
+                <button type="button" onClick={() => { setSelection([]); setSelectedCells([]); setSelected(undefined); }}>取消框选</button>
               </div>}
               {selectedPoint && (
                 <small>
@@ -617,11 +603,14 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           brush={brush}
           selected={selected}
           selection={selection}
-          onSelect={(items) => {
+          selectedCells={selectedCells}
+          onRotate={rotate}
+          onSelect={(items, cells) => {
+            setSelectedCells(cells);
             setSelectionLimit(40); setSelection(items.map(s => s.key)); setSelected(items[0]?.key);
-            setMessage(`已框选 ${items.length} 个物体。点击列表查看详情。`);
+            setMessage(`已框选 ${cells.length} 格、${items.length} 个物体，可批量清理。`);
           }}
-          ghost={tool === 'place' ? spriteArt(art, 'object', template, season, undefined, objects.find(o => o.uid === moving || (!moving && o.id === template))?.angle) : undefined}
+          ghost={tool === 'place' ? spriteArt(art, 'object', template, season, undefined, angle) : undefined}
           previewValid={previewValid}
           focus={focus}
           onHover={setHover}

@@ -139,7 +139,7 @@ export function spriteArt(art: MapArt, kind: 'crop' | 'object', id: number, seas
   const frames = (kind === 'crop' ? art.crops : art.objects)[id]?.seasons[season];
   if (!frames) return undefined;
   const entity = art.objects[id];
-  const preferred = kind === 'crop' ? cropSequence(art.crops[id], 1, 0, true) : entity?.directional ? 110 + angleCode(angle) : entity?.initial ?? 100;
+  const preferred = kind === 'crop' ? cropSequence(art.crops[id], 1, 0, true) : entity?.directional ? (entity.initial ?? 110) + angleCode(angle) : entity?.initial ?? 100;
   return (
     (form !== undefined ? frames[form] : undefined) ??
     (preferred !== undefined ? frames[preferred] : undefined) ??
@@ -189,7 +189,7 @@ export function buildFarmScene(
       floor: false
     });
   }
-  const original = mapObjects(doc);
+  const original = mapObjects(doc).filter(o=>!edits.removed?.includes(o.uid));
   for (const [index, fixture] of (art.fixtures ?? []).entries()) {
     if (fixture.require >= 0 && !flagEnabled(doc, fixture.require)) continue;
     if (original.some(o => o.id === fixture.id && Math.hypot(o.x-fixture.x,o.y-fixture.y) < 5)) continue;
@@ -207,9 +207,9 @@ export function buildFarmScene(
       y: p.y,
       key: `object:${obj.uid}`,
       uid: obj.uid,
-      id: obj.id,
+      id: move?.template ?? obj.id,
       kind: 'object',
-      art: spriteArt(art, 'object', obj.id, season, undefined, obj.angle),
+      art: spriteArt(art, 'object', move?.template ?? obj.id, season, undefined, move?.angle ?? obj.angle),
       edited: !!move,
       floor: !!obj.spec?.floor,
       movable: obj.movable
@@ -217,15 +217,15 @@ export function buildFarmScene(
   }
   edits.objects
     ?.filter((e) => !e.move && e.scene === scene)
-    .forEach((e, i) => {
+    .forEach((e) => {
       const p = landPosition(e.cell),
         spec = MAP_DATA.objects.find((s) => s.id === e.template);
       result.push({
         ...p,
-        key: `new:${i}`,
+        key: `new:${edits.objects!.indexOf(e)}`,
         id: e.template,
         kind: 'object',
-        art: spriteArt(art, 'object', e.template, season, undefined, original.find(o => o.id === e.template)?.angle),
+        art: spriteArt(art, 'object', e.template, season, undefined, e.angle ?? original.find(o => o.id === e.template)?.angle),
         edited: true,
         floor: !!spec?.floor
       });

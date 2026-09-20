@@ -3,10 +3,11 @@ import { readFileSync } from 'node:fs';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
-import { applyMapEdits, MAP_CROPS, MAP_DATA, mapCells, mapObjects, parseMapPreset, sceneCells, areaAvailable, landPosition } from './saveMap';
-import { readSigned, SerDocument } from './ser';
+import { applyMapEdits, addMapPlacement, clearMapArea, placementProblem, MAP_CROPS, MAP_DATA, mapCells, mapObjects, parseMapPreset, sceneCells, areaAvailable, landPosition, landId } from './saveMap';
+import { readSigned, encodeSigned, serializeSer, SerDocument } from './ser';
 import { animalHouses, ANIMALS, animalResidents } from './saveAnimals';
 import { mapBuildingFlags } from './saveMap';
+import { footprint, containsPoint } from './saveMapGeometry';
 
 describe('map presets', () => {
   it('rejects incompatible and malformed layouts', () => {
@@ -42,6 +43,90 @@ describe.skipIf(!hasPrivateSaveFixtures)('map static save roundtrips', () => {
     expect(() => applyMapEdits(model.doc, { cells: { '999999:1': { crop: null } } })).toThrow('可耕作');
     expect(() => applyMapEdits(model.doc, { objects: [{ scene: 999999, cell: 1, template: 1 }] })).toThrow('不可放置');
   });
+  it('clears every selected crop and resets ridges, while preserving cells outside the selection', () => {
+    const original=mapCells(model.doc), ids=original.filter(c=>c.crop&&c.soil).slice(0,8).map(c=>c.id);
+    expect(ids.length).toBe(8);
+    const edits=clearMapArea(model.doc,{},100000001,ids,[],'reset');
+    const result=mapCells(new SerDocument(applyMapEdits(model.doc,edits)));
+    expect(result.filter(c=>ids.includes(c.id)).every(c=>!c.crop&&!c.soil)).toBe(true);
+    expect(result.filter(c=>!ids.includes(c.id)).map(c=>[c.id,c.crop,c.soil])).toEqual(original.filter(c=>!ids.includes(c.id)).map(c=>[c.id,c.crop,c.soil]));
+  });
+  it('clears a draft object using its original array index after a moved object', () => {
+    const objects=mapObjects(model.doc), old=objects.find(o=>o.movable)!;
+    const edits={objects:[{scene:100000001,cell:landId(old.x,old.y),template:old.id,move:old.uid},{scene:100000001,cell:1,template:241000000}]};
+    const cleared=clearMapArea(model.doc,edits,100000001,[],['new:1'],'objects');
+    expect(cleared.objects).toEqual([edits.objects[0]]);
+  });
+  it('creates a previously absent container with native capacity and empty inventory', () => {
+    const objects=mapObjects(model.doc),spec=MAP_DATA.objects.find(s=>s.storage===30&&s.category==='furniture'&&!objects.some(o=>o.id===s.id))!;
+    expect(spec).toBeTruthy();
+    const target=sceneCells(100000001).find(c=>c.area===1&&!placementProblem(model.doc,{}, {scene:100000001,cell:c.id,template:spec.id,angle:45}))!;
+    expect(target).toBeTruthy();
+    const doc=new SerDocument(applyMapEdits(model.doc,{objects:[{scene:100000001,cell:target.id,template:spec.id,angle:45}]}));
+    const added=mapObjects(doc).find(o=>o.id===spec.id)!;
+    const slots=doc.children(doc.resolve('p/itemList_',added.node)!);
+    expect(slots).toHaveLength(30);
+    expect(slots.every(n=>!doc.children(n).length)).toBe(true);
+  },60_000);
+  it('allows two single-cell machines on adjacent diagonal cells', () => {
+    const terrain=sceneCells(100000001);
+    const candidates=terrain.filter(c=>(c.mask&2)&&areaAvailable(model.doc,c.area));
+    let pair:typeof candidates=[];
+    for(const cell of candidates) {
+      const other=candidates.find(c=>c.x===cell.x+45&&c.y===cell.y+45);if(!other)continue;
+      const first={scene:100000001,cell:cell.id,template:240030000,angle:45};
+      if(placementProblem(model.doc,{},first))continue;
+      const second={...first,cell:other.id};
+      if(!placementProblem(model.doc,{objects:[first]},second)){pair=[cell,other];break;}
+    }
+    expect(pair.length).toBe(2);
+    const result=mapObjects(new SerDocument(applyMapEdits(model.doc,{objects:pair.map(c=>({scene:100000001,cell:c.id,template:240030000,angle:45}))})));
+    expect(result.length).toBe(mapObjects(model.doc).length+2);
+  },60_000);
+  it('accepts a mature tree for sap collection and rejects empty ground', () => {
+    const tree=mapCells(model.doc).find(c=>c.crop>=1000&&c.crop<=1004&&sceneCells(100000001).some(t=>t.id===c.id));
+    expect(tree).toBeTruthy();
+    const growth=model.doc.resolve('p/pCropsStatus_/p/growth_/this->value_',tree!.node)!;
+    const doc=new SerDocument(serializeSer(model.doc,{payloads:new Map([[growth.offset,encodeSigned(1000n,growth.size)]])}));
+    const placement={scene:100000001,cell:tree!.id,template:240250000};
+    expect(placementProblem(model.doc,{},placement)).toContain('成熟树木');
+    expect(placementProblem(doc,{},placement)).toBeNull();
+    const added=new SerDocument(applyMapEdits(doc,{objects:[placement]}));
+    expect(mapObjects(added).filter(o=>o.id===240250000).length).toBe(mapObjects(doc).filter(o=>o.id===240250000).length+1);
+    expect(placementProblem(doc,{cells:{[`100000001:${placement.cell}`]:{crop:null}}},placement)).toContain('成熟树木');
+  });
+  it.each([111200001,111110001,111020000])('upgrades building %i together with residents and indoor contents', id => {
+    const before=mapObjects(model.doc), building=before.find(o=>o.id===id)!,spec=building.spec!;
+    const upgraded=MAP_DATA.objects.find(s=>spec.upgrade?s.id===spec.upgrade:s.buildingFamily===spec.buildingFamily&&s.level===spec.level+1&&s.slot===spec.slot)!;
+    const edits=addMapPlacement(model.doc,{}, {scene:100000001,cell:landId(building.x,building.y),template:upgraded.id,move:building.uid,angle:building.angle});
+    expect(edits.objects!.length).toBeGreaterThan(1);
+    const restored=parseSaveModel(decodeSave(exportSave(model,[],{},{},{},{},edits),'upgraded-copy'));
+    const after=mapObjects(restored.doc);
+    expect(after.find(o=>o.uid===building.uid)?.id).toBe(upgraded.id);
+    // Every indoor object's identity and item payload survives migration.
+    const itemTree=(doc:SerDocument,node:import('./ser').SerNode):unknown=>doc.children(node).length?doc.children(node).map(n=>[n.name,itemTree(doc,n)]):node.tag===0?Array.from(doc.payload(node)):null;
+    for(const move of edits.objects!.filter(e=>e.move&&e.move!==building.uid)) {
+      const old=before.find(o=>o.uid===move.move)!,next=after.find(o=>o.uid===move.move)!;
+      expect(next).toMatchObject({id:old.id,angle:old.angle,...landPosition(move.cell)});
+      expect(itemTree(restored.doc,restored.doc.resolve('p/itemList_',next.node)!)).toEqual(itemTree(model.doc,model.doc.resolve('p/itemList_',old.node)!));
+    }
+    expect(animalResidents(restored.doc).map(r=>[r.name,r.species,r.variant])).toEqual(animalResidents(model.doc).map(r=>[r.name,r.species,r.variant]));
+    if(spec.upgrade) {
+      const house=animalHouses(restored.doc).find(h=>h.id===upgraded.mapId)!;
+      expect(house).toBeTruthy();
+      expect(animalResidents(restored.doc).some(r=>house.slots.some(s=>s.id===r.placement))).toBe(true);
+      expect(animalHouses(restored.doc).some(h=>h.id===spec.mapId)).toBe(false);
+    }
+  },60_000);
+  it('can upgrade the same barn twice in one draft without leaving its contents in the intermediate room', () => {
+    const building=mapObjects(model.doc).find(o=>o.id===111200001)!;
+    let edits=addMapPlacement(model.doc,{}, {scene:100000001,cell:landId(building.x,building.y),template:111210001,move:building.uid});
+    const contents=edits.objects!.filter(e=>e.move!==building.uid).map(e=>e.move);
+    edits=addMapPlacement(model.doc,edits,{scene:100000001,cell:landId(building.x,building.y),template:111220001,move:building.uid});
+    const finalMap=MAP_DATA.objects.find(o=>o.id===111220001)!.mapId;
+    expect(edits.objects!.filter(e=>contents.includes(e.move)).every(e=>e.scene===finalMap)).toBe(true);
+    expect(()=>exportSave(model,[],{},{},{},{},edits)).not.toThrow();
+  },60_000);
   it('adds a barn from a matching template and opens its animal slots in the same export', () => {
     const objects = mapObjects(model.doc);
     const donor = objects.find(o => o.movable && o.spec?.building && MAP_DATA.objects.some(s => s.family === o.spec!.family && !objects.some(e => e.spec?.mapId === s.mapId)))!;
@@ -59,13 +144,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('map static save roundtrips', () => {
     });
     expect(candidates.length).toBeGreaterThan(0);
     const target = candidates[0];
-    const crops = mapCells(model.doc).filter(c => {
-      const p = landPosition(c.id);
-      return c.crop && p.x >= target.x + Math.min(donor.bounds[0], -22) && p.x <= target.x + Math.max(donor.bounds[2], 22) && p.y >= target.y + Math.min(donor.bounds[1], -22) && p.y <= target.y + Math.max(donor.bounds[3], 22);
-    });
     const objectsDraft = [{ scene: scene.id, cell: target.id, template: spec.id }];
-    if (crops.length) expect(() => applyMapEdits(model.doc, { objects: objectsDraft })).toThrow('有作物');
-    const edits = { objects: objectsDraft, cells: Object.fromEntries(crops.map(c => [`${scene.id}:${c.id}`, { crop: null }])) };
+    const edits = { objects: objectsDraft };
+    const builtMap = new SerDocument(applyMapEdits(model.doc, edits));
+    const footprintCells = sceneCells(scene.id).filter(c => footprint(spec, target).some(poly => containsPoint(poly,c)));
+    for (const cell of mapCells(builtMap).filter(c=>footprintCells.some(t=>t.id===c.id))) expect([cell.crop,cell.soil]).toEqual([0,0]);
     expect(() => applyMapEdits(model.doc, edits)).not.toThrow();
     expect(animalHouses(model.doc, mapBuildingFlags(edits!)).some(h => h.id === spec.mapId)).toBe(true);
     const house = animalHouses(model.doc, mapBuildingFlags(edits!)).find(h => h.id === spec.mapId)!;

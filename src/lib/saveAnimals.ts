@@ -49,7 +49,7 @@ export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits
   for (const [index, placement] of Object.entries(edits.moves ?? {})) {
     const resident = residents[Number(index)];
     if (!resident) throw new Error('要移动的动物不存在。');
-    if (!slots.some(slot => slot.id === resident.placement)) throw new Error('特殊伙伴的安置方式不同，不能移动到普通畜舍栏位。');
+    if (!places.placements.some(slot => slot.id === resident.placement && !slot.special && slot.houseType < 2)) throw new Error('特殊伙伴的安置方式不同，不能移动到普通畜舍栏位。');
     relocate(built.children![resident.index], resident.species, placement);
   }
   for (const [placement, addition] of Object.entries(edits.added ?? {})) {

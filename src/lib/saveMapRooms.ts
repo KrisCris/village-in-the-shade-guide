@@ -1,4 +1,4 @@
-import { MAP_DATA, mapObjects } from './saveMap';
+import { MAP_DATA, draftObjects, mapBuildingFlags, type MapEdits } from './saveMap';
 import { flagEnabled } from './saveProgress';
 import type { SerDocument } from './ser';
 import type { MapArt, RoomFixture } from './saveMapScene';
@@ -15,9 +15,9 @@ export interface MapRoom {
 }
 
 /** Only the current house layout and constructed outbuildings are editable. */
-export function availableMapRooms(doc: SerDocument, art: MapArt): MapRoom[] {
-  const objects = mapObjects(doc);
-  const level = flagEnabled(doc, 142) ? 4 : flagEnabled(doc, 141) ? 3 : flagEnabled(doc, 140) ? 2 : 1;
+export function availableMapRooms(doc: SerDocument, art: MapArt, edits: MapEdits = {}): MapRoom[] {
+  const objects = draftObjects(doc, edits), progress=mapBuildingFlags(edits,doc);
+  const level = flagEnabled(doc, 142,progress) ? 4 : flagEnabled(doc, 141,progress) ? 3 : flagEnabled(doc, 140,progress) ? 2 : 1;
   const house = MAP_DATA.scenes.find(s => s.code === `MAP_ID_MYHOUSE_LV${level}_01`)!;
   const rooms: MapRoom[] = [];
   const add = (scene: number, name: string, description: string, home = false) => {
@@ -34,7 +34,7 @@ export function availableMapRooms(doc: SerDocument, art: MapArt): MapRoom[] {
   for (const scene of MAP_DATA.scenes) {
     if (!built.has(scene.id) || scene.code.includes('MYHOUSE')) continue;
     const number = scene.code.match(/_(0[1-4])(?:_MIRROR)?$/)?.[1];
-    const name = scene.code.includes('AVIARY') ? '禽舍' : scene.code.includes('LIVESTOCK') ? '畜舍' : '温室';
+    const name = scene.code.includes('AVIARY') ? '鸡舍' : scene.code.includes('LIVESTOCK') ? '畜舍' : scene.code.includes('BARN') ? '仓库' : '温室';
     add(scene.id, `${name}${number ? ` ${Number(number)}` : ''}`, '单层');
   }
   return rooms;

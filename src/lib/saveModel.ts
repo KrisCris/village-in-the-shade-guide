@@ -1,4 +1,4 @@
-import { applyMapEdits, mapBuildingFlags, type MapEdits } from './saveMap';
+import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, type MapEdits } from './saveMap';
 /**
  * Typed view over a decoded save.
  *
@@ -558,7 +558,8 @@ export function pendingChanges(model: SaveModel, drafts: SaveDrafts): SaveChange
  * the node they addressed will not be written out at all.
  */
 export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotEdits = {}, progress: ProgressEdits = {}, machines: MachineEdits = {}, animalEdits: AnimalEdits = {}, mapEdits: MapEdits = {}): Uint8Array {
-  progress = { ...progress, flags: { ...progress.flags, ...mapBuildingFlags(mapEdits).flags } };
+  progress = { ...progress, flags: { ...progress.flags, ...mapBuildingFlags(mapEdits, model.doc).flags } };
+  animalEdits = mapAnimalEdits(model.doc, mapEdits, animalEdits, progress);
   const processing = buildMachineEdits(model.doc, model.containers, machines);
   if (Object.keys(processing.slots).some(key => Object.hasOwn(slots, key))) throw new Error("加工栏位同时存在物品修改，请撤销物品修改。");
   slots = { ...slots, ...processing.slots };
