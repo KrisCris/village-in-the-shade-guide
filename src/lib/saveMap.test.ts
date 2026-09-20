@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
-import { applyMapEdits, MAP_CROPS, MAP_DATA, mapCells, mapObjects, parseMapPreset, sceneCells, areaAvailable } from './saveMap';
+import { applyMapEdits, MAP_CROPS, MAP_DATA, mapCells, mapObjects, parseMapPreset, sceneCells, areaAvailable, landPosition } from './saveMap';
 import { readSigned, SerDocument } from './ser';
 import { animalHouses, ANIMALS, animalResidents } from './saveAnimals';
 import { mapBuildingFlags } from './saveMap';
@@ -58,7 +58,14 @@ describe.skipIf(!hasPrivateSaveFixtures)('map static save roundtrips', () => {
       return true;
     });
     expect(candidates.length).toBeGreaterThan(0);
-    const edits = { objects: [{ scene: scene.id, cell: candidates[0].id, template: spec.id }] };
+    const target = candidates[0];
+    const crops = mapCells(model.doc).filter(c => {
+      const p = landPosition(c.id);
+      return c.crop && p.x >= target.x + Math.min(donor.bounds[0], -22) && p.x <= target.x + Math.max(donor.bounds[2], 22) && p.y >= target.y + Math.min(donor.bounds[1], -22) && p.y <= target.y + Math.max(donor.bounds[3], 22);
+    });
+    const objectsDraft = [{ scene: scene.id, cell: target.id, template: spec.id }];
+    if (crops.length) expect(() => applyMapEdits(model.doc, { objects: objectsDraft })).toThrow('有作物');
+    const edits = { objects: objectsDraft, cells: Object.fromEntries(crops.map(c => [`${scene.id}:${c.id}`, { crop: null }])) };
     expect(() => applyMapEdits(model.doc, edits)).not.toThrow();
     expect(animalHouses(model.doc, mapBuildingFlags(edits!)).some(h => h.id === spec.mapId)).toBe(true);
     const house = animalHouses(model.doc, mapBuildingFlags(edits!)).find(h => h.id === spec.mapId)!;

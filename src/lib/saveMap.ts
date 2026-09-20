@@ -91,6 +91,10 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     if (spec?.building && !moving && occupied.some(o => o.spec?.mapId === spec.mapId)) throw new Error('此编号的房屋已经存在。请选择其他空闲编号。');
     const [l, t, r, b] = donor.bounds;
     const box = { l: target.x + Math.min(l, -22), r: target.x + Math.max(r, 22), t: target.y + Math.min(t, -22), b: target.y + Math.max(b, 22) };
+    if (!spec?.floor && cells.some(c => {
+      const p = landPosition(c.id), edit = edits.cells?.[`${placement.scene}:${c.id}`];
+      return (edit?.crop !== undefined ? edit.crop : c.crop) && p.x >= box.l && p.x <= box.r && p.y >= box.t && p.y <= box.b;
+    })) throw new Error('物体占地内有作物，请先清除或选择空地。');
     if (!donor.spec?.floor && occupied.some(o => o.uid !== moving?.uid && !o.spec?.floor && box.l < o.x + Math.max(o.bounds[2], 22) && box.r > o.x + Math.min(o.bounds[0], -22) && box.t < o.y + Math.max(o.bounds[3], 22) && box.b > o.y + Math.min(o.bounds[1], -22))) throw new Error('物体占地与现有设施重叠。');
     const terrain = sceneCells(placement.scene);
     // Sample every valid grid parity point within the conservative saved bounds.
@@ -117,7 +121,8 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   for (const [key, paint] of Object.entries(edits.cells ?? {})) {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);
     if (!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area)) throw new Error('目标不在已开放的可耕作区域。');
-    if (occupied.some(o => !o.spec?.floor && terrain.x >= o.x + Math.min(o.bounds[0], -22) && terrain.x <= o.x + Math.max(o.bounds[2], 22) && terrain.y >= o.y + Math.min(o.bounds[1], -22) && terrain.y <= o.y + Math.max(o.bounds[3], 22))) throw new Error('田地被设施占用。');
+    const clearingOnly = paint.crop === null && paint.soil === undefined && paint.watered === undefined;
+    if (!clearingOnly && occupied.some(o => !o.spec?.floor && terrain.x >= o.x + Math.min(o.bounds[0], -22) && terrain.x <= o.x + Math.max(o.bounds[2], 22) && terrain.y >= o.y + Math.min(o.bounds[1], -22) && terrain.y <= o.y + Math.max(o.bounds[3], 22))) throw new Error('田地被设施占用。');
     let entry = cells.find(c => c.id === id);
     const donor = cells.find(c => c.soil && c.crop && MAP_CROPS.some(crop => crop.numeric_id === c.crop));
     if (!donor) throw new Error('请先在游戏中耕地并种下一株作物，作为田地模板。');
