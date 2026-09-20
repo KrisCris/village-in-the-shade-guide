@@ -32,6 +32,7 @@ export interface MapArt {
   rooms?: Record<string, RoomArt[]>;
   background?: string;
   fixtures?: RoomFixture[];
+  fixedObjects?: (Point & { id: number; name: string; angle: number; require: number })[];
 }
 export interface SceneGround extends Point {
   id: number;
@@ -190,6 +191,12 @@ export function buildFarmScene(
     });
   }
   const original = mapObjects(doc).filter(o=>!edits.removed?.includes(o.uid));
+  if(scene===FARM_SCENE) for(const fixture of art.fixedObjects??[]) {
+    if(!within(fixture)||(fixture.require>=0&&!flagEnabled(doc,fixture.require)))continue;
+    if(original.some(o=>o.id===fixture.id))continue;
+    result.push({...fixture,key:`fixed:${fixture.id}:${fixture.x}:${fixture.y}`,kind:'object',
+      art:spriteArt(art,'object',fixture.id,season,undefined,fixture.angle),edited:false,floor:false,movable:false});
+  }
   for (const [index, fixture] of (art.fixtures ?? []).entries()) {
     if (fixture.require >= 0 && !flagEnabled(doc, fixture.require)) continue;
     if (original.some(o => o.id === fixture.id && Math.hypot(o.x-fixture.x,o.y-fixture.y) < 5)) continue;

@@ -70,6 +70,22 @@ def main():
     room_cache = {}
     fixture_cache = {}
     gimmicks = table('gimmick')
+    # Outdoor maps also have two actor sections before the 208-byte fixtures.
+    # Shipping boxes live here rather than in the save's editable gimmick list.
+    head = maps.read_entry('data/map/map_0000_spr.ymwr.head')
+    if head.startswith(b'YKCMP_V1'):
+        head = zlib.decompress(head[20:])
+    header = struct.unpack_from('<19I', head)
+    start = 76+header[3]*72+header[12]*112+header[8]*84+header[9]*56+header[10]*48
+    metadata['fixedObjects'] = []
+    for i in range(header[11]):
+        offset = start+i*208
+        id, x, y, angle = struct.unpack_from('<4i', head, offset)
+        if id not in gimmicks:
+            raise ValueError(f'Unknown outdoor fixture at {offset}: {id}')
+        if gimmicks[id][1][0] == 'GIMMICK_ID_ARCHITECTURE_SHIPPING_BOX' and BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
+            metadata['fixedObjects'].append(dict(id=id, name='出货箱', x=x, y=y, angle=angle,
+                                                require=struct.unpack_from('<i', head, offset+36)[0]))
     for scene in ([] if args.update_objects else specs['scenes']):
         if 'OPENWORLD' in scene['code']:
             continue
@@ -80,7 +96,7 @@ def main():
                 head = zlib.decompress(head[20:])
             cols, rows = struct.unpack_from('<2I', head, 52)
             header = struct.unpack_from('<19I', head)
-            start = 76+header[3]*72+header[12]*112+header[8]*84
+            start = 76+header[3]*72+header[12]*112+header[8]*84+header[9]*56+header[10]*48
             fixtures = []
             for i in range(header[11]):
                 offset = start+i*208

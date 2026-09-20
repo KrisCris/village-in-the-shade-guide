@@ -9,6 +9,7 @@ import {
 } from 'react';
 import {
   MAP_DATA,
+  allowedMapTerrain,
   cropGrowth, cropPlacementProblem, mapCells,
   addMapPlacement,
   placementProblem,
@@ -85,6 +86,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     [search, setSearch] = useState(''),
     [limit, setLimit] = useState(40);
   const [grid, setGrid] = useState(false),
+    [restricted, setRestricted] = useState(false),
     [plants, setPlants] = useState(true),
     [facilities, setFacilities] = useState(true),
     [labels, setLabels] = useState(true);
@@ -145,6 +147,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     target = hover && pickCell(hover);
   const savedCells=useMemo(()=>new Map(mapCells(model.doc).map(c=>[c.id,c])),[model]);
   const soilAt=(id:number)=>current.current.cells?.[`${sceneId}:${id}`]?.soil??savedCells.get(id)?.soil??1;
+  const allowedTerrain=useMemo(()=>restricted?allowedMapTerrain(model.doc,edits,sceneId,tool,template,crop):[],[restricted,model,edits,sceneId,tool,template,crop]);
   const occupied = useMemo(()=>draftObjects(model.doc,edits),[model,edits]);
   function blocked(point: Point) {
     return occupied.some(o=>o.uid!==moving && !o.spec?.floor && o.blocksPlacement && objectFootprint(o).some(poly=>containsPoint(poly,point)));
@@ -160,7 +163,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const nameOf = (s: SceneSprite) =>
     s.kind === 'crop'
       ? (names.names?.crops?.[s.id] ?? `作物 ${s.id}`)
-      : (MAP_DATA.objects.find((o) => o.id === s.id)?.name ??
+      : (MAP_DATA.objects.find((o) => o.id === s.id)?.name ?? art?.fixedObjects?.find(o=>o.id===s.id)?.name ??
         (art?.objects[s.id]?.model.startsWith('arc_110') ? '我的家' : `场景设施 ${s.id}`));
   const palette = useMemo(
     () =>
@@ -535,7 +538,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   <strong>{nameOf(chosen)}</strong>
                   {chosen.art && <img src={withBase(`/maps/farm/${chosen.art.file}`)} alt={nameOf(chosen)} />}
                   <small>
-                    {chosen.kind === 'crop' ? (mature ? '成熟预览' : '存档中的生长阶段') : chosen.key.startsWith('new:')?'新增设施':'存档中的设施'}
+                    {chosen.kind === 'crop' ? (mature ? '成熟预览' : '存档中的生长阶段') : chosen.key.startsWith('new:')?'新增设施':chosen.key.startsWith('fixed:')||chosen.key.startsWith('fixture:')?'固定场景设施':'存档中的设施'}
                     {chosen.edited ? ' · 已修改' : ''}
                   </small>
                   {chosen.movable && (
@@ -553,7 +556,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                     </button>
                   )}
                   {chosen.movable&&<button type="button" onClick={()=>{commit(clearMapArea(model.doc,current.current,sceneId,[],[chosen.key],chosen.floor?'floor':'objects'));cancelSelection();setMessage('已删除所选物体，可撤销。');}}>删除这件{templates.find(t=>t.id===chosen.id)?.building?'建筑':'设施'}</button>}
-                  {chosen.kind==='object'&&<button type="button" onClick={rotate}>↻ 调整朝向（R）</button>}
+                  {chosen.kind==='object'&&chosen.movable&&<button type="button" onClick={rotate}>↻ 调整朝向（R）</button>}
                   {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-upgrades">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>升级为 {t.name} · {t.level} 级</button>)}</div>}
                   {chosen.kind==='crop'&&chosen.cell&&<MapGrowthControls state={cropGrowth(model.doc,edits,sceneId,chosen.cell)} onChange={editGrowth}/>}
                   {!selection.length && chosen.kind === 'crop' && chosen.cell && (
@@ -604,10 +607,11 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             {[
               ['成熟预览（不改变生长进度）', mature, setMature],
               ['网格', grid, setGrid],
+              ['地形禁放区', restricted, setRestricted],
               ['地名', labels, setLabels],
               ['作物与树木', plants, setPlants],
               ['建筑与设施', facilities, setFacilities]
-            ].filter(([label]) => !room || ['网格','建筑与设施'].includes(String(label)) || terrain.some(c => c.mask & 1) && label !== '地名').map(([label, value, set]) => (
+            ].filter(([label]) => !room || ['网格','建筑与设施','地形禁放区'].includes(String(label)) || terrain.some(c => c.mask & 1) && label !== '地名').map(([label, value, set]) => (
               <label key={String(label)}>
                 <input
                   type="checkbox"
@@ -617,6 +621,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                 {label as string}
               </label>
             ))}
+            {restricted&&<small>斜纹表示当前工具不能使用的地形；已有物体和完整占地以放置预览为准。</small>}
           </details>
         </aside>
         <MapCanvas
@@ -629,6 +634,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           ground={ground}
           tool={tool}
           grid={grid}
+          allowedTerrain={restricted?allowedTerrain:undefined}
           plants={plants}
           facilities={facilities}
           labels={labels}

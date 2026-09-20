@@ -27,6 +27,7 @@ export interface MapCanvasProps {
   ground: SceneGround[];
   tool: string;
   grid: boolean;
+  allowedTerrain?: Point[];
   plants: boolean;
   facilities: boolean;
   labels: boolean;
@@ -179,6 +180,24 @@ export default function MapCanvas(props: MapCanvasProps) {
       }
       if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
     }
+    if(props.allowedTerrain) {
+      // Clip a sparse screen-sized hatch to the inverse of the native allowed cells.
+      // Draw below props so building and plant art remains unobscured.
+      ctx.save();
+      const forbidden=new Path2D();
+      forbidden.rect(left,top,right-left,bottom-top);
+      for(const c of props.allowedTerrain) {
+        if(c.x<left-45||c.x>right+45||c.y<top-45||c.y>bottom+45)continue;
+        forbidden.moveTo(c.x,c.y-45);forbidden.lineTo(c.x+45,c.y);forbidden.lineTo(c.x,c.y+45);forbidden.lineTo(c.x-45,c.y);forbidden.closePath();
+      }
+      ctx.clip(forbidden,'evenodd');
+      ctx.setTransform(ratio,0,0,ratio,0,0);
+      ctx.beginPath();
+      for(let x=-size.height;x<size.width;x+=18){ctx.moveTo(x,0);ctx.lineTo(x+size.height,size.height);}
+      ctx.lineWidth=2;ctx.strokeStyle='#11292338';ctx.stroke();
+      ctx.lineWidth=1;ctx.setLineDash([4,5]);ctx.strokeStyle='#fff8';ctx.stroke();
+      ctx.restore();
+    }
     if (props.grid && camera.zoom > 0.12)
       for (const c of terrain) {
         if (c.x < left - 45 || c.x > right + 45 || c.y < top - 45 || c.y > bottom + 45) continue;
@@ -269,6 +288,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     props.sprites,
     props.ground,
     props.grid,
+    props.allowedTerrain,
     props.plants,
     props.facilities,
     props.labels,

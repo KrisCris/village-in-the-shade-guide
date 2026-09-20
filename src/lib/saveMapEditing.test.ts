@@ -8,6 +8,8 @@ import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacement
 import { animalHouses, animalResidents } from './saveAnimals';
 import { buildFarmScene, type MapArt } from './saveMapScene';
 import placements from '../../data/sources/game-save-placements.json';
+import { allowedMapTerrain } from './saveMap';
+import farmArt from '../../public/maps/farm/manifest.json';
 
 it('reads the native rice and wasabi water-field requirements', () => {
   expect(cropSoils(63)).toEqual([3]); expect(cropSoils(65)).toEqual([3]);
@@ -21,6 +23,27 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
   let model: ReturnType<typeof parseSaveModel>;
   beforeAll(() => { model=parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'copy')); });
   const scene=100000001;
+  it('draws the fixed shipping box independently of movable save objects, including seasonal art', () => {
+    for(const season of [0,3]) {
+      const sprites=buildFarmScene(model.doc,{},farmArt as MapArt,season);
+      const boxes=sprites.filter(s=>s.id===112000000);
+      expect(boxes).toHaveLength(1);
+      expect(boxes[0]).toMatchObject({x:11880,y:21780,movable:false,edited:false});
+      expect(boxes[0].art?.file).toBe(farmArt.objects['112000000'].seasons[season]['100'].file);
+    }
+  });
+  it('changes the terrain overlay with cultivation, water crops and fishing restrictions', () => {
+    const field=sceneCells(scene).find(c=>c.area===1&&(c.mask&1))!;
+    expect(allowedMapTerrain(model.doc,{},scene,'canal').some(c=>c.id===field.id)).toBe(true);
+    const edits={cells:{[`${scene}:${field.id}`]:{soil:3,crop:63}}};
+    expect(allowedMapTerrain(model.doc,edits,scene,'plant',0,63).some(c=>c.id===field.id)).toBe(true);
+    expect(allowedMapTerrain(model.doc,edits,scene,'plant',0,1).some(c=>c.id===field.id)).toBe(false);
+    const trap=MAP_DATA.objects.find(o=>o.features.includes('PLACEMENT_FISHING'))!;
+    const allowed=allowedMapTerrain(model.doc,{},scene,'place',trap.id);
+    expect(allowed.length).toBeGreaterThan(0);
+    expect(allowed.every(c=>c.mask&256)).toBe(true);
+    expect(allowed.some(c=>c.id===field.id)).toBe(false);
+  });
   it('upgrades a newly placed barn and migrates both existing and newly added residents into that barn', () => {
     const old=mapObjects(model.doc).find(o=>o.id===111200001)!;
     const placement={scene,cell:landId(old.x,old.y),template:111200011,angle:old.angle};

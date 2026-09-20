@@ -198,6 +198,31 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   }
   return null;
 }
+
+/** Terrain-only overlay: object collisions and full footprints remain in placementProblem. */
+export function allowedMapTerrain(doc:SerDocument,edits:MapEdits,scene:number,tool:string,template=0,crop=0) {
+  const spec=tool==='place'?data.objects.find(o=>o.id===template):undefined,fs=spec?.features??[];
+  const indoor=scene!==100000001,code=data.scenes.find(s=>s.id===scene)?.code??'';
+  if(spec&&((spec.building||fs.includes('PLACEMENT_GARDEN_ONLY'))&&indoor||fs.includes('PLACEMENT_INDOOR_ONLY')&&!indoor||fs.includes('PLACEMENT_MYHOUSE_ONLY')&&!code.includes('MYHOUSE')||fs.includes('PLACEMENT_ARC_LIVESTOCK_ONLY')&&!/LIVESTOCK|AVIARY/.test(code)))return [];
+  const farming=['plant','water','soil','ridge','canal'].includes(tool);
+  const special=fs.includes('PLACEMENT_FISHING')?256:fs.includes('PLACEMENT_BIND_TRAP')?512:fs.includes('PLACEMENT_BOX_TRAP')?1024:fs.includes('PLACEMENT_SPRINKLING_BAIT')?2048:0;
+  const mask=farming?1:special||(spec?.building?4:fs.includes('PLACEMENT_WALL_ONLY')?128:fs.includes('PLACEMENT_GARDEN_ONLY')?64:fs.includes('PLACEMENT_FARMING_ONLY')?1:2);
+  const saved=new Map(mapCells(doc).map(c=>[c.id,c])),areas=new Map<number,boolean>();
+  const trees=new Set(crops.filter(c=>c.id.startsWith('CROPS_ID_OBJECT_TREE')).map(c=>c.numeric_id));
+  return sceneCells(scene).filter(c=>{
+    if(!areas.has(c.area))areas.set(c.area,areaAvailable(doc,c.area));
+    if(!areas.get(c.area)||(!(c.mask&mask)&&!fs.includes('PLACEMENT_ANYWHERE')))return false;
+    if(special&&(c.mask&4096)&&fs.includes('TRAP'))return false;
+    const soil=edits.cells?.[`${scene}:${c.id}`]?.soil??saved.get(c.id)?.soil??1;
+    if(tool==='plant'&&cropPlacementProblem(crop,soil))return false;
+    if(!farming&&soil===3&&!spec?.building&&!fs.includes('SCARECROW'))return false;
+    if(fs.includes('TREE')) {
+      const edit=edits.cells?.[`${scene}:${c.id}`],crop=edit?.crop!==undefined?edit.crop:saved.get(c.id)?.crop;
+      if(!crop||!trees.has(crop)||!matureTreeAt(doc,edits,c.id,scene))return false;
+    }
+    return true;
+  });
+}
 /** Expand building clearing into the same undoable draft as its placement. */
 export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): MapEdits {
   const original=placement.move?draftObjects(doc,edits).find(o=>o.uid===placement.move):undefined;
