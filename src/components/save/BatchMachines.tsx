@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import SearchableSelect from '../controls/SearchableSelect';
+import MachineRecipePicker, { MachineRecipeSummary } from './MachineRecipePicker';
 import { MACHINES, machineJobs, machineSpec, deviceEnabled, type MachineEdit, type MachineEdits } from '../../lib/saveMachines';
 import RankPicker from './RankPicker';
-import SaveIcon from './SaveIcon';
 import type { SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
-import { itemLabel } from './ItemGrid';
 
 export default function BatchMachines({ family, model, edits, names, onChange, drafts, onDraft }: {
   family: string; model: SaveModel; edits: MachineEdits; names: SaveNameTables;
@@ -13,6 +11,7 @@ export default function BatchMachines({ family, model, edits, names, onChange, d
   drafts: Record<number, string>; onDraft: (offset: number, value: string) => void;
 }) {
   const [recipeId, setRecipeId] = useState(''), [rank, setRank] = useState(0);
+  const [picking, setPicking] = useState(false);
   const targets = model.containers.filter(c => machineSpec(c)?.family === family && deviceEnabled(model.doc, c));
   const jobs = targets.flatMap(c => machineJobs(model.doc, c, edits).map(job => ({ ...job, container: c, key: `${c.id}/${job.index}` })));
   const recipes = MACHINES.processes.filter(r => targets.some(c => machineSpec(c)?.mode === 'processing' && r.machines.includes(c.dataId!)));
@@ -30,11 +29,14 @@ export default function BatchMachines({ family, model, edits, names, onChange, d
       {!!jobs.length && <button type="button" disabled={!running.length} onClick={() => running.forEach(j => onChange(j.key, { ...edits[j.key], finish: true }))}>完成 {running.length} 个加工任务</button>}
     </div>
     {recipes.length > 0 && <div className="save-batch-recipe">
-      <label>添加加工任务<SearchableSelect value={recipeId} onChange={e => setRecipeId(e.target.value)}><option value="">选择配方</option>{recipes.map(r => <option key={r.id} value={r.id}>{itemLabel(names, String(r.output))} · {r.inputs.map(i => `${itemLabel(names, String(i.itemId))} × ${i.count}`).join(' + ')}</option>)}</SearchableSelect></label>
-      {recipe && <div className="save-machine-output"><SaveIcon names={names} kind="items" value={String(recipe.output)} size={48} rank={rank} /><span>{itemLabel(names, String(recipe.output))} × {recipe.count}</span></div>}
+      <span>添加加工任务</span>
+      <div className="save-recipe-options"><button type="button" aria-label={recipe ? '更换加工配方' : '选择加工配方'} onClick={() => setPicking(true)}>
+        {recipe ? <MachineRecipeSummary recipe={recipe} names={names} rank={rank} /> : '选择加工配方'}
+      </button></div>
       <button type="button" disabled={!recipe || !empty.length} onClick={() => empty.forEach(j => onChange(j.key, { recipeId: recipe!.id, rank, finish: false }))}>填入 {empty.length} 个空栏位</button>
       <p>只填入能加工此配方的空栏位，已有任务保留。材料直接生成，不扣背包物品。</p>
     </div>}
+    {picking && <MachineRecipePicker recipes={recipes} names={names} rank={rank} onRankChange={setRank} batch onClose={() => setPicking(false)} onSelect={selected => { setRecipeId(String(selected.id)); setPicking(false); }} />}
     {!!modified.length && <button type="button" onClick={() => modified.forEach(j => onChange(j.key))}>撤销本类别的 {modified.length} 项任务修改</button>}
     {collected.some(item => drafts[item.rankOffset] !== undefined && drafts[item.rankOffset] !== item.rank) && <button type="button" onClick={() => collected.forEach(item => onDraft(item.rankOffset, item.rank))}>还原本类别收集物品质</button>}
   </div>;
