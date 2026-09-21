@@ -181,8 +181,8 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
     }
     if(props.allowedTerrain) {
-      // Clip a sparse screen-sized hatch to the inverse of the native allowed cells.
-      // Draw below props so building and plant art remains unobscured.
+      // Box each forbidden tile on the same 45-degree lattice as the map.
+      // The inverse clip keeps allowed ground clear, including at region edges.
       ctx.save();
       const forbidden=new Path2D();
       forbidden.rect(left,top,right-left,bottom-top);
@@ -191,11 +191,25 @@ export default function MapCanvas(props: MapCanvasProps) {
         forbidden.moveTo(c.x,c.y-45);forbidden.lineTo(c.x+45,c.y);forbidden.lineTo(c.x,c.y+45);forbidden.lineTo(c.x-45,c.y);forbidden.closePath();
       }
       ctx.clip(forbidden,'evenodd');
-      ctx.setTransform(ratio,0,0,ratio,0,0);
-      ctx.beginPath();
-      for(let x=-size.height;x<size.width;x+=18){ctx.moveTo(x,0);ctx.lineTo(x+size.height,size.height);}
-      ctx.lineWidth=2;ctx.strokeStyle='#11292338';ctx.stroke();
-      ctx.lineWidth=1;ctx.setLineDash([4,5]);ctx.strokeStyle='#fff8';ctx.stroke();
+      ctx.fillStyle='#59636b66';
+      ctx.fillRect(left,top,right-left,bottom-top);
+      const boxes=new Path2D(),hatch=new Path2D();
+      const parity=terrain.length?(Math.round(terrain[0].x/45)+Math.round(terrain[0].y/45))%2:1;
+      for(let column=Math.floor(left/45)-1;column<=Math.ceil(right/45)+1;column++) {
+        let row=Math.floor(top/45)-1;
+        if(((column+row)%2+2)%2!==parity)row++;
+        for(;row<=Math.ceil(bottom/45)+1;row+=2) {
+          const x=column*45,y=row*45;
+          // A small gap distinguishes adjacent boxes instead of merging their borders.
+          boxes.moveTo(x,y-42);boxes.lineTo(x+42,y);boxes.lineTo(x,y+42);boxes.lineTo(x-42,y);boxes.closePath();
+          hatch.moveTo(x-19,y-19);hatch.lineTo(x+19,y+19);
+          hatch.moveTo(x-19,y+19);hatch.lineTo(x+19,y-19);
+        }
+      }
+      ctx.fillStyle='#172d2310';ctx.fill(boxes);
+      ctx.lineWidth=2.5/camera.zoom;ctx.strokeStyle='#172d2355';ctx.stroke(boxes);
+      ctx.lineWidth=1/camera.zoom;ctx.strokeStyle='#f2e5c4b3';ctx.stroke(boxes);
+      ctx.lineWidth=1/camera.zoom;ctx.setLineDash([3/camera.zoom,3/camera.zoom]);ctx.strokeStyle='#f2e5c48c';ctx.stroke(hatch);
       ctx.restore();
     }
     if (props.grid && camera.zoom > 0.12)
