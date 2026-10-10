@@ -5,6 +5,8 @@ export type Name = {
   internal: string;
   aliases: string[];
   review_status: string;
+  /** Native game slots by locale (ja, zh-TW, ko, zh-CN, reserved slot-N). */
+  translations?: Record<string, string>;
 };
 
 export type Entity = Record<string, unknown> & {

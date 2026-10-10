@@ -59,7 +59,7 @@
 
 计划格式保留版本 1，新增 `planningMode: intent` 和自动 / 手动字段；旧的直接计算接口兼容保留，普通页面全部使用新模型。编辑器限制 200 个节点和 500 条连线；节点机器台数上限 10000，容量不属于玩家配置。
 
-设备容量见 `data/sources/game-machine-capacities.json`，由 `tools/extract-machine-capacities.py --game-dir <游戏目录> --output <审阅文件>` 只读提取。当前构建 24969282 的 29 种配方加工设备中，13 种改良设备有 3 槽，其余 16 种为 1 槽（含蜂箱、树液采集器、养蚕箱）。依据 `gimmick.dat` 的第一组 `settingArg` 和原生 `GimmickProcessPushItem` 的槽位分支，记录原表及执行文件 SHA-256；不通过设备名称猜测。未知容量不默认当作 1，不安排加工并提示数据尚未核实。工作台、炉灶、洒水器等不属于这一配方加工模型。
+设备容量见 `data/sources/game-machine-capacities.json`，由 `tools/extract-machine-capacities.py --game-dir <游戏目录> --output <审阅文件>` 只读提取。当前构建 25311578 的 29 种配方加工设备中，13 种改良设备有 3 槽，其余 16 种为 1 槽（含蜂箱、树液采集器、养蚕箱）。依据 `gimmick.dat` 的第一组 `settingArg` 和原生 `GimmickProcessPushItem` 的槽位分支，记录原表及执行文件 SHA-256；不通过设备名称猜测。未知容量不默认当作 1，不安排加工并提示数据尚未核实。工作台、炉灶、洒水器等不属于这一配方加工模型。
 
 代码：`src/domain/workflow/intent.ts` 推断物品和兼容选项；`intentSimulation.ts` 计算材料分配、排期、资源与收支；`workflowEditor.ts` 创建和迁移计划；`src/components/workflow/` 呈现画布、节点及日程。推荐器尚未实现，之后可以生成同一格式的计划再交给模拟器验证。
 

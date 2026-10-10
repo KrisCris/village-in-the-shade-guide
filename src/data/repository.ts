@@ -5,7 +5,7 @@ import { buildCatalog } from './catalog';
 
 export { entityUrl, normalizeSearch, rankEntities } from './clientSearch';
 
-const modules = import.meta.glob('../../data/generated/build-24969282/entities/*.json', {
+const modules = import.meta.glob('../../data/generated/build-25311578/entities/*.json', {
   eager: true,
   import: 'default',
 }) as Record<string, unknown>;

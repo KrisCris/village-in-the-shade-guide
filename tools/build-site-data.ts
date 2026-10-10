@@ -4,7 +4,7 @@ import { buildCatalog } from '../src/data/catalog';
 import {plannerPayload} from '../src/data/plannerPayload';
 import {workflowPayload} from '../src/data/workflowPayload';
 
-const source = 'data/generated/build-24969282/entities';
+const source = 'data/generated/build-25311578/entities';
 const input: Record<string, unknown> = {};
 for (const file of (await readdir(source)).filter((name) => name.endsWith('.json')).sort()) {
   input[`/entities/${file}`] = JSON.parse(await readFile(join(source, file), 'utf8'));

@@ -169,6 +169,30 @@ describe("game map farmland orientation", () => {
     expect(cells.has(`0,${s.width - 1}`)).toBe(true);
     expect(cells.has(`${s.height - 1},${s.width - 1}`)).toBe(false);
   });
+  it("moves build 24969282 outdoor selections onto the renumbered ver120 terrain", () => {
+    const outdoor = farmland.legacy_shapes.filter(
+      (s) => !farmland.shapes.some((c) => c.id === s.id),
+    );
+    expect(outdoor.length).toBeGreaterThan(0);
+    for (const old of outdoor) {
+      const plots = farmlandPlots({
+        shapeId: old.id,
+        cells: old.cells.map((c) => c.join(",")),
+      });
+      // Every old cell is still farmable, so none may be dropped or duplicated.
+      expect(plots.reduce((n, p) => n + p.cells.length, 0)).toBe(old.cells.length);
+      for (const plot of plots) {
+        const shape = farmland.shapes.find((s) => s.id === plot.shapeId)!;
+        expect(shape.map_ids.some((id) => old.map_ids.includes(id))).toBe(true);
+        const absolute = new Set(old.cells.map(([x, y]) => `${x + old.origin[0]},${y + old.origin[1]}`));
+        for (const cell of plot.cells) {
+          const [x, y] = cell.split(",").map(Number);
+          expect(absolute.has(`${x + shape.origin[0]},${y + shape.origin[1]}`)).toBe(true);
+        }
+      }
+    }
+    expect(farmlandPlots({ shapeId: outdoor[0].id, cells: ["-9,-9"] })).toEqual([]);
+  });
   it("round trips saved selections for every extracted shape without mirroring", () => {
     for (const s of farmland.shapes)
       for (const [x, y] of s.cells) {

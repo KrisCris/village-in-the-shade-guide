@@ -9,7 +9,7 @@ import livestockProducts from '../../data/sources/game-livestock-products.json';
 import machineCapacities from '../../data/sources/game-machine-capacities.json';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
-const buildId = '24969282';
+const buildId = '25311578';
 
 function kindFromPath(path: string) {
   return path.split('/').at(-1)!.replace('.json', '');
@@ -17,7 +17,9 @@ function kindFromPath(path: string) {
 
 function withSearchAliases(name: Name): Name {
   const readable=(text:string)=>text.replace(/<cmd\b[^>]*>/g,'').replace(/^\s*[＋+]\s*/,'').trim();
-  const simplified = readable(toSimplified(name.zh_hant || name.zh_hans));
+  // Official Simplified Chinese ships since build 25311578; OpenCC only fills
+  // authored overrides and names the game leaves untranslated.
+  const simplified = readable(name.translations?.['zh-CN'] || toSimplified(name.zh_hant || name.zh_hans));
   const aliases = [...new Set([simplified, ...name.aliases, ...buildPinyinAliases(simplified), ...buildPinyinAliases(name.zh_hant)])];
   return { ...name, zh_hans: simplified, zh_hant: readable(name.zh_hant), ja: readable(name.ja), aliases };
 }
@@ -63,8 +65,10 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if (entity.category_name) entity.category_name = withSearchAliases(entity.category_name);
       if (typeof entity.location === 'string') entity.location = toSimplified(entity.location);
       if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? toSimplified(condition).replace('尚未解锁此款外观', '仅在尚未拥有此款外观时出售，购买后解锁').replace('尚未解锁此制作配方', '仅在尚未学会此配方时出售') : condition);
-      for (const field of ['description','objective']) if(typeof entity[field]==='string') entity[field]=toSimplified(entity[field]);
-      if(Array.isArray(entity.steps))entity.steps=entity.steps.map(step=>typeof step==='string'?toSimplified(step):step);
+      const official = (field: string) => (entity[`${field}_translations`] as Record<string, string> | undefined)?.['zh-CN'];
+      for (const field of ['description','objective']) if(typeof entity[field]==='string' && !official(field)) entity[field]=toSimplified(entity[field]);
+      const stepTranslations = entity.step_translations as Array<Record<string, string>> | undefined;
+      if(Array.isArray(entity.steps))entity.steps=entity.steps.map((step,index)=>typeof step==='string'&&!stepTranslations?.[index]?.['zh-CN']?toSimplified(step):step);
       setSearchText(entity);
       entities.push(entity);
       byId[entity.id] ??= entity;
@@ -106,6 +110,8 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
           zh_hant: `${traditionalPrefix}：${target.name.zh_hant || target.name.zh_hans}`,
           internal: entity.id,
           aliases: [...target.name.aliases, entity.id],
+          // The target's official names lack the listing prefix.
+          translations: undefined,
         });
         setSearchText(entity);
       }

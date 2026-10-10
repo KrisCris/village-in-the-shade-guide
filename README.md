@@ -1,6 +1,6 @@
 # 静谧田园 Wiki
 
-《Village in the Shade / ほの暮しの庭》的中文资料库与规划指南。名称、图标、价格、配方与关联条件主要从游戏构建 `24969282` 提取；AppMedia 仅作选题与核对参考，不是整站翻译。
+《Village in the Shade / ほの暮しの庭》的中文资料库与规划指南。名称、图标、价格、配方与关联条件主要从游戏构建 `25311578` 提取；AppMedia 仅作选题与核对参考，不是整站翻译。
 
 ## 功能
 
@@ -44,7 +44,7 @@ npm run verify           # 上述检查及完整生产构建
 | --- | --- |
 | `src/pages/`、`src/components/` | 页面与交互 |
 | `src/domain/` | 收益、条件和双向关系 |
-| `data/generated/build-24969282/` | 已提交的结构化游戏快照 |
+| `data/generated/build-25311578/` | 已提交的结构化游戏快照（旧构建 `24969282` 保留作对照） |
 | `data/sources/`、`docs/data-evidence/` | 补充数据、参考目录与证据 |
 | `src/honogurashi_extractor/`、`tools/` | 本地只读提取器和研究工具 |
 | `public/icons/`、`public/maps/`、`public/portraits/` | 展示素材 |

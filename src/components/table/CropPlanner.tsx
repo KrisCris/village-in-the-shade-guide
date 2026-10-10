@@ -20,7 +20,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
   const [sort,setSort]=useState('monthNet');
   const [direction,setDirection]=useState('desc');
   const [selected,setSelected]=useState<Entity|null>(null);
-  const catalog=useMemo<Catalog>(()=>({buildId:'24969282',generatedAt:'',entities,byId:Object.fromEntries(entities.filter(e=>e.kind==='items').map(e=>[e.id,e])),counts:{}}),[entities]);
+  const catalog=useMemo<Catalog>(()=>({buildId:'25311578',generatedAt:'',entities,byId:Object.fromEntries(entities.filter(e=>e.kind==='items').map(e=>[e.id,e])),counts:{}}),[entities]);
   const seasonal=useMemo(()=>entities.filter(e=>e.kind==='crops' && (e.seasons as string[]|undefined)?.includes(season)),[entities,season]);
   const availability=useMemo(()=>new Map(seasonal.map(crop=>[crop.id,seedAvailability(crop,entities,year,season)])),[seasonal,entities,year,season]);
   const candidates=useMemo(()=>seasonal.filter(crop=>ownedSeeds||availability.get(crop.id)?.available),[seasonal,ownedSeeds,availability]);
