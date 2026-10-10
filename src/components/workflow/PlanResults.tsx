@@ -150,7 +150,7 @@ export default function PlanResults({
                 {item(id)}
                 <b>×{a.quantity}</b>
                 <span>{number(a.amount)}</span>
-                {a.replant > 0 && <small>{tr('其中续种补买')} {a.replant} {tr('个')}</small>}
+                {a.replant > 0 && <small>{tr('其中续种补买 {count} 个', { count: a.replant })}</small>}
               </div>
             ))}
           </section>
@@ -233,7 +233,7 @@ export default function PlanResults({
           </section>
           {!!tasks.length && (
             <details className="wf-daily-tasks">
-              <summary>{tr('留货与交付目标 ·')} {tasks.length} {tr('项')}</summary>
+              <summary>{tr('留货与交付目标 · {count} 项', { count: tasks.length })}</summary>
               {tasks.map((n) => {
                 const history = result.events.filter(
                   (e) => e.nodeId === n.id && e.day <= daily.day,
@@ -276,7 +276,7 @@ export default function PlanResults({
           )}
           {!!daily.inProgress?.length && (
             <details open>
-              <summary>{tr('生长 / 加工中 ·')} {daily.inProgress.length} {tr('批')}</summary>
+              <summary>{tr('生长 / 加工中 · {count} 批', { count: daily.inProgress.length })}</summary>
               <ul className="wf-progress-list">
                 {daily.inProgress.map((job, i) => (
                   <li key={i}>

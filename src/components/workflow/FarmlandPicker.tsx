@@ -351,14 +351,14 @@ export default function FarmlandPicker({
             </svg>
           </div>
           <div className="wf-farm-summary">
-            <strong>{tr('已选')} {total} {tr('格')}</strong>
+            <strong>{tr('已选 {count} 格', { count: total })}</strong>
             <span>
               {tr('当前地图')} {preview.size} / {shape.count} {tr('格')}
             </span>
           </div>
           {owners.length > 0 && (
             <details className="wf-farm-occupancy" open>
-              <summary>{tr('当前地图有')} {uses?.size} {tr('格已分配给其他种植')}</summary>
+              <summary>{tr('当前地图有 {count} 格已分配给其他种植', { count: uses?.size })}</summary>
               <ul>
                 {owners.map((u) => (
                   <li key={u.nodeId} className={u.status}>
@@ -393,7 +393,7 @@ export default function FarmlandPicker({
                 setOpen(false);
               }}
             >
-              {tr('使用')} {total} {tr('格')}
+              {tr('使用 {count} 格', { count: total })}
             </button>
           </footer>
         </dialog>

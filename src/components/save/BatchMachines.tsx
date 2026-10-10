@@ -22,23 +22,23 @@ export default function BatchMachines({ family, model, edits, names, onChange, d
   const collected = targets.filter(c => machineSpec(c)?.mode === 'collector').flatMap(c => c.slots.flatMap(s => s.item ? [s.item] : []));
   const modified = jobs.filter(j => edits[j.key]);
   return <div className="save-batch-panel">
-    <p className="save-machine-caption">{targets.length} {tr('台设备 ·')} {occupied.length} {tr('个加工任务')}{collected.length > 0 && tr(' · {count} 格已收集物品', { count: collected.length })}</p>
+    <p className="save-machine-caption">{tr('{machines} 台设备 · {count} 个加工任务', { machines: targets.length, count: occupied.length })}{collected.length > 0 && tr(' · {count} 格已收集物品', { count: collected.length })}</p>
     <RankPicker value={rank} onChange={setRank} />
     <div className="save-batch-actions">
-      {!!jobs.length && <button type="button" disabled={!occupied.length} onClick={() => occupied.forEach(j => onChange(j.key, { ...edits[j.key], rank, finish: edits[j.key]?.finish ?? false }))}>{tr('设置')} {occupied.length} {tr('个任务的品质')}</button>}
-      {targets.some(c => machineSpec(c)?.mode === 'collector') && <button type="button" disabled={!collected.length} onClick={() => collected.forEach(item => onDraft(item.rankOffset, String(rank)))}>{tr('设置')} {collected.length} {tr('格收集物的品质')}</button>}
-      {!!jobs.length && <button type="button" disabled={!running.length} onClick={() => running.forEach(j => onChange(j.key, { ...edits[j.key], finish: true }))}>{tr('完成')} {running.length} {tr('个加工任务')}</button>}
+      {!!jobs.length && <button type="button" disabled={!occupied.length} onClick={() => occupied.forEach(j => onChange(j.key, { ...edits[j.key], rank, finish: edits[j.key]?.finish ?? false }))}>{tr('设置 {count} 个任务的品质', { count: occupied.length })}</button>}
+      {targets.some(c => machineSpec(c)?.mode === 'collector') && <button type="button" disabled={!collected.length} onClick={() => collected.forEach(item => onDraft(item.rankOffset, String(rank)))}>{tr('设置 {count} 格收集物的品质', { count: collected.length })}</button>}
+      {!!jobs.length && <button type="button" disabled={!running.length} onClick={() => running.forEach(j => onChange(j.key, { ...edits[j.key], finish: true }))}>{tr('完成 {count} 个加工任务', { count: running.length })}</button>}
     </div>
     {recipes.length > 0 && <div className="save-batch-recipe">
       <span>{tr('添加加工任务')}</span>
       <div className="save-recipe-options"><button type="button" aria-label={recipe ? tr('更换加工配方') : tr('选择加工配方')} onClick={() => setPicking(true)}>
         {recipe ? <MachineRecipeSummary recipe={recipe} names={names} rank={rank} /> : tr('选择加工配方')}
       </button></div>
-      <button type="button" disabled={!recipe || !empty.length} onClick={() => empty.forEach(j => onChange(j.key, { recipeId: recipe!.id, rank, finish: false }))}>{tr('填入')} {empty.length} {tr('个空栏位')}</button>
+      <button type="button" disabled={!recipe || !empty.length} onClick={() => empty.forEach(j => onChange(j.key, { recipeId: recipe!.id, rank, finish: false }))}>{tr('填入 {count} 个空栏位', { count: empty.length })}</button>
       <p>{tr('只填入能加工此配方的空栏位，已有任务保留。材料直接生成，不扣背包物品。')}</p>
     </div>}
     {picking && <MachineRecipePicker recipes={recipes} names={names} rank={rank} onRankChange={setRank} batch onClose={() => setPicking(false)} onSelect={selected => { setRecipeId(String(selected.id)); setPicking(false); }} />}
-    {!!modified.length && <button type="button" onClick={() => modified.forEach(j => onChange(j.key))}>{tr('撤销本类别的')} {modified.length} {tr('项任务修改')}</button>}
+    {!!modified.length && <button type="button" onClick={() => modified.forEach(j => onChange(j.key))}>{tr('撤销本类别的 {count} 项任务修改', { count: modified.length })}</button>}
     {collected.some(item => drafts[item.rankOffset] !== undefined && drafts[item.rankOffset] !== item.rank) && <button type="button" onClick={() => collected.forEach(item => onDraft(item.rankOffset, item.rank))}>{tr('还原本类别收集物品质')}</button>}
   </div>;
 }

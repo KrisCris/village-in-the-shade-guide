@@ -391,10 +391,10 @@ function Editor() {
       </div>}
 
       <div className="save-changes">
-        <p>{tr('待写入的修改（')}{editCount}）</p>
+        <p>{tr('待写入的修改（{count}）', { count: editCount })}</p>
         <ul>
           {mapEditCount(map) > 0 && <li><b>{tr('地图布局')}</b><span>{mapEditCount(map)} {tr('处修改')}</span><button type="button" onClick={() => setMap({})}>{tr('撤销地图修改')}</button></li>}
-          {animalEditCount(animals) > 0 && <li><b>{tr('动物安置')}</b><span>{Object.keys(animals.moves ?? {}).length} {tr('处移动，')}{Object.keys(animals.added ?? {}).length} {tr('只新增')}</span><button type="button" onClick={() => setAnimals({})}>{tr('撤销安置修改')}</button></li>}
+          {animalEditCount(animals) > 0 && <li><b>{tr('动物安置')}</b><span>{tr('{moved} 处移动，{added} 只新增', { moved: Object.keys(animals.moves ?? {}).length, added: Object.keys(animals.added ?? {}).length })}</span><button type="button" onClick={() => setAnimals({})}>{tr('撤销安置修改')}</button></li>}
           {Object.entries(machines).map(([key, edit]) => {
             const container = model.containers.find(entry => entry.id === key.split('/')[0]);
             const spec = container && machineSpec(container);

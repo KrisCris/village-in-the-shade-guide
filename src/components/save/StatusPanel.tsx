@@ -29,7 +29,7 @@ export default function StatusPanel({ model, drafts, onChange }: { model: SaveMo
         </select></label>
         <label>{tr('当前')}{title} <input type="range" aria-label={tr('当前{title}', { title })} min={0} max={max} step={1} value={current}
           onChange={event => onChange(currentField, event.target.value)} /></label>
-        <small>{current} / {max} {tr('· 每')}{unitLabel} {rule.unit} {tr('点')}</small>
+        <small>{tr('{current} / {max} · 每{unit} {points} 点', { current, max, unit: unitLabel, points: rule.unit })}</small>
         <button type="button" onClick={() => onChange(currentField, String(max))}>{tr('恢复至上限')}</button>
       </div>;
     })}

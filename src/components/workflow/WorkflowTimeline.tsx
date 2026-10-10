@@ -106,11 +106,13 @@ export default function WorkflowTimeline({
           className="wf-timeline-summary"
           onClick={() => setExpanded(!expanded)}
         >
-          {formatDay(day)} {tr('· 买入')}{" "}
-          {daily?.events
-            .filter((e) => e.kind === "purchase")
-            .reduce((s, e) => s + (e.quantity ?? 0), 0) ?? 0}{" "}
-          {tr('个 · 今日支出 -')}{(daily?.spending ?? 0).toLocaleString()}
+          {tr('{date} · 买入 {count} 个 · 今日支出 -{spending}', {
+            date: formatDay(day),
+            count: daily?.events
+              .filter((e) => e.kind === "purchase")
+              .reduce((s, e) => s + (e.quantity ?? 0), 0) ?? 0,
+            spending: (daily?.spending ?? 0).toLocaleString(),
+          })}
           {(daily?.income ?? 0) > 0 ? tr(' · 到账 +{amount}', { amount: daily!.income.toLocaleString() }) : ""}
           {warnings ? tr(' · {warnings} 项未完成', { warnings }) : ""}
           <WorkflowIcon name="chevron" size={14} />

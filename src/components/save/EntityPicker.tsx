@@ -71,8 +71,8 @@ export default function EntityPicker({ names, kind, value, onChange, allowedIds,
         <SaveIcon names={names} kind={kind} value={id} size={24} /><span>{name}</span>{kind === 'items' && <small>{id}</small>}
       </button></li>)}
       {matches.length === 0 && <li className="save-slot-none">{tr('没有匹配的结果。')}</li>}
-      {matches.length > limit && <li ref={sentinel}><button type="button" onClick={() => setLimit(current => current + 80)}>{tr('加载更多（已显示')} {Math.min(limit, matches.length)} / {matches.length}）</button></li>}
+      {matches.length > limit && <li ref={sentinel}><button type="button" onClick={() => setLimit(current => current + 80)}>{tr('加载更多（已显示 {shown} / {total}）', { shown: Math.min(limit, matches.length), total: matches.length })}</button></li>}
     </ul>
-    <small>{tr('共')} {matches.length} {tr('个结果')}</small>
+    <small>{tr('共 {count} 个结果', { count: matches.length })}</small>
   </div>;
 }

@@ -20,7 +20,7 @@ export default function WorkflowAssistance({ advice, onAction }: { advice: Advic
       <p className="wf-note">{tr('按当前已分配原料计算缺口。下面的买入或库存数量是本次安排，修改上游后会重新提示缺口。')}</p>
       {advice.inputs.map(input => <div className="wf-assist-ingredient" key={input.itemId}>
         <strong>{input.name}</strong>
-        <small>{input.shortage > 0 ? tr('还需 {shortage} 个 · 已分配 {received} 个', { shortage: input.shortage, received: input.received }) : tr('尚未连接来源')} {tr('· 每批')} {input.perBatch} {tr('个')}</small>
+        <small>{input.shortage > 0 ? tr('还需 {shortage} 个 · 已分配 {received} 个', { shortage: input.shortage, received: input.received }) : tr('尚未连接来源')} {tr('· 每批 {count} 个', { count: input.perBatch })}</small>
         <div className="wf-assist-options">{input.actions.map(action)}</div>
         {!input.actions.length && <p className="wf-note">{tr('请连接来源，或分次添加原料节点。')}</p>}
       </div>)}

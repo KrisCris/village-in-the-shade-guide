@@ -9,7 +9,7 @@ export default function MapGrowthControls({ state, onChange }: {
   const normal = state.forms['1'];
   return <div className="farm-growth">
     <strong>{tr('生长状态')}</strong>
-    <p>{CROP_FORMS[state.form] ?? tr('未知状态')} {tr('· 阶段')} {state.stage + 1} / {state.stages.length}</p>
+    <p>{tr('{form} · 阶段 {stage} / {stages}', { form: CROP_FORMS[state.form] ?? tr('未知状态'), stage: state.stage + 1, stages: state.stages.length })}</p>
     <p>{state.days === null ? tr('此状态不按成长天数推进') : state.days === 0 ? tr('已成熟') : tr('基础剩余 {days} 天', { days: state.days })}</p>
     <small>{tr('按每日 100 成长点估算；季节、浇水、肥料等会影响实际时间。')}</small>
     <SearchableSelect aria-label={tr('作物形态')} value={state.form} onChange={e => onChange({ form: Number(e.target.value), growth: 0 })}>

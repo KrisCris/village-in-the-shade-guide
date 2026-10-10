@@ -539,7 +539,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       ),
     });
     setNotice(
-      tr('已添加 {min} 组{day}所在季节的留货需求。没有设置官方未知的截止日期。', { min: Math.min(demands.length, 200 - plan.nodes.length), day: formatDay(day) }),
+      tr('已添加 {count} 组{date}所在季节的留货需求。没有设置官方未知的截止日期。', { count: Math.min(demands.length, 200 - plan.nodes.length), date: formatDay(day) }),
     );
   };
   const starter = () => {
@@ -790,7 +790,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = tr('农场计划-{slice}.json', { slice: new Date().toISOString().slice(0, 10) });
+    a.download = tr('农场计划-{date}.json', { date: new Date().toISOString().slice(0, 10) });
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
@@ -1050,14 +1050,14 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       <div className="wf-context-bar">
         <button className="wf-period" onClick={() => togglePanel("resources")}>
           <WorkflowIcon name="calendar" size={15} />
-          {formatDay(plan.startDay)} {tr('起 ·')} {plan.days} {tr('天')}
+          {tr('{date} 起 · {days} 天', { date: formatDay(plan.startDay), days: plan.days })}
           <WorkflowIcon name="chevron" size={12} />
         </button>
         <span
           className="wf-resource-summary"
           title={tr('按同时占用推算的需求，机器购置费用另计')}
         >
-          {tr('需要')} {result.intent?.land ?? 0} {tr('格土地')}<span>·</span>
+          {tr('需要 {count} 格土地', { count: result.intent?.land ?? 0 })}<span>·</span>
           {Object.values(result.intent?.nodes ?? {}).reduce(
             (sum, p) => sum + p.machines,
             0,
@@ -1302,7 +1302,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                 {" "}
                 <details className="wf-connections" open>
                   <summary>
-                    {tr('连线管理（也可用下拉框连接） ·')} {plan.edges.length} {tr('条')}
+                    {tr('连线管理（也可用下拉框连接） · {count} 条', { count: plan.edges.length })}
                   </summary>
                   <div className="wf-link-form">
                     <label>

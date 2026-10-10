@@ -493,7 +493,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   setLimit(40);
                 }}
               />
-              {tool==='plant'&&selectedCells.length>0&&<button type="button" onClick={()=>paintSelection({crop,growth:0,form:1})}>{tr('种植到选区（')}{selectedCells.length} {tr('格）')}</button>}
+              {tool==='plant'&&selectedCells.length>0&&<button type="button" onClick={()=>paintSelection({crop,growth:0,form:1})}>{tr('种植到选区（{count} 格）', { count: selectedCells.length })}</button>}
               <div
                 className="farm-palette-scroll"
                 onScroll={(e) => {
@@ -558,7 +558,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   )}
                   {chosen.movable&&<button type="button" onClick={()=>{commit(clearMapArea(model.doc,current.current,sceneId,[],[chosen.key],chosen.floor?'floor':'objects'));cancelSelection();setMessage(tr('已删除所选物体，可撤销。'));}}>{tr('删除这件')}{templates.find(t=>t.id===chosen.id)?.building?tr('建筑'):tr('设施')}</button>}
                   {chosen.kind==='object'&&chosen.movable&&<button type="button" onClick={rotate}>{tr('↻ 调整朝向（R）')}</button>}
-                  {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-upgrades">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>{tr('升级为')} {t.name} · {t.level} {tr('级')}</button>)}</div>}
+                  {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-upgrades">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>{tr('升级为 {name} · {level} 级', { name: t.name, level: t.level })}</button>)}</div>}
                   {chosen.kind==='crop'&&chosen.cell&&<MapGrowthControls state={cropGrowth(model.doc,edits,sceneId,chosen.cell)} onChange={editGrowth}/>}
                   {!selection.length && chosen.kind === 'crop' && chosen.cell && (
                     <button
@@ -580,7 +580,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                 </>
               )}
               {(selection.length > 0 || selectedCells.length > 0) && <div className="farm-multi-selection">
-                <strong>{tr('已框选')} {selectedCells.length} {tr('格 ·')} {selection.length} {tr('个物体')}</strong>
+                <strong>{tr('已框选 {count} 格 · {count2} 个物体', { count: selectedCells.length, count2: selection.length })}</strong>
                 <div className="farm-bulk-actions">{[['crops',tr('清除作物')],['floor',tr('清除地板')],['objects',tr('清除设施')],['reset',tr('全部重置为平地')]].map(([id,label])=><button type="button" key={id} onClick={()=>clearSelection(id as ClearLayer)}>{label}</button>)}</div>
                 <div className="farm-bulk-actions"><button type="button" onClick={()=>paintSelection({watered:true})}>{tr('批量浇水')}</button><button type="button" onClick={()=>paintSelection({soil:1})}>{tr('批量耕地')}</button><button type="button" onClick={()=>paintSelection({soil:2})}>{tr('批量田垄')}</button><button type="button" onClick={()=>paintSelection({soil:3})}>{tr('批量水田')}</button><button type="button" onClick={matureSelection}>{tr('作物／树木全部成熟')}</button><button type="button" onClick={()=>changeTool('plant')}>{tr('在选区种植…')}</button></div>
                 <div>{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}

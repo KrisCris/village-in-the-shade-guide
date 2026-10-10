@@ -328,7 +328,7 @@ export function EntityPicker({
                   <option value="">{tr('全部季节')}</option>
                   {Object.entries(seasonNames).map(([key, name]) => (
                     <option key={key} value={key}>
-                      {name}{tr('季')}
+                      {tr('{season}季', { season: name })}
                     </option>
                   ))}
                 </select>
@@ -337,7 +337,7 @@ export function EntityPicker({
           </div>
           <div className="wf-picker-summary" role="status">
             <span>
-              {tr('共')} {matches.length} {tr('项 · 已显示')} {options.length} {tr('项')}
+              {tr('共 {count} 项 · 已显示 {count2} 项', { count: matches.length, count2: options.length })}
             </span>
             {selected && <span>{tr('当前选择：')}{selected.name.zh_hans}</span>}
           </div>

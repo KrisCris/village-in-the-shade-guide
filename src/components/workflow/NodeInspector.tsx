@@ -150,7 +150,7 @@ export default function NodeInspector({
               : tr('连接来源，自动安排')}{" "}
           </strong>
           {projection.readyDay !== undefined && (
-            <span>{tr('已备齐，最早可在')} {formatDay(projection.readyDay)} {tr('交付')}</span>
+            <span>{tr('已备齐，最早可在 {date} 交付', { date: formatDay(projection.readyDay) })}</span>
           )}
           {projection.quantity > 0 && (
             <span>
@@ -244,8 +244,7 @@ export default function NodeInspector({
       )}
       {node.kind === "plant" && crop && (
         <p className="wf-note">
-          {tr('生长')} {String(crop.growth_days ?? "?")} {tr('天，每格收获')}{" "}
-          {String(crop.harvest_quantity ?? "?")} {tr('个。')}
+          {tr('生长 {days} 天，每格收获 {count} 个。', { days: String(crop.growth_days ?? "?"), count: String(crop.harvest_quantity ?? "?") })}
           {crop.regrow_days
             ? tr('天然再生：每 {regrow_days} 天再收获，不消耗种子。', { regrow_days: crop.regrow_days })
             : ""}
@@ -270,7 +269,7 @@ export default function NodeInspector({
           {name(String((recipe.output as { item_id: string })?.item_id ?? ""))}{" "}
           ×{String((recipe.output as { quantity: number })?.quantity ?? "?")}
           <br />
-          {tr('每批')} {projection?.duration ?? "?"} {tr('天，完工当天可继续加工或出货。')}
+          {tr('每批 {days} 天，完工当天可继续加工或出货。', { days: projection?.duration ?? "?" })}
         </p>
       )}
       {!demand && (
@@ -443,8 +442,8 @@ export default function NodeInspector({
           )}
           {comparison && (
             <div className="wf-comparison">
-              <strong>{tr('与配足')} {comparison.machines} {tr('台相比')}</strong>
-              <span>{tr('末批完工晚')} {comparison.delay} {tr('天')}</span>
+              <strong>{tr('与配足 {machines} 台相比', { machines: comparison.machines })}</strong>
+              <span>{tr('末批完工晚 {days} 天', { days: comparison.delay })}</span>
               <span>
                 {tr('本期到账')} {comparison.incomeDifference >= 0 ? "+" : ""}
                 {comparison.incomeDifference.toLocaleString()}
@@ -464,7 +463,7 @@ export default function NodeInspector({
                   {(
                     projection.processedValue - projection.rawValue
                   ).toLocaleString()}{" "}
-                  {tr('· 每批多用')} {projection.duration} {tr('天')}
+                  {tr('· 每批多用 {days} 天', { days: projection.duration })}
                 </span>
               ) : (
                 <span>{tr('原料卖价有缺失，暂不能比较增值。')}</span>
@@ -501,7 +500,7 @@ export default function NodeInspector({
             {tr('种子不足时自动补买')}
           </label>
           <p className="wf-note">
-            {tr('需要土地')} {projection?.land ?? 0} {tr('格；整份计划按同时占地推算需求。')}
+            {tr('需要土地 {count} 格；整份计划按同时占地推算需求。', { count: projection?.land ?? 0 })}
           </p>
         </section>
       )}

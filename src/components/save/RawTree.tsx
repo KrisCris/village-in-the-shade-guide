@@ -64,7 +64,7 @@ function NodeRow(props: RawTreeProps & { node: SerNode; depth: number; autoOpen:
     ))}
     {children.length > limit && <div className="save-tree-row" style={{ paddingLeft: `${(depth + 1) * 1.1}rem` }}>
       <button type="button" className="save-tree-more" onClick={() => setLimit((value) => value + PAGE * 5)}>
-        {tr('还有')} {children.length - limit} {tr('个子节点，点击展开更多')}
+        {tr('还有 {count} 个子节点，点击展开更多', { count: children.length - limit })}
       </button>
     </div>}
   </>;
@@ -134,7 +134,7 @@ export default function RawTree(props: RawTreeProps) {
             {isNodeList(node.tag) ? <span className="save-cell readonly" /> : <Leaf {...props} node={node} />}
           </div>)}
           {results.truncated && <div className="save-tree-row">
-            <span className="save-tree-label"><small>{tr('结果超过')} {SEARCH_LIMIT} {tr('条，请把关键词写得更具体。')}</small></span>
+            <span className="save-tree-label"><small>{tr('结果超过 {count} 条，请把关键词写得更具体。', { count: SEARCH_LIMIT })}</small></span>
           </div>}
         </div>
         : <div className="save-tree"><NodeRow {...props} node={doc.root} depth={0} autoOpen /></div>}

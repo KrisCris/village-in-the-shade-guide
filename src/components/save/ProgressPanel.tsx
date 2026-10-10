@@ -52,13 +52,13 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
       <select aria-label={tr('解锁状态')} value={filter} onChange={event => setFilter(event.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></select>
       <span>{rows.filter(enabled).length} / {rows.length} {tr('已解锁')}</span>
     </div>
-    {tab === 'encyclopedia' && <div className="save-progress-bulk"><button type="button" onClick={() => matches.forEach(row => toggle(row, true))}>{tr('将当前')} {matches.length} {tr('项标记为已发现')}</button><small>{tr('只修改图鉴记录，不会向背包添加物品。')}</small></div>}
+    {tab === 'encyclopedia' && <div className="save-progress-bulk"><button type="button" onClick={() => matches.forEach(row => toggle(row, true))}>{tr('将当前 {count} 项标记为已发现', { count: matches.length })}</button><small>{tr('只修改图鉴记录，不会向背包添加物品。')}</small></div>}
     <div className="save-progress-grid">{visible.map(row => <label className="save-progress-card" key={row.id}>
       {row.item && <SaveIcon names={names} kind="items" value={row.item} size={36} />}
       <span><strong>{row.name}</strong>{row.description && <small>{row.description}</small>}</span>
       <input type="checkbox" aria-label={row.name} checked={enabled(row)} onChange={event => toggle(row, event.target.checked)} />
     </label>)}</div>
     {!matches.length && <p className="save-tab-empty">{tr('没有匹配的项目。')}</p>}
-    <div ref={sentinel} className="save-progress-sentinel">{more && (manualLoad ? <button type="button" className="save-load-more" onClick={loadMore}>{tr('加载更多（')}{visible.length} / {matches.length}）</button> : <small>{tr('已显示')} {visible.length} / {matches.length} {tr('项')}</small>)}</div></>}
+    <div ref={sentinel} className="save-progress-sentinel">{more && (manualLoad ? <button type="button" className="save-load-more" onClick={loadMore}>{tr('加载更多（{shown} / {total}）', { shown: visible.length, total: matches.length })}</button> : <small>{tr('已显示 {shown} / {total} 项', { shown: visible.length, total: matches.length })}</small>)}</div></>}
   </section>;
 }

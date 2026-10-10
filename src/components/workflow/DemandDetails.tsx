@@ -43,9 +43,11 @@ export default function DemandDetails({
                   : tr('仍需补齐前置条件')}
           </strong>
           <small>
-            {tr('截至')} {formatDay(day)} ·{" "}
-            {rows.filter((a) => a.held >= a.quantity).length} / {rows.length}{" "}
-            {tr('项已足')}
+            {tr('截至 {date} · {ready} / {total} 项已足', {
+              date: formatDay(day),
+              ready: rows.filter((a) => a.held >= a.quantity).length,
+              total: rows.length,
+            })}
           </small>
         </div>
       </div>
