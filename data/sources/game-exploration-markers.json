@@ -1,9 +1,9 @@
 {
-  "source": "creature.dat spawn anchor prefixes + map_0000_spr.ymwr.head",
+  "source": "creature.dat spawn anchor prefixes + map.dat MAP_ID_OPENWORLD: data/map/map_0000_ver120_spr.ymwr.head",
   "markers": [
     {
       "anchor": "pop_exchangeCreature00",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 17420,
       "y": 22147,
       "kind": "exchange",
@@ -11,7 +11,7 @@
     },
     {
       "anchor": "pop_treasureBox00",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 15297,
       "y": 17401,
       "kind": "treasure",
@@ -19,7 +19,7 @@
     },
     {
       "anchor": "pop_treasureBox01",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 16919,
       "y": 19665,
       "kind": "treasure",
@@ -27,7 +27,7 @@
     },
     {
       "anchor": "pop_treasureBox02",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 16711,
       "y": 16165,
       "kind": "treasure",
@@ -35,7 +35,7 @@
     },
     {
       "anchor": "pop_treasureBox03",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 18727,
       "y": 18831,
       "kind": "treasure",
@@ -43,7 +43,7 @@
     },
     {
       "anchor": "pop_treasureBox04",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 16888,
       "y": 17612,
       "kind": "treasure",
@@ -51,7 +51,7 @@
     },
     {
       "anchor": "pop_treasureBox05",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 6755,
       "y": 13468,
       "kind": "treasure",
@@ -59,7 +59,7 @@
     },
     {
       "anchor": "pop_treasureBox06",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 11701,
       "y": 10142,
       "kind": "treasure",
@@ -67,7 +67,7 @@
     },
     {
       "anchor": "pop_treasureBox07",
-      "map": "data/map/map_0000_spr.ymwr.head",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
       "x": 14501,
       "y": 27720,
       "kind": "treasure",

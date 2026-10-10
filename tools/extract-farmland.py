@@ -1,9 +1,9 @@
-"""Extract playable farming cells from build 24969282 YMWR heads, read-only.
+"""Extract playable farming cells from build 25311578 YMWR heads, read-only.
 
-Native verification: 0x1401C4BD0 scales terrain tile coordinates by 90 and adds
-45. Callback 0x1401C7CC0 reads four u64 ground masks at +0x30, taking the
+Native verification: 0x1401CF660 scales terrain tile coordinates by 90 and adds
+45. Callback 0x1401D2860 reads four u64 ground masks at +0x30, taking the
 north/west/east/south edge centres, then divides coordinates by 45 and inserts
-unique cell IDs (0x1401C7D10-0x1401C7DE7). Adjacent tile masks must agree.
+unique cell IDs (0x1401D28A2-0x1401D2987). Adjacent tile masks must agree.
 GROUND_ELEMENT_ABLE_FARMING is bit 0 in mapgroundelement.dat.
 """
 import argparse, hashlib, json, struct, zlib
@@ -47,7 +47,16 @@ def main():
     parser.add_argument('--game-dir',type=Path,default=Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade'))
     parser.add_argument('--output',type=Path,default=Path('data/sources/game-farmland.json'))
     args=parser.parse_args();exe_hash=hashlib.sha256((args.game_dir/'village.exe').read_bytes()).hexdigest()
-    assert exe_hash=='7dc5ad614541fb7708e42036df7b7da85053ab4959f6ed2e9dfe1330aedbd381', 'Unreviewed executable build'
+    assert exe_hash=='ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05', 'Unreviewed executable build'
+    # Compatibility evidence comes from the previously committed catalog. These
+    # cells are never counted as current terrain; saved plans use their origins.
+    previous=json.loads(args.output.read_text(encoding='utf8')) if args.output.exists() else {}
+    if previous.get('build_id')=='24969282':
+        legacy_shapes=[dict(build_id='24969282', **{key:shape[key] for key in ('id','origin','map_ids','map','cells','sha256')}) for shape in previous['shapes']]
+    else:
+        legacy_shapes=previous.get('legacy_shapes',[])
+    if not legacy_shapes:
+        raise ValueError('Missing legacy farmland geometry; use the committed catalog as the output baseline')
     data=FafullfsArchive.open(args.game_dir/'data.dat');archive=FafullfsArchive.open(args.game_dir/'data/map_1_00.dat')
     rules=list(_string_groups(read_table(data.read_entry('data/database/mapgroundelement.dat'))))
     assert int(next(g[3] for g in rules if g[0]=='GROUND_ELEMENT_ABLE_FARMING'),2)==1
@@ -74,10 +83,10 @@ def main():
             shapes.append(dict(id=f'{Path(entry.name).name}-{i}',label=label,map=entry.name,map_ids=sorted(set(references[entry.name])),
                 width=max_x-min_x+1,height=max_y-min_y+1,count=len(part),origin=[min_x,min_y],cells=[[x-min_x,y-min_y] for x,y in part],
                 sha256=hashlib.sha256(raw).hexdigest()))
-    result=dict(build_id='24969282',executable_sha256=exe_hash,source='map_1_00.dat YMWR terrain + mapgroundelement.dat + map.dat',
-        native_rule='0x1401C4BD0 and 0x1401C7CC0: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes',
+    result=dict(build_id='25311578',executable_sha256=exe_hash,source='map_1_00.dat YMWR terrain + mapgroundelement.dat + map.dat',
+        native_rule='0x1401CF660 and 0x1401D2860: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes',
         scanned_map_heads=len(scanned),excluded_nonplayable=excluded,scope='All referenced non-test map heads in the build; seasonal duplicates verified equal. Terrain capacity before buildings, objects, ownership and unlocks.',
-        shapes=sorted(shapes,key=lambda s:s['label']))
+        shapes=sorted(shapes,key=lambda s:s['label']),legacy_shapes=legacy_shapes)
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     print('Scanned',len(scanned),'map heads; excluded',len(excluded),'test/unreferenced maps')
     print([(s['label'],s['count'],s['width'],s['height']) for s in result['shapes']])

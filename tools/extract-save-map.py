@@ -10,6 +10,7 @@ from honogurashi_extractor.table import read_table
 from honogurashi_extractor.gimmick import gimmick_features
 from honogurashi_extractor.map_art import FairyBank
 from honogurashi_extractor.probe import _string_groups
+from honogurashi_extractor.localization import localized_block
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--game-dir', type=Path, required=True)
@@ -28,7 +29,7 @@ for row in table('mapgroup').records:
     for i in range(u32(row, 32)):
         o = 36 + i * 16
         origins[u64(row, o)] = [u32(row, o + 8), u32(row, o + 12)]
-# isPlacementGimmick 0x1401db250 selects mapgroundelement trap/fishing masks by category.
+# Historical build24969282 isPlacementGimmick 0x1401db250 selects mapgroundelement trap/fishing masks by category.
 placement_masks = {kind: 0 for kind in range(1,6)}
 for r in table('mapgroundelement').records:
     kind=u32(r,60)
@@ -74,7 +75,7 @@ for row, strings in zip(table('map').records, _string_groups(table('map')), stri
               for (x, y), m in sorted(cells.items()) if compact_mask(m)]
     if usable:
         scenes.append(dict(id=mid, code=strings[0], label=strings[1], origin=origins[mid], cells=usable))
-items = {i['numeric_id']: i for i in json.loads(Path('data/generated/build-24969282/entities/items.json').read_text(encoding='utf-8'))}
+items = {i['numeric_id']: i for i in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))}
 placements = json.loads(Path('data/sources/game-save-placements.json').read_text(encoding='utf-8'))['placements']
 features = {u64(r, 0): g[0].removeprefix('GIMMICK_FEATURE_') for r,g in zip(table('gimmickfeature').records, _string_groups(table('gimmickfeature')))}
 constructs = []
@@ -85,7 +86,7 @@ for r,g in zip(table('construction').records, _string_groups(table('construction
         n = u32(r,cursor); cursor += 4
         result = [u64(r,cursor+i*8) for i in range(n)]; cursor += n*8
         return result
-    constructs.append(dict(id=u64(r,0),code=g[0],name=g[7],object=u64(r,284),limit=u32(r,280),enable=vector(),disable=vector()))
+    constructs.append(dict(id=u64(r,0),code=g[0],name=g[7],nameTranslations=localized_block(g,1,7),object=u64(r,284),limit=u32(r,280),enable=vector(),disable=vector()))
 anime_table = table('anime')
 animes = {u64(r,0):(r,g) for r,g in zip(anime_table.records,_string_groups(anime_table))}
 fairy = FafullfsArchive.open(game/'data/fairy_1_00.dat')
@@ -152,5 +153,9 @@ for row, strings in zip(gt.records, _string_groups(gt), strict=True):
         floor=floor,features=fs,featureIds=feature_ids,rotations=rotations,storage=storage,shapes=shapes,replacement=replacement,category=category,
         limit=construction['limit'] if construction else 0,mirror=bool(u32(row,120)),script=strings[8]))
     objects[-1].update(compatibility.get(id,{}))
+    if item:
+        objects[-1]['nameTranslations']=item['name']['translations']
+    elif construction:
+        objects[-1]['nameTranslations']=construction['nameTranslations']
 args.output.write_text(json.dumps(dict(source='YMWR masks; mapgroup; gimmick variable feature vector/rotation list; construction; native FAD collision polygons',scenes=scenes,objects=objects,construction=constructs,cropRules=crop_rules),ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 print(f'{len(scenes)} scenes, {len(objects)} object definitions')

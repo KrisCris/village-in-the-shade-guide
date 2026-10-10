@@ -17,6 +17,9 @@ u64 = lambda r, o: struct.unpack_from('<Q', r, o)[0]
 i32 = lambda r, o: struct.unpack_from('<i', r, o)[0]
 def table(name): return read_table(archive.read_entry(f'data/database/{name}.dat'))
 def string(t, r, o): return _table_string(t, r, o)
+
+def localized(t, r, o):
+    return {locale: string(t,r,o+i*8) for i,locale in enumerate(('ja','slot-1','slot-2','slot-3','zh-TW','ko','zh-CN'))}
 t = table('skilltree')
 nodes = []
 for r in t.records:
@@ -28,16 +31,17 @@ for r in t.records:
         level=u32(r, 72), showFlags=[u64(r, 80+i*8) for i in range(count)],
         flag=u64(r, 80+shift), horrorOnly=bool(u32(r, 88+shift)),
         costs=[u32(r, 92+shift+i*4) for i in range(6)],
-        name=string(t, r, 148+shift), description=string(t, r, 196+shift)))
+        name=string(t, r, 164+shift), description=string(t, r, 220+shift),
+        nameTranslations=localized(t,r,116+shift), descriptionTranslations=localized(t,r,172+shift)))
 t = table('bundlegroup')
-groups = [dict(id=u64(r, 0), name=string(t, r, 60),
-    bundles=[u32(r, o) for o in (76, 80, 84, 88) if u32(r, o)], flag=u32(r, 92),
-    event=str(u64(r, 96)), reward=u64(r, 104)) for r in t.records if 12 <= u64(r, 0) <= 20]
+groups = [dict(id=u64(r, 0), name=string(t, r, 76), nameTranslations=localized(t,r,28),
+    bundles=[u32(r, o) for o in (84, 88, 92, 96) if u32(r, o)], flag=u32(r, 100),
+    event=str(u64(r, 104)), reward=u64(r, 112)) for r in t.records if 12 <= u64(r, 0) <= 20]
 t = table('bundle')
 ids = {id for group in groups for id in group['bundles']}
-bundles = [dict(id=u64(r, 0), name=string(t, r, 48),
-    items=[dict(itemId=u32(r, 64+i*12), rank=u32(r, 68+i*12), count=u32(r, 72+i*12)) for i in range(3) if u32(r, 64+i*12)],
-    reward=u64(r, 100), rewardCount=u32(r, 108)) for r in t.records if u64(r, 0) in ids]
+bundles = [dict(id=u64(r, 0), name=string(t, r, 64), nameTranslations=localized(t,r,16),
+    items=[dict(itemId=u32(r, 72+i*12), rank=u32(r, 76+i*12), count=u32(r, 80+i*12)) for i in range(3) if u32(r, 72+i*12)],
+    reward=u64(r, 108), rewardCount=u32(r, 116)) for r in t.records if u64(r, 0) in ids]
 t = table('gameflag')
 flags = {string(t, r, 8): u64(r, 0) for r in t.records}
 result = dict(nodes=nodes, groups=groups, bundles=bundles,

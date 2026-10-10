@@ -14,9 +14,9 @@ parser.add_argument('--game-dir', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 args = parser.parse_args()
 archive = FafullfsArchive.open(args.game_dir / 'data.dat')
-layouts = [('playercrothing', 200, 10), ('playerheadaccessory', 240, 10),
-           ('playerneckaccessory', 148, 10), ('playerbackaccessory', 148, 10),
-           ('playerfronthairstyle', 112, 1), ('playerbackhairstyle', 136, 1)]
+layouts = [('playercrothing', 208, 10), ('playerheadaccessory', 248, 10),
+           ('playerneckaccessory', 156, 10), ('playerbackaccessory', 156, 10),
+           ('playerfronthairstyle', 120, 1), ('playerbackhairstyle', 144, 1)]
 tables = {}
 for name, offset, count in layouts:
     table = read_table(archive.read_entry(f'data/database/{name}.dat'))

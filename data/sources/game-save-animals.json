@@ -1,10 +1,19 @@
 {
-  "source": "livestock.dat; native love level 0x14010AA80 tests feature11, divides by300/400, clamps at5",
+  "source": "livestock.dat; native love level 0x140114A60 tests feature11, divides by300/400, clamps at5",
   "animals": [
     {
       "id": 1,
       "code": "LIVESTOCK_ID_CHICKEN",
-      "name": "雞",
+      "name": "鸡",
+      "nameTranslations": {
+        "ja": "ニワトリ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "雞",
+        "ko": "닭",
+        "zh-CN": "鸡"
+      },
       "houseType": 1,
       "features": [
         11
@@ -36,7 +45,16 @@
     {
       "id": 2,
       "code": "LIVESTOCK_ID_CHICK",
-      "name": "小雞",
+      "name": "小鸡",
+      "nameTranslations": {
+        "ja": "ヒヨコ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小雞",
+        "ko": "병아리",
+        "zh-CN": "小鸡"
+      },
       "houseType": 1,
       "features": [
         11
@@ -68,7 +86,16 @@
     {
       "id": 3,
       "code": "LIVESTOCK_ID_DUCK",
-      "name": "鴨",
+      "name": "鸭",
+      "nameTranslations": {
+        "ja": "アヒル",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鴨",
+        "ko": "오리",
+        "zh-CN": "鸭"
+      },
       "houseType": 1,
       "features": [
         7,
@@ -95,7 +122,16 @@
     {
       "id": 4,
       "code": "LIVESTOCK_ID_DUCK_CHICK",
-      "name": "小鴨",
+      "name": "小鸭",
+      "nameTranslations": {
+        "ja": "アヒルのヒヨコ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小鴨",
+        "ko": "새끼 오리",
+        "zh-CN": "小鸭"
+      },
       "houseType": 1,
       "features": [
         7,
@@ -122,7 +158,16 @@
     {
       "id": 5,
       "code": "LIVESTOCK_ID_TURKEY",
-      "name": "火雞",
+      "name": "火鸡",
+      "nameTranslations": {
+        "ja": "七面鳥",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "火雞",
+        "ko": "칠면조",
+        "zh-CN": "火鸡"
+      },
       "houseType": 1,
       "features": [
         11
@@ -142,7 +187,16 @@
     {
       "id": 6,
       "code": "LIVESTOCK_ID_TURKEY_CHICK",
-      "name": "小火雞",
+      "name": "小火鸡",
+      "nameTranslations": {
+        "ja": "七面鳥のヒヨコ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小火雞",
+        "ko": "새끼 칠면조",
+        "zh-CN": "小火鸡"
+      },
       "houseType": 1,
       "features": [
         11
@@ -163,6 +217,15 @@
       "id": 7,
       "code": "LIVESTOCK_ID_COW",
       "name": "牛",
+      "nameTranslations": {
+        "ja": "ウシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛",
+        "ko": "소",
+        "zh-CN": "牛"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -193,6 +256,15 @@
       "id": 8,
       "code": "LIVESTOCK_ID_CALF",
       "name": "小牛",
+      "nameTranslations": {
+        "ja": "子ウシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小牛",
+        "ko": "송아지",
+        "zh-CN": "小牛"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -222,7 +294,16 @@
     {
       "id": 9,
       "code": "LIVESTOCK_ID_SHEEP",
-      "name": "綿羊",
+      "name": "绵羊",
+      "nameTranslations": {
+        "ja": "ヒツジ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "綿羊",
+        "ko": "양",
+        "zh-CN": "绵羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -246,7 +327,16 @@
     {
       "id": 10,
       "code": "LIVESTOCK_ID_LAMB",
-      "name": "小綿羊",
+      "name": "小绵羊",
+      "nameTranslations": {
+        "ja": "子ヒツジ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小綿羊",
+        "ko": "새끼 양",
+        "zh-CN": "小绵羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -271,6 +361,15 @@
       "id": 11,
       "code": "LIVESTOCK_ID_GOAT",
       "name": "山羊",
+      "nameTranslations": {
+        "ja": "ヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "山羊",
+        "ko": "염소",
+        "zh-CN": "山羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -301,6 +400,15 @@
       "id": 12,
       "code": "LIVESTOCK_ID_BABY_GOAT",
       "name": "小山羊",
+      "nameTranslations": {
+        "ja": "子ヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小山羊",
+        "ko": "새끼 염소",
+        "zh-CN": "小山羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -330,7 +438,16 @@
     {
       "id": 13,
       "code": "LIVESTOCK_ID_CASHMERE_GOAT",
-      "name": "喀什米爾山羊",
+      "name": "克什米尔山羊",
+      "nameTranslations": {
+        "ja": "カシミヤヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "喀什米爾山羊",
+        "ko": "캐시미어",
+        "zh-CN": "克什米尔山羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -348,7 +465,16 @@
     {
       "id": 14,
       "code": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
-      "name": "喀什米爾小山羊",
+      "name": "克什米尔小山羊",
+      "nameTranslations": {
+        "ja": "カシミヤ子ヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "喀什米爾小山羊",
+        "ko": "새끼 캐시미어",
+        "zh-CN": "克什米尔小山羊"
+      },
       "houseType": 0,
       "features": [],
       "heartUnit": 400,
@@ -366,7 +492,16 @@
     {
       "id": 15,
       "code": "LIVESTOCK_ID_PIG",
-      "name": "豬",
+      "name": "猪",
+      "nameTranslations": {
+        "ja": "ブタ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "豬",
+        "ko": "돼지",
+        "zh-CN": "猪"
+      },
       "houseType": 0,
       "features": [
         9,
@@ -393,7 +528,16 @@
     {
       "id": 16,
       "code": "LIVESTOCK_ID_PIGLET",
-      "name": "小豬",
+      "name": "小猪",
+      "nameTranslations": {
+        "ja": "子ブタ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小豬",
+        "ko": "새끼 돼지",
+        "zh-CN": "小猪"
+      },
       "houseType": 0,
       "features": [
         11
@@ -419,7 +563,16 @@
     {
       "id": 17,
       "code": "LIVESTOCK_ID_HORSE",
-      "name": "馬",
+      "name": "马",
+      "nameTranslations": {
+        "ja": "ウマ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "馬",
+        "ko": "말",
+        "zh-CN": "马"
+      },
       "houseType": 2,
       "features": [
         8,
@@ -452,7 +605,16 @@
     {
       "id": 18,
       "code": "LIVESTOCK_ID_BABY_HORSE",
-      "name": "小馬",
+      "name": "小马",
+      "nameTranslations": {
+        "ja": "子ウマ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小馬",
+        "ko": "망아지",
+        "zh-CN": "小马"
+      },
       "houseType": 2,
       "features": [
         8,
@@ -485,7 +647,16 @@
     {
       "id": 19,
       "code": "LIVESTOCK_ID_COLOR_CHICK_RED",
-      "name": "彩色小雞／紅色",
+      "name": "彩色小鸡／红色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/赤色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／紅色",
+        "ko": "컬러 병아리/빨간색",
+        "zh-CN": "彩色小鸡／红色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -503,7 +674,16 @@
     {
       "id": 20,
       "code": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
-      "name": "彩色小雞／橘色",
+      "name": "彩色小鸡／橘色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/橙色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／橘色",
+        "ko": "컬러 병아리/주황색",
+        "zh-CN": "彩色小鸡／橘色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -521,7 +701,16 @@
     {
       "id": 21,
       "code": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
-      "name": "彩色小雞／綠色",
+      "name": "彩色小鸡／绿色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/緑色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／綠色",
+        "ko": "컬러 병아리/초록색",
+        "zh-CN": "彩色小鸡／绿色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -539,7 +728,16 @@
     {
       "id": 22,
       "code": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
-      "name": "彩色小雞／水藍色",
+      "name": "彩色小鸡／水蓝色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/水色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／水藍色",
+        "ko": "컬러 병아리/하늘색",
+        "zh-CN": "彩色小鸡／水蓝色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -557,7 +755,16 @@
     {
       "id": 23,
       "code": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
-      "name": "彩色小雞／藍色",
+      "name": "彩色小鸡／蓝色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/青色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／藍色",
+        "ko": "컬러 병아리/파란색",
+        "zh-CN": "彩色小鸡／蓝色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -575,7 +782,16 @@
     {
       "id": 24,
       "code": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
-      "name": "彩色小雞／紫色",
+      "name": "彩色小鸡／紫色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/紫色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／紫色",
+        "ko": "컬러 병아리/보라색",
+        "zh-CN": "彩色小鸡／紫色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -593,7 +809,16 @@
     {
       "id": 25,
       "code": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
-      "name": "彩色小雞／灰色",
+      "name": "彩色小鸡／灰色",
+      "nameTranslations": {
+        "ja": "カラーヒヨコ/灰色",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "彩色小雞／灰色",
+        "ko": "컬러 병아리/회색",
+        "zh-CN": "彩色小鸡／灰色"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -611,7 +836,16 @@
     {
       "id": 30,
       "code": "LIVESTOCK_ID_ROOSTER",
-      "name": "公雞",
+      "name": "公鸡",
+      "nameTranslations": {
+        "ja": "雄鶏",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "公雞",
+        "ko": "수탉",
+        "zh-CN": "公鸡"
+      },
       "houseType": 1,
       "features": [],
       "heartUnit": 400,
@@ -630,6 +864,15 @@
       "id": 100,
       "code": "LIVESTOCK_ID_GHOST_COW",
       "name": "牛鬼",
+      "nameTranslations": {
+        "ja": "牛お化け",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛鬼",
+        "ko": "소 괴물",
+        "zh-CN": "牛鬼"
+      },
       "houseType": 0,
       "features": [
         1,
@@ -645,6 +888,15 @@
       "id": 200,
       "code": "LIVESTOCK_ID_DOG",
       "name": "狗",
+      "nameTranslations": {
+        "ja": "犬",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "狗",
+        "ko": "개",
+        "zh-CN": "狗"
+      },
       "houseType": 3,
       "features": [
         4,
@@ -664,6 +916,233 @@
           "itemId": 0
         }
       ]
+    },
+    {
+      "id": 301,
+      "code": "LIVESTOCK_ID_CHICK_SILKIE",
+      "name": "乌骨鸡的小鸡",
+      "nameTranslations": {
+        "ja": "ウコッケイのヒヨコ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烏骨雞的小雞",
+        "ko": "새끼 오골계",
+        "zh-CN": "乌骨鸡的小鸡"
+      },
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 5,
+      "adultId": 302,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2748,
+          "icon": 7356,
+          "itemId": 800201
+        }
+      ]
+    },
+    {
+      "id": 302,
+      "code": "LIVESTOCK_ID_CHICKEN_SILKIE",
+      "name": "乌骨鸡",
+      "nameTranslations": {
+        "ja": "ウコッケイ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烏骨雞",
+        "ko": "오골계",
+        "zh-CN": "乌骨鸡"
+      },
+      "houseType": 1,
+      "features": [
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2749,
+          "icon": 7357,
+          "itemId": 800202
+        }
+      ]
+    },
+    {
+      "id": 303,
+      "code": "LIVESTOCK_ID_DUCK_CHICK_WILD",
+      "name": "野鸭的小鸭",
+      "nameTranslations": {
+        "ja": "カモのヒヨコ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "野鴨的小鴨",
+        "ko": "새끼 청둥오리",
+        "zh-CN": "野鸭的小鸭"
+      },
+      "houseType": 1,
+      "features": [
+        7,
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 7,
+      "adultId": 304,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2750,
+          "icon": 7358,
+          "itemId": 800203
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "code": "LIVESTOCK_ID_DUCK_WILD",
+      "name": "野鸭",
+      "nameTranslations": {
+        "ja": "カモ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "野鴨",
+        "ko": "청둥오리",
+        "zh-CN": "野鸭"
+      },
+      "houseType": 1,
+      "features": [
+        7,
+        11
+      ],
+      "heartUnit": 300,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2751,
+          "icon": 7359,
+          "itemId": 800204
+        }
+      ]
+    },
+    {
+      "id": 305,
+      "code": "LIVESTOCK_ID_COWCHILD_FLUFFY",
+      "name": "毛茸茸的小牛",
+      "nameTranslations": {
+        "ja": "ふさふさの子ウシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "毛茸茸的小牛",
+        "ko": "복슬복슬 송아지",
+        "zh-CN": "毛茸茸的小牛"
+      },
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 14,
+      "adultId": 306,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2752,
+          "icon": 7360,
+          "itemId": 800205
+        }
+      ]
+    },
+    {
+      "id": 306,
+      "code": "LIVESTOCK_ID_COW_FLUFFY",
+      "name": "毛茸茸的牛",
+      "nameTranslations": {
+        "ja": "ふさふさのウシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "毛茸茸的牛",
+        "ko": "복슬복슬 소",
+        "zh-CN": "毛茸茸的牛"
+      },
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2753,
+          "icon": 7361,
+          "itemId": 800206
+        }
+      ]
+    },
+    {
+      "id": 307,
+      "code": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+      "name": "斑纹小山羊",
+      "nameTranslations": {
+        "ja": "まだら子ヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "斑紋小山羊",
+        "ko": "얼룩무늬 새끼 염소",
+        "zh-CN": "斑纹小山羊"
+      },
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 10,
+      "adultId": 308,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2754,
+          "icon": 7362,
+          "itemId": 800207
+        }
+      ]
+    },
+    {
+      "id": 308,
+      "code": "LIVESTOCK_ID_GOAT_MOTTLED",
+      "name": "斑纹山羊",
+      "nameTranslations": {
+        "ja": "まだらヤギ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "斑紋山羊",
+        "ko": "얼룩무늬 염소",
+        "zh-CN": "斑纹山羊"
+      },
+      "houseType": 0,
+      "features": [],
+      "heartUnit": 400,
+      "growDays": 0,
+      "adultId": 0,
+      "variants": [
+        {
+          "index": 0,
+          "texture": 2755,
+          "icon": 7363,
+          "itemId": 800208
+        }
+      ]
     }
-  ]
+  ],
+  "build_id": "25311578"
 }
