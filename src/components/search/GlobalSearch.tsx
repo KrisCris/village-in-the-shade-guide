@@ -32,7 +32,7 @@ function SearchBox({ prominent }: { prominent: boolean }) {
     <input id="global-query" type="search" value={query} onFocus={loadIndex} onChange={(event) => { setQuery(event.target.value); void loadIndex(); }} placeholder={t('洋葱 / yangcong / yc / タマネギ')} autoComplete="off" />
     {query && <div className="search-results" role="listbox" aria-label={t('搜索结果')}>
       {loading && rows.length === 0 ? <p>{t('正在读取搜索索引…')}</p> : results.length ? results.map((entity) => <a key={`${entity.kind}:${entity.id}`} href={href(entityUrl(entity))} role="option">
-        <span>{entity.name.zh_hans}</span><small>{kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind} · {secondaryName(entity.name, locale) || entity.id}</small>
+        <span>{entity.name.zh_hans}</span><small>{kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}{locale !== 'ja' && ` · ${secondaryName(entity.name, locale) || entity.id}`}</small>
       </a>) : <p>{t('没有匹配项')}</p>}
     </div>}
     <style>{`

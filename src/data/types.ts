@@ -20,9 +20,9 @@ export type Name = {
   translations?: Record<string, string>;
 };
 
-/** The name shown under the primary one: Japanese on Chinese pages, Simplified Chinese on Japanese pages. */
+/** The Japanese name shown under the primary one on Chinese pages; Japanese pages show none. */
 export function secondaryName(name: Name, locale: string): string {
-  return locale === 'ja' ? name.translations?.['zh-CN'] || '' : name.ja || '';
+  return locale === 'ja' ? '' : name.ja || '';
 }
 
 export type Entity = Record<string, unknown> & {

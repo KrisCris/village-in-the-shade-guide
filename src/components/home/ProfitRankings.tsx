@@ -26,7 +26,7 @@ function Ranking({ title, link, rows, quality }: { title: string; link: string; 
       return <a key={entity.id} href={href(entityUrl(entity))}>
         <b>{index + 1}</b>
         <img src={withBase(entity.icon_path || placeholder)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(placeholder); }} alt="" width="44" height="44" loading="lazy" />
-        <span>{entity.name.zh_hans}<small>{secondaryName(entity.name, locale)}</small></span>
+        <span>{entity.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(entity.name, locale)}</small>}</span>
         <strong>{metric(perDay, t)}<small>{quality}</small></strong>
       </a>;
     })}</div>

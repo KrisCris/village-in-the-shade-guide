@@ -34,12 +34,10 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <div className={`entity-intro ${portrait?'has-portrait':''}`}><div>
     <p className="eyebrow">{entity.category_name?.zh_hans || (kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind)}</p>
     <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={withBase(entity.icon_path)} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
-    <p className="aliases">{(locale === 'ja'
-      ? [[t('简中'), entity.name.translations?.['zh-CN']], [t('繁中'), entity.name.zh_hant]]
-      : locale === 'zh-TW'
-        ? [[t('简中'), entity.name.translations?.['zh-CN']], [t('日文'), entity.name.ja]]
-        : [[t('繁中'), entity.name.zh_hant], [t('日文'), entity.name.ja]]
-    ).map(([label, value]) => t('{label}：{value}', { label: label ?? '', value: value || '—' })).join('　')}</p>
+    {locale !== 'ja' && <p className="aliases">{(locale === 'zh-TW'
+      ? [[t('简中'), entity.name.translations?.['zh-CN']], [t('日文'), entity.name.ja]]
+      : [[t('繁中'), entity.name.zh_hant], [t('日文'), entity.name.ja]]
+    ).map(([label, value]) => t('{label}：{value}', { label: label ?? '', value: value || '—' })).join('　')}</p>}
     {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}
     </div>{portrait&&<AnimatedPortrait key={entity.id} portrait={portrait} controls/>}</div>
 
@@ -62,7 +60,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
       {profit.harvests && <span>{t('28 日内收获')}<strong>{t('{count} 次',{count:profit.harvests})}</strong></span>}
     </div><p className="calculation-note">{entity.kind === 'processes' ? t('加工增值＝产出售价－原料直接售价。') : t('按每天浇水、28 天完整季节、同一格地计算。')} {t('当前品质：{quality}。',{quality:model.qualityName})}</p></section>}
 
-    {locations.length > 0 && <section><h2>{t('出现地点')}</h2><div className="location-list">{locations.map((location) => <div key={location.id}><span>{location.name}</span><small>{location.secondary}</small></div>)}</div></section>}
+    {locations.length > 0 && <section><h2>{t('出现地点')}</h2><div className="location-list">{locations.map((location) => <div key={location.id}><span>{location.name}</span>{location.secondary && <small>{location.secondary}</small>}</div>)}</div></section>}
 
     {groups.filter(group=>group.key!=='machines').map((group) => <section key={group.key}><h2>{group.label}</h2><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} />)}</div></section>)}
 
