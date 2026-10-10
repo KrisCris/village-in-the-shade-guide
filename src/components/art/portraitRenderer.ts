@@ -1,4 +1,4 @@
-import {animationTime,type Model,type Key} from './portraitData';
+import {animationTime,isTexture,type Model,type Key} from './portraitData';
 import {hiddenLayers} from './portraitCatalog';
 type Sample=Key&{mix:number;next?:Key};
 type Command={k:Sample;m:DOMMatrix;order:number};
@@ -38,7 +38,7 @@ export function createPortraitRenderer(canvas:HTMLCanvasElement,data:Model,image
     if(k){const [, ,x,y,sx,sy,r]=k.transform;m=parent.translate(x,y).rotate(r*180/Math.PI).scale(sx,sy);}
     node(n[2],time,m,depth+1);
     if(!k)return;
-    if(k.resource>=244)commands.push({k,m,order:k.order||0});
+    if(isTexture(data,k.resource))commands.push({k,m,order:k.order||0});
     else if(k.resource>=0&&data.refs[k.resource]===data.name){
       const dynamic=k.rect[0]<0,a=animations.get(dynamic?face:k.rect[0]);if(!a)return;
       const start=commands.length;

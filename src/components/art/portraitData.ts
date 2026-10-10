@@ -8,5 +8,7 @@ export function defaultFace(data:Model,pose:number){
   const match=Object.keys(known).find(id=>/叫/.test(label)&&/叫/.test(data.options.faces[id]?.name||''));
   return Number(match||Object.entries(known).sort((a,b)=>b[1]-a[1])[0]?.[0]||1000);
 }
+/** Resources below the FAD model table size are nested models; the rest are texture atlases. */
+export function isTexture(data:Pick<Model,'refs'>,resource:number){return resource>=Object.keys(data.refs).length;}
 export function animationTime(time:number,duration:number){return duration>0?((time%duration)+duration)%duration:0;}
 export function poseOptions(data:Model){return data.animations.map(a=>a[0]&65535).filter(id=>id>=10&&id<1000&&!(data.name==='BU_0110'&&[100,101].includes(id)));}

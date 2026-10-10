@@ -55,8 +55,7 @@ def icon_bounds(record: bytes) -> tuple[int, int, int, int]:
 def _find_texture_archive(game_dir: Path, texture_paths: set[str]) -> FafullfsArchive:
     for path in sorted((game_dir / "data").glob("texture*.dat")):
         archive = FafullfsArchive.open(path)
-        names = {entry.name for entry in archive.entries()}
-        if texture_paths & names:
+        if any(archive.has_entry(name) for name in texture_paths):
             return archive
     raise FileNotFoundError("no texture archive contains the requested icon atlases")
 
@@ -83,7 +82,6 @@ def extract_item_icons(
         if _table_string(texture_table, record, 24).endswith(".nltx")
     }
     texture_archive = _find_texture_archive(game_dir, texture_paths)
-    texture_entries = {entry.name for entry in texture_archive.entries()}
     atlas_cache: dict[str, Image.Image] = {}
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -103,7 +101,7 @@ def extract_item_icons(
                 missing_icon += 1
                 continue
             texture_path = _table_string(texture_table, texture_record, 24)
-            if texture_path not in texture_entries:
+            if not texture_archive.has_entry(texture_path):
                 missing_icon += 1
                 continue
             atlas = atlas_cache.get(texture_path)

@@ -34,5 +34,5 @@ for season,tag in [('spring','spr'),('summer','sum'),('autumn','aut'),('winter',
     export(f'shrub-{season}.webp',f'data/texture/fairy_bli_9017/bli_9017_tex_{tag}.nltx',600,(0,390,490,760))
 export('clouds.webp','data/texture/fairy_bli_8100/bg_8100_09_spr.nltx',1200)
 export('haze.webp','data/texture/fairy_bli_8100/bg_8100_10_spr.nltx',1200)
-Path('data/sources/site-scenery.json').write_text(json.dumps({'build_id':'24969282','note':'Native game scenery, web-sized. Homepage composition is decorative, not a geographic reconstruction. Summer mountain background reuses spring because this background set has no summer variant.','assets':records},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+Path('data/sources/site-scenery.json').write_text(json.dumps({'build_id':'25311578','note':'Native game scenery, web-sized. Homepage composition is decorative, not a geographic reconstruction. Summer mountain background reuses spring because this background set has no summer variant.','assets':records},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'Exported {len(records)} scenery assets, {sum(p.stat().st_size for p in args.output.glob("*.webp")):,} bytes')

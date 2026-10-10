@@ -20,7 +20,8 @@ from honogurashi_extractor.texture import decode_nltx_image
 
 ROOT = Path(__file__).resolve().parents[1]
 SEASONS = ('spr', 'sum', 'aut', 'win')
-BOUNDS = (7936, 18688, 14336, 27648)
+# Build 25311578 adds farmland east of the old area (farmable cells reach x=16020).
+BOUNDS = (7936, 18688, 17408, 27648)
 
 
 def save_rules(metadata):
@@ -40,8 +41,9 @@ def main():
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--skip-ground', action='store_true')
     parser.add_argument('--update-objects', action='store_true')
+    parser.add_argument('--output', type=Path, default=ROOT/'public/maps/farm')
     args = parser.parse_args()
-    dest = ROOT/'public/maps/farm'
+    dest = args.output
     dest.mkdir(parents=True, exist_ok=True)
     (dest/'sprites').mkdir(exist_ok=True)
     archive = FafullfsArchive.open(args.game/'data.dat')
@@ -58,7 +60,7 @@ def main():
     replacement_pool = read_table(archive.read_entry('data/database/animereplacetexture.dat')).string_pool
     banks = {2: FairyBank(fairy.read_entry('data/fairy/resident.fad')),
              3: FairyBank(fairy.read_entry('data/fairy/resident_2.fad'))}
-    metadata: dict = {'source': 'Steam build 24969282, YMWR ground tiles and FAD scene nodes',
+    metadata: dict = {'source': 'Steam build 25311578, YMWR ground tiles and FAD scene nodes',
                       'bounds': BOUNDS, 'scale': .5, 'seasons': list(SEASONS), 'crops': {}, 'objects': {}}
     specs = json.loads((ROOT/'data/sources/game-save-map.json').read_text(encoding='utf-8'))
     if args.update_objects:
@@ -66,23 +68,33 @@ def main():
     else:
         metadata['rooms'] = {}
     room_maps = table('map')
+    # map.dat names the seasonal openworld heads (map_0000_ver120_* since 25311578).
+    openworld = next(strings[2] for _, strings in room_maps.values() if strings[0] == 'MAP_ID_OPENWORLD')
+    if not openworld.endswith('_spr.ymwr'):
+        raise ValueError(f'Unexpected openworld map name: {openworld}')
+    openworld = openworld.removesuffix('_spr.ymwr')
     (dest/'rooms').mkdir(exist_ok=True)
     room_cache = {}
     fixture_cache = {}
     gimmicks = table('gimmick')
     # Outdoor maps also have two actor sections before the 208-byte fixtures.
     # Shipping boxes live here rather than in the save's editable gimmick list.
-    head = maps.read_entry('data/map/map_0000_spr.ymwr.head')
+    head = maps.read_entry(f'{openworld}_spr.ymwr.head')
     if head.startswith(b'YKCMP_V1'):
         head = zlib.decompress(head[20:])
     header = struct.unpack_from('<19I', head)
     start = 76+header[3]*72+header[12]*112+header[8]*84+header[9]*56+header[10]*48
     metadata['fixedObjects'] = []
+    # Saves also store interactive world fixtures (e.g. shared boxes) as map
+    # objects, so every fixture type inside the farm window needs art.
+    outdoor_fixture_ids = set()
     for i in range(header[11]):
         offset = start+i*208
         id, x, y, angle = struct.unpack_from('<4i', head, offset)
         if id not in gimmicks:
             raise ValueError(f'Unknown outdoor fixture at {offset}: {id}')
+        if BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
+            outdoor_fixture_ids.add(id)
         if gimmicks[id][1][0] == 'GIMMICK_ID_ARCHITECTURE_SHIPPING_BOX' and BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
             metadata['fixedObjects'].append(dict(id=id, name='出货箱', x=x, y=y, angle=angle,
                                                 require=struct.unpack_from('<i', head, offset+36)[0]))
@@ -149,7 +161,7 @@ def main():
     if not args.skip_ground:
         for season in SEASONS:
             print('Ground', season, flush=True)
-            image = ground_image(maps.read_entry(f'data/map/map_0000_{season}.ymwr.mat'), BOUNDS)
+            image = ground_image(maps.read_entry(f'{openworld}_{season}.ymwr.mat'), BOUNDS)
             image.resize((image.width//2, image.height//2), Image.Resampling.LANCZOS).save(dest/f'{season}.webp', quality=88)
 
     @lru_cache(maxsize=24)
@@ -220,10 +232,15 @@ def main():
 
     for id, (r, _) in ([] if args.update_objects else table('crops').items()):
         # Variable-length prerequisite lists precede the animation reference.
-        # Validate the full animation + four seasonal replacement tuple.
+        # Validate the full animation + four seasonal replacement tuple; field
+        # objects (mud, rocks, giant crops) use bli_/eve_/ene_ models too.
+        def native_model(anime_id):
+            record, strings = anime[anime_id]
+            bank = banks.get(struct.unpack_from('<I', record, 24)[0])
+            return bool(bank) and strings[2] in bank.entries
         offset = next((o for o in range(112, 256, 4)
                        if struct.unpack_from('<I', r, o)[0] in anime
-                       and anime[struct.unpack_from('<I', r, o)[0]][1][2].startswith(('gim_', 'obj_'))
+                       and native_model(struct.unpack_from('<I', r, o)[0])
                        and 0 < struct.unpack_from('<I', r, o+80)[0] <= 10
                        and all(struct.unpack_from('<I', r, o+8+i*8)[0] in replacement or struct.unpack_from('<I', r, o+8+i*8)[0] == 0 for i in range(4))), None)
         if offset is None:
@@ -249,7 +266,7 @@ def main():
     print('Crop art', len(metadata['crops']), flush=True)
     wanted = {o['id'] for o in specs['objects']}
     furnishings = {o['id'] for o in specs['objects'] if o['itemId']}
-    fixture_ids = {f['id'] for fixtures in fixture_cache.values() for f in fixtures}
+    fixture_ids = {f['id'] for fixtures in fixture_cache.values() for f in fixtures} | outdoor_fixture_ids
     for index, (id, (r, strings)) in enumerate(gimmicks.items()):
         if id not in wanted and id not in fixture_ids and not any(k in strings[0] for k in ('ARCHITECTURE', 'INDOOR')):
             continue

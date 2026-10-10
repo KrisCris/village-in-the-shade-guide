@@ -11,7 +11,8 @@ for(const {name} of await read('index')) {
   if(name==='BU_0160')continue;
   const data=await read(name);
   data.options={poses:Object.fromEntries(Object.entries(poses[name]||{}).map(([id,p])=>[id,{label:p.label,expressions:p.expressions}])),faces:faces[name]||{}};
-  for(const k of data.keys)if(k.resource>=244)textures.add(k.resource);
+  // Resources at or above the FAD model-table size are texture atlases.
+  for(const k of data.keys)if(k.resource>=Object.keys(data.refs).length)textures.add(k.resource);
   await writeFile(path.join(target,name+'.json'),JSON.stringify(data,(_,v)=>typeof v==='number'&&!Number.isInteger(v)?Math.round(v*100000)/100000:v));
 }
 for(const id of textures)await copyFile(path.join(source,`tex-${id}.webp`),path.join(target,`tex-${id}.webp`));

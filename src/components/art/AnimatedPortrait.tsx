@@ -2,7 +2,7 @@ import {useEffect,useRef,useState,useId} from 'react';
 import {withBase} from '../../lib/sitePath';
 import SearchableSelect from '../controls/SearchableSelect';
 import {portraitNotice,type PortraitDefinition} from './portraitCatalog';
-import {defaultFace,poseOptions,type Model} from './portraitData';
+import {defaultFace,isTexture,poseOptions,type Model} from './portraitData';
 import {portraitLabel} from './portraitLabels';
 import './portraits.css';
 
@@ -25,7 +25,7 @@ export default function AnimatedPortrait({portrait,controls=false,onReady,onErro
         const response=await fetch(withBase(`/art/portraits/${portrait.resource}.json`),{signal:abort.signal});if(!response.ok)throw new Error('立绘数据加载失败');
         const data:Model=await response.json();
         const images=new Map<number,HTMLImageElement>();
-        await Promise.all([...new Set(data.keys.filter(k=>k.resource>=244).map(k=>k.resource))].map(async resource=>{
+        await Promise.all([...new Set(data.keys.filter(k=>isTexture(data,k.resource)).map(k=>k.resource))].map(async resource=>{
           const response=await fetch(withBase(`/art/portraits/tex-${resource}.webp`),{signal:abort.signal});if(!response.ok)throw new Error('立绘贴图加载失败');
           const url=URL.createObjectURL(await response.blob());
           try{const im=new Image();im.src=url;await im.decode();images.set(resource,im);}
