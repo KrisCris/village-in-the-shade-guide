@@ -2,6 +2,7 @@ import type { Entity } from "../../data/types";
 import type { WorkflowNode, WorkflowPlan, WorkflowEdge } from "./types";
 import { hasCycle, stringArray } from "./graph";
 import { nodeLabels } from "../workflowEditor";
+import { tr } from '../../i18n/active';
 
 export const autoLabel = (n: WorkflowNode) =>
   n.labelMode === "auto" || (n.labelMode !== "manual" && n.label === nodeLabels[n.kind]);
@@ -128,7 +129,7 @@ export function resolveIntent(plan: WorkflowPlan, entities: Entity[]) {
       !outputs.some((id) => inputs.includes(id))
     )
       notices[target.id].push(
-        `与「${source.label}」的物品不匹配，请调整选择或连线。`,
+        tr('与「{label}」的物品不匹配，请调整选择或连线。', { label: source.label }),
       );
   }
   return { nodes, choices, notices };

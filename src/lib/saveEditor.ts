@@ -1,3 +1,4 @@
+import { tr } from '../i18n/active';
 /**
  * YKCMP_V1 container codec for the game's save files.
  *
@@ -40,7 +41,7 @@ function writeU32(data: Uint8Array, offset: number, value: number): void {
 /** Decode the raw LZ4 block used by YKCMP_V1 type 8 saves. */
 export function decodeLz4Block(input: Uint8Array, outputSize: number): Uint8Array {
   if (!Number.isSafeInteger(outputSize) || outputSize < 0 || outputSize > MAX_SAVE_SIZE) {
-    throw new Error(`无效的解压长度：${outputSize}`);
+    throw new Error(tr('无效的解压长度：{outputSize}', { outputSize }));
   }
   const output = new Uint8Array(outputSize);
   let inputPos = 0;
@@ -51,37 +52,37 @@ export function decodeLz4Block(input: Uint8Array, outputSize: number): Uint8Arra
     if (literalLength === 15) {
       let extra = 255;
       while (extra === 255) {
-        if (inputPos >= input.length) throw new Error('LZ4 字面量长度越界。');
+        if (inputPos >= input.length) throw new Error(tr('LZ4 字面量长度越界。'));
         extra = input[inputPos++];
         literalLength += extra;
       }
     }
     if (inputPos + literalLength > input.length || outputPos + literalLength > output.length) {
-      throw new Error('LZ4 字面量数据越界。');
+      throw new Error(tr('LZ4 字面量数据越界。'));
     }
     output.set(input.subarray(inputPos, inputPos + literalLength), outputPos);
     inputPos += literalLength;
     outputPos += literalLength;
     if (inputPos === input.length) break;
-    if (inputPos + 2 > input.length) throw new Error('LZ4 匹配偏移越界。');
+    if (inputPos + 2 > input.length) throw new Error(tr('LZ4 匹配偏移越界。'));
     const offset = input[inputPos] | (input[inputPos + 1] << 8);
     inputPos += 2;
-    if (offset === 0 || offset > outputPos) throw new Error('LZ4 匹配偏移无效。');
+    if (offset === 0 || offset > outputPos) throw new Error(tr('LZ4 匹配偏移无效。'));
     let matchLength = token & 0x0f;
     if (matchLength === 15) {
       let extra = 255;
       while (extra === 255) {
-        if (inputPos >= input.length) throw new Error('LZ4 匹配长度越界。');
+        if (inputPos >= input.length) throw new Error(tr('LZ4 匹配长度越界。'));
         extra = input[inputPos++];
         matchLength += extra;
       }
     }
     matchLength += 4;
-    if (outputPos + matchLength > output.length) throw new Error('LZ4 匹配数据越界。');
+    if (outputPos + matchLength > output.length) throw new Error(tr('LZ4 匹配数据越界。'));
     for (let i = 0; i < matchLength; i++) output[outputPos + i] = output[outputPos - offset + i];
     outputPos += matchLength;
   }
-  if (outputPos !== output.length) throw new Error(`LZ4 解压长度不符：${outputPos}/${output.length}`);
+  if (outputPos !== output.length) throw new Error(tr('LZ4 解压长度不符：{actual}/{expected}', { actual: outputPos, expected: output.length }));
   return output;
 }
 
@@ -176,14 +177,14 @@ export function encodeLz4Block(input: Uint8Array): Uint8Array {
 
 export function decodeSave(file: Uint8Array, fileName = 'save'): DecodedSave {
   if (file.length < HEADER_SIZE || new TextDecoder('ascii').decode(file.subarray(0, 8)) !== MAGIC) {
-    throw new Error('不是受支持的 YKCMP_V1 存档。');
+    throw new Error(tr('不是受支持的 YKCMP_V1 存档。'));
   }
   const type = readU32(file, TYPE_OFFSET);
-  if (type !== 8) throw new Error(`这个工具只支持 LZ4（type 8）存档，读到的是 type ${type}。`);
+  if (type !== 8) throw new Error(tr('这个工具只支持 LZ4（type 8）存档，读到的是 type {type}。', { type }));
   const compressedEnd = readU32(file, COMPRESSED_END_OFFSET);
   const uncompressedSize = readU32(file, UNCOMPRESSED_SIZE_OFFSET);
   if (compressedEnd <= HEADER_SIZE || compressedEnd > file.length || uncompressedSize > MAX_SAVE_SIZE) {
-    throw new Error('存档头中的长度无效。');
+    throw new Error(tr('存档头中的长度无效。'));
   }
   return {
     data: decodeLz4Block(file.subarray(HEADER_SIZE, compressedEnd), uncompressedSize),
@@ -199,12 +200,12 @@ export function decodeSave(file: Uint8Array, fileName = 'save'): DecodedSave {
  */
 export function encodeSave(save: DecodedSave, data: Uint8Array = save.data): Uint8Array {
   if (data.length !== readU32(save.original, UNCOMPRESSED_SIZE_OFFSET)) {
-    throw new Error('解压缓冲区长度必须与原存档一致。');
+    throw new Error(tr('解压缓冲区长度必须与原存档一致。'));
   }
   const compressed = encodeLz4Block(data);
   const compressedEnd = HEADER_SIZE + compressed.length;
   if (compressedEnd > save.original.length) {
-    throw new Error(`压缩后的数据 ${compressedEnd} 字节，超过了存档文件的 ${save.original.length} 字节。`);
+    throw new Error(tr('压缩后的数据 {size} 字节，超过了存档文件的 {limit} 字节。', { size: compressedEnd, limit: save.original.length }));
   }
   const output = new Uint8Array(save.original.length);
   output.set(save.original.subarray(0, HEADER_SIZE));
@@ -212,9 +213,9 @@ export function encodeSave(save: DecodedSave, data: Uint8Array = save.data): Uin
   writeU32(output, UNCOMPRESSED_SIZE_OFFSET, data.length);
   output.set(compressed, HEADER_SIZE);
   const check = decodeSave(output, save.fileName);
-  if (check.data.length !== data.length) throw new Error('重新打包校验失败：长度不符。');
+  if (check.data.length !== data.length) throw new Error(tr('重新打包校验失败：长度不符。'));
   for (let i = 0; i < data.length; i++) {
-    if (check.data[i] !== data[i]) throw new Error(`重新打包校验失败：偏移 ${i} 处的字节不一致。`);
+    if (check.data[i] !== data[i]) throw new Error(tr('重新打包校验失败：偏移 {i} 处的字节不一致。', { i }));
   }
   return output;
 }

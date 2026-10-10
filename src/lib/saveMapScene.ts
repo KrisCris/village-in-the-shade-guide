@@ -2,6 +2,7 @@ import { MAP_DATA, landPosition, mapCells, mapObjects, sceneCells, type MapEdits
 import { readSigned, type SerDocument } from './ser';
 import { splitGameTime } from './saveTime';
 import { flagEnabled } from './saveProgress';
+import { tr } from '../i18n/active';
 
 export interface SpriteArt {
   file: string;
@@ -63,9 +64,9 @@ export interface SceneSprite extends Point {
 export const FARM_SCENE = MAP_DATA.scenes.find((s) => s.code === 'MAP_ID_OPENWORLD')!.id;
 export const FARM_CELLS = sceneCells(FARM_SCENE);
 export const FARM_REGIONS = [
-  { id: 1, name: '住宅旁', description: '北边 · L 形田地' },
-  { id: 2, name: '西边田地', description: '中部 · 第二块田' },
-  { id: 4, name: '南边田地', description: '下方 · 第三块田' }
+  { id: 1, name: tr('住宅旁'), description: tr('北边 · L 形田地') },
+  { id: 2, name: tr('西边田地'), description: tr('中部 · 第二块田') },
+  { id: 4, name: tr('南边田地'), description: tr('下方 · 第三块田') }
 ].map((region) => {
   const cells = FARM_CELLS.filter((c) => c.area === region.id);
   return {

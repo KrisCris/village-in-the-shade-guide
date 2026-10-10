@@ -4,6 +4,7 @@ import { nodeLabels } from "../../domain/workflowEditor";
 import { formatDay } from "../../domain/workflow/date";
 import { memo } from "react";
 import WorkflowIcon from "./WorkflowIcon";
+import { tr } from '../../i18n/active';
 export type CardData = {
   node: WorkflowNode;
   subtitle: string;
@@ -26,7 +27,7 @@ export default memo(function WorkflowCard({
         <Handle
           type="target"
           position={Position.Left}
-          aria-label="连接输入"
+          aria-label={tr('连接输入')}
           onClick={(e) => {
             e.stopPropagation();
             data.onAdd?.(n.id, "input");
@@ -41,7 +42,7 @@ export default memo(function WorkflowCard({
         {n.repeat && ["plant", "purchase"].includes(n.kind) && (
           <b>
             <WorkflowIcon name="repeat" size={12} />
-            {n.kind === "plant" ? "自动续种" : "循环"}
+            {n.kind === "plant" ? tr('自动续种') : tr('循环')}
           </b>
         )}
       </div>
@@ -61,26 +62,26 @@ export default memo(function WorkflowCard({
         </span>
         <strong>{n.label}</strong>
       </div>
-      <p>{data.subtitle || "点击设置物品与数量"}</p>
+      <p>{data.subtitle || tr('点击设置物品与数量')}</p>
       <small className="wf-node-date">
         <WorkflowIcon name="calendar" size={12} />
         {data.projection?.firstDay !== undefined
           ? `${formatDay(data.projection.firstDay)}${data.projection.finishDay !== data.projection.firstDay ? ` → ${formatDay(data.projection.finishDay!)}` : ""}`
           : n.dateMode === "manual"
-            ? `${formatDay(n.startDay)} 起`
-            : "原料齐备后自动安排"}
-        {n.remainingDays !== undefined ? " · 已在进行" : ""}
+            ? tr('{date} 起', { date: formatDay(n.startDay) })
+            : tr('原料齐备后自动安排')}
+        {n.remainingDays !== undefined ? tr(' · 已在进行') : ""}
       </small>
       {data.projection && (
         <div className={`wf-node-status ${data.projection.status}`}>
           {data.projection.notices[0] ??
             (n.kind === "plant"
-              ? `需 ${data.projection.land} 格土地 · 收获 ${data.projection.outputQuantity} 个`
+              ? tr('需 {land} 格土地 · 收获 {outputQuantity} 个', { land: data.projection.land, outputQuantity: data.projection.outputQuantity })
               : n.kind === "process"
-                ? `${data.projection.machines} 台机器 · 产出 ${data.projection.outputQuantity} 个`
+                ? tr('{machines} 台机器 · 产出 {outputQuantity} 个', { machines: data.projection.machines, outputQuantity: data.projection.outputQuantity })
                 : data.projection.delivered
-                  ? "已交付"
-                  : "数量与日期随上游推算")}
+                  ? tr('已交付')
+                  : tr('数量与日期随上游推算'))}
         </div>
       )}
       {data.progress && <div className="wf-node-progress">{data.progress}</div>}
@@ -93,7 +94,7 @@ export default memo(function WorkflowCard({
         <Handle
           type="source"
           position={Position.Right}
-          aria-label="连接产物"
+          aria-label={tr('连接产物')}
           onClick={(e) => {
             e.stopPropagation();
             data.onAdd?.(n.id, "output");
@@ -103,7 +104,7 @@ export default memo(function WorkflowCard({
       {!["purchase", "inventory"].includes(n.kind) && (
         <button
           className="wf-node-add input nodrag nopan"
-          aria-label="添加前置节点"
+          aria-label={tr('添加前置节点')}
           onClick={(e) => {
             e.stopPropagation();
             data.onAdd?.(n.id, "input");
@@ -115,7 +116,7 @@ export default memo(function WorkflowCard({
       {!["reserve", "delivery", "consume", "sale"].includes(n.kind) && (
         <button
           className="wf-node-add output nodrag nopan"
-          aria-label="添加后续节点"
+          aria-label={tr('添加后续节点')}
           onClick={(e) => {
             e.stopPropagation();
             data.onAdd?.(n.id, "output");

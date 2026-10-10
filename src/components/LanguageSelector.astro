@@ -1,0 +1,43 @@
+---
+import { getI18n } from '../i18n/server';
+import { localeNames } from '../i18n/locales';
+const i18n = getI18n(Astro.url);
+const { t } = i18n;
+---
+<details class="language-menu">
+  <summary aria-label={t('语言：{language}', { language: localeNames[i18n.locale] })} title={t('切换语言')}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3Z"/></svg>
+    <span>{localeNames[i18n.locale]}</span>
+  </summary>
+  <ul>
+    {i18n.alternates().map(({ locale, href }) => (
+      <li><a href={href} lang={locale} hreflang={locale} aria-current={locale === i18n.locale ? 'true' : undefined} data-astro-reload>{localeNames[locale]}</a></li>
+    ))}
+  </ul>
+</details>
+<script>
+  import {onPageMount} from '../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
+    const menu=document.querySelector<HTMLDetailsElement>('.language-menu');if(!menu)return;
+    // Keep the reader's place (filters in the query, section in the hash).
+    const keepPlace=(event:Event)=>{const link=(event.target as Element).closest<HTMLAnchorElement>('a');if(link)link.href=link.href.replace(/[?#].*$/,'')+location.search+location.hash;};
+    const outside=(event:PointerEvent)=>{if(menu.open&&!menu.contains(event.target as Node))menu.open=false;};
+    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary')?.focus();}};
+    menu.addEventListener('click',keepPlace);menu.addEventListener('keydown',escape);document.addEventListener('pointerdown',outside);
+    return()=>{menu.removeEventListener('click',keepPlace);menu.removeEventListener('keydown',escape);document.removeEventListener('pointerdown',outside);};
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
+</script>
+<style>
+  .language-menu{position:relative}
+  summary{display:flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .6rem;border-radius:10px;color:var(--ink);font-size:.85rem;cursor:pointer;list-style:none;white-space:nowrap}
+  summary::-webkit-details-marker{display:none}
+  summary:hover,.language-menu[open] summary{background:var(--green-soft)}
+  summary svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}
+  ul{position:absolute;right:0;top:calc(100% + 8px);z-index:50;display:grid;gap:.15rem;min-width:9.5rem;margin:0;padding:.4rem;list-style:none;background:var(--paper-raised);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 48px #0004}
+  a{display:block;padding:.6rem .75rem;border-radius:8px;color:var(--ink);text-decoration:none;font-size:.9rem}
+  a:hover{background:var(--green-soft);color:var(--green)}
+  a[aria-current]{color:var(--green);font-weight:700}
+  a[aria-current]::after{content:' ✓'}
+  @media(max-width:520px){summary span{display:none}summary{padding:0 .5rem}}
+</style>

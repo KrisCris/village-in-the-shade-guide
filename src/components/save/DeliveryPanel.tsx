@@ -7,8 +7,9 @@ import type { SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { itemLabel } from './ItemGrid';
+import { tr } from '../../i18n/active';
 
-const ranks = ['普通', '铜星', '银星', '金星', '品牌'];
+const ranks = [tr('普通'), tr('铜星'), tr('银星'), tr('金星'), tr('品牌')];
 export default function DeliveryPanel({ model, names, edits, onReplace, onMaterials }: {
   onMaterials: (materials: MaterialRequest[]) => void;
   model: SaveModel; names: SaveNameTables; edits: ProgressEdits; onReplace: (edits: ProgressEdits) => void;
@@ -37,20 +38,20 @@ export default function DeliveryPanel({ model, names, edits, onReplace, onMateri
   }
   return <div className="save-delivery-layout">
     <aside className="save-delivery-sidebar">
-      <div className="save-delivery-search"><input type="search" aria-label="搜索交付目录" placeholder="搜索目录或材料 · 支持拼音" value={query} onChange={e => setQuery(e.target.value)} /></div>
-      <nav className="save-delivery-list" aria-label="交付委托目录">{visible.map(g => <button key={g.id} type="button" aria-pressed={selected === g.id} onClick={() => setSelected(g.id)}><span>{g.name}</span><span className="save-unlock-state" data-state={g.bundles.every(complete) ? 'complete' : 'pending'}>{g.bundles.every(complete) ? '✓ 完成' : `${g.bundles.filter(complete).length} / ${g.bundles.length}`}</span></button>)}{!visible.length && <p>没有匹配的目录</p>}</nav>
-      <div className="save-delivery-access"><span className="save-unlock-state" data-state={open ? 'complete' : 'pending'}>{open ? '✓ 交付目录已开放' : '◇ 交付目录未开放'}</span>{!open && <button type="button" onClick={() => onReplace({ ...edits, flags: { ...edits.flags, [UNLOCKS.catalogFlag]: true } })}>开放村长家的交付目录</button>}<small>开放后可查看八册分类委托。</small></div>
+      <div className="save-delivery-search"><input type="search" aria-label={tr('搜索交付目录')} placeholder={tr('搜索目录或材料 · 支持拼音')} value={query} onChange={e => setQuery(e.target.value)} /></div>
+      <nav className="save-delivery-list" aria-label={tr('交付委托目录')}>{visible.map(g => <button key={g.id} type="button" aria-pressed={selected === g.id} onClick={() => setSelected(g.id)}><span>{g.name}</span><span className="save-unlock-state" data-state={g.bundles.every(complete) ? 'complete' : 'pending'}>{g.bundles.every(complete) ? tr('✓ 完成') : `${g.bundles.filter(complete).length} / ${g.bundles.length}`}</span></button>)}{!visible.length && <p>{tr('没有匹配的目录')}</p>}</nav>
+      <div className="save-delivery-access"><span className="save-unlock-state" data-state={open ? 'complete' : 'pending'}>{open ? tr('✓ 交付目录已开放') : tr('◇ 交付目录未开放')}</span>{!open && <button type="button" onClick={() => onReplace({ ...edits, flags: { ...edits.flags, [UNLOCKS.catalogFlag]: true } })}>{tr('开放村长家的交付目录')}</button>}<small>{tr('开放后可查看八册分类委托。')}</small></div>
     </aside>
-    <section className="save-delivery-detail" aria-label="交付目录详情">
-      <header><div><span className="save-unlock-eyebrow">村长家的交付委托</span><h3>{group.name}</h3></div>{group.reward > 0 && <div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(group.reward)} size={36} /><span><small>整册奖励</small>{itemLabel(names, String(group.reward))}</span></div>}</header>
-      <p className="save-delivery-note">修改进度不会补发奖励。选择“留最后一件”，可回到游戏中完成最后一次交付并正常领奖。</p>
+    <section className="save-delivery-detail" aria-label={tr('交付目录详情')}>
+      <header><div><span className="save-unlock-eyebrow">{tr('村长家的交付委托')}</span><h3>{group.name}</h3></div>{group.reward > 0 && <div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(group.reward)} size={36} /><span><small>{tr('整册奖励')}</small>{itemLabel(names, String(group.reward))}</span></div>}</header>
+      <p className="save-delivery-note">{tr('修改进度不会补发奖励。选择“留最后一件”，可回到游戏中完成最后一次交付并正常领奖。')}</p>
       <div className="save-delivery-scroll">{bundles.map(b => <article className="save-delivery-bundle" key={b.id}>
-        <header><h4>{b.name}</h4><span className="save-unlock-state" data-state={complete(b.id) ? 'complete' : 'pending'}>{complete(b.id) ? '✓ 已交付' : '○ 交付中'}</span></header>
+        <header><h4>{b.name}</h4><span className="save-unlock-state" data-state={complete(b.id) ? 'complete' : 'pending'}>{complete(b.id) ? tr('✓ 已交付') : tr('○ 交付中')}</span></header>
         <div className="save-delivery-materials">{b.items.map((item, i) => { const key = `${b.id}:${i}`, row = rows.get(key); return <label key={key} className={count(key) === item.count ? 'complete' : ''}>
-          <SaveIcon names={names} kind="items" value={String(item.itemId)} size={44} /><span><strong>{itemLabel(names, String(item.itemId))}</strong><small>{row ? `${ranks[row.rank] ?? '未知品质'}${row.rank > 0 ? '及以上' : ''}` : '此存档没有该项记录'}</small></span>
-          <span className="save-delivery-count"><small>已交付</small><span><input type="number" min="0" max={item.count} step="1" disabled={!row} aria-label={`${b.name} · ${itemLabel(names, String(item.itemId))}已交付数量`} value={count(key)} onChange={e => { const n = e.target.valueAsNumber; if (Number.isInteger(n)) change({ [key]: Math.max(0, Math.min(item.count, n)) }); }} /><span>/ {item.count}</span></span></span>
+          <SaveIcon names={names} kind="items" value={String(item.itemId)} size={44} /><span><strong>{itemLabel(names, String(item.itemId))}</strong><small>{row ? `${ranks[row.rank] ?? tr('未知品质')}${row.rank > 0 ? tr('及以上') : ''}` : tr('此存档没有该项记录')}</small></span>
+          <span className="save-delivery-count"><small>{tr('已交付')}</small><span><input type="number" min="0" max={item.count} step="1" disabled={!row} aria-label={tr('{name} · {itemLabel}已交付数量', { name: b.name, itemLabel: itemLabel(names, String(item.itemId)) })} value={count(key)} onChange={e => { const n = e.target.valueAsNumber; if (Number.isInteger(n)) change({ [key]: Math.max(0, Math.min(item.count, n)) }); }} /><span>/ {item.count}</span></span></span>
         </label>; })}</div>
-        <footer><div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(b.reward)} size={28} /><small>奖励：{itemLabel(names, String(b.reward))} × {b.rewardCount}</small></div><div className="save-delivery-buttons"><button type="button" disabled={complete(b.id) || b.items.some((_, i) => !rows.has(`${b.id}:${i}`))} onClick={() => onMaterials(b.items.map((item, i) => ({ itemId: item.itemId, rank: item.rank, count: Math.max(0, item.count - count(`${b.id}:${i}`)) })))}>剩余材料加入背包</button><button type="button" onClick={() => fill(b.id, true)}>留最后一件</button><button type="button" onClick={() => fill(b.id, false)}>标记完成</button>{b.items.some((_, i) => edits.deliveries?.[`${b.id}:${i}`] !== undefined) && <button type="button" onClick={() => change(Object.fromEntries(b.items.map((_, i) => [`${b.id}:${i}`, undefined])))}>撤销</button>}</div></footer>
+        <footer><div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(b.reward)} size={28} /><small>{tr('奖励：')}{itemLabel(names, String(b.reward))} × {b.rewardCount}</small></div><div className="save-delivery-buttons"><button type="button" disabled={complete(b.id) || b.items.some((_, i) => !rows.has(`${b.id}:${i}`))} onClick={() => onMaterials(b.items.map((item, i) => ({ itemId: item.itemId, rank: item.rank, count: Math.max(0, item.count - count(`${b.id}:${i}`)) })))}>{tr('剩余材料加入背包')}</button><button type="button" onClick={() => fill(b.id, true)}>{tr('留最后一件')}</button><button type="button" onClick={() => fill(b.id, false)}>{tr('标记完成')}</button>{b.items.some((_, i) => edits.deliveries?.[`${b.id}:${i}`] !== undefined) && <button type="button" onClick={() => change(Object.fromEntries(b.items.map((_, i) => [`${b.id}:${i}`, undefined])))}>{tr('撤销')}</button>}</div></footer>
       </article>)}</div>
     </section>
   </div>;

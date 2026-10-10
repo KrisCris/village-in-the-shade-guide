@@ -1,3 +1,5 @@
+import { format, msg, type Translate } from '../i18n/translate';
+
 export const QUALITY_VALUES = ['normal', 'copper', 'silver', 'gold', 'brand'] as const;
 export type Quality = typeof QUALITY_VALUES[number];
 
@@ -9,12 +11,13 @@ export const QUALITY_MULTIPLIERS: Record<Quality, number> = {
   brand: 2,
 };
 
+/** Translation keys; display with t(). */
 export const QUALITY_LABELS: Record<Quality, string> = {
-  normal: '无星',
-  copper: '铜★',
-  silver: '银★',
-  gold: '金★',
-  brand: '品牌',
+  normal: msg('无星'),
+  copper: msg('铜★'),
+  silver: msg('银★'),
+  gold: msg('金★'),
+  brand: msg('品牌'),
 };
 
 export type QualityPrice = {
@@ -29,8 +32,8 @@ export function parseQuality(value: string | null | undefined): Quality {
   return QUALITY_VALUES.includes(value as Quality) ? value as Quality : 'normal';
 }
 
-export function qualityLabel(quality: Quality): string {
-  return QUALITY_LABELS[quality];
+export function qualityLabel(quality: Quality, t: Translate = format): string {
+  return t(QUALITY_LABELS[quality]);
 }
 
 export function qualityPrice(basePrice: number | null | undefined, eligible: boolean, quality: Quality): QualityPrice | null {
@@ -40,7 +43,7 @@ export function qualityPrice(basePrice: number | null | undefined, eligible: boo
   return { value, exact: Number.isInteger(value), multiplier, quality, fixed: !eligible };
 }
 
-export function formatQualityPrice(result: QualityPrice | null): string {
-  if (!result) return '数据不足';
+export function formatQualityPrice(result: QualityPrice | null, t: Translate = format): string {
+  if (!result) return t('数据不足');
   return `${result.exact ? '' : '≈'}${Number.isInteger(result.value) ? result.value : result.value.toFixed(2)}`;
 }

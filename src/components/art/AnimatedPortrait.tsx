@@ -4,9 +4,11 @@ import SearchableSelect from '../controls/SearchableSelect';
 import {portraitNotice,type PortraitDefinition} from './portraitCatalog';
 import {defaultFace,isTexture,poseOptions,type Model} from './portraitData';
 import {portraitLabel} from './portraitLabels';
+import {useI18n} from '../../i18n/react';
 import './portraits.css';
 
 export default function AnimatedPortrait({portrait,controls=false,onReady,onError}:{portrait:PortraitDefinition;controls?:boolean;onReady?:()=>void;onError?:()=>void}){
+  const {t,locale}=useI18n();
   const root=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null);
   const player=useRef<Awaited<ReturnType<typeof import('./portraitRenderer')['createPortraitRenderer']>>|null>(null);
   const notify=useRef(onReady);notify.current=onReady;
@@ -22,11 +24,11 @@ export default function AnimatedPortrait({portrait,controls=false,onReady,onErro
     const abort=new AbortController();let disposed=false,raf=0,renderer:typeof player.current=null;
     const start=async()=>{
       try{
-        const response=await fetch(withBase(`/art/portraits/${portrait.resource}.json`),{signal:abort.signal});if(!response.ok)throw new Error('立绘数据加载失败');
+        const response=await fetch(withBase(`/art/portraits/${portrait.resource}.json`),{signal:abort.signal});if(!response.ok)throw new Error(t('立绘数据加载失败'));
         const data:Model=await response.json();
         const images=new Map<number,HTMLImageElement>();
         await Promise.all([...new Set(data.keys.filter(k=>isTexture(data,k.resource)).map(k=>k.resource))].map(async resource=>{
-          const response=await fetch(withBase(`/art/portraits/tex-${resource}.webp`),{signal:abort.signal});if(!response.ok)throw new Error('立绘贴图加载失败');
+          const response=await fetch(withBase(`/art/portraits/tex-${resource}.webp`),{signal:abort.signal});if(!response.ok)throw new Error(t('立绘贴图加载失败'));
           const url=URL.createObjectURL(await response.blob());
           try{const im=new Image();im.src=url;await im.decode();images.set(resource,im);}
           finally{URL.revokeObjectURL(url);}
@@ -39,18 +41,18 @@ export default function AnimatedPortrait({portrait,controls=false,onReady,onErro
           if(c.visible&&!document.hidden&&!reduced.matches){time+=previous?Math.min(now-previous,100)*.06:0;renderer!.draw(c.pose,c.face,time);}
           previous=now;raf=requestAnimationFrame(tick);
         };raf=requestAnimationFrame(tick);
-      }catch(e){if(!disposed&&!(e instanceof DOMException&&e.name==='AbortError')){setError(e instanceof Error?e.message:'立绘加载失败');failed.current?.();}}
+      }catch(e){if(!disposed&&!(e instanceof DOMException&&e.name==='AbortError')){setError(e instanceof Error?e.message:t('立绘加载失败'));failed.current?.();}}
     };void start();
     return()=>{disposed=true;abort.abort();cancelAnimationFrame(raf);renderer?.dispose();player.current=null;};
-  },[entered,portrait.resource,attempt]);
+  },[entered,portrait.resource,attempt,t]);
   useEffect(()=>{if(player.current){player.current.fit(pose,face);player.current.draw(pose,face,0);}},[pose,face]);
   return <div ref={root} className={`animated-portrait ${controls?'with-controls':''}`}>
-    <canvas ref={canvas} width="720" height="960" role="img" aria-label={`${portrait.name}动态立绘`} style={{opacity:loaded?1:0}}/>
-    {!loaded&&<span className="portrait-status" role="status">{error||'立绘加载中…'}{error&&<button type="button" onClick={()=>{setError('');setAttempt(n=>n+1);}}>重试</button>}</span>}
+    <canvas ref={canvas} width="720" height="960" role="img" aria-label={t('{name}动态立绘',{name:t(portrait.name)})} style={{opacity:loaded?1:0}}/>
+    {!loaded&&<span className="portrait-status" role="status">{error||t('立绘加载中…')}{error&&<button type="button" onClick={()=>{setError('');setAttempt(n=>n+1);}}>{t('重试')}</button>}</span>}
     {controls&&<div className="portrait-options">
-      <label htmlFor={`${id}-pose`}>姿势<SearchableSelect id={`${id}-pose`} value={pose} onChange={e=>{const p=Number(e.target.value);setPose(p);if(model)setFace(defaultFace(model,p));}}>{(model?poseOptions(model):[10]).map(p=><option key={p} value={p}>{p}{model?.options.poses[p]?.label?` · ${portraitLabel(model.options.poses[p].label)}`:''}</option>)}</SearchableSelect></label>
-      <label htmlFor={`${id}-face`}>表情<SearchableSelect id={`${id}-face`} value={face} onChange={e=>setFace(Number(e.target.value))}>{(model?model.animations.map(a=>a[0]&65535).filter(n=>n>=1000):[1000]).map(f=><option key={f} value={f}>{f}{model?.options.faces[f]?.name?` · ${portraitLabel(model.options.faces[f].name)}`:''}</option>)}</SearchableSelect></label>
-      <small>{portraitNotice}</small>
+      <label htmlFor={`${id}-pose`}>{t('姿势')}<SearchableSelect id={`${id}-pose`} value={pose} onChange={e=>{const p=Number(e.target.value);setPose(p);if(model)setFace(defaultFace(model,p));}}>{(model?poseOptions(model):[10]).map(p=><option key={p} value={p}>{p}{model?.options.poses[p]?.label?` · ${portraitLabel(model.options.poses[p].label,t,locale)}`:''}</option>)}</SearchableSelect></label>
+      <label htmlFor={`${id}-face`}>{t('表情')}<SearchableSelect id={`${id}-face`} value={face} onChange={e=>setFace(Number(e.target.value))}>{(model?model.animations.map(a=>a[0]&65535).filter(n=>n>=1000):[1000]).map(f=><option key={f} value={f}>{f}{model?.options.faces[f]?.name?` · ${portraitLabel(model.options.faces[f].name,t,locale)}`:''}</option>)}</SearchableSelect></label>
+      <small>{t(portraitNotice)}</small>
     </div>}
   </div>;
 }

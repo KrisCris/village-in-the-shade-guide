@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsyncWorkflowPlanner from '../../components/workflow/AsyncWorkflowPlanner';
+import { getI18n } from '../../i18n/server';
+const { t, locale } = getI18n(Astro.url);
 ---
-<BaseLayout title="农场生产工作流" description="按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。">
-  <div class="workflow-page-shell"><AsyncWorkflowPlanner client:only="react"><p slot="fallback">正在打开农场生产工作流…</p></AsyncWorkflowPlanner></div>
+<BaseLayout title={t('农场生产工作流')} description={t('按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。')}>
+  <div class="workflow-page-shell"><AsyncWorkflowPlanner client:only="react" locale={locale}><p slot="fallback">{t('正在打开农场生产工作流…')}</p></AsyncWorkflowPlanner></div>
 </BaseLayout>
 <style is:global>
   body.wiki-page:has(.workflow-page-shell){height:100dvh;min-height:0;overflow:hidden}

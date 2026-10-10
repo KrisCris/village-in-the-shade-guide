@@ -1,6 +1,7 @@
 import data from '../../data/sources/game-save-machines.json';
 import type { SaveContainer, SlotEdits, SlotAssignment } from './saveItems';
 import { builtChild, captureBuilt, encodeSigned, readSigned, SerTag, type SerBuiltNode, type SerDocument, type SerNode } from './ser';
+import { tr } from '../i18n/active';
 
 export const MACHINES = data;
 export interface MachineEdit { recipeId?: number; finish: boolean; rank?: number }
@@ -24,7 +25,7 @@ export function displayedItem(doc: SerDocument, container: SaveContainer): numbe
 export function gameDuration(seconds: number): string {
   const minutes = Math.ceil(Math.max(0, seconds) / 60);
   const days = Math.floor(minutes / 1440), hours = Math.floor(minutes % 1440 / 60), rest = minutes % 60;
-  return [days && `${days}天`, hours && `${hours}小时`, (rest || !minutes) && `${rest}分钟`].filter(Boolean).join(' ');
+  return [days && tr('{days}天', { days }), hours && tr('{hours}小时', { hours }), (rest || !minutes) && tr('{rest}分钟', { rest })].filter(Boolean).join(' ');
 }
 const packedKey = (key: string) => [...key].reduce((value, character, index) => value | (BigInt(character.charCodeAt(0)) << BigInt(index * 8)), 0n);
 function mapValue(doc: SerDocument, node: SerNode | undefined, key: string): number {
@@ -75,7 +76,7 @@ function updatedMap(doc: SerDocument, node: SerNode, changes: Record<string, num
 export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[], edits: MachineEdits) {
   const payloads = new Map<number, Uint8Array>(), subtrees = new Map<number, SerBuiltNode>(), slots: Record<number, SlotAssignment | null> = {};
   for (const key of Object.keys(edits)) {
-    if (!containers.some(container => machineJobs(doc, container).some(job => `${container.id}/${job.index}` === key))) throw new Error('加工栏位无效。');
+    if (!containers.some(container => machineJobs(doc, container).some(job => `${container.id}/${job.index}` === key))) throw new Error(tr('加工栏位无效。'));
   }
   for (const container of containers) {
     const affected = Object.keys(edits).some(key => key.startsWith(container.id + '/'));
@@ -88,15 +89,15 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
     for (const job of machineJobs(doc, container)) {
       const edit = edits[`${container.id}/${job.index}`];
       if (!edit) continue;
-      if (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)) throw new Error('材料品质无效。');
+      if (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)) throw new Error(tr('材料品质无效。'));
       let seconds = job.seconds;
       if (edit.recipeId !== undefined) {
-        if (machineSpec(container)?.mode !== 'processing') throw new Error('自动采集设备不能手动添加配方。');
-        if (job.seconds !== 0) throw new Error('请先在游戏中领取已有加工品，再向空栏位加入配方。');
+        if (machineSpec(container)?.mode !== 'processing') throw new Error(tr('自动采集设备不能手动添加配方。'));
+        if (job.seconds !== 0) throw new Error(tr('请先在游戏中领取已有加工品，再向空栏位加入配方。'));
         const recipe = data.processes.find(recipe => recipe.id === edit.recipeId && recipe.machines.includes(container.dataId!));
-        if (!recipe || recipe.minutes <= 0 || recipe.inputs.length > 8) throw new Error('这台设备不能加工所选配方。');
+        if (!recipe || recipe.minutes <= 0 || recipe.inputs.length > 8) throw new Error(tr('这台设备不能加工所选配方。'));
         const buffer = container.slots.slice(job.index * 8, job.index * 8 + 8);
-        if (buffer.length !== 8 || buffer.some(slot => slot.item)) throw new Error('加工材料缓冲区不为空或格式未知。');
+        if (buffer.length !== 8 || buffer.some(slot => slot.item)) throw new Error(tr('加工材料缓冲区不为空或格式未知。'));
         buffer.forEach((slot, index) => { const input = recipe.inputs[index]; slots[slot.pointer] = input ? { itemId: String(input.itemId), count: String(input.count), rank: String(edit.rank ?? 0), quality: '0' } : null; });
         seconds = recipe.minutes * 60;
         ids[`itemID${job.index}`] = recipe.output; values[`itemVal${job.index}`] = recipe.count;
@@ -107,7 +108,7 @@ export function buildMachineEdits(doc: SerDocument, containers: SaveContainer[],
         const buffer = machineSpec(container)?.mode === 'extractor' ? container.slots.slice(0, 1) : container.slots.slice(job.index * 8, job.index * 8 + 8);
         for (const slot of buffer) if (slot.item) payloads.set(slot.item.rankOffset, encodeSigned(BigInt(edit.rank), doc.node(slot.item.rankOffset).size));
       }
-      if (!seconds) throw new Error('空加工栏位不能立即完成。');
+      if (!seconds) throw new Error(tr('空加工栏位不能立即完成。'));
       if (edit.finish) new DataView(starts.buffer).setBigInt64(job.index * 8, BigInt(now - seconds), true);
     }
     const jobs = machineJobs(doc, container, edits);

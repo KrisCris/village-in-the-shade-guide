@@ -1,4 +1,5 @@
 import { withBase } from './sitePath';
+import { dataHref } from '../i18n/active';
 import { simplifySaveText } from './saveText';
 import type { LookupKind } from './saveModel';
 
@@ -23,7 +24,7 @@ export interface SaveNameTables {
 let pending: Promise<SaveNameTables> | null = null;
 
 export function loadSaveNames(): Promise<SaveNameTables> {
-  pending ??= fetch(withBase('/save-editor-names.json'))
+  pending ??= fetch(dataHref('/save-editor-names.json'))
     .then((response) => (response.ok ? response.json() : {}))
     .then((tables: SaveNameTables) => ({ ...tables, names: Object.fromEntries(Object.entries(tables.names ?? {}).map(([kind, entries]) => [kind, Object.fromEntries(Object.entries(entries).map(([id, name]) => [id, simplifySaveText(name)]))])) }))
     .catch(() => ({}));

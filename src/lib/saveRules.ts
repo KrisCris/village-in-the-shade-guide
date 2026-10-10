@@ -1,4 +1,5 @@
 import source from '../../data/sources/game-save-editor-rules.json';
+import { tr } from '../i18n/active';
 
 const constants = source.constants;
 export const SAVE_RULES = {
@@ -11,11 +12,11 @@ export const SAVE_RULES = {
 
 /** The game's final rank is BRAND, not an independently defined platinum rank. */
 export const ITEM_RANKS = [
-  { value: constants.ITEM_RANK_NORMAL.value, label: '普通' },
-  { value: constants.ITEM_RANK_COPPER.value, label: '铜星' },
-  { value: constants.ITEM_RANK_SILVER.value, label: '银星' },
-  { value: constants.ITEM_RANK_GOLD.value, label: '金星' },
-  { value: constants.ITEM_RANK_BRAND.value, label: '品牌' },
+  { value: constants.ITEM_RANK_NORMAL.value, label: tr('普通') },
+  { value: constants.ITEM_RANK_COPPER.value, label: tr('铜星') },
+  { value: constants.ITEM_RANK_SILVER.value, label: tr('银星') },
+  { value: constants.ITEM_RANK_GOLD.value, label: tr('金星') },
+  { value: constants.ITEM_RANK_BRAND.value, label: tr('品牌') },
 ];
 
 export function heartFill(points: number, thresholds: readonly number[]): number[] {

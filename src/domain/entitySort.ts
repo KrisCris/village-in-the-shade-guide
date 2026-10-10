@@ -1,3 +1,4 @@
+import { activeLang } from '../i18n/active';
 import type { Entity } from '../data/types';
 import type { Quality } from './quality';
 import { qualityPrice } from './quality';
@@ -79,7 +80,7 @@ export function sortEntities(rows: Entity[], field: SortField, direction: SortDi
         return a.value == null ? 1 : -1;
       }
       const compared = typeof a.value === 'string'
-        ? a.value.localeCompare(String(b.value), 'zh-CN')
+        ? a.value.localeCompare(String(b.value), activeLang())
         : a.value - Number(b.value);
       return compared === 0 ? a.index - b.index : compared * factor;
     })

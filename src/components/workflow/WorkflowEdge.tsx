@@ -5,6 +5,7 @@ import {
   type EdgeProps,
 } from "@xyflow/react";
 import WorkflowIcon from "./WorkflowIcon";
+import { tr } from '../../i18n/active';
 export default function WorkflowEdge(props: EdgeProps) {
   const [path, x, y] = getSmoothStepPath(props);
   const onInsert = props.data?.onInsert as
@@ -27,8 +28,8 @@ export default function WorkflowEdge(props: EdgeProps) {
           <span>{props.label}</span>
           <button
             type="button"
-            aria-label="在连线中插入节点"
-            title="插入节点并自动连接"
+            aria-label={tr('在连线中插入节点')}
+            title={tr('插入节点并自动连接')}
             onClick={(e) => {
               e.stopPropagation();
               onInsert?.(props.id, { x, y });

@@ -1,4 +1,5 @@
 import type { Entity } from "../../data/types";
+import { tr } from '../../i18n/active';
 
 // These are wardrobe unlock categories, distinct from placeable furniture/accessories.
 // GameAddInventoryItem -> 0x140268AE0 -> 0x1401488A0 checks categories 34–39
@@ -17,15 +18,15 @@ export const categoryKey = (e: Entity) => e.category_id || e.kind;
 export const categoryLabel = (e: Entity) =>
   e.category_name?.zh_hans ||
   ({
-    crops: "作物",
-    processes: "加工配方",
-    machines: "机械",
-    items: "其他物品",
+    crops: tr('作物'),
+    processes: tr('加工配方'),
+    machines: tr('机械'),
+    items: tr('其他物品'),
   }[e.kind] ??
     e.kind);
 export const seasonNames: Record<string, string> = {
-  spring: "春",
-  summer: "夏",
-  autumn: "秋",
-  winter: "冬",
+  spring: tr('春'),
+  summer: tr('夏'),
+  autumn: tr('秋'),
+  winter: tr('冬'),
 };

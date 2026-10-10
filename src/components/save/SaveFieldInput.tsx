@@ -5,6 +5,7 @@ import { useState } from 'react';
 import EntityPicker from './EntityPicker';
 import SaveDialog from './SaveDialog';
 import FriendshipInput from './FriendshipInput';
+import { tr } from '../../i18n/active';
 
 interface SaveFieldInputProps {
   field: SaveField;
@@ -19,7 +20,7 @@ interface SaveFieldInputProps {
 export default function SaveFieldInput({ field, draft, names, onChange, compact }: SaveFieldInputProps) {
   const value = draft ?? field.value;
   const [picking, setPicking] = useState(false);
-  const nameField = field.type === 'string' && /名字|名称|品牌名|name_|dogName_/i.test(field.label);
+  const nameField = field.type === 'string' && (field.nameLimit || /name_|dogName_/i.test(field.label));
   const dirty = value !== field.value;
   const resolved = lookupName(names, field.lookup, value);
 
@@ -27,7 +28,7 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
     return <span className="save-cell readonly" title={field.note}>
       <SaveIcon names={names} kind={field.lookup} value={value} size={22} />
       <span className="save-cell-value">{resolved || value || '—'}</span>
-      {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}/5 字符</small>}
+      {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}{tr('/5 字符')}</small>}
     {resolved && <small className="save-cell-name">ID {value}</small>}
     </span>;
   }
@@ -39,15 +40,15 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
   if (field.type === 'bool') {
     return <span className={`save-cell${dirty ? ' dirty' : ''}`}>
       <select value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={field.label}>
-        <option value="0">否</option>
-        <option value="1">是</option>
+        <option value="0">{tr('否')}</option>
+        <option value="1">{tr('是')}</option>
       </select>
     </span>;
   }
 
   if (field.lookup) return <div className={`save-cell${dirty ? ' dirty' : ''}`}>
     <button className="save-select-trigger" type="button" aria-label={field.label} aria-expanded={picking} onClick={() => setPicking(open => !open)}>
-      <SaveIcon names={names} kind={field.lookup} value={value} size={22} />{resolved || `未知值 ${value}`} ▾
+      <SaveIcon names={names} kind={field.lookup} value={value} size={22} />{resolved || tr('未知值 {value}', { value })} ▾
     </button>
     {picking && <SaveDialog title={field.label} compact onClose={() => setPicking(false)}><EntityPicker names={names} kind={field.lookup} value={value} label={field.label} onChange={id => { onChange(field, id); setPicking(false); }} /></SaveDialog>}
   </div>;
@@ -64,11 +65,11 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
       size={compact ? 10 : undefined}
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={field.label}
-      aria-description={nameField ? '名称最多 5 个字符，导出时检查。' : undefined}
+      aria-description={nameField ? tr('名称最多 5 个字符，导出时检查。') : undefined}
       aria-invalid={nameField && Array.from(value).length > 5 || undefined}
       spellCheck={false}
     />
-    {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}/5 字符</small>}
+    {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}{tr('/5 字符')}</small>}
     {resolved && <small className="save-cell-name">
       <SaveIcon names={names} kind={field.lookup} value={value} size={18} />
       {resolved}

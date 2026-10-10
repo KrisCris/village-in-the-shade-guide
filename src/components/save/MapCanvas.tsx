@@ -17,6 +17,7 @@ import {
   type SpriteArt
 } from '../../lib/saveMapScene';
 import { withBase } from '../../lib/sitePath';
+import { tr } from '../../i18n/active';
 
 export interface MapCanvasProps {
   art: MapArt;
@@ -431,7 +432,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         className={props.tool === 'pan' ? 'is-pan' : ''}
         tabIndex={0}
         role="application"
-        aria-label="农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。"
+        aria-label={tr('农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。')}
         onContextMenu={(e) => { e.preventDefault(); props.onCancel(); }}
         onKeyDown={(e) => {
           if(e.key.toLowerCase()==='r'){e.preventDefault();props.onRotate();}
@@ -483,12 +484,12 @@ export default function MapCanvas(props: MapCanvasProps) {
         }}
       />
       <div className="farm-compass" aria-hidden="true">
-        北 ↑
+        {tr('北 ↑')}
       </div>
       <button
         type="button"
         className="farm-minimap"
-        aria-label="农场总览，拖动定位，回车查看全貌"
+        aria-label={tr('农场总览，拖动定位，回车查看全貌')}
         onPointerDown={(e) => {
           if (miniPointer.current !== null) return;
           e.preventDefault();
@@ -525,28 +526,28 @@ export default function MapCanvas(props: MapCanvasProps) {
         </svg>
       </button>
       <div className="farm-zoom">
-        <button type="button" aria-label="放大地图" onClick={() => zoom(1.35)}>
+        <button type="button" aria-label={tr('放大地图')} onClick={() => zoom(1.35)}>
           ＋
         </button>
         <output>{Math.round(camera.zoom * 100)}%</output>
-        <button type="button" aria-label="缩小地图" onClick={() => zoom(1 / 1.35)}>
+        <button type="button" aria-label={tr('缩小地图')} onClick={() => zoom(1 / 1.35)}>
           −
         </button>
         <button type="button" onClick={() => setCamera(fitCamera(homeBounds, size.width, size.height))}>
-          全貌
+          {tr('全貌')}
         </button>
       </div>
       {!!loading && (
         <span className="farm-loading" role="status">
-          正在载入场景素材…
+          {tr('正在载入场景素材…')}
         </span>
       )}
       {!!failed.current.size && (
         <span className="farm-loading" role="alert">
-          部分素材加载失败，请刷新重试。
+          {tr('部分素材加载失败，请刷新重试。')}
         </span>
       )}
-      <div className="farm-canvas-hint">左键选择／框选 · 中键平移 · 双指平移 · 滚轮缩放</div>
+      <div className="farm-canvas-hint">{tr('左键选择／框选 · 中键平移 · 双指平移 · 滚轮缩放')}</div>
     </div>
   );
 }

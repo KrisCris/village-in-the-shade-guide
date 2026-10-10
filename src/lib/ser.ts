@@ -1,3 +1,4 @@
+import { tr } from '../i18n/active';
 /**
  * Reader and writer for the `SER` container that holds the decompressed save.
  *
@@ -79,41 +80,41 @@ export class SerDocument {
 
   constructor(data: Uint8Array) {
     if (data.length < 0x19 || data[0] !== 0x53 || data[1] !== 0x45 || data[2] !== 0x52 || data[3] !== 0x00) {
-      throw new Error('解压后的数据不是 SER 容器。');
+      throw new Error(tr('解压后的数据不是 SER 容器。'));
     }
     this.data = data;
     this.view = new DataView(data.buffer, data.byteOffset, data.byteLength);
     this.usedSize = this.view.getUint32(0x08, true);
     this.namesOffset = this.view.getUint32(0x0c, true);
     if (this.namesOffset < 0x19 || this.namesOffset > this.usedSize || this.usedSize > data.length) {
-      throw new Error('SER 头部的长度或名称表偏移无效。');
+      throw new Error(tr('SER 头部的长度或名称表偏移无效。'));
     }
     this.root = this.node(0x10);
     if (this.root.end !== this.namesOffset) {
-      throw new Error('SER 根节点的长度与名称表偏移不一致。');
+      throw new Error(tr('SER 根节点的长度与名称表偏移不一致。'));
     }
   }
 
   /** Read the NUL-terminated name at `offset` inside the name table. */
   name(offset: number): string {
     const start = this.namesOffset + offset;
-    if (offset < 0 || start >= this.usedSize) throw new Error(`名称偏移 ${offset} 越界。`);
+    if (offset < 0 || start >= this.usedSize) throw new Error(tr('名称偏移 {offset} 越界。', { offset }));
     let end = start;
     while (end < this.usedSize && this.data[end] !== 0) end++;
     return new TextDecoder('utf-8', { fatal: false }).decode(this.data.subarray(start, end));
   }
 
   node(offset: number): SerNode {
-    if (offset + HEADER_SIZE > this.namesOffset) throw new Error(`SER 节点头 @${offset} 越界。`);
+    if (offset + HEADER_SIZE > this.namesOffset) throw new Error(tr('SER 节点头 @{offset} 越界。', { offset }));
     const tag = this.data[offset];
-    if (tag > SerTag.String) throw new Error(`未知的 SER 节点类型 ${tag} @${offset}。`);
+    if (tag > SerTag.String) throw new Error(tr('未知的 SER 节点类型 {tag} @{offset}。', { tag, offset }));
     const nameOffset = this.view.getUint32(offset + 1, true);
     const size = this.view.getUint32(offset + 5, true);
     const counted = COUNTED_TAGS.has(tag);
     const ref = counted ? this.view.getUint32(offset + HEADER_SIZE, true) : -1;
     const body = offset + HEADER_SIZE + (counted ? 4 : 0);
     const end = body + size;
-    if (end > this.namesOffset) throw new Error(`SER 节点 @${offset} 的长度 ${size} 越界。`);
+    if (end > this.namesOffset) throw new Error(tr('SER 节点 @{offset} 的长度 {size} 越界。', { offset, size }));
     return { offset, tag, nameOffset, name: this.name(nameOffset), size, body, end, ref };
   }
 
@@ -125,7 +126,7 @@ export class SerDocument {
     let cursor = node.body;
     while (cursor < node.end) {
       const child = this.node(cursor);
-      if (child.end > node.end) throw new Error(`SER 子节点 @${cursor} 超出父节点 @${node.offset}。`);
+      if (child.end > node.end) throw new Error(tr('SER 子节点 @{cursor} 超出父节点 @{offset}。', { cursor, offset: node.offset }));
       result.push(child);
       cursor = child.end;
     }
@@ -163,7 +164,7 @@ export function readSigned(doc: SerDocument, node: SerNode): bigint {
     case 2: return BigInt(doc.view.getInt16(node.body, true));
     case 4: return BigInt(doc.view.getInt32(node.body, true));
     case 8: return doc.view.getBigInt64(node.body, true);
-    default: throw new Error(`${node.name} 不是 1/2/4/8 字节的整数字段。`);
+    default: throw new Error(tr('{name} 不是 1/2/4/8 字节的整数字段。', { name: node.name }));
   }
 }
 
@@ -175,7 +176,7 @@ export function encodeSigned(value: bigint, byteLength: number): Uint8Array {
     case 2: view.setInt16(0, Number(value), true); break;
     case 4: view.setInt32(0, Number(value), true); break;
     case 8: view.setBigInt64(0, value, true); break;
-    default: throw new Error(`不支持 ${byteLength} 字节的整数字段。`);
+    default: throw new Error(tr('不支持 {byteLength} 字节的整数字段。', { byteLength }));
   }
   return out;
 }
@@ -188,7 +189,7 @@ export function signedRange(byteLength: number): { min: bigint; max: bigint } {
 export function readFloat(doc: SerDocument, node: SerNode): number {
   if (node.size === 4) return doc.view.getFloat32(node.body, true);
   if (node.size === 8) return doc.view.getFloat64(node.body, true);
-  throw new Error(`${node.name} 不是 4/8 字节的浮点字段。`);
+  throw new Error(tr('{name} 不是 4/8 字节的浮点字段。', { name: node.name }));
 }
 
 export function encodeFloat(value: number, byteLength: number): Uint8Array {
@@ -196,22 +197,22 @@ export function encodeFloat(value: number, byteLength: number): Uint8Array {
   const view = new DataView(out.buffer);
   if (byteLength === 4) view.setFloat32(0, value, true);
   else if (byteLength === 8) view.setFloat64(0, value, true);
-  else throw new Error(`不支持 ${byteLength} 字节的浮点字段。`);
+  else throw new Error(tr('不支持 {byteLength} 字节的浮点字段。', { byteLength }));
   return out;
 }
 
 export function readString(doc: SerDocument, node: SerNode): string {
-  if (node.tag !== SerTag.String) throw new Error(`${node.name} 不是字符串节点。`);
+  if (node.tag !== SerTag.String) throw new Error(tr('{name} 不是字符串节点。', { name: node.name }));
   if (node.size < 5) return '';
   const length = doc.view.getUint32(node.body, true);
-  if (4 + length + 1 !== node.size) throw new Error(`${node.name} 的字符串长度前缀与节点长度不符。`);
+  if (4 + length + 1 !== node.size) throw new Error(tr('{name} 的字符串长度前缀与节点长度不符。', { name: node.name }));
   return new TextDecoder('utf-8', { fatal: false }).decode(doc.data.subarray(node.body + 4, node.body + 4 + length));
 }
 
 /** Build a string payload; the encoder handles the length change for us. */
 export function encodeString(value: string): Uint8Array {
   const bytes = new TextEncoder().encode(value);
-  if (bytes.includes(0)) throw new Error('字符串不能包含空字节。');
+  if (bytes.includes(0)) throw new Error(tr('字符串不能包含空字节。'));
   const out = new Uint8Array(4 + bytes.length + 1);
   new DataView(out.buffer).setUint32(0, bytes.length, true);
   out.set(bytes, 4);
@@ -398,7 +399,7 @@ export function serializeSer(doc: SerDocument, edits: SerEdits | SerEditSet): Ui
   const builtNames = new Map<SerBuiltNode, number>();
   const registerNames = (node: SerBuiltNode): void => {
     if (node.nameOffset < 0) {
-      if (!node.name || node.name.includes('\0')) throw new Error('新建节点名称无效。');
+      if (!node.name || node.name.includes('\0')) throw new Error(tr('新建节点名称无效。'));
       let offset = named.get(node.name);
       if (offset === undefined) {
         // The last name in a real save may end at EOF, without a NUL.
@@ -430,7 +431,7 @@ export function serializeSer(doc: SerDocument, edits: SerEdits | SerEditSet): Ui
   const remap = (ref: number, label: string): number => {
     if (ref === NULL_REF) return ref;
     const moved = plan.offset.get(ref);
-    if (moved === undefined) throw new Error(`指针 ${label} 引用了未知偏移 ${ref}。`);
+    if (moved === undefined) throw new Error(tr('指针 {label} 引用了未知偏移 {ref}。', { label, ref }));
     return moved;
   };
 
@@ -444,7 +445,7 @@ export function serializeSer(doc: SerDocument, edits: SerEdits | SerEditSet): Ui
       let ref: number;
       if (node.tag === SerTag.Pointer) {
         const pointer = node.pointer ?? 'null';
-        ref = pointer === 'null' ? NULL_REF : pointer === 'self' ? at : remap(pointer, node.name ?? '新建节点');
+        ref = pointer === 'null' ? NULL_REF : pointer === 'self' ? at : remap(pointer, node.name ?? tr('新建节点'));
       } else {
         ref = node.ref ?? (node.children?.length ?? 0);
       }

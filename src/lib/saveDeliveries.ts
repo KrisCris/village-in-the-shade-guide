@@ -1,6 +1,7 @@
 import data from '../../data/sources/game-save-unlocks.json';
 import { simplifySaveEntry } from './saveText';
 import { encodeSigned, readSigned, type SerDocument } from './ser';
+import { tr } from '../i18n/active';
 
 export const UNLOCKS = { ...data, nodes: data.nodes.map(simplifySaveEntry), groups: data.groups.map(simplifySaveEntry), bundles: data.bundles.map(simplifySaveEntry) };
 export type DeliveryEdits = Record<string, number>;
@@ -29,13 +30,13 @@ export function buildDeliveryEdits(doc: SerDocument, edits: DeliveryEdits = {}) 
   const rows = readDeliveries(doc), payloads = new Map<number, Uint8Array>(), flags: Record<string, boolean> = {};
   for (const [key, count] of Object.entries(edits)) {
     const row = rows.get(key);
-    if (!row || !Number.isInteger(count) || count < 0 || count > row.count) throw new Error('交付数量必须在 0 与所需数量之间。');
+    if (!row || !Number.isInteger(count) || count < 0 || count > row.count) throw new Error(tr('交付数量必须在 0 与所需数量之间。'));
     payloads.set(row.offset, encodeSigned(BigInt(row.count - count), 4));
   }
   for (const group of data.groups) {
     if (!Object.keys(edits).some(key => group.bundles.includes(Number(key.split(':')[0])))) continue;
     const expected = data.bundles.filter(b => group.bundles.includes(b.id)).flatMap(b => b.items.map((_, i) => `${b.id}:${i}`));
-    if (expected.some(key => !rows.has(key))) throw new Error('此目录缺少可验证的交付记录。');
+    if (expected.some(key => !rows.has(key))) throw new Error(tr('此目录缺少可验证的交付记录。'));
     flags[group.flag] = expected.every(key => { const row = rows.get(key)!; return (edits[key] ?? row.count - row.remain) === row.count; });
   }
   return { payloads, flags };

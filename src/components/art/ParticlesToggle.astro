@@ -1,10 +1,14 @@
-<button type="button" class="particles-toggle" role="switch" aria-label="飘落物" aria-checked="true">开启</button>
+---
+import { getI18n } from '../../i18n/server';
+const { t } = getI18n(Astro.url);
+---
+<button type="button" class="particles-toggle" role="switch" aria-label={t('飘落物')} aria-checked="true" data-on={t('开启')} data-off={t('关闭')}>{t('开启')}</button>
 <script>
   import {onPageMount} from '../../lib/pageLifecycle';
   const dispose=onPageMount(()=>{
     const button=document.querySelector<HTMLButtonElement>('.particles-toggle');if(!button)return;
     const root=document.documentElement;
-    const sync=()=>{const enabled=root.dataset.particles!=='off';button.setAttribute('aria-checked',String(enabled));button.textContent=enabled?'开启':'关闭';};
+    const sync=()=>{const enabled=root.dataset.particles!=='off';button.setAttribute('aria-checked',String(enabled));button.textContent=(enabled?button.dataset.on:button.dataset.off)??'';};
     const toggle=()=>{root.dataset.particles=root.dataset.particles==='off'?'on':'off';try{localStorage.setItem('village-particles',root.dataset.particles);}catch{}sync();window.dispatchEvent(new Event('particles-preference-change'));};
     button.addEventListener('click',toggle);sync();return()=>button.removeEventListener('click',toggle);
   });

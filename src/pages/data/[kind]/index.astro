@@ -1,24 +1,25 @@
 ---
-import { withBase } from '../../../lib/sitePath';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LazyEntityExplorer from '../../../components/table/LazyEntityExplorer';
 import { getCatalog } from '../../../data/repository';
 import { visibleRowsForKind } from '../../../data/catalogViews';
 import { groupProcessesByOutput } from '../../../domain/processGroups';
 import { kindLabels } from '../../../data/types';
+import { getI18n } from '../../../i18n/server';
 export function getStaticPaths() {
   const catalog = getCatalog();
   return Object.keys(catalog.counts).map((kind) => ({ params: { kind }, props: { kind } }));
 }
 const { kind } = Astro.props;
-const catalog = getCatalog();
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
 const rawRows = visibleRowsForKind(catalog, kind);
 const rows = kind === 'processes' ? groupProcessesByOutput(rawRows, catalog) : rawRows;
-const label = kindLabels[kind] ?? kind;
+const label = kindLabels[kind] ? t(kindLabels[kind]) : kind;
 ---
-<BaseLayout title={label} description={`${label}完整数据表，支持中文、日文和内部 ID 搜索。`}>
+<BaseLayout title={label} description={t('{label}完整数据表，支持中文、日文和内部 ID 搜索。', { label })}>
   <h1>{label}</h1>
-  {['crops','processes'].includes(kind) && <p><a href={withBase("/planner/")}>种植与加工收益排行 →</a></p>}
-  <p class="muted">共 {rows.length} 条</p>
-  <LazyEntityExplorer client:load source={`/list-data/kind-${kind}.json`}/>
+  {['crops','processes'].includes(kind) && <p><a href={href("/planner/")}>{t('种植与加工收益排行')} →</a></p>}
+  <p class="muted">{t('共 {count} 条', { count: rows.length })}</p>
+  <LazyEntityExplorer client:load source={`/list-data/kind-${kind}.json`} locale={locale}/>
 </BaseLayout>

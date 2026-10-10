@@ -1,5 +1,6 @@
 import { SAVE_RULES } from './saveRules';
 import type { SaveContainer, SaveSlot, SlotAssignment, SlotEdits } from './saveItems';
+import { tr } from '../i18n/active';
 
 export interface MaterialRequest { itemId: number; count: number; rank?: number }
 
@@ -13,10 +14,10 @@ export function slotValue(slot: SaveSlot, drafts: Record<number, string>, edits:
 /** Compute all assignments before changing state: insufficient room changes nothing. */
 export function addMaterials(containers: SaveContainer[], drafts: Record<number, string>, edits: SlotEdits, materials: MaterialRequest[]): SlotEdits {
   const backpack = containers.find(c => c.kind === 'backpack');
-  if (!backpack) throw new Error('此存档没有背包。');
+  if (!backpack) throw new Error(tr('此存档没有背包。'));
   const next = { ...edits };
   for (const material of materials) {
-    if (!Number.isSafeInteger(material.itemId) || material.itemId <= 0 || !Number.isSafeInteger(material.count) || material.count < 0 || !Number.isInteger(material.rank ?? 0) || (material.rank ?? 0) < 0 || (material.rank ?? 0) > 4) throw new Error('材料或品质无效。');
+    if (!Number.isSafeInteger(material.itemId) || material.itemId <= 0 || !Number.isSafeInteger(material.count) || material.count < 0 || !Number.isInteger(material.rank ?? 0) || (material.rank ?? 0) < 0 || (material.rank ?? 0) > 4) throw new Error(tr('材料或品质无效。'));
     let remaining = material.count;
     const itemId = String(material.itemId), rank = String(material.rank ?? 0);
     for (const slot of backpack.slots) {
@@ -33,7 +34,7 @@ export function addMaterials(containers: SaveContainer[], drafts: Record<number,
       next[slot.pointer] = { itemId, rank, quality: '0', count: String(amount) };
       remaining -= amount;
     }
-    if (remaining) throw new Error('背包空间不足，未加入任何材料。请先腾出空位。');
+    if (remaining) throw new Error(tr('背包空间不足，未加入任何材料。请先腾出空位。'));
   }
   return next;
 }
@@ -42,9 +43,9 @@ export function transferSlots(containers: SaveContainer[], drafts: Record<number
   const permitted = containers.filter(c => c.kind === 'backpack' || c.kind === 'storage' || c.id === 'shippingBoxItemList_');
   const slots = permitted.flatMap(c => c.slots);
   const source = slots.find(s => s.pointer === from), target = slots.find(s => s.pointer === to);
-  if (!source || !target) throw new Error('只能在背包、收纳箱和出货箱之间移动物品。');
+  if (!source || !target) throw new Error(tr('只能在背包、收纳箱和出货箱之间移动物品。'));
   if (from === to) return edits;
   const a = slotValue(source, drafts, edits), b = slotValue(target, drafts, edits);
-  if (!a) throw new Error('来源格子为空。');
+  if (!a) throw new Error(tr('来源格子为空。'));
   return { ...edits, [from]: b, [to]: a };
 }

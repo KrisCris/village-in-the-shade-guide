@@ -3,6 +3,7 @@ import type { LookupKind } from '../../lib/saveModel';
 import { lookupIcon, type SaveNameTables } from '../../lib/saveNames';
 import { ITEM_RANKS } from '../../lib/saveRules';
 import RankIcon from './RankIcon';
+import { tr } from '../../i18n/active';
 
 const FALLBACKS: Partial<Record<LookupKind, string>> = {
   items: '/icons/fallback/items.svg',
@@ -42,7 +43,7 @@ export default function SaveIcon({ names, kind, value, size, className, rank }: 
   />;
   if (rank === undefined) return icon;
   const quality = ITEM_RANKS.find(entry => entry.value === rank);
-  return <span className="save-ranked-icon" style={{ width: size, height: size }} title={quality?.label ?? '未知品质'}>
+  return <span className="save-ranked-icon" style={{ width: size, height: size }} title={quality?.label ?? tr('未知品质')}>
     {icon}
     <RankIcon className="save-rank-badge" rank={rank} />
   </span>;

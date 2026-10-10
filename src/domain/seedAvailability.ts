@@ -1,4 +1,5 @@
 import type {Entity} from '../data/types';
+import {tr} from '../i18n/active';
 const seasons=['spring','summer','autumn','winter'];
 // storesales predicates join to gameflag's named year/season release flags.
 const release:Record<number,[number,number]>={520:[2,0],521:[3,0],522:[1,1],523:[2,1],524:[3,1],525:[1,2],526:[2,2],527:[1,3]};
@@ -12,5 +13,5 @@ export function seedAvailability(crop:Entity,entities:Entity[],year:number,seaso
    const start=release[flag];return !start||date >= (start[0]-1)*4+start[1];
   });
  });
- return {available:available.length>0,conditions:[...new Set(available.flatMap(e=>(e.conditions ?? []) as string[]))],locations:[...new Set(available.map(e=>String(e.location ?? '商店')))]};
+ return {available:available.length>0,conditions:[...new Set(available.flatMap(e=>(e.conditions ?? []) as string[]))],locations:[...new Set(available.map(e=>String(e.location ?? tr('商店'))))]};
 }

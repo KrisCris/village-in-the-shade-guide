@@ -15,6 +15,7 @@ import type {
   NodeProjection,
   WorkInProgress,
 } from "./types";
+import { tr } from '../../i18n/active';
 
 type Crop = {
   seeds: string[];
@@ -55,7 +56,7 @@ export function simulateIntentPlan(
   entities: Entity[],
 ): SimulationResult {
   try {plan=parsePlan(JSON.stringify(plan));} catch(error) {
-    return {days:[],events:[],issues:[error instanceof Error?error.message:'计划格式无效'],income:0,spending:0,cash:0,pendingRevenue:0,stock:[],inProgress:[],demandProgress:Object.create(null)};
+    return {days:[],events:[],issues:[error instanceof Error?error.message:tr('计划格式无效')],income:0,spending:0,cash:0,pendingRevenue:0,stock:[],inProgress:[],demandProgress:Object.create(null)};
   }
   const resolved = resolveIntent(plan, entities),
     nodes = resolved.nodes;
@@ -88,7 +89,7 @@ export function simulateIntentPlan(
   };
   const summary = result.intent!;
   if (hasCycle(nodes, plan.edges)) {
-    result.issues.push("流程包含循环或失效连线，请修复后计算。");
+    result.issues.push(tr('流程包含循环或失效连线，请修复后计算。'));
     return result;
   }
   const catalog = new Map(entities.map((e) => [e.id, e])),
@@ -192,7 +193,7 @@ export function simulateIntentPlan(
     const item = catalog.get(itemId),
       price = item?.buy_price;
     if (!priceValid(price)) {
-      warn(n, `${name(itemId)} 的买价未知，购买尚未计入。`);
+      warn(n, tr('{name} 的买价未知，购买尚未计入。', { name: name(itemId) }));
       return false;
     }
     const availability = seedAvailability(
@@ -202,18 +203,18 @@ export function simulateIntentPlan(
       seasonAt(day),
     );
     if (!availability.available) {
-      warn(n, `${name(itemId)} 在当日没有已知商店供应。`);
+      warn(n, tr('{name} 在当日没有已知商店供应。', { name: name(itemId) }));
       return false;
     }
     if (availability.conditions.length)
-      notice(n, `购买条件需确认：${availability.conditions.join("；")}`);
+      notice(n, tr('购买条件需确认：{conditions}', { conditions: availability.conditions.join("；") }));
     const amount = quantity * price;
     spending += amount;
     account(-amount);
     emit(
       n,
       "purchase",
-      `${replant ? "续种补买" : "买入"} ${name(itemId)} ×${quantity} · ${amount}`,
+      `${replant ? tr('续种补买') : tr('买入')} ${name(itemId)} ×${quantity} · ${amount}`,
       { itemId, quantity, amount, reason: replant ? "replant" : "initial" },
     );
     return true;
@@ -232,19 +233,19 @@ export function simulateIntentPlan(
   }
   for (const n of nodes) {
     for (const message of resolved.notices[n.id]) block(n, message);
-    if(n.needsConfirmation) block(n, '尚未确认取得这些物品；在库存节点确认准备完毕后才计入计划。', 'draft');
+    if(n.needsConfirmation) block(n, tr('尚未确认取得这些物品；在库存节点确认准备完毕后才计入计划。'), 'draft');
     if (
       ["purchase", "inventory", "sale", "consume"].includes(n.kind) &&
       !catalog.has(n.itemId ?? "")
     )
-      block(n, "连接一个已选物品的节点，或手动选择物品。", "draft");
+      block(n, tr('连接一个已选物品的节点，或手动选择物品。'), "draft");
     if (n.kind === "plant") {
       const c = catalog.get(n.cropId ?? ""),
         outputs = stringArray(c?.harvest_item_ids),
         seeds = stringArray(c?.seed_item_ids),
         seasons = stringArray(c?.seasons);
       if (!c) {
-        block(n, "连接种子来源以推算作物，或手动选择作物。", "draft");
+        block(n, tr('连接种子来源以推算作物，或手动选择作物。'), "draft");
         continue;
       }
       if (
@@ -258,7 +259,7 @@ export function simulateIntentPlan(
           c.regrow_days !== 0 &&
           !positive(c.regrow_days))
       ) {
-        block(n, "生长时间、产量、种子或季节数据不完整。");
+        block(n, tr('生长时间、产量、种子或季节数据不完整。'));
         continue;
       }
       crops.set(n.id, {
@@ -279,8 +280,8 @@ export function simulateIntentPlan(
         block(
           n,
           resolved.choices[n.id].length > 1
-            ? `有 ${resolved.choices[n.id].length} 种兼容配方，请选择加工方式。`
-            : "连接原料后选择加工配方。",
+            ? tr('有 {count} 种兼容配方，请选择加工方式。', { count: resolved.choices[n.id].length })
+            : tr('连接原料后选择加工配方。'),
           "draft",
         );
         continue;
@@ -294,19 +295,19 @@ export function simulateIntentPlan(
         !positive(output.quantity) ||
         !priceValid(r.duration_minutes)
       ) {
-        block(n, "配方投入、产出或加工时间数据不完整。");
+        block(n, tr('配方投入、产出或加工时间数据不完整。'));
         continue;
       }
       const machineIds = stringArray(r.machine_ids);
       const machineId = n.machineId ?? machineIds[0];
       projection(n).machineId = machineId;
       if (!machineId || !machineIds.includes(machineId)) {
-        block(n, "所选机器不支持当前配方，请更改机器型号。");
+        block(n, tr('所选机器不支持当前配方，请更改机器型号。'));
         continue;
       }
       const machine = entities.find(e => e.kind === "machines" && e.id === machineId);
       if (!positive(machine?.capacity)) {
-        block(n, "这台设备的游戏容量数据尚未核实，暂不能安排加工。");
+        block(n, tr('这台设备的游戏容量数据尚未核实，暂不能安排加工。'));
         continue;
       }
       projection(n).machineCapacity = machine.capacity;
@@ -326,11 +327,11 @@ export function simulateIntentPlan(
       n.requirements = req;
       result.demandProgress[n.id] = req.map((a) => ({ ...a, quantity: 0 }));
       if (!req.length) {
-        block(n, "添加要留存的物品与数量。", "draft");
+        block(n, tr('添加要留存的物品与数量。'), "draft");
         continue;
       }
       if (!incoming.get(n.id)!.length)
-        notice(n, "尚未安排来源，连接产物后自动留货。");
+        notice(n, tr('尚未安排来源，连接产物后自动留货。'));
     }
   }
   const inputAmounts = (n: WorkflowNode): Amount[] => {
@@ -397,7 +398,7 @@ export function simulateIntentPlan(
           ) {
             notice(
               n,
-              `「${source.label}」的${name(itemId)}有多个“剩余全部”去向：设置固定数量或不同分配顺序。`,
+              tr('「{label}」的{name}有多个“剩余全部”去向：设置固定数量或不同分配顺序。', { label: source.label, name: name(itemId) }),
               "blocked",
             );
             continue;
@@ -522,8 +523,8 @@ export function simulateIntentPlan(
         n,
         kind,
         kind === "plant"
-          ? `播种 ${quantity} 格 · ${duration} 天后收获`
-          : `投料 ${r!.inputs.map((a) => `${name(a.itemId)} ×${a.quantity * quantity}`).join(" + ")} · ${quantity} 批`,
+          ? tr('播种 {quantity} 格 · {duration} 天后收获', { quantity, duration })
+          : tr('投料 {inputs} · {quantity} 批', { inputs: r!.inputs.map((a) => `${name(a.itemId)} ×${a.quantity * quantity}`).join(" + "), quantity }),
         { itemId: kind === "plant" ? c!.seeds[0] : itemId, quantity },
       );
   };
@@ -538,7 +539,7 @@ export function simulateIntentPlan(
         const r = receipts.splice(i, 1)[0];
         income += r.amount;
         account(r.amount);
-        emit(byNode.get(r.nodeId)!, "receipt", `出货款到账 ${r.amount}`, r);
+        emit(byNode.get(r.nodeId)!, "receipt", tr('出货款到账 {amount}', { amount: r.amount }), r);
       }
     for (let i = jobs.length - 1; i >= 0; i--)
       if (jobs[i].finishDay <= day) {
@@ -550,7 +551,7 @@ export function simulateIntentPlan(
         emit(
           n,
           j.kind === "plant" ? "harvest" : "complete",
-          `${j.kind === "plant" ? "收获" : "加工完成"} ${name(j.itemId)} ×${j.quantity}`,
+          `${j.kind === "plant" ? tr('收获') : tr('加工完成')} ${name(j.itemId)} ×${j.quantity}`,
           { itemId: j.itemId, quantity: j.quantity },
         );
         if (j.kind === "plant" && j.regrow) {
@@ -577,7 +578,7 @@ export function simulateIntentPlan(
           (!c.seasons.includes(seasonAt(day)) ||
             day + n.remainingDays > Math.ceil(day / 28) * 28)
         ) {
-          block(n, "已有作物无法在本季完成收获。");
+          block(n, tr('已有作物无法在本季完成收获。'));
           continue;
         }
         initialized.add(n.id);
@@ -613,7 +614,7 @@ export function simulateIntentPlan(
         put(supplies.get(n.id)!, n.itemId!, n.quantity);
         mark(n, n.quantity);
         projection(n).outputQuantity += n.quantity;
-        emit(n, "inventory", `已有 ${name(n.itemId!)} ×${n.quantity}`, {
+        emit(n, "inventory", tr('已有 {name} ×{quantity}', { name: name(n.itemId!), quantity: n.quantity }), {
           itemId: n.itemId,
           quantity: n.quantity,
         });
@@ -629,7 +630,7 @@ export function simulateIntentPlan(
         emit(
           n,
           j.kind === "plant" ? "harvest" : "complete",
-          `已有生产完成 ${name(j.itemId)} ×${j.quantity}`,
+          tr('已有生产完成 {name} ×{quantity}', { name: name(j.itemId), quantity: j.quantity }),
           { itemId: j.itemId, quantity: j.quantity },
         );
         if (j.kind === "plant" && j.regrow && day + j.regrow <= j.lastDay)
@@ -659,7 +660,7 @@ export function simulateIntentPlan(
         );
         if ((!n.seasonProtection && !c.seasons.includes(seasonAt(day))) || day + c.growth > lastDay) {
           if (!started.has(n.id) && c.seeds.some((id) => get(n, id) > 0))
-            notice(n, "种植季节不符，或本季已不足以完成首次收获。", "blocked");
+            notice(n, tr('种植季节不符，或本季已不足以完成首次收获。'), "blocked");
           continue;
         }
         const available = c.seeds.reduce((s, id) => s + get(n, id), 0);
@@ -726,7 +727,7 @@ export function simulateIntentPlan(
               plan.quality,
             );
           if (!price || !priceValid(price.value)) {
-            warn(n, `${name(itemId)} 的卖价未知，已保留库存。`);
+            warn(n, tr('{name} 的卖价未知，已保留库存。', { name: name(itemId) }));
             continue;
           }
           const amount = price.value * count;
@@ -735,7 +736,7 @@ export function simulateIntentPlan(
           emit(
             n,
             "sale",
-            `出售 ${name(itemId)} ×${count} · ${plan.settlementDays ? `${plan.settlementDays} 天后到账` : "当日到账"}`,
+            tr('出售 {name} ×{count} · {settlement}', { name: name(itemId), count, settlement: plan.settlementDays ? tr('{days} 天后到账', { days: plan.settlementDays }) : tr('当日到账') }),
             { itemId, quantity: count, amount },
           );
           if (plan.settlementDays) {
@@ -750,7 +751,7 @@ export function simulateIntentPlan(
           } else {
             income += amount;
             account(amount);
-            emit(n, "receipt", `出货款到账 ${amount}`, {
+            emit(n, "receipt", tr('出货款到账 {amount}', { amount }), {
               itemId,
               quantity: count,
               amount,
@@ -759,7 +760,7 @@ export function simulateIntentPlan(
         } else {
           use(n, itemId, count);
           mark(n, count);
-          emit(n, "consume", `消耗 ${name(itemId)} ×${count}`, {
+          emit(n, "consume", tr('消耗 {name} ×{count}', { name: name(itemId), count }), {
             itemId,
             quantity: count,
           });
@@ -775,7 +776,7 @@ export function simulateIntentPlan(
               previous.quantity += quantity;
               projection(n).reserved += quantity;
               mark(n, quantity);
-              emit(n, "reserve", `留存 ${name(a.itemId)} ×${quantity}`, {
+              emit(n, "reserve", tr('留存 {name} ×{quantity}', { name: name(a.itemId), quantity }), {
                 itemId: a.itemId,
                 quantity,
               });
@@ -806,7 +807,7 @@ export function simulateIntentPlan(
           emit(
             n,
             "delivery",
-            `交付 ${(n.requirements ?? []).map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、")}，从留货中扣除。`,
+            tr('交付 {items}，从留货中扣除。', { items: (n.requirements ?? []).map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、") }),
             {
               quantity: (n.requirements ?? []).reduce(
                 (s, a) => s + a.quantity,
@@ -815,7 +816,7 @@ export function simulateIntentPlan(
             },
           );
         } else if (day === n.dueDay)
-          warn(n, "到交付日期仍未备齐，继续留货；调整交付日期后可重新安排。");
+          warn(n, tr('到交付日期仍未备齐，继续留货；调整交付日期后可重新安排。'));
       }
     }
     const pending = receipts.reduce((s, r) => s + r.amount, 0),
@@ -856,13 +857,13 @@ export function simulateIntentPlan(
     day = Math.min(...dates);
     if (day > 11200) {
       summary.complete = false;
-      result.issues.push("后续安排超过第 100 年，剩余在制品与待到账款保留。");
+      result.issues.push(tr('后续安排超过第 100 年，剩余在制品与待到账款保留。'));
       break;
     }
   }
   if (iterations >= 20000) {
     summary.complete = false;
-    result.issues.push("后续事件过多，推演已停止；请缩短重复范围。");
+    result.issues.push(tr('后续事件过多，推演已停止；请缩短重复范围。'));
   }
   if (!periodCaptured) {
     result.income = income;
@@ -892,11 +893,11 @@ export function simulateIntentPlan(
         );
         const stop =
           lastPlant + c.growth * 2 > limit
-            ? "余下时间不足以再完成一轮，已停止续种。"
+            ? tr('余下时间不足以再完成一轮，已停止续种。')
             : !n.autoBuy
-              ? "种子不足以保持首轮规模，下一轮未安排。"
+              ? tr('种子不足以保持首轮规模，下一轮未安排。')
               : undefined;
-        if (stop) p.notices.push(`最后播种为第 ${lastPlant} 天。${stop}`);
+        if (stop) p.notices.push(tr('最后播种为第 {lastPlant} 天。{stop}', { lastPlant, stop }));
       }
     }
     if (
@@ -904,18 +905,18 @@ export function simulateIntentPlan(
       !autoDate(n) &&
       n.startDay > periodEnd
     )
-      p.notices.push("开始日期在计划的新增安排范围之外，请延长计划天数。");
+      p.notices.push(tr('开始日期在计划的新增安排范围之外，请延长计划天数。'));
     const waiting = [...inboxes.get(n.id)!].filter(([, q]) => q > 0);
     if (n.kind === "process" && waiting.length) {
       const r = recipes.get(n.id)!;
       const missing = r.inputs
         .filter((a) => get(n, a.itemId) < a.quantity)
-        .map((a) => `${name(a.itemId)} 还缺 ${a.quantity - get(n, a.itemId)}`);
+        .map((a) => tr('{name} 还缺 {count}', { name: name(a.itemId), count: a.quantity - get(n, a.itemId) }));
       notice(
         n,
         missing.length
-          ? `余料尚不够一批：${missing.join("，")}。`
-          : "仍有原料等待加工。",
+          ? tr('余料尚不够一批：{items}。', { items: missing.join("，") })
+          : tr('仍有原料等待加工。'),
       );
     }
     if (n.kind === "reserve" || n.kind === "delivery") {
@@ -931,13 +932,13 @@ export function simulateIntentPlan(
       if (missing.length)
         notice(
           n,
-          `还需 ${missing.map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、")}。`,
+          tr('还需 {items}。', { items: missing.map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、") }),
         );
     }
     if (!p.firstDay && p.notices.length === 0)
       notice(
         n,
-        incoming.get(n.id)!.length ? "等待上游产物。" : "尚未连接物品来源。",
+        incoming.get(n.id)!.length ? tr('等待上游产物。') : tr('尚未连接物品来源。'),
       );
     if (p.firstDay !== undefined && p.status === "scheduled" && !waiting.length)
       p.status = "done";
@@ -953,7 +954,7 @@ export function simulateIntentPlan(
     if (left.length)
       notice(
         n,
-        `未安排去向：${left.map(([id, q]) => `${name(id)} ×${q}`).join("、")}。`,
+        tr('未安排去向：{items}。', { items: left.map(([id, q]) => `${name(id)} ×${q}`).join("、") }),
       );
   }
   return result;

@@ -6,6 +6,7 @@ import places from '../../data/sources/game-save-placements.json';
 import { animalResidents, animalHouses, ANIMALS, type AnimalEdits } from './saveAnimals';
 import { flagEnabled, type ProgressEdits } from './saveProgress';
 import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, nullPointer, readFloat, readSigned, serializeSer, SerDocument, SerTag, type SerBuiltNode, type SerNode } from './ser';
+import { tr } from '../i18n/active';
 
 export const MAP_DATA = data;
 export const MAP_CROPS = crops.filter(c => c.seed_item_ids.length && c.harvest_item_ids.length);
@@ -35,7 +36,7 @@ export function mapAnimalEdits(doc: SerDocument, edits: MapEdits, animalEdits: A
   const moves={...animalEdits.moves},added={...animalEdits.added};
   const objects=mapObjects(doc);
   if(objects.some(o=>edits.removed?.includes(o.uid)&&o.spec?.code.includes('ARCHITECTURE_STABLE'))&&residents.some(r=>ANIMALS.some(a=>a.id===r.species&&a.houseType===2))&&!buildings.some(o=>o.spec?.code.includes('ARCHITECTURE_STABLE')))
-    throw new Error('马厩里还有马，请保留一座马厩后再导出。');
+    throw new Error(tr('马厩里还有马，请保留一座马厩后再导出。'));
   function relocate(placement:number,species:number,name:string) {
     const old=places.placements.find(p=>p.id===placement);
     if(!old||old.special||old.houseType>=2||available.has(placement))return placement;
@@ -48,7 +49,7 @@ export function mapAnimalEdits(doc: SerDocument, edits: MapEdits, animalEdits: A
     const ordinal=places.placements.filter(p=>p.mapId===old.mapId&&!p.special).findIndex(p=>p.id===placement);
     const preferred=candidates[ordinal];
     const target=preferred&&!occupied.has(preferred.id)?preferred:candidates.find(s=>!occupied.has(s.id));
-    if(!target)throw new Error(`建筑内没有足够栏位安置「${name}」，请先调整动物位置。`);
+    if(!target)throw new Error(tr('建筑内没有足够栏位安置「{name}」，请先调整动物位置。', { name }));
     occupied.add(target.id);return target.id;
   }
   for(const resident of residents){const target=relocate(resident.placement,resident.species,resident.name);if(target!==resident.placement)moves[resident.index]=target;}
@@ -86,21 +87,21 @@ export function mapObjects(doc: SerDocument) {
 }
 
 export function parseMapPreset(text: string): MapEdits {
-  if (text.length > 2_000_000) throw new Error('布局预设过大。');
+  if (text.length > 2_000_000) throw new Error(tr('布局预设过大。'));
   const preset = JSON.parse(text);
-  if (preset?.version !== 1 || preset?.game !== 'honogurashi' || !preset.edits || typeof preset.edits !== 'object') throw new Error('布局预设格式不兼容。');
+  if (preset?.version !== 1 || preset?.game !== 'honogurashi' || !preset.edits || typeof preset.edits !== 'object') throw new Error(tr('布局预设格式不兼容。'));
   const e = preset.edits as MapEdits;
-  if (Array.isArray(e) || Object.keys(e).some(key => !['cells', 'objects', 'removed'].includes(key))) throw new Error('预设包含未知编辑项。');
-  if (e.cells !== undefined && (!e.cells || Array.isArray(e.cells) || typeof e.cells !== 'object')) throw new Error('预设田地列表无效。');
-  if (Object.keys(e.cells ?? {}).length > 5000 || (e.objects?.length ?? 0) > 1000) throw new Error('布局预设超出编辑上限。');
+  if (Array.isArray(e) || Object.keys(e).some(key => !['cells', 'objects', 'removed'].includes(key))) throw new Error(tr('预设包含未知编辑项。'));
+  if (e.cells !== undefined && (!e.cells || Array.isArray(e.cells) || typeof e.cells !== 'object')) throw new Error(tr('预设田地列表无效。'));
+  if (Object.keys(e.cells ?? {}).length > 5000 || (e.objects?.length ?? 0) > 1000) throw new Error(tr('布局预设超出编辑上限。'));
   for (const [key, paint] of Object.entries(e.cells ?? {})) {
-    if (!/^\d+:\d+$/.test(key) || !paint || typeof paint !== 'object' || Array.isArray(paint) || Object.keys(paint).some(k => !['crop', 'soil', 'watered', 'growth', 'form'].includes(k)) || (paint.crop !== undefined && paint.crop !== null && !MAP_CROPS.some(c => c.numeric_id === paint.crop)) || (paint.soil !== undefined && ![0, 1, 2, 3].includes(paint.soil)) || (paint.watered !== undefined && typeof paint.watered !== 'boolean')) throw new Error('预设含无效田地。');
-    if(paint.growth!==undefined&&(!Number.isSafeInteger(paint.growth)||paint.growth<0||paint.growth>1_000_000)||paint.form!==undefined&&(!Number.isSafeInteger(paint.form)||paint.form<1||paint.form>10))throw new Error('无效的生长状态。');
+    if (!/^\d+:\d+$/.test(key) || !paint || typeof paint !== 'object' || Array.isArray(paint) || Object.keys(paint).some(k => !['crop', 'soil', 'watered', 'growth', 'form'].includes(k)) || (paint.crop !== undefined && paint.crop !== null && !MAP_CROPS.some(c => c.numeric_id === paint.crop)) || (paint.soil !== undefined && ![0, 1, 2, 3].includes(paint.soil)) || (paint.watered !== undefined && typeof paint.watered !== 'boolean')) throw new Error(tr('预设含无效田地。'));
+    if(paint.growth!==undefined&&(!Number.isSafeInteger(paint.growth)||paint.growth<0||paint.growth>1_000_000)||paint.form!==undefined&&(!Number.isSafeInteger(paint.form)||paint.form<1||paint.form>10))throw new Error(tr('无效的生长状态。'));
   }
-  if (e.objects !== undefined && !Array.isArray(e.objects)) throw new Error('预设物体列表无效。');
-  for (const object of e.objects ?? []) if (!object || ![object.scene, object.cell, object.template].every(Number.isSafeInteger) || (object.move !== undefined && !/^\d+$/.test(object.move))) throw new Error('预设含无效物体。');
-  if (e.removed !== undefined && (!Array.isArray(e.removed) || e.removed.some(id => !/^\d+$/.test(id)))) throw new Error('无效的清理物体列表。');
-  for (const o of e.objects ?? []) if (o.angle !== undefined && (!Number.isFinite(o.angle) || o.angle % 45 !== 0)) throw new Error('无效的物体方向。');
+  if (e.objects !== undefined && !Array.isArray(e.objects)) throw new Error(tr('预设物体列表无效。'));
+  for (const object of e.objects ?? []) if (!object || ![object.scene, object.cell, object.template].every(Number.isSafeInteger) || (object.move !== undefined && !/^\d+$/.test(object.move))) throw new Error(tr('预设含无效物体。'));
+  if (e.removed !== undefined && (!Array.isArray(e.removed) || e.removed.some(id => !/^\d+$/.test(id)))) throw new Error(tr('无效的清理物体列表。'));
+  for (const o of e.objects ?? []) if (o.angle !== undefined && (!Number.isFinite(o.angle) || o.angle % 45 !== 0)) throw new Error(tr('无效的物体方向。'));
   return e;
 }
 
@@ -125,7 +126,7 @@ export function matureTreeAt(doc: SerDocument, edits: MapEdits, id: number, scen
   return false;
 
 }
-export const CROP_FORMS:Record<number,string>={1:'正常生长',2:'枯萎',3:'异变',4:'再收获生长',5:'再次收获生长',6:'树桩',7:'树桩',8:'坑洞',9:'枯萎可收获',10:'等待收获季节'};
+export const CROP_FORMS:Record<number,string>={1:tr('正常生长'),2:tr('枯萎'),3:tr('异变'),4:tr('再收获生长'),5:tr('再次收获生长'),6:tr('树桩'),7:tr('树桩'),8:tr('坑洞'),9:tr('枯萎可收获'),10:tr('等待收获季节')};
 export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number) {
   const cell=mapCells(doc).find(c=>c.id===id),paint=edits.cells?.[`${scene}:${id}`];
   const crop=crops.find(c=>c.numeric_id===(paint?.crop!==undefined?paint.crop:cell?.crop));
@@ -141,8 +142,8 @@ export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number
 export function cropSoils(id:number):number[]{return (data.cropRules as Record<string,{soils:number[]}>)[id]?.soils??[];}
 export function cropPlacementProblem(id:number,soil:number) {
   const allowed=cropSoils(id);
-  if(allowed.length&&!allowed.includes(soil))return allowed.includes(3)?'这种作物需要水田，请先使用水渠／水田工具。':'这种作物不能种在水田，请先改为耕地或田垄。';
-  if(!allowed.length&&soil===3)return '这种作物不能种在水田。';
+  if(allowed.length&&!allowed.includes(soil))return allowed.includes(3)?tr('这种作物需要水田，请先使用水渠／水田工具。'):tr('这种作物不能种在水田，请先改为耕地或田垄。');
+  if(!allowed.length&&soil===3)return tr('这种作物不能种在水田。');
   return null;
 }
 export function placementProblem(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): string | null {
@@ -150,20 +151,20 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   const original=placement.move?mapObjects(doc).find(o=>o.uid===placement.move):undefined;
   const homeUpgrade=!!original&&!!spec?.code.includes('ARCHITECTURE_MYHOUSE_')&&!!original.spec?.code.includes('ARCHITECTURE_MYHOUSE_')&&placement.cell===landId(original.x,original.y)&&spec.level>original.spec.level;
   if(homeUpgrade)return null;
-  if(spec?.code.includes('ARCHITECTURE_MYHOUSE_'))return '自宅只能在原位置升级。';
+  if(spec?.code.includes('ARCHITECTURE_MYHOUSE_'))return tr('自宅只能在原位置升级。');
   const target=terrain.find(c=>c.id===placement.cell);
-  if (!target || !spec) return '此位置不可放置。';
-  if (!areaAvailable(doc,target.area)) return '此田地尚未购买。';
+  if (!target || !spec) return tr('此位置不可放置。');
+  if (!areaAvailable(doc,target.area)) return tr('此田地尚未购买。');
   const fs=spec.features,indoor=placement.scene!==100000001;
-  if ((spec.building || fs.includes('PLACEMENT_GARDEN_ONLY')) && indoor) return '只能放在室外庭院。';
-  if (fs.includes('PLACEMENT_INDOOR_ONLY') && !indoor) return '只能放在室内。';
-  if (fs.includes('PLACEMENT_MYHOUSE_ONLY') && !data.scenes.find(s=>s.id===placement.scene)?.code.includes('MYHOUSE')) return '只能放在自宅。';
-  if (fs.includes('TREE') && !matureTreeAt(doc,edits,target.id,placement.scene)) return '树液采集器需要放在成熟树木所在的地块。';
-  if (fs.includes('PLACEMENT_ARC_LIVESTOCK_ONLY') && !/LIVESTOCK|AVIARY/.test(data.scenes.find(s=>s.id===placement.scene)?.code??'')) return '只能放在畜舍或鸡舍内。';
+  if ((spec.building || fs.includes('PLACEMENT_GARDEN_ONLY')) && indoor) return tr('只能放在室外庭院。');
+  if (fs.includes('PLACEMENT_INDOOR_ONLY') && !indoor) return tr('只能放在室内。');
+  if (fs.includes('PLACEMENT_MYHOUSE_ONLY') && !data.scenes.find(s=>s.id===placement.scene)?.code.includes('MYHOUSE')) return tr('只能放在自宅。');
+  if (fs.includes('TREE') && !matureTreeAt(doc,edits,target.id,placement.scene)) return tr('树液采集器需要放在成熟树木所在的地块。');
+  if (fs.includes('PLACEMENT_ARC_LIVESTOCK_ONLY') && !/LIVESTOCK|AVIARY/.test(data.scenes.find(s=>s.id===placement.scene)?.code??'')) return tr('只能放在畜舍或鸡舍内。');
   const specialMask=fs.includes('PLACEMENT_FISHING')?256:fs.includes('PLACEMENT_BIND_TRAP')?512:fs.includes('PLACEMENT_BOX_TRAP')?1024:fs.includes('PLACEMENT_SPRINKLING_BAIT')?2048:0;
-  if(specialMask&&(!(target.mask&specialMask)||(target.mask&4096)&&fs.includes('TRAP')))return fs.includes('PLACEMENT_FISHING')?'捕蟹笼只能放在允许设笼的钓鱼水域。':'这里不是这种陷阱或鱼饵的可放置地点。';
+  if(specialMask&&(!(target.mask&specialMask)||(target.mask&4096)&&fs.includes('TRAP')))return fs.includes('PLACEMENT_FISHING')?tr('捕蟹笼只能放在允许设笼的钓鱼水域。'):tr('这里不是这种陷阱或鱼饵的可放置地点。');
   const soil=edits.cells?.[`${placement.scene}:${target.id}`]?.soil??mapCells(doc).find(c=>c.id===target.id)?.soil;
-  if(soil===3&&!spec.building&&!fs.includes('SCARECROW'))return '水田内不能放置这类设施，请先恢复平地。';
+  if(soil===3&&!spec.building&&!fs.includes('SCARECROW'))return tr('水田内不能放置这类设施，请先恢复平地。');
   const mask=specialMask|| (spec.building?4:fs.includes('PLACEMENT_WALL_ONLY')?128:fs.includes('PLACEMENT_GARDEN_ONLY')?64:fs.includes('PLACEMENT_FARMING_ONLY')?1:2);
   const polygons=footprint(spec,target,placement.angle??45);
   const points=polygons.flat();
@@ -173,28 +174,28 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
     for(let y=Math.floor(Math.min(...points.map(p=>p.y))/45)*45;y<=Math.max(...points.map(p=>p.y));y+=45) {
       if(fs.includes('PLACEMENT_WALL_ONLY') || (Math.round(x/45)+Math.round(y/45))%2!==parity || !polygons.some(poly=>containsPoint(poly,{x,y}))) continue;
       const c=valid.get(`${x},${y}`);
-      if(!c || !areaAvailable(doc,c.area) || (!fs.includes('PLACEMENT_ANYWHERE') && !(c.mask&mask))) return '物体完整占地越过可放置边界。';
+      if(!c || !areaAvailable(doc,c.area) || (!fs.includes('PLACEMENT_ANYWHERE') && !(c.mask&mask))) return tr('物体完整占地越过可放置边界。');
     }
-  if (!(target.mask&mask) && !fs.includes('PLACEMENT_ANYWHERE')) return '此地面不允许放置这类物体。';
+  if (!(target.mask&mask) && !fs.includes('PLACEMENT_ANYWHERE')) return tr('此地面不允许放置这类物体。');
   const all=draftObjects(doc,edits).filter(o=>o.uid!==placement.move);
-  if (spec.building && all.some(o=>o.spec?.building && (spec.mapId ? o.spec.buildingFamily===spec.buildingFamily && o.spec.slot===spec.slot : o.spec.buildingFamily===spec.buildingFamily && spec.limit===1))) return '此编号的建筑已存在。';
+  if (spec.building && all.some(o=>o.spec?.building && (spec.mapId ? o.spec.buildingFamily===spec.buildingFamily && o.spec.slot===spec.slot : o.spec.buildingFamily===spec.buildingFamily && spec.limit===1))) return tr('此编号的建筑已存在。');
   for(const o of all) {
     if(!o.spec && !o.blocksPlacement)continue;
     const overlaps=polygons.some(a=>objectFootprint(o).some(b=>polygonsOverlap(a,b)));
     if(!overlaps)continue;
     if(spec.building && o.movable && !o.spec?.building)continue;
-    if(spec.floor && o.spec?.floor && Math.hypot(o.x-target.x,o.y-target.y)<1)return '这里已有地板，请先清除地板层。';
+    if(spec.floor && o.spec?.floor && Math.hypot(o.x-target.x,o.y-target.y)<1)return tr('这里已有地板，请先清除地板层。');
     if(spec.floor || o.spec?.floor || fs.includes('OVERLAPABLE') || o.spec?.features.includes('OVERLAPABLE'))continue;
     if(fs.includes('PLACEMENT_IGNORE_COLLISION'))continue;
-    return '物体占地与现有设施重叠。';
+    return tr('物体占地与现有设施重叠。');
   }
   if(!spec.floor && !spec.building && !fs.includes('TREE')) for(const c of mapCells(doc)) {
     const edit=edits.cells?.[`${placement.scene}:${c.id}`];
-    if((edit?.crop!==undefined?edit.crop:c.crop) && polygons.some(poly=>containsPoint(poly,landPosition(c.id))))return '物体占地内有作物，请先清除或选择空地。';
+    if((edit?.crop!==undefined?edit.crop:c.crop) && polygons.some(poly=>containsPoint(poly,landPosition(c.id))))return tr('物体占地内有作物，请先清除或选择空地。');
   }
   if(!spec.floor&&!spec.building&&!fs.includes('TREE'))for(const [key,edit] of Object.entries(edits.cells??{})) {
     const [scene,id]=key.split(':').map(Number);
-    if(scene===placement.scene&&edit.crop&&polygons.some(poly=>containsPoint(poly,landPosition(id))))return '物体占地内有作物，请先清除或选择空地。';
+    if(scene===placement.scene&&edit.crop&&polygons.some(poly=>containsPoint(poly,landPosition(id))))return tr('物体占地内有作物，请先清除或选择空地。');
   }
   return null;
 }
@@ -250,7 +251,7 @@ export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: Ob
       const floor=oldRooms.findIndex(r=>item.x>=r.bounds[0]&&item.x<=r.bounds[2]&&item.y>=r.bounds[1]&&item.y<=r.bounds[3]);
       if(floor<0)continue;
       const old=oldRooms[floor].bounds,room=newRooms[Math.min(floor,newRooms.length-1)]?.bounds;
-      if(!room)throw new Error('新建筑的室内布局尚未解析，不能迁移室内物品。');
+      if(!room)throw new Error(tr('新建筑的室内布局尚未解析，不能迁移室内物品。'));
       const x=(old[0]+old[2])/2,y=(old[1]+old[3])/2;
       const desired={x:(room[0]+room[2])/2+(spec.mirror!==oldSpec.mirror?x-item.x:item.x-x),y:(room[1]+room[3])/2+item.y-y};
       const candidates=sceneCells(spec.mapId).filter(c=>c.x>=room[0]&&c.x<=room[2]&&c.y>=room[1]&&c.y<=room[3]).sort((a,b)=>Math.hypot(a.x-desired.x,a.y-desired.y)-Math.hypot(b.x-desired.x,b.y-desired.y));
@@ -258,7 +259,7 @@ export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: Ob
       const base={...next,objects:next.objects!.filter((e,i)=>draftIndex===undefined?e.move!==item.uid:i!==draftIndex)};
       const move={scene:spec.mapId,template:item.id,angle:item.angle,...(draftIndex===undefined?{move:item.uid}:{})};
       const cell=candidates.find(c=>!placementProblem(doc,base,{...move,cell:c.id}));
-      if(!cell)throw new Error(`新房间没有足够位置安置「${item.spec?.name??'室内物品'}」，请先整理室内。`);
+      if(!cell)throw new Error(tr('新房间没有足够位置安置「{name}」，请先整理室内。',{name:item.spec?.name??tr('室内物品')}));
       next={...base,objects:[...base.objects,{...move,cell:cell.id}]};
     }
   }
@@ -294,17 +295,17 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   const cellList = doc.resolve('mapStatusMap_/0v/p/cells_');
   const objectList = doc.resolve('gimmickList_');
   const seedNode = doc.resolve('statusUniqueIDGenerator_/idSeed_');
-  if (!cellList || !objectList || !seedNode) throw new Error('此存档缺少地图结构。');
+  if (!cellList || !objectList || !seedNode) throw new Error(tr('此存档缺少地图结构。'));
   let seed = readSigned(doc, seedNode);
   const world = captureBuilt(doc, cellList, true), gimmicks = captureBuilt(doc, objectList, true);
   const patch = (target: SerBuiltNode, path: string, value: number, floating = false) => {
-    const node = builtChild(target, path); if (!node?.payload) throw new Error(`地图模板缺少 ${path}`);
+    const node = builtChild(target, path); if (!node?.payload) throw new Error(tr('地图模板缺少 {path}', { path }));
     node.payload = floating ? encodeFloat(value, node.payload.length) : encodeSigned(BigInt(value), node.payload.length);
   };
   const occupied = objects.filter(o=>!edits.removed?.includes(o.uid)).map(o => ({ ...o, bounds: [...o.bounds] }));
   for(const uid of edits.removed??[]) {
     const object=objects.find(o=>o.uid===uid);
-    if(!object?.movable) throw new Error('不能清理固定场景物体。');
+    if(!object?.movable) throw new Error(tr('不能清理固定场景物体。'));
     const index=doc.children(objectList).findIndex(n=>n.offset===object.node.offset);
     patch(gimmicks.children![index],'p/isEnabled_',0);
   }
@@ -318,7 +319,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     const moving = placement.move ? occupied.find(o=>o.uid===placement.move) : undefined;
     const homeUpgrade=!!moving&&!!spec?.code.includes('ARCHITECTURE_MYHOUSE_')&&!!moving.spec?.code.includes('ARCHITECTURE_MYHOUSE_')&&placement.cell===landId(moving.x,moving.y)&&spec.level>moving.spec.level;
     const target = sceneCells(placement.scene).find(c => c.id === placement.cell)??(homeUpgrade?landPosition(placement.cell):undefined);
-    if(!target || !spec || !donor || (placement.move && ((!moving?.movable&&!homeUpgrade) || (!homeUpgrade&&moving!.id!==spec.id && moving!.spec?.buildingFamily!==spec.buildingFamily))))throw new Error(`此位置不可放置，或无法建立物体结构（${placement.template} / ${placement.move??'新增'}）。`);
+    if(!target || !spec || !donor || (placement.move && ((!moving?.movable&&!homeUpgrade) || (!homeUpgrade&&moving!.id!==spec.id && moving!.spec?.buildingFamily!==spec.buildingFamily))))throw new Error(tr('此位置不可放置，或无法建立物体结构（{template} / {move}）。',{template:placement.template,move:placement.move??tr('新增')}));
     const problem=placementProblem(doc,{...edits,objects:processed},placement);if(problem)throw new Error(problem);
     processed.push(placement);
     const index = moving ? doc.children(objectList).findIndex(n => n.offset === moving.node.offset) : gimmicks.children!.length;
@@ -353,20 +354,20 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   for (const [key, paint] of Object.entries(edits.cells ?? {})) {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);
     const growthOnly=paint.crop===undefined&&paint.soil===undefined&&paint.watered===undefined&&(paint.growth!==undefined||paint.form!==undefined);
-    if (!growthOnly&&(!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area))) throw new Error('目标不在已开放的可耕作区域。');
+    if (!growthOnly&&(!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area))) throw new Error(tr('目标不在已开放的可耕作区域。'));
     const oldCell=cells.find(c=>c.id===id),cropId=paint.crop!==undefined?paint.crop:oldCell?.crop;
     const soil=paint.soil??oldCell?.soil??1;
     if(cropId&&paint.soil!==0&&(paint.crop!==undefined||paint.soil!==undefined)){const problem=cropPlacementProblem(cropId,soil);if(problem)throw new Error(problem);}
-    if(paint.growth!==undefined||paint.form!==undefined){const state=cropGrowth(doc,edits,sceneId,id);if(!state||!state.stages.length||state.growth>state.maximum)throw new Error('此作物不支持所选生长阶段。');}
+    if(paint.growth!==undefined||paint.form!==undefined){const state=cropGrowth(doc,edits,sceneId,id);if(!state||!state.stages.length||state.growth>state.maximum)throw new Error(tr('此作物不支持所选生长阶段。'));}
     const clearingOnly = paint.crop === null && paint.soil === undefined && paint.watered === undefined;
     if(growthOnly){
-      if(!oldCell)throw new Error('此处没有可修改的作物。');
+      if(!oldCell)throw new Error(tr('此处没有可修改的作物。'));
       const built=world.children![doc.children(cellList).findIndex(n=>n.offset===oldCell.node.offset)];
       if(paint.growth!==undefined)patch(built,'p/pCropsStatus_/p/growth_/this->value_',paint.growth);
       if(paint.form!==undefined)patch(built,'p/pCropsStatus_/p/formID_',paint.form);
       continue;
     }
-    if (!clearingOnly && paint.soil!==0 && occupied.some(o => o.blocksPlacement && !o.spec?.floor && objectFootprint(o).some(poly=>containsPoint(poly,terrain!)))) throw new Error('田地被设施占用。');
+    if (!clearingOnly && paint.soil!==0 && occupied.some(o => o.blocksPlacement && !o.spec?.floor && objectFootprint(o).some(poly=>containsPoint(poly,terrain!)))) throw new Error(tr('田地被设施占用。'));
     let entry = cells.find(c => c.id === id);
     if(paint.soil===0) {
       if(entry) {
@@ -376,7 +377,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
       continue;
     }
     const donor = cells.find(c => c.soil && c.crop && MAP_CROPS.some(crop => crop.numeric_id === c.crop));
-    if (!donor) throw new Error('请先在游戏中耕地并种下一株作物，作为田地模板。');
+    if (!donor) throw new Error(tr('请先在游戏中耕地并种下一株作物，作为田地模板。'));
     let built: SerBuiltNode;
     if (entry) built = world.children![doc.children(cellList).findIndex(n => n.offset === entry!.node.offset)];
     else {

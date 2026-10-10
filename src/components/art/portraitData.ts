@@ -5,7 +5,7 @@ export function defaultFace(data:Model,pose:number){
   const known=data.options.poses[pose]?.expressions||{};
   // A body marked as shouting is not necessarily paired with the normal face.
   const label=data.options.poses[pose]?.label||'';
-  const match=Object.keys(known).find(id=>/叫/.test(label)&&/叫/.test(data.options.faces[id]?.name||''));
+  const match=Object.keys(known).find(id=>/叫/.test(label)&&/叫/.test(data.options.faces[id]?.name||'')); // i18n-ignore — game label
   return Number(match||Object.entries(known).sort((a,b)=>b[1]-a[1])[0]?.[0]||1000);
 }
 /** Resources below the FAD model table size are nested models; the rest are texture atlases. */

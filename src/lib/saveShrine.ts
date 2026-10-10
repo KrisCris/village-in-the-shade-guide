@@ -1,6 +1,7 @@
 import { UNLOCKS } from './saveDeliveries';
 import { flagEnabled, readSkills, type ProgressEdits } from './saveProgress';
 import { readSigned, type SerDocument } from './ser';
+import { tr } from '../i18n/active';
 
 export function shrineLevel(doc: SerDocument): number | null {
   const root = doc.resolve('gameValues_');
@@ -24,7 +25,7 @@ export function shrineRelated(id: number, unlock: boolean): number[] {
   function visit(id: number) {
     if (ids.has(id)) return;
     const node = UNLOCKS.nodes.find(n => n.id === id);
-    if (!node) throw new Error('技能树节点不存在。');
+    if (!node) throw new Error(tr('技能树节点不存在。'));
     ids.add(id);
     (unlock ? node.parents : UNLOCKS.nodes.filter(n => n.parents.includes(id)).map(n => n.id)).forEach(visit);
   }

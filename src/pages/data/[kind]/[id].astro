@@ -1,21 +1,24 @@
 ---
-import { withBase } from '../../../lib/sitePath';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { compactDetailModel } from '../../../data/detailPayload';
 import EntityPage from '../../../components/entity/EntityPage';
 import { getCatalog } from '../../../data/repository';
 import { buildEntityDetailModel } from '../../../domain/relations';
+import { kindLabels } from '../../../data/types';
+import { getI18n } from '../../../i18n/server';
 export function getStaticPaths() {
   const catalog = getCatalog();
   return catalog.entities.map((entity) => ({ params: { kind: entity.kind, id: entity.id }, props: { entity } }));
 }
-const { entity } = Astro.props;
-const catalog = getCatalog();
-const initialModel = buildEntityDetailModel(entity, catalog, 'normal');
-if (entity.kind === 'processes' && initialModel.entity.kind === 'items') return Astro.redirect(withBase(`/data/items/${initialModel.entity.id}/`), 301);
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
+// Paths are shared by every language; read the entity in the page language.
+const entity = catalog.entities.find((row) => row.kind === Astro.props.entity.kind && row.id === Astro.props.entity.id) ?? Astro.props.entity;
+const initialModel = buildEntityDetailModel(entity, catalog, 'normal', false, t);
+if (entity.kind === 'processes' && initialModel.entity.kind === 'items') return Astro.redirect(href(`/data/items/${initialModel.entity.id}/`), 301);
 ---
-<BaseLayout title={entity.name.zh_hans} description={`${entity.name.zh_hans}的价格、获取、材料、产物与关联数据。`}>
-  <nav class="crumb" aria-label="面包屑"><a href={withBase("/")}>首页</a><span>›</span><a href={withBase(`/data/${entity.kind}/`)}>{entity.kind}</a><span>›</span><span>{entity.name.zh_hans}</span></nav>
-  <EntityPage client:load initialEntity={entity} initialModel={compactDetailModel(initialModel)} />
+<BaseLayout title={entity.name.zh_hans} description={t('{name}的价格、获取、材料、产物与关联数据。', { name: entity.name.zh_hans })}>
+  <nav class="crumb" aria-label={t('面包屑')}><a href={href("/")}>{t('首页')}</a><span>›</span><a href={href(`/data/${entity.kind}/`)}>{kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}</a><span>›</span><span>{entity.name.zh_hans}</span></nav>
+  <EntityPage client:load initialEntity={entity} initialModel={compactDetailModel(initialModel)} locale={locale} />
 </BaseLayout>
 <style>.crumb{display:flex;flex-wrap:wrap;gap:.5rem;color:var(--muted);font-size:.86rem;margin-bottom:1.5rem}.crumb a{color:var(--muted)}</style>

@@ -1,35 +1,38 @@
 ---
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { guideCategories, guides } from '../../data/guideContent';
+import { guideCategories, guides, localizeGuide } from '../../data/guideContent';
 import {getCatalog} from '../../data/repository';
-const items=getCatalog().entities.filter(e=>e.kind==='items'&&e.category_id);
+import { getI18n } from '../../i18n/server';
+const {t,href,locale}=getI18n(Astro.url);
+const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
 const categories=[...new Map(items.map(e=>[e.category_id!,e])).values()].sort((a,b)=>Number(a.category_numeric_id)-Number(b.category_numeric_id));
 const planningGuides=[
- ['四季留货与交付','/guides/season-plan/','CROPS'],
- ['种植加工收益排行','/planner/','PROCESSED_PRODUCT'],
- ['播种、跨季与菌类','/guides/cultivation-plan/','SEEDING'],
- ['四季钓鱼与留货','/guides/fishing-plan/','FISH'],
- ['料理材料与食谱','/guides/cooking-plan/','COOKING'],
- ['畜牧产物与饲养','/guides/livestock-plan/','LIVESTOCK_PRODUCT'],
- ['狩猎执照与材料','/guides/hunting-plan/','HUNTING_LICENSE'],
- ['帮忙券与主线推进','/guides/progression/','FARM_TOOL'],
- ['生日、送礼与食谱传授','/guides/residents/','FLOWER'],
- ['图书、神社与夜间地图','/guides/collection-map/','CURSE'],
- ['夜间交换与勾玉','/guides/night-preparation/','KEYITEM'],
- ['祠堂能力与配方解锁','/guides/skills/','MACHINE'],
- ['服装与装饰获取','/guides/appearance/','CLOTHES'],
+ [t('四季留货与交付'),'/guides/season-plan/','CROPS'],
+ [t('种植加工收益排行'),'/planner/','PROCESSED_PRODUCT'],
+ [t('播种、跨季与菌类'),'/guides/cultivation-plan/','SEEDING'],
+ [t('四季钓鱼与留货'),'/guides/fishing-plan/','FISH'],
+ [t('料理材料与食谱'),'/guides/cooking-plan/','COOKING'],
+ [t('畜牧产物与饲养'),'/guides/livestock-plan/','LIVESTOCK_PRODUCT'],
+ [t('狩猎执照与材料'),'/guides/hunting-plan/','HUNTING_LICENSE'],
+ [t('帮忙券与主线推进'),'/guides/progression/','FARM_TOOL'],
+ [t('生日、送礼与食谱传授'),'/guides/residents/','FLOWER'],
+ [t('图书、神社与夜间地图'),'/guides/collection-map/','CURSE'],
+ [t('夜间交换与勾玉'),'/guides/night-preparation/','KEYITEM'],
+ [t('祠堂能力与配方解锁'),'/guides/skills/','MACHINE'],
+ [t('服装与装饰获取'),'/guides/appearance/','CLOTHES'],
 ];
+const dataCategory=guideCategories[guideCategories.length-1];
 ---
-<BaseLayout title="中文攻略索引">
-  <h1>攻略</h1>
-  <div class="guide-grid planning">{planningGuides.map(([title,url,category])=>{const icon=items.find(e=>e.category_id===`ITEM_CATEGORY_${category}`&&e.icon_path)?.icon_path;return <a class="card" href={withBase(url)}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>;})}</div>
-  <section id="数据"><h2>分类一览</h2><div class="guide-grid">{categories.map(category=>{const icon=items.find(e=>e.category_id===category.category_id&&e.icon_path)?.icon_path;return <a class="card" href={withBase(`/categories/${category.category_id}/`)}>{icon&&<img src={withBase(icon)} width="56" height="56" alt="" loading="lazy" />}<strong>{category.category_name?.zh_hans}</strong></a>;})}</div></section>
+<BaseLayout title={t('中文攻略索引')}>
+  <h1>{t('攻略')}</h1>
+  <div class="guide-grid planning">{planningGuides.map(([title,url,category])=>{const icon=items.find(e=>e.category_id===`ITEM_CATEGORY_${category}`&&e.icon_path)?.icon_path;return <a class="card" href={href(url)}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>;})}</div>
+  <section id={dataCategory}><h2>{t('分类一览')}</h2><div class="guide-grid">{categories.map(category=>{const icon=items.find(e=>e.category_id===category.category_id&&e.icon_path)?.icon_path;return <a class="card" href={href(`/categories/${category.category_id}/`)}>{icon&&<img src={withBase(icon)} width="56" height="56" alt="" loading="lazy" />}<strong>{category.category_name?.zh_hans}</strong></a>;})}</div></section>
   {guideCategories.map((category) => {
-    if(category==='数据')return null;
+    if(category===dataCategory)return null;
     const rows = guides.filter((guide) => guide.category === category);
     if (!rows.length) return null;
-    return <section id={category}><div class="section-heading"><h2>{category}</h2></div><div class="guide-grid">{rows.map((guide) => <a class="card" href={withBase(guide.guideTarget ?? `/guides/${guide.sourceId}/`)}><strong>{guide.chineseTitle}</strong>{!guide.guideTarget&&<small>{guide.title}</small>}</a>)}</div></section>;
+    return <section id={category}><div class="section-heading"><h2>{t(category)}</h2></div><div class="guide-grid">{rows.map((guide) => {const {title}=localizeGuide(guide,locale);return <a class="card" href={href(guide.guideTarget ?? `/guides/${guide.sourceId}/`)}><strong>{title}</strong>{!guide.guideTarget&&title!==guide.title&&<small>{guide.title}</small>}</a>;})}</div></section>;
   })}
 </BaseLayout>
 <style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}</style>

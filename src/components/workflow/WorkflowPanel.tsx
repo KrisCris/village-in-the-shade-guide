@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import ResizeHandle from "./ResizeHandle";
 import WorkflowIcon, { type IconName } from "./WorkflowIcon";
+import { tr } from '../../i18n/active';
 
 export default function WorkflowPanel({
   title,
@@ -56,11 +57,11 @@ export default function WorkflowPanel({
       ref={element}
       className="wf-property-panel wf-floating"
       style={{ width, transform: `translate(${offset.x}px,${offset.y}px)` }}
-      aria-label="属性面板"
+      aria-label={tr('属性面板')}
     >
       <ResizeHandle
         axis="width"
-        label="调整属性面板宽度"
+        label={tr('调整属性面板宽度')}
         value={width}
         min={280}
         max={Math.max(280, Math.min(640, window.innerWidth - 100))}
@@ -68,7 +69,7 @@ export default function WorkflowPanel({
       />
       <div
         className="wf-floating-header wf-panel-drag"
-        title="拖动标题栏移动面板"
+        title={tr('拖动标题栏移动面板')}
         onPointerDown={(e) => {
           if (e.button !== 0 || (e.target as HTMLElement).closest("button"))
             return;
@@ -103,7 +104,7 @@ export default function WorkflowPanel({
         </strong>
         <button
           className="wf-icon-button"
-          aria-label="关闭属性面板"
+          aria-label={tr('关闭属性面板')}
           onClick={onClose}
         >
           <WorkflowIcon name="close" size={16} />

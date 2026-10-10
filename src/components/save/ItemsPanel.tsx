@@ -9,6 +9,7 @@ import BatchMachines from './BatchMachines';
 import MachinePanel from './MachinePanel';
 import DeviceBrowser, { SpecialContents, specialTitle } from './DeviceBrowser';
 import { specialSpec, type MachineEdit, type MachineEdits } from '../../lib/saveMachines';
+import { tr } from '../../i18n/active';
 
 interface ItemsPanelProps {
   model: SaveModel;
@@ -46,8 +47,8 @@ function resolve(slot: SaveSlot, drafts: Record<number, string>, slotEdits: Slot
 
 function describe(container: SaveContainer, names: SaveNameTables, drafts: Record<number, string>, slotEdits: SlotEdits): string {
   const occupied = container.slots.map(slot => resolve(slot, drafts, slotEdits).view).filter(view => view !== null);
-  const parts = [`${occupied.length}/${container.slots.length} 格`];
-  if (occupied[0]) parts.push(`内有 ${itemLabel(names, occupied[0].itemId)}`);
+  const parts = [tr('{used}/{total} 格', { used: occupied.length, total: container.slots.length })];
+  if (occupied[0]) parts.push(tr('内有 {itemLabel}', { itemLabel: itemLabel(names, occupied[0].itemId) }));
   return parts.join(' · ');
 }
 
@@ -129,17 +130,17 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
       : null;
 
   return <div className="save-items" data-view={tab}>
-    <div className="save-device-tabs" aria-label="物品分类">{[['storage', '物品容器'], ['machines', '加工设备'], ['special', '特殊容器']].map(([id, title]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setSelected(null); }}>{title}</button>)}</div>
+    <div className="save-device-tabs" aria-label={tr('物品分类')}>{[['storage', tr('物品容器')], ['machines', tr('加工设备')], ['special', tr('特殊容器')]].map(([id, title]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setSelected(null); }}>{title}</button>)}</div>
     {tab === 'machines' && <DeviceBrowser model={model} names={names} edits={machines} renderBatch={family => <BatchMachines family={family} model={model} edits={machines} names={names} onChange={onMachine} drafts={drafts} onDraft={onDraft} />}>{container => <MachinePanel drafts={drafts} onDraft={onDraft} key={container.id} model={model} container={container} edits={machines} names={names} onChange={onMachine} />}</DeviceBrowser>}
     {tab === 'special' && <DeviceBrowser model={model} names={names} edits={machines} special occupancy={container => container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length}>{container => container.kind === 'system' || specialSpec(container)?.kind === 'shared' ? <>
       <ContainerView container={container} drafts={drafts} slotEdits={slotEdits} names={names} selected={selected} onSelect={setSelected} />{editor(container)}
     </> : <SpecialContents model={model} container={container} names={names} />}</DeviceBrowser>}
-    {tab === 'storage' && activeView?.view && <div className="save-progress-bulk"><span>移动所选物品到：</span>{[...switchable, ...pinned.filter(c => c.kind === 'backpack')].filter(c => c !== active).map(c => { const target = c.slots.find(s => !resolve(s, drafts, slotEdits).view); return <button type="button" key={c.id} disabled={!target} onClick={() => { if (target && selected !== null) { onTransfer(selected, target.pointer); setSelected(null); } }}>{c.title}{!target ? '（已满）' : ''}</button>; })}</div>}
-    {tab === 'storage' && !open && <p className="save-device-hint">存档中没有收纳箱。</p>}
+    {tab === 'storage' && activeView?.view && <div className="save-progress-bulk"><span>{tr('移动所选物品到：')}</span>{[...switchable, ...pinned.filter(c => c.kind === 'backpack')].filter(c => c !== active).map(c => { const target = c.slots.find(s => !resolve(s, drafts, slotEdits).view); return <button type="button" key={c.id} disabled={!target} onClick={() => { if (target && selected !== null) { onTransfer(selected, target.pointer); setSelected(null); } }}>{c.title}{!target ? tr('（已满）') : ''}</button>; })}</div>}
+    {tab === 'storage' && !open && <p className="save-device-hint">{tr('存档中没有收纳箱。')}</p>}
     {tab === 'storage' && open && <section className="save-container-panel">
       <header className="save-container-head">
         <label className="save-container-switch">
-          <span>容器</span>
+          <span>{tr('容器')}</span>
           <select value={open.id} onChange={(event) => { setOpenId(event.target.value); setSelected(null); }}>
             {switchable.map((container) => <option key={container.id} value={container.id}>
                 {(container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title}（{describe(container, names, drafts, slotEdits)}）
@@ -147,10 +148,10 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
           </select>
         </label>
         {open.kind === 'storage' && open.nameOffset !== undefined && <label className="save-container-name">
-          <span>箱子名称</span><input aria-label="箱子名称" value={drafts[open.nameOffset] ?? open.customName} placeholder={open.title}
+          <span>{tr('箱子名称')}</span><input aria-label={tr('箱子名称')} value={drafts[open.nameOffset] ?? open.customName} placeholder={open.title}
             onChange={event => onDraft(open.nameOffset!, event.target.value)} />
         </label>}
-        <p className="save-container-meta">{open.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {open.slots.length} 格已占用</p>
+        <p className="save-container-meta">{open.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {open.slots.length} {tr('格已占用')}</p>
       </header>
       <ContainerView
         container={open}
@@ -167,7 +168,7 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
     {tab === 'storage' && <div className="save-carried-items">{pinned.filter(container => container.kind !== 'tool').map((container) => <section className="save-container-panel pinned" key={container.id}>
       <header className="save-container-head">
         <h3>{container.title}</h3>
-        <p className="save-container-meta">{container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {container.slots.length} 格已占用</p>
+        <p className="save-container-meta">{container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length} / {container.slots.length} {tr('格已占用')}</p>
       </header>
       <ContainerView
         container={container}

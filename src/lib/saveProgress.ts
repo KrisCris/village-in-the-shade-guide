@@ -2,6 +2,7 @@ import data from '../../data/sources/game-save-progression.json';
 import { simplifySaveEntry } from './saveText';
 import { builtChild, captureBuilt, encodeSigned, readSigned, SerTag, type SerBuiltNode, type SerDocument } from './ser';
 import { buildDeliveryEdits, type DeliveryEdits } from './saveDeliveries';
+import { tr } from '../i18n/active';
 
 export const PROGRESSION = { ...data, skills: data.skills.map(simplifySaveEntry), flags: data.flags.map(simplifySaveEntry), recipes: data.recipes.map(simplifySaveEntry) };
 export interface ProgressEdits { encyclopedia?: Record<string, boolean>; skills?: Record<string, boolean>; flags?: Record<string, boolean>; deliveries?: DeliveryEdits }
@@ -33,11 +34,11 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
   const flags = { ...edits.flags, ...delivery.flags };
   if (Object.keys(edits.encyclopedia ?? {}).length) {
     const node = doc.resolve('encyclopediaReleaseMap_');
-    if (!node) throw new Error('存档缺少图鉴记录。');
+    if (!node) throw new Error(tr('存档缺少图鉴记录。'));
     const children = doc.children(node), pairs = new Map<string, SerBuiltNode[]>();
     for (let i = 0; i < children.length; i += 2) pairs.set(readSigned(doc, children[i]).toString(), [captureBuilt(doc, children[i]), captureBuilt(doc, children[i + 1])]);
     for (const [id, enabled] of Object.entries(edits.encyclopedia ?? {})) {
-      if (!/^\d+$/.test(id)) throw new Error('图鉴物品无效。');
+      if (!/^\d+$/.test(id)) throw new Error(tr('图鉴物品无效。'));
       if (!enabled) pairs.delete(id);
       else if (!pairs.has(id)) pairs.set(id, [
         { tag: SerTag.Scalar, nameOffset: -1, name: '0k', payload: encodeSigned(BigInt(id), 8) },
@@ -53,7 +54,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
   }
   if (Object.keys(edits.skills ?? {}).length) {
     const node = doc.resolve('pPlayerStatus_/p/skills_');
-    if (!node) throw new Error('存档缺少技能记录。');
+    if (!node) throw new Error(tr('存档缺少技能记录。'));
     const children = doc.children(node), entries = new Map<string, SerBuiltNode>();
     for (const pointer of children) {
       const id = doc.resolve('p/pData_/dataID', pointer);
@@ -61,7 +62,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
     }
     for (const [id, enabled] of Object.entries(edits.skills ?? {})) {
       const skill = PROGRESSION.skills.find(skill => String(skill.id) === id);
-      if (!skill) throw new Error('技能不在游戏资料表内。');
+      if (!skill) throw new Error(tr('技能不在游戏资料表内。'));
       flags[skill.flag] = enabled;
       if (!enabled) entries.delete(id);
       else if (!entries.has(id)) {
@@ -74,7 +75,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
         };
         built.pointer = 'self';
         const target = builtChild(built, 'p/pData_/dataID'), value = builtChild(built, 'p/value_');
-        if (!target || !value) throw new Error('技能模板格式未知。');
+        if (!target || !value) throw new Error(tr('技能模板格式未知。'));
         target.payload = encodeSigned(BigInt(id), 8); value.payload = encodeSigned(0n, 8);
         entries.set(id, built);
       }
@@ -86,11 +87,11 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
   }
   if (Object.keys(flags).length) {
     const node = doc.resolve('flags_/flags_');
-    if (!node) throw new Error('存档缺少解锁记录。');
+    if (!node) throw new Error(tr('存档缺少解锁记录。'));
     const bytes = doc.payload(node).slice();
     for (const [id, enabled] of Object.entries(flags)) {
       const bit = Number(id);
-      if (!Number.isSafeInteger(bit) || bit < 0 || bit >= bytes.length * 8 || !PROGRESSION.flags.some(flag => flag.id === bit)) throw new Error('解锁项目无效。');
+      if (!Number.isSafeInteger(bit) || bit < 0 || bit >= bytes.length * 8 || !PROGRESSION.flags.some(flag => flag.id === bit)) throw new Error(tr('解锁项目无效。'));
       const mask = 1 << (bit & 7);
       bytes[bit >> 3] = enabled ? bytes[bit >> 3] | mask : bytes[bit >> 3] & ~mask;
     }

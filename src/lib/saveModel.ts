@@ -32,6 +32,7 @@ import {
   NULL_REF,
   type SerNode,
 } from './ser';
+import { tr } from '../i18n/active';
 
 export type SaveSectionId = 'basic' | 'player' | 'items' | 'barn' | 'npc' | 'brand' | 'progress' | 'quests' | 'raw' | 'map';
 export type FieldType = 'int' | 'float' | 'bool' | 'string' | 'bytes';
@@ -51,6 +52,8 @@ export interface SaveField {
   note?: string;
   readOnly?: boolean;
   lookup?: LookupKind;
+  /** A player-visible name the game limits to 5 characters. */
+  nameLimit?: boolean;
 }
 
 export interface SaveTableRow {
@@ -107,41 +110,42 @@ interface ScalarSpec {
   lookup?: LookupKind;
   min?: bigint;
   max?: bigint;
+  nameLimit?: boolean;
 }
 
 const BASIC_GROUPS: { title: string; specs: ScalarSpec[] }[] = [
   {
-    title: '身份',
+    title: tr('身份'),
     specs: [
-      { path: 'pPlayerStatus_/p/name_', label: '玩家名字', type: 'string' },
-      { path: 'pPlayerStatus_/p/dogName_', label: '狗狗名字', type: 'string' },
-      { path: 'revision_', label: '存档修订号', type: 'string', readOnly: true },
-      { path: 'version_', label: '存档版本', readOnly: true },
+      { path: 'pPlayerStatus_/p/name_', label: tr('玩家名字'), type: 'string' },
+      { path: 'pPlayerStatus_/p/dogName_', label: tr('狗狗名字'), type: 'string' },
+      { path: 'revision_', label: tr('存档修订号'), type: 'string', readOnly: true },
+      { path: 'version_', label: tr('存档版本'), readOnly: true },
     ],
   },
   {
-    title: '金钱',
+    title: tr('金钱'),
     specs: [
-      { path: 'money_/this->value_', label: '持有金钱', min: 0n, max: BigInt(SAVE_RULES.moneyMax) },
-      { path: 'offeringMoney_/this->value_', label: '供奉金钱', min: 0n, max: BigInt(SAVE_RULES.moneyMax) },
+      { path: 'money_/this->value_', label: tr('持有金钱'), min: 0n, max: BigInt(SAVE_RULES.moneyMax) },
+      { path: 'offeringMoney_/this->value_', label: tr('供奉金钱'), min: 0n, max: BigInt(SAVE_RULES.moneyMax) },
     ],
   },
   {
-    title: '时间',
+    title: tr('时间'),
     specs: [
-      { path: 'gameTime_/second_', label: '游戏内累计秒数', min: 0n, note: '决定年份、季节、日期和时刻。' },
-      { path: 'playTime_/date_', label: '游玩时长 · 天', readOnly: true, min: 0n },
-      { path: 'playTime_/hour_', label: '游玩时长 · 小时', min: 0n, max: 9999n },
-      { path: 'playTime_/minute_', label: '游玩时长 · 分', min: 0n, max: 59n },
-      { path: 'playTime_/second_', label: '游玩时长 · 秒', min: 0n, max: 59n },
+      { path: 'gameTime_/second_', label: tr('游戏内累计秒数'), min: 0n, note: tr('决定年份、季节、日期和时刻。') },
+      { path: 'playTime_/date_', label: tr('游玩时长 · 天'), readOnly: true, min: 0n },
+      { path: 'playTime_/hour_', label: tr('游玩时长 · 小时'), min: 0n, max: 9999n },
+      { path: 'playTime_/minute_', label: tr('游玩时长 · 分'), min: 0n, max: 59n },
+      { path: 'playTime_/second_', label: tr('游玩时长 · 秒'), min: 0n, max: 59n },
     ],
   },
   {
-    title: '天气',
+    title: tr('天气'),
     specs: [
-      { path: 'pOlddayWeatherData_/dataID', label: '昨天天气', lookup: 'weather' },
-      { path: 'pWeatherData_/dataID', label: '今天天气', lookup: 'weather' },
-      { path: 'pNextdayWeatherData_/dataID', label: '明天天气', lookup: 'weather' },
+      { path: 'pOlddayWeatherData_/dataID', label: tr('昨天天气'), lookup: 'weather' },
+      { path: 'pWeatherData_/dataID', label: tr('今天天气'), lookup: 'weather' },
+      { path: 'pNextdayWeatherData_/dataID', label: tr('明天天气'), lookup: 'weather' },
     ],
   },
 
@@ -149,39 +153,39 @@ const BASIC_GROUPS: { title: string; specs: ScalarSpec[] }[] = [
 
 const PLAYER_GROUPS: { title: string; specs: ScalarSpec[] }[] = [
   {
-    title: '状态',
+    title: tr('状态'),
     specs: [
-      { path: 'pPlayerStatus_/p/hp_/this->value_', label: '生命（当前）', min: 0n, note: '每颗心 4 点，最多 10 颗心。' },
-      { path: 'pPlayerStatus_/p/hp_/max_', label: '生命（上限）', min: BigInt(SAVE_RULES.hp.initial), max: BigInt(SAVE_RULES.hp.max) },
-      { path: 'pPlayerStatus_/p/st_/this->value_', label: '体力（当前）', min: 0n },
-      { path: 'pPlayerStatus_/p/st_/max_', label: '体力（上限）', min: BigInt(SAVE_RULES.stamina.initial), max: BigInt(SAVE_RULES.stamina.max), note: '每段 190，最多 5 段。' },
+      { path: 'pPlayerStatus_/p/hp_/this->value_', label: tr('生命（当前）'), min: 0n, note: tr('每颗心 4 点，最多 10 颗心。') },
+      { path: 'pPlayerStatus_/p/hp_/max_', label: tr('生命（上限）'), min: BigInt(SAVE_RULES.hp.initial), max: BigInt(SAVE_RULES.hp.max) },
+      { path: 'pPlayerStatus_/p/st_/this->value_', label: tr('体力（当前）'), min: 0n },
+      { path: 'pPlayerStatus_/p/st_/max_', label: tr('体力（上限）'), min: BigInt(SAVE_RULES.stamina.initial), max: BigInt(SAVE_RULES.stamina.max), note: tr('每段 190，最多 5 段。') },
     ],
   },
   {
-    title: '工具范围等级',
+    title: tr('工具范围等级'),
     specs: [
       { path: 'pPlayerStatus_/p/mullberryRangeLevel_', label: 'mullberryRangeLevel_', min: 0n },
-      { path: 'pPlayerStatus_/p/wateringCanRangeLevel_', label: '浇水壶范围等级', min: 0n },
-      { path: 'pPlayerStatus_/p/sickleRangeLevel_', label: '镰刀范围等级', min: 0n },
-      { path: 'pPlayerStatus_/p/plowRangeLevel_', label: '犁范围等级', min: 0n },
+      { path: 'pPlayerStatus_/p/wateringCanRangeLevel_', label: tr('浇水壶范围等级'), min: 0n },
+      { path: 'pPlayerStatus_/p/sickleRangeLevel_', label: tr('镰刀范围等级'), min: 0n },
+      { path: 'pPlayerStatus_/p/plowRangeLevel_', label: tr('犁范围等级'), min: 0n },
     ],
   },
   {
-    title: '外观',
+    title: tr('外观'),
     specs: [
-      { path: 'pPlayerStatus_/p/pBackHairStyle_/dataID', label: '后发型 ID' },
-      { path: 'pPlayerStatus_/p/pFrontHairStyle_/dataID', label: '前发型 ID' },
-      { path: 'pPlayerStatus_/p/hairColorHsv_/x', label: '发色 H', type: 'float' },
-      { path: 'pPlayerStatus_/p/hairColorHsv_/y', label: '发色 S', type: 'float' },
-      { path: 'pPlayerStatus_/p/hairColorHsv_/z', label: '发色 V', type: 'float' },
-      { path: 'pPlayerStatus_/p/pCrothing_/dataID', label: '服装 ID' },
-      { path: 'pPlayerStatus_/p/crothingColor_', label: '服装配色' },
-      { path: 'pPlayerStatus_/p/pHeadAccessory_/dataID', label: '头部饰品 ID' },
-      { path: 'pPlayerStatus_/p/headAccessoryColor_', label: '头部饰品配色' },
-      { path: 'pPlayerStatus_/p/pNeckAccessory_/dataID', label: '颈部饰品 ID' },
-      { path: 'pPlayerStatus_/p/neckAccessoryColor_', label: '颈部饰品配色' },
-      { path: 'pPlayerStatus_/p/pBackAccessory_/dataID', label: '背部饰品 ID' },
-      { path: 'pPlayerStatus_/p/backAccessoryColor_', label: '背部饰品配色' },
+      { path: 'pPlayerStatus_/p/pBackHairStyle_/dataID', label: tr('后发型 ID') },
+      { path: 'pPlayerStatus_/p/pFrontHairStyle_/dataID', label: tr('前发型 ID') },
+      { path: 'pPlayerStatus_/p/hairColorHsv_/x', label: tr('发色 H'), type: 'float' },
+      { path: 'pPlayerStatus_/p/hairColorHsv_/y', label: tr('发色 S'), type: 'float' },
+      { path: 'pPlayerStatus_/p/hairColorHsv_/z', label: tr('发色 V'), type: 'float' },
+      { path: 'pPlayerStatus_/p/pCrothing_/dataID', label: tr('服装 ID') },
+      { path: 'pPlayerStatus_/p/crothingColor_', label: tr('服装配色') },
+      { path: 'pPlayerStatus_/p/pHeadAccessory_/dataID', label: tr('头部饰品 ID') },
+      { path: 'pPlayerStatus_/p/headAccessoryColor_', label: tr('头部饰品配色') },
+      { path: 'pPlayerStatus_/p/pNeckAccessory_/dataID', label: tr('颈部饰品 ID') },
+      { path: 'pPlayerStatus_/p/neckAccessoryColor_', label: tr('颈部饰品配色') },
+      { path: 'pPlayerStatus_/p/pBackAccessory_/dataID', label: tr('背部饰品 ID') },
+      { path: 'pPlayerStatus_/p/backAccessoryColor_', label: tr('背部饰品配色') },
     ],
   },
 ];
@@ -201,7 +205,7 @@ function scalarField(doc: SerDocument, node: SerNode, spec: ScalarSpec): SaveFie
     lookup: spec.lookup,
     control: spec.control,
   };
-  if (type === 'string') return { ...base, value: readString(doc, node) };
+  if (type === 'string') return { ...base, value: readString(doc, node), ...((spec.nameLimit || /(^|\/)(name_|dogName_)$/.test(spec.path)) && { nameLimit: true }) };
   if (type === 'float') return { ...base, value: String(readFloat(doc, node)), min: spec.path.includes('hairColorHsv_') ? '0' : undefined, max: spec.path.includes('hairColorHsv_') ? '1' : undefined };
   if (type === 'bool') return { ...base, value: readSigned(doc, node) === 0n ? '0' : '1' };
   const range = signedRange(node.size);
@@ -258,19 +262,19 @@ function livestockTable(doc: SerDocument): SaveTable | null {
       key: `livestock-${index}`,
       label: `#${index + 1}`,
       cells: [
-        cell(doc, animal, { path: 'name_', label: '名字', type: 'string' }),
-        cell(doc, animal, { path: 'pData_/dataID', label: '种类', lookup: 'livestock', readOnly: true }),
-        cell(doc, animal, { path: 'loveRate_/this->value_', label: '好感', min: 0n, max: heartMax, control: 'animal-friendship' }),
-        cell(doc, animal, { path: 'moodRate_/this->value_', label: '心情', min: 0n, max: 255n, control: 'slider' }),
-        cell(doc, animal, { path: 'foodNum_/this->value_', label: '已喂食', type: 'bool' }),
+        cell(doc, animal, { path: 'name_', label: tr('名字'), type: 'string' }),
+        cell(doc, animal, { path: 'pData_/dataID', label: tr('种类'), lookup: 'livestock', readOnly: true }),
+        cell(doc, animal, { path: 'loveRate_/this->value_', label: tr('好感'), min: 0n, max: heartMax, control: 'animal-friendship' }),
+        cell(doc, animal, { path: 'moodRate_/this->value_', label: tr('心情'), min: 0n, max: 255n, control: 'slider' }),
+        cell(doc, animal, { path: 'foodNum_/this->value_', label: tr('已喂食'), type: 'bool' }),
       ],
     };
   });
   return {
     id: 'livestockList_',
-    title: `畜牧（${rows.length} 只）`,
-    note: '种类只读：改动它会让存档里的贴图和产物数据对不上。',
-    columns: ['#', '名字', '种类', '好感', '心情', '已喂食'],
+    title: tr('畜牧（{count} 只）', { count: rows.length }),
+    note: tr('种类只读：改动它会让存档里的贴图和产物数据对不上。'),
+    columns: ['#', tr('名字'), tr('种类'), tr('好感'), tr('心情'), tr('已喂食')],
     rows,
   };
 }
@@ -284,15 +288,15 @@ function npcTable(doc: SerDocument): SaveTable | null {
       key: `npc-${index}`,
       label: `#${index + 1}`,
       cells: [
-        cell(doc, npc, { path: 'pData_/dataID', label: '角色', lookup: 'characters', readOnly: true }),
-        cell(doc, npc, { path: 'loveRate_/this->value_', label: '好感', min: 0n, max: BigInt(SAVE_RULES.npcHearts.at(-1)!), control: 'npc-friendship' }),
+        cell(doc, npc, { path: 'pData_/dataID', label: tr('角色'), lookup: 'characters', readOnly: true }),
+        cell(doc, npc, { path: 'loveRate_/this->value_', label: tr('好感'), min: 0n, max: BigInt(SAVE_RULES.npcHearts.at(-1)!), control: 'npc-friendship' }),
       ],
     };
   });
   return {
     id: 'npcStatusList_',
-    title: `NPC（${rows.length} 位）`,
-    columns: ['#', '角色', '好感'],
+    title: tr('NPC（{count} 位）', { count: rows.length }),
+    columns: ['#', tr('角色'), tr('好感')],
     rows,
   };
 }
@@ -309,16 +313,16 @@ function brandTable(doc: SerDocument, path: string, title: string, lookup: Looku
       key: `${path}-${index}`,
       label: `#${index + 1}`,
       cells: [
-        scalarField(doc, key, { path: '', label: '对象 ID', readOnly: true, lookup }),
-        scalarField(doc, value, { path: '', label: '品牌名', type: 'string' }),
+        scalarField(doc, key, { path: '', label: tr('对象 ID'), readOnly: true, lookup }),
+        scalarField(doc, value, { path: '', label: tr('品牌名'), type: 'string', nameLimit: true }),
       ],
     });
   }
   return {
     id: path,
-    title: `${title}（${rows.length} 条）`,
-    note: rows.length === 0 ? '这个存档里还没有登记品牌名。' : undefined,
-    columns: ['#', '对象 ID', '品牌名'],
+    title: tr('{title}（{count} 条）', { title, count: rows.length }),
+    note: rows.length === 0 ? tr('这个存档里还没有登记品牌名。') : undefined,
+    columns: ['#', tr('对象 ID'), tr('品牌名')],
     rows,
   };
 }
@@ -328,7 +332,7 @@ function brandTable(doc: SerDocument, path: string, title: string, lookup: Looku
 export function describeGameTime(totalSeconds: bigint): string {
   const date = splitGameTime(String(totalSeconds));
   if (!date) return '—';
-  return `第 ${date.year} 年 ${GAME_SEASONS[Number(date.season)]} ${date.day} 日 ${date.hour.padStart(2, '0')}:${date.minute.padStart(2, '0')}`;
+  return tr('第 {year} 年 {season} {day} 日 {hour}:{minute}', { year: date.year, season: GAME_SEASONS[Number(date.season)], day: date.day, hour: date.hour.padStart(2, '0'), minute: date.minute.padStart(2, '0') });
 }
 
 /* ------------------------------------------------------------------ model -- */
@@ -358,28 +362,28 @@ export function parseSaveModel(save: DecodedSave): SaveModel {
   const sections: SaveSection[] = [
     {
       id: 'basic',
-      label: '基础信息',
-      description: '修改名字、金钱、时间和天气。',
+      label: tr('基础信息'),
+      description: tr('修改名字、金钱、时间和天气。'),
       groups: buildGroups(doc, BASIC_GROUPS),
       tables: [],
     },
     {
       id: 'player',
-      label: '玩家',
-      description: '调整生命、体力与外观。',
+      label: tr('玩家'),
+      description: tr('调整生命、体力与外观。'),
       groups: buildGroups(doc, PLAYER_GROUPS),
       tables: [],
     },
     {
       id: 'items',
-      label: '物品',
-      description: '上面是容器，下面是背包和工具栏，格子排布与游戏里一致。点格子可以换物品、改数量，空格子也能直接放入新物品。',
+      label: tr('物品'),
+      description: tr('上面是容器，下面是背包和工具栏，格子排布与游戏里一致。点格子可以换物品、改数量，空格子也能直接放入新物品。'),
       groups: [],
       tables: [],
     },
-    { id: 'barn', label: '畜牧', description: '牲畜的名字、好感、心情、饲料和成长。', groups: [], tables: [] },
-    { id: 'npc', label: 'NPC', description: '村民好感度。', groups: [], tables: [] },
-    { id: 'brand', label: '品牌名', description: '作物与畜产品的品牌名称。', groups: [], tables: [] },
+    { id: 'barn', label: tr('畜牧'), description: tr('牲畜的名字、好感、心情、饲料和成长。'), groups: [], tables: [] },
+    { id: 'npc', label: 'NPC', description: tr('村民好感度。'), groups: [], tables: [] },
+    { id: 'brand', label: tr('品牌名'), description: tr('作物与畜产品的品牌名称。'), groups: [], tables: [] },
   ];
 
   const barn = livestockTable(doc);
@@ -389,8 +393,8 @@ export function parseSaveModel(save: DecodedSave): SaveModel {
   // Both maps are keyed by the harvested/produced item ID, not by the crop or
   // animal ID — confirmed for the crop map, which lists 小麦 and 荞麦 item IDs.
   for (const table of [
-    brandTable(doc, 'brandCropsNameMap_', '作物品牌', 'items'),
-    brandTable(doc, 'brandLivestockNameMap_', '畜产品牌', 'items'),
+    brandTable(doc, 'brandCropsNameMap_', tr('作物品牌'), 'items'),
+    brandTable(doc, 'brandLivestockNameMap_', tr('畜产品牌'), 'items'),
   ]) {
     if (table) sections[5].tables.push(table);
   }
@@ -400,9 +404,9 @@ export function parseSaveModel(save: DecodedSave): SaveModel {
   const { nodeCount, aliasTargets } = surveyTree(doc);
   const containers = collectContainers(doc);
   const summary = [
-    `SER 节点 ${nodeCount.toLocaleString('en-US')} 个，数据区 ${doc.usedSize.toLocaleString('en-US')} 字节。`,
-    gameTime === null ? '未找到游戏时间字段。' : `游戏时间：${describeGameTime(gameTime)}。`,
-    money === null ? '未找到金钱字段。' : `持有金钱：${money.toLocaleString('en-US')}。`,
+    tr('SER 节点 {nodes} 个，数据区 {bytes} 字节。', { nodes: nodeCount.toLocaleString('en-US'), bytes: doc.usedSize.toLocaleString('en-US') }),
+    gameTime === null ? tr('未找到游戏时间字段。') : tr('游戏时间：{time}。', { time: describeGameTime(gameTime) }),
+    money === null ? tr('未找到金钱字段。') : tr('持有金钱：{money}。', { money: money.toLocaleString('en-US') }),
   ];
 
   return { save, doc, sections, containers, summary, nodeCount, aliasTargets };
@@ -417,9 +421,9 @@ export function toHex(bytes: Uint8Array): string {
 function fromHex(value: string, byteLength: number, label: string): Uint8Array {
   const parts = value.trim().split(/\s+/).filter(Boolean);
   if (parts.some((part) => !/^[0-9a-fA-F]{2}$/.test(part))) {
-    throw new Error(`${label} 必须是以空格分隔的两位十六进制字节。`);
+    throw new Error(tr('{label} 必须是以空格分隔的两位十六进制字节。', { label }));
   }
-  if (parts.length !== byteLength) throw new Error(`${label} 必须保持 ${byteLength} 字节。`);
+  if (parts.length !== byteLength) throw new Error(tr('{label} 必须保持 {byteLength} 字节。', { label, byteLength }));
   return Uint8Array.from(parts, (part) => Number.parseInt(part, 16));
 }
 
@@ -442,7 +446,7 @@ export function rawFieldFor(doc: SerDocument, node: SerNode): SaveField | null {
       byteLength: node.size,
       min: range.min.toString(),
       max: range.max.toString(),
-      note: asFloat === null ? undefined : `按浮点读取是 ${asFloat}`,
+      note: asFloat === null ? undefined : tr('按浮点读取是 {asFloat}', { asFloat }),
     };
   }
   if (node.tag === SerTag.Scalar || node.tag === SerTag.Blob) {
@@ -452,7 +456,7 @@ export function rawFieldFor(doc: SerDocument, node: SerNode): SaveField | null {
       type: 'bytes',
       value: toHex(doc.payload(node)),
       byteLength: node.size,
-      note: '原始字节，只能等长度替换。',
+      note: tr('原始字节，只能等长度替换。'),
     };
   }
   return null;
@@ -466,22 +470,22 @@ function payloadFor(doc: SerDocument, field: SaveField, raw: string): Uint8Array
   const node = doc.node(field.offset);
   const value = raw.trim();
   if (field.type === 'string') {
-    if ((node.name === 'name_' || node.name === 'dogName_' || field.label === '品牌名') && Array.from(raw).length > 5) throw new Error(`${field.label}最多 5 个字符。`);
+    if ((node.name === 'name_' || node.name === 'dogName_' || field.label === tr('品牌名')) && Array.from(raw).length > 5) throw new Error(tr('{label}最多 5 个字符。', { label: field.label }));
     return encodeString(raw);
   }
   if (field.type === 'bytes') return fromHex(raw, node.size, field.label);
   if (field.type === 'float') {
     const parsed = Number(value);
-    if (!Number.isFinite(parsed)) throw new Error(`${field.label} 必须是一个数字。`);
-    if ((field.min !== undefined && parsed < Number(field.min)) || (field.max !== undefined && parsed > Number(field.max))) throw new Error(`${field.label} 超出允许范围。`);
+    if (!Number.isFinite(parsed)) throw new Error(tr('{label} 必须是一个数字。', { label: field.label }));
+    if ((field.min !== undefined && parsed < Number(field.min)) || (field.max !== undefined && parsed > Number(field.max))) throw new Error(tr('{label} 超出允许范围。', { label: field.label }));
     return encodeFloat(parsed, node.size);
   }
-  if (!/^-?\d+$/.test(value)) throw new Error(`${field.label} 必须是整数。`);
+  if (!/^-?\d+$/.test(value)) throw new Error(tr('{label} 必须是整数。', { label: field.label }));
   const parsed = BigInt(value);
   const range = signedRange(node.size);
   const min = field.min !== undefined ? BigInt(field.min) : range.min;
   const max = field.max !== undefined ? BigInt(field.max) : range.max;
-  if (parsed < min || parsed > max) throw new Error(`${field.label} 必须在 ${min} 到 ${max} 之间。`);
+  if (parsed < min || parsed > max) throw new Error(tr('{label} 必须在 {min} 到 {max} 之间。', { label: field.label, min, max }));
   return encodeSigned(parsed, node.size);
 }
 
@@ -501,11 +505,11 @@ export function collectFields(model: SaveModel): Map<number, SaveField> {
 function containerFields(model: SaveModel): SaveField[] {
   const fields: SaveField[] = [];
   for (const container of model.containers) {
-    if (container.nameOffset !== undefined) fields.push({ offset: container.nameOffset, label: `${container.title} · 名称`, type: 'string', value: container.customName, byteLength: model.doc.node(container.nameOffset).size });
+    if (container.nameOffset !== undefined) fields.push({ offset: container.nameOffset, label: tr('{title} · 名称', { title: container.title }), type: 'string', nameLimit: true, value: container.customName, byteLength: model.doc.node(container.nameOffset).size });
     for (const slot of container.slots) {
       const item = slot.item;
       if (!item) continue;
-      const where = `${container.title} 第 ${slot.index + 1} 格`;
+      const where = tr('{title} 第 {number} 格', { title: container.title, number: slot.index + 1 });
       const push = (offset: number, label: string, value: string, lookup?: LookupKind): void => {
         fields.push({
           offset,
@@ -518,10 +522,10 @@ function containerFields(model: SaveModel): SaveField[] {
           lookup,
         });
       };
-      push(item.itemIdOffset, '物品', item.itemId, 'items');
-      push(item.countOffset, '数量', item.count);
+      push(item.itemIdOffset, tr('物品'), item.itemId, 'items');
+      push(item.countOffset, tr('数量'), item.count);
       push(item.rankOffset, 'rank_', item.rank);
-      push(item.qualityOffset, '品质加成', item.quality);
+      push(item.qualityOffset, tr('品质加成'), item.quality);
     }
   }
   return fields;
@@ -561,7 +565,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   progress = { ...progress, flags: { ...progress.flags, ...mapBuildingFlags(mapEdits, model.doc).flags } };
   animalEdits = mapAnimalEdits(model.doc, mapEdits, animalEdits, progress);
   const processing = buildMachineEdits(model.doc, model.containers, machines);
-  if (Object.keys(processing.slots).some(key => Object.hasOwn(slots, key))) throw new Error("加工栏位同时存在物品修改，请撤销物品修改。");
+  if (Object.keys(processing.slots).some(key => Object.hasOwn(slots, key))) throw new Error(tr('加工栏位同时存在物品修改，请撤销物品修改。'));
   slots = { ...slots, ...processing.slots };
   validateCuratedChanges(model, changes, slots);
   const changedLeaves = new Map(changes.map(change => [change.field.offset, change]));
@@ -579,7 +583,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   progression.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   for (const offset of subtrees.keys()) {
     const node = model.doc.node(offset);
-    if ([...model.aliasTargets].some(target => target >= node.offset && target < node.end)) throw new Error(`格子 0x${offset.toString(16)} 被其他指针引用，不能替换。`);
+    if ([...model.aliasTargets].some(target => target >= node.offset && target < node.end)) throw new Error(tr('格子 0x{string} 被其他指针引用，不能替换。', { string: offset.toString(16) }));
   }
   const replaced = [...subtrees.keys()].map((offset) => model.doc.node(offset));
   const shadowed = (offset: number): boolean =>
@@ -588,7 +592,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   const payloads = new Map<number, Uint8Array>([...progression.payloads, ...processing.payloads]);
   for (const change of changes) {
     if (shadowed(change.field.offset)) continue;
-    if (payloads.has(change.field.offset)) throw new Error('同一解锁记录同时在完整字段树和解锁页面被修改，请先撤销其中一项。');
+    if (payloads.has(change.field.offset)) throw new Error(tr('同一解锁记录同时在完整字段树和解锁页面被修改，请先撤销其中一项。'));
     // Cross-field validation above uses the pending maximum. Do not reject a
     // current value merely because it exceeds the original maximum.
     const isCurrentStatus = ['hp_', 'st_'].some(key => model.doc.resolve(`pPlayerStatus_/p/${key}/this->value_`)?.offset === change.field.offset);
@@ -604,16 +608,16 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
     if (fraction && !changedLeaves.has(fraction.offset)) payloads.set(fraction.offset, encodeSigned(0n, fraction.size));
   }
   if (idSeed) payloads.set(idSeed.offset, idSeed.payload);
-  if (livestock.seed !== seed) { if (!seedNode) throw new Error('存档缺少唯一 ID 生成器。'); payloads.set(seedNode.offset, encodeSigned(livestock.seed, seedNode.size)); }
+  if (livestock.seed !== seed) { if (!seedNode) throw new Error(tr('存档缺少唯一 ID 生成器。')); payloads.set(seedNode.offset, encodeSigned(livestock.seed, seedNode.size)); }
   const ser = applyMapEdits(new SerDocument(serializeSer(model.doc, { payloads, subtrees })), mapEdits);
   if (ser.length > model.save.data.length) {
-    throw new Error(`改动后的数据 ${ser.length} 字节，超过了存档缓冲区的 ${model.save.data.length} 字节。`);
+    throw new Error(tr('改动后的数据 {size} 字节，超过了存档缓冲区的 {limit} 字节。', { size: ser.length, limit: model.save.data.length }));
   }
   const buffer = new Uint8Array(model.save.data.length);
   buffer.set(ser);
   const packed = encodeSave(model.save, buffer);
   // Read the export back through the same parser before handing it to the user.
   const verified = new SerDocument(decodeSave(packed, model.save.fileName).data);
-  if (verified.usedSize !== ser.length) throw new Error('导出校验失败：SER 数据长度不一致。');
+  if (verified.usedSize !== ser.length) throw new Error(tr('导出校验失败：SER 数据长度不一致。'));
   return packed;
 }

@@ -9,6 +9,7 @@ import {
   categoryLabel,
   seasonNames,
 } from "../../domain/workflow/catalog";
+import { tr } from '../../i18n/active';
 
 export function NumberField({
   label,
@@ -57,9 +58,9 @@ export function DateField({
     <fieldset className="wf-date">
       <legend>{label}</legend>
       <label>
-        <span className="wf-sr">{label}年份</span>
+        <span className="wf-sr">{label}{tr('年份')}</span>
         <input
-          aria-label={`${label}年份`}
+          aria-label={tr('{label}年份', { label })}
           type="number"
           min={1}
           max={100}
@@ -75,22 +76,22 @@ export function DateField({
           }}
         />
       </label>
-      <span>年</span>
+      <span>{tr('年')}</span>
       <select
-        aria-label={`${label}季节`}
+        aria-label={tr('{label}季节', { label })}
         value={season}
         onChange={(e) =>
           onChange((year - 1) * 112 + Number(e.target.value) * 28 + day)
         }
       >
-        {["春", "夏", "秋", "冬"].map((s, i) => (
+        {[tr('春'), tr('夏'), tr('秋'), tr('冬')].map((s, i) => (
           <option key={s} value={i}>
             {s}
           </option>
         ))}
       </select>
       <select
-        aria-label={`${label}日`}
+        aria-label={tr('{label}日', { label })}
         value={day}
         onChange={(e) =>
           onChange((year - 1) * 112 + season * 28 + Number(e.target.value))
@@ -98,7 +99,7 @@ export function DateField({
       >
         {Array.from({ length: 28 }, (_, i) => (
           <option key={i} value={i + 1}>
-            {i + 1} 日
+            {i + 1} {tr('日')}
           </option>
         ))}
       </select>
@@ -207,7 +208,7 @@ export function EntityPicker({
           />
         )}
         <span id={`${id}-value`}>
-          {selected?.name.zh_hans ?? "搜索并选择…"}
+          {selected?.name.zh_hans ?? tr('搜索并选择…')}
         </span>
         <WorkflowIcon name="chevron" size={13} />
       </button>
@@ -237,13 +238,13 @@ export function EntityPicker({
           <header className="wf-picker-heading">
             <div>
               <h2 id={`${id}-title`}>
-                选择{label === "快速添加的作物" ? "作物" : label}
+                {tr('选择')}{label === tr('快速添加的作物') ? tr('作物') : label}
               </h2>
-              <span>点击一项即可选用，支持名称和拼音搜索</span>
+              <span>{tr('点击一项即可选用，支持名称和拼音搜索')}</span>
             </div>
             <button
               type="button"
-              aria-label="关闭选择面板"
+              aria-label={tr('关闭选择面板')}
               onClick={() => setOpen(false)}
             >
               <WorkflowIcon name="close" size={20} />
@@ -254,14 +255,14 @@ export function EntityPicker({
             <input
               ref={input}
               role="combobox"
-              aria-label={`搜索${label}`}
+              aria-label={tr('搜索{label}', { label })}
               aria-expanded="true"
               aria-controls={`${id}-options`}
               aria-autocomplete="list"
               aria-activedescendant={
                 options[active] ? `${id}-${active}` : undefined
               }
-              placeholder="输入名称 / 拼音"
+              placeholder={tr('输入名称 / 拼音')}
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -298,16 +299,16 @@ export function EntityPicker({
           <div className="wf-picker-filters">
             {categories.length > 1 && (
               <label>
-                类型
+                {tr('类型')}
                 <select
-                  aria-label="筛选物品类型"
+                  aria-label={tr('筛选物品类型')}
                   value={category}
                   onChange={(e) => {
                     setCategory(e.target.value);
                     setSeason("");
                   }}
                 >
-                  <option value="">全部类型</option>
+                  <option value="">{tr('全部类型')}</option>
                   {categories.map(([key, name]) => (
                     <option key={key} value={key}>
                       {name}
@@ -318,16 +319,16 @@ export function EntityPicker({
             )}
             {hasCrops && (
               <label>
-                生长季节
+                {tr('生长季节')}
                 <select
-                  aria-label="筛选作物季节"
+                  aria-label={tr('筛选作物季节')}
                   value={season}
                   onChange={(e) => setSeason(e.target.value)}
                 >
-                  <option value="">全部季节</option>
+                  <option value="">{tr('全部季节')}</option>
                   {Object.entries(seasonNames).map(([key, name]) => (
                     <option key={key} value={key}>
-                      {name}季
+                      {name}{tr('季')}
                     </option>
                   ))}
                 </select>
@@ -336,9 +337,9 @@ export function EntityPicker({
           </div>
           <div className="wf-picker-summary" role="status">
             <span>
-              共 {matches.length} 项 · 已显示 {options.length} 项
+              {tr('共')} {matches.length} {tr('项 · 已显示')} {options.length} {tr('项')}
             </span>
-            {selected && <span>当前选择：{selected.name.zh_hans}</span>}
+            {selected && <span>{tr('当前选择：')}{selected.name.zh_hans}</span>}
           </div>
           <div
             className="wf-picker-options"
@@ -386,15 +387,15 @@ export function EntityPicker({
                 {e.id === value && <WorkflowIcon name="check" size={13} />}
               </button>
             ))}
-            {!options.length && <p className="wf-note">没有匹配的项目</p>}
+            {!options.length && <p className="wf-note">{tr('没有匹配的项目')}</p>}
           </div>
           <footer className="wf-picker-footer">
             <span>
               {options.length < matches.length
-                ? "向下滚动加载更多 · ↑ ↓ 选择 · Enter 确认"
-                : "↑ ↓ 选择 · Enter 确认"}
+                ? tr('向下滚动加载更多 · ↑ ↓ 选择 · Enter 确认')
+                : tr('↑ ↓ 选择 · Enter 确认')}
             </span>
-            <span>Esc 关闭</span>
+            <span>{tr('Esc 关闭')}</span>
           </footer>
         </dialog>
       )}

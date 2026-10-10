@@ -24,6 +24,7 @@ public/item-list.json
 public/planner-data.json
 public/save-editor-names.json
 public/workflow-data.json
+public/locales/
 # Web-sized icons ARE versioned: CI cannot read the local game install.
 output/
 data/raw/

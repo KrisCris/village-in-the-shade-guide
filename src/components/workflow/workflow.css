@@ -181,7 +181,7 @@
   border: 1px solid transparent;
   padding: 1px 0;
   background: transparent;
-  font-family: "Noto Serif SC", "Songti SC", SimSun, serif;
+  font-family: var(--font-serif);
   font-weight: 700;
   font-size: 21px;
   line-height: 1.5;

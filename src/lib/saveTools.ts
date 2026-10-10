@@ -1,5 +1,6 @@
 import data from '../../data/sources/game-save-tools.json';
 import type { SaveModel } from './saveModel';
+import { tr } from '../i18n/active';
 
 export const TOOLS = data.tools;
 export const TOOL_RANGE_FIELDS: Record<number, string> = {
@@ -14,7 +15,7 @@ export function linkedToolDrafts(model: SaveModel, drafts: Record<number, string
     if (!item || drafts[item.itemIdOffset] === undefined || drafts[item.itemIdOffset] === item.itemId) continue;
     const before = TOOLS.find(tool => String(tool.itemId) === item.itemId);
     const after = TOOLS.find(tool => String(tool.itemId) === drafts[item.itemIdOffset]);
-    if (!before || !after || !before.family || before.family !== after.family) throw new Error('工具栏只能更换同类工具的升级版本。');
+    if (!before || !after || !before.family || before.family !== after.family) throw new Error(tr('工具栏只能更换同类工具的升级版本。'));
     const path = TOOL_RANGE_FIELDS[after.family];
     const range = path && model.doc.resolve(`pPlayerStatus_/p/${path}`);
     if (range) result[range.offset] = String(after.level);

@@ -3,6 +3,7 @@ import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { useState } from 'react';
 import { ITEM_RANKS } from '../../lib/saveRules';
+import { tr } from '../../i18n/active';
 
 /** What a slot currently shows, after drafts and pending assignments. */
 export interface SlotView {
@@ -63,7 +64,7 @@ export default function ItemGrid({ container, slots, names, selected, onSelect, 
             buttons?.[next]?.focus();
           }}
           onClick={() => onSelect(slot.pointer)}
-          aria-label={view ? `第 ${slot.index + 1} 格：${name}，${ITEM_RANKS.find(rank => rank.value === Number(view.rank))?.label ?? '未知品质'} ×${view.count}` : `第 ${slot.index + 1} 格：空`}
+          aria-label={view ? tr('第 {number} 格：{name}，{quality} ×{count}', { number: slot.index + 1, name, quality: ITEM_RANKS.find(rank => rank.value === Number(view.rank))?.label ?? tr('未知品质'), count: view.count }) : tr('第 {number} 格：空', { number: slot.index + 1 })}
         >
           <span className="save-slot-index">{slot.index + 1}</span>
           {view

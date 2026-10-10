@@ -1,4 +1,3 @@
-import { withBase } from '../../lib/sitePath';
 import {createPortal} from 'react-dom';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent } from 'react';
 import type { Catalog, Entity } from '../../data/types';
@@ -6,9 +5,11 @@ import { resolveCatalogEntity } from '../../data/entityLookup';
 import { buildEntityDetailModel } from '../../domain/relations';
 import { useQuality } from '../quality/qualityPreference';
 import EntityDetail from './EntityDetail';
+import { useI18n } from '../../i18n/react';
 import { clampDrawerWidth, DRAWER_DEFAULT_WIDTH, DRAWER_MIN_WIDTH, DRAWER_MOBILE_BREAKPOINT, DRAWER_WIDTH_KEY, storedDrawerWidth } from './drawerSizing';
 
 export default function EntityDrawer({ initial, onClose }: { initial: Entity; onClose: () => void }) {
+  const { t, href, data: dataUrl } = useI18n();
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [stack, setStack] = useState<Entity[]>([initial]);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -33,7 +34,7 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
   },[]);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(withBase('/game-data.json'), { signal: controller.signal }).then((response) => {
+    fetch(dataUrl('/game-data.json'), { signal: controller.signal }).then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }).then((data) => {
@@ -42,7 +43,7 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
       setCatalog({ ...data, generatedAt: '', byId });
     }).catch((error) => { if (error.name !== 'AbortError') setLoadFailed(true); });
     return () => controller.abort();
-  }, []);
+  }, [dataUrl]);
   useEffect(() => {
     const onKey = (event: globalThis.KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
@@ -92,13 +93,13 @@ export default function EntityDrawer({ initial, onClose }: { initial: Entity; on
   };
   const current = stack.at(-1)!;
   const title = useMemo(() => stack.map((e) => e.name.zh_hans).join(' › '), [stack]);
-  const model = useMemo(() => catalog ? buildEntityDetailModel(resolveCatalogEntity(catalog, current), catalog, quality) : null, [catalog, current, quality]);
+  const model = useMemo(() => catalog ? buildEntityDetailModel(resolveCatalogEntity(catalog, current), catalog, quality, false, t) : null, [catalog, current, quality, t]);
   if(typeof document==='undefined')return null;
   return createPortal(<div className="drawer-backdrop" role="presentation" onClick={(e) => e.target === e.currentTarget && onClose()}>
     <aside ref={dialog} className="drawer" role="dialog" aria-modal="true" aria-label={title} style={{ width }}>
-      <div className="drawer-resizer" role="separator" aria-label="调整详情栏宽度" aria-orientation="vertical" aria-valuemin={DRAWER_MIN_WIDTH} aria-valuenow={width} tabIndex={0} onPointerDown={startResize} onPointerMove={moveResize} onPointerUp={finishResize} onPointerCancel={finishResize} onKeyDown={resizeWithKeyboard} />
-      <header><button className="drawer-close" onClick={onClose}>关闭</button>{stack.length>1&&<button onClick={()=>setStack(stack.slice(0,-1))}>← 返回</button>}<span>{title}</span><a href={withBase(`/data/${current.kind}/${encodeURIComponent(current.id)}/`)}>独立页面 ↗</a></header>
-      <div className="drawer-body" key={current.id}>{model ? <EntityDetail model={model} onOpen={(next) => setStack([...stack, next])} /> : <p>{loadFailed ? '关联数据读取失败，请打开独立页面查看基础数据。' : '正在读取关联数据…'}</p>}</div>
+      <div className="drawer-resizer" role="separator" aria-label={t('调整详情栏宽度')} aria-orientation="vertical" aria-valuemin={DRAWER_MIN_WIDTH} aria-valuenow={width} tabIndex={0} onPointerDown={startResize} onPointerMove={moveResize} onPointerUp={finishResize} onPointerCancel={finishResize} onKeyDown={resizeWithKeyboard} />
+      <header><button className="drawer-close" onClick={onClose}>{t('关闭')}</button>{stack.length>1&&<button onClick={()=>setStack(stack.slice(0,-1))}>← {t('返回')}</button>}<span>{title}</span><a href={href(`/data/${current.kind}/${encodeURIComponent(current.id)}/`)}>{t('独立页面')} ↗</a></header>
+      <div className="drawer-body" key={current.id}>{model ? <EntityDetail model={model} onOpen={(next) => setStack([...stack, next])} /> : <p>{loadFailed ? t('关联数据读取失败，请打开独立页面查看基础数据。') : t('正在读取关联数据…')}</p>}</div>
     </aside>
     <style>{`
       .drawer-backdrop{position:fixed;inset:0;z-index:60;background:rgb(20 20 15 / 44%);display:flex;justify-content:flex-end}.drawer{position:relative;height:100%;max-width:100vw;background:var(--paper);box-shadow:-12px 0 40px rgb(0 0 0 / 20%);display:grid;grid-template-rows:auto 1fr}.drawer-resizer{position:absolute;z-index:2;inset:0 auto 0 -7px;width:14px;cursor:col-resize;touch-action:none}.drawer-resizer::after{content:'';position:absolute;inset:0 auto 0 6px;width:2px;background:transparent}.drawer-resizer:hover::after,.drawer-resizer:focus-visible::after{background:var(--green)}.drawer>header{display:flex;align-items:center;gap:1rem;padding:.7rem 1rem;border-bottom:1px solid var(--border);background:var(--paper-raised)}.drawer>header span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:.85rem}.drawer-body{overflow:auto;padding:1.5rem clamp(1rem,4vw,2.5rem) 4rem}

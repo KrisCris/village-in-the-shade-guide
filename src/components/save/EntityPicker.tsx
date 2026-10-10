@@ -4,6 +4,7 @@ import type { LookupKind } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
+import { tr } from '../../i18n/active';
 
 // Native 0x1401653C0 / 0x14014890E: categories 34–39 unlock appearance,
 // then return before inserting into the inventory. Keep the name/icon catalog intact.
@@ -13,7 +14,7 @@ const APPEARANCE_CATEGORIES = new Set([
   'ITEM_CATEGORY_ORNAMENTS', 'ITEM_CATEGORY_BAG',
 ]);
 
-export default function EntityPicker({ names, kind, value, onChange, allowedIds, label = '选择物品' }: {
+export default function EntityPicker({ names, kind, value, onChange, allowedIds, label = tr('选择物品') }: {
   names: SaveNameTables; kind: LookupKind; value: string;
   onChange: (id: string) => void; allowedIds?: ReadonlySet<string>; label?: string;
 }) {
@@ -59,19 +60,19 @@ export default function EntityPicker({ names, kind, value, onChange, allowedIds,
     return () => observer.disconnect();
   }, [limit, matches.length]);
   return <div className={`save-slot-picker${kind !== 'items' ? ' compact' : ''}`} role="group" aria-label={label}>
-    {kind === 'items' && <label>物品分类<SearchableSelect value={category} onChange={event => setCategory(event.target.value)}>
-      <option value="">全部分类</option>
+    {kind === 'items' && <label>{tr('物品分类')}<SearchableSelect value={category} onChange={event => setCategory(event.target.value)}>
+      <option value="">{tr('全部分类')}</option>
       {Object.entries(names.categories ?? {}).filter(([id]) => !APPEARANCE_CATEGORIES.has(id)).map(([id, name]) => <option key={id} value={id}>{name}</option>)}
     </SearchableSelect></label>}
-    <input autoFocus className="save-slot-search" aria-label={`搜索${label}`} placeholder="名称、拼音、首字母或 ID" value={query} onChange={event => setQuery(event.target.value)} />
+    <input autoFocus className="save-slot-search" aria-label={tr('搜索{label}', { label })} placeholder={tr('名称、拼音、首字母或 ID')} value={query} onChange={event => setQuery(event.target.value)} />
     <ul className="save-slot-options" ref={root}>
-      {start > 0 && <li><button type="button" onClick={() => setStart(current => Math.max(0, current - 80))}>加载前面的选项</button></li>}
+      {start > 0 && <li><button type="button" onClick={() => setStart(current => Math.max(0, current - 80))}>{tr('加载前面的选项')}</button></li>}
       {matches.slice(start, limit).map(({ id, name }) => <li key={id}><button type="button" className={id === value ? 'active' : ''} onClick={() => onChange(id)}>
         <SaveIcon names={names} kind={kind} value={id} size={24} /><span>{name}</span>{kind === 'items' && <small>{id}</small>}
       </button></li>)}
-      {matches.length === 0 && <li className="save-slot-none">没有匹配的结果。</li>}
-      {matches.length > limit && <li ref={sentinel}><button type="button" onClick={() => setLimit(current => current + 80)}>加载更多（已显示 {Math.min(limit, matches.length)} / {matches.length}）</button></li>}
+      {matches.length === 0 && <li className="save-slot-none">{tr('没有匹配的结果。')}</li>}
+      {matches.length > limit && <li ref={sentinel}><button type="button" onClick={() => setLimit(current => current + 80)}>{tr('加载更多（已显示')} {Math.min(limit, matches.length)} / {matches.length}）</button></li>}
     </ul>
-    <small>共 {matches.length} 个结果</small>
+    <small>{tr('共')} {matches.length} {tr('个结果')}</small>
   </div>;
 }

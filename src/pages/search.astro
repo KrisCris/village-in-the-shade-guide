@@ -2,12 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlobalSearch from '../components/search/GlobalSearch';
 import { withBase } from '../lib/sitePath';
+import { getI18n } from '../i18n/server';
+const { t, locale } = getI18n(Astro.url);
+// Pagefind keeps one index per <html lang> and picks the page language itself.
 const pagefindUrl = withBase('/pagefind/pagefind.js');
 ---
-<BaseLayout title="搜索">
-  <p class="eyebrow">SEARCH</p><h1>全站搜索</h1>
-  <GlobalSearch client:load prominent />
-  <section><h2>攻略全文搜索</h2><div id="pagefind-search" data-index-url={pagefindUrl}><p class="muted">输入关键词后加载攻略索引。</p><input id="guide-query" type="search" placeholder="搜索攻略正文" /><div id="guide-results"></div></div></section>
+<BaseLayout title={t('搜索')}>
+  <p class="eyebrow">SEARCH</p><h1>{t('全站搜索')}</h1>
+  <GlobalSearch client:load prominent locale={locale} />
+  <section><h2>{t('攻略全文搜索')}</h2><div id="pagefind-search" data-index-url={pagefindUrl} data-empty={t('没有匹配攻略')} data-unavailable={t('全文索引在生产构建后可用。')}><p class="muted">{t('输入关键词后加载攻略索引。')}</p><input id="guide-query" type="search" placeholder={t('搜索攻略正文')} /><div id="guide-results"></div></div></section>
 </BaseLayout>
 <script>
   import {onPageMount} from '../lib/pageLifecycle';
@@ -15,12 +18,14 @@ const pagefindUrl = withBase('/pagefind/pagefind.js');
   const panel=document.querySelector<HTMLElement>('#pagefind-search');
   if(!panel)return;
   const pagefindUrl = panel.dataset.indexUrl!;
+  const empty=document.createElement('p'),unavailable=document.createElement('p');
+  empty.textContent=panel.dataset.empty!;unavailable.textContent=panel.dataset.unavailable!;
   const input = panel.querySelector<HTMLInputElement>('#guide-query')!; const output = panel.querySelector<HTMLElement>('#guide-results')!;
   let revision=0;
   input?.addEventListener('input', async () => {
     const request=++revision;
     const query = input.value.trim(); if (!query) { output.innerHTML = ''; return; }
-    try { const pagefind = await import(/* @vite-ignore */ pagefindUrl); const search = await pagefind.search(query); const rows = await Promise.all(search.results.slice(0, 12).map((r:{data:()=>Promise<{url:string;meta:{title:string};excerpt:string}>}) => r.data())); if(request!==revision)return; output.innerHTML = rows.map((r) => `<a class="result" href="${r.url}"><strong>${r.meta.title}</strong><span>${r.excerpt}</span></a>`).join('') || '<p>没有匹配攻略</p>'; } catch { if(request===revision)output.innerHTML = '<p>全文索引在生产构建后可用。</p>'; }
+    try { const pagefind = await import(/* @vite-ignore */ pagefindUrl); const search = await pagefind.search(query); const rows = await Promise.all(search.results.slice(0, 12).map((r:{data:()=>Promise<{url:string;meta:{title:string};excerpt:string}>}) => r.data())); if(request!==revision)return; output.innerHTML = rows.map((r) => `<a class="result" href="${r.url}"><strong>${r.meta.title}</strong><span>${r.excerpt}</span></a>`).join('') || empty.outerHTML; } catch { if(request===revision)output.innerHTML = unavailable.outerHTML; }
   });
   return()=>{revision++;};
   });

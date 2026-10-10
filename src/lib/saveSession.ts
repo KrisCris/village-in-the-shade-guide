@@ -4,6 +4,7 @@ import type { MachineEdits } from './saveMachines';
 import type { ProgressEdits } from './saveProgress';
 import type { SlotEdits } from './saveItems';
 import type { SaveSectionId } from './saveModel';
+import { tr } from '../i18n/active';
 
 export const SESSION_KEY = 'village-save-editor:v2';
 export interface SaveIdentity { name: string; size: number; sha256: string }
@@ -26,7 +27,7 @@ export async function identifySave(bytes: Uint8Array, name: string): Promise<Sav
 
 export async function verifySessionBytes(identity: SaveIdentity, bytes: Uint8Array): Promise<void> {
   if (bytes.length !== identity.size || (await identifySave(bytes, identity.name)).sha256 !== identity.sha256) {
-    throw new Error('暂存文件校验不一致，已停止恢复。请重新选择原始存档。');
+    throw new Error(tr('暂存文件校验不一致，已停止恢复。请重新选择原始存档。'));
   }
 }
 
@@ -41,11 +42,11 @@ export function readSession(storage: Storage): SaveSession | null {
     || Object.entries(value.drafts).some(([offset, draft]) => !/^\d+$/.test(offset) || typeof draft !== 'string')
     || Object.entries(value.slots).some(([offset, slot]) => !/^\d+$/.test(offset) || (slot !== null &&
       (!slot || (slot.sourcePointer !== undefined && !Number.isSafeInteger(slot.sourcePointer)) || ['itemId', 'count', 'rank', 'quality'].some(key => typeof slot[key as keyof typeof slot] !== 'string'))))) {
-    throw new Error('暂存草稿格式不兼容，请重新选择原始存档。');
+    throw new Error(tr('暂存草稿格式不兼容，请重新选择原始存档。'));
   }
-  if (value.progress && Object.entries(value.progress).some(([group, entries]) => !['encyclopedia', 'skills', 'flags', 'deliveries'].includes(group) || !entries || Object.entries(entries).some(([id, checked]) => group === 'deliveries' ? !/^\d+:[0-2]$/.test(id) || !Number.isSafeInteger(checked) || Number(checked) < 0 : !/^\d+$/.test(id) || typeof checked !== 'boolean'))) throw new Error('暂存的收集记录格式不兼容。');
-  if (value.machines && Object.entries(value.machines).some(([key, edit]) => !/^gimmick-\d+\/[0-2]$/.test(key) || !edit || typeof edit.finish !== 'boolean' || (edit.recipeId !== undefined && !Number.isSafeInteger(edit.recipeId)) || (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)))) throw new Error('暂存的加工记录格式不兼容。');
-  if (value.animals && (Object.values(value.animals.moves ?? {}).some(id => !Number.isSafeInteger(id)) || Object.values(value.animals.added ?? {}).some(animal => !animal || !Number.isSafeInteger(animal.species) || typeof animal.name !== 'string' || (animal.variant !== undefined && (!Number.isInteger(animal.variant) || animal.variant < 0 || animal.variant > 2))))) throw new Error('暂存的动物记录格式不兼容。');
+  if (value.progress && Object.entries(value.progress).some(([group, entries]) => !['encyclopedia', 'skills', 'flags', 'deliveries'].includes(group) || !entries || Object.entries(entries).some(([id, checked]) => group === 'deliveries' ? !/^\d+:[0-2]$/.test(id) || !Number.isSafeInteger(checked) || Number(checked) < 0 : !/^\d+$/.test(id) || typeof checked !== 'boolean'))) throw new Error(tr('暂存的收集记录格式不兼容。'));
+  if (value.machines && Object.entries(value.machines).some(([key, edit]) => !/^gimmick-\d+\/[0-2]$/.test(key) || !edit || typeof edit.finish !== 'boolean' || (edit.recipeId !== undefined && !Number.isSafeInteger(edit.recipeId)) || (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)))) throw new Error(tr('暂存的加工记录格式不兼容。'));
+  if (value.animals && (Object.values(value.animals.moves ?? {}).some(id => !Number.isSafeInteger(id)) || Object.values(value.animals.added ?? {}).some(animal => !animal || !Number.isSafeInteger(animal.species) || typeof animal.name !== 'string' || (animal.variant !== undefined && (!Number.isInteger(animal.variant) || animal.variant < 0 || animal.variant > 2))))) throw new Error(tr('暂存的动物记录格式不兼容。'));
   if (value.map) parseMapPreset(JSON.stringify({ version: 1, game: 'honogurashi', edits: value.map }));
   return value;
 }
@@ -56,7 +57,7 @@ function openDatabase(): Promise<IDBDatabase> {
     request.onupgradeneeded = () => request.result.createObjectStore('originals');
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
-    request.onblocked = () => reject(new Error('浏览器暂存数据库被其他页面占用。'));
+    request.onblocked = () => reject(new Error(tr('浏览器暂存数据库被其他页面占用。')));
   });
 }
 
@@ -78,7 +79,7 @@ export async function restoreOriginal(identity: SaveIdentity): Promise<Uint8Arra
   try {
     const bytes = await new Promise<Uint8Array>((resolve, reject) => {
       const request = db.transaction('originals', 'readonly').objectStore('originals').get(identity.sha256);
-      request.onsuccess = () => request.result instanceof Uint8Array ? resolve(request.result) : reject(new Error('浏览器已清除暂存文件，请重新选择原始存档。'));
+      request.onsuccess = () => request.result instanceof Uint8Array ? resolve(request.result) : reject(new Error(tr('浏览器已清除暂存文件，请重新选择原始存档。')));
       request.onerror = () => reject(request.error);
     });
     await verifySessionBytes(identity, bytes);
