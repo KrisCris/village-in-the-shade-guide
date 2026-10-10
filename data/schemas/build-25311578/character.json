@@ -1,0 +1,125 @@
+{
+  "table": "character",
+  "build_id": "25311578",
+  "record_size": 732,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    732,
+    740
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 1010
+        },
+        {
+          "record_id": 1020,
+          "value": 1020
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 0
+        },
+        {
+          "record_id": 1020,
+          "value": 748
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 15
+        },
+        {
+          "record_id": 1020,
+          "value": 18
+        }
+      ]
+    },
+    {
+      "name": "liked_item_1",
+      "offset": 216,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 60400
+        },
+        {
+          "record_id": 1020,
+          "value": 100280
+        }
+      ]
+    },
+    {
+      "name": "disliked_item_1",
+      "offset": 248,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 140160
+        },
+        {
+          "record_id": 1020,
+          "value": 62180
+        }
+      ]
+    },
+    {
+      "name": "birthday_season",
+      "offset": 460,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 1
+        },
+        {
+          "record_id": 1020,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "birthday_day",
+      "offset": 464,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 1010,
+          "value": 17
+        },
+        {
+          "record_id": 1020,
+          "value": 18
+        }
+      ]
+    }
+  ],
+  "language_count": 7
+}

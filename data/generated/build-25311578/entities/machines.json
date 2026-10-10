@@ -1,0 +1,2256 @@
+[
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工肉类和黄豆的机器。\n能够制作熟成肉或味噌。\n放入材料后，经过三天就会加工完成。",
+    "description_translations": {
+      "ja": "肉類や大豆を加工する容器。\n熟成肉や味噌を作ることができる。\n素材を入れて３日経つと加工される。",
+      "ko": "육류와 대두 가공에 쓰이는 용기.\n숙성육, 미소를 만들 수 있다.\n재료를 넣고 3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工肉类和黄豆的机器。\n能够制作熟成肉或味噌。\n放入材料后，经过三天就会加工完成。",
+      "zh-TW": "加工肉類和黃豆的機器。\n能夠製作熟成肉或味噌。\n放入材料後，經過三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2070,
+    "id": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+    "name": {
+      "aliases": [
+        "熟成桶",
+        "熟成樽",
+        "ITEM_ID_GIMMICK_AGUNG_BARREL",
+        "숙성통"
+      ],
+      "internal": "ITEM_ID_GIMMICK_AGUNG_BARREL",
+      "ja": "熟成樽",
+      "review_status": "official",
+      "translations": {
+        "ja": "熟成樽",
+        "ko": "숙성통",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "熟成桶",
+        "zh-TW": "熟成桶"
+      },
+      "zh_hans": "熟成桶",
+      "zh_hant": "熟成桶"
+    },
+    "numeric_id": 400040,
+    "outline_icon_id": 5035,
+    "related_item_id": null,
+    "sell_price": 52
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工肉类和黄豆的机器。\n一次最多可放入3个材料。\n放入材料后，经过三天就会加工完成。",
+    "description_translations": {
+      "ja": "肉類や大豆を加工する容器。\n一度に3つまでの素材を入れられる。\n素材を入れて３日経つと加工される。",
+      "ko": "육류와 대두 가공에 쓰이는 용기.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工肉类和黄豆的机器。\n一次最多可放入3个材料。\n放入材料后，经过三天就会加工完成。",
+      "zh-TW": "加工肉類和黃豆的機器。\n一次最多可放入3個材料。\n放入材料後，經過三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2086,
+    "id": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+    "name": {
+      "aliases": [
+        "熟成桶／改",
+        "熟成樽/改",
+        "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+        "숙성통/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_AGUNG_BARREL_02",
+      "ja": "熟成樽/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "熟成樽/改",
+        "ko": "숙성통/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "熟成桶／改",
+        "zh-TW": "熟成桶／改"
+      },
+      "zh_hans": "熟成桶／改",
+      "zh_hant": "熟成桶／改"
+    },
+    "numeric_id": 400041,
+    "outline_icon_id": 5051,
+    "related_item_id": null,
+    "sell_price": 98
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "饲养蜜蜂用的饲养箱。\n放入花即可采集到蜂蜜，\n视花卉种类，需要花费一天到四天的时间。",
+    "description_translations": {
+      "ja": "ミツバチを育てるための巣箱。\n花を入れるとハチミツを採取できるが、\n花によって１日から４日の時間がかかる。",
+      "ko": "꿀벌을 키우기 위한 벌통.\n꽃을 넣으면 꿀을 채취할 수 있지만\n꽃에 따라 1일~4일의 시간이 걸린다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "饲养蜜蜂用的饲养箱。\n放入花即可采集到蜂蜜，\n视花卉种类，需要花费一天到四天的时间。",
+      "zh-TW": "飼養蜜蜂用的飼養箱。\n放入花即可採集到蜂蜜，\n視花卉種類，需要花費一天到四天的時間。"
+    },
+    "feature_ids": [],
+    "icon_id": 2095,
+    "id": "ITEM_ID_GIMMICK_BEEHIVE",
+    "name": {
+      "aliases": [
+        "蜂箱",
+        "養蜂箱",
+        "ITEM_ID_GIMMICK_BEEHIVE",
+        "벌통"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BEEHIVE",
+      "ja": "養蜂箱",
+      "review_status": "official",
+      "translations": {
+        "ja": "養蜂箱",
+        "ko": "벌통",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "蜂箱",
+        "zh-TW": "蜂箱"
+      },
+      "zh_hans": "蜂箱",
+      "zh_hant": "蜂箱"
+    },
+    "numeric_id": 402040,
+    "outline_icon_id": 5060,
+    "related_item_id": null,
+    "sell_price": 90
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工玻璃片、矿石类和粘土的装置。\n12小时即可制作出玻璃、金属棒、砖头。\n需要木炭或煤炭才会运转。",
+    "description_translations": {
+      "ja": "ガラス片や鉱石類、粘土を加工する装置。\n１２時間でガラスや延べ棒、レンガを作れる。\n動かすには木炭か石炭が必要。",
+      "ko": "유리 조각, 광석, 점토를 가공하는 장치.\n12시간 동안 유리 막대,벽돌을 만든다.\n작동시키려면 목탄이나 석탄이 필요하다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工玻璃片、矿石类和粘土的装置。\n12小时即可制作出玻璃、金属棒、砖头。\n需要木炭或煤炭才会运转。",
+      "zh-TW": "加工玻璃片、礦石類和黏土的裝置。\n12小時即可製作出玻璃、金屬棒、磚頭。\n需要木炭或煤炭才會運轉。"
+    },
+    "feature_ids": [],
+    "icon_id": 2074,
+    "id": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+    "name": {
+      "aliases": [
+        "熔炉",
+        "熔爐",
+        "溶鉱炉",
+        "ITEM_ID_GIMMICK_BLAST_FURNACE",
+        "용광로"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BLAST_FURNACE",
+      "ja": "溶鉱炉",
+      "review_status": "official",
+      "translations": {
+        "ja": "溶鉱炉",
+        "ko": "용광로",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "熔炉",
+        "zh-TW": "熔爐"
+      },
+      "zh_hans": "熔炉",
+      "zh_hant": "熔爐"
+    },
+    "numeric_id": 400080,
+    "outline_icon_id": 5039,
+    "related_item_id": null,
+    "sell_price": 45
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工玻璃片、矿石类和粘土的装置。\n一次最多可放入3个材料。\n需要木炭或煤炭才会运转。",
+    "description_translations": {
+      "ja": "ガラス片や鉱石類、粘土を加工する装置。\n一度に3つまでの素材を入れられる。\n動かすには木炭か石炭が必要。",
+      "ko": "유리 조각, 광석, 점토를 가공하는 장치.\n한 번에 재료를 3개까지 넣을 수 있다.\n작동시키려면 목탄이나 석탄이 필요하다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工玻璃片、矿石类和粘土的装置。\n一次最多可放入3个材料。\n需要木炭或煤炭才会运转。",
+      "zh-TW": "加工玻璃片、礦石類和黏土的裝置。\n一次最多可放入3個材料。\n需要木炭或煤炭才會運轉。"
+    },
+    "feature_ids": [],
+    "icon_id": 2090,
+    "id": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+    "name": {
+      "aliases": [
+        "熔炉／改",
+        "熔爐／改",
+        "溶鉱炉/改",
+        "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+        "용광로/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BLAST_FURNACE_02",
+      "ja": "溶鉱炉/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "溶鉱炉/改",
+        "ko": "용광로/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "熔炉／改",
+        "zh-TW": "熔爐／改"
+      },
+      "zh_hans": "熔炉／改",
+      "zh_hant": "熔爐／改"
+    },
+    "numeric_id": 400081,
+    "outline_icon_id": 5055,
+    "related_item_id": null,
+    "sell_price": 97
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工作物和水果的容器。\n能够制作高汤或酒。\n放入材料后，经过两、三天就会加工完成。",
+    "description_translations": {
+      "ja": "作物や果物を加工する容器。\n出汁やお酒を作ることができる。\n素材を入れて２、３日経つと加工される。",
+      "ko": "작물과 과일 가공에 쓰이는 용기.\n각종 육수, 술을 만들 수 있다.\n재료를 넣고 2~3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工作物和水果的容器。\n能够制作高汤或酒。\n放入材料后，经过两、三天就会加工完成。",
+      "zh-TW": "加工作物和水果的容器。\n能夠製作高湯或酒。\n放入材料後，經過兩、三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2069,
+    "id": "ITEM_ID_GIMMICK_BREWING_BARREL",
+    "name": {
+      "aliases": [
+        "酿造桶",
+        "釀造桶",
+        "醸造樽",
+        "ITEM_ID_GIMMICK_BREWING_BARREL",
+        "양조통"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BREWING_BARREL",
+      "ja": "醸造樽",
+      "review_status": "official",
+      "translations": {
+        "ja": "醸造樽",
+        "ko": "양조통",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "酿造桶",
+        "zh-TW": "釀造桶"
+      },
+      "zh_hans": "酿造桶",
+      "zh_hant": "釀造桶"
+    },
+    "numeric_id": 400030,
+    "outline_icon_id": 5034,
+    "related_item_id": null,
+    "sell_price": 62
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工作物和水果的容器。\n一次最多可放入3个材料。\n放入材料后，经过两、三天就会加工完成。",
+    "description_translations": {
+      "ja": "作物や果物を加工する容器。\n一度に3つまでの素材を入れられる。\n素材を入れて２、３日経つと加工される。",
+      "ko": "작물과 과일 가공에 쓰이는 용기.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 2~3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工作物和水果的容器。\n一次最多可放入3个材料。\n放入材料后，经过两、三天就会加工完成。",
+      "zh-TW": "加工作物和水果的容器。\n一次最多可放入3個材料。\n放入材料後，經過兩、三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2085,
+    "id": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+    "name": {
+      "aliases": [
+        "酿造桶／改",
+        "釀造桶／改",
+        "醸造樽/改",
+        "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+        "양조통/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_BREWING_BARREL_02",
+      "ja": "醸造樽/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "醸造樽/改",
+        "ko": "양조통/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "酿造桶／改",
+        "zh-TW": "釀造桶／改"
+      },
+      "zh_hans": "酿造桶／改",
+      "zh_hant": "釀造桶／改"
+    },
+    "numeric_id": 400031,
+    "outline_icon_id": 5050,
+    "related_item_id": null,
+    "sell_price": 141
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "将木材制成木炭的装置。\n必须放入5个木材类物品。\n放入材料后，经过30分钟就会加工完成。",
+    "description_translations": {
+      "ja": "木材から木炭を作る装置。\n木材類は５個入れる必要がある。\n素材を入れて３０分経つと加工される。",
+      "ko": "목재로 목탄을 만드는 장치.\n목재류는 5개를 넣어야 한다.\n재료를 넣고 30분이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "将木材制成木炭的装置。\n必须放入5个木材类物品。\n放入材料后，经过30分钟就会加工完成。",
+      "zh-TW": "將木材製成木炭的裝置。\n必須放入5個木材類物品。\n放入材料後，經過30分鐘就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2075,
+    "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+    "name": {
+      "aliases": [
+        "木炭窑",
+        "木炭窯",
+        "炭焼き窯",
+        "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+        "숯가마"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CHARCOAL_KILN",
+      "ja": "炭焼き窯",
+      "review_status": "official",
+      "translations": {
+        "ja": "炭焼き窯",
+        "ko": "숯가마",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "木炭窑",
+        "zh-TW": "木炭窯"
+      },
+      "zh_hans": "木炭窑",
+      "zh_hant": "木炭窯"
+    },
+    "numeric_id": 400090,
+    "outline_icon_id": 5040,
+    "related_item_id": null,
+    "sell_price": 38
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "将木材制成木炭的装置。\n一次最多可放入3个材料。\n放入材料后，经过30分钟就会加工完成。",
+    "description_translations": {
+      "ja": "木材から木炭を作る装置。\n一度に3つまでの素材を入れられる。\n素材を入れて３０分経つと加工される。",
+      "ko": "목재로 목탄을 만드는 장치.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 30분이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "将木材制成木炭的装置。\n一次最多可放入3个材料。\n放入材料后，经过30分钟就会加工完成。",
+      "zh-TW": "將木材製成木炭的裝置。\n一次最多可放入3個材料。\n放入材料後，經過30分鐘就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2091,
+    "id": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+    "name": {
+      "aliases": [
+        "木炭窑／改",
+        "木炭窯／改",
+        "炭焼き窯/改",
+        "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+        "숯가마/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CHARCOAL_KILN_02",
+      "ja": "炭焼き窯/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "炭焼き窯/改",
+        "ko": "숯가마/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "木炭窑／改",
+        "zh-TW": "木炭窯／改"
+      },
+      "zh_hans": "木炭窑／改",
+      "zh_hant": "木炭窯／改"
+    },
+    "numeric_id": 400091,
+    "outline_icon_id": 5056,
+    "related_item_id": null,
+    "sell_price": 164
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "将各种有机物加工成肥料的容器。\n根据放入的东西，会改变肥料的质量。\n放入材料后，经过一、两天就会加工完成。",
+    "description_translations": {
+      "ja": "様々な有機物を、肥料に加工する容器。\n入れる物によって、肥料の質が変わる。\n素材を入れて１日、２日経つと加工される。",
+      "ko": "다양한 유기물을 비료로 가공할 때 쓰이는 용기.\n넣은 물건에 따라 비료의 품질이 달라진다.\n재료를 넣고 1~2일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "将各种有机物加工成肥料的容器。\n根据放入的东西，会改变肥料的质量。\n放入材料后，经过一、两天就会加工完成。",
+      "zh-TW": "將各種有機物加工成肥料的容器。\n根據放入的東西，會改變肥料的品質。\n放入材料後，經過一、兩天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2077,
+    "id": "ITEM_ID_GIMMICK_COMPOSTER",
+    "name": {
+      "aliases": [
+        "堆肥桶",
+        "コンポスター",
+        "ITEM_ID_GIMMICK_COMPOSTER",
+        "퇴비함"
+      ],
+      "internal": "ITEM_ID_GIMMICK_COMPOSTER",
+      "ja": "コンポスター",
+      "review_status": "official",
+      "translations": {
+        "ja": "コンポスター",
+        "ko": "퇴비함",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "堆肥桶",
+        "zh-TW": "堆肥桶"
+      },
+      "zh_hans": "堆肥桶",
+      "zh_hant": "堆肥桶"
+    },
+    "numeric_id": 400110,
+    "outline_icon_id": 5042,
+    "related_item_id": null,
+    "sell_price": 41
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "将各种有机物加工成肥料的容器。\n一次最多可放入3个材料。\n放入材料后，经过一、两天就会加工完成。",
+    "description_translations": {
+      "ja": "様々な有機物を、肥料に加工する容器。\n一度に3つまでの素材を入れられる。\n素材を入れて１日、２日経つと加工される。",
+      "ko": "다양한 유기물을 비료로 가공할 때 쓰이는 용기.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1~2일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "将各种有机物加工成肥料的容器。\n一次最多可放入3个材料。\n放入材料后，经过一、两天就会加工完成。",
+      "zh-TW": "將各種有機物加工成肥料的容器。\n一次最多可放入3個材料。\n放入材料後，經過一、兩天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2093,
+    "id": "ITEM_ID_GIMMICK_COMPOSTER_02",
+    "name": {
+      "aliases": [
+        "堆肥桶／改",
+        "コンポスター/改",
+        "ITEM_ID_GIMMICK_COMPOSTER_02",
+        "퇴비함/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_COMPOSTER_02",
+      "ja": "コンポスター/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "コンポスター/改",
+        "ko": "퇴비함/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "堆肥桶／改",
+        "zh-TW": "堆肥桶／改"
+      },
+      "zh_hans": "堆肥桶／改",
+      "zh_hant": "堆肥桶／改"
+    },
+    "numeric_id": 400111,
+    "outline_icon_id": 5058,
+    "related_item_id": null,
+    "sell_price": 135
+  },
+  {
+    "buy_price": 500,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "可制作各种道具和家具的工作台。\n只要有设计图，能制作的东西就会慢慢增加。\n可使用周围8格内收纳箱中的材料。",
+    "description_translations": {
+      "ja": "色々な道具や家具を作れる作業台。\n設計図があれば、作れるものが増えていく。\n周囲８マスの収納箱からも素材を使用可能。",
+      "ko": "다양한 도구와 가구를 만들 수 있는 작업대.\n설계도가 있으면 만들 수 있는 것이 늘어난다.\n주위 8칸의 수납함에서도 재료를 사용할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "可制作各种道具和家具的工作台。\n只要有设计图，能制作的东西就会慢慢增加。\n可使用周围8格内收纳箱中的材料。",
+      "zh-TW": "可製作各種道具和家具的工作台。\n只要有設計圖，能製作的東西就會慢慢增加。\n可使用周圍8格內收納箱中的材料。"
+    },
+    "feature_ids": [],
+    "icon_id": 2079,
+    "id": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+    "name": {
+      "aliases": [
+        "工作台",
+        "作業台",
+        "ITEM_ID_GIMMICK_CRAFT_TABLE",
+        "작업대"
+      ],
+      "internal": "ITEM_ID_GIMMICK_CRAFT_TABLE",
+      "ja": "作業台",
+      "review_status": "official",
+      "translations": {
+        "ja": "作業台",
+        "ko": "작업대",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "工作台",
+        "zh-TW": "工作台"
+      },
+      "zh_hans": "工作台",
+      "zh_hant": "工作台"
+    },
+    "numeric_id": 400130,
+    "outline_icon_id": 5044,
+    "related_item_id": null,
+    "sell_price": 375
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工水果、肉类和花朵的机器。\n能够制作果干、肉干等等。\n放入材料后，经过两、三天就会加工完成。",
+    "description_translations": {
+      "ja": "果物や肉類、花を加工する機械。\nドライフルーツや干し肉などを作れる。\n素材を入れて２、３日経つと加工される。",
+      "ko": "과일, 육류, 꽃을 가공하는 기계.\n말린 과일, 말린 고기 등을 만들 수 있다.\n재료를 넣고 2~3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工水果、肉类和花朵的机器。\n能够制作果干、肉干等等。\n放入材料后，经过两、三天就会加工完成。",
+      "zh-TW": "加工水果、肉類和花朵的機器。\n能夠製作果乾、肉乾等等。\n放入材料後，經過兩、三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2071,
+    "id": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+    "name": {
+      "aliases": [
+        "干燥机",
+        "乾燥機",
+        "ITEM_ID_GIMMICK_DRYING_MACHINE",
+        "乾燥机",
+        "건조기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DRYING_MACHINE",
+      "ja": "乾燥機",
+      "review_status": "official",
+      "translations": {
+        "ja": "乾燥機",
+        "ko": "건조기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "干燥机",
+        "zh-TW": "乾燥機"
+      },
+      "zh_hans": "干燥机",
+      "zh_hant": "乾燥機"
+    },
+    "numeric_id": 400050,
+    "outline_icon_id": 5036,
+    "related_item_id": null,
+    "sell_price": 83
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工水果、肉类和花朵的机器。\n一次最多可放入3个材料。\n放入材料后，经过两、三天就会加工完成。",
+    "description_translations": {
+      "ja": "果物や肉類、花を加工する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて２、３日経つと加工される。",
+      "ko": "과일, 육류, 꽃을 가공하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 2~3일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工水果、肉类和花朵的机器。\n一次最多可放入3个材料。\n放入材料后，经过两、三天就会加工完成。",
+      "zh-TW": "加工水果、肉類和花朵的機器。\n一次最多可放入3個材料。\n放入材料後，經過兩、三天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2087,
+    "id": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "干燥机／改",
+        "乾燥機／改",
+        "乾燥機/改",
+        "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+        "乾燥机／改",
+        "건조기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DRYING_MACHINE_02",
+      "ja": "乾燥機/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "乾燥機/改",
+        "ko": "건조기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "干燥机／改",
+        "zh-TW": "乾燥機／改"
+      },
+      "zh_hans": "干燥机／改",
+      "zh_hant": "乾燥機／改"
+    },
+    "numeric_id": 400051,
+    "outline_icon_id": 5052,
+    "related_item_id": null,
+    "sell_price": 164
+  },
+  {
+    "buy_price": 1000,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "可改变家具颜色的工作台。\n要改变颜色必须要有染料。\n可使用周围8格内收纳箱中的材料。",
+    "description_translations": {
+      "ja": "家具の色を変えられる作業台。\n色を変えるには染料が必要。\n周囲８マスの収納箱からも素材を使用可能。",
+      "ko": "가구의 색을 바꿀 수 있는 작업대.\n색을 바꾸려면 염료가 필요하다.\n주위 8칸의 수납함에서도 재료를 사용할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "可改变家具颜色的工作台。\n要改变颜色必须要有染料。\n可使用周围8格内收纳箱中的材料。",
+      "zh-TW": "可改變家具顏色的工作台。\n要改變顏色必須要有染料。\n可使用周圍8格內收納箱中的材料。"
+    },
+    "feature_ids": [],
+    "icon_id": 2078,
+    "id": "ITEM_ID_GIMMICK_DYEING_MACHINE",
+    "name": {
+      "aliases": [
+        "染色台",
+        "ITEM_ID_GIMMICK_DYEING_MACHINE",
+        "염색대"
+      ],
+      "internal": "ITEM_ID_GIMMICK_DYEING_MACHINE",
+      "ja": "染色台",
+      "review_status": "official",
+      "translations": {
+        "ja": "染色台",
+        "ko": "염색대",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "染色台",
+        "zh-TW": "染色台"
+      },
+      "zh_hans": "染色台",
+      "zh_hant": "染色台"
+    },
+    "numeric_id": 400120,
+    "outline_icon_id": 5043,
+    "related_item_id": null,
+    "sell_price": 750
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工小麦、甘蔗和岩盐的机器。\n能够制作面粉、砂糖、盐等等。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "小麦やサトウキビ、岩塩を加工する機械。\n小麦粉や砂糖、塩などを作ることができる。\n素材を入れて１日経つと加工される。",
+      "ko": "밀, 사탕수수, 암염을 가공하는 기계.\n밀가루, 설탕, 소금 등을 만들 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工小麦、甘蔗和岩盐的机器。\n能够制作面粉、砂糖、盐等等。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工小麥、甘蔗和岩鹽的機器。\n能夠製作麵粉、砂糖、鹽等等。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2072,
+    "id": "ITEM_ID_GIMMICK_FLOUR_MILL",
+    "name": {
+      "aliases": [
+        "研磨机",
+        "研磨機",
+        "粉挽き",
+        "ITEM_ID_GIMMICK_FLOUR_MILL",
+        "제분기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FLOUR_MILL",
+      "ja": "粉挽き",
+      "review_status": "official",
+      "translations": {
+        "ja": "粉挽き",
+        "ko": "제분기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "研磨机",
+        "zh-TW": "研磨機"
+      },
+      "zh_hans": "研磨机",
+      "zh_hant": "研磨機"
+    },
+    "numeric_id": 400060,
+    "outline_icon_id": 5037,
+    "related_item_id": null,
+    "sell_price": 45
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工小麦、甘蔗和岩盐的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "小麦やサトウキビ、岩塩を加工する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて１日経つと加工される。",
+      "ko": "밀, 사탕수수, 암염을 가공하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工小麦、甘蔗和岩盐的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工小麥、甘蔗和岩鹽的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2088,
+    "id": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+    "name": {
+      "aliases": [
+        "研磨机／改",
+        "研磨機／改",
+        "粉挽き/改",
+        "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+        "제분기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FLOUR_MILL_02",
+      "ja": "粉挽き/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "粉挽き/改",
+        "ko": "제분기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "研磨机／改",
+        "zh-TW": "研磨機／改"
+      },
+      "zh_hans": "研磨机／改",
+      "zh_hant": "研磨機／改"
+    },
+    "numeric_id": 400061,
+    "outline_icon_id": 5053,
+    "related_item_id": null,
+    "sell_price": 60
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "固定式的大型烹饪设备。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+    "description_translations": {
+      "ja": "設置型の大きい調理施設。\nこれを使えば料理を作ることができる。\n周囲８マスの収納箱からも素材を使用可能。",
+      "ko": "설치하여 사용하는 대형 조리 시설.\n이걸 사용하면 요리를 만들 수 있다.\n주위 8칸의 수납함에서도 재료를 사용할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "固定式的大型烹饪设备。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+      "zh-TW": "固定式的大型烹飪設備。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。"
+    },
+    "feature_ids": [],
+    "icon_id": 2102,
+    "id": "ITEM_ID_GIMMICK_FURNACE",
+    "name": {
+      "aliases": [
+        "炉灶",
+        "爐灶",
+        "かまど",
+        "ITEM_ID_GIMMICK_FURNACE",
+        "아궁이"
+      ],
+      "internal": "ITEM_ID_GIMMICK_FURNACE",
+      "ja": "かまど",
+      "review_status": "official",
+      "translations": {
+        "ja": "かまど",
+        "ko": "아궁이",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "炉灶",
+        "zh-TW": "爐灶"
+      },
+      "zh_hans": "炉灶",
+      "zh_hant": "爐灶"
+    },
+    "numeric_id": 403010,
+    "outline_icon_id": 5067,
+    "related_item_id": null,
+    "sell_price": 175
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "用炭火烧烤食物的炉具。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+    "description_translations": {
+      "ja": "炭火で食べ物を焼くためのコンロ。\nこれを使えば料理を作ることができる。\n周囲８マスの収納箱からも素材を使用可能。",
+      "ko": "숯불로 먹을 걸 굽기 위한 화로.\n이걸 사용하면 요리를 만들 수 있다.\n주위 8칸의 수납함에서도 재료를 사용할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "用炭火烧烤食物的炉具。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+      "zh-TW": "用炭火燒烤食物的爐具。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。"
+    },
+    "feature_ids": [],
+    "icon_id": 2105,
+    "id": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+    "name": {
+      "aliases": [
+        "炭烤炉",
+        "炭烤爐",
+        "七輪",
+        "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+        "풍로"
+      ],
+      "internal": "ITEM_ID_GIMMICK_JAPANESE_CHARCOAL_GRILL",
+      "ja": "七輪",
+      "review_status": "official",
+      "translations": {
+        "ja": "七輪",
+        "ko": "풍로",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "炭烤炉",
+        "zh-TW": "炭烤爐"
+      },
+      "zh_hans": "炭烤炉",
+      "zh_hant": "炭烤爐"
+    },
+    "numeric_id": 403040,
+    "outline_icon_id": 5070,
+    "related_item_id": null,
+    "sell_price": 111
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "纺织生丝、羊毛和克什米尔山羊毛的机器。\n能够制作布。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "生糸や羊毛、カシミヤを織る機械。\n布を作ることができる。\n素材を入れて１日経つと加工される。",
+      "ko": "생사, 양털, 캐시미어를 짜는 장치.\n천을 만들 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "纺织生丝、羊毛和克什米尔山羊毛的机器。\n能够制作布。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "紡織生絲、羊毛和喀什米爾山羊毛的機器。\n能夠製作布。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2076,
+    "id": "ITEM_ID_GIMMICK_LOOM",
+    "name": {
+      "aliases": [
+        "织布机",
+        "織布機",
+        "織り機",
+        "ITEM_ID_GIMMICK_LOOM",
+        "방직기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_LOOM",
+      "ja": "織り機",
+      "review_status": "official",
+      "translations": {
+        "ja": "織り機",
+        "ko": "방직기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "织布机",
+        "zh-TW": "織布機"
+      },
+      "zh_hans": "织布机",
+      "zh_hant": "織布機"
+    },
+    "numeric_id": 400100,
+    "outline_icon_id": 5041,
+    "related_item_id": null,
+    "sell_price": 210
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "纺织生丝、羊毛和克什米尔山羊毛的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "生糸や羊毛、カシミヤを織る機械。\n一度に3つまでの素材を入れられる。\n素材を入れて１日経つと加工される。",
+      "ko": "생사, 양털, 캐시미어를 짜는 장치.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "纺织生丝、羊毛和克什米尔山羊毛的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "紡織生絲、羊毛和喀什米爾山羊毛的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2092,
+    "id": "ITEM_ID_GIMMICK_LOOM_02",
+    "name": {
+      "aliases": [
+        "织布机／改",
+        "織布機／改",
+        "織り機/改",
+        "ITEM_ID_GIMMICK_LOOM_02",
+        "방직기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_LOOM_02",
+      "ja": "織り機/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "織り機/改",
+        "ko": "방직기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "织布机／改",
+        "zh-TW": "織布機／改"
+      },
+      "zh_hans": "织布机／改",
+      "zh_hant": "織布機／改"
+    },
+    "numeric_id": 400101,
+    "outline_icon_id": 5057,
+    "related_item_id": null,
+    "sell_price": 401
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工蛋类的机器。\n能够制作蛋黄酱。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "タマゴ類を加工する機械。\nマヨネーズを作ることができる。\n素材を入れて１日経つと加工される。",
+      "ko": "알을 가공하는 기계.\n마요네즈를 만들 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工蛋类的机器。\n能够制作蛋黄酱。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工蛋類的機器。\n能夠製作美乃滋。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2068,
+    "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+    "name": {
+      "aliases": [
+        "蛋黄酱加工机",
+        "美乃滋加工機",
+        "マヨネーズ加工機",
+        "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+        "美乃滋加工机",
+        "마요네즈 가공기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE",
+      "ja": "マヨネーズ加工機",
+      "review_status": "official",
+      "translations": {
+        "ja": "マヨネーズ加工機",
+        "ko": "마요네즈 가공기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "蛋黄酱加工机",
+        "zh-TW": "美乃滋加工機"
+      },
+      "zh_hans": "蛋黄酱加工机",
+      "zh_hant": "美乃滋加工機"
+    },
+    "numeric_id": 400020,
+    "outline_icon_id": 5033,
+    "related_item_id": null,
+    "sell_price": 31
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工蛋类的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "タマゴ類を加工する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて１日経つと加工される。",
+      "ko": "알을 가공하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工蛋类的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工蛋類的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2084,
+    "id": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "蛋黄酱加工机／改",
+        "美乃滋加工機／改",
+        "マヨネーズ加工機/改",
+        "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+        "美乃滋加工机／改",
+        "마요네즈 가공기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MAYONNAISE_PROCESSING_MACHINE_02",
+      "ja": "マヨネーズ加工機/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "マヨネーズ加工機/改",
+        "ko": "마요네즈 가공기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "蛋黄酱加工机／改",
+        "zh-TW": "美乃滋加工機／改"
+      },
+      "zh_hans": "蛋黄酱加工机／改",
+      "zh_hant": "美乃滋加工機／改"
+    },
+    "numeric_id": 400021,
+    "outline_icon_id": 5049,
+    "related_item_id": null,
+    "sell_price": 135
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "携带式的煮饭器具。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+    "description_translations": {
+      "ja": "携帯用の炊飯器具。\nこれを使えば料理を作ることができる。\n周囲８マスの収納箱からも素材を使用可能。",
+      "ko": "휴대용 취사도구.\n이걸 사용하면 요리를 만들 수 있다.\n주위 8칸의 수납함에서도 재료를 사용할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "携带式的煮饭器具。\n使用这个即可制作料理。\n可使用周围8格内收纳箱中的材料。",
+      "zh-TW": "攜帶式的煮飯器具。\n使用這個即可製作料理。\n可使用周圍8格內收納箱中的材料。"
+    },
+    "feature_ids": [],
+    "icon_id": 2101,
+    "id": "ITEM_ID_GIMMICK_MESSTIN",
+    "name": {
+      "aliases": [
+        "煮饭盒",
+        "煮飯盒",
+        "はんごう",
+        "ITEM_ID_GIMMICK_MESSTIN",
+        "반합"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MESSTIN",
+      "ja": "はんごう",
+      "review_status": "official",
+      "translations": {
+        "ja": "はんごう",
+        "ko": "반합",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "煮饭盒",
+        "zh-TW": "煮飯盒"
+      },
+      "zh_hans": "煮饭盒",
+      "zh_hant": "煮飯盒"
+    },
+    "numeric_id": 403000,
+    "outline_icon_id": 5066,
+    "related_item_id": null,
+    "sell_price": 66
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工奶类、黄豆的机器。\n能够制作淡奶油、干酪、豆腐等等。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "ミルク類や大豆を加工する機械。\n生クリームやチーズ、豆腐などを作れる。\n素材を入れて１日経つと加工される。",
+      "ko": "원유와 대두를 가공하는 기계.\n생크림, 치즈, 두부 등을 만들 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工奶类、黄豆的机器。\n能够制作淡奶油、干酪、豆腐等等。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工奶類、黃豆的機器。\n能夠製作鮮奶油、起司、豆腐等等。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2067,
+    "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+    "name": {
+      "aliases": [
+        "牛奶加工机",
+        "牛奶加工機",
+        "ミルク加工機",
+        "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+        "우유 가공기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE",
+      "ja": "ミルク加工機",
+      "review_status": "official",
+      "translations": {
+        "ja": "ミルク加工機",
+        "ko": "우유 가공기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "牛奶加工机",
+        "zh-TW": "牛奶加工機"
+      },
+      "zh_hans": "牛奶加工机",
+      "zh_hant": "牛奶加工機"
+    },
+    "numeric_id": 400010,
+    "outline_icon_id": 5032,
+    "related_item_id": null,
+    "sell_price": 69
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工奶类、黄豆的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "ミルク類や大豆を加工する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて１日経つと加工される。",
+      "ko": "원유와 대두를 가공하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工奶类、黄豆的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "加工奶類、黃豆的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2083,
+    "id": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "牛奶加工机／改",
+        "牛奶加工機／改",
+        "ミルク加工機/改",
+        "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+        "우유 가공기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_MILK_PROCESSING_MACHINE_02",
+      "ja": "ミルク加工機/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "ミルク加工機/改",
+        "ko": "우유 가공기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "牛奶加工机／改",
+        "zh-TW": "牛奶加工機／改"
+      },
+      "zh_hans": "牛奶加工机／改",
+      "zh_hant": "牛奶加工機／改"
+    },
+    "numeric_id": 400011,
+    "outline_icon_id": 5048,
+    "related_item_id": null,
+    "sell_price": 202
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工黄豆、芝麻、花朵和骨头等物品的机器。\n能够制作油类或染料。\n放入材料后，经过几天后就会加工完成。",
+    "description_translations": {
+      "ja": "大豆やゴマ、花と骨などを加工する機械。\n油類や染料を作ることができる。\n素材を入れて何日か経つと加工される。",
+      "ko": "대두, 참깨, 꽃, 뼈 등을 가공하는 기계.\n기름류, 염료를 만들 수 있다.\n재료를 넣고 며칠이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工黄豆、芝麻、花朵和骨头等物品的机器。\n能够制作油类或染料。\n放入材料后，经过几天后就会加工完成。",
+      "zh-TW": "加工黃豆、芝麻、花朵和骨頭等物品的機器。\n能夠製作油類或染料。\n放入材料後，經過幾天後就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2073,
+    "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+    "name": {
+      "aliases": [
+        "榨油机",
+        "榨油機",
+        "搾油機",
+        "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+        "착유기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE",
+      "ja": "搾油機",
+      "review_status": "official",
+      "translations": {
+        "ja": "搾油機",
+        "ko": "착유기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "榨油机",
+        "zh-TW": "榨油機"
+      },
+      "zh_hans": "榨油机",
+      "zh_hant": "榨油機"
+    },
+    "numeric_id": 400070,
+    "outline_icon_id": 5038,
+    "related_item_id": null,
+    "sell_price": 83
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工黄豆、芝麻、花朵和骨头等物品的机器。\n一次最多可放入3个材料。\n放入材料后，经过几天后就会加工完成。",
+    "description_translations": {
+      "ja": "大豆やゴマ、花と骨などを加工する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて何日か経つと加工される。",
+      "ko": "대두, 참깨, 꽃, 뼈 등을 가공하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 며칠이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工黄豆、芝麻、花朵和骨头等物品的机器。\n一次最多可放入3个材料。\n放入材料后，经过几天后就会加工完成。",
+      "zh-TW": "加工黃豆、芝麻、花朵和骨頭等物品的機器。\n一次最多可放入3個材料。\n放入材料後，經過幾天後就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2089,
+    "id": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+    "name": {
+      "aliases": [
+        "榨油机／改",
+        "榨油機／改",
+        "搾油機/改",
+        "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+        "착유기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE_02",
+      "ja": "搾油機/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "搾油機/改",
+        "ko": "착유기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "榨油机／改",
+        "zh-TW": "榨油機／改"
+      },
+      "zh_hans": "榨油机／改",
+      "zh_hant": "榨油機／改"
+    },
+    "numeric_id": 400071,
+    "outline_icon_id": 5054,
+    "related_item_id": null,
+    "sell_price": 305
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "设置于树上，用来采集树液的容器。\n可设置于树上，\n每三天可以采集一次树液。",
+    "description_translations": {
+      "ja": "樹木に設置して樹液を採るための容器。\n樹木に対して設置できて、\n３日ごとに樹液を採取できる。",
+      "ko": "나무에 설치해서 수액을 얻기 위한 용기.\n나무에 설치할 수 있으며\n3일마다 수액을 채취할 수 있다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "设置于树上，用来采集树液的容器。\n可设置于树上，\n每三天可以采集一次树液。",
+      "zh-TW": "設置於樹上，用來採集樹液的容器。\n可設置於樹上，\n每三天可以採集一次樹液。"
+    },
+    "feature_ids": [],
+    "icon_id": 2096,
+    "id": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+    "name": {
+      "aliases": [
+        "树液采集器",
+        "樹液採集器",
+        "樹液採取器",
+        "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+        "수액 채취기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SAP_EXTRACTOR",
+      "ja": "樹液採取器",
+      "review_status": "official",
+      "translations": {
+        "ja": "樹液採取器",
+        "ko": "수액 채취기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "树液采集器",
+        "zh-TW": "樹液採集器"
+      },
+      "zh_hans": "树液采集器",
+      "zh_hant": "樹液採集器"
+    },
+    "numeric_id": 402050,
+    "outline_icon_id": 5061,
+    "related_item_id": null,
+    "sell_price": 37
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "用来饲养蚕的饲养箱。\n放入桑叶即可采集到生丝。\n产出生丝需要花费两天时间。",
+    "description_translations": {
+      "ja": "カイコを育てるための巣箱。\n桑の葉を入れると生糸を採取できる。\n生糸ができるまで２日かかる。",
+      "ko": "누에를 키우기 위한 통.\n뽕잎을 넣으면 생사를 채취할 수 있다.\n생사가 만들어지기까지 2일이 걸린다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "用来饲养蚕的饲养箱。\n放入桑叶即可采集到生丝。\n产出生丝需要花费两天时间。",
+      "zh-TW": "用來飼養蠶的飼養箱。\n放入桑葉即可採集到生絲。\n產出生絲需要花費兩天時間。"
+    },
+    "feature_ids": [],
+    "icon_id": 2097,
+    "id": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+    "name": {
+      "aliases": [
+        "蚕箱",
+        "蠶箱",
+        "養蚕箱",
+        "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+        "양잠통"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SERICULTURE_BOX",
+      "ja": "養蚕箱",
+      "review_status": "official",
+      "translations": {
+        "ja": "養蚕箱",
+        "ko": "양잠통",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "蚕箱",
+        "zh-TW": "蠶箱"
+      },
+      "zh_hans": "蚕箱",
+      "zh_hant": "蠶箱"
+    },
+    "numeric_id": 402070,
+    "outline_icon_id": 5062,
+    "related_item_id": null,
+    "sell_price": 120
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "烟熏肉、蛋和鱼等物品的机器。\n能够制作烟熏肉、烟熏蛋、烟熏鱼。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "肉やタマゴ、魚などを燻製する機械。\n燻製肉や燻製卵、魚の燻製を作れる。\n素材を入れて１日経つと加工される。",
+      "ko": "육류, 알, 생선 등을 훈제하는 기계.\n훈제육, 훈제 달걀, 훈제 생선을 만들 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "烟熏肉、蛋和鱼等物品的机器。\n能够制作烟熏肉、烟熏蛋、烟熏鱼。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "煙燻肉、蛋和魚等物品的機器。\n能夠製作煙燻肉、煙燻蛋、煙燻魚。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2080,
+    "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+    "name": {
+      "aliases": [
+        "烟熏机",
+        "煙燻機",
+        "燻製器",
+        "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+        "烟燻机",
+        "훈제기"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SMOKING_MACHINE",
+      "ja": "燻製器",
+      "review_status": "official",
+      "translations": {
+        "ja": "燻製器",
+        "ko": "훈제기",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "烟熏机",
+        "zh-TW": "煙燻機"
+      },
+      "zh_hans": "烟熏机",
+      "zh_hant": "煙燻機"
+    },
+    "numeric_id": 400140,
+    "outline_icon_id": 5045,
+    "related_item_id": null,
+    "sell_price": 62
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "烟熏肉、蛋和鱼等物品的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+    "description_translations": {
+      "ja": "肉やタマゴ、魚などを燻製する機械。\n一度に3つまでの素材を入れられる。\n素材を入れて１日経つと加工される。",
+      "ko": "육류, 알, 생선 등을 훈제하는 기계.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 1일이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "烟熏肉、蛋和鱼等物品的机器。\n一次最多可放入3个材料。\n放入材料后，经过一天就会加工完成。",
+      "zh-TW": "煙燻肉、蛋和魚等物品的機器。\n一次最多可放入3個材料。\n放入材料後，經過一天就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2094,
+    "id": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+    "name": {
+      "aliases": [
+        "烟熏机／改",
+        "煙燻機／改",
+        "燻製器/改",
+        "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+        "烟燻机／改",
+        "훈제기/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SMOKING_MACHINE_02",
+      "ja": "燻製器/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "燻製器/改",
+        "ko": "훈제기/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "烟熏机／改",
+        "zh-TW": "煙燻機／改"
+      },
+      "zh_hans": "烟熏机／改",
+      "zh_hant": "煙燻機／改"
+    },
+    "numeric_id": 400141,
+    "outline_icon_id": 5059,
+    "related_item_id": null,
+    "sell_price": 168
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "会自动浇水的机器。\n朝周围3格田地浇水。\n用过一次后，就再也离不开它了。",
+    "description_translations": {
+      "ja": "水やりを自動でやってくれる機械。\n周囲３マスの畑に水を撒ける。\n一度使うとこれ無しではいられない。",
+      "ko": "자동으로 물을 주기 위한 설비.\n주위 3칸의 밭에 물을 준다.\n일단 써 보면 다시는 원래대로 못 돌아간다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "会自动浇水的机器。\n朝周围3格田地浇水。\n用过一次后，就再也离不开它了。",
+      "zh-TW": "會自動澆水的機器。\n朝周圍3格田地澆水。\n用過一次後，就再也離不開它了。"
+    },
+    "feature_ids": [],
+    "icon_id": 2100,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+    "name": {
+      "aliases": [
+        "强化洒水器",
+        "強化灑水器",
+        "強化スプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+        "강화 스프링클러"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_LARGE",
+      "ja": "強化スプリンクラー",
+      "review_status": "official",
+      "translations": {
+        "ja": "強化スプリンクラー",
+        "ko": "강화 스프링클러",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "强化洒水器",
+        "zh-TW": "強化灑水器"
+      },
+      "zh_hans": "强化洒水器",
+      "zh_hant": "強化灑水器"
+    },
+    "numeric_id": 402120,
+    "outline_icon_id": 5065,
+    "related_item_id": null,
+    "sell_price": 565
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "会自动浇水的机器。\n朝周围2格田地浇水。\n早晨的工作会轻松很多。",
+    "description_translations": {
+      "ja": "水やりを自動でやってくれる機械。\n周囲２マスの畑に水を撒ける。\n朝の作業がだいぶ楽になる。",
+      "ko": "자동으로 물을 주기 위한 설비.\n주위 2칸의 밭에 물을 준다.\n아침 작업이 상당히 편해진다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "会自动浇水的机器。\n朝周围2格田地浇水。\n早晨的工作会轻松很多。",
+      "zh-TW": "會自動澆水的機器。\n朝周圍2格田地澆水。\n早晨的工作會輕鬆很多。"
+    },
+    "feature_ids": [],
+    "icon_id": 2099,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+    "name": {
+      "aliases": [
+        "普通洒水器",
+        "普通灑水器",
+        "普通のスプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+        "평범한 스프링클러"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_MIDDLE",
+      "ja": "普通のスプリンクラー",
+      "review_status": "official",
+      "translations": {
+        "ja": "普通のスプリンクラー",
+        "ko": "평범한 스프링클러",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "普通洒水器",
+        "zh-TW": "普通灑水器"
+      },
+      "zh_hans": "普通洒水器",
+      "zh_hant": "普通灑水器"
+    },
+    "numeric_id": 402110,
+    "outline_icon_id": 5064,
+    "related_item_id": null,
+    "sell_price": 330
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "会自动浇水的机器。\n朝周围1格田地浇水。\n早晨的工作会稍微轻松一点。",
+    "description_translations": {
+      "ja": "水やりを自動でやってくれる機械。\n周囲１マスの畑に水を撒ける。\nほんの少し朝の作業が楽になる。",
+      "ko": "자동으로 물을 주기 위한 설비.\n주위 1칸의 밭에 물을 준다.\n아침 작업이 약간 편해진다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "会自动浇水的机器。\n朝周围1格田地浇水。\n早晨的工作会稍微轻松一点。",
+      "zh-TW": "會自動澆水的機器。\n朝周圍1格田地澆水。\n早晨的工作會稍微輕鬆一點。"
+    },
+    "feature_ids": [],
+    "icon_id": 2098,
+    "id": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+    "name": {
+      "aliases": [
+        "小型洒水器",
+        "小型灑水器",
+        "小さいスプリンクラー",
+        "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+        "작은 스프링클러"
+      ],
+      "internal": "ITEM_ID_GIMMICK_SPRINKLER_SMALL",
+      "ja": "小さいスプリンクラー",
+      "review_status": "official",
+      "translations": {
+        "ja": "小さいスプリンクラー",
+        "ko": "작은 스프링클러",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小型洒水器",
+        "zh-TW": "小型灑水器"
+      },
+      "zh_hans": "小型洒水器",
+      "zh_hant": "小型灑水器"
+    },
+    "numeric_id": 402100,
+    "outline_icon_id": 5063,
+    "related_item_id": null,
+    "sell_price": 120
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工作物、水果、鱼和牛奶的容器。\n能够制作腌渍物、果酱、发酵食品等等。\n放入材料后，经过几天后就会加工完成。",
+    "description_translations": {
+      "ja": "作物や果物、魚や牛乳を加工する容器。\n漬物やジャム、発酵食品などを作れる。\n素材を入れて何日か経つと加工される。",
+      "ko": "작물, 과일, 생선, 우유 가공에 쓰이는 용기.\n절임, 잼, 발효 식품 등을 만들 수 있다.\n재료를 넣고 며칠이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工作物、水果、鱼和牛奶的容器。\n能够制作腌渍物、果酱、发酵食品等等。\n放入材料后，经过几天后就会加工完成。",
+      "zh-TW": "加工作物、水果、魚和牛奶的容器。\n能夠製作醃漬物、果醬、發酵食品等等。\n放入材料後，經過幾天後就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2066,
+    "id": "ITEM_ID_GIMMICK_STORAGE_JAR",
+    "name": {
+      "aliases": [
+        "腌菜桶",
+        "醃菜桶",
+        "漬物樽",
+        "ITEM_ID_GIMMICK_STORAGE_JAR",
+        "절임통"
+      ],
+      "internal": "ITEM_ID_GIMMICK_STORAGE_JAR",
+      "ja": "漬物樽",
+      "review_status": "official",
+      "translations": {
+        "ja": "漬物樽",
+        "ko": "절임통",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "腌菜桶",
+        "zh-TW": "醃菜桶"
+      },
+      "zh_hans": "腌菜桶",
+      "zh_hant": "醃菜桶"
+    },
+    "numeric_id": 400000,
+    "outline_icon_id": 5031,
+    "related_item_id": null,
+    "sell_price": 37
+  },
+  {
+    "buy_price": null,
+    "category_id": "ITEM_CATEGORY_MACHINE",
+    "category_name": {
+      "aliases": [
+        "机械",
+        "機械",
+        "ITEM_CATEGORY_MACHINE"
+      ],
+      "internal": "ITEM_CATEGORY_MACHINE",
+      "ja": "機械",
+      "review_status": "override",
+      "translations": {
+        "ja": "機械",
+        "zh-TW": ""
+      },
+      "zh_hans": "机械",
+      "zh_hant": ""
+    },
+    "category_numeric_id": 17,
+    "description": "加工作物、水果、鱼和牛奶的容器。\n一次最多可放入3个材料。\n放入材料后，经过几天后就会加工完成。",
+    "description_translations": {
+      "ja": "作物や果物、魚や牛乳を加工する容器。\n一度に3つまでの素材を入れられる。\n素材を入れて何日か経つと加工される。",
+      "ko": "작물, 과일, 생선, 우유 가공에 쓰이는 용기.\n한 번에 재료를 3개까지 넣을 수 있다.\n재료를 넣고 며칠이 지나면 가공된다.",
+      "slot-1": "",
+      "slot-2": "",
+      "slot-3": "",
+      "zh-CN": "加工作物、水果、鱼和牛奶的容器。\n一次最多可放入3个材料。\n放入材料后，经过几天后就会加工完成。",
+      "zh-TW": "加工作物、水果、魚和牛奶的容器。\n一次最多可放入3個材料。\n放入材料後，經過幾天後就會加工完成。"
+    },
+    "feature_ids": [],
+    "icon_id": 2082,
+    "id": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+    "name": {
+      "aliases": [
+        "腌菜桶／改",
+        "醃菜桶／改",
+        "漬物樽/改",
+        "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+        "절임통/개량판"
+      ],
+      "internal": "ITEM_ID_GIMMICK_STORAGE_JAR_02",
+      "ja": "漬物樽/改",
+      "review_status": "official",
+      "translations": {
+        "ja": "漬物樽/改",
+        "ko": "절임통/개량판",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "腌菜桶／改",
+        "zh-TW": "醃菜桶／改"
+      },
+      "zh_hans": "腌菜桶／改",
+      "zh_hant": "醃菜桶／改"
+    },
+    "numeric_id": 400001,
+    "outline_icon_id": 5047,
+    "related_item_id": null,
+    "sell_price": 56
+  }
+]

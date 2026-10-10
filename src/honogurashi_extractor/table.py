@@ -19,6 +19,7 @@ class TableContainer:
     records: tuple[bytes, ...]
     auxiliary_index: tuple[int, ...]
     string_pool: bytes
+    language_count: int = 6
 
     def strings(self) -> tuple[str, ...]:
         try:
@@ -31,7 +32,9 @@ class TableContainer:
         return tuple(values)
 
 
-def read_table(data: bytes) -> TableContainer:
+def read_table(data: bytes, *, language_count: int = 6) -> TableContainer:
+    if language_count not in (6, 7):
+        raise TableFormatError("unsupported table language count")
     if len(data) < HEADER.size:
         raise TableFormatError("table length is shorter than its header")
     record_count, record_bytes, string_bytes, record_size = HEADER.unpack_from(data)
@@ -72,4 +75,5 @@ def read_table(data: bytes) -> TableContainer:
         records=tuple(records),
         auxiliary_index=tuple(auxiliary_index),
         string_pool=data[strings_start:],
+        language_count=language_count,
     )

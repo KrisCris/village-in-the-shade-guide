@@ -61,3 +61,11 @@ def test_reports_invalid_utf8_in_string_pool():
 
     with pytest.raises(TableFormatError, match="UTF-8"):
         table.strings()
+
+
+def test_language_width_is_explicit_and_old_tables_default_to_six():
+    payload = build_table(records=[b"1234"], strings=b"ID\0")
+    assert read_table(payload).language_count == 6
+    assert read_table(payload, language_count=7).language_count == 7
+    with pytest.raises(TableFormatError, match="language"):
+        read_table(payload, language_count=0)
