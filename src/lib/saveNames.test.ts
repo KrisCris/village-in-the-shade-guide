@@ -5,10 +5,11 @@ import { lookupIcon, lookupName, type SaveNameTables } from './saveNames';
 const tables: SaveNameTables = JSON.parse(readFileSync('public/save-editor-names.json', 'utf8'));
 
 describe('save editor name tables', () => {
-  it('normalizes display labels without changing item IDs or source tables', () => {
-    const input = { names: { items: { '42': '樹液採集器' } } };
-    expect(lookupName(input, 'items', '42')).toBe('树液采集器');
-    expect(input.names.items['42']).toBe('樹液採集器');
+  it('shows names exactly as the page language table has them', () => {
+    // Japanese kanji share Traditional forms; converting them broke 漬物樽 into 渍物樽.
+    const ja: SaveNameTables = JSON.parse(readFileSync('public/locales/ja/save-editor-names.json', 'utf8'));
+    expect(lookupName(ja, 'items', '400000')).toBe('漬物樽');
+    expect(lookupName({ names: { items: { '42': '樹液採集器' } } }, 'items', '42')).toBe('樹液採集器');
   });
   it('labels the IDs the save actually stores', () => {
     expect(lookupName(tables, 'items', '230000')).toBe('木材');

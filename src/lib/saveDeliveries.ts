@@ -1,9 +1,9 @@
 import data from '../../data/sources/game-save-unlocks.json';
-import { simplifySaveEntry } from './saveText';
+import { localizeGameData } from './saveText';
 import { encodeSigned, readSigned, type SerDocument } from './ser';
 import { tr } from '../i18n/active';
 
-export const UNLOCKS = { ...data, nodes: data.nodes.map(simplifySaveEntry), groups: data.groups.map(simplifySaveEntry), bundles: data.bundles.map(simplifySaveEntry) };
+export const UNLOCKS = localizeGameData(data);
 export type DeliveryEdits = Record<string, number>;
 export function readDeliveries(doc: SerDocument) {
   const root = doc.resolve('bundleList_');

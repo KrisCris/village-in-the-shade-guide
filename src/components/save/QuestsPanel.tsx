@@ -4,10 +4,11 @@ import type { SaveField, SaveModel } from '../../lib/saveModel';
 import { rawFieldFor } from '../../lib/saveModel';
 import { readSigned } from '../../lib/ser';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
-import { simplifySaveText } from '../../lib/saveText';
+import { gameText } from '../../lib/saveText';
 import { tr } from '../../i18n/active';
 
-const questText = (text: string) => simplifySaveText(text.replace(/<[^>]+>/g, '').trim());
+// Internal quests are marked by a leading tag in the Chinese name; display uses the page language.
+const questText = (text: string, translations?: Record<string, string>) => gameText(text, translations).replace(/<[^>]+>/g, '').trim();
 const stateLabel = (state: number) => state === 0 ? tr('隐藏') : state === 3 ? tr('已完成') : tr('进行中');
 
 function QuestStateBadge({ state }: { state: number }) {
@@ -35,7 +36,7 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
     return (node ? model.doc.children(node) : []).filter((_, index) => index % 2 === 1).flatMap(pointer => {
       const id = model.doc.resolve('p/dataID_', pointer), state = model.doc.resolve('p/state_', pointer), check = model.doc.resolve('p/checkLevel_', pointer);
       const info = id && data.quests.find(quest => quest.id === Number(readSigned(model.doc, id)));
-      return info && state && check ? [{ info, title: questText(info.name) || simplifySaveText(info.name), searchText: buildSaveSearchText(questText(info.name), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
+      return info && state && check ? [{ info, title: questText(info.name, info.nameTranslations) || gameText(info.name, info.nameTranslations), searchText: buildSaveSearchText(questText(info.name, info.nameTranslations), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
     });
   }, [model]);
   const visible = quests.filter(quest => (showInternal || !quest.internal) && quest.searchText.includes(normalizeSearch(search)));
@@ -80,12 +81,12 @@ function QuestDetail({ quest: { info, title, state, check }, drafts, onChange }:
   return <article className="save-quest-detail" aria-label={tr('当前任务详情')}>
     <header className="save-quest-detail-header"><h3>{title}</h3><QuestStateBadge state={currentState} /></header>
     <div className="save-quest-detail-body">
-      {info.description && <p className="save-quest-description">{questText(info.description)}</p>}
+      {info.description && <p className="save-quest-description">{questText(info.description, info.descriptionTranslations)}</p>}
       <div className="save-quest-controls">
         <label><span>{tr('任务记录')}</span><select aria-label={tr('{title}任务记录', { title })} value={currentState === 0 ? '0' : currentState === 3 ? '3' : '1'} onChange={event => { onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, event.target.value); if (event.target.value === '3') onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, String(max)); }}><option value="0">{tr('隐藏')}</option><option value="1">{tr('显示')}</option><option value="3">{tr('标记完成')}</option></select></label>
-        {!!info.steps.length && <label><span>{tr('清单进度')}</span><select aria-label={tr('{title}清单进度', { title })} value={value} onChange={event => { onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, event.target.value); onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, Number(event.target.value) >= max ? '3' : '1'); }}>{value === 'original' && <option value="original">{tr('存档中的当前进度')}</option>}<option value={-1}>{tr('尚未完成清单项目')}</option>{levels.filter(level => level >= 0).map(level => <option key={level} value={level}>{tr('已完成')} {info.steps.filter(step => step.level < level).length} / {info.steps.length} {tr('项')}</option>)}</select></label>}
+        {!!info.steps.length && <label><span>{tr('清单进度')}</span><select aria-label={tr('{title}清单进度', { title })} value={value} onChange={event => { onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, event.target.value); onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, Number(event.target.value) >= max ? '3' : '1'); }}>{value === 'original' && <option value="original">{tr('存档中的当前进度')}</option>}<option value={-1}>{tr('尚未完成清单项目')}</option>{levels.filter(level => level >= 0).map(level => <option key={level} value={level}>{tr('已完成 {done} / {total} 项', { done: info.steps.filter(step => step.level < level).length, total: info.steps.length })}</option>)}</select></label>}
       </div>
-      {!!info.steps.length && <section className="save-quest-checklist"><h4>{tr('任务清单')} <small>{info.steps.filter(step => step.level < current).length} / {info.steps.length}</small></h4><ul>{info.steps.map((step, index) => <li key={index} className={current > step.level ? 'done' : 'pending'}><span aria-hidden="true">{current > step.level ? '✓' : '○'}</span><span>{questText(step.name)}</span></li>)}</ul></section>}
+      {!!info.steps.length && <section className="save-quest-checklist"><h4>{tr('任务清单')} <small>{info.steps.filter(step => step.level < current).length} / {info.steps.length}</small></h4><ul>{info.steps.map((step, index) => <li key={index} className={current > step.level ? 'done' : 'pending'}><span aria-hidden="true">{current > step.level ? '✓' : '○'}</span><span>{questText(step.name, step.nameTranslations)}</span></li>)}</ul></section>}
       <p className="save-quest-note">{tr('修改记录不会触发剧情、发放奖励或改变村庄状态。')}</p>
     </div>
   </article>;

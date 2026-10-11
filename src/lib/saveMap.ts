@@ -1,4 +1,5 @@
-import data from '../../data/sources/game-save-map.json';
+import source from '../../data/sources/game-save-map.json';
+import { localizeGameData } from './saveText';
 import { containsPoint, footprint, polygonsOverlap } from './saveMapGeometry';
 import artData from '../../data/sources/game-map-rules.json';
 import crops from '../../data/generated/build-25311578/entities/crops.json';
@@ -7,6 +8,13 @@ import { animalResidents, animalHouses, ANIMALS, type AnimalEdits } from './save
 import { flagEnabled, type ProgressEdits } from './saveProgress';
 import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, nullPointer, readFloat, readSigned, serializeSer, SerDocument, SerTag, type SerBuiltNode, type SerNode } from './ser';
 import { tr } from '../i18n/active';
+import { msg } from '../i18n/translate';
+
+// The base house and coop templates ship without game translations; their
+// Simplified Chinese names are catalog keys instead.
+const untranslated = new Set([msg('我的家'), msg('鸡舍')]);
+const localized = localizeGameData(source);
+const data = { ...localized, objects: localized.objects.map(o => 'nameTranslations' in o || !untranslated.has(o.name) ? o : { ...o, name: tr(o.name) }) };
 
 export const MAP_DATA = data;
 export const MAP_CROPS = crops.filter(c => c.seed_item_ids.length && c.harvest_item_ids.length);

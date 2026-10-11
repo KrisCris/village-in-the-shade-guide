@@ -1,7 +1,9 @@
-import data from '../../data/sources/game-save-tools.json';
+import source from '../../data/sources/game-save-tools.json';
+import { localizeGameData } from './saveText';
 import type { SaveModel } from './saveModel';
 import { tr } from '../i18n/active';
 
+const data = localizeGameData(source);
 export const TOOLS = data.tools;
 export const TOOL_RANGE_FIELDS: Record<number, string> = {
   660000: 'wateringCanRangeLevel_', 660010: 'mullberryRangeLevel_', 660080: 'plowRangeLevel_',
