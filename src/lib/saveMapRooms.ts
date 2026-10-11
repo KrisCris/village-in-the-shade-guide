@@ -15,6 +15,7 @@ export interface MapRoom {
   floorName?: string;
   bounds: number[];
   file: string;
+  scenery?: string;
   fixtures?: RoomFixture[];
 }
 

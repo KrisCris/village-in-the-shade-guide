@@ -140,7 +140,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   },[rooms,roomId]);
   const room = rooms.find(r => r.id === roomId);
   const sceneId = room?.scene ?? FARM_SCENE;
-  const viewArt = useMemo(() => art && room ? { ...art, bounds: room.bounds, background: room.file, fixtures: room.fixtures } : art, [art, room]);
+  const viewArt = useMemo(() => art && room ? { ...art, bounds: room.bounds, background: room.file, scenery: room.scenery, fixtures: room.fixtures } : art, [art, room]);
   const terrain = useMemo(() => sceneCells(sceneId).filter(c => !room || (c.x >= room.bounds[0] && c.x <= room.bounds[2] && c.y >= room.bounds[1] && c.y <= room.bounds[3])), [sceneId, room]);
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
   function changeRoom(id: string) {

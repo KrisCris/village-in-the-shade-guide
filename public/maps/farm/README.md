@@ -14,7 +14,11 @@ uv run python tools/extract-map-art.py --game <installed-game-directory>
 ```
 
 The extractor reads the archives without executing the game. Ground tiles are
-composed at native resolution, then reduced to 50% for transfer. Sprite anchors,
+composed at native resolution, then reduced to 50% for transfer. Static YMWR
+decals (walls, fences, roofs, trees and rocks) go in separate `*-scenery.webp`
+layers with the same bounds, so the editor can hide them in its ground-only view.
+Each decal is drawn from its top-left position, scaled about its pivot, flipped
+and faded as recorded, and ordered by its depth line. Sprite anchors,
 first-frame transforms, texture substitutions, seasonal variations and crop
 growth thresholds come from game records. `manifest.json` contains world bounds
 and sprite metadata. Crops use their saved state and growth points, not an

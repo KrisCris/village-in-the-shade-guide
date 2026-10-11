@@ -23,7 +23,7 @@ export interface ArtEntity {
   mapId?: number;
 }
 export interface RoomFixture extends Point { id: number; require: number; art: SpriteArt }
-export interface RoomArt { file: string; bounds: number[]; fixtures?: RoomFixture[] }
+export interface RoomArt { file: string; scenery?: string; bounds: number[]; fixtures?: RoomFixture[] }
 export interface MapArt {
   bounds: number[];
   seasons: string[];
@@ -32,6 +32,8 @@ export interface MapArt {
   soils?: Record<string, SpriteArt>;
   rooms?: Record<string, RoomArt[]>;
   background?: string;
+  /** Walls, fences, roofs and trees, drawn over the background with the same bounds. */
+  scenery?: string;
   fixtures?: RoomFixture[];
   fixedObjects?: (Point & { id: number; name: string; angle: number; require: number })[];
 }

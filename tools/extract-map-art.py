@@ -13,7 +13,7 @@ from PIL import Image, ImageChops, ImageDraw
 
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.gimmick import gimmick_features
-from honogurashi_extractor.map_art import FairyBank, ground_image
+from honogurashi_extractor.map_art import FairyBank, ground_image, scenery_image
 from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.texture import decode_nltx_image
@@ -140,6 +140,8 @@ def main():
             bounds = (min(x for x,y in tiles)*256, min(y for x,y in tiles)*256,
                       (max(x for x,y in tiles)+1)*256, (max(y for x,y in tiles)+1)*256)
             image = ground_image(mat, bounds, cols)
+            # Walls, fences, roofs and props are YMWR decals drawn over the ground tiles.
+            scenery = scenery_image(head, mat, bounds)
             # Upstairs shares a YMWR map with the ground floor. Separate the two
             # disconnected rooms at the native terrain gap, never rotate them.
             cuts = [bounds]
@@ -153,16 +155,23 @@ def main():
                 cuts = [tuple(first), tuple(second)] if axis == 0 else [tuple(second), tuple(first)]
             floors = []
             for index, cut in enumerate(cuts):
-                crop = image.crop((cut[0]-bounds[0], cut[1]-bounds[1], cut[2]-bounds[0], cut[3]-bounds[1]))
+                box = (cut[0]-bounds[0], cut[1]-bounds[1], cut[2]-bounds[0], cut[3]-bounds[1])
+                crop, decor = image.crop(box), scenery.crop(box)
                 rgb = crop.convert('RGB').split()
                 tight = ImageChops.lighter(ImageChops.lighter(rgb[0], rgb[1]), rgb[2]).point(lambda p: 255 if p > 8 else 0).getbbox()
                 if not tight:
                     raise ValueError(f'Empty room {path} floor {index}')
-                cropped = crop.crop(tight)
+                extra = decor.getchannel('A').getbbox()
+                if extra:
+                    tight = (min(tight[0], extra[0]), min(tight[1], extra[1]), max(tight[2], extra[2]), max(tight[3], extra[3]))
                 local = [cut[0]+tight[0],cut[1]+tight[1],cut[0]+tight[2],cut[1]+tight[3]]
                 file = f'rooms/{Path(path).stem}-{index}.webp'
-                clear_outside(cropped).save(dest/file, quality=92, method=4)
-                floors.append({'file': file, 'bounds': local})
+                clear_outside(crop.crop(tight)).save(dest/file, quality=92, method=4)
+                floor = {'file': file, 'bounds': local}
+                if extra:
+                    floor['scenery'] = f'rooms/{Path(path).stem}-{index}-scenery.webp'
+                    decor.crop(tight).save(dest/floor['scenery'], quality=92, method=4)
+                floors.append(floor)
             room_cache[path] = floors
         metadata['rooms'][str(scene['id'])] = [
             {**floor, 'bounds': [v+scene['origin'][i%2] for i,v in enumerate(floor['bounds'])],
@@ -173,8 +182,15 @@ def main():
     if not args.skip_ground:
         for season in SEASONS:
             print('Ground', season, flush=True)
-            image = ground_image(maps.read_entry(f'{openworld}_{season}.ymwr.mat'), BOUNDS)
+            mat = maps.read_entry(f'{openworld}_{season}.ymwr.mat')
+            image = ground_image(mat, BOUNDS)
             image.resize((image.width//2, image.height//2), Image.Resampling.LANCZOS).save(dest/f'{season}.webp', quality=88)
+            # Trees, rocks and fences go on their own layer so the editor can hide them.
+            head = maps.read_entry(f'{openworld}_{season}.ymwr.head')
+            if head.startswith(b'YKCMP_V1'):
+                head = zlib.decompress(head[20:])
+            image = scenery_image(head, mat, BOUNDS)
+            image.resize((image.width//2, image.height//2), Image.Resampling.LANCZOS).save(dest/f'{season}-scenery.webp', quality=80, method=6)
 
     @lru_cache(maxsize=24)
     def texture_image(id):

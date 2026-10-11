@@ -177,3 +177,54 @@ def ground_image(data: bytes, bounds: tuple[int, int, int, int], columns: int = 
             image = decode_nltx_image(data[base+offset+8:base+offset+8+size])
             out.alpha_composite(image, (x*256-left, y*256-top))
     return out
+
+
+def decals(head: bytes) -> list[dict]:
+    """Static scenery sprites (walls, fences, roofs, trees) that YMWR stores after its collision and cell tables."""
+    header = struct.unpack_from('<19I', head)
+    start = 76+header[3]*72+header[12]*112
+    result = []
+    for i in range(header[8]):
+        texture, x, y, w, h, px, py = struct.unpack_from('<7i', head, start+i*84)
+        rotation, scale, flip = struct.unpack_from('<2fI', head, start+i*84+36)
+        alpha = struct.unpack_from('<i', head, start+i*84+52)[0]
+        x1, y1, x2, y2 = struct.unpack_from('<4i', head, start+i*84+64)
+        # (x, y) is the sprite's top-left; the pivot is only the centre for scaling,
+        # and the sort line below it orders overlapping sprites by depth.
+        result.append(dict(texture=texture, x=x, y=y, w=w, h=h, px=w-px if flip else px, py=py,
+                           rotation=rotation, scale=scale, flip=bool(flip), alpha=alpha, depth=y+max(y1, y2)))
+    return result
+
+
+def scenery_image(head: bytes, mat: bytes, bounds: tuple[int, int, int, int]) -> Image.Image:
+    """Draw the YMWR decals that overlap bounds, back to front, on a transparent layer."""
+    count = struct.unpack_from('<I', mat)[0]
+    textures: dict[int, Image.Image] = {}
+    left, top, right, bottom = bounds
+    out = Image.new('RGBA', (right-left, bottom-top))
+    for decal in sorted(decals(head), key=lambda d: d['depth']):
+        scale = decal['scale']
+        x = round(decal['x']+decal['px']*(1-scale))
+        y = round(decal['y']+decal['py']*(1-scale))
+        w, h = round(decal['w']*scale), round(decal['h']*scale)
+        if x+w <= left or x >= right or y+h <= top or y >= bottom or w <= 0 or h <= 0:
+            continue
+        index = decal['texture']
+        if not 0 <= index < count:
+            raise ValueError(f'YMWR decal texture {index} outside {count} textures')
+        if index not in textures:
+            offset, size = struct.unpack_from('<II', mat, 8+index*8)
+            textures[index] = decode_nltx_image(mat[offset:offset+size])
+        image = textures[index].crop((0, 0, decal['w'], decal['h']))
+        if decal['flip']:
+            image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+        if (w, h) != image.size:
+            image = image.resize((w, h), Image.Resampling.LANCZOS)
+        if abs(decal['rotation']) > 1e-6:
+            raise ValueError('Rotated YMWR decals are not supported')
+        if decal['alpha'] < 255:
+            image.putalpha(image.getchannel('A').point(lambda a, k=decal['alpha']: a*k//255))
+        layer = Image.new('RGBA', out.size)
+        layer.paste(image, (x-left, y-top))
+        out.alpha_composite(layer)
+    return out

@@ -3,7 +3,7 @@ import struct
 import pytest
 from PIL import Image
 
-from honogurashi_extractor.map_art import FairyBank, ground_image, multiply, point
+from honogurashi_extractor.map_art import FairyBank, decals, ground_image, multiply, point, scenery_image
 
 
 def test_affine_parent_translation_and_mirroring():
@@ -56,3 +56,33 @@ def test_ground_index_uses_relative_offsets_and_verifies_coordinates(monkeypatch
     struct.pack_into('<I', data, 20, 1)
     with pytest.raises(ValueError, match='coordinates'):
         ground_image(bytes(data), (0, 0, 256, 256), 1)
+
+
+def decal_head(*rows):
+    head = bytearray(76)
+    struct.pack_into('<I', head, 8*4, len(rows))
+    for texture, x, y, w, h, px, py, scale, flip, alpha in rows:
+        row = bytearray(84)
+        struct.pack_into('<9i2fIii', row, 0, texture, x, y, w, h, px, py, 8, 8, 0.0, scale, flip, 0, alpha)
+        struct.pack_into('<4i', row, 64, 0, h, w, h)
+        head += row
+    return bytes(head)
+
+
+def test_decals_are_placed_by_top_left_and_scaled_about_the_pivot(monkeypatch):
+    mat = bytearray(16)
+    struct.pack_into('<III', mat, 0, 1, 0, 0)
+    texture = Image.new('RGBA', (8, 8))
+    texture.paste((255, 0, 0, 255), (0, 0, 1, 4))
+    monkeypatch.setattr('honogurashi_extractor.map_art.decode_nltx_image', lambda blob: texture)
+    head = decal_head((0, 10, 20, 4, 4, 2, 4, 1.0, 1, 128), (0, 30, 20, 4, 4, 2, 4, 0.5, 0, 255))
+    first, second = decals(head)
+    assert (first['x'], first['y'], first['flip'], first['px']) == (10, 20, True, 2)
+    assert second['depth'] == 24
+    image = scenery_image(head, bytes(mat), (0, 0, 40, 40))
+    # Flipped: the red left column moves to the right edge; alpha scales opacity.
+    assert image.getpixel((13, 20)) == (255, 0, 0, 128)
+    assert image.getpixel((10, 20))[3] == 0
+    # Half scale around the bottom-centre pivot (32, 24): drawn at (31, 22) as a 2x2 sprite whose red column is x=31.
+    assert image.getbbox() == (13, 20, 32, 24)
+    assert image.getpixel((31, 22))[3] > 0

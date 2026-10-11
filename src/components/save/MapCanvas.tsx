@@ -58,6 +58,7 @@ export default function MapCanvas(props: MapCanvasProps) {
   const regions = props.regions ?? FARM_REGIONS;
   const homeBounds = props.homeBounds ?? FARM_BOUNDS;
   const backgroundFile = props.art.background ?? `${props.art.seasons[props.season]}.webp`;
+  const sceneryFile = props.art.background ? props.art.scenery : `${props.art.seasons[props.season]}-scenery.webp`;
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
   const shown = (s: SceneSprite) => s.kind === 'crop' ? props.plants : s.floor ? props.floors : props.facilities;
   const canvas = useRef<HTMLCanvasElement>(null),
@@ -159,6 +160,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       bounds = props.art.bounds;
     if (background)
       ctx.drawImage(background, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
+    const scenery = sceneryFile && !props.groundOnly ? image(sceneryFile) : undefined;
     const left = camera.x - size.width / 2 / camera.zoom,
       right = camera.x + size.width / 2 / camera.zoom;
     const top = camera.y - size.height / 2 / camera.zoom,
@@ -189,6 +191,8 @@ export default function MapCanvas(props: MapCanvasProps) {
       }
       if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
     }
+    if (scenery)
+      ctx.drawImage(scenery, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
     if(props.allowedTerrain) {
       const parity=terrain.length?(Math.round(terrain[0].x/45)+Math.round(terrain[0].y/45))%2:1;
       const layer=restrictedOverlay.current.render(props.allowedTerrain,bounds,camera,size.width,size.height,ratio,parity);
@@ -288,6 +292,8 @@ export default function MapCanvas(props: MapCanvasProps) {
     terrain,
     regions,
     backgroundFile,
+    sceneryFile,
+    props.groundOnly,
     props.season,
     props.sprites,
     props.ground,
@@ -535,6 +541,13 @@ export default function MapCanvas(props: MapCanvasProps) {
             width={props.art.bounds[2] - props.art.bounds[0]}
             height={props.art.bounds[3] - props.art.bounds[1]}
           />
+          {sceneryFile && !props.groundOnly && <image
+            href={withBase(`/maps/farm/${sceneryFile}`)}
+            x={props.art.bounds[0]}
+            y={props.art.bounds[1]}
+            width={props.art.bounds[2] - props.art.bounds[0]}
+            height={props.art.bounds[3] - props.art.bounds[1]}
+          />}
           <rect
             x={camera.x - size.width / 2 / camera.zoom}
             y={camera.y - size.height / 2 / camera.zoom}
