@@ -14,7 +14,7 @@ const required=fish.filter(e=>uses(e.id).length);
 const seasons=[['spring',t('春')],['summer',t('夏')],['autumn',t('秋')],['winter',t('冬')]];
 ---
 <BaseLayout title={t('四季钓鱼与留货规划')}><h1>{t('四季钓鱼与留货规划')}</h1>
-<nav>{seasons.map(([id,name])=><a href={`#${id}`}>{t('{season}季',{season:name})}</a>)}<a href={href("/data/fish/")}>{t('全部鱼类筛选')}</a></nav>
+<nav>{seasons.map(([id,name])=><a href={`#${id}`}>{t('{season}季',{season:name})}</a>)}<a href={href("/guides/fishing-spots/")}>{t('四季钓点分布')}</a><a href={href("/data/fish/")}>{t('全部鱼类筛选')}</a></nav>
 <p>{t('先钓有期限的委托，再补尚未完成的交付目录。下面按鱼在本季的实际出现记录列出留货目标；不是要求每季重复交一次，完成过的目录可以划出自己的计划。')}</p>
 <p>{t('早：7:00–12:00；中：12:00–18:00；晚：18:00–次日 0:00；深夜：0:00–6:00。6:00–7:00 未归入这四组出现记录。')}</p>
 <ol><li>{t('出门前选定一个未完成的交付组，确认缺的鱼与数量；不要只看鱼价决定去哪里。')}</li><li set:html={tHtml('在下方找当前季节可钓的目标，把同一钓点、同一时段的鱼一起补齐。道路未开放时先做<a href="/guides/progression/#help">帮忙券与道路解锁</a>。')} /><li>{t('钓到后先留够交付数量。剩余鱼再考虑做料理或加工；料理标注“鱼类”的材料可用其他同类鱼，不必消耗稀有鱼。')}</li></ol>

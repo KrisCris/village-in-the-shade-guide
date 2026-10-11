@@ -1,0 +1,5067 @@
+{
+ "source": "fishing.dat (build 25311578)",
+ "spots": [
+  "FISHING_ID_01",
+  "FISHING_ID_02",
+  "FISHING_ID_03",
+  "FISHING_ID_04",
+  "FISHING_ID_05",
+  "FISHING_ID_06"
+ ],
+ "spawns": [
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_01",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_01",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_01",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_01",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_01",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SATSUKI_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_02",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_02",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_GOBY",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_02",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_EEL",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_02",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_02",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_03",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_EEL",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_LONG_ARM_SHRIMP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_03",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_BITTERLING",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SOFTSHELL_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_03",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CRUCIAN_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CARP",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CARP",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_03",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_03",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_04",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMAGO_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_04",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_CATFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_04",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMAME_TROUT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_04",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_04",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_05",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_PALE_CHUB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_FRESHWATER_CRAB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_CRAYFISH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SWEETFISH",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_05",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_RAINBOW_TROUT",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_RAINBOW_TROUT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_AMUR_MINNOW",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_CHUB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_YAMATO_CHAR",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_POND_TURTLE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_RAINBOW_TROUT",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_05",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DACE",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_DARK_SLEEPER",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_MITTEN_CRAB",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_SALMON",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_JAPANESE_HUCHEN",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_05",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_05",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "spring",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_06",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_LOACH",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "summer",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_06",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 3.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_BLACK_SPOTTED_FROG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "autumn",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_06",
+   "weight": 1.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "morning",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "day",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "evening",
+   "item": "ITEM_ID_FISHING_WHITE_CATFISH",
+   "weight": 0.5
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_WATER_PLANT",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_TWIG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_EMPTY_CAN",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_TRASH_PLASTIC_BAG",
+   "weight": 6.0
+  },
+  {
+   "spot": "FISHING_ID_06",
+   "season": "winter",
+   "period": "late-night",
+   "item": "ITEM_ID_FISHING_GHOST_FISH_06",
+   "weight": 1.0
+  }
+ ]
+}

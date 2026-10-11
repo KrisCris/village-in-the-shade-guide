@@ -13,6 +13,7 @@ import { useQuality } from '../quality/qualityPreference';
 
 const seasonLabels: Record<string, string> = { spring: msg('春'), summer: msg('夏'), autumn: msg('秋'), winter: msg('冬') };
 const timeLabels: Record<string, string> = { morning: msg('早晨 07:00–12:00'), day: msg('白天 12:00–18:00'), evening: msg('夜晚 18:00–00:00'), 'late-night': msg('深夜 00:00–06:00') };
+const periodLabels: Record<string, string> = { morning: msg('早晨'), day: msg('白天'), evening: msg('夜晚'), 'late-night': msg('深夜') };
 export function applyEntityFilters(rows: Entity[], filters: Record<string, string>) {
   const needle = normalizeSearch(filters.query ?? '');
   return rows.filter((row) => {
@@ -124,7 +125,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
 
   const seasonText = (row: Entity) => (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ? t(seasonLabels[value]) : value).join(t('、'));
   return <>
-    {kind === 'fish' && <p className="fishing-hours">{Object.values(timeLabels).map((label) => t(label)).join(' · ')}<br /><small>{t('06:00–07:00 无出没时段记录')}</small></p>}
+    {kind === 'fish' && <p className="fishing-hours">{Object.values(timeLabels).map((label) => t(label)).join(' · ')}<br /><small>{t('06:00–07:00 无出没时段记录')}</small><br /><a href={href('/guides/fishing-spots/')}>{t('按季节查看各钓点能钓到的鱼和概率')} →</a></p>}
     <div className="toolbar card">
       <label>{t('页内搜索')}<input type="search" placeholder={t('名称、拼音、日文或 ID')} value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       {['crops', 'fish'].includes(kind) && <>
@@ -140,7 +141,21 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
       <label>{t('方向')}<SearchableSelect value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">{t('升序')}</option><option value="desc">{t('降序')}</option></SearchableSelect></label>
       <b>{t('{count} 条', { count: shown.length })}</b>
     </div>
-    <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>{t('名称')}</th><th>{t('季节 / 类型')}</th><th>{t('成本')}</th><th>{t('产值')}</th><th>{t('时间')}</th><th>{t('日净收益')}</th><th>{t('数据 ID')}</th></tr></thead><tbody>{visible.map((row) => {
+    {kind === 'fish' ? <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>{t('名称')}</th><th>{t('季节')}</th><th>{t('钓鱼点')}</th><th>{t('时段')}</th><th>{t('产值')}</th><th>{t('数据 ID')}</th></tr></thead><tbody>{visible.map((row) => {
+      // Spots and periods follow the active filters, so a spring filter lists only where and when it bites in spring.
+      const hits = row.appearances?.filter((entry) => (!season || entry.season === season) && (!timePeriod || entry.time_period === timePeriod) && (!fishingLocation || entry.location_id === fishingLocation)) ?? [];
+      const places = ((row.locations ?? []) as { location_id: string; name: { zh_hans: string } }[]).filter((place) => hits.some((entry) => entry.location_id === place.location_id));
+      const periods = Object.keys(timeLabels).filter((period) => hits.some((entry) => entry.time_period === period));
+      const metrics = entityMetrics(row, quality, priceIndex);
+      return <tr key={row.id} tabIndex={0} aria-label={t('打开{name}详情', { name: row.name.zh_hans })} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
+        <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
+        <td>{seasonText(row) || '—'}</td>
+        <td className="fish-places">{places.map((place) => <span key={place.location_id}>{place.name.zh_hans}</span>)}</td>
+        <td>{periods.map((period) => t(periodLabels[period])).join(t('、')) || '—'}</td>
+        <td className="price">{metricText(metrics.sell, row.quality_eligible ? qualityLabel(quality, t) : t('固定'))}</td>
+        <td><code>{row.id}</code></td>
+      </tr>;
+    })}</tbody></table></div> : <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>{t('名称')}</th><th>{t('季节 / 类型')}</th><th>{t('成本')}</th><th>{t('产值')}</th><th>{t('时间')}</th><th>{t('日净收益')}</th><th>{t('数据 ID')}</th></tr></thead><tbody>{visible.map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality, t) : t('固定');
       const processGroup = row.source_kind === 'processes';
@@ -159,13 +174,13 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         <td className="price">{metricText(metrics.profit, row.quality_eligible ? qualityLabel(quality, t) : t('固定'))}</td>
         <td><code>{row.id}</code></td>
       </tr>;
-    })}</tbody></table></div>
+    })}</tbody></table></div>}
     <div ref={sentinel} className="load-more">{more&&<button onClick={loadMore}>{t('加载更多（已显示 {shown} / {total}）', { shown: visible.length, total: shown.length })}</button>}</div>
     {selected && <Suspense fallback={<div role="status" className="detail-loading">{t('正在打开详情…')}</div>}><EntityDrawer initial={selected} onClose={() => setSelected(null)} /></Suspense>}
     <style>{`
       .load-more{display:flex;justify-content:center;padding:1rem}.detail-loading{position:fixed;right:1rem;bottom:1rem;z-index:70;background:var(--paper-raised);padding:1rem;border:1px solid var(--border);border-radius:8px}
       .toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:.8rem;padding:.8rem;margin:1.2rem 0}.toolbar label{display:grid;gap:.3rem;color:var(--muted);font-size:.78rem}.toolbar input,.toolbar select{min-height:42px;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);color:var(--ink)}.toolbar b{margin-left:auto;padding:.7rem;color:var(--green)}
-      .table-wrap{overflow-x:auto;overflow-y:hidden;scroll-margin-top:6rem}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:flex;align-items:center;gap:.65rem;color:var(--green);font-weight:750;text-decoration:none;min-width:180px}.entity-link img{flex:none;border-radius:7px;object-fit:contain;background:var(--paper-deep)}.entity-link span{display:grid}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}code{font-size:.72rem;color:var(--muted)}
+      .table-wrap{overflow-x:auto;overflow-y:hidden;scroll-margin-top:6rem}table{width:100%;border-collapse:collapse;font-size:.9rem}th{position:sticky;top:0;z-index:1;background:var(--paper-deep);text-align:left;white-space:nowrap}th,td{padding:.7rem .8rem;border-bottom:1px solid var(--border);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr:focus-visible{background:color-mix(in srgb,var(--green-soft) 45%,transparent)}.entity-link{display:flex;align-items:center;gap:.65rem;color:var(--green);font-weight:750;text-decoration:none;min-width:180px}.entity-link img{flex:none;border-radius:7px;object-fit:contain;background:var(--paper-deep)}.entity-link span{display:grid}.entity-link small{display:block;color:var(--muted);font-weight:400;margin-top:.2rem}.fish-places span{display:block;white-space:nowrap}code{font-size:.72rem;color:var(--muted)}
       @media(max-width:700px){.toolbar>*{flex:1 1 140px}.toolbar b{margin-left:0}.table-wrap th,.table-wrap td{padding:.6rem .5rem}.table-wrap th:first-child,.table-wrap td:first-child{position:static}.table-wrap .entity-link{min-width:0;gap:.4rem;align-items:flex-start}.table-wrap .entity-link img{width:30px;height:30px}.table-wrap .entity-link span{min-width:0;overflow-wrap:anywhere}.table-wrap .entity-link small{font-size:.72rem}}
     `}</style>
   </>;
