@@ -353,7 +353,7 @@ export default function FarmlandPicker({
           <div className="wf-farm-summary">
             <strong>{tr('已选 {count} 格', { count: total })}</strong>
             <span>
-              {tr('当前地图')} {preview.size} / {shape.count} {tr('格')}
+              {tr('当前地图 {shown} / {total} 格', { shown: preview.size, total: shape.count })}
             </span>
           </div>
           {owners.length > 0 && (

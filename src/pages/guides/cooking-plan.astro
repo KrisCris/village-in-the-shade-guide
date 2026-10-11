@@ -15,7 +15,7 @@ const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
 <nav><a href="#ingredients">{t('可替换材料')}</a>　<a href={href("/guides/residents/#recipes")}>{t('村民传授食谱')}</a>　<a href={href("/data/cooking-recipes/")}>{t('全部料理配方')}</a></nav>
 <section><h2>{t('先决定用途，再备材料')}</h2><ol>
 <li set:html={tHtml('为送礼做料理时，先在<a href="/guides/residents/">角色喜好与生日表</a>选定目标，再点料理查看配方。不要为尚未学会的菜一次囤齐所有材料。')} />
-<li set:html={tHtml('为交付做料理时，先按<a href="/data/activities/?q=料理">交付目录</a>留够成品数量；目录所需与自己的日常消耗分开。')} />
+<li set:html={tHtml('为交付做料理时，先按<a href="/data/activities/?q=交付目录">交付目录</a>留够成品数量；目录所需与自己的日常消耗分开。')} />
 <li>{t('材料写“蛋类、奶类、肉类、鱼类、小鱼类”时，可以从对应清单挑已有余量的材料。详情里的默认物品只是示例，不代表只能用那一种。')}</li>
 <li>{t('稀有鱼、即将交任务的鱼先留存。做烤鱼等允许类别替换的菜时，先考虑容易补充、没有待办用途的鱼。')}</li>
 </ol></section>

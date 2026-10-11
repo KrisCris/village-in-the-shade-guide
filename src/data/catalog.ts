@@ -75,7 +75,9 @@ export function translateLabel(value: string, t: Translate): string {
 }
 
 function setSearchText(entity: Entity) {
-  entity.searchText = normalizeSearch([entity.name.zh_hans, entity.name.zh_hant, entity.name.ja, entity.name.internal, ...entity.name.aliases, ...(entity.category_name?.aliases ?? [])].join(' '));
+  // Activities are found by what they are and where they happen (建筑, 村长家交付委托目录).
+  const context = entity.kind === 'activities' ? [entity.activity_type, entity.location].filter((value): value is string => typeof value === 'string') : [];
+  entity.searchText = normalizeSearch([entity.name.zh_hans, entity.name.zh_hant, entity.name.ja, entity.name.internal, ...entity.name.aliases, ...(entity.category_name?.aliases ?? []), ...context].join(' '));
 }
 
 export function iconItemIdFor(entity: Entity) {

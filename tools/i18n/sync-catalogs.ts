@@ -75,7 +75,9 @@ for (const file of (await readdir(entities)).filter((name) => name.endsWith('.js
   }
 }
 const dataKeys = new Set<string>();
-buildCatalog(input, '', 'ja', (source) => {
+// Each language falls back to the catalog for names the game leaves blank in
+// that language only (zh-TW item categories, for example), so record both.
+for (const locale of ['ja', 'zh-TW'] as const) buildCatalog(input, '', locale, (source) => {
   dataKeys.add(source);
   return source;
 });
