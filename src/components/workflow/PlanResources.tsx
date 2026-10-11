@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import type { Entity } from "../../data/types";
 import type { WorkflowPlan } from "../../domain/workflow/types";
 import { QUALITY_LABELS, QUALITY_VALUES } from "../../domain/quality";
@@ -40,7 +41,7 @@ export default function PlanResources({
       />
       <label className="wf-field">
         {tr('统一品质假设')}
-        <select
+        <SearchableSelect
           value={plan.quality}
           onChange={(e) =>
             onChange({
@@ -54,7 +55,7 @@ export default function PlanResources({
               {QUALITY_LABELS[q]}
             </option>
           ))}
-        </select>
+        </SearchableSelect>
       </label>
       <p className="wf-note">
         {tr('收支只计购买原料和出货。机器购置、土地扩建等费用另计；推算的资源数量表示完成该流程的需求。')}

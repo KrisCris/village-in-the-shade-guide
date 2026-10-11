@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import {
   useCallback,
   useEffect,
@@ -1307,7 +1308,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   <div className="wf-link-form">
                     <label>
                       {tr('来源')}
-                      <select
+                      <SearchableSelect
                         value={source}
                         onChange={(e) => setSource(e.target.value)}
                       >
@@ -1317,12 +1318,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                             {n.label}
                           </option>
                         ))}
-                      </select>
+                      </SearchableSelect>
                     </label>
                     <span>→</span>
                     <label>
                       {tr('去向')}
-                      <select
+                      <SearchableSelect
                         value={target}
                         onChange={(e) => setTarget(e.target.value)}
                       >
@@ -1332,7 +1333,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                             {n.label}
                           </option>
                         ))}
-                      </select>
+                      </SearchableSelect>
                     </label>
                     <button
                       disabled={!source || !target}

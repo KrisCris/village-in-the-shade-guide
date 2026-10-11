@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { withBase } from "../../lib/sitePath";
 import WorkflowIcon from "./WorkflowIcon";
@@ -77,7 +78,7 @@ export function DateField({
         />
       </label>
       <span>{tr('年')}</span>
-      <select
+      <SearchableSelect
         aria-label={tr('{label}季节', { label })}
         value={season}
         onChange={(e) =>
@@ -89,8 +90,8 @@ export function DateField({
             {s}
           </option>
         ))}
-      </select>
-      <select
+      </SearchableSelect>
+      <SearchableSelect
         aria-label={tr('{label}日', { label })}
         value={day}
         onChange={(e) =>
@@ -102,7 +103,7 @@ export function DateField({
             {i + 1} {tr('日')}
           </option>
         ))}
-      </select>
+      </SearchableSelect>
     </fieldset>
   );
 }
@@ -300,7 +301,7 @@ export function EntityPicker({
             {categories.length > 1 && (
               <label>
                 {tr('类型')}
-                <select
+                <SearchableSelect
                   aria-label={tr('筛选物品类型')}
                   value={category}
                   onChange={(e) => {
@@ -314,13 +315,13 @@ export function EntityPicker({
                       {name}
                     </option>
                   ))}
-                </select>
+                </SearchableSelect>
               </label>
             )}
             {hasCrops && (
               <label>
                 {tr('生长季节')}
-                <select
+                <SearchableSelect
                   aria-label={tr('筛选作物季节')}
                   value={season}
                   onChange={(e) => setSeason(e.target.value)}
@@ -331,7 +332,7 @@ export function EntityPicker({
                       {tr('{season}季', { season: name })}
                     </option>
                   ))}
-                </select>
+                </SearchableSelect>
               </label>
             )}
           </div>

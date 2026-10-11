@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import type { MaterialRequest } from '../../lib/saveInventory';
 import { useEffect, useMemo, useState } from 'react';
 import { PROGRESSION, flagEnabled, readEncyclopedia, readSkills, type ProgressEdits, type ProgressToggleGroup } from '../../lib/saveProgress';
@@ -45,11 +46,11 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
     {tab === 'shrine' ? <ShrinePanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
     <div className="save-progress-toolbar">
       <input type="search" aria-label={tr('搜索收集项目')} placeholder={tr('名称、拼音或首字母')} value={query} onChange={event => setQuery(event.target.value)} />
-      {tab !== 'skills' && <select aria-label={tr('收集项目分类')} value={category} onChange={event => setCategory(event.target.value)}><option value="">{tr('全部分类')}</option>
+      {tab !== 'skills' && <SearchableSelect aria-label={tr('收集项目分类')} value={category} onChange={event => setCategory(event.target.value)}><option value="">{tr('全部分类')}</option>
         {/* i18n-ignore-next-line — recipe category IDs from game data */}
         {Object.entries(tab === 'recipes' ? { 手作配方: tr('手作配方'), 料理配方: tr('料理配方') } : names.categories ?? {}).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
-      </select>}
-      <select aria-label={tr('解锁状态')} value={filter} onChange={event => setFilter(event.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></select>
+      </SearchableSelect>}
+      <SearchableSelect aria-label={tr('解锁状态')} value={filter} onChange={event => setFilter(event.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></SearchableSelect>
       <span>{rows.filter(enabled).length} / {rows.length} {tr('已解锁')}</span>
     </div>
     {tab === 'encyclopedia' && <div className="save-progress-bulk"><button type="button" onClick={() => matches.forEach(row => toggle(row, true))}>{tr('将当前 {count} 项标记为已发现', { count: matches.length })}</button><small>{tr('只修改图鉴记录，不会向背包添加物品。')}</small></div>}

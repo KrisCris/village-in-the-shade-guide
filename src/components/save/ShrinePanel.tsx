@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import type { MaterialRequest } from '../../lib/saveInventory';
 import { shrineLearningMaterials, shrineRecipeMaterials } from '../../lib/shrineMaterials';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -78,7 +79,7 @@ export default function ShrinePanel({ model, names, edits = {}, onReplace, onMat
     <section className="save-shrine-map" aria-label={tr('神龛技能树')}>
       <div className="save-shrine-toolbar">
         <input type="search" aria-label={tr('搜索神龛节点')} placeholder={tr('搜索技能或配方 · 支持拼音')} value={query} onChange={e => setQuery(e.target.value)} />
-        {model && <select aria-label={tr('神龛解锁状态')} value={filter} onChange={e => setFilter(e.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></select>}
+        {model && <SearchableSelect aria-label={tr('神龛解锁状态')} value={filter} onChange={e => setFilter(e.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></SearchableSelect>}
         <button type="button" onClick={() => locate(selected)}>{tr('定位选中')}</button>
         <div className="save-shrine-zoom"><button type="button" aria-label={tr('缩小技能树')} onClick={() => zoom(1 / 1.2)}>−</button><output aria-label={tr('技能树缩放比例')}>{Math.round(camera.scale * 100)}%</output><button type="button" aria-label={tr('放大技能树')} onClick={() => zoom(1.2)}>＋</button></div>
       </div>

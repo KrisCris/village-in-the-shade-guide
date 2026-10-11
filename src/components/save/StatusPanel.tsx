@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { collectFields, type SaveField, type SaveModel } from '../../lib/saveModel';
 import { SAVE_RULES } from '../../lib/saveRules';
 import { withBase } from '../../lib/sitePath';
@@ -19,14 +20,14 @@ export default function StatusPanel({ model, drafts, onChange }: { model: SaveMo
         <div className={`save-status-symbols ${key === 'hp_' ? 'health' : 'stamina'}`} aria-label={`${current} / ${max}`}>
           {Array.from({ length: Math.ceil(max / rule.unit) }, (_, index) => <span key={index} className="save-status-unit" style={key === 'hp_' ? { maskImage: `url(${withBase('/icons/generated/ui/health.webp')})` } : undefined}><i style={{ width: `${Math.max(0, Math.min(1, (current - index * rule.unit) / rule.unit)) * 100}%` }} /></span>)}
         </div>
-        <label>{title}{tr('上限')} <select aria-label={tr('{title}上限', { title })} value={max} onChange={event => {
+        <label>{title}{tr('上限')} <SearchableSelect aria-label={tr('{title}上限', { title })} value={max} onChange={event => {
           const next = Number(event.target.value);
           onChange(maxField, String(next));
           if (current > next) onChange(currentField, String(next));
         }}>
-          {!options.includes(max) && <option value={max} disabled>{tr('存档原值')} {max}</option>}
+          {!options.includes(max) && <option value={max}>{tr('存档原值')} {max}</option>}
           {options.map(value => <option key={value} value={value}>{value / rule.unit} {unitLabel}</option>)}
-        </select></label>
+        </SearchableSelect></label>
         <label>{tr('当前')}{title} <input type="range" aria-label={tr('当前{title}', { title })} min={0} max={max} step={1} value={current}
           onChange={event => onChange(currentField, event.target.value)} /></label>
         <small>{tr('{current} / {max} · 每{unit} {points} 点', { current, max, unit: unitLabel, points: rule.unit })}</small>

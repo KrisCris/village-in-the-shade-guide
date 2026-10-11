@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { useEffect, useRef, useState, useId } from "react";
 import {
   mapCell,
@@ -176,7 +177,7 @@ export default function FarmlandPicker({
             </button>
           </header>
           <div className="wf-farm-toolbar">
-            <select
+            <SearchableSelect
               aria-label={tr('田块形状')}
               value={shapeId}
               onChange={(e) => {
@@ -192,7 +193,7 @@ export default function FarmlandPicker({
                     : ""}
                 </option>
               ))}
-            </select>
+            </SearchableSelect>
             <button
               onClick={() =>
                 setSelected(new Set(shape.cells.map(([x, y]) => key(x, y))))
