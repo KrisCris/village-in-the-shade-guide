@@ -32,6 +32,9 @@ export interface MapCanvasProps {
   allowedTerrain?: Point[];
   plants: boolean;
   facilities: boolean;
+  floors: boolean;
+  groundOnly: boolean;
+  onGroundOnly: (value: boolean) => void;
   labels: boolean;
   brush: number;
   selected?: string;
@@ -41,6 +44,8 @@ export interface MapCanvasProps {
   selectedCells: number[];
   onRotate: () => void;
   ghost?: SpriteArt;
+  /** Draw the placement preview flipped, as inside a mirrored building. */
+  mirrored?: boolean;
   previewValid: boolean;
   focus: { bounds: number[]; revision: number };
   onHover: (point: Point | null) => void;
@@ -54,6 +59,7 @@ export default function MapCanvas(props: MapCanvasProps) {
   const homeBounds = props.homeBounds ?? FARM_BOUNDS;
   const backgroundFile = props.art.background ?? `${props.art.seasons[props.season]}.webp`;
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
+  const shown = (s: SceneSprite) => s.kind === 'crop' ? props.plants : s.floor ? props.floors : props.facilities;
   const canvas = useRef<HTMLCanvasElement>(null),
     viewport = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 800, height: 700 });
@@ -194,10 +200,11 @@ export default function MapCanvas(props: MapCanvasProps) {
         if (c.x < left - 45 || c.x > right + 45 || c.y < top - 45 || c.y > bottom + 45) continue;
         diamond(c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
       }
-    function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1) {
+    function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1, mirror = false) {
+      const start = mirror ? x - sprite.x - sprite.w : x + sprite.x;
       if (
-        x + sprite.x + sprite.w < left ||
-        x + sprite.x > right ||
+        start + sprite.w < left ||
+        start > right ||
         y + sprite.y + sprite.h < top ||
         y + sprite.y > bottom
       )
@@ -205,13 +212,19 @@ export default function MapCanvas(props: MapCanvasProps) {
       const img = image(sprite.file);
       if (img) {
         ctx.globalAlpha = opacity;
-        ctx.drawImage(img, x + sprite.x, y + sprite.y, sprite.w, sprite.h);
+        if (mirror) {
+          ctx.save();
+          ctx.translate(x, 0);
+          ctx.scale(-1, 1);
+          ctx.drawImage(img, sprite.x, y + sprite.y, sprite.w, sprite.h);
+          ctx.restore();
+        } else ctx.drawImage(img, x + sprite.x, y + sprite.y, sprite.w, sprite.h);
         ctx.globalAlpha = 1;
       }
     }
     for (const sprite of props.sprites) {
-      if (sprite.kind === 'crop' ? !props.plants : !props.facilities) continue;
-      if (sprite.art) drawSprite(sprite.art, sprite.x, sprite.y);
+      if (!shown(sprite)) continue;
+      if (sprite.art) drawSprite(sprite.art, sprite.x, sprite.y, 1, sprite.mirror);
       else if (sprite.x >= left && sprite.x <= right && sprite.y >= top && sprite.y <= bottom) {
         ctx.fillStyle = '#bc9151';
         ctx.beginPath();
@@ -234,7 +247,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           )
             diamond(c.x, c.y, props.previewValid ? '#fff2a044' : '#ef685844', color);
       } else diamond(target.x, target.y, '#fff2a022', color);
-      if (props.ghost && props.tool === 'place') drawSprite(props.ghost, target.x, target.y, 0.65);
+      if (props.ghost && props.tool === 'place') drawSprite(props.ghost, target.x, target.y, 0.65, props.mirrored);
     }
     if (props.labels) {
       ctx.font = `600 ${13 / camera.zoom}px system-ui`;
@@ -282,6 +295,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     props.allowedTerrain,
     props.plants,
     props.facilities,
+    props.floors,
     props.labels,
     props.selected,
     props.selection,
@@ -289,6 +303,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     marquee,
     touchTrail,
     props.ghost,
+    props.mirrored,
     props.previewValid,
     props.tool,
     props.brush,
@@ -309,9 +324,9 @@ export default function MapCanvas(props: MapCanvasProps) {
   function choose(p: Point) {
     if (props.tool !== 'inspect') { props.onChoose(p); return; }
     const hit = [...props.sprites].reverse().find((s) => {
-      if (s.kind === 'crop' ? !props.plants : !props.facilities) return false;
+      if (!shown(s)) return false;
       if (!s.art) return Math.hypot(p.x - s.x, p.y - s.y) < 40;
-      const x = p.x-s.x-s.art.x, y = p.y-s.y-s.art.y;
+      const x = (s.mirror ? s.x-p.x : p.x-s.x)-s.art.x, y = p.y-s.y-s.art.y;
       if (x<0||y<0||x>=s.art.w||y>=s.art.h) return false;
       let mask=alphaMasks.current.get(s.art.file);
       if (!mask) {
@@ -407,7 +422,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (!g.moved) choose(position(e));
       else if (props.tool === 'inspect') {
         const p = position(e), a = g.start;
-        props.onSelect(props.sprites.filter(s => (s.kind === 'crop' ? props.plants : props.facilities) &&
+        props.onSelect(props.sprites.filter(s => shown(s) &&
           inSelection(s,a,p)), terrain.filter(c=>inSelection(c,a,p)).map(c=>c.id));
       }
     }
@@ -483,8 +498,14 @@ export default function MapCanvas(props: MapCanvasProps) {
           }
         }}
       />
+      <div className="farm-overlay-start">
       <div className="farm-compass" aria-hidden="true">
         {tr('北 ↑')}
+      </div>
+      <div className="farm-view" role="group" aria-label={tr('显示图层')}>
+        <button type="button" aria-pressed={!props.groundOnly} onClick={() => props.onGroundOnly(false)}>{tr('全部')}</button>
+        <button type="button" aria-pressed={props.groundOnly} onClick={() => props.onGroundOnly(true)} title={tr('隐藏作物、树木和设施，只显示土地、地板和道路')}>{tr('仅地面')}</button>
+      </div>
       </div>
       <button
         type="button"

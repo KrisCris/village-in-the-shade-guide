@@ -112,6 +112,7 @@
 .farm-reset { padding-top: .8rem; border-top: 1px solid var(--border); }
 .farm-actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: .4rem; }
 .farm-choices { display: grid; gap: .35rem; }
+.farm-note { color: var(--muted); font-size: .8rem; line-height: 1.6; }
 .farm-editor .farm-choices button { text-align: left; }
 .farm-editor .farm-danger { color: var(--vermilion); }
 .farm-editor .farm-danger:hover:not(:disabled) { border-color: var(--vermilion); background: color-mix(in srgb, var(--vermilion) 10%, transparent); }
@@ -191,7 +192,12 @@
 .farm-zoom { position: absolute; right: 14px; top: 14px; display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 4px; background: #20342deb; border: 1px solid #e5e6c933; border-radius: 10px; box-shadow: 0 4px 20px #0003; }
 .farm-editor .farm-zoom button { background: #f2efdf; color: #29483f; border-color: transparent; min-width: 42px; padding: .3rem; font-size: .85rem; }
 .farm-zoom output { font: 11px system-ui; text-align: center; color: #f5eed6; padding: 3px; }
-.farm-compass { position: absolute; top: 16px; left: 16px; color: #fff7df; background: #20342dbb; padding: .5rem .65rem; border-radius: 8px; font-size: .75rem; pointer-events: none; }
+.farm-overlay-start { position: absolute; top: 14px; left: 14px; display: flex; align-items: center; gap: 6px; }
+.farm-compass { color: #fff7df; background: #20342dbb; padding: .5rem .65rem; border-radius: 8px; font-size: .75rem; pointer-events: none; }
+.farm-view { display: flex; gap: 2px; padding: 3px; background: #20342deb; border: 1px solid #e5e6c933; border-radius: 9px; }
+.farm-view button { font: inherit; font-size: .75rem; color: #e9e3cc; background: transparent; border: 0; border-radius: 6px; padding: .3rem .65rem; cursor: pointer; }
+.farm-view button[aria-pressed='true'] { background: #f4ecd2; color: #1f2f29; font-weight: 600; }
+.farm-view button:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
 .farm-canvas-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: #1d332cda; color: #faf0d5; border: 1px solid #e2d9b833; border-radius: 20px; padding: .35rem .8rem; font-size: .67rem; white-space: nowrap; pointer-events: none; }
 .farm-loading { position: absolute; left: 50%; top: 15px; transform: translateX(-50%); background: #20342de6; color: #fff7df; padding: .5rem .9rem; border-radius: 8px; font-size: .75rem; pointer-events: none; }
 

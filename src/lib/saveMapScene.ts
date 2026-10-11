@@ -60,13 +60,16 @@ export interface SceneSprite extends Point {
   uid?: string;
   cell?: number;
   movable?: boolean;
+  /** Mirrored buildings store their contents flipped; the game draws those sprites flipped too. */
+  mirror?: boolean;
 }
 export const FARM_SCENE = MAP_DATA.scenes.find((s) => s.code === 'MAP_ID_OPENWORLD')!.id;
 export const FARM_CELLS = sceneCells(FARM_SCENE);
 export const FARM_REGIONS = [
   { id: 1, name: tr('住宅旁'), description: tr('北边 · L 形田地') },
   { id: 2, name: tr('西边田地'), description: tr('中部 · 第二块田') },
-  { id: 4, name: tr('南边田地'), description: tr('下方 · 第三块田') }
+  { id: 4, name: tr('南边田地'), description: tr('下方 · 第三块田') },
+  { id: 8, name: tr('东边田地'), description: tr('右侧 · 追加农地（1.2.0）') }
 ].map((region) => {
   const cells = FARM_CELLS.filter((c) => c.area === region.id);
   return {
@@ -79,7 +82,7 @@ export const FARM_REGIONS = [
     ]
   };
 });
-export const FARM_BOUNDS = [8100, 19300, 13600, 26600];
+export const FARM_BOUNDS = [8100, 19300, 16500, 26600];
 export const worldToScreen = (p: Point, c: Camera, width: number, height: number): Point => ({
   x: (p.x - c.x) * c.zoom + width / 2,
   y: (p.y - c.y) * c.zoom + height / 2
@@ -145,6 +148,8 @@ export function spriteArt(art: MapArt, kind: 'crop' | 'object', id: number, seas
   return (
     (form !== undefined ? frames[form] : undefined) ??
     (preferred !== undefined ? frames[preferred] : undefined) ??
+    // A direction without its own frame uses the resting frame (e.g. barn troughs at 0° share frame 300).
+    (kind === 'object' && entity?.initial !== undefined ? frames[entity.initial] : undefined) ??
     Object.values(frames).at(-1)
   );
 }
@@ -168,6 +173,7 @@ export function buildFarmScene(
       .map((k) => Number(k.split(':')[1]))
   ]);
   const result: SceneSprite[] = [];
+  const mirror = isMirrorScene(scene);
   for (const id of ids) {
     const p = landPosition(id);
     if (!within(p)) continue;
@@ -220,7 +226,8 @@ export function buildFarmScene(
       art: spriteArt(art, 'object', move?.template ?? obj.id, season, undefined, move?.angle ?? obj.angle),
       edited: !!move,
       floor: !!obj.spec?.floor,
-      movable: obj.movable
+      movable: obj.movable,
+      mirror
     });
   }
   edits.objects
@@ -237,11 +244,14 @@ export function buildFarmScene(
         kind: 'object',
         art: spriteArt(art, 'object', e.template, season, undefined, e.angle ?? original.find(o => o.id === e.template)?.angle),
         edited: true,
-        floor: !!spec?.floor
+        floor: !!spec?.floor,
+        mirror
       });
     });
   return result.sort((a, b) => Number(b.floor) - Number(a.floor) || a.y - b.y || a.x - b.x);
 }
+
+export const isMirrorScene = (scene: number) => !!MAP_DATA.scenes.find((s) => s.id === scene)?.code.endsWith('_MIRROR');
 
 export function farmGround(doc: SerDocument, edits: MapEdits, scene = FARM_SCENE): SceneGround[] {
   const existing = new Map(mapCells(doc).map((c) => [c.id, c]));

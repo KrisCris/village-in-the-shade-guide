@@ -70,8 +70,8 @@ for row, strings in zip(table('map').records, _string_groups(table('map')), stri
             key = (X, Y)
             # Keep the intersection on seams: never manufacture placement permission.
             cells[key] = cells.get(key, mask) & mask
-    # Indoor wall anchors live in the two high-word direction bits.
-    usable = [[x, y, compact_mask(m), (m >> 36) & 7]
+    # Farm areas are high-word bits 36-38; the 1.2.0 additional farmland uses bit 42 (area 8).
+    usable = [[x, y, compact_mask(m), (m >> 36) & 7 | (8 if m >> 42 & 1 else 0)]
               for (x, y), m in sorted(cells.items()) if compact_mask(m)]
     if usable:
         scenes.append(dict(id=mid, code=strings[0], label=strings[1], origin=origins[mid], cells=usable))

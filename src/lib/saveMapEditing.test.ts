@@ -4,7 +4,7 @@ import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures'
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
 import { SerDocument } from './ser';
-import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapObjects, MAP_DATA, placementProblem, sceneCells } from './saveMap';
+import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapObjects, MAP_DATA, placementProblem, sceneCells, soilForCrop } from './saveMap';
 import { animalHouses, animalResidents } from './saveAnimals';
 import { buildFarmScene, type MapArt } from './saveMapScene';
 import placements from '../../data/sources/game-save-placements.json';
@@ -17,6 +17,17 @@ it('reads the native rice and wasabi water-field requirements', () => {
   expect(cropPlacementProblem(65, 3)).toBeNull();
   expect(cropPlacementProblem(1, 3)).toBeTruthy();
   expect(cropPlacementProblem(1, 2)).toBeNull();
+});
+
+it('picks the soil a crop needs when it is planted', () => {
+  expect(soilForCrop(63, 1)).toBe(3);
+  expect(soilForCrop(63, 0)).toBe(3);
+  expect(soilForCrop(63, 3)).toBeUndefined();
+  expect(soilForCrop(1, 3)).toBe(1);
+  expect(soilForCrop(1, 2)).toBeUndefined();
+  expect(soilForCrop(64, 1)).toBe(2);
+  for (const [id, { soils }] of Object.entries(MAP_DATA.cropRules as Record<string, { soils: number[] }>))
+    for (const soil of [0, 1, 2, 3]) expect(cropPlacementProblem(Number(id), soilForCrop(Number(id), soil) ?? soil), `${id} on ${soil}`).toBeNull();
 });
 
 describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () => {
@@ -105,6 +116,9 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     expect(()=>applyMapEdits(model.doc,{cells:{[key]:{crop:63,soil:1}}})).toThrow('水田');
     const clear=clearMapArea(model.doc,edits,scene,[cell.id],[],'crops');
     expect(mapCells(new SerDocument(applyMapEdits(model.doc,clear))).find(c=>c.id===cell.id)?.crop).toBe(0);
+    const plain=clearMapArea(model.doc,edits,scene,[cell.id],[],'soil');
+    expect(plain.cells?.[key]).toEqual({crop:null,soil:0,watered:false});
+    expect(plain.removed).toEqual([]);
   });
   it('updates an existing tree stage without replacing its crop identity', () => {
     const cell=mapCells(model.doc).find(c=>c.crop===1001)!;

@@ -65,7 +65,8 @@ export function mapAnimalEdits(doc: SerDocument, edits: MapEdits, animalEdits: A
   return {...animalEdits,moves,added};
 }
 export function areaAvailable(doc: SerDocument, area: number) {
-  return (!(area & 2) || flagEnabled(doc, 147)) && (!(area & 4) || flagEnabled(doc, 148));
+  // 147/148: the two farmland expansions; 90033: the additional farmland built at the carpenter (1.2.0).
+  return (!(area & 2) || flagEnabled(doc, 147)) && (!(area & 4) || flagEnabled(doc, 148)) && (!(area & 8) || flagEnabled(doc, 90033));
 }
 export function sceneCells(sceneId: number) {
   const scene = data.scenes.find(s => s.id === sceneId);
@@ -163,6 +164,12 @@ export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number
   return {crop,form,growth,forms,stages,stage,maximum,days:growing?Math.ceil(Math.max(0,maximum-growth)/100):null};
 }
 export function cropSoils(id:number):number[]{return (data.cropRules as Record<string,{soils:number[]}>)[id]?.soils??[];}
+/** The soil a crop needs on a cell that currently has `soil` (0 = plain ground), or undefined when it can stay. */
+export function soilForCrop(id:number,soil:number):number|undefined {
+  const allowed=cropSoils(id);
+  if(!allowed.length)return soil===3?1:undefined;
+  return allowed.includes(soil)?undefined:allowed[0];
+}
 export function cropPlacementProblem(id:number,soil:number) {
   const allowed=cropSoils(id);
   if(allowed.length&&!allowed.includes(soil))return allowed.includes(3)?tr('这种作物需要水田，请先使用水渠／水田工具。'):tr('这种作物不能种在水田，请先改为耕地或田垄。');
@@ -290,11 +297,12 @@ export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: Ob
   return next;
 }
 
-export type ClearLayer = 'crops' | 'floor' | 'objects' | 'reset';
+export type ClearLayer = 'crops' | 'floor' | 'objects' | 'soil' | 'reset';
 export function clearMapArea(doc: SerDocument, edits: MapEdits, scene: number, cellIds: number[], keys: string[], layer: ClearLayer): MapEdits {
   const ids=new Set(cellIds),next:MapEdits={...edits,cells:{...edits.cells},removed:[...(edits.removed??[])]};
-  if(layer==='crops'||layer==='reset')for(const c of sceneCells(scene))if(ids.has(c.id)&&(c.mask&1)&&areaAvailable(doc,c.area))
-    next.cells![`${scene}:${c.id}`]=layer==='reset'?{crop:null,soil:0,watered:false}:{...next.cells![`${scene}:${c.id}`],crop:null,growth:undefined,form:undefined};
+  // 'soil' turns tilled cells back into plain ground (a crop cannot stay without soil) but keeps objects standing there.
+  if(layer==='crops'||layer==='soil'||layer==='reset')for(const c of sceneCells(scene))if(ids.has(c.id)&&(c.mask&1)&&areaAvailable(doc,c.area))
+    next.cells![`${scene}:${c.id}`]=layer==='crops'?{...next.cells![`${scene}:${c.id}`],crop:null,growth:undefined,form:undefined}:{crop:null,soil:0,watered:false};
   const remove=new Set<string>();
   for(const o of draftObjects(doc,edits)) {
     const key=o.uid.startsWith('new:')?o.uid:`object:${o.uid}`;
