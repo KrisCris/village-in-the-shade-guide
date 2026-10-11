@@ -809,3 +809,8 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 .save-location small { flex-basis: 100%; }
 .save-system-hint button { margin-block: .6rem; padding: .4rem .9rem; border: 1px solid var(--border); background: var(--paper-raised); color: var(--ink); cursor: pointer; }
 .save-system-hint button:hover { border-color: var(--green); }
+@media (max-width: 640px) {
+  .save-page-heading, .save-editor, .save-safety { width: 100%; }
+  .save-workspace-heading { padding: .8rem .75rem; }
+  .save-workspace-body { padding: .75rem .5rem; }
+}

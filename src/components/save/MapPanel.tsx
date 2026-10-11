@@ -47,22 +47,37 @@ import type { SaveNameTables } from '../../lib/saveNames';
 import { itemLabel } from './ItemGrid';
 import MapCanvas from './MapCanvas';
 import MapGrowthControls from './MapGrowthControls';
+import TrimmedSprite from './TrimmedSprite';
 import '../../styles/save-map.css';
 
 import SearchableSelect from '../controls/SearchableSelect';
 import { availableMapRooms } from '../../lib/saveMapRooms';
 import { tr } from '../../i18n/active';
-const TOOLS = [
-  ['inspect', '↖', tr('选择')],
-  ['pan', '✥', tr('平移')],
-  ['plant', '♧', tr('种植')],
-  ['place', '⌂', tr('设施')],
-  ['water', '◉', tr('浇水')],
-  ['soil', '▱', tr('耕地')],
-  ['ridge', '≋', tr('田垄')],
-  ['canal', '≈', tr('水渠／水田')],
-  ['clear', '⌫', tr('清理')]
+const ICONS: Record<string, string> = {
+  inspect: 'M6 3.5l12.5 7.2-5.6 1.4L10 17.6z',
+  pan: 'M12 3v18M3 12h18M12 3 9.5 5.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5',
+  plant: 'M12 21v-8.5M12 12.5C12 8.4 9 5.5 4.5 5.5c0 4.1 3 7 7.5 7zM12 10.5c0-3.4 2.4-6 6.5-6 0 3.4-2.4 6-6.5 6z',
+  place: 'M4 11 12 4l8 7M6 9.4V20h12V9.4M10 20v-5h4v5',
+  water: 'M12 3.5c3.4 4.4 5.8 7.4 5.8 10.6a5.8 5.8 0 0 1-11.6 0c0-3.2 2.4-6.2 5.8-10.6z',
+  soil: 'M4 6h16v12H4zM4 10h16M4 14h16',
+  ridge: 'M3 9.5c3-3 6 3 9 0s6-3 9 0M3 15.5c3-3 6 3 9 0s6-3 9 0',
+  canal: 'M3 8c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0M3 13c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0M3 18c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0',
+  clear: 'M8.5 20H20M5.6 14.6l8-8a2 2 0 0 1 2.8 0l2.3 2.3a2 2 0 0 1 0 2.8L12.2 18H9z M9.3 11l4.9 4.9',
+  undo: 'M9 7 4.5 11.5 9 16M5 11.5h9a5 5 0 0 1 0 10h-2',
+  redo: 'M15 7l4.5 4.5L15 16M19 11.5h-9a5 5 0 0 0 0 10h2',
+  expand: 'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'
+};
+function Icon({ name }: { name: string }) {
+  return <svg className="farm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={ICONS[name]} /></svg>;
+}
+const TOOL_GROUPS = [
+  [['inspect', tr('选择')], ['pan', tr('平移')]],
+  [['plant', tr('种植')], ['place', tr('设施')]],
+  [['water', tr('浇水')], ['soil', tr('耕地')], ['ridge', tr('田垄')], ['canal', tr('水田')]],
+  [['clear', tr('清理')]]
 ];
+const TOOL_NAMES: Record<string, string> = Object.fromEntries(TOOL_GROUPS.flat());
+const SEASONS = [tr('春'), tr('夏'), tr('秋'), tr('冬')];
 interface Props {
   model: SaveModel;
   edits: MapEdits;
@@ -386,6 +401,22 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   }
   if (loadError) return <p role="alert">{loadError}{tr('请刷新重试。')}</p>;
   if (!art) return <p role="status">{tr('正在载入农场地图…')}</p>;
+  const brushTool = ['plant', 'water', 'soil', 'ridge', 'canal', 'clear'].includes(tool);
+  const availableTools = TOOL_GROUPS.map(group => group.filter(([id]) => !room || terrain.some(c => c.mask & 1) || ['inspect', 'pan', 'place', 'clear'].includes(id))).filter(group => group.length);
+  const activeTemplate = templates.find(t => t.id === template);
+  const layerToggles: Array<[string, boolean, Dispatch<SetStateAction<boolean>>]> = ([
+    [tr('成熟预览（不改变生长进度）'), mature, setMature],
+    [tr('网格'), grid, setGrid],
+    [tr('地形禁放区'), restricted, setRestricted],
+    [tr('地名'), labels, setLabels],
+    [tr('作物与树木'), plants, setPlants],
+    [tr('建筑与设施'), facilities, setFacilities]
+  ] as Array<[string, boolean, Dispatch<SetStateAction<boolean>>]>).filter(([label]) => !room || [tr('网格'), tr('建筑与设施'), tr('地形禁放区')].includes(label) || terrain.some(c => c.mask & 1) && label !== tr('地名'));
+  const pickPalette = (p: { id: number; kind: 'crop' | 'object' }) => {
+    p.kind === 'crop' ? setCrop(p.id) : setTemplate(p.id);
+    setAngle(templates.find(t => t.id === p.id)?.building ? 0 : 45);
+    setMoving('');
+  };
   return (
     <section
       ref={root}
@@ -405,226 +436,50 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       }}
     >
       <header className="farm-header">
-        <div>
+        <div className="farm-title">
           <strong>{room ? room.name : tr('农场布局')}</strong>
           <span>{room ? room.description : tr('三块田地 · 游戏原始场景')}</span>
         </div>
+        <div className="farm-place">
+          <SearchableSelect id="farm-room-select" aria-label={tr('所在位置')} value={roomId} onChange={e => changeRoom(e.target.value)}>
+            <option value="outdoor">{tr('室外 · 三块田地')}</option>
+            {rooms.map(r => <option key={r.id} value={r.id}>{r.name} · {r.description}</option>)}
+          </SearchableSelect>
+          {room
+            ? <div className="farm-segments" role="group" aria-label={tr('房屋楼层')}>{rooms.filter(r => r.scene === room.scene || (room.home && r.home)).map(r => <button type="button" key={r.id} aria-pressed={r.id === roomId} onClick={() => changeRoom(r.id)}>{r.floorName ?? tr('室内全貌')}</button>)}</div>
+            : <nav className="farm-segments" aria-label={tr('定位田地')}>
+              <button type="button" title={tr('三块田地')} onClick={() => setFocus((f) => ({ bounds: FARM_BOUNDS, revision: f.revision + 1 }))}>{tr('全貌')}</button>
+              {FARM_REGIONS.map((r) => {
+                const owned = areaAvailable(model.doc, r.id);
+                return <button type="button" key={r.id} title={`${r.description}${owned ? '' : tr(' · 未购买')}`} className={owned ? undefined : 'is-locked'} onClick={() => setFocus((f) => ({ bounds: r.bounds, revision: f.revision + 1 }))}>{r.name}</button>;
+              })}
+            </nav>}
+        </div>
         <button
           type="button"
+          className="farm-icon-button"
+          aria-label={tr('全屏')}
+          title={tr('全屏')}
           onClick={() => {
             if (document.fullscreenElement) document.exitFullscreen();
             else root.current?.requestFullscreen().catch(() => setMessage(tr('浏览器未能进入全屏。')));
           }}
         >
-          {tr('⛶ 全屏')}
+          <Icon name="expand" />
         </button>
       </header>
-      <div className="farm-room-switch">
-        <label htmlFor="farm-room-select">{tr('所在位置')}</label>
-        <SearchableSelect id="farm-room-select" value={roomId} onChange={e => changeRoom(e.target.value)}>
-          <option value="outdoor">{tr('室外 · 三块田地')}</option>
-          {rooms.map(r => <option key={r.id} value={r.id}>{r.name} · {r.description}</option>)}
-        </SearchableSelect>
-        {room && <div className="farm-floor-tabs" role="group" aria-label={tr('房屋楼层')}>{rooms.filter(r => r.scene === room.scene || (room.home && r.home)).map(r => <button type="button" key={r.id} aria-pressed={r.id === roomId} onClick={() => changeRoom(r.id)}>{r.floorName ?? tr('室内全貌')}</button>)}</div>}
+      <div className="farm-toolbar" role="toolbar" aria-label={tr('地图工具')}>
+        {availableTools.map((group, index) => <div className="farm-tool-group" key={index}>
+          {group.map(([id, label]) => <button type="button" key={id} aria-pressed={tool === id} onClick={() => changeTool(id)} title={id === 'canal' ? tr('水渠／水田') : label}>
+            <Icon name={id} /><span>{label}</span>
+          </button>)}
+        </div>)}
+        <div className="farm-tool-group farm-history">
+          <button type="button" disabled={!past.length} onClick={undo} title={tr('撤销（Ctrl+Z）')}><Icon name="undo" /><span>{tr('撤销')}</span></button>
+          <button type="button" disabled={!future.length} onClick={redo} title={tr('重做（Ctrl+Shift+Z）')}><Icon name="redo" /><span>{tr('重做')}</span></button>
+        </div>
       </div>
-      {!room && <nav className="farm-regions" aria-label={tr('定位田地')}>
-        <button
-          type="button"
-          onClick={() => setFocus((f) => ({ bounds: FARM_BOUNDS, revision: f.revision + 1 }))}
-        >
-          <strong>{tr('全貌')}</strong>
-          <small>{tr('三块田地')}</small>
-        </button>
-        {FARM_REGIONS.map((r) => (
-          <button
-            type="button"
-            key={r.id}
-            onClick={() => setFocus((f) => ({ bounds: r.bounds, revision: f.revision + 1 }))}
-          >
-            <strong>{r.name}</strong>
-            <small>
-              {r.description}
-              {!areaAvailable(model.doc, r.id) ? tr(' · 未购买') : ''}
-            </small>
-          </button>
-        ))}
-      </nav>}
       <div className="farm-workspace">
-        <aside className="farm-sidebar">
-          <div className="farm-tools" role="group" aria-label={tr('地图工具')}>
-            {TOOLS.filter(([id]) => !room || terrain.some(c => c.mask & 1) || ['inspect', 'pan', 'place', 'clear'].includes(id)).map(([id, icon, label]) => (
-              <button type="button" key={id} aria-pressed={tool === id} onClick={() => changeTool(id)}>
-                <span aria-hidden="true">{icon}</span>
-                {label}
-              </button>
-            ))}
-          </div>
-          {!['inspect', 'pan', 'place'].includes(tool) && (
-            <div className="farm-brush">
-              <span>{tr('笔刷')}</span>
-              {[1, 3, 5].map((n) => (
-                <button type="button" key={n} aria-pressed={brush === n} onClick={() => setBrush(n)}>
-                  {n}×{n}
-                </button>
-              ))}
-            </div>
-          )}
-          {tool==='canal'&&<p className="farm-tool-note">{tr('画出水田后再种稻米、山葵。转换地形会清除不适合该土壤的作物，可撤销。')}</p>}
-          {tool==='clear' && <div className="farm-clear-options"><label>{tr('清理层级')}</label><SearchableSelect value={clearLayer} onChange={e=>setClearLayer(e.target.value as ClearLayer)}>
-            <option value="crops">{tr('作物与树木')}</option><option value="floor">{tr('地板／道路')}</option><option value="objects">{tr('设施与建筑')}</option><option value="reset">{tr('全部清空并恢复平地')}</option>
-          </SearchableSelect><small>{tr('拖动清理选定层级，每笔都可撤销。')}</small>
-            {!room&&<><label htmlFor="farm-reset-area">{tr('整块田地')}</label><SearchableSelect id="farm-reset-area" value={resetArea} onChange={e=>setResetArea(e.target.value)}>{FARM_REGIONS.map(r=><option key={r.id} value={r.id}>{r.name}</option>)}</SearchableSelect>
-            <button type="button" onClick={()=>{const cells=terrain.filter(c=>c.area===Number(resetArea)&&areaAvailable(model.doc,c.area));commit(clearMapArea(model.doc,current.current,sceneId,cells.map(c=>c.id),[],'reset'));setMessage(tr('这块田地已恢复平地，可撤销。'));}}>{tr('清空整块田地并恢复平地')}</button></>}
-          </div>}
-          {['plant', 'place'].includes(tool) ? (
-            <div className="farm-palette">
-              <label htmlFor="farm-palette-search">{tool === 'plant' ? tr('选择作物') : tr('选择设施')}</label>
-              {tool==='plant'?<SearchableSelect aria-label={tr('作物季节')} value={cropSeason} onChange={e=>{setCropSeason(e.target.value);setLimit(40);}}>
-                <option value="-1">{tr('全部季节')}</option>{[tr('春'),tr('夏'),tr('秋'),tr('冬')].map((s,i)=><option key={i} value={i}>{s}</option>)}
-              </SearchableSelect>:<><div className="farm-category-tabs">{[['machine',tr('加工设备')],['building',tr('建筑')],['floor',tr('地板／道路')],['furniture',tr('家具／装饰')]].filter(([id])=>!room||id!=='building').map(([id,label])=><button type="button" key={id} aria-pressed={category===id} onClick={()=>{setCategory(id);setMachineFilter('');setSearch('');setLimit(40);}}>{label}</button>)}</div>
-              {category==='machine'&&<SearchableSelect aria-label={tr('设备类别')} value={machineFilter} onChange={e=>{setMachineFilter(e.target.value);setLimit(40);}}><option value="">{tr('全部设备类别')}</option>{Array.from(new Map(templates.filter(t=>t.category==='machine').map(t=>[t.script,t])).values()).map(t=><option key={t.script} value={t.script}>{t.name}</option>)}</SearchableSelect>}
-              <button type="button" onClick={rotate}>{tr('↻ 旋转（R）')}</button></>}
-              <input
-                id="farm-palette-search"
-                placeholder={tr('名称、拼音或 ID')}
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                  setLimit(40);
-                }}
-              />
-              {tool==='plant'&&selectedCells.length>0&&<button type="button" onClick={()=>paintSelection({crop,growth:0,form:1})}>{tr('种植到选区（{count} 格）', { count: selectedCells.length })}</button>}
-              <div
-                className="farm-palette-scroll"
-                onScroll={(e) => {
-                  const t = e.currentTarget;
-                  if (t.scrollHeight - t.scrollTop - t.clientHeight < 180)
-                    setLimit((n) => Math.min(n + 40, filtered.length));
-                }}
-              >
-                <div className="farm-palette-grid">
-                  {filtered.slice(0, limit).map((p) => {
-                    const sprite = spriteArt(art, p.kind, p.id, season);
-                    return (
-                      <button
-                        type="button"
-                        key={p.id}
-                        aria-pressed={(tool === 'plant' ? crop : template) === p.id}
-                        onClick={() => {
-                          p.kind === 'crop' ? setCrop(p.id) : setTemplate(p.id);setAngle(templates.find(t=>t.id===p.id)?.building?0:45);
-                          setMoving('');
-                        }}
-                        title={p.name}
-                      >
-                        {sprite ? (
-                          <img src={withBase(`/maps/farm/${sprite.file}`)} alt="" loading="lazy" />
-                        ) : (
-                          <span className="farm-no-art">◇</span>
-                        )}
-                        <span>{p.name}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-                {!filtered.length && <p>{tr('没有匹配的项目。')}</p>}
-              </div>
-              <small>
-                {filtered.length} {tr('项')}{moving ? tr(' · 正在移动已选设施') : ''}
-              </small>
-            </div>
-          ) : (
-            <div className="farm-selection">
-              {chosen ? (
-                <>
-                  <strong>{nameOf(chosen)}</strong>
-                  {chosen.art && <img src={withBase(`/maps/farm/${chosen.art.file}`)} alt={nameOf(chosen)} />}
-                  <small>
-                    {chosen.kind === 'crop' ? (mature ? tr('成熟预览') : tr('存档中的生长阶段')) : chosen.key.startsWith('new:')?tr('新增设施'):chosen.key.startsWith('fixed:')||chosen.key.startsWith('fixture:')?tr('固定场景设施'):tr('存档中的设施')}
-                    {chosen.edited ? tr(' · 已修改') : ''}
-                  </small>
-                  {chosen.movable && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setTool('place');
-                        setTemplate(chosen.id);
-                        setMoving(chosen.uid!);
-                        setAngle(occupied.find(o=>o.uid===chosen.uid)?.angle??45);
-                        setMessage(tr('点击新的位置移动这件设施。按 Esc 取消。'));
-                      }}
-                    >
-                      {tr('移动这件设施')}
-                    </button>
-                  )}
-                  {chosen.movable&&<button type="button" onClick={()=>{commit(clearMapArea(model.doc,current.current,sceneId,[],[chosen.key],chosen.floor?'floor':'objects'));cancelSelection();setMessage(tr('已删除所选物体，可撤销。'));}}>{tr('删除这件')}{templates.find(t=>t.id===chosen.id)?.building?tr('建筑'):tr('设施')}</button>}
-                  {chosen.kind==='object'&&chosen.movable&&<button type="button" onClick={rotate}>{tr('↻ 调整朝向（R）')}</button>}
-                  {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-upgrades">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>{tr('升级为 {name} · {level} 级', { name: t.name, level: t.level })}</button>)}</div>}
-                  {chosen.kind==='crop'&&chosen.cell&&<MapGrowthControls state={cropGrowth(model.doc,edits,sceneId,chosen.cell)} onChange={editGrowth}/>}
-                  {!selection.length && chosen.kind === 'crop' && chosen.cell && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        commit(clearMapArea(model.doc,current.current,sceneId,[chosen.cell!],[],'crops'));
-                        setSelected(undefined);
-                      }}
-                    >
-                      {tr('清除这株作物')}
-                    </button>
-                  )}
-                </>
-              ) : (
-                <>
-                  <strong>{tr('从真实场景开始')}</strong>
-                  <p>{room ? tr('点击家具查看详情，选择移动后点击新位置。') : tr('点击上方田地名称定位。放大后，点击作物或设施查看详情。')}</p>
-                  <p>{tr('选择种植、设施等工具后，地图会显示落点预览。')}</p>
-                </>
-              )}
-              {(selection.length > 0 || selectedCells.length > 0) && <div className="farm-multi-selection">
-                <strong>{tr('已框选 {count} 格 · {count2} 个物体', { count: selectedCells.length, count2: selection.length })}</strong>
-                <div className="farm-bulk-actions">{[['crops',tr('清除作物')],['floor',tr('清除地板')],['objects',tr('清除设施')],['reset',tr('全部重置为平地')]].map(([id,label])=><button type="button" key={id} onClick={()=>clearSelection(id as ClearLayer)}>{label}</button>)}</div>
-                <div className="farm-bulk-actions"><button type="button" onClick={()=>paintSelection({watered:true})}>{tr('批量浇水')}</button><button type="button" onClick={()=>paintSelection({soil:1})}>{tr('批量耕地')}</button><button type="button" onClick={()=>paintSelection({soil:2})}>{tr('批量田垄')}</button><button type="button" onClick={()=>paintSelection({soil:3})}>{tr('批量水田')}</button><button type="button" onClick={matureSelection}>{tr('作物／树木全部成熟')}</button><button type="button" onClick={()=>changeTool('plant')}>{tr('在选区种植…')}</button></div>
-                <div>{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}
-                  aria-pressed={selected === s.key} onClick={() => setSelected(s.key)}>{nameOf(s)}</button>)}</div>
-                {selection.length > selectionLimit && <button type="button" onClick={() => setSelectionLimit(n => n + 40)}>{tr('显示更多')}</button>}
-                <button type="button" onClick={() => { setSelection([]); setSelectedCells([]); setSelected(undefined); }}>{tr('取消框选')}</button>
-              </div>}
-              {selectedPoint && (
-                <small>
-                  {tr('位置')} {Math.round(chosen?.x ?? selectedPoint.x)}, {Math.round(chosen?.y ?? selectedPoint.y)}
-                </small>
-              )}
-            </div>
-          )}
-          <details className="farm-layer-options">
-            <summary>{room ? tr('图层') : tr('季节与图层')}</summary>
-            {!room && <><div className="farm-seasons">
-              {[tr('春'), tr('夏'), tr('秋'), tr('冬')].map((s, i) => (
-                <button type="button" key={s} aria-pressed={season === i} onClick={() => setSeason(i)}>
-                  {s}
-                </button>
-              ))}
-            </div>
-            <small>{tr('仅切换预览，不修改存档季节。')}</small></>}
-            {[
-              [tr('成熟预览（不改变生长进度）'), mature, setMature],
-              [tr('网格'), grid, setGrid],
-              [tr('地形禁放区'), restricted, setRestricted],
-              [tr('地名'), labels, setLabels],
-              [tr('作物与树木'), plants, setPlants],
-              [tr('建筑与设施'), facilities, setFacilities]
-            ].filter(([label]) => !room || [tr('网格'),tr('建筑与设施'),tr('地形禁放区')].includes(String(label)) || terrain.some(c => c.mask & 1) && label !== tr('地名')).map(([label, value, set]) => (
-              <label key={String(label)}>
-                <input
-                  type="checkbox"
-                  checked={value as boolean}
-                  onChange={(e) => (set as Dispatch<SetStateAction<boolean>>)(e.target.checked)}
-                />
-                {label as string}
-              </label>
-            ))}
-            {restricted&&<small>{tr('斜纹表示当前工具不能使用的地形；已有物体和完整占地以放置预览为准。')}</small>}
-          </details>
-        </aside>
         <MapCanvas
           art={viewArt!}
           terrain={terrain}
@@ -657,17 +512,180 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           onChoose={choose}
           onStroke={finishStroke}
         />
+        <aside className="farm-panel" aria-label={TOOL_NAMES[tool]}>
+          {['plant', 'place'].includes(tool) ? (
+            <div className="farm-palette">
+              <h3>{tool === 'plant' ? tr('选择作物') : tr('选择设施')}</h3>
+              {tool === 'plant'
+                ? <div className="farm-segments" role="group" aria-label={tr('作物季节')}>
+                  {[[-1, tr('全部')], ...SEASONS.map((s, i) => [i, s])].map(([id, label]) => <button type="button" key={id} aria-pressed={cropSeason === String(id)} onClick={() => { setCropSeason(String(id)); setLimit(40); }}>{label}</button>)}
+                </div>
+                : <>
+                  <div className="farm-segments farm-categories" role="group" aria-label={tr('设施类别')}>
+                    {[['machine', tr('加工设备')], ['building', tr('建筑')], ['floor', tr('地板／道路')], ['furniture', tr('家具／装饰')]].filter(([id]) => !room || id !== 'building').map(([id, label]) => <button type="button" key={id} aria-pressed={category === id} onClick={() => { setCategory(id); setMachineFilter(''); setSearch(''); setLimit(40); }}>{label}</button>)}
+                  </div>
+                  {category === 'machine' && <SearchableSelect aria-label={tr('设备类别')} value={machineFilter} onChange={e => { setMachineFilter(e.target.value); setLimit(40); }}><option value="">{tr('全部设备类别')}</option>{Array.from(new Map(templates.filter(t => t.category === 'machine').map(t => [t.script, t])).values()).map(t => <option key={t.script} value={t.script}>{t.name}</option>)}</SearchableSelect>}
+                </>}
+              <input
+                id="farm-palette-search"
+                className="farm-search"
+                aria-label={tool === 'plant' ? tr('搜索作物') : tr('搜索设施')}
+                placeholder={tr('名称、拼音或 ID')}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setLimit(40);
+                }}
+              />
+              <div
+                className="farm-palette-scroll"
+                onScroll={(e) => {
+                  const t = e.currentTarget;
+                  if (t.scrollHeight - t.scrollTop - t.clientHeight < 180)
+                    setLimit((n) => Math.min(n + 40, filtered.length));
+                }}
+              >
+                <div className="farm-palette-grid">
+                  {filtered.slice(0, limit).map((p) => {
+                    const sprite = spriteArt(art, p.kind, p.id, season);
+                    return (
+                      <button type="button" key={p.id} aria-pressed={(tool === 'plant' ? crop : template) === p.id} onClick={() => pickPalette(p)} title={p.name}>
+                        {sprite ? <TrimmedSprite className="farm-sprite" src={withBase(`/maps/farm/${sprite.file}`)} /> : <span className="farm-sprite farm-no-art" aria-hidden="true">◇</span>}
+                        <span>{p.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {!filtered.length && <p className="farm-empty">{tr('没有匹配的项目。')}</p>}
+              </div>
+              <div className="farm-palette-foot">
+                <small>{filtered.length} {tr('项')}{moving ? tr(' · 正在移动已选设施') : ''}</small>
+                {tool === 'place' && <button type="button" onClick={rotate} disabled={!activeTemplate || (!activeTemplate.reverse && activeTemplate.rotations.length < 2)}>{tr('↻ 旋转（R）')}</button>}
+              </div>
+              {tool === 'plant' && selectedCells.length > 0 && <button type="button" className="farm-primary" onClick={() => paintSelection({ crop, growth: 0, form: 1 })}>{tr('种植到选区（{count} 格）', { count: selectedCells.length })}</button>}
+            </div>
+          ) : tool === 'clear' ? (
+            <div className="farm-section">
+              <h3>{tr('清理')}</h3>
+              <p>{tr('拖动清理选定层级，每笔都可撤销。')}</p>
+              <div className="farm-choices" role="group" aria-label={tr('清理层级')}>
+                {([['crops', tr('作物与树木')], ['floor', tr('地板／道路')], ['objects', tr('设施与建筑')], ['reset', tr('全部清空并恢复平地')]] as Array<[ClearLayer, string]>).map(([id, label]) => <button type="button" key={id} aria-pressed={clearLayer === id} onClick={() => setClearLayer(id)}>{label}</button>)}
+              </div>
+              {!room && <div className="farm-reset">
+                <h4>{tr('整块田地')}</h4>
+                <div className="farm-segments" role="group" aria-label={tr('整块田地')}>
+                  {FARM_REGIONS.map(r => <button type="button" key={r.id} aria-pressed={resetArea === String(r.id)} onClick={() => setResetArea(String(r.id))}>{r.name}</button>)}
+                </div>
+                <button type="button" onClick={() => { const cells = terrain.filter(c => c.area === Number(resetArea) && areaAvailable(model.doc, c.area)); commit(clearMapArea(model.doc, current.current, sceneId, cells.map(c => c.id), [], 'reset')); setMessage(tr('这块田地已恢复平地，可撤销。')); }}>{tr('清空整块田地并恢复平地')}</button>
+              </div>}
+            </div>
+          ) : ['water', 'soil', 'ridge', 'canal'].includes(tool) ? (
+            <div className="farm-section">
+              <h3>{tool === 'canal' ? tr('水渠／水田') : TOOL_NAMES[tool]}</h3>
+              <p>{tr('在地图上点击或拖动使用工具。')}</p>
+              {tool === 'canal' && <p>{tr('画出水田后再种稻米、山葵。转换地形会清除不适合该土壤的作物，可撤销。')}</p>}
+            </div>
+          ) : (
+            <div className="farm-section farm-selection">
+              {chosen ? (
+                <>
+                  <h3>{nameOf(chosen)}</h3>
+                  <small>
+                    {chosen.kind === 'crop' ? (mature ? tr('成熟预览') : tr('存档中的生长阶段')) : chosen.key.startsWith('new:')?tr('新增设施'):chosen.key.startsWith('fixed:')||chosen.key.startsWith('fixture:')?tr('固定场景设施'):tr('存档中的设施')}
+                    {chosen.edited ? tr(' · 已修改') : ''}
+                  </small>
+                  {chosen.art && <TrimmedSprite className="farm-selection-art" src={withBase(`/maps/farm/${chosen.art.file}`)} label={nameOf(chosen)} />}
+                  {chosen.movable && <div className="farm-actions">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setTool('place');
+                        setTemplate(chosen.id);
+                        setMoving(chosen.uid!);
+                        setAngle(occupied.find(o=>o.uid===chosen.uid)?.angle??45);
+                        setMessage(tr('点击新的位置移动这件设施。按 Esc 取消。'));
+                      }}
+                    >
+                      {tr('移动这件设施')}
+                    </button>
+                    {chosen.kind==='object'&&<button type="button" onClick={rotate}>{tr('↻ 调整朝向（R）')}</button>}
+                    <button type="button" className="farm-danger" onClick={()=>{commit(clearMapArea(model.doc,current.current,sceneId,[],[chosen.key],chosen.floor?'floor':'objects'));cancelSelection();setMessage(tr('已删除所选物体，可撤销。'));}}>{tr('删除这件')}{templates.find(t=>t.id===chosen.id)?.building?tr('建筑'):tr('设施')}</button>
+                  </div>}
+                  {chosen.uid&&templates.find(t=>t.id===chosen.id)?.building&&<div className="farm-actions">{templates.filter(t=>{const active=templates.find(s=>s.id===chosen.id)!;return active.upgrade?t.id===active.upgrade:t.buildingFamily===active.buildingFamily&&t.slot===active.slot&&t.mirror===active.mirror&&t.level===active.level+1;}).map(t=><button type="button" key={t.id} onClick={()=>upgrade(t.id)}>{tr('升级为 {name} · {level} 级', { name: t.name, level: t.level })}</button>)}</div>}
+                  {chosen.kind==='crop'&&chosen.cell&&<MapGrowthControls state={cropGrowth(model.doc,edits,sceneId,chosen.cell)} onChange={editGrowth}/>}
+                  {!selection.length && chosen.kind === 'crop' && chosen.cell && (
+                    <button
+                      type="button"
+                      className="farm-danger"
+                      onClick={() => {
+                        commit(clearMapArea(model.doc,current.current,sceneId,[chosen.cell!],[],'crops'));
+                        setSelected(undefined);
+                      }}
+                    >
+                      {tr('清除这株作物')}
+                    </button>
+                  )}
+                </>
+              ) : !(selection.length > 0 || selectedCells.length > 0) && (
+                <>
+                  <h3>{tool === 'pan' ? tr('平移') : tr('从真实场景开始')}</h3>
+                  <p>{room ? tr('点击家具查看详情，选择移动后点击新位置。') : tr('点击上方田地名称定位。放大后，点击作物或设施查看详情。')}</p>
+                  <p>{tr('选择种植、设施等工具后，地图会显示落点预览。')}</p>
+                </>
+              )}
+              {(selection.length > 0 || selectedCells.length > 0) && <div className="farm-multi-selection">
+                <h4>{tr('已框选 {count} 格 · {count2} 个物体', { count: selectedCells.length, count2: selection.length })}</h4>
+                <div className="farm-actions">{[['crops',tr('清除作物')],['floor',tr('清除地板')],['objects',tr('清除设施')],['reset',tr('全部重置为平地')]].map(([id,label])=><button type="button" key={id} onClick={()=>clearSelection(id as ClearLayer)}>{label}</button>)}</div>
+                <div className="farm-actions"><button type="button" onClick={()=>paintSelection({watered:true})}>{tr('批量浇水')}</button><button type="button" onClick={()=>paintSelection({soil:1})}>{tr('批量耕地')}</button><button type="button" onClick={()=>paintSelection({soil:2})}>{tr('批量田垄')}</button><button type="button" onClick={()=>paintSelection({soil:3})}>{tr('批量水田')}</button><button type="button" onClick={matureSelection}>{tr('作物／树木全部成熟')}</button><button type="button" onClick={()=>changeTool('plant')}>{tr('在选区种植…')}</button></div>
+                {selection.length > 0 && <div className="farm-selection-list">{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}
+                  aria-pressed={selected === s.key} onClick={() => setSelected(s.key)}>{nameOf(s)}</button>)}</div>}
+                {selection.length > selectionLimit && <button type="button" onClick={() => setSelectionLimit(n => n + 40)}>{tr('显示更多')}</button>}
+                <button type="button" onClick={() => { setSelection([]); setSelectedCells([]); setSelected(undefined); }}>{tr('取消框选')}</button>
+              </div>}
+              {selectedPoint && (
+                <small>
+                  {tr('位置')} {Math.round(chosen?.x ?? selectedPoint.x)}, {Math.round(chosen?.y ?? selectedPoint.y)}
+                </small>
+              )}
+            </div>
+          )}
+          {brushTool && (
+            <div className="farm-brush">
+              <h4>{tr('笔刷')}</h4>
+              <div className="farm-segments" role="group" aria-label={tr('笔刷')}>
+                {[1, 3, 5].map((n) => (
+                  <button type="button" key={n} aria-pressed={brush === n} onClick={() => setBrush(n)}>
+                    {n}×{n}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          <details className="farm-layer-options">
+            <summary>{room ? tr('图层') : tr('季节与图层')}</summary>
+            {!room && <>
+              <div className="farm-segments" role="group" aria-label={tr('预览季节')}>
+                {SEASONS.map((s, i) => (
+                  <button type="button" key={s} aria-pressed={season === i} onClick={() => setSeason(i)}>
+                    {s}
+                  </button>
+                ))}
+              </div>
+              <small>{tr('仅切换预览，不修改存档季节。')}</small>
+            </>}
+            <div className="farm-switches">
+              {layerToggles.map(([label, value, set]) => (
+                <button type="button" role="switch" aria-checked={value} key={label} onClick={() => set(!value)}>
+                  <span className="farm-switch" aria-hidden="true" />{label}
+                </button>
+              ))}
+            </div>
+            {restricted&&<small>{tr('斜纹表示当前工具不能使用的地形；已有物体和完整占地以放置预览为准。')}</small>}
+          </details>
+        </aside>
       </div>
       <footer className="farm-footer">
-        <div className="farm-history">
-          <button type="button" disabled={!past.length} onClick={undo}>
-            {tr('↶ 撤销')}
-          </button>
-          <button type="button" disabled={!future.length} onClick={redo}>
-            {tr('↷ 重做')}
-          </button>
-          <span>{mapEditCount(edits)} {tr('处修改')}</span>
-        </div>
+        <span className="farm-edit-count">{mapEditCount(edits)} {tr('处修改')}</span>
         <p role="status">{message}</p>
         <div className="farm-files">
           <button
@@ -721,7 +739,6 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           input.value = '';
         }}
       />
-
     </section>
   );
 }

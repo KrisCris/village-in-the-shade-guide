@@ -28,5 +28,6 @@ h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .25rem 0 1rem; }
 .drawer{animation:drawer-arrive .3s cubic-bezier(.2,.7,.2,1)}.drawer-backdrop{animation:veil-arrive .2s ease}.drawer-body{animation:content-arrive .25s ease}.entity-link img,.category-grid img{transition:transform .25s}.entity-link:hover img,.category-grid a:hover img{transform:translateY(-3px) rotate(-4deg)}.category-grid a:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
 @keyframes drawer-arrive{from{transform:translateX(5%);opacity:0}to{transform:none;opacity:1}}@keyframes veil-arrive{from{opacity:0}to{opacity:1}}@keyframes content-arrive{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
 @media (max-width: 800px) { .page { display: block; } .main { padding-top: 1.25rem; } }
+@media (max-width: 640px) { .main { padding-inline: .75rem; } }
 @media (max-width: 760px) { .site-header nav { order: 3; width: 100%; justify-content: center; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation:none!important; } }
