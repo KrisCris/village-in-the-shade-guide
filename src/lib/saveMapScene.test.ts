@@ -33,7 +33,7 @@ describe('farm viewport geometry', () => {
       expect(pickFarmCell({ x: c.x + 20, y: c.y + 20 })?.id).toBe(c.id);
     }
     expect(pickFarmCell({ x: 0, y: 0 })).toBeUndefined();
-    expect(FARM_REGIONS.map((r) => r.id)).toEqual([1, 2, 4]);
+    expect(FARM_REGIONS.map((r) => r.id)).toEqual([1, 2, 4, 8]);
   });
   it('uses growth thresholds within each normal, regrowing or stump state', () => {
     const entity = {
