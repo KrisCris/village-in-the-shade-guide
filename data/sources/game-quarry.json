@@ -1,0 +1,7445 @@
+{
+ "source": "dungeon.dat + cropsharvest.dat + crops.dat (build 25311578)",
+ "floors": [
+  {
+   "floor": 1,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 2,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 3,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 4,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 5,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 6,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 7,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 8,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 9,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 45
+    },
+    {
+     "rock": 1304,
+     "weight": 45
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1311,
+     "weight": 5
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 10,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 11,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 12,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 13,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 14,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 15,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 16,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 17,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 18,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 19,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 50
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 50
+    }
+   ]
+  },
+  {
+   "floor": 20,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 21,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 22,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 23,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 24,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 25,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 26,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 27,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 28,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 29,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 42
+    },
+    {
+     "rock": 1304,
+     "weight": 42
+    },
+    {
+     "rock": 1351,
+     "weight": 6
+    },
+    {
+     "rock": 1307,
+     "weight": 7
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 30,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 31,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 32,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 33,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 34,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 35,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 36,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 37,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 38,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 39,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 32
+    },
+    {
+     "rock": 1304,
+     "weight": 32
+    },
+    {
+     "rock": 1351,
+     "weight": 4
+    },
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1354,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 30
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    }
+   ]
+  },
+  {
+   "floor": 40,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 41,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 42,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 43,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 44,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 45,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 46,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 47,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 48,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 49,
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 11
+    },
+    {
+     "rock": 1304,
+     "weight": 11
+    },
+    {
+     "rock": 1351,
+     "weight": 2
+    },
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1307,
+     "weight": 5
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 50,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 51,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 52,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 53,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 54,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 55,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 56,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 57,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 58,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 59,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 7
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 60,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 61,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 62,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 63,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 64,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 65,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 66,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 67,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 68,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 69,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1355,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 70,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 71,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 72,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 73,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 74,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 75,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 76,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 77,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 78,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 79,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 42
+    },
+    {
+     "rock": 1305,
+     "weight": 42
+    },
+    {
+     "rock": 1352,
+     "weight": 6
+    },
+    {
+     "rock": 1308,
+     "weight": 7
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1355,
+     "weight": 2
+    },
+    {
+     "rock": 1307,
+     "weight": 1
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 80,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 81,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 82,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 83,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 84,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 85,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 86,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 87,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 88,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 89,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 32
+    },
+    {
+     "rock": 1305,
+     "weight": 32
+    },
+    {
+     "rock": 1352,
+     "weight": 4
+    },
+    {
+     "rock": 1303,
+     "weight": 11
+    },
+    {
+     "rock": 1306,
+     "weight": 11
+    },
+    {
+     "rock": 1353,
+     "weight": 2
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 2
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 90,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 91,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 92,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 93,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 94,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 95,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 96,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 97,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 98,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 99,
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 11
+    },
+    {
+     "rock": 1305,
+     "weight": 11
+    },
+    {
+     "rock": 1352,
+     "weight": 2
+    },
+    {
+     "rock": 1303,
+     "weight": 32
+    },
+    {
+     "rock": 1306,
+     "weight": 32
+    },
+    {
+     "rock": 1353,
+     "weight": 4
+    },
+    {
+     "rock": 1309,
+     "weight": 5
+    },
+    {
+     "rock": 1356,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 100,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 101,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 102,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 103,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 104,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 105,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 106,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 107,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 108,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 109,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1309,
+     "weight": 3
+    },
+    {
+     "rock": 1310,
+     "weight": 5
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GOLD",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 10
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 110,
+   "rocks": [],
+   "special_chance": 0,
+   "special_rooms": []
+  },
+  {
+   "floor": 111,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 112,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 113,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 114,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 115,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 116,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 117,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 118,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 119,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 5,
+   "special_rooms": [
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GHOST",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+     "weight": 25
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+     "weight": 20
+    },
+    {
+     "room": "DUNGEON_FLOOR_SPECIAL_GEM",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "floor": 120,
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 43
+    },
+    {
+     "rock": 1306,
+     "weight": 43
+    },
+    {
+     "rock": 1353,
+     "weight": 6
+    },
+    {
+     "rock": 1310,
+     "weight": 6
+    },
+    {
+     "rock": 1357,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 3
+    },
+    {
+     "rock": 1308,
+     "weight": 5
+    },
+    {
+     "rock": 1309,
+     "weight": 2
+    }
+   ],
+   "special_chance": 0,
+   "special_rooms": []
+  }
+ ],
+ "rooms": [
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
+   "name_ja": "蜂の巣部屋lv1",
+   "rocks": []
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
+   "name_ja": "蜂の巣部屋lv2",
+   "rocks": []
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_GHOST",
+   "name_ja": "お化け部屋",
+   "rocks": []
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
+   "name_ja": "暗闇部屋",
+   "rocks": []
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_COPPER",
+   "name_ja": "鉱脈部屋(銅)",
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 2
+    },
+    {
+     "rock": 1304,
+     "weight": 2
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1307,
+     "weight": 90
+    },
+    {
+     "rock": 1354,
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_IRON",
+   "name_ja": "鉱脈部屋(鉄)",
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 2
+    },
+    {
+     "rock": 1305,
+     "weight": 2
+    },
+    {
+     "rock": 1352,
+     "weight": 1
+    },
+    {
+     "rock": 1308,
+     "weight": 90
+    },
+    {
+     "rock": 1355,
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_GOLD",
+   "name_ja": "鉱脈部屋(金)",
+   "rocks": [
+    {
+     "rock": 1302,
+     "weight": 2
+    },
+    {
+     "rock": 1305,
+     "weight": 2
+    },
+    {
+     "rock": 1352,
+     "weight": 1
+    },
+    {
+     "rock": 1309,
+     "weight": 90
+    },
+    {
+     "rock": 1356,
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
+   "name_ja": "鉱脈部屋(隕鉄)",
+   "rocks": [
+    {
+     "rock": 1303,
+     "weight": 2
+    },
+    {
+     "rock": 1306,
+     "weight": 2
+    },
+    {
+     "rock": 1353,
+     "weight": 1
+    },
+    {
+     "rock": 1310,
+     "weight": 90
+    },
+    {
+     "rock": 1357,
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "id": "DUNGEON_FLOOR_SPECIAL_GEM",
+   "name_ja": "鉱脈部屋(宝石)",
+   "rocks": [
+    {
+     "rock": 1301,
+     "weight": 2
+    },
+    {
+     "rock": 1304,
+     "weight": 2
+    },
+    {
+     "rock": 1351,
+     "weight": 1
+    },
+    {
+     "rock": 1311,
+     "weight": 90
+    },
+    {
+     "rock": 1358,
+     "weight": 5
+    }
+   ]
+  }
+ ],
+ "rocks": {
+  "1301": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 3,
+     "chance": 50
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOPAZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_JADE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GARNET",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1302": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 3,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 3,
+     "chance": 100
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 3,
+     "chance": 20
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_SAPPHIRE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMBER",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_BERYL",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1303": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 3,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HEAVY",
+     "min": 1,
+     "max": 3,
+     "chance": 90
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 15
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 5,
+     "chance": 20
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMETHYST",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOURMALINE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_FLUORITE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1304": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 3,
+     "chance": 50
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOPAZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_JADE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GARNET",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1305": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 3,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 3,
+     "chance": 100
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 3,
+     "chance": 20
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_SAPPHIRE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMBER",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_BERYL",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1306": {
+   "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+   "names": {
+    "ja": "石切場の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 돌",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 3,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HEAVY",
+     "min": 1,
+     "max": 3,
+     "chance": 90
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 1,
+     "chance": 15
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 3,
+     "max": 5,
+     "chance": 20
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 2,
+     "max": 4,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 1,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMETHYST",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOURMALINE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_FLUORITE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1307": {
+   "code": "CROPS_ID_OBJECT_STONE_COPPER",
+   "names": {
+    "ja": "銅鉱脈の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "銅礦脈的石頭",
+    "ko": "동광맥의 돌",
+    "zh-CN": "铜矿脉的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_COPPER_ORE",
+     "min": 2,
+     "max": 3,
+     "chance": 100
+    }
+   ]
+  },
+  "1308": {
+   "code": "CROPS_ID_OBJECT_STONE_IRON",
+   "names": {
+    "ja": "鉄鉱脈の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "鐵礦脈的石頭",
+    "ko": "철광맥의 돌",
+    "zh-CN": "铁矿脉的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_IRON_ORE",
+     "min": 1,
+     "max": 3,
+     "chance": 100
+    }
+   ]
+  },
+  "1309": {
+   "code": "CROPS_ID_OBJECT_STONE_GOLD",
+   "names": {
+    "ja": "金鉱脈の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "金礦脈的石頭",
+    "ko": "금광맥의 돌",
+    "zh-CN": "金矿脉的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_GOLD_ORE",
+     "min": 1,
+     "max": 3,
+     "chance": 100
+    }
+   ]
+  },
+  "1310": {
+   "code": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+   "names": {
+    "ja": "隕鉄鉱脈の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "隕鐵礦脈的石頭",
+    "ko": "운철광맥의 돌",
+    "zh-CN": "陨铁矿脉的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_METEORIC_IRON",
+     "min": 1,
+     "max": 3,
+     "chance": 100
+    }
+   ]
+  },
+  "1311": {
+   "code": "CROPS_ID_OBJECT_STONE_GEM",
+   "names": {
+    "ja": "宝石鉱脈の石",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "寶石礦脈的石頭",
+    "ko": "보석광맥의 돌",
+    "zh-CN": "宝石矿脉的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_TOPAZ",
+     "min": 1,
+     "max": 1,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+     "min": 1,
+     "max": 1,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_JADE",
+     "min": 1,
+     "max": 1,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GARNET",
+     "min": 1,
+     "max": 1,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_SAPPHIRE",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMBER",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_BERYL",
+     "min": 1,
+     "max": 1,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMETHYST",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOURMALINE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_FLUORITE",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+     "min": 1,
+     "max": 1,
+     "chance": 1
+    }
+   ]
+  },
+  "1351": {
+   "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+   "names": {
+    "ja": "石切場の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 바위",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 6,
+     "chance": 100
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOPAZ",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_JADE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GARNET",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    }
+   ]
+  },
+  "1352": {
+   "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+   "names": {
+    "ja": "石切場の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 바위",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE",
+     "min": 1,
+     "max": 6,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 6,
+     "chance": 100
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_QUARTZ",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_SAPPHIRE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMBER",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_BERYL",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    }
+   ]
+  },
+  "1353": {
+   "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+   "names": {
+    "ja": "石切場の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "採石場的石頭",
+    "ko": "채석장의 바위",
+    "zh-CN": "采石场的石头"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HARD",
+     "min": 1,
+     "max": 6,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_STONE_HEAVY",
+     "min": 1,
+     "max": 6,
+     "chance": 57
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+     "min": 1,
+     "max": 2,
+     "chance": 48
+    },
+    {
+     "item": "ITEM_ID_OBJECT_CLAY",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROCK_SALT",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_COAL",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_MOSS",
+     "min": 1,
+     "max": 2,
+     "chance": 5
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMETHYST",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOURMALINE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_FLUORITE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    }
+   ]
+  },
+  "1354": {
+   "code": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+   "names": {
+    "ja": "銅鉱脈の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "銅礦脈的岩石",
+    "ko": "동광맥의 바위",
+    "zh-CN": "铜矿脉的岩石"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_COPPER_ORE",
+     "min": 5,
+     "max": 8,
+     "chance": 100
+    }
+   ]
+  },
+  "1355": {
+   "code": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+   "names": {
+    "ja": "鉄鉱脈の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "鐵礦脈的岩石",
+    "ko": "철광맥의 바위",
+    "zh-CN": "铁矿脉的岩石"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_IRON_ORE",
+     "min": 5,
+     "max": 8,
+     "chance": 100
+    }
+   ]
+  },
+  "1356": {
+   "code": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+   "names": {
+    "ja": "金鉱脈の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "金礦脈的岩石",
+    "ko": "금광맥의 바위",
+    "zh-CN": "金矿脉的岩石"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_GOLD_ORE",
+     "min": 5,
+     "max": 8,
+     "chance": 100
+    }
+   ]
+  },
+  "1357": {
+   "code": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+   "names": {
+    "ja": "隕鉄鉱脈の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "隕鐵礦脈的岩石",
+    "ko": "운철광맥의 바위",
+    "zh-CN": "陨铁矿脉的岩石"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_METEORIC_IRON",
+     "min": 5,
+     "max": 8,
+     "chance": 100
+    }
+   ]
+  },
+  "1358": {
+   "code": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+   "names": {
+    "ja": "宝石鉱脈の岩",
+    "slot-1": "",
+    "slot-2": "",
+    "slot-3": "",
+    "zh-TW": "寶石礦脈的岩石",
+    "ko": "보석광맥의 바위",
+    "zh-CN": "宝石矿脉的岩石"
+   },
+   "drops": [
+    {
+     "item": "ITEM_ID_OBJECT_TOPAZ",
+     "min": 1,
+     "max": 2,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+     "min": 1,
+     "max": 2,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_JADE",
+     "min": 1,
+     "max": 2,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_GARNET",
+     "min": 1,
+     "max": 2,
+     "chance": 30
+    },
+    {
+     "item": "ITEM_ID_OBJECT_QUARTZ",
+     "min": 1,
+     "max": 2,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_SAPPHIRE",
+     "min": 1,
+     "max": 2,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMBER",
+     "min": 1,
+     "max": 2,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_BERYL",
+     "min": 1,
+     "max": 2,
+     "chance": 10
+    },
+    {
+     "item": "ITEM_ID_OBJECT_AMETHYST",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_TOURMALINE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_FLUORITE",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    },
+    {
+     "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+     "min": 1,
+     "max": 2,
+     "chance": 1
+    }
+   ]
+  }
+ }
+}

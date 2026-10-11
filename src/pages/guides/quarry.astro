@@ -1,0 +1,172 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCatalog, entityUrl } from '../../data/repository';
+import quarry from '../../../data/sources/game-quarry.json';
+import { getI18n } from '../../i18n/server';
+import { msg } from '../../i18n/translate';
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
+const item = (id: string) => catalog.entities.find(e => e.kind === 'items' && e.id === id);
+type Rock = { code: string; names: Record<string, string>; drops: { item: string; min: number; max: number; chance: number }[] };
+const rocks = quarry.rocks as Record<string, Rock>;
+const rockName = (id: number | string) => { const n = rocks[String(id)].names; return (locale === 'ja' ? n.ja : locale === 'zh-TW' ? n['zh-TW'] : n['zh-CN']) || n.ja; };
+
+// Floors with the same rock table form one band; every tenth floor is a rest area without rocks.
+const key = (rows: { rock: number; weight: number }[]) => JSON.stringify(rows);
+const bands: { from: number; to: number; rocks: { rock: number; weight: number }[] }[] = [];
+for (const floor of quarry.floors) {
+  if (!floor.rocks.length) continue;
+  const last = bands.at(-1);
+  if (last && key(last.rocks) === key(floor.rocks)) last.to = floor.floor;
+  else bands.push({ from: floor.floor, to: floor.floor, rocks: floor.rocks });
+}
+const range = (from: number, to: number) => from === to ? String(from) : `${from}–${to}`;
+
+// Each drop is rolled on its own; per rock broken: chance = Σ share × chance, quantity = Σ share × chance × average stack.
+function yields(rows: { rock: number; weight: number }[]) {
+  const total = rows.reduce((sum, row) => sum + row.weight, 0), result = new Map<string, { chance: number; quantity: number }>();
+  for (const row of rows) for (const drop of rocks[String(row.rock)].drops) {
+    const share = row.weight / total * drop.chance / 100, now = result.get(drop.item) ?? { chance: 0, quantity: 0 };
+    result.set(drop.item, { chance: now.chance + share, quantity: now.quantity + share * (drop.min + drop.max) / 2 });
+  }
+  return result;
+}
+const table = bands.map(band => yields(band.rocks));
+const groups: [string, string[]][] = [
+  [msg('石材'), ['ITEM_ID_OBJECT_STONE', 'ITEM_ID_OBJECT_STONE_HARD', 'ITEM_ID_OBJECT_STONE_HEAVY']],
+  [msg('其他材料'), ['ITEM_ID_OBJECT_GLASS_PIECE', 'ITEM_ID_OBJECT_CLAY', 'ITEM_ID_OBJECT_ROCK_SALT', 'ITEM_ID_OBJECT_COAL', 'ITEM_ID_OBJECT_MOSS']],
+  [msg('矿石'), ['ITEM_ID_OBJECT_COPPER_ORE', 'ITEM_ID_OBJECT_IRON_ORE', 'ITEM_ID_OBJECT_GOLD_ORE', 'ITEM_ID_OBJECT_METEORIC_IRON']],
+];
+const listed = new Set(groups.flatMap(([, ids]) => ids));
+const gems = [...new Set(Object.values(rocks).flatMap(rock => rock.drops.map(drop => drop.item)))].filter(id => !listed.has(id));
+groups.push([msg('宝石'), gems]);
+const percent = (value: number) => value === 0 ? '—' : value >= .1 ? `${Math.round(value * 100)}%` : value >= .01 ? `${(value * 100).toFixed(1)}%` : `${(value * 100).toFixed(2)}%`;
+const amount = (value: number) => value === 0 ? '—' : value >= 1 ? value.toFixed(1) : value >= .01 ? value.toFixed(2) : value.toFixed(3);
+
+const roomNames: Record<string, string> = {
+  DUNGEON_FLOOR_SPECIAL_BEE_LV1: msg('蜂巢房间 Lv1'), DUNGEON_FLOOR_SPECIAL_BEE_LV2: msg('蜂巢房间 Lv2'),
+  DUNGEON_FLOOR_SPECIAL_GHOST: msg('幽灵房间'), DUNGEON_FLOOR_SPECIAL_DARKNESS: msg('黑暗房间'),
+  DUNGEON_FLOOR_SPECIAL_COPPER: msg('铜矿脉房间'), DUNGEON_FLOOR_SPECIAL_IRON: msg('铁矿脉房间'), DUNGEON_FLOOR_SPECIAL_GOLD: msg('金矿脉房间'),
+  DUNGEON_FLOOR_SPECIAL_METEORIC_IRON: msg('陨铁矿脉房间'), DUNGEON_FLOOR_SPECIAL_GEM: msg('宝石矿脉房间')
+};
+const specialBands: { from: number; to: number; chance: number; rooms: { room: string; weight: number }[] }[] = [];
+for (const floor of quarry.floors) {
+  if (!floor.special_rooms.length) continue;
+  const last = specialBands.at(-1);
+  if (last && last.to >= floor.floor - 2 && last.chance === floor.special_chance && key(last.rooms as never) === key(floor.special_rooms as never)) last.to = floor.floor;
+  else specialBands.push({ from: floor.floor, to: floor.floor, chance: floor.special_chance, rooms: floor.special_rooms });
+}
+const roomOrder = Object.keys(roomNames).filter(id => specialBands.some(band => band.rooms.some(row => row.room === id)));
+const veinRooms = quarry.rooms.filter(room => room.rocks.length).map(room => {
+  const total = room.rocks.reduce((sum, row) => sum + row.weight, 0);
+  const veins = room.rocks.filter(row => !/TUNNEL/.test(rocks[String(row.rock)].code)).reduce((sum, row) => sum + row.weight, 0);
+  return { id: room.id, share: veins / total };
+});
+// Several rocks share one in-game name, so each row also shows the floors where it appears.
+const rockRows = Object.entries(rocks).map(([id, rock]) => {
+  const floors = quarry.floors.filter(f => f.rocks.some(r => String(r.rock) === id)).map(f => f.floor);
+  const rooms = quarry.rooms.filter(room => room.rocks.some(r => String(r.rock) === id)).map(room => room.id);
+  return { id, rock, floors: floors.length ? range(floors[0], floors.at(-1)!) : '', rooms };
+}).filter(row => row.floors || row.rooms.length)
+  // A and B stones are look-alike variants with the same drops; list each once.
+  .filter((row, index, rows) => rows.findIndex(other => JSON.stringify([rockName(other.id), other.floors, other.rooms, other.rock.drops]) === JSON.stringify([rockName(row.id), row.floors, row.rooms, row.rock.drops])) === index);
+---
+<BaseLayout title={t('采石场掉落分布')}>
+  <h1>{t('采石场掉落分布')}</h1>
+  <p>{t('每敲碎一块石头，各种掉落分别判定。表中是该层段平均每块石头掉出该物品的概率，颜色越深表示越适合在这几层找它。')}</p>
+  <p class="note">{t('第 10、20……110 层是休息层，没有石头。数值为未学祠堂能力时的基础值；「矿脉探查术」会提高矿脉出现率，「采掘技术」会让石头多掉石材。')} <a href={href('/guides/skills/')}>{t('查看祠堂能力')}</a></p>
+
+  <div class="quarry-mode" role="group" aria-label={t('显示方式')}>
+    <button type="button" aria-pressed="true" data-mode="chance">{t('掉落概率')}</button>
+    <button type="button" aria-pressed="false" data-mode="quantity">{t('平均数量')}</button>
+  </div>
+  <div class="quarry-scroll">
+    <table class="quarry-table" data-mode="chance">
+      <thead><tr><th scope="col">{t('层')}</th>{bands.map(band => <th scope="col">{range(band.from, band.to)}</th>)}</tr></thead>
+      {groups.map(([group, ids]) => <tbody>
+        <tr class="quarry-group"><th scope="rowgroup" colspan={bands.length + 1}>{t(group)}</th></tr>
+        {ids.map(id => {
+          const e = item(id), values = table.map(row => row.get(id) ?? { chance: 0, quantity: 0 }), top = Math.max(...values.map(v => v.chance));
+          return <tr>
+            <th scope="row">{e ? <a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a> : id}</th>
+            {values.map(value => <td style={value.chance ? `--heat:${Math.round(8 + 72 * Math.sqrt(value.chance / top))}%` : undefined}><span class="chance">{percent(value.chance)}</span><span class="quantity">{amount(value.quantity)}</span></td>)}
+          </tr>;
+        })}
+      </tbody>)}
+    </table>
+  </div>
+  <p class="note">{t('平均数量 = 每敲碎一块石头平均得到的个数，已计入掉落概率和每次掉落的数量范围。')}</p>
+
+  <section>
+    <h2>{t('特殊房间')}</h2>
+    <p>{t('从第 11 层起，进入新楼层时有一定概率变成特殊房间。表中是每层变成该房间的概率。矿脉房间里大部分石头都是对应的矿脉石，是集中采矿的机会。')}</p>
+    <div class="quarry-scroll">
+      <table class="quarry-table quarry-rooms">
+        <thead><tr><th scope="col">{t('层')}</th>{roomOrder.map(id => <th scope="col">{t(roomNames[id])}</th>)}</tr></thead>
+        <tbody>{specialBands.map(band => {
+          const total = band.rooms.reduce((sum, row) => sum + row.weight, 0);
+          return <tr><th scope="row">{range(band.from, band.to)}</th>{roomOrder.map(id => { const row = band.rooms.find(r => r.room === id); const value = row ? band.chance / 100 * row.weight / total : 0; return <td style={value ? `--heat:${Math.round(10 + 60 * value / .025)}%` : undefined}>{percent(value)}</td>; })}</tr>;
+        })}</tbody>
+      </table>
+    </div>
+    <ul class="quarry-veins">{veinRooms.map(room => <li><strong>{t(roomNames[room.id])}</strong>{t('：约 {share} 的石头是矿脉石。', { share: percent(room.share) })}</li>)}</ul>
+  </section>
+
+  <details>
+    <summary>{t('各种石头的掉落表')}</summary>
+    <div class="quarry-scroll">
+      <table class="quarry-rocks">
+        <thead><tr><th scope="col">{t('石头')}</th><th scope="col">{t('掉落（数量 · 概率）')}</th></tr></thead>
+        <tbody>{rockRows.map(({ id, rock, floors, rooms }) => <tr><th scope="row">{rockName(id)}<small>{[rock.code.endsWith('_BIG') && t('大石块'), floors && t('{floors} 层', { floors }), ...rooms.map(room => t(roomNames[room]))].filter(Boolean).join(' · ')}</small></th><td>{rock.drops.map(drop => { const e = item(drop.item); return <span class="quarry-drop">{e ? <a href={href(entityUrl(e))}>{e.name.zh_hans}</a> : drop.item} {drop.min === drop.max ? `×${drop.min}` : `×${drop.min}–${drop.max}`} · {drop.chance}%</span>; })}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="note">{t('来源：dungeon.dat（各层石头权重、特殊房间）、cropsharvest.dat（石头掉落）。')}</p>
+  </details>
+</BaseLayout>
+<script>
+  for (const group of document.querySelectorAll<HTMLElement>('.quarry-mode')) {
+    const table = group.nextElementSibling?.querySelector('table');
+    group.addEventListener('click', event => {
+      const button = (event.target as HTMLElement).closest('button');
+      if (!button || !table) return;
+      for (const other of group.querySelectorAll('button')) other.setAttribute('aria-pressed', String(other === button));
+      table.dataset.mode = button.dataset.mode;
+    });
+  }
+</script>
+<style>
+  p { line-height: 1.8; }
+  .note { color: var(--muted); font-size: .88rem; }
+  section { margin: 2.5rem 0; }
+  .quarry-mode { display: inline-flex; gap: 3px; padding: 3px; margin: .5rem 0 .8rem; border: 1px solid var(--border); border-radius: 10px; background: var(--paper); }
+  .quarry-mode button { font: inherit; font-size: .85rem; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 7px; padding: .35rem .9rem; cursor: pointer; }
+  .quarry-mode button[aria-pressed='true'] { background: var(--paper-raised); border-color: var(--green); font-weight: 600; }
+  .quarry-mode button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .quarry-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--paper-raised); }
+  .quarry-table, .quarry-rocks { border-collapse: collapse; width: 100%; font-size: .8rem; font-variant-numeric: tabular-nums; }
+  .quarry-table th, .quarry-table td, .quarry-rocks th, .quarry-rocks td { padding: .4rem .5rem; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); }
+  .quarry-table thead th { position: sticky; top: 0; background: var(--paper); font-weight: 600; white-space: nowrap; text-align: center; }
+  .quarry-table th[scope='row'], .quarry-table thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper-raised); text-align: left; }
+  .quarry-table thead th:first-child { z-index: 2; background: var(--paper); }
+  .quarry-table th[scope='row'] a { display: flex; align-items: center; gap: .4rem; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .quarry-table th[scope='row'] a:hover span { text-decoration: underline; }
+  .quarry-table th[scope='row'] img { object-fit: contain; flex: none; }
+  .quarry-table td { text-align: center; white-space: nowrap; color: var(--muted); background: color-mix(in srgb, var(--green) var(--heat, 0%), transparent); }
+  .quarry-table td[style] { color: var(--ink); }
+  .quarry-group th { text-align: left; font-size: .75rem; color: var(--muted); background: var(--paper); letter-spacing: .05em; }
+  .quarry-table .quantity, .quarry-table[data-mode='quantity'] .chance { display: none; }
+  .quarry-table[data-mode='quantity'] .quantity { display: inline; }
+  .quarry-rooms td { min-width: 4.5rem; }
+  .quarry-veins { line-height: 1.9; }
+  .quarry-rocks th { text-align: left; white-space: nowrap; vertical-align: top; }
+  .quarry-rocks th small { display: block; color: var(--muted); font-weight: 400; font-size: .75rem; }
+  .quarry-rocks td { line-height: 1.9; }
+  .quarry-drop { display: inline-block; margin-right: 1rem; white-space: nowrap; }
+  details { margin: 2rem 0; }
+  details summary { cursor: pointer; font-weight: 600; margin-bottom: .8rem; }
+  @media (max-width: 640px) {
+    .quarry-scroll { margin-inline: -.75rem; border-radius: 0; border-inline: 0; }
+    .quarry-table th[scope='row'] span { max-width: 5.5rem; overflow: hidden; text-overflow: ellipsis; }
+  }
+</style>
