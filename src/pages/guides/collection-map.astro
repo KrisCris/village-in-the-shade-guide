@@ -6,6 +6,7 @@ import mapData from '../../../data/sources/game-map-markers.json';
 import exploration from '../../../data/sources/game-exploration-markers.json';
 import {getCatalog,entityUrl} from '../../data/repository';
 import {translateLabel} from '../../data/catalog';
+import {isVillageMap} from '../../data/collectionMap';
 import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
@@ -18,9 +19,9 @@ const markers=mapData.markers.map(m=>{
 });
 // Exploration labels are "玉手箱 N" or the exchange anchor name.
 const explorationLabel=(label:string)=>{const number=label.match(/(\d+)$/)?.[1];return number?t('玉手箱 {number}',{number}):t(label);};
-const outside=[...markers.filter(m=>m.map.includes('map_0000_spr')),...exploration.markers.map(m=>({...m,label:explorationLabel(m.label),href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
+const outside=[...markers.filter(m=>isVillageMap(m.map)),...exploration.markers.map(m=>({...m,label:explorationLabel(m.label),href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
 const markerLabel=(m:{kind:string;anchor:string;label:string})=>m.kind==='book'?m.anchor.slice(-2):m.label;
-const inside=markers.filter(m=>!m.map.includes('map_0000_spr'));
+const inside=markers.filter(m=>!isVillageMap(m.map));
 const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+mapData.projection.offset_x,y:m.y/mapData.projection.scale_divisor+mapData.projection.offset_y});
 const detail=(m:(typeof outside)[number])=>{
  if(m.kind==='book')return [t('遗失图书，可交还图书馆。'),'progress_label' in m&&m.progress_label?t('关联进度：{progress}。此进度不等于路线已可达。',{progress:String(m.progress_label)}):''].filter(Boolean).join('\n');
