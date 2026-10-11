@@ -15,6 +15,34 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('tells same-product recipes apart by their ingredients on machine and ingredient pages', () => {
+    const dye = entity('black-dye', 'items', { sell_price: 50 });
+    const white = entity('white-dye', 'items', { sell_price: 20 });
+    const ink = entity('squid-ink', 'items', { sell_price: 10 });
+    const coal = entity('charcoal', 'items', { sell_price: 5 });
+    const press = entity('press', 'machines');
+    const first = entity('dye-1', 'processes', { machine_ids: ['press'], inputs: [{ item_id: 'white-dye', quantity: 1 }, { item_id: 'squid-ink', quantity: 1 }], output: { item_id: 'black-dye', quantity: 1 }, duration_minutes: 1380 });
+    const second = entity('dye-2', 'processes', { machine_ids: ['press'], inputs: [{ item_id: 'white-dye', quantity: 1 }, { item_id: 'charcoal', quantity: 2 }], output: { item_id: 'black-dye', quantity: 1 }, duration_minutes: 2820 });
+    const data = catalog(dye, white, ink, coal, press, first, second);
+    const outputs = buildRelationGroups(press, data, 'normal').find(group => group.key === 'outputs')!.rows;
+    expect(outputs.map(row => row.chips[0])).toEqual(['原料：white-dye ×1 + squid-ink ×1', '原料：white-dye ×1 + charcoal ×2']);
+    expect(outputs.map(row => row.chips[1])).toEqual(['23 小时', '1 日 23 小时']);
+    const uses = buildRelationGroups(white, data, 'normal').find(group => group.key === 'used-in')!.rows;
+    expect(uses.map(row => row.chips[1])).toEqual(['原料：white-dye ×1 + squid-ink ×1', '原料：white-dye ×1 + charcoal ×2']);
+  });
+
+  it('gives every colour of an outfit the style source and hides its zero sell price', () => {
+    const style = { category_id: 'ITEM_CATEGORY_CLOTHES', sell_price: 0 };
+    const coffee = entity('ITEM_ID_CLOTHING_02_00', 'items', { ...style, numeric_id: 500010 });
+    const red = entity('ITEM_ID_CLOTHING_02_01', 'items', { ...style, numeric_id: 500011 });
+    const offer = entity('offer', 'store-offers', { item_id: 'ITEM_ID_CLOTHING_02_00', location: '行商' });
+    const model = buildEntityDetailModel(red, catalog(coffee, red, offer), 'normal');
+    const acquisition = model.groups.find(group => group.key === 'acquisition')!;
+    expect(acquisition.rows.map(row => row.entity.id)).toEqual(['offer']);
+    expect(acquisition.rows[0].chips).toContain('同款任意配色');
+    expect(model.facts.some(fact => fact.label === '卖出价')).toBe(false);
+  });
+
   it('opens the same product detail from each process and retains every recipe', () => {
     const product = entity('flour', 'items', { sell_price: 50 });
     const grain = entity('wheat', 'items', { sell_price: 10 });

@@ -18,7 +18,7 @@ const priorities=[
 ---
 <BaseLayout title={t('祠堂能力与解锁规划')}><h1>{t('祠堂能力与解锁规划')}</h1>
 <p set:html={tHtml('先完成<a href="/guides/progression/">岔路祠堂的修复任务</a>。以下按当前目标安排优先级；学习前还需在游戏中确认已开放的节点和消耗。')} />
-<section class="save-editor"><ShrineWiki client:only="react" locale={locale}><p slot="fallback" class="save-loading" role="status">{t('正在加载狐狸神社技能树…')}</p></ShrineWiki></section>
+<section class="save-editor" style="width:100%"><ShrineWiki client:only="react" locale={locale}><p slot="fallback" class="save-loading" role="status">{t('正在加载狐狸神社技能树…')}</p></ShrineWiki></section>
 <section><h2>{t('按目标选择')}</h2>{priorities.map(group=><article class="card"><h3>{group.title}</h3><p>{group.why}</p><ul>{group.ids.map(id=>{const skill=skills.find(e=>e.id===id);return skill&&<li><a href={`#${id}`}>{skill.name.zh_hans}</a>{t('：')}{String(skill.description)}</li>;})}</ul></article>)}</section>
 <section><h2>{t('能力与配方一览')}</h2><p>{t('学习需要满足全部前置节点。点击上方技能树节点可查看修缮等级、学习材料和解锁配方。')}</p>
 <label>{t('查找能力或配方')}<input id="skill-search" type="search" placeholder={t('名称、效果或拼音')} /></label>

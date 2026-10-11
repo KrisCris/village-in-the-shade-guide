@@ -702,7 +702,7 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 
 .save-system-hint { margin-block:1rem; color:var(--muted); font-size:.85rem; }
 .save-system-hint summary { cursor:pointer; }
-.save-system-hint input { display:block; margin-block:.6rem; max-width:100%; }
+.save-system-hint input[type=file] { display:none; }
 
 .save-status-symbols { display:flex; flex-wrap:wrap; align-items:center; gap:4px; min-height:32px; }
 .save-status-unit { display:block; position:relative; background:color-mix(in srgb,var(--muted) 22%,transparent); overflow:hidden; }
@@ -794,3 +794,18 @@ html.save-editor-maximized .falling-leaves { z-index:201; }
 }
 
 .save-machine-search{box-sizing:border-box;width:100%;padding:.65rem .8rem;border:1px solid var(--border);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;margin:.7rem 0}.save-batch-machines{padding:1rem;border:1px solid var(--border);border-radius:10px;margin-bottom:1rem}.save-batch-machines summary{cursor:pointer;font-weight:600}.save-slot[draggable=true]{cursor:grab}
+.save-slot.dragging { opacity: .45; }
+.save-slot.drop-target { border-color: var(--green); background: var(--green-soft); box-shadow: inset 0 0 0 2px var(--green); }
+.save-slot-move { display: flex; align-items: center; gap: .5rem; margin-left: auto; font-size: .84rem; color: var(--muted); }
+.save-slot-move .search-select-trigger.search-select-trigger { min-width: 10rem; min-height: 36px; }
+.save-basic-language { padding-bottom: 1rem; }
+.save-basic-language label { display: grid; gap: .4rem; max-width: 18rem; font-size: .85rem; color: var(--muted); }
+.save-basic-language p { margin: .6rem 0 0; font-size: .8rem; color: var(--muted); }
+.save-location { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; margin-top: .4rem; padding-top: .9rem; border-top: 1px solid var(--border); font-size: .85rem; color: var(--muted); text-align: center; }
+.save-location > span { font-weight: 600; color: var(--ink); }
+.save-location code { padding: .3rem .5rem; border-radius: 6px; background: var(--paper-deep); color: var(--ink); overflow-wrap: anywhere; }
+.save-location button { padding: .35rem .8rem; border: 1px solid var(--border); background: var(--paper-raised); color: var(--ink); cursor: pointer; }
+.save-location button:hover { border-color: var(--green); }
+.save-location small { flex-basis: 100%; }
+.save-system-hint button { margin-block: .6rem; padding: .4rem .9rem; border: 1px solid var(--border); background: var(--paper-raised); color: var(--ink); cursor: pointer; }
+.save-system-hint button:hover { border-color: var(--green); }

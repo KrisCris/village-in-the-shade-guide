@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import type { SaveField } from '../../lib/saveModel';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
@@ -28,7 +29,7 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
     return <span className="save-cell readonly" title={field.note}>
       <SaveIcon names={names} kind={field.lookup} value={value} size={22} />
       <span className="save-cell-value">{resolved || value || '—'}</span>
-      {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}{tr('/5 字符')}</small>}
+      {nameField && <NameCount value={value} />}
     {resolved && <small className="save-cell-name">ID {value}</small>}
     </span>;
   }
@@ -39,10 +40,10 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
 
   if (field.type === 'bool') {
     return <span className={`save-cell${dirty ? ' dirty' : ''}`}>
-      <select value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={field.label}>
+      <SearchableSelect value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={field.label}>
         <option value="0">{tr('否')}</option>
         <option value="1">{tr('是')}</option>
-      </select>
+      </SearchableSelect>
     </span>;
   }
 
@@ -65,14 +66,23 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
       size={compact ? 10 : undefined}
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={field.label}
-      aria-description={nameField ? tr('名称最多 5 个字符，导出时检查。') : undefined}
-      aria-invalid={nameField && Array.from(value).length > 5 || undefined}
+      maxLength={nameField ? NAME_LIMIT : undefined}
+      aria-description={nameField ? tr('游戏内名称最多 5 个字符。') : undefined}
+      aria-invalid={nameField && Array.from(value).length > NAME_LIMIT || undefined}
       spellCheck={false}
     />
-    {nameField && <small className={Array.from(value).length > 5 ? 'save-status error' : 'save-cell-name'}>{Array.from(value).length}{tr('/5 字符')}</small>}
+    {nameField && <NameCount value={value} />}
     {resolved && <small className="save-cell-name">
       <SaveIcon names={names} kind={field.lookup} value={value} size={18} />
       {resolved}
     </small>}
   </span>;
+}
+
+/** The game caps player, pet, animal and brand names at five characters in every language. */
+export const NAME_LIMIT = 5;
+
+export function NameCount({ value }: { value: string }) {
+  const length = Array.from(value).length;
+  return <small className={length > NAME_LIMIT ? 'save-status error' : 'save-cell-name'}>{tr('{length}/{limit} 字符', { length, limit: NAME_LIMIT })}</small>;
 }

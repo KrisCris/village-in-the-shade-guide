@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { useEffect, useState } from 'react';
 import type { SaveContainer, SaveSlot, SlotAssignment } from '../../lib/saveItems';
 import type { SaveNameTables } from '../../lib/saveNames';
@@ -13,10 +14,12 @@ interface SlotEditorProps {
   container: SaveContainer; slot: SaveSlot; view: SlotView | null; state: SlotState;
   names: SaveNameTables; onApply: (value: SlotAssignment) => void;
   onClear: () => void; onRevert: () => void; onClose: () => void;
+  /** Containers with a free slot; choosing one moves this stack there. */
+  moveTargets?: Array<{ id: string; label: string }>; onMove?: (containerId: string) => void;
 }
 const BLANK: SlotView = { itemId: '', count: '1', rank: '0', quality: '0' };
 
-export default function SlotEditor({ container, slot, view, state, names, onApply, onClear, onRevert, onClose }: SlotEditorProps) {
+export default function SlotEditor({ container, slot, view, state, names, onApply, onClear, onRevert, onClose, moveTargets = [], onMove }: SlotEditorProps) {
   const [value, setValue] = useState<SlotView>(view ?? BLANK);
   const [picking, setPicking] = useState(view === null);
   useEffect(() => { setValue(view ?? BLANK); }, [slot.pointer, view?.itemId, view?.count, view?.rank, view?.quality]);
@@ -47,6 +50,10 @@ export default function SlotEditor({ container, slot, view, state, names, onAppl
       <button type="button" className="save-slot-primary" disabled={!valid} onClick={() => onApply(value)}>{view ? tr('应用到这一格') : tr('放入这一格')}</button>
       {view && <button type="button" className="save-slot-danger" onClick={onClear}>{tr('清空这一格')}</button>}
       {state !== 'clean' && <button type="button" onClick={onRevert}>{tr('撤销改动')}</button>}
+      {view && onMove && moveTargets.length > 0 && <label className="save-slot-move"><span>{tr('移到')}</span><SearchableSelect value="" onChange={event => { if (event.target.value) onMove(event.target.value); }}>
+        <option value="">{tr('选择容器')}</option>
+        {moveTargets.map(target => <option key={target.id} value={target.id}>{target.label}</option>)}
+      </SearchableSelect></label>}
     </div>
   </div>;
 }

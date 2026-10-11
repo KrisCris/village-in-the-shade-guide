@@ -4,11 +4,24 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
-import { flagEnabled, PROGRESSION, readEncyclopedia, readSkills } from './saveProgress';
+import { flagEnabled, gameLanguage, PROGRESSION, readEncyclopedia, readSkills, withGameLanguage } from './saveProgress';
 import { SerTag } from './ser';
 
 let model: ReturnType<typeof parseSaveModel>;
 beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
+describe.skipIf(!hasPrivateSaveFixtures)('game language', () => {
+  it('switches the save to one language flag and records nothing when unchanged', () => {
+    expect(gameLanguage(model.doc)).toBe(45);
+    expect(withGameLanguage(model.doc, {}, 45).flags).toEqual({});
+    const edits = withGameLanguage(model.doc, {}, 44);
+    expect(edits.flags).toEqual({ 44: true, 45: false });
+    const restored = parseSaveModel(decodeSave(exportSave(model, [], {}, edits), 'edited'));
+    expect([40, 41, 42, 43, 44, 45, 46].filter(id => flagEnabled(restored.doc, id))).toEqual([44]);
+    expect(withGameLanguage(model.doc, edits, 45).flags).toEqual({});
+    expect(() => withGameLanguage(model.doc, {}, 41)).toThrow();
+  });
+});
+
 describe.skipIf(!hasPrivateSaveFixtures)('collection and unlock edits', () => {
   it('adds and removes encyclopedia map pairs with exact counts and preserves other entries', () => {
     const before = readEncyclopedia(model.doc);

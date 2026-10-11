@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { mapAnimalEdits, type MapEdits } from '../../lib/saveMap';
 import type { ProgressEdits } from '../../lib/saveProgress';
 import { useLayoutEffect, useRef, useState } from 'react';
@@ -6,7 +7,7 @@ import type { SaveField, SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import SaveDialog from './SaveDialog';
-import SaveFieldInput from './SaveFieldInput';
+import SaveFieldInput, { NAME_LIMIT, NameCount } from './SaveFieldInput';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { tr } from '../../i18n/active';
 
@@ -69,12 +70,12 @@ export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, on
     {houses.map(house => <div className="save-animal-tile" key={house.id}>{housePanel(house)}</div>)}
     {loose.length > 0 && <div className="save-animal-tile"><section className="save-container-panel"><header className="save-container-head"><h3>{tr('其他伙伴')}</h3><small>{loose.length} {tr('位伙伴')}</small></header><div className="save-animal-slots">{loose.map(animalButton)}</div></section></div>}
     {detail && tableRow && <SaveDialog title={`${detail.name} · ${speciesName(detail.species)}`} onClose={() => setSelected(null)}><div className="save-animal-fields">{tableRow.cells.filter(field => field && !field.readOnly).map(field => field && <label key={field.offset}><span>{field.label}</span><SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onField} /></label>)}</div>
-      {houses.some(house => house.type < 2 && house.slots.some(slot => slot.id === detail.placement)) && <label className="save-animal-move"><span>{tr('安置位置')}</span><select aria-label={tr('安置位置')} value={detail.placement} onChange={event => move(Number(event.target.value))}>{houses.filter(house => house.type < 2 && house.type === ANIMALS.find(animal => animal.id === detail.species)?.houseType).map(house => <optgroup key={house.id} label={house.title}>{house.slots.filter(slot => !edits.added?.[slot.id]).map((slot, index) => <option value={slot.id} key={slot.id}>{tr('位置')} {index + 1}{residents.find(resident => resident.placement === slot.id && resident.index !== detail.index) ? tr(' · 交换位置') : ''}</option>)}</optgroup>)}</select></label>}
+      {houses.some(house => house.type < 2 && house.slots.some(slot => slot.id === detail.placement)) && <label className="save-animal-move"><span>{tr('安置位置')}</span><SearchableSelect aria-label={tr('安置位置')} value={detail.placement} onChange={event => move(Number(event.target.value))}>{houses.filter(house => house.type < 2 && house.type === ANIMALS.find(animal => animal.id === detail.species)?.houseType).map(house => <optgroup key={house.id} label={house.title}>{house.slots.filter(slot => !edits.added?.[slot.id]).map((slot, index) => <option value={slot.id} key={slot.id}>{tr('位置')} {index + 1}{residents.find(resident => resident.placement === slot.id && resident.index !== detail.index) ? tr(' · 交换位置') : ''}</option>)}</optgroup>)}</SearchableSelect></label>}
     </SaveDialog>}
     {adding !== null && <SaveDialog title={tr('添加动物')} onClose={() => setAdding(null)}><div className="save-animal-picker">
       <input type="search" className="save-animal-search" aria-label={tr('搜索动物品种')} placeholder={tr('搜索品种、拼音或首字母')} value={query} onChange={e => setQuery(e.target.value)} />
       <div className="save-animal-breeds" role="group" aria-label={tr('新动物品种')}>{matches.map(a => <button type="button" key={a.id} aria-pressed={species === a.id} onClick={() => setSpecies(a.id)}>{portrait(a.species, a.variant, 48)}<strong>{a.name}</strong><small>{a.growDays > 0 ? tr('幼年') : tr('成年')}</small></button>)}{!matches.length && <p>{tr('没有匹配的品种。')}</p>}</div>
-      <div className="save-animal-add-footer"><label className="save-animal-move"><span>{tr('名字')}</span><input aria-label={tr('新动物名字')} placeholder={tr('给新伙伴起个名字')} value={name} onChange={event => setName(event.target.value)} /></label><button type="button" className="save-download" disabled={!species || !name.trim()} onClick={() => { const [id, variant] = species.split(':').map(Number); onEdit({ ...edits, added: { ...edits.added, [adding]: { species: id, variant, name: name.trim() } } }); setAdding(null); }}>{tr('添加到空位')}</button></div>
+      <div className="save-animal-add-footer"><label className="save-animal-move"><span>{tr('名字')}</span><input aria-label={tr('新动物名字')} placeholder={tr('给新伙伴起个名字')} maxLength={NAME_LIMIT} value={name} onChange={event => setName(event.target.value)} /><NameCount value={name} /></label><button type="button" className="save-download" disabled={!species || !name.trim() || Array.from(name).length > NAME_LIMIT} onClick={() => { const [id, variant] = species.split(':').map(Number); onEdit({ ...edits, added: { ...edits.added, [adding]: { species: id, variant, name: name.trim() } } }); setAdding(null); }}>{tr('添加到空位')}</button></div>
     </div></SaveDialog>}
   </div>;
 }

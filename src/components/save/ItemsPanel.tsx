@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { useMemo, useState } from 'react';
 import { SHIPPING_BOX_ID, type SaveContainer, type SaveSlot, type SlotAssignment, type SlotEdits } from '../../lib/saveItems';
 import type { SaveModel } from '../../lib/saveModel';
@@ -114,6 +115,9 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
     onDraft(item.qualityOffset, value.quality);
   }
 
+  // Backpack first, then the shipping box and storage chests; the same set transferSlots accepts.
+  const targets = [...pinned.filter(c => c.kind === 'backpack'), ...switchable];
+  const movable = new Set(targets);
   const editor = (container: SaveContainer) =>
     active === container && activeSlot && activeView
       ? <SlotEditor
@@ -126,6 +130,9 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
         onClear={() => applyToSlot(null)}
         onRevert={() => applyToSlot(undefined)}
         onClose={() => setSelected(null)}
+        moveTargets={movable.has(container) ? targets.filter(target => target !== container && target.slots.some(slot => !resolve(slot, drafts, slotEdits).view))
+          .map(target => ({ id: target.id, label: (target.nameOffset !== undefined && drafts[target.nameOffset]) || target.title })) : []}
+        onMove={id => { const target = containers.find(c => c.id === id)?.slots.find(slot => !resolve(slot, drafts, slotEdits).view); if (target && selected !== null) { onTransfer(selected, target.pointer); setSelected(null); } }}
       />
       : null;
 
@@ -135,17 +142,16 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
     {tab === 'special' && <DeviceBrowser model={model} names={names} edits={machines} special occupancy={container => container.slots.filter(slot => resolve(slot, drafts, slotEdits).view).length}>{container => container.kind === 'system' || specialSpec(container)?.kind === 'shared' ? <>
       <ContainerView container={container} drafts={drafts} slotEdits={slotEdits} names={names} selected={selected} onSelect={setSelected} />{editor(container)}
     </> : <SpecialContents model={model} container={container} names={names} />}</DeviceBrowser>}
-    {tab === 'storage' && activeView?.view && <div className="save-progress-bulk"><span>{tr('移动所选物品到：')}</span>{[...switchable, ...pinned.filter(c => c.kind === 'backpack')].filter(c => c !== active).map(c => { const target = c.slots.find(s => !resolve(s, drafts, slotEdits).view); return <button type="button" key={c.id} disabled={!target} onClick={() => { if (target && selected !== null) { onTransfer(selected, target.pointer); setSelected(null); } }}>{c.title}{!target ? tr('（已满）') : ''}</button>; })}</div>}
     {tab === 'storage' && !open && <p className="save-device-hint">{tr('存档中没有收纳箱。')}</p>}
     {tab === 'storage' && open && <section className="save-container-panel">
       <header className="save-container-head">
         <label className="save-container-switch">
           <span>{tr('容器')}</span>
-          <select value={open.id} onChange={(event) => { setOpenId(event.target.value); setSelected(null); }}>
+          <SearchableSelect value={open.id} onChange={(event) => { setOpenId(event.target.value); setSelected(null); }}>
             {switchable.map((container) => <option key={container.id} value={container.id}>
                 {(container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title}（{describe(container, names, drafts, slotEdits)}）
               </option>)}
-          </select>
+          </SearchableSelect>
         </label>
         {open.kind === 'storage' && open.nameOffset !== undefined && <label className="save-container-name">
           <span>{tr('箱子名称')}</span><input aria-label={tr('箱子名称')} value={drafts[open.nameOffset] ?? open.customName} placeholder={open.title}

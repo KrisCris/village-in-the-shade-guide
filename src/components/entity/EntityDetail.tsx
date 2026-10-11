@@ -5,6 +5,7 @@ import { withBase } from '../../lib/sitePath';
 import type { Entity } from '../../data/types';
 import { kindLabels } from '../../data/types';
 import type { EntityDetailModel } from '../../domain/relations';
+import { durationText } from '../../domain/duration';
 import RelationRow from './RelationRow';
 import AnimatedPortrait from '../art/AnimatedPortrait';
 import {portraits} from '../art/portraitCatalog';
@@ -25,6 +26,8 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     const av = score(a), bv = score(b);
     return (Number.isFinite(bv) ? bv : -Infinity) - (Number.isFinite(av) ? av : -Infinity);
   });
+  // Recipes for one product differ only by ingredients, so they name each plan.
+  const planTitle = (plan: EntityDetailModel) => plan.groups.filter(g => g.key === 'materials').flatMap(g => g.rows.map(r => r.entity.name.zh_hans)).join(' + ');
   const machines=groups.find(group=>group.key==='machines');
   const planRows = useProgressiveRows(plans, 12, `${entity.id}:${ingredient}:${sort}`);
   const machineIds=(rows:NonNullable<typeof machines>['rows'])=>[...new Set(rows.map(row=>`${row.entity.kind}:${row.entity.id}`))].sort().join('|');
@@ -47,7 +50,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <section><h2>{t('基础数据')}</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
     {machines&&<section><h2>{machines.label}</h2><div className="relation-list">{machines.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></section>}
     {model.processingPlans?.length > 0 && <section><h2>{t('加工方案')}</h2>{partialPlans && <p>{t('先显示 {shown} / {total} 个方案；完整数据载入后可筛选与排序。',{shown:model.processingPlans.length,total:model.totalProcessingPlans ?? model.processingPlans.length})}</p>}{!partialPlans && model.processingPlans.length > 1 && <div className="plan-filters"><label>{t('原材料')}<SearchableSelect value={ingredient} onChange={e => setIngredient(e.target.value)}><option value="">{t('全部原材料')}</option>{materials.map(([id, name]) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label><label>{t('排序')}<SearchableSelect value={sort} onChange={e => setSort(e.target.value)}><option value="default">{t('游戏顺序')}</option><option value="net">{t('加工增值从高到低')}</option><option value="perDay">{t('每日增值从高到低')}</option><option value="duration">{t('耗时从短到长')}</option></SearchableSelect></label><span>{t('{count} 个方案',{count:plans.length})}</span></div>}{planRows.visible.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
-      <div className="plan-heading"><h3>{t('方案 {number}',{number:index + 1})}</h3><span>{t('{minutes} 分钟',{minutes:Number(plan.entity.duration_minutes)})}</span></div>
+      <div className="plan-heading"><h3>{planTitle(plan) || t('方案 {number}',{number:index + 1})}</h3><span>{durationText(Number(plan.entity.duration_minutes), t)}</span></div>
       {plan.profit && <div className="profit-grid"><span>{t('原料直接售价')}<strong>{plan.profit.inputCost}</strong></span><span>{t('产出价值')}<strong>{plan.profit.outputValue}</strong></span><span>{t('加工增值')}<strong>{plan.profit.net}</strong></span><span>{t('每日加工增值')}<strong>{plan.profit.perDay}</strong></span></div>}
       {plan.groups.filter((group) => ['materials','machines','unlocks'].includes(group.key)&&(group.key!=='machines'||machineIds(group.rows)!==sharedMachines)).map((group) => <div key={group.key}><h4>{group.key==='machines'?t('本方案适用机械'):group.label}</h4><div className="relation-list">{group.rows.map((row) => <RelationRow key={row.key} row={row} onOpen={onOpen} compact />)}</div></div>)}
     </div>)}<div ref={planRows.sentinel}>{planRows.more && <button type="button" className="load-more" onClick={planRows.loadMore}>{t('加载更多加工方案（{shown} / {total}）',{shown:planRows.visible.length,total:plans.length})}</button>}</div></section>}

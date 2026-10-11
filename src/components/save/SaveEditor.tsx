@@ -71,6 +71,8 @@ function downloadName(name: string): string {
   return `${name}.edited`;
 }
 
+const SAVE_FOLDER = '%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\';
+
 export default function SaveEditor({ locale }: { locale?: Locale }) {
   return <I18nProvider locale={locale}><Editor /></I18nProvider>;
 }
@@ -358,8 +360,13 @@ function Editor() {
         </span>
         <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
       </div>
+      {!model && <div className="save-location">
+        <span>{tr('Steam 存档位置')}</span>
+        <code>{SAVE_FOLDER}</code>
+        <button type="button" onClick={async () => { try { await navigator.clipboard.writeText(SAVE_FOLDER); setNotice(tr('已复制存档目录。')); } catch { setError(tr('复制失败，请手动复制上面的目录。')); } }}>{tr('复制路径')}</button>
+        <small>{tr('网页不能直接打开这个目录。点“选择游戏存档”后，把路径粘贴到文件窗口的地址栏，再进入以数字命名的 Steam ID 文件夹。')}</small>
+      </div>}
     </div>
-    <details className="save-system-hint"><summary>{tr('Windows / Steam 存档位置')}</summary><p>{tr('选择存档时，把下面的路径粘贴到文件窗口地址栏。')}</p><code>%APPDATA%\Nippon Ichi Software, Inc\Honogurashinoniwa\</code><button type="button" onClick={async () => { try { await navigator.clipboard.writeText('%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\'); setNotice(tr('已复制存档目录。')); } catch { setError(tr('复制失败，请手动复制上面的目录。')); } }}>{tr('复制目录')}</button><p>{tr('网页无法直接指定或自动读取 AppData 私人目录，需要你在文件窗口中选择一次。')}</p></details>
     <SystemSaveHint />
     {busy && <p className="save-status" role="status">{notice}</p>}
     {!busy && notice && <p className="save-status success" role="status">{notice}</p>}
@@ -474,7 +481,7 @@ function Editor() {
             <StatusPanel model={model} drafts={drafts} onChange={updateField} />
             <AppearancePanel model={model} drafts={drafts} names={names} onChange={updateField} progress={progress} onUnlock={id => updateProgress('flags', String(id), true)} />
           </div>}
-          {tab === 'basic' ? <BasicPanel groups={section.groups} drafts={drafts} names={names} onChange={updateField} /> : <div className="save-overview-layout">
+          {tab === 'basic' ? <BasicPanel groups={section.groups} drafts={drafts} names={names} onChange={updateField} doc={model.doc} progress={progress} onProgress={setProgress} /> : <div className="save-overview-layout">
           <SaveFieldTable groups={section.groups.filter(group => tab !== 'player' || ![tr('外观'), tr('状态'), tr('工具范围等级')].includes(group.title))} drafts={drafts} names={names} onChange={updateField} />
           </div>}
           {section.tables.map((table) => <SaveDataTable

@@ -122,6 +122,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
     setSelected(row);
   };
 
+  const seasonText = (row: Entity) => (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ? t(seasonLabels[value]) : value).join(t('、'));
   return <>
     {kind === 'fish' && <p className="fishing-hours">{Object.values(timeLabels).map((label) => t(label)).join(' · ')}<br /><small>{t('06:00–07:00 无出没时段记录')}</small></p>}
     <div className="toolbar card">
@@ -151,7 +152,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         : null;
       return <tr key={row.id} tabIndex={0} aria-label={t('打开{name}详情', { name: row.name.zh_hans })} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
         <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
-        <td>{processGroup ? t('{count} 种配方', { count: Number(row.variant_count) }) : row.category_name?.zh_hans || (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ? t(seasonLabels[value]) : value).join(t('、')) || kind}{row.cultivation_method && <small>{String(row.cultivation_method)}</small>}{row.kind==='crops' && ((row.harvest_item_ids ?? []) as string[]).length>1 && <small>{String(row.harvest_names)}</small>}</td>
+        <td>{processGroup ? t('{count} 种配方', { count: Number(row.variant_count) }) : (kind === 'crops' && seasonText(row)) || row.category_name?.zh_hans || seasonText(row) || kind}{row.cultivation_method && <small>{String(row.cultivation_method)}</small>}{row.kind==='crops' && ((row.harvest_item_ids ?? []) as string[]).length>1 && <small>{String(row.harvest_names)}</small>}</td>
         <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality, t) : t('固定'))}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>
         <td>{duration ?? (typeof row.growth_days === 'number' ? (row.regrow_days ? t('{days} 日 / 再生 {regrow} 日', { days: row.growth_days, regrow: Number(row.regrow_days) }) : t('{days} 日', { days: row.growth_days })) : '—')}</td>

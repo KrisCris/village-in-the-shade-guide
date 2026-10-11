@@ -28,6 +28,25 @@ export function flagEnabled(doc: SerDocument, id: number, edits: ProgressEdits =
   return !!bytes && !!(bytes[id >> 3] & (1 << (id & 7)));
 }
 
+/** GAME_FLAG_LANGUAGE_JP…KO (40–46): each save keeps exactly one on. */
+export const LANGUAGE_FLAGS = [40, 41, 42, 43, 44, 45, 46];
+/** The languages with game text in this build; EN/FR/ES flags exist but have no text. */
+export const GAME_LANGUAGES = [
+  { flag: 44, name: '简体中文' }, { flag: 45, name: '繁體中文' }, { flag: 40, name: '日本語' }, { flag: 46, name: '한국어' }, // i18n-ignore — language names stay in their own script
+];
+export function gameLanguage(doc: SerDocument, edits: ProgressEdits = {}): number | undefined {
+  return LANGUAGE_FLAGS.find(id => flagEnabled(doc, id, edits));
+}
+/** Switch on one language flag and off the others, recording only real changes. */
+export function withGameLanguage(doc: SerDocument, edits: ProgressEdits, flag: number): ProgressEdits {
+  if (!GAME_LANGUAGES.some(language => language.flag === flag)) throw new Error(tr('不支持的游戏语言。'));
+  const flags = { ...edits.flags };
+  for (const id of LANGUAGE_FLAGS) {
+    if (flagEnabled(doc, id) === (id === flag)) delete flags[id]; else flags[id] = id === flag;
+  }
+  return { ...edits, flags };
+}
+
 export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { subtrees: Map<number, SerBuiltNode>; payloads: Map<number, Uint8Array> } {
   const delivery = buildDeliveryEdits(doc, edits.deliveries);
   const subtrees = new Map<number, SerBuiltNode>(), payloads = delivery.payloads;

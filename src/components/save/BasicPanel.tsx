@@ -3,9 +3,13 @@ import type { SaveNameTables } from '../../lib/saveNames';
 import SaveFieldInput from './SaveFieldInput';
 import SaveFieldTable from './SaveFieldTable';
 import GameClockInput from './GameClockInput';
+import SearchableSelect from '../controls/SearchableSelect';
+import { GAME_LANGUAGES, gameLanguage, withGameLanguage, type ProgressEdits } from '../../lib/saveProgress';
+import type { SerDocument } from '../../lib/ser';
 import { tr } from '../../i18n/active';
 
-export default function BasicPanel({ groups, drafts, names, onChange }: {
+export default function BasicPanel({ groups, drafts, names, onChange, doc, progress, onProgress }: {
+  doc: SerDocument; progress: ProgressEdits; onProgress: (edits: ProgressEdits) => void;
   groups: SaveGroup[];
   drafts: Record<number, string>;
   names: SaveNameTables;
@@ -20,6 +24,14 @@ export default function BasicPanel({ groups, drafts, names, onChange }: {
       <SaveFieldTable groups={groups.filter(group => ![tr('时间'), tr('天气')].includes(group.title))} drafts={drafts} names={names} onChange={onChange} />
     </div>
     <div className="save-basic-column">
+      <section className="save-group save-basic-language">
+        <h3>{tr('游戏语言')}</h3>
+        <label><span>{tr('这个存档使用的语言')}</span><SearchableSelect value={gameLanguage(doc, progress) ?? ''} onChange={event => onProgress(withGameLanguage(doc, progress, Number(event.target.value)))}>
+          {gameLanguage(doc, progress) === undefined && <option value="">{tr('未知')}</option>}
+          {GAME_LANGUAGES.map(language => <option key={language.flag} value={language.flag}>{language.name}</option>)}
+        </SearchableSelect></label>
+        <p>{tr('进入游戏后生效。选档界面的摘要可能仍显示原来的语言。')}</p>
+      </section>
       {time && <section className="save-group save-basic-time">
         <h3>{tr('时间')}</h3>
         {clock && <>

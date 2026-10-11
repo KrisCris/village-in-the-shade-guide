@@ -3,11 +3,13 @@ import { findCatalogEntity } from '../data/entityLookup';
 import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
+import { durationText } from './duration';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappaExchange from '../../data/sources/game-kappa-exchange.json';
 import livestockProducts from '../../data/sources/game-livestock-products.json';
 import recipeDocuments from '../../data/sources/game-recipe-documents.json';
+import appearanceGroups from '../../data/sources/game-appearance-groups.json';
 import { format, msg, type Translate } from '../i18n/translate';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
@@ -73,8 +75,7 @@ function numberText(value: number, approximate = false): string {
 }
 
 function durationChip(minutes: unknown, t: Translate): string | null {
-  if (typeof minutes !== 'number') return null;
-  return minutes % 1440 === 0 ? t('{days} 日', { days: minutes / 1440 }) : t('{minutes} 分钟', { minutes });
+  return typeof minutes === 'number' ? durationText(minutes, t) : null;
 }
 
 function priceText(entity: Entity, field: 'buy_price' | 'sell_price', quality: Quality, t: Translate, quantity = 1): string | undefined {
@@ -180,7 +181,15 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     }
     if(entity.id===document.document_item_id) add('unlocks',findCatalogEntity(catalog,document.target_item_id,'items'),{chips:[t('解锁此物品的制作配方')]});
   }
-  const addOutput = (source: Entity, group: RelationGroupKey, context?: string) => {
+  // A process is named after its output, so several recipes for one product only differ by ingredients.
+  const inputsChip = (source: Entity) => {
+    const inputs = recipeInputs(source).flatMap((input) => {
+      const item = input.item_id ? findCatalogEntity(catalog, input.item_id, 'items') : undefined;
+      return item ? [`${item.name.zh_hans} ×${Number(input.quantity ?? 1)}`] : [];
+    });
+    return inputs.length ? t('原料：{inputs}', { inputs: inputs.join(' + ') }) : null;
+  };
+  const addOutput = (source: Entity, group: RelationGroupKey, context?: string | null) => {
     const output = itemQuantity(source.output);
     if (!output.item_id) return;
     const outputEntity = findCatalogEntity(catalog, output.item_id, 'items');
@@ -224,7 +233,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       addInputs(recipe, 'materials', recipe.name.zh_hans);
     }
     for (const process of catalog.entities.filter((row) => row.kind === 'processes' && ((row.machine_ids as string[] | undefined) ?? []).includes(entity.id))) {
-      addOutput(process, 'outputs', process.name.zh_hans);
+      addOutput(process, 'outputs', inputsChip(process));
     }
   }
 
@@ -316,7 +325,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
         }
       }
       const quantity = relationQuantity(source, subjectIds);
-      if (quantity != null) add('used-in', source, { quantity, chips: [source.kind === 'processes' ? t('机械加工') : source.kind === 'cooking-recipes' ? t('料理') : t('制作'), durationChip(source.duration_minutes, t)] });
+      if (quantity != null) add('used-in', source, { quantity, chips: [source.kind === 'processes' ? t('机械加工') : source.kind === 'cooking-recipes' ? t('料理') : t('制作'), source.kind === 'processes' ? inputsChip(source) : null, durationChip(source.duration_minutes, t)] });
     }
   }
 
@@ -337,6 +346,21 @@ function entitySellPrice(entity: Entity, catalog: Catalog, quality: Quality, t: 
   return outputEntity ? priceText(outputEntity, 'sell_price', quality, t, Number(output.quantity ?? 1)) : undefined;
 }
 
+const APPEARANCE_CATEGORIES = new Set(['ITEM_CATEGORY_ORNAMENTS', 'ITEM_CATEGORY_CLOTHES', 'ITEM_CATEGORY_COLLAR', 'ITEM_CATEGORY_BACK_HAIRSTYLE', 'ITEM_CATEGORY_FRONT_HAIRSTYLE', 'ITEM_CATEGORY_BAG']);
+
+/** One unlock flag covers a whole style, so every colour shares the style's sources. */
+function styleAcquisition(entity: Entity, catalog: Catalog, quality: Quality, t: Translate): RelationRowModel[] {
+  const group = appearanceGroups.groups.find(row => row.item_numeric_ids.includes(Number(entity.numeric_id)));
+  if (!group) return [];
+  const rows = new Map<string, RelationRowModel>();
+  for (const sibling of catalog.entities.filter(row => row.kind === 'items' && row.id !== entity.id && group.item_numeric_ids.includes(Number(row.numeric_id)))) {
+    for (const row of buildRelationGroups(sibling, catalog, quality, t).find(g => g.key === 'acquisition')?.rows ?? []) {
+      if (!rows.has(row.key)) rows.set(row.key, { ...row, chips: [...row.chips, t('同款任意配色')] });
+    }
+  }
+  return [...rows.values()];
+}
+
 export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality: Quality, processOnly = false, t: Translate = format): EntityDetailModel {
   if (entity.kind === 'processes') {
     const output = itemQuantity(entity.output).item_id;
@@ -353,14 +377,15 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   addFact(t('栽培方式'), entity.cultivation_method as string | undefined);
   addFact(t('所需金额'), entity.money_cost as number | undefined, true);
   addFact(t('条件'), ((entity.conditions ?? []) as string[]).join(t('；')));
-  addFact(t('卖出价'), entitySellPrice(entity, catalog, quality, t), true);
+  const appearance = APPEARANCE_CATEGORIES.has(entity.category_id ?? '');
+  if (!(appearance && entity.sell_price === 0)) addFact(t('卖出价'), entitySellPrice(entity, catalog, quality, t), true);
   addFact(entity.kind === 'store-offers' ? t('出售季节') : entity.kind === 'fish' ? t('出现季节') : t('生长季节'), seasonList((entity.seasons as string[] | undefined) ?? [], t));
   addFact(t('首次成熟'), typeof entity.growth_days === 'number' ? t('{days} 日', { days: entity.growth_days }) : null);
   addFact(t('每次收获'), typeof entity.harvest_quantity === 'number' ? t('{count} 个', { count: entity.harvest_quantity }) : null);
   addFact(t('再次收获'), typeof entity.regrow_days === 'number' ? t('{days} 日', { days: entity.regrow_days }) : null);
   addFact(t('成熟所需成长点'), entity.growth_points as number | null);
   addFact(t('再生所需成长点'), entity.regrow_points as number | null);
-  addFact(t('加工时间'), typeof entity.duration_minutes === 'number' ? t('{minutes} 分钟（{duration}）', { minutes: entity.duration_minutes, duration: durationChip(entity.duration_minutes, t) ?? '' }) : null);
+  addFact(t('加工时间'), typeof entity.duration_minutes === 'number' ? durationText(entity.duration_minutes, t) : null);
   addFact(t('身份（日文）'), entity.role_ja as string | null);
   addFact(t('数据编号'), entity.numeric_id as number | null);
   addFact(t('内部 ID'), entity.id);
@@ -402,6 +427,10 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     const rows = group.key === 'acquisition' ? group.rows.filter((row) => !embeddedIds.has(row.entity.id)) : group.rows;
     return rows.length ? [{ ...group, rows }] : [];
   });
+  if (appearance && !groups.some(group => group.key === 'acquisition')) {
+    const rows = styleAcquisition(entity, catalog, quality, t);
+    if (rows.length) groups.unshift({ key: 'acquisition', label: t(groupLabels.acquisition), rows });
+  }
   const alternatives=ingredientOptions(entity).map(option=>({
     label:t('{feature} ×{quantity}（任选）',{feature:option.feature_name,quantity:option.quantity}),
     rows:option.item_ids.flatMap(id=>{
