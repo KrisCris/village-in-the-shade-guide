@@ -124,7 +124,7 @@
 .save-slot.cleared { border-color: var(--vermilion); border-style: dashed; background: color-mix(in srgb, var(--vermilion) 8%, var(--paper)); }
 .save-slot-index { position: absolute; top: .18rem; left: .3rem; color: var(--muted); font-size: .6rem; font-variant-numeric: tabular-nums; }
 .save-slot-name { width: 100%; padding: 0 .1rem; font-size: .6rem; line-height: 1.18; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-.save-slot-art { position: relative; display: grid; place-items: center; }
+.save-slot-art { position: relative; display: grid; place-items: center; pointer-events: none; }
 .save-slot-count { position: absolute; right: .3rem; bottom: .25rem; padding: 0 .22rem; border-radius: 3px; background: color-mix(in srgb, var(--ink) 82%, transparent); color: var(--paper); font-size: .72rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
 .save-slot-plus { color: var(--muted); font-size: 1rem; }
 

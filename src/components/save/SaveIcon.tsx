@@ -37,6 +37,7 @@ export default function SaveIcon({ names, kind, value, size, className, rank }: 
     height={size}
     loading="lazy"
     decoding="async"
+    draggable={false}
     onError={fallback
       ? (event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(fallback); }
       : undefined}
