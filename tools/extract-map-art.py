@@ -9,7 +9,7 @@ import zlib
 from functools import lru_cache
 from pathlib import Path
 
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageDraw
 
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.gimmick import gimmick_features
@@ -22,6 +22,18 @@ ROOT = Path(__file__).resolve().parents[1]
 SEASONS = ('spr', 'sum', 'aut', 'win')
 # Build 25311578 adds farmland east of the old area (farmable cells reach x=16020).
 BOUNDS = (7936, 18688, 17408, 27648)
+
+
+def clear_outside(image: Image.Image) -> Image.Image:
+    """Make the black canvas around a room transparent. Flooding from the border keeps dark art inside the room."""
+    rgba = image.convert('RGBA')
+    r, g, b, _ = rgba.split()
+    lit = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda p: 255 if p > 8 else 0)
+    mask = Image.new('L', (rgba.width + 2, rgba.height + 2), 0)
+    mask.paste(lit, (1, 1))
+    ImageDraw.floodfill(mask, (0, 0), 128)
+    rgba.putalpha(mask.crop((1, 1, rgba.width + 1, rgba.height + 1)).point(lambda p: 0 if p == 128 else 255))
+    return rgba
 
 
 def save_rules(metadata):
@@ -149,7 +161,7 @@ def main():
                 cropped = crop.crop(tight)
                 local = [cut[0]+tight[0],cut[1]+tight[1],cut[0]+tight[2],cut[1]+tight[3]]
                 file = f'rooms/{Path(path).stem}-{index}.webp'
-                cropped.save(dest/file, quality=92, method=4)
+                clear_outside(cropped).save(dest/file, quality=92, method=4)
                 floors.append({'file': file, 'bounds': local})
             room_cache[path] = floors
         metadata['rooms'][str(scene['id'])] = [
