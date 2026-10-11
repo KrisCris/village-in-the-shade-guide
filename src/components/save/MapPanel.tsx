@@ -20,6 +20,9 @@ import {
   MAP_CROPS,
   areaAvailable,
   applyMapEdits,
+  exportMapLayout,
+  importMapLayout,
+  parseMapLayout,
   parseMapPreset,
   mapEditCount,
   landId,
@@ -389,7 +392,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   }
   function download() {
     const url = URL.createObjectURL(
-      new Blob([JSON.stringify({ version: 1, game: 'honogurashi', edits }, null, 2)], {
+      new Blob([JSON.stringify(exportMapLayout(model.doc, edits))], {
         type: 'application/json'
       })
     );
@@ -701,10 +704,10 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           >
             {tr('检查布局')}
           </button>
-          <button type="button" onClick={download}>
+          <button type="button" onClick={download} title={tr('保存整个农场的田地与设施，可作为备份，或导入到其他存档。')}>
             {tr('导出布局')}
           </button>
-          <button type="button" onClick={() => presetInput.current?.click()}>
+          <button type="button" onClick={() => presetInput.current?.click()} title={tr('用布局文件重建这个存档的农场；多余的设施会被移除，装有物品的容器会保留。')}>
             {tr('导入布局')}
           </button>
           <button
@@ -729,10 +732,23 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
             file = input.files?.[0];
           if (!file) return;
           try {
-            const next = parseMapPreset(await file.text());
-            applyMapEdits(model.doc, next);
-            commit(next);
-            setMessage(tr('布局已导入。'));
+            const text = await file.text();
+            if (JSON.parse(text)?.version === 2) {
+              const result = importMapLayout(model.doc, parseMapLayout(text));
+              applyMapEdits(model.doc, result.edits);
+              commit(result.edits);
+              setMessage([
+                tr('已按布局重建农场，放置 {count} 件物体。', { count: result.placed }),
+                result.skipped ? tr('{count} 项超出本存档已开放的范围，已跳过。', { count: result.skipped }) : '',
+                result.kept ? tr('{count} 个仍装有物品的容器已保留。', { count: result.kept }) : '',
+                tr('可撤销。')
+              ].join(''));
+            } else {
+              const next = parseMapPreset(text);
+              applyMapEdits(model.doc, next);
+              commit(next);
+              setMessage(tr('布局已导入。'));
+            }
           } catch (error) {
             setMessage((error as Error).message);
           }

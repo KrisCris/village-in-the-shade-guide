@@ -71,7 +71,15 @@ export function sceneCells(sceneId: number) {
   const scene = data.scenes.find(s => s.id === sceneId);
   return scene?.cells.map(([x, y, mask, area]) => ({ id: landId(scene.origin[0] + x * 45, scene.origin[1] + y * 45), x: scene.origin[0] + x * 45, y: scene.origin[1] + y * 45, mask, area })) ?? [];
 }
+// A parsed save never changes (edits produce new bytes), so its map reads are cached per document.
+const cellCache = new WeakMap<SerDocument, ReturnType<typeof readMapCells>>();
+const objectCache = new WeakMap<SerDocument, ReturnType<typeof readMapObjects>>();
 export function mapCells(doc: SerDocument) {
+  let cells = cellCache.get(doc);
+  if (!cells) cellCache.set(doc, cells = readMapCells(doc));
+  return cells;
+}
+function readMapCells(doc: SerDocument) {
   const list = doc.resolve('mapStatusMap_/0v/p/cells_');
   const nodes = list ? doc.children(list) : [];
   return nodes.flatMap((key, i) => i % 2 ? [] : [{ id: Number(readSigned(doc, key)), node: nodes[i + 1],
@@ -79,6 +87,11 @@ export function mapCells(doc: SerDocument) {
 }
 function scalar(doc: SerDocument, node: SerNode, path: string) { const n = doc.resolve(path, node); return n ? Number(readSigned(doc, n)) : 0; }
 export function mapObjects(doc: SerDocument) {
+  let objects = objectCache.get(doc);
+  if (!objects) objectCache.set(doc, objects = readMapObjects(doc));
+  return objects;
+}
+function readMapObjects(doc: SerDocument) {
   const list = doc.resolve('gimmickList_');
   return (list ? doc.children(list) : []).flatMap(node => {
     const id = scalar(doc, node, 'p/pData_/dataID'), spec = data.objects.find(o => o.id === id);
@@ -113,12 +126,14 @@ export function parseMapPreset(text: string): MapEdits {
   return e;
 }
 
+const specById = new Map(data.objects.map(o => [o.id, o]));
 export function draftObjects(doc: SerDocument, edits: MapEdits) {
-  return mapObjects(doc).filter(o => !edits.removed?.includes(o.uid)).map(o => {
-    const e=edits.objects?.findLast(e=>e.move===o.uid);
-    return { ...o, ...(e?landPosition(e.cell):{}), id:e?.template??o.id, spec:data.objects.find(s=>s.id===(e?.template??o.id)), angle:e?.angle??o.angle };
+  const removed=new Set(edits.removed),moves=new Map((edits.objects??[]).flatMap(e=>e.move?[[e.move,e] as const]:[]));
+  return mapObjects(doc).filter(o => !removed.has(o.uid)).map(o => {
+    const e=moves.get(o.uid);
+    return { ...o, ...(e?landPosition(e.cell):{}), id:e?.template??o.id, spec:specById.get(e?.template??o.id), angle:e?.angle??o.angle };
   }).concat((edits.objects??[]).flatMap((e,i)=>e.move?[]:[{
-    node:undefined as unknown as SerNode,id:e.template,spec:data.objects.find(s=>s.id===e.template),uid:`new:${i}`, ...landPosition(e.cell), angle:e.angle??45,
+    node:undefined as unknown as SerNode,id:e.template,spec:specById.get(e.template),uid:`new:${i}`, ...landPosition(e.cell), angle:e.angle??45,
     bounds:[-45,-45,45,45],movable:true,blocksPlacement:true
   }]));
 }
@@ -418,4 +433,135 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   if (Object.keys(edits.cells ?? {}).length) { world.ref = world.children!.length / 2; subtrees.set(cellList.offset, world); }
   if (edits.objects?.length || edits.removed?.length) { gimmicks.ref = gimmicks.children!.length; subtrees.set(objectList.offset, gimmicks); payloads.set(seedNode.offset, encodeSigned(seed, seedNode.size)); }
   return serializeSer(doc, { subtrees, payloads });
+}
+
+/* Full layouts: every tilled cell and movable object, so a farm can be backed up or rebuilt in another save. */
+export interface LayoutCell { scene: number; cell: number; soil: number; crop: number | null; growth?: number; form?: number; watered: boolean }
+export interface LayoutObject { scene: number; cell: number; template: number; angle: number }
+export interface MapLayout { version: 2; game: 'honogurashi'; cells: LayoutCell[]; objects: LayoutObject[] }
+export interface LayoutImport { edits: MapEdits; placed: number; skipped: number; kept: number }
+
+const FARM_ID = data.scenes.find(s => s.code === 'MAP_ID_OPENWORLD')!.id;
+const sceneIndexes = new Map<number, Map<number, ReturnType<typeof sceneCells>[number]>>();
+function sceneCell(scene: number, id: number) {
+  let index = sceneIndexes.get(scene);
+  if (!index) sceneIndexes.set(scene, index = new Map(sceneCells(scene).map(c => [c.id, c])));
+  return index.get(id);
+}
+let cellScenes: Map<number, number> | undefined;
+/** Rooms use separate world coordinates, so a cell ID identifies its scene; the open farm wins ties. */
+function sceneOfCell(id: number) {
+  if (!cellScenes) {
+    cellScenes = new Map();
+    for (const scene of [...data.scenes].sort((a, b) => Number(b.id === FARM_ID) - Number(a.id === FARM_ID)))
+      for (const c of sceneCells(scene.id)) if (!cellScenes.has(c.id)) cellScenes.set(c.id, scene.id);
+  }
+  return cellScenes.get(id) ?? FARM_ID;
+}
+const layoutObject = (spec?: typeof data.objects[number]) => !!spec && !spec.code.includes('ARCHITECTURE_MYHOUSE_');
+
+export function exportMapLayout(doc: SerDocument, edits: MapEdits): MapLayout {
+  const saved = new Map(mapCells(doc).map(c => [c.id, c]));
+  const keys = new Map<string, { scene: number; id: number }>();
+  for (const id of saved.keys()) keys.set(`${sceneOfCell(id)}:${id}`, { scene: sceneOfCell(id), id });
+  for (const key of Object.keys(edits.cells ?? {})) { const [scene, id] = key.split(':').map(Number); keys.set(key, { scene, id }); }
+  const value = (node: SerNode | undefined, path: string) => { const n = node && doc.resolve(path, node); return n ? Number(readSigned(doc, n)) : undefined; };
+  const cells: LayoutCell[] = [];
+  for (const [key, { scene, id }] of keys) {
+    const old = saved.get(id), paint = edits.cells?.[key];
+    const soil = paint?.soil ?? old?.soil ?? 1;
+    if (!soil) continue;
+    const raw = paint?.crop !== undefined ? paint.crop : old?.crop || null;
+    const crop = raw && MAP_CROPS.some(c => c.numeric_id === raw) ? raw : null, fresh = paint?.crop !== undefined;
+    cells.push({ scene, cell: id, soil, crop, ...(crop ? {
+      growth: paint?.growth ?? (fresh ? 0 : value(old?.node, 'p/pCropsStatus_/p/growth_/this->value_') ?? 0),
+      form: paint?.form ?? (fresh ? 1 : value(old?.node, 'p/pCropsStatus_/p/formID_') ?? 1)
+    } : {}), watered: paint?.watered ?? !!value(old?.node, 'p/pFarmlandStatus_/p/water_/this->value_') });
+  }
+  const objects = draftObjects(doc, edits).filter(o => o.movable && layoutObject(o.spec)).map(o => {
+    const draft = o.uid.startsWith('new:') ? edits.objects?.[Number(o.uid.slice(4))] : edits.objects?.findLast(e => e.move === o.uid);
+    const cell = draft?.cell ?? landId(o.x, o.y);
+    return { scene: draft?.scene ?? sceneOfCell(cell), cell, template: o.id, angle: o.angle };
+  });
+  return { version: 2, game: 'honogurashi', cells, objects };
+}
+
+export function parseMapLayout(text: string): MapLayout {
+  if (text.length > 5_000_000) throw new Error(tr('布局文件过大。'));
+  const layout = JSON.parse(text);
+  if (layout?.version !== 2 || layout?.game !== 'honogurashi' || !Array.isArray(layout.cells) || !Array.isArray(layout.objects)) throw new Error(tr('布局文件格式不兼容。'));
+  if (layout.cells.length > 20000 || layout.objects.length > 5000) throw new Error(tr('布局文件超出编辑上限。'));
+  const int = (value: unknown, min: number, max: number) => Number.isSafeInteger(value) && (value as number) >= min && (value as number) <= max;
+  for (const c of layout.cells)
+    if (!c || !int(c.scene, 0, 2 ** 31) || !int(c.cell, 0, 2 ** 40) || ![1, 2, 3].includes(c.soil) || typeof c.watered !== 'boolean' || (c.crop !== null && !MAP_CROPS.some(crop => crop.numeric_id === c.crop))
+      || (c.growth !== undefined && !int(c.growth, 0, 1_000_000)) || (c.form !== undefined && !int(c.form, 1, 10))) throw new Error(tr('布局文件含无效田地。'));
+  for (const o of layout.objects)
+    if (!o || !int(o.scene, 0, 2 ** 31) || !int(o.cell, 0, 2 ** 40) || !data.objects.some(s => s.id === o.template) || !Number.isFinite(o.angle) || o.angle % 45 !== 0) throw new Error(tr('布局文件含无效物体。'));
+  return layout as MapLayout;
+}
+
+function holdsItems(doc: SerDocument, node: SerNode) {
+  const list = doc.resolve('p/itemList_', node);
+  return !!list && doc.children(list).some(slot => doc.children(slot).some(child => child.tag === SerTag.Object));
+}
+
+/** Rebuild this save's farm from a layout: reuse matching objects, clear the rest, skip what the save cannot hold. */
+export function importMapLayout(doc: SerDocument, layout: MapLayout): LayoutImport {
+  let skipped = 0;
+  const cells: Record<string, CellPaint> = {};
+  const wanted = new Set(layout.cells.map(c => `${c.scene}:${c.cell}`));
+  for (const old of mapCells(doc)) {
+    const scene = sceneOfCell(old.id), key = `${scene}:${old.id}`, terrain = sceneCell(scene, old.id);
+    // Untilled ground keeps its debris and wild trees; only farmland outside the layout is reset.
+    if (old.soil && !wanted.has(key) && terrain && (terrain.mask & 1) && areaAvailable(doc, terrain.area)) cells[key] = { crop: null, soil: 0, watered: false };
+  }
+  for (const c of layout.cells) {
+    const terrain = sceneCell(c.scene, c.cell);
+    if (!terrain || !(terrain.mask & 1) || !areaAvailable(doc, terrain.area) || (c.crop && cropPlacementProblem(c.crop, c.soil))) { skipped++; continue; }
+    cells[`${c.scene}:${c.cell}`] = { soil: c.soil, crop: c.crop, watered: c.watered };
+  }
+  for (const c of layout.cells) {
+    const key = `${c.scene}:${c.cell}`, paint = cells[key];
+    if (!paint?.crop || (c.growth === undefined && c.form === undefined)) continue;
+    const staged = { ...paint, growth: c.growth, form: c.form };
+    const state = cropGrowth(doc, { cells: { ...cells, [key]: staged } }, c.scene, c.cell);
+    if (state?.stages.length && state.growth <= state.maximum) cells[key] = staged;
+  }
+  // Cells that already match the layout need no edit.
+  const current = new Map(exportMapLayout(doc, {}).cells.map(c => [`${c.scene}:${c.cell}`, c]));
+  for (const c of layout.cells) {
+    const key = `${c.scene}:${c.cell}`, now = current.get(key), paint = cells[key];
+    if (paint && now && now.soil === paint.soil && now.crop === paint.crop && now.watered === paint.watered && (!paint.crop || (now.growth === (paint.growth ?? 0) && now.form === (paint.form ?? 1)))) delete cells[key];
+  }
+  const pool = mapObjects(doc).filter(o => o.movable && layoutObject(o.spec));
+  const used = new Set<string>();
+  const building = (template: number) => Number(!!data.objects.find(s => s.id === template)?.building);
+  // An object already standing where the layout wants it stays untouched, even where the editor could not place it.
+  const order = [...layout.objects].sort((a, b) => building(b.template) - building(a.template));
+  const rest = order.filter(o => {
+    const same = pool.find(p => p.id === o.template && !used.has(p.uid) && landId(p.x, p.y) === o.cell && p.angle === o.angle);
+    if (same) used.add(same.uid);
+    return !same;
+  });
+  let pending: ObjectPlacement[] = rest.map(o => {
+    const at = landPosition(o.cell);
+    const match = pool.filter(p => p.id === o.template && !used.has(p.uid)).sort((a, b) => Math.hypot(a.x - at.x, a.y - at.y) - Math.hypot(b.x - at.x, b.y - at.y))[0];
+    if (match) used.add(match.uid);
+    return { scene: o.scene, cell: o.cell, template: o.template, angle: o.angle, ...(match ? { move: match.uid } : {}) };
+  });
+  const leftover = pool.filter(p => !used.has(p.uid));
+  const kept = leftover.filter(p => holdsItems(doc, p.node));
+  let edits: MapEdits = { cells, removed: leftover.filter(p => !kept.includes(p)).map(p => p.uid), objects: [] };
+  // Objects still at their old spot can block each other; retry until no placement makes progress.
+  for (let progress = true; pending.length && progress;) {
+    progress = false;
+    const failed: ObjectPlacement[] = [];
+    for (const placement of pending) {
+      try { edits = addMapPlacement(doc, edits, placement); progress = true; }
+      catch { failed.push(placement); }
+    }
+    pending = failed;
+  }
+  skipped += pending.length;
+  return { edits, placed: layout.objects.length - pending.length, skipped, kept: kept.length };
 }
