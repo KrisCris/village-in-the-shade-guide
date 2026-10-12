@@ -1,0 +1,15 @@
+name: 建议 / Suggestion
+description: 想要的新内容、新功能或改进 / New content, features or improvements
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: 想要什么 / What you would like
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 用在什么场景 / When you would use it
+      description: 例如你在游戏里想做什么 / For example, what you are trying to do in the game

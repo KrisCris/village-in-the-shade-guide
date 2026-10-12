@@ -1,4 +1,3 @@
-import { withBase } from '../../lib/sitePath';
 import { useMemo, useRef, useState } from 'react';
 import { kindLabels, secondaryName, type Entity } from '../../data/types';
 import { entityUrl, expandSearchRows, rankEntities } from '../../data/clientSearch';

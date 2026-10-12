@@ -4,10 +4,11 @@ Output feeds tools/package-portraits.mjs; it is not part of the site build.
 """
 from pathlib import Path
 import argparse,struct,re,json
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.texture import decode_nltx_image
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--game-dir',type=Path,default=Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade'))
+add_game_dir(parser)
 parser.add_argument('--output',type=Path,default=Path('.local/fairy-review'))
 args=parser.parse_args()
 a=FafullfsArchive.open(args.game_dir/'data/fairy_1_00.dat')

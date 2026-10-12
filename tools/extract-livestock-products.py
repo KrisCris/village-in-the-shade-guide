@@ -8,6 +8,7 @@ import argparse
 import json
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
@@ -16,8 +17,9 @@ from honogurashi_extractor.texture import decode_nltx_image
 
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--image-dir',type=Path,default=Path('public/icons/generated/livestock'))
+add_game_dir(parser)
 args=parser.parse_args()
-archive=FafullfsArchive.open(Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade/data.dat'))
+archive=FafullfsArchive.open(args.game_dir/'data.dat')
 table=read_table(archive.read_entry('data/database/livestock.dat'))
 u32=lambda r,o:struct.unpack_from('<I',r,o)[0]
 u64=lambda r,o:struct.unpack_from('<Q',r,o)[0]

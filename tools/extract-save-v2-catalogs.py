@@ -4,13 +4,14 @@ import json
 import re
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.icons import _table_string
 from honogurashi_extractor.probe import _string_groups
 
 p = argparse.ArgumentParser()
-p.add_argument('--game-dir', required=True, type=Path)
+add_game_dir(p)
 p.add_argument('--output-dir', required=True, type=Path)
 a = p.parse_args()
 archive = FafullfsArchive.open(a.game_dir / 'data.dat')

@@ -1,5 +1,7 @@
 # 维护约定
 
+**简体中文** | [English](CONTRIBUTING.en.md)
+
 欢迎提交 issue 和 pull request。贡献按项目对应部分的许可发布：代码按 AGPL-3.0，文字和翻译按 CC BY-NC-SA 4.0，你保留自己贡献的著作权。见 [授权说明](LICENSING.md)。
 
 ## 开发环境

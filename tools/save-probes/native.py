@@ -2,7 +2,8 @@
 import argparse,bisect,re
 from pathlib import Path
 import pefile,capstone
-p=argparse.ArgumentParser();p.add_argument('mode',choices=['strings','xrefs','function']);p.add_argument('query');p.add_argument('--exe',type=Path,default=Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade\village.exe'));args=p.parse_args()
+from honogurashi_extractor.gamedir import default_game_dir
+p=argparse.ArgumentParser();p.add_argument('mode',choices=['strings','xrefs','function']);p.add_argument('query');p.add_argument('--exe',type=Path,default=(default_game_dir() or Path('.'))/'village.exe');args=p.parse_args()
 pe=pefile.PE(str(args.exe));base=pe.OPTIONAL_HEADER.ImageBase;raw=args.exe.read_bytes();md=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_64);md.skipdata=True
 funcs=[(x.struct.BeginAddress,x.struct.EndAddress) for x in pe.DIRECTORY_ENTRY_EXCEPTION];starts=[a for a,b in funcs]
 def dump(address):

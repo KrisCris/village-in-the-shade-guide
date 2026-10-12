@@ -6,11 +6,15 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))
+from honogurashi_extractor.gamedir import ENV, default_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-archive = FafullfsArchive.open(Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade\data.dat'))
+game = default_game_dir()
+if game is None:
+    raise SystemExit(f'Set {ENV} to the game directory.')
+archive = FafullfsArchive.open(game / 'data.dat')
 table = read_table(archive.read_entry(f'data/database/{sys.argv[1]}.dat'))
 pattern = re.compile(sys.argv[2] if len(sys.argv) > 2 else '.', re.I)
 print(f'{sys.argv[1]}: {table.record_count} records, {table.record_size} bytes')

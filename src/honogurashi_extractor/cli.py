@@ -8,6 +8,7 @@ from importlib.metadata import version
 from collections.abc import Sequence
 from pathlib import Path
 
+from .gamedir import add_game_dir
 from .archive import FafullfsArchive
 from .audit import audit_snapshot
 from .diff import diff_snapshots
@@ -26,7 +27,7 @@ def build_parser() -> argparse.ArgumentParser:
     subcommands = parser.add_subparsers(dest="command", required=True)
 
     extract = subcommands.add_parser("extract", help="extract a normalized snapshot")
-    extract.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(extract)
     extract.add_argument("--build-id", required=True)
     extract.add_argument("--output", type=Path, required=True)
     extract.add_argument("--schema-dir", type=Path, default=Path("data/schemas"))
@@ -43,25 +44,25 @@ def build_parser() -> argparse.ArgumentParser:
     inspect_archive = subcommands.add_parser(
         "inspect-archive", help="list entries in the installed data.dat"
     )
-    inspect_archive.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(inspect_archive)
 
     inspect_table = subcommands.add_parser(
         "inspect-table", help="show the shape of one archived database table"
     )
-    inspect_table.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(inspect_table)
     inspect_table.add_argument("entry")
 
     probe = subcommands.add_parser(
         "probe", help="write an evidence report for archived database tables"
     )
-    probe.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(probe)
     probe.add_argument("--tables", required=True)
     probe.add_argument("--output", type=Path, required=True)
 
     verify_schemas = subcommands.add_parser(
         "verify-schemas", help="verify build schemas against installed game data"
     )
-    verify_schemas.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(verify_schemas)
     verify_schemas.add_argument("--build-id", required=True)
     verify_schemas.add_argument("--schema-dir", type=Path, default=Path("data/schemas"))
 
@@ -71,7 +72,7 @@ def build_parser() -> argparse.ArgumentParser:
     extract_icons = subcommands.add_parser(
         "extract-icons", help="extract item icons from the installed game"
     )
-    extract_icons.add_argument("--game-dir", type=Path, required=True)
+    add_game_dir(extract_icons)
     extract_icons.add_argument("--snapshot", type=Path, required=True)
     extract_icons.add_argument("--output", type=Path, required=True)
 

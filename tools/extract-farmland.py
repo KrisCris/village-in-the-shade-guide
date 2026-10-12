@@ -8,6 +8,7 @@ GROUND_ELEMENT_ABLE_FARMING is bit 0 in mapgroundelement.dat.
 """
 import argparse, hashlib, json, struct, zlib
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
@@ -44,7 +45,7 @@ def components(cells):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--game-dir',type=Path,default=Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade'))
+    add_game_dir(parser)
     parser.add_argument('--output',type=Path,default=Path('data/sources/game-farmland.json'))
     args=parser.parse_args();exe_hash=hashlib.sha256((args.game_dir/'village.exe').read_bytes()).hexdigest()
     assert exe_hash=='ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05', 'Unreviewed executable build'

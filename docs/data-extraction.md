@@ -1,5 +1,7 @@
 # 游戏数据维护
 
+**简体中文** | [English](data-extraction.en.md)
+
 只在游戏更新或核对数据时需要。浏览和构建网站不需要重新提取。
 
 ## 数据在哪
@@ -20,13 +22,14 @@
 
 需要 Python 3.11+、uv 和自己的游戏安装。所有工具只读游戏文件，不修改游戏或存档。
 
+`honogurashi-data` 和 `tools/` 下的脚本都用 `--game-dir` 指定游戏目录。不指定时，依次读取环境变量 `HONOGURASHI_GAME_DIR` 和 Steam 的库列表（`libraryfolders.vdf`）自动查找；通过 Steam 安装的游戏一般不用设置。
+
 ```powershell
 uv sync --extra dev
-$gameDir = '你的游戏安装目录'
-uv run honogurashi-data verify-schemas --game-dir $gameDir --build-id 25311578
-uv run honogurashi-data extract --game-dir $gameDir --build-id 25311578 --output data/raw/review-25311578
+uv run honogurashi-data verify-schemas --build-id 25311578
+uv run honogurashi-data extract --build-id 25311578 --output data/raw/review-25311578
 uv run honogurashi-data audit data/raw/review-25311578
-uv run honogurashi-data extract-icons --game-dir $gameDir --snapshot data/raw/review-25311578 --output output/review-icons
+uv run honogurashi-data extract-icons --snapshot data/raw/review-25311578 --output output/review-icons
 ```
 
 `honogurashi-data` 还有 `diff`（比较两个快照）、`inspect-archive`、`inspect-table` 和 `probe` 等子命令，用于研究表结构。
@@ -39,10 +42,7 @@ uv run honogurashi-data extract-icons --game-dir $gameDir --snapshot data/raw/re
 
 ## 专项工具
 
-`tools/extract-*.py` 各自负责一类数据，针对特定构建写成，输入、输出和假设要逐个检查，不能当作一键更新流水线。
-
-- 存档编辑器、图像、设备容量和农田相关脚本用 `--game-dir`（或 `--game`）指定游戏目录。
-- 地图标记、探索点、钓鱼、采石场、规则、经济、食谱和外观分组脚本把游戏路径写在脚本开头，默认是作者本机的 Steam 目录，运行前先改成自己的路径。它们直接写入 `data/sources/` 下对应文件，运行前确认工作区干净，运行后用 `git diff` 核对。
+`tools/extract-*.py` 各自负责一类数据，针对特定构建写成，输入、输出和假设要逐个检查，不能当作一键更新流水线。多数脚本直接写入 `data/sources/` 下对应的文件，运行前确认工作区干净，运行后用 `git diff` 核对。
 
 | 类别 | 工具 |
 | --- | --- |

@@ -6,12 +6,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--game-dir', type=Path, required=True)
+add_game_dir(parser)
 parser.add_argument('--output', type=Path, required=True)
 args = parser.parse_args()
 archive = FafullfsArchive.open(args.game_dir / 'data.dat')

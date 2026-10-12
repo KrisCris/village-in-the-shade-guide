@@ -1,6 +1,10 @@
 # 授权说明
 
+**简体中文** | [English](LICENSING.en.md)
+
 Copyright (c) 2026 _connlost（GitHub：[KrisCris](https://github.com/KrisCris)）
+
+英文版是译文，两者不一致时以本中文版为准。
 
 静谧田园 Wiki 是开源项目，欢迎使用、修改和参与。代码和内容分开授权：
 
@@ -57,18 +61,3 @@ Copyright (c) 2026 _connlost（GitHub：[KrisCris](https://github.com/KrisCris)�
 ## 免责
 
 本项目按“现状”提供，不附带任何保证。游戏数据、攻略和计算结果可能有误，也可能随游戏更新失效。存档编辑器可能损坏存档，或产生与游戏行为不一致的结果，使用前请备份存档；修改存档可能影响成就、进度和游戏体验。在法律允许的最大范围内，作者不对使用本项目造成的任何损失负责。
-
----
-
-## English summary
-
-Copyright (c) 2026 _connlost (GitHub: KrisCris). The Chinese text above is authoritative.
-
-- **Code** is licensed under the GNU AGPL-3.0 only ([LICENSE](LICENSE)), with these additional terms under section 7:
-  - (b) public deployments must keep the "_connlost" author credit and a link to this repository visible on every page;
-  - (c) modified versions must be marked as modified and must not claim to be the original site or author;
-  - (e) no rights are granted to the name "静谧田园 Wiki".
-- **Content**, meaning guide text, translations, documentation, verification notes and the author's curation and annotation of game data, is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Credit "静谧田园 Wiki (by _connlost)" and link the original page. Commercial use needs written permission.
-- **Contributions** are accepted under the same licenses, code under AGPL-3.0 and text under CC BY-NC-SA 4.0. Contributors keep their copyright.
-- **Game names, text, images and data** belong to Nippon Ichi Software, Inc. and other rights holders. They are not licensed by this project.
-- The project is provided as is, without warranty. The save editor may corrupt saves, so back them up first.

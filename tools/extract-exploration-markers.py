@@ -4,11 +4,12 @@ import re
 import struct
 import zlib
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-game=Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade')
+game=game_dir(__doc__)
 data=FafullfsArchive.open(game/'data.dat')
 maps=FafullfsArchive.open(game/'data/map_1_00.dat')
 creatures=read_table(data.read_entry('data/database/creature.dat'))

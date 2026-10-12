@@ -5,6 +5,7 @@ import json
 import struct
 import zlib
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.gimmick import gimmick_features
@@ -13,7 +14,7 @@ from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.localization import localized_block
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--game-dir', type=Path, required=True)
+add_game_dir(parser)
 parser.add_argument('--output', type=Path, default=Path('data/sources/game-save-map.json'))
 args = parser.parse_args()
 game = args.game_dir
