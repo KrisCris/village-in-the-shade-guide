@@ -1,13 +1,14 @@
 import appearance from '../../data/sources/game-save-appearance.json';
+import { tr } from '../i18n/active';
 export const APPEARANCE = appearance.tables;
 export type AppearanceKind = keyof typeof APPEARANCE;
 export const APPEARANCE_FIELDS: { kind: AppearanceKind; label: string; idPath: string; colorPath?: string }[] = [
-  { kind: 'playerfronthairstyle', label: '前发型', idPath: 'pFrontHairStyle_/dataID' },
-  { kind: 'playerbackhairstyle', label: '后发型', idPath: 'pBackHairStyle_/dataID' },
-  { kind: 'playercrothing', label: '服装', idPath: 'pCrothing_/dataID', colorPath: 'crothingColor_' },
-  { kind: 'playerheadaccessory', label: '头部饰品', idPath: 'pHeadAccessory_/dataID', colorPath: 'headAccessoryColor_' },
-  { kind: 'playerneckaccessory', label: '颈部饰品', idPath: 'pNeckAccessory_/dataID', colorPath: 'neckAccessoryColor_' },
-  { kind: 'playerbackaccessory', label: '背部饰品', idPath: 'pBackAccessory_/dataID', colorPath: 'backAccessoryColor_' },
+  { kind: 'playerfronthairstyle', label: tr('前发型'), idPath: 'pFrontHairStyle_/dataID' },
+  { kind: 'playerbackhairstyle', label: tr('后发型'), idPath: 'pBackHairStyle_/dataID' },
+  { kind: 'playercrothing', label: tr('服装'), idPath: 'pCrothing_/dataID', colorPath: 'crothingColor_' },
+  { kind: 'playerheadaccessory', label: tr('头部饰品'), idPath: 'pHeadAccessory_/dataID', colorPath: 'headAccessoryColor_' },
+  { kind: 'playerneckaccessory', label: tr('颈部饰品'), idPath: 'pNeckAccessory_/dataID', colorPath: 'neckAccessoryColor_' },
+  { kind: 'playerbackaccessory', label: tr('背部饰品'), idPath: 'pBackAccessory_/dataID', colorPath: 'backAccessoryColor_' },
 ];
 
 export function hsvToHex(h: number, s: number, v: number): string {
@@ -22,7 +23,7 @@ export function hsvToHex(h: number, s: number, v: number): string {
 }
 
 export function hexToHsv(hex: string): [number, number, number] {
-  if (!/^#[\da-f]{6}$/i.test(hex)) throw new Error('无效颜色');
+  if (!/^#[\da-f]{6}$/i.test(hex)) throw new Error(tr('无效颜色'));
   const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
   const max = Math.max(r, g, b), min = Math.min(r, g, b), delta = max - min;
   const h = !delta ? 0 : max === r ? ((g - b) / delta + 6) % 6 : max === g ? (b - r) / delta + 2 : (r - g) / delta + 4;

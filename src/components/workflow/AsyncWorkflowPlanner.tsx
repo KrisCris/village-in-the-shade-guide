@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import type { Entity } from "../../data/types";
-import { withBase } from "../../lib/sitePath";
 import WorkflowEditor from "./WorkflowEditor";
-export default function AsyncWorkflowPlanner() {
+import { dataHref, tr } from '../../i18n/active';
+import { I18nProvider } from '../../i18n/react';
+import type { Locale } from '../../i18n/locales';
+
+export default function AsyncWorkflowPlanner({ locale }: { locale?: Locale }) {
+  return <I18nProvider locale={locale}><WorkflowLoader /></I18nProvider>;
+}
+
+function WorkflowLoader() {
   const [entities, setEntities] = useState<Entity[] | null>(null),
     [error, setError] = useState(false),
     [attempt, setAttempt] = useState(0);
   useEffect(() => {
     const controller = new AbortController();
     setError(false);
-    fetch(withBase("/workflow-data.json"), { signal: controller.signal })
+    fetch(dataHref("/workflow-data.json"), { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw new Error("load");
         return r.json();
@@ -29,11 +36,11 @@ export default function AsyncWorkflowPlanner() {
     <div className="wf-loading" role="status">
       {error ? (
         <>
-          <p>生产数据加载失败</p>
-          <button onClick={() => setAttempt((n) => n + 1)}>重试</button>
+          <p>{tr('生产数据加载失败')}</p>
+          <button onClick={() => setAttempt((n) => n + 1)}>{tr('重试')}</button>
         </>
       ) : (
-        "正在加载作物、加工配方与留货目录…"
+        tr('正在加载作物、加工配方与留货目录…')
       )}
     </div>
   );

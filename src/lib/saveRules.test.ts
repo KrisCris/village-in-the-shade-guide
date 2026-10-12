@@ -14,6 +14,13 @@ beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync(
 const pathDrafts = (entries: Record<string, string>) => Object.fromEntries(Object.entries(entries).map(([path, value]) => [model.doc.resolve(path)!.offset, value]));
 
 describe.skipIf(!hasPrivateSaveFixtures)('verified save editor rules', () => {
+  it('limits editable names to five Unicode characters', () => {
+    for (const path of ['pPlayerStatus_/p/name_', 'pPlayerStatus_/p/dogName_']) {
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: 'abcdef' })))).toThrow('5');
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '甲乙丙丁戊' })))).not.toThrow();
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '😀😀😀😀😀' })))).not.toThrow();
+    }
+  });
   it('uses non-linear NPC heart thresholds', () => {
     expect(heartFill(390, SAVE_RULES.npcHearts)).toEqual([1, 1, .3, 0, 0, 0]);
     expect(heartFill(2100, SAVE_RULES.npcHearts)).toEqual([1, 1, 1, 1, 1, 1]);
@@ -30,10 +37,10 @@ describe.skipIf(!hasPrivateSaveFixtures)('verified save editor rules', () => {
   });
   it('exports a longer box name without altering its contents', () => {
     const box = model.containers.find(container => container.kind === 'storage')!;
-    const edited = exportSave(model, pendingChanges(model, { [box.nameOffset!]: '春天的种子与材料箱' }));
+    const edited = exportSave(model, pendingChanges(model, { [box.nameOffset!]: '春日材料箱' }));
     const restored = parseSaveModel(decodeSave(edited, 'edited'));
     const found = restored.containers.find(container => container.id === box.id)!;
-    expect(found.customName).toBe('春天的种子与材料箱');
+    expect(found.customName).toBe('春日材料箱');
     expect(found.slots.map(slot => slot.item && [slot.item.itemId, slot.item.count])).toEqual(box.slots.map(slot => slot.item && [slot.item.itemId, slot.item.count]));
   });
   it('validates current HP against the pending maximum and rejects partial hearts', () => {

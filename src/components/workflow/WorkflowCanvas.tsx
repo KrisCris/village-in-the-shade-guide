@@ -21,6 +21,7 @@ import {
 import WorkflowCard, { type FlowNode } from "./WorkflowCard";
 import WorkflowEdge from './WorkflowEdge';
 import type { NodeKind } from "../../domain/workflow/types";
+import { tr } from '../../i18n/active';
 
 const nodeTypes = { operation: WorkflowCard };
 const edgeTypes = { workflow: WorkflowEdge };
@@ -160,12 +161,12 @@ export default memo(function WorkflowCanvas({
             onDropNode(kind, { x: position.x - 132, y: position.y - 40 });
         }
       }}
-      aria-label="生产流程画布"
+      aria-label={tr('生产流程画布')}
     >
       <Background color="var(--wf-grid)" gap={24} size={1} />
       <MiniMap
         style={miniMapSize}
-        ariaLabel="流程小地图：拖动移动视野，滚轮缩放"
+        ariaLabel={tr('流程小地图：拖动移动视野，滚轮缩放')}
         pannable
         zoomable
         nodeColor="var(--green)"

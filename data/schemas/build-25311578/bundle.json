@@ -1,0 +1,92 @@
+{
+  "table": "bundle",
+  "build_id": "25311578",
+  "language_count": 7,
+  "record_size": 136,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    136
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 8,
+          "value": 8
+        },
+        {
+          "record_id": 9,
+          "value": 9
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 8,
+          "value": 0
+        },
+        {
+          "record_id": 9,
+          "value": 104
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 8,
+          "value": 19
+        },
+        {
+          "record_id": 9,
+          "value": 19
+        }
+      ]
+    },
+    {
+      "name": "input_1_item_id",
+      "offset": 72,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 8,
+          "value": 140010
+        },
+        {
+          "record_id": 9,
+          "value": 100030
+        }
+      ]
+    },
+    {
+      "name": "input_1_quantity",
+      "offset": 80,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 8,
+          "value": 5
+        },
+        {
+          "record_id": 9,
+          "value": 3
+        }
+      ]
+    }
+  ]
+}

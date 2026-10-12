@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { characterGuideRedirects, guideCategories, guides, translateHeading } from './guideContent';
-import characters from '../../data/generated/build-24969282/entities/characters.json';
+import { characterGuideRedirects, guideCategories, guides, localizeGuide, translateHeading } from './guideContent';
+import { toTraditional } from '../i18n/traditional';
+import characters from '../../data/generated/build-25311578/entities/characters.json';
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 
 const kana = /[ぁ-ゖァ-ヺ]/;
@@ -37,5 +38,24 @@ describe('Chinese guide content', () => {
       .toBe('/data/characters/CHARA_ID_FEMALE_DOCTOR/');
     expect(guides.some((guide) => guide.guideTarget === '/guides/residents/')).toBe(true);
     expect(guides.some((guide) => guide.guideTarget === '/guides/progression/')).toBe(true);
+  });
+});
+
+describe('localized guide titles', () => {
+  it('uses the source title on Japanese pages without the site suffix', () => {
+    for (const guide of guides) {
+      const { title, headings } = localizeGuide(guide, 'ja');
+      expect(title, guide.sourceId).not.toMatch(/【ほの暮しの庭】$/);
+      expect(headings).toBe(guide.headings);
+    }
+  });
+  it('converts the Chinese title and checklist for Traditional Chinese pages', () => {
+    for (const guide of guides) {
+      const zhCN = localizeGuide(guide, 'zh-CN');
+      const zhTW = localizeGuide(guide, 'zh-TW');
+      expect(zhCN.title).toBe(guide.chineseTitle);
+      expect(zhTW.title, guide.sourceId).toBe(toTraditional(guide.chineseTitle));
+      expect(zhTW.headings).toEqual(zhCN.headings.map(toTraditional));
+    }
   });
 });

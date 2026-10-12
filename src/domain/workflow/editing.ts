@@ -10,6 +10,7 @@ import { canConnectDraft, resolveIntent } from "./intent";
 import { canConnect, outputItems, stringArray } from "./graph";
 import { seedAvailability } from "../seedAvailability";
 import { seasonAt, yearAt } from "./date";
+import { tr } from '../../i18n/active';
 
 export type AddAnchor = {
   nodeId?: string;
@@ -23,14 +24,14 @@ export function addConnectedNode(
   position: { x: number; y: number },
   anchor: AddAnchor,
 ) {
-  if (plan.nodes.length >= 200) throw new Error("每份计划最多 200 个节点");
+  if (plan.nodes.length >= 200) throw new Error(tr('每份计划最多 200 个节点'));
   const added = { ...newNode(kind, plan.startDay), position };
   let nodes = [...plan.nodes, added],
     edges = [...plan.edges];
   const edge = anchor.edgeId
     ? edges.find((e) => e.id === anchor.edgeId)
     : undefined;
-  if (anchor.edgeId && !edge) throw new Error("连线已改变，请重新选择");
+  if (anchor.edgeId && !edge) throw new Error(tr('连线已改变，请重新选择'));
   const from =
     edge?.source ?? (anchor.side === "output" ? anchor.nodeId : undefined);
   const to =
@@ -50,7 +51,7 @@ export function addConnectedNode(
   ]) {
     if (!source || !target) continue;
     if (!canConnectDraft(nodes, edges, source, target))
-      throw new Error("这种节点不能放在这里");
+      throw new Error(tr('这种节点不能放在这里'));
     edges.push({ id: uid(), source, target });
   }
   return {
@@ -104,7 +105,7 @@ export function prepareDemand(
 ) {
   const target = plan.nodes.find((n) => n.id === targetId);
   if (!target || !["reserve", "delivery"].includes(target.kind))
-    throw new Error("请选择留货或交付节点");
+    throw new Error(tr('请选择留货或交付节点'));
   let nodes = [...plan.nodes],
     edges = [...plan.edges],
     index = 0;
@@ -129,7 +130,7 @@ export function prepareDemand(
     depth: number,
   ) => {
     if (nodes.length >= 200)
-      throw new Error("生成后将超过 200 个节点，请分批安排");
+      throw new Error(tr('生成后将超过 200 个节点，请分批安排'));
     const node = {
       ...newNode(kind, plan.startDay),
       ...props,
@@ -196,7 +197,7 @@ export function prepareDemand(
       if (!quantity) return;
     }
     const item = catalog.get(itemId);
-    if (!item) throw new Error("需求物品已不在目录中");
+    if (!item) throw new Error(tr('需求物品已不在目录中'));
     if (seen.has(itemId) || depth > 8) {
       unresolved.push(item.name.zh_hans);
       create(
@@ -205,7 +206,7 @@ export function prepareDemand(
           itemId,
           quantity,
           needsConfirmation: true,
-          label: `待确认已有 ${item.name.zh_hans}`,
+          label: tr('待确认已有 {name}', { name: item.name.zh_hans }),
           labelMode: "manual",
         },
         to,
@@ -299,7 +300,7 @@ export function prepareDemand(
           itemId,
           quantity,
           needsConfirmation: true,
-          label: `待准备 ${item.name.zh_hans}`,
+          label: tr('待准备 {name}', { name: item.name.zh_hans }),
           labelMode: "manual",
         },
         to,

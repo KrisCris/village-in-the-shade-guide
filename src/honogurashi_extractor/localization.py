@@ -123,10 +123,15 @@ _TRADITIONAL_TO_SIMPLIFIED = str.maketrans(
 
 
 def build_name(
-    *, ja: str, zh_hant: str, internal: str, overrides: Mapping[str, str]
+    *, ja: str, zh_hant: str, internal: str, overrides: Mapping[str, str],
+    translations: Mapping[str, str] | None = None,
 ) -> LocalizedName:
+    native = dict(translations) if translations is not None else {"ja": ja, "zh-TW": zh_hant}
     override = overrides.get(internal)
-    if override:
+    if native.get("zh-CN"):
+        zh_hans = native["zh-CN"]
+        review_status = "official"
+    elif override:
         zh_hans = override
         review_status = "override"
     elif zh_hant:
@@ -135,7 +140,7 @@ def build_name(
     else:
         zh_hans = ja or internal
         review_status = "source-ja"
-    aliases = tuple(dict.fromkeys(value for value in (zh_hans, zh_hant, ja, internal) if value))
+    aliases = tuple(dict.fromkeys(value for value in (zh_hans, zh_hant, ja, internal, override, *native.values()) if value))
     return LocalizedName(
         zh_hans=zh_hans,
         zh_hant=zh_hant,
@@ -143,4 +148,16 @@ def build_name(
         internal=internal,
         aliases=aliases,
         review_status=review_status,
+        translations=native,
     )
+
+
+def localized_block(group: tuple[str, ...], start: int, language_count: int = 6) -> dict[str, str]:
+    """Preserve native slot order, including the three reserved empty slots."""
+    locales = ("ja", "slot-1", "slot-2", "slot-3", "zh-TW", "ko", "zh-CN")
+    return {locale: group[start + index] if start + index < len(group) else ""
+            for index, locale in enumerate(locales[:language_count])}
+
+
+def preferred_text(translations: Mapping[str, str]) -> str:
+    return translations.get("zh-CN") or translations.get("zh-TW") or translations.get("ja") or ""

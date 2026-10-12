@@ -14,7 +14,12 @@
   --radius: 10px;
   --sidebar: 224px;
   --max: 1500px;
-  font-family: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", SimSun, serif;
+  font-family: var(--font-sans);
 }
+/* Han glyph shapes differ by language; pick fonts made for the page language. */
+:root:lang(zh-TW) { --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; --font-serif: "Noto Serif TC", "Songti TC", PMingLiU, serif; }
+:root:lang(ja) { --font-sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", Meiryo, system-ui, sans-serif; --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; }
 
 :root[data-theme="night"] { color-scheme: dark; --paper: #14251f; --paper-raised: #20332b; --paper-deep: #2a3d31; --ink: #efe9d5; --muted: #b1bfaa; --green: #b8cf9e; --green-soft: #354d37; --vermilion: #e49e7c; --gold: #debf79; --border: #4c604e; --shadow: 0 12px 35px rgb(0 0 0 / 25%); }

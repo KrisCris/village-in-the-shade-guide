@@ -1,21 +1,26 @@
 ---
 import { withBase } from '../lib/sitePath';
+import { getI18n } from '../i18n/server';
+import { stripLocale } from '../i18n/locales';
 import PageSettings from './PageSettings.astro';
+import LanguageSelector from './LanguageSelector.astro';
+const { t, href } = getI18n(Astro.url);
 const navigation = [
-  { href: '/data/', label: '资料库' },
-  { href: '/planner/', label: '收益规划' },
-  { href: '/planner/workflow/', label: '工作流' },
-  { href: '/guides/', label: '攻略' },
-  { href: '/save-editor/', label: '存档工具' },
-  { href: '/search/', label: '搜索' },
+  { href: '/data/', label: t('资料库') },
+  { href: '/planner/', label: t('收益规划') },
+  { href: '/planner/workflow/', label: t('工作流') },
+  { href: '/guides/', label: t('攻略') },
+  { href: '/save-editor/', label: t('存档工具') },
+  { href: '/search/', label: t('搜索') },
 ];
-const current = navigation.filter(item => Astro.url.pathname.startsWith(withBase(item.href))).sort((a,b)=>b.href.length-a.href.length)[0]?.href;
+const path = stripLocale(Astro.url.pathname);
+const current = navigation.filter(item => path.startsWith(item.href)).sort((a,b)=>b.href.length-a.href.length)[0]?.href;
 ---
 
 <header class="site-header">
-  <a class="brand" href={withBase("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>静谧田园 Wiki</strong></a>
-  <nav aria-label="页首导航">{navigation.map(item=><a href={withBase(item.href)} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a>)}</nav>
-  <div class="header-controls"><PageSettings /></div>
+  <a class="brand" href={href("/")}><img src={withBase("/game-icon.png")} width="38" height="38" alt="" style="border-radius:50%;object-fit:cover" /><strong>{t('静谧田园 Wiki')}</strong></a>
+  <nav aria-label={t('页首导航')}>{navigation.map(item=><a href={href(item.href)} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a>)}</nav>
+  <div class="header-controls"><LanguageSelector /><PageSettings /></div>
 </header>
 <style>
   .header-controls{flex-wrap:wrap;justify-content:flex-end}

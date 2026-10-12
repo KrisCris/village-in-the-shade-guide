@@ -1,6 +1,7 @@
 import {expect, it} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import EntityDetail from './EntityDetail';
+import {I18nProvider} from '../../i18n/react';
 import HomePortraits from '../art/HomePortraits';
 import type {EntityDetailModel} from '../../domain/relations';
 
@@ -42,4 +43,9 @@ it('offers an animated portrait for a supported character but not an item',()=>{
 it('does not put avatar attribution in the character introduction',()=>{
   const character={...model,entity:{...model.entity,kind:'characters',portrait_source:'https://nippon1.jp/consumer/honogurashi/character.html'}};
   expect(renderToStaticMarkup(<EntityDetail model={character}/>)).not.toContain('发行商官方人物页');
+});
+
+it('lists other-language names under the title only on Chinese pages',()=>{
+  expect(renderToStaticMarkup(<EntityDetail model={model}/>)).toContain('class="aliases"');
+  expect(renderToStaticMarkup(<I18nProvider locale="ja"><EntityDetail model={model}/></I18nProvider>)).not.toContain('class="aliases"');
 });

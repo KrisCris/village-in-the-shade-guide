@@ -16,9 +16,9 @@ from .icons import extract_item_icons
 from .normalize import normalize_snapshot
 from .normalize_world import normalize_world
 from .normalize_activities import normalize_activities
-from .probe import build_probe
+from .probe import build_probe, _string_groups
 from .schema import SchemaError, load_schema_file, verify_schema_evidence
-from .table import read_table
+from .table import read_table, TableFormatError
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -111,7 +111,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             name: archive.read_entry(f"data/database/{name}.dat")
             for name in table_names
         }
-        tables = {name: read_table(data) for name, data in raw_tables.items()}
+        language_count = 7 if args.build_id == "25311578" else 6
+        tables = {name: read_table(data, language_count=language_count) for name, data in raw_tables.items()}
         schema_root = args.schema_dir / f"build-{args.build_id}"
         schemas = {
             name: load_schema_file(schema_root / f"{name}.json")
@@ -147,6 +148,56 @@ def main(argv: Sequence[str] | None = None) -> int:
             extractor_version=version("honogurashi-extractor"),
         )
         write_snapshot(snapshot, args.output, provenance)
+        # Preserve every native database string in original slot order. The
+        # evidence includes tables used by specialized site features as well.
+        localization_tables = {}
+        for entry in archive.entries():
+            if not entry.name.startswith("data/database/") or not entry.name.endswith(".dat"):
+                continue
+            name = Path(entry.name).stem
+            data = archive.read_entry(entry.name)
+            native_hash = hashlib.sha256(data).hexdigest()
+            try:
+                table = read_table(data, language_count=language_count)
+                strings = table.strings()
+                index_by_offset = {}
+                offset = 0
+                for index, value in enumerate(strings):
+                    index_by_offset[offset] = index
+                    offset += len(value.encode("utf-8")) + 1
+                groups = _string_groups(table)
+                record_groups = []
+                for index, (record, group) in enumerate(zip(table.records, groups, strict=True)):
+                    start = index_by_offset.get(int.from_bytes(record[8:12], "little")) if group else None
+                    if group and (start is None or tuple(strings[start:start + len(group)]) != group):
+                        # Some scalar-only tables store one ID string per row
+                        # without an offset pointer at byte 8.
+                        start = index if len(strings) == len(table.records) and group == (strings[index],) else None
+                    record_groups.append({"numeric_id": int.from_bytes(record[:4], "little"),
+                                          "string_start": start, "string_count": len(group)})
+                localization_tables[name] = {
+                    "sha256": native_hash,
+                    "language_count": language_count,
+                    "strings": list(strings),
+                    "records": record_groups,
+                }
+            except TableFormatError as error:
+                if data in (bytes(4), bytes(12)):
+                    localization_tables[name] = {"sha256": native_hash, "empty": True, "byte_size": len(data), "strings": [], "records": []}
+                else:
+                    localization_tables[name] = {"sha256": native_hash, "unparsed": str(error)}
+        evidence = {"format": 1, "build_id": args.build_id,
+                    "record_string_encoding": "strings[string_start:string_start + string_count]; null start means no identified record group",
+                    "tables": localization_tables}
+        evidence_data = (json.dumps(evidence, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
+        (args.output / "localization-evidence.json").write_bytes(evidence_data)
+        manifest_path = args.output / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["language_count"] = language_count
+        manifest["schema_sha256"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                                      for path in sorted(schema_root.glob("*.json"))}
+        manifest["generated_files"]["localization-evidence.json"] = hashlib.sha256(evidence_data).hexdigest()
+        manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8")
         print(
             f"wrote={args.output} entities="
             f"{sum(len(getattr(snapshot, name)) for name in snapshot.__dataclass_fields__ if isinstance(getattr(snapshot, name), dict))}"
@@ -193,10 +244,11 @@ def main(argv: Sequence[str] | None = None) -> int:
                 raise SchemaError(
                     f"schema {path.name} targets build {schema.build_id}, not {args.build_id}"
                 )
-            table = read_table(
-                archive.read_entry(f"data/database/{schema.table}.dat")
-            )
             raw_schema = json.loads(path.read_text(encoding="utf-8"))
+            table = read_table(
+                archive.read_entry(f"data/database/{schema.table}.dat"),
+                language_count=raw_schema.get("language_count", 6),
+            )
             observed = set(raw_schema.get("observed_record_sizes", []))
             actual = {len(record) for record in table.records}
             if observed and actual != observed:

@@ -1,10 +1,21 @@
 ---
 import {withBase} from '../../lib/sitePath';
+import { getI18n } from '../../i18n/server';
+const { t } = getI18n(Astro.url);
+const messages = {
+  play: t('播放背景音乐'),
+  pause: t('暂停背景音乐'),
+  idle: t('主旋律 · 点击音符播放'),
+  playing: t('主旋律 · 正在播放'),
+  blocked: t('点击页面后开始播放 · 可随时暂停'),
+  failed: t('音乐暂时无法播放，请点击音符重试'),
+  loadFailed: t('音乐暂时无法加载，请重试'),
+};
 ---
-<div class="music-player" transition:persist="background-music">
-  <button class="music-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="play-icon" d="m9 5 11 7-11 7Z"/><path class="pause-icon" d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg></button>
+<div class="music-player" transition:persist="background-music" data-messages={JSON.stringify(messages)}>
+  <button class="music-toggle" type="button" aria-label={messages.play} aria-pressed="false" title={messages.play}><svg viewBox="0 0 24 24" aria-hidden="true"><path class="play-icon" d="m9 5 11 7-11 7Z"/><path class="pause-icon" d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg></button>
   <div class="music-settings">
-    <div class="music-popover"><label>音乐音量<input class="music-volume" type="range" min="0" max="1" step="0.05" value="0.05" /></label><small role="status">主旋律 · 点击音符播放</small></div>
+    <div class="music-popover"><label>{t('音乐音量')}<input class="music-volume" type="range" min="0" max="1" step="0.05" value="0.05" /></label><small role="status">{messages.idle}</small></div>
   </div>
   <audio preload="none" loop data-src={withBase('/audio/main-theme.mp3')}></audio>
 </div>
@@ -15,6 +26,7 @@ import {withBase} from '../../lib/sitePath';
     const toggle=player.querySelector<HTMLButtonElement>('.music-toggle')!;
     const volume=player.querySelector<HTMLInputElement>('.music-volume')!;
     const status=player.querySelector<HTMLElement>('[role="status"]')!;
+    const text=JSON.parse(player.dataset.messages!) as Record<'play'|'pause'|'idle'|'playing'|'blocked'|'failed'|'loadFailed',string>;
     const key='village-music';
     let savedTime=0,wanted=false,blocked=false;
     try{
@@ -30,9 +42,9 @@ import {withBase} from '../../lib/sitePath';
     const update=()=>{
       const playing=!audio.paused;
       toggle.setAttribute('aria-pressed',String(playing));
-      toggle.setAttribute('aria-label',playing?'暂停背景音乐':'播放背景音乐');
-      toggle.title=playing?'暂停背景音乐':'播放背景音乐';
-      status.textContent=playing?'主旋律 · 正在播放':'主旋律 · 点击音符播放';
+      toggle.setAttribute('aria-label',playing?text.pause:text.play);
+      toggle.title=playing?text.pause:text.play;
+      status.textContent=playing?text.playing:text.idle;
     };
     const play=async()=>{
       if(!audio.getAttribute('src'))audio.src=audio.dataset.src!;
@@ -40,7 +52,7 @@ import {withBase} from '../../lib/sitePath';
       try{await audio.play();blocked=false;if(!wanted)audio.pause();save();}
       catch(error){
         blocked=error instanceof DOMException&&error.name==='NotAllowedError';
-        update();status.textContent=blocked?'点击页面后开始播放 · 可随时暂停':'音乐暂时无法播放，请点击音符重试';
+        update();status.textContent=blocked?text.blocked:text.failed;
         // Browser policy is not a user preference. Only the toggle changes wanted.
         save();
       }
@@ -50,7 +62,7 @@ import {withBase} from '../../lib/sitePath';
       savedTime=0;
     });
     audio.addEventListener('play',update);audio.addEventListener('pause',update);
-    audio.addEventListener('error',()=>{update();status.textContent='音乐暂时无法加载，请重试';});
+    audio.addEventListener('error',()=>{update();status.textContent=text.loadFailed;});
     toggle.addEventListener('click',()=>{
       if(audio.paused){wanted=true;void play();}
       else{wanted=false;audio.pause();save();}

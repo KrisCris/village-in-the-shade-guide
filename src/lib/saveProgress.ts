@@ -1,9 +1,10 @@
 import data from '../../data/sources/game-save-progression.json';
-import { simplifySaveEntry } from './saveText';
+import { localizeGameData } from './saveText';
 import { builtChild, captureBuilt, encodeSigned, readSigned, SerTag, type SerBuiltNode, type SerDocument } from './ser';
 import { buildDeliveryEdits, type DeliveryEdits } from './saveDeliveries';
+import { tr } from '../i18n/active';
 
-export const PROGRESSION = { ...data, skills: data.skills.map(simplifySaveEntry), flags: data.flags.map(simplifySaveEntry), recipes: data.recipes.map(simplifySaveEntry) };
+export const PROGRESSION = localizeGameData(data);
 export interface ProgressEdits { encyclopedia?: Record<string, boolean>; skills?: Record<string, boolean>; flags?: Record<string, boolean>; deliveries?: DeliveryEdits }
 export type ProgressToggleGroup = Exclude<keyof ProgressEdits, 'deliveries'>;
 export function progressCount(edits: ProgressEdits): number { return Object.values(edits).reduce((sum, group) => sum + Object.keys(group ?? {}).length, 0); }
@@ -27,17 +28,36 @@ export function flagEnabled(doc: SerDocument, id: number, edits: ProgressEdits =
   return !!bytes && !!(bytes[id >> 3] & (1 << (id & 7)));
 }
 
+/** GAME_FLAG_LANGUAGE_JP…KO (40–46): each save keeps exactly one on. */
+export const LANGUAGE_FLAGS = [40, 41, 42, 43, 44, 45, 46];
+/** The languages with game text in this build; EN/FR/ES flags exist but have no text. */
+export const GAME_LANGUAGES = [
+  { flag: 44, name: '简体中文' }, { flag: 45, name: '繁體中文' }, { flag: 40, name: '日本語' }, { flag: 46, name: '한국어' }, // i18n-ignore — language names stay in their own script
+];
+export function gameLanguage(doc: SerDocument, edits: ProgressEdits = {}): number | undefined {
+  return LANGUAGE_FLAGS.find(id => flagEnabled(doc, id, edits));
+}
+/** Switch on one language flag and off the others, recording only real changes. */
+export function withGameLanguage(doc: SerDocument, edits: ProgressEdits, flag: number): ProgressEdits {
+  if (!GAME_LANGUAGES.some(language => language.flag === flag)) throw new Error(tr('不支持的游戏语言。'));
+  const flags = { ...edits.flags };
+  for (const id of LANGUAGE_FLAGS) {
+    if (flagEnabled(doc, id) === (id === flag)) delete flags[id]; else flags[id] = id === flag;
+  }
+  return { ...edits, flags };
+}
+
 export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { subtrees: Map<number, SerBuiltNode>; payloads: Map<number, Uint8Array> } {
   const delivery = buildDeliveryEdits(doc, edits.deliveries);
   const subtrees = new Map<number, SerBuiltNode>(), payloads = delivery.payloads;
   const flags = { ...edits.flags, ...delivery.flags };
   if (Object.keys(edits.encyclopedia ?? {}).length) {
     const node = doc.resolve('encyclopediaReleaseMap_');
-    if (!node) throw new Error('存档缺少图鉴记录。');
+    if (!node) throw new Error(tr('存档缺少图鉴记录。'));
     const children = doc.children(node), pairs = new Map<string, SerBuiltNode[]>();
     for (let i = 0; i < children.length; i += 2) pairs.set(readSigned(doc, children[i]).toString(), [captureBuilt(doc, children[i]), captureBuilt(doc, children[i + 1])]);
     for (const [id, enabled] of Object.entries(edits.encyclopedia ?? {})) {
-      if (!/^\d+$/.test(id)) throw new Error('图鉴物品无效。');
+      if (!/^\d+$/.test(id)) throw new Error(tr('图鉴物品无效。'));
       if (!enabled) pairs.delete(id);
       else if (!pairs.has(id)) pairs.set(id, [
         { tag: SerTag.Scalar, nameOffset: -1, name: '0k', payload: encodeSigned(BigInt(id), 8) },
@@ -53,7 +73,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
   }
   if (Object.keys(edits.skills ?? {}).length) {
     const node = doc.resolve('pPlayerStatus_/p/skills_');
-    if (!node) throw new Error('存档缺少技能记录。');
+    if (!node) throw new Error(tr('存档缺少技能记录。'));
     const children = doc.children(node), entries = new Map<string, SerBuiltNode>();
     for (const pointer of children) {
       const id = doc.resolve('p/pData_/dataID', pointer);
@@ -61,7 +81,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
     }
     for (const [id, enabled] of Object.entries(edits.skills ?? {})) {
       const skill = PROGRESSION.skills.find(skill => String(skill.id) === id);
-      if (!skill) throw new Error('技能不在游戏资料表内。');
+      if (!skill) throw new Error(tr('技能不在游戏资料表内。'));
       flags[skill.flag] = enabled;
       if (!enabled) entries.delete(id);
       else if (!entries.has(id)) {
@@ -74,7 +94,7 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
         };
         built.pointer = 'self';
         const target = builtChild(built, 'p/pData_/dataID'), value = builtChild(built, 'p/value_');
-        if (!target || !value) throw new Error('技能模板格式未知。');
+        if (!target || !value) throw new Error(tr('技能模板格式未知。'));
         target.payload = encodeSigned(BigInt(id), 8); value.payload = encodeSigned(0n, 8);
         entries.set(id, built);
       }
@@ -86,11 +106,11 @@ export function buildProgressEdits(doc: SerDocument, edits: ProgressEdits): { su
   }
   if (Object.keys(flags).length) {
     const node = doc.resolve('flags_/flags_');
-    if (!node) throw new Error('存档缺少解锁记录。');
+    if (!node) throw new Error(tr('存档缺少解锁记录。'));
     const bytes = doc.payload(node).slice();
     for (const [id, enabled] of Object.entries(flags)) {
       const bit = Number(id);
-      if (!Number.isSafeInteger(bit) || bit < 0 || bit >= bytes.length * 8 || !PROGRESSION.flags.some(flag => flag.id === bit)) throw new Error('解锁项目无效。');
+      if (!Number.isSafeInteger(bit) || bit < 0 || bit >= bytes.length * 8 || !PROGRESSION.flags.some(flag => flag.id === bit)) throw new Error(tr('解锁项目无效。'));
       const mask = 1 << (bit & 7);
       bytes[bit >> 3] = enabled ? bytes[bit >> 3] | mask : bytes[bit >> 3] & ~mask;
     }

@@ -1,5 +1,5 @@
 {
-  "source": "livestockplacement.dat; mapgroup.dat; native 0x14013BB50/0x14013AD30 availability, 0x1401050A0 base position",
+  "source": "livestockplacement.dat/mapgroup.dat; historical build24969282 native 0x14013BB50/0x14013AD30 availability, 0x1401050A0 base position",
   "placements": [
     {
       "id": 1,
@@ -7078,5 +7078,6 @@
       "requires": [],
       "excludes": []
     }
-  ]
+  ],
+  "build_id": "25311578"
 }

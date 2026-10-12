@@ -16,9 +16,11 @@
     "content:coverage": "node tools/content/build-coverage.mjs",
     "content:translate": "powershell -NoProfile -File tools/content/translate-headings.ps1",
     "content:check": "node tools/content/check-coverage.mjs",
+    "i18n:sync": "tsx tools/i18n/sync-catalogs.ts",
+    "i18n:check": "tsx tools/i18n/sync-catalogs.ts --check",
     "build": "npm run build:data && astro build && pagefind --site dist",
     "preview": "astro preview",
-    "verify": "npm run content:check && npm test && npm run check && npm run build"
+    "verify": "npm run content:check && npm run i18n:check && npm test && npm run check && npm run build"
   },
   "dependencies": {
     "@astrojs/react": "latest",

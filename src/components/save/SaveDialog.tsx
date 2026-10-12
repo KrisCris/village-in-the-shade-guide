@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type ReactNode } from 'react';
+import { tr } from '../../i18n/active';
 
 /** Native modal provides focus containment and keeps expanded controls out of page layout. */
 export default function SaveDialog({ title, onClose, children, compact = false }: {
@@ -12,13 +13,13 @@ export default function SaveDialog({ title, onClose, children, compact = false }
     return () => dialog.close();
   }, []);
   return <dialog ref={ref} className={`save-dialog${compact ? ' compact' : ''}`} aria-labelledby={heading}
-    onKeyDownCapture={event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); onClose(); } }}
+    onKeyDownCapture={event => { if (event.key === 'Escape' && !(event.target instanceof Element && event.target.closest('.search-select-popup'))) { event.preventDefault(); event.stopPropagation(); onClose(); } }}
     onCancel={event => { event.preventDefault(); onClose(); }}
     onClick={event => { if (event.target === event.currentTarget) {
       const rect = event.currentTarget.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) onClose();
     } }}>
-    <header className="save-dialog-head"><h3 id={heading}>{title}</h3><button type="button" className="save-slot-close" aria-label="关闭弹窗" onClick={onClose}>×</button></header>
+    <header className="save-dialog-head"><h3 id={heading}>{title}</h3><button type="button" className="save-slot-close" aria-label={tr('关闭弹窗')} onClick={onClose}>×</button></header>
     <div className="save-dialog-body">{children}</div>
   </dialog>;
 }

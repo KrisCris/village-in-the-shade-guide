@@ -1,0 +1,86 @@
+{
+  "table": "cropsharvest",
+  "build_id": "25311578",
+  "language_count": 7,
+  "record_size": 52,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    52,
+    96,
+    104,
+    112,
+    140,
+    148,
+    156,
+    180,
+    188,
+    196,
+    252,
+    300,
+    316,
+    420,
+    424,
+    428,
+    468,
+    472,
+    492,
+    512,
+    536,
+    568,
+    580,
+    604,
+    692,
+    696,
+    700
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 13
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 12
+        },
+        {
+          "record_id": 2,
+          "value": 12
+        }
+      ]
+    }
+  ]
+}

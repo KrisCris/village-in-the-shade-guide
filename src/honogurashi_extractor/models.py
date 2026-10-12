@@ -11,6 +11,7 @@ class LocalizedName:
     internal: str
     aliases: tuple[str, ...]
     review_status: str
+    translations: dict[str, str] = field(default_factory=dict, hash=False)
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,6 +29,7 @@ class Item:
     category_name: LocalizedName | None = None
     description: str = ""
     feature_ids: tuple[int, ...] = ()
+    description_translations: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)
@@ -176,6 +178,9 @@ class Quest(WorldEntry):
     objective: str = ""
     steps: tuple[str, ...] = ()
     source: str = "quest.dat"
+    description_translations: dict[str, str] = field(default_factory=dict)
+    objective_translations: dict[str, str] = field(default_factory=dict)
+    step_translations: tuple[dict[str, str], ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -194,6 +199,7 @@ class Activity:
     source: str = ""
     description: str = ""
     reward_candidates: tuple[str, ...] = ()
+    description_translations: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)

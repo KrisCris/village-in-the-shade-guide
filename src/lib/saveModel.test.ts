@@ -88,7 +88,8 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     expect(barn.rows[1].cells[2]!.value).toBe('764');
 
     const npc = section(model, 'npc').tables[0];
-    expect(npc.rows).toHaveLength(16);
+    // The ghost girl and the mother are story-only and hidden.
+    expect(npc.rows).toHaveLength(14);
     expect(npc.rows[0].cells[0]!.value).toBe('1010');
     expect(npc.rows[0].cells[1]!.value).toBe('390');
 
@@ -115,7 +116,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
       const ids = model.sections.map((entry) => entry.id).join(',');
       expect(`${name}:${ids}`).toBe(`${name}:basic,player,items,barn,npc,brand`);
       expect(`${name}:${section(model, 'barn').tables[0].rows.length}`).toBe(`${name}:10`);
-      expect(`${name}:${section(model, 'npc').tables[0].rows.length}`).toBe(`${name}:16`);
+      expect(`${name}:${section(model, 'npc').tables[0].rows.length}`).toBe(`${name}:14`);
       expect(`${name}:${collectFields(model).size > 100}`).toBe(`${name}:true`);
     }
   }, 60_000);
@@ -124,7 +125,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     const model = load('save.003');
     const barn = section(model, 'barn').tables[0];
     const drafts = {
-      [field(model, '玩家名字').offset]: '新的玩家名字',
+      [field(model, '玩家名字').offset]: '新玩家名字',
       [field(model, '持有金钱').offset]: '12345',
       [barn.rows[1].cells[0]!.offset]: 'Q',
       [barn.rows[1].cells[2]!.offset]: '800',
@@ -136,7 +137,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     expect(packed.length).toBe(model.save.original.length);
 
     const reread = parseSaveModel(decodeSave(packed, 'edited'));
-    expect(field(reread, '玩家名字').value).toBe('新的玩家名字');
+    expect(field(reread, '玩家名字').value).toBe('新玩家名字');
     expect(field(reread, '持有金钱').value).toBe('12345');
     const rebuiltBarn = section(reread, 'barn').tables[0];
     expect(rebuiltBarn.rows[1].cells[0]!.value).toBe('Q');

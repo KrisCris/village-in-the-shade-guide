@@ -52,3 +52,21 @@ def test_rejects_entry_outside_archive(tmp_path):
 
     with pytest.raises(ArchiveFormatError, match="outside archive"):
         FafullfsArchive.open(archive_path)
+
+
+def test_resolves_table_paths_with_different_casing(tmp_path):
+    """Build 25311578 tables cite DLC_itemicon_* while the archive stores dlc_itemicon_*."""
+    archive_path = build_fafullfs(
+        tmp_path,
+        {"data/texture/dlc_itemicon_ani01_01.nltx": b"dlc", "data/texture/Same.nltx": b"upper",
+         "data/texture/same.nltx": b"lower"},
+    )
+
+    archive = FafullfsArchive.open(archive_path)
+
+    assert archive.read_entry("data/texture/DLC_itemicon_ani01_01.nltx") == b"dlc"
+    assert archive.read_entry("data/texture/same.nltx") == b"lower"
+    # Ambiguous case-folded names never guess.
+    assert not archive.has_entry("data/texture/SAME.nltx")
+    with pytest.raises(KeyError):
+        archive.read_entry("data/texture/missing.nltx")

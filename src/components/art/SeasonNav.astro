@@ -1,5 +1,15 @@
-<nav class="season-nav" aria-label="四季留货导航">
-  {['春','夏','秋','冬'].map((name,index)=><a href={`#${['spring','summer','autumn','winter'][index]}`} aria-label={`${name}季留货`}>{name}</a>)}
+---
+import { getI18n } from '../../i18n/server';
+const { t } = getI18n(Astro.url);
+const seasons = [
+  { id: 'spring', name: t('春'), label: t('春季留货') },
+  { id: 'summer', name: t('夏'), label: t('夏季留货') },
+  { id: 'autumn', name: t('秋'), label: t('秋季留货') },
+  { id: 'winter', name: t('冬'), label: t('冬季留货') },
+];
+---
+<nav class="season-nav" aria-label={t('四季留货导航')}>
+  {seasons.map(season=><a href={`#${season.id}`} aria-label={season.label}>{season.name}</a>)}
 </nav>
 <script>
   import {onPageMount} from '../../lib/pageLifecycle';

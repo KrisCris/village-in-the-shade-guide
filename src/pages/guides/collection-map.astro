@@ -5,28 +5,41 @@ import CollectionMap from '../../components/CollectionMap';
 import mapData from '../../../data/sources/game-map-markers.json';
 import exploration from '../../../data/sources/game-exploration-markers.json';
 import {getCatalog,entityUrl} from '../../data/repository';
-const catalog=getCatalog();
+import {translateLabel} from '../../data/catalog';
+import {isVillageMap} from '../../data/collectionMap';
+import { getI18n } from '../../i18n/server';
+const {t,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
 const treasurePool=catalog.entities.find(e=>e.id==='TREASUREBOX_REWARD_POOL');
 const treasureRewards=((treasurePool?.reward_candidates??[]) as string[]).map(id=>catalog.entities.find(e=>e.kind==='items'&&e.id===id)).filter(Boolean);
+const progress=(label:string|null|undefined)=>label?translateLabel(label,t):'';
 const markers=mapData.markers.map(m=>{
  const item='item_numeric_id' in m?catalog.entities.find(e=>e.kind==='items'&&e.numeric_id===m.item_numeric_id):undefined;
- return {...m,label:item?.name.zh_hans ?? `狐狸神社 ${Number(m.anchor.slice(-2))+1}`,href:item?entityUrl(item):'/guides/season-plan/',icon:item?.icon_path?withBase(item.icon_path):undefined,description:typeof item?.description==='string'?item.description:''};
+ return {...m,progress_label:progress(m.progress_label),label:item?.name.zh_hans ?? t('狐狸神社 {number}',{number:Number(m.anchor.slice(-2))+1}),href:item?entityUrl(item):'/guides/season-plan/',icon:item?.icon_path?withBase(item.icon_path):undefined,description:typeof item?.description==='string'?item.description:''};
 });
-const outside=[...markers.filter(m=>m.map.includes('map_0000_spr')),...exploration.markers.map(m=>({...m,href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
+// Exploration labels are "玉手箱 N" or the exchange anchor name.
+const explorationLabel=(label:string)=>{const number=label.match(/(\d+)$/)?.[1];return number?t('玉手箱 {number}',{number}):t(label);};
+const outside=[...markers.filter(m=>isVillageMap(m.map)),...exploration.markers.map(m=>({...m,label:explorationLabel(m.label),href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
 const markerLabel=(m:{kind:string;anchor:string;label:string})=>m.kind==='book'?m.anchor.slice(-2):m.label;
-const inside=markers.filter(m=>!m.map.includes('map_0000_spr'));
+const inside=markers.filter(m=>!isVillageMap(m.map));
 const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+mapData.projection.offset_x,y:m.y/mapData.projection.scale_divisor+mapData.projection.offset_y});
-const interactiveMarkers=outside.map(m=>{const p=project(m);return {...m,px:p.x,py:p.y,shortLabel:markerLabel(m),href:m.href.startsWith('#')?'':withBase(m.href),detail:m.kind==='book'?`遗失图书，可交还图书馆。${'progress_label' in m?`\n关联进度：${m.progress_label}。此进度不等于路线已可达。`:''}`:m.kind==='shrine'?'狐狸神社供奉地点。供奉需要按季节准备物品；下方链接可查看四季留货与供奉清单。':m.kind==='treasure'?`夜间玉手箱生成点，不代表每天必定刷新。接近后会逃跑，需先击倒，再靠近拾取。\n奖励为候选池抽选（${treasureRewards.length} 种），不是每次全部获得。`:'夜间交换怪异生成锚点，不保证每天出现；交付物品与奖励随怪异类型不同，详见夜间准备指南。'};});
+const detail=(m:(typeof outside)[number])=>{
+ if(m.kind==='book')return [t('遗失图书，可交还图书馆。'),'progress_label' in m&&m.progress_label?t('关联进度：{progress}。此进度不等于路线已可达。',{progress:String(m.progress_label)}):''].filter(Boolean).join('\n');
+ if(m.kind==='shrine')return t('狐狸神社供奉地点。供奉需要按季节准备物品；下方链接可查看四季留货与供奉清单。');
+ if(m.kind==='treasure')return `${t('夜间玉手箱生成点，不代表每天必定刷新。接近后会逃跑，需先击倒，再靠近拾取。')}\n${t('奖励为候选池抽选（{count} 种），不是每次全部获得。',{count:treasureRewards.length})}`;
+ return t('夜间交换怪异生成锚点，不保证每天出现；交付物品与奖励随怪异类型不同，详见夜间准备指南。');
+};
+const interactiveMarkers=outside.map(m=>{const p=project(m);return {...m,px:p.x,py:p.y,shortLabel:markerLabel(m),href:m.href.startsWith('#')?'':href(m.href),detail:detail(m)};});
 ---
-<BaseLayout title="图书、神社与夜间收集地图"><h1>图书、神社与夜间收集地图</h1>
-<p>55 本图书、4 个神社、8 个玉手箱生成点、1 个交换怪异生成点。夜间生成点不代表每天必定刷新。</p>
-<p><a href={withBase("/guides/season-plan/")}>狐狸神社四季供奉清单 →</a></p>
-<CollectionMap markers={interactiveMarkers} image={withBase('/maps/minimap_01_spr_tc.webp')} client:load />
-<p>金色：图书；橙色：狐狸神社；蓝色：玉手箱；紫色：交换怪异。编号不代表收集顺序或神社季度。</p>
-<section id="treasures"><h2>玉手箱怎么收集</h2><p>玉手箱不是走过去直接打开的固定箱子：接近后会逃跑，需要先击倒，再靠近执行拾取。游戏脚本对静止状态下的箭矢攻击另作处理，会转入逃跑状态；不要把射出第一箭当成已经拿到奖励。</p><div class="books">{exploration.markers.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>怪异表将玉手箱关联到这些生成锚点；奖励表收录下列 {treasureRewards.length} 种候选物品。不是每次全部获得，抽选与数量条件仍需核对。</p><details><summary>查看奖励候选：设计图、外观与物品</summary><div class="books">{treasureRewards.map(e=>e&&<a href={withBase(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details></section>
-<h2>村庄图书</h2><p>“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={withBase(m.href)}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
-<h2>独立区域图书</h2><div class="books">{inside.map(m=><a id={m.anchor} href={withBase(m.href)}>{m.label}<small>{m.map.includes('2160')?'附身草丛（藪）':'隘口（峠）'} · {m.x}, {m.y}</small>{'progress_label' in m&&<small>关联进度：{m.progress_label}</small>}</a>)}</div>
-<p>这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。</p>
-<details><summary>地图数据来源</summary><p>底图：minimap_01_spr_tc.nltx；位置：lostbook.dat 与 YMWR 地图锚点。世界坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）及 X/Y 偏移（348、−145）换算到原图像素。</p></details>
+<BaseLayout title={t('图书、神社与夜间收集地图')}><h1>{t('图书、神社与夜间收集地图')}</h1>
+<p>{t('55 本图书、4 个神社、8 个玉手箱生成点、1 个交换怪异生成点。夜间生成点不代表每天必定刷新。')}</p>
+<p><a href={href("/guides/season-plan/")}>{t('狐狸神社四季供奉清单')} →</a></p>
+<CollectionMap markers={interactiveMarkers} image={withBase('/maps/minimap_01_spr_tc.webp')} client:load locale={locale} />
+<p>{t('金色：图书；橙色：狐狸神社；蓝色：玉手箱；紫色：交换怪异。编号不代表收集顺序或神社季度。')}</p>
+<section id="treasures"><h2>{t('玉手箱怎么收集')}</h2><p>{t('玉手箱不是走过去直接打开的固定箱子：接近后会逃跑，需要先击倒，再靠近执行拾取。游戏脚本对静止状态下的箭矢攻击另作处理，会转入逃跑状态；不要把射出第一箭当成已经拿到奖励。')}</p><div class="books">{outside.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>{t('怪异表将玉手箱关联到这些生成锚点；奖励表收录下列 {count} 种候选物品。不是每次全部获得，抽选与数量条件仍需核对。',{count:treasureRewards.length})}</p><details><summary>{t('查看奖励候选：设计图、外观与物品')}</summary><div class="books">{treasureRewards.map(e=>e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details></section>
+<h2>{t('村庄图书')}</h2><p>{t('“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。')}</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={href(m.href)}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&m.progress_label&&<small>{t('关联进度：{progress}',{progress:String(m.progress_label)})}</small>}</a>)}</div>
+<h2>{t('独立区域图书')}</h2><div class="books">{inside.map(m=><a id={m.anchor} href={href(m.href)}>{m.label}<small>{m.map.includes('2160')?t('附身草丛（藪）'):t('隘口（峠）')} · {m.x}, {m.y}</small>{m.progress_label&&<small>{t('关联进度：{progress}',{progress:String(m.progress_label)})}</small>}</a>)}</div>
+<p>{t('这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。')}</p>
+<details><summary>{t('地图数据来源')}</summary><p>{t('底图：minimap_01_spr_tc.nltx；位置：lostbook.dat 与 YMWR 地图锚点。世界坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）及 X/Y 偏移（348、−145）换算到原图像素。')}</p></details>
 </BaseLayout>
 <style>.road-map{margin:1rem 0}.road-map summary{cursor:pointer}.road-map img{width:100%;height:auto}.map-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}.map-wrap svg{display:block;width:100%;min-width:680px;max-height:none}.map-wrap a:hover circle{fill:var(--green)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.5rem}.books a{padding:.6rem;background:var(--paper-raised);border-radius:8px;color:var(--ink);text-decoration:none}.books small{display:block;color:var(--muted)}p{line-height:1.7}</style>

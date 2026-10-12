@@ -2,21 +2,27 @@
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
-const catalog=getCatalog();
-const skills=catalog.entities.filter(e=>e.kind==='activities'&&e.activity_type==='祠堂能力 / 配方解锁').sort((a,b)=>Number(a.numeric_id)-Number(b.numeric_id));
+import ShrineWiki from '../../components/save/ShrineWiki';
+import { getI18n } from '../../i18n/server';
+import '../../styles/save-editor.css';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+// Shrine skill nodes share an ID prefix; their activity type text is translated.
+const skills=catalog.entities.filter(e=>e.kind==='activities'&&e.id.startsWith('SKILL_NODE_')).sort((a,b)=>Number(a.numeric_id)-Number(b.numeric_id));
 const priorities=[
- {title:'田地多、每天收获费时',ids:['SKILL_NODE_HARVEST_SICKLE','SKILL_NODE_CRAFT_SPRINKLER_SMALL'],why:'先改善收获和浇水，再扩种；洒水器还需要另备制作材料。'},
- {title:'正在攒建筑材料',ids:['SKILL_NODE_WOOD_DROP_PLUS_1','SKILL_NODE_MINE_DROP_PLUS_1'],why:'优先增加每次采集所得，配合建筑清单留货。'},
- {title:'想学村民食谱',ids:['SKILL_NODE_VILLAGER_EXCHANGE_1'],why:'先提升交流效率，再完成好感度突破并回访村民。'},
- {title:'准备提高出货收入',ids:['SKILL_NODE_CROPS_PRICE_UP_1','SKILL_NODE_CROPS_PROCESSED_PRODUCTS_PRICE_UP_1'],why:'按实际出售的是原作物还是加工品选路线，两种加成不是同一个类别。'},
+ {title:t('田地多、每天收获费时'),ids:['SKILL_NODE_HARVEST_SICKLE','SKILL_NODE_CRAFT_SPRINKLER_SMALL'],why:t('先改善收获和浇水，再扩种；洒水器还需要另备制作材料。')},
+ {title:t('正在攒建筑材料'),ids:['SKILL_NODE_WOOD_DROP_PLUS_1','SKILL_NODE_MINE_DROP_PLUS_1'],why:t('优先增加每次采集所得，配合建筑清单留货。')},
+ {title:t('想学村民食谱'),ids:['SKILL_NODE_VILLAGER_EXCHANGE_1'],why:t('先提升交流效率，再完成好感度突破并回访村民。')},
+ {title:t('准备提高出货收入'),ids:['SKILL_NODE_CROPS_PRICE_UP_1','SKILL_NODE_CROPS_PROCESSED_PRODUCTS_PRICE_UP_1'],why:t('按实际出售的是原作物还是加工品选路线，两种加成不是同一个类别。')},
 ];
 ---
-<BaseLayout title="祠堂能力与解锁规划"><h1>祠堂能力与解锁规划</h1>
-<p>先完成<a href={withBase("/guides/progression/")}>岔路祠堂的修复任务</a>。以下按当前目标安排优先级；学习前还需在游戏中确认已开放的节点和消耗。</p>
-<section><h2>按目标选择</h2>{priorities.map(group=><article class="card"><h3>{group.title}</h3><p>{group.why}</p><ul>{group.ids.map(id=>{const skill=skills.find(e=>e.id===id);return skill&&<li><a href={withBase(`#${id}`)}>{skill.name.zh_hans}</a>：{String(skill.description)}</li>;})}</ul></article>)}</section>
-<section><h2>能力与配方一览</h2><p>前置栏显示游戏表中的连接节点；多个连接不据此推定必须全部学习。消耗物品的列对应尚未确认，暂不显示推测数量。</p>
-<label>查找能力或配方<input id="skill-search" type="search" placeholder="名称、效果或拼音" /></label>
-<div class="skills">{skills.map(skill=>{const recipes=catalog.entities.filter(e=>['craft-recipes','cooking-recipes'].includes(e.kind)&&Number(e.unlock_flag)>0&&e.unlock_flag===skill.unlock_flag);return <article class="card skill" id={skill.id} data-search={`${skill.searchText} ${skill.description}`}><h3><a href={withBase(entityUrl(skill))}>{skill.name.zh_hans}</a></h3><p>{String(skill.description)}</p><p>前置：{((skill.prerequisites??[]) as string[]).length?((skill.prerequisites??[]) as string[]).map(id=>{const previous=skills.find(e=>e.id===id);return previous&&<a class="previous" href={withBase(`#${id}`)}>{previous.name.zh_hans}</a>;}):'无'}</p>{recipes.length>0&&<div class="recipes">{recipes.map(recipe=><a href={withBase(entityUrl(recipe))}>{recipe.icon_path&&<img src={withBase(recipe.icon_path)} alt="" width="40" height="40" loading="lazy"/>}{recipe.name.zh_hans} · 材料与用途</a>)}</div>}</article>;})}</div></section>
+<BaseLayout title={t('祠堂能力与解锁规划')}><h1>{t('祠堂能力与解锁规划')}</h1>
+<p set:html={tHtml('先完成<a href="/guides/progression/">岔路祠堂的修复任务</a>。以下按当前目标安排优先级；学习前还需在游戏中确认已开放的节点和消耗。')} />
+<section class="save-editor" style="width:100%"><ShrineWiki client:only="react" locale={locale}><p slot="fallback" class="save-loading" role="status">{t('正在加载狐狸神社技能树…')}</p></ShrineWiki></section>
+<section><h2>{t('按目标选择')}</h2>{priorities.map(group=><article class="card"><h3>{group.title}</h3><p>{group.why}</p><ul>{group.ids.map(id=>{const skill=skills.find(e=>e.id===id);return skill&&<li><a href={`#${id}`}>{skill.name.zh_hans}</a>{t('：')}{String(skill.description)}</li>;})}</ul></article>)}</section>
+<section><h2>{t('能力与配方一览')}</h2><p>{t('学习需要满足全部前置节点。点击上方技能树节点可查看修缮等级、学习材料和解锁配方。')}</p>
+<label>{t('查找能力或配方')}<input id="skill-search" type="search" placeholder={t('名称、效果或拼音')} /></label>
+<div class="skills">{skills.map(skill=>{const recipes=catalog.entities.filter(e=>['craft-recipes','cooking-recipes'].includes(e.kind)&&Number(e.unlock_flag)>0&&e.unlock_flag===skill.unlock_flag);return <article class="card skill" id={skill.id} data-search={`${skill.searchText} ${skill.description}`}><h3><a href={href(entityUrl(skill))}>{skill.name.zh_hans}</a></h3><p>{String(skill.description)}</p><p>{t('前置：')}{((skill.prerequisites??[]) as string[]).length?((skill.prerequisites??[]) as string[]).map(id=>{const previous=skills.find(e=>e.id===id);return previous&&<a class="previous" href={`#${id}`}>{previous.name.zh_hans}</a>;}):t('无')}</p>{recipes.length>0&&<div class="recipes">{recipes.map(recipe=><a href={href(entityUrl(recipe))}>{recipe.icon_path&&<img src={withBase(recipe.icon_path)} alt="" width="40" height="40" loading="lazy"/>}{t('{name} · 材料与用途',{name:recipe.name.zh_hans})}</a>)}</div>}</article>;})}</div></section>
 </BaseLayout>
 <script>
 import {normalizeSearch} from '../../data/clientSearch';

@@ -1,4 +1,5 @@
-export const GAME_SEASONS = ['春', '夏', '秋', '冬'] as const;
+import { tr } from '../i18n/active';
+export const GAME_SEASONS = [tr('春'), tr('夏'), tr('秋'), tr('冬')] as const;
 const DAY = 86400n;
 const DAY_START = 7n * 3600n;
 export const MAX_GAME_SECONDS = (1n << 63n) - 1n;

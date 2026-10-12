@@ -1,0 +1,195 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCatalog, entityUrl } from '../../data/repository';
+import fishing from '../../../data/sources/game-fishing.json';
+import { getI18n } from '../../i18n/server';
+import { msg } from '../../i18n/translate';
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
+const fish = new Map(catalog.entities.filter(e => e.kind === 'fish').map(e => [e.id, e]));
+const spotNames = new Map([...fish.values()].flatMap(e => ((e.locations ?? []) as { location_id: string; name: { zh_hans: string } }[]).map(l => [l.location_id, l.name.zh_hans] as const)));
+const seasons: [string, string][] = [['spring', msg('春')], ['summer', msg('夏')], ['autumn', msg('秋')], ['winter', msg('冬')]];
+const periods: [string, string, string][] = [['morning', msg('早晨'), '7–12'], ['day', msg('白天'), '12–18'], ['evening', msg('夜晚'), '18–24'], ['late-night', msg('深夜'), '0–6']];
+const isTrash = (id: string) => id.startsWith('ITEM_ID_TRASH_');
+
+// The catch is drawn from one spot/season/period's rows in proportion to weight.
+type Spawn = (typeof fishing.spawns)[number];
+const pools = new Map<string, Spawn[]>();
+for (const spawn of fishing.spawns) {
+  const key = `${spawn.spot}|${spawn.season}|${spawn.period}`;
+  pools.set(key, [...pools.get(key) ?? [], spawn]);
+}
+function chances(spot: string, season: string, period: string) {
+  const pool = pools.get(`${spot}|${season}|${period}`) ?? [], total = pool.reduce((sum, row) => sum + row.weight, 0);
+  const result = new Map<string, number>();
+  for (const row of pool) result.set(row.item, (result.get(row.item) ?? 0) + row.weight / total);
+  return result;
+}
+const percent = (value: number) => value >= .1 ? `${Math.round(value * 100)}%` : `${(value * 100).toFixed(1)}%`;
+const heat = (value: number) => `--heat:${Math.round(10 + 60 * Math.min(1, value / .25))}%`;
+const seasonData = seasons.map(([season, label]) => {
+  const spots = fishing.spots.map(spot => {
+    const byPeriod = periods.map(([period]) => chances(spot, season, period));
+    const ids = [...new Set(byPeriod.flatMap(map => [...map.keys()]))].filter(id => !isTrash(id))
+      .sort((a, b) => Math.max(...byPeriod.map(m => m.get(b) ?? 0)) - Math.max(...byPeriod.map(m => m.get(a) ?? 0)));
+    const trash = byPeriod.map(map => [...map].filter(([id]) => isTrash(id)).reduce((sum, [, value]) => sum + value, 0));
+    return { spot, byPeriod, ids, trash };
+  });
+  // Fish × spot grid in catalog order; each cell lists the periods the fish bites at that spot.
+  const caught = new Set(spots.flatMap(s => s.ids));
+  const grid = [...fish.keys()].filter(id => caught.has(id)).map(id => ({ id, cells: spots.map(({ spot, byPeriod }) => ({ spot, odds: byPeriod.map(map => map.get(id) ?? 0) })) }));
+  return { season, label, spots, grid, species: caught.size };
+});
+---
+<BaseLayout title={t('四季钓点分布')} description={t('每个钓鱼点在各季节、各时段能钓到哪些鱼，以及每次上钩是哪种鱼的概率。')}>
+  <h1>{t('四季钓点分布')}</h1>
+  <p>{t('先选季节，上方总表告诉你每个钓点、每个时段能钓到几种鱼；下方按钓点列出每种鱼的上钩概率，颜色越深越容易钓到。')}</p>
+  <p class="note">{t('概率按游戏内出现权重计算，是每次上钩时为该鱼的基础概率，未计入鱼饵和祠堂能力。杂物（空罐、塑料袋、树枝、水草）合并显示。')} <a href={href('/data/fish/')}>{t('全部鱼类筛选')}</a> · <a href={href('/guides/fishing-plan/')}>{t('四季钓鱼与留货')}</a></p>
+
+  <div class="fish-controls">
+    <div class="fish-seasons" role="tablist" aria-label={t('季节')}>
+      {seasonData.map(({ season, label }, index) => <button type="button" role="tab" id={`tab-${season}`} aria-controls={`season-${season}`} aria-selected={index === 0 ? "true" : "false"} tabindex={index ? "-1" : "0"} data-season={season}>{t(label)}</button>)}
+    </div>
+    <div class="fish-views" role="group" aria-label={t('查看方式')}>
+      <button type="button" aria-pressed="true" data-view="spots">{t('按钓点')}</button>
+      <button type="button" aria-pressed="false" data-view="grid">{t('按鱼')}</button>
+    </div>
+  </div>
+
+  {seasonData.map(({ season, label, spots, grid, species }, index) => <section id={`season-${season}`} class="fish-season" role="tabpanel" aria-labelledby={`tab-${season}`} hidden={index > 0}>
+    <h2>{t('{season}季：共 {count} 种鱼', { season: t(label), count: species })}</h2>
+    <div class="fish-grid-view" hidden>
+      <p class="fish-legend">{periods.map(([, name, hours], i) => <span><i class={`p${i}`}></i>{t(name)} <small>{hours}</small></span>)}<span class="note">{t('亮起表示这个时段能在该钓点钓到。')}</span></p>
+      <div class="fish-scroll">
+        <table class="fish-grid">
+          <thead><tr><th scope="col">{t('鱼')}</th>{spots.map(({ spot }) => <th scope="col">{spotNames.get(spot) ?? spot}</th>)}</tr></thead>
+          <tbody>{grid.map(({ id, cells }) => { const e = fish.get(id)!; return <tr>
+            <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="24" height="24" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
+            {cells.map(({ spot, odds }) => {
+              const text = odds.some(Boolean) ? periods.flatMap(([, name], i) => odds[i] ? [`${t(name)} ${percent(odds[i])}`] : []).join(' · ') : t('钓不到');
+              return <td title={`${spotNames.get(spot) ?? spot}：${text}`} aria-label={text} data-sort={odds.some(Boolean) ? String(odds.reduce((sum, value) => sum + value, 0)) : ''}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
+            })}
+          </tr>; })}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="fish-spot-view">
+    <div class="fish-scroll">
+      <table class="fish-summary">
+        <thead><tr><th scope="col">{t('钓鱼点')}</th>{periods.map(([, name, hours]) => <th scope="col">{t(name)}<small>{hours}</small></th>)}</tr></thead>
+        <tbody>{spots.map(({ spot, byPeriod }) => {
+          const counts = byPeriod.map(map => [...map.keys()].filter(id => !isTrash(id)).length);
+          return <tr><th scope="row"><a href={`#${season}-${spot}`}>{spotNames.get(spot) ?? spot}</a></th>{counts.map(count => <td style={count ? `--heat:${Math.round(10 + 60 * count / 12)}%` : undefined}>{count ? t('{count} 种', { count }) : '—'}</td>)}</tr>;
+        })}</tbody>
+      </table>
+    </div>
+
+    <div class="fish-spots">{spots.map(({ spot, byPeriod, ids, trash }) => <article class="fish-spot" id={`${season}-${spot}`}>
+      <h3>{spotNames.get(spot) ?? spot}<small>{t('{count} 种鱼', { count: ids.length })}</small></h3>
+      <div class="fish-scroll">
+        <table class="fish-odds">
+          <thead><tr><th scope="col"><span class="sr-only">{t('鱼')}</span></th>{periods.map(([, name]) => <th scope="col">{t(name)}</th>)}</tr></thead>
+          <tbody>
+            {ids.map(id => { const e = fish.get(id)!; return <tr>
+              <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
+              {byPeriod.map(map => { const value = map.get(id) ?? 0; return <td style={value ? heat(value) : undefined}>{value ? percent(value) : '—'}</td>; })}
+            </tr>; })}
+            <tr class="fish-trash" data-sort-pin="end"><th scope="row">{t('杂物')}</th>{trash.map(value => <td>{value ? percent(value) : '—'}</td>)}</tr>
+          </tbody>
+        </table>
+      </div>
+    </article>)}</div>
+    </div>
+  </section>)}
+  <p class="note">{t('来源：fishing.dat 各钓鱼点的出现记录与权重。')}</p>
+</BaseLayout>
+<script>
+  import { onPageMount } from '../../lib/pageLifecycle';
+  // The client router runs this module once; wire the controls again on every visit to the page.
+  const dispose = onPageMount(() => {
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('.fish-seasons [role=tab]')];
+    if (!tabs.length) return;
+    const show = (tab: HTMLButtonElement) => {
+      for (const other of tabs) {
+        const selected = other === tab;
+        other.setAttribute('aria-selected', String(selected));
+        other.tabIndex = selected ? 0 : -1;
+        document.getElementById(`season-${other.dataset.season}`)!.hidden = !selected;
+      }
+    };
+    for (const [index, tab] of tabs.entries()) {
+      tab.addEventListener('click', () => show(tab));
+      tab.addEventListener('keydown', event => {
+        const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        const next = tabs[(index + step + tabs.length) % tabs.length];
+        show(next); next.focus();
+      });
+    }
+    const views = [...document.querySelectorAll<HTMLButtonElement>('.fish-views button')];
+    for (const button of views) button.addEventListener('click', () => {
+      for (const other of views) other.setAttribute('aria-pressed', String(other === button));
+      const grid = button.dataset.view === 'grid';
+      for (const panel of document.querySelectorAll<HTMLElement>('.fish-grid-view')) panel.hidden = !grid;
+      for (const panel of document.querySelectorAll<HTMLElement>('.fish-spot-view')) panel.hidden = grid;
+    });
+    const season = location.hash.match(/^#(spring|summer|autumn|winter)/)?.[1];
+    const initial = tabs.find(tab => tab.dataset.season === season);
+    if (initial) show(initial);
+  });
+  if (import.meta.hot) import.meta.hot.dispose(dispose);
+</script>
+<style>
+  p { line-height: 1.8; }
+  .note { color: var(--muted); font-size: .88rem; }
+  .fish-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; margin: .5rem 0 1rem; position: sticky; top: 4.5rem; z-index: 3; }
+  .fish-seasons, .fish-views { display: inline-flex; gap: 3px; padding: 3px; border: 1px solid var(--border); border-radius: 10px; background: var(--paper); }
+  .fish-seasons button, .fish-views button { font: inherit; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 7px; padding: .4rem 1.2rem; cursor: pointer; }
+  .fish-views button { font-size: .85rem; padding-inline: .9rem; }
+  .fish-seasons button[aria-selected='true'], .fish-views button[aria-pressed='true'] { background: var(--paper-raised); border-color: var(--green); font-weight: 600; }
+  .fish-seasons button:focus-visible, .fish-views button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .fish-legend { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin: 0 0 .7rem; font-size: .85rem; }
+  .fish-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .fish-legend small { color: var(--muted); }
+  .fish-legend .note { font-size: .8rem; }
+  .fish-legend i, .fish-grid i { display: inline-block; width: .7rem; height: .7rem; border-radius: 3px; border: 1px solid color-mix(in srgb, var(--border) 80%, transparent); }
+  .p0 { --period: #e3b23c; } .p1 { --period: #6fae5a; } .p2 { --period: #d9774b; } .p3 { --period: #6a78c8; }
+  :is(.fish-legend, .fish-grid) i[class] { background: var(--period); border-color: var(--period); }
+  .fish-grid thead th:not(:first-child) { white-space: normal; min-width: 5.5rem; font-size: .8rem; }
+  .fish-grid thead th:first-child { text-align: left; }
+  .fish-grid td { background: none; }
+  .fish-grid td i + i { margin-left: 3px; }
+  .fish-grid th[scope='row'], .fish-grid thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper-raised); }
+  .fish-grid thead th:first-child { background: var(--paper); }
+  .fish-grid th[scope='row'] a { display: flex; align-items: center; gap: .4rem; color: var(--ink); text-decoration: none; }
+  .fish-grid th[scope='row'] a:hover span { text-decoration: underline; }
+  .fish-grid img { object-fit: contain; flex: none; }
+  .fish-season h2 { margin-top: .5rem; }
+  .fish-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--paper-raised); }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: .45rem .6rem; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); }
+  thead th { background: var(--paper); font-weight: 600; white-space: nowrap; text-align: center; }
+  thead th small { display: block; color: var(--muted); font-weight: 400; font-size: .72rem; }
+  th[scope='row'] { text-align: left; white-space: nowrap; font-weight: 500; }
+  td { text-align: center; white-space: nowrap; color: var(--muted); background: color-mix(in srgb, var(--green) var(--heat, 0%), transparent); }
+  td[style] { color: var(--ink); }
+  .fish-summary th[scope='row'] a { color: var(--ink); }
+  .fish-summary thead th:first-child { text-align: left; }
+  .fish-spots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .fish-spot { scroll-margin-top: 8rem; }
+  .fish-spot h3 { display: flex; align-items: baseline; gap: .6rem; margin: 0 0 .5rem; }
+  .fish-spot h3 small { color: var(--muted); font-weight: 400; font-size: .8rem; }
+  .fish-odds th[scope='row'] a { display: flex; align-items: center; gap: .4rem; color: var(--ink); text-decoration: none; }
+  .fish-odds th[scope='row'] a:hover span { text-decoration: underline; }
+  .fish-odds img { object-fit: contain; flex: none; }
+  .fish-trash th { color: var(--muted); font-size: .8rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 640px) {
+    .fish-controls { top: 4rem; }
+    .fish-seasons, .fish-views { display: flex; flex: 1 1 100%; }
+    .fish-seasons button, .fish-views button { flex: 1; padding-inline: .5rem; }
+    .fish-scroll { margin-inline: -.75rem; border-radius: 0; border-inline: 0; }
+    .fish-spot h3 { padding-inline: .1rem; }
+  }
+</style>

@@ -1,0 +1,968 @@
+[
+  {
+    "id": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+    "name": {
+      "aliases": [
+        "克什米尔小山羊",
+        "喀什米爾小山羊",
+        "カシミヤ子ヤギ",
+        "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+        "喀什米尔小山羊",
+        "새끼 캐시미어"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+      "ja": "カシミヤ子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "カシミヤ子ヤギ",
+        "ko": "새끼 캐시미어",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "克什米尔小山羊",
+        "zh-TW": "喀什米爾小山羊"
+      },
+      "zh_hans": "克什米尔小山羊",
+      "zh_hant": "喀什米爾小山羊"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_GOAT",
+    "name": {
+      "aliases": [
+        "小山羊",
+        "子ヤギ",
+        "LIVESTOCK_ID_BABY_GOAT",
+        "새끼 염소"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_GOAT",
+      "ja": "子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "子ヤギ",
+        "ko": "새끼 염소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小山羊",
+        "zh-TW": "小山羊"
+      },
+      "zh_hans": "小山羊",
+      "zh_hant": "小山羊"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+    "name": {
+      "aliases": [
+        "斑纹小山羊",
+        "斑紋小山羊",
+        "まだら子ヤギ",
+        "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+        "얼룩무늬 새끼 염소"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+      "ja": "まだら子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "まだら子ヤギ",
+        "ko": "얼룩무늬 새끼 염소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "斑纹小山羊",
+        "zh-TW": "斑紋小山羊"
+      },
+      "zh_hans": "斑纹小山羊",
+      "zh_hant": "斑紋小山羊"
+    },
+    "numeric_id": 307
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_HORSE",
+    "name": {
+      "aliases": [
+        "小马",
+        "小馬",
+        "子ウマ",
+        "LIVESTOCK_ID_BABY_HORSE",
+        "망아지"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_HORSE",
+      "ja": "子ウマ",
+      "review_status": "official",
+      "translations": {
+        "ja": "子ウマ",
+        "ko": "망아지",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小马",
+        "zh-TW": "小馬"
+      },
+      "zh_hans": "小马",
+      "zh_hant": "小馬"
+    },
+    "numeric_id": 18
+  },
+  {
+    "id": "LIVESTOCK_ID_CALF",
+    "name": {
+      "aliases": [
+        "小牛",
+        "子ウシ",
+        "LIVESTOCK_ID_CALF",
+        "송아지"
+      ],
+      "internal": "LIVESTOCK_ID_CALF",
+      "ja": "子ウシ",
+      "review_status": "official",
+      "translations": {
+        "ja": "子ウシ",
+        "ko": "송아지",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小牛",
+        "zh-TW": "小牛"
+      },
+      "zh_hans": "小牛",
+      "zh_hant": "小牛"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "LIVESTOCK_ID_CASHMERE_GOAT",
+    "name": {
+      "aliases": [
+        "克什米尔山羊",
+        "喀什米爾山羊",
+        "カシミヤヤギ",
+        "LIVESTOCK_ID_CASHMERE_GOAT",
+        "喀什米尔山羊",
+        "캐시미어"
+      ],
+      "internal": "LIVESTOCK_ID_CASHMERE_GOAT",
+      "ja": "カシミヤヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "カシミヤヤギ",
+        "ko": "캐시미어",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "克什米尔山羊",
+        "zh-TW": "喀什米爾山羊"
+      },
+      "zh_hans": "克什米尔山羊",
+      "zh_hant": "喀什米爾山羊"
+    },
+    "numeric_id": 13
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICK",
+    "name": {
+      "aliases": [
+        "小鸡",
+        "小雞",
+        "ヒヨコ",
+        "LIVESTOCK_ID_CHICK",
+        "병아리"
+      ],
+      "internal": "LIVESTOCK_ID_CHICK",
+      "ja": "ヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ヒヨコ",
+        "ko": "병아리",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小鸡",
+        "zh-TW": "小雞"
+      },
+      "zh_hans": "小鸡",
+      "zh_hant": "小雞"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICKEN",
+    "name": {
+      "aliases": [
+        "鸡",
+        "雞",
+        "ニワトリ",
+        "LIVESTOCK_ID_CHICKEN",
+        "닭"
+      ],
+      "internal": "LIVESTOCK_ID_CHICKEN",
+      "ja": "ニワトリ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ニワトリ",
+        "ko": "닭",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "鸡",
+        "zh-TW": "雞"
+      },
+      "zh_hans": "鸡",
+      "zh_hant": "雞"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICKEN_SILKIE",
+    "name": {
+      "aliases": [
+        "乌骨鸡",
+        "烏骨雞",
+        "ウコッケイ",
+        "LIVESTOCK_ID_CHICKEN_SILKIE",
+        "오골계"
+      ],
+      "internal": "LIVESTOCK_ID_CHICKEN_SILKIE",
+      "ja": "ウコッケイ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ウコッケイ",
+        "ko": "오골계",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "乌骨鸡",
+        "zh-TW": "烏骨雞"
+      },
+      "zh_hans": "乌骨鸡",
+      "zh_hant": "烏骨雞"
+    },
+    "numeric_id": 302
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICK_SILKIE",
+    "name": {
+      "aliases": [
+        "乌骨鸡的小鸡",
+        "烏骨雞的小雞",
+        "ウコッケイのヒヨコ",
+        "LIVESTOCK_ID_CHICK_SILKIE",
+        "새끼 오골계"
+      ],
+      "internal": "LIVESTOCK_ID_CHICK_SILKIE",
+      "ja": "ウコッケイのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ウコッケイのヒヨコ",
+        "ko": "새끼 오골계",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "乌骨鸡的小鸡",
+        "zh-TW": "烏骨雞的小雞"
+      },
+      "zh_hans": "乌骨鸡的小鸡",
+      "zh_hant": "烏骨雞的小雞"
+    },
+    "numeric_id": 301
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／蓝色",
+        "彩色小雞／藍色",
+        "カラーヒヨコ/青色",
+        "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+        "컬러 병아리/파란색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+      "ja": "カラーヒヨコ/青色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/青色",
+        "ko": "컬러 병아리/파란색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／蓝色",
+        "zh-TW": "彩色小雞／藍色"
+      },
+      "zh_hans": "彩色小鸡／蓝色",
+      "zh_hant": "彩色小雞／藍色"
+    },
+    "numeric_id": 23
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+    "name": {
+      "aliases": [
+        "彩色小鸡／灰色",
+        "彩色小雞／灰色",
+        "カラーヒヨコ/灰色",
+        "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+        "컬러 병아리/회색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+      "ja": "カラーヒヨコ/灰色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/灰色",
+        "ko": "컬러 병아리/회색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／灰色",
+        "zh-TW": "彩色小雞／灰色"
+      },
+      "zh_hans": "彩色小鸡／灰色",
+      "zh_hant": "彩色小雞／灰色"
+    },
+    "numeric_id": 25
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+    "name": {
+      "aliases": [
+        "彩色小鸡／绿色",
+        "彩色小雞／綠色",
+        "カラーヒヨコ/緑色",
+        "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+        "컬러 병아리/초록색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+      "ja": "カラーヒヨコ/緑色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/緑色",
+        "ko": "컬러 병아리/초록색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／绿色",
+        "zh-TW": "彩色小雞／綠色"
+      },
+      "zh_hans": "彩色小鸡／绿色",
+      "zh_hant": "彩色小雞／綠色"
+    },
+    "numeric_id": 21
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／水蓝色",
+        "彩色小雞／水藍色",
+        "カラーヒヨコ/水色",
+        "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+        "컬러 병아리/하늘색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+      "ja": "カラーヒヨコ/水色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/水色",
+        "ko": "컬러 병아리/하늘색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／水蓝色",
+        "zh-TW": "彩色小雞／水藍色"
+      },
+      "zh_hans": "彩色小鸡／水蓝色",
+      "zh_hant": "彩色小雞／水藍色"
+    },
+    "numeric_id": 22
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／橘色",
+        "彩色小雞／橘色",
+        "カラーヒヨコ/橙色",
+        "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+        "컬러 병아리/주황색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+      "ja": "カラーヒヨコ/橙色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/橙色",
+        "ko": "컬러 병아리/주황색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／橘色",
+        "zh-TW": "彩色小雞／橘色"
+      },
+      "zh_hans": "彩色小鸡／橘色",
+      "zh_hant": "彩色小雞／橘色"
+    },
+    "numeric_id": 20
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／紫色",
+        "彩色小雞／紫色",
+        "カラーヒヨコ/紫色",
+        "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+        "컬러 병아리/보라색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+      "ja": "カラーヒヨコ/紫色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/紫色",
+        "ko": "컬러 병아리/보라색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／紫色",
+        "zh-TW": "彩色小雞／紫色"
+      },
+      "zh_hans": "彩色小鸡／紫色",
+      "zh_hant": "彩色小雞／紫色"
+    },
+    "numeric_id": 24
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_RED",
+    "name": {
+      "aliases": [
+        "彩色小鸡／红色",
+        "彩色小雞／紅色",
+        "カラーヒヨコ/赤色",
+        "LIVESTOCK_ID_COLOR_CHICK_RED",
+        "컬러 병아리/빨간색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_RED",
+      "ja": "カラーヒヨコ/赤色",
+      "review_status": "official",
+      "translations": {
+        "ja": "カラーヒヨコ/赤色",
+        "ko": "컬러 병아리/빨간색",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "彩色小鸡／红色",
+        "zh-TW": "彩色小雞／紅色"
+      },
+      "zh_hans": "彩色小鸡／红色",
+      "zh_hant": "彩色小雞／紅色"
+    },
+    "numeric_id": 19
+  },
+  {
+    "id": "LIVESTOCK_ID_COW",
+    "name": {
+      "aliases": [
+        "牛",
+        "ウシ",
+        "LIVESTOCK_ID_COW",
+        "소"
+      ],
+      "internal": "LIVESTOCK_ID_COW",
+      "ja": "ウシ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ウシ",
+        "ko": "소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "牛",
+        "zh-TW": "牛"
+      },
+      "zh_hans": "牛",
+      "zh_hant": "牛"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "LIVESTOCK_ID_COWCHILD_FLUFFY",
+    "name": {
+      "aliases": [
+        "毛茸茸的小牛",
+        "ふさふさの子ウシ",
+        "LIVESTOCK_ID_COWCHILD_FLUFFY",
+        "복슬복슬 송아지"
+      ],
+      "internal": "LIVESTOCK_ID_COWCHILD_FLUFFY",
+      "ja": "ふさふさの子ウシ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ふさふさの子ウシ",
+        "ko": "복슬복슬 송아지",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "毛茸茸的小牛",
+        "zh-TW": "毛茸茸的小牛"
+      },
+      "zh_hans": "毛茸茸的小牛",
+      "zh_hant": "毛茸茸的小牛"
+    },
+    "numeric_id": 305
+  },
+  {
+    "id": "LIVESTOCK_ID_COW_FLUFFY",
+    "name": {
+      "aliases": [
+        "毛茸茸的牛",
+        "ふさふさのウシ",
+        "LIVESTOCK_ID_COW_FLUFFY",
+        "복슬복슬 소"
+      ],
+      "internal": "LIVESTOCK_ID_COW_FLUFFY",
+      "ja": "ふさふさのウシ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ふさふさのウシ",
+        "ko": "복슬복슬 소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "毛茸茸的牛",
+        "zh-TW": "毛茸茸的牛"
+      },
+      "zh_hans": "毛茸茸的牛",
+      "zh_hant": "毛茸茸的牛"
+    },
+    "numeric_id": 306
+  },
+  {
+    "id": "LIVESTOCK_ID_DOG",
+    "name": {
+      "aliases": [
+        "狗",
+        "犬",
+        "LIVESTOCK_ID_DOG",
+        "개"
+      ],
+      "internal": "LIVESTOCK_ID_DOG",
+      "ja": "犬",
+      "review_status": "official",
+      "translations": {
+        "ja": "犬",
+        "ko": "개",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "狗",
+        "zh-TW": "狗"
+      },
+      "zh_hans": "狗",
+      "zh_hant": "狗"
+    },
+    "numeric_id": 200
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK",
+    "name": {
+      "aliases": [
+        "鸭",
+        "鴨",
+        "アヒル",
+        "LIVESTOCK_ID_DUCK",
+        "오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK",
+      "ja": "アヒル",
+      "review_status": "official",
+      "translations": {
+        "ja": "アヒル",
+        "ko": "오리",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "鸭",
+        "zh-TW": "鴨"
+      },
+      "zh_hans": "鸭",
+      "zh_hant": "鴨"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_CHICK",
+    "name": {
+      "aliases": [
+        "小鸭",
+        "小鴨",
+        "アヒルのヒヨコ",
+        "LIVESTOCK_ID_DUCK_CHICK",
+        "새끼 오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_CHICK",
+      "ja": "アヒルのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "ja": "アヒルのヒヨコ",
+        "ko": "새끼 오리",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小鸭",
+        "zh-TW": "小鴨"
+      },
+      "zh_hans": "小鸭",
+      "zh_hant": "小鴨"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_CHICK_WILD",
+    "name": {
+      "aliases": [
+        "野鸭的小鸭",
+        "野鴨的小鴨",
+        "カモのヒヨコ",
+        "LIVESTOCK_ID_DUCK_CHICK_WILD",
+        "새끼 청둥오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_CHICK_WILD",
+      "ja": "カモのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "ja": "カモのヒヨコ",
+        "ko": "새끼 청둥오리",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "野鸭的小鸭",
+        "zh-TW": "野鴨的小鴨"
+      },
+      "zh_hans": "野鸭的小鸭",
+      "zh_hant": "野鴨的小鴨"
+    },
+    "numeric_id": 303
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_WILD",
+    "name": {
+      "aliases": [
+        "野鸭",
+        "野鴨",
+        "カモ",
+        "LIVESTOCK_ID_DUCK_WILD",
+        "청둥오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_WILD",
+      "ja": "カモ",
+      "review_status": "official",
+      "translations": {
+        "ja": "カモ",
+        "ko": "청둥오리",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "野鸭",
+        "zh-TW": "野鴨"
+      },
+      "zh_hans": "野鸭",
+      "zh_hant": "野鴨"
+    },
+    "numeric_id": 304
+  },
+  {
+    "id": "LIVESTOCK_ID_GHOST_COW",
+    "name": {
+      "aliases": [
+        "牛鬼",
+        "牛お化け",
+        "LIVESTOCK_ID_GHOST_COW",
+        "소 괴물"
+      ],
+      "internal": "LIVESTOCK_ID_GHOST_COW",
+      "ja": "牛お化け",
+      "review_status": "official",
+      "translations": {
+        "ja": "牛お化け",
+        "ko": "소 괴물",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "牛鬼",
+        "zh-TW": "牛鬼"
+      },
+      "zh_hans": "牛鬼",
+      "zh_hant": "牛鬼"
+    },
+    "numeric_id": 100
+  },
+  {
+    "id": "LIVESTOCK_ID_GOAT",
+    "name": {
+      "aliases": [
+        "山羊",
+        "ヤギ",
+        "LIVESTOCK_ID_GOAT",
+        "염소"
+      ],
+      "internal": "LIVESTOCK_ID_GOAT",
+      "ja": "ヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ヤギ",
+        "ko": "염소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "山羊",
+        "zh-TW": "山羊"
+      },
+      "zh_hans": "山羊",
+      "zh_hant": "山羊"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "LIVESTOCK_ID_GOAT_MOTTLED",
+    "name": {
+      "aliases": [
+        "斑纹山羊",
+        "斑紋山羊",
+        "まだらヤギ",
+        "LIVESTOCK_ID_GOAT_MOTTLED",
+        "얼룩무늬 염소"
+      ],
+      "internal": "LIVESTOCK_ID_GOAT_MOTTLED",
+      "ja": "まだらヤギ",
+      "review_status": "official",
+      "translations": {
+        "ja": "まだらヤギ",
+        "ko": "얼룩무늬 염소",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "斑纹山羊",
+        "zh-TW": "斑紋山羊"
+      },
+      "zh_hans": "斑纹山羊",
+      "zh_hant": "斑紋山羊"
+    },
+    "numeric_id": 308
+  },
+  {
+    "id": "LIVESTOCK_ID_HORSE",
+    "name": {
+      "aliases": [
+        "马",
+        "馬",
+        "ウマ",
+        "LIVESTOCK_ID_HORSE",
+        "말"
+      ],
+      "internal": "LIVESTOCK_ID_HORSE",
+      "ja": "ウマ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ウマ",
+        "ko": "말",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "马",
+        "zh-TW": "馬"
+      },
+      "zh_hans": "马",
+      "zh_hant": "馬"
+    },
+    "numeric_id": 17
+  },
+  {
+    "id": "LIVESTOCK_ID_LAMB",
+    "name": {
+      "aliases": [
+        "小绵羊",
+        "小綿羊",
+        "子ヒツジ",
+        "LIVESTOCK_ID_LAMB",
+        "새끼 양"
+      ],
+      "internal": "LIVESTOCK_ID_LAMB",
+      "ja": "子ヒツジ",
+      "review_status": "official",
+      "translations": {
+        "ja": "子ヒツジ",
+        "ko": "새끼 양",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小绵羊",
+        "zh-TW": "小綿羊"
+      },
+      "zh_hans": "小绵羊",
+      "zh_hant": "小綿羊"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "LIVESTOCK_ID_PIG",
+    "name": {
+      "aliases": [
+        "猪",
+        "豬",
+        "ブタ",
+        "LIVESTOCK_ID_PIG",
+        "돼지"
+      ],
+      "internal": "LIVESTOCK_ID_PIG",
+      "ja": "ブタ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ブタ",
+        "ko": "돼지",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "猪",
+        "zh-TW": "豬"
+      },
+      "zh_hans": "猪",
+      "zh_hant": "豬"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "LIVESTOCK_ID_PIGLET",
+    "name": {
+      "aliases": [
+        "小猪",
+        "小豬",
+        "子ブタ",
+        "LIVESTOCK_ID_PIGLET",
+        "새끼 돼지"
+      ],
+      "internal": "LIVESTOCK_ID_PIGLET",
+      "ja": "子ブタ",
+      "review_status": "official",
+      "translations": {
+        "ja": "子ブタ",
+        "ko": "새끼 돼지",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小猪",
+        "zh-TW": "小豬"
+      },
+      "zh_hans": "小猪",
+      "zh_hant": "小豬"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "LIVESTOCK_ID_ROOSTER",
+    "name": {
+      "aliases": [
+        "公鸡",
+        "公雞",
+        "雄鶏",
+        "LIVESTOCK_ID_ROOSTER",
+        "수탉"
+      ],
+      "internal": "LIVESTOCK_ID_ROOSTER",
+      "ja": "雄鶏",
+      "review_status": "official",
+      "translations": {
+        "ja": "雄鶏",
+        "ko": "수탉",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "公鸡",
+        "zh-TW": "公雞"
+      },
+      "zh_hans": "公鸡",
+      "zh_hant": "公雞"
+    },
+    "numeric_id": 30
+  },
+  {
+    "id": "LIVESTOCK_ID_SHEEP",
+    "name": {
+      "aliases": [
+        "绵羊",
+        "綿羊",
+        "ヒツジ",
+        "LIVESTOCK_ID_SHEEP",
+        "양"
+      ],
+      "internal": "LIVESTOCK_ID_SHEEP",
+      "ja": "ヒツジ",
+      "review_status": "official",
+      "translations": {
+        "ja": "ヒツジ",
+        "ko": "양",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "绵羊",
+        "zh-TW": "綿羊"
+      },
+      "zh_hans": "绵羊",
+      "zh_hant": "綿羊"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "LIVESTOCK_ID_TURKEY",
+    "name": {
+      "aliases": [
+        "火鸡",
+        "火雞",
+        "七面鳥",
+        "LIVESTOCK_ID_TURKEY",
+        "칠면조"
+      ],
+      "internal": "LIVESTOCK_ID_TURKEY",
+      "ja": "七面鳥",
+      "review_status": "official",
+      "translations": {
+        "ja": "七面鳥",
+        "ko": "칠면조",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "火鸡",
+        "zh-TW": "火雞"
+      },
+      "zh_hans": "火鸡",
+      "zh_hant": "火雞"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "LIVESTOCK_ID_TURKEY_CHICK",
+    "name": {
+      "aliases": [
+        "小火鸡",
+        "小火雞",
+        "七面鳥のヒヨコ",
+        "LIVESTOCK_ID_TURKEY_CHICK",
+        "새끼 칠면조"
+      ],
+      "internal": "LIVESTOCK_ID_TURKEY_CHICK",
+      "ja": "七面鳥のヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "ja": "七面鳥のヒヨコ",
+        "ko": "새끼 칠면조",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-CN": "小火鸡",
+        "zh-TW": "小火雞"
+      },
+      "zh_hans": "小火鸡",
+      "zh_hant": "小火雞"
+    },
+    "numeric_id": 6
+  }
+]

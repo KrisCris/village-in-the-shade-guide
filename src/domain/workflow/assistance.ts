@@ -6,6 +6,7 @@ import { autoAmount, autoDate, resolveIntent } from "./intent";
 import { canConnect, outputItems, stringArray } from "./graph";
 import { formatDay, seasonAt, yearAt } from "./date";
 import type { NodeKind, SimulationResult, WorkflowNode, WorkflowPlan } from "./types";
+import { tr } from '../../i18n/active';
 
 export type AssistanceAction = {
   key: string;
@@ -49,12 +50,12 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
   const insertBefore = soleSale?.kind === "sale" && !soleSale.itemId && autoAmount(soleSale) && autoDate(soleSale)
     && plan.edges.filter(e => e.target === soleSale.id).length === 1 ? soleSale.id : undefined;
   const canExtend = ordinary.length === 0 || !!insertBefore;
-  const suffix = insertBefore ? " · 接在现有出售前" : " · 自动数量与日期";
+  const suffix = insertBefore ? tr(' · 接在现有出售前') : tr(' · 自动数量与日期');
   if (outputs.length && canExtend) {
     for (const entity of entities) {
       if (entity.kind === "crops" && stringArray(entity.seed_item_ids).some(id => outputs.includes(id))) {
         assistance.next.push({ key: `plant:${entity.id}`, kind: "plant", sourceId: n.id, insertBefore,
-          label: `种植 ${entity.name.zh_hans}`, detail: `生长 ${entity.growth_days ?? "未知"} 天${suffix}`, create: { cropId: entity.id } });
+          label: tr('种植 {name}', { name: entity.name.zh_hans }), detail: `${tr('生长 {days} 天', { days: entity.growth_days ?? tr('未知') })}${suffix}`, create: { cropId: entity.id } });
       }
       if (entity.kind === "processes") {
         const knownMachine = entities.some(machine => machine.kind === "machines"
@@ -65,7 +66,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
         if (!Array.isArray(inputs) || inputs.some(a => !Number.isSafeInteger(a.quantity) || a.quantity <= 0) || !inputs.some(a => outputs.includes(a.item_id))) continue;
         const output = entity.output as { item_id?: string; quantity?: number } | undefined;
         if (!output?.item_id || !Number.isSafeInteger(output.quantity) || output.quantity! <= 0) continue;
-        const days = typeof entity.duration_minutes === "number" ? Math.max(1, Math.ceil(entity.duration_minutes / 1440)) : "未知";
+        const days = typeof entity.duration_minutes === "number" ? Math.max(1, Math.ceil(entity.duration_minutes / 1440)) : tr('未知');
         const salePrice = (id: string) => {
           const item = entities.find(e => e.kind === "items" && e.id === id);
           return qualityPrice(item?.sell_price as number, !!item?.quality_eligible, plan.quality)?.value;
@@ -73,9 +74,9 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
         const rawPrices = inputs.map(a => salePrice(a.item_id)), outputPrice = salePrice(output.item_id);
         const valueDelta = outputPrice !== undefined && typeof output.quantity === "number" && rawPrices.every(p => p !== undefined)
           ? outputPrice * output.quantity - inputs.reduce((sum, a, i) => sum + rawPrices[i]! * a.quantity, 0) : undefined;
-        const valueNote = valueDelta === undefined ? " · 产值差额待核实" : ` · 较原料直接出售 ${valueDelta >= 0 ? "+" : ""}${valueDelta}/批`;
+        const valueNote = valueDelta === undefined ? tr(' · 产值差额待核实') : tr(' · 较原料直接出售 {sign}{delta}/批', { sign: valueDelta >= 0 ? "+" : "", delta: valueDelta });
         assistance.next.push({ key: `process:${entity.id}`, kind: "process", sourceId: n.id, insertBefore,
-          label: `加工 ${entity.name.zh_hans}`, detail: `${inputs.map(a => `${name(a.item_id)} ×${a.quantity}`).join(" + ")} → ${name(output.item_id)} ×${output.quantity ?? "?"} · ${days} 天${valueNote}${suffix}`, valueDelta,
+          label: tr('加工 {name}', { name: entity.name.zh_hans }), detail: tr('{inputs} → {name} ×{count} · {days} 天{note}{suffix}', { inputs: inputs.map(a => `${name(a.item_id)} ×${a.quantity}`).join(" + "), name: name(output.item_id), count: output.quantity ?? "?", days, note: valueNote, suffix }), valueDelta,
           create: { recipeId: entity.id } });
       }
     }
@@ -83,7 +84,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
       const item = entities.find(e => e.kind === "items" && e.id === outputs[0]);
       if (typeof item?.sell_price === "number" && Number.isFinite(item.sell_price) && item.sell_price >= 0)
         assistance.next.unshift({ key: `sale:${item.id}`, kind: "sale", sourceId: n.id,
-          label: `出售 ${item.name.zh_hans}`, detail: "出货日期与数量跟随上游，留货先分配", create: {} });
+          label: tr('出售 {name}', { name: item.name.zh_hans }), detail: tr('出货日期与数量跟随上游，留货先分配'), create: {} });
     }
   }
   // Show known value gains before losses; this is not a whole-plan profit ranking.
@@ -95,7 +96,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
     if (!["reserve", "delivery"].includes(target.kind) || !canConnect(nodes, plan.edges, n.id, target.id, entities)) continue;
     const matching = (target.requirements ?? []).filter(a => outputs.includes(a.itemId));
     assistance.next.unshift({ key: `target:${target.id}`, kind: target.kind, sourceId: n.id, targetId: target.id,
-      label: `留给 ${target.label}`, detail: matching.map(a => `${name(a.itemId)} ×${a.quantity}`).join("、") + " · 连接后优先留货" });
+      label: tr('留给 {label}', { label: target.label }), detail: matching.map(a => `${name(a.itemId)} ×${a.quantity}`).join("、") + tr(' · 连接后优先留货') });
   }
   // Existing in-progress batches have already consumed their ingredients in the game.
   if (n.kind !== "process" || n.remainingDays !== undefined) return assistance;
@@ -118,7 +119,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
     for (const source of nodes) {
       if (!outputItems(source, entities).includes(itemId) || !canConnect(nodes, plan.edges, source.id, n.id, entities)) continue;
       need.actions.push({ key: `source:${source.id}`, kind: source.kind, sourceId: source.id, targetId: n.id,
-        label: `连接 ${source.label}`, detail: "使用计划中已有来源；实际分配量仍由上游与留货顺序决定" });
+        label: tr('连接 {label}', { label: source.label }), detail: tr('使用计划中已有来源；实际分配量仍由上游与留货顺序决定') });
     }
     const quantity = shortage || perBatch;
     if (quantity <= 10000) {
@@ -126,10 +127,10 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
       const availability = item ? seedAvailability({ ...item, seed_item_ids: [itemId] }, entities, yearAt(day), seasonAt(day)) : undefined;
       if (typeof item?.buy_price === "number" && Number.isFinite(item.buy_price) && item.buy_price >= 0 && availability?.available)
         need.actions.push({ key: `buy:${itemId}`, kind: "purchase", sourceId: n.id,
-          label: `买入 ${name(itemId)} ×${quantity}`, detail: `${formatDay(day)} · 支出 ${quantity * item.buy_price}${availability.conditions.length ? " · " + availability.conditions.join("；") : ""}`,
+          label: tr('买入 {name} ×{quantity}', { name: name(itemId), quantity }), detail: tr('{date} · 支出 {amount}{conditions}', { date: formatDay(day), amount: quantity * item.buy_price, conditions: availability.conditions.length ? " · " + availability.conditions.join("；") : "" }),
           create: { itemId, quantity, startDay: day } });
       need.actions.push({ key: `stock:${itemId}`, kind: "inventory", sourceId: n.id,
-        label: `使用已有 ${name(itemId)} ×${quantity}`, detail: `${formatDay(day)} 可用 · 不计历史购买成本`, create: { itemId, quantity, startDay: day } });
+        label: tr('使用已有 {name} ×{quantity}', { name: name(itemId), quantity }), detail: tr('{day} 可用 · 不计历史购买成本', { day: formatDay(day) }), create: { itemId, quantity, startDay: day } });
     }
     assistance.inputs.push(need);
   }
@@ -139,7 +140,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
 export function applyWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], nodeId: string, key: string, result?: SimulationResult) {
   const advice = getWorkflowAssistance(plan, entities, nodeId, result);
   const action = [...advice.next, ...advice.inputs.flatMap(i => i.actions)].find(a => a.key === key);
-  if (!action) throw new Error("这项建议已不适用于当前流程，请重新选择。");
+  if (!action) throw new Error(tr('这项建议已不适用于当前流程，请重新选择。'));
   let nodes = [...plan.nodes], edges = [...plan.edges];
   let focusId = action.targetId ?? nodeId;
   if (action.targetId) {
@@ -161,5 +162,5 @@ export function applyWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], 
     focusId = upstream ? source.id : added.id;
   }
   const next = parsePlan(JSON.stringify({ ...plan, nodes, edges }));
-  return { plan: next, focusId, message: `${action.label}：已更新节点与连线，可一次撤销。` };
+  return { plan: next, focusId, message: tr('{label}：已更新节点与连线，可一次撤销。', { label: action.label }) };
 }

@@ -7,7 +7,7 @@ from dataclasses import replace
 
 from .icons import item_icon_id, item_outline_icon_id
 from .harvest import normalize_harvest_quantities
-from .localization import build_name
+from .localization import build_name, localized_block, preferred_text
 from .models import (
     Crop,
     Issue,
@@ -49,15 +49,16 @@ def _u32(record: bytes, offset: int) -> int:
     return int.from_bytes(record[offset : offset + 4], "little")
 
 
-def _growth_data(record: bytes) -> tuple[int | None, int | None, int | None, int | None]:
-    """Read crop.dat's variable arrays and 264-byte visual-stage records.
+def _growth_data(record: bytes, language_count: int = 6) -> tuple[int | None, int | None, int | None, int | None]:
+    """Read crop.dat's variable arrays and build-specific visual-stage stride.
 
     State 1 is initial growth; state 4 is regrowth. Other states (including
     withered and cursed crops) must not contribute to cultivation duration.
     Day estimates retain the ordinary 100-growth-points-per-day baseline.
     """
     missing = (None, None, None, None)
-    cursor = 76
+    cursor = 76 + (language_count - 6) * 8
+    stride = 264 + (language_count - 6) * 8
     for width in (4, 4, 4, 8):
         if cursor + 4 > len(record):
             return missing
@@ -75,10 +76,10 @@ def _growth_data(record: bytes) -> tuple[int | None, int | None, int | None, int
             return missing
         state, count = _u32(record, cursor), _u32(record, cursor + 4)
         cursor += 8
-        if cursor + count * 264 > len(record):
+        if cursor + count * stride > len(record):
             return missing
-        thresholds = [_u32(record, cursor + i * 264) for i in range(count)]
-        cursor += count * 264
+        thresholds = [_u32(record, cursor + i * stride) for i in range(count)]
+        cursor += count * stride
         if state in (1, 4) and thresholds and thresholds[-1] > 0:
             if thresholds[0] != 0 or any(a >= b for a, b in zip(thresholds, thresholds[1:])):
                 return missing
@@ -95,11 +96,10 @@ def _growth_data(record: bytes) -> tuple[int | None, int | None, int | None, int
     )
 
 
-def _name(group: tuple[str, ...], overrides: Mapping[str, str]):
-    internal = group[0]
-    ja = group[1] if len(group) > 1 else ""
-    zh_hant = group[5] if len(group) > 5 else ""
-    return build_name(ja=ja, zh_hant=zh_hant, internal=internal, overrides=overrides)
+def _name(group: tuple[str, ...], overrides: Mapping[str, str], language_count: int = 6, start: int = 1):
+    native = localized_block(group, start, language_count)
+    return build_name(ja=native["ja"], zh_hant=native["zh-TW"], internal=group[0],
+                      overrides=overrides, translations=native)
 
 
 def _seasons(group: tuple[str, ...]) -> tuple[str, ...]:
@@ -155,23 +155,27 @@ def normalize_snapshot(
         for record, group in zip(item_table.records, _string_groups(item_table), strict=True):
             numeric_id = _u32(record, 0)
             item_groups_by_numeric[numeric_id] = group
-            name = _name(group, overrides)
-            feature_count = _u32(record, 344)
-            if feature_count > (len(record) - 348) // 8:
+            name = _name(group, overrides, item_table.language_count)
+            shift = (item_table.language_count - 6) * 40
+            feature_count = _u32(record, 344 + shift)
+            if feature_count > (len(record) - 348 - shift) // 8:
                 raise ValueError(f"item {name.internal}: invalid feature count")
+            blocks = [localized_block(group, 1 + block * item_table.language_count, item_table.language_count) for block in (2, 3, 4)]
+            description_translations = {locale: "\n".join(block[locale] for block in blocks if block[locale]) for locale in blocks[0]}
             item = Item(
                 id=name.internal,
                 numeric_id=numeric_id,
                 name=name,
-                buy_price=_u32(record, 292) or None,
-                sell_price=_u32(record, 296),
-                feature_ids=tuple(_u32(record, 348 + i * 8) for i in range(feature_count)),
+                buy_price=_u32(record, 292 + shift) or None,
+                sell_price=_u32(record, 296 + shift),
+                feature_ids=tuple(_u32(record, 348 + shift + i * 8) for i in range(feature_count)),
                 icon_id=item_icon_id(record) or None,
                 outline_icon_id=item_outline_icon_id(record) or None,
-                category_numeric_id=_u32(record, 280),
-                category_id=categories[_u32(record, 280)].internal if _u32(record, 280) in categories else None,
-                category_name=categories.get(_u32(record, 280)),
-                description="\n".join(group[i+4] or group[i] for i in (13,19,25) if len(group)>i+4 and (group[i+4] or group[i])),
+                category_numeric_id=_u32(record, 280 + shift),
+                category_id=categories[_u32(record, 280 + shift)].internal if _u32(record, 280 + shift) in categories else None,
+                category_name=categories.get(_u32(record, 280 + shift)),
+                description="\n".join(preferred_text(block) for block in blocks if preferred_text(block)),
+                description_translations=description_translations,
             )
             snapshot.items[item.id] = item
             items_by_numeric[numeric_id] = item
@@ -212,17 +216,17 @@ def normalize_snapshot(
                     seed = items_by_numeric[_u32(item_record, 0)]
                     if not seed.id.startswith("ITEM_ID_SEED_"):
                         continue
-                    if _u32(item_record, 356) != crop_numeric_id:
+                    if _u32(item_record, 356 + (item_table.language_count - 6) * 40) != crop_numeric_id:
                         continue
                     seeds.append(seed.id)
                     # Only the growth description, not later flavour text about
                     # the crop changing into another harvest in a later season.
                     seed_group = item_groups_by_numeric[seed.numeric_id]
-                    seasons.extend(_seasons(tuple(seed_group[13:19])))
+                    seasons.extend(_seasons(tuple(seed_group[1 + 2 * item_table.language_count:1 + 3 * item_table.language_count])))
                     if seed.related_item_id:
                         harvests.append(seed.related_item_id)
-            name = _name(group, overrides)
-            growth_points, growth_days, regrow_points, regrow_days = _growth_data(record)
+            name = _name(group, overrides, crop_table.language_count)
+            growth_points, growth_days, regrow_points, regrow_days = _growth_data(record, crop_table.language_count)
             snapshot.crops[name.internal] = Crop(
                 id=name.internal,
                 numeric_id=crop_numeric_id,
@@ -292,6 +296,7 @@ def normalize_snapshot(
                     zh_hant=output_name.zh_hant,
                     internal=process_internal,
                     overrides=overrides,
+                    translations=output_name.translations,
                 )
                 snapshot.processes[name.internal] = Process(
                     id=name.internal,
@@ -334,6 +339,7 @@ def _normalize_craft(table, items_by_numeric, machines_by_numeric, snapshot, ove
                 zh_hant=output_name.zh_hant,
                 internal=group[0],
                 overrides=overrides,
+                translations=output_name.translations,
             )
             numeric_machine_id = _u32(record, 24)
             machine_id = machines_by_numeric.get(numeric_machine_id)
@@ -373,6 +379,7 @@ def _normalize_cooking(table, items_by_numeric, snapshot, overrides):
                 zh_hant=output_name.zh_hant,
                 internal=group[0],
                 overrides=overrides,
+                translations=output_name.translations,
             )
             snapshot.cooking_recipes[name.internal] = Recipe(name.internal, record_id, name, None, tuple(inputs), ItemQuantity(output_id, _u32(record, 32)), _u32(record, 152) or None, ingredient_options=tuple(options))
 

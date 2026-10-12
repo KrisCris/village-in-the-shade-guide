@@ -26,6 +26,7 @@ import {
   type SerDocument,
   type SerNode,
 } from './ser';
+import { tr } from '../i18n/active';
 
 /** Storage boxes the player can rename and sort; everything else is a machine. */
 const STORAGE_BOX_IDS = new Set([241000000, 241000400]);
@@ -129,11 +130,11 @@ function buildContainer(
 }
 
 const ROOT_LISTS: { path: string; title: string }[] = [
-  { path: 'shippingBoxItemList_', title: '出货箱' },
-  { path: 'huntRewardBoxItemList_', title: '狩猎奖励箱' },
-  { path: 'constructionBoxItemList_', title: '建造材料箱' },
-  { path: 'bundleRewardBoxItemList_', title: '供奉奖励箱' },
-  { path: 'dropItemList_', title: '掉落物' },
+  { path: 'shippingBoxItemList_', title: tr('出货箱') },
+  { path: 'huntRewardBoxItemList_', title: tr('狩猎奖励箱') },
+  { path: 'constructionBoxItemList_', title: tr('建造材料箱') },
+  { path: 'bundleRewardBoxItemList_', title: tr('供奉奖励箱') },
+  { path: 'dropItemList_', title: tr('掉落物') },
 ];
 
 /**
@@ -144,9 +145,9 @@ const ROOT_LISTS: { path: string; title: string }[] = [
 export function collectContainers(doc: SerDocument): SaveContainer[] {
   const primary: SaveContainer[] = [];
   const backpack = doc.resolve('inventoryItemList_');
-  if (backpack) primary.push(buildContainer(doc, backpack, 'inventoryItemList_', 'backpack', '背包'));
+  if (backpack) primary.push(buildContainer(doc, backpack, 'inventoryItemList_', 'backpack', tr('背包')));
   const tools = doc.resolve('toolItemList_');
-  if (tools) primary.push(buildContainer(doc, tools, 'toolItemList_', 'tool', '工具栏'));
+  if (tools) primary.push(buildContainer(doc, tools, 'toolItemList_', 'tool', tr('工具栏')));
 
   const storage: SaveContainer[] = [];
   const machines: SaveContainer[] = [];
@@ -165,7 +166,7 @@ export function collectContainers(doc: SerDocument): SaveContainer[] {
       const customName = nameNode ? readString(doc, nameNode) : '';
       const isBox = STORAGE_BOX_IDS.has(dataId);
       const number = isBox ? ++boxNumber : ++machineNumber;
-      const title = customName || (isBox ? `收纳箱 ${number}` : `设备 ${number}`);
+      const title = customName || (isBox ? tr('收纳箱 {number}', { number }) : tr('设备 {number}', { number }));
       const container = buildContainer(
         doc,
         list,
@@ -205,6 +206,8 @@ export function collectContainers(doc: SerDocument): SaveContainer[] {
 /* ----------------------------------------------------------- slot editing -- */
 
 export interface SlotAssignment {
+  /** Original template for moves, retaining item-specific status fields. */
+  sourcePointer?: number;
   itemId: string;
   count: string;
   rank: string;
@@ -225,8 +228,8 @@ function findDonor(doc: SerDocument, containers: SaveContainer[], listPointer: n
 }
 
 function setScalar(node: SerBuiltNode | undefined, value: string, label: string): void {
-  if (!node?.payload) throw new Error(`新建物品时找不到 ${label} 字段。`);
-  if (!/^-?\d+$/.test(value.trim())) throw new Error(`${label} 必须是整数。`);
+  if (!node?.payload) throw new Error(tr('新建物品时找不到 {label} 字段。', { label }));
+  if (!/^-?\d+$/.test(value.trim())) throw new Error(tr('{label} 必须是整数。', { label }));
   node.payload = encodeSigned(BigInt(value.trim()), node.payload.length);
 }
 
@@ -271,9 +274,9 @@ export function buildSlotEdits(
   for (const [key, assignment] of entries) {
     const offset = Number(key);
     const virtual = containers.find(container => container.id === SHIPPING_BOX_ID)?.slots.find(slot => slot.pointer === offset && offset >= SHIPPING_SLOT_BASE);
-    if (offset >= SHIPPING_SLOT_BASE && !virtual) throw new Error('出货箱栏位无效。');
+    if (offset >= SHIPPING_SLOT_BASE && !virtual) throw new Error(tr('出货箱栏位无效。'));
     const pointer = virtual ? { tag: SerTag.Pointer, nameOffset: -1, name: String(virtual.index), ref: NULL_REF } : doc.node(offset);
-    if (pointer.tag !== SerTag.Pointer) throw new Error(`格子 ${offset} 不是一个物品指针。`);
+    if (pointer.tag !== SerTag.Pointer) throw new Error(tr('格子 {offset} 不是一个物品指针。', { offset }));
 
     if (assignment === null) {
       if (pointer.ref === NULL_REF) continue;
@@ -281,22 +284,23 @@ export function buildSlotEdits(
       continue;
     }
 
-    const donor = findDonor(doc, containers, offset);
-    if (!donor) throw new Error('这个存档里没有任何已占用的格子可以作为新物品的模板。');
+    if (assignment.sourcePointer !== undefined && !containers.some(c => c.slots.some(s => s.pointer === assignment.sourcePointer && s.item))) throw new Error(tr('移动物品的来源模板无效。'));
+    const donor = assignment.sourcePointer === undefined ? findDonor(doc, containers, offset) : doc.node(assignment.sourcePointer);
+    if (!donor) throw new Error(tr('这个存档里没有任何已占用的格子可以作为新物品的模板。'));
     const built = captureBuilt(doc, donor);
     // Keep the slot's own name ("0", "1", …) rather than the donor's.
     built.nameOffset = pointer.nameOffset;
     built.name = pointer.name;
     built.pointer = 'self';
     const item = built.children?.find((entry) => entry.tag === SerTag.Object);
-    if (!item) throw new Error('模板格子里没有物品对象。');
+    if (!item) throw new Error(tr('模板格子里没有物品对象。'));
     seed += 1n;
     handedOut += 1;
     setScalar(child(item, 'uniqueID_'), seed.toString(), 'uniqueID_');
-    setScalar(child(item, 'pData_/dataID'), assignment.itemId, '物品 ID');
-    setScalar(child(item, 'stackCount_/this->value_'), assignment.count, '数量');
+    setScalar(child(item, 'pData_/dataID'), assignment.itemId, tr('物品 ID'));
+    setScalar(child(item, 'stackCount_/this->value_'), assignment.count, tr('数量'));
     setScalar(child(item, 'rank_'), assignment.rank, 'rank_');
-    setScalar(child(item, 'qualityUpValue_'), assignment.quality, '品质加成');
+    setScalar(child(item, 'qualityUpValue_'), assignment.quality, tr('品质加成'));
     subtrees.set(offset, built);
   }
 

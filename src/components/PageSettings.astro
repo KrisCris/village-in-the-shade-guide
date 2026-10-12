@@ -4,16 +4,18 @@ import SeasonSelector from './art/SeasonSelector';
 import QualityButtons from './quality/QualityButtons';
 import MusicPlayer from './art/MusicPlayer.astro';
 import ParticlesToggle from './art/ParticlesToggle.astro';
+import { getI18n } from '../i18n/server';
+const { t, locale } = getI18n(Astro.url);
 ---
 <div class="page-settings">
-  <button class="settings-trigger" aria-label="页面设置" aria-expanded="false" aria-controls="settings-panel" title="页面设置"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.61 9.53L21.78 9.92L21.78 14.08L19.61 14.47L19.13 15.63L20.39 17.45L17.45 20.39L15.63 19.13L14.47 19.61L14.08 21.78L9.92 21.78L9.53 19.61L8.37 19.13L6.55 20.39L3.61 17.45L4.87 15.63L4.39 14.47L2.22 14.08L2.22 9.92L4.39 9.53L4.87 8.37L3.61 6.55L6.55 3.61L8.37 4.87L9.53 4.39L9.92 2.22L14.08 2.22L14.47 4.39L15.63 4.87L17.45 3.61L20.39 6.55L19.13 8.37Z"/><circle cx="12" cy="12" r="3"/></svg></button>
-  <div id="settings-panel" class="settings-panel" role="dialog" aria-label="页面设置" hidden>
-    <header><strong>页面设置</strong><button class="settings-close" aria-label="关闭页面设置">×</button></header>
-    <section class="settings-day"><h2>昼夜模式</h2><ThemeSwitch /></section>
-    <section><h2>主题季节</h2><SeasonSelector client:load /></section>
-    <section class="settings-day"><h2>飘落物</h2><ParticlesToggle /></section>
-    <section><h2>物品品质</h2><QualityButtons client:load /></section>
-    <section><h2>背景音乐</h2><MusicPlayer /></section>
+  <button class="settings-trigger" aria-label={t('页面设置')} aria-expanded="false" aria-controls="settings-panel" title={t('页面设置')}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.61 9.53L21.78 9.92L21.78 14.08L19.61 14.47L19.13 15.63L20.39 17.45L17.45 20.39L15.63 19.13L14.47 19.61L14.08 21.78L9.92 21.78L9.53 19.61L8.37 19.13L6.55 20.39L3.61 17.45L4.87 15.63L4.39 14.47L2.22 14.08L2.22 9.92L4.39 9.53L4.87 8.37L3.61 6.55L6.55 3.61L8.37 4.87L9.53 4.39L9.92 2.22L14.08 2.22L14.47 4.39L15.63 4.87L17.45 3.61L20.39 6.55L19.13 8.37Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+  <div id="settings-panel" class="settings-panel" role="dialog" aria-label={t('页面设置')} hidden>
+    <header><strong>{t('页面设置')}</strong><button class="settings-close" aria-label={t('关闭页面设置')}>×</button></header>
+    <section class="settings-day"><h2>{t('昼夜模式')}</h2><ThemeSwitch /></section>
+    <section><h2>{t('主题季节')}</h2><SeasonSelector client:load locale={locale} /></section>
+    <section class="settings-day"><h2>{t('飘落物')}</h2><ParticlesToggle /></section>
+    <section><h2>{t('物品品质')}</h2><QualityButtons client:load locale={locale} /></section>
+    <section><h2>{t('背景音乐')}</h2><MusicPlayer /></section>
   </div>
 </div>
 <script>
@@ -36,4 +38,8 @@ import ParticlesToggle from './art/ParticlesToggle.astro';
   .settings-trigger{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:10px;background:transparent;color:var(--ink);cursor:pointer}.settings-trigger:hover,.settings-trigger[aria-expanded=true]{background:var(--green-soft)}.settings-trigger svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
   .settings-panel{position:fixed;right:12px;width:min(340px,calc(100vw - 24px));max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;padding:1.2rem;background:var(--paper-raised);color:var(--ink);border:1px solid var(--border);border-radius:18px;box-shadow:0 12px 48px #0004;z-index:50}.settings-panel[hidden]{display:none}.settings-panel header{display:flex;align-items:center;justify-content:space-between}.settings-close{border:0;background:transparent;color:inherit;width:36px;height:36px;font-size:1.5rem;cursor:pointer}.settings-panel section{padding-top:1rem;margin-top:1rem;border-top:1px solid var(--border)}.settings-panel h2{font-family:inherit;font-size:.78rem;font-weight:600;margin:0 0 .7rem;color:var(--muted)}.settings-day{display:flex;justify-content:space-between;align-items:center}.settings-day h2{margin:0}
   .settings-panel :global(.setting-choices){display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.35rem}.settings-panel :global(.setting-choices button){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;min-height:64px;padding:.4rem .1rem;font-size:.7rem;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer}.settings-panel :global(.setting-choices button[aria-pressed=true]){border-color:var(--green);background:var(--green-soft);color:var(--ink)}.settings-panel :global(.setting-choices button:hover){border-color:var(--border)}.settings-panel :global(.setting-choices img),.settings-panel :global(.setting-choices svg){width:28px;height:28px;object-fit:contain}.settings-panel :global(.setting-symbol){height:28px;font-size:1.4rem;line-height:28px}
+  .settings-panel :global(.quality-choice-art){display:flex;align-items:center;justify-content:center;width:28px;height:46px}
+  .settings-panel :global(.quality-choices .save-rank-icon){display:block;width:28px;height:auto;overflow:hidden;flex:none}
+  .settings-panel :global(.quality-label-toggle){margin-top:.65rem;width:100%;min-height:36px;padding:.4rem .6rem;border:1px solid var(--border);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:.75rem;cursor:pointer}
+  .settings-panel :global(.quality-label-toggle:focus-visible){outline:2px solid var(--green);outline-offset:2px}
 </style>

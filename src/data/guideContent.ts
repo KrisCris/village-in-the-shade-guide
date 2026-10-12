@@ -1,10 +1,14 @@
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
 import guideTranslations from '../../data/sources/guide-translations.json';
-import characters from '../../data/generated/build-24969282/entities/characters.json';
+import characters from '../../data/generated/build-25311578/entities/characters.json';
+import { msg } from '../i18n/translate';
+import { toTraditional } from '../i18n/traditional';
+import type { Locale } from '../i18n/locales';
 
 export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string; guideTarget?: string };
 
+// i18n-ignore-start — matches Japanese AppMedia titles and builds Simplified Chinese source text.
 export function guideTarget(title: string) {
   if (/牧畜のやり方|なつき度の上げ方/.test(title)) return '/guides/livestock-plan/';
   if (/狩猟のやり方/.test(title)) return '/guides/hunting-plan/';
@@ -100,6 +104,7 @@ export function dataTarget(title: string) {
   return undefined;
 }
 
+// i18n-ignore-end
 const outlineMap = new Map(sourceOutlines.outlines.map((row) => [row.sourceId, row.headings]));
 // Retired character articles are compatibility routes only, never guide content.
 export const characterGuideRedirects = sourceCatalog.sources.flatMap((source) => {
@@ -107,6 +112,7 @@ export const characterGuideRedirects = sourceCatalog.sources.flatMap((source) =>
   return character ? [{ sourceId: source.sourceId, target: `/data/characters/${character.id}/` }] : [];
 });
 const retiredCharacterIds = new Set(characterGuideRedirects.map((row) => row.sourceId));
+// i18n-ignore-start — source categories and Japanese outline filters.
 export const guides: GuideSource[] = sourceCatalog.sources.filter((source) => !['产品', '总览'].includes(source.category) && !retiredCharacterIds.has(source.sourceId)).map((source) => ({
   ...source,
   chineseTitle: chineseTitle(source.title),
@@ -115,17 +121,19 @@ export const guides: GuideSource[] = sourceCatalog.sources.filter((source) => ![
   guideTarget: guideTarget(source.title),
 }));
 
-export const guideCategories = ['系统与生活', '剧情', '怪异', '探索', '活动', '角色', '数据'];
+// i18n-ignore-end
 
-export function guideIntro(guide: GuideSource) {
-  const intros: Record<string, string> = {
-    剧情: '按事件发生顺序整理必要动作、准备事项与解锁内容。以下流程含剧情剧透，建议只展开当前进度。',
-    怪异: '按出现信号、触发条件、处理方法与奖励查询。深夜出行前先留出体力与背包空间。',
-    角色: '角色姓名采用游戏内中文；礼物喜好与相关委托优先链接本地游戏数据，事件顺序按攻略主题整理。',
-    数据: '列表数值由游戏构建 24969282 生成，可继续点击物品、材料、产物和机械查看关联与价格。',
-    探索: '按地点与前置条件整理探索目标。涉及夜间区域的条目可能包含轻度剧情剧透。',
-    活动: '集中列出举办时间、参加条件、准备重点与容易错过的奖励。',
-    产品: '记录版本与平台相关主题；价格、更新状态等可能随时间变化，请同时核对官方信息。',
-  };
-  return intros[guide.category] ?? '把原攻略主题压缩为可查询的行动清单；数值和物品关系优先引用游戏数据页。';
+/** Category names are also anchor IDs on /guides/; display them with t(). */
+export const guideCategories = [msg('系统与生活'), msg('剧情'), msg('怪异'), msg('探索'), msg('活动'), msg('角色'), msg('数据')];
+/** Story and anomaly guides hide their steps behind a spoiler toggle. */
+export const spoilerCategories = new Set([msg('剧情'), msg('怪异')]);
+
+/**
+ * Title and checklist in the page language. Japanese readers get the AppMedia
+ * originals; Traditional Chinese converts the Simplified renderings.
+ */
+export function localizeGuide(guide: GuideSource, locale: Locale) {
+  if (locale === 'ja') return { title: guide.title.replace(/【ほの暮しの庭】$/, ''), headings: guide.headings }; // i18n-ignore
+  const convert = locale === 'zh-TW' ? toTraditional : (text: string) => text;
+  return { title: convert(guide.chineseTitle), headings: guide.headings.map((heading) => convert(translateHeading(heading))) };
 }

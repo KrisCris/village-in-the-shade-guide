@@ -9,6 +9,8 @@ from honogurashi_extractor.probe import _string_groups
 
 archive=FafullfsArchive.open(Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade/data.dat'))
 raw=archive.read_entry('data/script/ai_creature_horror_kappa.lub')
+if hashlib.sha256(raw).hexdigest() != '2df19c19b30d966438e2e6906b2b33d4e315375e53675c70632982eaffc8bff9':
+    raise ValueError('Kappa script changed; re-trace reward branches before extracting')
 proto=runpy.run_path('tools/inspect-lua54.py')['read_chunk'](raw)['children'][2]
 defines=read_table(archive.read_entry('data/database/gamedefine.dat'))
 quantity=next(int(g[4]) for g in _string_groups(defines) if g[0]=='ENUM_KAPPA_CUCUMBER_NUM')

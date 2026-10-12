@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import { useEffect, useRef, useState, useId } from "react";
 import {
   mapCell,
@@ -9,6 +10,7 @@ import {
 import type { FarmlandSelection } from "../../domain/workflow/types";
 import { formatDay } from "../../domain/workflow/date";
 import WorkflowIcon from "./WorkflowIcon";
+import { tr } from '../../i18n/active';
 const shapes = farmlandShapes;
 export default function FarmlandPicker({
   value,
@@ -42,9 +44,9 @@ export default function FarmlandPicker({
     cells: source.cells.map(([x, y]) => mapCell(x, y, source.height)),
   };
   const label = (s: typeof source) =>
-    s.label.includes("温室")
-      ? `${s.label} · ${s.count === 100 ? "中央田区" : "外围地形标记"}`
-      : s.label;
+    s.map_ids.some((id) => id.startsWith("MAP_ID_GREENHOUSE"))
+      ? tr('温室 · {area}', { area: s.count === 100 ? tr('中央田区') : tr('外围地形标记') })
+      : tr('室外田块 {number}', { number: s.label.match(/\d+$/)?.[0] ?? '' });
   const key = (x: number, y: number) => `${x},${y}`;
   const selected = new Set(
     (draft.find((p) => p.shapeId === shapeId)?.cells ?? []).map((cell) => {
@@ -84,9 +86,9 @@ export default function FarmlandPicker({
     ).values(),
   ];
   const statusText = {
-    conflict: "种植时间重叠",
-    separate: "其他时段使用",
-    unknown: "日期待定",
+    conflict: tr('种植时间重叠'),
+    separate: tr('其他时段使用'),
+    unknown: tr('日期待定'),
   };
   const inside = (x: number, y: number) =>
     drag &&
@@ -149,16 +151,16 @@ export default function FarmlandPicker({
         }}
       >
         <WorkflowIcon name="select" />
-        框选田块，自动数格
+        {tr('框选田块，自动数格')}
         {value
-          ? ` · ${farmlandPlots(value).reduce((s, p) => s + p.cells.length, 0)} 格`
+          ? tr(' · {count} 格', { count: farmlandPlots(value).reduce((s, p) => s + p.cells.length, 0) })
           : ""}
       </button>
       {open && (
         <dialog
           ref={ref}
           className="wf-picker-dialog wf-farm-dialog"
-          aria-label="框选可种植田块"
+          aria-label={tr('框选可种植田块')}
           onCancel={(e) => {
             e.preventDefault();
             setOpen(false);
@@ -167,16 +169,16 @@ export default function FarmlandPicker({
         >
           <header className="wf-picker-heading">
             <div>
-              <h2>选出这次要种的田</h2>
-              <span>可跨地图选择，切换地图保留选区；Shift 拖动取消。</span>
+              <h2>{tr('选出这次要种的田')}</h2>
+              <span>{tr('可跨地图选择，切换地图保留选区；Shift 拖动取消。')}</span>
             </div>
-            <button aria-label="关闭田地选择" onClick={() => setOpen(false)}>
+            <button aria-label={tr('关闭田地选择')} onClick={() => setOpen(false)}>
               <WorkflowIcon name="close" />
             </button>
           </header>
           <div className="wf-farm-toolbar">
-            <select
-              aria-label="田块形状"
+            <SearchableSelect
+              aria-label={tr('田块形状')}
               value={shapeId}
               onChange={(e) => {
                 setShapeId(e.target.value);
@@ -185,21 +187,21 @@ export default function FarmlandPicker({
             >
               {shapes.map((s) => (
                 <option key={s.id} value={s.id}>
-                  {label(s)} · {s.count} 格
+                  {label(s)} · {s.count} {tr('格')}
                   {draft.find((p) => p.shapeId === s.id)?.cells.length
-                    ? ` · 已选 ${draft.find((p) => p.shapeId === s.id)!.cells.length}`
+                    ? tr(' · 已选 {count}', { count: draft.find((p) => p.shapeId === s.id)!.cells.length })
                     : ""}
                 </option>
               ))}
-            </select>
+            </SearchableSelect>
             <button
               onClick={() =>
                 setSelected(new Set(shape.cells.map(([x, y]) => key(x, y))))
               }
             >
-              全选
+              {tr('全选')}
             </button>
-            <button onClick={() => setSelected(new Set())}>清空</button>
+            <button onClick={() => setSelected(new Set())}>{tr('清空')}</button>
             <button
               onClick={() =>
                 setSelected(
@@ -214,10 +216,10 @@ export default function FarmlandPicker({
                 )
               }
             >
-              仅选可用
+              {tr('仅选可用')}
             </button>
           </div>
-          <div className="wf-farm-maps" aria-label="已选地图">
+          <div className="wf-farm-maps" aria-label={tr('已选地图')}>
             {draft.map((p) => (
               <button
                 key={p.shapeId}
@@ -228,17 +230,17 @@ export default function FarmlandPicker({
                 }}
               >
                 {label(shapes.find((s) => s.id === p.shapeId)!)} ·{" "}
-                {p.cells.length} 格
+                {p.cells.length} {tr('格')}
               </button>
             ))}
           </div>
-          <div className="wf-farm-legend" role="list" aria-label="田块状态图例">
+          <div className="wf-farm-legend" role="list" aria-label={tr('田块状态图例')}>
             {[
-              ["", "未分配"],
-              ["chosen", "本次选择"],
-              ["conflict", "同时占用"],
-              ["unknown", "待排期"],
-              ["separate", "其他时段"],
+              ["", tr('未分配')],
+              ["chosen", tr('本次选择')],
+              ["conflict", tr('同时占用')],
+              ["unknown", tr('待排期')],
+              ["separate", tr('其他时段')],
             ].map(([state, label]) => (
               <span key={label} role="listitem">
                 <svg
@@ -273,7 +275,7 @@ export default function FarmlandPicker({
               style={{ maxWidth: shape.width * 32 }}
               viewBox={`0 0 ${shape.width * 24} ${shape.height * 24}`}
               role="group"
-              aria-label="田块格子，按住拖动框选"
+              aria-label={tr('田块格子，按住拖动框选')}
               onPointerDown={(e) => {
                 if (e.button !== 0) return;
                 e.preventDefault();
@@ -328,7 +330,7 @@ export default function FarmlandPicker({
                   }
                   role="checkbox"
                   aria-checked={preview.has(key(x, y))}
-                  aria-label={`第 ${y + 1} 行第 ${x + 1} 格`}
+                  aria-label={tr('第 {row} 行第 {column} 格', { row: y + 1, column: x + 1 })}
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === " " || e.key === "Enter") {
@@ -343,27 +345,27 @@ export default function FarmlandPicker({
                   <title>
                     {cellUses(x, y)
                       .map((u) => `${u.label}：${statusText[u.status]}`)
-                      .join("；") || "未被其他节点分配"}
+                      .join("；") || tr('未被其他节点分配')}
                   </title>
                 </rect>
               ))}
             </svg>
           </div>
           <div className="wf-farm-summary">
-            <strong>已选 {total} 格</strong>
+            <strong>{tr('已选 {count} 格', { count: total })}</strong>
             <span>
-              当前地图 {preview.size} / {shape.count} 格
+              {tr('当前地图 {shown} / {total} 格', { shown: preview.size, total: shape.count })}
             </span>
           </div>
           {owners.length > 0 && (
             <details className="wf-farm-occupancy" open>
-              <summary>当前地图有 {uses?.size} 格已分配给其他种植</summary>
+              <summary>{tr('当前地图有 {count} 格已分配给其他种植', { count: uses?.size })}</summary>
               <ul>
                 {owners.map((u) => (
                   <li key={u.nodeId} className={u.status}>
                     <strong>{u.label}</strong> · {statusText[u.status]}
                     {u.spans.length
-                      ? ` · ${formatDay(Math.min(...u.spans.map((s) => s.start)))} 起`
+                      ? tr(' · {date} 起', { date: formatDay(Math.min(...u.spans.map((s) => s.start))) })
                       : ""}
                   </li>
                 ))}
@@ -372,18 +374,18 @@ export default function FarmlandPicker({
           )}
           {selectedConflicts > 0 && (
             <p className="wf-farm-warning" role="status">
-              已选格子中有 {selectedConflicts}{" "}
-              格与其他种植时间重叠，请调整选区或种植日期。
+              {tr('已选格子中有')} {selectedConflicts}{" "}
+              {tr('格与其他种植时间重叠，请调整选区或种植日期。')}
             </p>
           )}
           <p className="wf-farm-note">
-            请取消建筑、机器、稻草人和其他作物占用的格子。田块是否解锁、温室外围是否可达需按自己的游戏状态选择；这里展示地图的可耕标记。
+            {tr('请取消建筑、机器、稻草人和其他作物占用的格子。田块是否解锁、温室外围是否可达需按自己的游戏状态选择；这里展示地图的可耕标记。')}
             {usage.unmapped > 0
-              ? `另有 ${usage.unmapped} 个种植节点未分配地图格子，无法定位占地。`
+              ? tr('另有 {unmapped} 个种植节点未分配地图格子，无法定位占地。', { unmapped: usage.unmapped })
               : ""}
           </p>
           <footer className="wf-picker-footer">
-            <span>应用后设置本节点的播种规模</span>
+            <span>{tr('应用后设置本节点的播种规模')}</span>
             <button
               className="wf-primary"
               disabled={!total}
@@ -392,7 +394,7 @@ export default function FarmlandPicker({
                 setOpen(false);
               }}
             >
-              使用 {total} 格
+              {tr('使用 {count} 格', { count: total })}
             </button>
           </footer>
         </dialog>

@@ -8,12 +8,18 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SidebarNav from '../components/SidebarNav.astro';
 import SeasonScene from '../components/art/SeasonScene.astro';
 import FallingLeaves from '../components/art/FallingLeaves.astro';
+import { getI18n } from '../i18n/server';
 interface Props { title: string; description?: string; immersive?: boolean; }
-const { title, description = '《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略', immersive=false } = Astro.props;
+const i18n = getI18n(Astro.url);
+const { t } = i18n;
+const { title, description = t('《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略'), immersive=false } = Astro.props;
+const siteName = t('静谧田园 Wiki');
+const absolute = (href: string) => Astro.site ? new URL(href, Astro.site).href : href;
+const alternates = i18n.alternates();
 const dynamicInterior = !immersive;
 ---
 <!doctype html>
-<html lang="zh-CN" data-season="spring">
+<html lang={i18n.lang} data-season="spring">
   <head>
     <ClientRouter fallback="swap" />
     <meta charset="utf-8" />
@@ -27,10 +33,12 @@ const dynamicInterior = !immersive;
       (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';})();
     </script>
     <link rel="icon" href={withBase("/game-icon.png")} />
-    <title>{title} · 静谧田园 Wiki</title>
+    {alternates.map(({ locale, href }) => <link rel="alternate" hreflang={locale} href={absolute(href)} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute(alternates[0].href)} />
+    <title>{title} · {siteName}</title>
   </head>
   <body class:list={[immersive?'home-page':'wiki-page', {'dynamic-interior':dynamicInterior}]}>
-    <a class="skip-link" href="#main-content">跳至正文</a>
+    <a class="skip-link" href="#main-content">{t('跳至正文')}</a>
     <SiteHeader />
     {!immersive && <FallingLeaves />}
     {dynamicInterior ? <><SeasonScene /><div class="interior-scene-veil" aria-hidden="true"></div></> : !immersive&&<div class="interior-scenery" aria-hidden="true"><img class="interior-mountains" src={withBase('/art/mountains-spring.webp')} alt="" loading="lazy"/><img class="interior-foliage" src={withBase('/art/pine-spring.webp')} alt="" width="256" height="312" loading="lazy"/></div>}
@@ -38,6 +46,11 @@ const dynamicInterior = !immersive;
       {!immersive&&<SidebarNav />}
       <main class="main" id="main-content" data-pagefind-body><slot /></main>
     </div>
-    <footer class="site-footer"><a href={withBase('/')}>静谧田园 Wiki</a><span>《静谧田园》© NIS · 非官方指南 · 作者：_connlost</span><a href="https://github.com/KrisCris/village-in-the-shade-guide">GitHub ↗</a></footer>
+    <footer class="site-footer"><a href={i18n.href('/')}>{siteName}</a><span>{t('《静谧田园》© NIS · 非官方指南 · 作者：{author}', { author: '_connlost' })}</span><a href="https://github.com/KrisCris/village-in-the-shade-guide">GitHub ↗</a></footer>
+    <script>
+      import { onPageMount } from '../lib/pageLifecycle';
+      import { enhanceSortableTables } from '../lib/sortableTables';
+      onPageMount(() => enhanceSortableTables(document, document.documentElement.lang || 'zh-CN'));
+    </script>
   </body>
 </html>

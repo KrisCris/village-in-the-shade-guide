@@ -1,0 +1,5021 @@
+[
+  {
+    "output": 450140,
+    "materials": [
+      {
+        "itemId": 212020,
+        "count": 2
+      },
+      {
+        "itemId": 130120,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 450130,
+    "materials": [
+      {
+        "itemId": 212000,
+        "count": 2
+      },
+      {
+        "itemId": 221500,
+        "count": 2
+      },
+      {
+        "itemId": 130120,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 450110,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 2
+      },
+      {
+        "itemId": 130120,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 520300,
+    "materials": [
+      {
+        "itemId": 640170,
+        "count": 10
+      },
+      {
+        "itemId": 150050,
+        "count": 1
+      },
+      {
+        "itemId": 150080,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 520310,
+    "materials": [
+      {
+        "itemId": 640180,
+        "count": 10
+      },
+      {
+        "itemId": 131080,
+        "count": 1
+      },
+      {
+        "itemId": 150100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 520320,
+    "materials": [
+      {
+        "itemId": 640180,
+        "count": 10
+      },
+      {
+        "itemId": 150070,
+        "count": 1
+      },
+      {
+        "itemId": 131110,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 520370,
+    "materials": [
+      {
+        "itemId": 640170,
+        "count": 10
+      },
+      {
+        "itemId": 150040,
+        "count": 1
+      },
+      {
+        "itemId": 150200,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 400040,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 140310,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 400041,
+    "materials": [
+      {
+        "itemId": 400040,
+        "count": 1
+      },
+      {
+        "itemId": 230002,
+        "count": 10
+      },
+      {
+        "itemId": 230021,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 460010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      },
+      {
+        "itemId": 212010,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 460060,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 6
+      },
+      {
+        "itemId": 212010,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 460050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 60
+      },
+      {
+        "itemId": 212020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 460030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 60
+      },
+      {
+        "itemId": 212010,
+        "count": 5
+      },
+      {
+        "itemId": 130120,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 460000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      },
+      {
+        "itemId": 212010,
+        "count": 5
+      },
+      {
+        "itemId": 130120,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 402040,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 40
+      },
+      {
+        "itemId": 140300,
+        "count": 3
+      },
+      {
+        "itemId": 140370,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 441010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 40
+      },
+      {
+        "itemId": 210020,
+        "count": 6
+      }
+    ]
+  },
+  {
+    "output": 441060,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 16
+      },
+      {
+        "itemId": 131070,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 441050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 40
+      },
+      {
+        "itemId": 212010,
+        "count": 4
+      },
+      {
+        "itemId": 130120,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 441030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 40
+      },
+      {
+        "itemId": 212010,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 441000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 40
+      }
+    ]
+  },
+  {
+    "output": 400080,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 10
+      },
+      {
+        "itemId": 240010,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 400081,
+    "materials": [
+      {
+        "itemId": 400080,
+        "count": 1
+      },
+      {
+        "itemId": 230021,
+        "count": 10
+      },
+      {
+        "itemId": 240020,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 429000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 230020,
+        "count": 15
+      }
+    ]
+  },
+  {
+    "output": 433010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 50
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 433040,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 50
+      },
+      {
+        "itemId": 230060,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 433000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 50
+      }
+    ]
+  },
+  {
+    "output": 400030,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400031,
+    "materials": [
+      {
+        "itemId": 400030,
+        "count": 1
+      },
+      {
+        "itemId": 230002,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 480000,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 480040,
+    "materials": [
+      {
+        "itemId": 130120,
+        "count": 8
+      },
+      {
+        "itemId": 221500,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 480020,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 2
+      },
+      {
+        "itemId": 221500,
+        "count": 6
+      }
+    ]
+  },
+  {
+    "output": 480010,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 4
+      },
+      {
+        "itemId": 221500,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 440010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 440060,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 8
+      },
+      {
+        "itemId": 131070,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 440050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 20
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      },
+      {
+        "itemId": 130120,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 440030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 20
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 440000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 400090,
+    "materials": [
+      {
+        "itemId": 210060,
+        "count": 5
+      },
+      {
+        "itemId": 230100,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 400091,
+    "materials": [
+      {
+        "itemId": 400090,
+        "count": 1
+      },
+      {
+        "itemId": 210060,
+        "count": 20
+      },
+      {
+        "itemId": 230100,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 410020,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 20
+      },
+      {
+        "itemId": 230001,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 410010,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 20
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 410000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      }
+    ]
+  },
+  {
+    "output": 412020,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 60
+      },
+      {
+        "itemId": 210020,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 412000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      }
+    ]
+  },
+  {
+    "output": 400110,
+    "materials": [
+      {
+        "itemId": 230070,
+        "count": 10
+      },
+      {
+        "itemId": 600020,
+        "count": 2
+      },
+      {
+        "itemId": 230000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 400111,
+    "materials": [
+      {
+        "itemId": 400110,
+        "count": 1
+      },
+      {
+        "itemId": 211000,
+        "count": 10
+      },
+      {
+        "itemId": 230050,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 434010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 50
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 434000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 50
+      },
+      {
+        "itemId": 230050,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 631040,
+    "materials": [
+      {
+        "itemId": 640180,
+        "count": 15
+      },
+      {
+        "itemId": 131090,
+        "count": 1
+      },
+      {
+        "itemId": 150100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 631020,
+    "materials": [
+      {
+        "itemId": 640170,
+        "count": 15
+      },
+      {
+        "itemId": 150050,
+        "count": 1
+      },
+      {
+        "itemId": 150060,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 631050,
+    "materials": [
+      {
+        "itemId": 640180,
+        "count": 15
+      },
+      {
+        "itemId": 150070,
+        "count": 1
+      },
+      {
+        "itemId": 131110,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 631030,
+    "materials": [
+      {
+        "itemId": 640170,
+        "count": 15
+      },
+      {
+        "itemId": 150040,
+        "count": 1
+      },
+      {
+        "itemId": 131100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 431010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 420030,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 10
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 420020,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 10
+      },
+      {
+        "itemId": 230020,
+        "count": 10
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 420000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 10
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 431060,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 30
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 431050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 30
+      },
+      {
+        "itemId": 230001,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 431030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 30
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 431000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      }
+    ]
+  },
+  {
+    "output": 413030,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 40
+      },
+      {
+        "itemId": 230001,
+        "count": 4
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 413020,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 40
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 413000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 40
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 400050,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      },
+      {
+        "itemId": 230100,
+        "count": 2
+      },
+      {
+        "itemId": 210000,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 400051,
+    "materials": [
+      {
+        "itemId": 400050,
+        "count": 1
+      },
+      {
+        "itemId": 230001,
+        "count": 30
+      },
+      {
+        "itemId": 230100,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 50000,
+    "materials": [
+      {
+        "itemId": 140400,
+        "count": 10
+      },
+      {
+        "itemId": 140410,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 21080,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 21030,
+    "materials": [
+      {
+        "itemId": 210060,
+        "count": 1
+      },
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21060,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21020,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21090,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 1
+      },
+      {
+        "itemId": 230040,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 21040,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21050,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 21070,
+    "materials": [
+      {
+        "itemId": 230040,
+        "count": 10
+      },
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 451640,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 5
+      },
+      {
+        "itemId": 130120,
+        "count": 8
+      }
+    ]
+  },
+  {
+    "output": 452030,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 4
+      },
+      {
+        "itemId": 209130,
+        "count": 1
+      },
+      {
+        "itemId": 209120,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 451341,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 15
+      }
+    ]
+  },
+  {
+    "output": 451270,
+    "materials": [
+      {
+        "itemId": 230050,
+        "count": 20
+      },
+      {
+        "itemId": 211000,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 451190,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 5
+      },
+      {
+        "itemId": 230060,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 455010,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 451110,
+    "materials": [
+      {
+        "itemId": 230070,
+        "count": 20
+      },
+      {
+        "itemId": 230050,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 451000,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 5
+      },
+      {
+        "itemId": 130120,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 455100,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 5
+      },
+      {
+        "itemId": 210010,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 455120,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 5
+      },
+      {
+        "itemId": 210030,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 455110,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 5
+      },
+      {
+        "itemId": 210020,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 451090,
+    "materials": [
+      {
+        "itemId": 130120,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 451070,
+    "materials": [
+      {
+        "itemId": 210000,
+        "count": 3
+      },
+      {
+        "itemId": 230050,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 451080,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 451170,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 5
+      },
+      {
+        "itemId": 212010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 421000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400060,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 20
+      },
+      {
+        "itemId": 230000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 400061,
+    "materials": [
+      {
+        "itemId": 400060,
+        "count": 1
+      },
+      {
+        "itemId": 230021,
+        "count": 20
+      },
+      {
+        "itemId": 230022,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 403010,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230002,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453320,
+    "materials": [
+      {
+        "itemId": 31010,
+        "count": 40
+      }
+    ]
+  },
+  {
+    "output": 453300,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 5
+      },
+      {
+        "itemId": 230040,
+        "count": 50
+      },
+      {
+        "itemId": 230070,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453210,
+    "materials": [
+      {
+        "itemId": 230021,
+        "count": 40
+      },
+      {
+        "itemId": 230070,
+        "count": 30
+      }
+    ]
+  },
+  {
+    "output": 453230,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 453250,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453060,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 600030,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453090,
+    "materials": [
+      {
+        "itemId": 230050,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453079,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 131150,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 453075,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111060,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453070,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 140170,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 453074,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111220,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453072,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111110,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453077,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111180,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453076,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111160,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453071,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111070,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453078,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111000,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453073,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230000,
+        "count": 1
+      },
+      {
+        "itemId": 111150,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453140,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 20
+      },
+      {
+        "itemId": 230021,
+        "count": 20
+      },
+      {
+        "itemId": 230022,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 457000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 453130,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 40
+      }
+    ]
+  },
+  {
+    "output": 457010,
+    "materials": [
+      {
+        "itemId": 230021,
+        "count": 30
+      },
+      {
+        "itemId": 230022,
+        "count": 30
+      }
+    ]
+  },
+  {
+    "output": 453160,
+    "materials": [
+      {
+        "itemId": 230050,
+        "count": 10
+      },
+      {
+        "itemId": 10420,
+        "count": 3
+      },
+      {
+        "itemId": 140070,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 21260,
+    "materials": [
+      {
+        "itemId": 210060,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21270,
+    "materials": [
+      {
+        "itemId": 230040,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 21290,
+    "materials": [
+      {
+        "itemId": 111100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21250,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 21280,
+    "materials": [
+      {
+        "itemId": 31010,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 21240,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 2
+      },
+      {
+        "itemId": 230022,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21220,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 21230,
+    "materials": [
+      {
+        "itemId": 230020,
+        "count": 2
+      },
+      {
+        "itemId": 230021,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21180,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 21130,
+    "materials": [
+      {
+        "itemId": 210060,
+        "count": 3
+      },
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21160,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 21120,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 21190,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 2
+      },
+      {
+        "itemId": 230040,
+        "count": 30
+      }
+    ]
+  },
+  {
+    "output": 21140,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 21150,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 21170,
+    "materials": [
+      {
+        "itemId": 230040,
+        "count": 15
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 641100,
+    "materials": [
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 240050,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 641110,
+    "materials": [
+      {
+        "itemId": 230040,
+        "count": 500
+      },
+      {
+        "itemId": 641100,
+        "count": 1
+      },
+      {
+        "itemId": 130160,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 403040,
+    "materials": [
+      {
+        "itemId": 230050,
+        "count": 30
+      },
+      {
+        "itemId": 211000,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 639060,
+    "materials": [
+      {
+        "itemId": 640150,
+        "count": 1
+      },
+      {
+        "itemId": 640160,
+        "count": 1
+      },
+      {
+        "itemId": 212010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 400100,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 15
+      },
+      {
+        "itemId": 221500,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 400101,
+    "materials": [
+      {
+        "itemId": 400100,
+        "count": 1
+      },
+      {
+        "itemId": 230002,
+        "count": 20
+      },
+      {
+        "itemId": 210010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400020,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 10
+      },
+      {
+        "itemId": 210010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400021,
+    "materials": [
+      {
+        "itemId": 400020,
+        "count": 1
+      },
+      {
+        "itemId": 210010,
+        "count": 5
+      },
+      {
+        "itemId": 210020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 403000,
+    "materials": [
+      {
+        "itemId": 429000,
+        "count": 1
+      },
+      {
+        "itemId": 211000,
+        "count": 20
+      },
+      {
+        "itemId": 210020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 400010,
+    "materials": [
+      {
+        "itemId": 207030,
+        "count": 5
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400011,
+    "materials": [
+      {
+        "itemId": 400010,
+        "count": 1
+      },
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 230022,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 400070,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 5
+      },
+      {
+        "itemId": 230021,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 400071,
+    "materials": [
+      {
+        "itemId": 400070,
+        "count": 1
+      },
+      {
+        "itemId": 210020,
+        "count": 15
+      },
+      {
+        "itemId": 210010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 402050,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 230020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 402070,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      },
+      {
+        "itemId": 230060,
+        "count": 20
+      }
+    ]
+  },
+  {
+    "output": 432010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      },
+      {
+        "itemId": 210020,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 432030,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 15
+      },
+      {
+        "itemId": 230001,
+        "count": 15
+      }
+    ]
+  },
+  {
+    "output": 432000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 30
+      },
+      {
+        "itemId": 212010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 400140,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 10
+      },
+      {
+        "itemId": 230020,
+        "count": 10
+      },
+      {
+        "itemId": 230040,
+        "count": 50
+      }
+    ]
+  },
+  {
+    "output": 400141,
+    "materials": [
+      {
+        "itemId": 400140,
+        "count": 1
+      },
+      {
+        "itemId": 210020,
+        "count": 5
+      },
+      {
+        "itemId": 230021,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 402120,
+    "materials": [
+      {
+        "itemId": 210030,
+        "count": 5
+      },
+      {
+        "itemId": 210040,
+        "count": 10
+      },
+      {
+        "itemId": 241090,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 402110,
+    "materials": [
+      {
+        "itemId": 210020,
+        "count": 5
+      },
+      {
+        "itemId": 210030,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 402100,
+    "materials": [
+      {
+        "itemId": 210010,
+        "count": 5
+      },
+      {
+        "itemId": 210020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 40000,
+    "materials": [
+      {
+        "itemId": 140400,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 40010,
+    "materials": [
+      {
+        "itemId": 140210,
+        "count": 1
+      },
+      {
+        "itemId": 140170,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 40020,
+    "materials": [
+      {
+        "itemId": 160180,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 400000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 230020,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 400001,
+    "materials": [
+      {
+        "itemId": 400000,
+        "count": 1
+      },
+      {
+        "itemId": 230001,
+        "count": 20
+      },
+      {
+        "itemId": 230021,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 430010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 430060,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 60
+      },
+      {
+        "itemId": 210020,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 430050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 60
+      },
+      {
+        "itemId": 230001,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 430030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 60
+      },
+      {
+        "itemId": 212010,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "output": 430000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 60
+      }
+    ]
+  },
+  {
+    "output": 660071,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 2
+      },
+      {
+        "itemId": 230001,
+        "count": 5
+      },
+      {
+        "itemId": 230002,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 429110,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 20
+      },
+      {
+        "itemId": 212010,
+        "count": 5
+      }
+    ]
+  },
+  {
+    "output": 429100,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 461010,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 100
+      },
+      {
+        "itemId": 210020,
+        "count": 6
+      },
+      {
+        "itemId": 212010,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 461060,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 40
+      },
+      {
+        "itemId": 210020,
+        "count": 10
+      },
+      {
+        "itemId": 212010,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 461050,
+    "materials": [
+      {
+        "itemId": 230060,
+        "count": 100
+      },
+      {
+        "itemId": 212020,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 461030,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 100
+      },
+      {
+        "itemId": 212010,
+        "count": 10
+      },
+      {
+        "itemId": 130120,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 461000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 100
+      },
+      {
+        "itemId": 212010,
+        "count": 10
+      },
+      {
+        "itemId": 130120,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 470019,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 131150,
+        "count": 1
+      },
+      {
+        "itemId": 131130,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470015,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111060,
+        "count": 1
+      },
+      {
+        "itemId": 111010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470010,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 100240,
+        "count": 1
+      },
+      {
+        "itemId": 131140,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470014,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111080,
+        "count": 1
+      },
+      {
+        "itemId": 111220,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470012,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111110,
+        "count": 1
+      },
+      {
+        "itemId": 111050,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470017,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111180,
+        "count": 1
+      },
+      {
+        "itemId": 111040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470016,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111020,
+        "count": 1
+      },
+      {
+        "itemId": 111160,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470011,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111030,
+        "count": 1
+      },
+      {
+        "itemId": 111170,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470018,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 111000,
+        "count": 1
+      },
+      {
+        "itemId": 111100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470013,
+    "materials": [
+      {
+        "itemId": 206500,
+        "count": 1
+      },
+      {
+        "itemId": 140060,
+        "count": 1
+      },
+      {
+        "itemId": 111150,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470020,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 4
+      },
+      {
+        "itemId": 209190,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470030,
+    "materials": [
+      {
+        "itemId": 212010,
+        "count": 2
+      },
+      {
+        "itemId": 209190,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 470040,
+    "materials": [
+      {
+        "itemId": 140170,
+        "count": 10
+      },
+      {
+        "itemId": 140210,
+        "count": 10
+      },
+      {
+        "itemId": 140280,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 472030,
+    "materials": [
+      {
+        "itemId": 221500,
+        "count": 2
+      },
+      {
+        "itemId": 212010,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 472020,
+    "materials": [
+      {
+        "itemId": 230002,
+        "count": 4
+      },
+      {
+        "itemId": 209170,
+        "count": 1
+      },
+      {
+        "itemId": 209160,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 422000,
+    "materials": [
+      {
+        "itemId": 230000,
+        "count": 10
+      },
+      {
+        "itemId": 210020,
+        "count": 6
+      },
+      {
+        "itemId": 210000,
+        "count": 10
+      }
+    ]
+  },
+  {
+    "output": 422010,
+    "materials": [
+      {
+        "itemId": 230001,
+        "count": 10
+      },
+      {
+        "itemId": 230060,
+        "count": 5
+      },
+      {
+        "itemId": 212000,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 60000,
+    "materials": [
+      {
+        "itemId": 140020,
+        "count": 1
+      },
+      {
+        "itemId": 140040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60010,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 2
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60020,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 60030,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 2
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 208010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60040,
+    "materials": [
+      {
+        "itemId": 208000,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60050,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 200400,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60060,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60070,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 201000,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 60080,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 200600,
+        "count": 1
+      },
+      {
+        "itemId": 100390,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60090,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 200030,
+        "count": 1
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60100,
+    "materials": [
+      {
+        "itemId": 160030,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60110,
+    "materials": [
+      {
+        "itemId": 100000,
+        "count": 2
+      },
+      {
+        "itemId": 208010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60120,
+    "materials": [
+      {
+        "itemId": 100010,
+        "count": 2
+      },
+      {
+        "itemId": 201000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60130,
+    "materials": [
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 100040,
+        "count": 1
+      },
+      {
+        "itemId": 208000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60140,
+    "materials": [
+      {
+        "itemId": 100020,
+        "count": 3
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60150,
+    "materials": [
+      {
+        "itemId": 100030,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60160,
+    "materials": [
+      {
+        "itemId": 100040,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60170,
+    "materials": [
+      {
+        "itemId": 100040,
+        "count": 1
+      },
+      {
+        "itemId": 209000,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60180,
+    "materials": [
+      {
+        "itemId": 320000,
+        "count": 1
+      },
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 100040,
+        "count": 1
+      },
+      {
+        "itemId": 131000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60190,
+    "materials": [
+      {
+        "itemId": 320000,
+        "count": 1
+      },
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 100040,
+        "count": 1
+      },
+      {
+        "itemId": 208000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60200,
+    "materials": [
+      {
+        "itemId": 100050,
+        "count": 2
+      },
+      {
+        "itemId": 209020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 100070,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60210,
+    "materials": [
+      {
+        "itemId": 100060,
+        "count": 1
+      },
+      {
+        "itemId": 320010,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60220,
+    "materials": [
+      {
+        "itemId": 131040,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 209000,
+        "count": 1
+      },
+      {
+        "itemId": 100060,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60230,
+    "materials": [
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 100060,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 100130,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60240,
+    "materials": [
+      {
+        "itemId": 100070,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 208010,
+        "count": 1
+      },
+      {
+        "itemId": 209020,
+        "count": 1
+      },
+      {
+        "itemId": 201000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60250,
+    "materials": [
+      {
+        "itemId": 100110,
+        "count": 2
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 100060,
+        "count": 1
+      },
+      {
+        "itemId": 100330,
+        "count": 1
+      },
+      {
+        "itemId": 320010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60260,
+    "materials": [
+      {
+        "itemId": 131000,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 201030,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60270,
+    "materials": [
+      {
+        "itemId": 201000,
+        "count": 2
+      },
+      {
+        "itemId": 100110,
+        "count": 2
+      },
+      {
+        "itemId": 209020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60280,
+    "materials": [
+      {
+        "itemId": 100110,
+        "count": 6
+      },
+      {
+        "itemId": 201500,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60290,
+    "materials": [
+      {
+        "itemId": 100120,
+        "count": 2
+      },
+      {
+        "itemId": 209000,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      },
+      {
+        "itemId": 100170,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60300,
+    "materials": [
+      {
+        "itemId": 100130,
+        "count": 4
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60310,
+    "materials": [
+      {
+        "itemId": 100140,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 140270,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60320,
+    "materials": [
+      {
+        "itemId": 100140,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60330,
+    "materials": [
+      {
+        "itemId": 140010,
+        "count": 1
+      },
+      {
+        "itemId": 140030,
+        "count": 1
+      },
+      {
+        "itemId": 140040,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 209000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60340,
+    "materials": [
+      {
+        "itemId": 100150,
+        "count": 2
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 201500,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60350,
+    "materials": [
+      {
+        "itemId": 100160,
+        "count": 2
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60360,
+    "materials": [
+      {
+        "itemId": 100160,
+        "count": 2
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60370,
+    "materials": [
+      {
+        "itemId": 100160,
+        "count": 1
+      },
+      {
+        "itemId": 100130,
+        "count": 1
+      },
+      {
+        "itemId": 100300,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 150010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60380,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 140000,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60390,
+    "materials": [
+      {
+        "itemId": 131040,
+        "count": 1
+      },
+      {
+        "itemId": 100170,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60400,
+    "materials": [
+      {
+        "itemId": 100180,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60410,
+    "materials": [
+      {
+        "itemId": 131000,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60420,
+    "materials": [
+      {
+        "itemId": 131030,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 2
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 122120,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60430,
+    "materials": [
+      {
+        "itemId": 131050,
+        "count": 1
+      },
+      {
+        "itemId": 100180,
+        "count": 1
+      },
+      {
+        "itemId": 209020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60440,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 203200,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 208010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60450,
+    "materials": [
+      {
+        "itemId": 100420,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 100350,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60460,
+    "materials": [
+      {
+        "itemId": 100190,
+        "count": 4
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60470,
+    "materials": [
+      {
+        "itemId": 207000,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 100410,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60480,
+    "materials": [
+      {
+        "itemId": 207000,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 140220,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60490,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 2
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60500,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 2
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 100330,
+        "count": 2
+      },
+      {
+        "itemId": 209000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60510,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 100280,
+        "count": 1
+      },
+      {
+        "itemId": 160030,
+        "count": 1
+      },
+      {
+        "itemId": 100380,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60520,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 140140,
+        "count": 1
+      },
+      {
+        "itemId": 140190,
+        "count": 1
+      },
+      {
+        "itemId": 140120,
+        "count": 1
+      },
+      {
+        "itemId": 140240,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60530,
+    "materials": [
+      {
+        "itemId": 140240,
+        "count": 2
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60540,
+    "materials": [
+      {
+        "itemId": 100360,
+        "count": 1
+      },
+      {
+        "itemId": 100300,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      },
+      {
+        "itemId": 100370,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60550,
+    "materials": [
+      {
+        "itemId": 100320,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 131040,
+        "count": 1
+      },
+      {
+        "itemId": 209010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60560,
+    "materials": [
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 100150,
+        "count": 1
+      },
+      {
+        "itemId": 208010,
+        "count": 1
+      },
+      {
+        "itemId": 201000,
+        "count": 1
+      },
+      {
+        "itemId": 100340,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60570,
+    "materials": [
+      {
+        "itemId": 131020,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60580,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 209010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60590,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 3
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 100400,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60600,
+    "materials": [
+      {
+        "itemId": 203200,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 131000,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 111220,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60610,
+    "materials": [
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 208000,
+        "count": 1
+      },
+      {
+        "itemId": 100310,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60620,
+    "materials": [
+      {
+        "itemId": 131000,
+        "count": 2
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60630,
+    "materials": [
+      {
+        "itemId": 100140,
+        "count": 1
+      },
+      {
+        "itemId": 100290,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 100180,
+        "count": 1
+      },
+      {
+        "itemId": 209020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60640,
+    "materials": [
+      {
+        "itemId": 160070,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60650,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 2
+      },
+      {
+        "itemId": 131040,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60660,
+    "materials": [
+      {
+        "itemId": 150000,
+        "count": 2
+      },
+      {
+        "itemId": 207010,
+        "count": 2
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60670,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 100180,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60680,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 2
+      },
+      {
+        "itemId": 150000,
+        "count": 2
+      },
+      {
+        "itemId": 140000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60690,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 131040,
+        "count": 1
+      },
+      {
+        "itemId": 100100,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60700,
+    "materials": [
+      {
+        "itemId": 209900,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 100360,
+        "count": 1
+      },
+      {
+        "itemId": 100080,
+        "count": 1
+      },
+      {
+        "itemId": 100380,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60710,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 100370,
+        "count": 1
+      },
+      {
+        "itemId": 100030,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60720,
+    "materials": [
+      {
+        "itemId": 160110,
+        "count": 1
+      },
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 140200,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60730,
+    "materials": [
+      {
+        "itemId": 100000,
+        "count": 2
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 201500,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62000,
+    "materials": [
+      {
+        "itemId": 209900,
+        "count": 1
+      },
+      {
+        "itemId": 140330,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62010,
+    "materials": [
+      {
+        "itemId": 140100,
+        "count": 1
+      },
+      {
+        "itemId": 140110,
+        "count": 1
+      },
+      {
+        "itemId": 140150,
+        "count": 1
+      },
+      {
+        "itemId": 140180,
+        "count": 1
+      },
+      {
+        "itemId": 140260,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62020,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 122010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62030,
+    "materials": [
+      {
+        "itemId": 100200,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62040,
+    "materials": [
+      {
+        "itemId": 100210,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62050,
+    "materials": [
+      {
+        "itemId": 122030,
+        "count": 2
+      },
+      {
+        "itemId": 122120,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62060,
+    "materials": [
+      {
+        "itemId": 100230,
+        "count": 3
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62070,
+    "materials": [
+      {
+        "itemId": 100090,
+        "count": 2
+      },
+      {
+        "itemId": 100230,
+        "count": 1
+      },
+      {
+        "itemId": 140110,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62080,
+    "materials": [
+      {
+        "itemId": 122040,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62090,
+    "materials": [
+      {
+        "itemId": 100090,
+        "count": 4
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 2
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62100,
+    "materials": [
+      {
+        "itemId": 122040,
+        "count": 1
+      },
+      {
+        "itemId": 100220,
+        "count": 1
+      },
+      {
+        "itemId": 122030,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62110,
+    "materials": [
+      {
+        "itemId": 140270,
+        "count": 3
+      },
+      {
+        "itemId": 100290,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 2
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62120,
+    "materials": [
+      {
+        "itemId": 122070,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 2
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62130,
+    "materials": [
+      {
+        "itemId": 122100,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 2
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62140,
+    "materials": [
+      {
+        "itemId": 122110,
+        "count": 2
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62150,
+    "materials": [
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 140250,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62160,
+    "materials": [
+      {
+        "itemId": 122060,
+        "count": 2
+      },
+      {
+        "itemId": 100090,
+        "count": 1
+      },
+      {
+        "itemId": 122110,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62170,
+    "materials": [
+      {
+        "itemId": 122080,
+        "count": 1
+      },
+      {
+        "itemId": 203200,
+        "count": 1
+      },
+      {
+        "itemId": 122120,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62180,
+    "materials": [
+      {
+        "itemId": 122120,
+        "count": 2
+      },
+      {
+        "itemId": 221000,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 62190,
+    "materials": [
+      {
+        "itemId": 122120,
+        "count": 2
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62200,
+    "materials": [
+      {
+        "itemId": 122060,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62210,
+    "materials": [
+      {
+        "itemId": 100290,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62220,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 3
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 201010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62230,
+    "materials": [
+      {
+        "itemId": 122050,
+        "count": 1
+      },
+      {
+        "itemId": 200630,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62240,
+    "materials": [
+      {
+        "itemId": 122060,
+        "count": 1
+      },
+      {
+        "itemId": 122050,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 62250,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 2
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 201020,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62260,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 2
+      },
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62270,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 2
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 221000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62280,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 2
+      },
+      {
+        "itemId": 122060,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62290,
+    "materials": [
+      {
+        "itemId": 207020,
+        "count": 2
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 122010,
+        "count": 1
+      },
+      {
+        "itemId": 122110,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 62300,
+    "materials": [
+      {
+        "itemId": 122030,
+        "count": 1
+      },
+      {
+        "itemId": 122100,
+        "count": 1
+      },
+      {
+        "itemId": 122050,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 200630,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60740,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 2
+      },
+      {
+        "itemId": 207030,
+        "count": 2
+      }
+    ]
+  },
+  {
+    "output": 60750,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 160270,
+        "count": 1
+      },
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 100460,
+        "count": 2
+      },
+      {
+        "itemId": 210030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60760,
+    "materials": [
+      {
+        "itemId": 130040,
+        "count": 1
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60770,
+    "materials": [
+      {
+        "itemId": 100390,
+        "count": 2
+      },
+      {
+        "itemId": 130000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60780,
+    "materials": [
+      {
+        "itemId": 100400,
+        "count": 1
+      },
+      {
+        "itemId": 160270,
+        "count": 1
+      },
+      {
+        "itemId": 201030,
+        "count": 1
+      },
+      {
+        "itemId": 204010,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60790,
+    "materials": [
+      {
+        "itemId": 201030,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 1
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60800,
+    "materials": [
+      {
+        "itemId": 100040,
+        "count": 2
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60810,
+    "materials": [
+      {
+        "itemId": 150000,
+        "count": 2
+      },
+      {
+        "itemId": 100070,
+        "count": 1
+      },
+      {
+        "itemId": 100110,
+        "count": 1
+      },
+      {
+        "itemId": 100010,
+        "count": 1
+      },
+      {
+        "itemId": 100170,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60820,
+    "materials": [
+      {
+        "itemId": 122120,
+        "count": 1
+      },
+      {
+        "itemId": 221000,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60830,
+    "materials": [
+      {
+        "itemId": 160030,
+        "count": 1
+      },
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 122120,
+        "count": 1
+      },
+      {
+        "itemId": 207030,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60840,
+    "materials": [
+      {
+        "itemId": 207010,
+        "count": 1
+      },
+      {
+        "itemId": 100060,
+        "count": 1
+      },
+      {
+        "itemId": 150000,
+        "count": 2
+      },
+      {
+        "itemId": 209040,
+        "count": 1
+      }
+    ]
+  },
+  {
+    "output": 60850,
+    "materials": [
+      {
+        "itemId": 122100,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 4
+      }
+    ]
+  },
+  {
+    "output": 60860,
+    "materials": [
+      {
+        "itemId": 130000,
+        "count": 1
+      },
+      {
+        "itemId": 207040,
+        "count": 1
+      },
+      {
+        "itemId": 122010,
+        "count": 1
+      }
+    ]
+  }
+]

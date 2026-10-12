@@ -15,7 +15,8 @@ creatures=read_table(data.read_entry('data/database/creature.dat'))
 groups=list(_string_groups(creatures))
 assert any(g[0]=='CREATURE_ID_HORROR_TREASURE_BOX' and 'pop_treasureBox' in g for g in groups)
 assert any(g[0]=='CREATURE_ID_HORROR_TOFU_BOY' and 'pop_exchangeCreature' in g for g in groups)
-map_name='data/map/map_0000_spr.ymwr.head'
+map_table=read_table(data.read_entry('data/database/map.dat'))
+map_name=next(g[2]+'.head' for g in _string_groups(map_table) if g[0]=='MAP_ID_OPENWORLD')
 blob=maps.read_entry(map_name)
 if blob.startswith(b'YKCMP_V1'): blob=zlib.decompress(blob[20:])
 markers=[]
@@ -24,5 +25,5 @@ for match in re.finditer(rb'(pop_treasureBox|pop_exchangeCreature)(\d+)\x00',blo
     kind='treasure' if match[1]==b'pop_treasureBox' else 'exchange'
     markers.append(dict(anchor=match[0][:-1].decode(),map=map_name,x=x,y=y,kind=kind,label=f'玉手箱 {int(match[2])+1}' if kind=='treasure' else '交换怪异生成点'))
 assert len(markers)==9 and len({m['anchor'] for m in markers})==9
-Path('data/sources/game-exploration-markers.json').write_text(json.dumps(dict(source='creature.dat spawn anchor prefixes + map_0000_spr.ymwr.head',markers=markers),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+Path('data/sources/game-exploration-markers.json').write_text(json.dumps(dict(source=f'creature.dat spawn anchor prefixes + map.dat MAP_ID_OPENWORLD: {map_name}',markers=markers),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('exploration markers:',len(markers))

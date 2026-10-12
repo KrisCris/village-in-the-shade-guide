@@ -581,5 +581,93 @@
       128,
       128
     ]
+  },
+  {
+    "file": "livestock-301.webp",
+    "icon_id": 7356,
+    "texture": "data/texture/DLC_itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-302.webp",
+    "icon_id": 7357,
+    "texture": "data/texture/DLC_itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-303.webp",
+    "icon_id": 7358,
+    "texture": "data/texture/DLC_itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      256,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-304.webp",
+    "icon_id": 7359,
+    "texture": "data/texture/DLC_itemicon_ani01_01.nltx",
+    "bounds": [
+      0,
+      384,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-305.webp",
+    "icon_id": 7360,
+    "texture": "data/texture/DLC_itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      0,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-306.webp",
+    "icon_id": 7361,
+    "texture": "data/texture/DLC_itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      128,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-307.webp",
+    "icon_id": 7362,
+    "texture": "data/texture/DLC_itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      512,
+      128,
+      128
+    ]
+  },
+  {
+    "file": "livestock-308.webp",
+    "icon_id": 7363,
+    "texture": "data/texture/DLC_itemicon_ani01_02.nltx",
+    "bounds": [
+      0,
+      640,
+      128,
+      128
+    ]
   }
 ]

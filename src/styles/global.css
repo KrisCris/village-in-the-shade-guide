@@ -9,12 +9,17 @@ select { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; 
 .quality-selector label { font-size: .88rem; font-weight: 700; }
 button, .button { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; padding: .55rem .8rem; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
 button:hover, .button:hover { border-color: var(--green); }
+/* Table column headers that sort on click (again to flip). */
+button.sort-header { display: inline-flex; align-items: center; gap: .15rem; min-height: 0; padding: 0; border: 0; border-radius: 2px; background: none; color: inherit; font-weight: inherit; text-align: inherit; white-space: nowrap; }
+button.sort-header:hover, [aria-sort] > button.sort-header { color: var(--green); }
+button.sort-header:active { transform: none; }
+button.sort-header:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 button,.button,a.card{transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}button:active,.button:active{transform:translateY(1px)}
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--vermilion) 75%, white); outline-offset: 2px; }
 .page { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); max-width: var(--max); margin: 0 auto; min-height: calc(100vh - 64px); }
 .main { padding: 2rem clamp(1rem, 3vw, 3.5rem) 6rem; min-width: 0; }
 .eyebrow { color: var(--vermilion); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", serif; line-height: 1.25; }
+h1, h2, h3 { font-family: var(--font-serif); line-height: 1.25; }
 h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .25rem 0 1rem; }
 .lede { max-width: 760px; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
 .card { border: 1px solid var(--border); background: color-mix(in srgb, var(--paper-raised) 92%, transparent); border-radius: var(--radius); box-shadow: 0 2px 0 rgb(255 255 255 / 25%); }
@@ -28,5 +33,6 @@ h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .25rem 0 1rem; }
 .drawer{animation:drawer-arrive .3s cubic-bezier(.2,.7,.2,1)}.drawer-backdrop{animation:veil-arrive .2s ease}.drawer-body{animation:content-arrive .25s ease}.entity-link img,.category-grid img{transition:transform .25s}.entity-link:hover img,.category-grid a:hover img{transform:translateY(-3px) rotate(-4deg)}.category-grid a:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
 @keyframes drawer-arrive{from{transform:translateX(5%);opacity:0}to{transform:none;opacity:1}}@keyframes veil-arrive{from{opacity:0}to{opacity:1}}@keyframes content-arrive{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}
 @media (max-width: 800px) { .page { display: block; } .main { padding-top: 1.25rem; } }
+@media (max-width: 640px) { .main { padding-inline: .75rem; } }
 @media (max-width: 760px) { .site-header nav { order: 3; width: 100%; justify-content: center; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation:none!important; } }

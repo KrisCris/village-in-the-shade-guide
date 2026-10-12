@@ -7,16 +7,17 @@ import type {
   WorkflowEdge,
   NodeKind,
 } from "./workflow/types";
+import { tr } from '../i18n/active';
 
 export const nodeLabels: Record<NodeKind, string> = {
-  purchase: "买入",
-  inventory: "已有库存",
-  plant: "种植",
-  process: "加工",
-  reserve: "留货",
-  delivery: "供奉 / 交付",
-  consume: "日常消耗",
-  sale: "出售",
+  purchase: tr('买入'),
+  inventory: tr('已有库存'),
+  plant: tr('种植'),
+  process: tr('加工'),
+  reserve: tr('留货'),
+  delivery: tr('供奉 / 交付'),
+  consume: tr('日常消耗'),
+  sale: tr('出售'),
 };
 export const uid = () => globalThis.crypto.randomUUID();
 export function newNode(kind: NodeKind, day: number, index = 0): WorkflowNode {
@@ -46,7 +47,8 @@ export function createDemandNodes(
   const season = ["spring", "summer", "autumn", "winter"][
     Math.floor((day - 1) / 28) % 4
   ];
-  const name = ["春", "夏", "秋", "冬"][Math.floor((day - 1) / 28) % 4];
+  // Village-head bundles are matched on the game's own Simplified Chinese name.
+  const name = ['春', '夏', '秋', '冬'][Math.floor((day - 1) / 28) % 4]; // i18n-ignore
   return entities
     .filter(
       (e) =>
@@ -54,7 +56,7 @@ export function createDemandNodes(
         !exclude.includes(e.id) &&
         (e.id.startsWith(`BUNDLE_ID_${season.toUpperCase()}_`) ||
           (e.id.startsWith("BUNDLE_ID_VILLAGE_HEAD_") &&
-            e.name.zh_hans.startsWith(`${name}季`))),
+            (e.name.translations?.['zh-CN'] ?? e.name.zh_hans).startsWith(`${name}季`))), // i18n-ignore
     )
     .map((e, i) => ({
       ...newNode("delivery", day, i),
@@ -71,7 +73,7 @@ export function createPlan(entities: Entity[]): WorkflowPlan {
   return {
     version: 1,
     planningMode: "intent",
-    name: "我的农场生产计划",
+    name: tr('我的农场生产计划'),
     startDay: 1,
     days: 28,
     initialCash: 0,
@@ -199,13 +201,13 @@ const schema = z.object({
   edges: z.array(z.object({ id, source: id, target: id })).max(500),
 });
 export function parsePlan(raw: string): WorkflowPlan {
-  if (raw.length > 2_000_000) throw new Error("计划文件过大（最多 2 MB）");
+  if (raw.length > 2_000_000) throw new Error(tr('计划文件过大（最多 2 MB）'));
   let plan: WorkflowPlan;
   try {
     plan = schema.parse(JSON.parse(raw));
   } catch {
     throw new Error(
-      "计划格式无效：请导入本站导出的版本 1 计划，检查日期、数量和资源上限。",
+      tr('计划格式无效：请导入本站导出的版本 1 计划，检查日期、数量和资源上限。'),
     );
   }
   const unique = (ids: string[]) => new Set(ids).size === ids.length;
@@ -214,9 +216,9 @@ export function parsePlan(raw: string): WorkflowPlan {
     !unique(plan.edges.map((e) => e.id)) ||
     !unique([...plan.plots, ...plan.machines].map((r) => r.id))
   )
-    throw new Error("计划包含重复 ID");
+    throw new Error(tr('计划包含重复 ID'));
   if (plan.machines.reduce((n, m) => n + m.count * m.capacity, 0) > 500)
-    throw new Error("最多同时安排 500 批加工");
+    throw new Error(tr('最多同时安排 500 批加工'));
   const ids = new Set(plan.nodes.map((n) => n.id));
   const pairs = new Set<string>();
   for (const e of plan.edges) {
@@ -227,14 +229,14 @@ export function parsePlan(raw: string): WorkflowPlan {
       e.source === e.target ||
       pairs.has(key)
     )
-      throw new Error("连线引用无效或重复");
+      throw new Error(tr('连线引用无效或重复'));
     pairs.add(key);
   }
   const active = new Set<string>(),
     done = new Set<string>();
   const visit = (id: string) => {
     if (active.has(id))
-      throw new Error("流程不能形成环路；请使用节点的重复开关");
+      throw new Error(tr('流程不能形成环路；请使用节点的重复开关'));
     if (done.has(id)) return;
     active.add(id);
     for (const e of plan.edges.filter((e) => e.source === id)) visit(e.target);
@@ -244,9 +246,9 @@ export function parsePlan(raw: string): WorkflowPlan {
   for (const n of plan.nodes) {
     visit(n.id);
     if (n.quantity === 0 && n.kind !== "sale")
-      throw new Error("非出售节点的数量必须大于零");
+      throw new Error(tr('非出售节点的数量必须大于零'));
     if (n.endDay !== undefined && n.endDay < n.startDay)
-      throw new Error("结束日期不能早于开始日期");
+      throw new Error(tr('结束日期不能早于开始日期'));
   }
   if (!plan.planningMode) {
     plan = {

@@ -3,7 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import {withBase} from '../../lib/sitePath';
 import {getCatalog} from '../../data/repository';
 import {databaseLinks} from '../../data/navigation';
-const catalog = getCatalog();
+import { getI18n } from '../../i18n/server';
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
 const categoryIcons = ['CROPS', 'FISH', 'MATERIAL', 'COOKING'].map(category =>
   catalog.entities.find(entity => entity.kind === 'items' && entity.category_id === `ITEM_CATEGORY_${category}` && entity.icon_path)?.icon_path
 );
@@ -13,14 +15,14 @@ const cards = databaseLinks.map(link => ({...link,
     : catalog.entities.find(entity => entity.kind === link.kind && entity.icon_path)?.icon_path,
 }));
 ---
-<BaseLayout title="资料库">
-  <h1>资料库</h1>
+<BaseLayout title={t('资料库')}>
+  <h1>{t('资料库')}</h1>
   <div class="database-grid">
-    {cards.map(card => <a class="card" href={withBase(card.href)}>
+    {cards.map(card => <a class="card" href={href(card.href)}>
       {card.href === '/categories/'
         ? <div class="category-icons" aria-hidden="true">{categoryIcons.map(icon => icon && <img src={withBase(icon)} width="34" height="34" alt="" />)}</div>
         : card.icon && <img src={withBase(card.icon)} width="72" height="72" alt="" />}
-      <strong>{card.label}</strong><span aria-hidden="true">↗</span>
+      <strong>{t(card.label)}</strong><span aria-hidden="true">↗</span>
     </a>)}
   </div>
 </BaseLayout>

@@ -41,6 +41,51 @@ def test_quest_steps_preserve_order_and_do_not_replace_them_with_completed_text(
     assert result.steps == ('收集酸酸的樹液兩份','交給蓮實')
 
 
+def test_seven_language_character_gifts_and_birthday_offsets():
+    item = _item("ITEM_GIFT", 60400, "礼物")
+    strings = ("\0".join(["CHARA_TEST", "役", "トバリ", "", "", "", "帷", "토바리", "帷"]) + "\0").encode()
+    table = read_table(build_table(records=[_record(740, {0: 1010, 216: 60400, 248: 60400, 460: 2, 464: 12})], strings=strings), language_count=7)
+    char = normalize_world({"character": table}, Snapshot(items={item.id: item}), {}).characters["CHARA_TEST"]
+    assert [gift.preference for gift in char.gift_items] == [1, -1]
+    assert (char.birthday_season, char.birthday_day) == ("autumn", 12)
+    assert char.name.translations == {"ja": "トバリ", "slot-1": "", "slot-2": "", "slot-3": "", "zh-TW": "帷", "ko": "토바리", "zh-CN": "帷"}
+
+
+def test_seven_language_quest_keeps_ordered_translations():
+    groups = ["QUEST_TEST"]
+    for text in ("依頼", "完了", "説明", "目的", "", "集める", "渡す"):
+        groups.extend([text, "", "", "", "繁" + text if text else "", "한" + text if text else "", "简" + text if text else ""])
+    table = read_table(build_table(records=[_record(600, {0: 1})], strings=("\0".join(groups) + "\0").encode()), language_count=7)
+    quest = normalize_world({"quest": table}, Snapshot(), {}).quests["QUEST_TEST"]
+    assert (quest.description, quest.objective, quest.steps) == ("简説明", "简目的", ("简集める", "简渡す"))
+    assert quest.description_translations["ko"] == "한説明"
+    assert [step["zh-CN"] for step in quest.step_translations] == ["简集める", "简渡す"]
+
+
+def test_native_quest_objective_array_uses_60_byte_entries():
+    values = ["QUEST_NATIVE"] + [""] * 35
+    values.extend(["first", "", "", "", "第一", "첫째", "第一步"])
+    values.extend(["second", "", "", "", "第二", "둘째", "第二步"])
+    values.extend(["not an objective", "", "", "", "尾部", "후속", "尾部"])
+    pool = ("\0".join(values) + "\0").encode()
+    offsets = []
+    cursor = 0
+    for value in values:
+        offsets.append(cursor)
+        cursor += len(value.encode()) + 1
+    scalars = {0: 1, 336: 2}
+    for index in range(2):
+        for slot in range(7):
+            scalar = 340 + index * 60 + slot * 8
+            source = 36 + index * 7 + slot
+            scalars[scalar] = offsets[source]
+            scalars[scalar + 4] = len(values[source].encode())
+    table = read_table(build_table(records=[_record(536, scalars)], strings=pool), language_count=7)
+    quest = normalize_world({"quest": table}, Snapshot(), {}).quests["QUEST_NATIVE"]
+    assert quest.steps == ("第一步", "第二步")
+    assert quest.step_translations[1]["ko"] == "둘째"
+
+
 def test_character_gift_and_fish_location_relations_use_stable_ids():
     onion = _item("ITEM_ID_CROPS_ONION", 100010, "洋葱")
     fish_item = _item("ITEM_ID_FISH_CARP", 160000, "鲤鱼")

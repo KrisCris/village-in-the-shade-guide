@@ -9,7 +9,7 @@ from honogurashi_extractor.probe import _string_groups
 game=Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade')
 archive=FafullfsArchive.open(game/'data.dat')
 groups=[]
-for table_name,offset in [('playercrothing',200),('playerheadaccessory',240)]:
+for table_name,offset in [('playercrothing',208),('playerheadaccessory',248)]:
     table=read_table(archive.read_entry(f'data/database/{table_name}.dat'))
     for record,strings in zip(table.records,_string_groups(table),strict=True):
         ids=[struct.unpack_from('<Q',record,offset+i*8)[0] for i in range(10)]

@@ -1,12 +1,12 @@
 # 游戏数据维护
 
-适用于仓库当前快照 `24969282`。仅在更新或核对游戏数据时使用；运行网站不需要重新提取。
+适用于仓库当前快照 `25311578`。仅在更新或核对游戏数据时使用；运行网站不需要重新提取。
 
 ## 数据来源
 
-- `data/generated/build-24969282/` 是已补充关联信息的结构化快照，不只是基础提取器的原始输出。
+- `data/generated/build-25311578/` 是已补充关联信息的结构化快照，不只是基础提取器的原始输出。上一构建 `build-24969282` 及其表结构原样保留，用于比较。
 - `data/sources/game-*.json` 保存地图、游戏规则、食谱传授、交换和家畜等专项解析结果。
-- 中文名称优先使用游戏官方繁中并转换为简中，保留日文和内部 ID。
+- 构建 `25311578` 起游戏自带简体中文，名称和说明直接使用官方简中；官方缺失时才由繁中转换。日文、繁中、韩文及预留语言槽按原表顺序保留在 `translations` 中，内部 ID 不变。
 - 物品图标由物品表引用图标表、纹理表后裁切，不按名称猜测。角色头像另取发行商人物页，见 [素材来源](assets.md)。
 
 ## 安全核对流程
@@ -16,17 +16,17 @@
 ```powershell
 uv sync --extra dev
 $gameDir = '你的游戏安装目录'
-uv run honogurashi-data verify-schemas --game-dir $gameDir --build-id 24969282
-uv run honogurashi-data extract --game-dir $gameDir --build-id 24969282 --output data/raw/review-24969282
-uv run honogurashi-data audit data/raw/review-24969282
+uv run honogurashi-data verify-schemas --game-dir $gameDir --build-id 25311578
+uv run honogurashi-data extract --game-dir $gameDir --build-id 25311578 --output data/raw/review-25311578
+uv run honogurashi-data audit data/raw/review-25311578
 ```
 
-提取到被忽略的审阅目录，**不要直接覆盖正式快照**。基础提取并不重建所有专项数据；应比较变化、核对引用和单位后，再有选择地更新正式文件。原始归档和存档不提交。
+提取到被忽略的审阅目录，**不要直接覆盖正式快照**。新构建增加第七个语言槽后，多数表的标量字段和嵌套列表步长都会移动，`data/schemas/build-25311578/` 记录了核对过的偏移。基础提取并不重建所有专项数据；应比较变化、核对引用和单位后，再有选择地更新正式文件。原始归档和存档不提交。
 
 验证物品图标时也先写入本地审阅目录：
 
 ```powershell
-uv run honogurashi-data extract-icons --game-dir $gameDir --snapshot data/raw/review-24969282 --output output/review-icons
+uv run honogurashi-data extract-icons --game-dir $gameDir --snapshot data/raw/review-25311578 --output output/review-icons
 ```
 
 只读提取会按工具读取游戏主归档及所需子归档，不修改游戏或存档。专项脚本的输入、输出及构建假设需分别检查，不能把整个 tools 目录当成一键更新流水线。

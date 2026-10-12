@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import {
   useCallback,
   useEffect,
@@ -57,6 +58,7 @@ import {
   prepareDemand,
   type AddAnchor,
 } from "../../domain/workflow/editing";
+import { pageHref, tr } from '../../i18n/active';
 
 const STORAGE = "village-production-plan-v1";
 function load(entities: Entity[]) {
@@ -75,14 +77,14 @@ function load(entities: Entity[]) {
       plan,
       error: "",
       migrationNotice: migrated
-        ? "旧方案已升级，保留手动日期、数量及机器设置。可在节点中恢复自动跟随上游；"
+        ? tr('旧方案已升级，保留手动日期、数量及机器设置。可在节点中恢复自动跟随上游；')
         : "",
     };
   } catch {
     return {
       plan: createPlan(entities),
       error:
-        "已保存的计划无法读取。原记录暂未覆盖；可导入备份，或编辑当前新计划。",
+        tr('已保存的计划无法读取。原记录暂未覆盖；可导入备份，或编辑当前新计划。'),
     };
   }
 }
@@ -111,7 +113,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const [cropChoice, setCropChoice] = useState("");
   const [panel, setPanel] = useState<
     "nodes" | "resources" | "connections" | "help" | null
-  >(() => (window.innerWidth > 700 ? "nodes" : null));
+  >(() => (window.innerWidth > 700 && !plan.nodes.length ? "nodes" : null));
   const [inspectorOpen, setInspectorOpen] = useState(false);
   const [panelWidth, setPanelWidth] = useState(340);
   const [mode, setMode] = useState<"hand" | "select">("hand");
@@ -202,7 +204,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       try {
         next = parsePlan(JSON.stringify(next));
       } catch (error) {
-        setNotice(error instanceof Error ? error.message : "计划设置无效");
+        setNotice(error instanceof Error ? error.message : tr('计划设置无效'));
         return;
       }
       setPast((p) => [...p.slice(-49), plan]);
@@ -214,13 +216,13 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   );
   useEffect(() => {
     if (saveBlocked) return;
-    setSaveStatus("保存中…");
+    setSaveStatus(tr('保存中…'));
     const timer = setTimeout(() => {
       try {
         localStorage.setItem(STORAGE, JSON.stringify(plan));
-        setSaveStatus("已保存在此浏览器");
+        setSaveStatus(tr('已保存在此浏览器'));
       } catch {
-        setSaveStatus("保存失败，请导出备份");
+        setSaveStatus(tr('保存失败，请导出备份'));
       }
     }, 350);
     return () => clearTimeout(timer);
@@ -274,7 +276,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         .map((e) => ({ ...e })),
     };
     setHasClipboard(true);
-    setNotice(`已复制 ${selected.length} 个节点及内部连线，可粘贴后修改日期。`);
+    setNotice(tr('已复制 {count} 个节点及内部连线，可粘贴后修改日期。', { count: selected.length }));
   };
   const paste = () => {
     if (!clipboard.current) return;
@@ -286,7 +288,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       plan.nodes.length + fragment.nodes.length > 200 ||
       plan.edges.length + fragment.edges.length > 500
     ) {
-      setNotice("每份计划最多 200 个节点。");
+      setNotice(tr('每份计划最多 200 个节点。'));
       return;
     }
     change({
@@ -344,18 +346,18 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const connect = (c: Pick<Connection, "source" | "target">) => {
     if (!c.source || !c.target) return;
     if (plan.edges.length >= 500) {
-      setNotice("每份计划最多 500 条连线。");
+      setNotice(tr('每份计划最多 500 条连线。'));
       return;
     }
     if (!canConnectDraft(plan.nodes, plan.edges, c.source, c.target)) {
-      setNotice("无法连接：请检查节点方向、重复连线或循环。");
+      setNotice(tr('无法连接：请检查节点方向、重复连线或循环。'));
       return;
     }
     change({
       ...plan,
       edges: [...plan.edges, { id: uid(), source: c.source, target: c.target }],
     });
-    setNotice("连线已添加，结果已更新。");
+    setNotice(tr('连线已添加，结果已更新。'));
   };
   const visiblePosition = (occupied = plan.nodes) => {
     const rect = canvas.current?.getBoundingClientRect();
@@ -451,7 +453,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const add = (kind: NodeKind, droppedPosition?: { x: number; y: number }) => {
     const position = droppedPosition ?? visiblePosition();
     if (plan.nodes.length >= 200) {
-      setNotice("每份计划最多 200 个节点。");
+      setNotice(tr('每份计划最多 200 个节点。'));
       return;
     }
     const n = { ...newNode(kind, day, plan.nodes.length), position };
@@ -477,7 +479,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       setPanel(null);
       setAddMenu(null);
     } catch (error) {
-      setNotice(error instanceof Error ? error.message : "无法新增节点");
+      setNotice(error instanceof Error ? error.message : tr('无法新增节点'));
     }
   };
   const prepare = () => {
@@ -500,11 +502,11 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       change(prepared.plan);
       setNotice(
         prepared.unresolved.length
-          ? `已生成可推算的前置流程；${[...new Set(prepared.unresolved)].join("、")} 仍需确认来源，尚未计入可交付数量。`
-          : "已按剩余缺口生成前置流程，可一次撤销。",
+          ? tr('已生成可推算的前置流程；{items} 仍需确认来源，尚未计入可交付数量。', { items: [...new Set(prepared.unresolved)].join("、") })
+          : tr('已按剩余缺口生成前置流程，可一次撤销。'),
       );
     } catch (error) {
-      setNotice(error instanceof Error ? error.message : "无法准备前置流程");
+      setNotice(error instanceof Error ? error.message : tr('无法准备前置流程'));
     }
   };
   const linkDemands = (
@@ -538,7 +540,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       ),
     });
     setNotice(
-      `已添加 ${Math.min(demands.length, 200 - plan.nodes.length)} 组${formatDay(day)}所在季节的留货需求。没有设置官方未知的截止日期。`,
+      tr('已添加 {count} 组{date}所在季节的留货需求。没有设置官方未知的截止日期。', { count: Math.min(demands.length, 200 - plan.nodes.length), date: formatDay(day) }),
     );
   };
   const starter = () => {
@@ -547,7 +549,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     );
     if (!crop) return;
     if (plan.nodes.length > 197) {
-      setNotice("节点数量已达上限。");
+      setNotice(tr('节点数量已达上限。'));
       return;
     }
     const seedId = (crop.seed_item_ids as string[] | undefined)?.[0],
@@ -557,21 +559,21 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const origin = visiblePosition();
     const buy = {
       ...newNode("purchase", day),
-      label: `购买${byId.get(seedId)?.name.zh_hans ?? "种子"}`,
+      label: tr('购买{name}', { name: byId.get(seedId)?.name.zh_hans ?? tr('种子') }),
       itemId: seedId,
       quantity,
       position: origin,
     };
     const plant = {
       ...newNode("plant", day),
-      label: `种植${crop.name.zh_hans}`,
+      label: tr('种植{name}', { name: crop.name.zh_hans }),
       cropId: crop.id,
       quantity,
       position: visiblePosition([...plan.nodes, buy]),
     };
     const sale = {
       ...newNode("sale", day),
-      label: "出售产物",
+      label: tr('出售产物'),
       position: visiblePosition([...plan.nodes, buy, plant]),
     };
     const nodes = [...plan.nodes, buy, plant, sale],
@@ -656,9 +658,9 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
               .map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
               .join(" · ") +
             (n.requirements && n.requirements.length > 3
-              ? ` 等 ${n.requirements.length} 项`
+              ? tr(' 等 {count} 项', { count: n.requirements.length })
               : "")
-          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : "连接后自动识别")} · ${projection?.quantity ? `${n.kind === "plant" ? projection.land : projection.quantity}${n.kind === "plant" ? " 格" : n.kind === "process" ? " 批" : " 个"}` : autoAmount(n) ? "跟随上游" : `${n.quantity} 个`}`;
+          : `${entity?.name.zh_hans ?? (n.itemId ? itemName(n.itemId) : tr('连接后自动识别'))} · ${projection?.quantity ? `${n.kind === "plant" ? projection.land : projection.quantity}${n.kind === "plant" ? tr(' 格') : n.kind === "process" ? tr(' 批') : tr(' 个')}` : autoAmount(n) ? tr('跟随上游') : tr('{quantity} 个', { quantity: n.quantity })}`;
         const completed = result.demandProgress[n.id]
           ? (result.days.find((d) => d.day === day)?.stock ?? []).filter(
               (s) => s.nodeId === n.id && s.reserved,
@@ -685,33 +687,34 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             icon: icon ? withBase(icon) : undefined,
             problems,
             today: events.length
-              ? `${((day - 1) % 28) + 1} 日 · ${
-                  problems
-                    ? `${problems} 项缺口`
+              ? tr('{day} 日 · {summary}', {
+                  day: ((day - 1) % 28) + 1,
+                  summary: problems
+                    ? tr('{count} 项缺口', { count: problems })
                     : events
                         .map(
                           (e) =>
                             ({
-                              inventory: "库存",
-                              purchase: "买入",
-                              plant: "播种",
-                              harvest: "收获",
-                              process: "投料",
-                              complete: "完成",
-                              reserve: "留货",
-                              delivery: "交付",
-                              consume: "消耗",
-                              sale: "出货",
-                              receipt: "到账",
-                              warning: "缺口",
+                              inventory: tr('库存'),
+                              purchase: tr('买入'),
+                              plant: tr('播种'),
+                              harvest: tr('收获'),
+                              process: tr('投料'),
+                              complete: tr('完成'),
+                              reserve: tr('留货'),
+                              delivery: tr('交付'),
+                              consume: tr('消耗'),
+                              sale: tr('出货'),
+                              receipt: tr('到账'),
+                              warning: tr('缺口'),
                             })[e.kind],
                         )
                         .filter((v, i, a) => a.indexOf(v) === i)
-                        .join(" / ")
-                }`
+                        .join(" / "),
+                })
               : "",
             progress: completed
-              ? `当日已备 ${completed.reduce((s, a) => s + a.quantity, 0)} / ${(n.requirements ?? []).reduce((s, a) => s + a.quantity, 0)} 个`
+              ? tr('当日已备 {ready} / {required} 个', { ready: completed.reduce((s, a) => s + a.quantity, 0), required: (n.requirements ?? []).reduce((s, a) => s + a.quantity, 0) })
               : undefined,
           },
         };
@@ -741,9 +744,9 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         label:
           (result.intent?.edgeTransfers[e.id]
             ?.map((a) => `${itemName(a.itemId)} ×${a.quantity}`)
-            .join(" · ") ?? "等待分配") +
+            .join(" · ") ?? tr('等待分配')) +
           (result.intent?.edgeSchedule[e.id]?.length
-            ? ` · ${formatDay(result.intent.edgeSchedule[e.id][0].day)}${result.intent.edgeSchedule[e.id].at(-1)!.day !== result.intent.edgeSchedule[e.id][0].day ? " 起" : ""}`
+            ? ` · ${formatDay(result.intent.edgeSchedule[e.id][0].day)}${result.intent.edgeSchedule[e.id].at(-1)!.day !== result.intent.edgeSchedule[e.id][0].day ? tr(' 起') : ""}`
             : ""),
         labelStyle: { fill: "var(--ink)", fontSize: 11 },
         labelBgStyle: { fill: "var(--paper-raised)", fillOpacity: 0.95 },
@@ -778,7 +781,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       100,
     );
     setNotice(
-      `已将 ${arranged.groupCount} 组独立流程分别整理并紧凑排布，可撤销恢复原位置。`,
+      tr('已将 {groupCount} 组独立流程分别整理并紧凑排布，可撤销恢复原位置。', { groupCount: arranged.groupCount }),
     );
   };
   const download = () => {
@@ -788,7 +791,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `农场计划-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = tr('农场计划-{date}.json', { date: new Date().toISOString().slice(0, 10) });
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
@@ -830,7 +833,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       setNotice(applied.message);
     } catch (error) {
       setNotice(
-        error instanceof Error ? error.message : "暂时不能执行这项操作。",
+        error instanceof Error ? error.message : tr('暂时不能执行这项操作。'),
       );
     }
   };
@@ -857,14 +860,14 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
     };
   }, [current?.id, computationKey, entities, result]);
   const descriptions: Record<NodeKind, string> = {
-    purchase: "购买种子与原料",
-    inventory: "使用手头已有物品",
-    plant: "播种、收获与自动续种",
-    process: "原料投入与多级加工",
-    reserve: "为后续用途保留物品",
-    delivery: "供奉、村长与任务交付",
-    consume: "料理、送礼与日常使用",
-    sale: "出货并计算到账收入",
+    purchase: tr('购买种子与原料'),
+    inventory: tr('使用手头已有物品'),
+    plant: tr('播种、收获与自动续种'),
+    process: tr('原料投入与多级加工'),
+    reserve: tr('为后续用途保留物品'),
+    delivery: tr('供奉、村长与任务交付'),
+    consume: tr('料理、送礼与日常使用'),
+    sale: tr('出货并计算到账收入'),
   };
   const togglePanel = (next: typeof panel) => {
     setPanel(panel === next ? null : next);
@@ -882,13 +885,13 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       className={`wf-app ${focused ? "wf-focused" : ""}`}
       tabIndex={0}
       onKeyDown={keyboard}
-      aria-label="农场工作流编辑器"
+      aria-label={tr('农场工作流编辑器')}
     >
       {addMenu && (
         <div
           className="wf-add-menu wf-floating"
           role="dialog"
-          aria-label="连接新节点"
+          aria-label={tr('连接新节点')}
           onKeyDown={(e) => {
             e.stopPropagation();
             if (e.key === "Escape") setAddMenu(null);
@@ -897,16 +900,16 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           <div className="wf-floating-header">
             <strong>
               {addMenu.edgeId
-                ? "插入流程节点"
+                ? tr('插入流程节点')
                 : addMenu.side === "input"
-                  ? "添加前置节点"
-                  : "添加后续节点"}
+                  ? tr('添加前置节点')
+                  : tr('添加后续节点')}
             </strong>
-            <button aria-label="关闭新增菜单" onClick={() => setAddMenu(null)}>
+            <button aria-label={tr('关闭新增菜单')} onClick={() => setAddMenu(null)}>
               <WorkflowIcon name="close" />
             </button>
           </div>
-          <p>添加后自动连接，物品和日期沿流程推算。</p>
+          <p>{tr('添加后自动连接，物品和日期沿流程推算。')}</p>
           <div>
             {(Object.keys(nodeLabels) as NodeKind[])
               .filter((kind) =>
@@ -935,13 +938,13 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           </span>
           <div>
             <div className="wf-breadcrumb">
-              <a href={withBase("/planner/")}>收益规划</a>
+              <a href={pageHref("/planner/")}>{tr('收益规划')}</a>
               <span>/</span>
-              <h1>生产工作流</h1>
+              <h1>{tr('生产工作流')}</h1>
             </div>
             <input
               className="wf-plan-name"
-              aria-label="计划名称"
+              aria-label={tr('计划名称')}
               value={plan.name}
               maxLength={150}
               onChange={(e) => change({ ...plan, name: e.target.value })}
@@ -954,24 +957,24 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
         </small>
         <div className="wf-heading-actions">
           <button
-            aria-label="计划设置"
+            aria-label={tr('计划设置')}
             onClick={() => togglePanel("resources")}
             aria-pressed={panel === "resources"}
           >
             <WorkflowIcon name="settings" />
-            <span>计划设置</span>
+            <span>{tr('计划设置')}</span>
           </button>
           <button
             className="wf-icon-button"
-            title={focused ? "退出专注模式（Esc）" : "专注模式"}
-            aria-label={focused ? "退出专注模式" : "专注模式"}
+            title={focused ? tr('退出专注模式（Esc）') : tr('专注模式')}
+            aria-label={focused ? tr('退出专注模式') : tr('专注模式')}
             aria-pressed={focused}
             onClick={() => setFocused(!focused)}
           >
             <WorkflowIcon name="expand" />
           </button>
           <details className="wf-file-menu">
-            <summary title="计划文件" aria-label="计划文件">
+            <summary title={tr('计划文件')} aria-label={tr('计划文件')}>
               <WorkflowIcon name="more" />
             </summary>
             <div>
@@ -983,11 +986,11 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   setSelected([]);
                   setInspectorOpen(false);
                   setPanel("nodes");
-                  setNotice("已新建计划，可撤销返回上一份。");
+                  setNotice(tr('已新建计划，可撤销返回上一份。'));
                 }}
               >
                 <WorkflowIcon name="plus" />
-                新建计划
+                {tr('新建计划')}
               </button>
               {hasLegacyBackup && (
                 <button
@@ -1001,21 +1004,21 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                     );
                     const a = document.createElement("a");
                     a.href = url;
-                    a.download = "农场计划-升级前备份.json";
+                    a.download = tr('农场计划-升级前备份.json');
                     a.click();
                     setTimeout(() => URL.revokeObjectURL(url), 1000);
                   }}
                 >
-                  导出升级前备份
+                  {tr('导出升级前备份')}
                 </button>
               )}
               <button onClick={download}>
                 <WorkflowIcon name="download" />
-                导出计划
+                {tr('导出计划')}
               </button>
               <button onClick={() => file.current?.click()}>
                 <WorkflowIcon name="upload" />
-                导入计划
+                {tr('导入计划')}
               </button>
             </div>
           </details>
@@ -1031,16 +1034,16 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             if (!picked) return;
             try {
               if (picked.size > 2_000_000)
-                throw new Error("计划文件不能超过 2 MB");
+                throw new Error(tr('计划文件不能超过 2 MB'));
               const next = parsePlan(await picked.text());
               change(next);
               setTimeout(() => frameNodes(next.nodes), 100);
               setSelected([]);
               setPanel(null);
               setInspectorOpen(false);
-              setNotice("计划已导入。");
+              setNotice(tr('计划已导入。'));
             } catch (error) {
-              setNotice(error instanceof Error ? error.message : "导入失败");
+              setNotice(error instanceof Error ? error.message : tr('导入失败'));
             }
           }}
         />
@@ -1048,34 +1051,34 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       <div className="wf-context-bar">
         <button className="wf-period" onClick={() => togglePanel("resources")}>
           <WorkflowIcon name="calendar" size={15} />
-          {formatDay(plan.startDay)} 起 · {plan.days} 天
+          {tr('{date} 起 · {days} 天', { date: formatDay(plan.startDay), days: plan.days })}
           <WorkflowIcon name="chevron" size={12} />
         </button>
         <span
           className="wf-resource-summary"
-          title="按同时占用推算的需求，机器购置费用另计"
+          title={tr('按同时占用推算的需求，机器购置费用另计')}
         >
-          需要 {result.intent?.land ?? 0} 格土地<span>·</span>
+          {tr('需要 {count} 格土地', { count: result.intent?.land ?? 0 })}<span>·</span>
           {Object.values(result.intent?.nodes ?? {}).reduce(
             (sum, p) => sum + p.machines,
             0,
           )}{" "}
-          台机器
+          {tr('台机器')}
         </span>
         <div className="wf-cash-summary">
-          <span title="支出发生时不依赖尚未到账的收入">
-            启动资金{" "}
+          <span title={tr('支出发生时不依赖尚未到账的收入')}>
+            {tr('启动资金')}{" "}
             <b>{(result.intent?.startupFunds ?? 0).toLocaleString()}</b>
           </span>
-          <span title="本期实际到账减去购买支出">
-            本期收支{" "}
+          <span title={tr('本期实际到账减去购买支出')}>
+            {tr('本期收支')}{" "}
             <b>
               {result.cash >= 0 ? "+" : ""}
               {result.cash.toLocaleString()}
             </b>
           </span>
-          <span title="包含期末之后的加工与到账">
-            最终收支{" "}
+          <span title={tr('包含期末之后的加工与到账')}>
+            {tr('最终收支')}{" "}
             <b>
               {(result.intent?.finalDelta ?? result.cash) >= 0 ? "+" : ""}
               {(result.intent?.finalDelta ?? result.cash).toLocaleString()}
@@ -1105,49 +1108,49 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             onZoom={setZoom}
           />
         </div>
-        <nav className="wf-rail" aria-label="工作流工具">
+        <nav className="wf-rail" aria-label={tr('工作流工具')}>
           <button
             className={panel === "nodes" ? "active" : ""}
-            aria-label="添加节点"
-            title="添加节点"
+            aria-label={tr('添加节点')}
+            title={tr('添加节点')}
             aria-pressed={panel === "nodes"}
             onClick={() => togglePanel("nodes")}
           >
             <WorkflowIcon name="plus" size={22} />
-            <span>节点</span>
+            <span>{tr('节点')}</span>
           </button>
           <button
             className={mode === "hand" ? "active" : ""}
-            aria-label="平移画布"
-            title="平移画布（H / 按住空格）"
+            aria-label={tr('平移画布')}
+            title={tr('平移画布（H / 按住空格）')}
             aria-pressed={mode === "hand"}
             onClick={() => setMode("hand")}
           >
             <WorkflowIcon name="hand" />
-            <span>平移</span>
+            <span>{tr('平移')}</span>
           </button>
           <button
             className={mode === "select" ? "active" : ""}
-            aria-label="框选节点"
-            title="框选节点（V / 按住 Shift）"
+            aria-label={tr('框选节点')}
+            title={tr('框选节点（V / 按住 Shift）')}
             aria-pressed={mode === "select"}
             onClick={() => setMode("select")}
           >
             <WorkflowIcon name="select" />
-            <span>框选</span>
+            <span>{tr('框选')}</span>
           </button>
           <hr />
           <button
-            aria-label="连线管理"
-            title="连线管理"
+            aria-label={tr('连线管理')}
+            title={tr('连线管理')}
             aria-pressed={panel === "connections"}
             onClick={() => togglePanel("connections")}
           >
             <WorkflowIcon name="link" />
           </button>
           <button
-            aria-label="操作帮助"
-            title="操作帮助与计算范围"
+            aria-label={tr('操作帮助')}
+            title={tr('操作帮助与计算范围')}
             aria-pressed={panel === "help"}
             onClick={() => togglePanel("help")}
           >
@@ -1155,12 +1158,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           </button>
         </nav>
         {panel === "nodes" && (
-          <aside className="wf-library wf-floating" aria-label="节点库">
+          <aside className="wf-library wf-floating" aria-label={tr('节点库')}>
             <div className="wf-floating-header">
-              <strong>添加节点</strong>
+              <strong>{tr('添加节点')}</strong>
               <button
                 className="wf-icon-button"
-                aria-label="关闭节点库"
+                aria-label={tr('关闭节点库')}
                 onClick={() => setPanel(null)}
               >
                 <WorkflowIcon name="close" size={16} />
@@ -1170,15 +1173,15 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
               <div className="wf-starter">
                 <div className="wf-starter-title">
                   <WorkflowIcon name="plant" size={17} />
-                  <strong>从一条种植流程开始</strong>
+                  <strong>{tr('从一条种植流程开始')}</strong>
                 </div>
-                <p>买种 → 种植 → 出售，一次连好。</p>
+                <p>{tr('买种 → 种植 → 出售，一次连好。')}</p>
                 <div className="wf-crop-picks">
                   {crops.slice(0, 4).map((c) => (
                     <button
                       key={c.id}
-                      title={`${c.name.zh_hans} · ${c.growth_days} 天生长`}
-                      aria-label={`选择${c.name.zh_hans}`}
+                      title={tr('{name} · {days} 天生长', { name: c.name.zh_hans, days: c.growth_days })}
+                      aria-label={tr('选择{name}', { name: c.name.zh_hans })}
                       aria-pressed={cropChoice === c.id}
                       onClick={() => setCropChoice(c.id)}
                     >
@@ -1195,7 +1198,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   ))}
                 </div>
                 <EntityPicker
-                  label="快速添加的作物"
+                  label={tr('快速添加的作物')}
                   entities={crops}
                   value={cropChoice}
                   onChange={setCropChoice}
@@ -1206,19 +1209,19 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   onClick={starter}
                 >
                   <WorkflowIcon name="plus" size={16} />
-                  添加种植流程
+                  {tr('添加种植流程')}
                 </button>
               </div>
               <div className="wf-library-search">
                 <WorkflowIcon name="search" size={16} />
                 <input
-                  aria-label="搜索节点类型"
-                  placeholder="搜索节点类型…"
+                  aria-label={tr('搜索节点类型')}
+                  placeholder={tr('搜索节点类型…')}
                   value={nodeQuery}
                   onChange={(e) => setNodeQuery(e.target.value)}
                 />
               </div>
-              <p className="wf-library-caption">点击添加，或拖入画布</p>
+              <p className="wf-library-caption">{tr('点击添加，或拖入画布')}</p>
               <div className="wf-node-catalog">
                 {(Object.keys(nodeLabels) as NodeKind[])
                   .filter((kind) =>
@@ -1251,10 +1254,10 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
               </div>
               <button className="wf-demand-button" onClick={generateDemands}>
                 <WorkflowIcon name="delivery" size={16} />
-                补充当季留货节点
+                {tr('补充当季留货节点')}
               </button>
               <p className="wf-note">
-                供奉与交付需求已自动带入，可连接产物，也可删除暂时不做的项目。
+                {tr('供奉与交付需求已自动带入，可连接产物，也可删除暂时不做的项目。')}
               </p>
             </div>
           </aside>
@@ -1281,12 +1284,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             }
             title={
               panel === "resources"
-                ? "计划设置"
+                ? tr('计划设置')
                 : panel === "connections"
-                  ? "连线管理"
+                  ? tr('连线管理')
                   : panel === "help"
-                    ? "操作指南"
-                    : "节点设置"
+                    ? tr('操作指南')
+                    : tr('节点设置')
             }
           >
             {panel === "resources" ? (
@@ -1300,43 +1303,43 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                 {" "}
                 <details className="wf-connections" open>
                   <summary>
-                    连线管理（也可用下拉框连接） · {plan.edges.length} 条
+                    {tr('连线管理（也可用下拉框连接） · {count} 条', { count: plan.edges.length })}
                   </summary>
                   <div className="wf-link-form">
                     <label>
-                      来源
-                      <select
+                      {tr('来源')}
+                      <SearchableSelect
                         value={source}
                         onChange={(e) => setSource(e.target.value)}
                       >
-                        <option value="">选择来源</option>
+                        <option value="">{tr('选择来源')}</option>
                         {inference.nodes.map((n) => (
                           <option key={n.id} value={n.id}>
                             {n.label}
                           </option>
                         ))}
-                      </select>
+                      </SearchableSelect>
                     </label>
                     <span>→</span>
                     <label>
-                      去向
-                      <select
+                      {tr('去向')}
+                      <SearchableSelect
                         value={target}
                         onChange={(e) => setTarget(e.target.value)}
                       >
-                        <option value="">选择去向</option>
+                        <option value="">{tr('选择去向')}</option>
                         {inference.nodes.map((n) => (
                           <option key={n.id} value={n.id}>
                             {n.label}
                           </option>
                         ))}
-                      </select>
+                      </SearchableSelect>
                     </label>
                     <button
                       disabled={!source || !target}
                       onClick={() => connect({ source, target })}
                     >
-                      连接
+                      {tr('连接')}
                     </button>
                   </div>
                   <ul>
@@ -1349,7 +1352,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                           <details>
                             <summary>
                               {result.intent.edgeSchedule[e.id].length}{" "}
-                              批分配明细
+                              {tr('批分配明细')}
                             </summary>
                             <ul>
                               {result.intent.edgeSchedule[e.id].map((a, i) => (
@@ -1362,7 +1365,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                           </details>
                         )}
                         <button
-                          aria-label="删除此连线"
+                          aria-label={tr('删除此连线')}
                           onClick={() =>
                             change({
                               ...plan,
@@ -1380,39 +1383,38 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             ) : panel === "help" ? (
               <>
                 <div className="wf-shortcuts">
-                  <h3>把农场安排在一张画布上</h3>
+                  <h3>{tr('把农场安排在一张画布上')}</h3>
                   <p>
-                    拖动节点移动位置，从右侧圆点拖到另一个节点的左侧圆点连接产物。
+                    {tr('拖动节点移动位置，从右侧圆点拖到另一个节点的左侧圆点连接产物。')}
                   </p>
                   <dl>
-                    <dt>移动画布</dt>
-                    <dd>左键拖动空白处 · H</dd>
-                    <dt>框选节点</dt>
-                    <dd>框选工具 · Shift 拖动</dd>
-                    <dt>临时平移</dt>
-                    <dd>按住空格拖动</dd>
-                    <dt>复制 / 粘贴</dt>
+                    <dt>{tr('移动画布')}</dt>
+                    <dd>{tr('左键拖动空白处 · H')}</dd>
+                    <dt>{tr('框选节点')}</dt>
+                    <dd>{tr('框选工具 · Shift 拖动')}</dd>
+                    <dt>{tr('临时平移')}</dt>
+                    <dd>{tr('按住空格拖动')}</dd>
+                    <dt>{tr('复制 / 粘贴')}</dt>
                     <dd>Ctrl / ⌘ + C / V</dd>
-                    <dt>撤销 / 重做</dt>
+                    <dt>{tr('撤销 / 重做')}</dt>
                     <dd>Ctrl / ⌘ + Z / Shift Z</dd>
-                    <dt>查看每日安排</dt>
-                    <dd>底部选择日期，展开生产日程</dd>
+                    <dt>{tr('查看每日安排')}</dt>
+                    <dd>{tr('底部选择日期，展开生产日程')}</dd>
                   </dl>
                   <p>
-                    选中种植节点可勾选自动续种、缺种补买。每次购买和播种都会出现在日程上。
+                    {tr('选中种植节点可勾选自动续种、缺种补买。每次购买和播种都会出现在日程上。')}
                   </p>
                 </div>
                 <details className="wf-assumptions" open>
-                  <summary>计算假设与范围</summary>
+                  <summary>{tr('计算假设与范围')}</summary>
                   <p>
-                    每天统一操作一次。播种日加生长天数为收获日；加工按 24
-                    小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数在计划设置中调整，机器台数与并行容量在加工节点中调整。
+                    {tr('每天统一操作一次。播种日加生长天数为收获日；加工按 24 小时向上取整，最早次日收取。实际游戏日界、出货到账时间和机器并行容量尚需玩家核对，到账天数在计划设置中调整，机器台数与并行容量在加工节点中调整。')}
                   </p>
                   <p>
-                    适种季节和商店供应使用现有资料。额外解锁、天气、肥料、体力、价格整数舍入及混合品质继承未完整模拟。统一品质是当前计划的估算假设。未知生长、产量、配方或价格不会被当成零。
+                    {tr('适种季节和商店供应使用现有资料。额外解锁、天气、肥料、体力、价格整数舍入及混合品质继承未完整模拟。统一品质是当前计划的估算假设。未知生长、产量、配方或价格不会被当成零。')}
                   </p>
                   <p>
-                    已有库存不重复扣买入成本。自动补买产生真实购买事件和现金支出；无期限的供奉与交付仅作为备货目标。此版本不会自动推荐最优方案，保存的计划结构可用于后续推荐。
+                    {tr('已有库存不重复扣买入成本。自动补买产生真实购买事件和现金支出；无期限的供奉与交付仅作为备货目标。此版本不会自动推荐最优方案，保存的计划结构可用于后续推荐。')}
                   </p>
                 </details>
               </>
@@ -1450,24 +1452,24 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           <div className="wf-view-tools">
             <button
               className="wf-icon-button"
-              aria-label="缩小画布"
-              title="缩小"
+              aria-label={tr('缩小画布')}
+              title={tr('缩小')}
               onClick={() => flow.current?.zoomOut({ duration: 150 })}
             >
               <WorkflowIcon name="minus" size={16} />
             </button>
             <button
               className="wf-zoom-value"
-              aria-label="重置为百分之百缩放"
-              title="重置为 100%"
+              aria-label={tr('重置为百分之百缩放')}
+              title={tr('重置为 100%')}
               onClick={() => flow.current?.zoomTo(1, { duration: 150 })}
             >
               {Math.round(zoom * 100)}%
             </button>
             <button
               className="wf-icon-button"
-              aria-label="放大画布"
-              title="放大"
+              aria-label={tr('放大画布')}
+              title={tr('放大')}
               onClick={() => flow.current?.zoomIn({ duration: 150 })}
             >
               <WorkflowIcon name="plus" size={16} />
@@ -1475,8 +1477,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             <i />
             <button
               className="wf-icon-button"
-              aria-label="适应全部节点"
-              title="适应全部节点"
+              aria-label={tr('适应全部节点')}
+              title={tr('适应全部节点')}
               onClick={() =>
                 flow.current?.fitView({
                   padding: 0.2,
@@ -1489,8 +1491,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             </button>
             <button
               className="wf-icon-button"
-              aria-label="整理节点布局"
-              title="按独立流程分组整理布局（可撤销）"
+              aria-label={tr('整理节点布局')}
+              title={tr('按独立流程分组整理布局（可撤销）')}
               onClick={arrange}
             >
               <WorkflowIcon name="layout" size={17} />
@@ -1498,17 +1500,17 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           </div>
           <span className="wf-pan-hint">
             {mode === "hand"
-              ? "拖动空白处平移 · Shift 框选"
-              : "拖动空白处框选 · 空格平移"}
+              ? tr('拖动空白处平移 · Shift 框选')
+              : tr('拖动空白处框选 · 空格平移')}
           </span>
         </div>
         <div className="wf-history-tools">
           {selected.length > 0 && (
             <>
-              <span>已选 {selected.length}</span>
+              <span>{tr('已选')} {selected.length}</span>
               <button
-                aria-label="聚焦所选链路"
-                title="放大查看选中节点的完整上下游"
+                aria-label={tr('聚焦所选链路')}
+                title={tr('放大查看选中节点的完整上下游')}
                 onClick={() =>
                   frameSelection(
                     plan.nodes.filter((n) => traced.nodes.has(n.id)),
@@ -1519,12 +1521,12 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
                   )
                 }
               >
-                <WorkflowIcon name="fit" size={16} /> 聚焦链路
+                <WorkflowIcon name="fit" size={16} /> {tr('聚焦链路')}
               </button>
               <button
                 className="wf-icon-button"
-                aria-label="复制选中节点"
-                title="复制（Ctrl / ⌘ + C）"
+                aria-label={tr('复制选中节点')}
+                title={tr('复制（Ctrl / ⌘ + C）')}
                 onClick={copy}
               >
                 <WorkflowIcon name="copy" size={16} />
@@ -1533,8 +1535,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           )}
           <button
             className="wf-icon-button"
-            aria-label="粘贴节点"
-            title="粘贴（Ctrl / ⌘ + V）"
+            aria-label={tr('粘贴节点')}
+            title={tr('粘贴（Ctrl / ⌘ + V）')}
             disabled={!hasClipboard}
             onClick={paste}
           >
@@ -1543,8 +1545,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           {(selected.length > 0 || selectedEdges.length > 0) && (
             <button
               className="wf-icon-button wf-danger"
-              aria-label="删除选中"
-              title="删除选中"
+              aria-label={tr('删除选中')}
+              title={tr('删除选中')}
               onClick={() => remove()}
             >
               <WorkflowIcon name="trash" size={16} />
@@ -1553,8 +1555,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           <i />
           <button
             className="wf-icon-button"
-            aria-label="撤销"
-            title="撤销（Ctrl / ⌘ + Z）"
+            aria-label={tr('撤销')}
+            title={tr('撤销（Ctrl / ⌘ + Z）')}
             disabled={!past.length}
             onClick={undo}
           >
@@ -1562,8 +1564,8 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
           </button>
           <button
             className="wf-icon-button"
-            aria-label="重做"
-            title="重做（Ctrl / ⌘ + Shift + Z）"
+            aria-label={tr('重做')}
+            title={tr('重做（Ctrl / ⌘ + Shift + Z）')}
             disabled={!future.length}
             onClick={redo}
           >
@@ -1575,7 +1577,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             <span>{notice}</span>
             <button
               className="wf-icon-button"
-              aria-label="关闭提示"
+              aria-label={tr('关闭提示')}
               onClick={() => setNotice("")}
             >
               <WorkflowIcon name="close" size={14} />

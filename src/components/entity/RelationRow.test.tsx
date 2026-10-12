@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import type { Entity } from '../../data/types';
+import { I18nProvider } from '../../i18n/react';
 import RelationRow from './RelationRow';
 
 const entity = (icon_path?: string): Entity => ({
@@ -22,5 +23,13 @@ describe('RelationRow', () => {
     const html = renderToStaticMarkup(<RelationRow row={{ key: 'recipe', entity: entity('/icons/recipe.webp'), fixedPrice: true, chips: [] }} />);
 
     expect(html).toContain('src="/icons/recipe.webp"');
+  });
+
+  it('shows the Japanese name under Chinese names but no subtitle on Japanese pages', () => {
+    const row = { key: 'recipe', entity: { ...entity(), name: { ...entity().name, zh_hans: '料理', ja: 'りょうり' } }, fixedPrice: true, chips: [] };
+    expect(renderToStaticMarkup(<RelationRow row={row} />)).toContain('<small>りょうり</small>');
+    const ja = renderToStaticMarkup(<I18nProvider locale="ja"><RelationRow row={row} /></I18nProvider>);
+    expect(ja).not.toContain('りょうり');
+    expect(ja).not.toContain('<small>recipe</small>');
   });
 });

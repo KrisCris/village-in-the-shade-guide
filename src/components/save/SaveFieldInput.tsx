@@ -1,3 +1,4 @@
+import SearchableSelect from '../controls/SearchableSelect';
 import type { SaveField } from '../../lib/saveModel';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
@@ -5,6 +6,7 @@ import { useState } from 'react';
 import EntityPicker from './EntityPicker';
 import SaveDialog from './SaveDialog';
 import FriendshipInput from './FriendshipInput';
+import { tr } from '../../i18n/active';
 
 interface SaveFieldInputProps {
   field: SaveField;
@@ -19,6 +21,7 @@ interface SaveFieldInputProps {
 export default function SaveFieldInput({ field, draft, names, onChange, compact }: SaveFieldInputProps) {
   const value = draft ?? field.value;
   const [picking, setPicking] = useState(false);
+  const nameField = field.type === 'string' && (field.nameLimit || /name_|dogName_/i.test(field.label));
   const dirty = value !== field.value;
   const resolved = lookupName(names, field.lookup, value);
 
@@ -26,7 +29,7 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
     return <span className="save-cell readonly" title={field.note}>
       <SaveIcon names={names} kind={field.lookup} value={value} size={22} />
       <span className="save-cell-value">{resolved || value || '—'}</span>
-      {resolved && <small className="save-cell-name">ID {value}</small>}
+      {nameField && <NameCount value={value} />}
     </span>;
   }
 
@@ -36,16 +39,16 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
 
   if (field.type === 'bool') {
     return <span className={`save-cell${dirty ? ' dirty' : ''}`}>
-      <select value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={field.label}>
-        <option value="0">否</option>
-        <option value="1">是</option>
-      </select>
+      <SearchableSelect value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={field.label}>
+        <option value="0">{tr('否')}</option>
+        <option value="1">{tr('是')}</option>
+      </SearchableSelect>
     </span>;
   }
 
   if (field.lookup) return <div className={`save-cell${dirty ? ' dirty' : ''}`}>
     <button className="save-select-trigger" type="button" aria-label={field.label} aria-expanded={picking} onClick={() => setPicking(open => !open)}>
-      <SaveIcon names={names} kind={field.lookup} value={value} size={22} />{resolved || `未知值 ${value}`} ▾
+      <SaveIcon names={names} kind={field.lookup} value={value} size={22} />{resolved || tr('未知值 {value}', { value })} ▾
     </button>
     {picking && <SaveDialog title={field.label} compact onClose={() => setPicking(false)}><EntityPicker names={names} kind={field.lookup} value={value} label={field.label} onChange={id => { onChange(field, id); setPicking(false); }} /></SaveDialog>}
   </div>;
@@ -62,11 +65,23 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
       size={compact ? 10 : undefined}
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={field.label}
+      maxLength={nameField ? NAME_LIMIT : undefined}
+      aria-description={nameField ? tr('游戏内名称最多 5 个字符。') : undefined}
+      aria-invalid={nameField && Array.from(value).length > NAME_LIMIT || undefined}
       spellCheck={false}
     />
+    {nameField && <NameCount value={value} />}
     {resolved && <small className="save-cell-name">
       <SaveIcon names={names} kind={field.lookup} value={value} size={18} />
       {resolved}
     </small>}
   </span>;
+}
+
+/** The game caps player, pet, animal and brand names at five characters in every language. */
+export const NAME_LIMIT = 5;
+
+export function NameCount({ value }: { value: string }) {
+  const length = Array.from(value).length;
+  return <small className={length > NAME_LIMIT ? 'save-status error' : 'save-cell-name'}>{tr('{length}/{limit} 字符', { length, limit: NAME_LIMIT })}</small>;
 }

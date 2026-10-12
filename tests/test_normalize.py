@@ -69,6 +69,48 @@ def test_official_names_and_aliases_are_preserved():
     assert name.review_status == "override"
 
 
+def test_official_simplified_name_precedes_override_and_keeps_native_slots():
+    name = build_name(ja="トバリ", zh_hant="帷", internal="CHARA_ID_ORPHAN",
+                      overrides={"CHARA_ID_ORPHAN": "灯"},
+                      translations={"ja": "トバリ", "zh-TW": "帷", "ko": "토바리", "zh-CN": "帷"})
+    assert name.zh_hans == "帷"
+    assert name.translations["ko"] == "토바리"
+    assert name.review_status == "official"
+    assert "灯" in name.aliases
+
+
+def test_seven_language_item_scalars_description_and_seed_relationship():
+    groups = []
+    for internal in ("ITEM_ID_SEED_TEST", "ITEM_ID_CROP_TEST"):
+        values = [internal]
+        for ja, hant, hans in (("種", "種子", "官方种子"), ("", "", ""),
+                                ("春に植える", "春天種植", "春天种植"), ("説明", "說明", "说明"), ("", "", "")):
+            values.extend([ja, "", "", "", hant, "한국어", hans])
+        groups.append(("\0".join(values) + "\0").encode())
+    tables = {
+        "item": read_table(build_table(records=[
+            _record(544, {0: 1, 24: 2, 320: 4, 332: 80, 336: 60, 384: 1, 388: 11, 396: 17}),
+            _record(536, {0: 2, 8: len(groups[0]), 336: 63}),
+        ], strings=b"".join(groups)), language_count=7),
+        "crops": read_table(build_table(records=[_record(500, {0: 17})],
+            strings=("\0".join(["CROPS_TEST", "作物", "", "", "", "作物", "작물", "作物"]) + "\0").encode()), language_count=7),
+    }
+    snapshot = normalize_snapshot(tables, {}, {"ITEM_ID_SEED_TEST": "旧种子"})
+    item = snapshot.items["ITEM_ID_SEED_TEST"]
+    assert (item.buy_price, item.sell_price, item.category_numeric_id, item.feature_ids) == (80, 60, 4, (11,))
+    assert item.name.zh_hans == "官方种子"
+    assert item.description == "春天种植\n说明"
+    assert item.description_translations["zh-TW"] == "春天種植\n說明"
+    assert snapshot.crops["CROPS_TEST"].seed_item_ids == (item.id,)
+    assert snapshot.crops["CROPS_TEST"].seasons == ("spring",)
+
+
+def test_seven_language_crop_stages_use_272_byte_stride():
+    record = _record(1048, {84: 0, 88: 0, 92: 0, 96: 0, 196: 1, 200: 1, 204: 3,
+                             480: 100, 752: 400})
+    assert _growth_data(record, language_count=7) == (400, 4, None, None)
+
+
 def test_cooking_category_ingredients_use_native_item_features():
     groups = [_localized_group(f"ITEM_{i}", f"物品{i}", f"物品{i}") for i in range(1, 5)]
     records = []

@@ -78,10 +78,11 @@ export class LeafWorld {
         if(leaf.x+leaf.r>p.left && leaf.x-leaf.r<p.right && oldBottom<=p.top+1 && leaf.y+leaf.r>=p.top && p.top<surface){surface=p.top;platform=p;}
       }
       if(platform && surface!==Infinity){
-        leaf.angle=Math.sin(leaf.id)*.4;
-        leaf.y=surface-this.contactBottom(leaf);leaf.vx=0;leaf.vy=0;leaf.resting=true;
+        // A settled leaf lies flat on the surface, so it stays almost level; the
+        // renderer flattens it (we see its edge) and contactBottom measures that shape.
+        leaf.resting=true;leaf.restAge=0;leaf.angle=Math.sin(leaf.id)*.05;
+        leaf.y=surface-this.contactBottom(leaf);leaf.vx=0;leaf.vy=0;
         leaf.platform=platform.id;leaf.dx=leaf.x-platform.left;leaf.dy=leaf.y-platform.top;
-        leaf.angle=Math.sin(leaf.id)*.4;
       }
     }
     let write=0,nextSeason:number|undefined;

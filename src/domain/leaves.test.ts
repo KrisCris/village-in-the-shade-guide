@@ -8,6 +8,13 @@ it('lands on the element edge without stacking on other particles',()=>{
   const b=w.spawn(a.x,190,0)!;b.vx=0;advance(w);
   expect(b.resting).toBe(true);expect(b.y+b.r).toBeCloseTo(200);
 });
+it('settles nearly level and measures contact in its resting shape',()=>{
+  const seen:boolean[]=[];
+  const w=new LeafWorld(800,leaf=>{seen.push(leaf.resting);return leaf.resting?2:leaf.r;});
+  const a=w.spawn(120,190,0)!;a.vx=0;advance(w);
+  expect(a.resting).toBe(true);expect(Math.abs(a.angle)).toBeLessThanOrEqual(.05);
+  expect(seen).toEqual([true]);expect(a.y).toBeCloseTo(198);
+});
 it('drifts back and forth slowly rather than falling like rain',()=>{
   const w=new LeafWorld();const leaf=w.spawn(200,0,0)!;let left=false,right=false;
   for(let i=0;i<600;i++){w.step(1/60,1000,1000,[]);left ||= leaf.vx < -2;right ||= leaf.vx > 2;}

@@ -5,6 +5,7 @@ import SaveIcon from './SaveIcon';
 import HairColorPicker from './HairColorPicker';
 import { flagEnabled, type ProgressEdits } from '../../lib/saveProgress';
 import { useState } from 'react';
+import { tr } from '../../i18n/active';
 
 export default function AppearancePanel({ model, drafts, names, onChange, progress, onUnlock }: {
   progress: ProgressEdits; onUnlock: (flag: number) => void;
@@ -16,10 +17,10 @@ export default function AppearancePanel({ model, drafts, names, onChange, progre
   const axes = ['x', 'y', 'z'].map(axis => field(`hairColorHsv_/${axis}`));
   const color = axes.map(axis => Number(axis ? drafts[axis.offset] ?? axis.value : 0));
   return <section className="save-group save-appearance-panel">
-    <header className="save-appearance-panel-head"><h3>外观</h3>
+    <header className="save-appearance-panel-head"><h3>{tr('外观')}</h3>
       {axes.every(Boolean) && <HairColorPicker value={color} onChange={(axis, value) => onChange(axes[axis]!, String(value))} />}
     </header>
-    <nav className="save-appearance-tabs" aria-label="外观分类">
+    <nav className="save-appearance-tabs" aria-label={tr('外观分类')}>
       {APPEARANCE_FIELDS.map(spec => <button key={spec.kind} type="button" aria-pressed={category === spec.kind} onClick={() => setCategory(spec.kind)}>{spec.label}</button>)}
     </nav>
     {APPEARANCE_FIELDS.filter(spec => spec.kind === category).map(spec => {
@@ -30,13 +31,13 @@ export default function AppearancePanel({ model, drafts, names, onChange, progre
       const rows = APPEARANCE[spec.kind];
       const current = rows.find(row => row.id === selectedId);
       return <fieldset className="save-appearance" key={spec.kind}><legend>{spec.label}</legend>
-        <h4 className="save-appearance-heading" id={`appearance-${spec.kind}-styles`}>款式</h4>
+        <h4 className="save-appearance-heading" id={`appearance-${spec.kind}-styles`}>{tr('款式')}</h4>
         <div className="save-appearance-options" role="group" aria-labelledby={`appearance-${spec.kind}-styles`}>
           {rows.map(row => {
             const first = row.variants[0]?.itemId;
-            const name = first ? lookupName(names, 'items', String(first))?.split('／')[0] : '无';
+            const name = first ? lookupName(names, 'items', String(first))?.split('／')[0] : tr('无');
             const locked = row.unlockFlag > 0 && !flagEnabled(model.doc, row.unlockFlag, progress);
-            return <button type="button" key={row.id} className={`save-appearance-style${locked ? ' is-locked' : ''}`} aria-pressed={selectedId === row.id} title={locked ? '点击解锁并使用' : undefined}
+            return <button type="button" key={row.id} className={`save-appearance-style${locked ? ' is-locked' : ''}`} aria-pressed={selectedId === row.id} title={locked ? tr('点击解锁并使用') : undefined}
               onClick={() => {
                 if (locked) onUnlock(row.unlockFlag);
                 onChange(id, String(row.id));
@@ -44,22 +45,22 @@ export default function AppearancePanel({ model, drafts, names, onChange, progre
               }}>
               <span className="save-appearance-art">{first && <SaveIcon names={names} kind="items" value={String(first)} size={40} />}</span>
               <span className="save-appearance-option-name">{name || row.name_ja}</span>
-              <small className="save-appearance-lock">{locked && <><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2" /><path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg>未解锁</>}</small>
+              <small className="save-appearance-lock">{locked && <><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2" /><path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg>{tr('未解锁')}</>}</small>
             </button>;
           })}
         </div>
         {colorField && !!current?.variants.length && <div className="save-appearance-colors">
-          <h4 className="save-appearance-heading">配色</h4>
-          <div className="save-appearance-options" role="group" aria-label={`${spec.label}配色`}>
+          <h4 className="save-appearance-heading">{tr('配色')}</h4>
+          <div className="save-appearance-options" role="group" aria-label={tr('{label}配色', { label: spec.label })}>
           {current.variants.map(variant => <button type="button" key={variant.color} aria-pressed={selectedColor === variant.color}
-            aria-label={lookupName(names, 'items', String(variant.itemId)) ?? `${spec.label}配色 ${variant.color}`}
+            aria-label={lookupName(names, 'items', String(variant.itemId)) ?? tr('{label}配色 {color}', { label: spec.label, color: variant.color })}
             onClick={() => onChange(colorField, String(variant.color))}>
             <SaveIcon names={names} kind="items" value={String(variant.itemId)} size={40} />
             <small>{lookupName(names, 'items', String(variant.itemId))?.split('／').at(-1)}</small>
           </button>)}
           </div>
         </div>}
-        {!current && <p>暂不支持预览当前外观。</p>}
+        {!current && <p>{tr('暂不支持预览当前外观。')}</p>}
       </fieldset>;
     })}
   </section>;

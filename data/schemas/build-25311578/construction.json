@@ -1,0 +1,128 @@
+{
+  "table": "construction",
+  "build_id": "25311578",
+  "language_count": 7,
+  "record_size": 364,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    364,
+    372,
+    380,
+    388,
+    436
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 676
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 39
+        },
+        {
+          "record_id": 2,
+          "value": 39
+        }
+      ]
+    },
+    {
+      "name": "operation",
+      "offset": 72,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "money_cost",
+      "offset": 248,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 8000
+        },
+        {
+          "record_id": 2,
+          "value": 30000
+        }
+      ]
+    },
+    {
+      "name": "input_1_item_id",
+      "offset": 252,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 230000
+        },
+        {
+          "record_id": 2,
+          "value": 230000
+        }
+      ]
+    },
+    {
+      "name": "input_1_quantity",
+      "offset": 256,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 100
+        },
+        {
+          "record_id": 2,
+          "value": 100
+        }
+      ]
+    }
+  ]
+}

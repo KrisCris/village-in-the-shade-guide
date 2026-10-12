@@ -1,12 +1,14 @@
-import {animationTime,type Model,type Key} from './portraitData';
+import {animationTime,isTexture,type Model,type Key} from './portraitData';
 import {hiddenLayers} from './portraitCatalog';
 type Sample=Key&{mix:number;next?:Key};
 type Command={k:Sample;m:DOMMatrix;order:number};
 
+import {tr} from '../../i18n/active';
+
 /** Shared-edge WebGL rasterization avoids the alpha seams of Canvas triangle clips. */
 export function createPortraitRenderer(canvas:HTMLCanvasElement,data:Model,images:Map<number,HTMLImageElement>){
   const gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false});
-  if(!gl)throw new Error('浏览器无法启用 WebGL');
+  if(!gl)throw new Error(tr('浏览器无法启用 WebGL'));
   const program=gl.createProgram()!;
   const shaders:WebGLShader[]=[];
   for(const [type,source] of [[gl.VERTEX_SHADER,'attribute vec2 p;attribute vec2 uv;varying vec2 v;void main(){gl_Position=vec4(p,0.,1.);v=uv;}'],[gl.FRAGMENT_SHADER,'precision mediump float;uniform sampler2D tex;varying vec2 v;void main(){gl_FragColor=texture2D(tex,v);}']] as const){
@@ -38,7 +40,7 @@ export function createPortraitRenderer(canvas:HTMLCanvasElement,data:Model,image
     if(k){const [, ,x,y,sx,sy,r]=k.transform;m=parent.translate(x,y).rotate(r*180/Math.PI).scale(sx,sy);}
     node(n[2],time,m,depth+1);
     if(!k)return;
-    if(k.resource>=244)commands.push({k,m,order:k.order||0});
+    if(isTexture(data,k.resource))commands.push({k,m,order:k.order||0});
     else if(k.resource>=0&&data.refs[k.resource]===data.name){
       const dynamic=k.rect[0]<0,a=animations.get(dynamic?face:k.rect[0]);if(!a)return;
       const start=commands.length;
@@ -63,7 +65,7 @@ export function createPortraitRenderer(canvas:HTMLCanvasElement,data:Model,image
       let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
       const duration=animations.get(pose)?.[3]||0;
       for(const t of [0,duration*.25,duration*.5,duration*.75]){collect(pose,t,expression);for(const c of commands)triangles(c,(_,dst)=>{for(const [x,y] of dst){const p=c.m.transformPoint({x,y});left=Math.min(left,p.x);right=Math.max(right,p.x);top=Math.min(top,p.y);bottom=Math.max(bottom,p.y);}});}
-      if(!Number.isFinite(left))throw new Error('立绘没有可显示的网格');
+      if(!Number.isFinite(left))throw new Error(tr('立绘没有可显示的网格'));
       const scale=Math.min(canvas.width/(right-left+50),canvas.height/(bottom-top+50));
       view={scale,x:canvas.width/2-(left+right)/2*scale,y:canvas.height/2-(top+bottom)/2*scale};
     },

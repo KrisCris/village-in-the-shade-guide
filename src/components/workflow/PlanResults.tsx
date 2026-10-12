@@ -7,20 +7,21 @@ import type {
 } from "../../domain/workflow/types";
 import { formatDay } from "../../domain/workflow/date";
 import { withBase } from "../../lib/sitePath";
+import { tr } from '../../i18n/active';
 
 const labels: Record<PlanEvent["kind"], string> = {
-  inventory: "已有库存",
-  purchase: "买入",
-  plant: "播种",
-  harvest: "收获",
-  process: "投料",
-  complete: "加工完成",
-  reserve: "留货",
-  delivery: "交付",
-  consume: "消耗",
-  sale: "出货",
-  receipt: "到账",
-  warning: "需处理",
+  inventory: tr('已有库存'),
+  purchase: tr('买入'),
+  plant: tr('播种'),
+  harvest: tr('收获'),
+  process: tr('投料'),
+  complete: tr('加工完成'),
+  reserve: tr('留货'),
+  delivery: tr('交付'),
+  consume: tr('消耗'),
+  sale: tr('出货'),
+  receipt: tr('到账'),
+  warning: tr('需处理'),
 };
 const number = (n: number) =>
   n.toLocaleString(undefined, { maximumFractionDigits: 2 });
@@ -46,7 +47,7 @@ export default function PlanResults({
   const catalog = new Map(entities.map((e) => [e.id, e]));
   const name = (id: string) => catalog.get(id)?.name.zh_hans ?? id;
   const nodeName = (id: string) =>
-    plan.nodes.find((n) => n.id === id)?.label ?? "计划";
+    plan.nodes.find((n) => n.id === id)?.label ?? tr('计划');
   const next = result.days.find(
     (d) =>
       d.day > (daily?.day ?? selectedDay) &&
@@ -94,54 +95,54 @@ export default function PlanResults({
   for (const p of Object.values(result.intent?.nodes ?? {}))
     if (p.machines)
       machineNeeds.set(
-        p.machineId ?? "配方所需机器",
-        (machineNeeds.get(p.machineId ?? "配方所需机器") ?? 0) + p.machines,
+        p.machineId ?? tr('配方所需机器'),
+        (machineNeeds.get(p.machineId ?? tr('配方所需机器')) ?? 0) + p.machines,
       );
   const visibleEvents = (daily?.events ?? []).filter(
     (e) => e.kind !== "purchase",
   );
   return (
-    <section className="wf-results wf-intent-results" aria-label="每日推演结果">
+    <section className="wf-results wf-intent-results" aria-label={tr('每日推演结果')}>
       {daily && (
         <div className="wf-daily">
           <div className="wf-panel-title">
             <h3>
               {formatDay(daily.day)}
               {daily.day > (result.intent?.periodEnd ?? Infinity) && (
-                <small> · 期末后续</small>
+                <small> {tr('· 期末后续')}</small>
               )}
             </h3>
             {next && (
               <button onClick={() => onDay(next.day)}>
-                下次操作 · {formatDay(next.day)} →
+                {tr('下次操作 ·')} {formatDay(next.day)} →
               </button>
             )}
           </div>
           <div className="wf-daily-cash">
             <div>
-              <small>今日支出</small>
+              <small>{tr('今日支出')}</small>
               <b>{number(daily.spending)}</b>
             </div>
             <div>
-              <small>今日到账</small>
+              <small>{tr('今日到账')}</small>
               <b>{number(daily.income)}</b>
             </div>
             <div>
-              <small>较期初累计增减</small>
+              <small>{tr('较期初累计增减')}</small>
               <b>{signed(daily.cash)}</b>
             </div>
             <div>
-              <small>已出货待到账</small>
+              <small>{tr('已出货待到账')}</small>
               <b>{number(daily.pendingRevenue)}</b>
             </div>
           </div>
           <section className="wf-shopping">
             <h4>
-              今日要买{" "}
+              {tr('今日要买')}{" "}
               <small>
                 {shopping.size
-                  ? `${[...shopping.values()].reduce((s, a) => s + a.quantity, 0)} 个 · ${number(daily.spending)}`
-                  : "无需购买"}
+                  ? tr('{count} 个 · {amount}', { count: [...shopping.values()].reduce((s, a) => s + a.quantity, 0), amount: number(daily.spending) })
+                  : tr('无需购买')}
               </small>
             </h4>
             {[...shopping].map(([id, a]) => (
@@ -149,7 +150,7 @@ export default function PlanResults({
                 {item(id)}
                 <b>×{a.quantity}</b>
                 <span>{number(a.amount)}</span>
-                {a.replant > 0 && <small>其中续种补买 {a.replant} 个</small>}
+                {a.replant > 0 && <small>{tr('其中续种补买 {count} 个', { count: a.replant })}</small>}
               </div>
             ))}
           </section>
@@ -171,8 +172,8 @@ export default function PlanResults({
           {!visibleEvents.length && (
             <p className="wf-note">
               {shopping.size
-                ? "按采购清单买入后，后续安排会在对应日期列出。"
-                : "这一天无需操作。可以直接跳到下一次操作。"}
+                ? tr('按采购清单买入后，后续安排会在对应日期列出。')
+                : tr('这一天无需操作。可以直接跳到下一次操作。')}
             </p>
           )}
           <div className="wf-operation-totals">
@@ -186,7 +187,7 @@ export default function PlanResults({
                     {labels[kind]}{" "}
                     <b>
                       {number(count)}
-                      {kind === "plant" ? " 格" : " 个"}
+                      {kind === "plant" ? tr(' 格') : tr(' 个')}
                     </b>
                   </span>
                 ) : null;
@@ -194,7 +195,7 @@ export default function PlanResults({
             )}
           </div>
           <section className="wf-stock-overview">
-            <h4>当日结束时的物品</h4>
+            <h4>{tr('当日结束时的物品')}</h4>
             <div className="wf-stock-columns">
               {(["usable", "reserved", "waiting"] as const).map((state) => {
                 const rows = groupStock(
@@ -209,9 +210,9 @@ export default function PlanResults({
                     <h5>
                       {
                         {
-                          usable: "可用库存",
-                          reserved: "已留货",
-                          waiting: "等待投料 / 使用",
+                          usable: tr('可用库存'),
+                          reserved: tr('已留货'),
+                          waiting: tr('等待投料 / 使用'),
                         }[state]
                       }
                     </h5>
@@ -223,7 +224,7 @@ export default function PlanResults({
                         </p>
                       ))
                     ) : (
-                      <small>暂无</small>
+                      <small>{tr('暂无')}</small>
                     )}
                   </div>
                 );
@@ -232,7 +233,7 @@ export default function PlanResults({
           </section>
           {!!tasks.length && (
             <details className="wf-daily-tasks">
-              <summary>留货与交付目标 · {tasks.length} 项</summary>
+              <summary>{tr('留货与交付目标 · {count} 项', { count: tasks.length })}</summary>
               {tasks.map((n) => {
                 const history = result.events.filter(
                   (e) => e.nodeId === n.id && e.day <= daily.day,
@@ -254,7 +255,7 @@ export default function PlanResults({
                   <div className="wf-status-row" key={n.id}>
                     <button onClick={() => onNode(n.id)}>{n.label}</button>
                     <strong>
-                      {delivered ? " 已交付" : ready ? " 已备齐" : " 待备货"}
+                      {delivered ? tr(' 已交付') : ready ? tr(' 已备齐') : tr(' 待备货')}
                     </strong>
                     <p>
                       {amounts
@@ -263,10 +264,10 @@ export default function PlanResults({
                     </p>
                     <small>
                       {!plan.edges.some((e) => e.target === n.id)
-                        ? "尚未安排来源"
+                        ? tr('尚未安排来源')
                         : projection?.readyDay !== undefined
-                          ? `${formatDay(projection.readyDay)} 可备齐`
-                          : "仍有缺口，查看来源或增加安排"}
+                          ? tr('{date} 可备齐', { date: formatDay(projection.readyDay) })
+                          : tr('仍有缺口，查看来源或增加安排')}
                     </small>
                   </div>
                 );
@@ -275,7 +276,7 @@ export default function PlanResults({
           )}
           {!!daily.inProgress?.length && (
             <details open>
-              <summary>生长 / 加工中 · {daily.inProgress.length} 批</summary>
+              <summary>{tr('生长 / 加工中 · {count} 批', { count: daily.inProgress.length })}</summary>
               <ul className="wf-progress-list">
                 {daily.inProgress.map((job, i) => (
                   <li key={i}>
@@ -285,7 +286,7 @@ export default function PlanResults({
                     <span>
                       {name(job.itemId)} ×{job.quantity}
                     </span>
-                    <small>{formatDay(job.finishDay)} 完成</small>
+                    <small>{formatDay(job.finishDay)} {tr('完成')}</small>
                   </li>
                 ))}
               </ul>
@@ -294,21 +295,21 @@ export default function PlanResults({
         </div>
       )}
       <aside className="wf-plan-outcome">
-        <h3>这份计划能带来什么</h3>
+        <h3>{tr('这份计划能带来什么')}</h3>
         <div className="wf-metrics">
           {[
-            ["本期收支增减", signed(result.cash)],
+            [tr('本期收支增减'), signed(result.cash)],
             [
-              "后续全部到账后",
+              tr('后续全部到账后'),
               signed(result.intent?.finalDelta ?? result.cash),
             ],
-            ["至少准备资金", number(result.intent?.startupFunds ?? 0)],
-            ["同时需要土地", `${result.intent?.land ?? 0} 格`],
+            [tr('至少准备资金'), number(result.intent?.startupFunds ?? 0)],
+            [tr('同时需要土地'), tr('{count} 格', { count: result.intent?.land ?? 0 })],
             [
-              "本期留存数量",
-              `${result.stock.filter((s) => s.reserved).reduce((s, a) => s + a.quantity, 0)} 个`,
+              tr('本期留存数量'),
+              tr('{count} 个', { count: result.stock.filter((s) => s.reserved).reduce((s, a) => s + a.quantity, 0) }),
             ],
-            ["期末已出货待到账", number(result.pendingRevenue)],
+            [tr('期末已出货待到账'), number(result.pendingRevenue)],
           ].map(([label, value]) => (
             <div key={label}>
               <small>{label}</small>
@@ -318,17 +319,17 @@ export default function PlanResults({
         </div>
         {!!machineNeeds.size && (
           <details>
-            <summary>机器需求 · 按型号查看</summary>
+            <summary>{tr('机器需求 · 按型号查看')}</summary>
             {[...machineNeeds].map(([id, count]) => (
               <p className="wf-machine-need" key={id}>
                 {catalog.get(id)?.name.zh_hans ?? id}
-                <b>{count} 台</b>
+                <b>{count} {tr('台')}</b>
               </p>
             ))}
           </details>
         )}
         <p className="wf-note">
-          资金需求按先投入、后回款推算。收支不含库存估值和机器购置费用。
+          {tr('资金需求按先投入、后回款推算。收支不含库存估值和机器购置费用。')}
         </p>
         {(result.intent?.finishDay ?? 0) >
           (result.intent?.periodEnd ?? Infinity) && (
@@ -336,12 +337,12 @@ export default function PlanResults({
             className="wf-future-link"
             onClick={() => onDay(result.intent!.finishDay)}
           >
-            查看最后到账 / 完成日 · {formatDay(result.intent!.finishDay)} →
+            {tr('查看最后到账 / 完成日 ·')} {formatDay(result.intent!.finishDay)} →
           </button>
         )}
         {!!result.issues.length && (
           <details className="wf-error" open>
-            <summary>{result.issues.length} 项需处理</summary>
+            <summary>{result.issues.length} {tr('项需处理')}</summary>
             {result.issues.map((issue, i) => (
               <p key={i}>{issue}</p>
             ))}

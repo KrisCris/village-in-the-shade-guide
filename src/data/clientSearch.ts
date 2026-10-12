@@ -1,3 +1,4 @@
+import { activeLang } from '../i18n/active';
 import type { Entity } from './types';
 
 export type CompactSearchRow = [id: string, kind: string, zhHans: string, zhHant: string, ja: string, aliases: string[]];
@@ -34,7 +35,7 @@ export function rankEntities(query: string, rows: Entity[]) {
       return { entity, score };
     })
     .filter(({ score }) => score < 99)
-    .sort((a, b) => a.score - b.score || a.entity.name.zh_hans.localeCompare(b.entity.name.zh_hans, 'zh-CN'))
+    .sort((a, b) => a.score - b.score || a.entity.name.zh_hans.localeCompare(b.entity.name.zh_hans, activeLang()))
     .map(({ entity }) => entity);
 }
 

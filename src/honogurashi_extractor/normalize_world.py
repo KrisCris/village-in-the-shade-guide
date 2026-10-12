@@ -4,7 +4,7 @@ from collections import defaultdict
 from collections.abc import Mapping
 import re
 
-from .localization import build_name
+from .localization import build_name, localized_block, preferred_text
 from .models import (
     Character,
     Fish,
@@ -39,10 +39,11 @@ def _fishing_place_names(fishing, items) -> dict[str, str]:
         for index in range(count):
             locations[_u32(record, 44 + index * 36)].add(group[0])
     names: dict[str, str] = {}
+    description_index = 1 + 2 * items.language_count + 4
     for record, group in zip(items.records, _string_groups(items), strict=True):
-        if not group[0].startswith('ITEM_ID_FISHING_GHOST_FISH_') or len(group) <= 17:
+        if not group or not group[0].startswith('ITEM_ID_FISHING_GHOST_FISH_') or len(group) <= description_index:
             continue
-        match = re.fullmatch(r'深夜時可於(.+?)釣魚處釣到。', group[17])
+        match = re.fullmatch(r'深夜時可於(.+?)釣魚處釣到。', group[description_index])
         places = locations[_u32(record, 0)]
         if not match or len(places) != 1:
             continue
@@ -70,13 +71,10 @@ def _u32(record: bytes, offset: int) -> int:
     return int.from_bytes(record[offset : offset + 4], "little")
 
 
-def _standard_name(group, overrides):
-    return build_name(
-        ja=group[1] if len(group) > 1 else "",
-        zh_hant=group[5] if len(group) > 5 else "",
-        internal=group[0],
-        overrides=overrides,
-    )
+def _standard_name(group, overrides, language_count=6, start=1):
+    native = localized_block(group, start, language_count)
+    return build_name(ja=native["ja"], zh_hant=native["zh-TW"], internal=group[0],
+                      overrides=overrides, translations=native)
 
 
 def normalize_world(
@@ -147,22 +145,19 @@ def normalize_world(
             characters.records, _string_groups(characters), strict=True
         ):
             internal = group[0]
-            name = build_name(
-                ja=group[2] if len(group) > 2 else group[1],
-                zh_hant=group[6] if len(group) > 6 else "",
-                internal=internal,
-                overrides=overrides,
-            )
+            name = _standard_name(group, overrides, characters.language_count, start=2)
             numeric_id = _u32(record, 0)
             # characterpresent is a conditional hand-in event table, NOT taste.
             # character.dat: four liked item IDs at 200, four disliked at 232.
+            shift = (characters.language_count - 6) * 16
             gifts = tuple(
                 GiftItem(items_by_numeric[item_id].id, preference)
-                for start, preference in ((200, 1), (232, -1))
+                for start, preference in ((200 + shift, 1), (232 + shift, -1))
                 for offset in range(start, start + 32, 8)
                 if (item_id := _u32(record, offset)) in items_by_numeric
             )
-            birthday_season, birthday_day = _u32(record, 420), _u32(record, 424)
+            birthday_shift = (characters.language_count - 6) * 40
+            birthday_season, birthday_day = _u32(record, 420 + birthday_shift), _u32(record, 424 + birthday_shift)
             has_birthday = birthday_season < 4 and 1 <= birthday_day <= 28
             world.characters[internal] = Character(
                 internal,
@@ -194,7 +189,7 @@ def _normalize_named(table, output, overrides):
     for record, group in zip(table.records, _string_groups(table), strict=True):
         if not group:
             continue
-        name = _standard_name(group, overrides)
+        name = _standard_name(group, overrides, table.language_count)
         output[name.internal] = WorldEntry(name.internal, _u32(record, 0), name)
 
 
@@ -202,15 +197,35 @@ def _normalize_quests(table, output, overrides):
     if not table:
         return
     for record, group in zip(table.records, _string_groups(table), strict=True):
-        name = _standard_name(group, overrides)
-        def text(offset):
-            if offset + 4 >= len(group):
-                return ""
-            return group[offset + 4] or group[offset]
-        # Five six-language blocks precede the ordered objective list. The
-        # second block is completion text, not the next action to perform.
-        output[name.internal] = Quest(name.internal, _u32(record,0), name,
-            text(13), text(19), tuple(text(i) for i in range(31, len(group), 6) if group[i]))
+        name = _standard_name(group, overrides, table.language_count)
+        width = table.language_count
+        description = localized_block(group, 1 + 2 * width, width)
+        objective = localized_block(group, 1 + 3 * width, width)
+        count_offset = 296 + (width - 6) * 40
+        count = _u32(record, count_offset)
+        if count:
+            stride = width * 8 + 4
+            start = count_offset + 4
+            if start + count * stride > len(record):
+                raise TableFormatError(f"quest {name.internal}: objectives are truncated")
+            native_steps = []
+            for index in range(count):
+                values = []
+                for slot in range(width):
+                    pointer = start + index * stride + slot * 8
+                    offset, length = _u32(record, pointer), _u32(record, pointer + 4)
+                    if offset + length > len(table.string_pool):
+                        raise TableFormatError(f"quest {name.internal}: objective text leaves string pool")
+                    values.append(table.string_pool[offset:offset + length].decode("utf-8"))
+                native_steps.append(localized_block(tuple(values), 0, width))
+            steps = tuple(native_steps)
+        else:
+            # Keep compatibility with older minimal string-only fixtures.
+            steps = tuple(localized_block(group, i, width) for i in range(1 + 5 * width, len(group), width) if group[i])
+        # The second block is completion text. Ordered objectives follow five blocks.
+        output[name.internal] = Quest(name.internal, _u32(record, 0), name,
+            preferred_text(description), preferred_text(objective), tuple(preferred_text(step) for step in steps),
+            description_translations=description, objective_translations=objective, step_translations=steps)
 
 
 def _normalize_weather(table, output, overrides):

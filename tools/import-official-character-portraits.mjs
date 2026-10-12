@@ -3,7 +3,7 @@ const source='https://nippon1.jp/consumer/honogurashi/character.html';
 const response=await fetch(source);
 if(!response.ok)throw new Error(`character page HTTP ${response.status}`);
 const html=await response.text();
-const people=JSON.parse(await readFile('data/generated/build-24969282/entities/characters.json','utf8'));
+const people=JSON.parse(await readFile('data/generated/build-25311578/entities/characters.json','utf8'));
 // The publisher page has malformed alt="alt="..." attributes; names are
 // matched exactly to the Japanese game localization, never guessed by order.
 const images=[...html.matchAll(/<img src="(img\/character\/chr_nav_\d+\.png[^\"]*)" alt="alt="([^\"]+)"/g)];

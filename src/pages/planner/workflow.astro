@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsyncWorkflowPlanner from '../../components/workflow/AsyncWorkflowPlanner';
+import { getI18n } from '../../i18n/server';
+const { t, locale } = getI18n(Astro.url);
 ---
-<BaseLayout title="农场生产工作流" description="按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。">
-  <div class="workflow-page-shell"><AsyncWorkflowPlanner client:only="react"><p slot="fallback">正在打开农场生产工作流…</p></AsyncWorkflowPlanner></div>
+<BaseLayout title={t('农场生产工作流')} description={t('按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。')}>
+  <div class="workflow-page-shell"><AsyncWorkflowPlanner client:only="react" locale={locale}><p slot="fallback" class="workflow-loading" role="status">{t('正在打开农场生产工作流…')}</p></AsyncWorkflowPlanner></div>
 </BaseLayout>
 <style is:global>
   body.wiki-page:has(.workflow-page-shell){height:100dvh;min-height:0;overflow:hidden}
@@ -12,6 +14,7 @@ import AsyncWorkflowPlanner from '../../components/workflow/AsyncWorkflowPlanner
   body:has(.workflow-page-shell) .main{max-width:none;min-width:0;width:100%;height:100%;padding:0;background:transparent;border:0}
   body:has(.workflow-page-shell) :is(.sidebar,.site-footer,.falling-leaves){display:none}
   .workflow-page-shell{height:100%;min-height:0}
+  .workflow-loading{display:grid;place-items:center;width:min(100% - 2rem,28rem);margin:20vh auto 0;padding:1.4rem 1rem;border:1px dashed var(--border);border-radius:var(--radius);background:var(--paper-raised);color:var(--muted)}
   body:has(.workflow-page-shell) .main .wf-breadcrumb h1{margin:0;padding:0;letter-spacing:.05em}
   body:has(.workflow-page-shell) .main .wf-breadcrumb h1::after{display:none}
 </style>

@@ -1,5 +1,5 @@
 {
-  "source": "gimmick.dat and gimmickprocess.dat; native 0x14026EF20 eight internal material entries per job, durations in seconds",
+  "source": "gimmick.dat and gimmickprocess.dat; native GimmickProcessPushItem 0x14027BE10: job material pointer stride eight at 0x14027C3DD, pointer storage at 0x14027C713; durations in seconds",
   "machines": [
     {
       "id": 203000000,
@@ -2408,6 +2408,186 @@
       "itemId": 0,
       "kind": "quest",
       "script": ""
+    },
+    {
+      "id": 800000100,
+      "itemId": 800001,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000101,
+      "itemId": 800002,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000102,
+      "itemId": 800003,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000103,
+      "itemId": 800004,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000104,
+      "itemId": 800005,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000105,
+      "itemId": 800006,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000106,
+      "itemId": 800007,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000107,
+      "itemId": 800008,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000108,
+      "itemId": 800009,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000109,
+      "itemId": 800010,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000200,
+      "itemId": 800011,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000201,
+      "itemId": 800012,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000202,
+      "itemId": 800013,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000203,
+      "itemId": 800014,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000204,
+      "itemId": 800015,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000205,
+      "itemId": 800016,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000206,
+      "itemId": 800017,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000207,
+      "itemId": 800018,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000208,
+      "itemId": 800019,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000209,
+      "itemId": 800020,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000900,
+      "itemId": 800081,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000901,
+      "itemId": 800082,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000902,
+      "itemId": 800083,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000903,
+      "itemId": 800084,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000904,
+      "itemId": 800085,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000905,
+      "itemId": 800086,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000906,
+      "itemId": 800087,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000907,
+      "itemId": 800088,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000908,
+      "itemId": 800089,
+      "kind": "display",
+      "script": "gimmick_table"
+    },
+    {
+      "id": 800000909,
+      "itemId": 800090,
+      "kind": "display",
+      "script": "gimmick_table"
     }
   ],
   "processes": [
@@ -10434,5 +10614,6 @@
       "count": 1,
       "minutes": 4320
     }
-  ]
+  ],
+  "build_id": "25311578"
 }

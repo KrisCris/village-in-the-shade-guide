@@ -7,6 +7,7 @@ import { demandRows } from "../../domain/workflow/editing";
 import { formatDay } from "../../domain/workflow/date";
 import { withBase } from "../../lib/sitePath";
 import WorkflowIcon from "./WorkflowIcon";
+import { tr } from '../../i18n/active';
 export default function DemandDetails({
   node,
   result,
@@ -28,23 +29,25 @@ export default function DemandDetails({
   const shortage = rows.reduce((s, a) => s + a.shortage, 0);
   const ready = rows.length > 0 && rows.every((a) => a.held >= a.quantity);
   return (
-    <section className="wf-demand-detail" aria-label="交付准备进度">
+    <section className="wf-demand-detail" aria-label={tr('交付准备进度')}>
       <div className="wf-demand-heading">
         <WorkflowIcon name="delivery" size={24} />
         <div>
           <strong>
             {delivered
-              ? "已交付"
+              ? tr('已交付')
               : ready
-                ? "已备齐，可以交付"
+                ? tr('已备齐，可以交付')
                 : p?.readyDay !== undefined
-                  ? `${formatDay(p.readyDay)} 可备齐`
-                  : "仍需补齐前置条件"}
+                  ? tr('{date} 可备齐', { date: formatDay(p.readyDay) })
+                  : tr('仍需补齐前置条件')}
           </strong>
           <small>
-            截至 {formatDay(day)} ·{" "}
-            {rows.filter((a) => a.held >= a.quantity).length} / {rows.length}{" "}
-            项已足
+            {tr('截至 {date} · {ready} / {total} 项已足', {
+              date: formatDay(day),
+              ready: rows.filter((a) => a.held >= a.quantity).length,
+              total: rows.length,
+            })}
           </small>
         </div>
       </div>
@@ -69,12 +72,12 @@ export default function DemandDetails({
               <strong>{item?.name.zh_hans ?? a.itemId}</strong>
               <small>
                 {a.held >= a.quantity
-                  ? "已足"
+                  ? tr('已足')
                   : a.shortage
-                    ? `计划仍缺 ${a.shortage} 个`
+                    ? tr('计划仍缺 {shortage} 个', { shortage: a.shortage })
                     : a.readyDay !== undefined
-                      ? `${formatDay(a.readyDay)} 备齐`
-                      : "等待来源"}
+                      ? tr('{date} 备齐', { date: formatDay(a.readyDay) })
+                      : tr('等待来源')}
               </small>
             </div>
             <b>
@@ -84,7 +87,7 @@ export default function DemandDetails({
             <progress
               max={a.quantity || 1}
               value={a.held}
-              aria-label={`${item?.name.zh_hans ?? a.itemId}备货进度`}
+              aria-label={tr('{name}备货进度', { name: item?.name.zh_hans ?? a.itemId })}
             />
           </div>
         );
@@ -92,12 +95,12 @@ export default function DemandDetails({
       {shortage > 0 && (
         <button className="wf-primary" onClick={onPrepare}>
           <WorkflowIcon name="plus" />
-          按缺口生成前置流程
+          {tr('按缺口生成前置流程')}
         </button>
       )}
       {shortage > 0 && (
         <p className="wf-note">
-          优先使用可用余料，再安排种植、加工或购买。采集等未知来源会标为待准备，确认取得后才计入可交付数量。
+          {tr('优先使用可用余料，再安排种植、加工或购买。采集等未知来源会标为待准备，确认取得后才计入可交付数量。')}
         </p>
       )}
     </section>

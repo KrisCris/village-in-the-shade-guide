@@ -1,6 +1,6 @@
 # 内容覆盖与限制
 
-更新：2026-09-06。游戏快照：构建 `24969282`。参考目录：[AppMedia](https://appmedia.jp/honogurashi/)。
+更新：2026-09-06。游戏快照：构建 `25311578`（2026-10-10 刷新）。参考目录：[AppMedia](https://appmedia.jp/honogurashi/)。
 
 ## 已有内容
 

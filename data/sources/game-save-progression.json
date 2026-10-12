@@ -1,5 +1,5 @@
 {
-  "source": "gameflag.dat; craft.dat unlock u64@116, output u64@92; cooking.dat unlock u64@152, output u64@24; skilltree.dat effect u64@40, flag u64@80",
+  "source": "gameflag.dat; craft flag@116 output@92; cooking flag@152 output@24; skilltree effect@40 flag@80+showFlagCount*8",
   "flags": [
     {
       "id": 1,
@@ -14572,6 +14572,111 @@
       "name": "衣装解禁フラグ_サムライポニテ"
     },
     {
+      "id": 90000,
+      "code": "GAME_FLAG_SALE_START_CAMP_SERIES",
+      "name": "雑貨屋_キャンプシリーズ販売解禁フラグ"
+    },
+    {
+      "id": 90001,
+      "code": "GAME_FLAG_SALE_START_ADDITIONAL_LIVESTOCK_00",
+      "name": "露天商_ウコッケイ+カモ販売解禁フラグ"
+    },
+    {
+      "id": 90002,
+      "code": "GAME_FLAG_SALE_START_ADDITIONAL_LIVESTOCK_01",
+      "name": "露天商_ふわふわウシ+まだらヤギ販売解禁フラグ"
+    },
+    {
+      "id": 90010,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0000",
+      "name": "キャンプ食卓/茶_購入フラグ"
+    },
+    {
+      "id": 90011,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0001",
+      "name": "キャンプテーブル/茶_購入フラグ"
+    },
+    {
+      "id": 90012,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0002",
+      "name": "キャンプチェア/茶_購入フラグ"
+    },
+    {
+      "id": 90013,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0003",
+      "name": "キャンプベンチ/茶_購入フラグ"
+    },
+    {
+      "id": 90014,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0004",
+      "name": "キャンプベッド/茶_購入フラグ"
+    },
+    {
+      "id": 90015,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0005",
+      "name": "キャンプ大ベッド/茶_購入フラグ"
+    },
+    {
+      "id": 90016,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0006",
+      "name": "キャンプボックス/茶_購入フラグ"
+    },
+    {
+      "id": 90017,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0007",
+      "name": "キャンプ洋服棚/茶_購入フラグ"
+    },
+    {
+      "id": 90018,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0008",
+      "name": "キャンプ薪ラック/茶_購入フラグ"
+    },
+    {
+      "id": 90019,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0009",
+      "name": "キャンプランタン/茶_購入フラグ"
+    },
+    {
+      "id": 90020,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0010",
+      "name": "キャンプマット/茶_購入フラグ"
+    },
+    {
+      "id": 90030,
+      "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
+      "name": "追加農地拡張の手紙送付"
+    },
+    {
+      "id": 90031,
+      "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00",
+      "name": "追加農地拡張のアナウンスデモ"
+    },
+    {
+      "id": 90032,
+      "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_01",
+      "name": "追加農地拡張後の初回デモ"
+    },
+    {
+      "id": 90033,
+      "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_CLEAR",
+      "name": "追加農地拡張を大工小屋から完了した"
+    },
+    {
+      "id": 90034,
+      "code": "GAME_FLAG_GIMMICK_RUBBLE_ADDITIONAL_FARMLAND_PROGRESS",
+      "name": "追加農地の瓦礫撤去中"
+    },
+    {
+      "id": 90040,
+      "code": "GAME_FLAG_CATALOG_SEND_LETTER",
+      "name": "カタログ案内の手紙送付"
+    },
+    {
+      "id": 90041,
+      "code": "GAME_FLAG_CATALOG_DEMO_00",
+      "name": "カタログ入手デモ"
+    },
+    {
       "id": 90099,
       "code": "GAME_FLAG_SKILL_HARVEST_SICKLE",
       "name": "カマでの作物収穫機能解放フラグ"
@@ -14581,1844 +14686,4607 @@
     {
       "flag": 80032,
       "category": "手作配方",
-      "name": "鉄の柵",
-      "itemId": 21020
+      "name": "铁制栅栏",
+      "itemId": 21020,
+      "nameTranslations": {
+        "ja": "鉄の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵製柵欄",
+        "ko": "철 울타리",
+        "zh-CN": "铁制栅栏"
+      }
     },
     {
       "flag": 80027,
       "category": "手作配方",
-      "name": "レンガの柵",
-      "itemId": 21030
+      "name": "砖头栅栏",
+      "itemId": 21030,
+      "nameTranslations": {
+        "ja": "レンガの柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "磚頭柵欄",
+        "ko": "벽돌 울타리",
+        "zh-CN": "砖头栅栏"
+      }
     },
     {
       "flag": 80028,
       "category": "手作配方",
-      "name": "板材の柵",
-      "itemId": 21040
+      "name": "木板栅栏",
+      "itemId": 21040,
+      "nameTranslations": {
+        "ja": "板材の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木板柵欄",
+        "ko": "널빤지 울타리",
+        "zh-CN": "木板栅栏"
+      }
     },
     {
       "flag": 80030,
       "category": "手作配方",
-      "name": "白い板材の柵",
-      "itemId": 21050
+      "name": "白色木板栅栏",
+      "itemId": 21050,
+      "nameTranslations": {
+        "ja": "白い板材の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "白色木板柵欄",
+        "ko": "하얀 널빤지 울타리",
+        "zh-CN": "白色木板栅栏"
+      }
     },
     {
       "flag": 80033,
       "category": "手作配方",
-      "name": "鉄のガーデン柵",
-      "itemId": 21060
+      "name": "铁制花园栅栏",
+      "itemId": 21060,
+      "nameTranslations": {
+        "ja": "鉄のガーデン柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵製花園柵欄",
+        "ko": "철 정원 울타리",
+        "zh-CN": "铁制花园栅栏"
+      }
     },
     {
       "flag": 80026,
       "category": "手作配方",
-      "name": "縄の柵",
-      "itemId": 21070
+      "name": "绳子栅栏",
+      "itemId": 21070,
+      "nameTranslations": {
+        "ja": "縄の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "繩子柵欄",
+        "ko": "밧줄 울타리",
+        "zh-CN": "绳子栅栏"
+      }
     },
     {
       "flag": 80029,
       "category": "手作配方",
-      "name": "竹の柵",
-      "itemId": 21080
+      "name": "竹子栅栏",
+      "itemId": 21080,
+      "nameTranslations": {
+        "ja": "竹の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "竹子柵欄",
+        "ko": "대나무 울타리",
+        "zh-CN": "竹子栅栏"
+      }
     },
     {
       "flag": 80031,
       "category": "手作配方",
-      "name": "網の柵",
-      "itemId": 21090
+      "name": "网子栅栏",
+      "itemId": 21090,
+      "nameTranslations": {
+        "ja": "網の柵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "網子柵欄",
+        "ko": "그물 울타리",
+        "zh-CN": "网子栅栏"
+      }
     },
     {
       "flag": 80032,
       "category": "手作配方",
-      "name": "鉄のゲート",
-      "itemId": 21120
+      "name": "铁制栅栏门",
+      "itemId": 21120,
+      "nameTranslations": {
+        "ja": "鉄のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵製柵欄門",
+        "ko": "철로 만든 입구",
+        "zh-CN": "铁制栅栏门"
+      }
     },
     {
       "flag": 80027,
       "category": "手作配方",
-      "name": "レンガのゲート",
-      "itemId": 21130
+      "name": "砖头栅栏门",
+      "itemId": 21130,
+      "nameTranslations": {
+        "ja": "レンガのゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "磚頭柵欄門",
+        "ko": "벽돌로 만든 입구",
+        "zh-CN": "砖头栅栏门"
+      }
     },
     {
       "flag": 80028,
       "category": "手作配方",
-      "name": "板材のゲート",
-      "itemId": 21140
+      "name": "木板栅栏门",
+      "itemId": 21140,
+      "nameTranslations": {
+        "ja": "板材のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木板柵欄門",
+        "ko": "널빤지로 만든 입구",
+        "zh-CN": "木板栅栏门"
+      }
     },
     {
       "flag": 80030,
       "category": "手作配方",
-      "name": "白い板材のゲート",
-      "itemId": 21150
+      "name": "白色木板栅栏门",
+      "itemId": 21150,
+      "nameTranslations": {
+        "ja": "白い板材のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "白色木板柵欄門",
+        "ko": "하얀 널빤지로 만든 입구",
+        "zh-CN": "白色木板栅栏门"
+      }
     },
     {
       "flag": 80033,
       "category": "手作配方",
-      "name": "鉄のガーデンゲート",
-      "itemId": 21160
+      "name": "铁制花园栅栏门",
+      "itemId": 21160,
+      "nameTranslations": {
+        "ja": "鉄のガーデンゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵製花園柵欄門",
+        "ko": "철로 만든 정원 입구",
+        "zh-CN": "铁制花园栅栏门"
+      }
     },
     {
       "flag": 80026,
       "category": "手作配方",
-      "name": "縄のゲート",
-      "itemId": 21170
+      "name": "绳子栅栏门",
+      "itemId": 21170,
+      "nameTranslations": {
+        "ja": "縄のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "繩子柵欄門",
+        "ko": "밧줄로 만든 입구",
+        "zh-CN": "绳子栅栏门"
+      }
     },
     {
       "flag": 80029,
       "category": "手作配方",
-      "name": "竹のゲート",
-      "itemId": 21180
+      "name": "竹子栅栏门",
+      "itemId": 21180,
+      "nameTranslations": {
+        "ja": "竹のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "竹子柵欄門",
+        "ko": "대나무로 만든 입구",
+        "zh-CN": "竹子栅栏门"
+      }
     },
     {
       "flag": 80031,
       "category": "手作配方",
-      "name": "網のゲート",
-      "itemId": 21190
+      "name": "网子栅栏门",
+      "itemId": 21190,
+      "nameTranslations": {
+        "ja": "網のゲート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "網子柵欄門",
+        "ko": "그물로 만든 입구",
+        "zh-CN": "网子栅栏门"
+      }
     },
     {
       "flag": 80020,
       "category": "手作配方",
-      "name": "石タイルの庭床",
-      "itemId": 21220
+      "name": "户外石砖地板",
+      "itemId": 21220,
+      "nameTranslations": {
+        "ja": "石タイルの庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外石磚地板",
+        "ko": "석재 타일이 깔린 정원 바닥",
+        "zh-CN": "户外石砖地板"
+      }
     },
     {
       "flag": 80022,
       "category": "手作配方",
-      "name": "白石タイルの庭床",
-      "itemId": 21230
+      "name": "户外白石砖地板",
+      "itemId": 21230,
+      "nameTranslations": {
+        "ja": "白石タイルの庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外白石磚地板",
+        "ko": "하얀 석재 타일이 깔린 정원 바닥",
+        "zh-CN": "户外白石砖地板"
+      }
     },
     {
       "flag": 80023,
       "category": "手作配方",
-      "name": "黒石タイルの庭床",
-      "itemId": 21240
+      "name": "户外黑石砖地板",
+      "itemId": 21240,
+      "nameTranslations": {
+        "ja": "黒石タイルの庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外黑石磚地板",
+        "ko": "까만 석재 타일이 깔린 정원 바닥",
+        "zh-CN": "户外黑石砖地板"
+      }
     },
     {
       "flag": 80021,
       "category": "手作配方",
-      "name": "丸太の庭床",
-      "itemId": 21250
+      "name": "户外原木地板",
+      "itemId": 21250,
+      "nameTranslations": {
+        "ja": "丸太の庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外原木地板",
+        "ko": "통나무가 깔린 정원 바닥",
+        "zh-CN": "户外原木地板"
+      }
     },
     {
       "flag": 80019,
       "category": "手作配方",
-      "name": "レンガの庭床",
-      "itemId": 21260
+      "name": "户外砖头地板",
+      "itemId": 21260,
+      "nameTranslations": {
+        "ja": "レンガの庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外磚頭地板",
+        "ko": "벽돌이 깔린 정원 바닥",
+        "zh-CN": "户外砖头地板"
+      }
     },
     {
       "flag": 80024,
       "category": "手作配方",
-      "name": "落ち葉の庭床",
-      "itemId": 21270
+      "name": "户外落叶地板",
+      "itemId": 21270,
+      "nameTranslations": {
+        "ja": "落ち葉の庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外落葉地板",
+        "ko": "낙엽이 깔린 정원 바닥",
+        "zh-CN": "户外落叶地板"
+      }
     },
     {
       "flag": 80018,
       "category": "手作配方",
-      "name": "藁の庭床",
-      "itemId": 21280
+      "name": "户外稻草地板",
+      "itemId": 21280,
+      "nameTranslations": {
+        "ja": "藁の庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外稻草地板",
+        "ko": "짚이 깔린 정원 바닥",
+        "zh-CN": "户外稻草地板"
+      }
     },
     {
       "flag": 80025,
       "category": "手作配方",
-      "name": "花の庭床",
-      "itemId": 21290
+      "name": "户外花朵地板",
+      "itemId": 21290,
+      "nameTranslations": {
+        "ja": "花の庭床",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "戶外花朵地板",
+        "ko": "꽃이 핀 정원 바닥",
+        "zh-CN": "户外花朵地板"
+      }
     },
     {
       "flag": 80007,
       "category": "手作配方",
-      "name": "撒き餌",
-      "itemId": 40000
+      "name": "鱼饵",
+      "itemId": 40000,
+      "nameTranslations": {
+        "ja": "撒き餌",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "魚餌",
+        "ko": "밑밥",
+        "zh-CN": "鱼饵"
+      }
     },
     {
       "flag": 80063,
       "category": "手作配方",
-      "name": "良質な撒き餌",
-      "itemId": 40010
+      "name": "优质鱼饵",
+      "itemId": 40010,
+      "nameTranslations": {
+        "ja": "良質な撒き餌",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "優質魚餌",
+        "ko": "질 좋은 밑밥",
+        "zh-CN": "优质鱼饵"
+      }
     },
     {
       "flag": 80064,
       "category": "手作配方",
-      "name": "白い撒き餌",
-      "itemId": 40020
+      "name": "白色鱼饵",
+      "itemId": 40020,
+      "nameTranslations": {
+        "ja": "白い撒き餌",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "白色魚餌",
+        "ko": "하얀 밑밥",
+        "zh-CN": "白色鱼饵"
+      }
     },
     {
       "flag": 80013,
       "category": "手作配方",
-      "name": "兵糧丸",
-      "itemId": 50000
+      "name": "兵粮丸",
+      "itemId": 50000,
+      "nameTranslations": {
+        "ja": "兵糧丸",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "兵糧丸",
+        "ko": "병량환",
+        "zh-CN": "兵粮丸"
+      }
     },
     {
       "flag": 80009,
       "category": "手作配方",
-      "name": "漬物樽",
-      "itemId": 400000
+      "name": "腌菜桶",
+      "itemId": 400000,
+      "nameTranslations": {
+        "ja": "漬物樽",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "醃菜桶",
+        "ko": "절임통",
+        "zh-CN": "腌菜桶"
+      }
     },
     {
       "flag": 80035,
       "category": "手作配方",
-      "name": "漬物樽/改",
-      "itemId": 400001
+      "name": "腌菜桶／改",
+      "itemId": 400001,
+      "nameTranslations": {
+        "ja": "漬物樽/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "醃菜桶／改",
+        "ko": "절임통/개량판",
+        "zh-CN": "腌菜桶／改"
+      }
     },
     {
       "flag": 80046,
       "category": "手作配方",
-      "name": "粉挽き",
-      "itemId": 400060
+      "name": "研磨机",
+      "itemId": 400060,
+      "nameTranslations": {
+        "ja": "粉挽き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "研磨機",
+        "ko": "제분기",
+        "zh-CN": "研磨机"
+      }
     },
     {
       "flag": 80047,
       "category": "手作配方",
-      "name": "粉挽き/改",
-      "itemId": 400061
+      "name": "研磨机／改",
+      "itemId": 400061,
+      "nameTranslations": {
+        "ja": "粉挽き/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "研磨機／改",
+        "ko": "제분기/개량판",
+        "zh-CN": "研磨机／改"
+      }
     },
     {
       "flag": 80008,
       "category": "手作配方",
-      "name": "溶鉱炉",
-      "itemId": 400080
+      "name": "熔炉",
+      "itemId": 400080,
+      "nameTranslations": {
+        "ja": "溶鉱炉",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "熔爐",
+        "ko": "용광로",
+        "zh-CN": "熔炉"
+      }
     },
     {
       "flag": 80037,
       "category": "手作配方",
-      "name": "溶鉱炉/改",
-      "itemId": 400081
+      "name": "熔炉／改",
+      "itemId": 400081,
+      "nameTranslations": {
+        "ja": "溶鉱炉/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "熔爐／改",
+        "ko": "용광로/개량판",
+        "zh-CN": "熔炉／改"
+      }
     },
     {
       "flag": 80100,
       "category": "手作配方",
-      "name": "マヨネーズ加工機",
-      "itemId": 400020
+      "name": "蛋黄酱加工机",
+      "itemId": 400020,
+      "nameTranslations": {
+        "ja": "マヨネーズ加工機",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "美乃滋加工機",
+        "ko": "마요네즈 가공기",
+        "zh-CN": "蛋黄酱加工机"
+      }
     },
     {
       "flag": 80036,
       "category": "手作配方",
-      "name": "マヨネーズ加工機/改",
-      "itemId": 400021
+      "name": "蛋黄酱加工机／改",
+      "itemId": 400021,
+      "nameTranslations": {
+        "ja": "マヨネーズ加工機/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "美乃滋加工機／改",
+        "ko": "마요네즈 가공기/개량판",
+        "zh-CN": "蛋黄酱加工机／改"
+      }
     },
     {
       "flag": 80050,
       "category": "手作配方",
-      "name": "燻製器",
-      "itemId": 400140
+      "name": "烟熏机",
+      "itemId": 400140,
+      "nameTranslations": {
+        "ja": "燻製器",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "煙燻機",
+        "ko": "훈제기",
+        "zh-CN": "烟熏机"
+      }
     },
     {
       "flag": 80051,
       "category": "手作配方",
-      "name": "燻製器/改",
-      "itemId": 400141
+      "name": "烟熏机／改",
+      "itemId": 400141,
+      "nameTranslations": {
+        "ja": "燻製器/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "煙燻機／改",
+        "ko": "훈제기/개량판",
+        "zh-CN": "烟熏机／改"
+      }
     },
     {
       "flag": 80042,
       "category": "手作配方",
-      "name": "炭焼き窯",
-      "itemId": 400090
+      "name": "木炭窑",
+      "itemId": 400090,
+      "nameTranslations": {
+        "ja": "炭焼き窯",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木炭窯",
+        "ko": "숯가마",
+        "zh-CN": "木炭窑"
+      }
     },
     {
       "flag": 80043,
       "category": "手作配方",
-      "name": "炭焼き窯/改",
-      "itemId": 400091
+      "name": "木炭窑／改",
+      "itemId": 400091,
+      "nameTranslations": {
+        "ja": "炭焼き窯/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木炭窯／改",
+        "ko": "숯가마/개량판",
+        "zh-CN": "木炭窑／改"
+      }
     },
     {
       "flag": 80048,
       "category": "手作配方",
-      "name": "ミルク加工機",
-      "itemId": 400010
+      "name": "牛奶加工机",
+      "itemId": 400010,
+      "nameTranslations": {
+        "ja": "ミルク加工機",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛奶加工機",
+        "ko": "우유 가공기",
+        "zh-CN": "牛奶加工机"
+      }
     },
     {
       "flag": 80049,
       "category": "手作配方",
-      "name": "ミルク加工機/改",
-      "itemId": 400011
+      "name": "牛奶加工机／改",
+      "itemId": 400011,
+      "nameTranslations": {
+        "ja": "ミルク加工機/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛奶加工機／改",
+        "ko": "우유 가공기/개량판",
+        "zh-CN": "牛奶加工机／改"
+      }
     },
     {
       "flag": 80052,
       "category": "手作配方",
-      "name": "醸造樽",
-      "itemId": 400030
+      "name": "酿造桶",
+      "itemId": 400030,
+      "nameTranslations": {
+        "ja": "醸造樽",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "釀造桶",
+        "ko": "양조통",
+        "zh-CN": "酿造桶"
+      }
     },
     {
       "flag": 80053,
       "category": "手作配方",
-      "name": "醸造樽/改",
-      "itemId": 400031
+      "name": "酿造桶／改",
+      "itemId": 400031,
+      "nameTranslations": {
+        "ja": "醸造樽/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "釀造桶／改",
+        "ko": "양조통/개량판",
+        "zh-CN": "酿造桶／改"
+      }
     },
     {
       "flag": 80056,
       "category": "手作配方",
-      "name": "熟成樽",
-      "itemId": 400040
+      "name": "熟成桶",
+      "itemId": 400040,
+      "nameTranslations": {
+        "ja": "熟成樽",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "熟成桶",
+        "ko": "숙성통",
+        "zh-CN": "熟成桶"
+      }
     },
     {
       "flag": 80057,
       "category": "手作配方",
-      "name": "熟成樽/改",
-      "itemId": 400041
+      "name": "熟成桶／改",
+      "itemId": 400041,
+      "nameTranslations": {
+        "ja": "熟成樽/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "熟成桶／改",
+        "ko": "숙성통/개량판",
+        "zh-CN": "熟成桶／改"
+      }
     },
     {
       "flag": 80054,
       "category": "手作配方",
-      "name": "乾燥機",
-      "itemId": 400050
+      "name": "干燥机",
+      "itemId": 400050,
+      "nameTranslations": {
+        "ja": "乾燥機",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥機",
+        "ko": "건조기",
+        "zh-CN": "干燥机"
+      }
     },
     {
       "flag": 80055,
       "category": "手作配方",
-      "name": "乾燥機/改",
-      "itemId": 400051
+      "name": "干燥机／改",
+      "itemId": 400051,
+      "nameTranslations": {
+        "ja": "乾燥機/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥機／改",
+        "ko": "건조기/개량판",
+        "zh-CN": "干燥机／改"
+      }
     },
     {
       "flag": 80038,
       "category": "手作配方",
-      "name": "織り機",
-      "itemId": 400100
+      "name": "织布机",
+      "itemId": 400100,
+      "nameTranslations": {
+        "ja": "織り機",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "織布機",
+        "ko": "방직기",
+        "zh-CN": "织布机"
+      }
     },
     {
       "flag": 80039,
       "category": "手作配方",
-      "name": "織り機/改",
-      "itemId": 400101
+      "name": "织布机／改",
+      "itemId": 400101,
+      "nameTranslations": {
+        "ja": "織り機/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "織布機／改",
+        "ko": "방직기/개량판",
+        "zh-CN": "织布机／改"
+      }
     },
     {
       "flag": 80044,
       "category": "手作配方",
-      "name": "搾油機",
-      "itemId": 400070
+      "name": "榨油机",
+      "itemId": 400070,
+      "nameTranslations": {
+        "ja": "搾油機",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "榨油機",
+        "ko": "착유기",
+        "zh-CN": "榨油机"
+      }
     },
     {
       "flag": 80045,
       "category": "手作配方",
-      "name": "搾油機/改",
-      "itemId": 400071
+      "name": "榨油机／改",
+      "itemId": 400071,
+      "nameTranslations": {
+        "ja": "搾油機/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "榨油機／改",
+        "ko": "착유기/개량판",
+        "zh-CN": "榨油机／改"
+      }
     },
     {
       "flag": 80040,
       "category": "手作配方",
-      "name": "コンポスター",
-      "itemId": 400110
+      "name": "堆肥桶",
+      "itemId": 400110,
+      "nameTranslations": {
+        "ja": "コンポスター",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "堆肥桶",
+        "ko": "퇴비함",
+        "zh-CN": "堆肥桶"
+      }
     },
     {
       "flag": 80041,
       "category": "手作配方",
-      "name": "コンポスター/改",
-      "itemId": 400111
+      "name": "堆肥桶／改",
+      "itemId": 400111,
+      "nameTranslations": {
+        "ja": "コンポスター/改",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "堆肥桶／改",
+        "ko": "퇴비함/개량판",
+        "zh-CN": "堆肥桶／改"
+      }
     },
     {
       "flag": 80011,
       "category": "手作配方",
-      "name": "養蜂箱",
-      "itemId": 402040
+      "name": "蜂箱",
+      "itemId": 402040,
+      "nameTranslations": {
+        "ja": "養蜂箱",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蜂箱",
+        "ko": "벌통",
+        "zh-CN": "蜂箱"
+      }
     },
     {
       "flag": 80006,
       "category": "手作配方",
-      "name": "樹液採取器",
-      "itemId": 402050
+      "name": "树液采集器",
+      "itemId": 402050,
+      "nameTranslations": {
+        "ja": "樹液採取器",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹液採集器",
+        "ko": "수액 채취기",
+        "zh-CN": "树液采集器"
+      }
     },
     {
       "flag": 80034,
       "category": "手作配方",
-      "name": "養蚕箱",
-      "itemId": 402070
+      "name": "蚕箱",
+      "itemId": 402070,
+      "nameTranslations": {
+        "ja": "養蚕箱",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蠶箱",
+        "ko": "양잠통",
+        "zh-CN": "蚕箱"
+      }
     },
     {
       "flag": 80065,
       "category": "手作配方",
-      "name": "小さいスプリンクラー",
-      "itemId": 402100
+      "name": "小型洒水器",
+      "itemId": 402100,
+      "nameTranslations": {
+        "ja": "小さいスプリンクラー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小型灑水器",
+        "ko": "작은 스프링클러",
+        "zh-CN": "小型洒水器"
+      }
     },
     {
       "flag": 80066,
       "category": "手作配方",
-      "name": "普通のスプリンクラー",
-      "itemId": 402110
+      "name": "普通洒水器",
+      "itemId": 402110,
+      "nameTranslations": {
+        "ja": "普通のスプリンクラー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "普通灑水器",
+        "ko": "평범한 스프링클러",
+        "zh-CN": "普通洒水器"
+      }
     },
     {
       "flag": 80067,
       "category": "手作配方",
-      "name": "強化スプリンクラー",
-      "itemId": 402120
+      "name": "强化洒水器",
+      "itemId": 402120,
+      "nameTranslations": {
+        "ja": "強化スプリンクラー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "強化灑水器",
+        "ko": "강화 스프링클러",
+        "zh-CN": "强化洒水器"
+      }
     },
     {
       "flag": 80012,
       "category": "手作配方",
-      "name": "はんごう",
-      "itemId": 403000
+      "name": "煮饭盒",
+      "itemId": 403000,
+      "nameTranslations": {
+        "ja": "はんごう",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "煮飯盒",
+        "ko": "반합",
+        "zh-CN": "煮饭盒"
+      }
     },
     {
       "flag": 80250,
       "category": "手作配方",
-      "name": "かまど",
-      "itemId": 403010
+      "name": "炉灶",
+      "itemId": 403010,
+      "nameTranslations": {
+        "ja": "かまど",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "爐灶",
+        "ko": "아궁이",
+        "zh-CN": "炉灶"
+      }
     },
     {
       "flag": 80251,
       "category": "手作配方",
-      "name": "七輪",
-      "itemId": 403040
+      "name": "炭烤炉",
+      "itemId": 403040,
+      "nameTranslations": {
+        "ja": "七輪",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炭烤爐",
+        "ko": "풍로",
+        "zh-CN": "炭烤炉"
+      }
     },
     {
       "flag": 80000,
       "category": "手作配方",
-      "name": "木の収納箱/茶",
-      "itemId": 410000
+      "name": "木制收纳箱／咖啡",
+      "itemId": 410000,
+      "nameTranslations": {
+        "ja": "木の収納箱/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製收納箱／咖啡",
+        "ko": "목재 수납함/갈색",
+        "zh-CN": "木制收纳箱／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな収納箱/茶",
-      "itemId": 410010
+      "name": "时髦收纳箱／咖啡",
+      "itemId": 410010,
+      "nameTranslations": {
+        "ja": "モダンな収納箱/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦收納箱／咖啡",
+        "ko": "모던한 수납함/갈색",
+        "zh-CN": "时髦收纳箱／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ収納箱/茶",
-      "itemId": 410020
+      "name": "编织收纳箱／咖啡",
+      "itemId": 410020,
+      "nameTranslations": {
+        "ja": "あみあみ収納箱/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織收納箱／咖啡",
+        "ko": "엮어 만든 수납함/갈색",
+        "zh-CN": "编织收纳箱／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の洋服棚/茶",
-      "itemId": 412000
+      "name": "木制衣柜／咖啡",
+      "itemId": 412000,
+      "nameTranslations": {
+        "ja": "木の洋服棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製衣櫃／咖啡",
+        "ko": "목재 옷장/갈색",
+        "zh-CN": "木制衣柜／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な洋服棚/茶",
-      "itemId": 412020
+      "name": "成熟风衣柜／咖啡",
+      "itemId": 412020,
+      "nameTranslations": {
+        "ja": "大人な洋服棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風衣櫃／咖啡",
+        "ko": "성숙한 느낌의 옷장/갈색",
+        "zh-CN": "成熟风衣柜／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の鏡台/茶",
-      "itemId": 413000
+      "name": "木制梳妆台／咖啡",
+      "itemId": 413000,
+      "nameTranslations": {
+        "ja": "木の鏡台/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製梳妝台／咖啡",
+        "ko": "목재 화장대/갈색",
+        "zh-CN": "木制梳妆台／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな鏡台/茶",
-      "itemId": 413020
+      "name": "时髦梳妆台／咖啡",
+      "itemId": 413020,
+      "nameTranslations": {
+        "ja": "モダンな鏡台/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦梳妝台／咖啡",
+        "ko": "모던한 화장대/갈색",
+        "zh-CN": "时髦梳妆台／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ鏡台/茶",
-      "itemId": 413030
+      "name": "编织梳妆台／咖啡",
+      "itemId": 413030,
+      "nameTranslations": {
+        "ja": "あみあみ鏡台/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織梳妝台／咖啡",
+        "ko": "엮어 만든 화장대/갈색",
+        "zh-CN": "编织梳妆台／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の卓上照明/茶",
-      "itemId": 420000
+      "name": "木制桌灯／咖啡",
+      "itemId": 420000,
+      "nameTranslations": {
+        "ja": "木の卓上照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製桌燈／咖啡",
+        "ko": "목재 탁상 조명/갈색",
+        "zh-CN": "木制桌灯／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな卓上照明/茶",
-      "itemId": 420020
+      "name": "时髦桌灯／咖啡",
+      "itemId": 420020,
+      "nameTranslations": {
+        "ja": "モダンな卓上照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦桌燈／咖啡",
+        "ko": "모던한 탁상 조명/갈색",
+        "zh-CN": "时髦桌灯／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な卓上照明/茶",
-      "itemId": 420030
+      "name": "成熟风桌灯／咖啡",
+      "itemId": 420030,
+      "nameTranslations": {
+        "ja": "大人な卓上照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風桌燈／咖啡",
+        "ko": "성숙한 느낌의 탁상 조명/갈색",
+        "zh-CN": "成熟风桌灯／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の照明/茶",
-      "itemId": 421000
+      "name": "木制灯具／咖啡",
+      "itemId": 421000,
+      "nameTranslations": {
+        "ja": "木の照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製燈具／咖啡",
+        "ko": "목재 조명/갈색",
+        "zh-CN": "木制灯具／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな壁照明/茶",
-      "itemId": 422000
+      "name": "酷帅壁灯／咖啡",
+      "itemId": 422000,
+      "nameTranslations": {
+        "ja": "クールな壁照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥壁燈／咖啡",
+        "ko": "쿨한 벽 조명/갈색",
+        "zh-CN": "酷帅壁灯／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ壁照明/茶",
-      "itemId": 422010
+      "name": "编织壁灯／咖啡",
+      "itemId": 422010,
+      "nameTranslations": {
+        "ja": "あみあみ壁照明/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織壁燈／咖啡",
+        "ko": "엮어 만든 벽 조명/갈색",
+        "zh-CN": "编织壁灯／咖啡"
+      }
     },
     {
       "flag": 80015,
       "category": "手作配方",
-      "name": "焚き火",
-      "itemId": 429000
+      "name": "篝火",
+      "itemId": 429000,
+      "nameTranslations": {
+        "ja": "焚き火",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "篝火",
+        "ko": "모닥불",
+        "zh-CN": "篝火"
+      }
     },
     {
       "flag": 80001,
       "category": "手作配方",
-      "name": "小さい松明",
-      "itemId": 429100
+      "name": "小型火把",
+      "itemId": 429100,
+      "nameTranslations": {
+        "ja": "小さい松明",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小型火把",
+        "ko": "작은 횃불",
+        "zh-CN": "小型火把"
+      }
     },
     {
       "flag": 80249,
       "category": "手作配方",
-      "name": "大きな松明",
-      "itemId": 429110
+      "name": "大型火把",
+      "itemId": 429110,
+      "nameTranslations": {
+        "ja": "大きな松明",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "大型火把",
+        "ko": "큰 횃불",
+        "zh-CN": "大型火把"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の食卓/茶",
-      "itemId": 430000
+      "name": "木制餐桌／咖啡",
+      "itemId": 430000,
+      "nameTranslations": {
+        "ja": "木の食卓/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製餐桌／咖啡",
+        "ko": "목재 식탁/갈색",
+        "zh-CN": "木制餐桌／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな食卓/茶",
-      "itemId": 430010
+      "name": "酷帅餐桌／咖啡",
+      "itemId": 430010,
+      "nameTranslations": {
+        "ja": "クールな食卓/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥餐桌／咖啡",
+        "ko": "쿨한 식탁/갈색",
+        "zh-CN": "酷帅餐桌／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな食卓/茶",
-      "itemId": 430030
+      "name": "时髦餐桌／咖啡",
+      "itemId": 430030,
+      "nameTranslations": {
+        "ja": "モダンな食卓/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦餐桌／咖啡",
+        "ko": "모던한 식탁/갈색",
+        "zh-CN": "时髦餐桌／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ食卓/茶",
-      "itemId": 430050
+      "name": "编织餐桌／咖啡",
+      "itemId": 430050,
+      "nameTranslations": {
+        "ja": "あみあみ食卓/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織餐桌／咖啡",
+        "ko": "엮어 만든 식탁/갈색",
+        "zh-CN": "编织餐桌／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な食卓/茶",
-      "itemId": 430060
+      "name": "成熟风餐桌／咖啡",
+      "itemId": 430060,
+      "nameTranslations": {
+        "ja": "大人な食卓/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風餐桌／咖啡",
+        "ko": "성숙한 느낌의 식탁/갈색",
+        "zh-CN": "成熟风餐桌／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の机/茶",
-      "itemId": 431000
+      "name": "木制桌子／咖啡",
+      "itemId": 431000,
+      "nameTranslations": {
+        "ja": "木の机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製桌子／咖啡",
+        "ko": "목재 책상/갈색",
+        "zh-CN": "木制桌子／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな机/茶",
-      "itemId": 431010
+      "name": "酷帅桌子／咖啡",
+      "itemId": 431010,
+      "nameTranslations": {
+        "ja": "クールな机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥桌子／咖啡",
+        "ko": "쿨한 책상/갈색",
+        "zh-CN": "酷帅桌子／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな机/茶",
-      "itemId": 431030
+      "name": "时髦桌子／咖啡",
+      "itemId": 431030,
+      "nameTranslations": {
+        "ja": "モダンな机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦桌子／咖啡",
+        "ko": "모던한 책상/갈색",
+        "zh-CN": "时髦桌子／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ机/茶",
-      "itemId": 431050
+      "name": "编织桌子／咖啡",
+      "itemId": 431050,
+      "nameTranslations": {
+        "ja": "あみあみ机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織桌子／咖啡",
+        "ko": "엮어 만든 책상/갈색",
+        "zh-CN": "编织桌子／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な机/茶",
-      "itemId": 431060
+      "name": "成熟风桌子／咖啡",
+      "itemId": 431060,
+      "nameTranslations": {
+        "ja": "大人な机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風桌子／咖啡",
+        "ko": "성숙한 느낌의 책상/갈색",
+        "zh-CN": "成熟风桌子／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の脇机/茶",
-      "itemId": 432000
+      "name": "木制边桌／咖啡",
+      "itemId": 432000,
+      "nameTranslations": {
+        "ja": "木の脇机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製邊桌／咖啡",
+        "ko": "목재 보조 책상/갈색",
+        "zh-CN": "木制边桌／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな脇机/茶",
-      "itemId": 432010
+      "name": "酷帅边桌／咖啡",
+      "itemId": 432010,
+      "nameTranslations": {
+        "ja": "クールな脇机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥邊桌／咖啡",
+        "ko": "쿨한 보조 책상/갈색",
+        "zh-CN": "酷帅边桌／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ脇机/茶",
-      "itemId": 432030
+      "name": "编织边桌／咖啡",
+      "itemId": 432030,
+      "nameTranslations": {
+        "ja": "あみあみ脇机/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織邊桌／咖啡",
+        "ko": "엮어 만든 보조 책상/갈색",
+        "zh-CN": "编织边桌／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の本棚/茶",
-      "itemId": 433000
+      "name": "木制书柜／咖啡",
+      "itemId": 433000,
+      "nameTranslations": {
+        "ja": "木の本棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製書櫃／咖啡",
+        "ko": "목재 책장/갈색",
+        "zh-CN": "木制书柜／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな本棚/茶",
-      "itemId": 433010
+      "name": "酷帅书柜／咖啡",
+      "itemId": 433010,
+      "nameTranslations": {
+        "ja": "クールな本棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥書櫃／咖啡",
+        "ko": "쿨한 책장/갈색",
+        "zh-CN": "酷帅书柜／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な本棚/茶",
-      "itemId": 433040
+      "name": "成熟风书柜／咖啡",
+      "itemId": 433040,
+      "nameTranslations": {
+        "ja": "大人な本棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風書櫃／咖啡",
+        "ko": "성숙한 느낌의 책장/갈색",
+        "zh-CN": "成熟风书柜／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の食器棚/茶",
-      "itemId": 434000
+      "name": "木制餐柜／咖啡",
+      "itemId": 434000,
+      "nameTranslations": {
+        "ja": "木の食器棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製餐櫃／咖啡",
+        "ko": "목재 식기장/갈색",
+        "zh-CN": "木制餐柜／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな食器棚/茶",
-      "itemId": 434010
+      "name": "酷帅餐柜／咖啡",
+      "itemId": 434010,
+      "nameTranslations": {
+        "ja": "クールな食器棚/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥餐櫃／咖啡",
+        "ko": "쿨한 식기장/갈색",
+        "zh-CN": "酷帅餐柜／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の椅子/茶",
-      "itemId": 440000
+      "name": "木制椅子／咖啡",
+      "itemId": 440000,
+      "nameTranslations": {
+        "ja": "木の椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製椅子／咖啡",
+        "ko": "목재 의자/갈색",
+        "zh-CN": "木制椅子／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな椅子/茶",
-      "itemId": 440010
+      "name": "酷帅椅子／咖啡",
+      "itemId": 440010,
+      "nameTranslations": {
+        "ja": "クールな椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥椅子／咖啡",
+        "ko": "쿨한 의자/갈색",
+        "zh-CN": "酷帅椅子／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな椅子/茶",
-      "itemId": 440030
+      "name": "时髦椅子／咖啡",
+      "itemId": 440030,
+      "nameTranslations": {
+        "ja": "モダンな椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦椅子／咖啡",
+        "ko": "모던한 의자/갈색",
+        "zh-CN": "时髦椅子／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ椅子/茶",
-      "itemId": 440050
+      "name": "编织椅子／咖啡",
+      "itemId": 440050,
+      "nameTranslations": {
+        "ja": "あみあみ椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織椅子／咖啡",
+        "ko": "엮어 만든 의자/갈색",
+        "zh-CN": "编织椅子／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な椅子/茶",
-      "itemId": 440060
+      "name": "成熟风椅子／咖啡",
+      "itemId": 440060,
+      "nameTranslations": {
+        "ja": "大人な椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風椅子／咖啡",
+        "ko": "성숙한 느낌의 의자/갈색",
+        "zh-CN": "成熟风椅子／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の長椅子/茶",
-      "itemId": 441000
+      "name": "木制长椅／咖啡",
+      "itemId": 441000,
+      "nameTranslations": {
+        "ja": "木の長椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製長椅／咖啡",
+        "ko": "목재 장의자/갈색",
+        "zh-CN": "木制长椅／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな長椅子/茶",
-      "itemId": 441010
+      "name": "酷帅长椅／咖啡",
+      "itemId": 441010,
+      "nameTranslations": {
+        "ja": "クールな長椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥長椅／咖啡",
+        "ko": "쿨한 장의자/갈색",
+        "zh-CN": "酷帅长椅／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな長椅子/茶",
-      "itemId": 441030
+      "name": "时髦长椅／咖啡",
+      "itemId": 441030,
+      "nameTranslations": {
+        "ja": "モダンな長椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦長椅／咖啡",
+        "ko": "모던한 장의자/갈색",
+        "zh-CN": "时髦长椅／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ長椅子/茶",
-      "itemId": 441050
+      "name": "编织长椅／咖啡",
+      "itemId": 441050,
+      "nameTranslations": {
+        "ja": "あみあみ長椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織長椅／咖啡",
+        "ko": "엮어 만든 장의자/갈색",
+        "zh-CN": "编织长椅／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な長椅子/茶",
-      "itemId": 441060
+      "name": "成熟风长椅／咖啡",
+      "itemId": 441060,
+      "nameTranslations": {
+        "ja": "大人な長椅子/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風長椅／咖啡",
+        "ko": "성숙한 느낌의 장의자/갈색",
+        "zh-CN": "成熟风长椅／咖啡"
+      }
     },
     {
       "flag": 80016,
       "category": "手作配方",
-      "name": "日本人形",
-      "itemId": 639060
+      "name": "日本人偶",
+      "itemId": 639060,
+      "nameTranslations": {
+        "ja": "日本人形",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "日本人偶",
+        "ko": "일본 인형",
+        "zh-CN": "日本人偶"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな座布団/茶",
-      "itemId": 450110
+      "name": "时髦坐垫／咖啡",
+      "itemId": 450110,
+      "nameTranslations": {
+        "ja": "モダンな座布団/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦坐墊／咖啡",
+        "ko": "모던한 방석/갈색",
+        "zh-CN": "时髦坐垫／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ座布団/茶",
-      "itemId": 450130
+      "name": "编织坐垫／咖啡",
+      "itemId": 450130,
+      "nameTranslations": {
+        "ja": "あみあみ座布団/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織坐墊／咖啡",
+        "ko": "엮어 만든 방석/갈색",
+        "zh-CN": "编织坐垫／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な座布団/茶",
-      "itemId": 450140
+      "name": "成熟风坐垫／咖啡",
+      "itemId": 450140,
+      "nameTranslations": {
+        "ja": "大人な座布団/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風坐墊／咖啡",
+        "ko": "성숙한 느낌의 방석/갈색",
+        "zh-CN": "成熟风坐垫／咖啡"
+      }
     },
     {
       "flag": 80102,
       "category": "手作配方",
-      "name": "小さいテディベア/茶",
-      "itemId": 451000
+      "name": "小泰迪熊／咖啡",
+      "itemId": 451000,
+      "nameTranslations": {
+        "ja": "小さいテディベア/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小泰迪熊／咖啡",
+        "ko": "작은 테디 베어/갈색",
+        "zh-CN": "小泰迪熊／咖啡"
+      }
     },
     {
       "flag": 80200,
       "category": "手作配方",
       "name": "花瓶",
-      "itemId": 451070
+      "itemId": 451070,
+      "nameTranslations": {
+        "ja": "花瓶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "花瓶",
+        "ko": "꽃병",
+        "zh-CN": "花瓶"
+      }
     },
     {
       "flag": 80201,
       "category": "手作配方",
-      "name": "木彫りの熊",
-      "itemId": 451080
+      "name": "木雕熊",
+      "itemId": 451080,
+      "nameTranslations": {
+        "ja": "木彫りの熊",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木雕熊",
+        "ko": "곰 모양 나무 조각상",
+        "zh-CN": "木雕熊"
+      }
     },
     {
       "flag": 80202,
       "category": "手作配方",
-      "name": "手編みマフラー",
-      "itemId": 451090
+      "name": "手织围巾",
+      "itemId": 451090,
+      "nameTranslations": {
+        "ja": "手編みマフラー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "手織圍巾",
+        "ko": "손으로 뜬 머플러",
+        "zh-CN": "手织围巾"
+      }
     },
     {
       "flag": 80203,
       "category": "手作配方",
-      "name": "苔玉",
-      "itemId": 451110
+      "name": "苔球",
+      "itemId": 451110,
+      "nameTranslations": {
+        "ja": "苔玉",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "苔球",
+        "ko": "이끼 볼",
+        "zh-CN": "苔球"
+      }
     },
     {
       "flag": 80204,
       "category": "手作配方",
-      "name": "木魚",
-      "itemId": 451170
+      "name": "木鱼",
+      "itemId": 451170,
+      "nameTranslations": {
+        "ja": "木魚",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木魚",
+        "ko": "목어",
+        "zh-CN": "木鱼"
+      }
     },
     {
       "flag": 80205,
       "category": "手作配方",
-      "name": "そろばん",
-      "itemId": 451190
+      "name": "算盘",
+      "itemId": 451190,
+      "nameTranslations": {
+        "ja": "そろばん",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "算盤",
+        "ko": "주판",
+        "zh-CN": "算盘"
+      }
     },
     {
       "flag": 80206,
       "category": "手作配方",
-      "name": "竹細工のトンボ",
-      "itemId": 455010
+      "name": "竹编蜻蜓",
+      "itemId": 455010,
+      "nameTranslations": {
+        "ja": "竹細工のトンボ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "竹編蜻蜓",
+        "ko": "대나무 세공으로 만든 잠자리",
+        "zh-CN": "竹编蜻蜓"
+      }
     },
     {
       "flag": 80239,
       "category": "手作配方",
-      "name": "トロフィー/銅",
-      "itemId": 455100
+      "name": "奖杯／铜",
+      "itemId": 455100,
+      "nameTranslations": {
+        "ja": "トロフィー/銅",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "獎盃／銅",
+        "ko": "트로피/동",
+        "zh-CN": "奖杯／铜"
+      }
     },
     {
       "flag": 80240,
       "category": "手作配方",
-      "name": "トロフィー/銀",
-      "itemId": 455110
+      "name": "奖杯／银",
+      "itemId": 455110,
+      "nameTranslations": {
+        "ja": "トロフィー/銀",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "獎盃／銀",
+        "ko": "트로피/은",
+        "zh-CN": "奖杯／银"
+      }
     },
     {
       "flag": 80241,
       "category": "手作配方",
-      "name": "トロフィー/金",
-      "itemId": 455120
+      "name": "奖杯／金",
+      "itemId": 455120,
+      "nameTranslations": {
+        "ja": "トロフィー/金",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "獎盃／金",
+        "ko": "트로피/금",
+        "zh-CN": "奖杯／金"
+      }
     },
     {
       "flag": 80207,
       "category": "手作配方",
-      "name": "壺",
-      "itemId": 451270
+      "name": "瓮",
+      "itemId": 451270,
+      "nameTranslations": {
+        "ja": "壺",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "甕",
+        "ko": "항아리",
+        "zh-CN": "瓮"
+      }
     },
     {
       "flag": 80010,
       "category": "手作配方",
-      "name": "薪の束",
-      "itemId": 451341
+      "name": "木柴捆",
+      "itemId": 451341,
+      "nameTranslations": {
+        "ja": "薪の束",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木柴捆",
+        "ko": "장작 묶음",
+        "zh-CN": "木柴捆"
+      }
     },
     {
       "flag": 80208,
       "category": "手作配方",
-      "name": "畳まれた布団",
-      "itemId": 451640
+      "name": "折叠好的棉被",
+      "itemId": 451640,
+      "nameTranslations": {
+        "ja": "畳まれた布団",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "折疊好的棉被",
+        "ko": "갠 이불",
+        "zh-CN": "折叠好的棉被"
+      }
     },
     {
       "flag": 80210,
       "category": "手作配方",
-      "name": "イースターエッグ",
-      "itemId": 452030
+      "name": "复活节彩蛋",
+      "itemId": 452030,
+      "nameTranslations": {
+        "ja": "イースターエッグ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "復活節彩蛋",
+        "ko": "부활절 달걀",
+        "zh-CN": "复活节彩蛋"
+      }
     },
     {
       "flag": 80212,
       "category": "手作配方",
-      "name": "枝の山",
-      "itemId": 453060
+      "name": "树枝堆",
+      "itemId": 453060,
+      "nameTranslations": {
+        "ja": "枝の山",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹枝堆",
+        "ko": "가지 더미",
+        "zh-CN": "树枝堆"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/茶",
-      "itemId": 453070
+      "name": "园艺推车／咖啡",
+      "itemId": 453070,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／咖啡",
+        "ko": "플라워 왜건/갈색",
+        "zh-CN": "园艺推车／咖啡"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/赤",
-      "itemId": 453071
+      "name": "园艺推车／红",
+      "itemId": 453071,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/赤",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／紅",
+        "ko": "플라워 왜건/빨간색",
+        "zh-CN": "园艺推车／红"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/橙",
-      "itemId": 453072
+      "name": "园艺推车／橘",
+      "itemId": 453072,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/橙",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／橘",
+        "ko": "플라워 왜건/오렌지색",
+        "zh-CN": "园艺推车／橘"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/黄",
-      "itemId": 453073
+      "name": "园艺推车／黄",
+      "itemId": 453073,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/黄",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／黃",
+        "ko": "플라워 왜건/노란색",
+        "zh-CN": "园艺推车／黄"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/緑",
-      "itemId": 453074
+      "name": "园艺推车／绿",
+      "itemId": 453074,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/緑",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／綠",
+        "ko": "플라워 왜건/초록색",
+        "zh-CN": "园艺推车／绿"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/青",
-      "itemId": 453075
+      "name": "园艺推车／蓝",
+      "itemId": 453075,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/青",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／藍",
+        "ko": "플라워 왜건/파란색",
+        "zh-CN": "园艺推车／蓝"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/紫",
-      "itemId": 453076
+      "name": "园艺推车／紫",
+      "itemId": 453076,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/紫",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／紫",
+        "ko": "플라워 왜건/보라색",
+        "zh-CN": "园艺推车／紫"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/桃",
-      "itemId": 453077
+      "name": "园艺推车／粉红",
+      "itemId": 453077,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/桃",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／粉紅",
+        "ko": "플라워 왜건/분홍색",
+        "zh-CN": "园艺推车／粉红"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/白",
-      "itemId": 453078
+      "name": "园艺推车／白",
+      "itemId": 453078,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/白",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／白",
+        "ko": "플라워 왜건/흰색",
+        "zh-CN": "园艺推车／白"
+      }
     },
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "フラワーワゴン/黒",
-      "itemId": 453079
+      "name": "园艺推车／黑",
+      "itemId": 453079,
+      "nameTranslations": {
+        "ja": "フラワーワゴン/黒",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "園藝推車／黑",
+        "ko": "플라워 왜건/검정색",
+        "zh-CN": "园艺推车／黑"
+      }
     },
     {
       "flag": 80213,
       "category": "手作配方",
-      "name": "植木鉢",
-      "itemId": 453090
+      "name": "花盆",
+      "itemId": 453090,
+      "nameTranslations": {
+        "ja": "植木鉢",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "花盆",
+        "ko": "화분",
+        "zh-CN": "花盆"
+      }
     },
     {
       "flag": 80215,
       "category": "手作配方",
-      "name": "積石",
-      "itemId": 453130
+      "name": "石堆",
+      "itemId": 453130,
+      "nameTranslations": {
+        "ja": "積石",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "石堆",
+        "ko": "쌓은 돌",
+        "zh-CN": "石堆"
+      }
     },
     {
       "flag": 80216,
       "category": "手作配方",
-      "name": "庭石",
-      "itemId": 453140
+      "name": "景观石",
+      "itemId": 453140,
+      "nameTranslations": {
+        "ja": "庭石",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "景觀石",
+        "ko": "정원석",
+        "zh-CN": "景观石"
+      }
     },
     {
       "flag": 80217,
       "category": "手作配方",
-      "name": "睡蓮鉢",
-      "itemId": 453160
+      "name": "莲花盆",
+      "itemId": 453160,
+      "nameTranslations": {
+        "ja": "睡蓮鉢",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蓮花盆",
+        "ko": "수련 화분",
+        "zh-CN": "莲花盆"
+      }
     },
     {
       "flag": 80218,
       "category": "手作配方",
-      "name": "立て札",
-      "itemId": 457000
+      "name": "立牌",
+      "itemId": 457000,
+      "nameTranslations": {
+        "ja": "立て札",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "立牌",
+        "ko": "팻말",
+        "zh-CN": "立牌"
+      }
     },
     {
       "flag": 80219,
       "category": "手作配方",
-      "name": "石積の灯籠",
-      "itemId": 457010
+      "name": "石灯笼",
+      "itemId": 457010,
+      "nameTranslations": {
+        "ja": "石積の灯籠",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "石燈籠",
+        "ko": "돌을 쌓아 만든 등롱",
+        "zh-CN": "石灯笼"
+      }
     },
     {
       "flag": 80220,
       "category": "手作配方",
-      "name": "苔むした石",
-      "itemId": 453210
+      "name": "青苔石",
+      "itemId": 453210,
+      "nameTranslations": {
+        "ja": "苔むした石",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "青苔石",
+        "ko": "이끼 낀 돌",
+        "zh-CN": "青苔石"
+      }
     },
     {
       "flag": 80222,
       "category": "手作配方",
-      "name": "大きな飛び石",
-      "itemId": 453230
+      "name": "大型垫脚石",
+      "itemId": 453230,
+      "nameTranslations": {
+        "ja": "大きな飛び石",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "大型墊腳石",
+        "ko": "커다란 징검돌",
+        "zh-CN": "大型垫脚石"
+      }
     },
     {
       "flag": 80223,
       "category": "手作配方",
-      "name": "小さな飛び石",
-      "itemId": 453250
+      "name": "小型垫脚石",
+      "itemId": 453250,
+      "nameTranslations": {
+        "ja": "小さな飛び石",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小型墊腳石",
+        "ko": "작은 징검돌",
+        "zh-CN": "小型垫脚石"
+      }
     },
     {
       "flag": 80224,
       "category": "手作配方",
-      "name": "低木と岩",
-      "itemId": 453300
+      "name": "灌木与岩石",
+      "itemId": 453300,
+      "nameTranslations": {
+        "ja": "低木と岩",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "灌木與岩石",
+        "ko": "관목과 바위",
+        "zh-CN": "灌木与岩石"
+      }
     },
     {
       "flag": 80226,
       "category": "手作配方",
-      "name": "牧草ロールの山",
-      "itemId": 453320
+      "name": "牧草卷堆",
+      "itemId": 453320,
+      "nameTranslations": {
+        "ja": "牧草ロールの山",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牧草捲堆",
+        "ko": "곤포 사일리지 더미",
+        "zh-CN": "牧草卷堆"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木のベッド/茶",
-      "itemId": 460000
+      "name": "木制床铺／咖啡",
+      "itemId": 460000,
+      "nameTranslations": {
+        "ja": "木のベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製床鋪／咖啡",
+        "ko": "목재 침대/갈색",
+        "zh-CN": "木制床铺／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールなベッド/茶",
-      "itemId": 460010
+      "name": "酷帅床铺／咖啡",
+      "itemId": 460010,
+      "nameTranslations": {
+        "ja": "クールなベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥床鋪／咖啡",
+        "ko": "쿨한 침대/갈색",
+        "zh-CN": "酷帅床铺／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンなベッド/茶",
-      "itemId": 460030
+      "name": "时髦床铺／咖啡",
+      "itemId": 460030,
+      "nameTranslations": {
+        "ja": "モダンなベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦床鋪／咖啡",
+        "ko": "모던한 침대/갈색",
+        "zh-CN": "时髦床铺／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみベッド/茶",
-      "itemId": 460050
+      "name": "编织床铺／咖啡",
+      "itemId": 460050,
+      "nameTranslations": {
+        "ja": "あみあみベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織床鋪／咖啡",
+        "ko": "엮어 만든 침대/갈색",
+        "zh-CN": "编织床铺／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人なベッド/茶",
-      "itemId": 460060
+      "name": "成熟风床铺／咖啡",
+      "itemId": 460060,
+      "nameTranslations": {
+        "ja": "大人なベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風床鋪／咖啡",
+        "ko": "성숙한 느낌의 침대/갈색",
+        "zh-CN": "成熟风床铺／咖啡"
+      }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木の大ベッド/茶",
-      "itemId": 461000
+      "name": "木制大床／咖啡",
+      "itemId": 461000,
+      "nameTranslations": {
+        "ja": "木の大ベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木製大床／咖啡",
+        "ko": "목재 대형 침대/갈색",
+        "zh-CN": "木制大床／咖啡"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな大ベッド/茶",
-      "itemId": 461010
+      "name": "酷帅大床／咖啡",
+      "itemId": 461010,
+      "nameTranslations": {
+        "ja": "クールな大ベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥大床／咖啡",
+        "ko": "쿨한 대형 침대/갈색",
+        "zh-CN": "酷帅大床／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな大ベッド/茶",
-      "itemId": 461030
+      "name": "时髦大床／咖啡",
+      "itemId": 461030,
+      "nameTranslations": {
+        "ja": "モダンな大ベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦大床／咖啡",
+        "ko": "모던한 대형 침대/갈색",
+        "zh-CN": "时髦大床／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ大ベッド/茶",
-      "itemId": 461050
+      "name": "编织大床／咖啡",
+      "itemId": 461050,
+      "nameTranslations": {
+        "ja": "あみあみ大ベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織大床／咖啡",
+        "ko": "엮어 만든 대형 침대/갈색",
+        "zh-CN": "编织大床／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な大ベッド/茶",
-      "itemId": 461060
+      "name": "成熟风大床／咖啡",
+      "itemId": 461060,
+      "nameTranslations": {
+        "ja": "大人な大ベッド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風大床／咖啡",
+        "ko": "성숙한 느낌의 대형 침대/갈색",
+        "zh-CN": "成熟风大床／咖啡"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/茶",
-      "itemId": 470010
+      "name": "干燥花／咖啡",
+      "itemId": 470010,
+      "nameTranslations": {
+        "ja": "ドライフラワー/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／咖啡",
+        "ko": "드라이플라워/갈색",
+        "zh-CN": "干燥花／咖啡"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/赤",
-      "itemId": 470011
+      "name": "干燥花／红",
+      "itemId": 470011,
+      "nameTranslations": {
+        "ja": "ドライフラワー/赤",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／紅",
+        "ko": "드라이플라워/빨간색",
+        "zh-CN": "干燥花／红"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/橙",
-      "itemId": 470012
+      "name": "干燥花／橘",
+      "itemId": 470012,
+      "nameTranslations": {
+        "ja": "ドライフラワー/橙",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／橘",
+        "ko": "드라이플라워/오렌지색",
+        "zh-CN": "干燥花／橘"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/黄",
-      "itemId": 470013
+      "name": "干燥花／黄",
+      "itemId": 470013,
+      "nameTranslations": {
+        "ja": "ドライフラワー/黄",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／黃",
+        "ko": "드라이플라워/노란색",
+        "zh-CN": "干燥花／黄"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/緑",
-      "itemId": 470014
+      "name": "干燥花／绿",
+      "itemId": 470014,
+      "nameTranslations": {
+        "ja": "ドライフラワー/緑",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／綠",
+        "ko": "드라이플라워/초록색",
+        "zh-CN": "干燥花／绿"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/青",
-      "itemId": 470015
+      "name": "干燥花／蓝",
+      "itemId": 470015,
+      "nameTranslations": {
+        "ja": "ドライフラワー/青",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／藍",
+        "ko": "드라이플라워/파란색",
+        "zh-CN": "干燥花／蓝"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/紫",
-      "itemId": 470016
+      "name": "干燥花／紫",
+      "itemId": 470016,
+      "nameTranslations": {
+        "ja": "ドライフラワー/紫",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／紫",
+        "ko": "드라이플라워/보라색",
+        "zh-CN": "干燥花／紫"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/桃",
-      "itemId": 470017
+      "name": "干燥花／粉红",
+      "itemId": 470017,
+      "nameTranslations": {
+        "ja": "ドライフラワー/桃",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／粉紅",
+        "ko": "드라이플라워/분홍색",
+        "zh-CN": "干燥花／粉红"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/白",
-      "itemId": 470018
+      "name": "干燥花／白",
+      "itemId": 470018,
+      "nameTranslations": {
+        "ja": "ドライフラワー/白",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／白",
+        "ko": "드라이플라워/흰색",
+        "zh-CN": "干燥花／白"
+      }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "ドライフラワー/黒",
-      "itemId": 470019
+      "name": "干燥花／黑",
+      "itemId": 470019,
+      "nameTranslations": {
+        "ja": "ドライフラワー/黒",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "乾燥花／黑",
+        "ko": "드라이플라워/검정색",
+        "zh-CN": "干燥花／黑"
+      }
     },
     {
       "flag": 80105,
       "category": "手作配方",
-      "name": "小さい絵画/茶",
-      "itemId": 470020
+      "name": "小型图画／咖啡",
+      "itemId": 470020,
+      "nameTranslations": {
+        "ja": "小さい絵画/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "小型圖畫／咖啡",
+        "ko": "작은 그림/갈색",
+        "zh-CN": "小型图画／咖啡"
+      }
     },
     {
       "flag": 80231,
       "category": "手作配方",
-      "name": "布タペストリー/茶",
-      "itemId": 470030
+      "name": "布制壁毯／咖啡",
+      "itemId": 470030,
+      "nameTranslations": {
+        "ja": "布タペストリー/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "布製壁毯／咖啡",
+        "ko": "천 태피스트리/갈색",
+        "zh-CN": "布制壁毯／咖啡"
+      }
     },
     {
       "flag": 80232,
       "category": "手作配方",
-      "name": "リース/茶",
-      "itemId": 470040
+      "name": "花圈／咖啡",
+      "itemId": 470040,
+      "nameTranslations": {
+        "ja": "リース/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "花圈／咖啡",
+        "ko": "화환/갈색",
+        "zh-CN": "花圈／咖啡"
+      }
     },
     {
       "flag": 80233,
       "category": "手作配方",
-      "name": "横長の絵画/茶",
-      "itemId": 472020
+      "name": "横幅图画／咖啡",
+      "itemId": 472020,
+      "nameTranslations": {
+        "ja": "横長の絵画/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "橫幅圖畫／咖啡",
+        "ko": "가로로 긴 그림/갈색",
+        "zh-CN": "横幅图画／咖啡"
+      }
     },
     {
       "flag": 80234,
       "category": "手作配方",
-      "name": "ガーランド/茶",
-      "itemId": 472030
+      "name": "墙壁挂饰／咖啡",
+      "itemId": 472030,
+      "nameTranslations": {
+        "ja": "ガーランド/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牆壁掛飾／咖啡",
+        "ko": "갈런드/갈색",
+        "zh-CN": "墙壁挂饰／咖啡"
+      }
     },
     {
       "flag": 80245,
       "category": "手作配方",
-      "name": "壁掛け狐面",
-      "itemId": 631020
+      "name": "壁挂狐狸面具",
+      "itemId": 631020,
+      "nameTranslations": {
+        "ja": "壁掛け狐面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "壁掛狐狸面具",
+        "ko": "벽걸이 여우 가면",
+        "zh-CN": "壁挂狐狸面具"
+      }
     },
     {
       "flag": 80246,
       "category": "手作配方",
-      "name": "壁掛け天狗面",
-      "itemId": 631030
+      "name": "壁挂天狗面具",
+      "itemId": 631030,
+      "nameTranslations": {
+        "ja": "壁掛け天狗面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "壁掛天狗面具",
+        "ko": "벽걸이 텐구 가면",
+        "zh-CN": "壁挂天狗面具"
+      }
     },
     {
       "flag": 80247,
       "category": "手作配方",
-      "name": "壁掛け般若面",
-      "itemId": 631040
+      "name": "壁挂般若面具",
+      "itemId": 631040,
+      "nameTranslations": {
+        "ja": "壁掛け般若面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "壁掛般若面具",
+        "ko": "벽걸이 반야 가면",
+        "zh-CN": "壁挂般若面具"
+      }
     },
     {
       "flag": 80248,
       "category": "手作配方",
-      "name": "壁掛けおかめ面",
-      "itemId": 631050
+      "name": "壁挂阿龟面具",
+      "itemId": 631050,
+      "nameTranslations": {
+        "ja": "壁掛けおかめ面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "壁掛阿龜面具",
+        "ko": "벽걸이 오카메 가면",
+        "zh-CN": "壁挂阿龟面具"
+      }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "クールな絨毯/茶",
-      "itemId": 480000
+      "name": "酷帅地毯／咖啡",
+      "itemId": 480000,
+      "nameTranslations": {
+        "ja": "クールな絨毯/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "酷帥地毯／咖啡",
+        "ko": "쿨한 융단/갈색",
+        "zh-CN": "酷帅地毯／咖啡"
+      }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "モダンな絨毯/茶",
-      "itemId": 480010
+      "name": "时髦地毯／咖啡",
+      "itemId": 480010,
+      "nameTranslations": {
+        "ja": "モダンな絨毯/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "時髦地毯／咖啡",
+        "ko": "모던한 융단/갈색",
+        "zh-CN": "时髦地毯／咖啡"
+      }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "あみあみ絨毯/茶",
-      "itemId": 480020
+      "name": "编织地毯／咖啡",
+      "itemId": 480020,
+      "nameTranslations": {
+        "ja": "あみあみ絨毯/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "編織地毯／咖啡",
+        "ko": "엮어 만든 융단/갈색",
+        "zh-CN": "编织地毯／咖啡"
+      }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "大人な絨毯/茶",
-      "itemId": 480040
+      "name": "成熟风地毯／咖啡",
+      "itemId": 480040,
+      "nameTranslations": {
+        "ja": "大人な絨毯/茶",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "成熟風地毯／咖啡",
+        "ko": "성숙한 느낌의 융단/갈색",
+        "zh-CN": "成熟风地毯／咖啡"
+      }
     },
     {
       "flag": 80017,
       "category": "手作配方",
-      "name": "狐面",
-      "itemId": 520300
+      "name": "狐狸面具",
+      "itemId": 520300,
+      "nameTranslations": {
+        "ja": "狐面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "狐狸面具",
+        "ko": "여우 가면",
+        "zh-CN": "狐狸面具"
+      }
     },
     {
       "flag": 80242,
       "category": "手作配方",
-      "name": "天狗面",
-      "itemId": 520370
+      "name": "天狗面具",
+      "itemId": 520370,
+      "nameTranslations": {
+        "ja": "天狗面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "天狗面具",
+        "ko": "텐구 가면",
+        "zh-CN": "天狗面具"
+      }
     },
     {
       "flag": 80243,
       "category": "手作配方",
-      "name": "般若面",
-      "itemId": 520310
+      "name": "般若面具",
+      "itemId": 520310,
+      "nameTranslations": {
+        "ja": "般若面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "般若面具",
+        "ko": "반야 가면",
+        "zh-CN": "般若面具"
+      }
     },
     {
       "flag": 80244,
       "category": "手作配方",
-      "name": "おかめ面",
-      "itemId": 520320
+      "name": "阿龟面具",
+      "itemId": 520320,
+      "nameTranslations": {
+        "ja": "おかめ面",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "阿龜面具",
+        "ko": "오카메 가면",
+        "zh-CN": "阿龟面具"
+      }
     },
     {
       "flag": 80110,
       "category": "手作配方",
-      "name": "手持ち提灯",
-      "itemId": 660071
+      "name": "手提灯笼",
+      "itemId": 660071,
+      "nameTranslations": {
+        "ja": "手持ち提灯",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "手提燈籠",
+        "ko": "휴대용 등롱",
+        "zh-CN": "手提灯笼"
+      }
     },
     {
       "flag": 80058,
       "category": "手作配方",
-      "name": "清めの塩",
-      "itemId": 641100
+      "name": "净化盐",
+      "itemId": 641100,
+      "nameTranslations": {
+        "ja": "清めの塩",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "淨化鹽",
+        "ko": "정화의 소금",
+        "zh-CN": "净化盐"
+      }
     },
     {
       "flag": 80060,
       "category": "手作配方",
-      "name": "藁人形",
-      "itemId": 641110
+      "name": "稻草人偶",
+      "itemId": 641110,
+      "nameTranslations": {
+        "ja": "藁人形",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "稻草人偶",
+        "ko": "짚 인형",
+        "zh-CN": "稻草人偶"
+      }
     },
     {
       "flag": 85000,
       "category": "料理配方",
-      "name": "素朴な朝食",
-      "itemId": 60000
+      "name": "简单的早餐",
+      "itemId": 60000,
+      "nameTranslations": {
+        "ja": "素朴な朝食",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "簡單的早餐",
+        "ko": "소박한 아침 식사",
+        "zh-CN": "简单的早餐"
+      }
     },
     {
       "flag": 85001,
       "category": "料理配方",
-      "name": "だし巻き卵",
-      "itemId": 60010
+      "name": "高汤蛋卷",
+      "itemId": 60010,
+      "nameTranslations": {
+        "ja": "だし巻き卵",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "高湯蛋捲",
+        "ko": "계란말이",
+        "zh-CN": "高汤蛋卷"
+      }
     },
     {
       "flag": 85002,
       "category": "料理配方",
-      "name": "ゆでたまご",
-      "itemId": 60020
+      "name": "水煮蛋",
+      "itemId": 60020,
+      "nameTranslations": {
+        "ja": "ゆでたまご",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "水煮蛋",
+        "ko": "삶은 달걀",
+        "zh-CN": "水煮蛋"
+      }
     },
     {
       "flag": 85003,
       "category": "料理配方",
-      "name": "スクランブルエッグ",
-      "itemId": 60030
+      "name": "炒蛋",
+      "itemId": 60030,
+      "nameTranslations": {
+        "ja": "スクランブルエッグ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炒蛋",
+        "ko": "스크램블드에그",
+        "zh-CN": "炒蛋"
+      }
     },
     {
       "flag": 85004,
       "category": "料理配方",
-      "name": "ソーセージグリル",
-      "itemId": 60040
+      "name": "烤香肠",
+      "itemId": 60040,
+      "nameTranslations": {
+        "ja": "ソーセージグリル",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤香腸",
+        "ko": "그릴소시지",
+        "zh-CN": "烤香肠"
+      }
     },
     {
       "flag": 85005,
       "category": "料理配方",
-      "name": "バタージャムトースト",
-      "itemId": 60050
+      "name": "果酱吐司",
+      "itemId": 60050,
+      "nameTranslations": {
+        "ja": "バタージャムトースト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "果醬吐司",
+        "ko": "버터 잼 토스트",
+        "zh-CN": "果酱吐司"
+      }
     },
     {
       "flag": 85006,
       "category": "料理配方",
-      "name": "クロワッサン",
-      "itemId": 60060
+      "name": "可颂",
+      "itemId": 60060,
+      "nameTranslations": {
+        "ja": "クロワッサン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "可頌",
+        "ko": "크루아상",
+        "zh-CN": "可颂"
+      }
     },
     {
       "flag": 85007,
       "category": "料理配方",
-      "name": "マルゲリータピザ",
-      "itemId": 60070
+      "name": "玛格丽特披萨",
+      "itemId": 60070,
+      "nameTranslations": {
+        "ja": "マルゲリータピザ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "瑪格麗特披薩",
+        "ko": "마르게리타 피자",
+        "zh-CN": "玛格丽特披萨"
+      }
     },
     {
       "flag": 85008,
       "category": "料理配方",
-      "name": "梅茶漬け",
-      "itemId": 60080
+      "name": "梅子茶泡饭",
+      "itemId": 60080,
+      "nameTranslations": {
+        "ja": "梅茶漬け",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "梅子茶泡飯",
+        "ko": "매실 차즈케",
+        "zh-CN": "梅子茶泡饭"
+      }
     },
     {
       "flag": 85009,
       "category": "料理配方",
-      "name": "おにぎりと漬物定食",
-      "itemId": 60090
+      "name": "饭团与腌渍物定食",
+      "itemId": 60090,
+      "nameTranslations": {
+        "ja": "おにぎりと漬物定食",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "飯糰與醃漬物定食",
+        "ko": "주먹밥과 채소 절임 정식",
+        "zh-CN": "饭团与腌渍物定食"
+      }
     },
     {
       "flag": 85010,
       "category": "料理配方",
-      "name": "焼き魚",
-      "itemId": 60100
+      "name": "烤鱼",
+      "itemId": 60100,
+      "nameTranslations": {
+        "ja": "焼き魚",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤魚",
+        "ko": "생선구이",
+        "zh-CN": "烤鱼"
+      }
     },
     {
       "flag": 85011,
       "category": "料理配方",
-      "name": "アスパラベーコン巻き",
-      "itemId": 60110
+      "name": "培根芦笋卷",
+      "itemId": 60110,
+      "nameTranslations": {
+        "ja": "アスパラベーコン巻き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "培根蘆筍捲",
+        "ko": "아스파라거스 베이컨 말이",
+        "zh-CN": "培根芦笋卷"
+      }
     },
     {
       "flag": 85012,
       "category": "料理配方",
-      "name": "オニオンスープ",
-      "itemId": 60120
+      "name": "洋葱汤",
+      "itemId": 60120,
+      "nameTranslations": {
+        "ja": "オニオンスープ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "洋蔥湯",
+        "ko": "양파 수프",
+        "zh-CN": "洋葱汤"
+      }
     },
     {
       "flag": 85013,
       "category": "料理配方",
-      "name": "タマネギのポトフ",
-      "itemId": 60130
+      "name": "洋葱火上锅",
+      "itemId": 60130,
+      "nameTranslations": {
+        "ja": "タマネギのポトフ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "洋蔥火上鍋",
+        "ko": "양파 포토푀",
+        "zh-CN": "洋葱火上锅"
+      }
     },
     {
       "flag": 85014,
       "category": "料理配方",
-      "name": "エンドウ豆のお浸し",
-      "itemId": 60140
+      "name": "凉拌豌豆",
+      "itemId": 60140,
+      "nameTranslations": {
+        "ja": "エンドウ豆のお浸し",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "涼拌豌豆",
+        "ko": "완두콩 무침",
+        "zh-CN": "凉拌豌豆"
+      }
     },
     {
       "flag": 85015,
       "category": "料理配方",
-      "name": "カブの肉あんかけ",
-      "itemId": 60150
+      "name": "肉燥大头菜",
+      "itemId": 60150,
+      "nameTranslations": {
+        "ja": "カブの肉あんかけ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "肉燥大頭菜",
+        "ko": "순무 고기 소스 요리",
+        "zh-CN": "肉燥大头菜"
+      }
     },
     {
       "flag": 85016,
       "category": "料理配方",
-      "name": "ポテトグラタン",
-      "itemId": 60160
+      "name": "焗烤土豆",
+      "itemId": 60160,
+      "nameTranslations": {
+        "ja": "ポテトグラタン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "焗烤馬鈴薯",
+        "ko": "감자 그라탱",
+        "zh-CN": "焗烤土豆"
+      }
     },
     {
       "flag": 85017,
       "category": "料理配方",
-      "name": "フライドポテト",
-      "itemId": 60170
+      "name": "薯条",
+      "itemId": 60170,
+      "nameTranslations": {
+        "ja": "フライドポテト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "薯條",
+        "ko": "감자튀김",
+        "zh-CN": "薯条"
+      }
     },
     {
       "flag": 85018,
       "category": "料理配方",
-      "name": "大人なカレー",
-      "itemId": 60180
+      "name": "大人咖喱",
+      "itemId": 60180,
+      "nameTranslations": {
+        "ja": "大人なカレー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "大人咖哩",
+        "ko": "어른 카레",
+        "zh-CN": "大人咖喱"
+      }
     },
     {
       "flag": 85019,
       "category": "料理配方",
-      "name": "おこさまカレー",
-      "itemId": 60190
+      "name": "儿童咖喱",
+      "itemId": 60190,
+      "nameTranslations": {
+        "ja": "おこさまカレー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "兒童咖哩",
+        "ko": "어린이 카레",
+        "zh-CN": "儿童咖喱"
+      }
     },
     {
       "flag": 85020,
       "category": "料理配方",
-      "name": "ラディッシュサラダ",
-      "itemId": 60200
+      "name": "樱桃萝卜沙拉",
+      "itemId": 60200,
+      "nameTranslations": {
+        "ja": "ラディッシュサラダ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "櫻桃蘿蔔沙拉",
+        "ko": "래디시 샐러드",
+        "zh-CN": "樱桃萝卜沙拉"
+      }
     },
     {
       "flag": 85021,
       "category": "料理配方",
-      "name": "ロールキャベツ",
-      "itemId": 60210
+      "name": "卷心菜卷",
+      "itemId": 60210,
+      "nameTranslations": {
+        "ja": "ロールキャベツ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "高麗菜捲",
+        "ko": "양배추 말이",
+        "zh-CN": "卷心菜卷"
+      }
     },
     {
       "flag": 85022,
       "category": "料理配方",
-      "name": "とんかつ",
-      "itemId": 60220
+      "name": "炸猪排",
+      "itemId": 60220,
+      "nameTranslations": {
+        "ja": "とんかつ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炸豬排",
+        "ko": "돈가스",
+        "zh-CN": "炸猪排"
+      }
     },
     {
       "flag": 85023,
       "category": "料理配方",
-      "name": "野菜炒め",
-      "itemId": 60230
+      "name": "炒青菜",
+      "itemId": 60230,
+      "nameTranslations": {
+        "ja": "野菜炒め",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炒青菜",
+        "ko": "채소 볶음",
+        "zh-CN": "炒青菜"
+      }
     },
     {
       "flag": 85024,
       "category": "料理配方",
-      "name": "シーザーサラダ",
-      "itemId": 60240
+      "name": "凯撒沙拉",
+      "itemId": 60240,
+      "nameTranslations": {
+        "ja": "シーザーサラダ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "凱撒沙拉",
+        "ko": "시저 샐러드",
+        "zh-CN": "凯撒沙拉"
+      }
     },
     {
       "flag": 85025,
       "category": "料理配方",
-      "name": "ミネストローネ",
-      "itemId": 60250
+      "name": "意式蔬菜汤",
+      "itemId": 60250,
+      "nameTranslations": {
+        "ja": "ミネストローネ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "義式蔬菜湯",
+        "ko": "미네스트로네",
+        "zh-CN": "意式蔬菜汤"
+      }
     },
     {
       "flag": 85026,
       "category": "料理配方",
-      "name": "豆腐ハンバーグ",
-      "itemId": 60260
+      "name": "豆腐汉堡排",
+      "itemId": 60260,
+      "nameTranslations": {
+        "ja": "豆腐ハンバーグ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "豆腐漢堡排",
+        "ko": "두부 햄버그",
+        "zh-CN": "豆腐汉堡排"
+      }
     },
     {
       "flag": 85027,
       "category": "料理配方",
-      "name": "カプレーゼ",
-      "itemId": 60270
+      "name": "西红柿干酪沙拉",
+      "itemId": 60270,
+      "nameTranslations": {
+        "ja": "カプレーゼ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "番茄起司沙拉",
+        "ko": "카프레제",
+        "zh-CN": "西红柿干酪沙拉"
+      }
     },
     {
       "flag": 85028,
       "category": "料理配方",
-      "name": "山盛りトマト",
-      "itemId": 60280
+      "name": "西红柿山",
+      "itemId": 60280,
+      "nameTranslations": {
+        "ja": "山盛りトマト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "番茄山",
+        "ko": "산더미 토마토",
+        "zh-CN": "西红柿山"
+      }
     },
     {
       "flag": 85029,
       "category": "料理配方",
-      "name": "ナスづくし",
-      "itemId": 60290
+      "name": "茄子全餐",
+      "itemId": 60290,
+      "nameTranslations": {
+        "ja": "ナスづくし",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "茄子全餐",
+        "ko": "가지 파티",
+        "zh-CN": "茄子全餐"
+      }
     },
     {
       "flag": 85030,
       "category": "料理配方",
-      "name": "ピーマンの肉詰め",
-      "itemId": 60300
+      "name": "青椒镶肉",
+      "itemId": 60300,
+      "nameTranslations": {
+        "ja": "ピーマンの肉詰め",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "青椒鑲肉",
+        "ko": "다진 고기를 넣은 피망 구이",
+        "zh-CN": "青椒镶肉"
+      }
     },
     {
       "flag": 85031,
       "category": "料理配方",
-      "name": "カボチャのスープ",
-      "itemId": 60310
+      "name": "南瓜汤",
+      "itemId": 60310,
+      "nameTranslations": {
+        "ja": "カボチャのスープ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "南瓜湯",
+        "ko": "호박 수프",
+        "zh-CN": "南瓜汤"
+      }
     },
     {
       "flag": 85032,
       "category": "料理配方",
-      "name": "カボチャの煮物",
-      "itemId": 60320
+      "name": "炖南瓜",
+      "itemId": 60320,
+      "nameTranslations": {
+        "ja": "カボチャの煮物",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "燉南瓜",
+        "ko": "호박 조림",
+        "zh-CN": "炖南瓜"
+      }
     },
     {
       "flag": 85033,
       "category": "料理配方",
-      "name": "山菜の天ぷら",
-      "itemId": 60330
+      "name": "山菜天妇罗",
+      "itemId": 60330,
+      "nameTranslations": {
+        "ja": "山菜の天ぷら",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "山菜天婦羅",
+        "ko": "산채 튀김",
+        "zh-CN": "山菜天妇罗"
+      }
     },
     {
       "flag": 85034,
       "category": "料理配方",
-      "name": "まるごとキュウリ",
-      "itemId": 60340
+      "name": "一根黄瓜",
+      "itemId": 60340,
+      "nameTranslations": {
+        "ja": "まるごとキュウリ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "一根小黃瓜",
+        "ko": "통 오이 요리",
+        "zh-CN": "一根黄瓜"
+      }
     },
     {
       "flag": 85035,
       "category": "料理配方",
-      "name": "コーンスープ",
-      "itemId": 60350
+      "name": "玉米浓汤",
+      "itemId": 60350,
+      "nameTranslations": {
+        "ja": "コーンスープ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "玉米濃湯",
+        "ko": "옥수수수프",
+        "zh-CN": "玉米浓汤"
+      }
     },
     {
       "flag": 85036,
       "category": "料理配方",
-      "name": "焼きとうもろこし",
-      "itemId": 60360
+      "name": "烤玉米",
+      "itemId": 60360,
+      "nameTranslations": {
+        "ja": "焼きとうもろこし",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤玉米",
+        "ko": "군옥수수",
+        "zh-CN": "烤玉米"
+      }
     },
     {
       "flag": 85037,
       "category": "料理配方",
-      "name": "肉と野菜の串焼き",
-      "itemId": 60370
+      "name": "综合串烧",
+      "itemId": 60370,
+      "nameTranslations": {
+        "ja": "肉と野菜の串焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "綜合串燒",
+        "ko": "고기 채소 꼬치구이",
+        "zh-CN": "综合串烧"
+      }
     },
     {
       "flag": 85038,
       "category": "料理配方",
-      "name": "春巻き",
-      "itemId": 60380
+      "name": "春卷",
+      "itemId": 60380,
+      "nameTranslations": {
+        "ja": "春巻き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "春捲",
+        "ko": "춘권",
+        "zh-CN": "春卷"
+      }
     },
     {
       "flag": 85039,
       "category": "料理配方",
-      "name": "生姜焼き",
-      "itemId": 60390
+      "name": "姜汁烧肉",
+      "itemId": 60390,
+      "nameTranslations": {
+        "ja": "生姜焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "薑汁燒肉",
+        "ko": "생강 소스 고기구이",
+        "zh-CN": "姜汁烧肉"
+      }
     },
     {
       "flag": 85040,
       "category": "料理配方",
-      "name": "ニンニクホイル焼き",
-      "itemId": 60400
+      "name": "铝箔纸烤大蒜",
+      "itemId": 60400,
+      "nameTranslations": {
+        "ja": "ニンニクホイル焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鋁箔紙烤大蒜",
+        "ko": "마늘 포일 구이",
+        "zh-CN": "铝箔纸烤大蒜"
+      }
     },
     {
       "flag": 85041,
       "category": "料理配方",
-      "name": "ステーキ",
-      "itemId": 60410
+      "name": "牛排",
+      "itemId": 60410,
+      "nameTranslations": {
+        "ja": "ステーキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛排",
+        "ko": "스테이크",
+        "zh-CN": "牛排"
+      }
     },
     {
       "flag": 85042,
       "category": "料理配方",
-      "name": "七面鳥の丸焼き",
-      "itemId": 60420
+      "name": "烤火鸡",
+      "itemId": 60420,
+      "nameTranslations": {
+        "ja": "七面鳥の丸焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤火雞",
+        "ko": "칠면조 통구이",
+        "zh-CN": "烤火鸡"
+      }
     },
     {
       "flag": 85043,
       "category": "料理配方",
-      "name": "ラムチョップ",
-      "itemId": 60430
+      "name": "烤羊小排",
+      "itemId": 60430,
+      "nameTranslations": {
+        "ja": "ラムチョップ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤羊小排",
+        "ko": "양갈비",
+        "zh-CN": "烤羊小排"
+      }
     },
     {
       "flag": 85044,
       "category": "料理配方",
-      "name": "デミグラスドリア",
-      "itemId": 60440
+      "name": "多蜜酱焗饭",
+      "itemId": 60440,
+      "nameTranslations": {
+        "ja": "デミグラスドリア",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "多蜜醬焗飯",
+        "ko": "데미글라스 도리아",
+        "zh-CN": "多蜜酱焗饭"
+      }
     },
     {
       "flag": 85045,
       "category": "料理配方",
-      "name": "レンコンのピリ辛炒め",
-      "itemId": 60450
+      "name": "辣炒莲藕",
+      "itemId": 60450,
+      "nameTranslations": {
+        "ja": "レンコンのピリ辛炒め",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "辣炒蓮藕",
+        "ko": "연근 매콤 볶음",
+        "zh-CN": "辣炒莲藕"
+      }
     },
     {
       "flag": 85046,
       "category": "料理配方",
-      "name": "おつまみ枝豆",
-      "itemId": 60460
+      "name": "凉拌毛豆",
+      "itemId": 60460,
+      "nameTranslations": {
+        "ja": "おつまみ枝豆",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "涼拌毛豆",
+        "ko": "술안주용 풋콩",
+        "zh-CN": "凉拌毛豆"
+      }
     },
     {
       "flag": 85047,
       "category": "料理配方",
-      "name": "ざるそば",
-      "itemId": 60470
+      "name": "竹笼荞麦面",
+      "itemId": 60470,
+      "nameTranslations": {
+        "ja": "ざるそば",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "竹籠蕎麥麵",
+        "ko": "자루 소바",
+        "zh-CN": "竹笼荞麦面"
+      }
     },
     {
       "flag": 85048,
       "category": "料理配方",
-      "name": "たぬきそば",
-      "itemId": 60480
+      "name": "天妇罗花荞麦面",
+      "itemId": 60480,
+      "nameTranslations": {
+        "ja": "たぬきそば",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "天婦羅花蕎麥麵",
+        "ko": "타누키 소바",
+        "zh-CN": "天妇罗花荞麦面"
+      }
     },
     {
       "flag": 85049,
       "category": "料理配方",
-      "name": "ざるうどん",
-      "itemId": 60490
+      "name": "竹笼乌冬面",
+      "itemId": 60490,
+      "nameTranslations": {
+        "ja": "ざるうどん",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "竹籠烏龍麵",
+        "ko": "자루 우동",
+        "zh-CN": "竹笼乌冬面"
+      }
     },
     {
       "flag": 85050,
       "category": "料理配方",
-      "name": "きつねうどん",
-      "itemId": 60500
+      "name": "豆皮乌冬面",
+      "itemId": 60500,
+      "nameTranslations": {
+        "ja": "きつねうどん",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "豆皮烏龍麵",
+        "ko": "키츠네 우동",
+        "zh-CN": "豆皮乌冬面"
+      }
     },
     {
       "flag": 85051,
       "category": "料理配方",
-      "name": "実家の味定食",
-      "itemId": 60510
+      "name": "家乡味定食",
+      "itemId": 60510,
+      "nameTranslations": {
+        "ja": "実家の味定食",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "家鄉味定食",
+        "ko": "고향의 맛 정식",
+        "zh-CN": "家乡味定食"
+      }
     },
     {
       "flag": 85052,
       "category": "料理配方",
-      "name": "山の幸茶碗蒸し",
-      "itemId": 60520
+      "name": "山珍茶碗蒸",
+      "itemId": 60520,
+      "nameTranslations": {
+        "ja": "山の幸茶碗蒸し",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "山珍茶碗蒸",
+        "ko": "산의 진미 계란찜",
+        "zh-CN": "山珍茶碗蒸"
+      }
     },
     {
       "flag": 85053,
       "category": "料理配方",
-      "name": "焼き松茸",
-      "itemId": 60530
+      "name": "烤松茸",
+      "itemId": 60530,
+      "nameTranslations": {
+        "ja": "焼き松茸",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤松茸",
+        "ko": "송이버섯 구이",
+        "zh-CN": "烤松茸"
+      }
     },
     {
       "flag": 85054,
       "category": "料理配方",
-      "name": "ぽかぽか鍋",
-      "itemId": 60540
+      "name": "暖呼呼火锅",
+      "itemId": 60540,
+      "nameTranslations": {
+        "ja": "ぽかぽか鍋",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "暖呼呼火鍋",
+        "ko": "따끈따끈한 전골",
+        "zh-CN": "暖呼呼火锅"
+      }
     },
     {
       "flag": 85055,
       "category": "料理配方",
-      "name": "キクラゲと卵炒め",
-      "itemId": 60550
+      "name": "木耳炒蛋",
+      "itemId": 60550,
+      "nameTranslations": {
+        "ja": "キクラゲと卵炒め",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "木耳炒蛋",
+        "ko": "목이버섯과 계란 볶음",
+        "zh-CN": "木耳炒蛋"
+      }
     },
     {
       "flag": 85056,
       "category": "料理配方",
-      "name": "ピンチョス",
-      "itemId": 60560
+      "name": "西班牙木签小吃",
+      "itemId": 60560,
+      "nameTranslations": {
+        "ja": "ピンチョス",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "西班牙木籤小吃",
+        "ko": "핀초",
+        "zh-CN": "西班牙木签小吃"
+      }
     },
     {
       "flag": 85057,
       "category": "料理配方",
-      "name": "焼き鳥串",
-      "itemId": 60570
+      "name": "烤鸡肉串",
+      "itemId": 60570,
+      "nameTranslations": {
+        "ja": "焼き鳥串",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤雞肉串",
+        "ko": "꼬치구이",
+        "zh-CN": "烤鸡肉串"
+      }
     },
     {
       "flag": 85058,
       "category": "料理配方",
-      "name": "餃子",
-      "itemId": 60580
+      "name": "煎饺",
+      "itemId": 60580,
+      "nameTranslations": {
+        "ja": "餃子",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "煎餃",
+        "ko": "교자",
+        "zh-CN": "煎饺"
+      }
     },
     {
       "flag": 85059,
       "category": "料理配方",
-      "name": "オムライス",
-      "itemId": 60590
+      "name": "蛋包饭",
+      "itemId": 60590,
+      "nameTranslations": {
+        "ja": "オムライス",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蛋包飯",
+        "ko": "오므라이스",
+        "zh-CN": "蛋包饭"
+      }
     },
     {
       "flag": 85060,
       "category": "料理配方",
-      "name": "ビーフシチュー",
-      "itemId": 60600
+      "name": "炖牛肉",
+      "itemId": 60600,
+      "nameTranslations": {
+        "ja": "ビーフシチュー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "燉牛肉",
+        "ko": "비프스튜",
+        "zh-CN": "炖牛肉"
+      }
     },
     {
       "flag": 85061,
       "category": "料理配方",
-      "name": "ホワイトシチュー",
-      "itemId": 60610
+      "name": "黄油炖菜",
+      "itemId": 60610,
+      "nameTranslations": {
+        "ja": "ホワイトシチュー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "奶油燉菜",
+        "ko": "크림스튜",
+        "zh-CN": "黄油炖菜"
+      }
     },
     {
       "flag": 85062,
       "category": "料理配方",
-      "name": "すき焼き",
-      "itemId": 60620
+      "name": "寿喜烧",
+      "itemId": 60620,
+      "nameTranslations": {
+        "ja": "すき焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "壽喜燒",
+        "ko": "스키야키",
+        "zh-CN": "寿喜烧"
+      }
     },
     {
       "flag": 85063,
       "category": "料理配方",
-      "name": "バーニャカウダ",
-      "itemId": 60630
+      "name": "热沾酱沙拉",
+      "itemId": 60630,
+      "nameTranslations": {
+        "ja": "バーニャカウダ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "熱沾醬沙拉",
+        "ko": "바냐 카우다",
+        "zh-CN": "热沾酱沙拉"
+      }
     },
     {
       "flag": 85064,
       "category": "料理配方",
-      "name": "鮎の塩焼き",
-      "itemId": 60640
+      "name": "盐烤香鱼",
+      "itemId": 60640,
+      "nameTranslations": {
+        "ja": "鮎の塩焼き",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鹽烤香魚",
+        "ko": "은어 소금구이",
+        "zh-CN": "盐烤香鱼"
+      }
     },
     {
       "flag": 85065,
       "category": "料理配方",
-      "name": "オリジナルラーメン",
-      "itemId": 60650
+      "name": "自创拉面",
+      "itemId": 60650,
+      "nameTranslations": {
+        "ja": "オリジナルラーメン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "自創拉麵",
+        "ko": "오리지널 라면",
+        "zh-CN": "自创拉面"
+      }
     },
     {
       "flag": 85066,
       "category": "料理配方",
-      "name": "ミートパイ",
-      "itemId": 60660
+      "name": "肉饼",
+      "itemId": 60660,
+      "nameTranslations": {
+        "ja": "ミートパイ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "肉餅",
+        "ko": "미트 파이",
+        "zh-CN": "肉饼"
+      }
     },
     {
       "flag": 85067,
       "category": "料理配方",
-      "name": "スパゲッティ",
-      "itemId": 60670
+      "name": "意大利面",
+      "itemId": 60670,
+      "nameTranslations": {
+        "ja": "スパゲッティ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "義大利麵",
+        "ko": "스파게티",
+        "zh-CN": "意大利面"
+      }
     },
     {
       "flag": 85068,
       "category": "料理配方",
-      "name": "肉まん",
-      "itemId": 60680
+      "name": "肉包",
+      "itemId": 60680,
+      "nameTranslations": {
+        "ja": "肉まん",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "肉包",
+        "ko": "고기 찐빵",
+        "zh-CN": "肉包"
+      }
     },
     {
       "flag": 85069,
       "category": "料理配方",
-      "name": "チャーハン",
-      "itemId": 60690
+      "name": "炒饭",
+      "itemId": 60690,
+      "nameTranslations": {
+        "ja": "チャーハン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炒飯",
+        "ko": "볶음밥",
+        "zh-CN": "炒饭"
+      }
     },
     {
       "flag": 85070,
       "category": "料理配方",
-      "name": "お雑煮",
-      "itemId": 60700
+      "name": "年糕汤",
+      "itemId": 60700,
+      "nameTranslations": {
+        "ja": "お雑煮",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "年糕湯",
+        "ko": "오조니",
+        "zh-CN": "年糕汤"
+      }
     },
     {
       "flag": 85071,
       "category": "料理配方",
       "name": "七草粥",
-      "itemId": 60710
+      "itemId": 60710,
+      "nameTranslations": {
+        "ja": "七草粥",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "七草粥",
+        "ko": "봄나물죽",
+        "zh-CN": "七草粥"
+      }
     },
     {
       "flag": 85072,
       "category": "料理配方",
-      "name": "うな重",
-      "itemId": 60720
+      "name": "鳗鱼饭",
+      "itemId": 60720,
+      "nameTranslations": {
+        "ja": "うな重",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鰻魚飯",
+        "ko": "장어 찬합",
+        "zh-CN": "鳗鱼饭"
+      }
     },
     {
       "flag": 85073,
       "category": "料理配方",
-      "name": "アスパラサラダ",
-      "itemId": 60730
+      "name": "芦笋沙拉",
+      "itemId": 60730,
+      "nameTranslations": {
+        "ja": "アスパラサラダ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蘆筍沙拉",
+        "ko": "아스파라거스 샐러드",
+        "zh-CN": "芦笋沙拉"
+      }
     },
     {
       "flag": 85074,
       "category": "料理配方",
-      "name": "柏餅",
-      "itemId": 62000
+      "name": "柏饼",
+      "itemId": 62000,
+      "nameTranslations": {
+        "ja": "柏餅",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "柏餅",
+        "ko": "카시와모찌",
+        "zh-CN": "柏饼"
+      }
     },
     {
       "flag": 85075,
       "category": "料理配方",
-      "name": "山果実盛り",
-      "itemId": 62010
+      "name": "山中果实拼盘",
+      "itemId": 62010,
+      "nameTranslations": {
+        "ja": "山果実盛り",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "山中果實拼盤",
+        "ko": "모듬 산과일 세트",
+        "zh-CN": "山中果实拼盘"
+      }
     },
     {
       "flag": 85076,
       "category": "料理配方",
-      "name": "プリン",
-      "itemId": 62020
+      "name": "布丁",
+      "itemId": 62020,
+      "nameTranslations": {
+        "ja": "プリン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "布丁",
+        "ko": "푸딩",
+        "zh-CN": "布丁"
+      }
     },
     {
       "flag": 85077,
       "category": "料理配方",
-      "name": "夏のお供スイカ",
-      "itemId": 62030
+      "name": "夏日圣品西瓜",
+      "itemId": 62030,
+      "nameTranslations": {
+        "ja": "夏のお供スイカ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "夏日聖品西瓜",
+        "ko": "여름의 친구 수박",
+        "zh-CN": "夏日圣品西瓜"
+      }
     },
     {
       "flag": 85078,
       "category": "料理配方",
-      "name": "夢いっぱいメロン",
-      "itemId": 62040
+      "name": "梦幻甜瓜",
+      "itemId": 62040,
+      "nameTranslations": {
+        "ja": "夢いっぱいメロン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "夢幻甜瓜",
+        "ko": "꿈 가득 멜론",
+        "zh-CN": "梦幻甜瓜"
+      }
     },
     {
       "flag": 85079,
       "category": "料理配方",
-      "name": "モモゼリー",
-      "itemId": 62050
+      "name": "桃子果冻",
+      "itemId": 62050,
+      "nameTranslations": {
+        "ja": "モモゼリー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "桃子果凍",
+        "ko": "복숭아 젤리",
+        "zh-CN": "桃子果冻"
+      }
     },
     {
       "flag": 85080,
       "category": "料理配方",
-      "name": "ベリーパンナコッタ",
-      "itemId": 62060
+      "name": "莓果奶冻",
+      "itemId": 62060,
+      "nameTranslations": {
+        "ja": "ベリーパンナコッタ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "莓果奶酪",
+        "ko": "베리 판나코타",
+        "zh-CN": "莓果奶冻"
+      }
     },
     {
       "flag": 85081,
       "category": "料理配方",
-      "name": "ベリー・ベリーパフェ",
-      "itemId": 62070
+      "name": "莓果芭菲",
+      "itemId": 62070,
+      "nameTranslations": {
+        "ja": "ベリー・ベリーパフェ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "莓果百匯",
+        "ko": "베리베리 파르페",
+        "zh-CN": "莓果芭菲"
+      }
     },
     {
       "flag": 85082,
       "category": "料理配方",
-      "name": "マンゴーパフェ",
-      "itemId": 62080
+      "name": "芒果芭菲",
+      "itemId": 62080,
+      "nameTranslations": {
+        "ja": "マンゴーパフェ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "芒果百匯",
+        "ko": "망고 파르페",
+        "zh-CN": "芒果芭菲"
+      }
     },
     {
       "flag": 85083,
       "category": "料理配方",
-      "name": "イチゴのケーキ",
-      "itemId": 62090
+      "name": "草莓蛋糕",
+      "itemId": 62090,
+      "nameTranslations": {
+        "ja": "イチゴのケーキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "草莓蛋糕",
+        "ko": "딸기 케이크",
+        "zh-CN": "草莓蛋糕"
+      }
     },
     {
       "flag": 85084,
       "category": "料理配方",
-      "name": "フルーツケーキ",
-      "itemId": 62100
+      "name": "水果蛋糕",
+      "itemId": 62100,
+      "nameTranslations": {
+        "ja": "フルーツケーキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "水果蛋糕",
+        "ko": "과일 케이크",
+        "zh-CN": "水果蛋糕"
+      }
     },
     {
       "flag": 85085,
       "category": "料理配方",
-      "name": "モンブラン",
-      "itemId": 62110
+      "name": "蒙布朗",
+      "itemId": 62110,
+      "nameTranslations": {
+        "ja": "モンブラン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蒙布朗",
+        "ko": "몽블랑",
+        "zh-CN": "蒙布朗"
+      }
     },
     {
       "flag": 85086,
       "category": "料理配方",
-      "name": "ブドウのタルト",
-      "itemId": 62120
+      "name": "葡萄塔",
+      "itemId": 62120,
+      "nameTranslations": {
+        "ja": "ブドウのタルト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "葡萄塔",
+        "ko": "포도 타르트",
+        "zh-CN": "葡萄塔"
+      }
     },
     {
       "flag": 85087,
       "category": "料理配方",
-      "name": "アップルパイ",
-      "itemId": 62130
+      "name": "苹果派",
+      "itemId": 62130,
+      "nameTranslations": {
+        "ja": "アップルパイ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蘋果派",
+        "ko": "애플파이",
+        "zh-CN": "苹果派"
+      }
     },
     {
       "flag": 85088,
       "category": "料理配方",
-      "name": "牛乳寒天",
-      "itemId": 62140
+      "name": "牛奶寒天冻",
+      "itemId": 62140,
+      "nameTranslations": {
+        "ja": "牛乳寒天",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛奶寒天凍",
+        "ko": "우유 푸딩",
+        "zh-CN": "牛奶寒天冻"
+      }
     },
     {
       "flag": 85089,
       "category": "料理配方",
       "name": "杏仁豆腐",
-      "itemId": 62150
+      "itemId": 62150,
+      "nameTranslations": {
+        "ja": "杏仁豆腐",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "杏仁豆腐",
+        "ko": "행인두부",
+        "zh-CN": "杏仁豆腐"
+      }
     },
     {
       "flag": 85090,
       "category": "料理配方",
-      "name": "チョコレートアソート",
-      "itemId": 62160
+      "name": "综合巧克力",
+      "itemId": 62160,
+      "nameTranslations": {
+        "ja": "チョコレートアソート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "綜合巧克力",
+        "ko": "초콜릿 모음",
+        "zh-CN": "综合巧克力"
+      }
     },
     {
       "flag": 85091,
       "category": "料理配方",
-      "name": "カキのコンポート",
-      "itemId": 62170
+      "name": "柿子蜜饯",
+      "itemId": 62170,
+      "nameTranslations": {
+        "ja": "カキのコンポート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "柿子蜜餞",
+        "ko": "감 콩포트",
+        "zh-CN": "柿子蜜饯"
+      }
     },
     {
       "flag": 85092,
       "category": "料理配方",
-      "name": "レモンのはちみつ漬け",
-      "itemId": 62180
+      "name": "蜂蜜渍柠檬",
+      "itemId": 62180,
+      "nameTranslations": {
+        "ja": "レモンのはちみつ漬け",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蜂蜜漬檸檬",
+        "ko": "레몬 꿀절임",
+        "zh-CN": "蜂蜜渍柠檬"
+      }
     },
     {
       "flag": 85093,
       "category": "料理配方",
-      "name": "レモンケーキ",
-      "itemId": 62190
+      "name": "柠檬蛋糕",
+      "itemId": 62190,
+      "nameTranslations": {
+        "ja": "レモンケーキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "檸檬蛋糕",
+        "ko": "레몬 케이크",
+        "zh-CN": "柠檬蛋糕"
+      }
     },
     {
       "flag": 85094,
       "category": "料理配方",
-      "name": "ガトーショコラ",
-      "itemId": 62200
+      "name": "古典巧克力蛋糕",
+      "itemId": 62200,
+      "nameTranslations": {
+        "ja": "ガトーショコラ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "古典巧克力蛋糕",
+        "ko": "가토 쇼콜라",
+        "zh-CN": "古典巧克力蛋糕"
+      }
     },
     {
       "flag": 85095,
       "category": "料理配方",
-      "name": "スイートポテト",
-      "itemId": 62210
+      "name": "红薯甜点",
+      "itemId": 62210,
+      "nameTranslations": {
+        "ja": "スイートポテト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "地瓜甜點",
+        "ko": "으깬 고구마 오븐 구이",
+        "zh-CN": "红薯甜点"
+      }
     },
     {
       "flag": 85096,
       "category": "料理配方",
-      "name": "お茶アイス",
-      "itemId": 62220
+      "name": "茶香冰激凌",
+      "itemId": 62220,
+      "nameTranslations": {
+        "ja": "お茶アイス",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "茶香冰淇淋",
+        "ko": "녹차 아이스크림",
+        "zh-CN": "茶香冰激凌"
+      }
     },
     {
       "flag": 85097,
       "category": "料理配方",
-      "name": "バナナヨーグルト",
-      "itemId": 62230
+      "name": "香蕉酸奶",
+      "itemId": 62230,
+      "nameTranslations": {
+        "ja": "バナナヨーグルト",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "香蕉優格",
+        "ko": "바나나 요거트",
+        "zh-CN": "香蕉酸奶"
+      }
     },
     {
       "flag": 85098,
       "category": "料理配方",
-      "name": "チョコバナナ",
-      "itemId": 62240
+      "name": "巧克力香蕉",
+      "itemId": 62240,
+      "nameTranslations": {
+        "ja": "チョコバナナ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "巧克力香蕉",
+        "ko": "초코 바나나",
+        "zh-CN": "巧克力香蕉"
+      }
     },
     {
       "flag": 85099,
       "category": "料理配方",
-      "name": "ティーセット",
-      "itemId": 62250
+      "name": "下午茶套组",
+      "itemId": 62250,
+      "nameTranslations": {
+        "ja": "ティーセット",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "下午茶套組",
+        "ko": "티 세트",
+        "zh-CN": "下午茶套组"
+      }
     },
     {
       "flag": 85100,
       "category": "料理配方",
-      "name": "緑茶セット",
-      "itemId": 62260
+      "name": "绿茶套组",
+      "itemId": 62260,
+      "nameTranslations": {
+        "ja": "緑茶セット",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "綠茶套組",
+        "ko": "녹차 세트",
+        "zh-CN": "绿茶套组"
+      }
     },
     {
       "flag": 85101,
       "category": "料理配方",
-      "name": "烏龍茶セット",
-      "itemId": 62270
+      "name": "乌龙茶套组",
+      "itemId": 62270,
+      "nameTranslations": {
+        "ja": "烏龍茶セット",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烏龍茶套組",
+        "ko": "우롱차 세트",
+        "zh-CN": "乌龙茶套组"
+      }
     },
     {
       "flag": 85102,
       "category": "料理配方",
-      "name": "ほうじ茶セット",
-      "itemId": 62280
+      "name": "焙茶套组",
+      "itemId": 62280,
+      "nameTranslations": {
+        "ja": "ほうじ茶セット",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "焙茶套組",
+        "ko": "호지차 세트",
+        "zh-CN": "焙茶套组"
+      }
     },
     {
       "flag": 85103,
       "category": "料理配方",
-      "name": "抹茶セット",
-      "itemId": 62290
+      "name": "抹茶套组",
+      "itemId": 62290,
+      "nameTranslations": {
+        "ja": "抹茶セット",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "抹茶套組",
+        "ko": "말차 세트",
+        "zh-CN": "抹茶套组"
+      }
     },
     {
       "flag": 85104,
       "category": "料理配方",
-      "name": "ミックスジュース",
-      "itemId": 62300
+      "name": "综合果汁",
+      "itemId": 62300,
+      "nameTranslations": {
+        "ja": "ミックスジュース",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "綜合果汁",
+        "ko": "믹스 주스",
+        "zh-CN": "综合果汁"
+      }
     },
     {
       "flag": 85106,
       "category": "料理配方",
-      "name": "塩むすび",
-      "itemId": 60740
+      "name": "盐味饭团",
+      "itemId": 60740,
+      "nameTranslations": {
+        "ja": "塩むすび",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鹽味飯糰",
+        "ko": "소금 주먹밥",
+        "zh-CN": "盐味饭团"
+      }
     },
     {
       "flag": 85107,
       "category": "料理配方",
-      "name": "金粉ちらし寿司",
-      "itemId": 60750
+      "name": "金粉散寿司",
+      "itemId": 60750,
+      "nameTranslations": {
+        "ja": "金粉ちらし寿司",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金粉散壽司",
+        "ko": "금가루 치라시초밥",
+        "zh-CN": "金粉散寿司"
+      }
     },
     {
       "flag": 85108,
       "category": "料理配方",
-      "name": "醤油プリン",
-      "itemId": 60760
+      "name": "酱油布丁",
+      "itemId": 60760,
+      "nameTranslations": {
+        "ja": "醤油プリン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "醬油布丁",
+        "ko": "간장 푸딩",
+        "zh-CN": "酱油布丁"
+      }
     },
     {
       "flag": 85109,
       "category": "料理配方",
-      "name": "タピオカミルクティー",
-      "itemId": 60770
+      "name": "珍珠奶茶",
+      "itemId": 60770,
+      "nameTranslations": {
+        "ja": "タピオカミルクティー",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "珍珠奶茶",
+        "ko": "버블티",
+        "zh-CN": "珍珠奶茶"
+      }
     },
     {
       "flag": 85110,
       "category": "料理配方",
-      "name": "焼き鮭定食",
-      "itemId": 60780
+      "name": "烤三文鱼定食",
+      "itemId": 60780,
+      "nameTranslations": {
+        "ja": "焼き鮭定食",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "烤鮭魚定食",
+        "ko": "연어 구이 정식",
+        "zh-CN": "烤三文鱼定食"
+      }
     },
     {
       "flag": 85111,
       "category": "料理配方",
-      "name": "肉吸い豆腐",
-      "itemId": 60790
+      "name": "牛肉豆腐汤",
+      "itemId": 60790,
+      "nameTranslations": {
+        "ja": "肉吸い豆腐",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "牛肉豆腐湯",
+        "ko": "소고기 두붓국",
+        "zh-CN": "牛肉豆腐汤"
+      }
     },
     {
       "flag": 85112,
       "category": "料理配方",
-      "name": "いももち",
-      "itemId": 60800
+      "name": "土豆年糕",
+      "itemId": 60800,
+      "nameTranslations": {
+        "ja": "いももち",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "馬鈴薯麻糬",
+        "ko": "감자빵",
+        "zh-CN": "土豆年糕"
+      }
     },
     {
       "flag": 85113,
       "category": "料理配方",
-      "name": "メンチカツ",
-      "itemId": 60810
+      "name": "炸肉饼",
+      "itemId": 60810,
+      "nameTranslations": {
+        "ja": "メンチカツ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "炸肉餅",
+        "ko": "멘치카츠",
+        "zh-CN": "炸肉饼"
+      }
     },
     {
       "flag": 85114,
       "category": "料理配方",
-      "name": "レモネード",
-      "itemId": 60820
+      "name": "柠檬水",
+      "itemId": 60820,
+      "nameTranslations": {
+        "ja": "レモネード",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "檸檬水",
+        "ko": "레모네이드",
+        "zh-CN": "柠檬水"
+      }
     },
     {
       "flag": 85115,
       "category": "料理配方",
-      "name": "小魚の唐揚げ",
-      "itemId": 60830
+      "name": "油炸小鱼",
+      "itemId": 60830,
+      "nameTranslations": {
+        "ja": "小魚の唐揚げ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "油炸小魚",
+        "ko": "작은 생선 튀김",
+        "zh-CN": "油炸小鱼"
+      }
     },
     {
       "flag": 85116,
       "category": "料理配方",
-      "name": "焼きそば",
-      "itemId": 60840
+      "name": "日式炒面",
+      "itemId": 60840,
+      "nameTranslations": {
+        "ja": "焼きそば",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "日式炒麵",
+        "ko": "야키소바",
+        "zh-CN": "日式炒面"
+      }
     },
     {
       "flag": 85117,
       "category": "料理配方",
-      "name": "リンゴ飴",
-      "itemId": 60850
+      "name": "苹果糖",
+      "itemId": 60850,
+      "nameTranslations": {
+        "ja": "リンゴ飴",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "蘋果糖",
+        "ko": "캔디 애플",
+        "zh-CN": "苹果糖"
+      }
     },
     {
       "flag": 85118,
       "category": "料理配方",
-      "name": "ソーダフロート",
-      "itemId": 60860
+      "name": "冰淇淋苏打",
+      "itemId": 60860,
+      "nameTranslations": {
+        "ja": "ソーダフロート",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "冰淇淋蘇打",
+        "ko": "소다 플로트",
+        "zh-CN": "冰淇淋苏打"
+      }
     }
   ],
   "skills": [
@@ -16426,8 +19294,26 @@
       "id": 301,
       "nodeId": 2,
       "flag": 6204,
-      "name": "田壟技術",
-      "description": "再敲擊一次田地即可形成「田壟」",
+      "name": "田垄技术",
+      "description": "再敲击一次田地即可形成「田垄」",
+      "nameTranslations": {
+        "ja": "畝の技術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "田壟技術",
+        "ko": "이랑 기술",
+        "zh-CN": "田垄技术"
+      },
+      "descriptionTranslations": {
+        "ja": "畑をもう一度叩くと「畝」にできる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "再敲擊一次田地即可形成「田壟」",
+        "ko": "밭을 한 번 더 두드리면 「이랑」이 된다.",
+        "zh-CN": "再敲击一次田地即可形成「田垄」"
+      },
       "requires": [
         1
       ]
@@ -16436,8 +19322,26 @@
       "id": 20000201,
       "nodeId": 20,
       "flag": 6200,
-      "name": "鐮刀技術",
-      "description": "減少揮動鐮刀時的體力消耗量",
+      "name": "镰刀技术",
+      "description": "减少挥动镰刀时的体力消耗量",
+      "nameTranslations": {
+        "ja": "カマの技術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐮刀技術",
+        "ko": "낫 기술",
+        "zh-CN": "镰刀技术"
+      },
+      "descriptionTranslations": {
+        "ja": "カマを振った時のスタミナ消費量が減少",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "減少揮動鐮刀時的體力消耗量",
+        "ko": "낫을 휘두를 때의 스태미나 소비량이 감소.",
+        "zh-CN": "减少挥动镰刀时的体力消耗量"
+      },
       "requires": [
         15
       ]
@@ -16446,8 +19350,26 @@
       "id": 20000502,
       "nodeId": 21,
       "flag": 6210,
-      "name": "樹木培育術",
-      "description": "樹木成長速度提昇5%",
+      "name": "树木培育术",
+      "description": "树木成长速度提升5%",
+      "nameTranslations": {
+        "ja": "樹木の育成術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木培育術",
+        "ko": "나무 육성술",
+        "zh-CN": "树木培育术"
+      },
+      "descriptionTranslations": {
+        "ja": "樹木の成長速度が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木成長速度提昇5%",
+        "ko": "나무의 성장 속도가 5% 상승한다.",
+        "zh-CN": "树木成长速度提升5%"
+      },
       "requires": [
         17,
         11
@@ -16457,8 +19379,26 @@
       "id": 20000504,
       "nodeId": 24,
       "flag": 6212,
-      "name": "礦脈探查術",
-      "description": "在採石場發現礦脈的機率提昇3%",
+      "name": "矿脉探查术",
+      "description": "在采石场发现矿脉的概率提升3%",
+      "nameTranslations": {
+        "ja": "鉱脈の発見術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "礦脈探查術",
+        "ko": "광맥 발견술",
+        "zh-CN": "矿脉探查术"
+      },
+      "descriptionTranslations": {
+        "ja": "石切場で鉱脈が見つかる確率が3％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "在採石場發現礦脈的機率提昇3%",
+        "ko": "채석장에서 광맥을 발견할 확률이 3% 상승한다.",
+        "zh-CN": "在采石场发现矿脉的概率提升3%"
+      },
       "requires": [
         14
       ]
@@ -16467,8 +19407,26 @@
       "id": 20000301,
       "nodeId": 29,
       "flag": 6207,
-      "name": "野草採取術",
-      "description": "有25%的機率可採集到2個採集物",
+      "name": "野草采取术",
+      "description": "有25%的概率可采集到2个采集物",
+      "nameTranslations": {
+        "ja": "野草の採取術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "野草採取術",
+        "ko": "들풀 채집술",
+        "zh-CN": "野草采取术"
+      },
+      "descriptionTranslations": {
+        "ja": "採取物が２５％の確率で２個採取できる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "有25%的機率可採集到2個採集物",
+        "ko": "25% 확률로 채집물을 2개씩 채집한다.",
+        "zh-CN": "有25%的概率可采集到2个采集物"
+      },
       "requires": [
         23,
         9
@@ -16478,8 +19436,26 @@
       "id": 20000501,
       "nodeId": 31,
       "flag": 6209,
-      "name": "鏡與劍探查術",
-      "description": "在深夜時將更容易獲得「鏡」與「劍」",
+      "name": "镜与剑探查术",
+      "description": "在深夜时将更容易获得「镜」与「剑」",
+      "nameTranslations": {
+        "ja": "鏡と剣の発見術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鏡與劍探查術",
+        "ko": "거울과 검 발견술",
+        "zh-CN": "镜与剑探查术"
+      },
+      "descriptionTranslations": {
+        "ja": "深夜に「鏡」と「剣」が手に入れやすくなる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "在深夜時將更容易獲得「鏡」與「劍」",
+        "ko": "심야에 「거울」과 「검」을 획득하기 쉬워진다.",
+        "zh-CN": "在深夜时将更容易获得「镜」与「剑」"
+      },
       "requires": [
         20
       ]
@@ -16488,8 +19464,26 @@
       "id": 20000506,
       "nodeId": 33,
       "flag": 6214,
-      "name": "動物友好術",
-      "description": "動物親密度更容易上昇",
+      "name": "动物友好术",
+      "description": "动物亲密度更容易上升",
+      "nameTranslations": {
+        "ja": "動物仲良し術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "動物友好術",
+        "ko": "동물 친밀술",
+        "zh-CN": "动物友好术"
+      },
+      "descriptionTranslations": {
+        "ja": "動物のなつき度が上がりやすくなる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "動物親密度更容易上昇",
+        "ko": "동물의 친밀도가 잘 오르게 된다.",
+        "zh-CN": "动物亲密度更容易上升"
+      },
       "requires": [
         28
       ]
@@ -16498,8 +19492,26 @@
       "id": 20000503,
       "nodeId": 37,
       "flag": 6211,
-      "name": "樹木培育術＋",
-      "description": "樹木成長速度提昇10%",
+      "name": "树木培育术＋",
+      "description": "树木成长速度提升10%",
+      "nameTranslations": {
+        "ja": "樹木の育成術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木培育術＋",
+        "ko": "나무 육성술+",
+        "zh-CN": "树木培育术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "樹木の成長速度が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木成長速度提昇10%",
+        "ko": "나무의 성장 속도가 10% 상승한다.",
+        "zh-CN": "树木成长速度提升10%"
+      },
       "requires": [
         26
       ]
@@ -16508,8 +19520,26 @@
       "id": 20000401,
       "nodeId": 42,
       "flag": 6216,
-      "name": "作物加工品出貨術",
-      "description": "作物加工品的售價提昇5%",
+      "name": "作物加工品出货术",
+      "description": "作物加工品的售价提升5%",
+      "nameTranslations": {
+        "ja": "作物加工品の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物加工品出貨術",
+        "ko": "작물 가공품 출하술",
+        "zh-CN": "作物加工品出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "作物加工品の売値が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物加工品的售價提昇5%",
+        "ko": "작물 가공품의 판매 가격이 5% 상승한다.",
+        "zh-CN": "作物加工品的售价提升5%"
+      },
       "requires": [
         32
       ]
@@ -16518,8 +19548,26 @@
       "id": 20000405,
       "nodeId": 48,
       "flag": 6218,
-      "name": "畜產品出貨術",
-      "description": "畜產品的售價提昇5%",
+      "name": "畜产品出货术",
+      "description": "畜产品的售价提升5%",
+      "nameTranslations": {
+        "ja": "畜産物の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品出貨術",
+        "ko": "축산물 출하술",
+        "zh-CN": "畜产品出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "畜産物の売値が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品的售價提昇5%",
+        "ko": "축산물의 판매 가격이 5% 상승한다.",
+        "zh-CN": "畜产品的售价提升5%"
+      },
       "requires": [
         38,
         43
@@ -16529,8 +19577,26 @@
       "id": 20000407,
       "nodeId": 51,
       "flag": 6220,
-      "name": "魚類出貨術",
-      "description": "魚類的售價提昇5%",
+      "name": "鱼类出货术",
+      "description": "鱼类的售价提升5%",
+      "nameTranslations": {
+        "ja": "魚の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "魚類出貨術",
+        "ko": "물고기 출하술",
+        "zh-CN": "鱼类出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "魚の売価が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "魚類的售價提昇5%",
+        "ko": "물고기의 판매 가격이 5% 상승한다.",
+        "zh-CN": "鱼类的售价提升5%"
+      },
       "requires": [
         40
       ]
@@ -16539,8 +19605,26 @@
       "id": 20000403,
       "nodeId": 54,
       "flag": 6224,
-      "name": "畜產品加工品出貨術",
-      "description": "畜產品加工品的售價提昇5%",
+      "name": "畜产品加工品出货术",
+      "description": "畜产品加工品的售价提升5%",
+      "nameTranslations": {
+        "ja": "畜産加工品の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品加工品出貨術",
+        "ko": "축산 가공품 출하술",
+        "zh-CN": "畜产品加工品出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "畜産加工品の売値が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品加工品的售價提昇5%",
+        "ko": "축산 가공품의 판매 가격이 5% 상승한다.",
+        "zh-CN": "畜产品加工品的售价提升5%"
+      },
       "requires": [
         43
       ]
@@ -16549,8 +19633,26 @@
       "id": 20000508,
       "nodeId": 55,
       "flag": 6226,
-      "name": "友好術",
-      "description": "居民好感度更容易上昇",
+      "name": "友好术",
+      "description": "居民好感度更容易上升",
+      "nameTranslations": {
+        "ja": "仲良し術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "友好術",
+        "ko": "친밀술",
+        "zh-CN": "友好术"
+      },
+      "descriptionTranslations": {
+        "ja": "住人との好感度が上がりやすくなる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "居民好感度更容易上昇",
+        "ko": "주민과의 호감도가 더 잘 오르게 된다.",
+        "zh-CN": "居民好感度更容易上升"
+      },
       "requires": [
         44
       ]
@@ -16559,8 +19661,26 @@
       "id": 20000304,
       "nodeId": 56,
       "flag": 6228,
-      "name": "採掘技術",
-      "description": "採掘石頭時，可額外獲得1個石頭",
+      "name": "采掘技术",
+      "description": "采掘石头时，可额外获得1个石头",
+      "nameTranslations": {
+        "ja": "採掘の技術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "採掘技術",
+        "ko": "채굴 기술",
+        "zh-CN": "采掘技术"
+      },
+      "descriptionTranslations": {
+        "ja": "石を採掘した際、石が１個多く採れる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "採掘石頭時，可額外獲得1個石頭",
+        "ko": "돌을 채굴할 때, 돌을 1개 더 획득한다.",
+        "zh-CN": "采掘石头时，可额外获得1个石头"
+      },
       "requires": [
         45,
         51
@@ -16570,8 +19690,26 @@
       "id": 20000411,
       "nodeId": 57,
       "flag": 6230,
-      "name": "作物出貨術",
-      "description": "作物的售價提昇5%",
+      "name": "作物出货术",
+      "description": "作物的售价提升5%",
+      "nameTranslations": {
+        "ja": "作物の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物出貨術",
+        "ko": "작물 출하술",
+        "zh-CN": "作物出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "作物の売値が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物的售價提昇5%",
+        "ko": "작물의 판매 가격이 5% 상승한다.",
+        "zh-CN": "作物的售价提升5%"
+      },
       "requires": [
         46,
         51
@@ -16581,8 +19719,26 @@
       "id": 20000302,
       "nodeId": 60,
       "flag": 6232,
-      "name": "樹木砍伐術",
-      "description": "砍伐樹木時，可額外獲得1個木材",
+      "name": "树木砍伐术",
+      "description": "砍伐树木时，可额外获得1个木材",
+      "nameTranslations": {
+        "ja": "樹木の伐採術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木砍伐術",
+        "ko": "나무 벌채술",
+        "zh-CN": "树木砍伐术"
+      },
+      "descriptionTranslations": {
+        "ja": "樹木の伐採時、木材が１個多く採取できる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "砍伐樹木時，可額外獲得1個木材",
+        "ko": "나무를 벌채할 때, 목재를 1개 더 채집한다.",
+        "zh-CN": "砍伐树木时，可额外获得1个木材"
+      },
       "requires": [
         49
       ]
@@ -16591,8 +19747,26 @@
       "id": 20000413,
       "nodeId": 61,
       "flag": 6234,
-      "name": "獵物出貨術",
-      "description": "狩獵報酬物的售價提昇5%",
+      "name": "猎物出货术",
+      "description": "狩猎报酬物的售价提升5%",
+      "nameTranslations": {
+        "ja": "獲物の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "獵物出貨術",
+        "ko": "사냥감 출하술",
+        "zh-CN": "猎物出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "狩りの報酬物の売価が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "狩獵報酬物的售價提昇5%",
+        "ko": "사냥 보상물의 판매 가격이 5% 상승한다.",
+        "zh-CN": "狩猎报酬物的售价提升5%"
+      },
       "requires": [
         50
       ]
@@ -16601,8 +19775,26 @@
       "id": 20000408,
       "nodeId": 62,
       "flag": 6221,
-      "name": "魚類出貨術＋",
-      "description": "魚類的售價提昇10%",
+      "name": "鱼类出货术＋",
+      "description": "鱼类的售价提升10%",
+      "nameTranslations": {
+        "ja": "魚の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "魚類出貨術＋",
+        "ko": "물고기 출하술+",
+        "zh-CN": "鱼类出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "魚の売価が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "魚類的售價提昇10%",
+        "ko": "물고기의 판매 가격이 10% 상승한다.",
+        "zh-CN": "鱼类的售价提升10%"
+      },
       "requires": [
         51
       ]
@@ -16611,8 +19803,26 @@
       "id": 20000402,
       "nodeId": 63,
       "flag": 6217,
-      "name": "作物加工品出貨術＋",
-      "description": "作物加工品的售價提昇10%",
+      "name": "作物加工品出货术＋",
+      "description": "作物加工品的售价提升10%",
+      "nameTranslations": {
+        "ja": "作物加工品の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物加工品出貨術＋",
+        "ko": "작물 가공품 출하술+",
+        "zh-CN": "作物加工品出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "作物加工品の売値が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物加工品的售價提昇10%",
+        "ko": "작물 가공품의 판매 가격이 10% 상승한다.",
+        "zh-CN": "作物加工品的售价提升10%"
+      },
       "requires": [
         53
       ]
@@ -16621,8 +19831,26 @@
       "id": 20000507,
       "nodeId": 64,
       "flag": 6215,
-      "name": "動物友好術＋",
-      "description": "動物親密度更加容易上昇",
+      "name": "动物友好术＋",
+      "description": "动物亲密度更加容易上升",
+      "nameTranslations": {
+        "ja": "動物仲良し術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "動物友好術＋",
+        "ko": "동물 친밀술+",
+        "zh-CN": "动物友好术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "動物のなつき度がもっと上がりやすくなる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "動物親密度更加容易上昇",
+        "ko": "동물의 친밀도가 더 잘 오르게 된다.",
+        "zh-CN": "动物亲密度更加容易上升"
+      },
       "requires": [
         54,
         60
@@ -16632,8 +19860,26 @@
       "id": 302,
       "nodeId": 65,
       "flag": 6236,
-      "name": "收納箱連結術",
-      "description": "可在多個收納箱之間移動內容物",
+      "name": "收纳箱连结术",
+      "description": "可在多个收纳箱之间移动内容物",
+      "nameTranslations": {
+        "ja": "収納箱の連結術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "收納箱連結術",
+        "ko": "수납함 연결술",
+        "zh-CN": "收纳箱连结术"
+      },
+      "descriptionTranslations": {
+        "ja": "複数の収納箱の間で、中身を移動できるようになる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "可在多個收納箱之間移動內容物",
+        "ko": "여러 수납함 사이에서 내용물을 이동할 수 있게 된다.",
+        "zh-CN": "可在多个收纳箱之间移动内容物"
+      },
       "requires": [
         55
       ]
@@ -16642,8 +19888,26 @@
       "id": 20000415,
       "nodeId": 66,
       "flag": 6237,
-      "name": "寶石出貨術",
-      "description": "寶石的售價提昇5%",
+      "name": "宝石出货术",
+      "description": "宝石的售价提升5%",
+      "nameTranslations": {
+        "ja": "宝石の出荷術",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "寶石出貨術",
+        "ko": "보석 출하술",
+        "zh-CN": "宝石出货术"
+      },
+      "descriptionTranslations": {
+        "ja": "宝石の売値が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "寶石的售價提昇5%",
+        "ko": "보석의 판매 가격이 5% 상승한다.",
+        "zh-CN": "宝石的售价提升5%"
+      },
       "requires": [
         56,
         61
@@ -16653,8 +19917,26 @@
       "id": 20000412,
       "nodeId": 67,
       "flag": 6231,
-      "name": "作物出貨術＋",
-      "description": "作物的售價提昇10%",
+      "name": "作物出货术＋",
+      "description": "作物的售价提升10%",
+      "nameTranslations": {
+        "ja": "作物の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物出貨術＋",
+        "ko": "작물 출하술+",
+        "zh-CN": "作物出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "作物の売値が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "作物的售價提昇10%",
+        "ko": "작물의 판매 가격이 10% 상승한다.",
+        "zh-CN": "作物的售价提升10%"
+      },
       "requires": [
         57
       ]
@@ -16663,8 +19945,26 @@
       "id": 20000406,
       "nodeId": 68,
       "flag": 6219,
-      "name": "畜產品出貨術＋",
-      "description": "畜產品的售價提昇10%",
+      "name": "畜产品出货术＋",
+      "description": "畜产品的售价提升10%",
+      "nameTranslations": {
+        "ja": "畜産物の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品出貨術＋",
+        "ko": "축산물 출하술+",
+        "zh-CN": "畜产品出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "畜産物の売値が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品的售價提昇10%",
+        "ko": "축산물의 판매 가격이 10% 상승한다.",
+        "zh-CN": "畜产品的售价提升10%"
+      },
       "requires": [
         59
       ]
@@ -16673,8 +19973,26 @@
       "id": 20000303,
       "nodeId": 71,
       "flag": 6233,
-      "name": "樹木砍伐術＋",
-      "description": "砍伐樹木時，可額外獲得2個木材",
+      "name": "树木砍伐术＋",
+      "description": "砍伐树木时，可额外获得2个木材",
+      "nameTranslations": {
+        "ja": "樹木の伐採術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "樹木砍伐術＋",
+        "ko": "나무 벌채술+",
+        "zh-CN": "树木砍伐术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "樹木の伐採時、木材が２個多く採取できる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "砍伐樹木時，可額外獲得2個木材",
+        "ko": "나무를 벌채할 때, 목재를 2개 더 채집한다.",
+        "zh-CN": "砍伐树木时，可额外获得2个木材"
+      },
       "requires": [
         64
       ]
@@ -16683,8 +20001,26 @@
       "id": 20000509,
       "nodeId": 72,
       "flag": 6227,
-      "name": "友好術＋",
-      "description": "居民好感度更加容易上昇",
+      "name": "友好术＋",
+      "description": "居民好感度更加容易上升",
+      "nameTranslations": {
+        "ja": "仲良し術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "友好術＋",
+        "ko": "친밀술+",
+        "zh-CN": "友好术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "住人との好感度がもっと上がりやすくなる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "居民好感度更加容易上昇",
+        "ko": "주민과의 호감도가 훨씬 더 잘 오르게 된다.",
+        "zh-CN": "居民好感度更加容易上升"
+      },
       "requires": [
         65,
         69
@@ -16694,8 +20030,26 @@
       "id": 20000505,
       "nodeId": 73,
       "flag": 6213,
-      "name": "礦脈探查術＋",
-      "description": "在採石場發現礦脈的機率提昇5%",
+      "name": "矿脉探查术＋",
+      "description": "在采石场发现矿脉的概率提升5%",
+      "nameTranslations": {
+        "ja": "鉱脈の発見術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "礦脈探查術＋",
+        "ko": "광맥 발견술+",
+        "zh-CN": "矿脉探查术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "石切場で鉱脈が見つかる確率が５％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "在採石場發現礦脈的機率提昇5%",
+        "ko": "채석장에서 광맥을 발견할 확률이 5% 상승한다.",
+        "zh-CN": "在采石场发现矿脉的概率提升5%"
+      },
       "requires": [
         66
       ]
@@ -16704,8 +20058,26 @@
       "id": 20000414,
       "nodeId": 75,
       "flag": 6235,
-      "name": "獵物出貨術＋",
-      "description": "狩獵報酬物的售價提昇10%",
+      "name": "猎物出货术＋",
+      "description": "狩猎报酬物的售价提升10%",
+      "nameTranslations": {
+        "ja": "獲物の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "獵物出貨術＋",
+        "ko": "사냥감 출하술+",
+        "zh-CN": "猎物出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "狩りの報酬物の売価が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "狩獵報酬物的售價提昇10%",
+        "ko": "사냥 보상물의 판매 가격이 10% 상승한다.",
+        "zh-CN": "狩猎报酬物的售价提升10%"
+      },
       "requires": [
         61
       ]
@@ -16714,8 +20086,26 @@
       "id": 20000416,
       "nodeId": 76,
       "flag": 6238,
-      "name": "寶石出貨術＋",
-      "description": "寶石的售價提昇10%",
+      "name": "宝石出货术＋",
+      "description": "宝石的售价提升10%",
+      "nameTranslations": {
+        "ja": "宝石の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "寶石出貨術＋",
+        "ko": "보석 출하술+",
+        "zh-CN": "宝石出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "宝石の売値が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "寶石的售價提昇10%",
+        "ko": "보석의 판매 가격이 10% 상승한다.",
+        "zh-CN": "宝石的售价提升10%"
+      },
       "requires": [
         70
       ]
@@ -16724,8 +20114,26 @@
       "id": 20000404,
       "nodeId": 77,
       "flag": 6225,
-      "name": "畜產品加工品出貨術＋",
-      "description": "畜產品加工品的售價提昇10%",
+      "name": "畜产品加工品出货术＋",
+      "description": "畜产品加工品的售价提升10%",
+      "nameTranslations": {
+        "ja": "畜産加工品の出荷術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品加工品出貨術＋",
+        "ko": "축산 가공품 출하술+",
+        "zh-CN": "畜产品加工品出货术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "畜産加工品の売値が１０％上昇する",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "畜產品加工品的售價提昇10%",
+        "ko": "축산 가공품의 판매 가격이 10% 상승한다.",
+        "zh-CN": "畜产品加工品的售价提升10%"
+      },
       "requires": [
         71
       ]
@@ -16734,11 +20142,30 @@
       "id": 20000305,
       "nodeId": 79,
       "flag": 6229,
-      "name": "採掘技術＋",
-      "description": "採掘石頭時，可額外獲得2個石頭",
+      "name": "采掘技术＋",
+      "description": "采掘石头时，可额外获得2个石头",
+      "nameTranslations": {
+        "ja": "採掘の技術+",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "採掘技術＋",
+        "ko": "채굴 기술+",
+        "zh-CN": "采掘技术＋"
+      },
+      "descriptionTranslations": {
+        "ja": "石を採掘した際、石が2個多く採れる",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "採掘石頭時，可額外獲得2個石頭",
+        "ko": "돌을 채굴할 때, 돌을 2개 더 획득한다.",
+        "zh-CN": "采掘石头时，可额外获得2个石头"
+      },
       "requires": [
         73
       ]
     }
-  ]
+  ],
+  "build_id": "25311578"
 }

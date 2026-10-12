@@ -9,5 +9,6 @@ export function compactItemRow(item:Entity):Entity {
   name:{...item.name,aliases:[]},
     ...(item.category_name?{category_name:{...item.category_name,aliases:[]}}:{}),
     ...(Array.isArray(item.variants)?{variants:item.variants.map(compactItemRow)}:{}),
+    ...(Array.isArray(item.locations)?{locations:(item.locations as {location_id:string;name:{zh_hans:string}}[]).map(place=>({location_id:place.location_id,name:{zh_hans:place.name.zh_hans}}))}:{}),
  };
 }

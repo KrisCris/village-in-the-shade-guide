@@ -1,8 +1,8 @@
-"""Read processing slot counts from the verified 24969282 game tables.
+"""Read processing slot counts from the verified 25311578 game tables.
 
-Native GimmickProcessPushItem at 0x14026EF20 checks the first settingArg
+Native GimmickProcessPushItem at 0x14027BE10 checks the first settingArg
 value: exactly "2" allows three slots, otherwise only slot zero is used
-(0x14026EFC4-0x14026F01B). This is slots per recipe batch, not output count.
+(0x14027BEB9-0x14027BF0B). This is slots per recipe batch, not output count.
 Only devices referenced by gimmickprocess.dat belong to this model.
 """
 import argparse
@@ -23,7 +23,7 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
     executable_hash = hashlib.sha256((args.game_dir / 'village.exe').read_bytes()).hexdigest()
-    if executable_hash != '7dc5ad614541fb7708e42036df7b7da85053ab4959f6ed2e9dfe1330aedbd381':
+    if executable_hash != 'ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05':
         raise ValueError('Unreviewed game executable; verify the native slot rule before extracting')
     archive = FafullfsArchive.open(args.game_dir / 'data.dat')
     raw = {name: archive.read_entry(f'data/database/{name}.dat')
@@ -41,14 +41,14 @@ def main():
                             _string_groups(tables['gimmick']), strict=True):
         if u64(row, 0) not in required:
             continue
-        key, level = strings[8:10]
+        key, level = strings[9:11]
         if (key, level) not in {('level', '1'), ('level', '2'), ('', '')}:
             raise ValueError(f'Unreviewed settingArg on {strings[0]}: {key}={level}')
         machines.append({
             'item_id': item_ids[u32(row, len(row) - 48)],
             'gimmick_id': strings[0],
             'gimmick_numeric_id': u64(row, 0),
-            'script': strings[7],
+            'script': strings[8],
             'level': level or None,
             'capacity': 3 if level == '2' else 1,
         })
@@ -57,9 +57,9 @@ def main():
     if len({m['item_id'] for m in machines}) != len(machines):
         raise ValueError('Duplicate machine items need a manual data review')
     result = {
-        'build_id': '24969282',
+        'build_id': '25311578',
         'source': 'gimmick.dat first settingArg; gimmickprocess.dat machine references; item.dat IDs',
-        'native_rule': 'GimmickProcessPushItem 0x14026EFC4-0x14026F01B: first settingArg value "2" => 3 slots, otherwise 1',
+        'native_rule': 'GimmickProcessPushItem 0x14027BEB9-0x14027BF0B: first settingArg value "2" => 3 slots, otherwise 1',
         'unit': 'simultaneous recipe batches per device',
         'sha256': {**{name + '.dat': hashlib.sha256(value).hexdigest() for name, value in raw.items()},
                    'village.exe': executable_hash},

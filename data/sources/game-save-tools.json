@@ -1,257 +1,581 @@
 {
-  "source": "item.dat: parent u64@16, level i32@308; village.exe upgrade writes native ItemData+0x154 to player range fields at 0x140329AE8, 0x140329B15, 0x140329B46",
+  "source": "item.dat parent u64@16, level u32@348; historical build24969282 native upgrade 0x140329AE8/0x140329B15/0x140329B46",
   "tools": [
     {
       "itemId": 660001,
       "family": 660000,
       "level": 1,
       "code": "ITEM_ID_TOOL_WATERING_CAN_1",
-      "name": "澆水壺"
+      "name": "浇水壶",
+      "nameTranslations": {
+        "ja": "ジョウロ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "澆水壺",
+        "ko": "물뿌리개",
+        "zh-CN": "浇水壶"
+      }
     },
     {
       "itemId": 660003,
       "family": 660000,
       "level": 2,
       "code": "ITEM_ID_TOOL_WATERING_CAN_3",
-      "name": "銅澆水壺"
+      "name": "铜浇水壶",
+      "nameTranslations": {
+        "ja": "銅のジョウロ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "銅澆水壺",
+        "ko": "동제 물뿌리개",
+        "zh-CN": "铜浇水壶"
+      }
     },
     {
       "itemId": 660004,
       "family": 660000,
       "level": 3,
       "code": "ITEM_ID_TOOL_WATERING_CAN_4",
-      "name": "鐵澆水壺"
+      "name": "铁浇水壶",
+      "nameTranslations": {
+        "ja": "鋼のジョウロ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵澆水壺",
+        "ko": "철제 물뿌리개",
+        "zh-CN": "铁浇水壶"
+      }
     },
     {
       "itemId": 660005,
       "family": 660000,
       "level": 4,
       "code": "ITEM_ID_TOOL_WATERING_CAN_5",
-      "name": "金澆水壺"
+      "name": "金浇水壶",
+      "nameTranslations": {
+        "ja": "金のジョウロ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金澆水壺",
+        "ko": "금제 물뿌리개",
+        "zh-CN": "金浇水壶"
+      }
     },
     {
       "itemId": 660006,
       "family": 660000,
       "level": 5,
       "code": "ITEM_ID_TOOL_WATERING_CAN_6",
-      "name": "隕鐵澆水壺"
+      "name": "陨铁浇水壶",
+      "nameTranslations": {
+        "ja": "隕鉄のジョウロ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "隕鐵澆水壺",
+        "ko": "운철제 물뿌리개",
+        "zh-CN": "陨铁浇水壶"
+      }
     },
     {
       "itemId": 660011,
       "family": 660010,
       "level": 1,
       "code": "ITEM_ID_TOOL_MULBERRY_1",
-      "name": "鋤頭"
+      "name": "锄头",
+      "nameTranslations": {
+        "ja": "クワ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鋤頭",
+        "ko": "괭이",
+        "zh-CN": "锄头"
+      }
     },
     {
       "itemId": 660013,
       "family": 660010,
       "level": 2,
       "code": "ITEM_ID_TOOL_MULBERRY_3",
-      "name": "銅鋤頭"
+      "name": "铜锄头",
+      "nameTranslations": {
+        "ja": "銅のクワ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "銅鋤頭",
+        "ko": "동제 괭이",
+        "zh-CN": "铜锄头"
+      }
     },
     {
       "itemId": 660014,
       "family": 660010,
       "level": 3,
       "code": "ITEM_ID_TOOL_MULBERRY_4",
-      "name": "鐵鋤頭"
+      "name": "铁锄头",
+      "nameTranslations": {
+        "ja": "鋼のクワ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵鋤頭",
+        "ko": "철제 괭이",
+        "zh-CN": "铁锄头"
+      }
     },
     {
       "itemId": 660015,
       "family": 660010,
       "level": 4,
       "code": "ITEM_ID_TOOL_MULBERRY_5",
-      "name": "金鋤頭"
+      "name": "金锄头",
+      "nameTranslations": {
+        "ja": "金のクワ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金鋤頭",
+        "ko": "금제 괭이",
+        "zh-CN": "金锄头"
+      }
     },
     {
       "itemId": 660016,
       "family": 660010,
       "level": 5,
       "code": "ITEM_ID_TOOL_MULBERRY_6",
-      "name": "隕鐵鋤頭"
+      "name": "陨铁锄头",
+      "nameTranslations": {
+        "ja": "隕鉄のクワ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "隕鐵鋤頭",
+        "ko": "운철제 괭이",
+        "zh-CN": "陨铁锄头"
+      }
     },
     {
       "itemId": 660021,
       "family": 660020,
       "level": 1,
       "code": "ITEM_ID_TOOL_AXE_1",
-      "name": "斧頭"
+      "name": "斧头",
+      "nameTranslations": {
+        "ja": "オノ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "斧頭",
+        "ko": "도끼",
+        "zh-CN": "斧头"
+      }
     },
     {
       "itemId": 660023,
       "family": 660020,
       "level": 2,
       "code": "ITEM_ID_TOOL_AXE_3",
-      "name": "銅斧頭"
+      "name": "铜斧头",
+      "nameTranslations": {
+        "ja": "銅のオノ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "銅斧頭",
+        "ko": "동제 도끼",
+        "zh-CN": "铜斧头"
+      }
     },
     {
       "itemId": 660024,
       "family": 660020,
       "level": 3,
       "code": "ITEM_ID_TOOL_AXE_4",
-      "name": "鐵斧頭"
+      "name": "铁斧头",
+      "nameTranslations": {
+        "ja": "鋼のオノ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵斧頭",
+        "ko": "철제 도끼",
+        "zh-CN": "铁斧头"
+      }
     },
     {
       "itemId": 660025,
       "family": 660020,
       "level": 4,
       "code": "ITEM_ID_TOOL_AXE_5",
-      "name": "金斧頭"
+      "name": "金斧头",
+      "nameTranslations": {
+        "ja": "金のオノ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金斧頭",
+        "ko": "금제 도끼",
+        "zh-CN": "金斧头"
+      }
     },
     {
       "itemId": 660026,
       "family": 660020,
       "level": 5,
       "code": "ITEM_ID_TOOL_AXE_6",
-      "name": "隕鐵斧頭"
+      "name": "陨铁斧头",
+      "nameTranslations": {
+        "ja": "隕鉄のオノ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "隕鐵斧頭",
+        "ko": "운철제 도끼",
+        "zh-CN": "陨铁斧头"
+      }
     },
     {
       "itemId": 660031,
       "family": 660030,
       "level": 1,
       "code": "ITEM_ID_TOOL_PICKAXE_1",
-      "name": "十字鎬"
+      "name": "十字镐",
+      "nameTranslations": {
+        "ja": "ツルハシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "十字鎬",
+        "ko": "곡괭이",
+        "zh-CN": "十字镐"
+      }
     },
     {
       "itemId": 660033,
       "family": 660030,
       "level": 2,
       "code": "ITEM_ID_TOOL_PICKAXE_3",
-      "name": "銅十字鎬"
+      "name": "铜十字镐",
+      "nameTranslations": {
+        "ja": "銅のツルハシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "銅十字鎬",
+        "ko": "동제 곡괭이",
+        "zh-CN": "铜十字镐"
+      }
     },
     {
       "itemId": 660034,
       "family": 660030,
       "level": 3,
       "code": "ITEM_ID_TOOL_PICKAXE_4",
-      "name": "鐵十字鎬"
+      "name": "铁十字镐",
+      "nameTranslations": {
+        "ja": "鋼のツルハシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵十字鎬",
+        "ko": "철제 곡괭이",
+        "zh-CN": "铁十字镐"
+      }
     },
     {
       "itemId": 660035,
       "family": 660030,
       "level": 4,
       "code": "ITEM_ID_TOOL_PICKAXE_5",
-      "name": "金十字鎬"
+      "name": "金十字镐",
+      "nameTranslations": {
+        "ja": "金のツルハシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金十字鎬",
+        "ko": "금제 곡괭이",
+        "zh-CN": "金十字镐"
+      }
     },
     {
       "itemId": 660036,
       "family": 660030,
       "level": 5,
       "code": "ITEM_ID_TOOL_PICKAXE_6",
-      "name": "隕鐵十字鎬"
+      "name": "陨铁十字镐",
+      "nameTranslations": {
+        "ja": "隕鉄のツルハシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "隕鐵十字鎬",
+        "ko": "운철제 곡괭이",
+        "zh-CN": "陨铁十字镐"
+      }
     },
     {
       "itemId": 660041,
       "family": 660040,
       "level": 1,
       "code": "ITEM_ID_TOOL_SICKLE_1",
-      "name": "鐮刀"
+      "name": "镰刀",
+      "nameTranslations": {
+        "ja": "カマ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐮刀",
+        "ko": "낫",
+        "zh-CN": "镰刀"
+      }
     },
     {
       "itemId": 660050,
       "family": 0,
       "level": 1,
       "code": "ITEM_ID_TOOL_BOW",
-      "name": "弓"
+      "name": "弓",
+      "nameTranslations": {
+        "ja": "弓",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "弓",
+        "ko": "활",
+        "zh-CN": "弓"
+      }
     },
     {
       "itemId": 660070,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_FLASHLIGHT",
-      "name": "手電筒"
+      "name": "手电筒",
+      "nameTranslations": {
+        "ja": "懐中電灯",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "手電筒",
+        "ko": "손전등",
+        "zh-CN": "手电筒"
+      }
     },
     {
       "itemId": 660071,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_LANTERN",
-      "name": "手提燈籠"
+      "name": "手提灯笼",
+      "nameTranslations": {
+        "ja": "手持ち提灯",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "手提燈籠",
+        "ko": "휴대용 등롱",
+        "zh-CN": "手提灯笼"
+      }
     },
     {
       "itemId": 660081,
       "family": 660080,
       "level": 1,
       "code": "ITEM_ID_TOOL_PLOW_1",
-      "name": "犁"
+      "name": "犁",
+      "nameTranslations": {
+        "ja": "スキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "犁",
+        "ko": "가래",
+        "zh-CN": "犁"
+      }
     },
     {
       "itemId": 660083,
       "family": 660080,
       "level": 2,
       "code": "ITEM_ID_TOOL_PLOW_3",
-      "name": "銅犁"
+      "name": "铜犁",
+      "nameTranslations": {
+        "ja": "銅のスキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "銅犁",
+        "ko": "동제 가래",
+        "zh-CN": "铜犁"
+      }
     },
     {
       "itemId": 660084,
       "family": 660080,
       "level": 3,
       "code": "ITEM_ID_TOOL_PLOW_4",
-      "name": "鐵犁"
+      "name": "铁犁",
+      "nameTranslations": {
+        "ja": "鋼のスキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "鐵犁",
+        "ko": "철제 가래",
+        "zh-CN": "铁犁"
+      }
     },
     {
       "itemId": 660085,
       "family": 660080,
       "level": 4,
       "code": "ITEM_ID_TOOL_PLOW_5",
-      "name": "金犁"
+      "name": "金犁",
+      "nameTranslations": {
+        "ja": "金のスキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "金犁",
+        "ko": "금제 가래",
+        "zh-CN": "金犁"
+      }
     },
     {
       "itemId": 660086,
       "family": 660080,
       "level": 5,
       "code": "ITEM_ID_TOOL_PLOW_6",
-      "name": "隕鐵犁"
+      "name": "陨铁犁",
+      "nameTranslations": {
+        "ja": "隕鉄のスキ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "隕鐵犁",
+        "ko": "운철제 가래",
+        "zh-CN": "陨铁犁"
+      }
     },
     {
       "itemId": 660090,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_NATA",
-      "name": "劈岩柴刀"
+      "name": "劈岩柴刀",
+      "nameTranslations": {
+        "ja": "岩切りナタ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "劈岩柴刀",
+        "ko": "절암의 손도끼",
+        "zh-CN": "劈岩柴刀"
+      }
     },
     {
       "itemId": 661000,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_BAG_LV2",
-      "name": "大包包"
+      "name": "大包包",
+      "nameTranslations": {
+        "ja": "大きなカバン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "大包包",
+        "ko": "큰 가방",
+        "zh-CN": "大包包"
+      }
     },
     {
       "itemId": 661010,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_BAG_LV3",
-      "name": "非常大的包包"
+      "name": "非常大的包包",
+      "nameTranslations": {
+        "ja": "とても大きなカバン",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "非常大的包包",
+        "ko": "아주 큰 가방",
+        "zh-CN": "非常大的包包"
+      }
     },
     {
       "itemId": 662000,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_SCARECROW_SPRING",
-      "name": "春天稻草人"
+      "name": "春天稻草人",
+      "nameTranslations": {
+        "ja": "春のカカシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "春天稻草人",
+        "ko": "봄의 허수아비",
+        "zh-CN": "春天稻草人"
+      }
     },
     {
       "itemId": 662001,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_SCARECROW_SUMMER",
-      "name": "夏天稻草人"
+      "name": "夏天稻草人",
+      "nameTranslations": {
+        "ja": "夏のカカシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "夏天稻草人",
+        "ko": "여름의 허수아비",
+        "zh-CN": "夏天稻草人"
+      }
     },
     {
       "itemId": 662002,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_SCARECROW_AUTUMN",
-      "name": "秋天稻草人"
+      "name": "秋天稻草人",
+      "nameTranslations": {
+        "ja": "秋のカカシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "秋天稻草人",
+        "ko": "가을의 허수아비",
+        "zh-CN": "秋天稻草人"
+      }
     },
     {
       "itemId": 662003,
       "family": 0,
       "level": 0,
       "code": "ITEM_ID_TOOL_SCARECROW_WINTER",
-      "name": "冬天稻草人"
+      "name": "冬天稻草人",
+      "nameTranslations": {
+        "ja": "冬のカカシ",
+        "slot-1": "",
+        "slot-2": "",
+        "slot-3": "",
+        "zh-TW": "冬天稻草人",
+        "ko": "겨울의 허수아비",
+        "zh-CN": "冬天稻草人"
+      }
     }
   ],
   "itemIds": [
@@ -3043,6 +3367,125 @@
     700180,
     700181,
     700182,
+    800001,
+    800002,
+    800003,
+    800004,
+    800005,
+    800006,
+    800007,
+    800008,
+    800009,
+    800010,
+    800011,
+    800012,
+    800013,
+    800014,
+    800015,
+    800016,
+    800017,
+    800018,
+    800019,
+    800020,
+    800021,
+    800022,
+    800023,
+    800024,
+    800025,
+    800026,
+    800027,
+    800028,
+    800029,
+    800030,
+    800031,
+    800032,
+    800033,
+    800034,
+    800035,
+    800036,
+    800037,
+    800038,
+    800039,
+    800040,
+    800041,
+    800042,
+    800043,
+    800044,
+    800045,
+    800046,
+    800047,
+    800048,
+    800049,
+    800050,
+    800051,
+    800052,
+    800053,
+    800054,
+    800055,
+    800056,
+    800057,
+    800058,
+    800059,
+    800060,
+    800061,
+    800062,
+    800063,
+    800064,
+    800065,
+    800066,
+    800067,
+    800068,
+    800069,
+    800070,
+    800071,
+    800072,
+    800073,
+    800074,
+    800075,
+    800076,
+    800077,
+    800078,
+    800079,
+    800080,
+    800081,
+    800082,
+    800083,
+    800084,
+    800085,
+    800086,
+    800087,
+    800088,
+    800089,
+    800090,
+    800091,
+    800092,
+    800093,
+    800094,
+    800095,
+    800096,
+    800097,
+    800098,
+    800099,
+    800100,
+    800101,
+    800102,
+    800103,
+    800104,
+    800105,
+    800106,
+    800107,
+    800108,
+    800109,
+    800110,
+    800201,
+    800202,
+    800203,
+    800204,
+    800205,
+    800206,
+    800207,
+    800208,
+    801001,
     990002,
     990003,
     990004,
@@ -3111,5 +3554,6 @@
     991008,
     991009,
     991010
-  ]
+  ],
+  "build_id": "25311578"
 }

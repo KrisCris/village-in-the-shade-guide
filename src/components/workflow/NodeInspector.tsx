@@ -21,6 +21,7 @@ import DemandDetails from "./DemandDetails";
 import FarmlandPicker from "./FarmlandPicker";
 import { farmlandUsage } from "../../domain/workflow/farmland";
 import { withBase } from "../../lib/sitePath";
+import { tr } from '../../i18n/active';
 
 export default function NodeInspector({
   node,
@@ -70,10 +71,10 @@ export default function NodeInspector({
         : "items";
   const label =
     node.kind === "plant"
-      ? "作物"
+      ? tr('作物')
       : node.kind === "process"
-        ? "加工配方"
-        : "物品";
+        ? tr('加工配方')
+        : tr('物品');
   const all = entities.filter((e) => e.kind === kind),
     items = entities.filter((e) => e.kind === "items");
   const name = (id: string) =>
@@ -116,11 +117,11 @@ export default function NodeInspector({
         )
       : all;
   return (
-    <aside className="wf-inspector" aria-label="节点设置">
+    <aside className="wf-inspector" aria-label={tr('节点设置')}>
       <div className="wf-panel-title">
         <span>{nodeLabels[node.kind]}</span>
         <button className="wf-danger" onClick={onDelete}>
-          删除节点
+          {tr('删除节点')}
         </button>
       </div>
       {demand && result && onPrepare && (
@@ -134,10 +135,10 @@ export default function NodeInspector({
       )}
       {node.needsConfirmation && (
         <section className="wf-projection draft">
-          <strong>这些物品还未确认取得</strong>
-          <p>准备好后填写实际数量与可用日期，再计入流程。</p>
+          <strong>{tr('这些物品还未确认取得')}</strong>
+          <p>{tr('准备好后填写实际数量与可用日期，再计入流程。')}</p>
           <button onClick={() => patch({ needsConfirmation: false })}>
-            已准备好，计入库存
+            {tr('已准备好，计入库存')}
           </button>
         </section>
       )}
@@ -146,18 +147,18 @@ export default function NodeInspector({
           <strong>
             {projection.firstDay !== undefined
               ? `${formatDay(projection.firstDay)}${projection.finishDay !== projection.firstDay ? ` → ${formatDay(projection.finishDay!)}` : ""}`
-              : "连接来源，自动安排"}{" "}
+              : tr('连接来源，自动安排')}{" "}
           </strong>
           {projection.readyDay !== undefined && (
-            <span>已备齐，最早可在 {formatDay(projection.readyDay)} 交付</span>
+            <span>{tr('已备齐，最早可在 {date} 交付', { date: formatDay(projection.readyDay) })}</span>
           )}
           {projection.quantity > 0 && (
             <span>
               {node.kind === "plant"
-                ? `占地 ${projection.land} 格 · 累计播种 ${Math.ceil(projection.quantity / Math.max(1, projection.land))} 轮 · 收获 ${projection.outputQuantity} 个`
+                ? tr('占地 {land} 格 · 累计播种 {ceil} 轮 · 收获 {outputQuantity} 个', { land: projection.land, ceil: Math.ceil(projection.quantity / Math.max(1, projection.land)), outputQuantity: projection.outputQuantity })
                 : node.kind === "process"
-                  ? `加工 ${projection.quantity} 批 · 产出 ${projection.outputQuantity} 个`
-                  : `已安排 ${projection.quantity} 个`}
+                  ? tr('加工 {quantity} 批 · 产出 {outputQuantity} 个', { quantity: projection.quantity, outputQuantity: projection.outputQuantity })
+                  : tr('已安排 {quantity} 个', { quantity: projection.quantity })}
             </span>
           )}
           {projection.notices.map((message, i) => (
@@ -169,7 +170,7 @@ export default function NodeInspector({
         <WorkflowAssistance key={node.id} advice={advice} onAction={onAction} />
       )}
       <label className="wf-field">
-        节点名称
+        {tr('节点名称')}
         <input
           value={autoLabel(node) ? resolved.label : node.label}
           maxLength={200}
@@ -179,14 +180,14 @@ export default function NodeInspector({
         />
       </label>
       <div className="wf-auto-hint">
-        <span>{autoLabel(node) ? "名称跟随所选物品" : "自定义名称"}</span>
+        <span>{autoLabel(node) ? tr('名称跟随所选物品') : tr('自定义名称')}</span>
         {!autoLabel(node) && !demand && (
           <button
             onClick={() =>
               patch({ label: nodeLabels[node.kind], labelMode: "auto" })
             }
           >
-            恢复自动命名
+            {tr('恢复自动命名')}
           </button>
         )}
       </div>
@@ -198,7 +199,7 @@ export default function NodeInspector({
             className="wf-restore-auto"
             onClick={() => patch({ amountMode: "auto", dateMode: "auto" })}
           >
-            恢复自动数量与日期
+            {tr('恢复自动数量与日期')}
           </button>
         )}
       {!demand && (
@@ -216,26 +217,26 @@ export default function NodeInspector({
           <div className="wf-auto-hint">
             <span>
               {inferred
-                ? "已根据连线推算"
+                ? tr('已根据连线推算')
                 : choices.length > 1
-                  ? `${choices.length} 种兼容选择`
+                  ? tr('{count} 种兼容选择', { count: choices.length })
                   : node[field]
-                    ? "手动选择"
-                    : "连接后自动推算"}
+                    ? tr('手动选择')
+                    : tr('连接后自动推算')}
             </span>
             {node[field] && (
               <button
                 disabled={!canReset}
                 title={
                   canReset
-                    ? "根据现有连线自动识别，保留当前物品"
-                    : "现有连线无法唯一识别此项，保留你的选择"
+                    ? tr('根据现有连线自动识别，保留当前物品')
+                    : tr('现有连线无法唯一识别此项，保留你的选择')
                 }
                 onClick={() => {
                   if (canReset) patch({ [field]: undefined });
                 }}
               >
-                {canReset ? "恢复自动识别" : "需指定物品"}
+                {canReset ? tr('恢复自动识别') : tr('需指定物品')}
               </button>
             )}
           </div>
@@ -243,10 +244,9 @@ export default function NodeInspector({
       )}
       {node.kind === "plant" && crop && (
         <p className="wf-note">
-          生长 {String(crop.growth_days ?? "?")} 天，每格收获{" "}
-          {String(crop.harvest_quantity ?? "?")} 个。
+          {tr('生长 {days} 天，每格收获 {count} 个。', { days: String(crop.growth_days ?? "?"), count: String(crop.harvest_quantity ?? "?") })}
           {crop.regrow_days
-            ? `天然再生：每 ${crop.regrow_days} 天再收获，不消耗种子。`
+            ? tr('天然再生：每 {regrow_days} 天再收获，不消耗种子。', { regrow_days: crop.regrow_days })
             : ""}
         </p>
       )}
@@ -257,7 +257,7 @@ export default function NodeInspector({
             checked={!!node.seasonProtection}
             onChange={(e) => patch({ seasonProtection: e.target.checked })}
           />
-          使用季节稻草人 / 温室保护（允许跨季生长）
+          {tr('使用季节稻草人 / 温室保护（允许跨季生长）')}
         </label>
       )}
       {node.kind === "process" && recipe && (
@@ -269,7 +269,7 @@ export default function NodeInspector({
           {name(String((recipe.output as { item_id: string })?.item_id ?? ""))}{" "}
           ×{String((recipe.output as { quantity: number })?.quantity ?? "?")}
           <br />
-          每批 {projection?.duration ?? "?"} 天，完工当天可继续加工或出货。
+          {tr('每批 {days} 天，完工当天可继续加工或出货。', { days: projection?.duration ?? "?" })}
         </p>
       )}
       {!demand && (
@@ -280,7 +280,7 @@ export default function NodeInspector({
               : undefined
           }
         >
-          {node.kind === "plant" && <h3>种植规模</h3>}
+          {node.kind === "plant" && <h3>{tr('种植规模')}</h3>}
           {!root && (
             <label className="wf-check">
               <input
@@ -302,10 +302,10 @@ export default function NodeInspector({
                 }
               />
               {node.kind === "plant"
-                ? "种下上游全部种子"
+                ? tr('种下上游全部种子')
                 : node.kind === "process"
-                  ? "加工分配到的全部原料"
-                  : "使用分配到的全部物品"}
+                  ? tr('加工分配到的全部原料')
+                  : tr('使用分配到的全部物品')}
             </label>
           )}
           {(node.kind === "plant" ||
@@ -315,12 +315,12 @@ export default function NodeInspector({
             <NumberField
               label={
                 node.kind === "plant"
-                  ? "种植格数"
+                  ? tr('种植格数')
                   : node.kind === "process"
-                    ? "本节点安排的总批数"
+                    ? tr('本节点安排的总批数')
                     : node.kind === "purchase"
-                      ? "每次买入数量"
-                      : "数量"
+                      ? tr('每次买入数量')
+                      : tr('数量')
               }
               value={
                 node.kind === "plant" && autoAmount(node)
@@ -350,12 +350,12 @@ export default function NodeInspector({
           )}
           {node.kind === "plant" && node.farmlandSelection && (
             <p className="wf-note">
-              格数来自地图选区；手动改数量或跟随全部种子会解除地图分配。
+              {tr('格数来自地图选区；手动改数量或跟随全部种子会解除地图分配。')}
             </p>
           )}
           {!root && autoAmount(node) && (
             <p className="wf-note">
-              留货先分配，固定数量其次，剩余原料再分给本节点。数量随上游变化。
+              {tr('留货先分配，固定数量其次，剩余原料再分给本节点。数量随上游变化。')}
             </p>
           )}
         </div>
@@ -372,7 +372,7 @@ export default function NodeInspector({
               })
             }
           />
-          原料齐备后尽早执行
+          {tr('原料齐备后尽早执行')}
         </label>
       )}
       {(root || !autoDate(node)) && (
@@ -380,9 +380,9 @@ export default function NodeInspector({
           label={
             root
               ? node.kind === "purchase"
-                ? "买入日期"
-                : "库存可用日期"
-              : "不早于此日"
+                ? tr('买入日期')
+                : tr('库存可用日期')
+              : tr('不早于此日')
           }
           value={node.startDay}
           onChange={(startDay) => patch({ startDay, dateMode: "manual" })}
@@ -390,12 +390,12 @@ export default function NodeInspector({
       )}
       {node.kind === "process" && (
         <section className="wf-inspector-section">
-          <h3>这个节点使用的机器</h3>
+          <h3>{tr('这个节点使用的机器')}</h3>
           {recipe &&
             Array.isArray(recipe.machine_ids) &&
             recipe.machine_ids.length > 0 && (
               <EntityPicker
-                label="机器型号"
+                label={tr('机器型号')}
                 entities={entities.filter(
                   (e) =>
                     e.kind === "machines" &&
@@ -408,8 +408,8 @@ export default function NodeInspector({
 
           <p className="wf-note">
             {projection?.machineCapacity
-              ? `每台可同时加工 ${projection.machineCapacity} 批，容量由游戏设备数据确定。`
-              : "选择设备后自动读取游戏中的加工容量。"}
+              ? tr('每台可同时加工 {machineCapacity} 批，容量由游戏设备数据确定。', { machineCapacity: projection.machineCapacity })
+              : tr('选择设备后自动读取游戏中的加工容量。')}
           </p>
 
           <label className="wf-check">
@@ -424,16 +424,16 @@ export default function NodeInspector({
                 })
               }
             />
-            自动配足，当批原料尽快加工
+            {tr('自动配足，当批原料尽快加工')}
           </label>
           {node.machineCount === undefined ? (
             <p className="wf-note">
-              当前流程需要最多 <b>{projection?.machines ?? 0}</b>{" "}
-              台。按完整配方批数与每台并行容量推算。
+              {tr('当前流程需要最多')} <b>{projection?.machines ?? 0}</b>{" "}
+              {tr('台。按完整配方批数与每台并行容量推算。')}
             </p>
           ) : (
             <NumberField
-              label="可用机器台数"
+              label={tr('可用机器台数')}
               value={node.machineCount}
               min={1}
               max={10000}
@@ -442,37 +442,37 @@ export default function NodeInspector({
           )}
           {comparison && (
             <div className="wf-comparison">
-              <strong>与配足 {comparison.machines} 台相比</strong>
-              <span>末批完工晚 {comparison.delay} 天</span>
+              <strong>{tr('与配足 {machines} 台相比', { machines: comparison.machines })}</strong>
+              <span>{tr('末批完工晚 {days} 天', { days: comparison.delay })}</span>
               <span>
-                本期到账 {comparison.incomeDifference >= 0 ? "+" : ""}
+                {tr('本期到账')} {comparison.incomeDifference >= 0 ? "+" : ""}
                 {comparison.incomeDifference.toLocaleString()}
               </span>
-              <small>延后到账会继续列在后续日程中。</small>
+              <small>{tr('延后到账会继续列在后续日程中。')}</small>
             </div>
           )}
           {projection?.processedValue !== undefined && (
             <div className="wf-comparison">
-              <strong>加工价值对比</strong>
+              <strong>{tr('加工价值对比')}</strong>
               <span>
-                产物卖价合计 {projection.processedValue.toLocaleString()}
+                {tr('产物卖价合计')} {projection.processedValue.toLocaleString()}
               </span>
               {projection.rawValue !== undefined ? (
                 <span>
-                  较原料直接出售
+                  {tr('较原料直接出售')}
                   {(
                     projection.processedValue - projection.rawValue
                   ).toLocaleString()}{" "}
-                  · 每批多用 {projection.duration} 天
+                  {tr('· 每批多用 {days} 天', { days: projection.duration })}
                 </span>
               ) : (
-                <span>原料卖价有缺失，暂不能比较增值。</span>
+                <span>{tr('原料卖价有缺失，暂不能比较增值。')}</span>
               )}
-              <small>比较已投料批次的物品价值，不含购置机器的成本。</small>
+              <small>{tr('比较已投料批次的物品价值，不含购置机器的成本。')}</small>
             </div>
           )}
           <p className="wf-note">
-            各加工节点独立占用机器；这里显示需求，购置成本需另计。
+            {tr('各加工节点独立占用机器；这里显示需求，购置成本需另计。')}
           </p>
         </section>
       )}
@@ -484,12 +484,12 @@ export default function NodeInspector({
               checked={node.repeat}
               onChange={(e) => patch({ repeat: e.target.checked })}
             />
-            收获清田后自动续种
+            {tr('收获清田后自动续种')}
           </label>
           <p className="wf-note">
             {node.repeat
-              ? "保持首轮规模，优先使用已有种子；每次补买和播种都会列入日程。本季来不及收获时停止续种。"
-              : "只播种一次。框选并复制整条流程，可以单独安排下一轮日期和去向。"}
+              ? tr('保持首轮规模，优先使用已有种子；每次补买和播种都会列入日程。本季来不及收获时停止续种。')
+              : tr('只播种一次。框选并复制整条流程，可以单独安排下一轮日期和去向。')}
           </p>
           <label className="wf-check">
             <input
@@ -497,10 +497,10 @@ export default function NodeInspector({
               checked={node.autoBuy}
               onChange={(e) => patch({ autoBuy: e.target.checked })}
             />
-            种子不足时自动补买
+            {tr('种子不足时自动补买')}
           </label>
           <p className="wf-note">
-            需要土地 {projection?.land ?? 0} 格；整份计划按同时占地推算需求。
+            {tr('需要土地 {count} 格；整份计划按同时占地推算需求。', { count: projection?.land ?? 0 })}
           </p>
         </section>
       )}
@@ -511,12 +511,12 @@ export default function NodeInspector({
             checked={node.repeat}
             onChange={(e) => patch({ repeat: e.target.checked })}
           />
-          每天重复购买
+          {tr('每天重复购买')}
         </label>
       )}
       {["plant", "process"].includes(node.kind) && (
         <details>
-          <summary>已有作物 / 在制品</summary>
+          <summary>{tr('已有作物 / 在制品')}</summary>
           <label className="wf-check">
             <input
               type="checkbox"
@@ -528,11 +528,11 @@ export default function NodeInspector({
                 })
               }
             />
-            计划开始时已在进行
+            {tr('计划开始时已在进行')}
           </label>
           {node.remainingDays !== undefined && (
             <NumberField
-              label="距完成还需天数（已有投入不扣费）"
+              label={tr('距完成还需天数（已有投入不扣费）')}
               value={node.remainingDays}
               max={112}
               onChange={(remainingDays) => patch({ remainingDays })}
@@ -542,7 +542,7 @@ export default function NodeInspector({
       )}
       {node.repeat && ["plant", "purchase"].includes(node.kind) && (
         <details>
-          <summary>停止新增安排</summary>
+          <summary>{tr('停止新增安排')}</summary>
           <label className="wf-check">
             <input
               type="checkbox"
@@ -555,17 +555,17 @@ export default function NodeInspector({
                 })
               }
             />
-            提前停止
+            {tr('提前停止')}
           </label>
           {node.endDay !== undefined && (
             <DateField
-              label="最后安排日期"
+              label={tr('最后安排日期')}
               value={node.endDay}
               onChange={(endDay) => patch({ endDay })}
             />
           )}
           <p className="wf-note">
-            默认到计划期末；已开始的加工和到账会继续推算。
+            {tr('默认到计划期末；已开始的加工和到账会继续推算。')}
           </p>
         </details>
       )}
@@ -573,9 +573,9 @@ export default function NodeInspector({
         <>
           <p className="wf-note">
             {node.sourceId
-              ? "来自四季留货目录，可按需要删除。"
-              : "连接产物来源，自动优先留存。"}
-            未指定交付日期时只备货，不消耗。
+              ? tr('来自四季留货目录，可按需要删除。')
+              : tr('连接产物来源，自动优先留存。')}
+            {tr('未指定交付日期时只备货，不消耗。')}
           </p>
           {(node.requirements ?? []).map((a, i) => (
             <div className="wf-requirement" key={`${a.itemId}-${i}`}>
@@ -593,7 +593,7 @@ export default function NodeInspector({
                 {name(a.itemId)}
               </span>
               <NumberField
-                label="需求数量"
+                label={tr('需求数量')}
                 min={1}
                 value={a.quantity}
                 onChange={(quantity) =>
@@ -605,7 +605,7 @@ export default function NodeInspector({
                 }
               />
               <button
-                aria-label={`移除${name(a.itemId)}`}
+                aria-label={tr('移除{name}', { name: name(a.itemId) })}
                 onClick={() =>
                   patch({
                     requirements: node.requirements!.filter((_, j) => i !== j),
@@ -617,7 +617,7 @@ export default function NodeInspector({
             </div>
           ))}
           <EntityPicker
-            label="添加需求物品"
+            label={tr('添加需求物品')}
             entities={items.filter(
               (e) => !node.requirements?.some((a) => a.itemId === e.id),
             )}
@@ -645,11 +645,11 @@ export default function NodeInspector({
                     })
                   }
                 />
-                指定交付日期，备齐后一次扣除
+                {tr('指定交付日期，备齐后一次扣除')}
               </label>
               {node.dueDay !== undefined && (
                 <DateField
-                  label="交付日期"
+                  label={tr('交付日期')}
                   value={node.dueDay}
                   onChange={(dueDay) => patch({ dueDay })}
                 />
@@ -660,15 +660,15 @@ export default function NodeInspector({
       )}
       {!root && (
         <details>
-          <summary>分流顺序</summary>
+          <summary>{tr('分流顺序')}</summary>
           <NumberField
-            label="同类分配顺序（较小优先）"
+            label={tr('同类分配顺序（较小优先）')}
             value={node.priority}
             max={100}
             onChange={(priority) => patch({ priority })}
           />
           <p className="wf-note">
-            多个“剩余全部”去向需要不同顺序，或改为固定数量。优先级相同的剩余去向会等待你选择。
+            {tr('多个“剩余全部”去向需要不同顺序，或改为固定数量。优先级相同的剩余去向会等待你选择。')}
           </p>
         </details>
       )}

@@ -27,6 +27,13 @@ class FafullfsArchive:
         self.path = path
         self._entries = entries
         self._entries_by_name = {entry.name: entry for entry in entries}
+        # Database tables reference some atlases with different casing
+        # (DLC_itemicon_* vs dlc_itemicon_*); the game resolves them anyway.
+        folded: dict[str, ArchiveEntry | None] = {}
+        for entry in entries:
+            key = entry.name.casefold()
+            folded[key] = None if key in folded else entry
+        self._entries_by_folded_name = folded
 
     @classmethod
     def open(cls, path: Path) -> "FafullfsArchive":
@@ -81,11 +88,18 @@ class FafullfsArchive:
     def entries(self) -> tuple[ArchiveEntry, ...]:
         return self._entries
 
+    def find_entry(self, name: str) -> ArchiveEntry | None:
+        """Exact match first, then a unique case-insensitive match."""
+        entry = self._entries_by_name.get(name)
+        return entry if entry is not None else self._entries_by_folded_name.get(name.casefold())
+
+    def has_entry(self, name: str) -> bool:
+        return self.find_entry(name) is not None
+
     def read_entry(self, name: str) -> bytes:
-        try:
-            entry = self._entries_by_name[name]
-        except KeyError as error:
-            raise KeyError(f"archive entry not found: {name}") from error
+        entry = self.find_entry(name)
+        if entry is None:
+            raise KeyError(f"archive entry not found: {name}")
         with self.path.open("rb") as stream:
             stream.seek(entry.offset)
             payload = stream.read(entry.size)
