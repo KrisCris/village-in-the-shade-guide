@@ -17,7 +17,7 @@ export default function SaveDataTable({ table, drafts, names, onChange, cards = 
     <h3>{table.title}</h3>
     {table.note && <p className="save-tab-description">{table.note}</p>}
     {used.length === 0
-      ? <p className="save-tab-empty">{tr('暂无记录。')}</p>
+      ? !table.note && <p className="save-tab-empty">{tr('暂无记录。')}</p>
       : cards ? <div className="save-record-grid">
         {used.map(row => <article className="save-record-card" key={row.key} aria-label={`${table.title} ${row.label}`}>
           {row.cells.map((field, index) => field && <div className={`save-record-field${index === 0 ? ' identity' : ''}`} key={field.offset}>

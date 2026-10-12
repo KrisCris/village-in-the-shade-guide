@@ -145,7 +145,7 @@ function Editor() {
         const slots = new Set(parsed.containers.flatMap(container => container.slots.map(slot => slot.pointer)));
         if (Object.keys(session.slots).some(offset => !slots.has(Number(offset)))) throw new Error(tr('暂存草稿中的格子已无法匹配，请重新选择原始存档。'));
         setModel(parsed); setIdentity(session.identity); setDrafts(session.drafts);
-        setSlotEdits(session.slots); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(session.map ?? {}); setTab(session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
+        setSlotEdits(session.slots); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(session.map ?? {}); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
       } catch (caught) {
         if (!cancelled) setStorageError(caught instanceof Error ? caught.message : tr('无法恢复暂存草稿。'));
       } finally { if (!cancelled) setRestoring(false); }
@@ -243,7 +243,7 @@ function Editor() {
       setAnimals({});
       setMap({});
       setTab('basic');
-      setNotice(tr('已读取 {name}。', { name: file.name }));
+      setNotice('');
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : tr('无法解析这个存档。'));
       setNotice('');
@@ -345,29 +345,29 @@ function Editor() {
     npc: ['NPC', tr('查看村民关系，调整好感度。')],
     brand: [tr('品牌名'), tr('为作物和畜产品管理品牌名称。')],
     quests: [tr('任务'), tr('查找任务，在右侧查看进度与修改项。')],
-    progress: [tr('收集与解锁'), tr('管理图鉴、制作配方、神龛技能与交付委托。')],
+    progress: [tr('收集与解锁'), tr('管理图鉴、制作配方、神龛技能、交付委托和品牌名。')],
     map: [tr('地图'), tr('编辑田地与设施布局，导入或导出布局预设。')],
     raw: [tr('完整字段树'), tr('按名称或路径查找存档字段。')],
   }[tab];
 
   return <section ref={editorRoot} className={`save-editor${maximized ? ' is-maximized' : ''}`} aria-label={tr('游戏存档编辑器')}>
-    <div className={`save-dropzone${model ? ' loaded' : ''}`}>
+    <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
+    {!model && <><div className="save-dropzone">
       <div className="save-file-label">
         <span className="save-file-icon" aria-hidden="true">↑</span>
         <span>
           <button type="button" disabled={busy || restoring} onClick={chooseSave}>{tr('选择游戏存档')}</button>
-          <small>{tr('save.001–save.005；文件只在浏览器里处理，不会上传')}</small>
+          <small>save.001–save.005</small>
         </span>
-        <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
       </div>
-      {!model && <div className="save-location">
+      <div className="save-location">
         <span>{tr('Steam 存档位置')}</span>
         <code>{SAVE_FOLDER}</code>
         <button type="button" onClick={async () => { try { await navigator.clipboard.writeText(SAVE_FOLDER); setNotice(tr('已复制存档目录。')); } catch { setError(tr('复制失败，请手动复制上面的目录。')); } }}>{tr('复制路径')}</button>
         <small>{tr('网页不能直接打开这个目录。点“选择游戏存档”后，把路径粘贴到文件窗口的地址栏，再进入以数字命名的 Steam ID 文件夹。')}</small>
-      </div>}
+      </div>
     </div>
-    <SystemSaveHint />
+    <SystemSaveHint /></>}
     {busy && <p className="save-status" role="status">{notice}</p>}
     {!busy && notice && <p className="save-status success" role="status">{notice}</p>}
     {error && <p className="save-status error" role="alert">{error}</p>}
@@ -380,6 +380,8 @@ function Editor() {
           <p className="eyebrow">{model.save.fileName} {tr('· 本地编辑')}</p>
           <h2>{tr('编辑存档')}</h2>
         </div>
+        <div className="save-intro-actions">
+        <button type="button" className="save-switch" disabled={busy} onClick={chooseSave}>{tr('换一个存档')}</button>
         <button
           type="button"
           className="save-download"
@@ -388,6 +390,7 @@ function Editor() {
         >
           {editCount ? tr('导出 {editCount} 处修改 ↓', { editCount }) : tr('导出修改副本 ↓')}
         </button>
+        </div>
       </div>
 
       <div className="save-notice-grid">{model.summary.filter(line => !line.startsWith('SER')).map((line) => <p key={line}>{line.startsWith(tr('游戏时间：{time}。').split('{time}')[0]) && clockDraft !== undefined ? tr('游戏时间：{time}。', { time: /^\d+$/.test(clockDraft) ? describeGameTime(BigInt(clockDraft)) : tr('待填写') }) : line}</p>)}</div>
@@ -431,7 +434,7 @@ function Editor() {
 
       <div className="save-editor-toolbar">
       <nav className="save-tabs" aria-label={tr('存档字段分类')}>
-        {model.sections.map((entry) => <button
+        {model.sections.filter(entry => entry.id !== 'brand').map((entry) => <button
           type="button"
           key={entry.id}
           className={tab === entry.id ? 'active' : ''}
@@ -440,8 +443,10 @@ function Editor() {
         <button type="button" className={tab === 'map' ? 'active' : ''} onClick={() => setTab('map')}>{tr('地图')}</button>
         <button type="button" className={tab === 'quests' ? 'active' : ''} onClick={() => setTab('quests')}>{tr('任务')}</button>
         <button type="button" className={tab === 'progress' ? 'active' : ''} onClick={() => setTab('progress')}>{tr('收集与解锁')}</button>
-        <button type="button" className={tab === 'raw' ? 'active' : ''} onClick={() => setTab('raw')}>{tr('完整字段树')}</button>
       </nav>
+      <button type="button" className="save-toolbar-action" aria-pressed={tab === 'raw'} aria-label={tr('完整字段树')} title={tr('完整字段树：按名称或路径查找任意存档字段')} onClick={() => setTab(tab === 'raw' ? 'basic' : 'raw')}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2.5C5 11 4 12 3 12c1 0 2 1 2 2.5V17c0 2 1 3 3 3m8-16c2 0 3 1 3 3v2.5c0 1.5 1 2.5 2 2.5-1 0-2 1-2 2.5V17c0 2-1 3-3 3" /></svg>
+      </button>
       {maximized && <button type="button" className="save-toolbar-action" disabled={!editCount || busy} onClick={() => setReviewing(true)} aria-label={tr('导出 {editCount} 处修改', { editCount })} title={tr('导出 {editCount} 处修改', { editCount })}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg>
       </button>}
@@ -459,7 +464,8 @@ function Editor() {
         <span className="save-workspace-file">{model.save.fileName}</span>
       </header>
       <div className="save-workspace-body">
-      {tab === 'map' ? <Suspense fallback={<p>{tr('正在读取地图…')}</p>}><MapPanel model={model} edits={map} names={names} onChange={setMap} /></Suspense> : tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel onMaterials={insertMaterials} model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress} /> : tab === 'raw'
+      {tab === 'map' ? <Suspense fallback={<p>{tr('正在读取地图…')}</p>}><MapPanel model={model} edits={map} names={names} onChange={setMap} /></Suspense> : tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel onMaterials={insertMaterials} model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress}
+          brands={model.sections.find(entry => entry.id === 'brand')?.tables.map(table => <SaveDataTable key={table.id} table={table} drafts={drafts} names={names} onChange={updateField} cards />)} /> : tab === 'raw'
         ? <RawTree model={model} doc={model.doc} drafts={drafts} names={names} onChange={updateField} />
         : tab === 'barn' ? <AnimalsPanel mapEdits={map} progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map, model.doc).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
         : tab === 'items'

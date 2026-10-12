@@ -1,6 +1,6 @@
 import SearchableSelect from '../controls/SearchableSelect';
 import type { MaterialRequest } from '../../lib/saveInventory';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { PROGRESSION, flagEnabled, readEncyclopedia, readSkills, type ProgressEdits, type ProgressToggleGroup } from '../../lib/saveProgress';
 import ShrinePanel from './ShrinePanel';
 import DeliveryPanel from './DeliveryPanel';
@@ -14,8 +14,10 @@ import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { useProgressiveRows } from '../table/useProgressiveRows';
 import { tr } from '../../i18n/active';
 
-export default function ProgressPanel({ model, edits, names, onChange, onReplace, onMaterials }: {
+export default function ProgressPanel({ model, edits, names, onChange, onReplace, onMaterials, brands }: {
   onMaterials: (materials: MaterialRequest[]) => void;
+  /** The crop and livestock brand-name tables, shown as their own view. */
+  brands?: ReactNode;
   model: SaveModel; edits: ProgressEdits; names: SaveNameTables; onChange: (group: ProgressToggleGroup, id: string, value: boolean | undefined) => void; onReplace: (edits: ProgressEdits) => void;
 }) {
   const [tab, setTab] = useState('encyclopedia'), [query, setQuery] = useState(''), [category, setCategory] = useState(''), [filter, setFilter] = useState('all');
@@ -42,8 +44,8 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
     else onChange(group, row.id, value === row.original ? undefined : value);
   };
   return <section className="save-progress">
-    <nav className="save-progress-tabs" aria-label={tr('收集与解锁分类')}>{[['encyclopedia', tr('图鉴')], ['recipes', tr('配方')], ['shrine', tr('神龛技能树')], ['deliveries', tr('交付委托')]].map(([id, name]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setCategory(''); setQuery(''); }}>{name}</button>)}</nav>
-    {tab === 'shrine' ? <ShrinePanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
+    <nav className="save-progress-tabs" aria-label={tr('收集与解锁分类')}>{[['encyclopedia', tr('图鉴')], ['recipes', tr('配方')], ['shrine', tr('神龛技能树')], ['deliveries', tr('交付委托')], ['brands', tr('品牌名')]].map(([id, name]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setCategory(''); setQuery(''); }}>{name}</button>)}</nav>
+    {tab === 'brands' ? brands : tab === 'shrine' ? <ShrinePanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
     <div className="save-progress-toolbar filter-bar">
       <input type="search" aria-label={tr('搜索收集项目')} placeholder={tr('名称、拼音或首字母')} value={query} onChange={event => setQuery(event.target.value)} />
       {tab !== 'skills' && <SearchableSelect aria-label={tr('收集项目分类')} value={category} onChange={event => setCategory(event.target.value)}><option value="">{tr('全部分类')}</option>

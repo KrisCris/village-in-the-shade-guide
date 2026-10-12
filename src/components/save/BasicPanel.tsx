@@ -37,10 +37,6 @@ export default function BasicPanel({ groups, drafts, names, onChange, doc, progr
         {clock && <>
           <p className="save-clock-preview">{seconds && /^\d+$/.test(seconds) ? describeGameTime(BigInt(seconds)) : tr('请输入有效的游戏时间')}</p>
           <GameClockInput value={seconds ?? ''} onChange={value => onChange(clock, value)} />
-          <div className="save-field-row">
-            <span className="save-field-meta"><b>{clock.label}</b></span>
-            <SaveFieldInput field={clock} draft={drafts[clock.offset]} names={names} onChange={onChange} />
-          </div>
         </>}
         {duration.some(entry => entry.field) && <div className="save-play-duration"><h4>{tr('实际游玩时长')}</h4><div className="save-duration-fields">{duration.map(({ unit, field }) => field && <label key={unit}><span>{unit}</span><SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onChange} /></label>)}</div></div>}
       </section>}

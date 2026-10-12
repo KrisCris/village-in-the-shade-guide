@@ -77,7 +77,8 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
   const switchable = containers.filter((container) => container.kind === 'storage' || container.id === SHIPPING_BOX_ID)
     .sort((a, b) => Number(b.id === SHIPPING_BOX_ID) - Number(a.id === SHIPPING_BOX_ID));
   const [tab, setTab] = useState('storage');
-  const [openId, setOpenId] = useState(switchable[0]?.id ?? '');
+  // Open on a box that holds something; the shipping box is usually empty between days.
+  const [openId, setOpenId] = useState(() => (switchable.find(container => container.slots.some(slot => slot.item)) ?? switchable[0])?.id ?? '');
   const [selected, setSelected] = useState<number | null>(null);
 
   const open = switchable.find((container) => container.id === openId) ?? switchable[0];

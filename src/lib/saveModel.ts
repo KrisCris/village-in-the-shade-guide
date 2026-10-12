@@ -120,8 +120,6 @@ const BASIC_GROUPS: { title: string; specs: ScalarSpec[] }[] = [
     specs: [
       { path: 'pPlayerStatus_/p/name_', label: tr('玩家名字'), type: 'string' },
       { path: 'pPlayerStatus_/p/dogName_', label: tr('狗狗名字'), type: 'string' },
-      { path: 'revision_', label: tr('存档修订号'), type: 'string', readOnly: true },
-      { path: 'version_', label: tr('存档版本'), readOnly: true },
     ],
   },
   {

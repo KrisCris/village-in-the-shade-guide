@@ -24,6 +24,7 @@ function QuestStateBadge({ status }: { status: QuestStatus }) {
 export default function QuestsPanel({ model, drafts, onChange }: { model: SaveModel; drafts: Record<number, string>; onChange: (field: SaveField, value: string) => void }) {
   const [search, setSearch] = useState('');
   const [showInternal, setShowInternal] = useState(false);
+  const [statusFilter, setStatusFilter] = useState<QuestStatus | 'all'>('all');
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [headerHeight, setHeaderHeight] = useState(64);
   useEffect(() => {
@@ -43,7 +44,10 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
       return info && state && check ? [{ info, title: questText(info.name, info.nameTranslations) || gameText(info.name, info.nameTranslations), searchText: buildSaveSearchText(questText(info.name, info.nameTranslations), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
     });
   }, [model]);
-  const visible = quests.filter(quest => (showInternal || !quest.internal) && quest.searchText.includes(normalizeSearch(search)));
+  const statusOf = (quest: typeof quests[number]) => questStatus(Number(drafts[quest.state.offset] ?? quest.state.value), Number(drafts[quest.check.offset] ?? quest.check.value), quest.info.steps);
+  const searched = quests.filter(quest => (showInternal || !quest.internal) && quest.searchText.includes(normalizeSearch(search)));
+  const visible = statusFilter === 'all' ? searched : searched.filter(quest => statusOf(quest) === statusFilter);
+  const statusCount = (status: QuestStatus | 'all') => status === 'all' ? searched.length : searched.filter(quest => statusOf(quest) === status).length;
   const selected = visible.find(quest => quest.info.id === selectedId) ?? visible[0];
   const internalCount = quests.filter(quest => quest.internal).length;
 
@@ -55,12 +59,17 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
             <input type="search" placeholder={tr('任务名称、拼音或首字母')} aria-label={tr('搜索任务')} value={search} onChange={event => setSearch(event.target.value)} />
           </label>
+          <div className="save-progress-tabs save-quest-status" role="group" aria-label={tr('任务状态')}>
+            {(['all', 'pending', 'complete', 'hidden'] as const).map(status => <button type="button" key={status} aria-pressed={statusFilter === status} onClick={() => setStatusFilter(status)}>
+              {status === 'all' ? tr('全部') : statusLabel(status)} <small>{statusCount(status)}</small>
+            </button>)}
+          </div>
           <label className="save-quest-filter"><input type="checkbox" checked={showInternal} onChange={event => setShowInternal(event.target.checked)} />{tr('显示教程／内部任务')}</label>
           <small aria-live="polite">{visible.length} {tr('个任务')}{!showInternal && internalCount > 0 ? tr(' · 已隐藏 {internalCount} 个教程／内部任务', { internalCount }) : ''}</small>
         </div>
         <nav className="save-quest-list" aria-label={tr('任务列表')}>
           {visible.map(quest => {
-            const status = questStatus(Number(drafts[quest.state.offset] ?? quest.state.value), Number(drafts[quest.check.offset] ?? quest.check.value), quest.info.steps);
+            const status = statusOf(quest);
             return <button type="button" key={quest.info.id} aria-pressed={selected?.info.id === quest.info.id} onClick={() => setSelectedId(quest.info.id)}>
               <span>{quest.title}</span><QuestStateBadge status={status} />
             </button>;

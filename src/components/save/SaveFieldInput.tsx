@@ -30,7 +30,6 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact 
       <SaveIcon names={names} kind={field.lookup} value={value} size={22} />
       <span className="save-cell-value">{resolved || value || '—'}</span>
       {nameField && <NameCount value={value} />}
-    {resolved && <small className="save-cell-name">ID {value}</small>}
     </span>;
   }
 
