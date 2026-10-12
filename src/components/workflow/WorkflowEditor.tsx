@@ -113,7 +113,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
   const [cropChoice, setCropChoice] = useState("");
   const [panel, setPanel] = useState<
     "nodes" | "resources" | "connections" | "help" | null
-  >(() => (window.innerWidth > 700 ? "nodes" : null));
+  >(() => (window.innerWidth > 700 && !plan.nodes.length ? "nodes" : null));
   const [inspectorOpen, setInspectorOpen] = useState(false);
   const [panelWidth, setPanelWidth] = useState(340);
   const [mode, setMode] = useState<"hand" | "select">("hand");
