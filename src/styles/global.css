@@ -9,6 +9,11 @@ select { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; 
 .quality-selector label { font-size: .88rem; font-weight: 700; }
 button, .button { min-height: 42px; border: 1px solid var(--border); border-radius: 9px; padding: .55rem .8rem; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
 button:hover, .button:hover { border-color: var(--green); }
+/* Table column headers that sort on click (again to flip). */
+button.sort-header { display: inline-flex; align-items: center; gap: .15rem; min-height: 0; padding: 0; border: 0; border-radius: 2px; background: none; color: inherit; font-weight: inherit; text-align: inherit; white-space: nowrap; }
+button.sort-header:hover, [aria-sort] > button.sort-header { color: var(--green); }
+button.sort-header:active { transform: none; }
+button.sort-header:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 button,.button,a.card{transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}button:active,.button:active{transform:translateY(1px)}
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--vermilion) 75%, white); outline-offset: 2px; }
 .page { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); max-width: var(--max); margin: 0 auto; min-height: calc(100vh - 64px); }

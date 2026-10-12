@@ -123,6 +123,15 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
     setSelected(row);
   };
 
+  // Clicking the sorted column flips it; a new column starts A–Z for names and high to low for numbers.
+  const sortBy = (field: SortField) => {
+    if (field === sort) setDirection(direction === 'asc' ? 'desc' : 'asc');
+    else { setSort(field); setDirection(field === 'name' ? 'asc' : 'desc'); }
+  };
+  const timed = kind === 'processes' || kind === 'crops';
+  const header = (label: string, field?: SortField) => <th key={label} aria-sort={field && sort === field ? (direction === 'asc' ? 'ascending' : 'descending') : undefined}>
+    {field ? <button type="button" className="sort-header" onClick={() => sortBy(field)}>{label}<span className="sort-mark" aria-hidden="true">{sort === field ? (direction === 'asc' ? ' ▲' : ' ▼') : ''}</span></button> : label}
+  </th>;
   const seasonText = (row: Entity) => (row.seasons as string[] | undefined)?.map((value) => seasonLabels[value] ? t(seasonLabels[value]) : value).join(t('、'));
   return <>
     {kind === 'fish' && <p className="fishing-hours">{Object.values(timeLabels).map((label) => t(label)).join(' · ')}<br /><small>{t('06:00–07:00 无出没时段记录')}</small><br /><a href={href('/guides/fishing-spots/')}>{t('按季节查看各钓点能钓到的鱼和概率')} →</a></p>}
@@ -137,11 +146,9 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
       </>}
       {kind === 'items' && itemCategoryOptions.length>0 && <label>{t('类别')}<SearchableSelect value={itemCategory} onChange={(event) => setItemCategory(event.target.value)}><option value="">{t('全部类别')}</option>{itemCategoryOptions.map(({id, name}) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label>}
       {kind === 'processes' && <label>{t('机械')}<SearchableSelect value={machine} onChange={(event) => setMachine(event.target.value)}><option value="">{t('全部机械')}</option>{machineOptions.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</SearchableSelect></label>}
-      <label>{t('排序字段')}<SearchableSelect value={sort} onChange={(event) => setSort(parseSort(event.target.value))}><option value="name">{t('名称')}</option><option value="sell">{t('产值')}</option><option value="buy">{t('成本')}</option>{['processes', 'crops'].includes(kind) && <option value="profit">{t('日净收益')}</option>}{kind === 'processes' && <option value="duration">{t('加工时间')}</option>}</SearchableSelect></label>
-      <label>{t('方向')}<SearchableSelect value={direction} onChange={(event) => setDirection(parseDirection(event.target.value))}><option value="asc">{t('升序')}</option><option value="desc">{t('降序')}</option></SearchableSelect></label>
       <b>{t('{count} 条', { count: shown.length })}</b>
     </div>
-    {kind === 'fish' ? <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>{t('名称')}</th><th>{t('季节')}</th><th>{t('钓鱼点')}</th><th>{t('时段')}</th><th>{t('产值')}</th><th>{t('数据 ID')}</th></tr></thead><tbody>{visible.map((row) => {
+    {kind === 'fish' ? <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr>{header(t('名称'), 'name')}{header(t('季节'))}{header(t('钓鱼点'))}{header(t('时段'))}{header(t('产值'), 'sell')}{header(t('数据 ID'))}</tr></thead><tbody>{visible.map((row) => {
       // Spots and periods follow the active filters, so a spring filter lists only where and when it bites in spring.
       const hits = row.appearances?.filter((entry) => (!season || entry.season === season) && (!timePeriod || entry.time_period === timePeriod) && (!fishingLocation || entry.location_id === fishingLocation)) ?? [];
       const places = ((row.locations ?? []) as { location_id: string; name: { zh_hans: string } }[]).filter((place) => hits.some((entry) => entry.location_id === place.location_id));
@@ -155,7 +162,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
         <td className="price">{metricText(metrics.sell, row.quality_eligible ? qualityLabel(quality, t) : t('固定'))}</td>
         <td><code>{row.id}</code></td>
       </tr>;
-    })}</tbody></table></div> : <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr><th>{t('名称')}</th><th>{t('季节 / 类型')}</th><th>{t('成本')}</th><th>{t('产值')}</th><th>{t('时间')}</th><th>{t('日净收益')}</th><th>{t('数据 ID')}</th></tr></thead><tbody>{visible.map((row) => {
+    })}</tbody></table></div> : <div className="table-wrap card" data-scene-total={shown.length}><table><thead><tr>{header(t('名称'), 'name')}{header(t('季节 / 类型'))}{header(t('成本'), 'buy')}{header(t('产值'), 'sell')}{header(t('时间'), timed ? 'duration' : undefined)}{header(t('日净收益'), timed ? 'profit' : undefined)}{header(t('数据 ID'))}</tr></thead><tbody>{visible.map((row) => {
       const metrics = entityMetrics(row, quality, priceIndex);
       const qualitySuffix = row.quality_eligible ? qualityLabel(quality, t) : t('固定');
       const processGroup = row.source_kind === 'processes';

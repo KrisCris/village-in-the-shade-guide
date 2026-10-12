@@ -68,7 +68,7 @@ const seasonData = seasons.map(([season, label]) => {
             <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="24" height="24" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
             {cells.map(({ spot, odds }) => {
               const text = odds.some(Boolean) ? periods.flatMap(([, name], i) => odds[i] ? [`${t(name)} ${percent(odds[i])}`] : []).join(' · ') : t('钓不到');
-              return <td title={`${spotNames.get(spot) ?? spot}：${text}`} aria-label={text}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
+              return <td title={`${spotNames.get(spot) ?? spot}：${text}`} aria-label={text} data-sort={odds.some(Boolean) ? String(odds.reduce((sum, value) => sum + value, 0)) : ''}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
             })}
           </tr>; })}</tbody>
         </table>
@@ -95,7 +95,7 @@ const seasonData = seasons.map(([season, label]) => {
               <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
               {byPeriod.map(map => { const value = map.get(id) ?? 0; return <td style={value ? heat(value) : undefined}>{value ? percent(value) : '—'}</td>; })}
             </tr>; })}
-            <tr class="fish-trash"><th scope="row">{t('杂物')}</th>{trash.map(value => <td>{value ? percent(value) : '—'}</td>)}</tr>
+            <tr class="fish-trash" data-sort-pin="end"><th scope="row">{t('杂物')}</th>{trash.map(value => <td>{value ? percent(value) : '—'}</td>)}</tr>
           </tbody>
         </table>
       </div>
