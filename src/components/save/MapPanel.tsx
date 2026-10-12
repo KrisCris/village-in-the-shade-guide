@@ -122,7 +122,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const eraseLayer = useRef<ClearLayer | null>(null);
   const [selectedCells, setSelectedCells] = useState<number[]>([]);
   const [selection, setSelection] = useState<string[]>([]);
-  const [selectionLimit, setSelectionLimit] = useState(40);
+  // The marquee's full selection, so narrowing it to one kind can be undone.
+  const [selectionBase, setSelectionBase] = useState<{ keys: string[]; cells: number[] }>({ keys: [], cells: [] });
   const [selected, setSelected] = useState<string>(),
     [hover, setHover] = useState<Point | null>(null),
     [selectedPoint, setSelectedPoint] = useState<Point | null>(null);
@@ -350,6 +351,30 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     commit(layers.reduce((draft,l)=>clearMapArea(model.doc,draft,sceneId,selectedCells,selection,l),current.current));
     setSelected(undefined);setSelection([]);setSelectedCells([]);setMessage(tr('选区已批量清理，可撤销。'));
   }
+  /** Selected objects grouped by what they are, most numerous first. */
+  const selectionGroups = useMemo(() => {
+    const keys = new Set(selection), groups = new Map<string, { name: string; sprites: SceneSprite[] }>();
+    for (const s of sprites) if (keys.has(s.key)) {
+      const name = nameOf(s), key = `${s.kind}:${name}`;
+      const group = groups.get(key) ?? groups.set(key, { name, sprites: [] }).get(key)!;
+      group.sprites.push(s);
+    }
+    return [...groups.values()].sort((a, b) => b.sprites.length - a.sprites.length);
+  }, [selection, sprites, names, art]);
+  const tilled = useMemo(() => new Set(ground.map(g => g.id)), [ground]);
+  const selectedFields = selectedCells.filter(id => tilled.has(id));
+  /** Narrow the selection to one kind; crops keep their cells so clearing and maturing still reach them. */
+  function keepGroup(group: { name: string; sprites: SceneSprite[] }) {
+    setSelection(group.sprites.map(s => s.key));
+    setSelectedCells(group.sprites.flatMap(s => s.kind === 'crop' && s.cell !== undefined ? [s.cell] : []));
+    setSelected(undefined);
+    setMessage(tr('已只保留 {name}（{count} 个）。', { name: group.name, count: group.sprites.length }));
+  }
+  function waterSelection() {
+    if (!selectedFields.length) { setMessage(tr('选区内没有田地。')); return; }
+    commit({ ...current.current, cells: { ...current.current.cells, ...Object.fromEntries(selectedFields.map(id => [`${sceneId}:${id}`, paintCell(id, { watered: true })])) } });
+    setMessage(tr('已为 {count} 格田地浇水，可撤销。', { count: selectedFields.length }));
+  }
   function paintSelection(paint: CellPaint) {
     const cells=terrain.filter(c=>selectedCells.includes(c.id)&&(c.mask&1)&&areaAvailable(model.doc,c.area)&&!blocked(c));
     if(!cells.length){setMessage(tr('选区内没有可耕作的空地。'));return;}
@@ -537,7 +562,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
           onCancel={cancelSelection}
           onSelect={(items, cells) => {
             setSelectedCells(cells);
-            setSelectionLimit(40); setSelection(items.map(s => s.key)); setSelected(items[0]?.key);
+            setSelectionBase({ keys: items.map(s => s.key), cells }); setSelection(items.map(s => s.key)); setSelected(undefined);
             setMessage(tr('已框选 {cells} 格、{objects} 个物体，可批量清理。', { cells: cells.length, objects: items.length }));
           }}
           ghost={tool === 'place' ? spriteArt(art, 'object', template, season, undefined, angle) : undefined}
@@ -667,13 +692,32 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
               )}
               {(selection.length > 0 || selectedCells.length > 0) && <div className="farm-multi-selection">
                 <h4>{tr('已框选 {count} 格 · {count2} 个物体', { count: selectedCells.length, count2: selection.length })}</h4>
+                {selectionGroups.length > 0 && <>
+                  <p className="farm-note">{selectionGroups.length > 1 ? tr('点一类只保留它，再批量处理。') : tr('地图上高亮的就是这些。')}</p>
+                  <div className="farm-selection-groups">{selectionGroups.map(group => {
+                    const sprite = group.sprites.find(s => s.art)?.art;
+                    return <button type="button" key={group.name} onClick={() => keepGroup(group)} disabled={selectionGroups.length < 2} title={group.name}>
+                      {sprite ? <TrimmedSprite className="farm-sprite" src={withBase(`/maps/farm/${sprite.file}`)} /> : <span className="farm-sprite farm-no-art" aria-hidden="true">◇</span>}
+                      <span>{group.name}</span><b>×{group.sprites.length}</b>
+                    </button>;
+                  })}</div>
+                  {selection.length < selectionBase.keys.length && <button type="button" onClick={() => { setSelection(selectionBase.keys); setSelectedCells(selectionBase.cells); }}>{tr('回到完整选区')}</button>}
+                </>}
+                {(selectedFields.length > 0 || selectionGroups.some(g => g.sprites[0].kind === 'crop')) && <>
+                  <h4>{tr('作物')}</h4>
+                  <div className="farm-actions">
+                    {selectedFields.length > 0 && <button type="button" onClick={waterSelection}>{tr('浇水')}</button>}
+                    <button type="button" onClick={matureSelection}>{tr('全部成熟')}</button>
+                    <button type="button" onClick={()=>changeTool('plant')}>{tr('在选区种植…')}</button>
+                  </div>
+                </>}
+                {selectedCells.length > 0 && <>
+                  <h4>{tr('整地')}</h4>
+                  <div className="farm-segments" role="group" aria-label={tr('整地')}>{LAND_KINDS.filter(([id]) => id !== 'water').map(([id,label])=><button type="button" key={id} onClick={()=>paintSelection({soil:id==='ridge'?2:id==='canal'?3:1})}>{label}</button>)}</div>
+                  <p className="farm-note">{tr('空地会变成田，已有作物保留；改成水田会清除不能种在水田的作物。')}</p>
+                </>}
+                <h4>{tr('清理')}</h4>
                 <div className="farm-actions"><button type="button" className="farm-danger" onClick={()=>clearSelection('visible')} title={tr('删除选区内当前显示的作物、设施和地板')}>{tr('删除选中内容')}</button><button type="button" onClick={()=>clearSelection('reset')}>{tr('全部恢复平地')}</button></div>
-                <h4>{tr('把选区改为')}</h4>
-                <div className="farm-segments" role="group" aria-label={tr('把选区改为')}>{LAND_KINDS.map(([id,label])=><button type="button" key={id} onClick={()=>paintSelection(id==='water'?{watered:true}:{soil:id==='ridge'?2:id==='canal'?3:1})}>{label}</button>)}</div>
-                <div className="farm-actions"><button type="button" onClick={matureSelection}>{tr('作物／树木全部成熟')}</button><button type="button" onClick={()=>changeTool('plant')}>{tr('在选区种植…')}</button></div>
-                {selection.length > 0 && <div className="farm-selection-list">{sprites.filter(s => selection.includes(s.key)).slice(0, selectionLimit).map(s => <button type="button" key={s.key}
-                  aria-pressed={selected === s.key} onClick={() => setSelected(s.key)}>{nameOf(s)}</button>)}</div>}
-                {selection.length > selectionLimit && <button type="button" onClick={() => setSelectionLimit(n => n + 40)}>{tr('显示更多')}</button>}
                 <button type="button" onClick={() => { setSelection([]); setSelectedCells([]); setSelected(undefined); }}>{tr('取消框选')}</button>
               </div>}
               {selectedPoint && (
