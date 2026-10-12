@@ -19,6 +19,10 @@ import {
 import { withBase } from '../../lib/sitePath';
 import { tr } from '../../i18n/active';
 
+// The game lifts map levels and adds bloom in post-processing; the extracted textures are the
+// ungraded input, so map art gets an approximate lift. Overlays and labels are drawn without it.
+const ART_GRADE = 'brightness(1.18) contrast(1.06) saturate(1.1)';
+
 export interface MapCanvasProps {
   art: MapArt;
   terrain?: typeof FARM_CELLS;
@@ -158,8 +162,10 @@ export default function MapCanvas(props: MapCanvasProps) {
     }
     const background = image(backgroundFile),
       bounds = props.art.bounds;
+    ctx.filter = ART_GRADE;
     if (background)
       ctx.drawImage(background, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
+    ctx.filter = 'none';
     const scenery = sceneryFile && !props.groundOnly ? image(sceneryFile) : undefined;
     const left = camera.x - size.width / 2 / camera.zoom,
       right = camera.x + size.width / 2 / camera.zoom;
@@ -184,15 +190,14 @@ export default function MapCanvas(props: MapCanvasProps) {
     }
     for (const soil of props.ground) {
       const tile = props.art.soils?.[soil.soil];
-      if (tile) {
-        ctx.filter = soil.watered ? 'brightness(.72)' : 'none';
-        drawSprite(tile, soil.x, soil.y);
-        ctx.filter = 'none';
-      }
+      if (tile) drawSprite(tile, soil.x, soil.y, 1, false, soil.watered ? 'brightness(.72)' : '');
       if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
     }
-    if (scenery)
+    if (scenery) {
+      ctx.filter = ART_GRADE;
       ctx.drawImage(scenery, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
+      ctx.filter = 'none';
+    }
     if(props.allowedTerrain) {
       const parity=terrain.length?(Math.round(terrain[0].x/45)+Math.round(terrain[0].y/45))%2:1;
       const layer=restrictedOverlay.current.render(props.allowedTerrain,bounds,camera,size.width,size.height,ratio,parity);
@@ -207,7 +212,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         if (c.mask === 128 && !wallSpots?.has(`${c.x},${c.y}`)) continue;
         diamond(c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
       }
-    function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1, mirror = false) {
+    function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1, mirror = false, shade = '') {
       const start = mirror ? x - sprite.x - sprite.w : x + sprite.x;
       if (
         start + sprite.w < left ||
@@ -219,6 +224,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       const img = image(sprite.file);
       if (img) {
         ctx.globalAlpha = opacity;
+        ctx.filter = `${shade} ${ART_GRADE}`.trim();
         if (mirror) {
           ctx.save();
           ctx.translate(x, 0);
@@ -227,6 +233,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           ctx.restore();
         } else ctx.drawImage(img, x + sprite.x, y + sprite.y, sprite.w, sprite.h);
         ctx.globalAlpha = 1;
+        ctx.filter = 'none';
       }
     }
     for (const sprite of props.sprites) {
