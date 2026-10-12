@@ -1,17 +1,24 @@
 # 游戏数据维护
 
-适用于仓库当前快照 `25311578`。仅在更新或核对游戏数据时使用；运行网站不需要重新提取。
+只在游戏更新或核对数据时需要。浏览和构建网站不需要重新提取。
 
-## 数据来源
+## 数据在哪
 
-- `data/generated/build-25311578/` 是已补充关联信息的结构化快照，不只是基础提取器的原始输出。上一构建 `build-24969282` 及其表结构原样保留，用于比较。
-- `data/sources/game-*.json` 保存地图、游戏规则、食谱传授、交换和家畜等专项解析结果。
-- 构建 `25311578` 起游戏自带简体中文，名称和说明直接使用官方简中；官方缺失时才由繁中转换。日文、繁中、韩文及预留语言槽按原表顺序保留在 `translations` 中，内部 ID 不变。
-- 物品图标由物品表引用图标表、纹理表后裁切，不按名称猜测。角色头像另取发行商人物页，见 [素材来源](assets.md)。
+| 路径 | 内容 |
+| --- | --- |
+| `data/generated/build-25311578/` | 当前快照：基础提取结果加上补充、核对过的关联信息 |
+| `data/generated/build-24969282/` | 上一构建的快照和表结构，留作对照，不再更新 |
+| `data/schemas/build-25311578/` | 核对过的表字段偏移 |
+| `data/sources/game-*.json` | 专项解析：地图、游戏规则、钓鱼、采石场、食谱传授、交换、家畜、设备容量、存档编辑器目录等 |
+| `data/sources/` 其余文件 | 站点素材来源、官方头像来源等参考数据 |
 
-## 安全核对流程
+构建 `25311578` 起游戏自带简体中文，名称和说明直接用官方简中；官方缺失时才从繁中转换。日文、繁中、韩文和预留语言槽按原表顺序保存在 `translations` 中，内部 ID 不变。
 
-需要 Python 3.11+、uv 和自己的游戏安装。以下命令经当前 CLI 参数核对；更换游戏构建时，需要先确认对应字段结构，不能直接沿用旧偏移。
+`npm run build:data`（`tools/build-site-data.ts`）把快照和专项数据整理成网站用的 JSON，`npm run dev`、`npm test`、`npm run build` 都会先运行它。
+
+## 提取流程
+
+需要 Python 3.11+、uv 和自己的游戏安装。所有工具只读游戏文件，不修改游戏或存档。
 
 ```powershell
 uv sync --extra dev
@@ -19,23 +26,40 @@ $gameDir = '你的游戏安装目录'
 uv run honogurashi-data verify-schemas --game-dir $gameDir --build-id 25311578
 uv run honogurashi-data extract --game-dir $gameDir --build-id 25311578 --output data/raw/review-25311578
 uv run honogurashi-data audit data/raw/review-25311578
-```
-
-提取到被忽略的审阅目录，**不要直接覆盖正式快照**。新构建增加第七个语言槽后，多数表的标量字段和嵌套列表步长都会移动，`data/schemas/build-25311578/` 记录了核对过的偏移。基础提取并不重建所有专项数据；应比较变化、核对引用和单位后，再有选择地更新正式文件。原始归档和存档不提交。
-
-验证物品图标时也先写入本地审阅目录：
-
-```powershell
 uv run honogurashi-data extract-icons --game-dir $gameDir --snapshot data/raw/review-25311578 --output output/review-icons
 ```
 
-只读提取会按工具读取游戏主归档及所需子归档，不修改游戏或存档。专项脚本的输入、输出及构建假设需分别检查，不能把整个 tools 目录当成一键更新流水线。
+`honogurashi-data` 还有 `diff`（比较两个快照）、`inspect-archive`、`inspect-table` 和 `probe` 等子命令，用于研究表结构。
 
-## 更新后的检查
+提取结果先放进被忽略的审阅目录，**不要直接覆盖正式快照**。基础提取不会重建所有专项数据，需要比较变化、核对引用和单位后，再有选择地更新正式文件。
+
+## 换新构建时
+
+游戏新增语言槽或改表后，多数表的字段和嵌套列表步长都会移动。先用 `verify-schemas` 确认结构，必要时在 `data/schemas/` 下新建该构建的偏移记录，不能沿用旧偏移。
+
+## 专项工具
+
+`tools/extract-*.py` 各自负责一类数据，针对特定构建写成，输入、输出和假设要逐个检查，不能当作一键更新流水线。
+
+- 存档编辑器、图像、设备容量和农田相关脚本用 `--game-dir`（或 `--game`）指定游戏目录。
+- 地图标记、探索点、钓鱼、采石场、规则、经济、食谱和外观分组脚本把游戏路径写在脚本开头，默认是作者本机的 Steam 目录，运行前先改成自己的路径。它们直接写入 `data/sources/` 下对应文件，运行前确认工作区干净，运行后用 `git diff` 核对。
+
+| 类别 | 工具 |
+| --- | --- |
+| 地图与探索 | `extract-map-markers.py`、`extract-exploration-markers.py`、`extract-farmland.py`、`extract-quarry.py`、`extract-fishing.py` |
+| 规则与经济 | `extract-game-rules.py`、`extract-machine-capacities.py`、`extract-livestock-products.py`、`extract-shrine-materials.py`、`extract-kappa-exchange.py`、`extract-night-exchanges.py` |
+| 食谱与外观 | `extract-recipe-documents.py`、`extract-recipe-lessons.py`、`extract-appearance-groups.py` |
+| 存档编辑器 | `extract-save-editor-rules.py`、`extract-save-appearance.py`、`extract-save-unlocks.py`、`extract-save-v2-catalogs.py`、`extract-save-map.py`、`extract-save-editor-icons.py` |
+| 图像 | `extract-map-art.py`、`extract-scenery.py`、`extract-portrait-models.py`、`extract-portrait-options.py`；见 [素材说明](assets.md) |
+| 研究 | `inspect-lua54.py`、`save_format.py`、`save-probes/` |
+
+## 更新后检查
 
 ```sh
 uv run pytest
 npm run verify
 ```
 
-同时抽查受影响物品的图标、商店条件、配方和反向用途。价格字段本身不能证明物品可购买；加工增值使用原料直接出售的机会成本，不等于从种子开始种植的总收益。完整限制见 [内容覆盖说明](content-coverage.md)。
+再抽查受影响物品的图标、商店条件、配方和反向用途。价格字段不能证明物品可以购买；加工增值按原料直接出售的机会成本计算，不等于从种子开始的总收益。限制见 [内容覆盖说明](content-coverage.md)，具体字段的引用链见 [`data-evidence/`](data-evidence/)。
+
+原始归档和存档不提交。
