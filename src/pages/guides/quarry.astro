@@ -125,15 +125,20 @@ const rockRows = Object.entries(rocks).map(([id, rock]) => {
   </details>
 </BaseLayout>
 <script>
-  for (const group of document.querySelectorAll<HTMLElement>('.quarry-mode')) {
-    const table = group.nextElementSibling?.querySelector('table');
-    group.addEventListener('click', event => {
-      const button = (event.target as HTMLElement).closest('button');
-      if (!button || !table) return;
-      for (const other of group.querySelectorAll('button')) other.setAttribute('aria-pressed', String(other === button));
-      table.dataset.mode = button.dataset.mode;
-    });
-  }
+  import { onPageMount } from '../../lib/pageLifecycle';
+  // The client router runs this module once; wire the toggles again on every visit to the page.
+  const dispose = onPageMount(() => {
+    for (const group of document.querySelectorAll<HTMLElement>('.quarry-mode')) {
+      const table = group.nextElementSibling?.querySelector('table');
+      group.addEventListener('click', event => {
+        const button = (event.target as HTMLElement).closest('button');
+        if (!button || !table) return;
+        for (const other of group.querySelectorAll('button')) other.setAttribute('aria-pressed', String(other === button));
+        table.dataset.mode = button.dataset.mode;
+      });
+    }
+  });
+  if (import.meta.hot) import.meta.hot.dispose(dispose);
 </script>
 <style>
   p { line-height: 1.8; }
