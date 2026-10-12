@@ -199,9 +199,12 @@ export default function MapCanvas(props: MapCanvasProps) {
       ctx.save();ctx.setTransform(ratio,0,0,ratio,0,0);
       ctx.drawImage(layer,0,0,size.width,size.height);ctx.restore();
     }
+    // Wall-only cells (mask 128) hold hanging decorations; they lie over the wall art, so only show them while placing one.
+    const wallSpots = props.allowedTerrain && new Set(props.allowedTerrain.map((c) => `${c.x},${c.y}`));
     if (props.grid && camera.zoom > 0.12)
       for (const c of terrain) {
         if (c.x < left - 45 || c.x > right + 45 || c.y < top - 45 || c.y > bottom + 45) continue;
+        if (c.mask === 128 && !wallSpots?.has(`${c.x},${c.y}`)) continue;
         diamond(c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
       }
     function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1, mirror = false) {
