@@ -267,9 +267,16 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
     if(!overlaps)continue;
     if(spec.building && o.movable && !o.spec?.building)continue;
     if(spec.floor && o.spec?.floor && Math.hypot(o.x-target.x,o.y-target.y)<1)return tr('这里已有地板，请先清除地板层。');
+    // Facilities may stand on a floor, but a floor is not slid under something already standing there.
+    if(spec.floor && !o.spec?.floor)return tr('这里有设施或树木，请先清除再铺地板。');
     if(spec.floor || o.spec?.floor || fs.includes('OVERLAPABLE') || o.spec?.features.includes('OVERLAPABLE'))continue;
     if(fs.includes('PLACEMENT_IGNORE_COLLISION'))continue;
     return tr('物体占地与现有设施重叠。');
+  }
+  if(spec.floor) {
+    const saved=mapCells(doc).find(c=>c.id===target.id),edit=edits.cells?.[`${placement.scene}:${target.id}`];
+    if(edit?.crop!==undefined?edit.crop:saved?.crop)return tr('这里有作物，请先清除再铺地板。');
+    if(edit?.soil??saved?.soil)return tr('这里是田地，请先恢复平地再铺地板。');
   }
   if(!spec.floor && !spec.building && !fs.includes('TREE')) for(const c of mapCells(doc)) {
     const edit=edits.cells?.[`${placement.scene}:${c.id}`];

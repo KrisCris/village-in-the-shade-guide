@@ -110,6 +110,17 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     const water={...clear,cells:{...clear.cells,[`${scene}:${land.id}`]:{soil:3,crop:null}}};
     expect(placementProblem(model.doc,water,{scene,cell:land.id,template:carpet.id})).toContain('水田');
   });
+  it('keeps floors off crops, tilled fields and standing objects, but lays them on cleared ground', () => {
+    const floor=MAP_DATA.objects.find(o=>o.floor&&o.category==='floor')!;
+    const lay=(edits:Parameters<typeof placementProblem>[1],cell:number)=>placementProblem(model.doc,edits,{scene,cell,template:floor.id});
+    const crop=mapCells(model.doc).find(c=>c.crop)!, field=mapCells(model.doc).find(c=>c.soil&&!c.crop)!;
+    expect(lay({},crop.id)).toContain('作物');
+    expect(lay({},field.id)).toContain('田地');
+    const farm=new Set(sceneCells(scene).filter(c=>c.mask&2).map(c=>c.id));
+    const standing=mapObjects(model.doc).find(o=>o.movable&&o.spec&&!o.spec.floor&&!o.spec.building&&!o.parent&&farm.has(landId(o.x,o.y)))!;
+    expect(lay({},landId(standing.x,standing.y))).toContain('设施');
+    expect(lay(clearMapArea(model.doc,{},scene,[field.id],[],'reset'),field.id)).toBeNull();
+  });
   it('serializes water fields and native growth stages, including clearing an edited crop', () => {
     const cell=mapCells(model.doc).find(c=>c.crop>0&&c.crop<100&&sceneCells(scene).some(t=>t.id===c.id&&(t.mask&1)))!,key=`${scene}:${cell.id}`;
     const plant={cells:{[key]:{crop:63,soil:3,watered:true}}};

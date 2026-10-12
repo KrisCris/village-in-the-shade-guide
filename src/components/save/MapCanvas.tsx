@@ -69,6 +69,8 @@ export interface MapCanvasProps {
   onHover: (point: Point | null) => void;
   onChoose: (point: Point, sprite?: SceneSprite) => void;
   onStroke: (start: boolean) => void;
+  /** Dragging with the place tool lays one per cell (floors and paths). */
+  dragPlace?: boolean;
 }
 
 export default function MapCanvas(props: MapCanvasProps) {
@@ -447,7 +449,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       if (multiTouch.current) return;
     } else if (gesture.current) return;
     const pan = props.tool === 'pan' || space.current || e.button === 1;
-    const paint = !pan && !['inspect', 'place'].includes(props.tool);
+    const paint = !pan && (props.tool === 'place' ? !!props.dragPlace : props.tool !== 'inspect');
     const p = position(e);
     gesture.current = { id: e.pointerId, touch, start: p, points: [p], x: e.clientX, y: e.clientY,
       lastX: e.clientX, lastY: e.clientY, pan, paint, moved: false, lastCell: pickCell(p)?.id };
