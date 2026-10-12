@@ -100,7 +100,7 @@ for row in t.records:
 write('placements', dict(source='livestockplacement.dat/mapgroup.dat; historical build24969282 native 0x14013BB50/0x14013AD30 availability, 0x1401050A0 base position', placements=placements))
 
 t = table('quest')
-quests = [dict(id=u64(row, 0), name=string(t, row, 68), description=string(t, row, 180),
+quests = [dict(id=u64(row, 0), code=string(t, row, 8), name=string(t, row, 68), description=string(t, row, 180),
     nameTranslations=localized(t,row,20), descriptionTranslations=localized(t,row,132),
     steps=[dict(name=string(t, row, 388 + index * 60), nameTranslations=localized(t,row,340+index*60),
                 level=u32(row, 396 + index * 60)) for index in range(u32(row, 336))]) for row in t.records]

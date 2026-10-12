@@ -7,7 +7,7 @@ import { readSigned } from '../../lib/ser';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { gameText } from '../../lib/saveText';
 import { tr } from '../../i18n/active';
-import { questStatus, type QuestStatus } from '../../lib/saveQuests';
+import { questStatuses, type QuestStatus } from '../../lib/saveQuests';
 
 // Internal quests are marked by a leading tag in the Chinese name; display uses the page language.
 const questText = (text: string, translations?: Record<string, string>) => gameText(text, translations).replace(/<[^>]+>/g, '').trim();
@@ -44,7 +44,12 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
       return info && state && check ? [{ info, title: questText(info.name, info.nameTranslations) || gameText(info.name, info.nameTranslations), searchText: buildSaveSearchText(questText(info.name, info.nameTranslations), String(info.id)), internal: /^\s*<[^>]+>/.test(info.name), state: rawFieldFor(model.doc, state)!, check: rawFieldFor(model.doc, check)! }] : [];
     });
   }, [model]);
-  const statusOf = (quest: typeof quests[number]) => questStatus(Number(drafts[quest.state.offset] ?? quest.state.value), Number(drafts[quest.check.offset] ?? quest.check.value), quest.info.steps);
+  const statuses = useMemo(() => {
+    const entries = quests.map(quest => ({ quest, code: quest.info.code, state: Number(drafts[quest.state.offset] ?? quest.state.value), check: Number(drafts[quest.check.offset] ?? quest.check.value), steps: quest.info.steps }));
+    const result = questStatuses(entries);
+    return new Map(entries.map(entry => [entry.quest, result.get(entry)!]));
+  }, [quests, drafts]);
+  const statusOf = (quest: typeof quests[number]) => statuses.get(quest)!;
   const searched = quests.filter(quest => (showInternal || !quest.internal) && quest.searchText.includes(normalizeSearch(search)));
   const visible = statusFilter === 'all' ? searched : searched.filter(quest => statusOf(quest) === statusFilter);
   const statusCount = (status: QuestStatus | 'all') => status === 'all' ? searched.length : searched.filter(quest => statusOf(quest) === status).length;
@@ -77,13 +82,14 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
           {!visible.length && <p className="save-quest-empty">{tr('没有匹配的任务，试试其他关键词或调整筛选。')}</p>}
         </nav>
       </aside>
-      {selected ? <QuestDetail key={selected.info.id} quest={selected} drafts={drafts} onChange={onChange} /> : <div className="save-quest-detail save-quest-empty-detail"><p>{tr('选择任务后，在这里查看和修改进度。')}</p></div>}
+      {selected ? <QuestDetail key={selected.info.id} quest={selected} status={statusOf(selected)} drafts={drafts} onChange={onChange} /> : <div className="save-quest-detail save-quest-empty-detail"><p>{tr('选择任务后，在这里查看和修改进度。')}</p></div>}
     </div>
   </section>;
 }
 
-function QuestDetail({ quest: { info, title, state, check }, drafts, onChange }: {
+function QuestDetail({ quest: { info, title, state, check }, status, drafts, onChange }: {
   quest: { info: typeof data.quests[number]; title: string; state: SaveField; check: SaveField };
+  status: QuestStatus;
   drafts: Record<number, string>;
   onChange: (field: SaveField, value: string) => void;
 }) {
@@ -92,7 +98,7 @@ function QuestDetail({ quest: { info, title, state, check }, drafts, onChange }:
   const max = Math.max(0, ...levels);
   const value = levels.includes(current) ? current : 'original';
   return <article className="save-quest-detail" aria-label={tr('当前任务详情')}>
-    <header className="save-quest-detail-header"><h3>{title}</h3><QuestStateBadge status={questStatus(currentState, current, info.steps)} /></header>
+    <header className="save-quest-detail-header"><h3>{title}</h3><QuestStateBadge status={status} /></header>
     <div className="save-quest-detail-body">
       {info.description && info.description !== UNUSED_TEXT && <p className="save-quest-description">{questText(info.description, info.descriptionTranslations)}</p>}
       <div className="save-quest-controls">

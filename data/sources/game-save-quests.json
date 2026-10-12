@@ -3,6 +3,7 @@
   "quests": [
     {
       "id": 1,
+      "code": "QUEST_ID_CHAIN_GRAND_GOAL",
       "name": "成为彼津村的一员。",
       "description": "林所说的生活目标。",
       "nameTranslations": {
@@ -27,6 +28,7 @@
     },
     {
       "id": 2,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_01",
       "name": "规矩之一，夜间十一点后禁止外出。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -65,6 +67,7 @@
     },
     {
       "id": 3,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_02",
       "name": "规矩之二，要为村子尽一份力。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -142,6 +145,7 @@
     },
     {
       "id": 4,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_03",
       "name": "规矩之三，别靠近陌生人。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -349,6 +353,7 @@
     },
     {
       "id": 5,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_04",
       "name": "规矩之四，别揭露他人秘密。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -478,6 +483,7 @@
     },
     {
       "id": 6,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_05",
       "name": "规矩之五，不得擅自出村。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -555,6 +561,7 @@
     },
     {
       "id": 7,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_06",
       "name": "规矩之六，别回应山里传来的声音。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -645,6 +652,7 @@
     },
     {
       "id": 8,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_07",
       "name": "规矩之七，别寻找遗失的物品。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -761,6 +769,7 @@
     },
     {
       "id": 9,
+      "code": "QUEST_ID_CHAIN_VILLAGE_RULES_08",
       "name": "规矩之八，愿望需要相应的代价。",
       "description": "流传于彼津村，必须遵守的规矩之一。",
       "nameTranslations": {
@@ -838,6 +847,7 @@
     },
     {
       "id": 10,
+      "code": "QUEST_ID_CHAIN_CONTROLLED_VILLAGER_01",
       "name": "？？？？？？",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -862,6 +872,7 @@
     },
     {
       "id": 11,
+      "code": "QUEST_ID_HUNTER_01",
       "name": "帮忙驹子",
       "description": "交出帮忙券，接下了驹子的委托。",
       "nameTranslations": {
@@ -926,6 +937,7 @@
     },
     {
       "id": 12,
+      "code": "QUEST_ID_ORPHAN_01",
       "name": "帮忙帷",
       "description": "交出帮忙券，接下了帷的委托。",
       "nameTranslations": {
@@ -990,6 +1002,7 @@
     },
     {
       "id": 13,
+      "code": "QUEST_ID_BOY_01",
       "name": "帮忙堇怜",
       "description": "交出帮忙券，接下了堇怜的委托。",
       "nameTranslations": {
@@ -1054,6 +1067,7 @@
     },
     {
       "id": 14,
+      "code": "QUEST_ID_STREET_VENDOR_01",
       "name": "帮忙琪娜娜",
       "description": "交出帮忙券，接下了琪娜娜的委托。",
       "nameTranslations": {
@@ -1118,6 +1132,7 @@
     },
     {
       "id": 15,
+      "code": "QUEST_ID_GIRL_01",
       "name": "帮忙洋",
       "description": "交出帮忙券，接下了洋的委托。",
       "nameTranslations": {
@@ -1182,6 +1197,7 @@
     },
     {
       "id": 16,
+      "code": "QUEST_ID_GENERAL_STORE_MASTER_01",
       "name": "帮忙茶梅",
       "description": "交出帮忙券，接下了茶梅的委托。",
       "nameTranslations": {
@@ -1246,6 +1262,7 @@
     },
     {
       "id": 17,
+      "code": "QUEST_ID_YOUNG_MAN_01",
       "name": "帮忙裕太",
       "description": "交出帮忙券，接下了裕太的委托。",
       "nameTranslations": {
@@ -1310,6 +1327,7 @@
     },
     {
       "id": 18,
+      "code": "QUEST_ID_OLD_MAN_01",
       "name": "帮忙六角",
       "description": "交出帮忙券，接下了六角的委托。",
       "nameTranslations": {
@@ -1361,6 +1379,7 @@
     },
     {
       "id": 19,
+      "code": "QUEST_ID_SECRETARY_01",
       "name": "帮忙今野",
       "description": "交出帮忙券，接下了今野的委托。",
       "nameTranslations": {
@@ -1425,6 +1444,7 @@
     },
     {
       "id": 20,
+      "code": "QUEST_ID_FEMALE_DOCTOR_01",
       "name": "帮忙莲实",
       "description": "交出帮忙券，接下了莲实的委托。",
       "nameTranslations": {
@@ -1489,6 +1509,7 @@
     },
     {
       "id": 21,
+      "code": "QUEST_ID_CARPENTER_01",
       "name": "帮忙木助",
       "description": "交出帮忙券，接下了木助的委托。",
       "nameTranslations": {
@@ -1553,6 +1574,7 @@
     },
     {
       "id": 22,
+      "code": "QUEST_ID_WOODCUTTER_01",
       "name": "帮忙四郎治",
       "description": "交出帮忙券，接下了四郎治的委托。",
       "nameTranslations": {
@@ -1630,6 +1652,7 @@
     },
     {
       "id": 23,
+      "code": "QUEST_ID_TUTORIAL_01",
       "name": "<cmd CMD_UNIT_MOVE_STICK>移动",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1654,6 +1677,7 @@
     },
     {
       "id": 24,
+      "code": "QUEST_ID_TUTORIAL_02",
       "name": "<cmd CMD_INTERACTION_HARVEST>动作",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1678,6 +1702,7 @@
     },
     {
       "id": 25,
+      "code": "QUEST_ID_TUTORIAL_03",
       "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1702,6 +1727,7 @@
     },
     {
       "id": 26,
+      "code": "QUEST_ID_TUTORIAL_04",
       "name": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋转",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1726,6 +1752,7 @@
     },
     {
       "id": 27,
+      "code": "QUEST_ID_TUTORIAL_05",
       "name": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移动",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1750,6 +1777,7 @@
     },
     {
       "id": 28,
+      "code": "QUEST_ID_TUTORIAL_06",
       "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃2",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1774,6 +1802,7 @@
     },
     {
       "id": 29,
+      "code": "QUEST_ID_TUTORIAL_07",
       "name": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃3",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1798,6 +1827,7 @@
     },
     {
       "id": 32,
+      "code": "QUEST_ID_TUTORIAL_10",
       "name": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地图",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1822,6 +1852,7 @@
     },
     {
       "id": 33,
+      "code": "QUEST_ID_CHAPTER_01_01",
       "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至树木处",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1846,6 +1877,7 @@
     },
     {
       "id": 34,
+      "code": "QUEST_ID_CHAPTER_01_02",
       "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧头砍倒树木",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1870,6 +1902,7 @@
     },
     {
       "id": 35,
+      "code": "QUEST_ID_CHAPTER_01_03",
       "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字镐敲碎所有石头",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1894,6 +1927,7 @@
     },
     {
       "id": 36,
+      "code": "QUEST_ID_CHAPTER_01_04",
       "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至田地",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1918,6 +1952,7 @@
     },
     {
       "id": 37,
+      "code": "QUEST_ID_CHAPTER_01_05",
       "name": "<cmd CMD_UNIT_ACTION -offsetY -5>使用锄头锄地",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1942,6 +1977,7 @@
     },
     {
       "id": 38,
+      "code": "QUEST_ID_CHAPTER_01_06",
       "name": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移动选择要翻整的位置",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1966,6 +2002,7 @@
     },
     {
       "id": 39,
+      "code": "QUEST_ID_CHAPTER_01_07",
       "name": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播种",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -1990,6 +2027,7 @@
     },
     {
       "id": 40,
+      "code": "QUEST_ID_CHAPTER_01_08",
       "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至水边",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2014,6 +2052,7 @@
     },
     {
       "id": 41,
+      "code": "QUEST_ID_CHAPTER_01_09",
       "name": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶汲水",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2038,6 +2077,7 @@
     },
     {
       "id": 42,
+      "code": "QUEST_ID_CHAPTER_01_10",
       "name": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2062,6 +2102,7 @@
     },
     {
       "id": 43,
+      "code": "QUEST_ID_CHAPTER_01_11",
       "name": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶对种子浇水",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2086,6 +2127,7 @@
     },
     {
       "id": 44,
+      "code": "QUEST_ID_CHAPTER_01_12",
       "name": "用心照料种下的蔬菜",
       "description": "被木助拜托帮忙了。",
       "nameTranslations": {
@@ -2110,6 +2152,7 @@
     },
     {
       "id": 45,
+      "code": "QUEST_ID_CHAPTER_01_13",
       "name": "对田地浇水",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2134,6 +2177,7 @@
     },
     {
       "id": 46,
+      "code": "QUEST_ID_CHAPTER_01_14",
       "name": "收获作物",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2158,6 +2202,7 @@
     },
     {
       "id": 47,
+      "code": "QUEST_ID_CHAPTER_01_15",
       "name": "将蔬菜供奉于祭坛吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2182,6 +2227,7 @@
     },
     {
       "id": 48,
+      "code": "QUEST_ID_TUTORIAL_11",
       "name": "试着吹手哨吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2206,6 +2252,7 @@
     },
     {
       "id": 49,
+      "code": "QUEST_ID_TUTORIAL_12",
       "name": "试着照乐谱吹手哨",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2230,6 +2277,7 @@
     },
     {
       "id": 50,
+      "code": "QUEST_ID_FIRST_MEETING_00",
       "name": "向村民打招呼吧　0/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2254,6 +2302,7 @@
     },
     {
       "id": 51,
+      "code": "QUEST_ID_FIRST_MEETING_01",
       "name": "向村民打招呼吧　1/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2278,6 +2327,7 @@
     },
     {
       "id": 52,
+      "code": "QUEST_ID_FIRST_MEETING_02",
       "name": "向村民打招呼吧　2/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2302,6 +2352,7 @@
     },
     {
       "id": 53,
+      "code": "QUEST_ID_FIRST_MEETING_03",
       "name": "向村民打招呼吧　3/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2326,6 +2377,7 @@
     },
     {
       "id": 54,
+      "code": "QUEST_ID_FIRST_MEETING_04",
       "name": "向村民打招呼吧　4/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2350,6 +2402,7 @@
     },
     {
       "id": 55,
+      "code": "QUEST_ID_FIRST_MEETING_05",
       "name": "向村民打招呼吧　5/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2374,6 +2427,7 @@
     },
     {
       "id": 56,
+      "code": "QUEST_ID_FIRST_MEETING_06",
       "name": "向村民打招呼吧　6/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2398,6 +2452,7 @@
     },
     {
       "id": 57,
+      "code": "QUEST_ID_FIRST_MEETING_07",
       "name": "向村民打招呼吧　7/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2422,6 +2477,7 @@
     },
     {
       "id": 58,
+      "code": "QUEST_ID_FIRST_MEETING_08",
       "name": "向村民打招呼吧　8/8",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2446,6 +2502,7 @@
     },
     {
       "id": 60,
+      "code": "QUEST_ID_CHAPTER_01_18",
       "name": "吃掉笔头菜",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2470,6 +2527,7 @@
     },
     {
       "id": 61,
+      "code": "QUEST_ID_CHAPTER_01_19",
       "name": "查看商品",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2494,6 +2552,7 @@
     },
     {
       "id": 62,
+      "code": "QUEST_ID_CHAPTER_01_20",
       "name": "将想要的商品记下来吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2518,6 +2577,7 @@
     },
     {
       "id": 63,
+      "code": "QUEST_ID_CHAPTER_01_21",
       "name": "检视笔记吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2542,6 +2602,7 @@
     },
     {
       "id": 65,
+      "code": "QUEST_ID_CHAPTER_02_03",
       "name": "把墓地打扫干净吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2593,6 +2654,7 @@
     },
     {
       "id": 85,
+      "code": "QUEST_ID_CHAPTER_04_09",
       "name": "若帷遇上危险，保护好她",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2617,6 +2679,7 @@
     },
     {
       "id": 86,
+      "code": "QUEST_ID_CHAPTER_04_10",
       "name": "再继续修缮祠堂吧",
       "description": "把位于岔路的祠堂修得更气派吧。",
       "nameTranslations": {
@@ -2641,6 +2704,7 @@
     },
     {
       "id": 87,
+      "code": "QUEST_ID_CHAPTER_05_00_01",
       "name": "试着使用鵺皮",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2665,6 +2729,7 @@
     },
     {
       "id": 88,
+      "code": "QUEST_ID_TUTORIAL_16",
       "name": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移动",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2689,6 +2754,7 @@
     },
     {
       "id": 89,
+      "code": "QUEST_ID_CHAPTER_05_00_02",
       "name": "<cmd CMD_INTERACTION_SQUARE>尝试使用劈岩柴刀",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2713,6 +2779,7 @@
     },
     {
       "id": 90,
+      "code": "QUEST_ID_CHAPTER_05_00_03",
       "name": "尝试使用奇迹的呼笛",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2737,6 +2804,7 @@
     },
     {
       "id": 92,
+      "code": "QUEST_ID_CHAPTER_05_00_04_DREAM",
       "name": "带着神器回到大洞",
       "description": "想起了某一天许下的约定。",
       "nameTranslations": {
@@ -2761,6 +2829,7 @@
     },
     {
       "id": 93,
+      "code": "QUEST_ID_CHAPTER_05_00_05",
       "name": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斩帷",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2785,6 +2854,7 @@
     },
     {
       "id": 103,
+      "code": "QUEST_ID_CHAPTER_06_01",
       "name": "移动至柴刀处",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2809,6 +2879,7 @@
     },
     {
       "id": 104,
+      "code": "QUEST_ID_CHAPTER_06_02",
       "name": "捡起柴刀",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2833,6 +2904,7 @@
     },
     {
       "id": 109,
+      "code": "QUEST_ID_CHAPTER_06_07",
       "name": "移开岩石",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2857,6 +2929,7 @@
     },
     {
       "id": 110,
+      "code": "QUEST_ID_CHAPTER_06_08",
       "name": "移开岩石吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2881,6 +2954,7 @@
     },
     {
       "id": 112,
+      "code": "QUEST_ID_SUB_001",
       "name": "试着制作收纳箱吧",
       "description": "林说这个很方便，建议制作。",
       "nameTranslations": {
@@ -2919,6 +2993,7 @@
     },
     {
       "id": 113,
+      "code": "QUEST_ID_SUB_002",
       "name": "试着制作兵粮丸吧",
       "description": "据莲实所说，这是以前的应急粮食。",
       "nameTranslations": {
@@ -2957,6 +3032,7 @@
     },
     {
       "id": 114,
+      "code": "QUEST_ID_HOLIDAY_NOTICE_FAIR",
       "name": "AM 10:00　评鉴会",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -2981,6 +3057,7 @@
     },
     {
       "id": 115,
+      "code": "QUEST_ID_HOLIDAY_NOTICE_SPRING",
       "name": "AM 10:00　赏花",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -3005,6 +3082,7 @@
     },
     {
       "id": 116,
+      "code": "QUEST_ID_HOLIDAY_NOTICE_SUMMER",
       "name": "PM 4:00　庙会日",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -3029,6 +3107,7 @@
     },
     {
       "id": 117,
+      "code": "QUEST_ID_HOLIDAY_NOTICE_AUTUMN",
       "name": "AM 10:00　收获祭典",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -3053,6 +3132,7 @@
     },
     {
       "id": 118,
+      "code": "QUEST_ID_HOLIDAY_NOTICE_WINTER",
       "name": "PM 8:00　年终祭典",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
@@ -3077,6 +3157,7 @@
     },
     {
       "id": 119,
+      "code": "QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST",
       "name": "修复岔路祠堂的委托",
       "description": "修好位于岔路的破旧祠堂吧。",
       "nameTranslations": {
@@ -3141,6 +3222,7 @@
     },
     {
       "id": 120,
+      "code": "QUEST_ID_CHAIN_FIND_SACRED",
       "name": "寻找三件神器",
       "description": "若想击退土地神，必须凑齐三件神器。",
       "nameTranslations": {
