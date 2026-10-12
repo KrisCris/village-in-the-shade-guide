@@ -28,6 +28,10 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
+      - name: Unpack encrypted save fixtures
+        run: bash tools/save-fixtures.sh unpack
+        env:
+          SAVE_FIXTURES_KEY: ${{ secrets.SAVE_FIXTURES_KEY }}
       - name: Check data, tests and types
         run: |
           npm run content:check

@@ -49,4 +49,4 @@ Prefer focused commits such as `fix(save-editor): normalize search` or `feat(wor
 
 ## Data & Agent Safety
 
-Game data is authoritative; AppMedia is reference material only. Never commit saves, secrets, raw archives, or private plans. Keep scratch output in ignored `output/` or `.local/`. Preserve verified snapshots and asset attribution. Prefer available codebase graph tools for structural discovery, validate coverage, and inspect source when coverage is incomplete.
+Game data is authoritative; AppMedia is reference material only. Never commit saves, secrets, raw archives, or private plans; the only save copy in Git is the encrypted `tests/fixtures/gamesave.tar.gz.enc` (see `tests/gamesave/README.md`). Keep scratch output in ignored `output/` or `.local/`. Preserve verified snapshots and asset attribution. Prefer available codebase graph tools for structural discovery, validate coverage, and inspect source when coverage is incomplete.
