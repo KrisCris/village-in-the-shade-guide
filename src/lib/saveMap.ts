@@ -246,7 +246,7 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   const specialMask=fs.includes('PLACEMENT_FISHING')?256:fs.includes('PLACEMENT_BIND_TRAP')?512:fs.includes('PLACEMENT_BOX_TRAP')?1024:fs.includes('PLACEMENT_SPRINKLING_BAIT')?2048:0;
   if(specialMask&&(!(target.mask&specialMask)||(target.mask&4096)&&fs.includes('TRAP')))return fs.includes('PLACEMENT_FISHING')?tr('捕蟹笼只能放在允许设笼的钓鱼水域。'):tr('这里不是这种陷阱或鱼饵的可放置地点。');
   const soil=edits.cells?.[`${placement.scene}:${target.id}`]?.soil??mapCells(doc).find(c=>c.id===target.id)?.soil;
-  if(soil===3&&!spec.building&&!fs.includes('SCARECROW'))return tr('水田内不能放置这类设施，请先恢复平地。');
+  if(soil===3&&!spec.building&&!spec.floor&&!fs.includes('SCARECROW'))return tr('水田内不能放置这类设施，请先恢复平地。');
   const mask=specialMask|| (spec.building?4:fs.includes('PLACEMENT_WALL_ONLY')?128:fs.includes('PLACEMENT_GARDEN_ONLY')?64:fs.includes('PLACEMENT_FARMING_ONLY')?1:2);
   const polygons=footprint(spec,target,placement.angle??45);
   const points=polygons.flat();
@@ -276,7 +276,6 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   if(spec.floor) {
     const saved=mapCells(doc).find(c=>c.id===target.id),edit=edits.cells?.[`${placement.scene}:${target.id}`];
     if(edit?.crop!==undefined?edit.crop:saved?.crop)return tr('这里有作物，请先清除再铺地板。');
-    if(edit?.soil??saved?.soil)return tr('这里是田地，请先恢复平地再铺地板。');
   }
   if(!spec.floor && !spec.building && !fs.includes('TREE')) for(const c of mapCells(doc)) {
     const edit=edits.cells?.[`${placement.scene}:${c.id}`];
@@ -330,6 +329,11 @@ export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: Ob
       next.removed!.push(o.uid);
     }
     next.objects=(next.objects??[]).filter(e=>e.move ? !next.removed?.includes(e.move) : !polygons.some(a=>footprint(data.objects.find(s=>s.id===e.template)!,landPosition(e.cell),e.angle??45).some(b=>polygonsOverlap(a,b))));
+  }
+  // An empty field under a new floor is turned back into plain ground first.
+  if(spec.floor) {
+    const key=`${placement.scene}:${placement.cell}`;
+    if(next.cells?.[key]?.soil??mapCells(doc).find(c=>c.id===placement.cell)?.soil)next.cells![key]={crop:null,soil:0,watered:false};
   }
   next.objects=[...(next.objects??[]),placement];
   const oldSpec=original?.spec;

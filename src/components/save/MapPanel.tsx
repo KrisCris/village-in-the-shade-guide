@@ -81,7 +81,7 @@ const LAND_KINDS: Array<[LandKind, string, string]> = [
   ['soil', tr('耕地'), tr('大多数作物都能种。')],
   ['ridge', tr('田垄'), tr('和耕地一样能种大多数作物，外观不同。')],
   ['canal', tr('水田'), tr('稻米等水生作物专用；其他作物不能种在水田。')],
-  ['water', tr('浇水'), tr('把田地标记为已浇水。')]
+  ['water', tr('浇水'), tr('给耕地和田垄浇水；水田不用浇水。')]
 ];
 const CLEAR_NAMES: Record<string, string> = { objects: tr('设施'), crops: tr('作物与树木'), floor: tr('地板与道路'), soil: tr('田地') };
 const TOOL_NAMES: Record<string, string> = Object.fromEntries(TOOL_GROUPS.flat());
@@ -170,6 +170,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     [model, edits, viewArt, season, mature, sceneId]
   );
   const ground = useMemo(() => farmGround(model.doc, edits, sceneId).filter(c => !room || terrain.some(t => t.id === c.id)), [model, edits, sceneId, room, terrain]);
+  // Dry fields (soil and ridges) can be watered; water fields cannot.
+  const waterable = useMemo(() => new Set(ground.filter(g => g.soil !== 3).map(g => g.id)), [ground]);
   const chosen = sprites.find((s) => s.key === selected),
     target = hover && pickCell(hover);
   const savedCells=useMemo(()=>new Map(mapCells(model.doc).map(c=>[c.id,c])),[model]);
@@ -287,10 +289,11 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
         Math.abs((c.y - c.x - cell.y + cell.x) / 90) <= radius &&
         (tool==='clear'||c.mask & 1) &&
         areaAvailable(model.doc, c.area) &&
-        (tool==='clear'||!blocked(c))
+        (tool==='clear'||!blocked(c)) &&
+        (!paint.watered||waterable.has(c.id))
     );
     if (!targets.length) {
-      setMessage(tr('这里不能耕作，或已被设施占用。'));
+      setMessage(paint.watered ? tr('这里没有可浇水的旱田；水田不用浇水。') : tr('这里不能耕作，或已被设施占用。'));
       return;
     }
     if(tool==='clear') {
@@ -318,7 +321,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   function paintCell(id:number,paint:CellPaint):CellPaint {
     const previous=current.current.cells?.[`${sceneId}:${id}`],cropId=previous?.crop!==undefined?previous.crop:savedCells.get(id)?.crop;
     const clear=paint.crop===undefined&&paint.soil!==undefined&&cropId&&cropPlacementProblem(cropId,paint.soil);
-    return {...previous,...paint,...(clear?{crop:null,growth:undefined,form:undefined}:{})};
+    // Water fields are never "watered"; the flag only applies to dry fields.
+    return {...previous,...paint,...(clear?{crop:null,growth:undefined,form:undefined}:{}),...(paint.soil===3?{watered:false}:{})};
   }
   /** Planting turns the cell into the soil the crop needs, e.g. rice makes a paddy. */
   function plantPaint(id:number,base:CellPaint={crop,growth:0,form:1}):CellPaint {
@@ -362,8 +366,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
     }
     return [...groups.values()].sort((a, b) => b.sprites.length - a.sprites.length);
   }, [selection, sprites, names, art]);
-  const tilled = useMemo(() => new Set(ground.map(g => g.id)), [ground]);
-  const selectedFields = selectedCells.filter(id => tilled.has(id));
+  const selectedFields = selectedCells.filter(id => waterable.has(id));
   /** Selected ground cells with nothing on them: no crop, facility or floor. */
   const emptyCells = useMemo(() => {
     if (!selectedCells.length) return [];
@@ -394,10 +397,10 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
         placed++;
       } catch { /* this cell already has a floor or cannot take one */ }
     }
-    if (!placed) { setMessage(tr('选区里没有能铺的格子：已有地板，或有作物、田地、设施。')); return; }
+    if (!placed) { setMessage(tr('选区里没有能铺的格子：已有地板，或有作物、设施。')); return; }
     commit(next);
     const skipped = selectedCells.length - placed;
-    setMessage(skipped ? tr('已铺 {count} 格；{skipped} 格有地板、作物、田地或设施，已跳过。可整次撤销。', { count: placed, skipped }) : tr('已铺 {count} 格，可整次撤销。', { count: placed }));
+    setMessage(skipped ? tr('已铺 {count} 格；{skipped} 格有地板、作物或设施，已跳过；空田会先恢复平地。可整次撤销。', { count: placed, skipped }) : tr('已铺 {count} 格，可整次撤销。', { count: placed }));
   }
   function waterSelection() {
     if (!selectedFields.length) { setMessage(tr('选区内没有田地。')); return; }
@@ -761,7 +764,8 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                   <div className="farm-segments" role="group" aria-label={tr('土地类型')}>{([[1, tr('翻成耕地')], [2, tr('翻成田垄')], [3, tr('翻成水田')]] as const).map(([soil, label]) => <button type="button" key={soil} onClick={() => paintSelection({ soil })} title={soil === 3 ? tr('改成水田会清除不能种在水田的作物。') : undefined}>{label}</button>)}</div>
                 </>}
                 <h4>{tr('清理')}</h4>
-                <div className="farm-actions"><button type="button" className="farm-danger" onClick={()=>clearSelection('visible')} title={tr('删除选区内当前显示的作物、设施和地板')}>{tr('删除选中内容')}</button><button type="button" onClick={()=>clearSelection('reset')}>{tr('全部恢复平地')}</button></div>
+                <div className="farm-actions"><button type="button" className="farm-danger" onClick={()=>clearSelection('visible')}>{tr('清除上面的东西')}</button><button type="button" className="farm-danger" onClick={()=>clearSelection('reset')}>{tr('清空成平地')}</button></div>
+                <p className="farm-note">{tr('「清除上面的东西」删掉作物、设施和地板，耕好的田保留；「清空成平地」连田一起清掉。')}</p>
                 <button type="button" onClick={() => { setSelection([]); setSelectedCells([]); setSelected(undefined); }}>{tr('取消框选')}</button>
               </div>}
               {selectedPoint && (

@@ -108,14 +108,17 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     const carpet=MAP_DATA.objects.find(o=>o.features.includes('PLACEMENT_CARPET'))!;
     const clear=clearMapArea(model.doc,{},scene,[land.id],[],'reset');
     const water={...clear,cells:{...clear.cells,[`${scene}:${land.id}`]:{soil:3,crop:null}}};
-    expect(placementProblem(model.doc,water,{scene,cell:land.id,template:carpet.id})).toContain('水田');
+    expect(placementProblem(model.doc,water,{scene,cell:land.id,template:carpet.id})).toBeNull();
+    const machine=MAP_DATA.objects.find(o=>o.category==='machine'&&!o.building&&!o.features.some(f=>f.startsWith('PLACEMENT_')||f==='SCARECROW'))!;
+    expect(placementProblem(model.doc,water,{scene,cell:land.id,template:machine.id})).toContain('水田');
   });
   it('keeps floors off crops, tilled fields and standing objects, but lays them on cleared ground', () => {
     const floor=MAP_DATA.objects.find(o=>o.floor&&o.category==='floor')!;
     const lay=(edits:Parameters<typeof placementProblem>[1],cell:number)=>placementProblem(model.doc,edits,{scene,cell,template:floor.id});
     const crop=mapCells(model.doc).find(c=>c.crop)!, field=mapCells(model.doc).find(c=>c.soil&&!c.crop)!;
     expect(lay({},crop.id)).toContain('作物');
-    expect(lay({},field.id)).toContain('田地');
+    expect(lay({},field.id)).toBeNull();
+    expect(addMapPlacement(model.doc,{},{scene,cell:field.id,template:floor.id}).cells?.[`${scene}:${field.id}`]).toEqual({crop:null,soil:0,watered:false});
     const farm=new Set(sceneCells(scene).filter(c=>c.mask&2).map(c=>c.id));
     const standing=mapObjects(model.doc).find(o=>o.movable&&o.spec&&!o.spec.floor&&!o.spec.building&&!o.parent&&farm.has(landId(o.x,o.y)))!;
     expect(lay({},landId(standing.x,standing.y))).toContain('设施');
