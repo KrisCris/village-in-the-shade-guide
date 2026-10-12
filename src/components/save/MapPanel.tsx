@@ -625,6 +625,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
                     {chosen.edited ? tr(' · 已修改') : ''}
                   </small>
                   {chosen.art && <TrimmedSprite className="farm-selection-art" src={withBase(`/maps/farm/${chosen.art.file}`)} label={nameOf(chosen)} />}
+                  {chosen.carried && <p className="farm-note">{tr('摆在家具上，会随家具移动和转向；删除家具时一起移除。')}</p>}
                   {chosen.movable && <div className="farm-actions">
                     <button
                       type="button"

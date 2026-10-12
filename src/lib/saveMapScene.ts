@@ -1,4 +1,4 @@
-import { MAP_DATA, landPosition, mapCells, mapObjects, sceneCells, type MapEdits } from './saveMap';
+import { MAP_DATA, landPosition, mapCells, mapObjects, editedObjects, sceneCells, type MapEdits } from './saveMap';
 import { readSigned, type SerDocument } from './ser';
 import { splitGameTime } from './saveTime';
 import { flagEnabled } from './saveProgress';
@@ -64,6 +64,10 @@ export interface SceneSprite extends Point {
   movable?: boolean;
   /** Mirrored buildings store their contents flipped; the game draws those sprites flipped too. */
   mirror?: boolean;
+  /** Stands on another object and moves with it. */
+  carried?: boolean;
+  /** Draw-order key when it differs from y: items on furniture draw right after the furniture. */
+  depth?: number;
 }
 export const FARM_SCENE = MAP_DATA.scenes.find((s) => s.code === 'MAP_ID_OPENWORLD')!.id;
 export const FARM_CELLS = sceneCells(FARM_SCENE);
@@ -211,25 +215,24 @@ export function buildFarmScene(
     if (original.some(o => o.id === fixture.id && Math.hypot(o.x-fixture.x,o.y-fixture.y) < 5)) continue;
     result.push({key:`fixture:${scene}:${index}`,id:fixture.id,x:fixture.x,y:fixture.y,kind:'object',art:fixture.art,edited:false,floor:false,movable:false});
   }
-  for (const obj of original) {
+  for (const obj of editedObjects(doc, edits)) {
     // Event markers are invisible trigger/sparkle actors, not placed facilities.
     if (obj.id >= 500000000 && !obj.spec) continue;
     if (art.objects[obj.id]?.hidden) continue;
-    const move = edits.objects?.findLast((e) => e.move === obj.uid);
-    const p = move ? landPosition(move.cell) : obj;
-    if (!within(p)) continue;
+    if (!within(obj)) continue;
     result.push({
-      x: p.x,
-      y: p.y,
+      x: obj.x,
+      y: obj.y,
       key: `object:${obj.uid}`,
       uid: obj.uid,
-      id: move?.template ?? obj.id,
+      id: obj.id,
       kind: 'object',
-      art: spriteArt(art, 'object', move?.template ?? obj.id, season, undefined, move?.angle ?? obj.angle),
-      edited: !!move,
+      art: spriteArt(art, 'object', obj.id, season, undefined, obj.angle),
+      edited: !!obj.move || !!obj.carried,
       floor: !!obj.spec?.floor,
       movable: obj.movable,
-      mirror
+      mirror,
+      ...(obj.parentY !== undefined ? { carried: true, depth: obj.parentY + 0.01 } : {})
     });
   }
   edits.objects
@@ -250,7 +253,7 @@ export function buildFarmScene(
         mirror
       });
     });
-  return result.sort((a, b) => Number(b.floor) - Number(a.floor) || a.y - b.y || a.x - b.x);
+  return result.sort((a, b) => Number(b.floor) - Number(a.floor) || (a.depth ?? a.y) - (b.depth ?? b.y) || a.x - b.x);
 }
 
 export const isMirrorScene = (scene: number) => !!MAP_DATA.scenes.find((s) => s.id === scene)?.code.endsWith('_MIRROR');

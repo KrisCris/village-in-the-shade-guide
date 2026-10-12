@@ -94,18 +94,75 @@ export function mapObjects(doc: SerDocument) {
 }
 function readMapObjects(doc: SerDocument) {
   const list = doc.resolve('gimmickList_');
-  return (list ? doc.children(list) : []).flatMap(node => {
+  // Furniture lists the items standing on it as `posNN` → item uniqueID; the item points back through parentID_.
+  const slots = new Map<string, string>();
+  const objects = (list ? doc.children(list) : []).flatMap(node => {
     const id = scalar(doc, node, 'p/pData_/dataID'), spec = data.objects.find(o => o.id === id);
     const x = doc.resolve('p/pos_/x', node), y = doc.resolve('p/pos_/y', node);
     if (!x || !y || !scalar(doc, node, 'p/isEnabled_')) return [];
+    const map = doc.resolve('p/statusIDValueMap_', node), pairs = map ? doc.children(map) : [];
+    for (const key of pairs) {
+      const label = key.name.endsWith('k') ? doc.resolve('id_', key) : undefined, value = pairs.find(v => v.name === key.name.slice(0, -1) + 'v');
+      const text = label ? String.fromCharCode(...doc.payload(label)).split(String.fromCharCode(0))[0] : '';
+      if (value && /^pos\d+$/.test(text)) slots.set(String(readSigned(doc, value)), text);
+    }
     const number = (key: string) => { const n = doc.resolve(`p/baseAABB_/${key}`, node); return n ? readFloat(doc, n) : 0; };
-    const angleNode = doc.resolve('p/angle_', node);
+    const angleNode = doc.resolve('p/angle_', node), parent = String(scalar(doc, node, 'p/parentID_'));
     return [{ node, id, spec, uid: String(scalar(doc, node, 'p/uniqueID_')), x: readFloat(doc, x), y: readFloat(doc, y), angle: angleNode ? readFloat(doc, angleNode) : 0,
       bounds: [number('l'), number('t'), number('r'), number('b')], movable: !!spec && (spec.features.includes('RELOCATION') || scalar(doc, node, 'p/tag_/id_') === 0),
       // Fixed indoor geometry uses YMWR placement masks. Effect actors (notably
       // room lights) have room-sized visual AABBs, not furniture collision boxes.
-      blocksPlacement: spec ? !spec.floor : id >= 100000000 && id < 200000000 }];
+      blocksPlacement: spec ? !spec.floor : id >= 100000000 && id < 200000000,
+      parent: parent === '0' ? undefined : parent, slot: undefined as string | undefined }];
   });
+  const uids = new Set(objects.map(o => o.uid));
+  for (const o of objects) {
+    if (!o.parent || !uids.has(o.parent)) { o.parent = undefined; continue; }
+    // Items on furniture follow it; they are not placed on the floor grid themselves.
+    o.slot = slots.get(o.uid); o.movable = false; o.blocksPlacement = false;
+  }
+  return objects;
+}
+const specById = new Map(data.objects.map(o => [o.id, o]));
+type ObjectRules = Record<string, { initial?: number; directional?: boolean; slots?: Record<string, Record<string, number[]>> }>;
+function slotOffset(id: number, angle: number, slot?: string) {
+  const entity = (artData.objects as ObjectRules)[id];
+  const frame = (entity?.initial ?? 100) + (entity?.directional ? [6,3,2,1,4,7,8,9][((Math.round(angle/45)%8)+8)%8] : 0);
+  // A direction without its own frame is drawn with the resting frame (see spriteArt).
+  return slot ? (entity?.slots?.[frame] ?? entity?.slots?.[entity.initial ?? 100])?.[slot] : undefined;
+}
+type SavedObject = ReturnType<typeof readMapObjects>[number];
+export type EditedObject = SavedObject & { move?: ObjectPlacement; carried?: boolean; parentY?: number };
+/** Saved objects after layout edits: moved ones at their new cell, items on furniture carried along with it. Cleared ones are left out. */
+export function editedObjects(doc: SerDocument, edits: MapEdits): EditedObject[] {
+  const objects = mapObjects(doc), byUid = new Map(objects.map(o => [o.uid, o])), removed = new Set(edits.removed);
+  const moves = new Map((edits.objects ?? []).flatMap(e => e.move ? [[e.move, e] as const] : []));
+  const done = new Map<string, EditedObject | null>();
+  const place = (o: SavedObject, depth: number): EditedObject | null => {
+    if (done.has(o.uid)) return done.get(o.uid)!;
+    let result: EditedObject | null;
+    const parent = o.parent ? byUid.get(o.parent) : undefined, move = moves.get(o.uid);
+    if (removed.has(o.uid)) result = null;
+    else if (!parent || depth > 4) result = move ? { ...o, ...landPosition(move.cell), id: move.template, spec: specById.get(move.template), angle: move.angle ?? o.angle, move } : o;
+    else {
+      const at = place(parent, depth + 1);
+      if (!at) result = null;
+      else if (at === parent) result = { ...o, parentY: parent.y };
+      else {
+        let dx = o.x - parent.x, dy = o.y - parent.y;
+        const before = slotOffset(parent.id, parent.angle, o.slot), after = slotOffset(at.id, at.angle, o.slot);
+        // Mirrored rooms store the slot with x negated; keep whichever side the save used.
+        if (before && after && Math.abs(dy - before[1]) < 2) {
+          const side = Math.abs(dx - before[0]) < 2 ? 1 : Math.abs(dx + before[0]) < 2 ? -1 : 0;
+          if (side) { dx = side * after[0]; dy = after[1]; }
+        }
+        result = { ...o, x: at.x + dx, y: at.y + dy, carried: true, parentY: at.y };
+      }
+    }
+    done.set(o.uid, result);
+    return result;
+  };
+  return objects.flatMap(o => { const p = place(o, 0); return p ? [p] : []; });
 }
 
 export function parseMapPreset(text: string): MapEdits {
@@ -127,15 +184,10 @@ export function parseMapPreset(text: string): MapEdits {
   return e;
 }
 
-const specById = new Map(data.objects.map(o => [o.id, o]));
 export function draftObjects(doc: SerDocument, edits: MapEdits) {
-  const removed=new Set(edits.removed),moves=new Map((edits.objects??[]).flatMap(e=>e.move?[[e.move,e] as const]:[]));
-  return mapObjects(doc).filter(o => !removed.has(o.uid)).map(o => {
-    const e=moves.get(o.uid);
-    return { ...o, ...(e?landPosition(e.cell):{}), id:e?.template??o.id, spec:specById.get(e?.template??o.id), angle:e?.angle??o.angle };
-  }).concat((edits.objects??[]).flatMap((e,i)=>e.move?[]:[{
+  return editedObjects(doc, edits).map(({ move: _, carried: __, parentY: ___, ...o }) => o).concat((edits.objects??[]).flatMap((e,i)=>e.move?[]:[{
     node:undefined as unknown as SerNode,id:e.template,spec:specById.get(e.template),uid:`new:${i}`, ...landPosition(e.cell), angle:e.angle??45,
-    bounds:[-45,-45,45,45],movable:true,blocksPlacement:true
+    bounds:[-45,-45,45,45],movable:true,blocksPlacement:true,parent:undefined as string|undefined,slot:undefined as string|undefined
   }]));
 }
 export function objectFootprint(object: {spec?: typeof data.objects[number];x:number;y:number;angle:number;bounds:number[]}) {
@@ -210,7 +262,7 @@ export function placementProblem(doc: SerDocument, edits: MapEdits, placement: O
   const all=draftObjects(doc,edits).filter(o=>o.uid!==placement.move);
   if (spec.building && all.some(o=>o.spec?.building && (spec.mapId ? o.spec.buildingFamily===spec.buildingFamily && o.spec.slot===spec.slot : o.spec.buildingFamily===spec.buildingFamily && spec.limit===1))) return tr('此编号的建筑已存在。');
   for(const o of all) {
-    if(!o.spec && !o.blocksPlacement)continue;
+    if(!o.spec && !o.blocksPlacement || o.parent)continue;
     const overlaps=polygons.some(a=>objectFootprint(o).some(b=>polygonsOverlap(a,b)));
     if(!overlaps)continue;
     if(spec.building && o.movable && !o.spec?.building)continue;
@@ -381,6 +433,14 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     patch(built, 'p/pos_/x', target.x, true); patch(built, 'p/pos_/y', target.y, true);
     if (moving) { moving.x = target.x; moving.y = target.y; moving.id=spec.id; moving.spec=spec; moving.angle=angle; }
     else occupied.push({ ...donor, id: placement.template, spec, uid: String(seed), x: target.x, y: target.y, angle, bounds: [...donor.bounds] });
+  }
+  // Items on furniture travel with it, and are cleared with it.
+  const placed = new Map(editedObjects(doc, edits).map(o => [o.uid, o]));
+  for (const o of objects) {
+    if (!o.parent) continue;
+    const next = placed.get(o.uid), built = gimmicks.children![doc.children(objectList).findIndex(n => n.offset === o.node.offset)];
+    if (!next) patch(built, 'p/isEnabled_', 0);
+    else if (next.carried) { patch(built, 'p/pos_/x', next.x, true); patch(built, 'p/pos_/y', next.y, true); }
   }
   for (const [key, paint] of Object.entries(edits.cells ?? {})) {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);

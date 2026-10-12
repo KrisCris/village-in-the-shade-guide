@@ -5,7 +5,7 @@ import { parseSaveModel } from './saveModel';
 import { SerDocument, serializeSer } from './ser';
 import { availableMapRooms } from './saveMapRooms';
 import { buildFarmScene, spriteArt, angleCode, type MapArt } from './saveMapScene';
-import { applyMapEdits, mapObjects, sceneCells } from './saveMap';
+import { applyMapEdits, editedObjects, landId, mapObjects, sceneCells, type MapEdits } from './saveMap';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
 const art = JSON.parse(readFileSync('public/maps/farm/manifest.json', 'utf8')) as MapArt;
 
@@ -70,5 +70,24 @@ describe.skipIf(!hasPrivateSaveFixtures)('save-driven native rooms', () => {
     expect(moved.id).toBe(object.id);expect(moved.angle).toBe(object.angle);
     expect([moved.x,moved.y]).not.toEqual([object.x,object.y]);
     expect(after.filter(o=>o.uid!==object.uid).map(o=>[o.uid,o.id,o.x,o.y,o.angle])).toEqual(original.filter(o=>o.uid!==object.uid).map(o=>[o.uid,o.id,o.x,o.y,o.angle]));
+  });
+  it('keeps items on furniture on top of it when the furniture turns or is cleared', () => {
+    const doc=load(), objects=mapObjects(doc);
+    const table=objects.find(o=>o.uid==='105378')!, tissues=objects.find(o=>o.uid==='105382')!;
+    expect([table.id,table.angle,tissues.parent,tissues.slot,tissues.movable]).toEqual([243010000,45,'105378','pos02',false]);
+    const room=availableMapRooms(doc,art).find(r=>sceneCells(r.scene).some(c=>c.id===landId(table.x,table.y)))!;
+    const sprites=(edits: MapEdits)=>buildFarmScene(doc,edits,{...art,bounds:room.bounds,fixtures:room.fixtures},0,false,room.scene);
+    const order=sprites({}).map(s=>s.uid);
+    expect(order.indexOf('105382')).toBeGreaterThan(order.indexOf('105378'));
+    // At 135° the table uses frame 111, whose second spot is 2 left of and 28 above its origin.
+    const turn: MapEdits={objects:[{scene:room.scene,cell:landId(table.x,table.y),template:table.id,move:table.uid,angle:135}]};
+    expect(editedObjects(doc,turn).find(o=>o.uid==='105382')).toMatchObject({x:table.x-2,y:table.y-28,carried:true});
+    const turned=mapObjects(new SerDocument(applyMapEdits(doc,turn)));
+    expect(turned.find(o=>o.uid==='105382')).toMatchObject({x:table.x-2,y:table.y-28,parent:'105378'});
+    expect(turned.find(o=>o.uid==='105381')).toMatchObject({x:table.x-42,y:table.y-68});
+    const cleared=mapObjects(new SerDocument(applyMapEdits(doc,{removed:[table.uid]}))).map(o=>o.uid);
+    expect(cleared).not.toContain('105382');
+    expect(cleared).not.toContain('105381');
+    expect(cleared).toContain('105372');
   });
 });
