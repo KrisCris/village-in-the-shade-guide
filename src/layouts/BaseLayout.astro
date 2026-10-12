@@ -17,6 +17,8 @@ const siteName = t('静谧田园 Wiki');
 const absolute = (href: string) => Astro.site ? new URL(href, Astro.site).href : href;
 const alternates = i18n.alternates();
 const dynamicInterior = !immersive;
+const repo = 'https://github.com/KrisCris/village-in-the-shade-guide';
+const licensing = `${repo}/blob/main/${i18n.lang === 'ja' ? 'LICENSING.en.md' : 'LICENSING.md'}`;
 ---
 <!doctype html>
 <html lang={i18n.lang} data-season="spring">
@@ -46,7 +48,7 @@ const dynamicInterior = !immersive;
       {!immersive&&<SidebarNav />}
       <main class="main" id="main-content" data-pagefind-body><slot /></main>
     </div>
-    <footer class="site-footer"><a href={i18n.href('/')}>{siteName}</a><span>{t('《静谧田园》© NIS · 非官方指南 · 作者：{author}', { author: '_connlost' })}</span><a href="https://github.com/KrisCris/village-in-the-shade-guide">GitHub ↗</a></footer>
+    <footer class="site-footer"><a href={i18n.href('/')}>{siteName}</a><span>{t('《静谧田园》© NIS · 非官方指南 · 作者：{author}', { author: '_connlost' })}</span><span class="site-footer-links"><a href={licensing}>{t('使用许可')}</a><a href={repo}>GitHub ↗</a></span></footer>
     <script>
       import { onPageMount } from '../lib/pageLifecycle';
       import { enhanceSortableTables } from '../lib/sortableTables';
