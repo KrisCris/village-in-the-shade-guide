@@ -7,9 +7,9 @@ import { exportSave, parseSaveModel, pendingChanges } from './saveModel';
 import { readSigned } from './ser';
 import { questStatus, questStatuses } from './saveQuests';
 import data from '../../data/sources/game-save-quests.json';
-let model: ReturnType<typeof parseSaveModel>;
-beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
 describe.skipIf(!hasPrivateSaveFixtures)('quest checklist records', () => {
+  let model: ReturnType<typeof parseSaveModel>;
+  beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
   it('edits a verified checkpoint and state without touching story flags', () => {
     const pointers = model.doc.children(model.doc.resolve('questMap_')!).filter((_, index) => index % 2 === 1);
     const pointer = pointers.find(pointer => Number(readSigned(model.doc, model.doc.resolve('p/dataID_', pointer)!)) === 3)!;
