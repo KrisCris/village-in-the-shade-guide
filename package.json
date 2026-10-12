@@ -42,5 +42,6 @@
     "tsx": "^4.23.13",
     "typescript": "latest",
     "vitest": "latest"
-  }
+  },
+  "license": "(AGPL-3.0-only AND CC-BY-NC-SA-4.0)"
 }
