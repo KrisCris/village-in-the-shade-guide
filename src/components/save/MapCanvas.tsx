@@ -19,9 +19,23 @@ import {
 import { withBase } from '../../lib/sitePath';
 import { tr } from '../../i18n/active';
 
-// The game lifts map levels and adds bloom in post-processing; the extracted textures are the
-// ungraded input, so map art gets an approximate lift. Overlays and labels are drawn without it.
-const ART_GRADE = 'brightness(1.18) contrast(1.06) saturate(1.1)';
+// Canvas filters on individual draws are re-rasterized per call and made dragging the map take
+// seconds per frame, so watered soil tiles are darkened once and cached instead. The game's
+// brighter post-processed look is a CSS filter on the whole canvas (see save-map.css).
+const WATERED_SHADE = 'brightness(.72)';
+// The art layer is cached with up to half a view of margin on each side, so panning only shifts it.
+const ART_MARGIN = 0.5;
+// Cache pixel budget (about two 4K screens); large or high-density views get a smaller margin.
+const ART_PIXELS = 16e6;
+// Trees and roofs overhang the map edge slightly.
+const ART_PAD = 600;
+
+type View = { left: number; top: number; right: number; bottom: number };
+interface ArtCache extends View { canvas: HTMLCanvasElement; zoom: number; ratio: number }
+const covers = (cache: View, rect: View) =>
+  rect.right <= rect.left || rect.bottom <= rect.top ||
+  (rect.left >= cache.left && rect.right <= cache.right && rect.top >= cache.top && rect.bottom <= cache.bottom);
+const shownIn = (p: MapCanvasProps, s: SceneSprite) => s.kind === 'crop' ? p.plants : s.floor ? p.floors : p.facilities;
 
 export interface MapCanvasProps {
   art: MapArt;
@@ -64,20 +78,24 @@ export default function MapCanvas(props: MapCanvasProps) {
   const backgroundFile = props.art.background ?? `${props.art.seasons[props.season]}.webp`;
   const sceneryFile = props.art.background ? props.art.scenery : `${props.art.seasons[props.season]}-scenery.webp`;
   const pickCell = (p: Point) => pickFarmCell(p, terrain);
-  const shown = (s: SceneSprite) => s.kind === 'crop' ? props.plants : s.floor ? props.floors : props.facilities;
+  const shown = (s: SceneSprite) => shownIn(props, s);
   const canvas = useRef<HTMLCanvasElement>(null),
     viewport = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 800, height: 700 });
   const [camera, setCamera] = useState<Camera>(() => fitCamera(homeBounds, 800, 700));
   const [hover, setHover] = useState<Point | null>(null),
-    [version, redraw] = useState(0),
-    [loading, setLoading] = useState(0);
+    [loading, setLoading] = useState(0),
+    [, setFailures] = useState(0);
   const restrictedOverlay = useRef(new RestrictedTerrainOverlay());
   const images = useRef(new Map<string, HTMLImageElement>()),
     failed = useRef(new Set<string>());
+  const shaded = useRef(new Map<string, HTMLCanvasElement>());
   const alphaMasks = useRef(new Map<string, { width: number; height: number; alpha: Uint8Array }>());
-  const latest = useRef({ props, camera, size });
-  latest.current = { props, camera, size };
+  const overlay = useRef<HTMLCanvasElement>(null);
+  const artCache = useRef<ArtCache | null>(null);
+  const artDirty = useRef(true);
+  const frame = useRef(0);
+  const settle = useRef<ReturnType<typeof setTimeout>>(undefined);
   const gesture = useRef<{
     id: number;
     touch: boolean;
@@ -98,6 +116,8 @@ export default function MapCanvas(props: MapCanvasProps) {
   const miniPointer = useRef<number | null>(null);
   const [marquee, setMarquee] = useState<{ start: Point; end: Point } | null>(null);
   const [touchTrail, setTouchTrail] = useState<Point[]>([]);
+  const latest = useRef({ props, camera, size, hover, marquee, touchTrail });
+  latest.current = { props, camera, size, hover, marquee, touchTrail };
   useEffect(() => {
     const element = viewport.current!;
     const observer = new ResizeObserver((entries) => {
@@ -128,206 +148,252 @@ export default function MapCanvas(props: MapCanvasProps) {
     element.addEventListener('wheel', wheel, { passive: false });
     return () => element.removeEventListener('wheel', wheel);
   }, []);
+  // Map content changes rebuild the cached art; camera moves and pointer feedback only repaint.
   useEffect(() => {
-    let disposed = false;
-    const ctx = canvas.current!.getContext('2d')!;
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.current!.width = Math.round(size.width * ratio);
-    canvas.current!.height = Math.round(size.height * ratio);
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.fillStyle = props.art.background ? '#111816' : '#263f3b';
-    ctx.fillRect(0, 0, size.width, size.height);
-    ctx.translate(size.width / 2, size.height / 2);
-    ctx.scale(camera.zoom, camera.zoom);
-    ctx.translate(-camera.x, -camera.y);
-    let pending = 0;
-    function image(path: string) {
-      let img = images.current.get(path);
-      if (!img && !failed.current.has(path)) {
-        img = new Image();
-        images.current.set(path, img);
-        img.onload = () => {
-          if (!disposed) redraw((v) => v + 1);
-          else requestAnimationFrame(() => redraw((v) => v + 1));
-        };
-        img.onerror = () => {
-          failed.current.add(path);
-          redraw((v) => v + 1);
-        };
-        img.src = withBase(`/maps/farm/${path}`);
-      }
-      if (img?.complete && img.naturalWidth) return img;
-      if (!failed.current.has(path)) pending++;
-      return undefined;
+    artDirty.current = true;
+    schedule();
+  }, [props.art, terrain, backgroundFile, sceneryFile, props.groundOnly, props.season, props.sprites, props.ground,
+    props.grid, props.allowedTerrain, props.plants, props.facilities, props.floors]);
+  useEffect(() => {
+    schedule();
+  }, [camera, size, hover, marquee, touchTrail, regions, props.selected, props.selection, props.selectedCells,
+    props.ghost, props.mirrored, props.previewValid, props.tool, props.brush, props.labels]);
+  useEffect(() => () => {
+    cancelAnimationFrame(frame.current);
+    frame.current = 0;
+    clearTimeout(settle.current);
+  }, []);
+
+  /** Paint at most once per display frame, however fast pointer or wheel events arrive. */
+  function schedule() {
+    if (!frame.current) frame.current = requestAnimationFrame(paint);
+  }
+  function image(path: string, counter?: { pending: number }) {
+    let img = images.current.get(path);
+    if (!img && !failed.current.has(path)) {
+      img = new Image();
+      images.current.set(path, img);
+      img.onload = () => {
+        artDirty.current = true;
+        schedule();
+      };
+      img.onerror = () => {
+        failed.current.add(path);
+        setFailures((count) => count + 1);
+        artDirty.current = true;
+        schedule();
+      };
+      img.src = withBase(`/maps/farm/${path}`);
     }
-    const background = image(backgroundFile),
-      bounds = props.art.bounds;
-    ctx.filter = ART_GRADE;
-    if (background)
-      ctx.drawImage(background, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
-    ctx.filter = 'none';
-    const scenery = sceneryFile && !props.groundOnly ? image(sceneryFile) : undefined;
-    const left = camera.x - size.width / 2 / camera.zoom,
-      right = camera.x + size.width / 2 / camera.zoom;
-    const top = camera.y - size.height / 2 / camera.zoom,
-      bottom = camera.y + size.height / 2 / camera.zoom;
-    function diamond(x: number, y: number, fill: string, stroke?: string) {
-      ctx.beginPath();
-      ctx.moveTo(x, y - 45);
-      ctx.lineTo(x + 45, y);
-      ctx.lineTo(x, y + 45);
-      ctx.lineTo(x - 45, y);
-      ctx.closePath();
-      if (fill) {
-        ctx.fillStyle = fill;
-        ctx.fill();
-      }
-      if (stroke) {
-        ctx.strokeStyle = stroke;
-        ctx.lineWidth = 1 / camera.zoom;
-        ctx.stroke();
-      }
+    if (img?.complete && img.naturalWidth) return img;
+    if (counter && !failed.current.has(path)) counter.pending++;
+    return undefined;
+  }
+  function darkened(path: string, img: HTMLImageElement) {
+    let copy = shaded.current.get(path);
+    if (!copy) {
+      copy = document.createElement('canvas');
+      copy.width = img.naturalWidth;
+      copy.height = img.naturalHeight;
+      const c = copy.getContext('2d')!;
+      c.filter = WATERED_SHADE;
+      c.drawImage(img, 0, 0);
+      shaded.current.set(path, copy);
     }
-    for (const soil of props.ground) {
-      const tile = props.art.soils?.[soil.soil];
-      if (tile) drawSprite(tile, soil.x, soil.y, 1, false, soil.watered ? 'brightness(.72)' : '');
-      if (soil.edited) diamond(soil.x, soil.y, '', '#f0bf5e');
+    return copy;
+  }
+  /** Draw a sprite in world coordinates if it overlaps the world rectangle `view`. */
+  function drawSprite(ctx: CanvasRenderingContext2D, view: View, sprite: SpriteArt, x: number, y: number,
+    { opacity = 1, mirror = false, watered = false, counter }: { opacity?: number; mirror?: boolean; watered?: boolean; counter?: { pending: number } } = {}) {
+    const start = mirror ? x - sprite.x - sprite.w : x + sprite.x;
+    if (start + sprite.w < view.left || start > view.right || y + sprite.y + sprite.h < view.top || y + sprite.y > view.bottom) return;
+    const loaded = image(sprite.file, counter);
+    if (!loaded) return;
+    const img = watered ? darkened(sprite.file, loaded) : loaded;
+    ctx.globalAlpha = opacity;
+    if (mirror) {
+      ctx.save();
+      ctx.translate(x, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(img, sprite.x, y + sprite.y, sprite.w, sprite.h);
+      ctx.restore();
+    } else ctx.drawImage(img, x + sprite.x, y + sprite.y, sprite.w, sprite.h);
+    ctx.globalAlpha = 1;
+  }
+  function diamond(ctx: CanvasRenderingContext2D, zoom: number, x: number, y: number, fill: string, stroke?: string) {
+    ctx.beginPath();
+    ctx.moveTo(x, y - 45);
+    ctx.lineTo(x + 45, y);
+    ctx.lineTo(x, y + 45);
+    ctx.lineTo(x - 45, y);
+    ctx.closePath();
+    if (fill) {
+      ctx.fillStyle = fill;
+      ctx.fill();
     }
-    if (scenery) {
-      ctx.filter = ART_GRADE;
-      ctx.drawImage(scenery, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
-      ctx.filter = 'none';
+    if (stroke) {
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1 / zoom;
+      ctx.stroke();
     }
-    if(props.allowedTerrain) {
-      const parity=terrain.length?(Math.round(terrain[0].x/45)+Math.round(terrain[0].y/45))%2:1;
-      const layer=restrictedOverlay.current.render(props.allowedTerrain,bounds,camera,size.width,size.height,ratio,parity);
-      ctx.save();ctx.setTransform(ratio,0,0,ratio,0,0);
-      ctx.drawImage(layer,0,0,size.width,size.height);ctx.restore();
+  }
+  /** The part of the map the art cache should hold: the view plus a margin, clipped to the map. */
+  function artRect(p: MapCanvasProps, camera: Camera, size: { width: number; height: number }, margin: number, ratio = 1): View {
+    const b = p.art.bounds;
+    const fit = Math.sqrt(ART_PIXELS / Math.max(1, size.width * size.height * ratio * ratio));
+    margin = Math.max(0, Math.min(margin, (fit - 1) / 2));
+    const halfWidth = size.width / 2 / camera.zoom * (1 + 2 * margin), halfHeight = size.height / 2 / camera.zoom * (1 + 2 * margin);
+    return {
+      left: Math.max(camera.x - halfWidth, b[0] - ART_PAD),
+      top: Math.max(camera.y - halfHeight, b[1] - ART_PAD),
+      right: Math.min(camera.x + halfWidth, b[2] + ART_PAD),
+      bottom: Math.min(camera.y + halfHeight, b[3] + ART_PAD)
+    };
+  }
+  /** Everything that only changes with the map contents: ground, soil, scenery, grid and sprites. */
+  function buildArt(p: MapCanvasProps, camera: Camera, size: { width: number; height: number }, ratio: number, counter: { pending: number }): ArtCache {
+    const rect = artRect(p, camera, size, ART_MARGIN, ratio);
+    const width = Math.max(1, rect.right - rect.left), height = Math.max(1, rect.bottom - rect.top);
+    const scale = camera.zoom * ratio;
+    const target = artCache.current?.canvas ?? document.createElement('canvas');
+    target.width = Math.max(1, Math.ceil(width * scale));
+    target.height = Math.max(1, Math.ceil(height * scale));
+    const ctx = target.getContext('2d')!;
+    ctx.setTransform(scale, 0, 0, scale, -rect.left * scale, -rect.top * scale);
+    const cells = p.terrain ?? FARM_CELLS, bounds = p.art.bounds;
+    const backgroundPath = p.art.background ?? `${p.art.seasons[p.season]}.webp`;
+    const sceneryPath = p.art.background ? p.art.scenery : `${p.art.seasons[p.season]}-scenery.webp`;
+    const background = image(backgroundPath, counter);
+    if (background) ctx.drawImage(background, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
+    for (const soil of p.ground) {
+      const tile = p.art.soils?.[soil.soil];
+      if (tile) drawSprite(ctx, rect, tile, soil.x, soil.y, { watered: soil.watered, counter });
+      if (soil.edited) diamond(ctx, camera.zoom, soil.x, soil.y, '', '#f0bf5e');
+    }
+    const scenery = sceneryPath && !p.groundOnly ? image(sceneryPath, counter) : undefined;
+    if (scenery) ctx.drawImage(scenery, bounds[0], bounds[1], bounds[2] - bounds[0], bounds[3] - bounds[1]);
+    if (p.allowedTerrain) {
+      const parity = cells.length ? (Math.round(cells[0].x / 45) + Math.round(cells[0].y / 45)) % 2 : 1;
+      const center = { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2, zoom: camera.zoom };
+      const layer = restrictedOverlay.current.render(p.allowedTerrain, bounds, center, width * camera.zoom, height * camera.zoom, ratio, parity);
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(layer, 0, 0, target.width, target.height);
+      ctx.restore();
     }
     // Wall-only cells (mask 128) hold hanging decorations; they lie over the wall art, so only show them while placing one.
-    const wallSpots = props.allowedTerrain && new Set(props.allowedTerrain.map((c) => `${c.x},${c.y}`));
-    if (props.grid && camera.zoom > 0.12)
-      for (const c of terrain) {
-        if (c.x < left - 45 || c.x > right + 45 || c.y < top - 45 || c.y > bottom + 45) continue;
+    const wallSpots = p.allowedTerrain && new Set(p.allowedTerrain.map((c) => `${c.x},${c.y}`));
+    if (p.grid && camera.zoom > 0.12)
+      for (const c of cells) {
+        if (c.x < rect.left - 45 || c.x > rect.right + 45 || c.y < rect.top - 45 || c.y > rect.bottom + 45) continue;
         if (c.mask === 128 && !wallSpots?.has(`${c.x},${c.y}`)) continue;
-        diamond(c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
+        diamond(ctx, camera.zoom, c.x, c.y, '', c.mask & 1 ? '#fff6' : '#b9d9f044');
       }
-    function drawSprite(sprite: SpriteArt, x: number, y: number, opacity = 1, mirror = false, shade = '') {
-      const start = mirror ? x - sprite.x - sprite.w : x + sprite.x;
-      if (
-        start + sprite.w < left ||
-        start > right ||
-        y + sprite.y + sprite.h < top ||
-        y + sprite.y > bottom
-      )
-        return;
-      const img = image(sprite.file);
-      if (img) {
-        ctx.globalAlpha = opacity;
-        ctx.filter = `${shade} ${ART_GRADE}`.trim();
-        if (mirror) {
-          ctx.save();
-          ctx.translate(x, 0);
-          ctx.scale(-1, 1);
-          ctx.drawImage(img, sprite.x, y + sprite.y, sprite.w, sprite.h);
-          ctx.restore();
-        } else ctx.drawImage(img, x + sprite.x, y + sprite.y, sprite.w, sprite.h);
-        ctx.globalAlpha = 1;
-        ctx.filter = 'none';
-      }
-    }
-    for (const sprite of props.sprites) {
-      if (!shown(sprite)) continue;
-      if (sprite.art) drawSprite(sprite.art, sprite.x, sprite.y, 1, sprite.mirror);
-      else if (sprite.x >= left && sprite.x <= right && sprite.y >= top && sprite.y <= bottom) {
+    for (const sprite of p.sprites) {
+      if (!shownIn(p, sprite)) continue;
+      if (sprite.art) drawSprite(ctx, rect, sprite.art, sprite.x, sprite.y, { mirror: sprite.mirror, counter });
+      else if (sprite.x >= rect.left && sprite.x <= rect.right && sprite.y >= rect.top && sprite.y <= rect.bottom) {
         ctx.fillStyle = '#bc9151';
         ctx.beginPath();
         ctx.arc(sprite.x, sprite.y, 12, 0, Math.PI * 2);
         ctx.fill();
       }
-      if (sprite.edited || (props.selected === sprite.key || props.selection.includes(sprite.key)))
-        diamond(sprite.x, sprite.y, '', (props.selected === sprite.key || props.selection.includes(sprite.key)) ? '#fff2aa' : '#f0bf5e');
+      if (sprite.edited) diamond(ctx, camera.zoom, sprite.x, sprite.y, '', '#f0bf5e');
     }
-    const target = hover && pickCell(hover);
-    if (target && props.tool !== 'pan') {
-      const color = props.previewValid ? '#fff1a0' : '#ff8a79';
-      if (!['inspect', 'place'].includes(props.tool)) {
-        const radius = (props.brush - 1) / 2;
-        for (const c of terrain)
+    return { canvas: target, ...rect, zoom: camera.zoom, ratio };
+  }
+  function paint() {
+    frame.current = 0;
+    const main = canvas.current, top = overlay.current;
+    if (!main || !top) return;
+    const { props: p, camera, size, hover, marquee, touchTrail } = latest.current;
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelWidth = Math.round(size.width * ratio), pixelHeight = Math.round(size.height * ratio);
+    for (const layer of [main, top])
+      if (layer.width !== pixelWidth || layer.height !== pixelHeight) {
+        layer.width = pixelWidth;
+        layer.height = pixelHeight;
+      }
+    let cache = artCache.current;
+    const visible = artRect(p, camera, size, 0);
+    if (cache && !artDirty.current && cache.ratio === ratio && cache.zoom !== camera.zoom && covers(cache, visible)) {
+      // While zooming, scale the cached art and rebuild it sharp once the wheel settles.
+      clearTimeout(settle.current);
+      settle.current = setTimeout(() => {
+        artDirty.current = true;
+        schedule();
+      }, 150);
+    } else if (!cache || artDirty.current || cache.ratio !== ratio || cache.zoom !== camera.zoom || !covers(cache, visible)) {
+      const counter = { pending: 0 };
+      cache = artCache.current = buildArt(p, camera, size, ratio, counter);
+      artDirty.current = false;
+      setLoading(counter.pending);
+    }
+    const z = camera.zoom;
+    const ctx = main.getContext('2d')!;
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    ctx.fillStyle = p.art.background ? '#111816' : '#263f3b';
+    ctx.fillRect(0, 0, size.width, size.height);
+    if (cache.right > cache.left && cache.bottom > cache.top)
+      ctx.drawImage(cache.canvas, (cache.left - camera.x) * z + size.width / 2, (cache.top - camera.y) * z + size.height / 2,
+        (cache.right - cache.left) * z, (cache.bottom - cache.top) * z);
+
+    // Pointer feedback, selection and labels: a few shapes on a transparent layer above the art.
+    const o = top.getContext('2d')!;
+    o.setTransform(ratio, 0, 0, ratio, 0, 0);
+    o.clearRect(0, 0, size.width, size.height);
+    o.translate(size.width / 2, size.height / 2);
+    o.scale(z, z);
+    o.translate(-camera.x, -camera.y);
+    const view = { left: camera.x - size.width / 2 / z, right: camera.x + size.width / 2 / z, top: camera.y - size.height / 2 / z, bottom: camera.y + size.height / 2 / z };
+    const cells = p.terrain ?? FARM_CELLS;
+    const picked = new Set(p.selection);
+    if (p.selected) picked.add(p.selected);
+    for (const sprite of p.sprites) if (picked.has(sprite.key) && shownIn(p, sprite)) diamond(o, z, sprite.x, sprite.y, '', '#fff2aa');
+    const target = hover && pickFarmCell(hover, cells);
+    if (target && p.tool !== 'pan') {
+      const color = p.previewValid ? '#fff1a0' : '#ff8a79';
+      if (!['inspect', 'place'].includes(p.tool)) {
+        const radius = (p.brush - 1) / 2;
+        for (const c of cells)
           if (
             Math.abs((c.x + c.y - target.x - target.y) / 90) <= radius &&
             Math.abs((c.y - c.x - target.y + target.x) / 90) <= radius &&
             c.mask & 1
           )
-            diamond(c.x, c.y, props.previewValid ? '#fff2a044' : '#ef685844', color);
-      } else diamond(target.x, target.y, '#fff2a022', color);
-      if (props.ghost && props.tool === 'place') drawSprite(props.ghost, target.x, target.y, 0.65, props.mirrored);
+            diamond(o, z, c.x, c.y, p.previewValid ? '#fff2a044' : '#ef685844', color);
+      } else diamond(o, z, target.x, target.y, '#fff2a022', color);
+      if (p.ghost && p.tool === 'place') drawSprite(o, view, p.ghost, target.x, target.y, { opacity: 0.65, mirror: p.mirrored });
     }
-    if (props.labels) {
-      ctx.font = `600 ${13 / camera.zoom}px system-ui`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      for (const region of regions) {
+    if (p.labels) {
+      o.font = `600 ${13 / z}px system-ui`;
+      o.textAlign = 'center';
+      o.textBaseline = 'middle';
+      for (const region of p.regions ?? FARM_REGIONS) {
         const x = (region.bounds[0] + region.bounds[2]) / 2,
           y = region.bounds[1] + 180;
-        if (
-          x < left + 70 / camera.zoom ||
-          x > right - 70 / camera.zoom ||
-          y < top + 20 / camera.zoom ||
-          y > bottom - 20 / camera.zoom
-        )
-          continue;
-        const w = ctx.measureText(region.name).width + 26 / camera.zoom,
-          h = 29 / camera.zoom;
-        ctx.fillStyle = '#1c302ce0';
-        ctx.beginPath();
-        ctx.roundRect(x - w / 2, y - h / 2, w, h, 6 / camera.zoom);
-        ctx.fill();
-        ctx.fillStyle = '#fff8df';
-        ctx.fillText(region.name, x, y);
+        if (x < view.left + 70 / z || x > view.right - 70 / z || y < view.top + 20 / z || y > view.bottom - 20 / z) continue;
+        const w = o.measureText(region.name).width + 26 / z,
+          h = 29 / z;
+        o.fillStyle = '#1c302ce0';
+        o.beginPath();
+        o.roundRect(x - w / 2, y - h / 2, w, h, 6 / z);
+        o.fill();
+        o.fillStyle = '#fff8df';
+        o.fillText(region.name, x, y);
       }
     }
     if (marquee) {
-      ctx.fillStyle = '#9ad6bb33'; ctx.strokeStyle = '#fff2aa'; ctx.lineWidth = 1.5 / camera.zoom;
-      const points=selectionPolygon(marquee.start,marquee.end);ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);points.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));ctx.closePath();ctx.fill();ctx.stroke();
+      o.fillStyle = '#9ad6bb33'; o.strokeStyle = '#fff2aa'; o.lineWidth = 1.5 / z;
+      const points = selectionPolygon(marquee.start, marquee.end);
+      o.beginPath(); o.moveTo(points[0].x, points[0].y); points.slice(1).forEach(point => o.lineTo(point.x, point.y)); o.closePath(); o.fill(); o.stroke();
     }
-    for(const c of terrain)if(props.selectedCells.includes(c.id))diamond(c.x,c.y,'#9ad6bb22','#fff2aa');
-    for (const p of touchTrail) diamond(p.x, p.y, '#9ad6bb55', '#fff2aa');
-    setLoading(pending);
-    return () => {
-      disposed = true;
-    };
-  }, [
-    props.art,
-    terrain,
-    regions,
-    backgroundFile,
-    sceneryFile,
-    props.groundOnly,
-    props.season,
-    props.sprites,
-    props.ground,
-    props.grid,
-    props.allowedTerrain,
-    props.plants,
-    props.facilities,
-    props.floors,
-    props.labels,
-    props.selected,
-    props.selection,
-    props.selectedCells,
-    marquee,
-    touchTrail,
-    props.ghost,
-    props.mirrored,
-    props.previewValid,
-    props.tool,
-    props.brush,
-    camera,
-    size,
-    hover,
-    version
-  ]);
+    if (p.selectedCells.length) {
+      const chosen = new Set(p.selectedCells);
+      for (const c of cells) if (chosen.has(c.id)) diamond(o, z, c.x, c.y, '#9ad6bb22', '#fff2aa');
+    }
+    for (const point of touchTrail) diamond(o, z, point.x, point.y, '#9ad6bb55', '#fff2aa');
+  }
   function position(event: { clientX: number; clientY: number }) {
     const rect = canvas.current!.getBoundingClientRect();
     return screenToWorld(
@@ -514,6 +580,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           }
         }}
       />
+      <canvas ref={overlay} className="farm-overlay-canvas" aria-hidden="true" />
       <div className="farm-overlay-start">
       <div className="farm-compass" aria-hidden="true">
         {tr('北 ↑')}

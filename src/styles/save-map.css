@@ -118,7 +118,7 @@
 .farm-editor .farm-danger:hover:not(:disabled) { border-color: var(--vermilion); background: color-mix(in srgb, var(--vermilion) 10%, transparent); }
 .farm-editor .farm-primary { background: var(--green); border-color: var(--green); color: var(--paper-raised); font-weight: 600; }
 .farm-editor .farm-primary:hover:not(:disabled) { background: var(--green); filter: brightness(1.08); }
-/* Same approximate in-game level lift as the map canvas (ART_GRADE in MapCanvas.tsx). */
+/* Same approximate in-game level lift as the map canvas. */
 .farm-selection-art, .farm-sprite { filter: brightness(1.18) contrast(1.06) saturate(1.1); }
 .farm-selection-art { width: 100%; height: 150px; display: block; }
 .farm-selection-list { display: grid; gap: 4px; max-height: 180px; overflow: auto; }
@@ -185,10 +185,14 @@
 
 /* Canvas overlays */
 .farm-viewport { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: #263f3b; }
-.farm-viewport canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+/* The game lifts map levels and adds bloom in post-processing; the extracted textures are its
+   ungraded input. One compositor filter on the whole canvas approximates it cheaply. */
+.farm-viewport canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; filter: brightness(1.18) contrast(1.06) saturate(1.1); }
 .farm-viewport canvas.is-pan { cursor: grab; }
 .farm-viewport canvas:active { cursor: crosshair; }
 .farm-viewport canvas.is-pan:active { cursor: grabbing; }
+/* Pointer feedback and selection: drawn above the art, without the art grade, and click-through. */
+.farm-viewport canvas.farm-overlay-canvas { position: absolute; inset: 0; pointer-events: none; filter: none; }
 .farm-editor .farm-minimap { position: absolute; bottom: 16px; right: 16px; width: 100px; padding: 0; overflow: hidden; line-height: 0; border: 2px solid #e1d5b8aa; box-shadow: 0 3px 15px #0006; background: #253d35; touch-action: none; cursor: move; min-height: 0; }
 .farm-minimap svg { display: block; width: 100%; height: auto; }
 .farm-zoom { position: absolute; right: 14px; top: 14px; display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 4px; background: #20342deb; border: 1px solid #e5e6c933; border-radius: 10px; box-shadow: 0 4px 20px #0003; }
