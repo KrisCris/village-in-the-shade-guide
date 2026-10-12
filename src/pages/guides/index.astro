@@ -6,7 +6,6 @@ import {getCatalog} from '../../data/repository';
 import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
 const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
-const categories=[...new Map(items.map(e=>[e.category_id!,e])).values()].sort((a,b)=>Number(a.category_numeric_id)-Number(b.category_numeric_id));
 const planningGuides=[
  [t('四季留货与交付'),'/guides/season-plan/','CROPS'],
  [t('种植加工收益排行'),'/planner/','PROCESSED_PRODUCT'],
@@ -24,12 +23,12 @@ const planningGuides=[
  [t('祠堂能力与配方解锁'),'/guides/skills/','MACHINE'],
  [t('服装与装饰获取'),'/guides/appearance/','CLOTHES'],
 ];
+// AppMedia's data pages are covered by the wiki's own catalog (资料库 → 物品分类).
 const dataCategory=guideCategories[guideCategories.length-1];
 ---
 <BaseLayout title={t('中文攻略索引')}>
   <h1>{t('攻略')}</h1>
   <div class="guide-grid planning">{planningGuides.map(([title,url,category])=>{const icon=items.find(e=>e.category_id===`ITEM_CATEGORY_${category}`&&e.icon_path)?.icon_path;return <a class="card" href={href(url)}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>;})}</div>
-  <section id={dataCategory}><h2>{t('分类一览')}</h2><div class="guide-grid">{categories.map(category=>{const icon=items.find(e=>e.category_id===category.category_id&&e.icon_path)?.icon_path;return <a class="card" href={href(`/categories/${category.category_id}/`)}>{icon&&<img src={withBase(icon)} width="56" height="56" alt="" loading="lazy" />}<strong>{category.category_name?.zh_hans}</strong></a>;})}</div></section>
   {guideCategories.map((category) => {
     if(category===dataCategory)return null;
     const rows = guides.filter((guide) => guide.category === category);
