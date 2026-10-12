@@ -88,7 +88,8 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
     expect(barn.rows[1].cells[2]!.value).toBe('764');
 
     const npc = section(model, 'npc').tables[0];
-    expect(npc.rows).toHaveLength(16);
+    // The ghost girl and the mother are story-only and hidden.
+    expect(npc.rows).toHaveLength(14);
     expect(npc.rows[0].cells[0]!.value).toBe('1010');
     expect(npc.rows[0].cells[1]!.value).toBe('390');
 
@@ -115,7 +116,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('save model', () => {
       const ids = model.sections.map((entry) => entry.id).join(',');
       expect(`${name}:${ids}`).toBe(`${name}:basic,player,items,barn,npc,brand`);
       expect(`${name}:${section(model, 'barn').tables[0].rows.length}`).toBe(`${name}:10`);
-      expect(`${name}:${section(model, 'npc').tables[0].rows.length}`).toBe(`${name}:16`);
+      expect(`${name}:${section(model, 'npc').tables[0].rows.length}`).toBe(`${name}:14`);
       expect(`${name}:${collectFields(model).size > 100}`).toBe(`${name}:true`);
     }
   }, 60_000);

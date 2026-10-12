@@ -12,6 +12,7 @@ import { buildProgressEdits, type ProgressEdits } from './saveProgress';
 import { buildMachineEdits, type MachineEdits } from './saveMachines';
 import { buildAnimalEdits, type AnimalEdits } from './saveAnimals';
 import animals from '../../data/sources/game-save-animals.json';
+import characters from '../../data/generated/build-25311578/entities/characters.json';
 import { linkedToolDrafts } from './saveTools';
 import { SAVE_RULES } from './saveRules';
 import { GAME_SEASONS, splitGameTime } from './saveTime';
@@ -279,11 +280,15 @@ function livestockTable(doc: SerDocument): SaveTable | null {
   };
 }
 
+// Story-only characters (the ghost girl, the mother) have no name or gifts in the game data and cannot be befriended.
+const storyCharacters = new Set(characters.filter(c => !c.gift_items?.length).map(c => BigInt(c.numeric_id)));
 function npcTable(doc: SerDocument): SaveTable | null {
   const list = doc.resolve('npcStatusList_');
   if (!list) return null;
-  const rows: SaveTableRow[] = doc.children(list).map((pointer, index) => {
-    const npc = pointee(doc, pointer);
+  const rows: SaveTableRow[] = doc.children(list).map(pointer => pointee(doc, pointer)).filter(npc => {
+    const id = doc.resolve('pData_/dataID', npc);
+    return !id || !storyCharacters.has(readSigned(doc, id));
+  }).map((npc, index) => {
     return {
       key: `npc-${index}`,
       label: `#${index + 1}`,
