@@ -43,12 +43,17 @@
         for(let y=0;y<48;y++)for(let x=0;x<48;x++)if(data[(y*48+x)*4+3]>32)pixels.push({x:x-23.5,y:y-23.5});
         return pixels;
       }));
+      // Seen from our slightly top-down view, a leaf lying on a surface shows mostly its edge:
+      // full width (narrowed by its random heading), a fraction of its height.
+      const FLAT=.3;
+      const breadth=(leaf:import('../../domain/leaves').Leaf)=>leaf.resting?.72+.28*Math.abs(Math.cos(leaf.id*1.3)):1;
       const contactBottom=(leaf:import('../../domain/leaves').Leaf)=>{
-        const sin=Math.sin(leaf.angle),cos=Math.cos(leaf.angle);
+        const sin=Math.sin(leaf.angle),cos=Math.cos(leaf.angle),wide=breadth(leaf),tall=leaf.resting?FLAT:1;
         let bottom=0;
-        for(const pixel of paintedPixels[leaf.season][leaf.id%3])bottom=Math.max(bottom,pixel.x*sin+pixel.y*cos);
+        for(const pixel of paintedPixels[leaf.season][leaf.id%3])bottom=Math.max(bottom,pixel.x*wide*sin+pixel.y*tall*cos);
         return bottom*leaf.r*2.8/48;
       };
+      const lowest=paintedPixels.map(palette=>palette.map(pixels=>Math.max(...pixels.map(p=>p.y))));
       world=new LeafWorld(800,contactBottom);
       const imageBounds=new WeakMap<HTMLImageElement,{source:string;left:number;top:number;right:number}>();
       const refresh=()=>{
@@ -163,9 +168,15 @@
         ctx.clearRect(0,0,width,height);
         for(const leaf of world.active){
           if(leaf.y < -20)continue;
-          ctx.save();ctx.translate(leaf.x,leaf.y);ctx.rotate(leaf.angle);
-          const flutter=leaf.resting||leaf.season===3?1:.35+Math.abs(Math.sin(now*.00065+leaf.id))*.65;
-          ctx.globalAlpha=.88*leaf.opacity;ctx.drawImage(sprites[leaf.season][leaf.id%3],-leaf.r*1.4,-leaf.r*1.4*flutter,leaf.r*2.8,leaf.r*2.8*flutter);ctx.restore();
+          const size=leaf.r*2.8;
+          let wide=1,tall=leaf.season===3?1:.35+Math.abs(Math.sin(now*.00065+leaf.id))*.65,lift=0;
+          if(leaf.resting){
+            // Ease from the falling pose to lying flat, keeping the lowest edge on the surface.
+            wide=breadth(leaf);tall=FLAT+(1-FLAT)*Math.max(0,1-leaf.restAge/.18);
+            lift=lowest[leaf.season][leaf.id%3]*(tall-FLAT)*size/48;
+          }
+          ctx.save();ctx.translate(leaf.x,leaf.y-lift);ctx.rotate(leaf.angle);
+          ctx.globalAlpha=.88*leaf.opacity;ctx.drawImage(sprites[leaf.season][leaf.id%3],-size/2*wide,-size/2*tall,size*wide,size*tall);ctx.restore();
         }
         for(const rect of textAreas)ctx.clearRect(rect.left-2,rect.top-1,rect.width+4,rect.height+2);
         if(import.meta.env.DEV&&statsClock>1){canvas.dataset.leaves=String(world.active.length);canvas.dataset.resting=String(world.active.filter(l=>l.resting).length);statsClock=0;}
