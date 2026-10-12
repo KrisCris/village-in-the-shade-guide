@@ -9,6 +9,8 @@ set -euo pipefail
 archive=tests/fixtures/gamesave.tar.gz.enc
 files=(save.001 save.002 save.003 save.004 save.005 .systemsave)
 cipher=(-aes-256-cbc -pbkdf2 -iter 200000 -md sha256 -pass env:SAVE_FIXTURES_KEY)
+# Keys copied from Windows tools can carry a trailing CR; whitespace is never part of the key.
+if [ -n "${SAVE_FIXTURES_KEY:-}" ]; then export SAVE_FIXTURES_KEY="$(printf %s "$SAVE_FIXTURES_KEY" | tr -d '[:space:]')"; fi
 
 case "${1:-}" in
   pack)
