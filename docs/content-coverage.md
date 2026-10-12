@@ -1,5 +1,7 @@
 # 内容覆盖与限制
 
+**简体中文** | [English](content-coverage.en.md)
+
 游戏快照：Steam 构建 `25311578`。对照目录：[AppMedia](https://appmedia.jp/honogurashi/)（只用来对照选题）。
 
 ## 已覆盖

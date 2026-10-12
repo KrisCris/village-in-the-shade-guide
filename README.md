@@ -1,5 +1,7 @@
 # 静谧田园 Wiki
 
+**简体中文** | [English](README.en.md)
+
 《Village in the Shade / ほの暮しの庭》（静谧田园）的非官方资料站、收益规划工具和存档编辑器。
 
 网站：<https://kriscris.github.io/village-in-the-shade-guide/>
@@ -70,7 +72,7 @@ uv run pytest          # 提取器测试（需 Python 3.11+ 和 uv）
 
 ## 参与
 
-欢迎通过 issue 报告错误或提出建议。提交代码前请阅读 [维护约定](CONTRIBUTING.md)。
+欢迎通过 issue 报告错误或提出建议，按问题类型选择对应的模板。提交代码前请阅读 [维护约定](CONTRIBUTING.md)。
 
 ## 许可
 
