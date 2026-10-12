@@ -41,7 +41,7 @@ When writing or revising page text, use the `no-ai-slop` skill and review its ch
 
 ## Testing Guidelines
 
-Use colocated `*.test.ts` / `*.test.tsx` Vitest tests and `tests/test_*.py` pytest tests. Cover changed behavior, edge cases, and reverse entity relationships. No numeric coverage threshold is configured. Run `verify` before merging; report unavailable game-dependent checks explicitly. Check responsive UI changes in a browser.
+Use colocated `*.test.ts` / `*.test.tsx` Vitest tests and `tests/test_*.py` pytest tests. Cover changed behavior, edge cases, and reverse entity relationships. No numeric coverage threshold is configured. Run `verify` before merging; report unavailable game-dependent checks explicitly. CI (`.github/workflows/ci.yml`) runs `verify`, `check:build`, and pytest on every pull request, using the encrypted save fixtures when the secret is available. Check responsive UI changes in a browser.
 
 ## Commit & Pull Request Guidelines
 
@@ -49,4 +49,4 @@ Prefer focused commits such as `fix(save-editor): normalize search` or `feat(wor
 
 ## Data & Agent Safety
 
-Game data is authoritative; AppMedia is reference material only. Never commit saves, secrets, raw archives, or private plans; the only save copy in Git is the encrypted `tests/fixtures/gamesave.tar.gz.enc` (see `tests/gamesave/README.md`). Keep scratch output in ignored `output/` or `.local/`. Preserve verified snapshots and asset attribution. Prefer available codebase graph tools for structural discovery, validate coverage, and inspect source when coverage is incomplete.
+Game data is authoritative; AppMedia is reference material only. Never commit saves, secrets, raw archives, or private plans; the only save copy in Git is the encrypted `tests/fixtures/gamesave.tar.gz.enc` (see `tests/gamesave/README.md`). Keep scratch output in ignored `output/` or `.local/`. Preserve verified snapshots and asset attribution. Licensing is described in `LICENSING.md`: code is AGPL-3.0-only with section 7 terms, original content is CC BY-NC-SA 4.0, and game assets are not licensed by the project. Keep the footer author credit. Prefer available codebase graph tools for structural discovery, validate coverage, and inspect source when coverage is incomplete.

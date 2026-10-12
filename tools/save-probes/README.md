@@ -1,8 +1,7 @@
 # Save probe scripts
 
-Throwaway read-only scripts used to reverse-engineer the save format. They are
-kept because the next round of save-editor work (see
-`docs/superpowers/plans/2026-09-12-save-editor-v2.md`) needs them again.
+Read-only scripts used to reverse-engineer the save format. They are kept for
+re-checking the rules recorded in `docs/save-editor.md` and for future research.
 
 They depend only on the standard library plus `ser2.py` in this folder, and they
 read `save.00N` from the **current working directory** — copy a fixture next to
@@ -26,6 +25,8 @@ PYTHONIOENCODING=utf-8 python path.py save.004 "gimmickList_/585/p" 3
 | `gv.py` | dump `gameValues_` with the game's own min/max bounds |
 | `alias.py` | find pointer aliases (nodes that must never be replaced) |
 | `progress.py` | `flags_` bitset, encyclopedia map, quests, skills; cross-checks outfit `unlock_flag` bits across saves |
+| `tables.py` | list records of a game table matching a pattern: `tables.py <table> [regex]`; the game path is written in the script |
+| `native.py` | find strings, cross-references or disassemble a function in `village.exe` (`--exe` to point at it); needs `pefile` and `capstone` |
 
 `tools/save_format.py` is the maintained, dependency-free implementation; prefer
 it for anything that needs to be correct rather than exploratory.
