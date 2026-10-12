@@ -1,0 +1,37 @@
+name: Check pull request
+
+# The same checks as the Pages build, run before merging so main never
+# receives a change that fails to deploy.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Content, translations, tests, types and build
+        run: npm run verify
+      - name: Built links
+        run: npm run check:build
+
+  extractor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --extra dev --locked
+      - run: uv run pytest -q
