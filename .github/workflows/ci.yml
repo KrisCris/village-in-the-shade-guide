@@ -23,6 +23,10 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Unpack encrypted save fixtures
+        run: bash tools/save-fixtures.sh unpack
+        env:
+          SAVE_FIXTURES_KEY: ${{ secrets.SAVE_FIXTURES_KEY }}
       - name: Content, translations, tests, types and build
         run: npm run verify
       - name: Built links

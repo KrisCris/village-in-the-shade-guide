@@ -1,6 +1,11 @@
 # Local save-editor integration fixtures
 
-Personal game saves are intentionally excluded from Git. The integration suites
+Personal game saves are intentionally excluded from Git. CI gets them from
+`tests/fixtures/gamesave.tar.gz.enc`, an AES-encrypted archive unpacked by
+`tools/save-fixtures.sh unpack` with the `SAVE_FIXTURES_KEY` Actions secret
+(forks do not receive the secret, so their runs skip these suites). After
+changing a fixture here, re-encrypt it with
+`SAVE_FIXTURES_KEY=... tools/save-fixtures.sh pack`. The integration suites
 use the original development snapshots `save.001` through `save.005` and
 `.systemsave` in this directory. They assert the contents of those specific
 snapshots, so arbitrary saves are not interchangeable fixtures.
