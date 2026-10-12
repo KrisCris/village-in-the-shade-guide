@@ -11,7 +11,7 @@ def test_affine_parent_translation_and_mirroring():
     assert point(transform, 3, 4) == (9, 16)
 
 
-def test_fad_preserves_parent_anchor_and_front_to_back_layers():
+def fad_bank(hidden=(), names=None):
     chunk = bytearray(720)
     struct.pack_into('<H', chunk, 40, 1)
     struct.pack_into('<4I', chunk, 64, 112, 144, 144, 240)
@@ -28,19 +28,40 @@ def test_fad_preserves_parent_anchor_and_front_to_back_layers():
         if i == 0:
             floats[9:11] = [10, 20]
         struct.pack_into('<26f', chunk, offset+4, *floats)
+        # Four RGBA vertex colours; zero alpha hides the node.
+        struct.pack_into('<16f', chunk, offset+64, *([1.0, 1.0, 1.0, 0.0 if i in hidden else 1.0]*4))
         if i == 1:
             struct.pack_into('<I', chunk, offset+132, 0x60100)
+    for i, name in (names or {}).items():
+        chunk[144+i*32:144+i*32+len(name)] = name
     data = bytearray(112)+chunk
     data[80:88] = b'test_map'
     struct.pack_into('<III', data, 88, len(chunk), 2, 112)
     bank = FairyBank(bytes(data))
     bank.texture = lambda key: ('red' if key == 1000 else 'blue', Image.new('RGBA', (2, 2), 'red' if key == 1000 else 'blue')) if key >= 0 else None
+    return bank
+
+
+def test_fad_preserves_parent_anchor_and_front_to_back_layers():
+    bank = fad_bank()
     image, anchor = bank.render('test_map', 1)
     assert anchor == (9, 19)
     assert image.getpixel((0, 0)) == (255, 0, 0, 255)
     assert bank.render('test_map', 99) is None
     assert bank.shapes('test_map', 1) == [{'name': '', 'flags': 0x60100, 'points': [[9,19],[11,19],[11,21],[9,21]]}]
     assert bank.shapes('test_map', 99) == []
+
+
+def test_fad_skips_nodes_with_zero_vertex_alpha():
+    # Furniture frames keep their whole texture sheet as a hidden node; drawing it doubled the bed.
+    image, _ = fad_bank(hidden={1}).render('test_map', 1)
+    assert image.getpixel((0, 0)) == (0, 0, 255, 255)
+
+
+def test_fad_slots_are_pos_node_origins():
+    bank = fad_bank(names={0: b'pos01', 2: b'center'})
+    assert bank.slots('test_map', 1) == {'pos01': [10.0, 20.0]}
+    assert bank.slots('test_map', 99) == {}
 
 
 def test_ground_index_uses_relative_offsets_and_verifies_coordinates(monkeypatch):

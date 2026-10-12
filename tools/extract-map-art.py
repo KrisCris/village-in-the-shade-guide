@@ -42,7 +42,8 @@ def save_rules(metadata):
         'rooms': {key: [{'bounds': floor['bounds']} for floor in floors] for key, floors in metadata['rooms'].items()},
         'crops': {key: {'model': value['model'], 'states': value.get('states', {})} for key, value in metadata['crops'].items()},
         'objects': {key: {'initial': value['initial'], 'directional': value['directional'],
-                         'seasons': [{seq: {k: frame[k] for k in ('x','y','w','h')} for seq, frame in value['seasons'][0].items()}]}
+                         'seasons': [{seq: {k: frame[k] for k in ('x','y','w','h')} for seq, frame in value['seasons'][0].items()}],
+                         **({'slots': value['slots']} if 'slots' in value else {})}
                     for key, value in metadata['objects'].items()}
     }
     (ROOT/'data/sources/game-map-rules.json').write_text(json.dumps(rules,separators=(',',':'))+'\n',encoding='utf-8')
@@ -240,13 +241,17 @@ def main():
             return None
         ids = bank.sequence_ids(model)
         frames = [i for i in frames_requested if i in ids] if frames_requested else [100 if 100 in ids else 1 if 1 in ids else next((i for i in ids if i > 0), 0)]
-        seasons = []
+        seasons, slots = [], {}
         for rep in reps:
             mapping = replacements(rep)
             mapping.update(replacements(furniture_rep))
             resolve = lambda name: texture_image(mapping[name]) if name in mapping and mapping[name] in texture else None
             variants = {}
             for frame in frames:
+                if not seasons:
+                    spots = bank.slots(model, frame)
+                    if spots:
+                        slots[str(frame)] = {k: [-x if mirror else x, y] for k, (x, y) in spots.items()}
                 rendered = bank.render(model, frame, resolve)
                 if rendered and mirror:
                     image, (x, y) = rendered
@@ -256,7 +261,7 @@ def main():
                     variants[str(frame)] = sprite
             seasons.append(variants)
         bank.textures.clear()
-        return {'model': model, 'seasons': seasons} if any(seasons) else None
+        return {'model': model, 'seasons': seasons, **({'slots': slots} if slots else {})} if any(seasons) else None
 
     for id, (r, _) in ([] if args.update_objects else table('crops').items()):
         # Variable-length prerequisite lists precede the animation reference.

@@ -93,6 +93,35 @@ class FairyBank:
         walk(struct.unpack_from('<i', data, offset+8)[0], IDENTITY)
         return shapes
 
+    def slots(self, name: str, sequence: int) -> dict[str, list[float]]:
+        """Where items placed on furniture sit: the origins of `posNN` nodes, e.g. tabletop spots."""
+        pos, size = self.entries[name]
+        data = self.data[pos:pos+size]
+        count = struct.unpack_from('<H', data, 40)[0]
+        seq, _, nodes, keys = struct.unpack_from('<4I', data, 64)
+        offset = next((seq+i*32 for i in range(count) if struct.unpack_from('<H', data, seq+i*32)[0] == sequence), None)
+        if offset is None:
+            return {}
+        result, visited = {}, set()
+        def walk(index, parent):
+            if index < 0 or index in visited:
+                return
+            visited.add(index)
+            node = nodes+index*32
+            child, sibling, count, key = struct.unpack_from('<4i', data, node+8)
+            transform = parent
+            if count:
+                f = struct.unpack_from('<26f', data, keys+key*160+4)
+                co, si = math.cos(f[13]), math.sin(f[13])
+                transform = multiply(parent, (f[11]*co, f[11]*si, -f[12]*si, f[12]*co, f[9], f[10]))
+                label = data[node:node+8].rstrip(bytes(1)).decode('ascii', errors='replace')
+                if label.startswith('pos') and label[3:].isdigit():
+                    result[label] = [round(v, 2) for v in point(transform, 0, 0)]
+            walk(child, transform)
+            walk(sibling, parent)
+        walk(struct.unpack_from('<i', data, offset+8)[0], IDENTITY)
+        return result
+
     def render(self, name: str, sequence: int, replacement: Callable[[str], Image.Image | None] | None = None):
         pos, size = self.entries[name]
         data = self.data[pos:pos+size]
@@ -123,7 +152,11 @@ class FairyBank:
                 co, si = math.cos(angle), math.sin(angle)
                 transform = multiply(parent, (sx*co, sx*si, -sy*si, sy*co, f[9], f[10]))
                 texture = self.texture(texture_id)
-                if texture and f[5] > 0 and f[6] > 0:
+                # Four RGBA vertex colours follow the transform; all-zero alpha hides a node
+                # (e.g. a whole texture sheet kept as a hidden reference in furniture frames).
+                colour = struct.unpack_from('<16f', data, offset+64)
+                alpha = sum(colour[3::4])/4
+                if texture and f[5] > 0 and f[6] > 0 and alpha > 0:
                     texture_name, image = texture
                     if replacement:
                         alternate = replacement(texture_name)
@@ -131,6 +164,9 @@ class FairyBank:
                             image = alternate
                     x, y, width, height, anchor_x, anchor_y = f[3:9]
                     piece = image.crop((round(x), round(y), round(x+width), round(y+height)))
+                    tint = [min(1.0, max(0.0, sum(colour[i::4])/4)) for i in range(3)]+[min(1.0, alpha)]
+                    if any(v < 1 for v in tint):
+                        piece = Image.merge('RGBA', [band.point(lambda v, k=k: round(v*k)) for band, k in zip(piece.convert('RGBA').split(), tint)])
                     pieces.append((piece, multiply(transform, (1, 0, 0, 1, -anchor_x, -anchor_y))))
             walk(child, transform)
             walk(sibling, parent)
