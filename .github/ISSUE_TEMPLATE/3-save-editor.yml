@@ -1,0 +1,51 @@
+name: 存档编辑器问题 / Save editor bug
+description: 读取、编辑或导出存档时出错，或导出的存档在游戏里不正常 / Reading, editing or exporting a save goes wrong
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **请不要把存档文件附在 issue 里**，issue 是公开的。需要存档才能排查时，作者会另外联系你。
+        **Do not attach save files here**; issues are public. If a save is needed, the author will ask separately.
+  - type: dropdown
+    id: area
+    attributes:
+      label: 哪个部分 / Which part
+      options:
+        - 读取或导出 / Loading or exporting
+        - 基础信息 / Basics
+        - 玩家 / Player
+        - 物品 / Items
+        - 畜牧 / Livestock
+        - NPC
+        - 地图 / Map
+        - 任务 / Quests
+        - 收集与解锁 / Collection and unlocks
+        - 完整字段树 / Field tree
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 做了什么 / What you did
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 出了什么问题 / What went wrong
+      description: 页面上的错误提示或截图 / Error messages or screenshots
+    validations:
+      required: true
+  - type: dropdown
+    id: ingame
+    attributes:
+      label: 导出的存档放进游戏后 / After loading the exported save in the game
+      options:
+        - 没有试过 / Not tried
+        - 能正常读取 / Loads normally
+        - 读取失败或显示异常 / Fails to load or looks wrong
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器 / Browser

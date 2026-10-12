@@ -1,0 +1,31 @@
+name: 网站问题 / Site bug
+description: 页面显示错误、功能不工作、搜索或规划器出错 / A page, search or planner does not work
+labels: ["bug"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接 / Page URL
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 怎么出现的 / Steps to reproduce
+      placeholder: |
+        1.
+        2.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际结果和期望结果 / What happened and what you expected
+      description: 截图可以直接粘贴进来 / Paste screenshots here
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器和设备 / Browser and device
+      placeholder: Chrome 140 / Windows, Safari / iPhone

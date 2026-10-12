@@ -1,0 +1,34 @@
+name: 数据或攻略错误 / Data or guide error
+description: 网站上的物品、配方、商店、钓点或攻略和游戏里不一致 / Something on the site does not match the game
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢指正。游戏数据是网站的唯一依据，有游戏内截图最好。
+        Thanks for the report. The game itself is the reference, so an in-game screenshot helps most.
+  - type: input
+    id: page
+    attributes:
+      label: 页面链接 / Page URL
+      placeholder: https://kriscris.github.io/village-in-the-shade-guide/...
+    validations:
+      required: true
+  - type: textarea
+    id: site
+    attributes:
+      label: 网站上写的 / What the site says
+    validations:
+      required: true
+  - type: textarea
+    id: game
+    attributes:
+      label: 游戏里实际的情况 / What the game shows
+      description: 截图可以直接粘贴进来 / Paste screenshots here
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 游戏版本 / Game version
+      description: 可选，例如最近一次更新的日期 / Optional, e.g. the date of the latest update
