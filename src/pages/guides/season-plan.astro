@@ -37,7 +37,7 @@ const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.condi
 <li>{t('按缺货清单决定外出目标：山菜优先补本季供品；鱼按季节、时段和钓点安排，不为不出现的鱼空等。')}</li>
 <li>{t('出货前再检查建筑、料理、交付用途。尚未凑齐一组的供品不要混进可出售库存。')}</li>
 </ol></section>
-{seasons.map(([season,name,title,sourceName])=>{
+{seasons.map(([season,,title,sourceName])=>{
 const bundles=activities.filter(e=>e.id.startsWith(`BUNDLE_ID_${season.toUpperCase()}_`) || (e.id.startsWith('BUNDLE_ID_VILLAGE_HEAD_')&&e.name.zh_hans.startsWith(`${sourceName}季`))).map(local); // i18n-ignore
 const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_season===season).sort((a,b)=>Number(a.birthday_day)-Number(b.birthday_day));
 return <section id={season}><h2>{title}</h2>

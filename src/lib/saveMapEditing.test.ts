@@ -26,7 +26,7 @@ it('picks the soil a crop needs when it is planted', () => {
   expect(soilForCrop(1, 3)).toBe(1);
   expect(soilForCrop(1, 2)).toBeUndefined();
   expect(soilForCrop(64, 1)).toBe(2);
-  for (const [id, { soils }] of Object.entries(MAP_DATA.cropRules as Record<string, { soils: number[] }>))
+  for (const id of Object.keys(MAP_DATA.cropRules))
     for (const soil of [0, 1, 2, 3]) expect(cropPlacementProblem(Number(id), soilForCrop(Number(id), soil) ?? soil), `${id} on ${soil}`).toBeNull();
 });
 
