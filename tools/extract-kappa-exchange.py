@@ -3,11 +3,12 @@ import hashlib
 import json
 import runpy
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-archive=FafullfsArchive.open(Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade/data.dat'))
+archive=FafullfsArchive.open(game_dir(__doc__)/'data.dat')
 raw=archive.read_entry('data/script/ai_creature_horror_kappa.lub')
 if hashlib.sha256(raw).hexdigest() != '2df19c19b30d966438e2e6906b2b33d4e315375e53675c70632982eaffc8bff9':
     raise ValueError('Kappa script changed; re-trace reward branches before extracting')

@@ -5,18 +5,21 @@ import re
 import struct
 import zlib
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.texture import decode_nltx_image
 
-game = Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade')
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--image-dir',type=Path,default=Path('public/maps'))
+add_game_dir(parser)
+args=parser.parse_args()
+game = args.game_dir
+image_dir = args.image_dir
 archive = FafullfsArchive.open(game / 'data.dat')
 maps = FafullfsArchive.open(game / 'data/map_1_00.dat')
 textures = FafullfsArchive.open(game / 'data/texture_1_00.dat')
-parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--image-dir',type=Path,default=Path('public/maps'))
-image_dir=parser.parse_args().image_dir
 image_dir.mkdir(parents=True, exist_ok=True)
 for name in ('minimap_01_spr_tc', 'minimap_11_spr_tc'):
     image = decode_nltx_image(textures.read_entry(f'data/texture/{name}.nltx'))

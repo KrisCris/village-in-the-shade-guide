@@ -11,6 +11,7 @@ from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw
 
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.gimmick import gimmick_features
 from honogurashi_extractor.map_art import FairyBank, ground_image, scenery_image
@@ -51,7 +52,7 @@ def save_rules(metadata):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--game', type=Path, required=True)
+    add_game_dir(parser, '--game-dir', '--game')
     parser.add_argument('--skip-ground', action='store_true')
     parser.add_argument('--update-objects', action='store_true')
     parser.add_argument('--output', type=Path, default=ROOT/'public/maps/farm')
@@ -59,10 +60,10 @@ def main():
     dest = args.output
     dest.mkdir(parents=True, exist_ok=True)
     (dest/'sprites').mkdir(exist_ok=True)
-    archive = FafullfsArchive.open(args.game/'data.dat')
-    textures = FafullfsArchive.open(args.game/'data/texture_1_00.dat')
-    fairy = FafullfsArchive.open(args.game/'data/fairy_1_00.dat')
-    maps = FafullfsArchive.open(args.game/'data/map_1_00.dat')
+    archive = FafullfsArchive.open(args.game_dir/'data.dat')
+    textures = FafullfsArchive.open(args.game_dir/'data/texture_1_00.dat')
+    fairy = FafullfsArchive.open(args.game_dir/'data/fairy_1_00.dat')
+    maps = FafullfsArchive.open(args.game_dir/'data/map_1_00.dat')
 
     def table(name):
         t = read_table(archive.read_entry(f'data/database/{name}.dat'))

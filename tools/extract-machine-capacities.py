@@ -11,6 +11,7 @@ import json
 import struct
 from pathlib import Path
 
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.icons import _table_string
 from honogurashi_extractor.probe import _string_groups
@@ -19,7 +20,7 @@ from honogurashi_extractor.table import read_table
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--game-dir', required=True, type=Path)
+    add_game_dir(parser)
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
     executable_hash = hashlib.sha256((args.game_dir / 'village.exe').read_bytes()).hexdigest()

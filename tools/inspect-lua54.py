@@ -6,6 +6,7 @@ Instruction reference: https://www.lua.org/source/5.4/lopcodes.h.html
 import argparse
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 
 OPS = '''MOVE LOADI LOADF LOADK LOADKX LOADFALSE LFALSESKIP LOADTRUE LOADNIL GETUPVAL SETUPVAL GETTABUP GETTABLE GETI GETFIELD SETTABUP SETTABLE SETI SETFIELD NEWTABLE SELF ADDI ADDK SUBK MULK MODK POWK DIVK IDIVK BANDK BORK BXORK SHRI SHLI ADD SUB MUL MOD POW DIV IDIV BAND BOR BXOR SHL SHR MMBIN MMBINI MMBINK UNM BNOT NOT LEN CONCAT CLOSE TBC JMP EQ LT LE EQK EQI LTI LEI GTI GEI TEST TESTSET CALL TAILCALL RETURN RETURN0 RETURN1 FORLOOP FORPREP TFORPREP TFORCALL TFORLOOP SETLIST CLOSURE VARARG VARARGPREP EXTRAARG'''.split()
@@ -89,7 +90,7 @@ def listing(proto, path='main'):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('entry')
-    parser.add_argument('--game',default='E:/Games/SteamLibrary/steamapps/common/Village in the Shade')
+    add_game_dir(parser,'--game-dir','--game')
     args=parser.parse_args()
-    archive=FafullfsArchive.open(Path(args.game)/'data.dat')
+    archive=FafullfsArchive.open(args.game_dir/'data.dat')
     listing(read_chunk(archive.read_entry(args.entry)))

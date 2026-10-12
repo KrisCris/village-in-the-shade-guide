@@ -2,12 +2,13 @@
 from pathlib import Path
 import argparse
 import json
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.texture import decode_nltx_image
 from PIL import Image
 
 parser=argparse.ArgumentParser()
-parser.add_argument('--game-dir',required=True,type=Path)
+add_game_dir(parser)
 parser.add_argument('--output',type=Path,default=Path('public/art'))
 args=parser.parse_args()
 archive=FafullfsArchive.open(args.game_dir/'data/texture_1_00.dat')

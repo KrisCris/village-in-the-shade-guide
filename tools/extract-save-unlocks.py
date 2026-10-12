@@ -3,12 +3,13 @@ import argparse
 import json
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.icons import _table_string
 
 p = argparse.ArgumentParser()
-p.add_argument('--game-dir', type=Path, required=True)
+add_game_dir(p)
 p.add_argument('--output', type=Path, required=True)
 a = p.parse_args()
 archive = FafullfsArchive.open(a.game_dir / 'data.dat')

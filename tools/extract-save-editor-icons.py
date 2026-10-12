@@ -5,13 +5,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.icons import _u32, _table_string, _find_texture_archive, icon_bounds
 from honogurashi_extractor.texture import decode_nltx_image
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--game-dir', required=True, type=Path)
+add_game_dir(parser)
 parser.add_argument('--output', required=True, type=Path)
 args = parser.parse_args()
 archive = FafullfsArchive.open(args.game_dir / 'data.dat')

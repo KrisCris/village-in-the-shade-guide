@@ -7,12 +7,13 @@ import json
 import struct
 from collections import Counter, defaultdict
 from pathlib import Path
+from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--game-dir', type=Path, default=Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade'))
+add_game_dir(parser)
 parser.add_argument('--output', type=Path, default=Path('.local/fairy-review'))
 cli = parser.parse_args()
 archive = FafullfsArchive.open(cli.game_dir / 'data.dat')

@@ -11,7 +11,7 @@ Source: Steam build 25311578, `map_1_00.dat`, `fairy_1_00.dat`,
 Reproduce with:
 
 ```
-uv run python tools/extract-map-art.py --game <installed-game-directory>
+uv run python tools/extract-map-art.py --game-dir <installed-game-directory>
 ```
 
 The extractor reads the archives without executing the game. Ground tiles are

@@ -3,11 +3,12 @@ import json
 import re
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-game=Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade')
+game=game_dir(__doc__)
 archive=FafullfsArchive.open(game/'data.dat')
 flags_table=read_table(archive.read_entry('data/database/gameflag.dat'))
 flags={int.from_bytes(record[:8],'little'):strings for record,strings in zip(flags_table.records,_string_groups(flags_table),strict=True)}

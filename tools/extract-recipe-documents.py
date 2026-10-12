@@ -2,11 +2,12 @@
 import json
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-archive=FafullfsArchive.open(Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade/data.dat'))
+archive=FafullfsArchive.open(game_dir(__doc__)/'data.dat')
 items={i['numeric_id']:i for i in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))}
 popups=read_table(archive.read_entry('data/database/intangeble.dat'))
 popups={struct.unpack_from('<Q',r)[0]:(r,g) for r,g in zip(popups.records,_string_groups(popups),strict=True)}

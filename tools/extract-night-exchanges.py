@@ -4,13 +4,14 @@ import json
 import runpy
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.localization import build_name, localized_block
 
 reader=runpy.run_path('tools/inspect-lua54.py')['read_chunk']
-archive=FafullfsArchive.open(Path('E:/Games/SteamLibrary/steamapps/common/Village in the Shade/data.dat'))
+archive=FafullfsArchive.open(game_dir(__doc__)/'data.dat')
 features=read_table(archive.read_entry('data/database/itemfeature.dat'))
 feature_ids={g[0]:struct.unpack_from('<Q',r)[0] for r,g in zip(features.records,_string_groups(features),strict=True)}
 creatures=read_table(archive.read_entry('data/database/creature.dat'))

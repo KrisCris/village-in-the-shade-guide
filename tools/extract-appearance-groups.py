@@ -2,11 +2,12 @@
 import json
 import struct
 from pathlib import Path
+from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
-game=Path(r'E:\Games\SteamLibrary\steamapps\common\Village in the Shade')
+game=game_dir(__doc__)
 archive=FafullfsArchive.open(game/'data.dat')
 groups=[]
 for table_name,offset in [('playercrothing',208),('playerheadaccessory',248)]:
