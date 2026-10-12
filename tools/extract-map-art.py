@@ -108,8 +108,10 @@ def main():
             raise ValueError(f'Unknown outdoor fixture at {offset}: {id}')
         if BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
             outdoor_fixture_ids.add(id)
-        if gimmicks[id][1][0] == 'GIMMICK_ID_ARCHITECTURE_SHIPPING_BOX' and BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
-            metadata['fixedObjects'].append(dict(id=id, name='出货箱', x=x, y=y, angle=angle,
+        # The shipping box and the additional farmland's spring (a pool you can draw water from) are map art, not save objects.
+        fixed_name = {'GIMMICK_ID_ARCHITECTURE_SHIPPING_BOX': '出货箱', 'GIMMICK_ID_WATER_ADDITIONAL_FARMLAND': '泉水'}.get(gimmicks[id][1][0])
+        if fixed_name and BOUNDS[0] <= x <= BOUNDS[2] and BOUNDS[1] <= y <= BOUNDS[3]:
+            metadata['fixedObjects'].append(dict(id=id, name=fixed_name, x=x, y=y, angle=angle,
                                                 require=struct.unpack_from('<i', head, offset+36)[0]))
     for scene in ([] if args.update_objects else specs['scenes']):
         if 'OPENWORLD' in scene['code']:

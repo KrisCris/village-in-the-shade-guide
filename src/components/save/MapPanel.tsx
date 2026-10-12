@@ -85,6 +85,7 @@ const LAND_KINDS: Array<[LandKind, string, string]> = [
 ];
 const CLEAR_NAMES: Record<string, string> = { objects: tr('设施'), crops: tr('作物与树木'), floor: tr('地板与道路'), soil: tr('田地') };
 const TOOL_NAMES: Record<string, string> = Object.fromEntries(TOOL_GROUPS.flat());
+const FIXED_NAMES: Record<number, string> = { 112000000: tr('出货箱'), 800010300: tr('泉水') };
 const SEASONS = [tr('春'), tr('夏'), tr('秋'), tr('冬')];
 interface Props {
   model: SaveModel;
@@ -188,7 +189,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   const nameOf = (s: SceneSprite) =>
     s.kind === 'crop'
       ? (names.names?.crops?.[s.id] ?? tr('作物 {id}', { id: s.id }))
-      : (MAP_DATA.objects.find((o) => o.id === s.id)?.name ?? art?.fixedObjects?.find(o=>o.id===s.id)?.name ??
+      : (MAP_DATA.objects.find((o) => o.id === s.id)?.name ?? FIXED_NAMES[s.id] ?? art?.fixedObjects?.find(o=>o.id===s.id)?.name ??
         (art?.objects[s.id]?.model.startsWith('arc_110') ? tr('我的家') : tr('场景设施 {id}', { id: s.id })));
   const palette = useMemo(
     () =>

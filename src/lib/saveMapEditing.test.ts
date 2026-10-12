@@ -43,6 +43,12 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
       expect(boxes[0].art?.file).toBe(farmArt.objects['112000000'].seasons[season]['100'].file);
     }
   });
+  it('draws the additional farmland spring as fixed map art', () => {
+    const springs=buildFarmScene(model.doc,{},farmArt as MapArt,0).filter(s=>s.id===800010300);
+    expect(springs).toHaveLength(1);
+    expect(springs[0]).toMatchObject({x:14109,y:22989,movable:false});
+    expect(springs[0].art?.file).toBe(farmArt.objects['800010300'].seasons[0]['100'].file);
+  });
   it('changes the terrain overlay with cultivation, water crops and fishing restrictions', () => {
     const field=sceneCells(scene).find(c=>c.area===1&&(c.mask&1))!;
     expect(allowedMapTerrain(model.doc,{},scene,'canal').some(c=>c.id===field.id)).toBe(true);
