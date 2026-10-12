@@ -7,14 +7,17 @@ import { readSigned } from '../../lib/ser';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { gameText } from '../../lib/saveText';
 import { tr } from '../../i18n/active';
+import { questStatus, type QuestStatus } from '../../lib/saveQuests';
 
 // Internal quests are marked by a leading tag in the Chinese name; display uses the page language.
 const questText = (text: string, translations?: Record<string, string>) => gameText(text, translations).replace(/<[^>]+>/g, '').trim();
-const stateLabel = (state: number) => state === 0 ? tr('隐藏') : state === 3 ? tr('已完成') : tr('进行中');
+// The game's own marker for quest text it never shows (every language has an equivalent).
+const UNUSED_TEXT = '！这个任务没有这个字符串！'; // i18n-ignore
+const statusLabel = (status: QuestStatus) => status === 'hidden' ? tr('隐藏') : status === 'complete' ? tr('已完成') : tr('进行中');
 
-function QuestStateBadge({ state }: { state: number }) {
-  return <span className="save-quest-state" data-state={state === 0 ? 'hidden' : state === 3 ? 'complete' : 'pending'}>
-    <span aria-hidden="true">{state === 0 ? '−' : state === 3 ? '✓' : '○'}</span>{stateLabel(state)}
+function QuestStateBadge({ status }: { status: QuestStatus }) {
+  return <span className="save-quest-state" data-state={status}>
+    <span aria-hidden="true">{status === 'hidden' ? '−' : status === 'complete' ? '✓' : '○'}</span>{statusLabel(status)}
   </span>;
 }
 
@@ -57,9 +60,9 @@ export default function QuestsPanel({ model, drafts, onChange }: { model: SaveMo
         </div>
         <nav className="save-quest-list" aria-label={tr('任务列表')}>
           {visible.map(quest => {
-            const state = Number(drafts[quest.state.offset] ?? quest.state.value);
+            const status = questStatus(Number(drafts[quest.state.offset] ?? quest.state.value), Number(drafts[quest.check.offset] ?? quest.check.value), quest.info.steps);
             return <button type="button" key={quest.info.id} aria-pressed={selected?.info.id === quest.info.id} onClick={() => setSelectedId(quest.info.id)}>
-              <span>{quest.title}</span><QuestStateBadge state={state} />
+              <span>{quest.title}</span><QuestStateBadge status={status} />
             </button>;
           })}
           {!visible.length && <p className="save-quest-empty">{tr('没有匹配的任务，试试其他关键词或调整筛选。')}</p>}
@@ -80,9 +83,9 @@ function QuestDetail({ quest: { info, title, state, check }, drafts, onChange }:
   const max = Math.max(0, ...levels);
   const value = levels.includes(current) ? current : 'original';
   return <article className="save-quest-detail" aria-label={tr('当前任务详情')}>
-    <header className="save-quest-detail-header"><h3>{title}</h3><QuestStateBadge state={currentState} /></header>
+    <header className="save-quest-detail-header"><h3>{title}</h3><QuestStateBadge status={questStatus(currentState, current, info.steps)} /></header>
     <div className="save-quest-detail-body">
-      {info.description && <p className="save-quest-description">{questText(info.description, info.descriptionTranslations)}</p>}
+      {info.description && info.description !== UNUSED_TEXT && <p className="save-quest-description">{questText(info.description, info.descriptionTranslations)}</p>}
       <div className="save-quest-controls">
         <label><span>{tr('任务记录')}</span><SearchableSelect aria-label={tr('{title}任务记录', { title })} value={currentState === 0 ? '0' : currentState === 3 ? '3' : '1'} onChange={event => { onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, event.target.value); if (event.target.value === '3') onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, String(max)); }}><option value="0">{tr('隐藏')}</option><option value="1">{tr('显示')}</option><option value="3">{tr('标记完成')}</option></SearchableSelect></label>
         {!!info.steps.length && <label><span>{tr('清单进度')}</span><SearchableSelect aria-label={tr('{title}清单进度', { title })} value={value} onChange={event => { onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, event.target.value); onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, Number(event.target.value) >= max ? '3' : '1'); }}>{value === 'original' && <option value="original">{tr('存档中的当前进度')}</option>}<option value={-1}>{tr('尚未完成清单项目')}</option>{levels.filter(level => level >= 0).map(level => <option key={level} value={level}>{tr('已完成 {done} / {total} 项', { done: info.steps.filter(step => step.level < level).length, total: info.steps.length })}</option>)}</SearchableSelect></label>}

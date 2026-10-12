@@ -5,6 +5,7 @@ import { describe, it, expect } from 'vitest';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel, pendingChanges } from './saveModel';
 import { readSigned } from './ser';
+import { questStatus } from './saveQuests';
 import data from '../../data/sources/game-save-quests.json';
 let model: ReturnType<typeof parseSaveModel>;
 beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
@@ -21,5 +22,20 @@ describe.skipIf(!hasPrivateSaveFixtures)('quest checklist records', () => {
     expect(restored.doc.payload(restored.doc.resolve(flags)!)).toEqual(model.doc.payload(model.doc.resolve(flags)!));
     expect(() => exportSave(model, pendingChanges(model, { [state.offset]: '4' }))).toThrow('任务');
     expect(() => exportSave(model, pendingChanges(model, { [check.offset]: '999' }))).toThrow('进度');
+  });
+});
+
+describe('quest status', () => {
+  const steps = [{ level: 0 }, { level: 2 }];
+  it('treats a fully checked list as complete even when the record stays shown', () => {
+    expect(questStatus(2, 3, steps)).toBe('complete');
+    expect(questStatus(1, 3, steps)).toBe('complete');
+    expect(questStatus(2, 2, steps)).toBe('pending');
+    expect(questStatus(2, -1, steps)).toBe('pending');
+  });
+  it('keeps hidden and checklist-free records as saved', () => {
+    expect(questStatus(0, 3, steps)).toBe('hidden');
+    expect(questStatus(3, -1, [])).toBe('complete');
+    expect(questStatus(2, 0, [])).toBe('pending');
   });
 });
