@@ -60,6 +60,6 @@ uv run pytest
 npm run verify
 ```
 
-再抽查受影响物品的图标、商店条件、配方和反向用途。价格字段不能证明物品可以购买；加工增值按原料直接出售的机会成本计算，不等于从种子开始的总收益。限制见 [内容覆盖说明](content-coverage.md)，具体字段的引用链见 [`data-evidence/`](data-evidence/)。
+再抽查受影响物品的图标、商店条件、配方和反向用途。价格字段不能证明物品可以购买；加工增值按原料直接出售的机会成本计算，不等于从种子开始的总收益。限制见 [内容覆盖说明](content-coverage.md)，钓点名称的引用链见 [`data-evidence/fishing-locations.md`](data-evidence/fishing-locations.md)。
 
 原始归档和存档不提交。
