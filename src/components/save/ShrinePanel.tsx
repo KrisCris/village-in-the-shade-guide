@@ -77,7 +77,7 @@ export default function ShrinePanel({ model, names, edits = {}, onReplace, onMat
   }
   return <div className="save-shrine-layout">
     <section className="save-shrine-map" aria-label={tr('神龛技能树')}>
-      <div className="save-shrine-toolbar">
+      <div className="save-shrine-toolbar filter-bar">
         <input type="search" aria-label={tr('搜索神龛节点')} placeholder={tr('搜索技能或配方 · 支持拼音')} value={query} onChange={e => setQuery(e.target.value)} />
         {model && <SearchableSelect aria-label={tr('神龛解锁状态')} value={filter} onChange={e => setFilter(e.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></SearchableSelect>}
         <button type="button" onClick={() => locate(selected)}>{tr('定位选中')}</button>

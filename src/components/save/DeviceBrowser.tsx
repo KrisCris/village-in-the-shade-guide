@@ -73,11 +73,11 @@ export default function DeviceBrowser({ model, names, edits, special = false, oc
   const groups = [...new Map(entries.map(entry => [entry.family, entry.group])).entries()];
   const active = enriched.find(entry => entry.container.id === selected);
   return <section className="save-device-browser" aria-label={label}>
-    <div className="save-device-toolbar">
+    <div className="save-device-toolbar filter-bar">
       <input type="search" aria-label={tr('搜索{label}', { label })} placeholder={tr('名称、产品、拼音或 ID')} value={search} onChange={event => setSearch(event.target.value)} />
       <SearchableSelect aria-label={tr('{label}类别', { label })} value={category} onChange={event => setCategory(event.target.value)}><option value="all">{tr('全部类别')}</option>{groups.map(([id, title]) => <option key={id} value={id}>{title}</option>)}</SearchableSelect>
       {!special && <SearchableSelect aria-label={tr('设备状态')} value={status} onChange={event => setStatus(event.target.value)}><option value="all">{tr('全部状态')}</option><option value="working">{tr('加工中')}</option><option value="ready">{tr('可以领取')}</option><option value="idle">{tr('空闲')}</option></SearchableSelect>}
-      <span>{shown.length} / {entries.length} {special ? tr('个') : tr('台')}</span>
+      <span className="filter-count">{shown.length} / {entries.length} {special ? tr('个') : tr('台')}</span>
     </div>
     <div className="save-device-scroll" tabIndex={0} aria-label={tr('{label}列表', { label })}>
       {groups.map(([family, group]) => {

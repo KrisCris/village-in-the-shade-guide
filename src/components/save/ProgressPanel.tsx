@@ -44,14 +44,14 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
   return <section className="save-progress">
     <nav className="save-progress-tabs" aria-label={tr('收集与解锁分类')}>{[['encyclopedia', tr('图鉴')], ['recipes', tr('配方')], ['shrine', tr('神龛技能树')], ['deliveries', tr('交付委托')]].map(([id, name]) => <button type="button" key={id} aria-pressed={tab === id} onClick={() => { setTab(id); setCategory(''); setQuery(''); }}>{name}</button>)}</nav>
     {tab === 'shrine' ? <ShrinePanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : tab === 'deliveries' ? <DeliveryPanel onMaterials={onMaterials} model={model} names={names} edits={edits} onReplace={onReplace} /> : <>
-    <div className="save-progress-toolbar">
+    <div className="save-progress-toolbar filter-bar">
       <input type="search" aria-label={tr('搜索收集项目')} placeholder={tr('名称、拼音或首字母')} value={query} onChange={event => setQuery(event.target.value)} />
       {tab !== 'skills' && <SearchableSelect aria-label={tr('收集项目分类')} value={category} onChange={event => setCategory(event.target.value)}><option value="">{tr('全部分类')}</option>
         {/* i18n-ignore-next-line — recipe category IDs from game data */}
         {Object.entries(tab === 'recipes' ? { 手作配方: tr('手作配方'), 料理配方: tr('料理配方') } : names.categories ?? {}).map(([id, label]) => <option key={id} value={id}>{label}</option>)}
       </SearchableSelect>}
       <SearchableSelect aria-label={tr('解锁状态')} value={filter} onChange={event => setFilter(event.target.value)}><option value="all">{tr('全部状态')}</option><option value="yes">{tr('已解锁')}</option><option value="no">{tr('未解锁')}</option></SearchableSelect>
-      <span>{rows.filter(enabled).length} / {rows.length} {tr('已解锁')}</span>
+      <span className="filter-count">{rows.filter(enabled).length} / {rows.length} {tr('已解锁')}</span>
     </div>
     {tab === 'encyclopedia' && <div className="save-progress-bulk"><button type="button" onClick={() => matches.forEach(row => toggle(row, true))}>{tr('将当前 {count} 项标记为已发现', { count: matches.length })}</button><small>{tr('只修改图鉴记录，不会向背包添加物品。')}</small></div>}
     <div className="save-progress-grid">{visible.map(row => <label className="save-progress-card" key={row.id}>
