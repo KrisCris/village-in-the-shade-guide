@@ -1,0 +1,149 @@
+---
+import { withBase } from '../lib/sitePath';
+import { getI18n } from '../i18n/server';
+const { t, locale } = getI18n(Astro.url);
+type Method = { id: string; label: string; icon: 'cup' | 'card' | 'qr'; text: string; href?: string; qr?: string; app?: string };
+const alipay = t('支付宝'), wechat = t('微信支付');
+const all: Record<string, Method> = {
+  kofi: { id: 'kofi', label: 'Ko-fi', icon: 'cup', text: t('在 Ko-fi 页面选好金额后付款，不用注册账号。'), href: 'https://ko-fi.com/connlost' },
+  paypal: { id: 'paypal', label: 'PayPal', icon: 'card', text: t('通过 PayPal.Me 付款，金额自己填写。'), href: 'https://www.paypal.com/paypalme/c0nnlost' },
+  alipay: { id: 'alipay', label: alipay, icon: 'qr', text: t('打开支付宝，扫一扫这个二维码。'), qr: '/support/alipay.png', app: alipay },
+  wechat: { id: 'wechat', label: wechat, icon: 'qr', text: t('打开微信，扫一扫这个二维码。'), qr: '/support/wechat-pay.png', app: t('微信') },
+};
+// Mainland readers mostly pay with Alipay or WeChat; everyone else sees Ko-fi first.
+const order = locale === 'zh-CN' ? ['alipay', 'wechat', 'kofi', 'paypal'] : ['kofi', 'paypal', 'alipay', 'wechat'];
+const methods = order.map(id => all[id]);
+---
+<div class="support">
+  <button class="support-trigger" type="button" aria-haspopup="dialog" aria-controls="support-dialog" aria-label={t('支持作者')} title={t('支持作者')}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.6 3.7 4.3 7 4.3c2 0 3.5 1.1 5 3 1.5-1.9 3-3 5-3 3.3 0 5.3 3.3 4.2 6.6-1.6 4.8-9.2 9.4-9.2 9.4Z"/></svg>
+  </button>
+  <dialog id="support-dialog" class="support-dialog" aria-labelledby="support-title">
+    <header>
+      <div>
+        <h2 id="support-title">{t('支持作者')}</h2>
+        <p>{t('本站免费、不放广告。觉得有用的话，可以请作者喝杯咖啡。')}</p>
+      </div>
+      <button class="support-close" type="button" aria-label={t('关闭')} title={t('关闭')}>×</button>
+    </header>
+    <div class="support-methods" role="tablist" aria-label={t('付款方式')}>
+      {methods.map((method, index) => <button type="button" role="tab" id={`support-tab-${method.id}`} aria-controls={`support-panel-${method.id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          {method.icon === 'cup' && <path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Zm12 1h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1 1 1.5 1 2.5M12 3.5c0 1 1 1.5 1 2.5"/>}
+          {method.icon === 'card' && <><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></>}
+          {method.icon === 'qr' && <><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM18 14h2M14 18v2"/></>}
+        </svg>
+        <span>{method.label}</span>
+      </button>)}
+    </div>
+    {methods.map((method, index) => <section class:list={['support-panel', { 'has-qr': method.qr }]} role="tabpanel" id={`support-panel-${method.id}`} aria-labelledby={`support-tab-${method.id}`} hidden={index !== 0}>
+      <div class="support-copy">
+        <h3>{method.label}</h3>
+        <p>{method.text}</p>
+        {method.href && <a class="support-action" href={method.href} target="_blank" rel="noopener noreferrer">{t('前往 {name}', { name: method.label })} <span aria-hidden="true">↗</span></a>}
+        {method.qr && <button class="support-action support-zoom" type="button" aria-pressed="false" data-zoom-label={t('放大二维码')} data-shrink-label={t('缩小二维码')}>{t('放大二维码')}</button>}
+        {method.qr && <small class="support-touch-hint">{t('在手机上：长按二维码保存图片，再在{app}的扫一扫里从相册选取。', { app: method.app! })}</small>}
+      </div>
+      {method.qr && <img class="support-qr" src={withBase(method.qr)} width="480" height="480" loading="lazy" decoding="async" alt={t('{app}收款二维码', { app: method.label })} />}
+    </section>)}
+  </dialog>
+</div>
+<script>
+  import { onPageMount } from '../lib/pageLifecycle';
+  const dispose = onPageMount(() => {
+    const root = document.querySelector<HTMLElement>('.support');
+    const dialog = root?.querySelector<HTMLDialogElement>('dialog');
+    const trigger = root?.querySelector<HTMLButtonElement>('.support-trigger');
+    if (!root || !dialog || !trigger) return;
+    const tabs = [...dialog.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      for (const other of tabs) {
+        const selected = other === tab;
+        other.setAttribute('aria-selected', String(selected));
+        other.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(other.getAttribute('aria-controls')!);
+        if (panel) panel.hidden = !selected;
+      }
+      if (focus) tab.focus();
+    };
+    const open = () => { dialog.showModal(); dialog.querySelector<HTMLButtonElement>('[role="tab"][aria-selected="true"]')?.focus(); };
+    const close = () => dialog.close();
+    const onClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (target === dialog) { close(); return; }
+      if (target.closest('.support-close')) { close(); return; }
+      const tab = target.closest<HTMLButtonElement>('[role="tab"]');
+      if (tab) { select(tab); return; }
+      const zoom = target.closest<HTMLButtonElement>('.support-zoom');
+      if (zoom) {
+        const zoomed = zoom.getAttribute('aria-pressed') !== 'true';
+        zoom.setAttribute('aria-pressed', String(zoomed));
+        zoom.textContent = (zoomed ? zoom.dataset.shrinkLabel : zoom.dataset.zoomLabel) ?? '';
+        zoom.closest('.support-panel')?.classList.toggle('is-zoomed', zoomed);
+      }
+    };
+    const onKey = (event: KeyboardEvent) => {
+      const index = tabs.indexOf(event.target as HTMLButtonElement);
+      if (index < 0) return;
+      const next = { ArrowRight: index + 1, ArrowDown: index + 1, ArrowLeft: index - 1, ArrowUp: index - 1, Home: 0, End: tabs.length - 1 }[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      select(tabs[(next + tabs.length) % tabs.length], true);
+    };
+    trigger.addEventListener('click', open);
+    dialog.addEventListener('click', onClick);
+    dialog.addEventListener('keydown', onKey);
+    return () => { trigger.removeEventListener('click', open); dialog.removeEventListener('click', onClick); dialog.removeEventListener('keydown', onKey); if (dialog.open) dialog.close(); };
+  });
+  if (import.meta.hot) import.meta.hot.dispose(dispose);
+</script>
+<style>
+  .support-trigger{display:grid;place-items:center;width:44px;height:44px;min-height:0;padding:0;border:0;border-radius:10px;background:transparent;color:var(--vermilion);cursor:pointer}
+  .support-trigger:hover,.support-trigger[aria-expanded=true]{background:var(--green-soft);border:0}
+  .support-trigger svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;transition:fill .2s}
+  .support-trigger:hover svg{fill:color-mix(in srgb,var(--vermilion) 30%,transparent);animation:support-beat .9s ease-in-out}
+  @keyframes support-beat{30%{transform:scale(1.14)}60%{transform:scale(.96)}}
+  @media(prefers-reduced-motion:reduce){.support-trigger:hover svg{animation:none}}
+
+  .support-dialog{width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:1.4rem;overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--border);border-radius:18px;background:var(--paper-raised);color:var(--ink);box-shadow:0 18px 60px #0005}
+  .support-dialog[open]{animation:support-arrive .25s cubic-bezier(.2,.7,.2,1)}
+  .support-dialog::backdrop{background:rgb(12 22 17 / 45%);backdrop-filter:blur(3px)}
+  @keyframes support-arrive{from{opacity:0;transform:translateY(12px) scale(.98)}}
+  @media(prefers-reduced-motion:reduce){.support-dialog[open]{animation:none}}
+  .support-dialog header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+  .support-dialog h2{margin:0;font-size:1.45rem}
+  .support-dialog header p{margin:.45rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.6}
+  .support-close{flex:none;width:36px;height:36px;min-height:0;padding:0;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:1.5rem;line-height:1}
+  .support-close:hover{background:var(--green-soft);color:var(--ink)}
+
+  .support-methods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1.2rem 0 .8rem}
+  .support-methods button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;min-height:68px;padding:.5rem .25rem;border:1px solid var(--border);border-radius:12px;background:var(--paper);color:var(--muted);font-size:.82rem;font-weight:600}
+  .support-methods button:hover{color:var(--ink)}
+  .support-methods button[aria-selected=true]{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+  .support-methods svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+  .support-panel{display:grid;gap:1rem;align-items:center;min-height:200px;padding:1.1rem;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:14px;background:color-mix(in srgb,var(--paper) 70%,var(--paper-raised))}
+  .support-panel[hidden]{display:none}
+  .support-panel.has-qr{grid-template-columns:minmax(0,1fr) 168px}
+  .support-copy{display:grid;justify-items:start;gap:.6rem}
+  .support-copy h3{margin:0;font-size:1.15rem}
+  .support-copy p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
+  .support-action{display:inline-flex;align-items:center;gap:.5rem;min-height:42px;margin-top:.2rem;padding:.55rem 1rem;border:1px solid var(--green);border-radius:9px;background:var(--green);color:var(--paper);font-size:.88rem;font-weight:600;text-decoration:none}
+  .support-action:hover{background:color-mix(in srgb,var(--green) 86%,var(--ink));border-color:var(--green)}
+  .support-zoom{background:transparent;color:var(--green)}
+  .support-zoom:hover{background:var(--green-soft)}
+  .support-touch-hint{display:none;color:var(--muted);font-size:.78rem;line-height:1.55}
+  .support-qr{display:block;width:100%;height:auto;aspect-ratio:1;padding:8px;border-radius:12px;background:#fff;box-shadow:0 2px 10px #0002}
+  .support-panel.is-zoomed{grid-template-columns:1fr}
+  .support-panel.is-zoomed .support-qr{order:-1;justify-self:center;max-width:340px}
+  @media(pointer:coarse){.support-touch-hint{display:block}}
+  @media(max-width:520px){
+    .support-dialog{padding:1.1rem}
+    .support-methods{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .support-methods button{flex-direction:row;min-height:52px}
+    .support-panel{min-height:0}
+    .support-panel.has-qr{grid-template-columns:1fr}
+    .support-panel.has-qr .support-qr{order:-1;justify-self:center;max-width:240px}
+    .support-zoom{display:none}
+  }
+</style>
