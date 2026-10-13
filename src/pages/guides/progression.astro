@@ -24,6 +24,6 @@ const shrine=quests.find(e=>e.id==='QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST');
 {shrine&&<section><h2>{t('岔路祠堂修复')}</h2><p>{String(shrine.objective)}</p><ol>{(shrine.steps as string[]).map(step=><li>{step}</li>)}</ol><a href={href(`/data/activities/?q=${encodeURIComponent(t('祠堂'))}`)}>{t('祠堂能力与配方')}</a></section>}
 <section id="story"><h2>{t('主线目标（剧透）')}</h2><p>{t('按任务链分别展开。清单保留游戏内目标顺序，部分分支会因当前剧情状态而不同，不把后面的目标当成现在就该做的事。')}</p>{main.map(e=><details><summary>{e.name.zh_hans}</summary><p>{String(e.objective)}</p><ol>{(e.steps as string[]).map(step=><li>{step}</li>)}</ol><a href={href(entityUrl(e))}>{t('任务详情')}</a></details>)}</section>
 <p><a href={href("/guides/season-plan/")}>{t('四季供奉与留货数量')}</a> · <a href={href("/guides/collection-map/")}>{t('图书地图与关联剧情进度')}</a> · <a href={href("/guides/residents/")}>{t('生日和送礼')}</a></p>
-<details><summary>{t('数据来源')}</summary><p>{t('quest.dat 的官方中文任务目标与分步清单；本站只调整展示结构并给出准备顺序，未把日文攻略的日期或推测当成游戏条件。')}</p></details>
+<details><summary>{t('数据来源')}</summary><p>{t('任务目标与分步清单取自 quest.dat 的官方中文；准备顺序是本站建议，没有采用日文攻略里的日期和推测。')}</p></details>
 </BaseLayout>
 <style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.4rem 0}.quest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}.card{padding:1rem}.card h3{margin-top:0}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

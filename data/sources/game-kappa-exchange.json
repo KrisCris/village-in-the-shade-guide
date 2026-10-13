@@ -19,7 +19,7 @@
       "condition": "铜镜之后的奖励阶段；之后回到起始阶段"
     }
   ],
-  "condition": "与河童交谈后分批交付，累计完成当轮剩余需求才发放该阶段奖励；不是同时取得三项奖励",
+  "condition": "与河童交谈后可以分批交付，交够当轮的需求后发放该阶段奖励；三项奖励按阶段依次领取",
   "source": "ai_creature_horror_kappa.lub: talk lines 51–195; event_horror_item_trade.lub: event_reset_summer; gamedefine.dat: KAPPA_CUCUMBER_NUM",
   "source_sha256": "2df19c19b30d966438e2e6906b2b33d4e315375e53675c70632982eaffc8bff9"
 }

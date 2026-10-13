@@ -18,11 +18,11 @@ if(guide.guideTarget)return Astro.redirect(href(guide.guideTarget));
 const isSpoiler = spoilerCategories.has(guide.category);
 const { title, headings } = localizeGuide(guide, locale);
 ---
-<BaseLayout title={title} description={t('{title}：紧凑中文要点与游戏数据链接。', { title })}>
+<BaseLayout title={title} description={t('{title}：要点和相关的游戏数据。', { title })}>
   <nav class="crumb"><a href={href("/guides/")}>{t('攻略')}</a><span>›</span><a href={href(`/guides/#${guide.category}`)}>{t(guide.category)}</a></nav>
   <p class="eyebrow">{t(guide.category)}</p><h1>{title}</h1>
   {guide.dataTarget && <a class="data-cta card" href={href(guide.dataTarget)}><span><strong>{t('打开完整数据表')}</strong><small>{t('支持搜索、筛选、排序与逐层展开关联')}</small></span><b>→</b></a>}
-  {headings.length > 0 && <section><h2>{t('参考主题')}</h2><p>{t('这一主题的详细条件尚未全部从游戏数据核对。以下是待补充范围，不作为已验证的操作步骤。')}</p>
+  {headings.length > 0 && <section><h2>{t('参考主题')}</h2><p>{t('这部分条件还没有全部和游戏数据核对。下面列出的是待补充的内容，不是已验证的步骤。')}</p>
     {isSpoiler ? <details class="spoiler"><summary>{t('展开含剧透的流程与应对要点')}</summary><ol>{headings.map((heading) => <li>{heading}</li>)}</ol></details> : <ol class="steps">{headings.map((heading) => <li>{heading}</li>)}</ol>}
   </section>}
   <aside class="source-note"><strong>{t('来源与口径')}</strong><p>{interpolate(t('本页按 AppMedia 对应主题重新整理，未复制原文；价格、名称、配方和关联以本地游戏数据为准。需要查看原页面时可前往 {link}。'), { link: <a href={withBase(guide.url)} rel="nofollow">{t('AppMedia：{title}', { title: guide.title })}</a> })}</p></aside>

@@ -4,4 +4,4 @@ import AsyncCropPlanner from '../components/table/AsyncCropPlanner';
 import { getI18n } from '../i18n/server';
 const { t, href, locale } = getI18n(Astro.url);
 ---
-<BaseLayout title={t('种植与加工收益')}><h1>{t('种植与加工收益')}</h1><p><a href={href('/planner/workflow/')}>{t('打开农场生产工作流')} →</a> {t('自由安排月中买种、续种、多级加工和供奉留货，按天查看结果。')}</p><AsyncCropPlanner client:load locale={locale}/></BaseLayout>
+<BaseLayout title={t('收益规划：种植与加工日收益')}><h1>{t('种植与加工收益')}</h1><p><a href={href('/planner/workflow/')}>{t('打开农场生产工作流')} →</a> {t('自由安排月中买种、续种、多级加工和供奉留货，按天查看结果。')}</p><AsyncCropPlanner client:load locale={locale}/></BaseLayout>

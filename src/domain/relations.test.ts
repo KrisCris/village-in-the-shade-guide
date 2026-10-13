@@ -268,7 +268,7 @@ describe('relation groups', () => {
     expect(output?.chips).toContain('河童阶段奖励');
     const source=buildRelationGroups(mirror,data,'normal').find(g=>g.key==='acquisition')?.rows.find(r=>r.entity===cucumber);
     expect(source).toMatchObject({quantity:30});
-    expect(source?.note).toContain('不是同时取得');
+    expect(source?.note).toContain('按阶段依次领取');
   });
 
   it('links animal production and juvenile growth without inventing drop quantities', () => {
