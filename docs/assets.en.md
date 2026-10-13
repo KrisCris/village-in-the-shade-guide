@@ -18,7 +18,8 @@ Most images on the site are extracted from the game files and stored in the repo
 | `public/art/portraits/` | animated portraits | exported by `tools/extract-portrait-models.py` and `extract-portrait-options.py`, packed by `tools/package-portraits.mjs` |
 | `public/art/logo-japanese.png` | Japanese game logo | public Steam store image |
 | `public/portraits/official/` | character portraits | publisher's character pages; sources in `data/sources/official-character-portraits.json` |
-| `public/game-icon.png` | site icon | game artwork |
+| `public/favicon.svg`, `public/app/` | site and app icons | drawn by the author; `tools/build-app-icons.mjs` writes every size |
+| `public/support/` | Alipay and WeChat Pay codes in the support dialog | the author's own payment codes |
 
 The home page background is a decorative scene assembled from game assets, not a reproduction of a game map. Its season does not affect any data filters.
 
@@ -26,7 +27,7 @@ The home page background is a decorative scene assembled from game assets, not a
 
 Images from the game, the Steam store and the publisher's website belong to Nippon Ichi Software, Inc. and other rights holders. The site shows them as an unofficial guide. The author claims no rights in them, and this project's licenses grant nobody any right to use them. If a rights holder wants something changed or removed, please open an issue on GitHub.
 
-The extraction tools are project code under AGPL-3.0. Shapes drawn by the author, such as `public/icons/fallback/`, are under CC BY-NC-SA 4.0. See [LICENSING.en.md](../LICENSING.en.md).
+The extraction tools are project code under AGPL-3.0. Shapes drawn by the author, such as `public/icons/fallback/` and the site and app icons, are under CC BY-NC-SA 4.0. See [LICENSING.en.md](../LICENSING.en.md).
 
 ## Adding assets
 

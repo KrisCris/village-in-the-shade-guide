@@ -9,10 +9,10 @@ import SidebarNav from '../components/SidebarNav.astro';
 import SeasonScene from '../components/art/SeasonScene.astro';
 import FallingLeaves from '../components/art/FallingLeaves.astro';
 import { getI18n } from '../i18n/server';
-interface Props { title: string; description?: string; immersive?: boolean; }
+interface Props { title: string; description?: string; immersive?: boolean; /** The title already names the site; skip the suffix. */ fullTitle?: boolean; /** Leave the page out of the search index. */ searchable?: boolean; }
 const i18n = getI18n(Astro.url);
 const { t } = i18n;
-const { title, description = t('《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略'), immersive=false } = Astro.props;
+const { title, description = t('《静谧田园》（Village in the Shade）中文版数据 Wiki 与攻略'), immersive=false, fullTitle=false, searchable=true } = Astro.props;
 const siteName = t('静谧田园 Wiki');
 const absolute = (href: string) => Astro.site ? new URL(href, Astro.site).href : href;
 const alternates = i18n.alternates();
@@ -25,19 +25,27 @@ const licensing = `${repo}/blob/main/${i18n.lang === 'ja' ? 'LICENSING.en.md' : 
   <head>
     <ClientRouter fallback="swap" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="Q8Z9UGOo12W6iNMjAKeC86wq4Wu6IEM8plWaLC8FXG4" />
     <meta name="theme-color" content="#ece8db" />
+    <meta name="application-name" content={siteName} />
+    <meta name="apple-mobile-web-app-title" content={siteName} />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script is:inline data-astro-rerun>
       (()=>{let particles;try{particles=localStorage.getItem('village-particles');}catch{}document.documentElement.dataset.particles=particles==='off'?'off':'on';})();
       (()=>{let season;try{season=localStorage.getItem('village-season');}catch{}const preference=['spring','summer','autumn','winter'].includes(season)?season:'auto';document.documentElement.dataset.seasonPreference=preference;if(preference!=='auto')document.documentElement.dataset.season=preference;})();
-      (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';})();
+      (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';document.querySelector('meta[name=theme-color]')?.setAttribute('content',document.documentElement.dataset.theme==='night'?'#14251f':'#ece8db');})();
     </script>
-    <link rel="icon" href={withBase("/game-icon.png")} />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={withBase('/app/favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={withBase('/app/apple-touch-icon.png')} />
+    <link rel="manifest" href={i18n.href('/manifest.webmanifest')} />
     {alternates.map(({ locale, href }) => <link rel="alternate" hreflang={locale} href={absolute(href)} />)}
     <link rel="alternate" hreflang="x-default" href={absolute(alternates[0].href)} />
-    <title>{title} · {siteName}</title>
+    <title>{fullTitle ? title : `${title} · ${siteName}`}</title>
+    {!searchable && <meta name="robots" content="noindex" />}
   </head>
   <body class:list={[immersive?'home-page':'wiki-page', {'dynamic-interior':dynamicInterior}]}>
     <a class="skip-link" href="#main-content">{t('跳至正文')}</a>
@@ -46,13 +54,17 @@ const licensing = `${repo}/blob/main/${i18n.lang === 'ja' ? 'LICENSING.en.md' : 
     {dynamicInterior ? <><SeasonScene /><div class="interior-scene-veil" aria-hidden="true"></div></> : !immersive&&<div class="interior-scenery" aria-hidden="true"><img class="interior-mountains" src={withBase('/art/mountains-spring.webp')} alt="" loading="lazy"/><img class="interior-foliage" src={withBase('/art/pine-spring.webp')} alt="" width="256" height="312" loading="lazy"/></div>}
     <div class:list={['page',{'immersive-page':immersive}]}>
       {!immersive&&<SidebarNav />}
-      <main class="main" id="main-content" data-pagefind-body><slot /></main>
+      <main class="main" id="main-content" data-pagefind-body={searchable ? '' : undefined}><slot /></main>
     </div>
     <footer class="site-footer"><a href={i18n.href('/')}>{siteName}</a><span>{t('《静谧田园》© NIS · 非官方指南 · 作者：{author}', { author: '_connlost' })}</span><span class="site-footer-links"><a href={licensing}>{t('使用许可')}</a><a href={repo}>GitHub ↗</a></span></footer>
     <script>
       import { onPageMount } from '../lib/pageLifecycle';
       import { enhanceSortableTables } from '../lib/sortableTables';
       onPageMount(() => enhanceSortableTables(document, document.documentElement.lang || 'zh-CN'));
+    </script>
+    <script>
+      import { registerApp } from '../lib/pwa';
+      registerApp();
     </script>
   </body>
 </html>

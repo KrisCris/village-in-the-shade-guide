@@ -18,7 +18,8 @@
 | `public/art/portraits/` | 动态立绘 | `tools/extract-portrait-models.py`、`extract-portrait-options.py` 导出，`tools/package-portraits.mjs` 打包 |
 | `public/art/logo-japanese.png` | 日文游戏标志 | Steam 商店公开图片 |
 | `public/portraits/official/` | 角色头像 | 发行商网站人物页，来源见 `data/sources/official-character-portraits.json` |
-| `public/game-icon.png` | 站点图标 | 游戏图像 |
+| `public/favicon.svg`、`public/app/` | 站点与应用图标 | 作者绘制，`tools/build-app-icons.mjs` 生成各尺寸 |
+| `public/support/` | 赞助弹窗里的支付宝、微信收款码 | 作者本人的收款码 |
 
 首页背景是用游戏素材拼出的装饰画面，不是游戏地图的还原；背景季节不影响资料筛选。
 
@@ -26,7 +27,7 @@
 
 上表中来自游戏、Steam 商店和发行商网站的图像，权利属于 Nippon Ichi Software, Inc. 及相应权利人。本站作为非官方攻略展示这些素材，作者不主张对其享有权利，本项目的许可也不授予任何人使用它们的权利。权利人如要求修改或删除，请在 GitHub 开 issue。
 
-提取工具属于本项目代码，按 AGPL-3.0 授权；`public/icons/fallback/` 等作者绘制的图形按 CC BY-NC-SA 4.0 授权。见 [授权说明](../LICENSING.md)。
+提取工具属于本项目代码，按 AGPL-3.0 授权；`public/icons/fallback/`、站点与应用图标等作者绘制的图形按 CC BY-NC-SA 4.0 授权。见 [授权说明](../LICENSING.md)。
 
 ## 添加素材
 

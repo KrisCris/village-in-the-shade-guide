@@ -2,12 +2,13 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import { fileURLToPath } from 'node:url';
 import localeRoutes from './src/i18n/localeRoutes.mjs';
+import pwa from './src/pwa/integration.mjs';
 
 export default defineConfig({
   site: process.env.SITE_URL || undefined,
   base: process.env.BASE_PATH || '/',
   output: 'static',
-  integrations: [react(), localeRoutes()],
+  integrations: [react(), localeRoutes(), pwa()],
   vite: {
     build: { assetsInlineLimit: 0 },
     plugins: [{
