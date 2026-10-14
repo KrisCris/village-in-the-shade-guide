@@ -13,6 +13,11 @@ const RUNTIME = {
   maps: { name: 'maps-v1', limit: 30 },
 };
 const LOCALES = ['zh-TW', 'ja'];
+// The offline download (src/lib/offlineStore.ts) stores the whole wiki in
+// caches named offline-*, marks its requests with this header and keeps those
+// caches up to date itself.
+const OFFLINE_PREFIX = 'offline-';
+const OFFLINE_HEADER = 'x-offline-download';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(SHELL).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -21,7 +26,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keep = new Set([SHELL, ...Object.values(RUNTIME).map((cache) => cache.name)]);
-    for (const key of await caches.keys()) if (!keep.has(key)) await caches.delete(key);
+    for (const key of await caches.keys()) if (!keep.has(key) && !key.startsWith(OFFLINE_PREFIX)) await caches.delete(key);
     await self.clients.claim();
   })());
 });
@@ -51,10 +56,13 @@ async function networkFirst(event, store, fallback) {
     event.waitUntil(put(store, event.request, response.clone()));
     return response;
   } catch (error) {
-    const cached = await caches.match(event.request, { ignoreSearch: event.request.mode === 'navigate' });
+    // Prefer this cache's copy: it is newer than the precached one. Queries
+    // are cache-busting stamps (Pagefind adds ?ts=), so stored copies match.
+    const options = { ignoreSearch: true, ignoreVary: true };
+    const cached = await (await caches.open(store.name)).match(event.request, options) ?? await caches.match(event.request, options);
     if (cached) return cached;
     if (fallback) {
-      const page = await caches.match(fallback);
+      const page = await caches.match(fallback, { ignoreVary: true });
       if (page) return page;
     }
     throw error;
@@ -62,34 +70,54 @@ async function networkFirst(event, store, fallback) {
 }
 
 async function cacheFirst(event, store) {
-  const cached = await caches.match(event.request);
+  const cached = await caches.match(event.request, { ignoreVary: true });
   if (cached) return cached;
   const response = await fetch(event.request);
   event.waitUntil(put(store, event.request, response.clone()));
   return response;
 }
 
+/** Pick the cache and strategy for a same-origin request, or null to leave it to the browser. */
+function route(url, mode) {
+  if (url.origin !== self.location.origin || !url.pathname.startsWith(BASE)) return null;
+  const path = url.pathname.slice(BASE.length);
+  // Pages: full loads, and the HTML Astro's view transitions fetch between pages.
+  if (mode === 'navigate' || path === '' || path.endsWith('/') || path.endsWith('.html')) {
+    return { store: RUNTIME.pages, strategy: 'network', fallback: offlinePage(url.pathname) };
+  }
+  // Content-hashed build output never changes under the same name.
+  if (path.startsWith('_astro/')) return { store: RUNTIME.assets, strategy: 'cache' };
+  // App icons keep their names when redrawn: check the network first.
+  if (path.startsWith('app/') || path === 'favicon.svg') return { store: RUNTIME.data, strategy: 'network' };
+  if (path.startsWith('maps/')) return { store: RUNTIME.maps, strategy: 'cache' };
+  if (/\.(?:png|webp|jpe?g|gif|svg|ico|woff2?|mp3|ogg|m4a)$/i.test(path)) return { store: RUNTIME.media, strategy: 'cache' };
+  // Data changes with each deployment: prefer the network, fall back offline.
+  if (path.startsWith('pagefind/') || /\.(?:json|webmanifest)$/i.test(path)) return { store: RUNTIME.data, strategy: 'network' };
+  return null;
+}
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-  if (request.method !== 'GET' || request.headers.has('range')) return;
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin || !url.pathname.startsWith(BASE)) return;
-  const path = url.pathname.slice(BASE.length);
+  if (request.method !== 'GET' || request.headers.has('range') || request.headers.has(OFFLINE_HEADER)) return;
+  const target = route(new URL(request.url), request.mode);
+  if (!target) return;
+  event.respondWith(target.strategy === 'cache'
+    ? cacheFirst(event, target.store)
+    : networkFirst(event, target.store, target.fallback));
+});
 
-  if (request.mode === 'navigate') {
-    event.respondWith(networkFirst(event, RUNTIME.pages, offlinePage(url.pathname)));
-  } else if (path.startsWith('_astro/')) {
-    // Content-hashed build output never changes under the same name.
-    event.respondWith(cacheFirst(event, RUNTIME.assets));
-  } else if (path.startsWith('app/') || path === 'favicon.svg') {
-    // App icons keep their names when redrawn: check the network first.
-    event.respondWith(networkFirst(event, RUNTIME.data));
-  } else if (path.startsWith('maps/')) {
-    event.respondWith(cacheFirst(event, RUNTIME.maps));
-  } else if (/\.(?:png|webp|jpe?g|gif|svg|ico|woff2?|mp3|ogg|m4a)$/i.test(path)) {
-    event.respondWith(cacheFirst(event, RUNTIME.media));
-  } else if (path.startsWith('pagefind/') || /\.(?:json|webmanifest)$/i.test(path)) {
-    // Data changes with each deployment: prefer the network, fall back offline.
-    event.respondWith(networkFirst(event, RUNTIME.data));
-  }
+// The first page a player opens loads before the worker controls it, so the
+// page sends its own URL and resources here to be stored as well.
+self.addEventListener('message', (event) => {
+  if (event.data?.type !== 'cache-urls' || !Array.isArray(event.data.urls)) return;
+  event.waitUntil(Promise.all(event.data.urls.map(async (href) => {
+    const url = new URL(href, self.location.origin);
+    const target = route(url, url.pathname.endsWith('/') ? 'navigate' : 'no-cors');
+    if (!target || await caches.match(url.href)) return;
+    try {
+      await put(target.store, url.href, await fetch(url.href));
+    } catch {
+      // Offline or gone: nothing to store.
+    }
+  })));
 });

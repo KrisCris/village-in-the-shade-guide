@@ -1,7 +1,10 @@
-// Write dist/sw.js after the static build. The worker precaches the offline
-// page (with the CSS and scripts it loads) and the app icons; everything else
-// is cached as players open it. The version changes with the build output, so
-// a deployment replaces the precache.
+// Write dist/sw.js after the static build. The worker precaches the home and
+// offline pages in each language (with the CSS and scripts they load) and the
+// app icons, so an installed app always opens; everything else is cached as
+// players open it, or all at once through the offline download (the file
+// lists come from tools/write-offline-files.mjs, which runs after Pagefind).
+// The version changes with the build output, so a deployment replaces the
+// precache.
 import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -19,18 +22,20 @@ export default function pwa() {
       'astro:build:done': async ({ dir }) => {
         const out = fileURLToPath(dir);
         const assets = (await readdir(join(out, '_astro'))).sort();
-        const offlinePages = locales.map((locale) => `${locale}offline/`);
+        const pages = locales.flatMap((locale) => [locale, `${locale}offline/`]);
         const linked = new Set();
-        for (const page of offlinePages) {
-          const html = await readFile(join(out, page, 'index.html'), 'utf8');
-          for (const [, file] of html.matchAll(/["'(]\/?(?:[^"'()]*\/)?(_astro\/[^"'()?#\s]+)/g)) linked.add(file);
+        const html = [];
+        for (const page of pages) {
+          html.push(await readFile(join(out, page, 'index.html'), 'utf8'));
+          for (const [, file] of html.at(-1).matchAll(/["'(]\/?(?:[^"'()]*\/)?(_astro\/[^"'()?#\s]+)/g)) linked.add(file);
         }
-        const precache = [...offlinePages, ...icons, ...[...linked].sort()].map((path) => `${base}${path}`);
-        // Icons keep their names when redrawn, so hash their contents too.
+        const precache = [...pages, ...icons, ...[...linked].sort()].map((path) => `${base}${path}`);
+        // Pages and icons keep their names when they change, so hash their contents too.
         const hash = createHash('sha256').update(assets.join('\n')).update(precache.join('\n'));
+        for (const page of html) hash.update(page);
         for (const icon of icons) hash.update(await readFile(join(out, icon)));
-        const version = hash.digest('hex').slice(0, 12);
         const template = await readFile(new URL('./sw-template.js', import.meta.url), 'utf8');
+        const version = hash.update(template).digest('hex').slice(0, 12);
         const worker = template
           .replace("'__BASE__'", JSON.stringify(base))
           .replace("'__VERSION__'", JSON.stringify(version))
