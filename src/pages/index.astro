@@ -16,6 +16,10 @@ import '../styles/home.css';
 const i18n = getI18n(Astro.url);
 const { t, href, locale } = i18n;
 const catalog = getCatalog(locale);
+const number = (value: number) => value.toLocaleString(i18n.lang);
+const icon = (id: string) => catalog.byId[id]?.icon_path;
+const itemIcon = (category: string) => catalog.entities.find(e => e.kind === 'items' && e.category_id === `ITEM_CATEGORY_${category}` && e.icon_path)?.icon_path;
+const totalEntries = Object.values(catalog.counts).reduce((sum, count) => sum + count, 0);
 const featuredKinds = primaryKinds.map((kind) => ({ kind, label: t(kindLabels[kind]), count: catalog.counts[kind] ?? 0, icon:catalog.entities.find(e=>e.kind===kind&&e.icon_path)?.icon_path }));
 const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.icon_path);
 const seasons=[t('春'),t('夏'),t('秋'),t('冬')];
@@ -30,34 +34,98 @@ const rankings=Object.fromEntries(QUALITY_VALUES.map(quality=>{
     .map(row=>({entity:compactItemRow(row.entity),perDay:row.profit!.perDay!}));
   return [quality,{crops:rank(crops,calculateEntityCropProfit),processes:rank(processes,calculateEntityProcessProfit)}];
 }));
+
+const features = [
+  { number: t('壹'), title: t('资料库'), text: t('{count} 条游戏数据：价格、获取方式、配方和用途。', { count: number(totalEntries) }), link: '/data/', anchor: '#chapter-summer', icon: icon('ITEM_ID_TOOL_BAG_LV2') },
+  { number: t('贰'), title: t('攻略'), text: t('四季留货、钓点、采石场掉落、送礼和收集地图。'), link: '/guides/', anchor: '#chapter-autumn', icon: icon('ITEM_ID_CURSE_FURNITURE_LOST_BOOKS_00') },
+  { number: t('叁'), title: t('生产工作流'), text: t('把种植、加工、交付和出售连成流程，按天算出土地、机器和现金。'), link: '/planner/workflow/', anchor: '#chapter-winter', icon: icon('ITEM_ID_GIMMICK_FLOUR_MILL') },
+  { number: t('肆'), title: t('存档编辑器'), text: t('在浏览器里改物品、田地布局、好感和任务进度。'), link: '/save-editor/', anchor: '#chapter-editor', icon: icon('ITEM_ID_GIMMICK_CHEST_CAMP_GREEN') },
+];
+const featuredGuides = [
+  { title: t('四季留货与交付'), text: t('每季供奉和交付目录要留多少货'), link: '/guides/season-plan/', icon: itemIcon('CROPS') },
+  { title: t('四季钓点分布'), text: t('每个钓点各时段的鱼和上钩概率'), link: '/guides/fishing-spots/', icon: itemIcon('FISH') },
+  { title: t('采石场掉落分布'), text: t('每层石头掉什么、概率多少'), link: '/guides/quarry/', icon: itemIcon('ORE') },
+  { title: t('生日、送礼与食谱传授'), text: t('村民生日、喜好和传授的食谱'), link: '/guides/residents/', icon: itemIcon('FLOWER') },
+  { title: t('料理材料与食谱'), text: t('配方用料和可以替换的材料'), link: '/guides/cooking-plan/', icon: itemIcon('COOKING') },
+  { title: t('帮忙券与主线推进'), text: t('帮忙券任务和道路开放顺序'), link: '/guides/progression/', icon: itemIcon('FARM_TOOL') },
+];
+// A real one-step chain from the game data: wheat → flour mill → flour.
+const flour = catalog.byId['ITEM_ID_FLOUR'];
+const flowNodes = [
+  { kind: t('种植'), entity: catalog.byId['ITEM_ID_CROPS_WHEAT'] },
+  { kind: t('加工'), entity: catalog.byId['ITEM_ID_GIMMICK_FLOUR_MILL'] },
+  { kind: t('产物'), entity: flour },
+].filter(node => node.entity);
+const editorAreas = [t('名字与金钱'), t('日期与天气'), t('背包与容器'), t('加工设备'), t('畜牧'), t('村民好感'), t('任务进度'), t('图鉴与配方'), t('田地布局')];
+const inventory = ['ITEM_ID_CROPS_WHEAT', 'ITEM_ID_FLOUR', 'ITEM_ID_CROPS_RICE', 'ITEM_ID_VINEGAR', 'ITEM_ID_HONEY', 'ITEM_ID_JAM_PEACH', 'ITEM_ID_DRIED_PERSIMMON', 'ITEM_ID_CROPS_EDAMAME', 'ITEM_ID_BEER', 'ITEM_ID_SEED_RICE', 'ITEM_ID_DRIED_SHIITAKE_MUSHROOM', 'ITEM_ID_CROPS_STRAWBERRY']
+  .map((id, index) => ({ icon: icon(id), count: [24, 12, 99, 5, 8, 3, 15, 40, 2, 30, 6, 18][index] }))
+  .filter(slot => slot.icon);
 ---
-<BaseLayout title={t('中文版数据 Wiki 与攻略')} immersive>
+<BaseLayout title={t('静谧田园 Wiki：资料库、攻略、生产规划与存档编辑器')} fullTitle immersive>
   <SeasonScene />
   <section class="home-chapter hero-chapter" id="chapter-spring" data-season-chapter>
     <div class="hero-copy">
       <p class="hero-kicker"><!-- i18n-ignore: the logo's alt is its own Japanese title --><img class="hero-game-logo" src={withBase('/art/logo-japanese.png')} width="1280" height="360" alt="ほの暮しの庭" /><span>{t('中文 WIKI')}</span></p>
       <h1>{t('静谧')}<span>{t('田园')}</span><i aria-hidden="true">暮らし</i></h1><!-- i18n-ignore: decorative stamp -->
       <GlobalSearch client:load prominent locale={locale} />
-      <div class="hero-actions"><a class="primary-link" href={href('/data/')}>{t('打开资料库')} <span>↗</span></a><a href={href('/planner/')}>{t('种植与加工规划')} →</a></div>
+      <div class="hero-actions"><a class="primary-link" href={href('/data/')}>{t('打开资料库')} <span>↗</span></a><a href={href('/planner/workflow/')}>{t('生产工作流')} →</a></div>
     </div>
     <HomePortraits client:visible locale={locale} />
-    <a class="scroll-cue" href="#chapter-summer">{t('向下探索')} <span>↓</span></a>
+    <a class="scroll-cue" href="#features">{t('向下探索')} <span>↓</span></a>
+  </section>
+  <section class="home-chapter feature-chapter" id="features" aria-label={t('本站功能')}>
+    <ol class="feature-grid">{features.map((feature, i) => <li data-reveal style={`--reveal-delay:${i * 60}ms`}>
+      <a class="feature-card" href={href(feature.link)}>
+        <span class="feature-number">{feature.number}</span>
+        {feature.icon && <img src={withBase(feature.icon)} width="64" height="64" alt="" loading="lazy" />}
+        <h2>{feature.title}</h2>
+        <p>{feature.text}</p>
+        <b aria-hidden="true">↗</b>
+      </a>
+    </li>)}</ol>
   </section>
   <section class="home-chapter" id="chapter-summer" data-season-chapter>
-    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('壹 · 田园手册')}</p><h2>{t('资料库')}</h2></div><a href={href('/categories/')}>{t('分类一览')} ↗</a></div>
-    <div class="art-categories">{featuredKinds.map(({kind,label,count,icon},i)=><a class="art-category" href={href(`/data/${kind}/`)} data-reveal style={`--reveal-delay:${i%4*50}ms`}><span class="category-number">0{i+1}</span>{icon&&<img src={withBase(icon)} width="100" height="100" alt="" loading="lazy"/>}<h3>{label}</h3><span class="category-count">{t('{count} 条', { count: count.toLocaleString(i18n.lang) })} <b>↗</b></span></a>)}<a class="art-category all-categories" href={href('/categories/')} data-reveal><span class="category-number">08</span><span class="category-seal" aria-hidden="true">{t('物')}</span><h3>{t('分类一览')}</h3><span class="category-count">{t('按游戏类别查找')} <b>↗</b></span></a></div>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('壹 · WIKI')}</p><h2>{t('资料库')}</h2><p class="chapter-lede">{t('数据取自游戏文件。点开任意一项，可以继续查它的来源、配方、用途和关联角色。')}</p></div><a href={href('/categories/')}>{t('分类一览')} ↗</a></div>
+    <div class="art-categories">{featuredKinds.map(({kind,label,count,icon},i)=><a class="art-category" href={href(`/data/${kind}/`)} data-reveal style={`--reveal-delay:${i%4*50}ms`}><span class="category-number">0{i+1}</span>{icon&&<img src={withBase(icon)} width="100" height="100" alt="" loading="lazy"/>}<h3>{label}</h3><span class="category-count">{t('{count} 条', { count: number(count) })} <b>↗</b></span></a>)}<a class="art-category all-categories" href={href('/categories/')} data-reveal><span class="category-number">08</span><span class="category-seal" aria-hidden="true">{t('物')}</span><h3>{t('分类一览')}</h3><span class="category-count">{t('按游戏类别查找')} <b>↗</b></span></a></div>
   </section>
-  <section class="home-chapter" id="chapter-autumn" data-season-chapter>
-    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('贰 · 四季耕作')}</p><h2>{t('每一季的打算')}</h2></div><a href={href('/planner/')}>{t('收益规划器')} ↗</a></div>
-    <div class="season-cards">{seasons.map((name,i)=><a href={href(`/data/crops/?season=${seasonIds[i]}`)} class="season-card" data-reveal><img src={withBase(`/art/tree-${seasonIds[i]}.webp`)} width="128" height="156" alt="" loading="lazy"/><span>{name}<small>{t('季作物')} →</small></span></a>)}</div>
-    <div class="guide-ribbon" data-reveal><a href={href('/guides/season-plan/')}>{t('四季留货规划')} <span>{t('供奉 · 委托 · 留种')} ↗</span></a><a href={href('/planner/')}>{t('种植到加工')} <span>{t('成本 · 增值 · 日收益')} ↗</span></a></div>
-    <div data-reveal><ProfitRankings client:visible rankings={rankings} locale={locale}/></div>
-  </section>
-  <section class="home-chapter village-chapter" id="chapter-winter" data-season-chapter>
-    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('叁 · 村中往来')}</p><h2>{t('熟悉的面孔')}</h2></div><a href={href('/guides/residents/')}>{t('生日与送礼')} ↗</a></div>
+  <section class="home-chapter village-chapter" id="chapter-autumn" data-season-chapter>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('贰 · 攻略')}</p><h2>{t('攻略')}</h2><p class="chapter-lede">{t('表格里的数量、概率和条件来自游戏数据，每篇都附有数据来源。')}</p></div><a href={href('/guides/')}>{t('全部攻略')} ↗</a></div>
+    <div class="guide-cards">{featuredGuides.map((guide, i) => <a class="guide-card" href={href(guide.link)} data-reveal style={`--reveal-delay:${i % 3 * 50}ms`}>{guide.icon && <img src={withBase(guide.icon)} width="48" height="48" alt="" loading="lazy" />}<span><strong>{guide.title}</strong><small>{guide.text}</small></span><b aria-hidden="true">↗</b></a>)}</div>
+    <div class="subsection-heading" data-reveal><h3>{t('熟悉的面孔')}</h3><a href={href('/guides/residents/')}>{t('生日与送礼')} ↗</a></div>
     <div class="resident-gallery" data-reveal>{residents.map(e=><a href={href(entityUrl(e))}><img src={withBase(e.icon_path!)} alt="" width="120" height="120" loading="lazy"/><span>{e.name.zh_hans}</span></a>)}</div>
     <a class="map-feature" href={href('/guides/collection-map/')} data-reveal><div class="map-art"><img src={withBase('/maps/minimap_01_spr_tc.webp')} width="4096" height="4096" alt={t('游戏内村庄地图')} loading="lazy"/></div><div class="map-copy"><p class="eyebrow">{t('探索与收集')}</p><h2>{t('循着地图，')}<br/>{t('走进村庄。')}</h2><span>{t('图书 · 狐狸神社 · 收集位置')} ↗</span></div></a>
-    <a class="all-guides" href={href('/guides/')}>{t('全部攻略')} <span>↗</span></a>
+  </section>
+  <section class="home-chapter" id="chapter-winter" data-season-chapter>
+    <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('叁 · 规划')}</p><h2>{t('生产工作流')}</h2><p class="chapter-lede">{t('按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。')}</p></div><a href={href('/planner/')}>{t('收益规划器')} ↗</a></div>
+    <a class="workflow-feature" href={href('/planner/workflow/')} data-reveal>
+      <div class="workflow-demo" aria-hidden="true">
+        {flowNodes.map((node, i) => <><span class="workflow-node"><small>{node.kind}</small>{node.entity!.icon_path && <img src={withBase(node.entity!.icon_path)} width="56" height="56" alt="" loading="lazy" />}<strong>{node.entity!.name.zh_hans}</strong></span>{i < flowNodes.length - 1 && <i class="workflow-edge"></i>}</>)}
+        {flour?.sell_price ? <><i class="workflow-edge"></i><span class="workflow-node workflow-sale"><small>{t('出售')}</small><b class="price">{number(flour.sell_price)}</b><strong>{t('每个')}</strong></span></> : null}
+      </div>
+      <ul class="workflow-points">
+        <li>{t('月中买种、续种和多级加工可以自由安排')}</li>
+        <li>{t('供奉和交付需求自动带入，产物先留货再出售')}</li>
+        <li>{t('按天列出买入、播种、收获、加工和到账')}</li>
+      </ul>
+      <span class="workflow-cta">{t('打开生产工作流')} <b>→</b></span>
+    </a>
+    <div class="season-cards">{seasons.map((name,i)=><a href={href(`/data/crops/?season=${seasonIds[i]}`)} class="season-card" data-reveal><img src={withBase(`/art/tree-${seasonIds[i]}.webp`)} width="128" height="156" alt="" loading="lazy"/><span>{name}<small>{t('季作物')} →</small></span></a>)}</div>
+    <div data-reveal><ProfitRankings client:visible rankings={rankings} locale={locale}/></div>
+  </section>
+  <section class="home-chapter editor-chapter" id="chapter-editor">
+    <div class="editor-feature" data-reveal>
+      <div class="editor-copy">
+        <p class="eyebrow">{t('肆 · 工具')}</p>
+        <h2>{t('存档编辑器')}</h2>
+        <p>{t('文件只在浏览器里处理，不会上传服务器；导出的是一个新的副本，你上传的文件不会被改动。')}</p>
+        <ul class="editor-areas">{editorAreas.map(area => <li>{area}</li>)}</ul>
+        <a class="primary-link" href={href('/save-editor/')}>{t('打开存档编辑器')} <span>→</span></a>
+        <small>{t('先退出游戏再导出、替换存档，并自己留一份原文件备份。')}</small>
+      </div>
+      <div class="editor-inventory" aria-hidden="true">
+        {Array.from({ length: 18 }, (_, i) => inventory[i]).map((slot, i) => <span class:list={['inventory-slot', { 'is-editing': i === 2 }]}>{slot && <><img src={withBase(slot.icon!)} width="48" height="48" alt="" loading="lazy" /><b>{slot.count}</b></>}</span>)}
+      </div>
+    </div>
   </section>
 </BaseLayout>
 <script>

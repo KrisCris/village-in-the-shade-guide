@@ -17,7 +17,7 @@ const entity = catalog.entities.find((row) => row.kind === Astro.props.entity.ki
 const initialModel = buildEntityDetailModel(entity, catalog, 'normal', false, t);
 if (entity.kind === 'processes' && initialModel.entity.kind === 'items') return Astro.redirect(href(`/data/items/${initialModel.entity.id}/`), 301);
 ---
-<BaseLayout title={entity.name.zh_hans} description={t('{name}的价格、获取、材料、产物与关联数据。', { name: entity.name.zh_hans })}>
+<BaseLayout title={`${entity.name.zh_hans} · ${kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}`} description={t('{name}的价格、获取、材料、产物与关联数据。', { name: entity.name.zh_hans })}>
   <nav class="crumb" aria-label={t('面包屑')}><a href={href("/")}>{t('首页')}</a><span>›</span><a href={href(`/data/${entity.kind}/`)}>{kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}</a><span>›</span><span>{entity.name.zh_hans}</span></nav>
   <EntityPage client:load initialEntity={entity} initialModel={compactDetailModel(initialModel)} locale={locale} />
 </BaseLayout>

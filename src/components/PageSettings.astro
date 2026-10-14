@@ -16,10 +16,17 @@ const { t, locale } = getI18n(Astro.url);
     <section class="settings-day"><h2>{t('飘落物')}</h2><ParticlesToggle /></section>
     <section><h2>{t('物品品质')}</h2><QualityButtons client:load locale={locale} /></section>
     <section><h2>{t('背景音乐')}</h2><MusicPlayer /></section>
+    <section class="settings-install" data-install-section hidden>
+      <h2>{t('安装到设备')}</h2>
+      <p>{t('像应用一样从桌面或主屏幕打开，打开过的页面在离线时也能查看。')}</p>
+      <button type="button" class="settings-install-button" data-install-button hidden>{t('安装应用')}</button>
+      <p class="settings-install-hint" data-install-hint hidden>{t('在 Safari 里点“分享”，再选“添加到主屏幕”。')}</p>
+    </section>
   </div>
 </div>
 <script>
   import {onPageMount} from '../lib/pageLifecycle';
+  import {canPromptInstall,needsManualInstall,promptInstall} from '../lib/pwa';
   const dispose=onPageMount(()=>{
     const root=document.querySelector<HTMLElement>('.page-settings');if(!root)return;
     const trigger=root.querySelector<HTMLButtonElement>('.settings-trigger')!,panel=root.querySelector<HTMLElement>('.settings-panel')!,closeButton=root.querySelector<HTMLButtonElement>('.settings-close')!;
@@ -29,8 +36,12 @@ const { t, locale } = getI18n(Astro.url);
     const outside=(e:PointerEvent)=>{if(!root.contains(e.target as Node))close();};
     const escape=(e:KeyboardEvent)=>{if(e.key==='Escape'&&!panel.hidden){e.preventDefault();close(true);}};
     const buttonClose=()=>close(true);
+    const installSection=root.querySelector<HTMLElement>('[data-install-section]')!,installButton=root.querySelector<HTMLButtonElement>('[data-install-button]')!,installHint=root.querySelector<HTMLElement>('[data-install-hint]')!;
+    const syncInstall=()=>{const prompt=canPromptInstall(),manual=needsManualInstall();installButton.hidden=!prompt;installHint.hidden=prompt||!manual;installSection.hidden=!prompt&&!manual;};
+    const install=()=>{void promptInstall().then(syncInstall);};
+    syncInstall();installButton.addEventListener('click',install);window.addEventListener('app-installable-change',syncInstall);
     trigger.addEventListener('click',toggle);closeButton.addEventListener('click',buttonClose);document.addEventListener('pointerdown',outside);document.addEventListener('keydown',escape);window.addEventListener('resize',position);
-    return()=>{trigger.removeEventListener('click',toggle);closeButton.removeEventListener('click',buttonClose);document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape);window.removeEventListener('resize',position);};
+    return()=>{installButton.removeEventListener('click',install);window.removeEventListener('app-installable-change',syncInstall);trigger.removeEventListener('click',toggle);closeButton.removeEventListener('click',buttonClose);document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape);window.removeEventListener('resize',position);};
   });
   if(import.meta.hot)import.meta.hot.dispose(dispose);
 </script>
@@ -42,4 +53,6 @@ const { t, locale } = getI18n(Astro.url);
   .settings-panel :global(.quality-choices .save-rank-icon){display:block;width:28px;height:auto;overflow:hidden;flex:none}
   .settings-panel :global(.quality-label-toggle){margin-top:.65rem;width:100%;min-height:36px;padding:.4rem .6rem;border:1px solid var(--border);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:.75rem;cursor:pointer}
   .settings-panel :global(.quality-label-toggle:focus-visible){outline:2px solid var(--green);outline-offset:2px}
+  .settings-install[hidden]{display:none}.settings-install p{margin:0 0 .7rem;color:var(--muted);font-size:.78rem;line-height:1.6}.settings-install-hint{margin:0!important}
+  .settings-install-button{width:100%;min-height:40px;border-color:var(--green);background:var(--green);color:var(--paper-raised);font-size:.85rem;font-weight:600}.settings-install-button:hover{background:color-mix(in srgb,var(--green) 86%,var(--ink))}
 </style>

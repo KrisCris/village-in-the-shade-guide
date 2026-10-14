@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getI18n } from '../i18n/server';
+const { t, href } = getI18n(Astro.url);
+---
+<BaseLayout title={t('没有网络连接')} searchable={false}>
+  <section class="offline card">
+    <h1>{t('没有网络连接')}</h1>
+    <p>{t('这个页面还没有保存到设备上。打开过的页面在离线时仍然可以查看。')}</p>
+    <div class="offline-actions"><button type="button" data-retry>{t('重新加载')}</button><a href={href('/')}>{t('返回首页')}</a></div>
+  </section>
+</BaseLayout>
+<script>
+  import { onPageMount } from '../lib/pageLifecycle';
+  onPageMount(() => {
+    const button = document.querySelector<HTMLButtonElement>('[data-retry]');
+    const retry = () => location.reload();
+    button?.addEventListener('click', retry);
+    return () => button?.removeEventListener('click', retry);
+  });
+</script>
+<style>
+  .offline{max-width:36rem;margin:4rem auto;padding:2rem}
+  .offline p{color:var(--muted);line-height:1.75}
+  .offline-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:1.5rem}
+  .offline-actions button{background:var(--green);border-color:var(--green);color:var(--paper)}
+</style>

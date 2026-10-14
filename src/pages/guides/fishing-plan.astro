@@ -15,7 +15,7 @@ const seasons=[['spring',t('春')],['summer',t('夏')],['autumn',t('秋')],['win
 ---
 <BaseLayout title={t('四季钓鱼与留货规划')}><h1>{t('四季钓鱼与留货规划')}</h1>
 <nav>{seasons.map(([id,name])=><a href={`#${id}`}>{t('{season}季',{season:name})}</a>)}<a href={href("/guides/fishing-spots/")}>{t('四季钓点分布')}</a><a href={href("/data/fish/")}>{t('全部鱼类筛选')}</a></nav>
-<p>{t('先钓有期限的委托，再补尚未完成的交付目录。下面按鱼在本季的实际出现记录列出留货目标；不是要求每季重复交一次，完成过的目录可以划出自己的计划。')}</p>
+<p>{t('先钓有期限的委托，再补尚未完成的交付目录。下面按鱼在本季的实际出现记录列出留货目标；每个目录只需完成一次，完成过的可以从计划里划掉。')}</p>
 <p>{t('早：7:00–12:00；中：12:00–18:00；晚：18:00–次日 0:00；深夜：0:00–6:00。6:00–7:00 未归入这四组出现记录。')}</p>
 <ol><li>{t('出门前选定一个未完成的交付组，确认缺的鱼与数量；不要只看鱼价决定去哪里。')}</li><li set:html={tHtml('在下方找当前季节可钓的目标，把同一钓点、同一时段的鱼一起补齐。道路未开放时先做<a href="/guides/progression/#help">帮忙券与道路解锁</a>。')} /><li>{t('钓到后先留够交付数量。剩余鱼再考虑做料理或加工；料理标注“鱼类”的材料可用其他同类鱼，不必消耗稀有鱼。')}</li></ol>
 {seasons.map(([season,name])=><section id={season}><h2>{t('{season}季要留的鱼',{season:name})}</h2><div class="fish-grid">{required.filter(e=>e.appearances?.some(a=>a.season===season)).map(e=>{
@@ -27,6 +27,6 @@ const seasons=[['spring',t('春')],['summer',t('夏')],['autumn',t('秋')],['win
  </article>;
 })}</div></section>)}
 <section><h2>{t('固定帮忙券与随机交付分开准备')}</h2><p set:html={tHtml('洋的帮忙券需要山女鱼，可从<a href="/data/fish/?q=山女鱼">山女鱼详情</a>确认季节和钓点。六角等村民的交付委托则应以当前任务面板的物品、数量、截止日期为准，不把某一次委托当作永久固定需求。')} /></section>
-<details><summary>{t('游戏数据来源')}</summary><p>{t('鱼与时段：fish.dat、fishing.dat 的出现记录；固定留货：bundle.dat、bundlegroup.dat。这里不包含尚未接到的随机交付，也不将未确认的道路条件推定为已解锁。')}</p></details>
+<details><summary>{t('游戏数据来源')}</summary><p>{t('鱼与时段：fish.dat、fishing.dat 的出现记录；固定留货：bundle.dat、bundlegroup.dat。不含尚未接到的随机交付，也不假定道路已经开放。')}</p></details>
 </BaseLayout>
 <style>nav{display:flex;gap:1rem;flex-wrap:wrap}section{margin:2rem 0;scroll-margin-top:90px}.fish-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}.card{padding:1rem}.card h3{margin:0}.card h3 a{display:flex;align-items:center;gap:.7rem}.card img{object-fit:contain}li,p{line-height:1.8}dl div{margin-top:.5rem}dd{margin:0;color:var(--muted);font-size:.9rem}strong{color:var(--gold)}</style>

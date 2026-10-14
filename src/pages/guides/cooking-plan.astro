@@ -19,7 +19,7 @@ const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
 <li>{t('材料写“蛋类、奶类、肉类、鱼类、小鱼类”时，可以从对应清单挑已有余量的材料。详情里的默认物品只是示例，不代表只能用那一种。')}</li>
 <li>{t('稀有鱼、即将交任务的鱼先留存。做烤鱼等允许类别替换的菜时，先考虑容易补充、没有待办用途的鱼。')}</li>
 </ol></section>
-<section><h2>{t('按目标取得食谱')}</h2><p set:html={tHtml('村民传授的 42 道食谱分布在 14 位居民的好感度 Lv1、Lv2、Lv3 突破之后。先去<a href="/guides/residents/#recipes">食谱对照表</a>找想做的菜，再决定培养谁；达到点数上限后还要完成对应人物事件并回去交谈。')} /><p>{t('餐厅反复吃同一道菜也是游戏教程写明的食谱取得方式。未核实每道菜的次数条件，因此这里不统一标为“吃 3 次”。已经掌握的食谱以游戏内料理菜单为准。')}</p></section>
+<section><h2>{t('按目标取得食谱')}</h2><p set:html={tHtml('村民传授的 42 道食谱分布在 14 位居民的好感度 Lv1、Lv2、Lv3 突破之后。先去<a href="/guides/residents/#recipes">食谱对照表</a>找想做的菜，再决定培养谁；达到点数上限后还要完成对应人物事件并回去交谈。')} /><p>{t('游戏教程写明，在餐厅反复吃同一道菜也能学会食谱。每道菜要吃几次还没核实。已经掌握的食谱以游戏内料理菜单为准。')}</p></section>
 <section id="ingredients"><h2>{t('五种可替换材料')}</h2><p>{t('以下分类来自游戏物品特征与料理材料栏。每道菜的用量各不相同，点开配方可查看数量及全局品质下的材料售价。')}</p>
 {features.map(feature=>{const related=choices.filter(c=>c.option.feature_numeric_id===feature.feature_numeric_id);return <article class="card"><h3>{feature.feature_name}</h3><div class="ingredients">{feature.item_ids.map(id=>{const entry=item(id);return entry&&<a href={href(entityUrl(entry))}>{entry.icon_path&&<img src={withBase(entry.icon_path)} width="44" height="44" alt="" loading="lazy"/>}{entry.name.zh_hans}</a>;})}</div><details><summary>{t('用于 {count} 道配方',{count:related.length})}</summary><div class="ingredients">{related.map(({recipe,option})=><a href={href(entityUrl(recipe))}>{recipe.icon_path&&<img src={withBase(recipe.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{recipe.name.zh_hans} · {feature.feature_name} ×{option.quantity}</a>)}</div></details></article>;})}
 </section>
