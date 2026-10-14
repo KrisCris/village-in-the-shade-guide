@@ -58,9 +58,22 @@ export function registerApp() {
 
   if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return;
   const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-  const register = () => navigator.serviceWorker.register(`${base}sw.js`, { scope: base }).catch(() => {
-    // The site works without offline support.
-  });
+  // A page that loaded before the worker took control was never stored; hand
+  // the worker this page and the files it used so it opens offline too.
+  const storeFirstPage = async () => {
+    const worker = (await navigator.serviceWorker.ready).active;
+    const page = new URL(location.href);
+    page.hash = '';
+    const files = performance.getEntriesByType('resource')
+      .map((entry) => entry.name)
+      .filter((name) => name.startsWith(`${location.origin}${base}`));
+    worker?.postMessage({ type: 'cache-urls', urls: [page.href, ...new Set(files)] });
+  };
+  const register = () => navigator.serviceWorker.register(`${base}sw.js`, { scope: base })
+    .then(() => { if (!navigator.serviceWorker.controller) return storeFirstPage(); })
+    .catch(() => {
+      // The site works without offline support.
+    });
   if (document.readyState === 'complete') register();
   else window.addEventListener('load', register, { once: true });
 }
