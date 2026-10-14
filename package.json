@@ -18,7 +18,7 @@
     "content:check": "node tools/content/check-coverage.mjs",
     "i18n:sync": "tsx tools/i18n/sync-catalogs.ts",
     "i18n:check": "tsx tools/i18n/sync-catalogs.ts --check",
-    "build": "npm run build:data && astro build && pagefind --site dist",
+    "build": "npm run build:data && astro build && pagefind --site dist && node tools/write-offline-files.mjs dist",
     "preview": "astro preview",
     "verify": "npm run content:check && npm run i18n:check && npm test && npm run check && npm run build"
   },

@@ -1,4 +1,6 @@
 /** Installable-app support: service worker, browser theme colour and the install prompt. */
+import { shouldDownloadAutomatically, startOffline } from './offlineStore';
+
 interface InstallPromptEvent extends Event {
   prompt(): Promise<void>;
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
@@ -69,8 +71,21 @@ export function registerApp() {
       .filter((name) => name.startsWith(`${location.origin}${base}`));
     worker?.postMessage({ type: 'cache-urls', urls: [page.href, ...new Set(files)] });
   };
+  // The installed app keeps the whole wiki stored; it checks once per launch.
+  const keepComplete = async () => {
+    if (!isStandalone() || !shouldDownloadAutomatically()) return;
+    try {
+      if (sessionStorage.getItem('offline-checked')) return;
+      sessionStorage.setItem('offline-checked', '1');
+    } catch {
+      // No session storage: check on every full page load instead.
+    }
+    await navigator.serviceWorker.ready;
+    await startOffline();
+  };
   const register = () => navigator.serviceWorker.register(`${base}sw.js`, { scope: base })
     .then(() => { if (!navigator.serviceWorker.controller) return storeFirstPage(); })
+    .then(keepComplete)
     .catch(() => {
       // The site works without offline support.
     });

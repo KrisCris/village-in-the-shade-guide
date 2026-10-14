@@ -1,8 +1,10 @@
 // Write dist/sw.js after the static build. The worker precaches the home and
 // offline pages in each language (with the CSS and scripts they load) and the
 // app icons, so an installed app always opens; everything else is cached as
-// players open it. The version changes with the build output, so
-// a deployment replaces the precache.
+// players open it, or all at once through the offline download (the file
+// lists come from tools/write-offline-files.mjs, which runs after Pagefind).
+// The version changes with the build output, so a deployment replaces the
+// precache.
 import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -32,8 +34,8 @@ export default function pwa() {
         const hash = createHash('sha256').update(assets.join('\n')).update(precache.join('\n'));
         for (const page of html) hash.update(page);
         for (const icon of icons) hash.update(await readFile(join(out, icon)));
-        const version = hash.digest('hex').slice(0, 12);
         const template = await readFile(new URL('./sw-template.js', import.meta.url), 'utf8');
+        const version = hash.update(template).digest('hex').slice(0, 12);
         const worker = template
           .replace("'__BASE__'", JSON.stringify(base))
           .replace("'__VERSION__'", JSON.stringify(version))

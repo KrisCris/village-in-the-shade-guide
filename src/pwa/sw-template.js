@@ -13,6 +13,11 @@ const RUNTIME = {
   maps: { name: 'maps-v1', limit: 30 },
 };
 const LOCALES = ['zh-TW', 'ja'];
+// The offline download (src/lib/offlineStore.ts) stores the whole wiki in
+// caches named offline-*, marks its requests with this header and keeps those
+// caches up to date itself.
+const OFFLINE_PREFIX = 'offline-';
+const OFFLINE_HEADER = 'x-offline-download';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(SHELL).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -21,7 +26,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keep = new Set([SHELL, ...Object.values(RUNTIME).map((cache) => cache.name)]);
-    for (const key of await caches.keys()) if (!keep.has(key)) await caches.delete(key);
+    for (const key of await caches.keys()) if (!keep.has(key) && !key.startsWith(OFFLINE_PREFIX)) await caches.delete(key);
     await self.clients.claim();
   })());
 });
@@ -51,12 +56,13 @@ async function networkFirst(event, store, fallback) {
     event.waitUntil(put(store, event.request, response.clone()));
     return response;
   } catch (error) {
-    // Prefer this cache's copy: it is newer than the precached one.
-    const options = { ignoreSearch: store === RUNTIME.pages };
+    // Prefer this cache's copy: it is newer than the precached one. Queries
+    // are cache-busting stamps (Pagefind adds ?ts=), so stored copies match.
+    const options = { ignoreSearch: true, ignoreVary: true };
     const cached = await (await caches.open(store.name)).match(event.request, options) ?? await caches.match(event.request, options);
     if (cached) return cached;
     if (fallback) {
-      const page = await caches.match(fallback);
+      const page = await caches.match(fallback, { ignoreVary: true });
       if (page) return page;
     }
     throw error;
@@ -64,7 +70,7 @@ async function networkFirst(event, store, fallback) {
 }
 
 async function cacheFirst(event, store) {
-  const cached = await caches.match(event.request);
+  const cached = await caches.match(event.request, { ignoreVary: true });
   if (cached) return cached;
   const response = await fetch(event.request);
   event.waitUntil(put(store, event.request, response.clone()));
@@ -92,7 +98,7 @@ function route(url, mode) {
 
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-  if (request.method !== 'GET' || request.headers.has('range')) return;
+  if (request.method !== 'GET' || request.headers.has('range') || request.headers.has(OFFLINE_HEADER)) return;
   const target = route(new URL(request.url), request.mode);
   if (!target) return;
   event.respondWith(target.strategy === 'cache'
