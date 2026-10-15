@@ -8,7 +8,7 @@ import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacement
 import { animalHouses, animalResidents } from './saveAnimals';
 import { buildFarmScene, type MapArt } from './saveMapScene';
 import placements from '../../data/sources/game-save-placements.json';
-import { allowedMapTerrain } from './saveMap';
+import { allowedMapTerrain, isBigTree, landPosition, treeSpacingProblem } from './saveMap';
 import farmArt from '../../public/maps/farm/manifest.json';
 
 it('reads the native rice and wasabi water-field requirements', () => {
@@ -139,6 +139,21 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     const plain=clearMapArea(model.doc,edits,scene,[cell.id],[],'soil');
     expect(plain.cells?.[key]).toEqual({crop:null,soil:0,watered:false});
     expect(plain.removed).toEqual([]);
+  });
+  it('keeps two empty cells between big trees, including trees planted in the same draft', () => {
+    const trees=mapCells(model.doc).filter(c=>isBigTree(c.crop)).map(c=>landPosition(c.id));
+    expect(trees.length).toBeGreaterThan(0);
+    // The saved trees themselves never stand closer than three cells.
+    const step=(a:{x:number;y:number},b:{x:number;y:number})=>Math.max(Math.abs(a.x+a.y-b.x-b.y),Math.abs(a.y-a.x-b.y+b.x))/90;
+    for(const a of trees)expect(Math.min(...trees.filter(b=>b!==a).map(b=>step(a,b)))).toBeGreaterThanOrEqual(3);
+    const cell=sceneCells(scene).find(c=>(c.mask&1)&&trees.every(t=>step(t,c)>6))!;
+    const apple={cells:{[`${scene}:${cell.id}`]:{crop:100}}};
+    // Two cells away along the grid, two cells away diagonally, then three cells away.
+    expect(treeSpacingProblem(model.doc,apple,scene,cell.id+2+2_000_000,1001)).toContain('两格');
+    expect(treeSpacingProblem(model.doc,apple,scene,cell.id+4,107)).toContain('两格');
+    expect(treeSpacingProblem(model.doc,apple,scene,cell.id+3+3_000_000,1001)).toBeNull();
+    expect(treeSpacingProblem(model.doc,apple,scene,cell.id+1+1_000_000,3)).toBeNull();
+    expect(()=>applyMapEdits(model.doc,{cells:{...apple.cells,[`${scene}:${cell.id+2+2_000_000}`]:{crop:100}}})).toThrow('两格');
   });
   it('keeps growth_ max_ on the last threshold of the written form', () => {
     const range=(doc:SerDocument,id:number)=>{const node=mapCells(doc).find(c=>c.id===id)!.node;return ['min_','max_','this->value_'].map(k=>Number(readSigned(doc,doc.resolve(`p/pCropsStatus_/p/growth_/${k}`,node)!)));};

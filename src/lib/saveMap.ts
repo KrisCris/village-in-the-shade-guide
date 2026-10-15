@@ -259,6 +259,22 @@ export function cropPlacementProblem(id:number,soil:number) {
   if(!allowed.length&&soil===3)return tr('这种作物不能种在水田。');
   return null;
 }
+/** Fruit trees, timber trees and bamboo. Their saplings stop growing with obstacles around them,
+ *  and every tree in game saves stands at least three cells from the next one. */
+const BIG_TREES=new Set(crops.filter(c=>c.numeric_id>=100&&c.numeric_id<200||c.id.startsWith('CROPS_ID_OBJECT_TREE')||c.id==='CROPS_ID_OBJECT_BANBOO').map(c=>c.numeric_id));
+export const isBigTree=(crop:number)=>BIG_TREES.has(crop);
+/** Two empty cells must separate big trees, counted along the diamond grid and diagonally. */
+export function treeSpacingProblem(doc:SerDocument,edits:MapEdits,scene:number,cell:number,crop:number) {
+  if(!BIG_TREES.has(crop))return null;
+  const at=landPosition(cell),planted=new Map(mapCells(doc).map(c=>[c.id,c.crop]));
+  for(const [key,edit] of Object.entries(edits.cells??{})){const [s,id]=key.split(':').map(Number);if(s===scene&&edit.crop!==undefined)planted.set(id,edit.crop??0);}
+  for(const [id,other] of planted){
+    if(id===cell||!BIG_TREES.has(other))continue;
+    const p=landPosition(id);
+    if(Math.max(Math.abs(p.x+p.y-at.x-at.y),Math.abs(p.y-p.x-at.y+at.x))<=180)return tr('大树之间要隔开两格，这里离另一棵树太近。');
+  }
+  return null;
+}
 export function placementProblem(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): string | null {
   const spec=data.objects.find(s=>s.id===placement.template),terrain=sceneCells(placement.scene);
   const original=placement.move?mapObjects(doc).find(o=>o.uid===placement.move):undefined;
@@ -334,7 +350,7 @@ export function allowedMapTerrain(doc:SerDocument,edits:MapEdits,scene:number,to
     if(!areas.get(c.area)||(!(c.mask&mask)&&!fs.includes('PLACEMENT_ANYWHERE')))return false;
     if(special&&(c.mask&4096)&&fs.includes('TRAP'))return false;
     const soil=edits.cells?.[`${scene}:${c.id}`]?.soil??saved.get(c.id)?.soil??1;
-    if(tool==='plant'&&cropPlacementProblem(crop,soil))return false;
+    if(tool==='plant'&&(cropPlacementProblem(crop,soil)||treeSpacingProblem(doc,edits,scene,c.id,crop)))return false;
     if(!farming&&soil===3&&!spec?.building&&!fs.includes('SCARECROW'))return false;
     if(fs.includes('TREE')) {
       const edit=edits.cells?.[`${scene}:${c.id}`],crop=edit?.crop!==undefined?edit.crop:saved.get(c.id)?.crop;
@@ -560,6 +576,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     const oldCell=cells.find(c=>c.id===id),cropId=paint.crop!==undefined?paint.crop:oldCell?.crop;
     const soil=paint.soil??oldCell?.soil??1;
     if(cropId&&paint.soil!==0&&(paint.crop!==undefined||paint.soil!==undefined)){const problem=cropPlacementProblem(cropId,soil);if(problem)throw new Error(problem);}
+    if(paint.crop){const problem=treeSpacingProblem(doc,edits,sceneId,id,paint.crop);if(problem)throw new Error(problem);}
     if(paint.growth!==undefined||paint.form!==undefined){const state=cropGrowth(doc,edits,sceneId,id);if(!state||!state.stages.length||state.growth>state.maximum)throw new Error(tr('此作物不支持所选生长阶段。'));}
     const clearingOnly = paint.crop === null && paint.soil === undefined && paint.watered === undefined;
     if(growthOnly){

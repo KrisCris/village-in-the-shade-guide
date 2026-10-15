@@ -9,7 +9,7 @@ import {
 } from 'react';
 import {
   MAP_DATA,
-  allowedMapTerrain,
+  allowedMapTerrain, treeSpacingProblem,
   cropGrowth, cropPlacementProblem, mapCells,
   addMapPlacement,
   placementProblem,
@@ -305,20 +305,15 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
       commit(clearMapArea(model.doc,current.current,sceneId,targets.map(c=>c.id),layerKeys(layer,targets),layer));
       setMessage(tr('已清除{what}（{count} 格），可撤销。', { what: CLEAR_NAMES[layer], count: targets.length }));return;
     }
-    const next = {
-      ...current.current,
-      cells: {
-        ...current.current.cells,
-        ...Object.fromEntries(
-          targets.map((c) => [
-            `${sceneId}:${c.id}`,
-            paintCell(c.id,tool==='plant'?plantPaint(c.id):paint)
-          ])
-        )
-      }
-    };
+    let next: MapEdits = current.current, skipped = 0;
+    for (const c of targets) {
+      // Big trees in one stroke must also keep their distance from each other.
+      if (tool === 'plant' && treeSpacingProblem(model.doc, next, sceneId, c.id, crop)) { skipped++; continue; }
+      next = { ...next, cells: { ...next.cells, [`${sceneId}:${c.id}`]: paintCell(c.id, tool === 'plant' ? plantPaint(c.id) : paint) } };
+    }
+    if (skipped === targets.length) { setMessage(treeSpacingProblem(model.doc, next, sceneId, cell.id, crop) ?? tr('大树之间要隔开两格，这里离另一棵树太近。')); return; }
     commit(next);
-    setMessage(tr('已修改 {count} 格。可撤销，导出存档前会核验布局。', { count: targets.length }));
+    setMessage(tr('已修改 {count} 格。可撤销，导出存档前会核验布局。', { count: targets.length - skipped }) + (skipped ? tr('{count} 格离其他大树太近，已跳过。', { count: skipped }) : ''));
   }
   function paintCell(id:number,paint:CellPaint):CellPaint {
     const previous=current.current.cells?.[`${sceneId}:${id}`],cropId=previous?.crop!==undefined?previous.crop:savedCells.get(id)?.crop;
