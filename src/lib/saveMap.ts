@@ -212,7 +212,7 @@ export function parseMapPreset(text: string): MapEdits {
 
 export function draftObjects(doc: SerDocument, edits: MapEdits) {
   return editedObjects(doc, edits).map(({ move: _, carried: __, parentY: ___, ...o }) => o).concat((edits.objects??[]).flatMap((e,i)=>e.move?[]:[{
-    node:undefined as unknown as SerNode,id:e.template,spec:specById.get(e.template),uid:`new:${i}`, ...landPosition(e.cell), angle:e.angle??45,
+    node:undefined as unknown as SerNode,id:e.template,spec:specById.get(e.template),uid:`new:${i}`, ...landPosition(e.cell), angle:specById.get(e.template)?.building?0:e.angle??45,
     bounds:[-45,-45,45,45],movable:true,blocksPlacement:true,parent:undefined as string|undefined,slot:undefined as string|undefined
   }]));
 }
@@ -346,7 +346,8 @@ export function allowedMapTerrain(doc:SerDocument,edits:MapEdits,scene:number,to
 /** Expand building clearing into the same undoable draft as its placement. */
 export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: ObjectPlacement): MapEdits {
   const original=placement.move?draftObjects(doc,edits).find(o=>o.uid===placement.move):undefined;
-  placement={...placement,angle:placement.angle??original?.angle??45};
+  // The game stores every building facing 0; only furniture and props turn.
+  placement={...placement,angle:specById.get(placement.template)?.building?0:placement.angle??original?.angle??45};
   const draftIndex=placement.move?.startsWith('new:')?Number(placement.move.slice(4)):undefined;
   const base={...edits,objects:(edits.objects??[]).filter((e,i)=>draftIndex!==undefined?i!==draftIndex:!placement.move || e.move!==placement.move)};
   if(draftIndex!==undefined)placement={...placement,move:undefined};
@@ -448,6 +449,18 @@ export function clearMapArea(doc: SerDocument, edits: MapEdits, scene: number, c
   return next;
 }
 
+/** Status keys and tags are ASCII packed little-endian into an int64. */
+const statusKey=(key:string)=>[...key].reduceRight((value,char)=>value*256n+BigInt(char.charCodeAt(0)),0n);
+/** Starting status of game-built buildings; their scripts keep these values up to date afterwards. */
+const BUILDING_STATUS:Record<string,readonly (readonly [string,number])[]>={
+  GIMMICK_ID_ARCHITECTURE_LIVESTOCK_HOUSE_SLOT:[['openUpd',1]],
+  GIMMICK_ID_ARCHITECTURE_AVIARY_SLOT:[['openUpd',1]],
+  GIMMICK_ID_ARCHITECTURE_STABLE:[['build',0],['food01',0],['food02',0],['food03',0]],
+  GIMMICK_ID_ARCHITECTURE_DOG_HOUSE:[['build',0]],
+};
+/** village.exe tags only the first coop slot (all levels and mirrors) "aviary"; the anvil is "anvil". */
+const buildingTag=(id:number)=>[111100000,111110000,111120000].includes(id-id%2)?'aviary':id===112080000?'anvil':undefined;
+
 /** Apply layout after ordinary save edits, resolving stable cell/unique IDs again. */
 export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
   if (!mapEditCount(edits)) return serializeSer(doc, {});
@@ -505,17 +518,20 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
       gimmicks.children!.push(built);
     }
     patch(built,'p/pData_/dataID',spec.id);
-    const angle=placement.angle??moving?.angle??45;
+    const angle=spec.building?0:placement.angle??moving?.angle??45;
     patch(built,'p/angle_',angle,true);
     const entity=(artData.objects as Record<string,{initial?:number;directional?:boolean;aabb?:Record<string,number[]>}>)[spec.id];
     const code=[6,3,2,1,4,7,8,9][((Math.round(angle/45)%8)+8)%8];
     // The game stores the uncropped bounds of the facing's first frame, not the visible sprite.
     const box=entity?.aabb?.[String((entity.initial??100)+(entity.directional?code:0))]??(entity?.aabb?Object.values(entity.aabb)[0]:undefined);
     if(box)(['l','t','r','b'] as const).forEach((key,i)=>patch(built,`p/baseAABB_/${key}`,box[i],true));
-    // gimmick_cobblestones plays its placement sound once and then records se=1.
-    if(!moving&&spec.script==='gimmick_cobblestones'){
+    if(!moving){
+      // gimmick_cobblestones plays its placement sound once and then records se=1.
+      const values=spec.script==='gimmick_cobblestones'?[['se',1] as const]:BUILDING_STATUS[spec.buildingFamily??'']??[];
       const status=builtChild(built,'p/statusValueMap_');
-      if(status){status.children=[{tag:SerTag.Object,nameOffset:-1,name:'0k',children:[{tag:SerTag.Scalar,nameOffset:-1,name:'id_',payload:encodeSigned(0x6573n,8)}]},{tag:SerTag.Scalar,nameOffset:-1,name:'0v',payload:encodeSigned(1n,4)}];status.ref=1;}
+      if(status&&values.length){status.children=values.flatMap(([key,value],i)=>[{tag:SerTag.Object,nameOffset:-1,name:`${i}k`,children:[{tag:SerTag.Scalar,nameOffset:-1,name:'id_',payload:encodeSigned(statusKey(key),8)}]},{tag:SerTag.Scalar,nameOffset:-1,name:`${i}v`,payload:encodeSigned(BigInt(value),4)}]);status.ref=values.length;}
+      const tag=buildingTag(spec.id);
+      if(tag)patch(built,'p/tag_/id_',Number(statusKey(tag)));
     }
     patch(built, 'p/pos_/x', target.x, true); patch(built, 'p/pos_/y', target.y, true);
     if (moving) { moving.x = target.x; moving.y = target.y; moving.id=spec.id; moving.spec=spec; moving.angle=angle; }

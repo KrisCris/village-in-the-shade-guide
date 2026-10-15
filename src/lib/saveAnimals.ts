@@ -20,8 +20,10 @@ export function animalHouses(doc: SerDocument, progress: ProgressEdits = {}) {
   const enabled = places.placements.filter(place => place.houseType < 3 && !place.special && place.mapGroup === 1 && place.requires.every(flag => !flag || flagEnabled(doc, flag, progress)) && place.excludes.every(flag => !flag || !flagEnabled(doc, flag, progress)));
   const groups = new Map<number, typeof enabled>();
   for (const place of enabled) groups.set(place.mapId, [...(groups.get(place.mapId) ?? []), place]);
-  const counts = [0, 0, 0];
-  return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: `${[tr('畜舍'), tr('禽舍'), tr('马棚')][slots[0].houseType]} ${++counts[slots[0].houseType]}`, slots }));
+  // Barns and coops keep the number of their building slot (map ID xxxxxxxNN), so
+  // building barn 2 never renames barn 1. There is only one stable.
+  return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: slots[0].houseType === 2 ? tr('马棚') : `${[tr('畜舍'), tr('禽舍')][slots[0].houseType]} ${id % 100}`, slots }))
+    .sort((a, b) => a.type - b.type || a.id % 100 - b.id % 100);
 }
 
 export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint, progress: ProgressEdits = {}, stable: { x: number; y: number; moved: boolean } | null = null) {
