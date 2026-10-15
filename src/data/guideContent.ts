@@ -21,6 +21,8 @@ export function guideTarget(title: string) {
   if (/釣りのやり方/.test(title)) return '/guides/fishing-spots/';
   if (/採掘のやり方/.test(title)) return '/guides/quarry/';
   if (/おすすめスキル/.test(title)) return '/guides/skills/';
+  const building = { '土地拡張のやり方': 'land', '改築する方法': 'house', '温室の最速解放手順': 'greenhouse', '生け簀の入手方法': 'fish-tank', '畑のおすすめ配置': 'layout' }[title];
+  if (building) return `/guides/buildings/#${building}`;
   if (/スプリンクラー/.test(title)) return '/data/items/ITEM_ID_GIMMICK_SPRINKLER_SMALL/';
   if (/好感度の上げ方|キャラ一覧/.test(title)) return '/guides/residents/';
   if (/紛失図書|狐の社/.test(title)) return '/guides/collection-map/';
