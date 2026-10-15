@@ -49,3 +49,31 @@ export function transferSlots(containers: SaveContainer[], drafts: Record<number
   if (!a) throw new Error(tr('来源格子为空。'));
   return { ...edits, [from]: b, [to]: a };
 }
+
+/** Drop edits that leave a slot as the file has it, so moving an item back or clearing an empty slot is not a change. */
+export function normalizeSlotEdits(containers: SaveContainer[], edits: SlotEdits): SlotEdits {
+  const slots = new Map(containers.flatMap(container => container.slots.map(slot => [slot.pointer, slot] as const)));
+  // A slot whose original item now sits elsewhere must keep its edit, even if a lookalike replaced it.
+  const moved = new Set(Object.entries(edits).flatMap(([key, value]) => value?.sourcePointer !== undefined && value.sourcePointer !== Number(key) ? [value.sourcePointer] : []));
+  const next: Record<number, SlotAssignment | null> = {};
+  for (const [key, value] of Object.entries(edits)) {
+    const pointer = Number(key), item = slots.get(pointer)?.item;
+    const unchanged = value === null ? !item
+      : !!item && !moved.has(pointer) && (value.sourcePointer ?? pointer) === pointer
+        && value.itemId === item.itemId && value.count === item.count && value.rank === item.rank && value.quality === item.quality;
+    if (!unchanged) next[pointer] = value;
+  }
+  return next;
+}
+
+/** Changes as the player sees them: a move or swap between two slots counts once. */
+export function slotChangeCount(edits: SlotEdits): number {
+  let count = 0;
+  for (const [key, value] of Object.entries(edits)) {
+    const pointer = Number(key), source = value?.sourcePointer;
+    const movedAway = value === null && Object.values(edits).some(other => other?.sourcePointer === pointer);
+    const secondHalfOfSwap = source !== undefined && source !== pointer && edits[source]?.sourcePointer === pointer && pointer > source;
+    if (!movedAway && !secondHalfOfSwap) count++;
+  }
+  return count;
+}

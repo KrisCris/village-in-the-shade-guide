@@ -26,7 +26,10 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
   const known = useMemo(() => readEncyclopedia(model.doc), [model]);
   const skills = useMemo(() => readSkills(model.doc), [model]);
   const rows = useMemo(() => {
-    if (tab === 'encyclopedia') return Object.entries(names.names?.items ?? {}).filter(([, name]) => !name.includes('基底')).map(([id, name]) => ({ id, name, item: id, category: names.itemCategories?.[id] ?? '', description: '', original: known.has(id) })); // i18n-ignore — game item names keep 基底 in every language
+    if (tab === 'encyclopedia') {
+      const hidden = new Set(names.encyclopediaHidden);
+      return Object.entries(names.names?.items ?? {}).filter(([id]) => !hidden.has(id)).map(([id, name]) => ({ id, name, item: id, category: names.itemCategories?.[id] ?? '', description: '', original: known.has(id) }));
+    }
     if (tab === 'skills') return PROGRESSION.skills.map(skill => ({ id: String(skill.id), name: skill.name, item: '', category: '', description: skill.description, original: skills.has(String(skill.id)) }));
     const flags = new Map<number, typeof PROGRESSION.recipes>();
     for (const recipe of PROGRESSION.recipes) flags.set(recipe.flag, [...flags.get(recipe.flag) ?? [], recipe]);

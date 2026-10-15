@@ -3,8 +3,8 @@ import { readFileSync } from 'node:fs';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
-import { SerDocument } from './ser';
-import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapObjects, MAP_DATA, placementProblem, sceneCells, soilForCrop } from './saveMap';
+import { encodeSigned, readSigned, serializeSer, SerDocument } from './ser';
+import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapChangeGroups, mapObjects, MAP_DATA, placementProblem, sceneCells, soilForCrop, storedGrowth, withoutMapChanges, type MapEdits } from './saveMap';
 import { animalHouses, animalResidents } from './saveAnimals';
 import { buildFarmScene, type MapArt } from './saveMapScene';
 import placements from '../../data/sources/game-save-placements.json';
@@ -139,6 +139,54 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     const plain=clearMapArea(model.doc,edits,scene,[cell.id],[],'soil');
     expect(plain.cells?.[key]).toEqual({crop:null,soil:0,watered:false});
     expect(plain.removed).toEqual([]);
+  });
+  it('keeps growth_ max_ on the last threshold of the written form', () => {
+    const range=(doc:SerDocument,id:number)=>{const node=mapCells(doc).find(c=>c.id===id)!.node;return ['min_','max_','this->value_'].map(k=>Number(readSigned(doc,doc.resolve(`p/pCropsStatus_/p/growth_/${k}`,node)!)));};
+    const target=mapCells(model.doc).find(c=>c.crop>0&&c.crop<100&&c.soil===2&&sceneCells(scene).some(t=>t.id===c.id&&(t.mask&1)))!,key=`${scene}:${target.id}`;
+    // Tea: normal growth tops out at 1000, regrowth at 200.
+    const planted=new SerDocument(applyMapEdits(model.doc,{cells:{[key]:{crop:64,growth:800,form:1}}}));
+    expect(range(planted,target.id)).toEqual([0,1000,800]);
+    expect(cropGrowth(planted,{},scene,target.id)).toMatchObject({stage:4,days:2});
+    const regrowing=new SerDocument(applyMapEdits(planted,{cells:{[key]:{form:5,growth:200}}}));
+    expect(range(regrowing,target.id)).toEqual([0,200,200]);
+  });
+  it('groups map changes for review and undoes one group at a time', () => {
+    const empty=sceneCells(scene).filter(t=>(t.mask&1)&&!mapCells(model.doc).some(c=>c.id===t.id&&c.crop)).slice(0,3);
+    const grown=mapCells(model.doc).find(c=>c.crop>0&&c.crop<100&&sceneCells(scene).some(t=>t.id===c.id))!;
+    const movable=mapObjects(model.doc).filter(o=>o.movable);
+    const edits:MapEdits={
+      cells:{[`${scene}:${empty[0].id}`]:{crop:1,soil:1},[`${scene}:${empty[1].id}`]:{crop:1,soil:1},[`${scene}:${empty[2].id}`]:{soil:0},[`${scene}:${grown.id}`]:{growth:0}},
+      objects:[{scene,cell:empty[0].id,template:241000000},{scene,cell:empty[1].id,template:241000000},{scene,cell:empty[2].id,template:movable[0].id,move:movable[0].uid}],
+      removed:[movable[1].uid],
+    };
+    const groups=mapChangeGroups(model.doc,edits);
+    expect(groups.map(g=>[g.kind,g.count])).toEqual([['place',2],['move',1],['remove',1],['plant',2],['growth',1],['clearSoil',1]]);
+    expect(groups.find(g=>g.kind==='growth')).toMatchObject({crop:grown.crop,growth:{form:expect.any(Number),stage:0}});
+    expect(groups.find(g=>g.kind==='remove')!.template).toBe(movable[1].id);
+    const placed=withoutMapChanges(edits,groups[0]);
+    expect(placed.objects).toEqual([edits.objects![2]]);
+    expect(placed.cells).toEqual(edits.cells);
+    const planted=withoutMapChanges(edits,groups.find(g=>g.kind==='plant')!);
+    expect(Object.keys(planted.cells!)).toEqual([`${scene}:${empty[2].id}`,`${scene}:${grown.id}`]);
+    expect(planted.removed).toEqual(edits.removed);
+  });
+  it('reads a growth value above max_ the way the game clamps it', () => {
+    const cell=mapCells(model.doc).find(c=>c.crop===64||c.crop===67)??mapCells(model.doc).find(c=>c.crop>0&&c.crop<100)!;
+    const node=model.doc.resolve('p/pCropsStatus_/p/growth_',cell.node)!;
+    const max=model.doc.resolve('max_',node)!,value=model.doc.resolve('this->value_',node)!;
+    const broken=new SerDocument(serializeSer(model.doc,new Map([[max.offset,encodeSigned(400n,max.size)],[value.offset,encodeSigned(800n,value.size)]])));
+    expect(storedGrowth(broken,mapCells(broken).find(c=>c.id===cell.id)!.node)).toBe(400);
+  });
+  it('keeps processing timers on other devices when a placement is removed', () => {
+    // Map edits rebuild the whole gimmick list; blob counts must survive that.
+    const timers=(doc:SerDocument)=>new Map(mapObjects(doc).map(o=>[o.uid,['timeValue_','createTime_'].map(name=>{
+      const n=doc.resolve(`p/${name}`,o.node)!;return `${n.ref}:${Buffer.from(doc.payload(n)).toString('hex')}`;
+    }).join('|')]));
+    const before=timers(model.doc),removed=mapObjects(model.doc).find(o=>o.movable)!;
+    const after=timers(new SerDocument(applyMapEdits(model.doc,{removed:[removed.uid]})));
+    expect([...before.values()].every(value=>value.startsWith('3:'))).toBe(true);
+    before.delete(removed.uid);
+    expect(after).toEqual(before);
   });
   it('updates an existing tree stage without replacing its crop identity', () => {
     const cell=mapCells(model.doc).find(c=>c.crop===1001)!;

@@ -4,7 +4,7 @@ import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures'
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
 import { applyMapEdits, addMapPlacement, clearMapArea, placementProblem, MAP_CROPS, MAP_DATA, mapCells, mapObjects, parseMapPreset, sceneCells, areaAvailable, landPosition, landId } from './saveMap';
-import { readSigned, encodeSigned, serializeSer, SerDocument } from './ser';
+import { readFloat, readSigned, encodeSigned, serializeSer, SerDocument, SerTag, type SerNode } from './ser';
 import { animalHouses, ANIMALS, animalResidents } from './saveAnimals';
 import { mapBuildingFlags } from './saveMap';
 import { footprint, containsPoint } from './saveMapGeometry';
@@ -68,6 +68,32 @@ describe.skipIf(!hasPrivateSaveFixtures)('map static save roundtrips', () => {
     expect(slots).toHaveLength(30);
     expect(slots.every(n=>!doc.children(n).length)).toBe(true);
   },60_000);
+  it('writes the same bounds and status as a floor tile the game placed', () => {
+    const scene=100000001,read=(doc:SerDocument,node:SerNode)=>({
+      aabb:['l','t','r','b'].map(k=>readFloat(doc,doc.resolve(`p/baseAABB_/${k}`,node)!)),
+      status:doc.children(doc.resolve('p/statusValueMap_',node)!).map(n=>Number(readSigned(doc,n.tag===SerTag.Object?doc.resolve('id_',n)!:n)))
+    });
+    const game=mapObjects(model.doc).find(o=>o.id===202800200&&o.angle===45);
+    const target=sceneCells(scene).find(c=>c.area===1&&!placementProblem(model.doc,{},{scene,cell:c.id,template:202800200,angle:45}))!;
+    const doc=new SerDocument(applyMapEdits(model.doc,{objects:[{scene,cell:target.id,template:202800200,angle:45}]}));
+    const added=mapObjects(doc).find(o=>o.uid===String(readSigned(doc,doc.resolve('statusUniqueIDGenerator_/idSeed_')!)))!;
+    // 0x6573 is the packed key "se".
+    expect(read(doc,added.node)).toEqual(game?read(model.doc,game.node):{aabb:[-64,-64,64,64],status:[0x6573,1]});
+    expect(read(doc,added.node).aabb).toEqual([-64,-64,64,64]);
+  },60_000);
+  it('places objects with the bounds the game stores for them', () => {
+    const scene=100000001,boxes=(doc:SerDocument,node:SerNode)=>['l','t','r','b'].map(k=>+readFloat(doc,doc.resolve(`p/baseAABB_/${k}`,node)!).toFixed(2));
+    let checked=0;
+    for(const game of mapObjects(model.doc).filter(o=>o.movable&&!o.parent&&[241000000,240040000,240400000].includes(o.id))) {
+      const target=sceneCells(scene).find(c=>c.area===1&&!placementProblem(model.doc,{},{scene,cell:c.id,template:game.id,angle:game.angle}));
+      if(!target)continue;
+      const doc=new SerDocument(applyMapEdits(model.doc,{objects:[{scene,cell:target.id,template:game.id,angle:game.angle}]}));
+      const added=mapObjects(doc).at(-1)!;
+      expect(boxes(doc,added.node),`${game.id} @${game.angle}`).toEqual(boxes(model.doc,game.node));
+      checked++;
+    }
+    expect(checked).toBeGreaterThan(0);
+  },120_000);
   it('allows two single-cell machines on adjacent diagonal cells', () => {
     const terrain=sceneCells(100000001);
     const candidates=terrain.filter(c=>(c.mask&2)&&areaAvailable(model.doc,c.area));

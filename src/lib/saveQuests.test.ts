@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest';
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel, pendingChanges } from './saveModel';
 import { readSigned } from './ser';
-import { questStatus, questStatuses } from './saveQuests';
+import { questRecord, questStateForChecklist, questStatus, questStatuses } from './saveQuests';
 import data from '../../data/sources/game-save-quests.json';
 describe.skipIf(!hasPrivateSaveFixtures)('quest checklist records', () => {
   let model: ReturnType<typeof parseSaveModel>;
@@ -49,3 +49,36 @@ describe('quest status', () => {
     expect(questStatus(2, 0, [])).toBe('pending');
   });
 });
+
+describe('quest record states', () => {
+  it('writes the states game saves use', () => {
+    // Shown quests are 2 in every game save; editing the checklist keeps that state.
+    expect(questStateForChecklist('QUEST_ID_SUB_001', 0, 1, 1)).toBe(3);
+    expect(questStateForChecklist('QUEST_ID_SUB_001', 0, 0, 1)).toBe(2);
+    expect(questStateForChecklist('QUEST_ID_CHAIN_VILLAGE_RULES_05', 2, 2, 4)).toBe(2);
+    expect(questStateForChecklist('QUEST_ID_CHAIN_VILLAGE_RULES_05', 0, 2, 4)).toBe(2);
+    // Village rules and villager requests stay open after the last step; other quests close.
+    expect(questStateForChecklist('QUEST_ID_CHAIN_VILLAGE_RULES_05', 2, 4, 4)).toBe(2);
+    expect(questStateForChecklist('QUEST_ID_HUNTER_01', 2, 4, 4)).toBe(2);
+    expect(questStateForChecklist('QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST', 2, 5, 5)).toBe(3);
+    expect(questStateForChecklist('QUEST_ID_CHAPTER_02_03', 3, 1, 2)).toBe(2);
+    expect(questRecord('QUEST_ID_HUNTER_01', 3, 2, 'done', 4)).toEqual({ state: 2, check: 4 });
+    expect(questRecord('QUEST_ID_SUB_001', 1, 2, 'done', 1)).toEqual({ state: 3, check: 1 });
+    expect(questRecord('QUEST_ID_CHAPTER_01_01', 0, 2, 'done', 0)).toEqual({ state: 3, check: undefined });
+    expect(questRecord('QUEST_ID_CHAPTER_01_01', 0, 0, 'shown', 0)).toEqual({ state: 2 });
+    expect(questRecord('QUEST_ID_CHAPTER_01_01', 0, 2, 'hidden', 0)).toEqual({ state: 0 });
+  });
+  it('matches how every game save stores finished checklists', () => {
+    for (const name of ['save.001', 'save.004']) {
+      if (!hasPrivateSaveFixtures) return;
+      const doc = parseSaveModel(decodeSave(new Uint8Array(readFileSync(`tests/gamesave/${name}`)), name)).doc;
+      for (const pointer of doc.children(doc.resolve('questMap_')!).filter((_, index) => index % 2 === 1)) {
+        const info = data.quests.find(quest => quest.id === Number(readSigned(doc, doc.resolve('p/dataID_', pointer)!)))!;
+        const state = Number(readSigned(doc, doc.resolve('p/state_', pointer)!)), check = Number(readSigned(doc, doc.resolve('p/checkLevel_', pointer)!));
+        const max = Math.max(0, ...info.steps.map(step => step.level + 1));
+        if (state && info.steps.length && check >= max) expect(questStateForChecklist(info.code, state, check, max), info.code).toBe(state);
+      }
+    }
+  });
+});
+

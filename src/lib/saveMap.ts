@@ -202,6 +202,11 @@ export function matureTreeAt(doc: SerDocument, edits: MapEdits, id: number, scen
   return false;
 
 }
+/** The growth the game uses: value_ clamped to the stored max_ of growth_. */
+export function storedGrowth(doc:SerDocument,cell:SerNode){
+  const value=doc.resolve('p/pCropsStatus_/p/growth_/this->value_',cell),max=doc.resolve('p/pCropsStatus_/p/growth_/max_',cell);
+  return value?Math.min(Number(readSigned(doc,value)),max?Number(readSigned(doc,max)):Infinity):0;
+}
 export const CROP_FORMS:Record<number,string>={1:tr('正常生长'),2:tr('枯萎'),3:tr('异变'),4:tr('再收获生长'),5:tr('再次收获生长'),6:tr('树桩'),7:tr('树桩'),8:tr('坑洞'),9:tr('枯萎可收获'),10:tr('等待收获季节')};
 export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number) {
   const cell=mapCells(doc).find(c=>c.id===id),paint=edits.cells?.[`${scene}:${id}`];
@@ -209,7 +214,7 @@ export function cropGrowth(doc:SerDocument,edits:MapEdits,scene:number,id:number
   if(!crop||paint?.soil===0)return null;
   const entity=(artData.crops as Record<string,{states?:Record<string,number[][]>}>)[crop.numeric_id];
   const forms=entity?.states??{},read=(path:string,fallback:number)=>{const n=cell&&doc.resolve(`p/pCropsStatus_/p/${path}`,cell.node);return n?Number(readSigned(doc,n)):fallback;};
-  const form=paint?.form??(paint?.crop!==undefined?1:read('formID_',1)),growth=paint?.growth??(paint?.crop!==undefined?0:read('growth_/this->value_',0));
+  const form=paint?.form??(paint?.crop!==undefined?1:read('formID_',1)),growth=paint?.growth??(paint?.crop!==undefined?0:cell?storedGrowth(doc,cell.node):0);
   const stages=forms[form]??[],maximum=stages.at(-1)?.[0]??0;
   const stage=Math.max(0,stages.findLastIndex(s=>s[0]<=growth));
   const growing=[1,4,5].includes(form)&&maximum>0;
@@ -360,6 +365,46 @@ export function addMapPlacement(doc: SerDocument, edits: MapEdits, placement: Ob
   return next;
 }
 
+export type MapChangeKind = 'plant' | 'growth' | 'clearCrop' | 'clearSoil' | 'soil' | 'water' | 'place' | 'move' | 'upgrade' | 'remove';
+/** Map drafts of one kind and subject, for the review list; `cells`, `objects` and `removed` say what undoing the group drops. */
+export interface MapChangeGroup { key: string; kind: MapChangeKind; count: number; crop?: number; soil?: number; watered?: boolean; template?: number; from?: number; growth?: { form: number; stage: number; stages: number; mature: boolean }; cells: string[]; objects: number[]; removed: string[] }
+export function mapChangeGroups(doc: SerDocument, edits: MapEdits): MapChangeGroup[] {
+  const groups = new Map<string, MapChangeGroup>(), cells = new Map(mapCells(doc).map(c => [c.id, c])), objects = new Map(mapObjects(doc).map(o => [o.uid, o]));
+  const add = (base: Omit<MapChangeGroup, 'key' | 'count' | 'cells' | 'objects' | 'removed'>, part: { cell?: string; object?: number; removed?: string }) => {
+    const key = [base.kind, base.crop, base.soil, base.watered, base.template, base.from, base.growth && `${base.growth.form}.${base.growth.stage}`].join(':');
+    const group = groups.get(key) ?? { ...base, key, count: 0, cells: [], objects: [], removed: [] };
+    group.count++;
+    if (part.cell) group.cells.push(part.cell);
+    if (part.object !== undefined) group.objects.push(part.object);
+    if (part.removed) group.removed.push(part.removed);
+    groups.set(key, group);
+  };
+  for (const [cell, paint] of Object.entries(edits.cells ?? {})) {
+    const old = cells.get(Number(cell.split(':')[1])), crop = old?.crop || undefined;
+    if (paint.soil === 0) add({ kind: 'clearSoil' }, { cell });
+    else if (typeof paint.crop === 'number') add({ kind: 'plant', crop: paint.crop }, { cell });
+    else if (paint.crop === null) add({ kind: 'clearCrop', crop }, { cell });
+    else if (paint.growth !== undefined || paint.form !== undefined) {
+      const [scene, id] = cell.split(':').map(Number), state = cropGrowth(doc, edits, scene, id);
+      add({ kind: 'growth', crop, growth: state ? { form: state.form, stage: state.stage, stages: state.stages.length, mature: state.days === 0 } : undefined }, { cell });
+    }
+    else if (paint.soil !== undefined) add({ kind: 'soil', soil: paint.soil }, { cell });
+    else if (paint.watered !== undefined) add({ kind: 'water', watered: paint.watered }, { cell });
+  }
+  (edits.objects ?? []).forEach((placement, index) => {
+    const from = placement.move ? objects.get(placement.move)?.id : undefined;
+    add(!placement.move ? { kind: 'place', template: placement.template } : from === placement.template ? { kind: 'move', template: placement.template } : { kind: 'upgrade', template: placement.template, from }, { object: index });
+  });
+  for (const uid of edits.removed ?? []) add({ kind: 'remove', template: objects.get(uid)?.id }, { removed: uid });
+  const order: MapChangeKind[] = ['place', 'upgrade', 'move', 'remove', 'plant', 'growth', 'clearCrop', 'clearSoil', 'soil', 'water'];
+  return [...groups.values()].sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind));
+}
+export function withoutMapChanges(edits: MapEdits, group: MapChangeGroup): MapEdits {
+  const cells = { ...edits.cells };
+  for (const key of group.cells) delete cells[key];
+  return { ...edits, cells, objects: (edits.objects ?? []).filter((_, index) => !group.objects.includes(index)), removed: (edits.removed ?? []).filter(uid => !group.removed.includes(uid)) };
+}
+
 export type ClearLayer = 'crops' | 'floor' | 'objects' | 'soil' | 'reset';
 export function clearMapArea(doc: SerDocument, edits: MapEdits, scene: number, cellIds: number[], keys: string[], layer: ClearLayer): MapEdits {
   const ids=new Set(cellIds),next:MapEdits={...edits,cells:{...edits.cells},removed:[...(edits.removed??[])]};
@@ -436,11 +481,16 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     patch(built,'p/pData_/dataID',spec.id);
     const angle=placement.angle??moving?.angle??45;
     patch(built,'p/angle_',angle,true);
-    const entity=(artData.objects as Record<string,{initial?:number;directional?:boolean;seasons:Record<string,{x:number;y:number;w:number;h:number}>[]}>)[spec.id];
-    const frames=entity?.seasons[0];
+    const entity=(artData.objects as Record<string,{initial?:number;directional?:boolean;aabb?:Record<string,number[]>}>)[spec.id];
     const code=[6,3,2,1,4,7,8,9][((Math.round(angle/45)%8)+8)%8];
-    const sprite=frames?.[String((entity?.initial??100)+(entity?.directional?code:0))]??(frames?Object.values(frames)[0]:undefined);
-    if(sprite)for(const [key,value] of Object.entries({l:sprite.x,t:sprite.y,r:sprite.x+sprite.w,b:sprite.y+sprite.h}))patch(built,`p/baseAABB_/${key}`,value,true);
+    // The game stores the uncropped bounds of the facing's first frame, not the visible sprite.
+    const box=entity?.aabb?.[String((entity.initial??100)+(entity.directional?code:0))]??(entity?.aabb?Object.values(entity.aabb)[0]:undefined);
+    if(box)(['l','t','r','b'] as const).forEach((key,i)=>patch(built,`p/baseAABB_/${key}`,box[i],true));
+    // gimmick_cobblestones plays its placement sound once and then records se=1.
+    if(!moving&&spec.script==='gimmick_cobblestones'){
+      const status=builtChild(built,'p/statusValueMap_');
+      if(status){status.children=[{tag:SerTag.Object,nameOffset:-1,name:'0k',children:[{tag:SerTag.Scalar,nameOffset:-1,name:'id_',payload:encodeSigned(0x6573n,8)}]},{tag:SerTag.Scalar,nameOffset:-1,name:'0v',payload:encodeSigned(1n,4)}];status.ref=1;}
+    }
     patch(built, 'p/pos_/x', target.x, true); patch(built, 'p/pos_/y', target.y, true);
     if (moving) { moving.x = target.x; moving.y = target.y; moving.id=spec.id; moving.spec=spec; moving.angle=angle; }
     else occupied.push({ ...donor, id: placement.template, spec, uid: String(seed), x: target.x, y: target.y, angle, bounds: [...donor.bounds] });
@@ -453,6 +503,14 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     if (!next) patch(built, 'p/isEnabled_', 0);
     else if (next.carried) { patch(built, 'p/pos_/x', next.x, true); patch(built, 'p/pos_/y', next.y, true); }
   }
+  // growth_ is a clamped range: the game keeps min_ at 0 and max_ at the last
+  // threshold of the current form, and clamps value_ to it when loading.
+  const syncGrowthRange = (built: SerBuiltNode, scene: number, id: number) => {
+    const state = cropGrowth(doc, edits, scene, id);
+    if (!state) return;
+    patch(built, 'p/pCropsStatus_/p/growth_/min_', 0);
+    patch(built, 'p/pCropsStatus_/p/growth_/max_', state.maximum);
+  };
   for (const [key, paint] of Object.entries(edits.cells ?? {})) {
     const [sceneId, id] = key.split(':').map(Number), terrain = sceneCells(sceneId).find(c => c.id === id);
     const growthOnly=paint.crop===undefined&&paint.soil===undefined&&paint.watered===undefined&&(paint.growth!==undefined||paint.form!==undefined);
@@ -467,6 +525,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
       const built=world.children![doc.children(cellList).findIndex(n=>n.offset===oldCell.node.offset)];
       if(paint.growth!==undefined)patch(built,'p/pCropsStatus_/p/growth_/this->value_',paint.growth);
       if(paint.form!==undefined)patch(built,'p/pCropsStatus_/p/formID_',paint.form);
+      syncGrowthRange(built,sceneId,id);
       continue;
     }
     if (!clearingOnly && paint.soil!==0 && occupied.some(o => o.blocksPlacement && !o.spec?.floor && objectFootprint(o).some(poly=>containsPoint(poly,terrain!)))) throw new Error(tr('田地被设施占用。'));
@@ -506,6 +565,7 @@ export function applyMapEdits(doc: SerDocument, edits: MapEdits): Uint8Array {
     }
     if(paint.growth!==undefined)patch(built,'p/pCropsStatus_/p/growth_/this->value_',paint.growth);
     if(paint.form!==undefined)patch(built,'p/pCropsStatus_/p/formID_',paint.form);
+    if(paint.crop!==null&&builtChild(built,'p/pCropsStatus_/p'))syncGrowthRange(built,sceneId,id);
     if (paint.soil !== undefined) patch(built, 'p/pFarmlandStatus_/p/pData_/dataID', paint.soil);
     if (paint.watered !== undefined) patch(built, 'p/pFarmlandStatus_/p/water_/this->value_', paint.watered ? 1 : 0);
   }
@@ -553,7 +613,7 @@ export function exportMapLayout(doc: SerDocument, edits: MapEdits): MapLayout {
     const raw = paint?.crop !== undefined ? paint.crop : old?.crop || null;
     const crop = raw && MAP_CROPS.some(c => c.numeric_id === raw) ? raw : null, fresh = paint?.crop !== undefined;
     cells.push({ scene, cell: id, soil, crop, ...(crop ? {
-      growth: paint?.growth ?? (fresh ? 0 : value(old?.node, 'p/pCropsStatus_/p/growth_/this->value_') ?? 0),
+      growth: paint?.growth ?? (fresh || !old ? 0 : storedGrowth(doc, old.node)),
       form: paint?.form ?? (fresh ? 1 : value(old?.node, 'p/pCropsStatus_/p/formID_') ?? 1)
     } : {}), watered: paint?.watered ?? !!value(old?.node, 'p/pFarmlandStatus_/p/water_/this->value_') });
   }

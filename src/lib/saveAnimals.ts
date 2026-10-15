@@ -69,7 +69,9 @@ export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits
     }
     const name = builtChild(target, 'p/name_')!; name.payload = encodeString(addition.name);
     // Native creation (0x140104380 / 0x140292DB0): selected data and texture, age zero.
-    for (const [path, value] of [['pData_/dataID', addition.species], ['pReplaceTexData_/dataID', variant.texture], ['growStatus_', 0], ['isDisableRelease_', 0]] as const) {
+    // A grown adult keeps the age it reached as a baby (game saves: chicken 5, cow 14), so an added adult starts there.
+    const age = ANIMALS.find(a => a.adultId === animal.id)?.growDays ?? 0;
+    for (const [path, value] of [['pData_/dataID', addition.species], ['pReplaceTexData_/dataID', variant.texture], ['growStatus_', age], ['isDisableRelease_', 0]] as const) {
       const field = builtChild(target, 'p/' + path); if (!field?.payload) throw new Error(tr('动物初始化字段未知。')); field.payload = encodeSigned(BigInt(value), field.payload.length);
     }
     for (const [path, value] of [['angle_', 0], ['scale_/x', 1], ['scale_/y', 1], ['baseAABB_/l', 0], ['baseAABB_/t', 0], ['baseAABB_/r', 0], ['baseAABB_/b', 0]] as const) {

@@ -59,6 +59,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('animal placement rules', () => {
     const get = (path: string) => restored.doc.resolve(`livestockList_/${chick.index}/p/${path}`)!;
     expect(readSigned(restored.doc, get('pReplaceTexData_/dataID'))).toBe(609n);
     expect(readSigned(restored.doc, get('growStatus_'))).toBe(0n);
+    // An adult starts at the age its baby form grows up at, like the adults the game writes.
+    const turkey = residents.at(-3)!;
+    expect(readSigned(restored.doc, restored.doc.resolve(`livestockList_/${turkey.index}/p/growStatus_`)!)).toBe(10n);
+    const grown = animalResidents(model.doc).filter(r => r.species === 1 || r.species === 7);
+    expect(grown.map(r => readSigned(model.doc, model.doc.resolve(`livestockList_/${r.index}/p/growStatus_`)!))).toEqual(grown.map(r => BigInt(ANIMALS.find(a => a.adultId === r.species)!.growDays)));
     expect(restored.doc.children(get('statusValueMap_'))).toHaveLength(0);
     expect(readSigned(restored.doc, get('loveRate_/this->value_'))).toBe(0n);
     expect(ANIMALS.find(a => a.id === 2)).toMatchObject({ growDays: 5, adultId: 1 });

@@ -7,7 +7,7 @@ import { readSigned } from '../../lib/ser';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import { gameText } from '../../lib/saveText';
 import { tr } from '../../i18n/active';
-import { questStatuses, type QuestStatus } from '../../lib/saveQuests';
+import { questRecord, questStateForChecklist, questStatuses, type QuestStatus } from '../../lib/saveQuests';
 
 // Internal quests are marked by a leading tag in the Chinese name; display uses the page language.
 const questText = (text: string, translations?: Record<string, string>) => gameText(text, translations).replace(/<[^>]+>/g, '').trim();
@@ -102,8 +102,16 @@ function QuestDetail({ quest: { info, title, state, check }, status, drafts, onC
     <div className="save-quest-detail-body">
       {info.description && info.description !== UNUSED_TEXT && <p className="save-quest-description">{questText(info.description, info.descriptionTranslations)}</p>}
       <div className="save-quest-controls">
-        <label><span>{tr('任务记录')}</span><SearchableSelect aria-label={tr('{title}任务记录', { title })} value={currentState === 0 ? '0' : currentState === 3 ? '3' : '1'} onChange={event => { onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, event.target.value); if (event.target.value === '3') onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, String(max)); }}><option value="0">{tr('隐藏')}</option><option value="1">{tr('显示')}</option><option value="3">{tr('标记完成')}</option></SearchableSelect></label>
-        {!!info.steps.length && <label><span>{tr('清单进度')}</span><SearchableSelect aria-label={tr('{title}清单进度', { title })} value={value} onChange={event => { onChange({ ...check, label: tr('{title} · 清单进度', { title }), min: '-1', max: String(max) }, event.target.value); onChange({ ...state, label: tr('{title} · 记录', { title }), min: '0', max: '3' }, Number(event.target.value) >= max ? '3' : '1'); }}>{value === 'original' && <option value="original">{tr('存档中的当前进度')}</option>}<option value={-1}>{tr('尚未完成清单项目')}</option>{levels.filter(level => level >= 0).map(level => <option key={level} value={level}>{tr('已完成 {done} / {total} 项', { done: info.steps.filter(step => step.level < level).length, total: info.steps.length })}</option>)}</SearchableSelect></label>}
+        <label><span>{tr('任务记录')}</span><SearchableSelect aria-label={tr('{title}任务记录', { title })} value={status === 'hidden' ? '0' : status === 'complete' ? '3' : '1'} onChange={event => {
+          const next = questRecord(info.code, info.steps.length, currentState, event.target.value === '0' ? 'hidden' : event.target.value === '3' ? 'done' : 'shown', max);
+          onChange(state, String(next.state));
+          if (next.check !== undefined) onChange(check, String(next.check));
+        }}><option value="0">{tr('隐藏')}</option><option value="1">{tr('显示')}</option><option value="3">{tr('标记完成')}</option></SearchableSelect></label>
+        {!!info.steps.length && <label><span>{tr('清单进度')}</span><SearchableSelect aria-label={tr('{title}清单进度', { title })} value={value} onChange={event => {
+          const level = Number(event.target.value);
+          onChange(check, String(level));
+          onChange(state, String(questStateForChecklist(info.code, currentState, level, max)));
+        }}>{value === 'original' && <option value="original">{tr('存档中的当前进度')}</option>}<option value={-1}>{tr('尚未完成清单项目')}</option>{levels.filter(level => level >= 0).map(level => <option key={level} value={level}>{tr('已完成 {done} / {total} 项', { done: info.steps.filter(step => step.level < level).length, total: info.steps.length })}</option>)}</SearchableSelect></label>}
       </div>
       {!!info.steps.length && <section className="save-quest-checklist"><h4>{tr('任务清单')} <small>{info.steps.filter(step => step.level < current).length} / {info.steps.length}</small></h4><ul>{info.steps.map((step, index) => <li key={index} className={current > step.level ? 'done' : 'pending'}><span aria-hidden="true">{current > step.level ? '✓' : '○'}</span><span>{questText(step.name, step.nameTranslations)}</span></li>)}</ul></section>}
       <p className="save-quest-note">{tr('修改记录不会触发剧情、发放奖励或改变村庄状态。')}</p>

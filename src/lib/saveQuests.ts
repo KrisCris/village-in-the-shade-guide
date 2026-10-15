@@ -22,3 +22,22 @@ export function questStatuses<T extends { code: string; state: number; check: nu
   if (goal && result.get(goal) === 'pending' && rules.length && rules.every(rule => result.get(rule) === 'complete')) result.set(goal, 'complete');
   return result;
 }
+
+/**
+ * Game saves never use state 1: a shown quest is 2. The village rules and the villagers' help
+ * requests stay at 2 after their last checklist step; every other quest closes at 3.
+ */
+const OPEN_WHEN_DONE = /^QUEST_ID_(CHAIN_VILLAGE_RULES|HUNTER|ORPHAN|BOY|STREET_VENDOR|GIRL|GENERAL_STORE_MASTER|YOUNG_MAN|OLD_MAN|SECRETARY|FEMALE_DOCTOR|CARPENTER|WOODCUTTER)_\d+$/;
+const shownState = (state: number) => state === 1 || state === 2 ? state : 2;
+
+/** The record state that goes with a new checklist level. */
+export function questStateForChecklist(code: string, state: number, check: number, max: number): number {
+  return max > 0 && check >= max && !OPEN_WHEN_DONE.test(code) ? 3 : shownState(state);
+}
+
+/** State and checklist level for a record choice; `check` is undefined when it stays as is. */
+export function questRecord(code: string, stepCount: number, state: number, record: 'hidden' | 'shown' | 'done', max: number): { state: number; check?: number } {
+  if (record === 'hidden') return { state: 0 };
+  if (record === 'shown') return { state: shownState(state) };
+  return { state: stepCount && OPEN_WHEN_DONE.test(code) ? shownState(state) : 3, check: stepCount ? max : undefined };
+}

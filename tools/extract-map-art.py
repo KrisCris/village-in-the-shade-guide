@@ -44,6 +44,7 @@ def save_rules(metadata):
         'crops': {key: {'model': value['model'], 'states': value.get('states', {})} for key, value in metadata['crops'].items()},
         'objects': {key: {'initial': value['initial'], 'directional': value['directional'],
                          'seasons': [{seq: {k: frame[k] for k in ('x','y','w','h')} for seq, frame in value['seasons'][0].items()}],
+                         **({'aabb': value['aabb']} if value.get('aabb') else {}),
                          **({'slots': value['slots']} if 'slots' in value else {})}
                     for key, value in metadata['objects'].items()}
     }
@@ -244,7 +245,12 @@ def main():
             return None
         ids = bank.sequence_ids(model)
         frames = [i for i in frames_requested if i in ids] if frames_requested else [100 if 100 in ids else 1 if 1 in ids else next((i for i in ids if i > 0), 0)]
-        seasons, slots = [], {}
+        seasons, slots, aabb = [], {}, {}
+        for frame in frames:
+            # Matches the stored baseAABB_ of 99% of game-placed objects; the
+            # rest reflect a later animation state (buildings, trees).
+            if box := bank.bounds(model, frame):
+                aabb[str(frame)] = [-box[2], box[1], -box[0], box[3]] if mirror else box
         for rep in reps:
             mapping = replacements(rep)
             mapping.update(replacements(furniture_rep))
@@ -264,7 +270,7 @@ def main():
                     variants[str(frame)] = sprite
             seasons.append(variants)
         bank.textures.clear()
-        return {'model': model, 'seasons': seasons, **({'slots': slots} if slots else {})} if any(seasons) else None
+        return {'model': model, 'seasons': seasons, 'aabb': aabb, **({'slots': slots} if slots else {})} if any(seasons) else None
 
     for id, (r, _) in ([] if args.update_objects else table('crops').items()):
         # Variable-length prerequisite lists precede the animation reference.

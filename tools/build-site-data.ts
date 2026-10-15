@@ -41,6 +41,9 @@ for (const locale of locales) {
   const saveEditorIcons: Record<string, Record<string, string>> = {};
   const categories: Record<string, string> = {};
   const itemCategories: Record<string, string> = {};
+  // Items with ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA (itemfeature.dat id 8): the
+  // game may still record them, but its encyclopedia never lists them.
+  const encyclopediaHidden: string[] = [];
   for (const entity of catalog.entities) {
     const numericId = entity.numeric_id;
     if (!saveEditorKinds.includes(entity.kind) || typeof numericId !== 'number') continue;
@@ -48,6 +51,7 @@ for (const locale of locales) {
     (saveEditorNames[entity.kind] ??= {})[key] = entity.name.zh_hans || entity.name.ja || entity.id;
     if (entity.kind === 'items' && typeof entity.category_id === 'string') {
       itemCategories[key] = entity.category_id;
+      if (Array.isArray(entity.feature_ids) && entity.feature_ids.includes(8)) encyclopediaHidden.push(key);
       const categoryName = entity.category_name as { zh_hans?: string; ja?: string } | undefined;
       categories[entity.category_id] = categoryName?.zh_hans || categoryName?.ja || entity.category_id;
     }
@@ -59,7 +63,7 @@ for (const locale of locales) {
   }
   await writeFile(
     join(dir, 'save-editor-names.json'),
-    JSON.stringify({ iconBase, iconExt, names: saveEditorNames, icons: saveEditorIcons, categories, itemCategories }),
+    JSON.stringify({ iconBase, iconExt, names: saveEditorNames, icons: saveEditorIcons, categories, itemCategories, encyclopediaHidden }),
   );
 
   const count = (tables: Record<string, Record<string, string>>) =>

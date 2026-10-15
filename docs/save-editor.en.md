@@ -28,8 +28,8 @@ Browsers can't open the AppData folder directly. The page gives you the path to 
 ### Editing and exporting
 
 1. **Back up.** Copy the whole save folder first.
-2. **Load.** Choose the save file and edit by section: basics, player, items, livestock, NPCs, map, quests, collection and unlocks. The "完整字段树" (field tree) button in the top right finds any field by name or path.
-3. **Review.** Before export, a preview lists every change, and each can be undone. Changing money, maxing friendship or adding brand-quality items may affect achievements, so the page asks you to confirm before export.
+2. **Load.** Choose the save file and edit by section: basics, player, items, livestock, NPCs, map, quests, collection and unlocks. The "完整字段树" (field tree) button in the top right finds any field by name or path. A field that also appears on another tab is shown and checked with the same type there, so a float isn't shown as raw integer bits.
+3. **Review.** Before export, a preview lists every change grouped by section, and each can be undone. Map changes are merged by action and object, such as "放置 · 户外石砖地板 · 3 个" (place · outdoor stone floor · 3), and a whole group can be undone at once. Moving or swapping items shows as one line and is undone together. Out-of-range values are marked in the input and in the preview, and download stays disabled until they are fixed. Changing money, maxing friendship or adding brand-quality items may affect achievements, so the page asks you to confirm before export.
 4. **Replace.** Download the edited copy and replace the original file while the game is closed.
 
 Drafts are kept in the current browser session. If you leave the page and come back, the draft is restored as long as you choose the same file again (checked by SHA-256).
@@ -112,7 +112,7 @@ Each node is `[tag u8][nameOffset u32][size u32] (+ [ref u32]) [payload]`. Only 
 
 A pointer's `ref` is a file offset. If `ref` equals the node's own offset, the pointer owns the object that follows; `0xFFFFFFFF` is a null pointer; any other value refers to a node serialized elsewhere. The samples contain exactly one such reference: `pConstructionStatus_/pStatus_` points at an entry in `gimmickList_`.
 
-**Any change in length shifts the offset of every later node, so every pointer `ref` has to be rewritten.** `serializeSer` re-lays out the offsets and rewrites the pointers, which is why names can change length freely. When a list is rebuilt, retained nodes keep their original offset mapping so outside references still reach the same object; new clones have no offset identity. New names are appended to the end of the name table.
+**Any change in length shifts the offset of every later node, so every pointer `ref` has to be rewritten.** `serializeSer` re-lays out the offsets and rewrites the pointers, which is why names can change length freely. When a list is rebuilt, retained nodes keep their original offset mapping so outside references still reach the same object; new clones have no offset identity. A blob's `ref` can't be derived from its children, so a rebuild must keep it as is. Written as 0, the game reads the array as empty. A processing device's `timeValue_` and `createTime_` are blobs, and losing their element counts resets every processing timer. New names are appended to the end of the name table.
 
 ### Main fields
 
@@ -178,22 +178,24 @@ These rules come from the game's tables and native code. Research notes such as 
 ### Livestock
 
 - A heart is 300 or 400 points (depending on species and a runtime feature), up to 5 hearts; dogs use 400. Mood is 0–255 and feeding is on or off.
-- Available pens depend on the building. Adding an animal needs at least one ordinary animal in the save to serve as a structural template. A new animal gets the texture and bounding box of its breed, and its growth, friendship, mood and temporary state start at zero.
+- Available pens depend on the building. Adding an animal needs at least one ordinary animal in the save to serve as a structural template. A new animal gets the texture and bounding box of its breed. An adult's growth is set to the days its young form needs to grow up, matching game saves (chicken 5, duck 7, sheep 10, cow 14); friendship, mood and temporary state start at zero.
 - When a barn is upgraded, its animals stay in that building and keep their pen order where possible. If there isn't room, the editor reports an error instead of quietly moving animals to another building. Demolishing a barn requires free pens elsewhere for its animals, or export is refused. A stable can't be demolished while you have a horse.
 
 ### Quests, unlocks and deliveries
 
-- Quests: a checklist step counts as done when `checkLevel_` is greater than its threshold; state 0 is hidden, 1 shown and 3 completed. Only the quest itself changes; story flags are left alone.
+- Quests: a checklist step counts as done when `checkLevel_` is greater than its threshold. State 0 is hidden, 2 shown and 3 completed; game saves never use 1. When the checklist is full, ordinary quests become 3, while village rules (`CHAIN_VILLAGE_RULES_*`) and villager help quests (each villager's `*_01`) stay at 2, as they do in the game. Only the quest itself changes; story flags are left alone.
+- Encyclopedia: `encyclopediaReleaseMap_` records item IDs, always with the value 1. The 76 items with `ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA` (itemfeature 8), such as building rewards, recipe documents, tool bases and demo props, never appear in the game's encyclopedia, so the editor doesn't list them either. Existing entries for them in a save are kept as they are.
 - Skill tree: unlocking a node also unlocks its prerequisites, and locking one locks its dependents, keeping `skills_` and the flag bits in sync. The shrine repair level is never changed automatically. The six learning materials are, in order, magatama, rain magatama, twin magatama, child magatama, bronze mirror and sword (items 650000, 650010, 650020, 650030, 650040, 650060); "补齐材料" (fill materials) puts them into the backpack in that order.
 - Village chief deliveries: required materials are read as `itemId u32, rank u32, count u32`, and high quality means rank 4. The editor only changes the remaining count. When a whole book is delivered it sets the book's completion flag, but it doesn't fire the delivery event or grant rewards. "留最后一件" (leave the last one) lets you make the final delivery in the game. "开放村长家的交付目录" (open the delivery catalog) only sets `GAME_FLAG_STORY_02_022`.
 
 ### Map
 
 - **Scenes**: 64 outdoor and indoor scenes. Terrain comes from YMWR on a 45-unit grid, and a cell ID is `round(y/45)*1000000 + round(x/45) + 1`. Only cells allowed by the ground mask can be edited, and farm expansions are checked separately against flags 147/148.
-- **Crops**: allowed soils follow the crops table; rice and wasabi only grow in paddies. Growth is written to `growth_` and `formID_`. `formID_` is a state (normal, withered, regrowing, stump and so on), not an animation number. Days remaining are estimated at 100 growth points a day, ignoring season, fertilizer and watering.
+- **Crops**: allowed soils follow the crops table; rice and wasabi only grow in paddies. Growth is written to `growth_` and `formID_`. `formID_` is a state (normal, withered, regrowing, stump and so on), not an animation number. `growth_` is a `{min_, max_, this->value_}` range: the game keeps `min_` at 0 and `max_` at the last threshold of the current form, and clamps `value_` to `max_` on load. Changing the form or growth value therefore has to update `max_` too, or the stage shown in the game won't match. Days remaining are estimated at 100 growth points a day, ignoring season, fertilizer and watering.
 - **Watering**: only tilled soil and ridges can be watered; paddies don't need it.
 - **Facilities**: collisions use the FAD collision areas, and adjacent single-cell diamonds may share an edge. Traps, crab pots, wall hangings and other special facilities follow their own terrain categories. Ordinary facilities (rugs included) can't go in a paddy, except scarecrows.
-- **Floors**: can't be laid under crops, trees or facilities; clear those first. Floors can go on tilled soil, which turns back into plain ground.
+- **Bounds**: a new object's `baseAABB_` is the union of the textured node quads in its FAD initial frame (or the frame for its facing, for directional objects), flipped horizontally for mirrored objects. `tools/extract-map-art.py` writes these to `aabb` in `game-map-rules.json`.
+- **Floors**: can't be laid under crops, trees or facilities; clear those first. Stone floors (script `gimmick_cobblestones`) need `se = 1` in `statusValueMap_`; without it the placement sound plays again when the game loads. Floors can go on tilled soil, which turns back into plain ground.
 - **Buildings**: placing one clears crops, floors and ordinary facilities in its footprint. Building numbers come from free slots, and upgrades keep the unique ID. Indoor items move to the new rooms by floor and relative position. Fixed scene objects and the house can't be deleted, and the house can only be upgraded in place. The shipping box is a fixed scene object: shown, but not movable.
 - **Interiors**: the house level (flags 140–142) chooses the floor plan, and flag 143 opens the basement. Lights and floor masks aren't drawn as ordinary furniture.
 - **Layout files**: JSON version 1 with scene, cell, template IDs and edit operations only; no save contents. On import the target save's templates, bounds, footprints and unlocked areas are checked again, and a move whose source facility can't be found is rejected.

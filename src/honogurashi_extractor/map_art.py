@@ -122,6 +122,41 @@ class FairyBank:
         walk(struct.unpack_from('<i', data, offset+8)[0], IDENTITY)
         return result
 
+    def bounds(self, name: str, sequence: int) -> list[float] | None:
+        """The game's `baseAABB_`: the union of the frame's node quads before transparent pixels are cropped."""
+        pos, size = self.entries[name]
+        data = self.data[pos:pos+size]
+        count = struct.unpack_from('<H', data, 40)[0]
+        seq, _, nodes, keys = struct.unpack_from('<4I', data, 64)
+        offset = next((seq+i*32 for i in range(count) if struct.unpack_from('<H', data, seq+i*32)[0] == sequence), None)
+        if offset is None:
+            return None
+        corners: list[tuple[float, float]] = []
+        visited: set[int] = set()
+        def walk(index, parent):
+            if index < 0 or index in visited:
+                return
+            visited.add(index)
+            node = nodes+index*32
+            child, sibling, key_count, key = struct.unpack_from('<4i', data, node+8)
+            transform = parent
+            if key_count:
+                offset = keys+key*160
+                texture_id = struct.unpack_from('<i', data, offset)[0]
+                f = struct.unpack_from('<26f', data, offset+4)
+                co, si = math.cos(f[13]), math.sin(f[13])
+                transform = multiply(parent, (f[11]*co, f[11]*si, -f[12]*si, f[12]*co, f[9], f[10]))
+                # Collision-only nodes (no texture) do not count.
+                if f[5] > 0 and f[6] > 0 and texture_id >= 0:
+                    quad = multiply(transform, (1, 0, 0, 1, -f[7], -f[8]))
+                    corners.extend(point(quad, x, y) for x, y in [(0, 0), (f[5], 0), (0, f[6]), (f[5], f[6])])
+            walk(child, transform)
+            walk(sibling, parent)
+        walk(struct.unpack_from('<i', data, offset+8)[0], IDENTITY)
+        if not corners:
+            return None
+        return [round(v, 2) for v in (min(p[0] for p in corners), min(p[1] for p in corners), max(p[0] for p in corners), max(p[1] for p in corners))]
+
     def render(self, name: str, sequence: int, replacement: Callable[[str], Image.Image | None] | None = None):
         pos, size = self.entries[name]
         data = self.data[pos:pos+size]

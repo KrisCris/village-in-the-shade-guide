@@ -14,6 +14,8 @@ import type { LookupKind } from './saveModel';
 export interface SaveNameTables {
   categories?: Record<string, string>;
   itemCategories?: Record<string, string>;
+  /** Item IDs the game's encyclopedia never lists. */
+  encyclopediaHidden?: string[];
   iconBase?: string;
   iconExt?: string;
   names?: Partial<Record<LookupKind, Record<string, string>>>;
