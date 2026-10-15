@@ -8,13 +8,30 @@ const {t,tHtml,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
 const get=(id:string)=>catalog.entities.find(e=>e.id===id&&(e.kind==='items'||e.kind==='livestock'));
 const adults=production.animals.filter(a=>a.product_item_ids.length);
+// Vendor offers from shopsale.dat; conditions from event.dat, event_sale_start/event_holiday_fair scripts and lettersend.dat.
+const C='ITEM_ID_LIVESTOCK_';
+const unlocks:[string[],string][]=[
+  [[C+'CHICK_WHITE',C+'COWCHILD_NORMAL',C+'LAMB_WHITE'],t('一开始就有卖。')],
+  [[C+'DUCK_CHICK_WHITE'],t('第 1 年夏季起。')],
+  [[C+'BABY_GOAT_WHITE'],t('第一次带家畜参加品评会之后，名次不限。马在单独的部门评比，不算。')],
+  [[C+'PIGLET_PINK'],t('家畜（马除外）在品评会拿到 A 级以上。')],
+  [[C+'TURKEY_CHICK_NORMAL'],t('用鸡在品评会拿到 S 级。')],
+  [[C+'BABY_CASHMERE_GOAT'],t('两种不同的家畜在品评会拿过 S 级，马也算一种。同一种拿再多次 S 也只算一种。')],
+  [[C+'BABY_HORSE_BROWN'],t('建好第一座畜舍后，琪娜娜来信说开始卖马；同时可以请木助建马棚，一座马棚养 3 匹。')],
+  [[C+'CHICK_BROWN',C+'CHICK_BLACK',C+'DUCK_CHICK_WHITEBLACK',C+'COWCHILD_BROWN',C+'COWCHILD_BLACK',C+'LAMB_BLACK',C+'BABY_GOAT_BROWN',C+'BABY_GOAT_BLACK',C+'PIGLET_BLACK',C+'BABY_HORSE_BLACK',C+'BABY_HORSE_KINAKO'],t('从同种成年家畜累计收获 20 个产物后，琪娜娜来信说进了新颜色。每种动物分开计数。')],
+  [[C+'CHICK_SILKIE',C+'DUCK_CHICK_WILD'],t('主线推进到第 5 章后半，在地下通道见到木灵之后。')],
+  [[C+'COWCHILD_FLUFFY',C+'BABY_GOAT_MOTTLED'],t('同样要推进到第 5 章后半，另外图鉴里要登记过白色小山羊。')],
+  [[C+'COLOR_CHICK_RED',C+'COLOR_CHICK_ORANGE',C+'COLOR_CHICK_GREEN',C+'COLOR_CHICK_LIGHT_BLUE',C+'COLOR_CHICK_BLUE',C+'COLOR_CHICK_PURPLE',C+'COLOR_CHICK_GRAY'],t('只在夏季 15 日的庙会期间卖。这段时间琪娜娜不卖其他家畜，彩色小鸡长大后是公鸡。')],
+];
 ---
 <BaseLayout title={t('畜牧产物与饲养规划')}><h1>{t('畜牧产物与饲养规划')}</h1>
-<nav><a href="#daily">{t('每日照料')}</a>　<a href="#products">{t('按产物选家畜')}</a>　<a href="#young">{t('幼畜长大')}</a></nav>
+<nav><a href="#unlock">{t('解锁条件')}</a>　<a href="#daily">{t('每日照料')}</a>　<a href="#products">{t('按产物选家畜')}</a>　<a href="#young">{t('幼畜长大')}</a></nav>
 <section><h2>{t('先准备设施，再选产物')}</h2><ol><li set:html={tHtml('先核对<a href="/data/activities/?q=建筑">鸡舍、畜舍等建筑材料</a>和自己的可用空间，别把全部资金先花在动物上。')} /><li>{t('按准备交付、制作或加工的目标选动物。下方产物可以继续点开，查看用途；需要牛奶和需要羊毛，对应的饲养目标不同。')}</li><li set:html={tHtml('先保留<a href="/data/activities/">交付目录</a>与<a href="/guides/residents/">生日礼物</a>用量，再安排料理与加工。料理标注“蛋类”“奶类”时可以使用其允许的替代品，见<a href="/guides/cooking-plan/#ingredients">材料对照表</a>。')} /></ol></section>
+<section id="unlock"><h2>{t('各种家畜什么时候能买')}</h2><p>{t('家畜都在行商琪娜娜那里买。新的种类和颜色要满足下面的条件才会上架，大多会先收到她的信。')}</p><div class="unlocks card">{unlocks.map(([ids,condition])=><div class="unlock"><div class="animals">{ids.map(id=>{const animal=get(id);return animal&&<a href={href(entityUrl(animal))}>{animal.icon_path&&<img src={withBase(animal.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{animal.name.zh_hans}</a>;})}</div><p>{condition}</p></div>)}</div>
+<h3 id="fair">{t('品评会怎么算名次')}</h3><p>{t('品评会在每季 27 日上午 10 点到下午 4 点于广场举行，家畜部门每次带一只去。得分是亲密度等级加上心情分：心情高于“好”加 5，高于“普通”加 4，不为负加 3，为负加 2。牛鬼会拉低家畜的心情。')}</p><ul><li>{t('10 分以上为 S，7 分以上为 A，4 分以上为 B，其余为 C。')}</li><li>{t('拿到 S 的家畜会成为品牌家畜；某种家畜第一次拿 S 时，还要给这种家畜起品牌名。品牌家畜再参加会直接得到特别名次，不算 S。')}</li><li>{t('小猪只要 A 级以上；火鸡要用还不是品牌的鸡拿 S；克什米尔山羊要两种家畜各拿过 S。')}</li></ul></section>
 <section id="daily"><h2>{t('每天按这个顺序照料')}</h2><ol><li>{t('注视家畜，检查进食状态与亲密度；先处理没有吃饭的动物。')}</li><li>{t('摸摸家畜。游戏教程说，每天抚摸能提高亲密度，也更容易得到优质的畜产品。')}</li><li>{t('收取可领取的产物，把今日要交的部分分开保留，再加工余量。')}</li><li>{t('需要集中附近家畜时使用家畜呼笛；它让附近已饲养的家畜靠近主角，不是召唤未拥有的动物。')}</li></ol></section>
 <section id="products"><h2>{t('按产物选择家畜')}</h2><div class="grid">{adults.map(animal=>{const adult=get(animal.livestock_id);return adult&&<article class="card"><h3><a href={href(entityUrl(adult))}>{adult.name.zh_hans}</a></h3><div class="products">{animal.product_item_ids.map(id=>{const product=get(id);return product&&<a href={href(entityUrl(product))}>{product.icon_path&&<img src={withBase(product.icon_path)} width="52" height="52" alt="" loading="lazy"/>}{product.name.zh_hans}</a>;})}</div><p>{t('产物候选，不代表每次同时取得所有物品。')}</p></article>;})}</div><p>{t('公鸡的普通产出表包含空结果与鸟的羽毛，不能按母鸡每天产蛋的方式估算收益。猪的产物表指向松露，马指向马尾毛；具体产出操作和状态以家畜面板为准。')}</p></section>
 <section id="young"><h2>{t('幼畜长大后是什么')}</h2><div class="grid">{production.animals.filter(a=>a.adult_id).map(animal=>{const young=get(animal.livestock_id),adult=get(animal.adult_id!);return young&&adult&&<p class="card"><a href={href(entityUrl(young))}>{young.name.zh_hans}</a> → <a href={href(entityUrl(adult))}>{adult.name.zh_hans}</a></p>;})}</div><p>{t('幼畜没有产物，长大后才开始产出。七种颜色的小鸡长大后都是公鸡，产物相同。')}</p></section>
-<details><summary>{t('游戏数据来源')}</summary><p>{t('livestock.dat：幼畜的成年家畜编号、变长产物表；tips.dat 的 TIPS_23_HOW_TO_LIVESTOCK、TIPS_50_INFO_LIVESTOCK、TIPS_54_WHISTLE_LIVESTOCK：照料、状态查看与呼笛。产物概率、数量和饲养状态的关系还没核对完，所以这里不估算每日收益。')}</p></details>
+<details><summary>{t('游戏数据来源')}</summary><p>{t('livestock.dat：幼畜的成年家畜编号、变长产物表；shopsale.dat 与 event_sale_start、event_holiday_fair 脚本、lettersend.dat：购买条件与品评会评分；tips.dat 的 TIPS_23_HOW_TO_LIVESTOCK、TIPS_50_INFO_LIVESTOCK、TIPS_54_WHISTLE_LIVESTOCK：照料、状态查看与呼笛。产物概率、数量和饲养状态的关系还没核对完，所以这里不估算每日收益。')}</p></details>
 </BaseLayout>
-<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem}.card{padding:1rem;margin:0}.card h3{margin-top:0}.card p{font-size:.85rem;color:var(--muted)}.products a{display:flex;align-items:center;gap:.6rem;margin:.5rem 0;text-decoration:none}.products img{object-fit:contain}nav{line-height:2}</style>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem}.card{padding:1rem;margin:0}.card h3{margin-top:0}.card p{font-size:.85rem;color:var(--muted)}.products a{display:flex;align-items:center;gap:.6rem;margin:.5rem 0;text-decoration:none}.products img{object-fit:contain}.unlocks{padding:.2rem 1rem}.unlock{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:.4rem 1.5rem;align-items:center;padding:.8rem 0}.unlock+.unlock{border-top:1px solid var(--border)}.unlock p{margin:0;font-size:inherit;color:inherit}@media(max-width:700px){.unlock{grid-template-columns:1fr}}.animals{display:flex;flex-wrap:wrap;gap:.3rem 1rem}.animals a{display:flex;align-items:center;gap:.4rem;text-decoration:none}.animals img{object-fit:contain}nav{line-height:2}</style>
