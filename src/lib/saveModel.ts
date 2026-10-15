@@ -1,4 +1,4 @@
-import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, type MapEdits } from './saveMap';
+import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, stablePosition, type MapEdits } from './saveMap';
 /**
  * Typed view over a decoded save.
  *
@@ -477,19 +477,27 @@ function payloadFor(doc: SerDocument, field: SaveField, raw: string): Uint8Array
     return encodeString(raw);
   }
   if (field.type === 'bytes') return fromHex(raw, node.size, field.label);
+  const problem = valueProblem({ ...field, byteLength: node.size }, raw);
+  if (problem) throw new Error(problem);
+  return field.type === 'float' ? encodeFloat(Number(value), node.size) : encodeSigned(BigInt(value), node.size);
+}
+
+/** Why a typed number cannot be written, or null. Inputs and export share this check. */
+export function valueProblem(field: Pick<SaveField, 'label' | 'type' | 'min' | 'max' | 'byteLength'>, raw: string): string | null {
+  const value = raw.trim();
   if (field.type === 'float') {
     const parsed = Number(value);
-    if (!Number.isFinite(parsed)) throw new Error(tr('{label} 必须是一个数字。', { label: field.label }));
-    if ((field.min !== undefined && parsed < Number(field.min)) || (field.max !== undefined && parsed > Number(field.max))) throw new Error(tr('{label} 超出允许范围。', { label: field.label }));
-    return encodeFloat(parsed, node.size);
+    if (!value || !Number.isFinite(parsed)) return tr('{label} 必须是一个数字。', { label: field.label });
+    if ((field.min !== undefined && parsed < Number(field.min)) || (field.max !== undefined && parsed > Number(field.max))) return tr('{label} 超出允许范围。', { label: field.label });
+    return null;
   }
-  if (!/^-?\d+$/.test(value)) throw new Error(tr('{label} 必须是整数。', { label: field.label }));
+  if (field.type !== 'int' && field.type !== 'bool') return null;
+  if (!/^-?\d+$/.test(value)) return tr('{label} 必须是整数。', { label: field.label });
   const parsed = BigInt(value);
-  const range = signedRange(node.size);
+  const range = signedRange(field.byteLength);
   const min = field.min !== undefined ? BigInt(field.min) : range.min;
   const max = field.max !== undefined ? BigInt(field.max) : range.max;
-  if (parsed < min || parsed > max) throw new Error(tr('{label} 必须在 {min} 到 {max} 之间。', { label: field.label, min, max }));
-  return encodeSigned(parsed, node.size);
+  return parsed < min || parsed > max ? tr('{label} 必须在 {min} 到 {max} 之间。', { label: field.label, min, max }) : null;
 }
 
 export function collectFields(model: SaveModel): Map<number, SaveField> {
@@ -579,7 +587,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   const seedNode = model.doc.resolve('statusUniqueIDGenerator_/idSeed_');
   const seed = idSeed ? new DataView(idSeed.payload.buffer).getBigInt64(0, true) : seedNode ? readSigned(model.doc, seedNode) : 0n;
   const animalLeaves = new Map(changes.filter(change => { const list = model.doc.resolve('livestockList_'); return list && change.field.offset >= list.offset && change.field.offset < list.end; }).map(change => [change.field.offset, payloadFor(model.doc, change.field, change.after)]));
-  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress);
+  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress, stablePosition(model.doc, mapEdits));
   livestock.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   const progression = buildProgressEdits(model.doc, progress);
   processing.subtrees.forEach((node, offset) => subtrees.set(offset, node));

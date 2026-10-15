@@ -19,6 +19,13 @@ describe('save editor name tables', () => {
     expect(lookupName(tables, undefined, '230000')).toBeNull();
   });
 
+  it('leaves out the items the game keeps out of its encyclopedia', () => {
+    const hidden = new Set(tables.encyclopediaHidden);
+    // Building rewards, recipe documents, tool bases and demo dummies carry ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA.
+    expect(hidden.size).toBe(76);
+    for (const id of ['660020', '990014', '230000']) expect(hidden.has(id)).toBe(id !== '230000');
+  });
+
   it('rebuilds icon URLs from the stems it ships', () => {
     expect(lookupIcon(tables, 'items', '230000')).toBe('/icons/generated/items/ITEM_ID_OBJECT_WOOD.webp');
     // Portraits live outside the icon folder and are stored as full paths.

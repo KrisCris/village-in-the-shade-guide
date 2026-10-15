@@ -1,4 +1,4 @@
-import { MAP_DATA, landPosition, mapCells, mapObjects, editedObjects, sceneCells, type MapEdits } from './saveMap';
+import { MAP_DATA, landPosition, mapCells, mapObjects, editedObjects, sceneCells, storedGrowth, type MapEdits } from './saveMap';
 import { readSigned, type SerDocument } from './ser';
 import { splitGameTime } from './saveTime';
 import { flagEnabled } from './saveProgress';
@@ -188,9 +188,8 @@ export function buildFarmScene(
     const crop = edit?.crop !== undefined ? edit.crop : cell?.crop;
     if (!crop) continue;
     const formNode = cell && doc.resolve('p/pCropsStatus_/p/formID_', cell.node);
-    const growthNode = cell && doc.resolve('p/pCropsStatus_/p/growth_/this->value_', cell.node);
     const form = edit?.form ?? (edit?.crop !== undefined ? 1 : formNode ? Number(readSigned(doc, formNode)) : 1);
-    const growth = edit?.growth ?? (edit?.crop !== undefined ? 0 : growthNode ? Number(readSigned(doc, growthNode)) : 0);
+    const growth = edit?.growth ?? (edit?.crop !== undefined || !cell ? 0 : storedGrowth(doc, cell.node));
     const sequence = cropSequence(art.crops[crop], form, growth, mature);
     result.push({
       ...p,

@@ -2,7 +2,7 @@ import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures'
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { decodeSave } from './saveEditor';
-import { encodeString, readString, serializeSer, SerDocument, SerTag } from './ser';
+import { captureBuilt, encodeString, readString, serializeSer, SerDocument, SerTag } from './ser';
 
 const FIXTURES = ['save.001', 'save.002', 'save.003', 'save.004', 'save.005', '.systemsave'];
 
@@ -19,6 +19,13 @@ describe.skipIf(!hasPrivateSaveFixtures)('SER container', () => {
       expect(Buffer.from(rebuilt).equals(Buffer.from(doc.data.subarray(0, doc.usedSize)))).toBe(true);
     }
   }, 120_000);
+
+  it('re-emits a captured subtree byte for byte, including blob element counts', () => {
+    const doc = open('save.004');
+    const gimmicks = doc.resolve('gimmickList_')!;
+    const rebuilt = serializeSer(doc, { subtrees: new Map([[gimmicks.offset, captureBuilt(doc, gimmicks, true)]]) });
+    expect(Buffer.from(rebuilt).equals(Buffer.from(doc.data.subarray(0, doc.usedSize)))).toBe(true);
+  }, 60_000);
 
   it('walks the save tree down to the leaves', () => {
     const doc = open('save.003');

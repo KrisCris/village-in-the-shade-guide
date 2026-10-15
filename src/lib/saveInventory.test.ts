@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { addMaterials, transferSlots } from './saveInventory';
+import { addMaterials, normalizeSlotEdits, slotChangeCount, transferSlots } from './saveInventory';
 import { SAVE_RULES } from './saveRules';
 import type { SaveContainer, SaveSlot } from './saveItems';
 
@@ -21,5 +21,27 @@ describe('inventory actions', () => {
     const containers = [container('backpack', [slot(1, 2)]), container('storage', [slot(2, 3)]), container('machine', [slot(3)])];
     expect(transferSlots(containers, { 201: '7' }, {}, 1, 2)).toMatchObject({ 1: { count: '3' }, 2: { count: '7' } });
     expect(() => transferSlots(containers, {}, {}, 1, 3)).toThrow('只能');
+  });
+  it('drops edits that put a slot back the way the file has it', () => {
+    const containers = [container('backpack', [slot(1, 2), slot(2)]), container('storage', [slot(3)])];
+    // Add to an empty slot, then move it on: the emptied slot was empty to begin with.
+    const added = normalizeSlotEdits(containers, { 2: { itemId: '9', count: '1', rank: '0', quality: '0' } });
+    expect(normalizeSlotEdits(containers, transferSlots(containers, {}, added, 2, 3))).toEqual({ 3: added[2] });
+    // Move out and back again.
+    const out = normalizeSlotEdits(containers, transferSlots(containers, {}, {}, 1, 3));
+    expect(Object.keys(out)).toEqual(['1', '3']);
+    expect(normalizeSlotEdits(containers, transferSlots(containers, {}, out, 3, 1))).toEqual({});
+  });
+  it('keeps an emptied source while its item sits elsewhere, even under a lookalike', () => {
+    const containers = [container('backpack', [slot(1, 2), slot(2)])];
+    const moved = transferSlots(containers, {}, {}, 1, 2);
+    const lookalike = { ...moved, 1: { itemId: '101', count: '2', rank: '2', quality: '0' } };
+    expect(Object.keys(normalizeSlotEdits(containers, lookalike))).toEqual(['1', '2']);
+  });
+  it('counts a move or a swap as one change', () => {
+    const containers = [container('backpack', [slot(1, 2), slot(2)]), container('storage', [slot(3, 4)])];
+    expect(slotChangeCount(transferSlots(containers, {}, {}, 1, 2))).toBe(1);
+    expect(slotChangeCount(transferSlots(containers, {}, {}, 1, 3))).toBe(1);
+    expect(slotChangeCount({ 2: { itemId: '9', count: '1', rank: '0', quality: '0' }, 3: null })).toBe(2);
   });
 });

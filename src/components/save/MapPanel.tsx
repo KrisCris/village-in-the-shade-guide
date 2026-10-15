@@ -28,6 +28,7 @@ import {
   mapEditCount,
   landId,
   sceneCells,
+  withoutNoOpWatering,
   type MapEdits,
   type CellPaint
 } from '../../lib/saveMap';
@@ -215,6 +216,7 @@ export default function MapPanel({ model, edits, names, onChange }: Props) {
   );
   const filtered = indexed.filter((p) => p.searchText.includes(normalizeSearch(search)));
   function commit(next: MapEdits) {
+    next = withoutNoOpWatering(model.doc, next);
     const previous = current.current;
     if (!stroke.current) {
       setPast((p) => [...p.slice(-29), previous]);

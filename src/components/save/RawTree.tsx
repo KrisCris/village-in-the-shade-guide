@@ -13,6 +13,8 @@ interface RawTreeProps {
   names: SaveNameTables;
   onChange: (field: SaveField, value: string) => void;
 }
+/** The curated fields by offset; a node that has one is edited through it everywhere. */
+type TreeProps = RawTreeProps & { fields: ReadonlyMap<number, SaveField> };
 
 const TAG_LABELS: Record<number, string> = {
   [SerTag.Scalar]: tr('数值'),
@@ -34,13 +36,15 @@ function meta(node: SerNode): string {
   return parts.join(' · ');
 }
 
-function Leaf({ doc, node, drafts, names, onChange }: RawTreeProps & { node: SerNode }) {
-  const field = useMemo(() => rawFieldFor(doc, node), [doc, node]);
+function Leaf({ doc, node, drafts, names, onChange, fields }: TreeProps & { node: SerNode }) {
+  // Edits are keyed by offset and read back with the curated field when there is
+  // one, so the tree must show and validate the same type (a float stays a float).
+  const field = useMemo(() => fields.get(node.offset) ?? rawFieldFor(doc, node), [doc, node, fields]);
   if (!field) return <span className="save-cell readonly" />;
   return <SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onChange} compact />;
 }
 
-function NodeRow(props: RawTreeProps & { node: SerNode; depth: number; autoOpen: boolean }) {
+function NodeRow(props: TreeProps & { node: SerNode; depth: number; autoOpen: boolean }) {
   const { doc, node, depth, autoOpen } = props;
   const [open, setOpen] = useState(autoOpen);
   const [limit, setLimit] = useState(PAGE);
@@ -131,13 +135,13 @@ export default function RawTree(props: RawTreeProps) {
               <span className="save-tree-leaf">{fields.get(node.offset)?.label ?? node.name}</span>
               <small>{path} · {meta(node)}</small>
             </span>
-            {isNodeList(node.tag) ? <span className="save-cell readonly" /> : <Leaf {...props} node={node} />}
+            {isNodeList(node.tag) ? <span className="save-cell readonly" /> : <Leaf {...props} fields={fields} node={node} />}
           </div>)}
           {results.truncated && <div className="save-tree-row">
             <span className="save-tree-label"><small>{tr('结果超过 {count} 条，请把关键词写得更具体。', { count: SEARCH_LIMIT })}</small></span>
           </div>}
         </div>
-        : <div className="save-tree"><NodeRow {...props} node={doc.root} depth={0} autoOpen /></div>}
+        : <div className="save-tree"><NodeRow {...props} fields={fields} node={doc.root} depth={0} autoOpen /></div>}
     </> : <p className="save-tab-empty">{tr('勾选上方确认后才会显示完整字段树。')}</p>}
   </div>;
 }

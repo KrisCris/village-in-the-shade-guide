@@ -1,4 +1,4 @@
-import { mapEditCount, mapBuildingFlags, type MapEdits } from '../../lib/saveMap';
+import { mapEditCount, mapBuildingFlags, withoutNoOpWatering, type MapEdits } from '../../lib/saveMap';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { identifySave, readSession, restoreOriginal, SESSION_KEY, storeOriginal, type SaveIdentity } from '../../lib/saveSession';
 import { decodeSave } from '../../lib/saveEditor';
@@ -14,21 +14,19 @@ import {
   type SaveSectionId,
 } from '../../lib/saveModel';
 import type { SaveSlot, SlotAssignment, SlotEdits } from '../../lib/saveItems';
-import { loadSaveNames, lookupName, type SaveNameTables } from '../../lib/saveNames';
-import { itemLabel } from './ItemGrid';
-import { addMaterials, transferSlots, type MaterialRequest } from '../../lib/saveInventory';
+import { loadSaveNames, type SaveNameTables } from '../../lib/saveNames';
+import { addMaterials, normalizeSlotEdits, slotChangeCount, transferSlots, type MaterialRequest } from '../../lib/saveInventory';
 import ItemsPanel from './ItemsPanel';
 import SystemSaveHint from './SystemSaveHint';
 import QuestsPanel from './QuestsPanel';
 import AnimalsPanel from './AnimalsPanel';
 import { animalEditCount, type AnimalEdits } from '../../lib/saveAnimals';
-import { deviceIdentity, machineSpec, specialSpec, type MachineEdits, type MachineEdit } from '../../lib/saveMachines';
-import { specialTitle } from './DeviceBrowser';
+import { type MachineEdits, type MachineEdit } from '../../lib/saveMachines';
 import RawTree from './RawTree';
 import ProgressPanel from './ProgressPanel';
-import { progressCount, PROGRESSION, type ProgressEdits } from '../../lib/saveProgress';
-import { UNLOCKS } from '../../lib/saveDeliveries';
+import { progressCount, type ProgressEdits } from '../../lib/saveProgress';
 import SaveDialog from './SaveDialog';
+import SaveChangeList from './SaveChangeList';
 import SaveDataTable from './SaveDataTable';
 import SaveFieldTable from './SaveFieldTable';
 import BasicPanel from './BasicPanel';
@@ -39,31 +37,6 @@ import { achievementWarnings } from '../../lib/saveValidation';
 import { tr } from '../../i18n/active';
 
 const MapPanel = lazy(() => import('./MapPanel'));
-
-interface StructuralLine {
-  key: number;
-  label: string;
-  text: string;
-}
-
-/** One line per slot that is being filled or emptied, for the change list. */
-function slotStructuralSummaries(model: SaveModel, slotEdits: SlotEdits, names: SaveNameTables): StructuralLine[] {
-  const show = (itemId: string, count: string): string => `${itemLabel(names, itemId)} ×${count}`;
-  const lines: StructuralLine[] = [];
-  for (const container of model.containers) {
-    for (const slot of container.slots) {
-      if (!Object.prototype.hasOwnProperty.call(slotEdits, slot.pointer)) continue;
-      const assignment = slotEdits[slot.pointer];
-      const before = slot.item ? show(slot.item.itemId, slot.item.count) : tr('空');
-      lines.push({
-        key: slot.pointer,
-        label: tr('{container} 第 {number} 格', { container: specialSpec(container) ? `${specialTitle(container, names)} #${deviceIdentity(model.doc, container)}` : container.title, number: slot.index + 1 }),
-        text: `${before} → ${assignment ? show(assignment.itemId, assignment.count) : tr('清空')}`,
-      });
-    }
-  }
-  return lines;
-}
 
 /** The slot number is the extension, so the marker goes on the end: the user
  *  drops `.edited` to put the file back as `save.00N`. */
@@ -145,7 +118,7 @@ function Editor() {
         const slots = new Set(parsed.containers.flatMap(container => container.slots.map(slot => slot.pointer)));
         if (Object.keys(session.slots).some(offset => !slots.has(Number(offset)))) throw new Error(tr('暂存草稿中的格子已无法匹配，请重新选择原始存档。'));
         setModel(parsed); setIdentity(session.identity); setDrafts(session.drafts);
-        setSlotEdits(session.slots); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(session.map ?? {}); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
+        setSlotEdits(normalizeSlotEdits(parsed.containers, session.slots)); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(withoutNoOpWatering(parsed.doc, session.map ?? {})); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
       } catch (caught) {
         if (!cancelled) setStorageError(caught instanceof Error ? caught.message : tr('无法恢复暂存草稿。'));
       } finally { if (!cancelled) setRestoring(false); }
@@ -188,7 +161,7 @@ function Editor() {
   }, [model, drafts]);
   const reviewChanges = changes.filter(change => !linkedRanges.has(change.field.offset));
 
-  const slotEditCount = Object.keys(slotEdits).length;
+  const slotEditCount = slotChangeCount(slotEdits);
   const progressEditCount = progressCount(progress);
   const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals) + mapEditCount(map);
   function updateMachine(key: string, value?: MachineEdit) { setMachines(current => { const next = { ...current }; if (value) next[key] = value; else delete next[key]; return next; }); }
@@ -278,7 +251,7 @@ function Editor() {
       const next = { ...current };
       if (value === undefined) delete next[slot.pointer];
       else next[slot.pointer] = value;
-      return next;
+      return normalizeSlotEdits(model!.containers, next);
     });
     const item = slot.item;
     if (!item) return;
@@ -292,7 +265,7 @@ function Editor() {
   }
 
   function applySlots(next: SlotEdits) {
-    setSlotEdits(next);
+    setSlotEdits(normalizeSlotEdits(model!.containers, next));
     setDrafts(current => {
       const clean = { ...current };
       for (const container of model!.containers) for (const slot of container.slots) {
@@ -310,15 +283,23 @@ function Editor() {
     try { applySlots(transferSlots(model!.containers, drafts, slotEdits, from, to)); setError(''); }
     catch (caught) { setError((caught as Error).message); }
   }
+  // A dry run while the review is open, so problems show before the download button is pressed.
+  const preview = useMemo(() => {
+    if (!reviewing || !model || !editCount) return { problem: '' };
+    if (changeState.error) return { problem: changeState.error };
+    try { return { problem: '', packed: exportSave(model, changes, slotEdits, progress, machines, animals, map) }; }
+    catch (caught) { return { problem: caught instanceof Error ? caught.message : tr('重新打包失败。') }; }
+  }, [reviewing, model, editCount, changeState, changes, slotEdits, progress, machines, animals, map]);
   function onDownload() {
     if (!model || !editCount) return;
     if (changeState.error) { setError(changeState.error); return; }
+    if (preview.problem) { setError(preview.problem); return; }
     if (risks.length && !riskAcknowledged) { setError(tr('请先阅读并确认成就风险提示。')); return; }
     setBusy(true);
     setError('');
     setNotice(tr('正在生成修改副本…'));
     try {
-      const packed = exportSave(model, changes, slotEdits, progress, machines, animals, map);
+      const packed = preview.packed ?? exportSave(model, changes, slotEdits, progress, machines, animals, map);
       const url = URL.createObjectURL(new Blob([packed.buffer as ArrayBuffer], { type: 'application/octet-stream' }));
       const anchor = document.createElement('a');
       anchor.href = url;
@@ -400,35 +381,18 @@ function Editor() {
         <label><input type="checkbox" checked={riskAcknowledged} onChange={event => setRiskAcknowledged(event.target.checked)} />{tr('我了解：游戏加载后可能永久解锁 Steam 成就，仍要导出。')}</label>
       </div>}
 
+      {preview.problem && <p className="save-status error" role="alert">{tr('还不能导出：{reason}', { reason: preview.problem })}</p>}
       <div className="save-changes">
         <p>{tr('待写入的修改（{count}）', { count: editCount })}</p>
-        <ul>
-          {mapEditCount(map) > 0 && <li><b>{tr('地图布局')}</b><span>{mapEditCount(map)} {tr('处修改')}</span><button type="button" onClick={() => setMap({})}>{tr('撤销地图修改')}</button></li>}
-          {animalEditCount(animals) > 0 && <li><b>{tr('动物安置')}</b><span>{tr('{moved} 处移动，{added} 只新增', { moved: Object.keys(animals.moves ?? {}).length, added: Object.keys(animals.added ?? {}).length })}</span><button type="button" onClick={() => setAnimals({})}>{tr('撤销安置修改')}</button></li>}
-          {Object.entries(machines).map(([key, edit]) => {
-            const container = model.containers.find(entry => entry.id === key.split('/')[0]);
-            const spec = container && machineSpec(container);
-            return <li key={key}><b>{container && spec ? `${itemLabel(names, String(spec.itemId))} #${deviceIdentity(model.doc, container)} · ` : ''}{tr('加工栏位')} {Number(key.split('/')[1]) + 1}</b><span>{edit.recipeId !== undefined ? tr('加入加工任务') : tr('已有任务')} → {edit.finish ? tr('立即完成') : tr('开始计时')}</span><button type="button" onClick={() => updateMachine(key)}>{tr('撤销')}</button></li>;
-          })}
-          {Object.entries(progress).flatMap(([group, entries]) => Object.entries(entries ?? {}).map(([id, enabled]) => <li key={`${group}-${id}`}>
-            <b>{group === 'encyclopedia' ? tr('图鉴') : group === 'skills' ? tr('技能') : group === 'deliveries' ? tr('交付') : tr('解锁')}</b>
-            <span>{group === 'deliveries' ? `${UNLOCKS.bundles.find(b => b.id === Number(id.split(':')[0]))?.name} · ${itemLabel(names, String(UNLOCKS.bundles.find(b => b.id === Number(id.split(':')[0]))?.items[Number(id.split(':')[1])]?.itemId))}` : group === 'encyclopedia' ? itemLabel(names, id) : group === 'skills' ? PROGRESSION.skills.find(skill => String(skill.id) === id)?.name : Number(id) === UNLOCKS.catalogFlag ? tr('村长家的交付目录') : UNLOCKS.nodes.find(n => String(n.flag) === id)?.name ?? PROGRESSION.flags.find(flag => String(flag.id) === id)?.name} → {group === 'deliveries' ? tr('已交付 {enabled} 件', { enabled }) : enabled ? tr('已解锁') : tr('未解锁')}</span>
-            <button type="button" onClick={() => updateProgress(group as keyof ProgressEdits, id, undefined)}>{tr('撤销')}</button>
-          </li>))}
-          {slotStructuralSummaries(model, slotEdits, names).map((line) => <li key={line.key}>
-            <b>{line.label}</b>
-            <span className="save-change-arrow">{line.text}</span>
-            <button type="button" onClick={() => setSlotEdits(current => { const next = { ...current }; delete next[line.key]; return next; })}>{tr('撤销')}</button>
-          </li>)}
-          {reviewChanges.map((change) => <li key={change.field.offset}>
-            <b>{change.field.label}</b>
-            <span className="save-change-arrow">{lookupName(names, change.field.lookup, change.before) ?? (change.before || tr('（空）'))} → {lookupName(names, change.field.lookup, change.after) ?? (change.after || tr('（空）'))}</span>
-            <button type="button" onClick={() => setDrafts(current => undoToolDraft(model, current, change.field.offset))}>{tr('撤销')}</button>
-          </li>)}
-        </ul>
+        <SaveChangeList model={model} names={names} changes={reviewChanges} slotEdits={slotEdits} machines={machines} progress={progress} animals={animals} map={map}
+          onUndoDraft={offset => setDrafts(current => undoToolDraft(model, current, offset))}
+          onUndoSlots={pointers => setSlotEdits(current => { const next = { ...current }; for (const pointer of pointers) delete next[pointer]; return next; })}
+          onUndoMachine={key => updateMachine(key)}
+          onUndoProgress={(group, id) => updateProgress(group, id, undefined)}
+          onAnimals={setAnimals} onMap={setMap} />
       </div>
 
-        <div className="save-review-actions"><button type="button" onClick={() => setReviewing(false)}>{tr('继续编辑')}</button><button type="button" className="save-download" disabled={busy || !editCount || (risks.length > 0 && !riskAcknowledged)} onClick={onDownload}>{tr('下载修改副本 ↓')}</button></div>
+        <div className="save-review-actions"><button type="button" onClick={() => setReviewing(false)}>{tr('继续编辑')}</button><button type="button" className="save-download" disabled={busy || !editCount || !!preview.problem || (risks.length > 0 && !riskAcknowledged)} onClick={onDownload}>{tr('下载修改副本 ↓')}</button></div>
         {error && <p role="alert" className="save-status error">{error}</p>}
       </SaveDialog>}
 

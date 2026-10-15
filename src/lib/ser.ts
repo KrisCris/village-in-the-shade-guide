@@ -267,7 +267,9 @@ function normalize(edits: SerEdits | SerEditSet): { payloads: SerEdits; subtrees
 export function captureBuilt(doc: SerDocument, node: SerNode, retainOffsets = false): SerBuiltNode {
   const base = { tag: node.tag, nameOffset: node.nameOffset, name: node.name, ...(retainOffsets ? { originalOffset: node.offset } : {}) };
   if (!NODE_LIST_TAGS.has(node.tag)) {
-    return { ...base, payload: Uint8Array.from(doc.payload(node)) };
+    // A blob's element count is not derivable from its children; dropping it
+    // would write 0 and the game would read the array as empty.
+    return { ...base, ...(node.tag === SerTag.Blob ? { ref: node.ref } : {}), payload: Uint8Array.from(doc.payload(node)) };
   }
   const children = doc.children(node).map((child) => captureBuilt(doc, child, retainOffsets));
   if (node.tag === SerTag.Pointer) {
