@@ -21,13 +21,24 @@ archive = FafullfsArchive.open(game / 'data.dat')
 maps = FafullfsArchive.open(game / 'data/map_1_00.dat')
 textures = FafullfsArchive.open(game / 'data/texture_1_00.dat')
 image_dir.mkdir(parents=True, exist_ok=True)
-for name in ('minimap_01_spr_tc', 'minimap_11_spr_tc'):
-    image = decode_nltx_image(textures.read_entry(f'data/texture/{name}.nltx'))
-    image.save(image_dir / f'{name}.webp', lossless=True)
+defines = read_table(archive.read_entry('data/database/gamedefine.dat'))
+
+def define_vector(name):
+    value = next(g[4] for g in _string_groups(defines) if len(g) > 4 and g[1] == name)
+    x, y = re.fullmatch(r'CVector2\(([-\d.]+)f,([-\d.]+)f\)', value).groups()
+    return round(float(x)), round(float(y))
+
+# minimap_01 is the fully opened village. The 1.2 farmland is a separate
+# overlay the game draws centered on MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND.
+farmland = decode_nltx_image(textures.read_entry('data/texture/minimap_apde01_spr_v120.nltx')).convert('RGBA')
+farm_x, farm_y = define_vector('MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND')
+for suffix in ('_sc', '_tc', ''):
+    image = decode_nltx_image(textures.read_entry(f'data/texture/minimap_01_spr{suffix}.nltx')).convert('RGBA')
+    image.alpha_composite(farmland, (farm_x - farmland.width // 2, farm_y - farmland.height // 2))
+    image.convert('RGB').save(image_dir / f'minimap_01_spr{suffix}.webp', quality=82, method=6)
 
 flags = read_table(archive.read_entry('data/database/gameflag.dat'))
 flag_names = {struct.unpack_from('<I',r)[0]: g[0] for r,g in zip(flags.records,_string_groups(flags))}
-defines = read_table(archive.read_entry('data/database/gamedefine.dat'))
 values = {g[1]: float(g[4]) for g in _string_groups(defines) if len(g)>4 and g[1] in ('MINIMAP_OFFSET_X','MINIMAP_OFFSET_Y','MINIMAP_ZOOM_RATE')}
 projection = dict(offset_x=values['MINIMAP_OFFSET_X'],offset_y=values['MINIMAP_OFFSET_Y'],scale_divisor=values['MINIMAP_ZOOM_RATE'],source='gamedefine.dat: MINIMAP_OFFSET_X/Y, MINIMAP_ZOOM_RATE')
 

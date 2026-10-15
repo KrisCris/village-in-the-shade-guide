@@ -1,45 +1,135 @@
 ---
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CollectionMap from '../../components/CollectionMap';
+import CollectionMap, { type MapMarker } from '../../components/CollectionMap';
 import mapData from '../../../data/sources/game-map-markers.json';
 import exploration from '../../../data/sources/game-exploration-markers.json';
+import night from '../../../data/sources/game-night-pickups.json';
 import {getCatalog,entityUrl} from '../../data/repository';
 import {translateLabel} from '../../data/catalog';
-import {isVillageMap} from '../../data/collectionMap';
+import {mapArea,markerId,minimapImage,projectMinimap,type MapArea,type MapKind} from '../../data/collectionMap';
+import {normalizeSearch} from '../../data/clientSearch';
+import {buildSaveSearchText} from '../../lib/saveSearch';
+import type {Entity} from '../../data/types';
 import { getI18n } from '../../i18n/server';
-const {t,href,locale}=getI18n(Astro.url);
+const {t,tHtml,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
+const items=new Map(catalog.entities.filter(e=>e.kind==='items').map(e=>[e.id,e]));
+const item=(id:string)=>items.get(id);
+const icon=(e?:Entity)=>e?.icon_path?withBase(e.icon_path):undefined;
+const itemHref=(e?:Entity)=>e?href(entityUrl(e)):'';
 const treasurePool=catalog.entities.find(e=>e.id==='TREASUREBOX_REWARD_POOL');
-const treasureRewards=((treasurePool?.reward_candidates??[]) as string[]).map(id=>catalog.entities.find(e=>e.kind==='items'&&e.id===id)).filter(Boolean);
-const progress=(label:string|null|undefined)=>label?translateLabel(label,t):'';
-const markers=mapData.markers.map(m=>{
- const item='item_numeric_id' in m?catalog.entities.find(e=>e.kind==='items'&&e.numeric_id===m.item_numeric_id):undefined;
- return {...m,progress_label:progress(m.progress_label),label:item?.name.zh_hans ?? t('狐狸神社 {number}',{number:Number(m.anchor.slice(-2))+1}),href:item?entityUrl(item):'/guides/season-plan/',icon:item?.icon_path?withBase(item.icon_path):undefined,description:typeof item?.description==='string'?item.description:''};
+const treasureRewards=((treasurePool?.reward_candidates??[]) as string[]).map(item).filter((e):e is Entity=>!!e);
+const areaNames:Record<MapArea,string>={village:'',pass:t('隘口（峠）'),bush:t('附身草丛（藪）'),'lost-forest':t('迷途森林（迷い森）'),subway:t('地下通道（地下通路）')};
+const part=item('ITEM_ID_CURSED_MACHINE_PART'),coin=item('ITEM_ID_CURSED_RAT_COIN'),phone=item('ITEM_ID_CURSED_RED_MOBILE_PHONE');
+const gramophone=item('ITEM_ID_CURSE_FURNITURE_GRAMOPHONE'),ratPet=item('ITEM_ID_CURSE_FURNITURE_RAT'),cheese=item('ITEM_ID_CHEESE');
+const name=(e?:Entity)=>e?.name.zh_hans??'';
+
+type Draft=Omit<MapMarker,'id'|'area'|'place'|'search'|'px'|'py'|'detail'>&{detail:string;anchor:string;map:string;x:number;y:number;aliases?:string[]};
+const drafts:Draft[]=[];
+for(const m of mapData.markers){
+  if(m.kind==='book'){
+    const book=catalog.entities.find(e=>e.kind==='items'&&'item_numeric_id' in m&&e.numeric_id===m.item_numeric_id);
+    const progress='progress_label' in m&&m.progress_label?translateLabel(m.progress_label,t):'';
+    drafts.push({...m,kind:'book',label:book?.name.zh_hans??m.anchor,short:m.anchor.slice(-2),note:[t('图书 {number}',{number:m.anchor.slice(-2)}),progress&&t('进度：{progress}',{progress})].filter(Boolean).join(' · '),detail:t('深夜捡到的遗失图书，放回图书馆的书架后就能阅读。'),href:itemHref(book),icon:icon(book),aliases:[m.anchor.slice(-2),...[book?.name.zh_hant,book?.name.ja].filter((a):a is string=>!!a)]});
+  }else{
+    const number=Number(m.anchor.slice(-2))+1;
+    drafts.push({...m,kind:'shrine',label:t('狐狸神社 {number}',{number}),short:String(number),note:'',detail:t('每个季节在这里供奉指定的物品。要准备什么，见四季留货规划。'),href:href('/guides/season-plan/')});
+  }
+}
+for(const m of exploration.markers){
+  if(m.kind==='treasure'){const number=Number(m.anchor.slice(-2))+1;drafts.push({...m,kind:'treasure',label:t('玉手箱 {number}',{number}),short:String(number),note:t('不是每晚都有'),detail:t('靠近时玉手箱会逃跑，先用弓箭击倒再拾取。奖励从 {count} 种候选物品里抽取。',{count:treasureRewards.length}),href:'#treasures'});}
+  else drafts.push({...m,kind:'exchange',label:t('交换怪异出现点'),short:t('交换'),note:t('不是每晚都有'),detail:t('河童、豆腐小僧、雷兽和猫又在这里出现。它们各收什么、给什么，见夜间交换指南。'),href:href('/guides/night-preparation/')});
+}
+const ratNotes:Record<string,string>={random:t('每晚从剩下的点里随机出现 3 只'),story:t('第4章剧情推进后固定出现'),fixed:t('固定出现')};
+for(const m of night.markers){
+  if(m.kind==='machine_part')drafts.push({...m,kind:'machine_part',label:t('机械部件 {number}',{number:m.number}),short:String(m.number),note:m.unlock==='GAME_FLAG_STORY_03_START'?t('第3章开始后'):t('第6章结束后'),detail:t('深夜开着灯才看得到的闪光点，捡起来是「{item}」。每个点只能捡一次。',{item:name(part)}),href:itemHref(part),icon:icon(part)});
+  else if(m.kind==='ghost_rat')drafts.push({...m,kind:'ghost_rat',label:t('幽灵老鼠 {number}',{number:m.number}),short:String(m.number),note:ratNotes[m.placement!],detail:t('开着灯、带着{cheese}靠近，选中{cheese}交给它，再跟着它走。它停下的地方会掉出「{coin}」。身上没有{cheese}时，它一看到你就跑。',{cheese:name(cheese),coin:name(coin)}),href:itemHref(coin),icon:icon(coin)});
+  else if(m.kind==='red_phone'){const number=Number(m.anchor.slice(-2))+1;drafts.push({...m,kind:'red_phone',label:t('手机候选点 {number}',{number}),short:String(number),note:t('5 处随机其一'),detail:t('电话亭事件第一次发生后，「{item}」会出现在这 5 个点中的一个。',{item:name(phone)}),href:itemHref(phone),icon:icon(phone)});}
+  else if(m.anchor==='chirping_machine')drafts.push({...m,kind:'turn_in',label:t('坏掉的机器'),short:t('机器'),note:t('交「{item}」',{item:name(part)}),detail:t('选中「{item}」对它使用就能放进去。放满 {count} 个后，茶梅会把机器带走修理，之后从她那里拿到「{reward}」。',{item:name(part),count:night.machine_parts_max,reward:name(gramophone)}),href:itemHref(gramophone),icon:icon(gramophone)});
+  else drafts.push({...m,kind:'turn_in',label:t('老鼠井'),short:t('井'),note:t('交「{item}」',{item:name(coin)}),detail:t('选中「{item}」扔进井里。扔满 {count} 枚后得到摆设「{reward}」。',{item:name(coin),count:night.rat_coin_max,reward:name(ratPet)}),href:itemHref(ratPet),icon:icon(ratPet)});
+}
+const details:string[]=[];
+const detailIndex=(text:string)=>{const index=details.indexOf(text);return index<0?details.push(text)-1:index;};
+const round=(value:number)=>Math.round(value*10)/10;
+// Only the fields the island reads: the source markers carry much more.
+const markers:MapMarker[]=drafts.map(({anchor,map,x,y,aliases=[],detail,kind,label,short,note,href:link,icon:image})=>{
+  const area=mapArea(map),place=areaNames[area];
+  const p=area==='village'?projectMinimap({x,y},mapData.projection):undefined;
+  const search=[normalizeSearch([label,note,place,...aliases].join(' ')),buildSaveSearchText(label)].join(' ');
+  return {id:markerId(kind,area,anchor),kind,area,label,short,place,note,detail:detailIndex(detail),href:link,icon:image,search,...(p&&{px:round(p.x),py:round(p.y)})};
 });
-// Exploration labels are "玉手箱 N" or the exchange anchor name.
-const explorationLabel=(label:string)=>{const number=label.match(/(\d+)$/)?.[1];return number?t('玉手箱 {number}',{number}):t(label);};
-const outside=[...markers.filter(m=>isVillageMap(m.map)),...exploration.markers.map(m=>({...m,label:explorationLabel(m.label),href:m.kind==='treasure'?'#treasures':'/guides/night-preparation/'}))];
-const markerLabel=(m:{kind:string;anchor:string;label:string})=>m.kind==='book'?m.anchor.slice(-2):m.label;
-const inside=markers.filter(m=>!isVillageMap(m.map));
-const project=(m:{x:number;y:number})=>({x:m.x/mapData.projection.scale_divisor+mapData.projection.offset_x,y:m.y/mapData.projection.scale_divisor+mapData.projection.offset_y});
-const detail=(m:(typeof outside)[number])=>{
- if(m.kind==='book')return [t('遗失图书，可交还图书馆。'),'progress_label' in m&&m.progress_label?t('关联进度：{progress}。此进度不等于路线已可达。',{progress:String(m.progress_label)}):''].filter(Boolean).join('\n');
- if(m.kind==='shrine')return t('狐狸神社供奉地点。供奉需要按季节准备物品；下方链接可查看四季留货与供奉清单。');
- if(m.kind==='treasure')return `${t('夜间玉手箱生成点，不代表每天必定刷新。接近后会逃跑，需先击倒，再靠近拾取。')}\n${t('奖励为候选池抽选（{count} 种），不是每次全部获得。',{count:treasureRewards.length})}`;
- return t('夜间交换怪异生成锚点，不保证每天出现；交付物品与奖励随怪异类型不同，详见夜间准备指南。');
-};
-const interactiveMarkers=outside.map(m=>{const p=project(m);return {...m,px:p.x,py:p.y,shortLabel:markerLabel(m),href:m.href.startsWith('#')?'':href(m.href),detail:detail(m)};});
+const kindOrder:MapKind[]=['book','machine_part','ghost_rat','red_phone','treasure','turn_in','shrine','exchange'];
+const sortKey=(m:MapMarker)=>Number(m.short)||0;
+markers.sort((a,b)=>kindOrder.indexOf(a.kind)-kindOrder.indexOf(b.kind)||sortKey(a)-sortKey(b));
+const count=(kind:MapKind,area?:MapArea)=>markers.filter(m=>m.kind===kind&&(!area||m.area===area)).length;
+const randomRats=night.markers.filter(m=>m.placement==='random').length;
+const sideAreas=(['pass','bush','lost-forest','subway'] as MapArea[]).map(area=>({area,name:areaNames[area],rows:markers.filter(m=>m.area===area)}));
+const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind===kind).map(m=>m.short).join('、');return list?t('{list} 号',{list}):'';};
 ---
-<BaseLayout title={t('图书、神社与夜间收集地图')}><h1>{t('图书、神社与夜间收集地图')}</h1>
-<p>{t('55 本图书、4 个神社、8 个玉手箱生成点、1 个交换怪异生成点。夜间生成点不代表每天必定刷新。')}</p>
-<p><a href={href("/guides/season-plan/")}>{t('狐狸神社四季供奉清单')} →</a></p>
-<CollectionMap markers={interactiveMarkers} image={withBase('/maps/minimap_01_spr_tc.webp')} client:load locale={locale} />
-<p>{t('金色：图书；橙色：狐狸神社；蓝色：玉手箱；紫色：交换怪异。编号不代表收集顺序或神社季度。')}</p>
-<section id="treasures"><h2>{t('玉手箱怎么收集')}</h2><p>{t('玉手箱被靠近时会逃跑，要先击倒，再靠近拾取。在它静止时射箭，它会转为逃跑，射中第一箭还拿不到奖励。')}</p><div class="books">{outside.filter(m=>m.kind==='treasure').map(m=><div><b>{m.label}</b><small>{m.x}, {m.y}</small></div>)}</div><p>{t('怪异表将玉手箱关联到这些生成锚点；奖励表收录下列 {count} 种候选物品。不是每次全部获得，抽选与数量条件仍需核对。',{count:treasureRewards.length})}</p><details><summary>{t('查看奖励候选：设计图、外观与物品')}</summary><div class="books">{treasureRewards.map(e=>e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details></section>
-<h2>{t('村庄图书')}</h2><p>{t('“关联进度”来自图书表中的剧情／事件标记；不代表该进度一到就一定能沿当前路线抵达。')}</p><div class="books">{outside.filter(m=>m.kind==='book').map(m=><a id={m.anchor} href={href(m.href)}><b>{m.anchor.slice(-2)}</b> {m.label}<small>{m.x}, {m.y}</small>{'progress_label' in m&&m.progress_label&&<small>{t('关联进度：{progress}',{progress:String(m.progress_label)})}</small>}</a>)}</div>
-<h2>{t('独立区域图书')}</h2><div class="books">{inside.map(m=><a id={m.anchor} href={href(m.href)}>{m.label}<small>{m.map.includes('2160')?t('附身草丛（藪）'):t('隘口（峠）')} · {m.x}, {m.y}</small>{m.progress_label&&<small>{t('关联进度：{progress}',{progress:String(m.progress_label)})}</small>}</a>)}</div>
-<p>{t('这两处使用独立坐标系，不能画在村庄图上。实际可达条件仍需结合剧情核对。')}</p>
-<details><summary>{t('地图数据来源')}</summary><p>{t('底图：minimap_01_spr_tc.nltx；位置：lostbook.dat 与 YMWR 地图锚点。世界坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）及 X/Y 偏移（348、−145）换算到原图像素。')}</p></details>
+<BaseLayout title={t('夜间收集地图')}>
+<h1>{t('夜间收集地图')}</h1>
+<p class="map-lede">{t('遗失图书、机械部件和老鼠的古钱都要在深夜找。地图标出了它们的位置，也标出了玉手箱、交换怪异和狐狸神社。点标记或列表里的条目查看拿法；拿到后打个勾，下次打开还在。')}</p>
+<CollectionMap markers={markers} details={details} image={withBase(minimapImage(locale))} client:load locale={locale} />
+
+<section class="map-guide" aria-labelledby="prep">
+<h2 id="prep">{t('出门前准备')}</h2>
+<ul class="map-prep">
+<li>{t('游戏里的深夜从 0:00 开始。幽灵老鼠 5:00 离开，机械部件的闪光点到早上消失。')}</li>
+<li>{t('机械部件的闪光点只在开灯时显示，把{cheese}交给幽灵老鼠也要开着灯。',{cheese:name(cheese)})}</li>
+<li>{t('每只幽灵老鼠要一块{cheese}。把山羊奶放进牛奶加工机，一天后就能做好。',{cheese:name(cheese)})}</li>
+</ul>
+
+<h2>{t('各类收集品')}</h2>
+<div class="map-guide-grid">
+<article id="books"><h3>{t('遗失图书')}<span>{t('{count} 本',{count:count('book')})}</span></h3>
+<p>{t('村里 {village} 本，隘口和附身草丛各 2 本。深夜捡到后，放回图书馆的书架就能阅读。',{village:count('book','village')})}</p>
+<p>{t('列表里的“进度”来自图书表，是这本书开始出现的条件。有些地点还要等剧情把路打开才走得到。')}</p></article>
+<article id="machine-parts"><h3>{t('机械部件')}<span>{t('{count} 个',{count:count('machine_part')})}</span></h3>
+<p>{t('1～15 号在第3章开始后出现，16～30 号在第6章结束后出现。村里有 {village} 个，其余在隘口、附身草丛、迷途森林和地下通道。每个点捡过就不会再出现。',{village:count('machine_part','village')})}</p>
+<p>{t('部件交给村里那台坏掉的机器（地图上的白色方块）。放满 {count} 个后，茶梅会把机器带走修理，之后从她那里拿到「{reward}」。',{count:night.machine_parts_max,reward:name(gramophone)})}</p></article>
+<article id="ghost-rats"><h3>{t('老鼠的古钱')}<span>{t('{count} 枚',{count:night.rat_coin_max})}</span></h3>
+<p>{t('古钱要从幽灵老鼠那里拿。村里有 {random} 个随机点，每晚从还没完成的点里挑 3 处出现；25 号是固定点，第4章剧情推进后出现。隘口、附身草丛、迷途森林和地下通道各有 1 只固定出现。',{random:randomRats})}</p>
+<p>{t('开着灯、带着{cheese}靠近，选中{cheese}交给它，再跟着它走，它停下的地方会掉出古钱。古钱扔进老鼠井，扔满 {count} 枚得到摆设「{reward}」。',{cheese:name(cheese),count:night.rat_coin_max,reward:name(ratPet)})}</p></article>
+<article id="red-phone"><h3>{t('鲜红的手机')}</h3>
+<p>{t('电话亭事件第一次发生后，「{item}」会出现在地图上 5 个红点中的一个，位置随机。',{item:name(phone)})}</p></article>
+<article id="treasures"><h3>{t('玉手箱')}<span>{t('{count} 个出现点',{count:count('treasure')})}</span></h3>
+<p>{t('不是每晚都有。靠近时它会逃跑，要先用弓箭击倒再拾取。它静止时射中第一箭只会让它开始逃跑，拿不到奖励。')}</p>
+<p>{t('奖励从 {count} 种候选物品里抽取，不会每样都给。',{count:treasureRewards.length})}</p>
+<details><summary>{t('查看奖励候选')}</summary><div class="map-rewards">{treasureRewards.map(e=><a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="32" height="32" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details></article>
+<article id="shrines"><h3>{t('交换怪异与狐狸神社')}</h3>
+<p set:html={tHtml('紫色菱形是河童、豆腐小僧、雷兽和猫又的出现点，不是每晚都有；交换内容见<a href="/guides/night-preparation/">夜间交换指南</a>。橙色菱形是四座狐狸神社，供品见<a href="/guides/season-plan/">四季留货规划</a>。')} /></article>
+</div>
+
+<h2 id="other-areas">{t('不在村庄地图上的地点')}</h2>
+<p>{t('这几处区域没有小地图，只能在游戏里找。下表列出每处有哪些收集品。')}</p>
+<div class="map-table-wrap"><table class="map-area-table">
+<thead><tr><th scope="col">{t('区域')}</th><th scope="col">{t('遗失图书')}</th><th scope="col">{t('机械部件')}</th><th scope="col">{t('幽灵老鼠')}</th></tr></thead>
+<tbody>{sideAreas.map(a=><tr><th scope="row">{a.name}</th><td>{a.rows.filter(m=>m.kind==='book').map(m=><a href={m.href}>{m.label}</a>)}{!a.rows.some(m=>m.kind==='book')&&'—'}</td><td>{numbers(a.rows,'machine_part')||'—'}</td><td>{numbers(a.rows,'ghost_rat')||'—'}</td></tr>)}</tbody>
+</table></div>
+
+<details class="map-sources"><summary>{t('数据来源')}</summary><p>{t('底图：minimap_01_spr（按网站语言用简体、繁体或日文版），叠加 1.2 版新增农地 minimap_apde01_spr_V120，位置取自 gamedefine.dat 的 MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND。图书：lostbook.dat 与地图锚点。机械部件、幽灵老鼠、鲜红的手机：event_horror_chirping_machine、event_horror_ghost_rat、event_horror_phone_booth 脚本中的放置逻辑与地图锚点。坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）和 X/Y 偏移（348、−145）换算到底图像素。')}</p></details>
+</section>
 </BaseLayout>
-<style>.road-map{margin:1rem 0}.road-map summary{cursor:pointer}.road-map img{width:100%;height:auto}.map-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}.map-wrap svg{display:block;width:100%;min-width:680px;max-height:none}.map-wrap a:hover circle{fill:var(--green)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.5rem}.books a{padding:.6rem;background:var(--paper-raised);border-radius:8px;color:var(--ink);text-decoration:none}.books small{display:block;color:var(--muted)}p{line-height:1.7}</style>
+<style>
+.map-lede{max-width:46rem;line-height:1.75}
+.map-guide{margin-top:2.2rem}
+.map-guide p{line-height:1.75}
+.map-prep{display:grid;gap:.4rem;padding-left:1.2rem;line-height:1.7}
+.map-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:.9rem;margin:1rem 0 2rem}
+.map-guide-grid article{padding:1rem 1.15rem;border:1px solid var(--border);border-radius:12px;background:var(--paper-raised);scroll-margin-top:5rem}
+.map-guide-grid h3{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .4rem;font-size:1.05rem}
+.map-guide-grid h3 span{font-size:.8rem;font-weight:400;color:var(--muted)}
+.map-guide-grid p{margin:.45rem 0;font-size:.92rem}
+.map-guide-grid details{margin-top:.6rem}
+.map-guide-grid summary,.map-sources summary{cursor:pointer;color:var(--green);font-size:.9rem}
+.map-rewards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.35rem;margin-top:.6rem;max-height:320px;overflow:auto}
+.map-rewards a{display:flex;align-items:center;gap:.4rem;padding:.35rem .45rem;border-radius:8px;background:var(--paper);color:var(--ink);font-size:.8rem;text-decoration:none}
+.map-rewards a:hover{background:var(--green-soft)}
+.map-table-wrap{overflow-x:auto}
+.map-area-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.map-area-table :is(th,td){padding:.55rem .7rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.map-area-table thead th{color:var(--muted);font-weight:600;font-size:.8rem}
+.map-area-table td a{display:block}
+.map-sources{margin:1.5rem 0;color:var(--muted);font-size:.85rem}
+</style>

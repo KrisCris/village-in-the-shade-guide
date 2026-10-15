@@ -12,7 +12,7 @@ Most images on the site are extracted from the game files and stored in the repo
 | `public/icons/generated/livestock/` | livestock icons | the game's own livestock icons |
 | `public/icons/generated/ui/` | UI icons such as quality stars, friendship hearts and stamina | `tools/extract-save-editor-icons.py`; crop coordinates in the folder's `sources.json` |
 | `public/icons/fallback/` | placeholder shapes for missing icons | drawn by the author; not the item's real appearance |
-| `public/maps/` | in-game minimaps | markers and projection in `data/sources/game-map-markers.json` and `game-exploration-markers.json` |
+| `public/maps/` | in-game minimaps (Simplified Chinese, Traditional Chinese and Japanese labels, with the 1.2 farmland drawn in) | markers and projection in `data/sources/game-map-markers.json`, `game-exploration-markers.json`, and `game-night-pickups.json` |
 | `public/maps/farm/` | farm, room, crop and facility art for the save editor | `tools/extract-map-art.py`; see the folder's README |
 | `public/art/` | home page mountains, mist, seasonal trees and shrubs | `tools/extract-scenery.py`; per-image sources in `data/sources/site-scenery.json` |
 | `public/art/portraits/` | animated portraits | exported by `tools/extract-portrait-models.py` and `extract-portrait-options.py`, packed by `tools/package-portraits.mjs` |
