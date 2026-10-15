@@ -24,12 +24,24 @@ export function animalHouses(doc: SerDocument, progress: ProgressEdits = {}) {
   return [...groups.entries()].map(([id, slots]) => ({ id, type: slots[0].houseType, title: `${[tr('畜舍'), tr('禽舍'), tr('马棚')][slots[0].houseType]} ${++counts[slots[0].houseType]}`, slots }));
 }
 
-export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint, progress: ProgressEdits = {}) {
-  if (!animalEditCount(edits)) return { subtrees: new Map<number, SerBuiltNode>(), seed };
+export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits: Map<number, Uint8Array>, seed: bigint, progress: ProgressEdits = {}, stable: { x: number; y: number; moved: boolean } | null = null) {
+  if (!animalEditCount(edits) && !stable?.moved) return { subtrees: new Map<number, SerBuiltNode>(), seed };
   const list = doc.resolve('livestockList_');
   if (!list) throw new Error(tr('存档缺少动物记录。'));
-  // Stable positions are scene bone attachments, not ordinary x/y placements.
-  const residents = animalResidents(doc), slots = animalHouses(doc, progress).filter(house => house.type < 2).flatMap(house => house.slots);
+  // Stable positions are the stable's posIN01-03 attachment points, so they are
+  // relative to wherever the stable stands; other houses have fixed x/y.
+  const residents = animalResidents(doc), slots = animalHouses(doc, progress).flatMap(house => house.slots);
+  const position = (slot: typeof slots[number]) => {
+    if (!('anchor' in slot) || !slot.anchor) return { x: slot.x, y: slot.y };
+    if (!stable) throw new Error(tr('地图上没有马厩，不能安置马。'));
+    return { x: stable.x + slot.anchor[0], y: stable.y + slot.anchor[1] };
+  };
+  const place = (target: SerBuiltNode, slot: typeof slots[number]) => {
+    const at = position(slot);
+    for (const field of ['pos_', 'basePos_']) for (const axis of ['x', 'y'] as const) {
+      const leaf = builtChild(target, `p/${field}/${axis}`); if (!leaf?.payload) throw new Error(tr('动物坐标字段未知。')); leaf.payload = encodeFloat(at[axis], leaf.payload.length);
+    }
+  };
   const occupied = new Set<number>();
   const built = captureBuilt(doc, list);
   const applyLeaves = (node: SerNode, target: SerBuiltNode) => { const payload = leafEdits.get(node.offset); if (payload) target.payload = payload; doc.children(node).forEach((child, index) => applyLeaves(child, target.children![index])); };
@@ -41,22 +53,25 @@ export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits
     for (const [path, value] of [['p/pPlacementData_/dataID', placement], ['p/pMapGroupData_/dataID', slot.mapGroup]] as const) {
       const field = builtChild(target, path); if (!field?.payload) throw new Error(tr('动物安置字段未知。')); field.payload = encodeSigned(BigInt(value), field.payload.length);
     }
-    for (const position of ['pos_', 'basePos_']) for (const axis of ['x', 'y'] as const) {
-      const field = builtChild(target, `p/${position}/${axis}`); if (!field?.payload) throw new Error(tr('动物坐标字段未知。')); field.payload = encodeFloat(slot[axis], field.payload.length);
-    }
+    place(target, slot);
   };
   // Reserve untouched positions first, so no moving/addition can silently overlap one.
-  for (const resident of residents) if (edits.moves?.[resident.index] === undefined) occupied.add(resident.placement);
+  for (const resident of residents) if (edits.moves?.[resident.index] === undefined) {
+    occupied.add(resident.placement);
+    // A moved stable takes its horses along.
+    const slot = slots.find(slot => slot.id === resident.placement);
+    if (stable?.moved && slot && 'anchor' in slot && slot.anchor) place(built.children![resident.index], slot);
+  }
   for (const [index, placement] of Object.entries(edits.moves ?? {})) {
     const resident = residents[Number(index)];
     if (!resident) throw new Error(tr('要移动的动物不存在。'));
-    if (!places.placements.some(slot => slot.id === resident.placement && !slot.special && slot.houseType < 2)) throw new Error(tr('特殊伙伴的安置方式不同，不能移动到普通畜舍栏位。'));
+    if (!places.placements.some(slot => slot.id === resident.placement && !slot.special && slot.houseType < 3)) throw new Error(tr('特殊伙伴的安置方式不同，不能移动到普通畜舍栏位。'));
     relocate(built.children![resident.index], resident.species, placement);
   }
   for (const [placement, addition] of Object.entries(edits.added ?? {})) {
-    const animal = ANIMALS.find(a => a.id === addition.species && a.id < 100 && a.houseType < 2);
+    const animal = ANIMALS.find(a => a.id === addition.species && a.id < 100 && a.houseType < 3);
     const variant = animal?.variants.find(v => v.index === (addition.variant ?? 0));
-    const donor = residents.find(resident => resident.species === addition.species) ?? residents.find(resident => ANIMALS.some(a => a.id === resident.species && a.id < 100 && a.houseType < 2));
+    const donor = residents.find(resident => resident.species === addition.species) ?? residents.find(resident => ANIMALS.some(a => a.id === resident.species && a.id < 100 && a.houseType < 3));
     if (!animal || !variant || !donor || !addition.name.trim()) throw new Error(tr('请填写名字，并选择有效的动物品种。'));
     if (Array.from(addition.name).length > 5) throw new Error(tr('动物名字最多 5 个字符。'));
     const target = captureBuilt(doc, donor.pointer); target.pointer = 'self';

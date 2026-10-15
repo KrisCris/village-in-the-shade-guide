@@ -7,6 +7,7 @@ import { exportSave, parseSaveModel, pendingChanges } from './saveModel';
 import { ANIMALS, animalHouses, animalResidents } from './saveAnimals';
 import { readFloat, readSigned } from './ser';
 import places from '../../data/sources/game-save-placements.json';
+import { addMapPlacement, landPosition, placementProblem, sceneCells, stablePosition, type MapEdits } from './saveMap';
 let model: ReturnType<typeof parseSaveModel>;
 beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004')); });
 describe.skipIf(!hasPrivateSaveFixtures)('animal placement rules', () => {
@@ -69,6 +70,24 @@ describe.skipIf(!hasPrivateSaveFixtures)('animal placement rules', () => {
     expect(ANIMALS.find(a => a.id === 2)).toMatchObject({ growDays: 5, adultId: 1 });
     expect(ANIMALS.find(a => a.id === 1)?.variants.map(v => v.texture)).toEqual([618, 620, 621]);
     expect(residents.slice(0,10).map(r => [r.name, r.species, r.placement])).toEqual(animalResidents(model.doc).map(r => [r.name,r.species,r.placement]));
+  });
+  it('stands an added horse at the stable attachment point and keeps it there when the stable moves', () => {
+    // No stable on the map: the stable positions exist only once one is built.
+    expect(() => exportSave(model, [], {}, { flags: { 145: true } }, {}, { added: { 410: { species: 17, name: '马' } } })).toThrow();
+    let map: MapEdits = {};
+    for (const cell of sceneCells(100000001).filter(t => t.mask & 1)) {
+      const placement = { scene: 100000001, cell: cell.id, template: 112010000 };
+      if (!placementProblem(model.doc, map, placement)) { map = addMapPlacement(model.doc, map, placement); break; }
+    }
+    const stable = stablePosition(model.doc, map)!;
+    expect(stable).toMatchObject(landPosition(map.objects![0].cell));
+    const restored = parseSaveModel(decodeSave(exportSave(model, [], {}, {}, {}, { added: { 410: { species: 17, variant: 1, name: '栗子' } } }, map), 'horse'));
+    const horse = animalResidents(restored.doc).at(-1)!;
+    expect(horse).toMatchObject({ species: 17, variant: 1, placement: 410, name: '栗子' });
+    const get = (path: string) => readFloat(restored.doc, restored.doc.resolve(`livestockList_/${horse.index}/p/${path}`)!);
+    // posIN02 of the stable model; the foal grows up after 20 days.
+    expect([get('pos_/x'), get('pos_/y'), get('basePos_/x'), get('basePos_/y')]).toEqual([stable.x - 102, stable.y - 121, stable.x - 102, stable.y - 121]);
+    expect(readSigned(restored.doc, restored.doc.resolve(`livestockList_/${horse.index}/p/growStatus_`)!)).toBe(20n);
   });
   it('rejects nonexistent coats, incompatible homes and story creatures', () => {
     for (const animal of [{species:1,variant:99},{species:100,variant:0},{species:7,variant:0}]) {

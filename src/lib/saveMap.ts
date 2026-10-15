@@ -64,6 +64,32 @@ export function mapAnimalEdits(doc: SerDocument, edits: MapEdits, animalEdits: A
   for(const [placement,animal] of Object.entries(animalEdits.added??{})){const target=relocate(Number(placement),animal.species,animal.name);if(target!==Number(placement)){delete added[placement];added[target]=animal;}}
   return {...animalEdits,moves,added};
 }
+/** Horses stand at the stable's attachment points, so they follow the stable when it moves. */
+export function stablePosition(doc: SerDocument, edits: MapEdits = {}) {
+  const find = (objects: { x: number; y: number; spec?: { buildingFamily?: string | null } }[]) => objects.find(o => o.spec?.buildingFamily === 'GIMMICK_ID_ARCHITECTURE_STABLE');
+  const now = find(draftObjects(doc, edits)), before = find(mapObjects(doc));
+  return now ? { x: now.x, y: now.y, moved: !before || before.x !== now.x || before.y !== now.y } : null;
+}
+/**
+ * Drop watering that leaves soil as the save already has it (rain waters every
+ * field), so the review only counts cells that really change.
+ */
+export function withoutNoOpWatering(doc: SerDocument, edits: MapEdits): MapEdits {
+  if (!edits.cells) return edits;
+  const saved = new Map(mapCells(doc).map(c => [c.id, c]));
+  let cells: MapEdits['cells'] | undefined;
+  for (const [key, paint] of Object.entries(edits.cells)) {
+    if (paint.watered === undefined) continue;
+    const cell = saved.get(Number(key.split(':')[1]));
+    if (!cell?.soil || (paint.soil !== undefined && paint.soil !== cell.soil)) continue;
+    const water = doc.resolve('p/pFarmlandStatus_/p/water_/this->value_', cell.node);
+    if (!water || !!Number(readSigned(doc, water)) !== paint.watered) continue;
+    const { watered: _, ...rest } = paint;
+    cells ??= { ...edits.cells };
+    if (Object.values(rest).every(value => value === undefined)) delete cells[key]; else cells[key] = rest;
+  }
+  return cells ? { ...edits, cells } : edits;
+}
 export function areaAvailable(doc: SerDocument, area: number) {
   // 147/148: the two farmland expansions; 90033: the additional farmland built at the carpenter (1.2.0).
   return (!(area & 2) || flagEnabled(doc, 147)) && (!(area & 4) || flagEnabled(doc, 148)) && (!(area & 8) || flagEnabled(doc, 90033));

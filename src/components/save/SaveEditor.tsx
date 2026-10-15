@@ -1,4 +1,4 @@
-import { mapEditCount, mapBuildingFlags, type MapEdits } from '../../lib/saveMap';
+import { mapEditCount, mapBuildingFlags, withoutNoOpWatering, type MapEdits } from '../../lib/saveMap';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { identifySave, readSession, restoreOriginal, SESSION_KEY, storeOriginal, type SaveIdentity } from '../../lib/saveSession';
 import { decodeSave } from '../../lib/saveEditor';
@@ -118,7 +118,7 @@ function Editor() {
         const slots = new Set(parsed.containers.flatMap(container => container.slots.map(slot => slot.pointer)));
         if (Object.keys(session.slots).some(offset => !slots.has(Number(offset)))) throw new Error(tr('暂存草稿中的格子已无法匹配，请重新选择原始存档。'));
         setModel(parsed); setIdentity(session.identity); setDrafts(session.drafts);
-        setSlotEdits(normalizeSlotEdits(parsed.containers, session.slots)); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(session.map ?? {}); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
+        setSlotEdits(normalizeSlotEdits(parsed.containers, session.slots)); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(withoutNoOpWatering(parsed.doc, session.map ?? {})); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
       } catch (caught) {
         if (!cancelled) setStorageError(caught instanceof Error ? caught.message : tr('无法恢复暂存草稿。'));
       } finally { if (!cancelled) setRestoring(false); }

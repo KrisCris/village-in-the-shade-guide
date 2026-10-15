@@ -4,7 +4,7 @@ import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures'
 import { decodeSave } from './saveEditor';
 import { exportSave, parseSaveModel } from './saveModel';
 import { encodeSigned, readSigned, serializeSer, SerDocument } from './ser';
-import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapChangeGroups, mapObjects, MAP_DATA, placementProblem, sceneCells, soilForCrop, storedGrowth, withoutMapChanges, type MapEdits } from './saveMap';
+import { addMapPlacement, applyMapEdits, clearMapArea, cropGrowth, cropPlacementProblem, cropSoils, landId, mapAnimalEdits, mapBuildingFlags, mapCells, mapChangeGroups, mapObjects, MAP_DATA, placementProblem, sceneCells, soilForCrop, storedGrowth, withoutMapChanges, withoutNoOpWatering, type MapEdits } from './saveMap';
 import { animalHouses, animalResidents } from './saveAnimals';
 import { buildFarmScene, type MapArt } from './saveMapScene';
 import placements from '../../data/sources/game-save-placements.json';
@@ -196,6 +196,20 @@ describe.skipIf(!hasPrivateSaveFixtures)('map editing follow-up roundtrips', () 
     expect(cropGrowth(after,{},scene,cell.id)).toMatchObject({growth:state.maximum,days:0});
     expect(mapCells(after).find(c=>c.id===cell.id)?.crop).toBe(cell.crop);
     expect(mapCells(after).find(c=>c.id===cell.id)?.soil).toBe(cell.soil);
+  });
+  it('drops watering that leaves a field as the save already has it', () => {
+    const water = (c: ReturnType<typeof mapCells>[number]) => Number(readSigned(model.doc, model.doc.resolve('p/pFarmlandStatus_/p/water_/this->value_', c.node)!));
+    const soil = mapCells(model.doc).filter(c => c.soil && c.soil !== 3 && model.doc.resolve('p/pFarmlandStatus_/p/water_/this->value_', c.node));
+    const wet = soil.find(c => water(c)), dry = soil.find(c => !water(c));
+    const edits: MapEdits = { cells: Object.fromEntries([
+      ...(wet ? [[`${scene}:${wet.id}`, { watered: true }]] : []),
+      ...(dry ? [[`${scene}:${dry.id}`, { watered: true }]] : []),
+    ]) };
+    const kept = withoutNoOpWatering(model.doc, edits).cells ?? {};
+    expect(wet || dry).toBeTruthy();
+    if (wet) expect(kept[`${scene}:${wet.id}`]).toBeUndefined();
+    if (dry) expect(kept[`${scene}:${dry.id}`]).toEqual({ watered: true });
+    expect(withoutNoOpWatering(model.doc, { objects: [] })).toEqual({ objects: [] });
   });
   it('new objects expose the same selectable identity and move control as stored objects', () => {
     const art={bounds:[0,0,100000,100000],crops:{},objects:{},seasons:[]} as MapArt;

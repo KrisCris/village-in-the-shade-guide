@@ -1,4 +1,4 @@
-import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, type MapEdits } from './saveMap';
+import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, stablePosition, type MapEdits } from './saveMap';
 /**
  * Typed view over a decoded save.
  *
@@ -587,7 +587,7 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   const seedNode = model.doc.resolve('statusUniqueIDGenerator_/idSeed_');
   const seed = idSeed ? new DataView(idSeed.payload.buffer).getBigInt64(0, true) : seedNode ? readSigned(model.doc, seedNode) : 0n;
   const animalLeaves = new Map(changes.filter(change => { const list = model.doc.resolve('livestockList_'); return list && change.field.offset >= list.offset && change.field.offset < list.end; }).map(change => [change.field.offset, payloadFor(model.doc, change.field, change.after)]));
-  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress);
+  const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress, stablePosition(model.doc, mapEdits));
   livestock.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   const progression = buildProgressEdits(model.doc, progress);
   processing.subtrees.forEach((node, offset) => subtrees.set(offset, node));
