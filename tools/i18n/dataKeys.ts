@@ -5,7 +5,6 @@
  */
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappa from '../../data/sources/game-kappa-exchange.json';
-import exploration from '../../data/sources/game-exploration-markers.json';
 
 const hasCjk = (value: string) => /[぀-ヿ㐀-鿿]/.test(value);
 
@@ -16,7 +15,5 @@ export function extraDataKeys(): string[] {
     ...nightExchanges.exchanges.flatMap((exchange) => [exchange.name, exchange.reward_mode, exchange.condition]),
     ...kappa.rewards.map((reward) => reward.condition),
     kappa.condition,
-    // src/pages/guides/collection-map.astro (numbered treasure labels use a template)
-    ...exploration.markers.map((marker) => marker.label).filter((label) => !/\d+$/.test(label)),
   ].filter(hasCjk);
 }
