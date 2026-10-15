@@ -1,0 +1,676 @@
+{
+  "source": "event scripts event_horror_chirping_machine.lub, event_horror_ghost_rat.lub, event_horror_phone_booth.lub, gimmick_event_kirakira_machine_parts.lub, ai_creature_horror_ghost_rat.lub + map.dat heads",
+  "script_sha256": {
+    "event_horror_chirping_machine": "312b2e3a4af829848f1b7ca35330170a4d0945e6d7d5705f530cadcf2224236a",
+    "event_horror_ghost_rat": "99ecdcae7d2f0b6350b7aaeafb369c76f16e6721f81a2fbb387f9ed113c57db9",
+    "event_horror_phone_booth": "08a6212e2f7464310a21e06df92451263dff0f79747eb591c9cb87bfb2f5f644",
+    "gimmick_event_kirakira_machine_parts": "eb620b31800c140e9531a59a76bcf722f29a22ef5da2a9506da734a91e086505",
+    "ai_creature_horror_ghost_rat": "a7d40fb3e3bb6ee9a6a29787c685c47baa30a6baace3d5b78e1f5d322a2345e9"
+  },
+  "late_night_hours": [
+    0,
+    6
+  ],
+  "machine_parts_max": 30,
+  "rat_coin_max": 30,
+  "markers": [
+    {
+      "anchor": "pop_machine_part00",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 11885,
+      "y": 7332,
+      "number": 1,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part01",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 11155,
+      "y": 11779,
+      "number": 2,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part02",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 9576,
+      "y": 12211,
+      "number": 3,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part03",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 9237,
+      "y": 18380,
+      "number": 4,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part04",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 18970,
+      "y": 14127,
+      "number": 5,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part05",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 14354,
+      "y": 16178,
+      "number": 6,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part06",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 17071,
+      "y": 19944,
+      "number": 7,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part07",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 20855,
+      "y": 18263,
+      "number": 8,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part08",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 19132,
+      "y": 23164,
+      "number": 9,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part09",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 8642,
+      "y": 28596,
+      "number": 10,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part10",
+      "kind": "machine_part",
+      "map": "data/map/map_2170_spr.ymwr.head",
+      "area": "pass",
+      "x": 9533,
+      "y": 15233,
+      "number": 11,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part11",
+      "kind": "machine_part",
+      "map": "data/map/map_2150_spr.ymwr.head",
+      "area": "lost-forest",
+      "x": 7984,
+      "y": 8357,
+      "number": 12,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part12",
+      "kind": "machine_part",
+      "map": "data/map/map_2160_spr.ymwr.head",
+      "area": "bush",
+      "x": 11388,
+      "y": 3344,
+      "number": 13,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part13",
+      "kind": "machine_part",
+      "map": "data/map/map_2160_spr.ymwr.head",
+      "area": "bush",
+      "x": 7945,
+      "y": 4344,
+      "number": 14,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part14",
+      "kind": "machine_part",
+      "map": "data/map/map_2160_spr.ymwr.head",
+      "area": "bush",
+      "x": 2797,
+      "y": 3034,
+      "number": 15,
+      "unlock": "GAME_FLAG_STORY_03_START"
+    },
+    {
+      "anchor": "pop_machine_part15",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 8427,
+      "y": 6748,
+      "number": 16,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part16",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 5974,
+      "y": 13366,
+      "number": 17,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part17",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 13559,
+      "y": 11234,
+      "number": 18,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part18",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15871,
+      "y": 12749,
+      "number": 19,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part19",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 18945,
+      "y": 11093,
+      "number": 20,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part20",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 6233,
+      "y": 17216,
+      "number": 21,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part21",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 16442,
+      "y": 20240,
+      "number": 22,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part22",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 22718,
+      "y": 16659,
+      "number": 23,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part23",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 6702,
+      "y": 25294,
+      "number": 24,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part24",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15687,
+      "y": 28271,
+      "number": 25,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part25",
+      "kind": "machine_part",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 2213,
+      "y": 10675,
+      "number": 26,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part26",
+      "kind": "machine_part",
+      "map": "data/map/map_2170_spr.ymwr.head",
+      "area": "pass",
+      "x": 5437,
+      "y": 4096,
+      "number": 27,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part27",
+      "kind": "machine_part",
+      "map": "data/map/map_2150_spr.ymwr.head",
+      "area": "lost-forest",
+      "x": 8136,
+      "y": 9761,
+      "number": 28,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part28",
+      "kind": "machine_part",
+      "map": "data/map/map_2160_spr.ymwr.head",
+      "area": "bush",
+      "x": 9044,
+      "y": 2184,
+      "number": 29,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_machine_part29",
+      "kind": "machine_part",
+      "map": "data/map/map_2140.ymwr.head",
+      "area": "subway",
+      "x": 10547,
+      "y": 5655,
+      "number": 30,
+      "unlock": "GAME_FLAG_STORY_06_END"
+    },
+    {
+      "anchor": "pop_ghostRat00",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 17120,
+      "y": 19996,
+      "number": 1,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat01",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15190,
+      "y": 20778,
+      "number": 2,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat02",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 16156,
+      "y": 17940,
+      "number": 3,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat03",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 10588,
+      "y": 17649,
+      "number": 4,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat04",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 13618,
+      "y": 15720,
+      "number": 5,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat05",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 9492,
+      "y": 15706,
+      "number": 6,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat06",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 20478,
+      "y": 20094,
+      "number": 7,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat07",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 21192,
+      "y": 17458,
+      "number": 8,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat08",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 16950,
+      "y": 27034,
+      "number": 9,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat09",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 19792,
+      "y": 17102,
+      "number": 10,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat10",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 16490,
+      "y": 15601,
+      "number": 11,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat11",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 10758,
+      "y": 12834,
+      "number": 12,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat12",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 6871,
+      "y": 13086,
+      "number": 13,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat13",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 10054,
+      "y": 25196,
+      "number": 14,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat14",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 18216,
+      "y": 22428,
+      "number": 15,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat15",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 9642,
+      "y": 13486,
+      "number": 16,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat16",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 17704,
+      "y": 15820,
+      "number": 17,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat17",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15086,
+      "y": 15516,
+      "number": 18,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat18",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 17392,
+      "y": 19182,
+      "number": 19,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat19",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 8880,
+      "y": 11768,
+      "number": 20,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat20",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 10472,
+      "y": 14680,
+      "number": 21,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat21",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 11538,
+      "y": 28676,
+      "number": 22,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat22",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 13728,
+      "y": 20286,
+      "number": 23,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat23",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 11940,
+      "y": 9558,
+      "number": 24,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_ghostRat25",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 11982,
+      "y": 18439,
+      "number": 26,
+      "placement": "random"
+    },
+    {
+      "anchor": "pop_fixed_ghostRat24",
+      "kind": "ghost_rat",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 19268,
+      "y": 11542,
+      "number": 25,
+      "placement": "story"
+    },
+    {
+      "anchor": "pop_ghostRat00",
+      "kind": "ghost_rat",
+      "map": "data/map/map_2140.ymwr.head",
+      "area": "subway",
+      "x": 13265,
+      "y": 3280,
+      "number": 27,
+      "placement": "fixed"
+    },
+    {
+      "anchor": "pop_ghostRat00",
+      "kind": "ghost_rat",
+      "map": "data/map/map_2150_spr.ymwr.head",
+      "area": "lost-forest",
+      "x": 8100,
+      "y": 9630,
+      "number": 28,
+      "placement": "fixed"
+    },
+    {
+      "anchor": "pop_ghostRat00",
+      "kind": "ghost_rat",
+      "map": "data/map/map_2160_spr.ymwr.head",
+      "area": "bush",
+      "x": 3605,
+      "y": 5903,
+      "number": 29,
+      "placement": "fixed"
+    },
+    {
+      "anchor": "pop_ghostRat00",
+      "kind": "ghost_rat",
+      "map": "data/map/map_2170_spr.ymwr.head",
+      "area": "pass",
+      "x": 10666,
+      "y": 16784,
+      "number": 30,
+      "placement": "fixed"
+    },
+    {
+      "anchor": "pop_mobilePhone00",
+      "kind": "red_phone",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15166,
+      "y": 15651
+    },
+    {
+      "anchor": "pop_mobilePhone01",
+      "kind": "red_phone",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 17711,
+      "y": 15777
+    },
+    {
+      "anchor": "pop_mobilePhone02",
+      "kind": "red_phone",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 15582,
+      "y": 18042
+    },
+    {
+      "anchor": "pop_mobilePhone03",
+      "kind": "red_phone",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 18938,
+      "y": 17474
+    },
+    {
+      "anchor": "pop_mobilePhone04",
+      "kind": "red_phone",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 18217,
+      "y": 18180
+    },
+    {
+      "anchor": "chirping_machine",
+      "kind": "turn_in",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 20813,
+      "y": 18052,
+      "gimmick": "GIMMICK_ID_BROKEN_GRAMOPHONE"
+    },
+    {
+      "anchor": "rat_well",
+      "kind": "turn_in",
+      "map": "data/map/map_0000_ver120_spr.ymwr.head",
+      "area": "village",
+      "x": 22443,
+      "y": 18746,
+      "gimmick": "GIMMICK_ID_RAT_WELL"
+    }
+  ]
+}

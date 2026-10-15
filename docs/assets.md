@@ -12,7 +12,7 @@
 | `public/icons/generated/livestock/` | 家畜图标 | 游戏原生家畜图标 |
 | `public/icons/generated/ui/` | 星级、好感心形、体力等界面图标 | `tools/extract-save-editor-icons.py`，裁切坐标见目录内 `sources.json` |
 | `public/icons/fallback/` | 缺图时的兜底图形 | 作者绘制，不代表物品实际外观 |
-| `public/maps/` | 游戏小地图 | 标注与投影参数见 `data/sources/game-map-markers.json`、`game-exploration-markers.json` |
+| `public/maps/` | 游戏小地图 | 标注与投影参数见 `data/sources/game-map-markers.json`、`game-exploration-markers.json`、`game-night-pickups.json` |
 | `public/maps/farm/` | 存档编辑器的农场、房间、作物和设施图 | `tools/extract-map-art.py`，见该目录的 README |
 | `public/art/` | 首页的山峦、云雾、四季树木与灌木 | `tools/extract-scenery.py`，逐图来源见 `data/sources/site-scenery.json` |
 | `public/art/portraits/` | 动态立绘 | `tools/extract-portrait-models.py`、`extract-portrait-options.py` 导出，`tools/package-portraits.mjs` 打包 |
