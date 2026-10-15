@@ -7,7 +7,7 @@ import exploration from '../../../data/sources/game-exploration-markers.json';
 import night from '../../../data/sources/game-night-pickups.json';
 import {getCatalog,entityUrl} from '../../data/repository';
 import {translateLabel} from '../../data/catalog';
-import {mapArea,markerId,projectMinimap,type MapArea,type MapKind} from '../../data/collectionMap';
+import {mapArea,markerId,minimapImage,projectMinimap,type MapArea,type MapKind} from '../../data/collectionMap';
 import {normalizeSearch} from '../../data/clientSearch';
 import {buildSaveSearchText} from '../../lib/saveSearch';
 import type {Entity} from '../../data/types';
@@ -70,7 +70,7 @@ const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind
 <BaseLayout title={t('夜间收集地图')}>
 <h1>{t('夜间收集地图')}</h1>
 <p class="map-lede">{t('遗失图书、机械部件和老鼠的古钱都要在深夜找。地图标出了它们的位置，也标出了玉手箱、交换怪异和狐狸神社。点标记或列表里的条目查看拿法；拿到后打个勾，下次打开还在。')}</p>
-<CollectionMap markers={markers} details={details} image={withBase('/maps/minimap_01_spr_tc.webp')} client:load locale={locale} />
+<CollectionMap markers={markers} details={details} image={withBase(minimapImage(locale))} client:load locale={locale} />
 
 <section class="map-guide" aria-labelledby="prep">
 <h2 id="prep">{t('出门前准备')}</h2>
@@ -108,7 +108,7 @@ const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind
 <tbody>{sideAreas.map(a=><tr><th scope="row">{a.name}</th><td>{a.rows.filter(m=>m.kind==='book').map(m=><a href={m.href}>{m.label}</a>)}{!a.rows.some(m=>m.kind==='book')&&'—'}</td><td>{numbers(a.rows,'machine_part')||'—'}</td><td>{numbers(a.rows,'ghost_rat')||'—'}</td></tr>)}</tbody>
 </table></div>
 
-<details class="map-sources"><summary>{t('数据来源')}</summary><p>{t('底图：minimap_01_spr_tc.nltx。图书：lostbook.dat 与地图锚点。机械部件、幽灵老鼠、鲜红的手机：event_horror_chirping_machine、event_horror_ghost_rat、event_horror_phone_booth 脚本中的放置逻辑与地图锚点。坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）和 X/Y 偏移（348、−145）换算到底图像素。')}</p></details>
+<details class="map-sources"><summary>{t('数据来源')}</summary><p>{t('底图：minimap_01_spr（按网站语言用简体、繁体或日文版），叠加 1.2 版新增农地 minimap_apde01_spr_V120，位置取自 gamedefine.dat 的 MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND。图书：lostbook.dat 与地图锚点。机械部件、幽灵老鼠、鲜红的手机：event_horror_chirping_machine、event_horror_ghost_rat、event_horror_phone_booth 脚本中的放置逻辑与地图锚点。坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）和 X/Y 偏移（348、−145）换算到底图像素。')}</p></details>
 </section>
 </BaseLayout>
 <style>

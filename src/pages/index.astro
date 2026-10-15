@@ -11,6 +11,7 @@ import { kindLabels, primaryKinds } from '../data/types';
 import SeasonScene from '../components/art/SeasonScene.astro';
 import HomePortraits from '../components/art/HomePortraits';
 import {entityUrl} from '../data/clientSearch';
+import {minimapImage} from '../data/collectionMap';
 import { getI18n } from '../i18n/server';
 import '../styles/home.css';
 const i18n = getI18n(Astro.url);
@@ -93,7 +94,7 @@ const inventory = ['ITEM_ID_CROPS_WHEAT', 'ITEM_ID_FLOUR', 'ITEM_ID_CROPS_RICE',
     <div class="guide-cards">{featuredGuides.map((guide, i) => <a class="guide-card" href={href(guide.link)} data-reveal style={`--reveal-delay:${i % 3 * 50}ms`}>{guide.icon && <img src={withBase(guide.icon)} width="48" height="48" alt="" loading="lazy" />}<span><strong>{guide.title}</strong><small>{guide.text}</small></span><b aria-hidden="true">↗</b></a>)}</div>
     <div class="subsection-heading" data-reveal><h3>{t('熟悉的面孔')}</h3><a href={href('/guides/residents/')}>{t('生日与送礼')} ↗</a></div>
     <div class="resident-gallery" data-reveal>{residents.map(e=><a href={href(entityUrl(e))}><img src={withBase(e.icon_path!)} alt="" width="120" height="120" loading="lazy"/><span>{e.name.zh_hans}</span></a>)}</div>
-    <a class="map-feature" href={href('/guides/collection-map/')} data-reveal><div class="map-art"><img src={withBase('/maps/minimap_01_spr_tc.webp')} width="4096" height="4096" alt={t('游戏内村庄地图')} loading="lazy"/></div><div class="map-copy"><p class="eyebrow">{t('探索与收集')}</p><h2>{t('循着地图，')}<br/>{t('走进村庄。')}</h2><span>{t('遗失图书 · 机械部件 · 幽灵老鼠')} ↗</span></div></a>
+    <a class="map-feature" href={href('/guides/collection-map/')} data-reveal><div class="map-art"><img src={withBase(minimapImage(locale))} width="4096" height="4096" alt={t('游戏内村庄地图')} loading="lazy"/></div><div class="map-copy"><p class="eyebrow">{t('探索与收集')}</p><h2>{t('循着地图，')}<br/>{t('走进村庄。')}</h2><span>{t('遗失图书 · 机械部件 · 幽灵老鼠')} ↗</span></div></a>
   </section>
   <section class="home-chapter" id="chapter-winter" data-season-chapter>
     <div class="chapter-heading" data-reveal><div><p class="eyebrow">{t('叁 · 规划')}</p><h2>{t('生产工作流')}</h2><p class="chapter-lede">{t('按天编排种植、续种、多级加工、供奉交付与出售，计算共享资源和每日收支。')}</p></div><a href={href('/planner/')}>{t('收益规划器')} ↗</a></div>

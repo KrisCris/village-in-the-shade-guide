@@ -1,3 +1,4 @@
+import type { Locale } from '../i18n/locales';
 /**
  * The village minimap covers the openworld map head. Build 25311578 renamed it
  * from map_0000_spr to map_0000_ver120_spr; other heads (map_2140 地下通路,
@@ -5,6 +6,9 @@
  * and cannot be drawn on the minimap.
  */
 export const isVillageMap = (map: string) => /(^|\/)map_0000(_ver\d+)?_spr\.ymwr/.test(map);
+
+/** Village map with place names in the site language; built by tools/extract-map-markers.py. */
+export const minimapImage = (locale: Locale) => `/maps/minimap_01_spr${({ 'zh-CN': '_sc', 'zh-TW': '_tc', ja: '' } as const)[locale]}.webp`;
 
 export type MapArea = 'village' | 'subway' | 'lost-forest' | 'bush' | 'pass';
 export type MapKind = 'book' | 'machine_part' | 'ghost_rat' | 'red_phone' | 'treasure' | 'turn_in' | 'shrine' | 'exchange';

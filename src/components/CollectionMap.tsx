@@ -1,5 +1,5 @@
 import {useEffect,useMemo,useRef,useState} from 'react';
-import {MAP_HOME,clampMap,focusMap,zoomMap,type MapView} from '../lib/mapViewport';
+import {MAP_HOME,clampMap,focusMap,panZoomMap,type MapView} from '../lib/mapViewport';
 import {COLLECTED_KEY,parseCollected,type MapArea,type MapKind} from '../data/collectionMap';
 import {normalizeSearch} from '../data/clientSearch';
 import '../styles/collection-map.css';
@@ -35,13 +35,34 @@ export default function CollectionMap({locale,...props}:Props&{locale?:Locale}){
   return <I18nProvider locale={locale}><MapView {...props}/></I18nProvider>;
 }
 
-function Mark({m,unit,selected,done}:{m:MapMarker;unit:number;selected:boolean;done:boolean}){
-  const k=style(m.kind),r=(selected?9:m.kind==='book'?5.5:6.5)*unit,x=m.px!,y=m.py!;
-  const paint={fill:k.color,stroke:selected?'#fff':'#262a20',strokeWidth:(selected?2.5:1.5)*unit,opacity:done&&!selected?.4:1};
+/** Dot radius in screen pixels; `unit` converts to map pixels. */
+const markRadius=(m:MapMarker,zoomed:boolean)=>(m.kind==='book'?3.5:4)*(zoomed?1.25:1);
+/** Teardrop pin in screen pixels with its tip on (0,0); the head is centered at (0,-PIN_HEAD). */
+const PIN_HEAD=22;
+const PIN='M0 0C-3-8-9-13-9-22A9 9 0 1 1 9-22C9-13 3-8 0 0Z';
+function Mark({m,unit,selected,done,zoomed}:{m:MapMarker;unit:number;selected:boolean;done:boolean;zoomed:boolean}){
+  const k=style(m.kind),x=m.px!,y=m.py!;
+  if(selected)return <g transform={`translate(${x} ${y}) scale(${unit})`}>
+    <ellipse rx={6} ry={2.5} fill="#000" opacity={.35}/>
+    <circle className="map-pulse" r={6} fill="none" stroke={k.color} strokeWidth={2.5}/>
+    <path d={PIN} fill="none" stroke="#1f231b" strokeWidth={5} strokeLinejoin="round"/>
+    <path d={PIN} fill={k.color} stroke="#fff" strokeWidth={2} strokeLinejoin="round"/>
+    <circle cy={-PIN_HEAD} r={3.5} fill="#1f231b"/>
+  </g>;
+  const r=markRadius(m,zoomed)*unit;
+  const paint={fill:k.color,stroke:'#1f231b',strokeWidth:1.1*unit,opacity:done?.35:1};
   if(k.shape==='square')return <rect x={x-r} y={y-r} width={r*2} height={r*2} rx={1.5*unit} {...paint}/>;
   if(k.shape==='diamond')return <path d={`M${x} ${y-r*1.3}L${x+r*1.3} ${y}L${x} ${y+r*1.3}L${x-r*1.3} ${y}Z`} {...paint}/>;
   return <circle cx={x} cy={y} r={r} {...paint}/>;
 }
+const ICONS={
+  expand:'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5',
+  collapse:'M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5',
+  plus:'M12 5v14M5 12h14',
+  minus:'M5 12h14',
+  reset:'M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4',
+};
+const Icon=({name}:{name:keyof typeof ICONS})=><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={ICONS[name]}/></svg>;
 
 function MapView({markers,details,image}:Props){
   const {t}=useI18n();
@@ -89,19 +110,44 @@ function MapView({markers,details,image}:Props){
       const el=svg.current!,box=bubble.current!;const rect=el.getBoundingClientRect();
       if(selected.px===undefined){setBubblePosition({left:12,top:12});return;}
       const point=new DOMPoint(selected.px,selected.py).matrixTransform(el.getScreenCTM()!);const x=point.x-rect.left,y=point.y-rect.top;
-      const above=y-box.offsetHeight-18,top=above>=12?above:y+22;
+      const above=y-box.offsetHeight-PIN_HEAD-20,top=above>=12?above:y+16;
       setBubblePosition({left:Math.max(12,Math.min(rect.width-box.offsetWidth-68,x-box.offsetWidth/2)),top:Math.max(12,Math.min(rect.height-box.offsetHeight-12,top))});
     };
     const observer=new ResizeObserver(place);observer.observe(svg.current);observer.observe(bubble.current);place();return()=>observer.disconnect();
   },[selected,view,full,fallback]);
 
+  // Gestures work in element pixels and update from the latest view, so several
+  // pointer events landing before one render still compose correctly.
   const pointers=useRef(new Map<number,{x:number;y:number}>()),moved=useRef(false);
-  const coordinates=(x:number,y:number)=>new DOMPoint(x,y).matrixTransform(svg.current!.getScreenCTM()!.inverse());
-  const zoom=(factor:number,x?:number,y?:number)=>setView(current=>{
-    const p=x===undefined?null:coordinates(x,y!);
-    return zoomMap(current,factor,p?(p.x-current.x)/current.width:.5,p?(p.y-current.y)/current.height:.5);
-  });
-  useEffect(()=>{const el=svg.current!;const wheel=(e:WheelEvent)=>{e.preventDefault();zoom(Math.exp(Math.max(-150,Math.min(150,e.deltaY))*.003),e.clientX,e.clientY);};el.addEventListener('wheel',wheel,{passive:false});return()=>el.removeEventListener('wheel',wheel);},[]);
+  const zoom=(factor:number,clientX?:number,clientY?:number)=>{
+    const rect=svg.current!.getBoundingClientRect();
+    const p=clientX===undefined?{x:rect.width/2,y:rect.height/2}:{x:clientX-rect.left,y:clientY!-rect.top};
+    setView(v=>panZoomMap(v,rect,p,p,factor));
+  };
+  const movePointer=(id:number,x:number,y:number)=>{
+    const old=pointers.current.get(id);if(!old)return;
+    const other=[...pointers.current].find(([key])=>key!==id)?.[1];
+    if(!moved.current&&!other&&Math.hypot(x-old.x,y-old.y)<4)return;
+    moved.current=true;
+    try{svg.current?.setPointerCapture(id);}catch{/* pointer already gone */}
+    const rect=svg.current!.getBoundingClientRect(),local=(p:{x:number;y:number})=>({x:p.x-rect.left,y:p.y-rect.top});
+    let from=local(old),to=local({x,y}),factor=1;
+    if(other){
+      const o=local(other);from={x:(from.x+o.x)/2,y:(from.y+o.y)/2};to={x:(to.x+o.x)/2,y:(to.y+o.y)/2};
+      const before=Math.hypot(old.x-other.x,old.y-other.y),after=Math.hypot(x-other.x,y-other.y);
+      if(after>1)factor=before/after;
+    }
+    pointers.current.set(id,{x,y});
+    setView(v=>panZoomMap(v,rect,from,to,factor));
+  };
+  useEffect(()=>{
+    const el=svg.current!;
+    const wheel=(e:WheelEvent)=>{e.preventDefault();const dy=e.deltaMode===1?e.deltaY*16:e.deltaY;zoom(Math.exp(Math.max(-150,Math.min(150,dy))*.003),e.clientX,e.clientY);};
+    // Safari fires its own pinch gesture events; keep them from zooming the page.
+    const gesture=(e:Event)=>e.preventDefault();
+    el.addEventListener('wheel',wheel,{passive:false});el.addEventListener('gesturestart',gesture);el.addEventListener('gesturechange',gesture);
+    return()=>{el.removeEventListener('wheel',wheel);el.removeEventListener('gesturestart',gesture);el.removeEventListener('gesturechange',gesture);};
+  },[]);
   useEffect(()=>{const sync=()=>setFull(document.fullscreenElement===root.current);document.addEventListener('fullscreenchange',sync);return()=>document.removeEventListener('fullscreenchange',sync);},[]);
   useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){select(null);setFallback(false);}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);},[]);
   useEffect(()=>{if(!fallback)return;const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=old;};},[fallback]);
@@ -114,7 +160,9 @@ function MapView({markers,details,image}:Props){
     const all=markers.filter(m=>m.kind===k.kind);
     return {...k,all,rows:all.filter(m=>visible(m)&&(!needle||m.search.includes(needle))),done:all.filter(m=>collected.has(m.id)).length};
   }).filter(g=>!needle||g.rows.length);
-  const onMap=markers.filter(m=>m.px!==undefined&&visible(m));
+  // Draw the selected marker last so its halo sits above its neighbours.
+  const onMap=markers.filter(m=>m.px!==undefined&&visible(m)&&m.id!==selectedId);
+  if(selected?.px!==undefined&&enabled.includes(selected.kind))onMap.push(selected);
   const markerLabel=(m:MapMarker)=>t(style(m.kind).label);
 
   return <div ref={root} className={`collection-map-shell ${fallback?'map-fullscreen':''}`}>
@@ -122,26 +170,30 @@ function MapView({markers,details,image}:Props){
       <div className="map-filters" role="group" aria-label={t('显示哪些标记')}>
         {MAP_KINDS.map(k=>{const count=markers.filter(m=>m.kind===k.kind).length;return <button key={k.kind} type="button" aria-pressed={enabled.includes(k.kind)} onClick={()=>toggleKind(k.kind)}><i className={`map-swatch ${k.shape}`} style={{background:k.color}}/>{t(k.label)}<span>{count}</span></button>;})}
       </div>
-      <button className="map-hide-done" type="button" aria-pressed={hideDone} onClick={()=>setHideDone(v=>!v)}>{t('隐藏已收集')}</button>
     </div>
     <div className="map-body">
       <div ref={stage} className="collection-map-stage">
         <svg ref={svg} viewBox={`${view.x} ${view.y} ${view.width} ${view.height}`} role="application" aria-label={t('村庄地图：拖动平移，滚轮或双指缩放，方向键平移，加减号缩放')} tabIndex={0}
           onKeyDown={e=>{if((e.target as Element).closest('[data-map-marker]'))return;const shift=view.width*.1;if(['+','=','-','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))e.preventDefault();if(e.key==='+'||e.key==='=')zoom(.8);else if(e.key==='-')zoom(1.25);else if(e.key==='Home')setView(MAP_HOME);else if(e.key.startsWith('Arrow'))setView(v=>clampMap({...v,x:v.x+(e.key==='ArrowLeft'?-shift:e.key==='ArrowRight'?shift:0),y:v.y+(e.key==='ArrowUp'?-shift:e.key==='ArrowDown'?shift:0)}));}}
           onPointerDown={e=>{if(e.button!==0)return;if(!pointers.current.size)moved.current=false;pointers.current.set(e.pointerId,{x:e.clientX,y:e.clientY});}}
-          onPointerMove={e=>{const old=pointers.current.get(e.pointerId);if(!old)return;const dx=e.clientX-old.x,dy=e.clientY-old.y;if(!moved.current&&Math.hypot(dx,dy)<4)return;moved.current=true;svg.current?.setPointerCapture(e.pointerId);const other=[...pointers.current.entries()].find(([id])=>id!==e.pointerId)?.[1];if(other){const before=Math.hypot(old.x-other.x,old.y-other.y),after=Math.hypot(e.clientX-other.x,e.clientY-other.y);if(after>1)zoom(before/after,(e.clientX+other.x)/2,(e.clientY+other.y)/2);}else{const a=coordinates(old.x,old.y),b=coordinates(e.clientX,e.clientY);setView(v=>clampMap({...v,x:v.x+a.x-b.x,y:v.y+a.y-b.y}));}pointers.current.set(e.pointerId,{x:e.clientX,y:e.clientY});}}
+          onPointerMove={e=>movePointer(e.pointerId,e.clientX,e.clientY)}
           onPointerUp={e=>pointers.current.delete(e.pointerId)} onPointerCancel={e=>pointers.current.delete(e.pointerId)} onLostPointerCapture={e=>pointers.current.delete(e.pointerId)} onPointerLeave={e=>{if(!e.currentTarget.hasPointerCapture(e.pointerId))pointers.current.delete(e.pointerId);}}
-          onClick={()=>{if(!moved.current)select(null);}}>
+          onClick={()=>{if(!moved.current)select(null);}}
+          onDoubleClick={e=>{if(!(e.target as Element).closest('[data-map-marker]'))zoom(.5,e.clientX,e.clientY);}}>
           <image href={image} width="4096" height="4096"/>
-          {onMap.map(m=>{const isSelected=m.id===selectedId;return <g key={m.id} data-map-marker={m.id} className={`map-marker kind-${m.kind}`} role="button" tabIndex={0} aria-label={`${markerLabel(m)} · ${m.label}`} aria-pressed={isSelected} onClick={e=>{e.stopPropagation();if(!moved.current)select(m,{focus:false});}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(m,{focus:false});}}}>
+          {onMap.map(m=>{const isSelected=m.id===selectedId,r=markRadius(m,zoomLevel>=2);return <g key={m.id} data-map-marker={m.id} className={`map-marker kind-${m.kind}`} role="button" tabIndex={0} aria-label={`${markerLabel(m)} · ${m.label}`} aria-pressed={isSelected} onClick={e=>{e.stopPropagation();if(!moved.current)select(m,{focus:false});}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(m,{focus:false});}}}>
             <circle cx={m.px} cy={m.py} r={14*unit} fill="transparent"/>
-            <Mark m={m} unit={unit} selected={isSelected} done={collected.has(m.id)}/>
-            {(zoomLevel>=2||isSelected)&&<text x={m.px!+10*unit} y={m.py!+4*unit} fontSize={11*unit} fontWeight="bold" fill="#22251d" stroke="#fff5d9" strokeWidth={2.5*unit} paintOrder="stroke">{m.short}</text>}
+            <Mark m={m} unit={unit} selected={isSelected} done={collected.has(m.id)} zoomed={zoomLevel>=2}/>
+            {(zoomLevel>=2||isSelected)&&<text x={m.px!+(isSelected?13:r+4)*unit} y={m.py!+(isSelected?4-PIN_HEAD:4)*unit} fontSize={(isSelected?13:11)*unit} fontWeight="bold" fill="#22251d" stroke="#fff5d9" strokeWidth={3*unit} paintOrder="stroke">{m.short}</text>}
           </g>;})}
         </svg>
-        <button className="map-fullscreen-toggle" type="button" onClick={fullscreen} aria-label={full||fallback?t('退出地图全屏'):t('地图全屏')} title={full||fallback?t('退出全屏'):t('全屏')}>{full||fallback?'↙':'⛶'}</button>
-        <div className="map-zoom-bar" role="group" aria-label={t('地图缩放')}><button type="button" aria-label={t('放大地图')} disabled={view.width<=MAP_HOME.width/6} onClick={()=>zoom(.8)}>＋</button><span>{Math.round(zoomLevel*100)}%</span><button type="button" aria-label={t('缩小地图')} disabled={view.width>=MAP_HOME.width} onClick={()=>zoom(1.25)}>−</button><button type="button" aria-label={t('重置地图')} onClick={()=>setView(MAP_HOME)}>↺</button></div>
-        {zoomLevel<2&&<p className="map-zoom-hint">{t('放大到 200% 显示编号')}</p>}
+        <div className="map-controls map-controls-top"><button type="button" onClick={fullscreen} aria-label={full||fallback?t('退出地图全屏'):t('地图全屏')} title={full||fallback?t('退出全屏'):t('全屏')}><Icon name={full||fallback?'collapse':'expand'}/></button></div>
+        <div className="map-controls map-controls-bottom" role="group" aria-label={t('地图缩放')}>
+          <button type="button" aria-label={t('放大地图')} title={t('放大地图')} disabled={view.width<=MAP_HOME.width/6+.5} onClick={()=>zoom(.7)}><Icon name="plus"/></button>
+          <button type="button" aria-label={t('缩小地图')} title={t('缩小地图')} disabled={view.width>=MAP_HOME.width-.5} onClick={()=>zoom(1/.7)}><Icon name="minus"/></button>
+          <button type="button" aria-label={t('重置地图')} title={t('重置地图')} disabled={view.width>=MAP_HOME.width-.5&&view.x===MAP_HOME.x&&view.y===MAP_HOME.y} onClick={()=>setView(MAP_HOME)}><Icon name="reset"/></button>
+        </div>
+        <p className="map-zoom-hint" aria-live="polite">{Math.round(zoomLevel*100)}%{zoomLevel<2&&` · ${t('放大到 200% 显示编号')}`}</p>
         {selected&&<div ref={bubble} className="map-bubble" style={bubblePosition} role="dialog" aria-label={selected.label}>
           <button className="map-bubble-close" type="button" aria-label={t('关闭地点详情')} onClick={()=>select(null)}>×</button>
           <small><i className={`map-swatch ${style(selected.kind).shape}`} style={{background:style(selected.kind).color}}/>{markerLabel(selected)}{selected.place&&` · ${selected.place}`}</small>
@@ -171,9 +223,12 @@ function MapView({markers,details,image}:Props){
           </details>)}
           {!groups.length&&<p className="map-list-empty">{needle?t('没有匹配的标记'):t('请先在上方选择要显示的标记')}</p>}
         </div>
-        <button className="map-reset" type="button" disabled={!collected.size} onClick={()=>{if(confirmReset){saveCollected(new Set());setConfirmReset(false);}else setConfirmReset(true);}}>{confirmReset?t('再点一次，清除全部勾选'):t('清除勾选（{count}）',{count:collected.size})}</button>
+        <div className="map-panel-foot">
+          <button className="map-hide-done" type="button" aria-pressed={hideDone} onClick={()=>setHideDone(v=>!v)}><i aria-hidden="true"/>{t('隐藏已收集')}</button>
+          <button className="map-reset" type="button" disabled={!collected.size} onClick={()=>{if(confirmReset){saveCollected(new Set());setConfirmReset(false);}else setConfirmReset(true);}}>{confirmReset?t('再点一次，清除全部勾选'):t('清除勾选（{count}）',{count:collected.size})}</button>
+          <p>{t('勾选只保存在当前浏览器')}</p>
+        </div>
       </div>
     </div>
-    <p className="map-help">{t('勾选只保存在当前浏览器。拖动平移，滚轮或双指缩放，点标记看详情。')}</p>
   </div>;
 }
