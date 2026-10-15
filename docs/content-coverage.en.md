@@ -15,7 +15,9 @@ Key numbers and conditions come from `data/generated/` and `data/sources/game-*.
 
 ## Not fully covered
 
-- All 116 AppMedia topics are mapped to pages on the site. `npm run content:check` only checks that the mapping is complete and the links work. It does not mean every topic has a full write-up; some older topic pages are still outlines.
+- All 116 AppMedia topics are mapped to pages on the site. `npm run content:check` only checks that the mapping is complete and the links work. It does not mean every topic has a full write-up.
+- Topics one of our guides already covers (livestock unlocks, the fair, fishing, mining, the story chapters and so on) redirect to that guide and are no longer listed again on the guide index. Topics that are too basic or unrelated to a guide (saving, multiplayer, the gaze button, whistle types, game modes, the forum) redirect back to the guide index. The rules are `guideTarget` and `retiredGuideTitles` in `src/data/guideContent.ts`.
+- "Topics still to write" on the guide index are pages that are still only outlines, such as the anomalies, festivals, building expansions and cursed items.
 - The guides are not translations of the Japanese site, and they don't cover every story branch, random request or hidden condition.
 - Maps only show locations that have been parsed. A marker does not mean the item is available at every stage of the game.
 - Birthdays, gift preferences and some recipe lessons are backed by game data. The number of restaurant visits needed to learn a recipe has not been verified, so don't write it as "eat it 3 times".
