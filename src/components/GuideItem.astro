@@ -1,0 +1,9 @@
+---
+import { withBase } from '../lib/sitePath';
+import type { Entity } from '../data/types';
+// An item icon and name linking to its entry; `note` is shown on the right.
+interface Props { entity?: Entity; href: string; note?: string }
+const { entity, href, note } = Astro.props;
+---
+{entity && <a class="guide-item" href={href}>{entity.icon_path && <img src={withBase(entity.icon_path)} width="40" height="40" alt="" loading="lazy" />}<span>{entity.name.zh_hans}</span>{note && <small>{note}</small>}</a>}
+<style>.guide-item{display:flex;align-items:center;gap:.5rem;text-decoration:none}.guide-item img{object-fit:contain;flex-shrink:0}.guide-item small{margin-left:auto;color:var(--muted)}@media(max-width:700px){.guide-item img{width:32px;height:32px}}</style>

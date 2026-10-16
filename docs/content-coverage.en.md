@@ -8,7 +8,7 @@ Game snapshot: Steam build `25311578`. Topic checklist: [AppMedia](https://appme
 
 - **Structured data**: items, crops, machine processing, crafting and cooking, fish, residents, plus the shops, deliveries, unlocks and livestock relationships parsed so far. Every entry links both ways: an item shows its recipes, machines and shops, and those pages link back.
 - **Planners**: value added by processing, full return starting from seeds, and the production workflow.
-- **Original guides**: seasonal stockpiles, fishing spots, the quarry, birthdays and gifts, appearance unlocks, shrine skills, collection maps, fishing and cooking preparation, night preparation, special crops, hunting, livestock, help tickets and progression goals, and more.
+- **Original guides**: seasonal stockpiles, fishing spots, the quarry, birthdays and gifts, appearance unlocks, shrine skills, collection maps, fishing and cooking preparation, night preparation, special crops, hunting, livestock, help tickets and progression goals, cursed items and the heart and stamina caps, and more.
 - **Save editor**: see the [save editor guide](save-editor.en.md).
 
 Key numbers and conditions come from `data/generated/` and `data/sources/game-*.json`. How fishing spot names were derived is recorded in [`data-evidence/fishing-locations.md`](data-evidence/fishing-locations.md) (Chinese).
@@ -17,11 +17,11 @@ Key numbers and conditions come from `data/generated/` and `data/sources/game-*.
 
 - All 116 AppMedia topics are mapped to pages on the site. `npm run content:check` only checks that the mapping is complete and the links work. It does not mean every topic has a full write-up.
 - Topics one of our guides already covers (livestock unlocks, the fair, fishing, mining, the story chapters and so on) redirect to that guide and are no longer listed again on the guide index. Topics that are too basic or unrelated to a guide (saving, multiplayer, the gaze button, whistle types, game modes, the forum) redirect back to the guide index. The rules are `guideTarget` and `retiredGuideTitles` in `src/data/guideContent.ts`.
-- "Topics still to write" on the guide index are pages that are still only outlines, such as the anomalies, festivals, building expansions and cursed items.
+- "Topics still to write" on the guide index are pages that are still only outlines, such as the anomalies, festivals and building expansions.
 - The guides are not translations of the Japanese site, and they don't cover every story branch, random request or hidden condition.
 - Maps only show locations that have been parsed. A marker does not mean the item is available at every stage of the game.
 - Birthdays, gift preferences and some recipe lessons are backed by game data. The number of restaurant visits needed to learn a recipe has not been verified, so don't write it as "eat it 3 times".
-- Building unlock years and event conditions, how requests are randomly picked, the night pickup pools and the mud seed conversion pools are not fully parsed. Don't infer a whole random pool from a few parsed locations, and a random delivery candidate is not a fixed request.
+- Building unlock years and event conditions and how requests are randomly picked are not fully parsed. The night sparkle item pools in the village and the additional farmland are parsed from `placementitem.dat` (`data/sources/game-curse-items.json`), but which cursed crop a mud seed grows into is not in the data tables and is still unknown. Don't infer a whole random pool from a few parsed locations, and a random delivery candidate is not a fixed request.
 - Generated "uses" only cover the relationships parsed so far, not every use in the game.
 - Amounts after quality multipliers have decimals and are estimates; how the game rounds them is not fully verified.
 - Profit rankings rely on the growth times, processing times and seed supply listed on each page. They ignore weather, skills, machine queues and how the player spends their days, so they are not an optimal plan.
