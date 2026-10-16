@@ -68,7 +68,11 @@ describe('guide index audit', () => {
     expect(byTitle('品評会の勝ち方').guideTarget).toBe('/guides/livestock-plan/#fair');
     for (const title of ['ヤギの解放条件と入手アイテム', 'カシミヤヤギの解放条件と入手アイテム', 'ブタの解放条件と入手アイテム', 'ウマの解放条件と入手アイテム', 'カラーヒヨコの入手方法と雄鶏の入手アイテム'])
       expect(byTitle(title).guideTarget, title).toBe('/guides/livestock-plan/#unlock');
+    for (const [title, anchor] of [['ヌシの鱗', 'abyss'], ['祟られたもの', 'cursed-crops'], ['泥の種', 'mud-seeds'], ['狐の油揚げ', 'fox-shrine'], ['機械の部品', 'machine-parts'], ['スタミナ回復', 'caps']])
+      expect(byTitle(title).guideTarget, title).toBe(`/guides/cursed-items/#${anchor}`);
     expect(byTitle('スプリンクラー').guideTarget).toMatch(/^\/data\/items\/ITEM_ID_GIMMICK_SPRINKLER_/);
+    for (const [title, anchor] of [['土地拡張のやり方', 'land'], ['改築する方法', 'house'], ['温室の最速解放手順', 'greenhouse'], ['生け簀の入手方法', 'fish-tank'], ['畑のおすすめ配置', 'layout']])
+      expect(byTitle(title).guideTarget, title).toBe(`/guides/buildings/#${anchor}`);
     const chapters = guides.filter((guide) => /^[春夏秋冬]月[前後]半/.test(guide.title));
     expect(chapters).toHaveLength(9);
     for (const chapter of chapters) expect(chapter.guideTarget).toBe('/guides/progression/#story');
