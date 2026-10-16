@@ -1,0 +1,762 @@
+{
+  "source": "latenightevent.dat, event.dat, gamevalue.dat, placementitem.dat, cropsharvest.dat + scripts event_check_late_night.lub, gimmick_shinto_altar.lub, gimmick_event_black_daruma.lub, event_horror_statue_game.lub, event_horror_eye_of_hand.lub, event_horror_soot_sprite.lub, event_horror_grass.lub, event_horror_mask.lub, event_horror_demon.lub, event_horror_hat_ghost.lub, event_horror_fujin_raijin.lub, event_horror_snow_woman.lub, event_horror_unknown_livestocs.lub",
+  "script_sha256": {
+    "event_check_late_night": "376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2",
+    "gimmick_shinto_altar": "2e5594a5e4b313e109d9e9766a13b39d51148ecd1a451214466950e6a88e3ebf",
+    "gimmick_event_black_daruma": "69286045c8a396852fb5a17dd9951083ad0dbc17ae4e4011a3c9526d2e2468e4",
+    "event_horror_statue_game": "19d2887a777717d8090ce876791370ae4df00c2f4677ce532a15f85fb41d392a",
+    "event_horror_eye_of_hand": "4192f7f6143eb887df97b0fbff177ba6d7cb554e8c96564bb47218c67ba13949",
+    "event_horror_soot_sprite": "d87ab5d936d9e9b21d00e7756e54664b748e8b7ecf0577c31d31199e39a3fc5a",
+    "event_horror_grass": "2cd7ccd8be4c870bd64b1ffc20505948268a78e69f5e0a6c8c8da16cdb53270b",
+    "event_horror_mask": "90a184b52bfdff9601bcbb1ada828506ee94375fa6cc5c59d90cf23dd6bd5cd2",
+    "event_horror_demon": "d44bba0759db4013ed959235c6563f0d90c413df6c8984fbda16b972e823024f",
+    "event_horror_hat_ghost": "fdd69160f321a5580ddcf6bb310b20091a3eacaab5d5ab0ccdac3625002f251b",
+    "event_horror_fujin_raijin": "5fd88804116ee8e2239d2ed35b5788b2ce13d617bcc701dfae230c14506da28e",
+    "event_horror_snow_woman": "cfd05957dd7859e74feb008aafd05d34e08feb4ee15f7c912ccab22e69c7fcbb",
+    "event_horror_unknown_livestocs": "b4800dcceec164f4ca9f911ece3809559478695ab7104957f63384c021ee7838"
+  },
+  "late_night": {
+    "hours": [
+      0,
+      6
+    ],
+    "weekly_count": [
+      3,
+      4
+    ],
+    "first_interval_days": [
+      1,
+      2
+    ],
+    "forced_by": [
+      "thunderstorm",
+      "day 1",
+      "day 15",
+      "item on the お化け棚"
+    ],
+    "never": "eve of a festival (common.isBeforeFestival)",
+    "cancelled_by": "GAME_FLAG_LATE_NIGHT_START_OFF (清めの塩 on the お化け棚)"
+  },
+  "altar": {
+    "item": "ITEM_ID_SHINTO_ALTAR",
+    "pickup_event": "EVENT_ID_STORY_01_200",
+    "requires": [
+      "GAME_FLAG_STORY_01_END"
+    ],
+    "excludes": [
+      "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GET_SHINTO_ALTAR",
+      "GAME_FLAG_HORROR_OFF_MODE"
+    ]
+  },
+  "tablets": [
+    {
+      "item": "ITEM_ID_CURSED_DARUMA_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_STATUE_GAME",
+      "late_night_event": "LATE_NIGHT_EVENT_STATUE_GAME",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_DARUMA_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_TENOME_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_HAND_EYES",
+      "late_night_event": "LATE_NIGHT_EVENT_HAND_EYES",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_HAND_EYES_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_SUSUWATARI_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "late_night_event": "LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_SOOT_SPRITE_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_TENGU_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_MASK",
+      "late_night_event": "LATE_NIGHT_EVENT_MASK",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_MASK_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_NODUCHI_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GRASS",
+      "late_night_event": "LATE_NIGHT_EVENT_GRASS",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_GRASS_FIRST"
+    }
+  ],
+  "mask_night_pickups": [
+    {
+      "group": 500000002,
+      "sparkle": 2,
+      "items": [
+        {
+          "item": "ITEM_ID_OBJECT_WOOD",
+          "weight": 14
+        },
+        {
+          "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_OBJECT_GARNET",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CURSED_RED_DEBRIS",
+          "weight": 40
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_01",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_02",
+          "weight": 9
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_03",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_04",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CROPS_MUD_SEEDS",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_MIRROR_01",
+          "weight": 2
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_SWORD",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "group": 500000003,
+      "sparkle": 3,
+      "items": [
+        {
+          "item": "ITEM_ID_OBJECT_WOOD",
+          "weight": 14
+        },
+        {
+          "item": "ITEM_ID_OBJECT_TOURMALINE",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_OBJECT_SAPPHIRE",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CURSED_BLUE_DEBRIS",
+          "weight": 40
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_01",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_02",
+          "weight": 9
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_03",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_04",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CROPS_MUD_SEEDS",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_MIRROR_01",
+          "weight": 2
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_SWORD",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "group": 500000002,
+      "sparkle": 4,
+      "items": [
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_FOX_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_DEMON_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_30",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_31",
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "group": 500000003,
+      "sparkle": 5,
+      "items": [
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_TENGU_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_MASK_OF_OKAME",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_37",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_32",
+          "weight": 25
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "LATE_NIGHT_EVENT_HAND_EYES",
+      "name_ja": "手の目",
+      "start_event": "EVENT_ID_HAND_EYES_START",
+      "encount_event": "EVENT_ID_HAND_EYES_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_HAND_EYES",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_HAND_EYES_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_eye_of_hand",
+        "counter": "GAME_VALUE_HORROR_EVILEYESTONE_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_EYEBALL_LANTERN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_STONE_MONUMENT",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_STATUE_GAME",
+      "name_ja": "達磨さんが転んだ",
+      "start_event": "EVENT_ID_DARUMA_START",
+      "encount_event": "EVENT_ID_DARUMA_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_STATUE_GAME",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_DARUMA_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "gimmick_event_black_daruma",
+        "counter": "GAME_VALUE_HORROR_DARUMA_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_BLACK_DARUMA",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_CREEPY_DARUMA",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "name_ja": "ススワタリ",
+      "start_event": "EVENT_ID_SOOT_SPRITE_START",
+      "encount_event": "EVENT_ID_SOOT_SPRITE_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_SOOT_SPRITE_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_soot_sprite",
+        "counter": "GAME_VALUE_HORROR_SOOT_SPRITE_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_BLACK_CRYSTAL",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_OBSIDIAN_ROSARY",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_GRASS",
+      "name_ja": "夜の草原",
+      "start_event": "EVENT_ID_GRASS_START",
+      "encount_event": "EVENT_ID_GRASS_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GRASS",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_GRASS_START"
+        ]
+      },
+      "from_date": {
+        "year": 1,
+        "season": "summer",
+        "day": 1,
+        "operator": 4
+      },
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_grass",
+        "counter": "GAME_VALUE_HORROR_NOZUCHI_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_MUD_VESSEL",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_TSUCHINOKO",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_MASK",
+      "name_ja": "お面",
+      "start_event": "EVENT_ID_MASK_START",
+      "encount_event": "EVENT_ID_MASK_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_MASK",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": []
+      },
+      "from_date": {
+        "year": 1,
+        "season": "summer",
+        "day": 1,
+        "operator": 4
+      },
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": null
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_DEMON",
+      "name_ja": "鬼",
+      "start_event": "EVENT_ID_DEMON_START",
+      "encount_event": "EVENT_ID_DEMON_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_DEMON",
+      "requires": [
+        "GAME_FLAG_STORY_04_034"
+      ],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_DEMON_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [
+        1,
+        15
+      ],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_demon",
+        "counter": "GAME_VALUE_HORROR_DEMON_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_SWORD",
+              "count": 2
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_JEWELS_02",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_SWORD",
+              "count": 2
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_JEWELS_02",
+              "count": 10
+            },
+            {
+              "item": "ITEM_ID_SPECIAL_MIRROR_01",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_KASA_GHOST",
+      "name_ja": "笠おばけ",
+      "start_event": "EVENT_ID_KASA_GHOST_START",
+      "encount_event": "EVENT_ID_KASA_GHOST_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_KASA_GHOST",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_HAT_GHOST_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [
+        "rain"
+      ],
+      "rewards": {
+        "script": "event_horror_hat_ghost",
+        "counter": "GAME_VALUE_HORROR_HAT_GHOST_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SUMMER",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNTURE_KASA_BROWN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_ACCESSORY_12",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNTURE_KASA_BLACK",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_FUJIN_RAIJIN",
+      "name_ja": "風神雷神",
+      "start_event": "EVENT_ID_FUJIN_RAIJIN_START",
+      "encount_event": "EVENT_ID_FUJIN_RAIJIN_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_FUJIN_RAIJIN",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_FUJIN_RAIJIN_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [
+        "thunderstorm"
+      ],
+      "rewards": {
+        "fujin": {
+          "script": "event_horror_fujin_raijin",
+          "counter": "GAME_VALUE_HORROR_FUJIN_REWARD_COUNT",
+          "counter_max": 2,
+          "steps": [
+            [
+              {
+                "item": "ITEM_ID_CURSE_FURNITURE_HANGING_SCROLL_01",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+                "count": 1
+              }
+            ]
+          ]
+        },
+        "raijin": {
+          "script": "event_horror_fujin_raijin",
+          "counter": "GAME_VALUE_HORROR_RAIJIN_REWARD_COUNT",
+          "counter_max": 2,
+          "steps": [
+            [
+              {
+                "item": "ITEM_ID_CURSE_FURNITURE_HANGING_SCROLL_02",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_SUMMER",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_WINTER",
+                "count": 1
+              }
+            ]
+          ]
+        },
+        "both_in_one_night": [
+          {
+            "item": "ITEM_ID_CURSE_FURNITURE_SUSPICIOUS_STATUE",
+            "count": 1
+          }
+        ],
+        "mizuchi_per_side": 4
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_SNOW_WOMAN",
+      "name_ja": "雪女",
+      "start_event": "EVENT_ID_SNOW_WOMAN_START",
+      "encount_event": "EVENT_ID_SNOW_WOMAN_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SNOW_WOMAN",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_SNOW_WOMAN_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [
+        "winter"
+      ],
+      "days": [],
+      "weathers": [
+        "snow"
+      ],
+      "rewards": {
+        "script": "event_horror_snow_woman",
+        "counter": "GAME_VALUE_HORROR_SNOW_WOMAN_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_SNOW_RABBIT",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_WINTER",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_SNOWMAN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "unknown_livestock": {
+    "check": {
+      "requires": [
+        "GAME_FLAG_LIVESTOCK_HOUSE_1_EXIST",
+        "GAME_FLAG_STORY_01_END"
+      ],
+      "excludes": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_CHECK",
+        "GAME_FLAG_HORROR_OFF_MODE"
+      ]
+    },
+    "start": {
+      "requires": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_CHECK",
+        "GAME_FLAG_STORY_01_END"
+      ],
+      "excludes": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_START"
+      ]
+    },
+    "appears": "needs any livestock house; not created on days 21–27",
+    "move_window": "0:00-5:00",
+    "dig_rewards": [
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 3
+      },
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 5
+      },
+      {
+        "item": "ITEM_ID_CURSE_FURNITURE_COW_SKULL",
+        "count": 1
+      }
+    ],
+    "repeat": [
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 5
+      },
+      {
+        "item": "ITEM_ID_CURSE_FURNITURE_COW_SKULL",
+        "count": 1
+      }
+    ],
+    "first_clear": "GAME_FLAG_WHISTLE_SONG_LEARN_02",
+    "clear_count_max": 3
+  }
+}

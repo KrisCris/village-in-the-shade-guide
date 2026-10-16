@@ -1,0 +1,118 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import anomalies from '../../../data/sources/game-anomalies.json';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const RANDOM='GameGetRandomLateNightItemID';
+const view=(id:string)=>{const e=catalog.entities.find(e=>e.kind==='items'&&e.id===id);return e&&{name:e.name.zh_hans,icon:e.icon_path,url:href(entityUrl(e))};};
+type Reward={item:string,count:number};
+const chips=(rewards:Reward[])=>rewards.map(r=>r.item===RANDOM?{name:t('随机深夜道具'),count:r.count}:{...view(r.item),count:r.count}).filter(c=>c.name);
+const event=(id:string)=>anomalies.events.find(e=>e.id===`LATE_NIGHT_EVENT_${id}`)!;
+const cycle=(id:string)=>(event(id).rewards as {steps:Reward[][]}).steps.map(chips);
+const fujin=event('FUJIN_RAIJIN').rewards as unknown as {fujin:{steps:Reward[][]},raijin:{steps:Reward[][]},both_in_one_night:Reward[],mizuchi_per_side:number};
+const cow=anomalies.unknown_livestock;
+const cowSteps=cow.dig_rewards.map(r=>chips([r]));
+const tablets=anomalies.tablets.map(tab=>({...view(tab.item),anchor:{STATUE_GAME:'daruma',HAND_EYES:'hand-eyes',SOOT_SPRITE:'soot-sprite',MASK:'mask',GRASS:'nozuchi'}[tab.late_night_event.replace('LATE_NIGHT_EVENT_','')]}));
+const anomalyName:Record<string,string>={daruma:t('一二三木头人'),'hand-eyes':t('手之目'),'soot-sprite':t('煤炭球'),mask:t('面具之夜'),nozuchi:t('野槌蛇与夜草')};
+const [red,blue,...blueprints]=anomalies.mask_night_pickups;
+const pickupChips=(group:typeof red)=>chips(group.items.map(i=>({item:i.item,count:1})));
+const masks=['ITEM_ID_CURSE_FURNITURE_FOX_MASK','ITEM_ID_CURSE_FURNITURE_TENGU_MASK','ITEM_ID_CURSE_FURNITURE_DEMON_MASK','ITEM_ID_CURSE_FURNITURE_MASK_OF_OKAME'].map(id=>chips([{item:id,count:1}])[0]).filter(Boolean);
+const blueprintCount=blueprints.reduce((n,g)=>n+g.items.length,0);
+const altar=view('ITEM_ID_SHINTO_ALTAR');
+const salt=view('ITEM_ID_CURSED_PURIFYING_SALT');
+const [startHour,endHour]=anomalies.late_night.hours;
+const nav=[['late-night',t('深夜什么时候来')],['shelf',t('妖怪置物架与木牌')],['hand-eyes',t('手之目')],['daruma',t('一二三木头人')],['soot-sprite',t('煤炭球')],['nozuchi',t('野槌蛇')],['mask',t('面具之夜')],['kasa-ghost',t('角笠妖')],['fujin-raijin',t('风神与雷神')],['snow-woman',t('雪女')],['demon',t('鬼')],['ghost-cow',t('陌生家畜')],['others',t('其他夜间怪异')]];
+---
+<BaseLayout title={t('怪异出现条件与对策')}><h1>{t('怪异出现条件与对策')}</h1>
+<p>{t('第一章结束后，深夜 {start} 点到 {end} 点会出现下面这些怪异。每张卡片写出现条件、遇到后会怎样、怎么解决和解决后的奖励。数据里查不到的部分标为“未核实”。',{start:startHour,end:endHour})}</p>
+<nav class="toc" aria-label={t('本页目录')}>{nav.map(([id,label])=><a href={`#${id}`}>{label}</a>)}</nav>
+
+<section id="late-night"><h2>{t('深夜什么时候来')}</h2><ul>
+<li>{t('每周一决定这一周有几次深夜（3 或 4 次），之后隔 1–2 天来一次，剩下的次数排进这周余下的日子。')}</li>
+<li>{t('下雷雨、每季第 1 天和第 15 天，以及妖怪置物架上放了木牌的那晚，一定会进入深夜。')}</li>
+<li>{t('节日前一晚不会有深夜。')}</li>
+<li>{t('在妖怪置物架上放净化盐，下一次深夜会取消，雷雨天和第 1、15 天也一样。')}</li>
+<li>{t('每次深夜从满足条件的怪异里挑一种。挑选权重写在游戏程序里，未核实。')}</li>
+</ul></section>
+
+<section id="shelf"><h2>{t('妖怪置物架与木牌')}</h2>
+<p>{t('第一章结束后，深夜经过村里的岔路口会捡到妖怪置物架（“安心生活模式”下不会触发）。摆好后把木牌放上去，那晚一定进入深夜，并发生木牌对应的怪异。木牌放一次就用掉。')}</p>
+<div class="items">{altar&&<a href={altar.url}>{altar.icon&&<img src={withBase(altar.icon)} width="44" height="44" alt="" loading="lazy"/>}{altar.name}</a>}{salt&&<a href={salt.url}>{salt.icon&&<img src={withBase(salt.icon)} width="44" height="44" alt="" loading="lazy"/>}{salt.name}</a>}</div>
+<table class="tablets"><thead><tr><th>{t('木牌')}</th><th>{t('对应怪异')}</th></tr></thead><tbody>{tablets.map(tab=><tr><td>{tab.url&&<a class="item" href={tab.url}>{tab.icon&&<img src={withBase(tab.icon)} width="32" height="32" alt="" loading="lazy"/>}{tab.name}</a>}</td><td><a href={`#${tab.anchor}`}>{anomalyName[tab.anchor!]}</a></td></tr>)}</tbody></table>
+<p>{t('第一次遇到某种怪异后，它的木牌会加入村内和追加农地的深夜拾取物。角笠妖、风神雷神、雪女和鬼没有木牌。')}</p></section>
+
+<section><h2>{t('各种怪异')}</h2><div class="anomalies">
+
+<article class="card" id="hand-eyes"><h3>{t('手之目')}</h3><p class="conds"><span class="pill">{t('不限季节和天气')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('村里出现固定不动和来回移动的灯笼。被灯笼的光照到，手之目会从附近现身追你；甩掉它后，灯笼回到原处。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('村里随机 5 处会立起小石碑。全部破坏后出现一座大石碑，破坏它就算解决。')} <span class="unverified">{t('用哪种工具破坏未核实')}</span></p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('HAND_EYES').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol></article>
+
+<article class="card" id="daruma"><h3>{t('一二三木头人')}</h3><p class="conds"><span class="pill">{t('不限季节和天气')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('村里出现围起来的区域和几块石头，不倒翁会追你。倒数“一二三木头人”后，不倒翁睁眼：睁眼期间移动、跳跃、点按或使用道具都会挨打，扣 2 颗心。这时躲起来可以结束这一轮。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('睁眼期间，石头会变成黑色不倒翁。站在它面前用十字镐敲碎（这一下不算犯规；没睁眼时敲不坏），捡起碎片就算解决。')}</p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('STATUE_GAME').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol></article>
+
+<article class="card" id="soot-sprite"><h3>{t('煤炭球')}</h3><p class="conds"><span class="pill">{t('不限季节和天气')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('遇到煤炭球后过一会儿，黑雾会罩住画面并熄掉你的灯。黑雾还在、你又没躲起来时，会一次 1 颗心地持续扣血。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('重新开灯，黑雾散开，煤炭球和大煤炭球随之出现。被灯光照到的煤炭球会减速逃开。打倒大煤炭球就算解决。')} <span class="unverified">{t('哪些攻击有效未核实')}</span></p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('SOOT_SPRITE').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol></article>
+
+<article class="card" id="nozuchi"><h3>{t('野槌蛇与夜草')}</h3><p class="conds"><span class="pill">{t('第 1 年夏季起（推断）')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('村里长满夜草，其中混着会动的拟态草，还会出现扭扭妖。夜草只有镰刀割得动。野槌蛇用身体撞人，一下扣 4 颗心。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('打倒野槌蛇的尾巴 3 次。尾巴露出一段时间后会消失，要趁它还在时打。')}</p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('GRASS').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol></article>
+
+<article class="card" id="mask"><h3>{t('面具之夜')}</h3><p class="conds"><span class="pill">{t('第 1 年夏季起（推断）')}</span><span class="pill">{t('天狗木牌')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('手电筒会坏掉。红、蓝两名蒙面商人出现，卖红色蜡烛和蓝色蜡烛。点着蜡烛走动，能看到同色的拾取物。蜡烛越烧越短，同色的面灵气会陆续出现，只在你被同色烛光照着时行动并冲过来。')} <span class="unverified">{t('蜡烛价格和紫面灵气的行动条件未核实')}</span></p>
+<h4>{t('怎么解决')}</h4><p>{t('这一晚没有解决奖励，收获是烛光照出的拾取物。深夜结束后手电筒恢复，剩下的蜡烛不能留着用。')}</p>
+<h4>{t('红色烛光照出')}</h4><div class="chips">{pickupChips(red).map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}</a>)}</div>
+<h4>{t('蓝色烛光照出')}</h4><div class="chips">{pickupChips(blue).map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}</a>)}</div>
+<p>{t('两种碎片最常见。另外还有 {count} 种面具设计图混在这一晚的拾取物里，哪种烛光照出哪张未核实。壁挂面具在工作台用 15 个红色或蓝色碎片，加狩猎或家畜材料制作：',{count:blueprintCount})}</p>
+<div class="chips">{masks.map(c=><a href={c!.url}>{c!.icon&&<img src={withBase(c!.icon)} width="32" height="32" alt="" loading="lazy"/>}{c!.name}</a>)}</div></article>
+
+<article class="card" id="kasa-ghost"><h3>{t('角笠妖')}</h3><p class="conds"><span class="pill">{t('雨夜')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('独脚的角笠妖在固定地点出现，会攻击你。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('等它一次攻击刚结束，把它举起来，搬到地藏前给地藏戴上。一共要给 4 尊地藏戴上。')}</p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('KASA_GHOST').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol><p class="note">{t('已经解锁斗笠饰品时，跳过斗笠这一项。')}</p></article>
+
+<article class="card" id="fujin-raijin"><h3>{t('风神与雷神')}</h3><p class="conds"><span class="pill">{t('雷雨夜')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('风神和雷神出现，雷神会降下落雷。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('村里会出现属于风神和属于雷神的蛟，分大小两种。打倒某一方的蛟累计 {count} 只，就能击退那位神。进度跨夜保留，两边都满 {count} 只后才清零。',{count:fujin.mizuchi_per_side})} <span class="unverified">{t('打倒蛟的方法未核实')}</span></p>
+<h4>{t('风神的奖励（循环）')}</h4><ol class="cycle">{fujin.fujin.steps.map(chips).map(step=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}</a>)}</li>)}</ol>
+<h4>{t('雷神的奖励（循环）')}</h4><ol class="cycle">{fujin.raijin.steps.map(chips).map(step=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}</a>)}</li>)}</ol>
+<p>{t('同一晚击退两位神（这晚开始时两位都还在）时，另外掉落：')}</p><div class="chips">{chips(fujin.both_in_one_night).map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}</a>)}</div></article>
+
+<article class="card" id="snow-woman"><h3>{t('雪女')}</h3><p class="conds"><span class="pill">{t('冬季')}</span><span class="pill">{t('雪夜')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('雪女把婴儿交给你，请你带孩子去见父亲。你放下婴儿时，雪女会追你；重新抱起一会儿后她才消失。雪童子在附近游荡，看到你会追过来。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('抱着婴儿走到丈夫的坟墓，在墓前放下。坟墓每次从 3 个位置中随机选一个。')}</p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('SNOW_WOMAN').map(step=><li>{step.map(c=>c.url?<a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>:<span>{c.name} ×{c.count}</span>)}</li>)}</ol></article>
+
+<article class="card" id="demon"><h3>{t('鬼')}</h3><details><summary>{t('第四章剧透：出现条件与打法')}</summary>
+<p class="conds"><span class="pill">{t('第四章在大洞前打倒津主后')}</span><span class="pill">{t('每季第 1、15 天')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('鬼会扔燃烧的岩石，还有冲撞、拍地和一击让你倒下的攻击。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('用十字镐把扔来的燃烧岩石打回去，才能伤到鬼。鬼的体力是 6。')}</p>
+<h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('DEMON').map(step=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>)}</li>)}</ol></details></article>
+
+<article class="card" id="ghost-cow"><h3>{t('陌生家畜')}</h3><p class="conds"><span class="pill">{t('第一章结束后')}</span><span class="pill">{t('需要畜舍')}</span><span class="pill">{t('不算深夜怪异')}</span></p>
+<h4>{t('会发生什么')}</h4><p>{t('建好畜舍后约 15 天，畜舍里会多出一头陌生的牛（每季第 21–27 天不会出现）。它不产出任何东西。')}</p>
+<h4>{t('怎么解决')}</h4><p>{t('在 {window} 之间打开畜舍的门（从外面或里面开都可以），牛会走到村里某处停下。在它停下的地方挖出埋着的东西就算解决，牛随后消失；5 点前没挖，它会回到畜舍。解决后过一段时间，它会再次出现。',{window:cow.move_window})}</p>
+<h4>{t('奖励')}</h4><ol class="cycle">{cowSteps.map((step,i)=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>)}{i===0&&<span>{t('，并学会呼唤家畜的第二首口哨')}</span>}</li>)}</ol><p class="note">{t('第 3 次之后，在第 2 项和第 3 项之间交替。')}</p></article>
+</div></section>
+
+<section id="others"><h2>{t('其他夜间怪异')}</h2><p set:html={tHtml('幽灵老鼠、机械部件、红色手机和迷失之书的位置见<a href="/guides/collection-map/">夜间收集地图</a>；雷兽、豆腐小僧、猫又和河童的交换见<a href="/guides/night-preparation/">夜间交换与勾玉准备</a>。')} />
+<p>{t('“随机深夜道具”由游戏程序从深夜道具中抽取，具体范围未核实。')}</p></section>
+
+<details><summary>{t('游戏数据来源')}</summary><ul>
+<li>{t('深夜频率、强制深夜与净化盐：event_check_late_night 的 awakeLateNight_check。')}</li>
+<li>{t('各怪异的季节、天气、日期和剧情条件：latenightevent.dat；全部开始事件都要求第一章结束（event.dat）。“第 1 年夏季起”是按表中日期字段推断的。')}</li>
+<li>{t('妖怪置物架：event.dat 的 EVENT_ID_STORY_01_200；木牌对应关系：gimmick_shinto_altar；木牌拾取：placementitem.dat。')}</li>
+<li>{t('打法与奖励：各怪异的 event_horror_* 和 ai_creature_horror_* 脚本，奖励循环长度取自 gamevalue.dat。')}</li>
+<li>{t('陌生家畜：event_horror_unknown_livestocs、event.dat 和 cropsharvest.dat。')}</li>
+<li>{anomalies.source}</li>
+</ul></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}article{scroll-margin-top:90px}p,li{line-height:1.8}.toc{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;line-height:1.8}.anomalies{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:1rem;align-items:start}.card{padding:1rem;margin:0}.card h3{margin-top:0}h4{font-size:.95rem;margin:1rem 0 .3rem}.card p{margin:.3rem 0}.conds{display:flex;flex-wrap:wrap;gap:.4rem}.unverified{font-size:.82rem;color:var(--muted);border-bottom:1px dashed var(--border)}.unverified::before{content:'⚠ '}.cycle{padding-left:1.4rem;margin:.3rem 0}.cycle li{margin:.2rem 0}.cycle li::marker{font-variant-numeric:tabular-nums}.cycle a,.cycle span{vertical-align:middle}.cycle a,.cycle span,.chips a,.items a,a.item{display:inline-flex;align-items:center;gap:.35rem;margin-right:.6rem;text-decoration:none}.cycle img,.chips img,.items img,a.item img{object-fit:contain}.chips,.items{display:flex;flex-wrap:wrap;gap:.3rem .2rem}.note{font-size:.85rem;color:var(--muted)}.tablets{width:100%;max-width:560px;border-collapse:separate;border-spacing:0;margin:.6rem 0;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);overflow:hidden}.tablets th{background:color-mix(in srgb,var(--green-soft) 70%,var(--paper-raised))}.tablets th,.tablets td{padding:.45rem .8rem;text-align:left}.tablets tr+tr td,.tablets tbody tr:first-child td{border-top:1px solid var(--border)}details{padding:.8rem 1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}.card details{padding:.6rem .8rem}summary{cursor:pointer;font-weight:bold}</style>
