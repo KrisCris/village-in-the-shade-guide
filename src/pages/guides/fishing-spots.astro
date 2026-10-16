@@ -3,6 +3,8 @@ import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCatalog, entityUrl } from '../../data/repository';
 import fishing from '../../../data/sources/game-fishing.json';
+import curse from '../../../data/sources/game-curse-items.json';
+import { catchChances } from '../../domain/fishingOdds';
 import { getI18n } from '../../i18n/server';
 import { msg } from '../../i18n/translate';
 import type { Entity } from '../../data/types';
@@ -22,19 +24,16 @@ const neededBy = new Map<string, Entity[]>();
 for (const { bundle, needs } of bundles) for (const { item_id } of needs) neededBy.set(item_id, [...neededBy.get(item_id) ?? [], bundle]);
 const keepTitle = (id: string) => t('交付要用：{list}', { list: neededBy.get(id)!.map(bundle => bundle.name.zh_hans).join('、') });
 
-// The catch is drawn from one spot/season/period's rows in proportion to weight.
+// The catch is drawn from one spot/season/period's rows, kept in fishing.dat order because white fish weigh the rows before them.
 type Spawn = (typeof fishing.spawns)[number];
 const pools = new Map<string, Spawn[]>();
 for (const spawn of fishing.spawns) {
   const key = `${spawn.spot}|${spawn.season}|${spawn.period}`;
   pools.set(key, [...pools.get(key) ?? [], spawn]);
 }
-function chances(spot: string, season: string, period: string) {
-  const pool = pools.get(`${spot}|${season}|${period}`) ?? [], total = pool.reduce((sum, row) => sum + row.weight, 0);
-  const result = new Map<string, number>();
-  for (const row of pool) result.set(row.item, (result.get(row.item) ?? 0) + row.weight / total);
-  return result;
-}
+const fishKind = curse.fish_kind as Record<string, number>;
+const chances = (spot: string, season: string, period: string) => catchChances(pools.get(`${spot}|${season}|${period}`) ?? [], fishKind);
+const whiteBait = catalog.entities.find(e => e.id === 'ITEM_ID_SPRINKLING_BAIT_WHITE')!;
 const percent = (value: number) => value >= .1 ? `${Math.round(value * 100)}%` : `${(value * 100).toFixed(1)}%`;
 const heat = (value: number) => `--heat:${Math.round(10 + 60 * Math.min(1, value / .25))}%`;
 const seasonData = seasons.map(([season, label]) => {
@@ -63,7 +62,7 @@ const seasonData = seasons.map(([season, label]) => {
 <BaseLayout title={t('四季钓点与留货')} description={t('每个钓鱼点在各季节、各时段能钓到哪些鱼、上钩概率，以及狐狸神社和村长家交付要留的鱼。')}>
   <h1>{t('四季钓点与留货')}</h1>
   <p>{t('先选季节。“本季要留的鱼”按交付目录列出这一季钓得到的鱼和去哪里钓；下面的表按钓点列出每种鱼的上钩概率，颜色越深越容易钓到。')}</p>
-  <p class="note">{t('概率按游戏内出现权重计算，是每次上钩时为该鱼的基础概率，未计入鱼饵和祠堂能力。杂物（空罐、塑料袋、树枝、水草）合并显示。6:00–7:00 不属于任何时段。')} <a href={href('/data/fish/')}>{t('全部鱼类筛选')}</a></p>
+  <p class="note">{t('概率是不用鱼饵时每次上钩钓到该鱼的机会，未计入祠堂能力。普通鱼和杂物按 fishing.dat 的出现权重分配；白色稀有鱼不按自己的权重算，约占 1%，用{white}时约占 3%。杂物（空罐、塑料袋、树枝、水草）合并显示。6:00–7:00 不属于任何时段。', { white: whiteBait.name.zh_hans })} <a href={href('/data/fish/')}>{t('全部鱼类筛选')}</a></p>
 
   <div class="fish-controls">
     <div class="fish-seasons" role="tablist" aria-label={t('季节')}>
@@ -132,7 +131,7 @@ const seasonData = seasons.map(([season, label]) => {
     </article>)}</div>
     </div>
   </section>)}
-  <p class="note">{t('来源：fishing.dat 各钓鱼点的出现记录与权重；交付目录取自 bundle.dat。')}</p>
+  <p class="note">{t('来源：fishing.dat 各钓鱼点的出现记录与权重；白色稀有鱼按 fish.dat 的分类认出，算法取自 village.exe 的上钩判定；交付目录取自 bundle.dat。')}</p>
 </BaseLayout>
 <script>
   import { onPageMount } from '../../lib/pageLifecycle';
