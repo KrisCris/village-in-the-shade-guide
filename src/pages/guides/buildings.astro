@@ -1,0 +1,171 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import construction from '../../../data/sources/game-construction.json';
+import unlocks from '../../../data/sources/game-save-unlocks.json';
+import farmland from '../../../data/sources/game-farmland.json';
+import { packSquares, sprinklerCoverage } from '../../domain/farmLayout';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const byId=new Map(catalog.entities.map(e=>[`${e.kind}:${e.id}`,e]));
+const item=(id:string)=>byId.get(`items:${id}`);
+const order=(id:string)=>byId.get(`activities:CONSTRUCTION_ID_${id}`)!;
+const orderData=new Map(construction.constructions.map(c=>[c.id,c]));
+const money=(n:number)=>t('金钱 {money}',{money:n.toLocaleString('en-US')});
+const localized=(row:{name:string;nameTranslations:Record<string,string>})=>locale==='zh-CN'?row.name:row.nameTranslations[locale]||row.name;
+const groupByFlag=new Map(unlocks.groups.map(g=>[g.flag,g]));
+// Each required flag in construction.dat, in player terms. An unknown flag fails the build instead of showing raw codes.
+const condition=(f:{id:number;code:string}):string=>{
+  const house:Record<string,string>={GAME_FLAG_MYHOUSE_EXPANSION_LV2:'RENOVATION_MY_HOUSE_LV2',GAME_FLAG_MYHOUSE_EXPANSION_LV3:'RENOVATION_MY_HOUSE_LV3',GAME_FLAG_MYHOUSE_EXPANSION_LV4:'RENOVATION_MY_HOUSE_LV4'};
+  if(house[f.code])return t('自宅已改建成“{house}”',{house:order(house[f.code]).name.zh_hans});
+  const group=groupByFlag.get(f.id);
+  if(group)return t('交完林的“{group}”',{group:localized(group)});
+  if(f.code==='GAME_FLAG_SALE_START_CONSTRUCTION_STABLE')return t('第一座畜舍建好后，木助来信');
+  if(f.code==='GAME_FLAG_STORY_06_END')return t('第 6 章结束后');
+  if(f.code==='GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00')return t('收到林的信并和她谈过');
+  throw new Error(`No wording for construction flag ${f.code}`);
+};
+const rowsOf=(ids:string[])=>ids.map(id=>{
+  const activity=order(id),data=orderData.get(`CONSTRUCTION_ID_${id}`)!;
+  return {activity,data,inputs:(activity.inputs??[]) as {item_id:string;quantity:number}[],conditions:data.required_flags.map(condition)};
+});
+const house=rowsOf(['RENOVATION_MY_HOUSE_LV2','RENOVATION_MY_HOUSE_LV3','RENOVATION_MY_HOUSE_LV4','MAKEOVER_BASEMENT']);
+const exteriors=rowsOf(['RENOVATION_MY_HOUSE_BRICK','RENOVATION_MY_HOUSE_LOG_HOUSE','RENOVATION_MY_HOUSE_THATCHED','RENOVATION_MY_HOUSE_JAPANESE_STYLE','RENOVATION_MY_HOUSE_WESTERN','RENOVATION_MY_HOUSE_PLASTER']);
+const interior=rowsOf(['MAKEOVER_NORMAL_WALL','MAKEOVER_BRIGHT_WALL','MAKEOVER_STYLISH_WALL','MAKEOVER_COLD_WALL','ORDINARY_FLOORBOARD','AUSTERE_FLOORBOARD']);
+const animals=rowsOf(['BUILD_AVIARY_LV2','RENOVATION_AVIARY_LV2','RENOVATION_AVIARY_LV3','BUILD_LIVESTOCK_HOUSE_LV1','RENOVATION_LIVESTOCK_HOUSE_LV2','RENOVATION_LIVESTOCK_HOUSE_LV3','BUILD_STABLE','BUILD_SILO','DOG_HOUSE']);
+const yard=rowsOf(['BUILD_ANVIL','BUILD_BARN','BUILD_WELL','BUILD_BIRD_BATH','BUILD_FISH_TANK_LV1','RENOVATION_FISH_TANK_LV2','GREENHOUSE']);
+const land=rowsOf(['EXPANTION_ADDITIONAL_FARMLAND','REMOVE_RUBBLE_BEHIND_RANCH']);
+const relocations=construction.constructions.filter(c=>c.kind==='relocation').map(c=>({activity:byId.get(`activities:${c.id}`)!}));
+const [greenhouse]=rowsOf(['GREENHOUSE']);
+const [tank1,tank2]=rowsOf(['BUILD_FISH_TANK_LV1','RENOVATION_FISH_TANK_LV2']);
+const description=(row:{data:{description:Record<string,string>}})=>row.data.description[locale];
+const intro=unlocks.groups.find(g=>g.id===12)!;
+const luxury=unlocks.groups.find(g=>g.flag===greenhouse.data.required_flags[0].id)!;
+const luxuryBundles=luxury.bundles.map(id=>unlocks.bundles.find(b=>b.id===id)!);
+const bundleEntity=(id:number)=>catalog.entities.find(e=>e.kind==='activities'&&e.numeric_id===id&&e.id.startsWith('BUNDLE_ID_'));
+const ranks=[t('不限品质'),t('铜★'),t('银★'),t('金★'),t('品牌')];
+const numeric=new Map(catalog.entities.filter(e=>e.kind==='items').map(e=>[e.numeric_id,e]));
+const gems=luxury.bundles.flatMap(id=>unlocks.bundles.find(b=>b.id===id)!.items).filter(need=>need.rank===0).map(need=>numeric.get(need.itemId)?.name.zh_hans).join(t('、'));
+const fish=construction.living_tank_item_numeric_ids.map(n=>numeric.get(n)).filter(e=>e!==undefined).map(e=>byId.get(`fish:${e.id}`)??e);
+const seeds=['ITEM_ID_SEED_MANGO','ITEM_ID_SEED_BANANA','ITEM_ID_SEED_CACAO'].map(item).filter(e=>e!==undefined);
+const expansion=construction.farmland_expansion;
+const shape=(id:string)=>farmland.shapes.find(s=>s.id===id)!;
+const stageName:Record<string,string>={start:t('初始田地'),expansion_1:t('第一块扩建地（{price}）',{price:money(expansion.prices[0])}),expansion_2:t('第二块扩建地（{price}）',{price:money(expansion.prices[1])}),additional:t('追加农地（1.2.0）')};
+const sprinklers=[[3,'ITEM_ID_GIMMICK_SPRINKLER_SMALL'],[5,'ITEM_ID_GIMMICK_SPRINKLER_MIDDLE'],[7,'ITEM_ID_GIMMICK_SPRINKLER_LARGE']] as const;
+const layout=expansion.farm_areas.map(area=>({name:stageName[area.stage],cells:area.cells,fits:sprinklers.map(([size])=>area.farmland_shapes.reduce((n,id)=>n+sprinklerCoverage(shape(id),size).squares,0))}));
+const ring=shape('map_1140.ymwr.head-0'),bed=shape('map_1140.ymwr.head-1');
+const offset=[bed.origin[0]-ring.origin[0],bed.origin[1]-ring.origin[1]];
+const ringSquares=packSquares(ring,3),bedSquares=packSquares(bed,5);
+const additional=construction.additional_farmland.EVENT_ID_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00.hours;
+const milestones=construction.construction_milestones.join(' / ');
+---
+<BaseLayout title={t('建筑、扩地与温室')}><h1>{t('建筑、扩地与温室')}</h1>
+<nav><a href="#shed">{t('委托木助')}</a>　<a href="#land">{t('扩建田地')}</a>　<a href="#house">{t('改建自宅')}</a>　<a href="#greenhouse">{t('温室')}</a>　<a href="#fish-tank">{t('养鱼池')}</a>　<a href="#facilities">{t('家畜与庭院设施')}</a>　<a href="#layout">{t('田地布局')}</a></nav>
+
+<section id="shed"><h2>{t('建筑都找木助的树木建设')}</h2>
+<p>{t('自宅改建、鸡舍、畜舍、温室、养鱼池等都向木助下订单。树木建设在第 1 章主线进行中开放。')}</p>
+<ul>
+<li>{t('营业时间是 10:00–17:00，周六、周日休息。')}</li>
+<li>{t('每张订单都要钱和材料，建好需要 1–5 天，下面各节列出每项的天数。设施说明里写着数量上限和占地大小。')}</li>
+<li>{t('施工范围内的家具、作物和加工机械会被收进回收箱，不会消失。')}</li>
+<li>{t('建筑数量累计到 {milestones} 座时，林会寄信送奖励。奖励内容还没解析。',{milestones})}</li>
+<li>{t('鸡舍、畜舍等建好后可以付钱移建换位置，不需要材料。')}<span class="relocations">{relocations.map(({activity})=><a href={href(entityUrl(activity))}>{activity.name.zh_hans} {money(Number(activity.money_cost))}</a>)}</span></li>
+</ul></section>
+
+<section id="land"><h2>{t('扩建田地')}</h2>
+<p>{t('初始田地旁边立着两块出售告示牌。调查告示牌可以把林叫来，一次付清就能买下那块地，林会拆掉围栏。林在 6:00–22:59 之间能叫来，其余时间联系不上。')}</p>
+<div class="farm-scroll"><table class="farm-table">
+<thead><tr><th scope="col">{t('田地')}</th><th scope="col">{t('可耕地')}</th><th scope="col">{t('怎么得到')}</th></tr></thead>
+<tbody>{expansion.farm_areas.map(area=><tr><th scope="row">{stageName[area.stage]}</th><td>{t('{count} 格',{count:area.cells})}</td><td>{{start:t('开局就有'),expansion_1:t('告示牌，{price}',{price:money(expansion.prices[0])}),expansion_2:t('告示牌，{price}',{price:money(expansion.prices[1])}),additional:t('林来信后向木助下订单')}[area.stage]}</td></tr>)}</tbody>
+</table></div>
+<p>{t('两块扩建地互不依赖，先买哪块都行。格数是地形上能耕作的格子，还没扣掉建筑和摆放的物件。')}</p>
+<h3 id="additional">{t('追加农地（1.2.0 版）')}</h3>
+<ol>
+<li>{t('两块扩建地都买下，并且第 4 章结束后，林会寄来一封关于新土地的信，在地图上标出地点。安心生活模式改为第 3 章名护成为村民后寄出。')}</li>
+<li>{t('{hours} 之间去标记地点找林谈。',{hours:additional??''})}</li>
+<li>{t('到树木建设订“农地扩建”。完工后南边的瓦砾被清走，多出一块田地。')}</li>
+</ol>
+<div class="orders">{land.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><p>{description(row)}{row.conditions.length>0&&<> {t('条件：')}{row.conditions.join(t('，'))}</>}</p><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+<p class="note">{t('游戏语言设为英语、法语或西班牙语时，数据里林的这封信不会触发，原因不明。')}</p>
+</section>
+
+<section id="house"><h2>{t('改建自宅')}</h2>
+<p>{t('自宅要按顺序改建：整洁的房屋 → 两层楼的房屋 → 大型房屋。地下室要先有两层楼的房屋；墙纸和地板在第一次改建后就能换。')}</p>
+<div class="orders">{house.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><p>{description(row)}{row.conditions.length>0&&<> {t('条件：')}{row.conditions.join(t('，'))}</>}</p><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+<h3>{t('大型房屋的外观')}</h3>
+<p>{t('大型房屋建成时是和风外观。其他外观各要完成林的一组交付委托，完成后林会给一份对应的建筑目录。换外观每次花费{price}，工期 2 天。',{price:money(Number(exteriors[0].activity.money_cost))})}</p>
+<div class="orders">{exteriors.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}</a></div><p>{row.conditions.filter((_,i)=>i>0).join(t('，'))}</p><div class="costs">{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+<p class="note">{t('换回和风外观的条件在数据里和茅葺屋相同，也要交完花卉。')}</p>
+<h3>{t('墙纸和地板')}</h3>
+<div class="orders">{interior.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+</section>
+
+<section id="greenhouse"><h2>{t('温室怎样最快解锁')}</h2>
+<p>{t('温室不看年份和章节，只看一个条件：交完林的“{group}”。这组委托要品牌品质的作物和畜产品，是整个解锁过程里最慢的一步。',{group:localized(luxury)})}</p>
+<ol class="steps">
+<li set:html={tHtml('推进主线到第 2 章，交完林的“{group}”三份订单并向她报告。之后村长家交付委托目录开放 8 组委托。',{group:localized(intro)})} />
+<li>{t('完成“{group}”的四份委托：',{group:localized(luxury)})}
+<div class="bundles">{luxuryBundles.map(bundle=>{const entity=bundleEntity(bundle.id);return <div class="bundle card"><h3>{entity?<a href={href(entityUrl(entity))}>{entity.name.zh_hans}</a>:localized(bundle)}</h3>{bundle.items.map(need=>{const e=numeric.get(need.itemId);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="32" height="32" alt="" loading="lazy"/>}<span>{e.name.zh_hans} ×{need.count}</span><small class={need.rank===4?'brand':''}>{ranks[need.rank]}</small></a>;})}</div>;})}</div></li>
+<li>{t('交完后林会给“建筑／温室”目录，茶梅也会来信，田上杂货店开始卖只能种在温室里的树苗。')}<span class="seeds">{seeds.map(e=><a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} {money(Number(e.buy_price))}</a>)}</span></li>
+<li>{t('到树木建设订温室，工期 {days} 天。{description}',{days:greenhouse.data.days,description:description(greenhouse)})}<div class="costs"><b>{money(Number(greenhouse.activity.money_cost))}</b>{greenhouse.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></li>
+</ol>
+<h3>{t('卡住进度的地方')}</h3>
+<ul>
+<li set:html={tHtml('畜产品和家畜毛需要牛、鸡、猪、羊、开司米山羊和马。猪和开司米山羊要在品评会拿到名次才会上架，马要先建畜舍再建马厩，见<a href="/guides/livestock-plan/#unlock">家畜解锁条件</a>。品评会每季只有 27 日一次，所以无法排出固定的最早日期。')} />
+<li>{t('“品牌”是游戏里最高的品质档。品评会拿到 S 的家畜会成为品牌家畜，但品牌家畜的产物是否直接是品牌品质，作物又怎样拿到品牌品质，本站还没核实。')}</li>
+<li set:html={tHtml('{gems}不要求品质，在<a href="/guides/quarry/">采石场</a>挖。',{gems})} />
+<li>{t('建温室还要 {count} 个玻璃棒，可以在等品评会的时候先做。',{count:greenhouse.inputs.find(i=>i.item_id==='ITEM_ID_GLASS_ROD')?.quantity??0})}</li>
+</ul>
+<h3>{t('温室里的田地')}</h3>
+<div class="greenhouse">
+<svg viewBox={`0 0 ${ring.width*10} ${ring.height*10}`} role="img" aria-label={t('温室田地：外圈 3 格宽，中间 10×10，圆点是洒水器的位置')}>
+{ring.cells.map(([x,y])=><rect class="soil" x={x*10+.5} y={y*10+.5} width="9" height="9"/>)}
+{bed.cells.map(([x,y])=><rect class="soil" x={(x+offset[0])*10+.5} y={(y+offset[1])*10+.5} width="9" height="9"/>)}
+{ringSquares.map(([x,y])=><circle class="small" cx={(x+1.5)*10} cy={(y+1.5)*10} r="3.2"/>)}
+{bedSquares.map(([x,y])=><circle class="middle" cx={(x+offset[0]+2.5)*10} cy={(y+offset[1]+2.5)*10} r="4.2"/>)}
+</svg>
+<div><p>{t('温室有 {total} 格田地：外圈宽 3 格，共 {ring} 格；中间是 10×10 的 {bed} 格，四周隔着一格走道。',{total:ring.cells.length+bed.cells.length,ring:ring.cells.length,bed:bed.cells.length})}</p>
+<p>{t('外圈放不下 5×5 的普通洒水器。沿外圈摆 {ringCount} 个小型洒水器能浇到 {ringWatered} 格；中间用 {bedCount} 个普通洒水器能浇到 {bedWatered} 格。',{ringCount:ringSquares.length,ringWatered:ringSquares.length*8,bedCount:bedSquares.length,bedWatered:bedSquares.length*24})}</p>
+<p>{t('芒果、香蕉和可可树苗不用浇水，但周围有障碍物会停止生长，种树的位置不要放洒水器。')}</p></div>
+</div>
+</section>
+
+<section id="fish-tank"><h2>{t('养鱼池')}</h2>
+<p>{t('养鱼池一开始就能向木助订，工期 {days} 天。{description}',{days:tank1.data.days,description:description(tank1)})}</p>
+<div class="costs"><b>{money(Number(tank1.activity.money_cost))}</b>{tank1.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div>
+<p>{t('同一种鱼放两条以上，鱼可能会变多；同种的鱼越多，增加的概率越高。每种鱼的具体概率还没解析。')}</p>
+<p>{t('交完林的“{group}”后，可以把养鱼池改建成大型养鱼池，工期 {days} 天。{description}',{group:localized(groupByFlag.get(tank2.data.required_flags[0].id)!),days:tank2.data.days,description:description(tank2)})}</p>
+<div class="costs"><b>{money(Number(tank2.activity.money_cost))}</b>{tank2.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div>
+<details class="fish"><summary>{t('能放进养鱼池的 {count} 种鱼',{count:fish.length})}</summary><div class="fish-list">{fish.map(e=><a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></details>
+</section>
+
+<section id="facilities"><h2>{t('家畜与庭院设施')}</h2>
+<p>{t('没有剧情或交付条件的设施写着“木助开放后即可”。鸡舍、畜舍、马厩和铁砧在数据里还有一个 1–4 的等级值，含义没查清，可能是额外的解锁条件。')}</p>
+<h3>{t('家畜')}</h3>
+<div class="orders">{animals.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}{row.data.kind==='renovation'&&<small class="kind">{t('改建')}</small>}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><p>{description(row)} {row.conditions.length?`${t('条件：')}${row.conditions.join(t('，'))}`:t('木助开放后即可。')}{row.data.unresolved_level>0&&<small class="level">{t('等级值 {level}',{level:row.data.unresolved_level})}</small>}</p><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+<h3>{t('庭院')}</h3>
+<div class="orders">{yard.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}{row.data.kind==='renovation'&&<small class="kind">{t('改建')}</small>}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><p>{description(row)} {row.conditions.length?`${t('条件：')}${row.conditions.join(t('，'))}`:t('木助开放后即可。')}{row.data.unresolved_level>0&&<small class="level">{t('等级值 {level}',{level:row.data.unresolved_level})}</small>}</p><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
+</section>
+
+<section id="layout"><h2>{t('田地布局')}</h2>
+<p>{t('洒水器以自己为中心浇一个正方形：小型 3×3、普通 5×5、强化 7×7，中心那格放洒水器本身。稻草人也按自己为中心的 5×5 生效 28 天。')}</p>
+<p set:html={tHtml('布局时把田地切成和洒水器一样大的正方形，正方形之间不留空隙，就不会有漏浇或重复浇的格子。洒水器的配方要先在<a href="/guides/skills/">祠堂能力</a>里解锁。')} />
+<div class="farm-scroll"><table class="farm-table">
+<thead><tr><th scope="col">{t('田地')}</th><th scope="col">{t('可耕地')}</th>{sprinklers.map(([size,id])=>{const e=item(id);return <th scope="col">{e?<a href={href(entityUrl(e))}>{e.name.zh_hans}</a>:''}<small>{size}×{size}</small></th>;})}</tr></thead>
+<tbody>{layout.map(row=><tr><th scope="row">{row.name}</th><td>{row.cells}</td>{row.fits.map((n,i)=><td>{t('{count} 个',{count:n})}<small>{t('浇 {watered} 格',{watered:n*(sprinklers[i][0]**2-1)})}</small></td>)}</tr>)}</tbody>
+</table></div>
+<p class="note">{t('表中个数是从田地一角按网格排完整正方形的结果，不是最优解。田地边缘不规则的地方可以用小型洒水器补。洒水器能不能放在田地外的走道上，还没核实。')}</p>
+</section>
+
+<details><summary>{t('游戏数据来源')}</summary><p>{t('construction.dat：订单的金钱、材料、工期、数量上限和前置条件；facility.dat 与 gameflag.dat：树木建设的营业时间和开放时机；gamedefine.dat：两块扩建地的价格；event_farmland_expansion、gimmick_land_for_sale_sign 脚本和地图上的告示牌位置：告示牌对应的土地和叫林的时间；event.dat 与 event_additional_farmland 脚本：追加农地的条件；bundlegroup.dat、bundle.dat：林的交付委托和品质要求；gimmick_bundle_green_blue 脚本与 shopsale.dat：温室树苗上架；tips.dat：施工回收和养鱼池繁殖；livingtank.dat：养鱼池能放的鱼；secretquest.dat：建筑数量奖励；map_1140 地形：温室田地。提取脚本是 tools/extract-construction.py。')}</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}nav{line-height:2}.note{font-size:.88rem;color:var(--muted)}
+.orders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:.7rem}.order{padding:.8rem 1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--paper-raised)}.order-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem .8rem;font-weight:600}.order-head span{font-weight:400;color:var(--muted);font-size:.85rem}.order p{margin:.4rem 0;font-size:.9rem}
+.costs,.relocations,.seeds,.fish-list{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .9rem;margin:.4rem 0}.costs a,.relocations a,.seeds a,.fish-list a{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;font-size:.9rem}.costs img,.seeds img,.fish-list img,.bundle img{object-fit:contain}.relocations a{font-size:.85rem}
+.kind{margin-left:.4rem;color:var(--muted);font-weight:400;font-size:.8rem}.level{margin-left:.5rem;padding:0 .4rem;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.75rem}
+.farm-scroll{overflow-x:auto}.farm-table{width:100%;border-collapse:collapse;font-size:.9rem}.farm-table :is(th,td){padding:.55rem .7rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.farm-table thead th{color:var(--muted);font-weight:600;font-size:.8rem}.farm-table td:nth-child(2){white-space:nowrap}.farm-table small{display:block;color:var(--muted);font-size:.78rem}
+.steps>li{margin:1rem 0}.bundles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.7rem;margin:.6rem 0}.bundle{padding:.8rem 1rem;margin:0}.bundle h3{margin:0 0 .4rem;font-size:1rem}.bundle>a{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:.5rem;margin:.35rem 0;text-decoration:none;font-size:.9rem}.bundle small{color:var(--muted);font-size:.78rem}.bundle small.brand{color:var(--gold);font-weight:600}
+.greenhouse{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:1.2rem;align-items:start}.greenhouse svg{width:100%;height:auto}.greenhouse .soil{fill:var(--green-soft);stroke:var(--border);stroke-width:.4}.greenhouse .small{fill:var(--green)}.greenhouse .middle{fill:var(--vermilion)}.greenhouse p{margin-top:0}@media(max-width:640px){.greenhouse{grid-template-columns:1fr}.greenhouse svg{max-width:240px}}
+.fish{padding:.6rem 1rem;border:1px solid var(--border);border-radius:var(--radius)}.fish summary{cursor:pointer}</style>
