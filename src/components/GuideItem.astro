@@ -6,4 +6,4 @@ interface Props { entity?: Entity; href: string; note?: string }
 const { entity, href, note } = Astro.props;
 ---
 {entity && <a class="guide-item" href={href}>{entity.icon_path && <img src={withBase(entity.icon_path)} width="40" height="40" alt="" loading="lazy" />}<span>{entity.name.zh_hans}</span>{note && <small>{note}</small>}</a>}
-<style>.guide-item{display:flex;align-items:center;gap:.5rem;text-decoration:none}.guide-item img{object-fit:contain;flex-shrink:0}.guide-item small{margin-left:auto;color:var(--muted)}@media(max-width:700px){.guide-item img{width:32px;height:32px}}</style>
+<style>.guide-item{display:flex;align-items:center;gap:.5rem;text-decoration:none}.guide-item img{object-fit:contain;flex-shrink:0}.guide-item small{margin-left:auto;padding-left:.4rem;color:var(--muted);white-space:nowrap}@media(max-width:700px){.guide-item img{width:32px;height:32px}}</style>
