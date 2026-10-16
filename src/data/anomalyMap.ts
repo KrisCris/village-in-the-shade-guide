@@ -3,18 +3,22 @@ import { projectMinimap, type MinimapProjection } from './collectionMap';
 /** Side length of the village minimap image in pixels. */
 export const MINIMAP_SIZE = 4096;
 
-export type MapShape = 'number' | 'dot' | 'square' | 'star';
+export type MapShape = 'number' | 'dot' | 'square' | 'star' | 'area';
 export interface MapLayer {
   label: string;
   /** Marker fill; markers get a dark outline so any fill reads on the map. */
   color: string;
   shape: MapShape;
-  /** World coordinates from data/sources/game-anomalies.json map_points. */
+  /** World coordinates from data/sources/game-anomalies.json map_points; for 'area', the top-left corners of `size` squares. */
   points: Array<{ x: number; y: number }>;
   /** First number for 'number' layers (default 1), so several layers can share one sequence. */
   start?: number;
+  /** Side of each square of an 'area' layer, in world units. */
+  size?: number;
 }
 export interface MapPin { left: number; top: number; color: string; shape: MapShape; text?: string }
+/** One shaded region: an SVG path in percent of the frame (viewBox 0 0 100 100). */
+export interface MapRegion { color: string; path: string }
 export interface MapFrame { x: number; y: number; width: number; height: number }
 
 const round = (value: number) => Math.round(value * 100) / 100;
@@ -44,16 +48,40 @@ export function mapFrame(points: Array<{ x: number; y: number }>, pad = 70, minW
   return { x: Math.round(x0), y: Math.round(y0), width: Math.round(x1 - x0), height: Math.round(y1 - y0) };
 }
 
-/** Pins as percentages of the frame; numbered layers count up in the given order. */
+/** Squares of one area layer as an SVG path; squares that touch along a row merge into one rectangle. */
+function regionPath(corners: Array<{ x: number; y: number }>, side: number, frame: MapFrame) {
+  const rows = new Map<number, number[]>();
+  for (const p of corners) rows.set(p.y, [...(rows.get(p.y) ?? []), p.x]);
+  const x = (v: number) => round((v - frame.x) / frame.width * 100), y = (v: number) => round((v - frame.y) / frame.height * 100);
+  const parts: string[] = [];
+  for (const [top, xs] of [...rows].sort(([a], [b]) => a - b)) {
+    xs.sort((a, b) => a - b);
+    for (let i = 0; i < xs.length;) {
+      let j = i;
+      while (j + 1 < xs.length && xs[j + 1] - xs[j] <= side + 0.01) j++;
+      parts.push(`M${x(xs[i])} ${y(top)}H${x(xs[j] + side)}V${y(top + side)}H${x(xs[i])}Z`);
+      i = j + 1;
+    }
+  }
+  return parts.join('');
+}
+
+/** Pins as percentages of the frame; numbered layers count up in the given order. 'area' layers become shaded regions. */
 export function mapPins(layers: MapLayer[], projection: MinimapProjection) {
   const projected = layers.map((layer) => layer.points.map((p) => projectMinimap(p, projection)));
-  const frame = mapFrame(projected.flat());
-  const pins: MapPin[] = layers.flatMap((layer, i) => projected[i].map((p, n) => ({
+  const side = (layer: MapLayer) => (layer.size ?? 0) / projection.scale_divisor;
+  const extent = layers.flatMap((layer, i) => layer.shape === 'area'
+    ? projected[i].flatMap((p) => [p, { x: p.x + side(layer), y: p.y + side(layer) }])
+    : projected[i]);
+  const frame = mapFrame(extent);
+  const regions: MapRegion[] = layers.flatMap((layer, i) => layer.shape === 'area' && projected[i].length
+    ? [{ color: layer.color, path: regionPath(projected[i], side(layer), frame) }] : []);
+  const pins: MapPin[] = layers.flatMap((layer, i) => layer.shape === 'area' ? [] : projected[i].map((p, n) => ({
     left: round((p.x - frame.x) / frame.width * 100),
     top: round((p.y - frame.y) / frame.height * 100),
     color: layer.color,
     shape: layer.shape,
     ...(layer.shape === 'number' && { text: String((layer.start ?? 1) + n) }),
   })));
-  return { frame, pins };
+  return { frame, pins, regions };
 }

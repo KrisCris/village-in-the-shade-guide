@@ -4,13 +4,14 @@ import mapData from '../../data/sources/game-map-markers.json';
 import { MINIMAP_SIZE, mapPins, type MapLayer } from '../data/anomalyMap';
 interface Props { layers: MapLayer[]; label: string; image: string }
 const { layers, label, image } = Astro.props;
-const { frame, pins } = mapPins(layers, mapData.projection);
+const { frame, pins, regions } = mapPins(layers, mapData.projection);
 const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
 ---
 <figure class="amap">
   <div class="amap-view" role="img" aria-label={label} style={`aspect-ratio:${frame.width}/${frame.height}`}>
     <img src={image} alt="" loading="lazy" decoding="async" width={MINIMAP_SIZE} height={MINIMAP_SIZE}
       style={`width:${pct(MINIMAP_SIZE / frame.width)};left:${pct(-frame.x / frame.width)};top:${pct(-frame.y / frame.height)}`} />
+    {regions.length > 0 && <svg class="amap-regions" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">{regions.map((region) => <path d={region.path} fill={region.color} />)}</svg>}
     {pins.map((pin) => <span class={`amap-pin ${pin.shape}`} style={`left:${pin.left}%;top:${pin.top}%;--pin:${pin.color}`} aria-hidden="true">{pin.text}</span>)}
   </div>
   <figcaption><ul class="amap-legend">{layers.map((layer) => <li><i class={`amap-pin ${layer.shape}`} style={`--pin:${layer.color}`} aria-hidden="true" />{layer.label}</li>)}</ul></figcaption>
@@ -24,6 +25,8 @@ const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
   .amap-pin.dot { width: .65rem; height: .65rem; border-radius: 50%; border-width: 1.5px; box-shadow: 0 0 0 1px #fffa; }
   .amap-pin.square { width: 1rem; height: 1rem; border-radius: 3px; }
   .amap-pin.star { width: 1.5rem; height: 1.5rem; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); border: 0; box-shadow: none; background: #17201c; }
+  .amap-regions { position: absolute; inset: 0; width: 100%; height: 100%; fill-opacity: .5; }
+  .amap-pin.area { width: .9rem; height: .9rem; border-radius: 2px; border-width: 1px; opacity: .8; }
   .amap-pin.star::after { content: ''; position: absolute; inset: 3px; clip-path: inherit; background: var(--pin); }
   figcaption { margin-top: .35rem; }
   .amap-legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin: 0; padding: 0; list-style: none; font-size: .85rem; color: var(--muted); }

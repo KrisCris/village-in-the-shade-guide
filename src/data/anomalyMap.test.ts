@@ -37,3 +37,28 @@ describe('anomaly map crop', () => {
     }
   });
 });
+
+describe('anomaly map areas', () => {
+  const area = { label: 'area', color: '#f00', shape: 'area' as const, size: 100, points: [{ x: 1000, y: 1000 }, { x: 1100, y: 1000 }, { x: 1300, y: 1000 }, { x: 1000, y: 1100 }] };
+
+  it('frames the far edges of the squares and draws no pins', () => {
+    const { frame, pins, regions } = mapPins([area], projection);
+    expect(pins).toEqual([]);
+    expect(frame.x).toBeLessThanOrEqual(1000);
+    expect(frame.x + frame.width).toBeGreaterThanOrEqual(1400);
+    expect(frame.y + frame.height).toBeGreaterThanOrEqual(1200);
+    expect(regions).toHaveLength(1);
+  });
+
+  it('merges touching squares in a row into one rectangle', () => {
+    const { regions } = mapPins([area], projection);
+    expect(regions[0].path.match(/M/g)).toHaveLength(3);
+    expect(regions[0].color).toBe('#f00');
+  });
+
+  it('keeps pins of other layers beside the areas', () => {
+    const { pins, regions } = mapPins([area, { label: 'gate', color: '#fff', shape: 'square', points: [{ x: 1050, y: 1050 }] }], projection);
+    expect(pins).toHaveLength(1);
+    expect(regions).toHaveLength(1);
+  });
+});

@@ -1,9 +1,14 @@
-"""Illustrations for the anomaly guide, rendered from the game's FAN models.
+"""Illustrations for the anomaly and night-monster guides, rendered from the game's FAN models.
 
 Two steps around tools/render-anomaly-art.mjs:
   uv run python tools/extract-anomaly-art.py export   # models + atlases -> output/anomaly-art/
   node tools/render-anomaly-art.mjs                   # headless Chrome renders -> output/anomaly-art/renders/
   uv run python tools/extract-anomaly-art.py pack     # trim, webp -> public/art/anomalies/ + data/sources/game-anomaly-art.json
+Add the set name to work on the night-monster pictures instead (output/night-monster-art/ ->
+public/art/night-monsters/ + data/sources/game-night-monster-art.json):
+  uv run python tools/extract-anomaly-art.py export night-monsters
+  node tools/render-anomaly-art.mjs night-monsters
+  uv run python tools/extract-anomaly-art.py pack night-monsters
 
 Each picture is one animation sequence of one model, referenced from anime.dat (ANIME_ID -> model name).
 The sequence numbers come from the creature / gimmick scripts named in SOURCE.
@@ -59,6 +64,24 @@ ART = {
     'fish-monster': ('ANIME_ID_ENEMY_WANDERING_GHOST', 12, 'creature.dat CREATURE_ID_HORROR_FISH_MONSTER anime; ai_creature_horror_fish_monster SEQ_WAIT 10, facing down'),
     'abyss-carp': ('ANIME_ID_ENEMY_ABYSS_CARP', 20, 'event_horror_abyss event_clear'),
 }
+# Night-monster guide: sequences from the ai_creature_horror_* scripts (or creature.dat baseSeq).
+NIGHT_MONSTERS = {
+    'tatazumu': ('ANIME_ID_ENEMY_MOYAMOYASAN', 310, 'ai_creature_horror_moyamoyasan_lv3 SEQ_STOP'),
+    'kunekune': ('ANIME_ID_ENEMY_KUNEKUNE', 11, 'ai_creature_horror_kunekune SEQ_STOP'),
+    'wandering-ghost': ('ANIME_ID_ENEMY_WANDERING_GHOST', 12, 'ai_creature_horror_wandering_ghost SEQ_WAIT 10, facing down'),
+    'warp-ghost': ('ANIME_ID_ENEMY_WARP_GHOST', 10, 'ai_creature_horror_warp_ghost SEQ_STOP'),
+    'obo': ('ANIME_ID_ENEMY_OBO', 12, 'ai_creature_horror_obo SEQ_WAIT 10, facing down'),
+    'two-mouths-woman': ('ANIME_ID_ENEMY_TWO_MOUTHS_WOMAN', 12, 'ai_creature_horror_two_mouths_woman SEQ_WAIT 10, facing down'),
+    'blockage': ('ANIME_ID_ENEMY_BLOCKAGE', 11, 'ai_creature_horror_blockage_plane SEQ_STOP 10 + 8-angle code 1'),
+    'wall-face': ('ANIME_ID_ENEMY_PLASTERED_WALL', 311, 'ai_creature_horror_plastered_wall_face SEQ_AWAKE'),
+    'wall-one': ('ANIME_ID_ENEMY_PLASTERED_WALL_ONE', 11, 'ai_creature_horror_plastered_wall_one SEQ_AWAKE'),
+    'walking-stone': ('ANIME_ID_ENEMY_WALKING_STONE', 110, 'ai_creature_horror_walking_stone SEQ_WALK'),
+    'treasure-box': ('ANIME_ID_ENEMY_TREASURE_BOX', 111, 'ai_creature_horror_treasure_box SEQ_RUN'),
+}
+SETS = {
+    'anomalies': (ART, OUT, PUBLIC, Path('data/sources/game-anomaly-art.json')),
+    'night-monsters': (NIGHT_MONSTERS, Path('output/night-monster-art'), Path('public/art/night-monsters'), Path('data/sources/game-night-monster-art.json')),
+}
 # The daruma model only ships in the per-language containers; its body is the same in each.
 CONTAINERS = ('resident.fad', 'resident_2.fad', 'resident_lang_jp.fad')
 
@@ -109,13 +132,13 @@ def export_model(b, skip, count, refs, index):
     return model, textures
 
 
-def export():
+def export(art=ART, out=OUT):
     models = anime_models()
-    wanted = {models[anime] for anime, _, _ in ART.values()}
+    wanted = {models[anime] for anime, _, _ in art.values()}
     found = {}
     for container in CONTAINERS:
         b, skip, count, refs = read_fad(container)
-        folder = OUT / 'models' / Path(container).stem
+        folder = out / 'models' / Path(container).stem
         folder.mkdir(parents=True, exist_ok=True)
         textures = set()
         for i, ref in enumerate(refs):
@@ -130,33 +153,35 @@ def export():
     missing = wanted - set(found)
     assert not missing, missing
     jobs = []
-    for slug, (anime, seq, _) in ART.items():
+    for slug, (anime, seq, _) in art.items():
         model = models[anime]
         jobs.append(dict(slug=slug, dir=f'models/{Path(found[model]).stem}', model=model, seq=seq))
-    (OUT / 'jobs.json').write_text(json.dumps(dict(containers=found, jobs=jobs), indent=1), encoding='utf-8')
-    print(f'exported {len(found)} models, {len(jobs)} jobs -> {OUT}')
+    (out / 'jobs.json').write_text(json.dumps(dict(containers=found, jobs=jobs), indent=1), encoding='utf-8')
+    print(f'exported {len(found)} models, {len(jobs)} jobs -> {out}')
 
 
-def pack():
-    meta = json.loads((OUT / 'jobs.json').read_text(encoding='utf-8'))
-    PUBLIC.mkdir(parents=True, exist_ok=True)
+def pack(art=ART, out=OUT, public=PUBLIC, sources_path=Path('data/sources/game-anomaly-art.json')):
+    meta = json.loads((out / 'jobs.json').read_text(encoding='utf-8'))
+    public.mkdir(parents=True, exist_ok=True)
     sources = {}
     for job in meta['jobs']:
-        im = Image.open(OUT / 'renders' / f"{job['slug']}.png").convert('RGBA')
+        im = Image.open(out / 'renders' / f"{job['slug']}.png").convert('RGBA')
         im = im.crop(im.getchannel('A').point(lambda a: 255 if a > 8 else 0).getbbox())
         pad = 6
         canvas = Image.new('RGBA', (im.width + 2 * pad, im.height + 2 * pad))
         canvas.paste(im, (pad, pad))
         canvas.thumbnail((256, 256), Image.LANCZOS)
-        canvas.save(PUBLIC / f"{job['slug']}.webp", 'WEBP', quality=88, method=6)
-        anime, seq, used_by = ART[job['slug']]
+        canvas.save(public / f"{job['slug']}.webp", 'WEBP', quality=88, method=6)
+        anime, seq, used_by = art[job['slug']]
         sources[job['slug']] = dict(anime=anime, model=job['model'], container=meta['containers'][job['model']],
                                     sequence=seq, used_by=used_by, width=canvas.width, height=canvas.height)
-    Path('data/sources/game-anomaly-art.json').write_text(json.dumps(dict(
+    sources_path.write_text(json.dumps(dict(
         source='anime.dat model names; FAN models in data/fairy_1_00.dat, rendered with src/components/art/portraitRenderer.ts',
         build='25311578', images=sources), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'packed {len(sources)} images -> {PUBLIC}')
+    print(f'packed {len(sources)} images -> {public}')
 
 
 if __name__ == '__main__':
-    {'export': export, 'pack': pack}[sys.argv[1] if len(sys.argv) > 1 else 'export']()
+    art, out, public, sources_path = SETS[sys.argv[2] if len(sys.argv) > 2 else 'anomalies']
+    step = sys.argv[1] if len(sys.argv) > 1 else 'export'
+    export(art, out) if step == 'export' else pack(art, out, public, sources_path)
