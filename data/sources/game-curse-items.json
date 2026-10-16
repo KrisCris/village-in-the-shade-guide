@@ -1,5 +1,5 @@
 {
-  "source": "event scripts event_horror_abyss.lub, event_horror_inari_shrine.lub, event_rankup.lub, gimmick_event_kirakira.lub, event_horror_common.lub, ai_creature_horror_vegetable_monster.lub, ai_creature_horror_fish_monster.lub, ai_creature_horror_dorotabo.lub + gamedefine.dat, gamevalue.dat, cropsharvest.dat, placementitem.dat",
+  "source": "event scripts event_horror_abyss.lub, event_horror_inari_shrine.lub, event_rankup.lub, gimmick_event_kirakira.lub, event_horror_common.lub, ai_creature_horror_vegetable_monster.lub, ai_creature_horror_fish_monster.lub, ai_creature_horror_dorotabo.lub + gamedefine.dat, gamevalue.dat, crops.dat, cropsharvest.dat, fish.dat, placementitem.dat + village.exe",
   "script_sha256": {
     "event_horror_abyss": "572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa",
     "event_horror_inari_shrine": "f2e964d2eb56445addce1e861736e194eadf4857e994537d22086b649ca1f821",
@@ -10,6 +10,7 @@
     "ai_creature_horror_fish_monster": "8ed1453024c390b585fb96e32de1c1ca786d2f6840aaa6f71bec57c47ed7d2c2",
     "ai_creature_horror_dorotabo": "50562b1557454516ccca0438c0d86acddac6864d4e5f078aca9f6ce47a551b98"
   },
+  "executable_sha256": "ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05",
   "caps": {
     "hp": {
       "initial": 12,
@@ -729,5 +730,331 @@
         }
       ]
     }
-  ]
+  ],
+  "mud_pool": {
+    "spring": [
+      {
+        "crop": "CROPS_ID_ONION",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_ONION"
+      },
+      {
+        "crop": "CROPS_ID_CABBAGE",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_CABBAGE"
+      },
+      {
+        "crop": "CROPS_ID_TURNIP",
+        "ridge": true,
+        "outcome": "giant",
+        "giant": "CROPS_ID_BIG_TURNIP",
+        "item": "ITEM_ID_CROPS_DISASTER_TURNIP"
+      },
+      {
+        "crop": "CROPS_ID_POTATO",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_PEA",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_LETTUCE",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_CARROT",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_STRAWBERRY",
+        "ridge": true,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_STRAWBERRY"
+      },
+      {
+        "crop": "CROPS_ID_ASPARAGUS",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_RADISH",
+        "ridge": false,
+        "outcome": "none"
+      }
+    ],
+    "summer": [
+      {
+        "crop": "CROPS_ID_WHITE_ONION",
+        "ridge": true,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_WHITE_ONION"
+      },
+      {
+        "crop": "CROPS_ID_TOMATO",
+        "ridge": true,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_TOMATO"
+      },
+      {
+        "crop": "CROPS_ID_EGGPLANT",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_PEPPER",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_CUCUMBER",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_CUCUMBER"
+      },
+      {
+        "crop": "CROPS_ID_CORN",
+        "ridge": false,
+        "outcome": "giant",
+        "giant": "CROPS_ID_BIG_CORN",
+        "item": "ITEM_ID_CROPS_DISASTER_CORN"
+      },
+      {
+        "crop": "CROPS_ID_WATERMELON",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_WATERMELON"
+      },
+      {
+        "crop": "CROPS_ID_WHEAT",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_WHEAT"
+      },
+      {
+        "crop": "CROPS_ID_SUGARCANE",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_PUMPKIN",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_GINGER",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_GINGER"
+      },
+      {
+        "crop": "CROPS_ID_EDAMAME",
+        "ridge": false,
+        "outcome": "season_end",
+        "item": "ITEM_ID_CROPS_DISASTER_SOYBEAN"
+      },
+      {
+        "crop": "CROPS_ID_BLUEBERRY",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_HOPS",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_MELON",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_PINEAPPLE",
+        "ridge": false,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_GARLIC",
+        "ridge": false,
+        "outcome": "none"
+      }
+    ],
+    "autumn": [
+      {
+        "crop": "CROPS_ID_BUCKWHEAT",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_BUCKWHEAT"
+      },
+      {
+        "crop": "CROPS_ID_TARO",
+        "ridge": true,
+        "outcome": "giant",
+        "giant": "CROPS_ID_BIG_TARO",
+        "item": "ITEM_ID_CROPS_DISASTER_TARO"
+      },
+      {
+        "crop": "CROPS_ID_SWEET_POTATO",
+        "ridge": true,
+        "outcome": "none"
+      },
+      {
+        "crop": "CROPS_ID_OLIVE",
+        "ridge": false,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_OLIVE"
+      },
+      {
+        "crop": "CROPS_ID_SESAME",
+        "ridge": false,
+        "outcome": "none"
+      }
+    ],
+    "winter": [
+      {
+        "crop": "CROPS_ID_DAIKON",
+        "ridge": true,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_DAIKON"
+      },
+      {
+        "crop": "CROPS_ID_SPINACH",
+        "ridge": true,
+        "outcome": "cursed",
+        "item": "ITEM_ID_CROPS_DISASTER_SPINACH"
+      },
+      {
+        "crop": "CROPS_ID_CHINESE_CABBAGE",
+        "ridge": true,
+        "outcome": "giant",
+        "giant": "CROPS_ID_BIG_CHINESE_CABBAGE",
+        "item": "ITEM_ID_CROPS_DISASTER_CHINESE_CABBAGE"
+      }
+    ]
+  },
+  "giants": {
+    "CROPS_ID_BIG_TURNIP": {
+      "cursed": "ITEM_ID_CROPS_DISASTER_TURNIP",
+      "normal": "ITEM_ID_CROPS_TURNIP",
+      "quantity": [
+        5,
+        10
+      ],
+      "actions": [
+        "ACTION_ID_PLAYER_AXE",
+        "ACTION_ID_PLAYER_PICKAXE",
+        "ACTION_ID_PLAYER_SICKLE"
+      ]
+    },
+    "CROPS_ID_BIG_CORN": {
+      "cursed": "ITEM_ID_CROPS_DISASTER_CORN",
+      "normal": "ITEM_ID_CROPS_CORN",
+      "quantity": [
+        5,
+        10
+      ],
+      "actions": [
+        "ACTION_ID_PLAYER_AXE",
+        "ACTION_ID_PLAYER_PICKAXE",
+        "ACTION_ID_PLAYER_SICKLE"
+      ]
+    },
+    "CROPS_ID_BIG_TARO": {
+      "cursed": "ITEM_ID_CROPS_DISASTER_TARO",
+      "normal": "ITEM_ID_CROPS_TARO",
+      "quantity": [
+        5,
+        10
+      ],
+      "actions": [
+        "ACTION_ID_PLAYER_AXE",
+        "ACTION_ID_PLAYER_PICKAXE",
+        "ACTION_ID_PLAYER_SICKLE"
+      ]
+    },
+    "CROPS_ID_BIG_CHINESE_CABBAGE": {
+      "cursed": "ITEM_ID_CROPS_DISASTER_CHINESE_CABBAGE",
+      "normal": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+      "quantity": [
+        5,
+        10
+      ],
+      "actions": [
+        "ACTION_ID_PLAYER_AXE",
+        "ACTION_ID_PLAYER_PICKAXE",
+        "ACTION_ID_PLAYER_SICKLE"
+      ]
+    }
+  },
+  "cursed_pull": {
+    "frames": 300,
+    "interval": 30,
+    "damage": 25,
+    "per_heart": 100
+  },
+  "fish_kind": {
+    "ITEM_ID_FISHING_AMUR_MINNOW": 1,
+    "ITEM_ID_FISHING_BITTERLING": 1,
+    "ITEM_ID_FISHING_DARK_CHUB": 1,
+    "ITEM_ID_FISHING_YAMAME_TROUT": 1,
+    "ITEM_ID_FISHING_YAMATO_CHAR": 1,
+    "ITEM_ID_FISHING_RAINBOW_TROUT": 1,
+    "ITEM_ID_FISHING_AMAGO_SALMON": 1,
+    "ITEM_ID_FISHING_SWEETFISH": 1,
+    "ITEM_ID_FISHING_SATSUKI_TROUT": 1,
+    "ITEM_ID_FISHING_PALE_CHUB": 1,
+    "ITEM_ID_FISHING_DACE": 1,
+    "ITEM_ID_FISHING_EEL": 1,
+    "ITEM_ID_FISHING_THREE_SPINED_STICKLEBACK": 1,
+    "ITEM_ID_FISHING_FRESHWATER_GOBY": 1,
+    "ITEM_ID_FISHING_JAPANESE_FLUVIAL_SCULPIN": 1,
+    "ITEM_ID_FISHING_CRUCIAN_CARP": 1,
+    "ITEM_ID_FISHING_CARP": 1,
+    "ITEM_ID_FISHING_CATFISH": 1,
+    "ITEM_ID_FISHING_FRESHWATER_CRAB": 1,
+    "ITEM_ID_FISHING_MITTEN_CRAB": 1,
+    "ITEM_ID_FISHING_DARK_SLEEPER": 1,
+    "ITEM_ID_FISHING_LOACH": 1,
+    "ITEM_ID_FISHING_JAPANESE_CRAYFISH": 1,
+    "ITEM_ID_FISHING_LONG_ARM_SHRIMP": 1,
+    "ITEM_ID_FISHING_SOFTSHELL_TURTLE": 1,
+    "ITEM_ID_FISHING_JAPANESE_POND_TURTLE": 1,
+    "ITEM_ID_FISHING_BLACK_SPOTTED_FROG": 1,
+    "ITEM_ID_FISHING_SALMON": 1,
+    "ITEM_ID_FISHING_JAPANESE_HUCHEN": 1,
+    "ITEM_ID_FISHING_WHITE_EEL": 2,
+    "ITEM_ID_FISHING_WHITE_CARP": 2,
+    "ITEM_ID_FISHING_WHITE_CATFISH": 2,
+    "ITEM_ID_FISHING_WHITE_JAPANESE_CRAYFISH": 2,
+    "ITEM_ID_FISHING_WHITE_SOFTSHELL_TURTLE": 2,
+    "ITEM_ID_FISHING_WHITE_JAPANESE_HUCHEN": 2,
+    "ITEM_ID_FISHING_GHOST_FISH_01": 3,
+    "ITEM_ID_FISHING_GHOST_FISH_02": 3,
+    "ITEM_ID_FISHING_GHOST_FISH_03": 3,
+    "ITEM_ID_FISHING_GHOST_FISH_04": 3,
+    "ITEM_ID_FISHING_GHOST_FISH_05": 3,
+    "ITEM_ID_FISHING_GHOST_FISH_06": 3,
+    "ITEM_ID_TRASH_EMPTY_CAN": 0,
+    "ITEM_ID_TRASH_PLASTIC_BAG": 0,
+    "ITEM_ID_TRASH_WATER_PLANT": 0,
+    "ITEM_ID_TRASH_TWIG": 0
+  },
+  "bait": {
+    "gimmicks": {
+      "ITEM_ID_SPRINKLING_BAIT": "GIMMICK_ID_SPRINKLING_BAIT",
+      "ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE": "GIMMICK_ID_SPRINKLING_BAIT_GOOD",
+      "ITEM_ID_SPRINKLING_BAIT_WHITE": "GIMMICK_ID_SPRINKLING_BAIT_WHITE"
+    },
+    "trash_multiplier": {
+      "ITEM_ID_SPRINKLING_BAIT": 0.5,
+      "ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE": 0.5,
+      "ITEM_ID_SPRINKLING_BAIT_WHITE": 1
+    }
+  }
 }

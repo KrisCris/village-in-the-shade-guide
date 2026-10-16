@@ -19,6 +19,23 @@ Re-trace when a script hash below changes.
 - ai_creature_horror_dorotabo: 泥田坊 plants CROPS_ID_OBJECT_MUD_SEEDS, whose harvest is 幽霊花の花瓶.
 - placementitem.dat: per map, groups of {gimmick, required flag pairs, excluded flag pairs, count range,
   entries}. Each entry is {weight, item, weather list, required flag, excluded flag}.
+
+Native code in village.exe (hash below), re-trace when it changes:
+- 0x14024B460 (planting): a seed item with +0x184 set (泥の種) stores a uniform random pick among crops with
+  type 0, exactly one planting season equal to the current one, the tile's farmland in their soil list, a
+  preferred soil other than the paddy (3), and no CROPS_FEATURE_GIANT_CROPS.
+- 0x1402B3F74: the grown mud seed is replaced by that pick, which is marked as mud-grown (+0x72).
+- 0x1402B412A-0x1402B4288 (daily growth): when a mud-grown crop enters the first stage whose form field (+0x98)
+  is set, a crop whose stage names a giant (+0xA8) becomes it if 0x1401E3D90 finds the 24 surrounding tiles of
+  the 5x5 square clear (farmable ground, no object, no type 2/6 crop, no CROPS_FEATURE_GIANT_NOT_REMOVE_CROPS);
+  0x1401E37D0 then removes the crops within 2 tiles. A failed check unmarks the crop, which stays ordinary.
+  Without a giant the crop takes that form (CROPS_FORM_DISASTER). Nothing here is random.
+- 0x1402B3BAC (season change): a mature mud-grown crop 34 (枝豆) takes CROPS_FORM_DISASTER instead of
+  CROPS_FORM_WITHERED_HARVESTABLE.
+- 0x14021AC00-0x14021B2C0 (catch roll): each fishing.dat row weighs int(weight*100). While bait is active,
+  GAME_VALUE_GIMMICK_BAIT_TYPE holds its gimmick: 撒き餌 halves trash (fish.dat kind 0), 良質な撒き餌 halves
+  trash and multiplies fish (kind 1) by 1.2, 白い撒き餌 gives white fish (kind 2) 3/97 of the running total.
+  Without bait white fish get 1/99 of it. 怪異魚 (kind 3) keep their weight.
 """
 import hashlib
 import json
@@ -31,7 +48,10 @@ from honogurashi_extractor.table import read_table
 from honogurashi_extractor.probe import _string_groups
 
 read_chunk=runpy.run_path('tools/inspect-lua54.py')['read_chunk']
-data=FafullfsArchive.open(game_dir(__doc__)/'data.dat')
+game=game_dir(__doc__)
+exe_hash=hashlib.sha256((game/'village.exe').read_bytes()).hexdigest()
+assert exe_hash=='ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05', 'Unreviewed executable build'
+data=FafullfsArchive.open(game/'data.dat')
 reviewed={
     'event_horror_abyss':'572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa',
     'event_horror_inari_shrine':'f2e964d2eb56445addce1e861736e194eadf4857e994537d22086b649ca1f821',
@@ -55,7 +75,9 @@ def table(name):
 defines={g[1]:g[4] for _,g in table('gamedefine') if len(g)>4}
 def define(key): return int(defines[key])
 values={g[0]:struct.unpack_from('<11i',r) for r,g in table('gamevalue')}
-items={it['numeric_id']:it['id'] for it in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))}
+item_rows=json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))
+items={it['numeric_id']:it['id'] for it in item_rows}
+cursed_items={it['id'] for it in item_rows if 10 in (it.get('feature_ids') or [])}
 flags={struct.unpack_from('<I',r)[0]:g[0] for r,g in table('gameflag')}
 weathers={1:'WEATHER_ID_SUNNY',2:'WEATHER_ID_RAIN',3:'WEATHER_ID_CLOUDY',4:'WEATHER_ID_SNOW',5:'WEATHER_ID_THUNDERSTORM',6:'WEATHER_ID_PEACH_BLOSSOMS'}
 gimmicks={struct.unpack_from('<I',r)[0]:g[0] for r,g in table('gimmick')}
@@ -143,9 +165,84 @@ for record,groups in table('placementitem'):
     assert len(ints)-pos<=4 or not any(ints[pos:]),groups[0]  # ID_100 ends with one unexplained value (120)
     pools.append(dict(id=groups[0],groups=out))
 
+# What a mud seed grows into (see the native notes above).
+u32=lambda r,o:struct.unpack_from('<I',r,o)[0]
+i64=lambda r,o:struct.unpack_from('<q',r,o)[0]
+def ids(name): return {g[0]:u32(r,0) for r,g in table(name)}
+crop_feature,crop_form,soil=ids('cropsfeature'),ids('cropsform'),ids('farmland')
+assert (crop_feature['CROPS_FEATURE_GIANT_CROPS'],crop_form['CROPS_FORM_DISASTER'],crop_form['CROPS_FORM_WITHERED_HARVESTABLE'])==(19,3,9)
+assert (soil['FARMLAND_PLOWED'],soil['FARMLAND_FURROW'],soil['FARMLAND_RICEFIELD'])==(1,2,3)
+assert read_table(data.read_entry('data/database/crops.dat')).language_count==6
+def crop_record(r):
+    """type, three season lists, soil list, preferred soil, a word, features, 80 fixed bytes, growth states."""
+    c=84;kind=u32(r,80);lists=[]
+    for _ in range(3):
+        n=u32(r,c);lists.append([u32(r,c+4+4*i) for i in range(n)]);c+=4+4*n
+    n=u32(r,c);soils=[i64(r,c+4+8*i) for i in range(n)];c+=4+8*n
+    preferred=i64(r,c);c+=12
+    n=u32(r,c);features=[i64(r,c+4+8*i) for i in range(n)];c+=4+8*n
+    master=i64(r,c);c+=80
+    states={}
+    count=u32(r,c);c+=4
+    for _ in range(count):
+        state,n=u32(r,c),u32(r,c+4);c+=8
+        states[state]=[(u32(r,c+k*272+0x98),i64(r,c+k*272+0xA8)) for k in range(n)];c+=n*272
+    assert c<=len(r)
+    return dict(kind=kind,plant=lists[1],soils=soils,preferred=preferred,features=features,master=master,states=states)
+crop_rows={g[0]:(i64(r,0),crop_record(r)) for r,g in table('crops')}
+crop_names={number:name for name,(number,_) in crop_rows.items()}
+def drops(r):
+    out=[];c=20
+    for _ in range(u32(r,16)):
+        state,n=u32(r,c),u32(r,c+4);c+=8
+        for _ in range(n):
+            m=u32(r,c+4);c+=8
+            for _ in range(m):
+                out.append(dict(state=state,item=items.get(u32(r,c)),action=u32(r,c+8),low=u32(r,c+20),high=u32(r,c+24),chance=u32(r,c+28)));c+=44
+    return out
+harvest_records={u32(r,0):r for r,g in table("cropsharvest")}
+harvest=lambda number:drops(harvest_records[number])
+actions={u32(r,0):g[0] for r,g in table('action')}
+mud_crop=crop_rows['CROPS_ID_MUD_SEEDS'][1]
+assert mud_crop['soils']==[1,2]
+seasons=('spring','summer','autumn','winter')
+mud_pool={season:[] for season in seasons}
+giants={}
+for name,(number,c) in crop_rows.items():
+    if not (c['kind']==0 and len(c['plant'])==1 and c['preferred']!=3 and 19 not in c['features'] and c['master']):
+        continue
+    assert c['soils']==[1,2],name  # every candidate takes plowed fields and ridges alike
+    form,giant=next(((f,g) for f,g in c['states'][1] if f),(0,0))
+    entry=dict(crop=name,ridge=c['preferred']==2)
+    if giant:
+        assert form==3
+        rows=harvest(giant)
+        assert {(r['low'],r['high'],r['chance']) for r in rows}=={(5,10,100)}
+        cursed=sorted({r['item'] for r in rows if r['item'] in cursed_items});normal=sorted({r['item'] for r in rows if r['item'] not in cursed_items})
+        assert len(cursed)==len(normal)==1
+        entry.update(outcome='giant',giant=crop_names[giant],item=cursed[0])
+        giants[crop_names[giant]]=dict(cursed=cursed[0],normal=normal[0],quantity=[5,10],actions=sorted({actions[r['action']] for r in rows}))
+    elif form==3 or number==34:
+        assert number!=34 or (name=='CROPS_ID_EDAMAME' and form==0)
+        cursed=[r for r in harvest(number) if r['state']==3]
+        assert len({r['item'] for r in cursed})==1 and cursed[0]['item'] in cursed_items and {(r['low'],r['high']) for r in cursed}=={(1,1)}
+        entry.update(outcome='season_end' if number==34 else 'cursed',item=cursed[0]['item'])
+    else:
+        assert form==0,name
+        entry.update(outcome='none')
+    mud_pool[seasons[c['plant'][0]]].append(entry)
+assert sum(e['outcome'] in ('cursed','giant','season_end') for p in mud_pool.values() for e in p)==18
+
+# Bait in the catch roll (see the native notes above).
+fish_kind={items[u32(r,0)]:u32(r,16) for r in read_table(data.read_entry('data/database/fish.dat')).records}
+assert {k for i,k in fish_kind.items() if i.startswith('ITEM_ID_FISHING_GHOST_FISH_')}=={3} and {k for i,k in fish_kind.items() if i.startswith('ITEM_ID_TRASH_')}=={0}
+bait_gimmick={items[u32(r,0)]:gimmicks[u32(r,404)] for r,g in table('item') if g[0].startswith('ITEM_ID_SPRINKLING_BAIT')}
+assert bait_gimmick=={'ITEM_ID_SPRINKLING_BAIT':'GIMMICK_ID_SPRINKLING_BAIT','ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE':'GIMMICK_ID_SPRINKLING_BAIT_GOOD','ITEM_ID_SPRINKLING_BAIT_WHITE':'GIMMICK_ID_SPRINKLING_BAIT_WHITE'}
+
 out=dict(
-    source='event scripts '+', '.join(f'{k}.lub' for k in reviewed)+' + gamedefine.dat, gamevalue.dat, cropsharvest.dat, placementitem.dat',
+    source='event scripts '+', '.join(f'{k}.lub' for k in reviewed)+' + gamedefine.dat, gamevalue.dat, crops.dat, cropsharvest.dat, fish.dat, placementitem.dat + village.exe',
     script_sha256=reviewed,
+    executable_sha256=exe_hash,
     caps=dict(
         hp=dict(initial=define('PLAYER_STATUS_HP_INITIAL_VALUE'),max=define('PLAYER_STATUS_HP_MAX_VALUE'),per_heart=define('PLAYER_STATUS_HP_HEART_MAX'),hearts=define('PLAYER_STATUS_HP_HEART_COUNT')),
         stamina=dict(initial=define('PLAYER_STATUS_ST_INITIAL_VALUE'),max=define('PLAYER_STATUS_ST_MAX_VALUE'),per_gauge=define('PLAYER_STATUS_ST_GAUGE_MAX'),gauges=define('PLAYER_STATUS_ST_GAUGE_COUNT')),
@@ -156,6 +253,11 @@ out=dict(
     unset_sparkle=dict(mud_seeds_percent=95,other='ITEM_ID_GIMMICK_SPRINKLER_SMALL'),
     dorotabo_harvest='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE',
     pickup_pools=pools,
+    mud_pool=mud_pool,
+    giants=giants,
+    cursed_pull=dict(frames=define('HORROR_MULFORM_HARVEST_TIME'),interval=define('HORROR_MULFORM_HARVEST_DAMAGE_INTERVAL'),damage=define('HORROR_MULFORM_HARVEST_DAMAGE_VALUE'),per_heart=100),
+    fish_kind=fish_kind,
+    bait=dict(gimmicks=bait_gimmick,trash_multiplier={'ITEM_ID_SPRINKLING_BAIT':0.5,'ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE':0.5,'ITEM_ID_SPRINKLING_BAIT_WHITE':1}),
 )
 Path('data/sources/game-curse-items.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print([(p['id'],[(g['gimmick'],g['count'],len(g['entries'])) for g in p['groups']]) for p in pools])
