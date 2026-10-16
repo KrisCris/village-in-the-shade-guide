@@ -98,7 +98,7 @@ const nav=[['late-night',t('深夜什么时候来')],['shelf',t('妖怪置物架
 <h4>{t('奖励（每次解决给下一项，循环）')}</h4><ol class="cycle">{cycle('DEMON').map(step=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>)}</li>)}</ol></details></article>
 
 <article class="card" id="ghost-cow"><h3>{t('陌生家畜')}</h3><p class="conds"><span class="pill">{t('第一章结束后')}</span><span class="pill">{t('需要畜舍')}</span><span class="pill">{t('不算深夜怪异')}</span></p>
-<h4>{t('会发生什么')}</h4><p>{t('建好畜舍后约 15 天，畜舍里会多出一头陌生的牛（每季第 21–27 天不会出现）。它不产出任何东西。')}</p>
+<h4>{t('会发生什么')}</h4><p>{t('建好畜舍后约 15 天，畜舍里会多出一头陌生的牛（每季第 21–27 天不会出现）。它不产出任何东西。它在的时候，品评会计分的心情最多按 100 算，到不了“好”（180），心情分最多加 4。')}</p>
 <h4>{t('怎么解决')}</h4><p>{t('在 {window} 之间打开畜舍的门（从外面或里面开都可以），牛会走到村里某处停下。在它停下的地方挖出埋着的东西就算解决，牛随后消失；5 点前没挖，它会回到畜舍。解决后过一段时间，它会再次出现。',{window:cow.move_window})}</p>
 <h4>{t('奖励')}</h4><ol class="cycle">{cowSteps.map((step,i)=><li>{step.map(c=><a href={c.url}>{c.icon&&<img src={withBase(c.icon)} width="32" height="32" alt="" loading="lazy"/>}{c.name}{c.count>1&&` ×${c.count}`}</a>)}{i===0&&<span>{t('，并学会呼唤家畜的第二首口哨')}</span>}</li>)}</ol><p class="note">{t('第 3 次之后，在第 2 项和第 3 项之间交替。')}</p></article>
 </div></section>
@@ -111,7 +111,7 @@ const nav=[['late-night',t('深夜什么时候来')],['shelf',t('妖怪置物架
 <li>{t('各怪异的季节、天气、日期和剧情条件：latenightevent.dat；全部开始事件都要求第一章结束（event.dat）。“第 1 年夏季起”是按表中日期字段推断的。')}</li>
 <li>{t('妖怪置物架：event.dat 的 EVENT_ID_STORY_01_200；木牌对应关系：gimmick_shinto_altar；木牌拾取：placementitem.dat。')}</li>
 <li>{t('打法与奖励：各怪异的 event_horror_* 和 ai_creature_horror_* 脚本，奖励循环长度取自 gamevalue.dat。')}</li>
-<li>{t('陌生家畜：event_horror_unknown_livestocs、event.dat 和 cropsharvest.dat。')}</li>
+<li>{t('陌生家畜：event_horror_unknown_livestocs、event.dat 和 cropsharvest.dat；品评会心情上限：event_holiday_fair 的 LivestockGetMoodRateInfluencedGhost 与 gamedefine 的 LIVESTOCK_MOOD_RATE_MAX_WITH_GHOST。')}</li>
 <li>{anomalies.source}</li>
 </ul></details>
 </BaseLayout>
