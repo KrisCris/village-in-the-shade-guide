@@ -1,0 +1,1351 @@
+{
+  "build_id": "25311578",
+  "source": "construction.dat, facility.dat, gamedefine.dat, event.dat, gameflag.dat, livingtank.dat, secretquest.dat, map_0000_ver120 head; hand-traced scripts listed in tools/extract-construction.py",
+  "sha256": {
+    "construction.dat": "c055e1d24376dee24cf0b275fd91454e328c6270c645621045b8e4b86eef4724",
+    "event.dat": "965cd3d35a56b993caf1753e8464c5af6ba8304f5d9819ad8587e233d594ccfe",
+    "facility.dat": "552a5e07d9093e63fc8b6fa51f69cbc5879e529c16048b2b14cbf6fc234901da",
+    "gamedefine.dat": "b2d5e92c88f3cd1dece9a3e79ad5ac90f79889cb8d6465dac3d9bfa2c41ccee0",
+    "gameflag.dat": "3a3677c73b62b7a2158775611c049831b3d323240de4098fbe0d50e94adaa317",
+    "gimmick.dat": "df11eaf6c995fa2f052a2dbb5baf492c3de52e0194d9b01635fc2621414a2109",
+    "livingtank.dat": "a8a3bf3d1c2ee59ad69901f621fc1f845c0450f9d68f78b22e2acfd910b29a89",
+    "map_0000_ver120_aut.ymwr.head": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf",
+    "secretquest.dat": "5bb88ef5cf63c58406f3377e3fbf54040c7a66138830415885c66aa795663487"
+  },
+  "scripts": {
+    "event_farmland_expansion": "085c9f1ebb9c49cddb963fa9543f0466540988a8c2464d84724e2427d88e30ef",
+    "gimmick_land_for_sale_sign": "4e3a240cb6ff0f7ad06521cb68b59950c33afd7ccb94973359c89f73e6beb750",
+    "gimmick_bundle_green_blue": "5e6c602b4ae94086b06f9d9e86800da443d646422b6e43b964f5032fd0170e9c",
+    "event_additional_farmland": "39a061320b1f7bc5174a4d4a49a365a53a669cf0c0813020a90282d326606d21"
+  },
+  "shop": {
+    "facility_id": "FACILITY_ID_CONSTRUCTION_SHED",
+    "hours": {
+      "ja": "営業時間：AM10:00～PM5:00",
+      "zh-CN": "营业时间：AM10:00～PM5:00",
+      "zh-TW": "營業時間：AM10:00～PM5:00"
+    },
+    "closed": {
+      "ja": "土・日曜休み",
+      "zh-CN": "周六、日公休",
+      "zh-TW": "週六、日公休"
+    },
+    "unlock_flag": {
+      "id": 11107,
+      "code": "GAME_FLAG_STORY_01_031_05",
+      "name_ja": "１章_機能閉鎖解除_大工小屋"
+    }
+  },
+  "constructions": [
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV2",
+      "numeric_id": 1,
+      "kind": "renovation",
+      "gimmick_id": 111010000,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [
+        140
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "新しくリフォームされた、小さなお家。キッチンが設置され、部屋も少し広くなる。壁紙と床の変更ができるようになる。",
+        "zh-CN": "翻新后的小房屋。可以设置厨房，房间也会稍微变宽敞。并且可以更换房间壁纸与地板的式样。",
+        "zh-TW": "翻新後的小房屋。可以設置廚房，房間也會稍微變寬敞。並且可以更換房間壁紙與地板的樣式。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV3",
+      "numeric_id": 2,
+      "kind": "renovation",
+      "gimmick_id": 111020000,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [
+        141
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "二階が増築されたお家。部屋が増え、土間も少し広くなる。たくさんの家具を置けるようになる。",
+        "zh-CN": "增建了二楼的房屋。可以增加房间，玄关处也会稍微变宽敞。并且可以放得下更多家具，",
+        "zh-TW": "增建了二樓的房屋。可以增加房間，玄關處也會稍微變寬敞。並且可以放得下更多家具，"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LV4",
+      "numeric_id": 3,
+      "kind": "renovation",
+      "gimmick_id": 111030000,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 141,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV3",
+          "name_ja": "自宅がレベル3に拡張されている"
+        }
+      ],
+      "sets_flags": [
+        142,
+        150
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "木材で建てられたとても広いお家。二階の部屋が広くなる。家の外装を変えることができるようになる。",
+        "zh-CN": "十分宽敞的木造房屋。二楼的房间会变得更加宽敞，并且可以变更房屋的外观。",
+        "zh-TW": "十分寬敞的木造房屋。二樓的房間會變得更加寬敞，並且可以變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_JAPANESE_STYLE",
+      "numeric_id": 4,
+      "kind": "renovation",
+      "gimmick_id": 111030000,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6666,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_04",
+          "name_ja": "村長バンドル04"
+        }
+      ],
+      "sets_flags": [
+        150
+      ],
+      "clears_flags": [
+        151,
+        152,
+        153,
+        154,
+        155
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "古民家風の落ち着いたお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "氛围沉稳的古民家房屋外观。只会变更房屋的外观。",
+        "zh-TW": "氛圍沉穩的古民家房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_LOG_HOUSE",
+      "numeric_id": 5,
+      "kind": "renovation",
+      "gimmick_id": 111030100,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6665,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_03",
+          "name_ja": "村長バンドル03"
+        }
+      ],
+      "sets_flags": [
+        151
+      ],
+      "clears_flags": [
+        150,
+        152,
+        153,
+        154,
+        155
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "自然に溶け込むお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "与大自然融为一体的房屋外观。只会变更房屋的外观。",
+        "zh-TW": "與大自然融為一體的房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_BRICK",
+      "numeric_id": 7,
+      "kind": "renovation",
+      "gimmick_id": 111030200,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6664,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_02",
+          "name_ja": "村長バンドル02"
+        }
+      ],
+      "sets_flags": [
+        152
+      ],
+      "clears_flags": [
+        150,
+        151,
+        153,
+        154,
+        155
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "レンガの温かみあるお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "令人感到温馨的房屋外观。只会变更房屋的外观。",
+        "zh-TW": "令人感到溫馨的房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_MAKEOVER_BASEMENT",
+      "numeric_id": 8,
+      "kind": "makeover",
+      "gimmick_id": 0,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 141,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV3",
+          "name_ja": "自宅がレベル3に拡張されている"
+        }
+      ],
+      "sets_flags": [
+        143
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お家の下に増築される小部屋。秘密基地みたいでワクワクする。",
+        "zh-CN": "在房屋地下增建的小房间。就像是秘密基地一样，令人兴奋。",
+        "zh-TW": "在房屋地下增建的小房間。就像是祕密基地一樣，令人興奮。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_ANVIL",
+      "numeric_id": 11,
+      "kind": "build",
+      "gimmick_id": 112080000,
+      "days": 3,
+      "limit": 3,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 1,
+      "version": null,
+      "description": {
+        "ja": "素材を加工して、道具を強化する作業台。庭には最大３つまで建てられる。３×２マスの建築スペースが必要。",
+        "zh-CN": "可以加工材料、强化道具的作业台。庭院中最多可建造3座。需要3×2格的建筑空间。",
+        "zh-TW": "可以加工材料、強化道具的作業台。庭院中最多可建造3座。需要3×2格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_AVIARY_LV2",
+      "numeric_id": 12,
+      "kind": "renovation",
+      "gimmick_id": 111110000,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 3,
+      "version": null,
+      "description": {
+        "ja": "鳥の家畜を、８羽まで飼育できる小屋。庭には最大４軒まで建てられる。６×７マスの建築スペースが必要。",
+        "zh-CN": "最多可以饲养8只家禽的鸟屋。庭院中最多可建造4座。需要6×7格的建筑空间。",
+        "zh-TW": "最多可以飼養8隻家禽的鳥屋。庭院中最多可建造4座。需要6×7格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_AVIARY_LV3",
+      "numeric_id": 13,
+      "kind": "renovation",
+      "gimmick_id": 111120000,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 4,
+      "version": null,
+      "description": {
+        "ja": "広々としたゆとりのある鶏小屋。鳥の家畜を、１２羽まで飼育できる。ホッパーの牧草を自動給餌する機械付き。",
+        "zh-CN": "拥有大空间的鸡舍。最多可以饲养12只家禽。附带连接储料斗的自动牧草喂食器。",
+        "zh-TW": "擁有大空間的雞舍。最多可以飼養12隻家禽。附帶連接儲料斗的自動牧草餵食器。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_AVIARY_LV2",
+      "numeric_id": 14,
+      "kind": "build",
+      "gimmick_id": 111110000,
+      "days": 4,
+      "limit": 4,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 3,
+      "version": null,
+      "description": {
+        "ja": "鳥の家畜を、８羽まで飼育できる小屋。庭には最大４軒まで建てられる。６×７マスの建築スペースが必要。",
+        "zh-CN": "最多可以饲养8只家禽的鸟屋。庭院中最多可建造4座。需要6×7格的建筑空间。",
+        "zh-TW": "最多可以飼養8隻家禽的鳥屋。庭院中最多可建造4座。需要6×7格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_LIVESTOCK_HOUSE_LV1",
+      "numeric_id": 15,
+      "kind": "build",
+      "gimmick_id": 111200000,
+      "days": 4,
+      "limit": 4,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 2,
+      "version": null,
+      "description": {
+        "ja": "ウシやヒツジを、４頭まで飼育できる小屋。庭には最大４軒まで建てられる。１２×９マスの建築スペースが必要。",
+        "zh-CN": "最多可以饲养4头牛或绵羊的畜舍。庭院中最多可建造4座。需要12×9格的建筑空间。",
+        "zh-TW": "最多可以飼養4頭牛或綿羊的畜舍。庭院中最多可建造4座。需要12×9格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_LIVESTOCK_HOUSE_LV2",
+      "numeric_id": 16,
+      "kind": "renovation",
+      "gimmick_id": 111210000,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 3,
+      "version": null,
+      "description": {
+        "ja": "たくさんの動物を飼える広さの家畜小屋。大きな家畜を、８頭まで飼育できる。",
+        "zh-CN": "能够饲养许多动物的宽敞畜舍。最多可以饲养8头大型家畜。",
+        "zh-TW": "能夠飼養許多動物的寬敞畜舍。最多可以飼養8頭大型家畜。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_LIVESTOCK_HOUSE_LV3",
+      "numeric_id": 17,
+      "kind": "renovation",
+      "gimmick_id": 111220000,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 4,
+      "version": null,
+      "description": {
+        "ja": "広々としたゆとりのある家畜小屋。大きな家畜を、１２頭まで飼育できる。ホッパーの牧草を自動給餌する機械付き。",
+        "zh-CN": "拥有大空间的畜舍。最多可以饲养12头大型家畜。附带连接储料斗的自动牧草喂食器。",
+        "zh-TW": "擁有大空間的畜舍。最多可以飼養12頭大型家畜。附帶連接儲料斗的自動牧草餵食器。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_SILO",
+      "numeric_id": 18,
+      "kind": "build",
+      "gimmick_id": 112020000,
+      "days": 3,
+      "limit": 1,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "牧草の最大貯蔵量を９９９個に増やす設備。この建物は、庭に１つしか建てられない。３×３マスの建築スペースが必要。",
+        "zh-CN": "能够将牧草的储藏量增加到999份的设备。此建筑物于庭院中最多只可建造1座。需要3×3格的建筑空间。",
+        "zh-TW": "能夠將牧草的儲藏量增加到999份的設備。此建築物於庭院中最多只可建造1座。需要3×3格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_STABLE",
+      "numeric_id": 19,
+      "kind": "build",
+      "gimmick_id": 112010000,
+      "days": 3,
+      "limit": 1,
+      "required_flags": [
+        {
+          "id": 550,
+          "code": "GAME_FLAG_SALE_START_CONSTRUCTION_STABLE",
+          "name_ja": "馬小屋の建築解禁"
+        }
+      ],
+      "sets_flags": [
+        145
+      ],
+      "clears_flags": [],
+      "unresolved_level": 3,
+      "version": null,
+      "description": {
+        "ja": "ウマを３頭まで飼育できる小屋。この建物は、庭に１つしか建てられない。８×４マスの建築スペースが必要。",
+        "zh-CN": "最多可以饲养3头马的马厩。此建筑物于庭院中最多只可建造1座。需要8×4格的建筑空间。",
+        "zh-TW": "最多可以飼養3頭馬的馬廄。此建築物於庭院中最多只可建造1座。需要8×4格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_BARN",
+      "numeric_id": 20,
+      "kind": "build",
+      "gimmick_id": 111300000,
+      "days": 4,
+      "limit": 2,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "内部の部屋にいろいろな物を置ける建物。庭には最大２軒まで建てられる。５×４マスの建築スペースが必要。",
+        "zh-CN": "能够在里面放置各种物品的建筑物。庭院中最多可建造2座。需要5×4格的建筑空间。",
+        "zh-TW": "能夠在裡面放置各種物品的建築物。庭院中最多可建造2座。需要5×4格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_BIRD_BATH",
+      "numeric_id": 21,
+      "kind": "build",
+      "gimmick_id": 112060000,
+      "days": 2,
+      "limit": 3,
+      "required_flags": [
+        {
+          "id": 6669,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_07",
+          "name_ja": "村長バンドル07"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "小鳥が訪れ、植物の種を落としていく設備。庭には最大３つまで建てられる。２×２マスの建築スペースが必要。",
+        "zh-CN": "能够吸引小鸟来访，并掉落植物种子的设施。庭院中最多可建造3座。需要2×2格的建筑空间。",
+        "zh-TW": "能夠吸引小鳥來訪，並掉落植物種子的設施。庭院中最多可建造3座。需要2×2格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_WELL",
+      "numeric_id": 22,
+      "kind": "build",
+      "gimmick_id": 112050000,
+      "days": 2,
+      "limit": 3,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "ジョウロに水を汲むための水場。庭には最大３つまで建てられる。２×２マスの建築スペースが必要。",
+        "zh-CN": "浇水壶的取水处。庭院中最多可建造3座。需要2×2格的建筑空间。",
+        "zh-TW": "澆水壺的取水處。庭院中最多可建造3座。需要2×2格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_BUILD_FISH_TANK_LV1",
+      "numeric_id": 23,
+      "kind": "build",
+      "gimmick_id": 112070000,
+      "days": 2,
+      "limit": 3,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お魚を１０匹まで入れられる生け簀。庭には最大３つまで建てられる。３×３マスの建築スペースが必要。",
+        "zh-CN": "最多可容纳10条鱼的养鱼池。庭院中最多可建造3座。需要3×3格的建筑空间。",
+        "zh-TW": "最多可容納10條魚的養魚池。庭院中最多可建造3座。需要3×3格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_FISH_TANK_LV2",
+      "numeric_id": 24,
+      "kind": "renovation",
+      "gimmick_id": 112070100,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 6670,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_08",
+          "name_ja": "村長バンドル08"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お魚を入れて育てるための、大きな生け簀。お魚が３０匹まで入れられるようになる。",
+        "zh-CN": "可以养殖鱼类的大型养鱼池。最多可容纳30条鱼。",
+        "zh-TW": "可以養殖魚類的大型養魚池。最多可容納30條魚。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_DOG_HOUSE",
+      "numeric_id": 25,
+      "kind": "build",
+      "gimmick_id": 112090000,
+      "days": 2,
+      "limit": 1,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "犬のための小さなお家。この建物は、庭に１つしか建てられない。２×３マスの建築スペースが必要。",
+        "zh-CN": "给狗狗住的小房子。此建筑物于庭院中最多只可建造1座。需要2×3格的建筑空间。",
+        "zh-TW": "給狗狗住的小房子。此建築物於庭院中最多只可建造1座。需要2×3格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_GREENHOUSE",
+      "numeric_id": 26,
+      "kind": "build",
+      "gimmick_id": 111400000,
+      "days": 5,
+      "limit": 1,
+      "required_flags": [
+        {
+          "id": 6671,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_09",
+          "name_ja": "村長バンドル09"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "季節に関係なく作物を育てられる設備。この建物は、庭に１つしか建てられない。９×７マスの建築スペースが必要。",
+        "zh-CN": "能够不分季节种植作物的设施。此建筑物于庭院中最多只可建造1座。需要9×7格的建筑空间。",
+        "zh-TW": "能夠不分季節種植作物的設施。此建築物於庭院中最多只可建造1座。需要9×7格的建築空間。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_MAKEOVER_NORMAL_WALL",
+      "numeric_id": 27,
+      "kind": "makeover",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の壁紙。これが本来のお家の壁。",
+        "zh-CN": "能够替换房间风格的壁纸。这是这间房子原本的墙壁。",
+        "zh-TW": "能夠替換房間風格的壁紙。這是這間房子原本的牆壁。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_MAKEOVER_BRIGHT_WALL",
+      "numeric_id": 28,
+      "kind": "makeover",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の壁紙。白くてどんな家具とも合いやすい。",
+        "zh-CN": "能够替换房间风格的壁纸。白色跟任何家具都很搭。",
+        "zh-TW": "能夠替換房間風格的壁紙。白色跟任何家具都很搭。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_MAKEOVER_STYLISH_WALL",
+      "numeric_id": 29,
+      "kind": "makeover",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の壁紙。赤が印象的で壁が主役になりそう。",
+        "zh-CN": "能够替换房间风格的壁纸。很抢眼的红色，感觉墙壁反而成为了注目焦点。",
+        "zh-TW": "能夠替換房間風格的壁紙。很搶眼的紅色，感覺牆壁反而成為了注目焦點。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_MAKEOVER_COLD_WALL",
+      "numeric_id": 30,
+      "kind": "makeover",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の壁紙。どんな部屋になるか、個性がでそう。",
+        "zh-CN": "能够替换房间风格的壁纸。会变成怎样的房间，要看房间主人的品味。",
+        "zh-TW": "能夠替換房間風格的壁紙。會變成怎樣的房間，要看房間主人的品味。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_ORDINARY_FLOORBOARD",
+      "numeric_id": 31,
+      "kind": "build",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の床材。これが本来のお家の床。",
+        "zh-CN": "能够替换房间风格的地板材质。这是这间房子原本的地板。",
+        "zh-TW": "能夠替換房間風格的地板材質。這是這間房子原本的地板。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_AUSTERE_FLOORBOARD",
+      "numeric_id": 32,
+      "kind": "build",
+      "gimmick_id": 0,
+      "days": 1,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 140,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV2",
+          "name_ja": "自宅がレベル2に拡張されている"
+        }
+      ],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "お部屋の模様替え用の床材。落ち着いた雰囲気にしてくれそう。",
+        "zh-CN": "能够替换房间风格的地板材质。感觉能营造出沉稳的氛围。",
+        "zh-TW": "能夠替換房間風格的地板材質。感覺能營造出沉穩的氛圍。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_ANVIL",
+      "numeric_id": 33,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_AVIARY",
+      "numeric_id": 34,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_LIVESTOCK_HOUSE",
+      "numeric_id": 35,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_SILO",
+      "numeric_id": 36,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_STABLE",
+      "numeric_id": 37,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_BARN",
+      "numeric_id": 38,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_BIRD_BATH",
+      "numeric_id": 39,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_WELL",
+      "numeric_id": 40,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_FISH_TANK",
+      "numeric_id": 41,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_DOG_HOUSE",
+      "numeric_id": 42,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RELOCATION_GREENHOUSE",
+      "numeric_id": 43,
+      "kind": "relocation",
+      "gimmick_id": 0,
+      "days": 0,
+      "limit": 0,
+      "required_flags": [],
+      "sets_flags": [],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "",
+        "zh-CN": "",
+        "zh-TW": ""
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_WESTERN",
+      "numeric_id": 44,
+      "kind": "renovation",
+      "gimmick_id": 111030500,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6667,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_05",
+          "name_ja": "村長バンドル05"
+        }
+      ],
+      "sets_flags": [
+        153
+      ],
+      "clears_flags": [
+        150,
+        151,
+        152,
+        154,
+        155
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "おしゃれな雰囲気のお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "流行时尚的房屋外观。只会变更房屋的外观。",
+        "zh-TW": "流行時尚的房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_THATCHED",
+      "numeric_id": 45,
+      "kind": "renovation",
+      "gimmick_id": 111030400,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6666,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_04",
+          "name_ja": "村長バンドル04"
+        }
+      ],
+      "sets_flags": [
+        154
+      ],
+      "clears_flags": [
+        150,
+        151,
+        152,
+        153,
+        155
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "昔ながらの良さがあるお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "保有昔日魅力的房屋外观。只会变更房屋的外观。",
+        "zh-TW": "保有昔日魅力的房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_RENOVATION_MY_HOUSE_PLASTER",
+      "numeric_id": 46,
+      "kind": "renovation",
+      "gimmick_id": 111030300,
+      "days": 2,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 142,
+          "code": "GAME_FLAG_MYHOUSE_EXPANSION_LV4",
+          "name_ja": "自宅がレベル4に拡張されている"
+        },
+        {
+          "id": 6668,
+          "code": "GAME_FLAG_BUNDLE_VILLAGE_HEAD_06",
+          "name_ja": "村長バンドル06"
+        }
+      ],
+      "sets_flags": [
+        155
+      ],
+      "clears_flags": [
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "漆喰の壁の味わい深いお家の外装。自宅の見た目だけを変えられる。",
+        "zh-CN": "韵味十足的灰泥墙房屋外观。只会变更房屋的外观。",
+        "zh-TW": "韻味十足的灰泥牆房屋外觀。只會變更房屋的外觀。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_REMOVE_RUBBLE_BEHIND_RANCH",
+      "numeric_id": 100,
+      "kind": "remove",
+      "gimmick_id": 490070000,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 16999,
+          "code": "GAME_FLAG_STORY_06_END",
+          "name_ja": "６章_終了"
+        }
+      ],
+      "sets_flags": [
+        56002
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": null,
+      "description": {
+        "ja": "庭の裏道を塞いでいる瓦礫の撤去。庭から石切場へ繋がる道が開通する。",
+        "zh-CN": "清除堵住庭院小路的瓦砾，能够开通通往采石场的道路。",
+        "zh-TW": "清除堵住庭院小路的瓦礫，能夠開通通往採石場的道路。"
+      }
+    },
+    {
+      "id": "CONSTRUCTION_ID_EXPANTION_ADDITIONAL_FARMLAND",
+      "numeric_id": 200,
+      "kind": "expantion",
+      "gimmick_id": 800010200,
+      "days": 3,
+      "limit": 0,
+      "required_flags": [
+        {
+          "id": 90031,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00",
+          "name_ja": "追加農地拡張のアナウンスデモ"
+        }
+      ],
+      "sets_flags": [
+        90033
+      ],
+      "clears_flags": [],
+      "unresolved_level": 0,
+      "version": 120,
+      "description": {
+        "ja": "庭の南側の瓦礫を撤去して、道の先の土地を農地として使えるようにする。費用にはリンに支払う土地代も含む。",
+        "zh-CN": "清理庭院南侧的瓦砾，即可将道路前方的土地开垦为农地。当中包含支付给林的土地费用。",
+        "zh-TW": "清理庭院南側的瓦礫，即可將道路前方的土地開墾為農地。當中包含支付給林的土地費用。"
+      }
+    }
+  ],
+  "farmland_expansion": {
+    "prices": [
+      5000,
+      20000
+    ],
+    "call_hours": [
+      6,
+      23
+    ],
+    "signs": {
+      "sign01": {
+        "x": 11059,
+        "y": 22078,
+        "nearest_area": 1
+      },
+      "sign02": {
+        "x": 10125,
+        "y": 23797,
+        "nearest_area": 2
+      },
+      "sign03": {
+        "x": 10943,
+        "y": 22980,
+        "nearest_area": 2
+      },
+      "sign04": {
+        "x": 11545,
+        "y": 23311,
+        "nearest_area": 4
+      }
+    },
+    "farm_areas": [
+      {
+        "area": 1,
+        "stage": "start",
+        "cells": 452,
+        "farmland_shapes": [
+          "map_0000_ver120_aut.ymwr.head-1",
+          "map_0000_ver120_aut.ymwr.head-2"
+        ]
+      },
+      {
+        "area": 2,
+        "stage": "expansion_1",
+        "cells": 783,
+        "farmland_shapes": [
+          "map_0000_ver120_aut.ymwr.head-4"
+        ]
+      },
+      {
+        "area": 4,
+        "stage": "expansion_2",
+        "cells": 800,
+        "farmland_shapes": [
+          "map_0000_ver120_aut.ymwr.head-5"
+        ]
+      },
+      {
+        "area": 8,
+        "stage": "additional",
+        "cells": 783,
+        "farmland_shapes": [
+          "map_0000_ver120_aut.ymwr.head-0",
+          "map_0000_ver120_aut.ymwr.head-3"
+        ]
+      }
+    ]
+  },
+  "additional_farmland": {
+    "EVENT_ID_ADDITIONAL_FARMLAND_EXPANTION_NOTICE": {
+      "name_ja": "追加農地拡張の手紙送付",
+      "hours": null,
+      "required_flags": [
+        {
+          "id": 147,
+          "code": "GAME_FLAG_FARMLAND_EXPANSION_01",
+          "name_ja": "農地が1段階拡張されている"
+        },
+        {
+          "id": 148,
+          "code": "GAME_FLAG_FARMLAND_EXPANSION_02",
+          "name_ja": "農地が2段階拡張されている"
+        },
+        {
+          "id": 14999,
+          "code": "GAME_FLAG_STORY_04_END",
+          "name_ja": "４章_終了"
+        }
+      ],
+      "blocked_by_flags": [
+        {
+          "id": 399,
+          "code": "GAME_FLAG_HORROR_OFF_MODE",
+          "name_ja": "あんしん暮しモードフラグ"
+        },
+        {
+          "id": 90030,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
+          "name_ja": "追加農地拡張の手紙送付"
+        },
+        {
+          "id": 41,
+          "code": "GAME_FLAG_LANGUAGE_EN",
+          "name_ja": "英語"
+        },
+        {
+          "id": 42,
+          "code": "GAME_FLAG_LANGUAGE_FR",
+          "name_ja": "フランス語"
+        },
+        {
+          "id": 43,
+          "code": "GAME_FLAG_LANGUAGE_ES",
+          "name_ja": "スペイン語"
+        }
+      ]
+    },
+    "EVENT_ID_ADDITIONAL_FARMLAND_EXPANTION_NOTICE_NO_HORROR": {
+      "name_ja": "追加農地拡張の手紙送付（あんしん暮し）",
+      "hours": null,
+      "required_flags": [
+        {
+          "id": 147,
+          "code": "GAME_FLAG_FARMLAND_EXPANSION_01",
+          "name_ja": "農地が1段階拡張されている"
+        },
+        {
+          "id": 148,
+          "code": "GAME_FLAG_FARMLAND_EXPANSION_02",
+          "name_ja": "農地が2段階拡張されている"
+        },
+        {
+          "id": 399,
+          "code": "GAME_FLAG_HORROR_OFF_MODE",
+          "name_ja": "あんしん暮しモードフラグ"
+        },
+        {
+          "id": 13020,
+          "code": "GAME_FLAG_STORY_03_001_HORROR_OFF",
+          "name_ja": "３章_ナゴが村人になる"
+        }
+      ],
+      "blocked_by_flags": [
+        {
+          "id": 90030,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
+          "name_ja": "追加農地拡張の手紙送付"
+        },
+        {
+          "id": 41,
+          "code": "GAME_FLAG_LANGUAGE_EN",
+          "name_ja": "英語"
+        },
+        {
+          "id": 42,
+          "code": "GAME_FLAG_LANGUAGE_FR",
+          "name_ja": "フランス語"
+        },
+        {
+          "id": 43,
+          "code": "GAME_FLAG_LANGUAGE_ES",
+          "name_ja": "スペイン語"
+        }
+      ]
+    },
+    "EVENT_ID_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00": {
+      "name_ja": "追加農地拡張について",
+      "hours": "7:00-16:59",
+      "required_flags": [
+        {
+          "id": 90030,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
+          "name_ja": "追加農地拡張の手紙送付"
+        }
+      ],
+      "blocked_by_flags": [
+        {
+          "id": 90031,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00",
+          "name_ja": "追加農地拡張のアナウンスデモ"
+        },
+        {
+          "id": 41,
+          "code": "GAME_FLAG_LANGUAGE_EN",
+          "name_ja": "英語"
+        },
+        {
+          "id": 42,
+          "code": "GAME_FLAG_LANGUAGE_FR",
+          "name_ja": "フランス語"
+        },
+        {
+          "id": 43,
+          "code": "GAME_FLAG_LANGUAGE_ES",
+          "name_ja": "スペイン語"
+        }
+      ]
+    },
+    "EVENT_ID_ADDITIONAL_FARMLAND_EXPANTION_DEMO_01": {
+      "name_ja": "追加農地拡張後デモ",
+      "hours": "7:00-23:00",
+      "required_flags": [
+        {
+          "id": 90033,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_CLEAR",
+          "name_ja": "追加農地拡張を大工小屋から完了した"
+        }
+      ],
+      "blocked_by_flags": [
+        {
+          "id": 90032,
+          "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_01",
+          "name_ja": "追加農地拡張後の初回デモ"
+        },
+        {
+          "id": 41,
+          "code": "GAME_FLAG_LANGUAGE_EN",
+          "name_ja": "英語"
+        },
+        {
+          "id": 42,
+          "code": "GAME_FLAG_LANGUAGE_FR",
+          "name_ja": "フランス語"
+        },
+        {
+          "id": 43,
+          "code": "GAME_FLAG_LANGUAGE_ES",
+          "name_ja": "スペイン語"
+        }
+      ]
+    }
+  },
+  "greenhouse_seed_flag": {
+    "id": 534,
+    "code": "GAME_FLAG_SALE_START_SEED_GREENHOUSE",
+    "name_ja": "温室の建築が解放されてから解禁されるもの"
+  },
+  "living_tank_item_numeric_ids": [
+    160000,
+    160010,
+    160020,
+    160030,
+    160040,
+    160050,
+    160060,
+    160070,
+    160080,
+    160090,
+    160100,
+    160110,
+    160120,
+    160130,
+    160140,
+    160150,
+    160160,
+    160170,
+    160180,
+    160190,
+    160200,
+    160210,
+    160220,
+    160230,
+    160240,
+    160250,
+    160260,
+    160270,
+    160280,
+    161000,
+    161010,
+    161020,
+    161030,
+    161040,
+    161050
+  ],
+  "construction_milestones": [
+    1,
+    5,
+    15,
+    25,
+    50
+  ]
+}
