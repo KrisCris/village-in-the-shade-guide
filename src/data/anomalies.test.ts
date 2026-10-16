@@ -33,4 +33,22 @@ describe('late-night anomaly data', () => {
     expect(rewards.length).toBeGreaterThan(30);
     for (const { item } of rewards) if (item !== RANDOM) expect(itemIds.has(item), item).toBe(true);
   });
+
+  it('keeps the fixed positions the guide maps', () => {
+    const counts = Object.fromEntries(Object.entries(anomalies.map_points).map(([key, points]) => [key, points.length]));
+    expect(counts).toMatchObject({ evil_eye_stone: 5, evil_eye_monument_big: 1, husband_grave: 3, jizo: 1, phone_box: 1, red_phone: 5, mask_item_red: 21, mask_item_blue: 21, dorotabo: 6, dorotabo_field: 6 });
+    for (const points of Object.values(anomalies.map_points)) for (const p of points) {
+      expect(p.x).toBeGreaterThan(0);
+      expect(p.y).toBeGreaterThan(0);
+    }
+  });
+
+  it('names existing items in the smaller night events', () => {
+    const { petopeto, giant_rabbit, phone_booth, doll, dorotabo } = anomalies.night_events;
+    const ids = [...petopeto.rewards, ...giant_rabbit.rewards].map((r) => r.item).filter((id) => id.startsWith('ITEM_ID_'));
+    ids.push(...phone_booth.rewards, phone_booth.pickup, phone_booth.after_answer, doll.pickup, doll.head, dorotabo.grown_harvest);
+    for (const id of ids) expect(itemIds.has(id), id).toBe(true);
+    expect(anomalies.night_events.abyss.need_per_level).toEqual([1, 3, 6, 10, 15, 15, 15]);
+    expect(anomalies.hand_eyes_monuments.hits).toEqual({ GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_SMALL: 2, GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_BIG: 4 });
+  });
 });

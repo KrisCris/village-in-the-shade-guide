@@ -9,13 +9,19 @@ Traced by hand from the scripts below (hashes in `reviewed`); re-trace when a ha
 - Each event script's clear function drops one reward per clear and advances a reward
   counter (gamevalue.dat holds the counter maximum; the cycle then restarts).
 - event_horror_unknown_livestocs: the barn ghost cow is a separate, non-late-night event.
+- night_events: the smaller night events outside the late-night rotation (petopeto, giant
+  rabbit, phone booth, Japanese doll, dorotabo, cursed produce, the abyss pool lord).
 latenightevent.dat supplies per-event conditions; event.dat supplies the start events'
-required and excluded flags.
+required and excluded flags; gimmick.dat supplies the monument hit counts. map_points reads
+anchors and placed gimmicks from the village map heads (identical across seasons) in game
+coordinates; the page projects them with the minimap projection.
 """
 import hashlib
 import json
+import re
 import runpy
 import struct
+import zlib
 from pathlib import Path
 from honogurashi_extractor.gamedir import game_dir
 from honogurashi_extractor.archive import FafullfsArchive
@@ -39,6 +45,32 @@ reviewed={
     'event_horror_fujin_raijin':'5fd88804116ee8e2239d2ed35b5788b2ce13d617bcc701dfae230c14506da28e',
     'event_horror_snow_woman':'cfd05957dd7859e74feb008aafd05d34e08feb4ee15f7c912ccab22e69c7fcbb',
     'event_horror_unknown_livestocs':'b4800dcceec164f4ca9f911ece3809559478695ab7104957f63384c021ee7838',
+    # Map positions and the smaller night events (map_points / night_events below).
+    'event_horror_petopeto':'5982eba8e8f074463594c23b608bed5a443475cd03aee336a14b6ccaf264deeb',
+    'ai_creature_horror_petopeto':'9c57700a6f4c32bd26304ee5f35eb100b8e1b8258a182acb6affedc1d65a7896',
+    'event_horror_mountain_monster':'f8a397df28449af07f8aaf50d1006cdcc6786ba572b4a5d33aec27309602cd89',
+    'event_horror_phone_booth':'08a6212e2f7464310a21e06df92451263dff0f79747eb591c9cb87bfb2f5f644',
+    'ai_creature_horror_long_hair_lady':'028dd8c8013e2353fa800210da354cc3419578ce7cf59bcc250629030f2c88a2',
+    'event_horror_doll':'c2c6f1aab43115d7948f3c8c136385c42d0c518663e50522eba39e90594a378a',
+    'gimmick_furniture_japanese_doll_body':'900343a47ae2e4c031b58f812bc7a4f7d3c628e23164662f78693d0d0209df02',
+    'ai_creature_horror_japanese_doll_body':'e5007108bf4c1c4095e7abacf93936fe4ae0e6ca763876797243ec7336a345e1',
+    'ai_creature_horror_japanese_doll_head_item':'b1f3dac822c1d00cb3d4c4b1574d6af4ec8a889c95c930c5bc26883cb33f1816',
+    'gimmick_event_night_grass':'eea10790b765e80150e4a3fbcdfdaf3980e4edfdda1666aa8c394e483567f4b3',
+    'ai_creature_horror_nozuchi_tail':'56e34dde60a89357a88d3e370599b0bee7b3058a1b3952fb264ffdf6929ba850',
+    'ai_creature_horror_red_mask_ghost':'3ee2e47f733eb4a12c041fa4417fac81efb346f17a9c35d94010b3c9fee9c452',
+    'ai_creature_horror_purple_mask_ghost':'0f9d7fe692a948ac1b87ecb9f22e9b50758902536262a430b0cdad5df3b8c4dd',
+    'gimmick_event_hat_gizo':'d05e7ab98e3e9bfae0c364c9657b8c10e4312032484674417c0c288336066dd4',
+    'ai_creature_horror_mizuchi_fujin_template':'0b66495d1fd8510ef11d3254c92bbded4e6389b32680295b7339603f414d17ee',
+    'ai_creature_horror_mizuchi_raijin_template':'9ce5c025fa923196e67248b1d20f523a9e05b91a49d6abb0b0a42edaf7588624',
+    'gimmick_snow_woman_husband_grave':'472bb109dad3bddd52b6bdfd51a5ab94a3e130a70c0ffbab1e4301eb9537d910',
+    'event_horror_grudge_vegetables':'0a02f544d6ba2593679566d746760ea57cda728bfd85628227e96c3c727efb7a',
+    'ai_creature_horror_dorotabo':'50562b1557454516ccca0438c0d86acddac6864d4e5f078aca9f6ce47a551b98',
+    'mapevent_horror_area':'c16bab5ce0c94bbfd38432e4a16473db218b4dd311ef21236548124e754c1729',
+    'event_horror_common':'87012d34303cd9e621f54b3caf1480be2acffe40cc8fd6df6d407d941dedd9c2',
+    'ai_creature_horror_vegetable_monster':'605b2c00e94da8ab9e2b8147cf5c95dfa3439f6a53da25dadc4d9450e2882f94',
+    'ai_creature_horror_fish_monster':'8ed1453024c390b585fb96e32de1c1ca786d2f6840aaa6f71bec57c47ed7d2c2',
+    'event_horror_abyss':'572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa',
+    'gimmick_event_evileye_stone_monument':'3a62f0be25c310941db5f9d735dab2d2ee0f65c02aa272779b3488de08c740f3',
 }
 scripts={}
 for name,digest in reviewed.items():
@@ -234,8 +266,132 @@ unknown_livestock=dict(
     clear_count_max=value_max['GAME_VALUE_HORROR_UNKNOWN_LIVESTOCK_CLEAR_COUNT'],
 )
 
+def consts(script):
+    """Every constant of a script, all functions included."""
+    out,todo=set(),[scripts[script]]
+    while todo:
+        p=todo.pop(); todo+=p['children']
+        out|={c for c in p['constants'] if isinstance(c,(str,int))}
+    return out
+
+# Map positions: named anchors in the village map head ((x, y) 32 bytes after the name; the four
+# season heads carry the same anchors), placed gimmicks as (u32 gimmick id, x, y).
+maps=FafullfsArchive.open(game_dir(__doc__)/'data/map_1_00.dat')
+def head(season):
+    b=maps.read_entry(f'data/map/map_0000_ver120_{season}.ymwr.head')
+    return zlib.decompress(b[20:]) if b.startswith(b'YKCMP_V1') else b
+village=head('spr')
+anchor_pos={m[1].decode():struct.unpack_from('<ii',village,m.start()+32) for m in re.finditer(rb'((?:pop|pos|move|event)_[A-Za-z0-9_]+)\x00',village)}
+gimmick_ids={g[0]:u32(r,0) for r,g in table('gimmick')}
+def placed(gimmick):
+    key=struct.pack('<I',gimmick_ids[gimmick])
+    assert village.count(key)==1,gimmick
+    return struct.unpack_from('<ii',village,village.find(key)+4)
+def family(pattern):
+    names=sorted(a for a in anchor_pos if re.fullmatch(pattern,a))
+    assert names,pattern
+    return [dict(anchor=a,x=anchor_pos[a][0],y=anchor_pos[a][1]) for a in names]
+POINTS={
+    # 手之目: small monuments pop_evilEyeStone (function 16); the big one is created at a constant.
+    'evil_eye_stone':r'pop_evilEyeStone\d+','eye_of_hand':r'pop_eye_of_hand\d+',
+    'lantern_fixed':r'pop_lanternFixed\d+_\d','lantern_move':r'pop_lanternMove\d+',
+    'daruma_stone':r'pop_daruma_stone\d+',
+    'boss_soot_sprite':r'pop_bossSootSprite\d+','soot_sprite':r'pop_sootSprite\d+',
+    # お面: the native placement reads pop_mask_item_red/blue; MapCreaturePop uses the creature anchors.
+    'mask_item_red':r'pop_mask_item_red\d+','mask_item_blue':r'pop_mask_item_blue\d+',
+    'purple_mask_ghost':r'pop_purpleMaskGhost\d+','red_merchant':r'pop_redMerchant(?:_\d+)?_\d+','blue_merchant':r'pop_blueMerchant(?:_\d+)?\d*(?:_\d+)?',
+    'hat_ghost':r'pop_hat_ghost\d+',
+    'mizuchi_fujin':r'pop_mizuchiFujin\d+','mizuchi_fujin_small':r'pop_mizuchiFujinS\d+',
+    'mizuchi_raijin':r'pop_mizuchiRaijin\d+','mizuchi_raijin_small':r'pop_mizuchiRaijinS\d+',
+    'husband_grave':r'pos_husband_grave\d+','snow_child':r'pop_snowChild\d+','snow_woman_intro':r'event_farm_entrance_pos00',
+    'petopeto':r'pop_petopeto\d+','petopeto_goal':r'pos_petopeto_goal\d+',
+    'giant_rabbit':r'pop_giant_rabbit\d+',
+    'red_phone':r'pop_mobilePhone\d+',
+    'doll_body_item':r'pop_japaneseDollBodyItem\d+','doll_walking':r'pop_japaneseDollBodyCreature\d+','doll_route':r'move_japaneseDollBody\d+',
+    'demon':r'pop_demon\d+',
+    'dorotabo':r'pop_dorotabo\d+','dorotabo_field':r'move_dorotabo\d+',
+    'fish_monster':r'pop_fishMonster\d+','abyss_carp':r'pop_abyss_carp\d+',
+}
+map_points={k:family(v) for k,v in POINTS.items()}
+assert {k:len(v) for k,v in map_points.items() if len(v)>1}=={
+    'evil_eye_stone':5,'eye_of_hand':2,'lantern_fixed':6,'lantern_move':7,'daruma_stone':97,'boss_soot_sprite':4,'soot_sprite':43,
+    'mask_item_red':21,'mask_item_blue':21,'purple_mask_ghost':21,'blue_merchant':4,'hat_ghost':20,
+    'mizuchi_fujin':4,'mizuchi_fujin_small':3,'mizuchi_raijin':4,'mizuchi_raijin_small':2,'husband_grave':3,'snow_child':21,'red_phone':5,'doll_route':2,
+    'dorotabo':6,'dorotabo_field':6,'fish_monster':30}
+eye=consts('event_horror_eye_of_hand')
+assert {17280,18630,'pop_evilEyeStone','pop_eye_of_hand'}<=eye
+# The small monuments go on RandomSelectIndex(#anchors, 5) of the 5 anchors, i.e. all of them.
+assert 'RandomSelectIndex' in consts('event_horror_eye_of_hand')
+monument_hits={g[0]:int(g[g.index('breakCount')+1]) for g in _string_groups(read_table(data.read_entry('data/database/gimmick.dat'))) if g[0].startswith('GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_')}
+assert monument_hits=={'GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_SMALL':2,'GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_BIG':4},monument_hits
+assert 'action_pickaxe' in consts('gimmick_event_evileye_stone_monument')
+map_points['evil_eye_monument_big']=[dict(anchor='constant in event_horror_eye_of_hand',x=17280,y=18630)]
+for key,gimmick in (('jizo','GIMMICK_ID_EVENT_HAT_GIZO'),('phone_box','GIMMICK_ID_FHONE_BOX')):
+    x,y=placed(gimmick)
+    map_points[key]=[dict(anchor=gimmick,x=x,y=y)]
+# The event scripts read these anchor names.
+assert {'pop_hat_ghost','GIMMICK_ID_EVENT_HAT_GIZO'}<=consts('event_horror_hat_ghost')
+assert {'pos_husband_grave%02d','RandomRange','event_farm_entrance_pos00'}<=consts('event_horror_snow_woman')
+assert {'pop_mobilePhone','GIMMICK_ID_FHONE_BOX'}<=consts('event_horror_phone_booth')
+assert {'pos_petopeto_goal00'}<=consts('event_horror_petopeto') and {'pop_giant_rabbit00'}<=consts('event_horror_mountain_monster')
+assert {'pop_japaneseDollBodyCreature00'}<=consts('event_horror_doll')
+for season in ('sum','aut','win'):
+    other=head(season)
+    for rows in map_points.values():
+        for p in rows:
+            if p['anchor'].startswith(('pop_','pos_','move_','event_')):
+                m=re.search(rb'(?<![A-Za-z0-9_])'+re.escape(p['anchor']).encode()+rb'\x00',other)
+                assert struct.unpack_from('<ii',other,m.start()+32)==(p['x'],p['y']),(season,p)
+
+# Night events outside the late-night rotation: reward lists in code order.
+def all_refs(script):
+    out=[]
+    for p in [scripts[script],*scripts[script]['children']]:
+        out+=[x for x in refs(p) if x not in out]
+    return out
+SCARECROWS=['ITEM_ID_TOOL_SCARECROW_SPRING','ITEM_ID_TOOL_SCARECROW_SUMMER','ITEM_ID_TOOL_SCARECROW_AUTUMN','ITEM_ID_TOOL_SCARECROW_WINTER']
+assert all_refs('event_horror_petopeto')==['ITEM_ID_ACCESSORY_01_00','ITEM_ID_ACCESSORY_74',*SCARECROWS]
+assert all_refs('event_horror_mountain_monster')==['ITEM_ID_FIGURINE_SEASON_JUGOYA_SET','ITEM_ID_ACCESSORY_05_00','ITEM_ID_CLOTHING_06_00',*SCARECROWS]
+assert {'ITEM_ID_CURSE_FURNITURE_OSUG','ITEM_ID_CURSE_FURNITURE_ONIMARU','ITEM_ID_CURSED_BROKEN_MOBILE_PHONE'}<=consts('event_horror_phone_booth')
+assert {'INTANGEBLE_ID_CRAFT_RECIPE_12','ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_BODY','ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_HEAD'}<=consts('event_horror_doll')
+# 泥田坊: mapevent_horror_area starts EVENT_ID_GRUDGE_VEGETABLES between 0:00 and 2:59, the first time
+# at once, later once 7 days have passed and the last 泥の種 is gone from its field.
+assert {'GAME_FLAG_HORROR_EVENT_GRUDGE_VEGETABLES_FIRST_DOROTABO','CROPS_ID_OBJECT_MUD_SEEDS','EVENT_ID_GRUDGE_VEGETABLES'}<=consts('mapevent_horror_area')
+assert {'pop_dorotabo%02d','CREATURE_ID_HORROR_DOROTABO'}<=consts('event_horror_grudge_vegetables')
+assert {'move_dorotabo00','move_dorotabo05','CROPS_ID_OBJECT_MUD_SEEDS'}<=consts('ai_creature_horror_dorotabo')
+crop_rows={g[0]:r for r,g in table('crops')}
+mud=[(u32(r,0),r) for r,g in table('cropsharvest') if u32(r,0)==u32(crop_rows['CROPS_ID_OBJECT_MUD_SEEDS'],0)]
+(_,mud_row),=mud
+assert items[u32(mud_row,36)]=='ITEM_ID_CROPS_MUD_SEEDS' and items[u32(mud_row,96)]=='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE',mud_row
+# Cursed crops / fish: discarding or shipping adds to a pop count; EVENT_ID_LATE_NIGHT_START pops that many.
+common_k=consts('event_horror_common')
+assert {'ITEM_FEATURE_CURSE','ITEM_CATEGORY_CROPS','ITEM_CATEGORY_FLOWER','ITEM_CATEGORY_FRUIT','ITEM_CATEGORY_FISH','CREATURE_ID_HORROR_VEGETABLE_MONSTER','CREATURE_ID_HORROR_FISH_MONSTER'}<=common_k
+assert event_hours['EVENT_ID_LATE_NIGHT_START'].startswith('0:00'),event_hours['EVENT_ID_LATE_NIGHT_START']
+veg=consts('ai_creature_horror_vegetable_monster')
+assert {'ATTACK_ID_ENEMY_HORROR_STRONG_BODY_SLAM','LIFESPAN_FRAME'}<=veg
+# オカミ淵: 今野 sells the tip for 1000; then cursed items thrown into the pool count toward the next level.
+abyss=consts('event_horror_abyss')
+assert {1000,'CHARA_ID_SECRETARY','ITEM_FEATURE_CURSE','ITEM_ID_CURSED_HEART_SCALE','GAME_FLAG_WHISTLE_SONG_LEARN_10','ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_1','ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_2'}<=abyss
+abyss_need=[int(defines[f'ABYSS_NEED_COUNT_LV{i}']) for i in range(1,8)]
+assert value_max['GAME_VALUE_HORROR_ABYSS_LEVEL']==7
+
+monuments=dict(tool='pickaxe (action_pickaxe)',needs_light=True,before_hour=5,hits=monument_hits)
+night_events=dict(
+    dorotabo=dict(event='EVENT_ID_GRUDGE_VEGETABLES',start=event_flags('EVENT_ID_GRUDGE_VEGETABLES'),hours=[0,2],repeat_after_days=7,
+        plants='CROPS_ID_OBJECT_MUD_SEEDS',early_harvest='ITEM_ID_CROPS_MUD_SEEDS',grown_harvest='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE'),
+    cursed_produce=dict(adds_on=['EVENT_ID_LATE_NIGHT_DISCARD_CURSED_CROP','EVENT_ID_LATE_NIGHT_SHIP_CURSED_CROP','EVENT_ID_LATE_NIGHT_DISCARD_CURSED_FISH','EVENT_ID_LATE_NIGHT_SHIP_CURSED_FISH'],
+        pops_on='EVENT_ID_LATE_NIGHT_START',vegetable_monster=dict(attack='ATTACK_ID_ENEMY_HORROR_STRONG_BODY_SLAM',charge_frames=120,lifespan_frames=360),
+        fish_monster=dict(lifespan_after_lost_frames=1800)),
+    abyss=dict(tip_price=1000,npc='CHARA_ID_SECRETARY',hours=[0,4],need_per_level=abyss_need,
+        rewards=['+1 max HP (ITEM_ID_CURSED_HEART_SCALE)']*5+['GAME_FLAG_WHISTLE_SONG_LEARN_10','ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_1 or _2 (repeats)']),
+    petopeto=dict(goal_event=event_flags('EVENT_ID_PETOPETO_GOAL'),rewards=[dict(item='ITEM_ID_ACCESSORY_01_00',skipped_by='GAME_FLAG_RELEASE_ACCESSORY_01'),dict(item='ITEM_ID_ACCESSORY_74',skipped_by='GAME_FLAG_RELEASE_ACCESSORY_74'),dict(item='random seasonal scarecrow',of=SCARECROWS)]),
+    giant_rabbit=dict(rewards=[dict(item='ITEM_ID_FIGURINE_SEASON_JUGOYA_SET'),dict(item='ITEM_ID_ACCESSORY_05_00',skipped_by='GAME_FLAG_RELEASE_ACCESSORY_05'),dict(item='ITEM_ID_CLOTHING_06_00',skipped_by='GAME_FLAG_RELEASE_CLOTHING_06'),dict(item='random seasonal scarecrow',of=SCARECROWS)]),
+    phone_booth=dict(start=event_flags('EVENT_ID_PHONE_BOOTH_START'),placement=event_flags('EVENT_ID_PHONE_BOOTH_PLACEMENT'),pickup='ITEM_ID_CURSED_RED_MOBILE_PHONE',after_answer='ITEM_ID_CURSED_BROKEN_MOBILE_PHONE',rewards=['ITEM_ID_CURSE_FURNITURE_OSUG','ITEM_ID_CURSE_FURNITURE_ONIMARU']),
+    doll=dict(placement=event_flags('EVENT_ID_DOLL_BODY_PLACEMENT'),pickup='ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_BODY',head='ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_HEAD',recipe='INTANGEBLE_ID_CRAFT_RECIPE_12'),
+)
+
 out=dict(
-    source='latenightevent.dat, event.dat, gamevalue.dat, placementitem.dat, cropsharvest.dat + scripts '+', '.join(f'{k}.lub' for k in reviewed),
+    source='latenightevent.dat, event.dat, gamevalue.dat, placementitem.dat, cropsharvest.dat, gimmick.dat, map_0000_ver120_*.ymwr.head + scripts '+', '.join(f'{k}.lub' for k in reviewed),
     script_sha256=reviewed,
     late_night=late_night,
     altar=dict(item='ITEM_ID_SHINTO_ALTAR',pickup_event='EVENT_ID_STORY_01_200',**altar_pickup),
@@ -243,6 +399,9 @@ out=dict(
     mask_night_pickups=candle_groups,
     events=late_events,
     unknown_livestock=unknown_livestock,
+    map_points=map_points,
+    night_events=night_events,
+    hand_eyes_monuments=monuments,
 )
 Path('data/sources/game-anomalies.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(len(late_events),'events,',len(tablet_list),'tablets')

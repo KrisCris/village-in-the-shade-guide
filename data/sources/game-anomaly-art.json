@@ -1,0 +1,339 @@
+{
+  "source": "anime.dat model names; FAN models in data/fairy_1_00.dat, rendered with src/components/art/portraitRenderer.ts",
+  "build": "25311578",
+  "images": {
+    "hand-eyes": {
+      "anime": "ANIME_ID_ENEMY_EYE_OF_HAND",
+      "model": "ene_3000",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_eye_of_hand",
+      "width": 256,
+      "height": 219
+    },
+    "lantern": {
+      "anime": "ANIME_ID_ENEMY_LANTERN",
+      "model": "ene_3010",
+      "container": "resident.fad",
+      "sequence": 110,
+      "used_by": "ai_creature_horror_lantern_fixed",
+      "width": 175,
+      "height": 241
+    },
+    "monument-small": {
+      "anime": "ANIME_ID_EVENT_EVILEVE_STONE_MONUMENT",
+      "model": "eve_0103",
+      "container": "resident.fad",
+      "sequence": 210,
+      "used_by": "gimmick.dat GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_SMALL waitSeq",
+      "width": 86,
+      "height": 131
+    },
+    "monument-big": {
+      "anime": "ANIME_ID_EVENT_EVILEVE_STONE_MONUMENT",
+      "model": "eve_0103",
+      "container": "resident.fad",
+      "sequence": 110,
+      "used_by": "gimmick.dat GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_BIG waitSeq",
+      "width": 108,
+      "height": 191
+    },
+    "daruma": {
+      "anime": "ANIME_ID_ENEMY_STATUE_GAME",
+      "model": "ene_3020",
+      "container": "resident_lang_jp.fad",
+      "sequence": 1,
+      "used_by": "ai_creature_horror_statue_game",
+      "width": 202,
+      "height": 256
+    },
+    "black-daruma-stone": {
+      "anime": "ANIME_ID_EVENT_BLACK_DARUMA",
+      "model": "eve_0104",
+      "container": "resident.fad",
+      "sequence": 200,
+      "used_by": "gimmick_event_black_daruma (eye closed)",
+      "width": 168,
+      "height": 166
+    },
+    "black-daruma": {
+      "anime": "ANIME_ID_EVENT_BLACK_DARUMA",
+      "model": "eve_0104",
+      "container": "resident.fad",
+      "sequence": 110,
+      "used_by": "gimmick_event_black_daruma (eye open)",
+      "width": 133,
+      "height": 146
+    },
+    "soot-sprite": {
+      "anime": "ANIME_ID_ENEMY_SOOT_SPRITE",
+      "model": "ene_3060",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_soot_sprite",
+      "width": 225,
+      "height": 212
+    },
+    "boss-soot-sprite": {
+      "anime": "ANIME_ID_ENEMY_SOOT_SPRITE",
+      "model": "ene_3060",
+      "container": "resident.fad",
+      "sequence": 1011,
+      "used_by": "ai_creature_horror_boss_soot_sprite SEQ_WAIT",
+      "width": 242,
+      "height": 214
+    },
+    "night-grass": {
+      "anime": "ANIME_ID_EVENT_NIGHT_GRASS",
+      "model": "eve_0109",
+      "container": "resident_2.fad",
+      "sequence": 10,
+      "used_by": "gimmick_event_night_grass",
+      "width": 200,
+      "height": 236
+    },
+    "night-grass-mimic": {
+      "anime": "ANIME_ID_ENEMY_NIGHT_GRASS_MIMIC",
+      "model": "ene_3080",
+      "container": "resident_2.fad",
+      "sequence": 110,
+      "used_by": "ai_creature_horror_night_grass_mimic",
+      "width": 110,
+      "height": 120
+    },
+    "nozuchi-tail": {
+      "anime": "ANIME_ID_ENEMY_NOZUCHI",
+      "model": "ene_3070",
+      "container": "resident.fad",
+      "sequence": 120,
+      "used_by": "ai_creature_horror_nozuchi_tail SEQ_STOP",
+      "width": 201,
+      "height": 256
+    },
+    "nozuchi": {
+      "anime": "ANIME_ID_ENEMY_NOZUCHI",
+      "model": "ene_3070",
+      "container": "resident.fad",
+      "sequence": 30,
+      "used_by": "ai_creature_horror_nozuchi",
+      "width": 197,
+      "height": 256
+    },
+    "red-mask": {
+      "anime": "ANIME_ID_ENEMY_MASK_GHOST",
+      "model": "ene_3050",
+      "container": "resident.fad",
+      "sequence": 1000,
+      "used_by": "ai_creature_horror_red_mask_ghost",
+      "width": 192,
+      "height": 256
+    },
+    "blue-mask": {
+      "anime": "ANIME_ID_ENEMY_MASK_GHOST",
+      "model": "ene_3050",
+      "container": "resident.fad",
+      "sequence": 3000,
+      "used_by": "ai_creature_horror_blue_mask_ghost",
+      "width": 192,
+      "height": 256
+    },
+    "purple-mask": {
+      "anime": "ANIME_ID_ENEMY_MASK_GHOST",
+      "model": "ene_3050",
+      "container": "resident.fad",
+      "sequence": 2000,
+      "used_by": "ai_creature_horror_purple_mask_ghost",
+      "width": 183,
+      "height": 225
+    },
+    "kasa-ghost": {
+      "anime": "ANIME_ID_ENEMY_SEDGE_HAT_GHOST",
+      "model": "ene_3030",
+      "container": "resident.fad",
+      "sequence": 101,
+      "used_by": "ai_creature_horror_sedge_hat_ghost",
+      "width": 201,
+      "height": 256
+    },
+    "jizo": {
+      "anime": "ANIME_ID_EVENT_HAT_JIZO",
+      "model": "eve_0105",
+      "container": "resident.fad",
+      "sequence": 120,
+      "used_by": "gimmick_event_hat_gizo SEQ_HAT_JIJO_1",
+      "width": 126,
+      "height": 212
+    },
+    "fujin": {
+      "anime": "ANIME_ID_ENEMY_FUJIN",
+      "model": "ene_8040",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_fujin SEQ_APPEAR",
+      "width": 232,
+      "height": 256
+    },
+    "raijin": {
+      "anime": "ANIME_ID_ENEMY_RAIJIN",
+      "model": "ene_8050",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_raijin SEQ_APPEAR",
+      "width": 250,
+      "height": 256
+    },
+    "mizuchi-fujin": {
+      "anime": "ANIME_ID_ENEMY_FUJIN",
+      "model": "ene_8040",
+      "container": "resident.fad",
+      "sequence": 1010,
+      "used_by": "ai_creature_horror_mizuchi_fujin_template SEQ_APPEAR",
+      "width": 194,
+      "height": 201
+    },
+    "mizuchi-raijin": {
+      "anime": "ANIME_ID_ENEMY_RAIJIN",
+      "model": "ene_8050",
+      "container": "resident.fad",
+      "sequence": 1010,
+      "used_by": "ai_creature_horror_mizuchi_raijin_template SEQ_APPEAR",
+      "width": 196,
+      "height": 201
+    },
+    "snow-woman": {
+      "anime": "ANIME_ID_ENEMY_SNOW_WOMAN",
+      "model": "ene_3100",
+      "container": "resident_2.fad",
+      "sequence": 51,
+      "used_by": "ai_creature_horror_snow_woman",
+      "width": 180,
+      "height": 256
+    },
+    "snow-child": {
+      "anime": "ANIME_ID_ENEMY_SNOW_CHILD",
+      "model": "ene_3110",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_snow_child",
+      "width": 198,
+      "height": 256
+    },
+    "husband-grave": {
+      "anime": "ANIME_ID_GIMMICK_SNOW_WOMAN_HUSBAND_GRAVE",
+      "model": "bli_9024",
+      "container": "resident.fad",
+      "sequence": 100,
+      "used_by": "gimmick_snow_woman_husband_grave",
+      "width": 155,
+      "height": 209
+    },
+    "petopeto": {
+      "anime": "ANIME_ID_ENEMY_PETOPETO",
+      "model": "ene_5120",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_petopeto",
+      "width": 256,
+      "height": 239
+    },
+    "giant-rabbit-moon": {
+      "anime": "ANIME_ID_ENEMY_GIANT_RABBIT",
+      "model": "ene_3090",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_giant_rabbit SEQ_WAIT",
+      "width": 254,
+      "height": 256
+    },
+    "giant-rabbit": {
+      "anime": "ANIME_ID_ENEMY_GIANT_RABBIT",
+      "model": "ene_3090",
+      "container": "resident.fad",
+      "sequence": 30,
+      "used_by": "event_horror_mountain_monster SEQ_MOON_VANISH",
+      "width": 232,
+      "height": 232
+    },
+    "red-phone": {
+      "anime": "ANIME_ID_EVENT_RED_MOBILE_PHONE",
+      "model": "eve_0101",
+      "container": "resident_2.fad",
+      "sequence": 200,
+      "used_by": "gimmick_event_red_mobile_phone",
+      "width": 140,
+      "height": 117
+    },
+    "long-hair-lady": {
+      "anime": "ANIME_ID_ENEMY_LONG_HAIR_LADY",
+      "model": "ene_5000",
+      "container": "resident.fad",
+      "sequence": 1,
+      "used_by": "ai_creature_horror_long_hair_lady",
+      "width": 208,
+      "height": 256
+    },
+    "doll-body": {
+      "anime": "ANIME_ID_ENEMY_JAPANESE_DOLL",
+      "model": "ene_5050",
+      "container": "resident_2.fad",
+      "sequence": 100,
+      "used_by": "ai_creature_horror_japanese_doll_body_item",
+      "width": 122,
+      "height": 117
+    },
+    "doll-walking": {
+      "anime": "ANIME_ID_ENEMY_JAPANESE_DOLL",
+      "model": "ene_5050",
+      "container": "resident_2.fad",
+      "sequence": 200,
+      "used_by": "ai_creature_horror_japanese_doll_body SEQ_WALK",
+      "width": 88,
+      "height": 199
+    },
+    "doll-head": {
+      "anime": "ANIME_ID_ENEMY_JAPANESE_DOLL",
+      "model": "ene_5050",
+      "container": "resident_2.fad",
+      "sequence": 300,
+      "used_by": "ai_creature_horror_japanese_doll_head_item",
+      "width": 92,
+      "height": 113
+    },
+    "ghost-rat": {
+      "anime": "ANIME_ID_ENEMY_GHOST_RAT",
+      "model": "ene_5110",
+      "container": "resident_2.fad",
+      "sequence": 1,
+      "used_by": "ai_creature_horror_ghost_rat",
+      "width": 198,
+      "height": 168
+    },
+    "dorotabo": {
+      "anime": "ANIME_ID_ENEMY_DOROTABO",
+      "model": "ene_5010",
+      "container": "resident.fad",
+      "sequence": 12,
+      "used_by": "ai_creature_horror_dorotabo walk seq 10, facing down",
+      "width": 256,
+      "height": 256
+    },
+    "fish-monster": {
+      "anime": "ANIME_ID_ENEMY_WANDERING_GHOST",
+      "model": "ene_1050",
+      "container": "resident.fad",
+      "sequence": 12,
+      "used_by": "creature.dat CREATURE_ID_HORROR_FISH_MONSTER anime; ai_creature_horror_fish_monster SEQ_WAIT 10, facing down",
+      "width": 189,
+      "height": 256
+    },
+    "abyss-carp": {
+      "anime": "ANIME_ID_ENEMY_ABYSS_CARP",
+      "model": "ene_9000",
+      "container": "resident.fad",
+      "sequence": 20,
+      "used_by": "event_horror_abyss event_clear",
+      "width": 256,
+      "height": 255
+    }
+  }
+}

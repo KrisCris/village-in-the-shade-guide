@@ -16,6 +16,7 @@ Most images on the site are extracted from the game files and stored in the repo
 | `public/maps/farm/` | farm, room, crop and facility art for the save editor | `tools/extract-map-art.py`; see the folder's README |
 | `public/art/` | home page mountains, mist, seasonal trees and shrubs | `tools/extract-scenery.py`; per-image sources in `data/sources/site-scenery.json` |
 | `public/art/portraits/` | animated portraits | exported by `tools/extract-portrait-models.py` and `extract-portrait-options.py`, packed by `tools/package-portraits.mjs` |
+| `public/art/anomalies/` | anomaly guide illustrations | exported from build `25311578` `anime.dat` and `fairy_1_00.dat` by `tools/extract-anomaly-art.py`, rendered by `tools/render-anomaly-art.mjs`; per-image sources in `data/sources/game-anomaly-art.json` |
 | `public/art/logo-japanese.png` | Japanese game logo | public Steam store image |
 | `public/portraits/official/` | character portraits | publisher's character pages; sources in `data/sources/official-character-portraits.json` |
 | `public/favicon.svg`, `public/app/` | site and app icons | drawn by the author; `tools/build-app-icons.mjs` writes every size |
