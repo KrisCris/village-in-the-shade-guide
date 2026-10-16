@@ -3,7 +3,9 @@
 Each fishing.dat record is one spot: word 10 (offset 40) holds the spawn count,
 followed by 36-byte rows of item id, float32 weight at +8, season at +16 and a
 time-range string reference at +24/+28. The catch is drawn from the rows for
-the current spot, season and period in proportion to their weights.
+the current spot, season and period in proportion to their weights, except
+white rare fish, whose weight comes from the rows before them (see the catch
+roll in tools/extract-curse-items.py). Rows stay in table order.
 """
 import json
 import struct
