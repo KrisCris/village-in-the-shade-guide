@@ -1,0 +1,177 @@
+---
+import GuideItem from '../../components/GuideItem.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import type {Entity} from '../../data/types';
+import curse from '../../../data/sources/game-curse-items.json';
+import fishing from '../../../data/sources/game-fishing.json';
+import night from '../../../data/sources/game-night-pickups.json';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const items=new Map(catalog.entities.filter(e=>e.kind==='items').map(e=>[e.id,e]));
+const item=(id:string)=>items.get(id);
+const name=(id:string)=>item(id)?.name.zh_hans??id;
+const scale='ITEM_ID_CURSED_HEART_SCALE',aburaage='ITEM_ID_CURSED_FOX_ABURAAGE',mud='ITEM_ID_CROPS_MUD_SEEDS';
+const {hp,stamina}=curse.caps;
+const hearts=(value:number)=>value/hp.per_heart;
+const gauges=(value:number)=>value/stamina.per_gauge;
+const scaleCount=curse.abyss.levels.filter(l=>l.reward===scale).length;
+const foxCount=curse.inari.clears*curse.inari.stamina_gauges_per_clear;
+// ITEM_FEATURE_CURSE is feature 10 in itemfeature.dat; the ヌシ only takes items that carry it.
+const cursed=catalog.entities.filter((e):e is Entity=>e.kind==='items'&&Array.isArray(e.feature_ids)&&(e.feature_ids as number[]).includes(10));
+const cursedCrops=cursed.filter(e=>e.category_id==='ITEM_CATEGORY_DEFORMITY_CROPS');
+const cursedFish=cursed.filter(e=>e.category_id==='ITEM_CATEGORY_DEFORMITY_FISH');
+let running=0;
+const levels=curse.abyss.levels.map(l=>({...l,total:running+=l.need}));
+const whistleLevel=levels.find(l=>l.reward==='WHISTLE_SONG_10')!;
+const lanternLevel=levels.find(l=>l.reward==='CARP_LANTERN_RANDOM')!;
+// Late-night catch share of each cursed fish at its spot (fishing.dat weights; same in every season).
+// The roll weighs each row int(weight*100); plain and high-grade bait halve trash (fish.dat kind 0).
+const lateNight=fishing.spawns.filter(r=>r.period==='late-night');
+const fishKind=curse.fish_kind as Record<string,number>;
+const trashBait=curse.bait.trash_multiplier.ITEM_ID_SPRINKLING_BAIT;
+const fishShare=(id:string,trash=1)=>{
+  const row=lateNight.find(r=>r.item===id)!;
+  const weigh=(r:typeof row)=>{const w=Math.trunc(r.weight*100);return fishKind[r.item]===0?Math.trunc(w*trash):w;};
+  const total=lateNight.filter(r=>r.spot===row.spot&&r.season===row.season).reduce((n,r)=>n+weigh(r),0);
+  return weigh(row)/total;
+};
+const pct=(value:number)=>`${(value*100).toFixed(1)}%`;
+const fishEntities=new Map(catalog.entities.filter(e=>e.kind==='fish').map(e=>[e.id,e]));
+const fishSpot=(id:string)=>((fishEntities.get(id)?.locations??[]) as {name:{zh_hans:string}}[])[0]?.name.zh_hans??'';
+const bestShare=Math.max(...cursedFish.map(e=>fishShare(e.id)));
+const bestSpots=cursedFish.filter(e=>fishShare(e.id)===bestShare).map(e=>fishSpot(e.id));
+// Mud seed picks and outcomes, traced in village.exe (see tools/extract-curse-items.py).
+const crops=new Map(catalog.entities.filter(e=>e.kind==='crops').map(e=>[e.id,e]));
+const cropName=(id:string)=>crops.get(id)?.name.zh_hans??id;
+const seasonName:Record<string,string>={spring:t('春'),summer:t('夏'),autumn:t('秋'),winter:t('冬')};
+// Every outcome except 'none' names the cursed item it yields.
+type MudEntry={crop:string;outcome:string;ridge:boolean;item?:string};
+type Yield=MudEntry&{item:string};
+const yields=(pool:MudEntry[],outcome:string)=>pool.filter((e):e is Yield=>e.outcome===outcome&&!!e.item);
+const mudSeasons=Object.entries(curse.mud_pool as Record<string,MudEntry[]>).map(([season,pool])=>({season,pool,cursed:yields(pool,'cursed'),giant:yields(pool,'giant'),late:yields(pool,'season_end'),plain:pool.filter(e=>e.outcome==='none')}));
+const giantCrops=mudSeasons.flatMap(s=>s.giant);
+const edamame=mudSeasons.flatMap(s=>s.late)[0];
+const giantInfo=Object.values(curse.giants)[0];
+const pull=curse.cursed_pull;
+const winter=mudSeasons.find(s=>s.season==='winter')!,spring=mudSeasons.find(s=>s.season==='spring')!;
+// Night sparkle pools from placementitem.dat; shares count entries whose weather and unlock flags fit.
+const village=curse.pickup_pools.find(p=>p.id==='PLACEMENT_ITEM_ID_001')!;
+const farmland=curse.pickup_pools.find(p=>p.id==='PLACEMENT_ITEM_ID_100')!;
+type Pool={entries:Array<{item:string;weight:number;weather:string[];required_flag:string|null}>};
+const nightPool=village.groups.find(g=>g.gimmick==='GIMMICK_ID_EVENT_KIRAKIRA_NIGHT')!;
+const redPool=village.groups.find(g=>g.gimmick==='GIMMICK_ID_EVENT_KIRAKIRA_NIGHT_RED'&&g.entries.some(e=>e.item===mud))!;
+const bluePool=village.groups.find(g=>g.gimmick==='GIMMICK_ID_EVENT_KIRAKIRA_NIGHT_BLUE'&&g.entries.some(e=>e.item===mud))!;
+const farmNight=farmland.groups.find(g=>g.gimmick==='GIMMICK_ID_EVENT_KIRAKIRA_NIGHT')!;
+// Sunny/cloudy and rainy nights swap jewel entries of equal total weight, so the share is the same in any weather.
+const share=(pool:Pool)=>{
+  const fits=pool.entries.filter(e=>!e.weather.length||e.weather.includes('WEATHER_ID_SUNNY'));
+  const mudWeight=fits.find(e=>e.item===mud)?.weight??0;
+  const always=fits.filter(e=>!e.required_flag).reduce((n,e)=>n+e.weight,0),all=fits.reduce((n,e)=>n+e.weight,0);
+  const low=Math.round(mudWeight/all*100),high=Math.round(mudWeight/always*100);
+  return low===high?`${low}%`:`${low}–${high}%`;
+};
+const weatherLabel=(ids:string[])=>ids.length?ids.map(id=>catalog.entities.find(e=>e.kind==='weather'&&e.id===id)?.name.zh_hans??id).join(t('、')):t('不限');
+const offers=(id:string)=>catalog.entities.filter(e=>e.kind==='store-offers'&&e.item_id===id).length;
+const url=(id:string)=>{const e=item(id);return e?href(entityUrl(e)):'';};
+---
+<BaseLayout title={t('咒物与心、活力上限')}><h1>{t('咒物与心、活力上限')}</h1>
+<nav><a href="#caps">{t('上限')}</a>　<a href="#abyss">{t('龙神渊与霸主的鳞片')}</a>　<a href="#cursed-crops">{t('被诅咒的作物和鱼')}</a>　<a href="#mud-seeds">{t('泥土种子')}</a>　<a href="#grow">{t('怎么种')}</a>　<a href="#fox-shrine">{t('狐狸神社与油豆腐')}</a>　<a href="#machine-parts">{t('机械部件与古钱')}</a>　<a href="#safe-mode">{t('安心生活模式')}</a></nav>
+<p>{t('心和活力条的上限只能靠两样东西提高：{scale}和{aburaage}。前者要把被诅咒的作物或鱼扔进龙神渊，后者要完成狐狸神社的季节供奉。两样都不能卖、不能扔，拿到时上限就涨了。',{scale:name(scale),aburaage:name(aburaage)})}</p>
+
+<section id="caps"><h2>{t('心和活力条能涨到多少')}</h2>
+<p>{t('物品说明里，心叫“体力”，活力条叫“活力”。本站的存档编辑器把它们叫作生命和体力，说的是同一组数值。')}</p>
+<table><thead><tr><th scope="col"></th><th scope="col">{t('开局')}</th><th scope="col">{t('每次增加')}</th><th scope="col">{t('全部拿到后')}</th></tr></thead><tbody>
+<tr><th scope="row"><GuideItem entity={item(scale)} href={url(scale)}/></th><td>{t('{n} 颗心',{n:hearts(hp.initial)})}</td><td>{t('+1 颗心（{points} 点）',{points:hp.per_heart})}</td><td>{t('{count} 片，{n} 颗心',{count:scaleCount,n:hearts(hp.initial)+scaleCount})}</td></tr>
+<tr><th scope="row"><GuideItem entity={item(aburaage)} href={url(aburaage)}/></th><td>{t('{n} 段',{n:gauges(stamina.initial)})}</td><td>{t('+1 段（{points} 点）',{points:stamina.per_gauge})}</td><td>{t('{count} 个，{n} 段',{count:foxCount,n:gauges(stamina.initial)+foxCount})}</td></tr>
+</tbody></table>
+<p>{t('活力条最多 {n} 段，4 个油豆腐正好加满。心的显示上限是 {max} 颗，但游戏脚本里只有霸主的鳞片会加心，一共 {count} 片，所以能到 {reach} 颗。',{n:stamina.gauges,max:hp.hearts,count:scaleCount,reach:hearts(hp.initial)+scaleCount})}</p>
+<p>{t('料理、泡澡和睡觉各恢复多少，本站还没从游戏数据里解析出来，这里不列数字。')}</p></section>
+
+<section id="abyss"><h2>{t('龙神渊：用被诅咒的东西换霸主的鳞片')}</h2>
+<ol>
+<li>{t('身上带着被诅咒的作物或鱼时去找今野说话。付她 {cost} 元，她才告诉你处理方法。付钱之前，往池子里扔东西不会有任何反应。',{cost:curse.abyss.info_cost})}</li>
+<li>{t('去村子东边的瀑布潭龙神渊，在栈桥上把被诅咒的作物或鱼扔进池里，一次扔 1 个。')}</li>
+<li>{t('池主只在深夜 {start}:00～{end}:00 出来。白天也能扔，攒够数量后白天再扔会被拦下，等深夜再去栈桥就行。',{start:curse.abyss.night_hours[0],end:curse.abyss.night_hours[1]})}</li>
+</ol>
+<table><thead><tr><th scope="col">{t('阶段')}</th><th scope="col">{t('本阶段需要')}</th><th scope="col">{t('累计')}</th><th scope="col">{t('奖励')}</th></tr></thead><tbody>
+{levels.slice(0,lanternLevel.level-1).map(l=><tr><td>{l.level}</td><td>{l.need}</td><td>{l.total}</td><td>{l.reward===scale?<GuideItem entity={item(scale)} href={url(scale)}/>:t('学会“唤雨呼笛”')}</td></tr>)}
+<tr><td>{t('{n} 起',{n:lanternLevel.level})}</td><td>{t('每 {n} 个',{n:lanternLevel.need})}</td><td>—</td><td><span class="pair"><GuideItem entity={item('ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_1')} href={url('ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_1')}/><GuideItem entity={item('ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_2')} href={url('ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_2')}/></span>{t('随机一个')}</td></tr>
+</tbody></table>
+<p>{t('5 片鳞一共要扔 {total} 个。超出本阶段的数量会留到下一阶段；攒得够多时，池主一晚会连发几个阶段的奖励，心也会一次加几颗。第 {w} 阶段教唤雨呼笛，之后每 {n} 个换一盏鲤鱼灯笼，可以一直换。',{total:levels[scaleCount-1].total,w:whistleLevel.level,n:lanternLevel.need})}</p></section>
+
+<section id="cursed-crops"><h2>{t('被诅咒的作物和鱼')}</h2>
+<p>{t('能扔进龙神渊的只有带“诅咒”特性的物品：{crops} 种被诅咒的作物和 {fish} 种被诅咒的鱼。分类叫“咒物”的物品（蜡烛、木牌、机械部件等）不算，扔不进去。',{crops:cursedCrops.length,fish:cursedFish.length})}</p>
+<p class="warn">{t('别把它们卖掉或扔进垃圾桶。每出货或丢弃 1 个，深夜就会多 1 只妖怪蔬菜（鱼则是妖怪鱼）。它会出现在你身边并撞过来，{hour}:00 离开。囤起来留给龙神渊最安全。',{hour:curse.curse_monsters.leave_hour})}</p>
+<h3>{t('被诅咒的作物')}</h3><p set:html={tHtml('只能用泥土种子种出来，种法见<a href="#grow">怎么种</a>。')} /><div class="items">{cursedCrops.map(e=><GuideItem entity={e} href={url(e.id)}/>)}</div>
+<h3>{t('被诅咒的鱼')}</h3><p set:html={tHtml('每个<a href="/guides/fishing-spots/">钓点</a>各有一种，只在深夜 0:00～6:00 上钩，四季都有。深夜钓上来的除了它就是垃圾。')} />
+<table class="fish-rates"><thead><tr><th scope="col">{t('被诅咒的鱼')}</th><th scope="col">{t('钓点')}</th><th scope="col">{t('不撒饵')}</th><th scope="col">{t('撒鱼饵')}</th></tr></thead><tbody>
+{cursedFish.map(e=><tr><td><GuideItem entity={e} href={url(e.id)}/></td><td>{fishSpot(e.id)}</td><td>{pct(fishShare(e.id))}</td><td>{pct(fishShare(e.id,trashBait))}</td></tr>)}
+</tbody></table>
+<p>{t('表里是每次上钩时钓到它的机会。{bait}和{good}都会让垃圾的权重减半，被诅咒的鱼不受影响，所以机会差不多翻倍；按物品说明，两种饵还会提高上钩率。{white}只对白色的稀有鱼起作用，深夜用它没有帮助。想多钓，就带鱼饵去{spots}。',{spots:bestSpots.join(t('、')),bait:name('ITEM_ID_SPRINKLING_BAIT'),good:name('ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE'),white:name('ITEM_ID_SPRINKLING_BAIT_WHITE')})}</p></section>
+
+<section id="mud-seeds"><h2>{t('泥土种子')}</h2>
+<div class="items"><GuideItem entity={item(mud)} href={url(mud)}/></div>
+<p>{t('泥土种子主要从夜里的闪光点捡到。村里和附加农地的夜间闪光点都可能给出。')}</p>
+<table><thead><tr><th scope="col">{t('闪光点')}</th><th scope="col">{t('数量范围')}</th><th scope="col">{t('出泥土种子的机会')}</th></tr></thead><tbody>
+<tr><th scope="row">{t('村里的夜间闪光点')}</th><td>{nightPool.count.join('–')}</td><td>{share(nightPool)}</td></tr>
+<tr><th scope="row">{t('附加农地的夜间闪光点')}</th><td>{farmNight.count.join('–')}</td><td>{share(farmNight)}</td></tr>
+<tr><th scope="row">{t('天狗面具怪异期间的红色闪光点')}</th><td>{redPool.count.join('–')}</td><td>{share(redPool)}</td></tr>
+<tr><th scope="row">{t('天狗面具怪异期间的蓝色闪光点')}</th><td>{bluePool.count.join('–')}</td><td>{share(bluePool)}</td></tr>
+</tbody></table>
+<p>{t('机会按单个闪光点算，晴天和雨天相同。区间的低值算上了全部 5 种怪异木牌，高值是一块木牌都还没解锁时；木牌要先遇到对应的怪异才会进池子。')}</p>
+<p>{t('天狗面具怪异开始到结束之间，游戏改用红、蓝两套闪光点池，普通的夜间池停用，怪异结束后恢复。这两套池子里泥土种子少得多。')}</p>
+<details><summary>{t('村里夜间闪光点的全部物品')}</summary><table><thead><tr><th scope="col">{t('物品')}</th><th scope="col">{t('权重')}</th><th scope="col">{t('天气')}</th><th scope="col">{t('条件')}</th></tr></thead><tbody>{nightPool.entries.map(e=><tr><td><GuideItem entity={item(e.item)} href={url(e.item)}/></td><td>{e.weight}</td><td>{weatherLabel(e.weather)}</td><td>{e.required_flag?t('先遇到对应怪异'):'—'}</td></tr>)}</tbody></table></details>
+<p>{t('泥田坊也会种泥土种子，它种的那一株收获的是摆设{vase}。',{vase:name(curse.dorotabo_harvest)})}</p>
+<p>{t('闪光点没有指定物品时，有 {n}% 给泥土种子，其余给{other}。',{n:curse.unset_sparkle.mud_seeds_percent,other:name(curse.unset_sparkle.other)})}</p></section>
+
+<section id="grow"><h2>{t('怎么种出被诅咒的作物和巨大作物')}</h2>
+<p>{t('只有泥土种子会长成被诅咒的作物或巨大作物，商店买的普通种子怎么种都不会变。泥土种子能种在耕地和田垄上，不能种在水田里。')}</p>
+<h3>{t('种下那天就定了长成什么')}</h3>
+<p>{t('种下泥土种子时，游戏从当季的蔬菜里等概率抽一种。只有固定在一个季节种的蔬菜会被抽到，花、果树、菌类、水田作物和全年可种的茶树、桑树都不在其中。种在耕地还是田垄，候选都一样。')}</p>
+<div class="seasons">{mudSeasons.map(s=><article class="season"><h4>{t('{season}：{n} 种',{season:seasonName[s.season],n:s.pool.length})}</h4>
+<p class="odds">{t('每颗种子：被诅咒 {c}/{n}，可能变巨大 {g}/{n}，适合田垄 {r}/{n}',{c:s.cursed.length+s.late.length,g:s.giant.length,r:s.pool.filter(e=>e.ridge).length,n:s.pool.length})}</p>
+<dl><dt>{t('成熟时必定变成被诅咒的')}</dt><dd><div class="items">{s.cursed.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd>
+{s.late.length>0&&<Fragment><dt>{t('留到入秋才变')}</dt><dd><div class="items">{s.late.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd></Fragment>}
+{s.giant.length>0&&<Fragment><dt>{t('长成巨大作物才有')}</dt><dd><div class="items">{s.giant.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd></Fragment>}
+{s.plain.length>0&&<Fragment><dt>{t('只是普通作物')}</dt><dd>{s.plain.map(e=>cropName(e.crop)).join(t('、'))}</dd></Fragment>}</dl></article>)}</div>
+<p>{t('抽到会变的作物，长到成熟那天就变成被诅咒的样子，不靠运气，每株收 1 个。抽到普通作物就是普通收成。冬天最划算：{wn} 种候选里 {wc} 种必定变，剩下的{wg}还可能长成巨大作物。春天 {sn} 种里只有 {sc} 种会变，能长成巨大作物的只有{sg}，所以春天很少见到巨大作物。',{wn:winter.pool.length,wc:winter.cursed.length,wg:winter.giant.map(e=>cropName(e.crop)).join(t('、')),sn:spring.pool.length,sc:spring.cursed.length,sg:spring.giant.map(e=>cropName(e.crop)).join(t('、'))})}</p>
+<h3>{t('巨大作物的条件')}</h3>
+<ol>
+<li>{t('泥土种子抽到{list}之一。',{list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</li>
+<li>{t('它成熟那天，以它为中心的 5×5 范围里，其余 24 格都得是能耕种的地面，上面没有设施、摆设、树、竹子或菌类原木。普通作物不算阻挡。')}</li>
+<li>{t('满足时，它变成占满 5×5 的巨大作物，范围内的其他作物会被清掉，包括还没收的被诅咒作物。')}</li>
+<li>{t('不满足时，它只长成普通作物，不会变成被诅咒的，也没有第二次机会。')}</li>
+</ol>
+<p>{t('巨大作物用斧头、镐或镰刀收，每棵出 {low}～{high} 个被诅咒的和 {low}～{high} 个普通的同种作物。被诅咒的{list}只能从巨大作物拿到。',{low:giantInfo.quantity[0],high:giantInfo.quantity[1],list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</p>
+{edamame&&<Fragment><h3>{t('毛豆要留到入秋')}</h3>
+<p>{t('泥土种子抽到{crop}时，成熟后先别收，让它在田里留到入秋那天，就会变成被诅咒的样子，能收 1 个{item}。',{crop:cropName(edamame.crop),item:name(edamame.item)})}</p></Fragment>}
+<h3>{t('怎么种最好')}</h3>
+<ul>
+<li>{t('季初就种。抽到的作物得在当季长熟，过了季会枯萎。')}</li>
+<li>{t('耕地和田垄不影响抽到什么，也不影响会不会变。区别只在天数：适合田垄的作物（种子说明里写着“适合于田垄栽种”）种在田垄上成熟得更快。冬天的候选全都适合田垄，全开田垄就行；其他季节开不开都可以。')}</li>
+<li>{t('泥土种子之间至少空 2 格（中心隔 3 格）。这样不管哪株长成巨大作物，都不会清掉旁边的泥土种子作物。')}</li>
+<li>{t('泥土种子长大后会变成抽到的作物。看到{list}时，检查它周围的 5×5：挪走洒水器等设施和摆设，离耕种区域的边缘至少 2 格。附近如果还有一株会变巨大的，两个 5×5 最好别重叠。',{list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</li>
+<li>{t('拔被诅咒的作物要 {frames} 帧，期间每 {interval} 帧掉 1/{part} 颗心。开局只有 {hearts} 颗心，心不满时先回复再拔。',{frames:pull.frames,interval:pull.interval,part:pull.per_heart/pull.damage,hearts:hearts(hp.initial)})}</li>
+</ul></section>
+
+<section id="fox-shrine"><h2>{t('狐狸神社：用季节供奉换狐狸的油豆腐')}</h2>
+<p set:html={tHtml('每个季节，狐狸神社有 4 份供品要交。清单见<a href="/guides/season-plan/">四季留货规划</a>，神社位置见<a href="/guides/collection-map/#shrines">夜间收集地图</a>。')} />
+<ol>
+<li>{t('同一个月内把当季 4 份供品交齐。每月月初，如果你还没完成 4 次，交了一半的进度会清空。')}</li>
+<li>{t('交齐后神狐出现，你得到 1 个{aburaage}，活力条立刻 +1 段。',{aburaage:name(aburaage)})}</li>
+<li>{t('第 {n} 次完成时，今野也会过来，送你 {count} 个{fox}。如果你多交了供品，她还会把卖掉多余供品的钱还给你。',{n:curse.inari.clears,count:curse.inari.final_guardian_fox,fox:name('ITEM_ID_CURSE_FURNITURE_GUARDIAN_FOX')})}</li>
+</ol>
+<p>{t('四个季节的供品各不相同，完成四季各一次就能拿满 {count} 个油豆腐。神狐会留下一个闪光点，里面是一件神社供品。',{count:foxCount})}</p></section>
+
+<section id="machine-parts"><h2>{t('机械部件与老鼠的古钱')}</h2>
+<div class="items"><GuideItem entity={item('ITEM_ID_CURSED_MACHINE_PART')} href={url('ITEM_ID_CURSED_MACHINE_PART')}/><GuideItem entity={item('ITEM_ID_CURSED_RAT_COIN')} href={url('ITEM_ID_CURSED_RAT_COIN')}/></div>
+<p set:html={tHtml('两样都属于咒物，但不是被诅咒的东西，扔不进龙神渊。机械部件 {parts} 个，交给村里坏掉的机器后得到留声机；古钱 {coins} 枚，扔进老鼠井后得到摆设。位置和拿法见<a href="/guides/collection-map/#machine-parts">夜间收集地图</a>。',{parts:night.machine_parts_max,coins:night.rat_coin_max})} /></section>
+
+<section id="safe-mode"><h2>{t('安心生活模式')}</h2>
+<p>{t('安心生活模式下，田上杂货店会卖 {scales} 片{scale}和 {foxes} 个{aburaage}，一次只上架 1 个，买走后才上架下一个。买到时上限同样会涨。',{scales:offers(scale),scale:name(scale),foxes:offers(aburaage),aburaage:name(aburaage)})}</p></section>
+
+<details class="sources"><summary>{t('游戏数据来源')}</summary><p>{t('上限：gamedefine.dat 的 PLAYER_STATUS_HP_* 与 PLAYER_STATUS_ST_*。龙神渊：event_horror_abyss 脚本（今野的 1000 元、深夜 0～5 点、各阶段奖励）、gamedefine.dat 的 ABYSS_NEED_COUNT_LV1～7、gamevalue.dat 的阶段范围 1～7。狐狸神社：event_horror_inari_shrine 脚本的 event_monthly_check、event_clear、event_clear_all；供品：bundle.dat。出货与丢弃的后果：event_horror_common 与 ai_creature_horror_vegetable_monster、ai_creature_horror_fish_monster 脚本。夜间闪光点：placementitem.dat 与 gimmick_event_kirakira 脚本，换池时机见 event.dat 的 EVENT_ID_MASK_START/END；泥田坊：ai_creature_horror_dorotabo 脚本与 cropsharvest.dat。被诅咒的鱼：fishing.dat 与 fish.dat，鱼饵效果来自 village.exe 的上钩抽选代码。泥土种子与巨大作物：crops.dat、cropsharvest.dat 与 village.exe 的种植和每日生长代码。安心生活模式：storesales.dat 与 event_rankup 脚本。提取脚本 tools/extract-curse-items.py。食物和睡眠的恢复量还没解析。')}</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.4rem 0}nav{line-height:2}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{padding:.45rem .6rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:middle}thead th{color:var(--muted);font-weight:600;font-size:.85rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.4rem .8rem;margin:.6rem 0}.seasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:.8rem;margin:.8rem 0}.season{padding:.8rem 1rem;border:1px solid var(--border);border-radius:8px;background:var(--paper)}.season h4{margin:0 0 .2rem}.season .odds{margin:0 0 .4rem;color:var(--muted);font-size:.85rem}.season dl{margin:0}.season dt{margin-top:.5rem;font-size:.85rem;color:var(--muted)}.season dd{margin:.1rem 0 0}.season .items{margin:.2rem 0;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.fish-rates td:nth-child(n+3),.fish-rates th:nth-child(n+3){white-space:nowrap}.pair{display:flex;flex-wrap:wrap;gap:.2rem .8rem}.warn{padding:.7rem 1rem;border-left:3px solid var(--accent,var(--green));background:var(--paper)}details table{font-size:.9rem}.sources{margin-top:2.5rem}@media(max-width:700px){table{font-size:.85rem}th,td{padding:.4rem .35rem}}</style>

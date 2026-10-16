@@ -26,6 +26,8 @@ export function guideTarget(title: string) {
   if (/スプリンクラー/.test(title)) return '/data/items/ITEM_ID_GIMMICK_SPRINKLER_SMALL/';
   if (/好感度の上げ方|キャラ一覧/.test(title)) return '/guides/residents/';
   if (/紛失図書|狐の社/.test(title)) return '/guides/collection-map/';
+  const cursed = ([[/ヌシの鱗/, 'abyss'], [/祟られたもの/, 'cursed-crops'], [/泥の種/, 'mud-seeds'], [/狐の油揚げ/, 'fox-shrine'], [/機械の部品/, 'machine-parts'], [/スタミナ回復/, 'caps']] as const).find(([pattern]) => pattern.test(title));
+  if (cursed) return `/guides/cursed-items/#${cursed[1]}`;
   if (/毎日やるべきこと/.test(title)) return '/guides/season-plan/';
   if (/序盤の進め方|攻略チャート一覧|依頼のやり方/.test(title)) return '/guides/progression/';
   // Chapter walkthroughs: the main quest steps from quest.dat cover them.
