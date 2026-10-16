@@ -1,0 +1,105 @@
+{
+  "source": "anime.dat model names; FAN models in data/fairy_1_00.dat, rendered with src/components/art/portraitRenderer.ts",
+  "build": "25311578",
+  "images": {
+    "tatazumu": {
+      "anime": "ANIME_ID_ENEMY_MOYAMOYASAN",
+      "model": "ene_1000",
+      "container": "resident.fad",
+      "sequence": 310,
+      "used_by": "ai_creature_horror_moyamoyasan_lv3 SEQ_STOP",
+      "width": 186,
+      "height": 250
+    },
+    "kunekune": {
+      "anime": "ANIME_ID_ENEMY_KUNEKUNE",
+      "model": "ene_1060",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_kunekune SEQ_STOP",
+      "width": 236,
+      "height": 256
+    },
+    "wandering-ghost": {
+      "anime": "ANIME_ID_ENEMY_WANDERING_GHOST",
+      "model": "ene_1050",
+      "container": "resident.fad",
+      "sequence": 12,
+      "used_by": "ai_creature_horror_wandering_ghost SEQ_WAIT 10, facing down",
+      "width": 189,
+      "height": 256
+    },
+    "warp-ghost": {
+      "anime": "ANIME_ID_ENEMY_WARP_GHOST",
+      "model": "ene_1080",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_warp_ghost SEQ_STOP",
+      "width": 241,
+      "height": 224
+    },
+    "obo": {
+      "anime": "ANIME_ID_ENEMY_OBO",
+      "model": "ene_1110",
+      "container": "resident.fad",
+      "sequence": 12,
+      "used_by": "ai_creature_horror_obo SEQ_WAIT 10, facing down",
+      "width": 91,
+      "height": 256
+    },
+    "two-mouths-woman": {
+      "anime": "ANIME_ID_ENEMY_TWO_MOUTHS_WOMAN",
+      "model": "ene_1100",
+      "container": "resident.fad",
+      "sequence": 12,
+      "used_by": "ai_creature_horror_two_mouths_woman SEQ_WAIT 10, facing down",
+      "width": 223,
+      "height": 256
+    },
+    "blockage": {
+      "anime": "ANIME_ID_ENEMY_BLOCKAGE",
+      "model": "ene_1090",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_blockage_plane SEQ_STOP 10 + 8-angle code 1",
+      "width": 245,
+      "height": 256
+    },
+    "wall-face": {
+      "anime": "ANIME_ID_ENEMY_PLASTERED_WALL",
+      "model": "ene_1070",
+      "container": "resident.fad",
+      "sequence": 311,
+      "used_by": "ai_creature_horror_plastered_wall_face SEQ_AWAKE",
+      "width": 256,
+      "height": 227
+    },
+    "wall-one": {
+      "anime": "ANIME_ID_ENEMY_PLASTERED_WALL_ONE",
+      "model": "ene_1071",
+      "container": "resident.fad",
+      "sequence": 11,
+      "used_by": "ai_creature_horror_plastered_wall_one SEQ_AWAKE",
+      "width": 163,
+      "height": 256
+    },
+    "walking-stone": {
+      "anime": "ANIME_ID_ENEMY_WALKING_STONE",
+      "model": "ene_5040",
+      "container": "resident_2.fad",
+      "sequence": 110,
+      "used_by": "ai_creature_horror_walking_stone SEQ_WALK",
+      "width": 156,
+      "height": 212
+    },
+    "treasure-box": {
+      "anime": "ANIME_ID_ENEMY_TREASURE_BOX",
+      "model": "ene_5080",
+      "container": "resident_2.fad",
+      "sequence": 111,
+      "used_by": "ai_creature_horror_treasure_box SEQ_RUN",
+      "width": 134,
+      "height": 192
+    }
+  }
+}

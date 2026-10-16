@@ -1,5 +1,5 @@
 // Renders the anomaly-guide models exported by tools/extract-anomaly-art.py with the site's portrait renderer.
-// usage: node tools/render-anomaly-art.mjs   (set CHROME to the Chrome/Chromium executable if it is not found)
+// usage: node tools/render-anomaly-art.mjs [night-monsters]   (set CHROME to the Chrome/Chromium executable if it is not found)
 import {spawn} from 'node:child_process';
 import {existsSync} from 'node:fs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
@@ -8,7 +8,7 @@ import {pathToFileURL} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {build} from 'esbuild';
 
-const root=path.resolve('output/anomaly-art');
+const root=path.resolve({'night-monsters':'output/night-monster-art'}[process.argv[2]]??'output/anomaly-art');
 const {jobs}=JSON.parse(await readFile(path.join(root,'jobs.json'),'utf8'));
 await mkdir(path.join(root,'renders'),{recursive:true});
 

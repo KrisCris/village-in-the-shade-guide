@@ -1,0 +1,2743 @@
+{
+ "source": "placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, map heads data/map/map_0000_ver120_spr.ymwr.head, data/map/map_2150_spr.ymwr.head, data/map/map_2160_spr.ymwr.head + scripts ai_creature_horror_moyamoyasan_lv3.lub, ai_creature_horror_kunekune.lub, ai_creature_horror_wandering_ghost.lub, ai_creature_horror_warp_ghost.lub, ai_creature_horror_obo.lub, ai_creature_horror_two_mouths_woman.lub, ai_creature_horror_blockage_plane.lub, ai_creature_horror_blockage.lub, ai_creature_horror_plastered_wall_face.lub, ai_creature_horror_plastered_wall_one.lub, ai_creature_horror_whelk.lub, ai_creature_horror_walking_stone.lub, ai_creature_horror_treasure_box.lub, mapevent_latenight_area.lub, event_check_late_night.lub, story_05_01.lub, story_05_02.lub, story_05_03.lub, story_06_02.lub",
+ "script_sha256": {
+  "ai_creature_horror_moyamoyasan_lv3": "ffbc0f9265826db8d637c69934fe5e7324403f76272c637bb432e8811fa9a84d",
+  "ai_creature_horror_kunekune": "220855d5a5ed1916cc112bd2da60ac2092d05bb63a00e3f3126e07bc466f5bf8",
+  "ai_creature_horror_wandering_ghost": "96f2382889ee48daf1987e56fde2e6d3a6fa0167af46a82240ba9941ead8a330",
+  "ai_creature_horror_warp_ghost": "b19774bc5db8d2e718b4ff79620748de09219d893c3f79da293441d171ac85e8",
+  "ai_creature_horror_obo": "a94dd59fdef6a4f81a0e1390b8713cf4b415921d6333fa727f2b820e7e4cd2cb",
+  "ai_creature_horror_two_mouths_woman": "8c5a1962d3bda2b925ac1bda314b5b6e26ed91b06b59fb542617d3e9e3904c35",
+  "ai_creature_horror_blockage_plane": "32eefbff4b76bf13b59d522bc97b4c8aac5ac48c1f5eb1777953d6d78f6ab40a",
+  "ai_creature_horror_blockage": "c7bea39482d436d99f66d8e8804baed8e1c81f7309704cf270fd6e5a6f277587",
+  "ai_creature_horror_plastered_wall_face": "15d02d7a52199e56486eca86db21c566e9ab021856ced74a2ca62b4fdf28724e",
+  "ai_creature_horror_plastered_wall_one": "d3aa69bff2f06ed6b089efcbd968efe25fa89ce051026e737328b8199a68fa83",
+  "ai_creature_horror_whelk": "79434c9a4f454d8ff525fed800fed779c34df074aacb465bfbe894b74ad011e0",
+  "ai_creature_horror_walking_stone": "c930abbc2915897326d1fd08ffcf036e345249e14b03c3501e4a281763e96aa8",
+  "ai_creature_horror_treasure_box": "cb41b13c468b6e0e48dbcca77f116e25790cece91de4d46ab76888344f31e0eb",
+  "mapevent_latenight_area": "3201be516f9fbabd5afe5787f885181eda33f18764b255cf4b902112a3a14b39",
+  "event_check_late_night": "376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2",
+  "story_05_01": "c8b2396ea70f875f851406f69d066f7acfb6a078625f19a523b01826a26ffcb4",
+  "story_05_02": "639acfa637563da58b038ce0fee5ded874fdc260cd29dd65d17e64a7052112ed",
+  "story_05_03": "0f82800041ed754e1b0e84ded0778db6729946ac8ed620b184df5424e277b7b5",
+  "story_06_02": "d246bb7f0ccf5fe5910b077bbe4f385b4ce734f2b635d799d0e2a30c8bddcbf4"
+ },
+ "late_night_hours": [
+  0,
+  6
+ ],
+ "hp_per_heart": 4,
+ "grid": 45,
+ "tables": {
+  "1": {
+   "table": 1,
+   "code": "HORROR_TABLE_NORMAL_01",
+   "label": "峠_汎用",
+   "conditions": 0,
+   "count": [
+    3,
+    6
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_MOYAMOYASAN_LV3",
+    "CREATURE_ID_HORROR_KUNEKUNE",
+    "CREATURE_ID_HORROR_WANDERING_GHOST",
+    "CREATURE_ID_HORROR_WARP_GHOST",
+    "CREATURE_ID_HORROR_OBO"
+   ]
+  },
+  "2": {
+   "table": 2,
+   "code": "HORROR_TABLE_NORMAL_02",
+   "label": "山中_汎用",
+   "conditions": 0,
+   "count": [
+    10,
+    15
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_MOYAMOYASAN_LV3",
+    "CREATURE_ID_HORROR_KUNEKUNE",
+    "CREATURE_ID_HORROR_WANDERING_GHOST",
+    "CREATURE_ID_HORROR_WARP_GHOST",
+    "CREATURE_ID_HORROR_OBO"
+   ]
+  },
+  "3": {
+   "table": 3,
+   "code": "HORROR_TABLE_NORMAL_03",
+   "label": "牧場_汎用",
+   "conditions": 0,
+   "count": [
+    25,
+    30
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_MOYAMOYASAN_LV3",
+    "CREATURE_ID_HORROR_KUNEKUNE",
+    "CREATURE_ID_HORROR_WANDERING_GHOST",
+    "CREATURE_ID_HORROR_WARP_GHOST",
+    "CREATURE_ID_HORROR_OBO"
+   ]
+  },
+  "4": {
+   "table": 4,
+   "code": "HORROR_TABLE_NORMAL_04",
+   "label": "往復_二口女",
+   "conditions": 0,
+   "count": [
+    2,
+    3
+   ],
+   "anchor": "pop_twoMouthsWoman",
+   "members": [
+    "CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN"
+   ]
+  },
+  "5": {
+   "table": 5,
+   "code": "HORROR_TABLE_NORMAL_05",
+   "label": "通せんぼ",
+   "conditions": 0,
+   "count": [
+    2,
+    4
+   ],
+   "anchor": "pop_planeBlockage",
+   "members": [
+    "CREATURE_ID_HORROR_BLOCKAGE_PLANE"
+   ]
+  },
+  "6": {
+   "table": 6,
+   "code": "HORROR_TABLE_NORMAL_06",
+   "label": "塗り壁_両手付",
+   "conditions": 0,
+   "count": [
+    0,
+    1
+   ],
+   "anchor": "pop_planePlastersWallHead",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_PLANE"
+   ]
+  },
+  "7": {
+   "table": 7,
+   "code": "HORROR_TABLE_NORMAL_07",
+   "label": "塗り壁_顔",
+   "conditions": 0,
+   "count": [
+    0,
+    1
+   ],
+   "anchor": "pop_planePlastersWallFace",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE"
+   ]
+  },
+  "8": {
+   "table": 8,
+   "code": "HORROR_TABLE_NORMAL_08_00",
+   "label": "塗り壁_１マス_抽選枠０",
+   "conditions": 3,
+   "count": [
+    1,
+    1
+   ],
+   "anchor": "pop_planePlastersWallOne",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_ONE"
+   ]
+  },
+  "9": {
+   "table": 9,
+   "code": "HORROR_TABLE_NORMAL_08_01",
+   "label": "塗り壁_１マス_抽選枠１",
+   "conditions": 3,
+   "count": [
+    0,
+    1
+   ],
+   "anchor": "pop_planePlastersWallOne",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_ONE"
+   ]
+  },
+  "10": {
+   "table": 10,
+   "code": "HORROR_TABLE_NORMAL_08_02",
+   "label": "塗り壁_１マス_抽選枠２",
+   "conditions": 3,
+   "count": [
+    1,
+    1
+   ],
+   "anchor": "pop_planePlastersWallOne",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_ONE"
+   ]
+  },
+  "11": {
+   "table": 11,
+   "code": "HORROR_TABLE_NORMAL_08_03",
+   "label": "塗り壁_１マス_抽選枠３",
+   "conditions": 3,
+   "count": [
+    1,
+    1
+   ],
+   "anchor": "pop_planePlastersWallOne",
+   "members": [
+    "CREATURE_ID_HORROR_PLASTERED_WALL_ONE"
+   ]
+  },
+  "15": {
+   "table": 15,
+   "code": "HORROR_TABLE_NORMAL_09",
+   "label": "くねくね",
+   "conditions": 0,
+   "count": [
+    2,
+    4
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_KUNEKUNE"
+   ]
+  },
+  "16": {
+   "table": 16,
+   "code": "HORROR_TABLE_NORMAL_10",
+   "label": "オボ",
+   "conditions": 0,
+   "count": [
+    4,
+    6
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_OBO"
+   ]
+  },
+  "100": {
+   "table": 100,
+   "code": "HORROR_TABLE_NORMAL_11",
+   "label": "牧場_汎用_追加マップ",
+   "conditions": 0,
+   "count": [
+    25,
+    30
+   ],
+   "anchor": null,
+   "members": [
+    "CREATURE_ID_HORROR_MOYAMOYASAN_LV3",
+    "CREATURE_ID_HORROR_KUNEKUNE",
+    "CREATURE_ID_HORROR_WANDERING_GHOST",
+    "CREATURE_ID_HORROR_WARP_GHOST",
+    "CREATURE_ID_HORROR_OBO"
+   ]
+  }
+ },
+ "areas": {
+  "pass_road": {
+   "tables": [
+    1
+   ],
+   "count": [
+    3,
+    6
+   ],
+   "blocks": [
+    [
+     16020,
+     27900
+    ],
+    [
+     16380,
+     27540
+    ],
+    [
+     16740,
+     25740
+    ],
+    [
+     16740,
+     26820
+    ],
+    [
+     16920,
+     26280
+    ],
+    [
+     17280,
+     25020
+    ],
+    [
+     17280,
+     27360
+    ],
+    [
+     17640,
+     27540
+    ],
+    [
+     18000,
+     24300
+    ]
+   ],
+   "block": 180,
+   "gates": [
+    {
+     "x": 18832,
+     "y": 23752
+    },
+    {
+     "x": 18429,
+     "y": 28174
+    },
+    {
+     "x": 14981,
+     "y": 27677
+    }
+   ]
+  },
+  "mountain": {
+   "tables": [
+    2
+   ],
+   "count": [
+    10,
+    15
+   ],
+   "blocks": [
+    [
+     5940,
+     13320
+    ],
+    [
+     6840,
+     12600
+    ],
+    [
+     7200,
+     13500
+    ],
+    [
+     7740,
+     12780
+    ],
+    [
+     7920,
+     15300
+    ],
+    [
+     8100,
+     12960
+    ],
+    [
+     8100,
+     15120
+    ],
+    [
+     8460,
+     15300
+    ],
+    [
+     8640,
+     13680
+    ],
+    [
+     8820,
+     13500
+    ],
+    [
+     9360,
+     10800
+    ],
+    [
+     9360,
+     16380
+    ],
+    [
+     9900,
+     11160
+    ],
+    [
+     9900,
+     13500
+    ],
+    [
+     9900,
+     16560
+    ],
+    [
+     10080,
+     10980
+    ],
+    [
+     10260,
+     10440
+    ],
+    [
+     10260,
+     13680
+    ],
+    [
+     10260,
+     17100
+    ],
+    [
+     10440,
+     14580
+    ],
+    [
+     10800,
+     14400
+    ],
+    [
+     11340,
+     9900
+    ],
+    [
+     11340,
+     10800
+    ],
+    [
+     11700,
+     13500
+    ],
+    [
+     11700,
+     13860
+    ],
+    [
+     11880,
+     9720
+    ],
+    [
+     11880,
+     10440
+    ],
+    [
+     11880,
+     10620
+    ],
+    [
+     12240,
+     13500
+    ],
+    [
+     12240,
+     13680
+    ]
+   ],
+   "block": 180,
+   "gates": [
+    {
+     "x": 12873,
+     "y": 9314
+    },
+    {
+     "x": 10804,
+     "y": 9985
+    },
+    {
+     "x": 9319,
+     "y": 11263
+    },
+    {
+     "x": 11510,
+     "y": 11299
+    },
+    {
+     "x": 8392,
+     "y": 12672
+    },
+    {
+     "x": 9304,
+     "y": 16753
+    },
+    {
+     "x": 10831,
+     "y": 17742
+    },
+    {
+     "x": 11839,
+     "y": 15711
+    },
+    {
+     "x": 12684,
+     "y": 14194
+    },
+    {
+     "x": 13045,
+     "y": 13561
+    },
+    {
+     "x": 11626,
+     "y": 13060
+    },
+    {
+     "x": 11295,
+     "y": 13230
+    }
+   ]
+  },
+  "farm": {
+   "tables": [
+    3
+   ],
+   "count": [
+    25,
+    30
+   ],
+   "blocks": [
+    [
+     8640,
+     22320
+    ],
+    [
+     8640,
+     22500
+    ],
+    [
+     8820,
+     22140
+    ],
+    [
+     8820,
+     22320
+    ],
+    [
+     8820,
+     22500
+    ],
+    [
+     8820,
+     22680
+    ],
+    [
+     9000,
+     21960
+    ],
+    [
+     9000,
+     22140
+    ],
+    [
+     9000,
+     22320
+    ],
+    [
+     9000,
+     22500
+    ],
+    [
+     9000,
+     22680
+    ],
+    [
+     9000,
+     22860
+    ],
+    [
+     9180,
+     21780
+    ],
+    [
+     9180,
+     21960
+    ],
+    [
+     9180,
+     22140
+    ],
+    [
+     9180,
+     22320
+    ],
+    [
+     9180,
+     22500
+    ],
+    [
+     9180,
+     22680
+    ],
+    [
+     9180,
+     22860
+    ],
+    [
+     9180,
+     23040
+    ],
+    [
+     9360,
+     21600
+    ],
+    [
+     9360,
+     21780
+    ],
+    [
+     9360,
+     21960
+    ],
+    [
+     9360,
+     22140
+    ],
+    [
+     9360,
+     22320
+    ],
+    [
+     9360,
+     22500
+    ],
+    [
+     9360,
+     22680
+    ],
+    [
+     9360,
+     22860
+    ],
+    [
+     9360,
+     23040
+    ],
+    [
+     9360,
+     23220
+    ],
+    [
+     9540,
+     21420
+    ],
+    [
+     9540,
+     21600
+    ],
+    [
+     9540,
+     21780
+    ],
+    [
+     9540,
+     21960
+    ],
+    [
+     9540,
+     22140
+    ],
+    [
+     9540,
+     22320
+    ],
+    [
+     9540,
+     22500
+    ],
+    [
+     9540,
+     22680
+    ],
+    [
+     9540,
+     22860
+    ],
+    [
+     9540,
+     23040
+    ],
+    [
+     9540,
+     23220
+    ],
+    [
+     9540,
+     23400
+    ],
+    [
+     9720,
+     21240
+    ],
+    [
+     9720,
+     21420
+    ],
+    [
+     9720,
+     21600
+    ],
+    [
+     9720,
+     21780
+    ],
+    [
+     9720,
+     21960
+    ],
+    [
+     9720,
+     22140
+    ],
+    [
+     9720,
+     22320
+    ],
+    [
+     9720,
+     22500
+    ],
+    [
+     9720,
+     22680
+    ],
+    [
+     9720,
+     22860
+    ],
+    [
+     9720,
+     23040
+    ],
+    [
+     9720,
+     23220
+    ],
+    [
+     9720,
+     23400
+    ],
+    [
+     9720,
+     23580
+    ],
+    [
+     9900,
+     21240
+    ],
+    [
+     9900,
+     21420
+    ],
+    [
+     9900,
+     21600
+    ],
+    [
+     9900,
+     21780
+    ],
+    [
+     9900,
+     21960
+    ],
+    [
+     9900,
+     22140
+    ],
+    [
+     9900,
+     22320
+    ],
+    [
+     9900,
+     22500
+    ],
+    [
+     9900,
+     22680
+    ],
+    [
+     9900,
+     22860
+    ],
+    [
+     9900,
+     23040
+    ],
+    [
+     9900,
+     23220
+    ],
+    [
+     9900,
+     23400
+    ],
+    [
+     9900,
+     23580
+    ],
+    [
+     10080,
+     21420
+    ],
+    [
+     10080,
+     21600
+    ],
+    [
+     10080,
+     21780
+    ],
+    [
+     10080,
+     21960
+    ],
+    [
+     10080,
+     22140
+    ],
+    [
+     10080,
+     22320
+    ],
+    [
+     10080,
+     22500
+    ],
+    [
+     10080,
+     22680
+    ],
+    [
+     10080,
+     22860
+    ],
+    [
+     10080,
+     23040
+    ],
+    [
+     10080,
+     23220
+    ],
+    [
+     10080,
+     23400
+    ],
+    [
+     10080,
+     24480
+    ],
+    [
+     10260,
+     20880
+    ],
+    [
+     10260,
+     21060
+    ],
+    [
+     10260,
+     21600
+    ],
+    [
+     10260,
+     21780
+    ],
+    [
+     10260,
+     21960
+    ],
+    [
+     10260,
+     22140
+    ],
+    [
+     10260,
+     22320
+    ],
+    [
+     10260,
+     22500
+    ],
+    [
+     10260,
+     22680
+    ],
+    [
+     10260,
+     22860
+    ],
+    [
+     10260,
+     23040
+    ],
+    [
+     10260,
+     23220
+    ],
+    [
+     10260,
+     24300
+    ],
+    [
+     10260,
+     24480
+    ],
+    [
+     10260,
+     24660
+    ],
+    [
+     10440,
+     20700
+    ],
+    [
+     10440,
+     20880
+    ],
+    [
+     10440,
+     21060
+    ],
+    [
+     10440,
+     21240
+    ],
+    [
+     10440,
+     21780
+    ],
+    [
+     10440,
+     21960
+    ],
+    [
+     10440,
+     22140
+    ],
+    [
+     10440,
+     22320
+    ],
+    [
+     10440,
+     22500
+    ],
+    [
+     10440,
+     22680
+    ],
+    [
+     10440,
+     22860
+    ],
+    [
+     10440,
+     23040
+    ],
+    [
+     10440,
+     24120
+    ],
+    [
+     10440,
+     24300
+    ],
+    [
+     10440,
+     24480
+    ],
+    [
+     10440,
+     24660
+    ],
+    [
+     10440,
+     24840
+    ],
+    [
+     10620,
+     20520
+    ],
+    [
+     10620,
+     20700
+    ],
+    [
+     10620,
+     20880
+    ],
+    [
+     10620,
+     21060
+    ],
+    [
+     10620,
+     21240
+    ],
+    [
+     10620,
+     21420
+    ],
+    [
+     10620,
+     21960
+    ],
+    [
+     10620,
+     22140
+    ],
+    [
+     10620,
+     22320
+    ],
+    [
+     10620,
+     22500
+    ],
+    [
+     10620,
+     22680
+    ],
+    [
+     10620,
+     22860
+    ],
+    [
+     10620,
+     23940
+    ],
+    [
+     10620,
+     24120
+    ],
+    [
+     10620,
+     24300
+    ],
+    [
+     10620,
+     24480
+    ],
+    [
+     10620,
+     24660
+    ],
+    [
+     10620,
+     24840
+    ],
+    [
+     10620,
+     25020
+    ],
+    [
+     10800,
+     20340
+    ],
+    [
+     10800,
+     20520
+    ],
+    [
+     10800,
+     20700
+    ],
+    [
+     10800,
+     20880
+    ],
+    [
+     10800,
+     21060
+    ],
+    [
+     10800,
+     21240
+    ],
+    [
+     10800,
+     21420
+    ],
+    [
+     10800,
+     21600
+    ],
+    [
+     10800,
+     22140
+    ],
+    [
+     10800,
+     22320
+    ],
+    [
+     10800,
+     22500
+    ],
+    [
+     10800,
+     22680
+    ],
+    [
+     10800,
+     23760
+    ],
+    [
+     10800,
+     23940
+    ],
+    [
+     10800,
+     24120
+    ],
+    [
+     10800,
+     24300
+    ],
+    [
+     10800,
+     24480
+    ],
+    [
+     10800,
+     24660
+    ],
+    [
+     10800,
+     24840
+    ],
+    [
+     10800,
+     25020
+    ],
+    [
+     10800,
+     25200
+    ],
+    [
+     10980,
+     20160
+    ],
+    [
+     10980,
+     20340
+    ],
+    [
+     10980,
+     20520
+    ],
+    [
+     10980,
+     20700
+    ],
+    [
+     10980,
+     20880
+    ],
+    [
+     10980,
+     21060
+    ],
+    [
+     10980,
+     21240
+    ],
+    [
+     10980,
+     21420
+    ],
+    [
+     10980,
+     21600
+    ],
+    [
+     10980,
+     21780
+    ],
+    [
+     10980,
+     22320
+    ],
+    [
+     10980,
+     22500
+    ],
+    [
+     10980,
+     23580
+    ],
+    [
+     10980,
+     23760
+    ],
+    [
+     10980,
+     23940
+    ],
+    [
+     10980,
+     24120
+    ],
+    [
+     10980,
+     24300
+    ],
+    [
+     10980,
+     24480
+    ],
+    [
+     10980,
+     24660
+    ],
+    [
+     10980,
+     24840
+    ],
+    [
+     10980,
+     25020
+    ],
+    [
+     10980,
+     25200
+    ],
+    [
+     10980,
+     25380
+    ],
+    [
+     11160,
+     20160
+    ],
+    [
+     11160,
+     20340
+    ],
+    [
+     11160,
+     20520
+    ],
+    [
+     11160,
+     20700
+    ],
+    [
+     11160,
+     20880
+    ],
+    [
+     11160,
+     21060
+    ],
+    [
+     11160,
+     21240
+    ],
+    [
+     11160,
+     21420
+    ],
+    [
+     11160,
+     21600
+    ],
+    [
+     11160,
+     23400
+    ],
+    [
+     11160,
+     23580
+    ],
+    [
+     11160,
+     23760
+    ],
+    [
+     11160,
+     23940
+    ],
+    [
+     11160,
+     24120
+    ],
+    [
+     11160,
+     24300
+    ],
+    [
+     11160,
+     24480
+    ],
+    [
+     11160,
+     24660
+    ],
+    [
+     11160,
+     24840
+    ],
+    [
+     11160,
+     25020
+    ],
+    [
+     11160,
+     25200
+    ],
+    [
+     11160,
+     25380
+    ],
+    [
+     11160,
+     25560
+    ],
+    [
+     11340,
+     20340
+    ],
+    [
+     11340,
+     20520
+    ],
+    [
+     11340,
+     20700
+    ],
+    [
+     11340,
+     20880
+    ],
+    [
+     11340,
+     21060
+    ],
+    [
+     11340,
+     21240
+    ],
+    [
+     11340,
+     21420
+    ],
+    [
+     11340,
+     23400
+    ],
+    [
+     11340,
+     23580
+    ],
+    [
+     11340,
+     23760
+    ],
+    [
+     11340,
+     23940
+    ],
+    [
+     11340,
+     24120
+    ],
+    [
+     11340,
+     24300
+    ],
+    [
+     11340,
+     24480
+    ],
+    [
+     11340,
+     24660
+    ],
+    [
+     11340,
+     24840
+    ],
+    [
+     11340,
+     25020
+    ],
+    [
+     11340,
+     25200
+    ],
+    [
+     11340,
+     25380
+    ],
+    [
+     11340,
+     25560
+    ],
+    [
+     11340,
+     25740
+    ],
+    [
+     11520,
+     20520
+    ],
+    [
+     11520,
+     20700
+    ],
+    [
+     11520,
+     20880
+    ],
+    [
+     11520,
+     21060
+    ],
+    [
+     11520,
+     21240
+    ],
+    [
+     11520,
+     23580
+    ],
+    [
+     11520,
+     23760
+    ],
+    [
+     11520,
+     23940
+    ],
+    [
+     11520,
+     24120
+    ],
+    [
+     11520,
+     24300
+    ],
+    [
+     11520,
+     24480
+    ],
+    [
+     11520,
+     24660
+    ],
+    [
+     11520,
+     24840
+    ],
+    [
+     11520,
+     25020
+    ],
+    [
+     11520,
+     25200
+    ],
+    [
+     11520,
+     25380
+    ],
+    [
+     11520,
+     25560
+    ],
+    [
+     11520,
+     25740
+    ],
+    [
+     11700,
+     20700
+    ],
+    [
+     11700,
+     20880
+    ],
+    [
+     11700,
+     23760
+    ],
+    [
+     11700,
+     23940
+    ],
+    [
+     11700,
+     24120
+    ],
+    [
+     11700,
+     24300
+    ],
+    [
+     11700,
+     24480
+    ],
+    [
+     11700,
+     24660
+    ],
+    [
+     11700,
+     24840
+    ],
+    [
+     11700,
+     25020
+    ],
+    [
+     11700,
+     25200
+    ],
+    [
+     11700,
+     25380
+    ],
+    [
+     11700,
+     25560
+    ],
+    [
+     11700,
+     25740
+    ],
+    [
+     11880,
+     23940
+    ],
+    [
+     11880,
+     24120
+    ],
+    [
+     11880,
+     24300
+    ],
+    [
+     11880,
+     24480
+    ],
+    [
+     11880,
+     24660
+    ],
+    [
+     11880,
+     24840
+    ],
+    [
+     11880,
+     25020
+    ],
+    [
+     11880,
+     25200
+    ],
+    [
+     11880,
+     25380
+    ],
+    [
+     11880,
+     25560
+    ],
+    [
+     12060,
+     24120
+    ],
+    [
+     12060,
+     24300
+    ],
+    [
+     12060,
+     24480
+    ],
+    [
+     12060,
+     24660
+    ],
+    [
+     12060,
+     24840
+    ],
+    [
+     12060,
+     25020
+    ],
+    [
+     12060,
+     25200
+    ],
+    [
+     12060,
+     25380
+    ],
+    [
+     12240,
+     24300
+    ],
+    [
+     12240,
+     24480
+    ],
+    [
+     12240,
+     24660
+    ],
+    [
+     12240,
+     24840
+    ],
+    [
+     12240,
+     25020
+    ],
+    [
+     12240,
+     25200
+    ],
+    [
+     12420,
+     24480
+    ],
+    [
+     12420,
+     24660
+    ],
+    [
+     12420,
+     24840
+    ],
+    [
+     12420,
+     25020
+    ],
+    [
+     12600,
+     24660
+    ],
+    [
+     12600,
+     24840
+    ]
+   ],
+   "block": 180,
+   "gates": [
+    {
+     "x": 11785,
+     "y": 20604
+    },
+    {
+     "x": 11452,
+     "y": 21668
+    },
+    {
+     "x": 11552,
+     "y": 23290
+    },
+    {
+     "x": 11616,
+     "y": 27248
+    }
+   ]
+  },
+  "added_farm": {
+   "tables": [
+    100
+   ],
+   "count": [
+    25,
+    30
+   ],
+   "blocks": [
+    [
+     12240,
+     23220
+    ],
+    [
+     12240,
+     23400
+    ],
+    [
+     12420,
+     23040
+    ],
+    [
+     12420,
+     23220
+    ],
+    [
+     12420,
+     23400
+    ],
+    [
+     12420,
+     23580
+    ],
+    [
+     12600,
+     23040
+    ],
+    [
+     12600,
+     23220
+    ],
+    [
+     12600,
+     23400
+    ],
+    [
+     12600,
+     23580
+    ],
+    [
+     12780,
+     23040
+    ],
+    [
+     12780,
+     23220
+    ],
+    [
+     12780,
+     23400
+    ],
+    [
+     12780,
+     23580
+    ],
+    [
+     12960,
+     23400
+    ],
+    [
+     13320,
+     23220
+    ],
+    [
+     13320,
+     23400
+    ],
+    [
+     13320,
+     23580
+    ],
+    [
+     13320,
+     23760
+    ],
+    [
+     13320,
+     23940
+    ],
+    [
+     13320,
+     24120
+    ],
+    [
+     13500,
+     23220
+    ],
+    [
+     13500,
+     23400
+    ],
+    [
+     13500,
+     23580
+    ],
+    [
+     13500,
+     23760
+    ],
+    [
+     13500,
+     23940
+    ],
+    [
+     13500,
+     24120
+    ],
+    [
+     13500,
+     24300
+    ],
+    [
+     13680,
+     23220
+    ],
+    [
+     13680,
+     23400
+    ],
+    [
+     13680,
+     23580
+    ],
+    [
+     13680,
+     23760
+    ],
+    [
+     13680,
+     23940
+    ],
+    [
+     13680,
+     24120
+    ],
+    [
+     13680,
+     24300
+    ],
+    [
+     13860,
+     23400
+    ],
+    [
+     13860,
+     23580
+    ],
+    [
+     13860,
+     23760
+    ],
+    [
+     13860,
+     23940
+    ],
+    [
+     13860,
+     24120
+    ],
+    [
+     13860,
+     24300
+    ],
+    [
+     14040,
+     23580
+    ],
+    [
+     14040,
+     23760
+    ],
+    [
+     14040,
+     23940
+    ],
+    [
+     14040,
+     24120
+    ],
+    [
+     14040,
+     24300
+    ],
+    [
+     14220,
+     23580
+    ],
+    [
+     14220,
+     23760
+    ],
+    [
+     14220,
+     23940
+    ],
+    [
+     14220,
+     24120
+    ],
+    [
+     14220,
+     24300
+    ],
+    [
+     14400,
+     23400
+    ],
+    [
+     14400,
+     23580
+    ],
+    [
+     14400,
+     23760
+    ],
+    [
+     14400,
+     23940
+    ],
+    [
+     14400,
+     24120
+    ],
+    [
+     14400,
+     24300
+    ],
+    [
+     14400,
+     24480
+    ],
+    [
+     14580,
+     23040
+    ],
+    [
+     14580,
+     23220
+    ],
+    [
+     14580,
+     23400
+    ],
+    [
+     14580,
+     23580
+    ],
+    [
+     14580,
+     23760
+    ],
+    [
+     14580,
+     23940
+    ],
+    [
+     14580,
+     24120
+    ],
+    [
+     14580,
+     24300
+    ],
+    [
+     14580,
+     24480
+    ],
+    [
+     14760,
+     22860
+    ],
+    [
+     14760,
+     23040
+    ],
+    [
+     14760,
+     23220
+    ],
+    [
+     14760,
+     23400
+    ],
+    [
+     14760,
+     23580
+    ],
+    [
+     14760,
+     23760
+    ],
+    [
+     14760,
+     23940
+    ],
+    [
+     14760,
+     24120
+    ],
+    [
+     14760,
+     24300
+    ],
+    [
+     14760,
+     24480
+    ],
+    [
+     14940,
+     22860
+    ],
+    [
+     14940,
+     23040
+    ],
+    [
+     14940,
+     23220
+    ],
+    [
+     14940,
+     23400
+    ],
+    [
+     14940,
+     23580
+    ],
+    [
+     14940,
+     23760
+    ],
+    [
+     14940,
+     23940
+    ],
+    [
+     14940,
+     24120
+    ],
+    [
+     14940,
+     24300
+    ],
+    [
+     14940,
+     24480
+    ],
+    [
+     15120,
+     23040
+    ],
+    [
+     15120,
+     23220
+    ],
+    [
+     15120,
+     23400
+    ],
+    [
+     15120,
+     23580
+    ],
+    [
+     15120,
+     23760
+    ],
+    [
+     15120,
+     23940
+    ],
+    [
+     15120,
+     24120
+    ],
+    [
+     15120,
+     24300
+    ],
+    [
+     15120,
+     24480
+    ],
+    [
+     15300,
+     23220
+    ],
+    [
+     15300,
+     23400
+    ],
+    [
+     15300,
+     23580
+    ],
+    [
+     15300,
+     23760
+    ],
+    [
+     15300,
+     23940
+    ],
+    [
+     15300,
+     24120
+    ],
+    [
+     15300,
+     24300
+    ],
+    [
+     15480,
+     23220
+    ],
+    [
+     15480,
+     23400
+    ],
+    [
+     15480,
+     23580
+    ],
+    [
+     15480,
+     23760
+    ],
+    [
+     15480,
+     23940
+    ],
+    [
+     15480,
+     24120
+    ],
+    [
+     15480,
+     24300
+    ],
+    [
+     15660,
+     23220
+    ],
+    [
+     15660,
+     23400
+    ],
+    [
+     15660,
+     23580
+    ],
+    [
+     15660,
+     23760
+    ],
+    [
+     15660,
+     23940
+    ],
+    [
+     15660,
+     24120
+    ],
+    [
+     15840,
+     23220
+    ],
+    [
+     15840,
+     23400
+    ],
+    [
+     15840,
+     23580
+    ],
+    [
+     15840,
+     23760
+    ],
+    [
+     16020,
+     23400
+    ],
+    [
+     16020,
+     23580
+    ]
+   ],
+   "block": 180,
+   "gates": [
+    {
+     "x": 12240,
+     "y": 22792
+    }
+   ]
+  }
+ },
+ "side_areas": {
+  "bush": {
+   "map": "data/map/map_2160_spr.ymwr.head",
+   "tables": [
+    4,
+    15,
+    16
+   ]
+  },
+  "lost_forest": {
+   "map": "data/map/map_2150_spr.ymwr.head",
+   "tables": [
+    4
+   ]
+  }
+ },
+ "map_points": {
+  "two_mouths_woman": [
+   {
+    "x": 11970,
+    "y": 13815
+   },
+   {
+    "x": 9810,
+    "y": 10935
+   },
+   {
+    "x": 11520,
+    "y": 9765
+   },
+   {
+    "x": 11520,
+    "y": 10755
+   }
+  ],
+  "two_mouths_route": [
+   {
+    "x": 11655,
+    "y": 13680
+   },
+   {
+    "x": 12465,
+    "y": 13860
+   },
+   {
+    "x": 9315,
+    "y": 10890
+   },
+   {
+    "x": 10350,
+    "y": 10935
+   },
+   {
+    "x": 11295,
+    "y": 10080
+   },
+   {
+    "x": 11970,
+    "y": 9675
+   },
+   {
+    "x": 11475,
+    "y": 10980
+   },
+   {
+    "x": 12015,
+    "y": 10890
+   },
+   {
+    "x": 11655,
+    "y": 10620
+   }
+  ],
+  "blockage": [
+   {
+    "x": 7515,
+    "y": 13230
+   },
+   {
+    "x": 7560,
+    "y": 14895
+   },
+   {
+    "x": 10575,
+    "y": 14310
+   },
+   {
+    "x": 8685,
+    "y": 14940
+   },
+   {
+    "x": 10935,
+    "y": 10440
+   },
+   {
+    "x": 11385,
+    "y": 10350
+   }
+  ],
+  "wall_face": [
+   {
+    "x": 8640,
+    "y": 13275
+   },
+   {
+    "x": 11340,
+    "y": 14355
+   }
+  ],
+  "wall_one_always": [
+   {
+    "x": 6480,
+    "y": 13455
+   },
+   {
+    "x": 6525,
+    "y": 13410
+   },
+   {
+    "x": 6570,
+    "y": 13365
+   },
+   {
+    "x": 6795,
+    "y": 13410
+   },
+   {
+    "x": 6840,
+    "y": 13455
+   },
+   {
+    "x": 6795,
+    "y": 13770
+   },
+   {
+    "x": 6750,
+    "y": 13815
+   },
+   {
+    "x": 7155,
+    "y": 13680
+   },
+   {
+    "x": 7200,
+    "y": 13725
+   },
+   {
+    "x": 7245,
+    "y": 13770
+   }
+  ],
+  "wall_one_sometimes": [
+   {
+    "x": 8865,
+    "y": 14040
+   },
+   {
+    "x": 8910,
+    "y": 13995
+   },
+   {
+    "x": 9000,
+    "y": 13995
+   },
+   {
+    "x": 9045,
+    "y": 13950
+   },
+   {
+    "x": 9135,
+    "y": 13950
+   },
+   {
+    "x": 9225,
+    "y": 13950
+   },
+   {
+    "x": 7425,
+    "y": 14580
+   },
+   {
+    "x": 7470,
+    "y": 14535
+   },
+   {
+    "x": 7560,
+    "y": 14535
+   }
+  ],
+  "whelk": [
+   {
+    "x": 8550,
+    "y": 15345
+   },
+   {
+    "x": 10755,
+    "y": 14760
+   },
+   {
+    "x": 10575,
+    "y": 12960
+   },
+   {
+    "x": 12420,
+    "y": 13275
+   },
+   {
+    "x": 12015,
+    "y": 16830
+   },
+   {
+    "x": 14535,
+    "y": 17730
+   },
+   {
+    "x": 15660,
+    "y": 16605
+   },
+   {
+    "x": 16830,
+    "y": 16335
+   },
+   {
+    "x": 16560,
+    "y": 18135
+   },
+   {
+    "x": 18495,
+    "y": 16920
+   },
+   {
+    "x": 19485,
+    "y": 18810
+   },
+   {
+    "x": 17460,
+    "y": 21105
+   },
+   {
+    "x": 14760,
+    "y": 19395
+   },
+   {
+    "x": 18585,
+    "y": 22680
+   },
+   {
+    "x": 21240,
+    "y": 17415
+   }
+  ]
+ },
+ "wall_one_groups": {
+  "always": 4,
+  "sometimes": 2
+ },
+ "behaviour": {
+  "moyamoya_slip_radius": 400,
+  "moyamoya_give_up_distance": 600,
+  "moyamoya_give_up_frames": 180,
+  "kunekune_slip_tiles": 4,
+  "slip_interval_frames": 60,
+  "wandering_sight_tiles": 7,
+  "wandering_sight_angle": 60,
+  "wandering_track_tiles": 10,
+  "wandering_lost_frames": 900,
+  "warp_wait_frames": 300,
+  "warp_count": 6,
+  "obo_sight_tiles": 7,
+  "obo_light_frames": 420,
+  "obo_lost_frames": 180,
+  "obo_light_speed": 0.4,
+  "two_mouths_wait_frames": 240,
+  "blockage_frames": 360,
+  "whelk_sight_tiles": 6,
+  "whelk_lifespan_frames": 3600,
+  "walking_stone_max": 5,
+  "walking_stone_hits": [
+   3,
+   8
+  ],
+  "treasure_box_sense": 300
+ },
+ "monsters": {
+  "CREATURE_ID_HORROR_MOYAMOYASAN_LV3": {
+   "ja": "たたずむ霊",
+   "zh_hant": "佇立靈",
+   "script": "ai_creature_horror_moyamoyasan_lv3",
+   "hp": 1,
+   "power": 4,
+   "move_speed": 2.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 4,
+    "hearts": 1.0,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_KUNEKUNE": {
+   "ja": "くねくね",
+   "zh_hant": "扭扭妖",
+   "script": "ai_creature_horror_kunekune",
+   "hp": 0,
+   "power": 1,
+   "move_speed": 0.0,
+   "pop_time": "",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_WANDERING_GHOST": {
+   "ja": "うろうろお化け",
+   "zh_hant": "徘徊妖怪",
+   "script": "ai_creature_horror_wandering_ghost",
+   "hp": 0,
+   "power": 1,
+   "move_speed": 1.5,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_WARP_GHOST": {
+   "ja": "ワープお化け",
+   "zh_hant": "瞬移妖怪",
+   "script": "ai_creature_horror_warp_ghost",
+   "hp": 0,
+   "power": 3,
+   "move_speed": 0.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 3,
+    "hearts": 0.75,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_OBO": {
+   "ja": "オボ",
+   "zh_hant": "歐柏妖",
+   "script": "ai_creature_horror_obo",
+   "hp": 0,
+   "power": 2,
+   "move_speed": 4.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 2,
+    "hearts": 0.5,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN": {
+   "ja": "二口女",
+   "zh_hant": "二口女",
+   "script": "ai_creature_horror_two_mouths_woman",
+   "hp": 0,
+   "power": 4,
+   "move_speed": 2.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_PUSH",
+    "hp": 4,
+    "hearts": 1.0,
+    "knockback": 64,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_BLOCKAGE_PLANE": {
+   "ja": "通せんぼ",
+   "zh_hant": "擋路妖",
+   "script": "ai_creature_horror_blockage_plane",
+   "hp": 0,
+   "power": 1,
+   "move_speed": 0.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16,
+    "stun_frames": 0
+   }
+  },
+  "CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE": {
+   "ja": "塗り壁（顔）",
+   "zh_hant": "塗壁（臉）",
+   "script": "ai_creature_horror_plastered_wall_face",
+   "hp": 0,
+   "power": 1,
+   "move_speed": 0.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_HORROR_KNOCK_DOWN",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16,
+    "stun_frames": 100
+   }
+  },
+  "CREATURE_ID_HORROR_PLASTERED_WALL_ONE": {
+   "ja": "塗り壁（1マス）",
+   "zh_hant": "塗壁（1格）",
+   "script": "ai_creature_horror_plastered_wall_one",
+   "hp": 0,
+   "power": 1,
+   "move_speed": 0.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_WHELK": {
+   "ja": "ツブ",
+   "zh_hant": "小顆粒",
+   "script": "ai_creature_horror_whelk",
+   "hp": 0,
+   "power": 0,
+   "move_speed": 3.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [
+    "GAME_FLAG_STORY_01_END"
+   ],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_WALKING_STONE": {
+   "ja": "歩く石",
+   "zh_hant": "行走的石頭",
+   "script": "ai_creature_horror_walking_stone",
+   "hp": 5,
+   "power": 0,
+   "move_speed": 6.0,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_TREASURE_BOX": {
+   "ja": "玉手箱",
+   "zh_hant": "玉手箱",
+   "script": "ai_creature_horror_treasure_box",
+   "hp": 1,
+   "power": 0,
+   "move_speed": 4.5,
+   "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  }
+ },
+ "walking_stone_drops": [
+  {
+   "item": "ITEM_ID_OBJECT_STONE",
+   "min": 1,
+   "max": 3,
+   "chance": 40
+  },
+  {
+   "item": "ITEM_ID_OBJECT_GLASS_PIECE",
+   "min": 1,
+   "max": 1,
+   "chance": 9
+  },
+  {
+   "item": "ITEM_ID_OBJECT_CLAY",
+   "min": 1,
+   "max": 1,
+   "chance": 9
+  },
+  {
+   "item": "ITEM_ID_OBJECT_ROCK_SALT",
+   "min": 1,
+   "max": 1,
+   "chance": 9
+  },
+  {
+   "item": "ITEM_ID_OBJECT_COAL",
+   "min": 2,
+   "max": 4,
+   "chance": 9
+  },
+  {
+   "item": "ITEM_ID_OBJECT_MOSS",
+   "min": 1,
+   "max": 1,
+   "chance": 5
+  },
+  {
+   "item": "ITEM_ID_OBJECT_TOPAZ",
+   "min": 1,
+   "max": 1,
+   "chance": 1
+  },
+  {
+   "item": "ITEM_ID_OBJECT_LAPIS_LAZULI",
+   "min": 1,
+   "max": 1,
+   "chance": 1
+  },
+  {
+   "item": "ITEM_ID_OBJECT_JADE",
+   "min": 1,
+   "max": 1,
+   "chance": 1
+  },
+  {
+   "item": "ITEM_ID_OBJECT_GARNET",
+   "min": 1,
+   "max": 1,
+   "chance": 1
+  },
+  {
+   "item": "ITEM_ID_CURSE_FURNITURE_SHELL_FOSSILS",
+   "min": 1,
+   "max": 1,
+   "chance": 15
+  }
+ ],
+ "whelk_item": "ITEM_ID_OBJECT_RIVER_SNAIL",
+ "story_bosses": [
+  {
+   "id": "CREATURE_ID_HORROR_ITSUMADE",
+   "ja": "以津真天",
+   "zh_hant": "以津真天",
+   "chapter": 5,
+   "map": "MAP_ID_LOST_FOREST"
+  },
+  {
+   "id": "CREATURE_ID_HORROR_NUE",
+   "ja": "鵺の皮",
+   "zh_hant": "鵺皮",
+   "chapter": 5,
+   "map": "MAP_ID_MOUNTAIN_PASS"
+  },
+  {
+   "id": "CREATURE_ID_HORROR_FIGURE",
+   "ja": "人影",
+   "zh_hant": "人影",
+   "chapter": 5,
+   "map": "MAP_ID_BUSHAREA"
+  },
+  {
+   "id": "CREATURE_ID_HORROR_SPOTTED_DOG",
+   "ja": "斑犬",
+   "zh_hant": "斑點狗",
+   "chapter": 5,
+   "map": "MAP_ID_BUSHAREA"
+  },
+  {
+   "id": "CREATURE_ID_HORROR_KODAMA",
+   "ja": "木霊",
+   "zh_hant": "木靈",
+   "chapter": 6,
+   "map": "MAP_ID_BOTTOM_OF_HOLE"
+  }
+ ]
+}

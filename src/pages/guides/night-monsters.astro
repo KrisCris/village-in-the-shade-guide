@@ -1,0 +1,158 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnomalyMap from '../../components/AnomalyMap.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import {minimapImage} from '../../data/collectionMap';
+import type {MapLayer,MapShape} from '../../data/anomalyMap';
+import {monsterName,heartText,seconds,tiles,areaPoints,type MonsterKey} from '../../data/nightMonsters';
+import data from '../../../data/sources/game-night-monsters.json';
+import art from '../../../data/sources/game-night-monster-art.json';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const view=(id:string)=>{const e=catalog.entities.find(e=>e.kind==='items'&&e.id===id);return e&&{name:e.name.zh_hans,icon:e.icon_path,url:href(entityUrl(e))};};
+const M=data.monsters;
+const nm=(key:string)=>monsterName(M[`CREATURE_ID_HORROR_${key}` as MonsterKey],locale);
+const hit=(key:string)=>heartText(M[`CREATURE_ID_HORROR_${key}` as MonsterKey].hit!.hearts);
+const b=data.behaviour;
+const T=data.tables;
+const range=(c:number[])=>c[0]===c[1]?String(c[0]):`${c[0]}–${c[1]}`;
+const generic=['MOYAMOYASAN_LV3','KUNEKUNE','WANDERING_GHOST','WARP_GHOST','OBO'].map(nm).join(t('、'));
+const pictures=art.images as Record<string,{width:number,height:number}>;
+const pic=(slug:string,label:string)=>({src:withBase(`/art/night-monsters/${slug}.webp`),label,...pictures[slug]});
+const image=withBase(minimapImage(locale));
+const points=data.map_points as Record<string,Array<{x:number,y:number}>>;
+const areas=data.areas;
+const layer=(label:string,color:string,shape:MapShape,key:string,start?:number):MapLayer=>({label,color,shape,points:points[key],start});
+const area=(label:string,color:string,key:keyof typeof areas):MapLayer=>({label,color,shape:'area',points:areaPoints(areas[key].blocks),size:areas[key].block});
+const gates=(...keys:(keyof typeof areas)[]):MapLayer=>({label:t('区域入口'),color:'#f4f1e8',shape:'square',points:keys.flatMap(k=>areas[k].gates)});
+const C={red:'#e2553f',blue:'#4a86e8',purple:'#a46be6',gold:'#f2b632',white:'#f4f1e8',green:'#4cbf75',cyan:'#3fc8d0',orange:'#f08a3c',pink:'#f07fb5'};
+const snail=view(data.whelk_item);
+const drops=data.walking_stone_drops.map(d=>({...view(d.item),min:d.min,max:d.max,chance:d.chance}));
+const bossMap:Record<string,string>={MAP_ID_LOST_FOREST:t('迷途森林'),MAP_ID_MOUNTAIN_PASS:t('隘口'),MAP_ID_BUSHAREA:t('附身草丛'),MAP_ID_BOTTOM_OF_HOLE:t('大洞底部')};
+const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['monsters',t('妖怪图鉴')],['bosses',t('剧情中的妖怪')]];
+---
+<BaseLayout title={t('深夜出没的妖怪')}><h1>{t('深夜出没的妖怪')}</h1>
+<p>{t('深夜走进山中、农场和通往隘口的路，会碰上下面这些妖怪。它们和每晚轮换的怪异无关，大多打不倒，主要靠躲。每张卡片写它们在哪里出现、会做什么、伤害多少和怎么应对。')}</p>
+<nav class="toc" aria-label={t('本页目录')}>{nav.map(([id,label])=><a href={`#${id}`}>{label}</a>)}</nav>
+
+<section id="when"><h2>{t('什么时候出现')}</h2><ul>
+<li set:html={tHtml('只在深夜 0:00–5:00 出现，到 5:00 全部消失。哪些晚上有深夜，见<a href="/guides/anomalies/#late-night">怪异出现条件与对策</a>。')} />
+<li>{t('山中、农场、追加农地和通往隘口的路，入口处各有一条看不见的界线（地图上的白色方块）。深夜从入口走进去，区域里会随机冒出一批妖怪；走出入口，这一批全部消失，下次进来重新出现。')}</li>
+<li>{t('附身草丛和迷途森林也有这样的入口。这两处不在村庄小地图上，下面没有画出来。')}</li>
+<li>{t('伤害按 4 点生命 = 1 颗心换算。')}</li>
+</ul>
+<table class="spawn"><thead><tr><th>{t('区域')}</th><th>{t('每次进入出现')}</th></tr></thead><tbody>
+<tr><td>{t('通往隘口的路')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['1'].count)})}</td></tr>
+<tr><td>{t('山中')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['2'].count)})}<br/>{t('另有{woman} {a} 只、{block} {b} 只，以及{wall}',{woman:nm('TWO_MOUTHS_WOMAN'),a:range(T['4'].count),block:nm('BLOCKAGE_PLANE'),b:range(T['5'].count),wall:t('涂壁')})}</td></tr>
+<tr><td>{t('农场')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['3'].count)})}</td></tr>
+<tr><td>{t('追加农地')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['100'].count)})}</td></tr>
+<tr><td>{t('附身草丛')}</td><td>{t('{kune} {a} 只、{obo} {b} 只、{woman} 1 只',{kune:nm('KUNEKUNE'),a:range(T['15'].count),obo:nm('OBO'),b:range(T['16'].count),woman:nm('TWO_MOUTHS_WOMAN')})}</td></tr>
+<tr><td>{t('迷途森林')}</td><td>{t('{woman} 1 只',{woman:nm('TWO_MOUTHS_WOMAN')})}</td></tr>
+</tbody></table>
+<p class="note">{t('各区域共用的 5 种妖怪每次随机抽取，表中数量是它们的总数。')}</p></section>
+
+<section id="maps"><h2>{t('出现范围地图')}</h2>
+<p>{t('彩色区域是妖怪会出现的范围，白色方块是入口。')}</p>
+<div class="maps">
+<AnomalyMap image={image} label={t('农场和追加农地的妖怪出现范围')} layers={[area(t('农场'),C.pink,'farm'),area(t('追加农地'),C.gold,'added_farm'),gates('farm','added_farm')]}/>
+<AnomalyMap image={image} label={t('山中的妖怪出现范围')} layers={[area(t('山中'),C.green,'mountain'),gates('mountain')]}/>
+<AnomalyMap image={image} label={t('通往隘口的路的妖怪出现范围')} layers={[area(t('通往隘口的路'),C.red,'pass_road'),gates('pass_road')]}/>
+</div></section>
+
+<section id="monsters"><h2>{t('妖怪图鉴')}</h2><div class="cards">
+
+<article class="card" id="tatazumu"><h3>{nm('MOYAMOYASAN_LV3')}</h3><div class="art">{([pic('tatazumu',nm('MOYAMOYASAN_LV3'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('农场')}</span><span class="pill">{t('通往隘口的路')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('一团发光的人影，站在原地不动。离它 {r} 格以内，体力消耗变多，还会每秒减少一些。你靠近后它会沿路追来。',{r:tiles(b.moyamoya_slip_radius)})}</p>
+<h4>{t('伤害')}</h4><p>{t('被撞到扣 {h} 颗心。',{h:hit('MOYAMOYASAN_LV3')})}</p>
+<h4>{t('怎么应对')}</h4><ul><li>{t('它只有 1 点生命，用武器打中一下就会消失，不掉东西。')}</li><li>{t('躲起来，它会走到你身边，然后消失并回到原处。')}</li><li>{t('离它 {d} 格以上并保持 {s} 秒，它就不再追。',{d:tiles(b.moyamoya_give_up_distance),s:seconds(b.moyamoya_give_up_frames)})}</li></ul></article>
+
+<article class="card" id="kunekune"><h3>{nm('KUNEKUNE')}</h3><div class="art">{([pic('kunekune',nm('KUNEKUNE'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('农场')}</span><span class="pill">{t('通往隘口的路')}</span><span class="pill">{t('附身草丛')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('黑色的细长影子，在原地扭动，不会移动。离它 {r} 格以内，体力消耗变多，还会每秒减少一些。',{r:b.kunekune_slip_tiles})}</p>
+<h4>{t('伤害')}</h4><p>{t('碰到扣 {h} 颗心。',{h:hit('KUNEKUNE')})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('打不倒。远远绕开，别在它附近停留。')}</p>
+<p class="note" set:html={tHtml('野槌蛇那晚村里也会出现它，见<a href="/guides/anomalies/#nozuchi">野槌蛇</a>。')} /></article>
+
+<article class="card" id="wandering-ghost"><h3>{nm('WANDERING_GHOST')}</h3><div class="art">{([pic('wandering-ghost',nm('WANDERING_GHOST'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('农场')}</span><span class="pill">{t('通往隘口的路')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('披着白布的妖怪，在原地附近来回走几步，停一会儿再走。前方 {d} 格、{a}° 以内看到你（或你贴到它身边），它会加速追来，{r} 格以内都跟得住。',{d:b.wandering_sight_tiles,a:b.wandering_sight_angle,r:b.wandering_track_tiles})}</p>
+<h4>{t('伤害')}</h4><p>{t('被撞到扣 {h} 颗心。',{h:hit('WANDERING_GHOST')})}</p>
+<h4>{t('怎么应对')}</h4><ul><li>{t('被追时躲起来，它会直接消失。')}</li><li>{t('跑出它的追踪范围也行：它会在附近找一阵，{s} 秒后回去继续巡逻。',{s:seconds(b.wandering_lost_frames)})}</li><li>{t('打不倒。')}</li></ul></article>
+
+<article class="card" id="warp-ghost"><h3>{nm('WARP_GHOST')}</h3><div class="art">{([pic('warp-ghost',nm('WARP_GHOST'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('农场')}</span><span class="pill">{t('通往隘口的路')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('长着红色细腿的大眼球。出现时下起血雨、地上冒出血泊。{s} 秒后它消失，又出现在你站的位置；这样最多瞬移 {n} 次，之后自己消失。',{s:seconds(b.warp_wait_frames),n:b.warp_count})}</p>
+<h4>{t('伤害')}</h4><p>{t('被撞到扣 {h} 颗心。',{h:hit('WARP_GHOST')})}</p>
+<h4>{t('怎么应对')}</h4><ul><li>{t('看到血泊就离开原地，它出现在你刚才的位置。')}</li><li>{t('躲起来，它会提前消失。')}</li><li>{t('打不倒。')}</li></ul></article>
+
+<article class="card" id="obo"><h3>{nm('OBO')}</h3><div class="art">{([pic('obo',nm('OBO'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('农场')}</span><span class="pill">{t('通往隘口的路')}</span><span class="pill">{t('附身草丛')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('瘦长的白色妖怪，身上有红色的眼睛。{r} 格以内看到你就追来。',{r:b.obo_sight_tiles})}</p>
+<h4>{t('伤害')}</h4><p>{t('被撞到扣 {h} 颗心。',{h:hit('OBO')})}</p>
+<h4>{t('怎么应对')}</h4><ul><li>{t('用灯照它：被照到时它缩成一团，速度只剩 {p}%；累计照 {s} 秒，它就消失。',{p:Math.round(b.obo_light_speed*100),s:seconds(b.obo_light_frames)})}</li><li>{t('甩掉它也行，跟丢 {s} 秒后它会回到原处。',{s:seconds(b.obo_lost_frames)})}</li></ul></article>
+
+<article class="card" id="two-mouths-woman"><h3>{nm('TWO_MOUTHS_WOMAN')}</h3><div class="art">{([pic('two-mouths-woman',nm('TWO_MOUTHS_WOMAN'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span><span class="pill">{t('附身草丛')}</span><span class="pill">{t('迷途森林')}</span></p>
+<div class="body"><div>
+<h4>{t('会做什么')}</h4><p>{t('后脑长着一张大嘴的女人，出现时会发出声音。她沿固定路线来回走，走到两头各停 {s} 秒，不会追人。',{s:seconds(b.two_mouths_wait_frames)})}</p>
+<p>{t('山中有 {n} 个出现点（地图数字），每次进入出现其中 {c} 个；附身草丛和迷途森林各 1 个。',{n:points.two_mouths_woman.length,c:range(T['4'].count)})}</p>
+<h4>{t('伤害')}</h4><p>{t('被碰到扣 {h} 颗心，并被远远推开。',{h:hit('TWO_MOUTHS_WOMAN')})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('打不倒。看准她走开的时机，从路线旁边绕过去。')}</p>
+</div><AnomalyMap image={image} label={t('山中：二口女的出现点和路线')} layers={[layer(t('出现点'),C.pink,'number','two_mouths_woman'),layer(t('路线经过的点'),C.white,'dot','two_mouths_route'),gates('mountain')]}/></div></article>
+
+<article class="card" id="blockage"><h3>{nm('BLOCKAGE_PLANE')}</h3><div class="art">{([pic('blockage',nm('BLOCKAGE_PLANE'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span></p>
+<div class="body"><div>
+<h4>{t('会做什么')}</h4><p>{t('一颗巨大的头，挡在山中的小路上，{s} 秒后自己消失。山中有 {n} 个出现点，每次进入出现其中 {c} 个。',{s:seconds(b.blockage_frames),n:points.blockage.length,c:range(T['5'].count)})}</p>
+<h4>{t('伤害')}</h4><p>{t('碰到扣 {h} 颗心。',{h:hit('BLOCKAGE_PLANE')})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('打不倒。停下来等它消失再过去。')}</p>
+</div><AnomalyMap image={image} label={t('山中：挡路妖的出现点')} layers={[layer(t('出现点'),C.orange,'dot','blockage'),gates('mountain')]}/></div></article>
+
+<article class="card" id="wall"><h3>{t('涂壁')}</h3><div class="art">{([pic('wall-face',nm('PLASTERED_WALL_FACE_PLANE')),pic('wall-one',nm('PLASTERED_WALL_ONE'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('山中')}</span></p>
+<div class="body"><div>
+<h4>{t('会做什么')}</h4><ul><li>{t('{face}：长着眼睛的一面墙，堵在路上。山中有 {n} 个出现点，每次进入最多出现 1 个。',{face:nm('PLASTERED_WALL_FACE_PLANE'),n:points.wall_face.length})}</li>
+<li>{t('{one}：一格一格的小墙排成一排，把小路堵死。西侧 {a} 处（地图橙点）每次进入都会堵上一处，东侧 {b} 处（紫点）有时也会堵上一处。',{one:nm('PLASTERED_WALL_ONE'),a:data.wall_one_groups.always,b:data.wall_one_groups.sometimes})}</li></ul>
+<h4>{t('伤害')}</h4><p>{t('碰到{face}，它会醒来拍你：扣 {h} 颗心，并被打倒约 {s} 秒。',{face:nm('PLASTERED_WALL_FACE_PLANE'),h:hit('PLASTERED_WALL_FACE_PLANE'),s:seconds(M.CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE.hit!.stun_frames)})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('打不倒，也推不开。换一条路走，或者出去再进来重新抽一次。')}</p>
+</div><AnomalyMap image={image} label={t('山中：涂壁的出现点')} layers={[layer(nm('PLASTERED_WALL_FACE_PLANE'),C.red,'square','wall_face'),layer(t('{one}（西侧）',{one:nm('PLASTERED_WALL_ONE')}),C.orange,'dot','wall_one_always'),layer(t('{one}（东侧）',{one:nm('PLASTERED_WALL_ONE')}),C.purple,'dot','wall_one_sometimes'),gates('mountain')]}/></div></article>
+
+<article class="card" id="walking-stone"><h3>{nm('WALKING_STONE')}</h3><div class="art">{([pic('walking-stone',nm('WALKING_STONE'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('村庄地图上的石头')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('深夜开始时，村庄地图上最多 {n} 块普通石头会变成行走的石头，混在其他石头里。用十字镐敲它，它会站起来逃跑；跑出画面后停下。深夜结束时，没敲碎的变回普通石头。',{n:b.walking_stone_max})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('追上去继续敲。每敲一下都会掉东西，敲 {a}～{b} 下（随机）后碎掉。它不会伤人。',{a:b.walking_stone_hits[0],b:b.walking_stone_hits[1]})}</p>
+<h4>{t('每敲一下，各自独立判定掉落')}</h4><table class="drops"><thead><tr><th>{t('物品')}</th><th>{t('数量')}</th><th>{t('几率')}</th></tr></thead><tbody>
+{drops.map(d=><tr><td>{d.url&&<a class="item" href={d.url}>{d.icon&&<img src={withBase(d.icon)} width="28" height="28" alt="" loading="lazy"/>}{d.name}</a>}</td><td>{range([d.min,d.max])}</td><td>{d.chance}%</td></tr>)}
+</tbody></table></article>
+
+<article class="card" id="whelk"><h3>{nm('WHELK')}</h3>
+<p class="conds"><span class="pill">{t('第一章结束后')}</span><span class="pill">{t('村庄地图')}</span></p>
+<div class="body"><div>
+<h4>{t('会做什么')}</h4><p>{t('深夜在地图上的 {n} 个固定点各有一个闪光的小颗粒。你走到 {r} 格以内，它会发现你并一段一段地慢慢逃开，{s} 秒后消失。',{n:points.whelk.length,r:b.whelk_sight_tiles,s:seconds(b.whelk_lifespan_frames)})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('趁它还没消失，追上去捡起来，得到：')}</p>{snail&&<div class="chips"><a href={snail.url}>{snail.icon&&<img src={withBase(snail.icon)} width="32" height="32" alt="" loading="lazy"/>}{snail.name}</a></div>}
+</div><AnomalyMap image={image} label={t('小颗粒的出现点')} layers={[layer(t('出现点'),C.cyan,'dot','whelk')]}/></div></article>
+
+<article class="card" id="treasure-box"><h3>{nm('TREASURE_BOX')}</h3><div class="art">{([pic('treasure-box',nm('TREASURE_BOX'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<h4>{t('会做什么')}</h4><p>{t('长着脚的漆盒。你走到约 {r} 格以内，它会站起来逃跑。',{r:tiles(b.treasure_box_sense)})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('还没跑时用箭射它，只会把它吓跑，不会受伤。等它跑起来再打中一下就倒，走过去捡起来拿奖励。')}</p>
+<p set:html={tHtml('出现点和奖励见<a href="/guides/collection-map/#treasures">夜间收集地图</a>。')} /></article>
+</div></section>
+
+<section id="bosses"><h2>{t('剧情中的妖怪')}</h2>
+<details><summary>{t('第五、六章剧透')}</summary>
+<p>{t('下面这些妖怪只在剧情战斗中出现，深夜的区域里不会刷出来。')}</p>
+<ul>{data.story_bosses.map(boss=><li>{t('{name}：第 {chapter} 章，{map}',{name:monsterName(boss,locale),chapter:boss.chapter,map:bossMap[boss.map]})}</li>)}</ul>
+</details></section>
+
+<details class="sources"><summary>{t('游戏数据来源')}</summary><ul>
+<li>{t('出现区域和数量：placementhorror.dat，以及村庄地图格子上记录的刷新表编号（四季相同）；入口：demolist.dat 的 DEMO_ID_PLANE_GHOST_AREA_ON_* 和 mapevent_latenight_area。')}</li>
+<li>{t('行为：各妖怪的 ai_creature_horror_* 脚本；生命、攻击力和出现时间：creature.dat；伤害：attack.dat 的倍率乘以攻击力。')}</li>
+<li>{t('行走的石头：event_check_late_night 和 cropsharvest.dat。')}</li>
+<li>{t('插图：用游戏自带的动画模型（anime.dat、fairy_1_00.dat）渲染。')}</li>
+<li>{data.source}</li>
+</ul></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}article{scroll-margin-top:90px}p,li{line-height:1.8}.toc{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;line-height:1.8;margin-bottom:1rem}.cards{display:grid;gap:1rem}.card{padding:1rem 1.1rem;margin:0;min-width:0}.card h3{margin-top:0}h4{font-size:.95rem;margin:1rem 0 .3rem}.card p{margin:.3rem 0}.card ul{margin:.3rem 0;padding-left:1.3rem}.body{display:grid;gap:.2rem 1.4rem;align-items:start}@media (min-width:900px){.body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.maps{grid-template-columns:repeat(2,minmax(0,1fr))}}.maps{display:grid;gap:0 1.2rem}.art{display:flex;flex-wrap:wrap;gap:.6rem 1rem;margin:.2rem 0 .6rem}.art figure{margin:0;display:grid;justify-items:center;gap:.2rem;width:88px}.art img{width:auto;height:auto;max-width:88px;max-height:80px;object-fit:contain}.art figcaption{font-size:.78rem;color:var(--muted);text-align:center;line-height:1.3}.conds{display:flex;flex-wrap:wrap;gap:.4rem}.chips{display:flex;flex-wrap:wrap;gap:.3rem .2rem}.chips a,a.item{display:inline-flex;align-items:center;gap:.35rem;margin-right:.6rem;text-decoration:none}.chips img,a.item img{object-fit:contain}.note{font-size:.85rem;color:var(--muted)}.spawn,.drops{width:100%;max-width:640px;border-collapse:separate;border-spacing:0;margin:.6rem 0;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);overflow:hidden}.drops{max-width:460px}.spawn th,.drops th{background:color-mix(in srgb,var(--green-soft) 70%,var(--paper-raised))}.spawn th,.spawn td,.drops th,.drops td{padding:.45rem .8rem;text-align:left;vertical-align:top}.spawn td:first-child{white-space:nowrap}.drops td:not(:first-child),.drops th:not(:first-child){text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.spawn tbody td,.drops tbody td{border-top:1px solid var(--border)}details{padding:.8rem 1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

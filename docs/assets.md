@@ -17,6 +17,7 @@
 | `public/art/` | 首页的山峦、云雾、四季树木与灌木 | `tools/extract-scenery.py`，逐图来源见 `data/sources/site-scenery.json` |
 | `public/art/portraits/` | 动态立绘 | `tools/extract-portrait-models.py`、`extract-portrait-options.py` 导出，`tools/package-portraits.mjs` 打包 |
 | `public/art/anomalies/` | 怪异页插图 | `tools/extract-anomaly-art.py` 从构建 `25311578` 的 `anime.dat`、`fairy_1_00.dat` 导出，`tools/render-anomaly-art.mjs` 渲染，逐图来源见 `data/sources/game-anomaly-art.json` |
+| `public/art/night-monsters/` | 深夜妖怪页插图 | 同一组工具（`night-monsters` 参数）从构建 `25311578` 的 `anime.dat`、`fairy_1_00.dat` 导出并渲染，逐图来源见 `data/sources/game-night-monster-art.json` |
 | `public/art/logo-japanese.png` | 日文游戏标志 | Steam 商店公开图片 |
 | `public/portraits/official/` | 角色头像 | 发行商网站人物页，来源见 `data/sources/official-character-portraits.json` |
 | `public/favicon.svg`、`public/app/` | 站点与应用图标 | 作者绘制，`tools/build-app-icons.mjs` 生成各尺寸 |
