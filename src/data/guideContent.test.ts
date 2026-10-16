@@ -76,6 +76,10 @@ describe('guide index audit', () => {
     const chapters = guides.filter((guide) => /^[春夏秋冬]月[前後]半/.test(guide.title));
     expect(chapters).toHaveLength(9);
     for (const chapter of chapters) expect(chapter.guideTarget).toBe('/guides/progression/#story');
+    expect(guides.find((guide) => guide.title.startsWith('怪異(お化け)一覧'))!.guideTarget).toBe('/guides/anomalies/');
+    const anomalies = { '付喪達磨': 'daruma', '牛お化け': 'ghost-cow', '天狗': 'mask', '風神雷神': 'fujin-raijin', '百目': 'soot-sprite', '提灯お化け': 'hand-eyes', '野槌': 'nozuchi', '唐傘お化け': 'kasa-ghost', '雪女': 'snow-woman', 'ヅ主': 'demon' };
+    for (const [title, anchor] of Object.entries(anomalies)) expect(byTitle(title).guideTarget, title).toBe(`/guides/anomalies/#${anchor}`);
+    expect(guides.filter((guide) => guide.category === '怪异').every((guide) => guide.guideTarget?.startsWith('/guides/anomalies/'))).toBe(true);
   });
   it('drops basic and off-topic topics back to the guide index', () => {
     for (const title of ['雑談・質問掲示板', 'セーブのやり方', 'マルチはある？', '注視の使い方', 'あんしん暮しモード', '取り返せないこと', '指笛の種類'])
@@ -83,7 +87,6 @@ describe('guide index audit', () => {
   });
   it('lists only topics without a guide of our own as pending', () => {
     expect(pendingGuides.every((guide) => !guide.guideTarget)).toBe(true);
-    expect(pendingGuides.some((guide) => guide.title === '雪女')).toBe(true);
     expect(pendingGuides.some((guide) => guide.title === '釣りのやり方')).toBe(false);
   });
 });

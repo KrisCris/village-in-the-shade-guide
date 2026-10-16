@@ -9,6 +9,11 @@ import type { Locale } from '../i18n/locales';
 export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitle: string; headings: string[]; dataTarget?: string; guideTarget?: string };
 
 // i18n-ignore-start — matches Japanese AppMedia titles and builds Simplified Chinese source text.
+/** AppMedia's per-anomaly pages and the matching card on /guides/anomalies/. */
+const anomalyAnchors: Record<string, string> = {
+  '付喪達磨': 'daruma', '牛お化け': 'ghost-cow', '天狗': 'mask', '風神雷神': 'fujin-raijin', '百目': 'soot-sprite',
+  '提灯お化け': 'hand-eyes', '野槌': 'nozuchi', '唐傘お化け': 'kasa-ghost', '雪女': 'snow-woman', 'ヅ主': 'demon',
+};
 export function guideTarget(title: string) {
   if (/牧畜のやり方|なつき度の上げ方/.test(title)) return '/guides/livestock-plan/';
   if (/の解放条件と入手アイテム|カラーヒヨコの入手方法/.test(title)) return '/guides/livestock-plan/#unlock';
@@ -34,6 +39,9 @@ export function guideTarget(title: string) {
   if (/^[春夏秋冬]月[前後]半/.test(title)) return '/guides/progression/#story';
   if (/キャラクリ変更/.test(title)) return '/guides/appearance/';
   if (/おすすめの金策/.test(title)) return '/planner/';
+  if (/怪異\(お化け\)一覧/.test(title)) return '/guides/anomalies/';
+  const anomaly = anomalyAnchors[title];
+  if (anomaly) return `/guides/anomalies/#${anomaly}`;
   return undefined;
 }
 

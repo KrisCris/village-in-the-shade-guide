@@ -1,0 +1,33 @@
+---
+/** Static crop of the village minimap with markers; every map on a page shares one image download. */
+import mapData from '../../data/sources/game-map-markers.json';
+import { MINIMAP_SIZE, mapPins, type MapLayer } from '../data/anomalyMap';
+interface Props { layers: MapLayer[]; label: string; image: string }
+const { layers, label, image } = Astro.props;
+const { frame, pins } = mapPins(layers, mapData.projection);
+const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
+---
+<figure class="amap">
+  <div class="amap-view" role="img" aria-label={label} style={`aspect-ratio:${frame.width}/${frame.height}`}>
+    <img src={image} alt="" loading="lazy" decoding="async" width={MINIMAP_SIZE} height={MINIMAP_SIZE}
+      style={`width:${pct(MINIMAP_SIZE / frame.width)};left:${pct(-frame.x / frame.width)};top:${pct(-frame.y / frame.height)}`} />
+    {pins.map((pin) => <span class={`amap-pin ${pin.shape}`} style={`left:${pin.left}%;top:${pin.top}%;--pin:${pin.color}`} aria-hidden="true">{pin.text}</span>)}
+  </div>
+  <figcaption><ul class="amap-legend">{layers.map((layer) => <li><i class={`amap-pin ${layer.shape}`} style={`--pin:${layer.color}`} aria-hidden="true" />{layer.label}</li>)}</ul></figcaption>
+</figure>
+<style>
+  .amap { margin: .6rem 0 .8rem; }
+  .amap-view { position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: #1d2a26; }
+  .amap-view img { position: absolute; max-width: none; height: auto; display: block; }
+  .amap-pin { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; box-sizing: border-box; background: var(--pin); border: 2px solid #17201c; box-shadow: 0 0 0 1.5px #fffc; color: #17201c; font: 700 .7rem/1 var(--font-sans); }
+  .amap-pin.number { width: 1.35rem; height: 1.35rem; border-radius: 50%; }
+  .amap-pin.dot { width: .65rem; height: .65rem; border-radius: 50%; border-width: 1.5px; box-shadow: 0 0 0 1px #fffa; }
+  .amap-pin.square { width: 1rem; height: 1rem; border-radius: 3px; }
+  .amap-pin.star { width: 1.5rem; height: 1.5rem; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); border: 0; box-shadow: none; background: #17201c; }
+  .amap-pin.star::after { content: ''; position: absolute; inset: 3px; clip-path: inherit; background: var(--pin); }
+  figcaption { margin-top: .35rem; }
+  .amap-legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin: 0; padding: 0; list-style: none; font-size: .85rem; color: var(--muted); }
+  .amap-legend li { display: inline-flex; align-items: center; gap: .4rem; }
+  .amap-legend .amap-pin { position: static; transform: none; flex: none; }
+  .amap-legend .amap-pin.number { width: 1rem; height: 1rem; }
+</style>

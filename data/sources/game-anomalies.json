@@ -1,0 +1,2769 @@
+{
+  "source": "latenightevent.dat, event.dat, gamevalue.dat, placementitem.dat, cropsharvest.dat, gimmick.dat, map_0000_ver120_*.ymwr.head + scripts event_check_late_night.lub, gimmick_shinto_altar.lub, gimmick_event_black_daruma.lub, event_horror_statue_game.lub, event_horror_eye_of_hand.lub, event_horror_soot_sprite.lub, event_horror_grass.lub, event_horror_mask.lub, event_horror_demon.lub, event_horror_hat_ghost.lub, event_horror_fujin_raijin.lub, event_horror_snow_woman.lub, event_horror_unknown_livestocs.lub, event_horror_petopeto.lub, ai_creature_horror_petopeto.lub, event_horror_mountain_monster.lub, event_horror_phone_booth.lub, ai_creature_horror_long_hair_lady.lub, event_horror_doll.lub, gimmick_furniture_japanese_doll_body.lub, ai_creature_horror_japanese_doll_body.lub, ai_creature_horror_japanese_doll_head_item.lub, gimmick_event_night_grass.lub, ai_creature_horror_nozuchi_tail.lub, ai_creature_horror_red_mask_ghost.lub, ai_creature_horror_purple_mask_ghost.lub, gimmick_event_hat_gizo.lub, ai_creature_horror_mizuchi_fujin_template.lub, ai_creature_horror_mizuchi_raijin_template.lub, gimmick_snow_woman_husband_grave.lub, event_horror_grudge_vegetables.lub, ai_creature_horror_dorotabo.lub, mapevent_horror_area.lub, event_horror_common.lub, ai_creature_horror_vegetable_monster.lub, ai_creature_horror_fish_monster.lub, event_horror_abyss.lub, gimmick_event_evileye_stone_monument.lub",
+  "script_sha256": {
+    "event_check_late_night": "376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2",
+    "gimmick_shinto_altar": "2e5594a5e4b313e109d9e9766a13b39d51148ecd1a451214466950e6a88e3ebf",
+    "gimmick_event_black_daruma": "69286045c8a396852fb5a17dd9951083ad0dbc17ae4e4011a3c9526d2e2468e4",
+    "event_horror_statue_game": "19d2887a777717d8090ce876791370ae4df00c2f4677ce532a15f85fb41d392a",
+    "event_horror_eye_of_hand": "4192f7f6143eb887df97b0fbff177ba6d7cb554e8c96564bb47218c67ba13949",
+    "event_horror_soot_sprite": "d87ab5d936d9e9b21d00e7756e54664b748e8b7ecf0577c31d31199e39a3fc5a",
+    "event_horror_grass": "2cd7ccd8be4c870bd64b1ffc20505948268a78e69f5e0a6c8c8da16cdb53270b",
+    "event_horror_mask": "90a184b52bfdff9601bcbb1ada828506ee94375fa6cc5c59d90cf23dd6bd5cd2",
+    "event_horror_demon": "d44bba0759db4013ed959235c6563f0d90c413df6c8984fbda16b972e823024f",
+    "event_horror_hat_ghost": "fdd69160f321a5580ddcf6bb310b20091a3eacaab5d5ab0ccdac3625002f251b",
+    "event_horror_fujin_raijin": "5fd88804116ee8e2239d2ed35b5788b2ce13d617bcc701dfae230c14506da28e",
+    "event_horror_snow_woman": "cfd05957dd7859e74feb008aafd05d34e08feb4ee15f7c912ccab22e69c7fcbb",
+    "event_horror_unknown_livestocs": "b4800dcceec164f4ca9f911ece3809559478695ab7104957f63384c021ee7838",
+    "event_horror_petopeto": "5982eba8e8f074463594c23b608bed5a443475cd03aee336a14b6ccaf264deeb",
+    "ai_creature_horror_petopeto": "9c57700a6f4c32bd26304ee5f35eb100b8e1b8258a182acb6affedc1d65a7896",
+    "event_horror_mountain_monster": "f8a397df28449af07f8aaf50d1006cdcc6786ba572b4a5d33aec27309602cd89",
+    "event_horror_phone_booth": "08a6212e2f7464310a21e06df92451263dff0f79747eb591c9cb87bfb2f5f644",
+    "ai_creature_horror_long_hair_lady": "028dd8c8013e2353fa800210da354cc3419578ce7cf59bcc250629030f2c88a2",
+    "event_horror_doll": "c2c6f1aab43115d7948f3c8c136385c42d0c518663e50522eba39e90594a378a",
+    "gimmick_furniture_japanese_doll_body": "900343a47ae2e4c031b58f812bc7a4f7d3c628e23164662f78693d0d0209df02",
+    "ai_creature_horror_japanese_doll_body": "e5007108bf4c1c4095e7abacf93936fe4ae0e6ca763876797243ec7336a345e1",
+    "ai_creature_horror_japanese_doll_head_item": "b1f3dac822c1d00cb3d4c4b1574d6af4ec8a889c95c930c5bc26883cb33f1816",
+    "gimmick_event_night_grass": "eea10790b765e80150e4a3fbcdfdaf3980e4edfdda1666aa8c394e483567f4b3",
+    "ai_creature_horror_nozuchi_tail": "56e34dde60a89357a88d3e370599b0bee7b3058a1b3952fb264ffdf6929ba850",
+    "ai_creature_horror_red_mask_ghost": "3ee2e47f733eb4a12c041fa4417fac81efb346f17a9c35d94010b3c9fee9c452",
+    "ai_creature_horror_purple_mask_ghost": "0f9d7fe692a948ac1b87ecb9f22e9b50758902536262a430b0cdad5df3b8c4dd",
+    "gimmick_event_hat_gizo": "d05e7ab98e3e9bfae0c364c9657b8c10e4312032484674417c0c288336066dd4",
+    "ai_creature_horror_mizuchi_fujin_template": "0b66495d1fd8510ef11d3254c92bbded4e6389b32680295b7339603f414d17ee",
+    "ai_creature_horror_mizuchi_raijin_template": "9ce5c025fa923196e67248b1d20f523a9e05b91a49d6abb0b0a42edaf7588624",
+    "gimmick_snow_woman_husband_grave": "472bb109dad3bddd52b6bdfd51a5ab94a3e130a70c0ffbab1e4301eb9537d910",
+    "event_horror_grudge_vegetables": "0a02f544d6ba2593679566d746760ea57cda728bfd85628227e96c3c727efb7a",
+    "ai_creature_horror_dorotabo": "50562b1557454516ccca0438c0d86acddac6864d4e5f078aca9f6ce47a551b98",
+    "mapevent_horror_area": "c16bab5ce0c94bbfd38432e4a16473db218b4dd311ef21236548124e754c1729",
+    "event_horror_common": "87012d34303cd9e621f54b3caf1480be2acffe40cc8fd6df6d407d941dedd9c2",
+    "ai_creature_horror_vegetable_monster": "605b2c00e94da8ab9e2b8147cf5c95dfa3439f6a53da25dadc4d9450e2882f94",
+    "ai_creature_horror_fish_monster": "8ed1453024c390b585fb96e32de1c1ca786d2f6840aaa6f71bec57c47ed7d2c2",
+    "event_horror_abyss": "572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa",
+    "gimmick_event_evileye_stone_monument": "3a62f0be25c310941db5f9d735dab2d2ee0f65c02aa272779b3488de08c740f3"
+  },
+  "late_night": {
+    "hours": [
+      0,
+      6
+    ],
+    "weekly_count": [
+      3,
+      4
+    ],
+    "first_interval_days": [
+      1,
+      2
+    ],
+    "forced_by": [
+      "thunderstorm",
+      "day 1",
+      "day 15",
+      "item on the お化け棚"
+    ],
+    "never": "eve of a festival (common.isBeforeFestival)",
+    "cancelled_by": "GAME_FLAG_LATE_NIGHT_START_OFF (清めの塩 on the お化け棚)"
+  },
+  "altar": {
+    "item": "ITEM_ID_SHINTO_ALTAR",
+    "pickup_event": "EVENT_ID_STORY_01_200",
+    "requires": [
+      "GAME_FLAG_STORY_01_END"
+    ],
+    "excludes": [
+      "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GET_SHINTO_ALTAR",
+      "GAME_FLAG_HORROR_OFF_MODE"
+    ]
+  },
+  "tablets": [
+    {
+      "item": "ITEM_ID_CURSED_DARUMA_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_STATUE_GAME",
+      "late_night_event": "LATE_NIGHT_EVENT_STATUE_GAME",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_DARUMA_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_TENOME_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_HAND_EYES",
+      "late_night_event": "LATE_NIGHT_EVENT_HAND_EYES",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_HAND_EYES_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_SUSUWATARI_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "late_night_event": "LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_SOOT_SPRITE_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_TENGU_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_MASK",
+      "late_night_event": "LATE_NIGHT_EVENT_MASK",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_MASK_FIRST"
+    },
+    {
+      "item": "ITEM_ID_CURSED_NODUCHI_MODE",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GRASS",
+      "late_night_event": "LATE_NIGHT_EVENT_GRASS",
+      "pickup_unlock_flag": "GAME_FLAG_HORROR_EVENT_GRASS_FIRST"
+    }
+  ],
+  "mask_night_pickups": [
+    {
+      "group": 500000002,
+      "sparkle": 2,
+      "items": [
+        {
+          "item": "ITEM_ID_OBJECT_WOOD",
+          "weight": 14
+        },
+        {
+          "item": "ITEM_ID_OBJECT_ROSE_QUARTZ",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_OBJECT_GARNET",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CURSED_RED_DEBRIS",
+          "weight": 40
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_01",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_02",
+          "weight": 9
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_03",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_04",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CROPS_MUD_SEEDS",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_MIRROR_01",
+          "weight": 2
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_SWORD",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "group": 500000003,
+      "sparkle": 3,
+      "items": [
+        {
+          "item": "ITEM_ID_OBJECT_WOOD",
+          "weight": 14
+        },
+        {
+          "item": "ITEM_ID_OBJECT_TOURMALINE",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_OBJECT_SAPPHIRE",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CURSED_BLUE_DEBRIS",
+          "weight": 40
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_01",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_02",
+          "weight": 9
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_03",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_JEWELS_04",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_CROPS_MUD_SEEDS",
+          "weight": 3
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_MIRROR_01",
+          "weight": 2
+        },
+        {
+          "item": "ITEM_ID_SPECIAL_SWORD",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "group": 500000002,
+      "sparkle": 4,
+      "items": [
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_FOX_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_DEMON_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_30",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_31",
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "group": 500000003,
+      "sparkle": 5,
+      "items": [
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_TENGU_MASK",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_MASK_OF_OKAME",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_37",
+          "weight": 25
+        },
+        {
+          "item": "ITEM_ID_CRAFT_RECIPE_ACCESSORY_32",
+          "weight": 25
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "LATE_NIGHT_EVENT_HAND_EYES",
+      "name_ja": "手の目",
+      "start_event": "EVENT_ID_HAND_EYES_START",
+      "encount_event": "EVENT_ID_HAND_EYES_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_HAND_EYES",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_HAND_EYES_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_eye_of_hand",
+        "counter": "GAME_VALUE_HORROR_EVILEYESTONE_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_EYEBALL_LANTERN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_STONE_MONUMENT",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_STATUE_GAME",
+      "name_ja": "達磨さんが転んだ",
+      "start_event": "EVENT_ID_DARUMA_START",
+      "encount_event": "EVENT_ID_DARUMA_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_STATUE_GAME",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_DARUMA_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "gimmick_event_black_daruma",
+        "counter": "GAME_VALUE_HORROR_DARUMA_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_BLACK_DARUMA",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_CREEPY_DARUMA",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "name_ja": "ススワタリ",
+      "start_event": "EVENT_ID_SOOT_SPRITE_START",
+      "encount_event": "EVENT_ID_SOOT_SPRITE_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SOOT_SPRITE",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_SOOT_SPRITE_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_soot_sprite",
+        "counter": "GAME_VALUE_HORROR_SOOT_SPRITE_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_BLACK_CRYSTAL",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_OBSIDIAN_ROSARY",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_GRASS",
+      "name_ja": "夜の草原",
+      "start_event": "EVENT_ID_GRASS_START",
+      "encount_event": "EVENT_ID_GRASS_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_GRASS",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_GRASS_START"
+        ]
+      },
+      "from_date": {
+        "year": 1,
+        "season": "summer",
+        "day": 1,
+        "operator": 4
+      },
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_grass",
+        "counter": "GAME_VALUE_HORROR_NOZUCHI_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_MUD_VESSEL",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_TSUCHINOKO",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_MASK",
+      "name_ja": "お面",
+      "start_event": "EVENT_ID_MASK_START",
+      "encount_event": "EVENT_ID_MASK_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_MASK",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": []
+      },
+      "from_date": {
+        "year": 1,
+        "season": "summer",
+        "day": 1,
+        "operator": 4
+      },
+      "seasons": [],
+      "days": [],
+      "weathers": [],
+      "rewards": null
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_DEMON",
+      "name_ja": "鬼",
+      "start_event": "EVENT_ID_DEMON_START",
+      "encount_event": "EVENT_ID_DEMON_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_DEMON",
+      "requires": [
+        "GAME_FLAG_STORY_04_034"
+      ],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_DEMON_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [
+        1,
+        15
+      ],
+      "weathers": [],
+      "rewards": {
+        "script": "event_horror_demon",
+        "counter": "GAME_VALUE_HORROR_DEMON_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_SWORD",
+              "count": 2
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_JEWELS_02",
+              "count": 10
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_SWORD",
+              "count": 2
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_SPECIAL_JEWELS_02",
+              "count": 10
+            },
+            {
+              "item": "ITEM_ID_SPECIAL_MIRROR_01",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_KASA_GHOST",
+      "name_ja": "笠おばけ",
+      "start_event": "EVENT_ID_KASA_GHOST_START",
+      "encount_event": "EVENT_ID_KASA_GHOST_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_KASA_GHOST",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_HAT_GHOST_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [
+        "rain"
+      ],
+      "rewards": {
+        "script": "event_horror_hat_ghost",
+        "counter": "GAME_VALUE_HORROR_HAT_GHOST_REWARD_COUNT",
+        "counter_max": 4,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_SUMMER",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNTURE_KASA_BROWN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_ACCESSORY_12",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNTURE_KASA_BLACK",
+              "count": 1
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_FUJIN_RAIJIN",
+      "name_ja": "風神雷神",
+      "start_event": "EVENT_ID_FUJIN_RAIJIN_START",
+      "encount_event": "EVENT_ID_FUJIN_RAIJIN_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_FUJIN_RAIJIN",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_FUJIN_RAIJIN_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [],
+      "days": [],
+      "weathers": [
+        "thunderstorm"
+      ],
+      "rewards": {
+        "fujin": {
+          "script": "event_horror_fujin_raijin",
+          "counter": "GAME_VALUE_HORROR_FUJIN_REWARD_COUNT",
+          "counter_max": 2,
+          "steps": [
+            [
+              {
+                "item": "ITEM_ID_CURSE_FURNITURE_HANGING_SCROLL_01",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_SPRING",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+                "count": 1
+              }
+            ]
+          ]
+        },
+        "raijin": {
+          "script": "event_horror_fujin_raijin",
+          "counter": "GAME_VALUE_HORROR_RAIJIN_REWARD_COUNT",
+          "counter_max": 2,
+          "steps": [
+            [
+              {
+                "item": "ITEM_ID_CURSE_FURNITURE_HANGING_SCROLL_02",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_SUMMER",
+                "count": 1
+              }
+            ],
+            [
+              {
+                "item": "ITEM_ID_TOOL_SCARECROW_WINTER",
+                "count": 1
+              }
+            ]
+          ]
+        },
+        "both_in_one_night": [
+          {
+            "item": "ITEM_ID_CURSE_FURNITURE_SUSPICIOUS_STATUE",
+            "count": 1
+          }
+        ],
+        "mizuchi_per_side": 4
+      }
+    },
+    {
+      "id": "LATE_NIGHT_EVENT_SNOW_WOMAN",
+      "name_ja": "雪女",
+      "start_event": "EVENT_ID_SNOW_WOMAN_START",
+      "encount_event": "EVENT_ID_SNOW_WOMAN_ENCOUNT",
+      "forced_flag": "GAME_FLAG_FORCED_LATE_NIGHT_EVENT_SNOW_WOMAN",
+      "requires": [],
+      "start_requires": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_SNOW_WOMAN_START"
+        ]
+      },
+      "from_date": null,
+      "seasons": [
+        "winter"
+      ],
+      "days": [],
+      "weathers": [
+        "snow"
+      ],
+      "rewards": {
+        "script": "event_horror_snow_woman",
+        "counter": "GAME_VALUE_HORROR_SNOW_WOMAN_REWARD_COUNT",
+        "counter_max": 3,
+        "steps": [
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_SNOW_RABBIT",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_TOOL_SCARECROW_WINTER",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "ITEM_ID_CURSE_FURNITURE_SNOWMAN",
+              "count": 1
+            }
+          ],
+          [
+            {
+              "item": "GameGetRandomLateNightItemID",
+              "count": 10
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "unknown_livestock": {
+    "check": {
+      "requires": [
+        "GAME_FLAG_LIVESTOCK_HOUSE_1_EXIST",
+        "GAME_FLAG_STORY_01_END"
+      ],
+      "excludes": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_CHECK",
+        "GAME_FLAG_HORROR_OFF_MODE"
+      ]
+    },
+    "start": {
+      "requires": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_CHECK",
+        "GAME_FLAG_STORY_01_END"
+      ],
+      "excludes": [
+        "GAME_FLAG_HORROR_EVENT_UNKNOWN_LIVESTOCK_START"
+      ]
+    },
+    "appears": "needs any livestock house; not created on days 21–27",
+    "move_window": "0:00-5:00",
+    "dig_rewards": [
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 3
+      },
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 5
+      },
+      {
+        "item": "ITEM_ID_CURSE_FURNITURE_COW_SKULL",
+        "count": 1
+      }
+    ],
+    "repeat": [
+      {
+        "item": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+        "count": 5
+      },
+      {
+        "item": "ITEM_ID_CURSE_FURNITURE_COW_SKULL",
+        "count": 1
+      }
+    ],
+    "first_clear": "GAME_FLAG_WHISTLE_SONG_LEARN_02",
+    "clear_count_max": 3
+  },
+  "map_points": {
+    "evil_eye_stone": [
+      {
+        "anchor": "pop_evilEyeStone00",
+        "x": 14401,
+        "y": 15929
+      },
+      {
+        "anchor": "pop_evilEyeStone01",
+        "x": 13995,
+        "y": 19260
+      },
+      {
+        "anchor": "pop_evilEyeStone02",
+        "x": 17730,
+        "y": 20745
+      },
+      {
+        "anchor": "pop_evilEyeStone03",
+        "x": 19305,
+        "y": 18900
+      },
+      {
+        "anchor": "pop_evilEyeStone04",
+        "x": 16920,
+        "y": 16695
+      }
+    ],
+    "eye_of_hand": [
+      {
+        "anchor": "pop_eye_of_hand00",
+        "x": 14039,
+        "y": 18674
+      },
+      {
+        "anchor": "pop_eye_of_hand01",
+        "x": 19083,
+        "y": 19303
+      }
+    ],
+    "lantern_fixed": [
+      {
+        "anchor": "pop_lanternFixed03_3",
+        "x": 19124,
+        "y": 19213
+      },
+      {
+        "anchor": "pop_lanternFixed04_1",
+        "x": 18090,
+        "y": 19845
+      },
+      {
+        "anchor": "pop_lanternFixed05_1",
+        "x": 17910,
+        "y": 18630
+      },
+      {
+        "anchor": "pop_lanternFixed06_3",
+        "x": 16380,
+        "y": 18405
+      },
+      {
+        "anchor": "pop_lanternFixed07_3",
+        "x": 14940,
+        "y": 17280
+      },
+      {
+        "anchor": "pop_lanternFixed08_3",
+        "x": 18675,
+        "y": 17595
+      }
+    ],
+    "lantern_move": [
+      {
+        "anchor": "pop_lanternMove01",
+        "x": 16740,
+        "y": 20790
+      },
+      {
+        "anchor": "pop_lanternMove02",
+        "x": 16065,
+        "y": 20385
+      },
+      {
+        "anchor": "pop_lanternMove03",
+        "x": 15840,
+        "y": 18180
+      },
+      {
+        "anchor": "pop_lanternMove05",
+        "x": 14535,
+        "y": 19035
+      },
+      {
+        "anchor": "pop_lanternMove06",
+        "x": 18135,
+        "y": 16290
+      },
+      {
+        "anchor": "pop_lanternMove07",
+        "x": 16785,
+        "y": 17010
+      },
+      {
+        "anchor": "pop_lanternMove08",
+        "x": 16020,
+        "y": 15795
+      }
+    ],
+    "daruma_stone": [
+      {
+        "anchor": "pop_daruma_stone00",
+        "x": 17730,
+        "y": 19800
+      },
+      {
+        "anchor": "pop_daruma_stone01",
+        "x": 15480,
+        "y": 20475
+      },
+      {
+        "anchor": "pop_daruma_stone02",
+        "x": 17435,
+        "y": 21216
+      },
+      {
+        "anchor": "pop_daruma_stone05",
+        "x": 18588,
+        "y": 20242
+      },
+      {
+        "anchor": "pop_daruma_stone07",
+        "x": 17239,
+        "y": 21242
+      },
+      {
+        "anchor": "pop_daruma_stone08",
+        "x": 17910,
+        "y": 20475
+      },
+      {
+        "anchor": "pop_daruma_stone09",
+        "x": 19335,
+        "y": 19020
+      },
+      {
+        "anchor": "pop_daruma_stone10",
+        "x": 19575,
+        "y": 17910
+      },
+      {
+        "anchor": "pop_daruma_stone100",
+        "x": 16788,
+        "y": 16930
+      },
+      {
+        "anchor": "pop_daruma_stone101",
+        "x": 16964,
+        "y": 16710
+      },
+      {
+        "anchor": "pop_daruma_stone102",
+        "x": 16166,
+        "y": 16908
+      },
+      {
+        "anchor": "pop_daruma_stone103",
+        "x": 16102,
+        "y": 16738
+      },
+      {
+        "anchor": "pop_daruma_stone104",
+        "x": 15980,
+        "y": 17232
+      },
+      {
+        "anchor": "pop_daruma_stone105",
+        "x": 15778,
+        "y": 17016
+      },
+      {
+        "anchor": "pop_daruma_stone106",
+        "x": 15154,
+        "y": 17108
+      },
+      {
+        "anchor": "pop_daruma_stone107",
+        "x": 15022,
+        "y": 17322
+      },
+      {
+        "anchor": "pop_daruma_stone108",
+        "x": 14286,
+        "y": 17104
+      },
+      {
+        "anchor": "pop_daruma_stone109",
+        "x": 14482,
+        "y": 16700
+      },
+      {
+        "anchor": "pop_daruma_stone11",
+        "x": 17640,
+        "y": 19395
+      },
+      {
+        "anchor": "pop_daruma_stone110",
+        "x": 15652,
+        "y": 16972
+      },
+      {
+        "anchor": "pop_daruma_stone111",
+        "x": 15378,
+        "y": 17873
+      },
+      {
+        "anchor": "pop_daruma_stone112",
+        "x": 15619,
+        "y": 18181
+      },
+      {
+        "anchor": "pop_daruma_stone113",
+        "x": 14946,
+        "y": 18796
+      },
+      {
+        "anchor": "pop_daruma_stone114",
+        "x": 15702,
+        "y": 19298
+      },
+      {
+        "anchor": "pop_daruma_stone115",
+        "x": 16857,
+        "y": 21105
+      },
+      {
+        "anchor": "pop_daruma_stone12",
+        "x": 17640,
+        "y": 18135
+      },
+      {
+        "anchor": "pop_daruma_stone13",
+        "x": 18765,
+        "y": 17280
+      },
+      {
+        "anchor": "pop_daruma_stone138",
+        "x": 18392,
+        "y": 18062
+      },
+      {
+        "anchor": "pop_daruma_stone139",
+        "x": 18174,
+        "y": 18310
+      },
+      {
+        "anchor": "pop_daruma_stone14",
+        "x": 18045,
+        "y": 16650
+      },
+      {
+        "anchor": "pop_daruma_stone140",
+        "x": 16060,
+        "y": 15599
+      },
+      {
+        "anchor": "pop_daruma_stone141",
+        "x": 16223,
+        "y": 15529
+      },
+      {
+        "anchor": "pop_daruma_stone142",
+        "x": 16032,
+        "y": 15702
+      },
+      {
+        "anchor": "pop_daruma_stone143",
+        "x": 15620,
+        "y": 16188
+      },
+      {
+        "anchor": "pop_daruma_stone144",
+        "x": 16506,
+        "y": 18470
+      },
+      {
+        "anchor": "pop_daruma_stone145",
+        "x": 17220,
+        "y": 19450
+      },
+      {
+        "anchor": "pop_daruma_stone146",
+        "x": 16970,
+        "y": 18186
+      },
+      {
+        "anchor": "pop_daruma_stone149",
+        "x": 15584,
+        "y": 16406
+      },
+      {
+        "anchor": "pop_daruma_stone15",
+        "x": 16830,
+        "y": 16335
+      },
+      {
+        "anchor": "pop_daruma_stone16",
+        "x": 16155,
+        "y": 16560
+      },
+      {
+        "anchor": "pop_daruma_stone17",
+        "x": 16515,
+        "y": 15660
+      },
+      {
+        "anchor": "pop_daruma_stone18",
+        "x": 17685,
+        "y": 15750
+      },
+      {
+        "anchor": "pop_daruma_stone19",
+        "x": 15847,
+        "y": 18215
+      },
+      {
+        "anchor": "pop_daruma_stone20",
+        "x": 15840,
+        "y": 19845
+      },
+      {
+        "anchor": "pop_daruma_stone21",
+        "x": 15165,
+        "y": 19530
+      },
+      {
+        "anchor": "pop_daruma_stone22",
+        "x": 14987,
+        "y": 19170
+      },
+      {
+        "anchor": "pop_daruma_stone23",
+        "x": 14085,
+        "y": 18180
+      },
+      {
+        "anchor": "pop_daruma_stone24",
+        "x": 14310,
+        "y": 16965
+      },
+      {
+        "anchor": "pop_daruma_stone25",
+        "x": 16155,
+        "y": 17370
+      },
+      {
+        "anchor": "pop_daruma_stone26",
+        "x": 15975,
+        "y": 18720
+      },
+      {
+        "anchor": "pop_daruma_stone32",
+        "x": 17438,
+        "y": 18984
+      },
+      {
+        "anchor": "pop_daruma_stone33",
+        "x": 16314,
+        "y": 20639
+      },
+      {
+        "anchor": "pop_daruma_stone36",
+        "x": 18623,
+        "y": 20111
+      },
+      {
+        "anchor": "pop_daruma_stone39",
+        "x": 18086,
+        "y": 20362
+      },
+      {
+        "anchor": "pop_daruma_stone40",
+        "x": 19801,
+        "y": 18773
+      },
+      {
+        "anchor": "pop_daruma_stone41",
+        "x": 16965,
+        "y": 20880
+      },
+      {
+        "anchor": "pop_daruma_stone42",
+        "x": 18495,
+        "y": 17730
+      },
+      {
+        "anchor": "pop_daruma_stone43",
+        "x": 15525,
+        "y": 16560
+      },
+      {
+        "anchor": "pop_daruma_stone44",
+        "x": 15352,
+        "y": 17592
+      },
+      {
+        "anchor": "pop_daruma_stone45",
+        "x": 19794,
+        "y": 18500
+      },
+      {
+        "anchor": "pop_daruma_stone46",
+        "x": 19172,
+        "y": 17504
+      },
+      {
+        "anchor": "pop_daruma_stone47",
+        "x": 18136,
+        "y": 18900
+      },
+      {
+        "anchor": "pop_daruma_stone48",
+        "x": 14445,
+        "y": 17730
+      },
+      {
+        "anchor": "pop_daruma_stone49",
+        "x": 14625,
+        "y": 16650
+      },
+      {
+        "anchor": "pop_daruma_stone50",
+        "x": 18765,
+        "y": 18630
+      },
+      {
+        "anchor": "pop_daruma_stone51",
+        "x": 16515,
+        "y": 18180
+      },
+      {
+        "anchor": "pop_daruma_stone52",
+        "x": 17055,
+        "y": 18630
+      },
+      {
+        "anchor": "pop_daruma_stone53",
+        "x": 17452,
+        "y": 18672
+      },
+      {
+        "anchor": "pop_daruma_stone55",
+        "x": 18356,
+        "y": 16711
+      },
+      {
+        "anchor": "pop_daruma_stone56",
+        "x": 18070,
+        "y": 16268
+      },
+      {
+        "anchor": "pop_daruma_stone57",
+        "x": 18675,
+        "y": 19530
+      },
+      {
+        "anchor": "pop_daruma_stone58",
+        "x": 16020,
+        "y": 20205
+      },
+      {
+        "anchor": "pop_daruma_stone59",
+        "x": 14760,
+        "y": 18945
+      },
+      {
+        "anchor": "pop_daruma_stone73",
+        "x": 13922,
+        "y": 18432
+      },
+      {
+        "anchor": "pop_daruma_stone74",
+        "x": 14212,
+        "y": 18754
+      },
+      {
+        "anchor": "pop_daruma_stone75",
+        "x": 13860,
+        "y": 18862
+      },
+      {
+        "anchor": "pop_daruma_stone77",
+        "x": 14316,
+        "y": 19402
+      },
+      {
+        "anchor": "pop_daruma_stone78",
+        "x": 15522,
+        "y": 19890
+      },
+      {
+        "anchor": "pop_daruma_stone79",
+        "x": 15798,
+        "y": 19440
+      },
+      {
+        "anchor": "pop_daruma_stone80",
+        "x": 15806,
+        "y": 20524
+      },
+      {
+        "anchor": "pop_daruma_stone81",
+        "x": 16226,
+        "y": 20346
+      },
+      {
+        "anchor": "pop_daruma_stone82",
+        "x": 17102,
+        "y": 21098
+      },
+      {
+        "anchor": "pop_daruma_stone83",
+        "x": 17922,
+        "y": 20386
+      },
+      {
+        "anchor": "pop_daruma_stone86",
+        "x": 18842,
+        "y": 20530
+      },
+      {
+        "anchor": "pop_daruma_stone87",
+        "x": 19122,
+        "y": 19290
+      },
+      {
+        "anchor": "pop_daruma_stone88",
+        "x": 19627,
+        "y": 18311
+      },
+      {
+        "anchor": "pop_daruma_stone89",
+        "x": 19508,
+        "y": 18073
+      },
+      {
+        "anchor": "pop_daruma_stone90",
+        "x": 18508,
+        "y": 17104
+      },
+      {
+        "anchor": "pop_daruma_stone91",
+        "x": 16652,
+        "y": 17870
+      },
+      {
+        "anchor": "pop_daruma_stone92",
+        "x": 17374,
+        "y": 18882
+      },
+      {
+        "anchor": "pop_daruma_stone93",
+        "x": 16926,
+        "y": 18842
+      },
+      {
+        "anchor": "pop_daruma_stone94",
+        "x": 17714,
+        "y": 18840
+      },
+      {
+        "anchor": "pop_daruma_stone95",
+        "x": 17286,
+        "y": 18772
+      },
+      {
+        "anchor": "pop_daruma_stone96",
+        "x": 17500,
+        "y": 19618
+      },
+      {
+        "anchor": "pop_daruma_stone97",
+        "x": 17322,
+        "y": 19608
+      },
+      {
+        "anchor": "pop_daruma_stone98",
+        "x": 17958,
+        "y": 19252
+      },
+      {
+        "anchor": "pop_daruma_stone99",
+        "x": 18298,
+        "y": 17550
+      }
+    ],
+    "boss_soot_sprite": [
+      {
+        "anchor": "pop_bossSootSprite03",
+        "x": 14224,
+        "y": 18984
+      },
+      {
+        "anchor": "pop_bossSootSprite04",
+        "x": 17370,
+        "y": 18696
+      },
+      {
+        "anchor": "pop_bossSootSprite06",
+        "x": 16842,
+        "y": 21198
+      },
+      {
+        "anchor": "pop_bossSootSprite07",
+        "x": 18942,
+        "y": 17448
+      }
+    ],
+    "soot_sprite": [
+      {
+        "anchor": "pop_sootSprite100",
+        "x": 18852,
+        "y": 20544
+      },
+      {
+        "anchor": "pop_sootSprite117",
+        "x": 16146,
+        "y": 15642
+      },
+      {
+        "anchor": "pop_sootSprite119",
+        "x": 14986,
+        "y": 15676
+      },
+      {
+        "anchor": "pop_sootSprite21",
+        "x": 14030,
+        "y": 18788
+      },
+      {
+        "anchor": "pop_sootSprite22",
+        "x": 13930,
+        "y": 19092
+      },
+      {
+        "anchor": "pop_sootSprite23",
+        "x": 14222,
+        "y": 19300
+      },
+      {
+        "anchor": "pop_sootSprite24",
+        "x": 14614,
+        "y": 19294
+      },
+      {
+        "anchor": "pop_sootSprite25",
+        "x": 14763,
+        "y": 19126
+      },
+      {
+        "anchor": "pop_sootSprite26",
+        "x": 14006,
+        "y": 18566
+      },
+      {
+        "anchor": "pop_sootSprite27",
+        "x": 14540,
+        "y": 19112
+      },
+      {
+        "anchor": "pop_sootSprite28",
+        "x": 17172,
+        "y": 18668
+      },
+      {
+        "anchor": "pop_sootSprite29",
+        "x": 17376,
+        "y": 18460
+      },
+      {
+        "anchor": "pop_sootSprite30",
+        "x": 17702,
+        "y": 18626
+      },
+      {
+        "anchor": "pop_sootSprite31",
+        "x": 17630,
+        "y": 18956
+      },
+      {
+        "anchor": "pop_sootSprite32",
+        "x": 17338,
+        "y": 19088
+      },
+      {
+        "anchor": "pop_sootSprite33",
+        "x": 17056,
+        "y": 18900
+      },
+      {
+        "anchor": "pop_sootSprite34",
+        "x": 17014,
+        "y": 18506
+      },
+      {
+        "anchor": "pop_sootSprite42",
+        "x": 18552,
+        "y": 17160
+      },
+      {
+        "anchor": "pop_sootSprite43",
+        "x": 18834,
+        "y": 17160
+      },
+      {
+        "anchor": "pop_sootSprite44",
+        "x": 18688,
+        "y": 17356
+      },
+      {
+        "anchor": "pop_sootSprite45",
+        "x": 18716,
+        "y": 17614
+      },
+      {
+        "anchor": "pop_sootSprite46",
+        "x": 19084,
+        "y": 17610
+      },
+      {
+        "anchor": "pop_sootSprite47",
+        "x": 18548,
+        "y": 17690
+      },
+      {
+        "anchor": "pop_sootSprite63",
+        "x": 16600,
+        "y": 21210
+      },
+      {
+        "anchor": "pop_sootSprite64",
+        "x": 16646,
+        "y": 21048
+      },
+      {
+        "anchor": "pop_sootSprite65",
+        "x": 16860,
+        "y": 20944
+      },
+      {
+        "anchor": "pop_sootSprite66",
+        "x": 17118,
+        "y": 21106
+      },
+      {
+        "anchor": "pop_sootSprite67",
+        "x": 17106,
+        "y": 21366
+      },
+      {
+        "anchor": "pop_sootSprite68",
+        "x": 16974,
+        "y": 21466
+      },
+      {
+        "anchor": "pop_sootSprite69",
+        "x": 16710,
+        "y": 21408
+      },
+      {
+        "anchor": "pop_sootSprite84",
+        "x": 14508,
+        "y": 16542
+      },
+      {
+        "anchor": "pop_sootSprite85",
+        "x": 15564,
+        "y": 18060
+      },
+      {
+        "anchor": "pop_sootSprite86",
+        "x": 16974,
+        "y": 16308
+      },
+      {
+        "anchor": "pop_sootSprite87",
+        "x": 16710,
+        "y": 17562
+      },
+      {
+        "anchor": "pop_sootSprite88",
+        "x": 17010,
+        "y": 15414
+      },
+      {
+        "anchor": "pop_sootSprite89",
+        "x": 18234,
+        "y": 16494
+      },
+      {
+        "anchor": "pop_sootSprite93",
+        "x": 15756,
+        "y": 19884
+      },
+      {
+        "anchor": "pop_sootSprite94",
+        "x": 16356,
+        "y": 20670
+      },
+      {
+        "anchor": "pop_sootSprite95",
+        "x": 17580,
+        "y": 19578
+      },
+      {
+        "anchor": "pop_sootSprite96",
+        "x": 16614,
+        "y": 18240
+      },
+      {
+        "anchor": "pop_sootSprite97",
+        "x": 19290,
+        "y": 19266
+      },
+      {
+        "anchor": "pop_sootSprite98",
+        "x": 18594,
+        "y": 19776
+      },
+      {
+        "anchor": "pop_sootSprite99",
+        "x": 17838,
+        "y": 20436
+      }
+    ],
+    "mask_item_red": [
+      {
+        "anchor": "pop_mask_item_red00",
+        "x": 16874,
+        "y": 21116
+      },
+      {
+        "anchor": "pop_mask_item_red01",
+        "x": 13960,
+        "y": 18364
+      },
+      {
+        "anchor": "pop_mask_item_red02",
+        "x": 15118,
+        "y": 18484
+      },
+      {
+        "anchor": "pop_mask_item_red03",
+        "x": 14738,
+        "y": 15674
+      },
+      {
+        "anchor": "pop_mask_item_red04",
+        "x": 15980,
+        "y": 17216
+      },
+      {
+        "anchor": "pop_mask_item_red05",
+        "x": 18496,
+        "y": 17030
+      },
+      {
+        "anchor": "pop_mask_item_red06",
+        "x": 18170,
+        "y": 17438
+      },
+      {
+        "anchor": "pop_mask_item_red07",
+        "x": 17316,
+        "y": 18750
+      },
+      {
+        "anchor": "pop_mask_item_red08",
+        "x": 18162,
+        "y": 18242
+      },
+      {
+        "anchor": "pop_mask_item_red09",
+        "x": 16006,
+        "y": 18746
+      },
+      {
+        "anchor": "pop_mask_item_red10",
+        "x": 15960,
+        "y": 19666
+      },
+      {
+        "anchor": "pop_mask_item_red11",
+        "x": 17374,
+        "y": 20346
+      },
+      {
+        "anchor": "pop_mask_item_red12",
+        "x": 18240,
+        "y": 19528
+      },
+      {
+        "anchor": "pop_mask_item_red13",
+        "x": 17234,
+        "y": 19500
+      },
+      {
+        "anchor": "pop_mask_item_red14",
+        "x": 18600,
+        "y": 20276
+      },
+      {
+        "anchor": "pop_mask_item_red15",
+        "x": 18872,
+        "y": 19448
+      },
+      {
+        "anchor": "pop_mask_item_red16",
+        "x": 19482,
+        "y": 17948
+      },
+      {
+        "anchor": "pop_mask_item_red17",
+        "x": 17358,
+        "y": 15766
+      },
+      {
+        "anchor": "pop_mask_item_red18",
+        "x": 16932,
+        "y": 16760
+      },
+      {
+        "anchor": "pop_mask_item_red19",
+        "x": 16120,
+        "y": 15468
+      },
+      {
+        "anchor": "pop_mask_item_red20",
+        "x": 14501,
+        "y": 17130
+      }
+    ],
+    "mask_item_blue": [
+      {
+        "anchor": "pop_mask_item_blue00",
+        "x": 17568,
+        "y": 15390
+      },
+      {
+        "anchor": "pop_mask_item_blue01",
+        "x": 18156,
+        "y": 16318
+      },
+      {
+        "anchor": "pop_mask_item_blue02",
+        "x": 19130,
+        "y": 16966
+      },
+      {
+        "anchor": "pop_mask_item_blue03",
+        "x": 17814,
+        "y": 18038
+      },
+      {
+        "anchor": "pop_mask_item_blue04",
+        "x": 16608,
+        "y": 18808
+      },
+      {
+        "anchor": "pop_mask_item_blue05",
+        "x": 18174,
+        "y": 18836
+      },
+      {
+        "anchor": "pop_mask_item_blue06",
+        "x": 19800,
+        "y": 19040
+      },
+      {
+        "anchor": "pop_mask_item_blue07",
+        "x": 17956,
+        "y": 20472
+      },
+      {
+        "anchor": "pop_mask_item_blue08",
+        "x": 15850,
+        "y": 20524
+      },
+      {
+        "anchor": "pop_mask_item_blue09",
+        "x": 17602,
+        "y": 17390
+      },
+      {
+        "anchor": "pop_mask_item_blue10",
+        "x": 15848,
+        "y": 18226
+      },
+      {
+        "anchor": "pop_mask_item_blue11",
+        "x": 17044,
+        "y": 16198
+      },
+      {
+        "anchor": "pop_mask_item_blue12",
+        "x": 15824,
+        "y": 16240
+      },
+      {
+        "anchor": "pop_mask_item_blue13",
+        "x": 14924,
+        "y": 17402
+      },
+      {
+        "anchor": "pop_mask_item_blue14",
+        "x": 14748,
+        "y": 19420
+      },
+      {
+        "anchor": "pop_mask_item_blue15",
+        "x": 14594,
+        "y": 16208
+      },
+      {
+        "anchor": "pop_mask_item_blue16",
+        "x": 13840,
+        "y": 18936
+      },
+      {
+        "anchor": "pop_mask_item_blue17",
+        "x": 19606,
+        "y": 18268
+      },
+      {
+        "anchor": "pop_mask_item_blue18",
+        "x": 16502,
+        "y": 19192
+      },
+      {
+        "anchor": "pop_mask_item_blue19",
+        "x": 15492,
+        "y": 20478
+      },
+      {
+        "anchor": "pop_mask_item_blue20",
+        "x": 16764,
+        "y": 20814
+      }
+    ],
+    "purple_mask_ghost": [
+      {
+        "anchor": "pop_purpleMaskGhost16",
+        "x": 14132,
+        "y": 18190
+      },
+      {
+        "anchor": "pop_purpleMaskGhost17",
+        "x": 14624,
+        "y": 19052
+      },
+      {
+        "anchor": "pop_purpleMaskGhost18",
+        "x": 15686,
+        "y": 16764
+      },
+      {
+        "anchor": "pop_purpleMaskGhost19",
+        "x": 16038,
+        "y": 18052
+      },
+      {
+        "anchor": "pop_purpleMaskGhost20",
+        "x": 16110,
+        "y": 15576
+      },
+      {
+        "anchor": "pop_purpleMaskGhost21",
+        "x": 16850,
+        "y": 16150
+      },
+      {
+        "anchor": "pop_purpleMaskGhost22",
+        "x": 16680,
+        "y": 17040
+      },
+      {
+        "anchor": "pop_purpleMaskGhost23",
+        "x": 17690,
+        "y": 15826
+      },
+      {
+        "anchor": "pop_purpleMaskGhost24",
+        "x": 18080,
+        "y": 16268
+      },
+      {
+        "anchor": "pop_purpleMaskGhost25",
+        "x": 18328,
+        "y": 16432
+      },
+      {
+        "anchor": "pop_purpleMaskGhost26",
+        "x": 17418,
+        "y": 16878
+      },
+      {
+        "anchor": "pop_purpleMaskGhost27",
+        "x": 18075,
+        "y": 17431
+      },
+      {
+        "anchor": "pop_purpleMaskGhost28",
+        "x": 19062,
+        "y": 17383
+      },
+      {
+        "anchor": "pop_purpleMaskGhost29",
+        "x": 16724,
+        "y": 18194
+      },
+      {
+        "anchor": "pop_purpleMaskGhost30",
+        "x": 18004,
+        "y": 18364
+      },
+      {
+        "anchor": "pop_purpleMaskGhost31",
+        "x": 16924,
+        "y": 18626
+      },
+      {
+        "anchor": "pop_purpleMaskGhost32",
+        "x": 15790,
+        "y": 19432
+      },
+      {
+        "anchor": "pop_purpleMaskGhost35",
+        "x": 16894,
+        "y": 19614
+      },
+      {
+        "anchor": "pop_purpleMaskGhost36",
+        "x": 18074,
+        "y": 18996
+      },
+      {
+        "anchor": "pop_purpleMaskGhost37",
+        "x": 17910,
+        "y": 20146
+      },
+      {
+        "anchor": "pop_purpleMaskGhost38",
+        "x": 17036,
+        "y": 21008
+      }
+    ],
+    "red_merchant": [
+      {
+        "anchor": "pop_redMerchant_03_00",
+        "x": 16256,
+        "y": 20154
+      }
+    ],
+    "blue_merchant": [
+      {
+        "anchor": "pop_blueMerchant00",
+        "x": 16930,
+        "y": 15281
+      },
+      {
+        "anchor": "pop_blueMerchant02",
+        "x": 19369,
+        "y": 18868
+      },
+      {
+        "anchor": "pop_blueMerchant_01_00",
+        "x": 19514,
+        "y": 19154
+      },
+      {
+        "anchor": "pop_blueMerchant_03_00",
+        "x": 16853,
+        "y": 15302
+      }
+    ],
+    "hat_ghost": [
+      {
+        "anchor": "pop_hat_ghost00",
+        "x": 15975,
+        "y": 18810
+      },
+      {
+        "anchor": "pop_hat_ghost01",
+        "x": 15615,
+        "y": 19800
+      },
+      {
+        "anchor": "pop_hat_ghost02",
+        "x": 16830,
+        "y": 18225
+      },
+      {
+        "anchor": "pop_hat_ghost03",
+        "x": 16650,
+        "y": 17145
+      },
+      {
+        "anchor": "pop_hat_ghost04",
+        "x": 16785,
+        "y": 16290
+      },
+      {
+        "anchor": "pop_hat_ghost05",
+        "x": 17505,
+        "y": 15750
+      },
+      {
+        "anchor": "pop_hat_ghost06",
+        "x": 18315,
+        "y": 16560
+      },
+      {
+        "anchor": "pop_hat_ghost07",
+        "x": 18450,
+        "y": 17685
+      },
+      {
+        "anchor": "pop_hat_ghost08",
+        "x": 16875,
+        "y": 15300
+      },
+      {
+        "anchor": "pop_hat_ghost09",
+        "x": 16065,
+        "y": 15660
+      },
+      {
+        "anchor": "pop_hat_ghost10",
+        "x": 15660,
+        "y": 16155
+      },
+      {
+        "anchor": "pop_hat_ghost11",
+        "x": 15705,
+        "y": 17010
+      },
+      {
+        "anchor": "pop_hat_ghost12",
+        "x": 14805,
+        "y": 15750
+      },
+      {
+        "anchor": "pop_hat_ghost13",
+        "x": 14535,
+        "y": 16380
+      },
+      {
+        "anchor": "pop_hat_ghost14",
+        "x": 14580,
+        "y": 17505
+      },
+      {
+        "anchor": "pop_hat_ghost15",
+        "x": 14985,
+        "y": 17370
+      },
+      {
+        "anchor": "pop_hat_ghost16",
+        "x": 15615,
+        "y": 18090
+      },
+      {
+        "anchor": "pop_hat_ghost17",
+        "x": 14580,
+        "y": 19215
+      },
+      {
+        "anchor": "pop_hat_ghost18",
+        "x": 13860,
+        "y": 18945
+      },
+      {
+        "anchor": "pop_hat_ghost19",
+        "x": 13995,
+        "y": 18270
+      }
+    ],
+    "mizuchi_fujin": [
+      {
+        "anchor": "pop_mizuchiFujin02",
+        "x": 15660,
+        "y": 16875
+      },
+      {
+        "anchor": "pop_mizuchiFujin03",
+        "x": 14760,
+        "y": 19215
+      },
+      {
+        "anchor": "pop_mizuchiFujin04",
+        "x": 16965,
+        "y": 16290
+      },
+      {
+        "anchor": "pop_mizuchiFujin05",
+        "x": 18810,
+        "y": 17415
+      }
+    ],
+    "mizuchi_fujin_small": [
+      {
+        "anchor": "pop_mizuchiFujinS00",
+        "x": 14130,
+        "y": 18675
+      },
+      {
+        "anchor": "pop_mizuchiFujinS01",
+        "x": 14580,
+        "y": 16605
+      },
+      {
+        "anchor": "pop_mizuchiFujinS02",
+        "x": 18495,
+        "y": 17730
+      }
+    ],
+    "mizuchi_raijin": [
+      {
+        "anchor": "pop_mizuchiRaijin00",
+        "x": 17505,
+        "y": 18540
+      },
+      {
+        "anchor": "pop_mizuchiRaijin01",
+        "x": 16155,
+        "y": 20250
+      },
+      {
+        "anchor": "pop_mizuchiRaijin03",
+        "x": 18135,
+        "y": 19710
+      },
+      {
+        "anchor": "pop_mizuchiRaijin04",
+        "x": 19395,
+        "y": 19170
+      }
+    ],
+    "mizuchi_raijin_small": [
+      {
+        "anchor": "pop_mizuchiRaijinS00",
+        "x": 15795,
+        "y": 19710
+      },
+      {
+        "anchor": "pop_mizuchiRaijinS01",
+        "x": 18495,
+        "y": 19980
+      }
+    ],
+    "husband_grave": [
+      {
+        "anchor": "pos_husband_grave01",
+        "x": 15953,
+        "y": 15545
+      },
+      {
+        "anchor": "pos_husband_grave02",
+        "x": 17805,
+        "y": 16795
+      },
+      {
+        "anchor": "pos_husband_grave03",
+        "x": 19324,
+        "y": 18791
+      }
+    ],
+    "snow_child": [
+      {
+        "anchor": "pop_snowChild00",
+        "x": 16758,
+        "y": 20852
+      },
+      {
+        "anchor": "pop_snowChild01",
+        "x": 15686,
+        "y": 19848
+      },
+      {
+        "anchor": "pop_snowChild02",
+        "x": 14746,
+        "y": 19184
+      },
+      {
+        "anchor": "pop_snowChild03",
+        "x": 14130,
+        "y": 18156
+      },
+      {
+        "anchor": "pop_snowChild04",
+        "x": 14714,
+        "y": 17504
+      },
+      {
+        "anchor": "pop_snowChild05",
+        "x": 15630,
+        "y": 16244
+      },
+      {
+        "anchor": "pop_snowChild06",
+        "x": 15466,
+        "y": 18252
+      },
+      {
+        "anchor": "pop_snowChild07",
+        "x": 16402,
+        "y": 18380
+      },
+      {
+        "anchor": "pop_snowChild08",
+        "x": 16930,
+        "y": 18540
+      },
+      {
+        "anchor": "pop_snowChild09",
+        "x": 17634,
+        "y": 18684
+      },
+      {
+        "anchor": "pop_snowChild10",
+        "x": 17350,
+        "y": 19056
+      },
+      {
+        "anchor": "pop_snowChild11",
+        "x": 17666,
+        "y": 19532
+      },
+      {
+        "anchor": "pop_snowChild12",
+        "x": 18534,
+        "y": 20028
+      },
+      {
+        "anchor": "pop_snowChild13",
+        "x": 19382,
+        "y": 17828
+      },
+      {
+        "anchor": "pop_snowChild14",
+        "x": 19194,
+        "y": 19560
+      },
+      {
+        "anchor": "pop_snowChild15",
+        "x": 18894,
+        "y": 17388
+      },
+      {
+        "anchor": "pop_snowChild16",
+        "x": 18190,
+        "y": 16512
+      },
+      {
+        "anchor": "pop_snowChild17",
+        "x": 16958,
+        "y": 16740
+      },
+      {
+        "anchor": "pop_snowChild18",
+        "x": 16652,
+        "y": 17702
+      },
+      {
+        "anchor": "pop_snowChild19",
+        "x": 17038,
+        "y": 15412
+      },
+      {
+        "anchor": "pop_snowChild20",
+        "x": 18162,
+        "y": 18272
+      }
+    ],
+    "snow_woman_intro": [
+      {
+        "anchor": "event_farm_entrance_pos00",
+        "x": 12690,
+        "y": 21870
+      }
+    ],
+    "petopeto": [
+      {
+        "anchor": "pop_petopeto00",
+        "x": 18214,
+        "y": 24170
+      }
+    ],
+    "petopeto_goal": [
+      {
+        "anchor": "pos_petopeto_goal00",
+        "x": 18178,
+        "y": 28096
+      }
+    ],
+    "giant_rabbit": [
+      {
+        "anchor": "pop_giant_rabbit00",
+        "x": 9002,
+        "y": 5900
+      }
+    ],
+    "red_phone": [
+      {
+        "anchor": "pop_mobilePhone00",
+        "x": 15166,
+        "y": 15651
+      },
+      {
+        "anchor": "pop_mobilePhone01",
+        "x": 17711,
+        "y": 15777
+      },
+      {
+        "anchor": "pop_mobilePhone02",
+        "x": 15582,
+        "y": 18042
+      },
+      {
+        "anchor": "pop_mobilePhone03",
+        "x": 18938,
+        "y": 17474
+      },
+      {
+        "anchor": "pop_mobilePhone04",
+        "x": 18217,
+        "y": 18180
+      }
+    ],
+    "doll_body_item": [
+      {
+        "anchor": "pop_japaneseDollBodyItem00",
+        "x": 17964,
+        "y": 17306
+      }
+    ],
+    "doll_walking": [
+      {
+        "anchor": "pop_japaneseDollBodyCreature00",
+        "x": 16008,
+        "y": 20414
+      }
+    ],
+    "doll_route": [
+      {
+        "anchor": "move_japaneseDollBody00",
+        "x": 14844,
+        "y": 19195
+      },
+      {
+        "anchor": "move_japaneseDollBody01",
+        "x": 12128,
+        "y": 16205
+      }
+    ],
+    "demon": [
+      {
+        "anchor": "pop_demon00",
+        "x": 17367,
+        "y": 18840
+      }
+    ],
+    "dorotabo": [
+      {
+        "anchor": "pop_dorotabo00",
+        "x": 14436,
+        "y": 16040
+      },
+      {
+        "anchor": "pop_dorotabo01",
+        "x": 18952,
+        "y": 17506
+      },
+      {
+        "anchor": "pop_dorotabo02",
+        "x": 10299,
+        "y": 10555
+      },
+      {
+        "anchor": "pop_dorotabo03",
+        "x": 19607,
+        "y": 18849
+      },
+      {
+        "anchor": "pop_dorotabo04",
+        "x": 7239,
+        "y": 13678
+      },
+      {
+        "anchor": "pop_dorotabo05",
+        "x": 10903,
+        "y": 26741
+      }
+    ],
+    "dorotabo_field": [
+      {
+        "anchor": "move_dorotabo00",
+        "x": 15117,
+        "y": 15440
+      },
+      {
+        "anchor": "move_dorotabo01",
+        "x": 18159,
+        "y": 18570
+      },
+      {
+        "anchor": "move_dorotabo02",
+        "x": 9931,
+        "y": 11472
+      },
+      {
+        "anchor": "move_dorotabo03",
+        "x": 20160,
+        "y": 20475
+      },
+      {
+        "anchor": "move_dorotabo04",
+        "x": 6375,
+        "y": 12506
+      },
+      {
+        "anchor": "move_dorotabo05",
+        "x": 11996,
+        "y": 27000
+      }
+    ],
+    "fish_monster": [
+      {
+        "anchor": "pop_fishMonster00",
+        "x": 11700,
+        "y": 11835
+      },
+      {
+        "anchor": "pop_fishMonster01",
+        "x": 11745,
+        "y": 12780
+      },
+      {
+        "anchor": "pop_fishMonster02",
+        "x": 12150,
+        "y": 13275
+      },
+      {
+        "anchor": "pop_fishMonster03",
+        "x": 12330,
+        "y": 13455
+      },
+      {
+        "anchor": "pop_fishMonster04",
+        "x": 12240,
+        "y": 13995
+      },
+      {
+        "anchor": "pop_fishMonster05",
+        "x": 13635,
+        "y": 15840
+      },
+      {
+        "anchor": "pop_fishMonster06",
+        "x": 13365,
+        "y": 16380
+      },
+      {
+        "anchor": "pop_fishMonster07",
+        "x": 13365,
+        "y": 16740
+      },
+      {
+        "anchor": "pop_fishMonster08",
+        "x": 13050,
+        "y": 17865
+      },
+      {
+        "anchor": "pop_fishMonster09",
+        "x": 13185,
+        "y": 18630
+      },
+      {
+        "anchor": "pop_fishMonster10",
+        "x": 13995,
+        "y": 20340
+      },
+      {
+        "anchor": "pop_fishMonster11",
+        "x": 14310,
+        "y": 20655
+      },
+      {
+        "anchor": "pop_fishMonster12",
+        "x": 15165,
+        "y": 20790
+      },
+      {
+        "anchor": "pop_fishMonster13",
+        "x": 16785,
+        "y": 22410
+      },
+      {
+        "anchor": "pop_fishMonster14",
+        "x": 16515,
+        "y": 22320
+      },
+      {
+        "anchor": "pop_fishMonster15",
+        "x": 14310,
+        "y": 19395
+      },
+      {
+        "anchor": "pop_fishMonster16",
+        "x": 14355,
+        "y": 17010
+      },
+      {
+        "anchor": "pop_fishMonster17",
+        "x": 14535,
+        "y": 16200
+      },
+      {
+        "anchor": "pop_fishMonster18",
+        "x": 15930,
+        "y": 18135
+      },
+      {
+        "anchor": "pop_fishMonster19",
+        "x": 15975,
+        "y": 15750
+      },
+      {
+        "anchor": "pop_fishMonster20",
+        "x": 16110,
+        "y": 16875
+      },
+      {
+        "anchor": "pop_fishMonster21",
+        "x": 16605,
+        "y": 17730
+      },
+      {
+        "anchor": "pop_fishMonster22",
+        "x": 19485,
+        "y": 18000
+      },
+      {
+        "anchor": "pop_fishMonster23",
+        "x": 19665,
+        "y": 19260
+      },
+      {
+        "anchor": "pop_fishMonster24",
+        "x": 19665,
+        "y": 19620
+      },
+      {
+        "anchor": "pop_fishMonster25",
+        "x": 19890,
+        "y": 19935
+      },
+      {
+        "anchor": "pop_fishMonster26",
+        "x": 20745,
+        "y": 19980
+      },
+      {
+        "anchor": "pop_fishMonster27",
+        "x": 21060,
+        "y": 17415
+      },
+      {
+        "anchor": "pop_fishMonster28",
+        "x": 21150,
+        "y": 17325
+      },
+      {
+        "anchor": "pop_fishMonster29",
+        "x": 18765,
+        "y": 21960
+      }
+    ],
+    "abyss_carp": [
+      {
+        "anchor": "pop_abyss_carp00",
+        "x": 22118,
+        "y": 15985
+      }
+    ],
+    "evil_eye_monument_big": [
+      {
+        "anchor": "constant in event_horror_eye_of_hand",
+        "x": 17280,
+        "y": 18630
+      }
+    ],
+    "jizo": [
+      {
+        "anchor": "GIMMICK_ID_EVENT_HAT_GIZO",
+        "x": 18924,
+        "y": 19211
+      }
+    ],
+    "phone_box": [
+      {
+        "anchor": "GIMMICK_ID_FHONE_BOX",
+        "x": 19017,
+        "y": 22591
+      }
+    ]
+  },
+  "night_events": {
+    "dorotabo": {
+      "event": "EVENT_ID_GRUDGE_VEGETABLES",
+      "start": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_GRUDGE_VEGETABLES_000",
+          "GAME_FLAG_HORROR_EVENT_INARI_SHRINE_START",
+          "GAME_FLAG_LATENIGHT_MODE_OFF"
+        ]
+      },
+      "hours": [
+        0,
+        2
+      ],
+      "repeat_after_days": 7,
+      "plants": "CROPS_ID_OBJECT_MUD_SEEDS",
+      "early_harvest": "ITEM_ID_CROPS_MUD_SEEDS",
+      "grown_harvest": "ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE"
+    },
+    "cursed_produce": {
+      "adds_on": [
+        "EVENT_ID_LATE_NIGHT_DISCARD_CURSED_CROP",
+        "EVENT_ID_LATE_NIGHT_SHIP_CURSED_CROP",
+        "EVENT_ID_LATE_NIGHT_DISCARD_CURSED_FISH",
+        "EVENT_ID_LATE_NIGHT_SHIP_CURSED_FISH"
+      ],
+      "pops_on": "EVENT_ID_LATE_NIGHT_START",
+      "vegetable_monster": {
+        "attack": "ATTACK_ID_ENEMY_HORROR_STRONG_BODY_SLAM",
+        "charge_frames": 120,
+        "lifespan_frames": 360
+      },
+      "fish_monster": {
+        "lifespan_after_lost_frames": 1800
+      }
+    },
+    "abyss": {
+      "tip_price": 1000,
+      "npc": "CHARA_ID_SECRETARY",
+      "hours": [
+        0,
+        4
+      ],
+      "need_per_level": [
+        1,
+        3,
+        6,
+        10,
+        15,
+        15,
+        15
+      ],
+      "rewards": [
+        "+1 max HP (ITEM_ID_CURSED_HEART_SCALE)",
+        "+1 max HP (ITEM_ID_CURSED_HEART_SCALE)",
+        "+1 max HP (ITEM_ID_CURSED_HEART_SCALE)",
+        "+1 max HP (ITEM_ID_CURSED_HEART_SCALE)",
+        "+1 max HP (ITEM_ID_CURSED_HEART_SCALE)",
+        "GAME_FLAG_WHISTLE_SONG_LEARN_10",
+        "ITEM_ID_CURSE_FURNITURE_CARP_LANTERN_1 or _2 (repeats)"
+      ]
+    },
+    "petopeto": {
+      "goal_event": {
+        "requires": [
+          "GAME_FLAG_HORROR_PETOPETO_START"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_PETOPETO_CLEAR"
+        ]
+      },
+      "rewards": [
+        {
+          "item": "ITEM_ID_ACCESSORY_01_00",
+          "skipped_by": "GAME_FLAG_RELEASE_ACCESSORY_01"
+        },
+        {
+          "item": "ITEM_ID_ACCESSORY_74",
+          "skipped_by": "GAME_FLAG_RELEASE_ACCESSORY_74"
+        },
+        {
+          "item": "random seasonal scarecrow",
+          "of": [
+            "ITEM_ID_TOOL_SCARECROW_SPRING",
+            "ITEM_ID_TOOL_SCARECROW_SUMMER",
+            "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+            "ITEM_ID_TOOL_SCARECROW_WINTER"
+          ]
+        }
+      ]
+    },
+    "giant_rabbit": {
+      "rewards": [
+        {
+          "item": "ITEM_ID_FIGURINE_SEASON_JUGOYA_SET"
+        },
+        {
+          "item": "ITEM_ID_ACCESSORY_05_00",
+          "skipped_by": "GAME_FLAG_RELEASE_ACCESSORY_05"
+        },
+        {
+          "item": "ITEM_ID_CLOTHING_06_00",
+          "skipped_by": "GAME_FLAG_RELEASE_CLOTHING_06"
+        },
+        {
+          "item": "random seasonal scarecrow",
+          "of": [
+            "ITEM_ID_TOOL_SCARECROW_SPRING",
+            "ITEM_ID_TOOL_SCARECROW_SUMMER",
+            "ITEM_ID_TOOL_SCARECROW_AUTUMN",
+            "ITEM_ID_TOOL_SCARECROW_WINTER"
+          ]
+        }
+      ]
+    },
+    "phone_booth": {
+      "start": {
+        "requires": [
+          "GAME_FLAG_STORY_02_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_PHONE_BOOTH_EVENT_START"
+        ]
+      },
+      "placement": {
+        "requires": [
+          "GAME_FLAG_HORROR_PHONE_BOOTH_EVENT_START"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_PHONE_BOOTH_DEMO_02_END"
+        ]
+      },
+      "pickup": "ITEM_ID_CURSED_RED_MOBILE_PHONE",
+      "after_answer": "ITEM_ID_CURSED_BROKEN_MOBILE_PHONE",
+      "rewards": [
+        "ITEM_ID_CURSE_FURNITURE_OSUG",
+        "ITEM_ID_CURSE_FURNITURE_ONIMARU"
+      ]
+    },
+    "doll": {
+      "placement": {
+        "requires": [
+          "GAME_FLAG_STORY_01_END"
+        ],
+        "excludes": [
+          "GAME_FLAG_HORROR_EVENT_DOLL_GET_BODY"
+        ]
+      },
+      "pickup": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_BODY",
+      "head": "ITEM_ID_CURSE_FURNITURE_JAPANESE_DOLL_HEAD",
+      "recipe": "INTANGEBLE_ID_CRAFT_RECIPE_12"
+    }
+  },
+  "hand_eyes_monuments": {
+    "tool": "pickaxe (action_pickaxe)",
+    "needs_light": true,
+    "before_hour": 5,
+    "hits": {
+      "GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_SMALL": 2,
+      "GIMMICK_ID_EVENT_EVILEYE_STONE_MONUMENT_BIG": 4
+    }
+  }
+}
