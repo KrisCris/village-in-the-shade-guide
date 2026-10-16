@@ -11,21 +11,30 @@ export type GuideSource = (typeof sourceCatalog.sources)[number] & { chineseTitl
 // i18n-ignore-start — matches Japanese AppMedia titles and builds Simplified Chinese source text.
 export function guideTarget(title: string) {
   if (/牧畜のやり方|なつき度の上げ方/.test(title)) return '/guides/livestock-plan/';
+  if (/の解放条件と入手アイテム|カラーヒヨコの入手方法/.test(title)) return '/guides/livestock-plan/#unlock';
+  if (/品評会の勝ち方/.test(title)) return '/guides/livestock-plan/#fair';
   if (/狩猟のやり方/.test(title)) return '/guides/hunting-plan/';
   if (/農作のやり方/.test(title)) return '/guides/cultivation-plan/';
   if (/玉手箱の場所/.test(title)) return '/guides/collection-map/#treasures';
   if (/勾玉集め|深夜探索/.test(title)) return '/guides/night-preparation/';
   if (/料理の作り方|おすすめ料理/.test(title)) return '/guides/cooking-plan/';
-  if (/釣りのやり方/.test(title)) return '/guides/fishing-plan/';
+  if (/釣りのやり方/.test(title)) return '/guides/fishing-spots/';
+  if (/採掘のやり方/.test(title)) return '/guides/quarry/';
   if (/おすすめスキル/.test(title)) return '/guides/skills/';
+  if (/スプリンクラー/.test(title)) return '/data/items/ITEM_ID_GIMMICK_SPRINKLER_SMALL/';
   if (/好感度の上げ方|キャラ一覧/.test(title)) return '/guides/residents/';
   if (/紛失図書|狐の社/.test(title)) return '/guides/collection-map/';
   if (/毎日やるべきこと/.test(title)) return '/guides/season-plan/';
   if (/序盤の進め方|攻略チャート一覧|依頼のやり方/.test(title)) return '/guides/progression/';
+  // Chapter walkthroughs: the main quest steps from quest.dat cover them.
+  if (/^[春夏秋冬]月[前後]半/.test(title)) return '/guides/progression/#story';
   if (/キャラクリ変更/.test(title)) return '/guides/appearance/';
   if (/おすすめの金策/.test(title)) return '/planner/';
   return undefined;
 }
+
+/** Topics too basic or off-topic for a guide; their old URLs fall back to the guide index. */
+export const retiredGuideTitles = /雑談・質問掲示板|セーブのやり方|マルチはある|注視の使い方|あんしん暮しモード|取り返せないこと|指笛の種類/;
 
 const exactTitles: Record<string, string> = {
   'ほの暮しの庭攻略': '《静谧田园》攻略总览', '好感度の上げ方': '好感度提升方法', '機種ごとの違い': '各平台版本区别',
@@ -118,8 +127,10 @@ export const guides: GuideSource[] = sourceCatalog.sources.filter((source) => ![
   chineseTitle: chineseTitle(source.title),
   headings: (outlineMap.get(source.sourceId) ?? []).filter((heading) => !/関連記事|サイト TOP|一覧まとめ|一覧データ|序盤必見|おすすめ$|効率・稼ぎ|注目アイテム|システム解説/.test(heading)),
   dataTarget: dataTarget(source.title),
-  guideTarget: guideTarget(source.title),
+  guideTarget: retiredGuideTitles.test(source.title) ? '/guides/' : guideTarget(source.title),
 }));
+/** AppMedia topics we have not written our own guide for yet. */
+export const pendingGuides = guides.filter((guide) => !guide.guideTarget);
 
 // i18n-ignore-end
 

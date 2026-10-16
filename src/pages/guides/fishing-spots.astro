@@ -5,6 +5,7 @@ import { getCatalog, entityUrl } from '../../data/repository';
 import fishing from '../../../data/sources/game-fishing.json';
 import { getI18n } from '../../i18n/server';
 import { msg } from '../../i18n/translate';
+import type { Entity } from '../../data/types';
 const { t, href, locale } = getI18n(Astro.url);
 const catalog = getCatalog(locale);
 const fish = new Map(catalog.entities.filter(e => e.kind === 'fish').map(e => [e.id, e]));
@@ -12,6 +13,14 @@ const spotNames = new Map([...fish.values()].flatMap(e => ((e.locations ?? []) a
 const seasons: [string, string][] = [['spring', msg('春')], ['summer', msg('夏')], ['autumn', msg('秋')], ['winter', msg('冬')]];
 const periods: [string, string, string][] = [['morning', msg('早晨'), '7–12'], ['day', msg('白天'), '12–18'], ['evening', msg('夜晚'), '18–24'], ['late-night', msg('深夜'), '0–6']];
 const isTrash = (id: string) => id.startsWith('ITEM_ID_TRASH_');
+// Delivery catalogues (bundle.dat) that take fish. Each catalogue is handed in once.
+type Need = { item_id: string; quantity: number };
+const bundles = catalog.entities.filter(e => e.kind === 'activities' && e.id.startsWith('BUNDLE_ID_'))
+  .map(bundle => ({ bundle, needs: ((bundle.inputs ?? []) as Need[]).filter(input => fish.has(input.item_id)) }))
+  .filter(({ needs }) => needs.length);
+const neededBy = new Map<string, Entity[]>();
+for (const { bundle, needs } of bundles) for (const { item_id } of needs) neededBy.set(item_id, [...neededBy.get(item_id) ?? [], bundle]);
+const keepTitle = (id: string) => t('交付要用：{list}', { list: neededBy.get(id)!.map(bundle => bundle.name.zh_hans).join('、') });
 
 // The catch is drawn from one spot/season/period's rows in proportion to weight.
 type Spawn = (typeof fishing.spawns)[number];
@@ -39,13 +48,22 @@ const seasonData = seasons.map(([season, label]) => {
   // Fish × spot grid in catalog order; each cell lists the periods the fish bites at that spot.
   const caught = new Set(spots.flatMap(s => s.ids));
   const grid = [...fish.keys()].filter(id => caught.has(id)).map(id => ({ id, cells: spots.map(({ spot, byPeriod }) => ({ spot, odds: byPeriod.map(map => map.get(id) ?? 0) })) }));
-  return { season, label, spots, grid, species: caught.size };
+  // This season's own shrine offering first, then the village head's catalogue, then other seasons' offerings.
+  const rank = (id: string) => id.includes(`_${season.toUpperCase()}_`) ? 0 : id.includes('VILLAGE_HEAD') ? 1 : 2;
+  const keep = bundles.flatMap(({ bundle, needs }) => {
+    const here = needs.filter(need => caught.has(need.item_id)).map(need => ({
+      ...need,
+      where: spots.flatMap(({ spot, byPeriod }) => { const odds = byPeriod.map(map => map.get(need.item_id) ?? 0); return odds.some(Boolean) ? [{ spot, odds }] : []; }),
+    }));
+    return here.length ? [{ bundle, here, elsewhere: needs.length - here.length }] : [];
+  }).sort((a, b) => rank(a.bundle.id) - rank(b.bundle.id));
+  return { season, label, spots, grid, keep, species: caught.size };
 });
 ---
-<BaseLayout title={t('四季钓点分布')} description={t('每个钓鱼点在各季节、各时段能钓到哪些鱼，以及每次上钩是哪种鱼的概率。')}>
-  <h1>{t('四季钓点分布')}</h1>
-  <p>{t('先选季节，上方总表告诉你每个钓点、每个时段能钓到几种鱼；下方按钓点列出每种鱼的上钩概率，颜色越深越容易钓到。')}</p>
-  <p class="note">{t('概率按游戏内出现权重计算，是每次上钩时为该鱼的基础概率，未计入鱼饵和祠堂能力。杂物（空罐、塑料袋、树枝、水草）合并显示。')} <a href={href('/data/fish/')}>{t('全部鱼类筛选')}</a> · <a href={href('/guides/fishing-plan/')}>{t('四季钓鱼与留货')}</a></p>
+<BaseLayout title={t('四季钓点与留货')} description={t('每个钓鱼点在各季节、各时段能钓到哪些鱼、上钩概率，以及狐狸神社和村长家交付要留的鱼。')}>
+  <h1>{t('四季钓点与留货')}</h1>
+  <p>{t('先选季节。“本季要留的鱼”按交付目录列出这一季钓得到的鱼和去哪里钓；下面的表按钓点列出每种鱼的上钩概率，颜色越深越容易钓到。')}</p>
+  <p class="note">{t('概率按游戏内出现权重计算，是每次上钩时为该鱼的基础概率，未计入鱼饵和祠堂能力。杂物（空罐、塑料袋、树枝、水草）合并显示。6:00–7:00 不属于任何时段。')} <a href={href('/data/fish/')}>{t('全部鱼类筛选')}</a></p>
 
   <div class="fish-controls">
     <div class="fish-seasons" role="tablist" aria-label={t('季节')}>
@@ -57,15 +75,27 @@ const seasonData = seasons.map(([season, label]) => {
     </div>
   </div>
 
-  {seasonData.map(({ season, label, spots, grid, species }, index) => <section id={`season-${season}`} class="fish-season" role="tabpanel" aria-labelledby={`tab-${season}`} hidden={index > 0}>
+  {seasonData.map(({ season, label, spots, grid, keep, species }, index) => <section id={`season-${season}`} class="fish-season" role="tabpanel" aria-labelledby={`tab-${season}`} hidden={index > 0}>
     <h2>{t('{season}季：共 {count} 种鱼', { season: t(label), count: species })}</h2>
+    <details class="fish-keep" open>
+      <summary><h3>{t('本季要留的鱼')}</h3><small>{t('每个交付目录只交一次，交过的可以不看')}</small></summary>
+      <div class="keep-grid">{keep.map(({ bundle, here, elsewhere }) => <article class="keep-card">
+        <h4><a href={href(entityUrl(bundle))}>{bundle.name.zh_hans}</a><small>{String(bundle.location).split(' · ')[0]}</small></h4>
+        <ul>{here.map(({ item_id, quantity, where }) => { const e = fish.get(item_id)!; return <li>
+          <a class="keep-fish" href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="32" height="32" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a><b>×{quantity}</b>
+          <span class="keep-where">{where.map(({ spot, odds }) => <a href={`#${season}-${spot}`} title={periods.flatMap(([, name], i) => odds[i] ? [`${t(name)} ${percent(odds[i])}`] : []).join(' · ')}><span class="dots">{odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</span>{spotNames.get(spot) ?? spot}</a>)}</span>
+        </li>; })}</ul>
+        {elsewhere > 0 && <p class="note">{t('另有 {count} 种这一季钓不到。', { count: elsewhere })}</p>}
+      </article>)}</div>
+      <p class="fish-legend">{periods.map(([, name, hours], i) => <span><i class={`p${i}`}></i>{t(name)} <small>{hours}</small></span>)}</p>
+    </details>
     <div class="fish-grid-view" hidden>
       <p class="fish-legend">{periods.map(([, name, hours], i) => <span><i class={`p${i}`}></i>{t(name)} <small>{hours}</small></span>)}<span class="note">{t('亮起表示这个时段能在该钓点钓到。')}</span></p>
       <div class="fish-scroll">
         <table class="fish-grid">
           <thead><tr><th scope="col">{t('鱼')}</th>{spots.map(({ spot }) => <th scope="col">{spotNames.get(spot) ?? spot}</th>)}</tr></thead>
           <tbody>{grid.map(({ id, cells }) => { const e = fish.get(id)!; return <tr>
-            <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="24" height="24" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
+            <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="24" height="24" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span>{neededBy.has(id) && <b class="keep-badge" title={keepTitle(id)}>{t('交付')}</b>}</a></th>
             {cells.map(({ spot, odds }) => {
               const text = odds.some(Boolean) ? periods.flatMap(([, name], i) => odds[i] ? [`${t(name)} ${percent(odds[i])}`] : []).join(' · ') : t('钓不到');
               return <td title={`${spotNames.get(spot) ?? spot}：${text}`} aria-label={text} data-sort={odds.some(Boolean) ? String(odds.reduce((sum, value) => sum + value, 0)) : ''}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
@@ -92,7 +122,7 @@ const seasonData = seasons.map(([season, label]) => {
           <thead><tr><th scope="col"><span class="sr-only">{t('鱼')}</span></th>{periods.map(([, name]) => <th scope="col">{t(name)}</th>)}</tr></thead>
           <tbody>
             {ids.map(id => { const e = fish.get(id)!; return <tr>
-              <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span></a></th>
+              <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span>{neededBy.has(id) && <b class="keep-badge" title={keepTitle(id)}>{t('交付')}</b>}</a></th>
               {byPeriod.map(map => { const value = map.get(id) ?? 0; return <td style={value ? heat(value) : undefined}>{value ? percent(value) : '—'}</td>; })}
             </tr>; })}
             <tr class="fish-trash" data-sort-pin="end"><th scope="row">{t('杂物')}</th>{trash.map(value => <td>{value ? percent(value) : '—'}</td>)}</tr>
@@ -102,7 +132,7 @@ const seasonData = seasons.map(([season, label]) => {
     </article>)}</div>
     </div>
   </section>)}
-  <p class="note">{t('来源：fishing.dat 各钓鱼点的出现记录与权重。')}</p>
+  <p class="note">{t('来源：fishing.dat 各钓鱼点的出现记录与权重；交付目录取自 bundle.dat。')}</p>
 </BaseLayout>
 <script>
   import { onPageMount } from '../../lib/pageLifecycle';
@@ -166,6 +196,34 @@ const seasonData = seasons.map(([season, label]) => {
   .fish-grid th[scope='row'] a:hover span { text-decoration: underline; }
   .fish-grid img { object-fit: contain; flex: none; }
   .fish-season h2 { margin-top: .5rem; }
+  .fish-keep { margin: 0 0 1.5rem; padding: .9rem 1rem 1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--paper-raised); }
+  .fish-keep summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .8rem; cursor: pointer; list-style: none; }
+  .fish-keep summary::-webkit-details-marker { display: none; }
+  .fish-keep summary::before { content: '\25B8'; color: var(--green); transition: transform .15s; }
+  .fish-keep[open] summary::before { transform: rotate(90deg); }
+  .fish-keep summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  .fish-keep summary h3 { display: inline; margin: 0; font-size: 1.1rem; }
+  .fish-keep summary small { color: var(--muted); font-size: .8rem; }
+  .keep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: .8rem; margin-top: .9rem; }
+  .keep-card { padding: .75rem .85rem; border: 1px solid color-mix(in srgb, var(--border) 80%, transparent); border-radius: 10px; background: var(--paper); }
+  .keep-card h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .6rem; margin: 0 0 .5rem; font-size: .95rem; }
+  .keep-card h4 a { color: var(--ink); }
+  .keep-card h4 small { color: var(--muted); font-weight: 400; font-size: .78rem; }
+  .keep-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  .keep-card li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .1rem .6rem; }
+  .keep-card li b { color: var(--gold); font-variant-numeric: tabular-nums; }
+  .keep-fish { display: flex; align-items: center; gap: .45rem; color: var(--ink); text-decoration: none; font-size: .92rem; }
+  .keep-fish:hover span { text-decoration: underline; }
+  .keep-fish img { object-fit: contain; flex: none; }
+  .keep-where { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .2rem .8rem; padding-left: calc(32px + .45rem); font-size: .8rem; }
+  .keep-where a { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); text-decoration: none; }
+  .keep-where a:hover { color: var(--ink); text-decoration: underline; }
+  .keep-where .dots { display: inline-flex; gap: 2px; }
+  .keep-where i { display: inline-block; width: .5rem; height: .5rem; border-radius: 2px; border: 1px solid color-mix(in srgb, var(--border) 80%, transparent); }
+  .keep-where i[class] { background: var(--period); border-color: var(--period); }
+  .keep-card .note { margin: .5rem 0 0; font-size: .78rem; }
+  .fish-keep .fish-legend { margin: .8rem 0 0; }
+  .keep-badge { flex: none; margin-left: .15rem; padding: 0 .35rem; border: 1px solid color-mix(in srgb, var(--gold) 60%, transparent); border-radius: 999px; color: var(--gold); font-size: .68rem; font-weight: 600; line-height: 1.5; }
   .fish-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--paper-raised); }
   table { border-collapse: collapse; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }
   th, td { padding: .45rem .6rem; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); }

@@ -24,7 +24,7 @@ const unlocks:[string[],string][]=[
   [[C+'COLOR_CHICK_RED',C+'COLOR_CHICK_ORANGE',C+'COLOR_CHICK_GREEN',C+'COLOR_CHICK_LIGHT_BLUE',C+'COLOR_CHICK_BLUE',C+'COLOR_CHICK_PURPLE',C+'COLOR_CHICK_GRAY'],t('只在夏季 15 日的庙会期间卖。这段时间琪娜娜不卖其他家畜，彩色小鸡长大后是公鸡。')],
 ];
 ---
-<BaseLayout title={t('畜牧产物与饲养规划')}><h1>{t('畜牧产物与饲养规划')}</h1>
+<BaseLayout title={t('家畜解锁、品评会与产物')}><h1>{t('家畜解锁、品评会与产物')}</h1>
 <nav><a href="#unlock">{t('解锁条件')}</a>　<a href="#daily">{t('每日照料')}</a>　<a href="#products">{t('按产物选家畜')}</a>　<a href="#young">{t('幼畜长大')}</a></nav>
 <section><h2>{t('先准备设施，再选产物')}</h2><ol><li set:html={tHtml('先核对<a href="/data/activities/?q=建筑">鸡舍、畜舍等建筑材料</a>和自己的可用空间，别把全部资金先花在动物上。')} /><li>{t('按准备交付、制作或加工的目标选动物。下方产物可以继续点开，查看用途；需要牛奶和需要羊毛，对应的饲养目标不同。')}</li><li set:html={tHtml('先保留<a href="/data/activities/">交付目录</a>与<a href="/guides/residents/">生日礼物</a>用量，再安排料理与加工。料理标注“蛋类”“奶类”时可以使用其允许的替代品，见<a href="/guides/cooking-plan/#ingredients">材料对照表</a>。')} /></ol></section>
 <section id="unlock"><h2>{t('各种家畜什么时候能买')}</h2><p>{t('家畜都在行商琪娜娜那里买。新的种类和颜色要满足下面的条件才会上架，大多会先收到她的信。')}</p><div class="unlocks card">{unlocks.map(([ids,condition])=><div class="unlock"><div class="animals">{ids.map(id=>{const animal=get(id);return animal&&<a href={href(entityUrl(animal))}>{animal.icon_path&&<img src={withBase(animal.icon_path)} width="40" height="40" alt="" loading="lazy"/>}{animal.name.zh_hans}</a>;})}</div><p>{condition}</p></div>)}</div>
