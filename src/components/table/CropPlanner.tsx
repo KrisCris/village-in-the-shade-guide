@@ -11,6 +11,7 @@ import {seedAvailability} from '../../domain/seedAvailability';
 import {msg} from '../../i18n/translate';
 import {useI18n} from '../../i18n/react';
 import {firstDirection, groupPlannerRows, optionKey, type PlannerSortKey} from './plannerRows';
+import {harvestOptions, type HarvestOption} from '../../domain/harvestChoice';
 
 const MONTH = 28;
 const seasons = {spring:msg('春'),summer:msg('夏'),autumn:msg('秋'),winter:msg('冬')};
@@ -37,6 +38,8 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
   const calculated=useMemo(()=>candidates.flatMap(crop=>cropProcessingOptions(crop,catalog,quality,MONTH,true)),[candidates,catalog,quality]);
   const matching=useMemo(()=>calculated.filter(row=>!query || normalizeSearch(row.crop.searchText+' '+row.output.searchText).includes(normalizeSearch(query))),[calculated,query]);
   const groups=useMemo(()=>groupPlannerRows(matching,sort,direction,lang),[matching,sort,direction,lang]);
+  // Picks the planner leaves out: the modelled harvest is the crop's first item, so list the others.
+  const earlyPicks=useMemo(()=>new Map(candidates.map(crop=>{const options=harvestOptions(crop,catalog,quality); const modelled=options.find(o=>o.item.id===(crop.harvest_item_ids as string[]|undefined)?.[0]); return [crop.id,modelled?{modelled,others:options.filter(o=>o!==modelled)}:null] as const;})),[candidates,catalog,quality]);
   const topPerDay=useMemo(()=>Math.max(0,...matching.map(row=>row.netPerDay)),[matching]);
   const {visible,sentinel,more,loadMore}=useProgressiveRows(groups,30);
   const columns:[PlannerSortKey,string][]=[['name',t('作物 → 产物')],['netPerDay',t('日净收益')],['netPerSeed',t('每颗种子净收益')],['finishDay',t('种下到卖完')],['monthNet',t('当月净收入')]];
@@ -49,6 +52,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
         <button type="button" className="plan-toggle" aria-expanded={open} aria-controls={detailId} aria-label={t('{name} 的明细',{name:product})} onClick={()=>setOpenDetails(toggle(openDetails,key))}><span aria-hidden="true">▸</span></button>
         {alternative?<span className="plan-icon" aria-hidden="true"/>:option.crop.icon_path?<img className="plan-icon" src={withBase(option.crop.icon_path)} alt="" loading="lazy" width={32} height={32}/>:<span className="plan-icon" aria-hidden="true"/>}
         <span className="plan-title"><button type="button" className="link-button" onClick={()=>setSelected(option.crop)}>{option.crop.name.zh_hans}</button>{option.process?<> → <button type="button" className="link-button" onClick={()=>setSelected(option.output)}>{option.output.name.zh_hans}</button></>:<span className="plan-muted"> · {t('直接出售')}</span>}</span>
+        {earlyPicks.get(option.crop.id)?.others.map(pick=><span key={pick.item.id} className="plan-tag">{t('可早收{name}',{name:pick.item.name.zh_hans})}</span>)}
         {others>0&&<button type="button" className="plan-more" aria-expanded={groupOpen} onClick={()=>setOpenGroups(toggle(openGroups,option.crop.id))}>{groupOpen?t('收起其他做法'):t('另 {count} 种做法',{count:others})}</button>}
       </span></td>
       <td className={option.netPerDay<0?'plan-daily plan-negative':'plan-daily'} data-label={label('netPerDay')}><span className="plan-bar" aria-hidden="true" style={{'--share':`${topPerDay>0?Math.max(0,option.netPerDay)/topPerDay*100:0}%`} as CSSProperties}/><b>{fmt(option.netPerDay)}</b></td>
@@ -56,7 +60,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
       <td data-label={label('finishDay')}>{t('{days} 天',{days:fmt(option.finishDay)})}{option.finishDay>MONTH&&<span className="plan-tag">{t('跨月')}</span>}</td>
       <td data-label={label('monthNet')} className={option.monthNet<0?'plan-negative':undefined}>{fmt(option.monthNet)}</td>
     </tr>,
-    open&&<tr key={key+':detail'} id={detailId} className="plan-detail"><td colSpan={5}><PlanDetail option={option}/></td></tr>];
+    open&&<tr key={key+':detail'} id={detailId} className="plan-detail"><td colSpan={5}><PlanDetail option={option} picks={earlyPicks.get(option.crop.id)??null}/></td></tr>];
   };
   return <>
     <div className="toolbar card planner-controls">
@@ -93,25 +97,25 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
 .plan-toggle:focus-visible,.plan-more:focus-visible,.plan-title .link-button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .plan-more{margin-left:.2rem;min-height:0;padding:.15rem .55rem;border:1px solid var(--border);border-radius:999px;background:none;color:var(--muted);font-size:.75rem;cursor:pointer}.plan-more:hover,.plan-more[aria-expanded=true]{border-color:var(--green);color:var(--green)}
 .plan-alt .plan-name-inner{padding-left:1.2rem}.plan-alt td{background:color-mix(in srgb,var(--paper-deep) 25%,transparent)}
-.plan-daily{min-width:9.5rem}.plan-daily b{position:relative;color:var(--green);font-size:1rem}.plan-bar{display:inline-block;width:4.5rem;height:6px;margin-right:.6rem;vertical-align:middle;border-radius:3px;background:linear-gradient(to right,var(--green) var(--share),color-mix(in srgb,var(--green-soft) 70%,transparent) var(--share))}
+.plan-daily{min-width:9.5rem}.plan-daily b{display:inline-block;min-width:3.6rem;color:var(--green);font-size:1rem;text-align:right}.plan-bar{display:inline-block;width:4.5rem;height:6px;margin-right:.6rem;vertical-align:middle;border-radius:3px;background:linear-gradient(to right,var(--green) var(--share),color-mix(in srgb,var(--green-soft) 70%,transparent) var(--share))}
 .plan-tag{display:inline-block;white-space:nowrap;margin-left:.4rem;padding:.05rem .4rem;border-radius:4px;background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold);font-size:.72rem}.plan-negative,.plan-negative.plan-daily b{color:var(--vermilion)}
 .plan-detail td{padding:0 .8rem 1rem;white-space:normal;text-align:left!important;background:color-mix(in srgb,var(--green-soft) 22%,transparent)}.plan-empty{padding:1rem;color:var(--muted)}
 .plan-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;padding-top:.8rem}.plan-facts>div{display:grid;gap:.15rem;padding:.55rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised)}.plan-facts span{color:var(--muted);font-size:.75rem}.plan-facts b{font-size:.95rem}.plan-facts small{color:var(--muted);font-size:.75rem}
-.plan-timeline{margin-top:.9rem}.plan-track{display:grid;grid-template-columns:3.2rem 1fr;align-items:center;gap:.5rem;margin:.35rem 0}.plan-track>span{color:var(--muted);font-size:.75rem}.plan-lane{position:relative;height:18px;border-radius:4px;background:color-mix(in srgb,var(--paper-deep) 55%,transparent)}
+.plan-pick{margin:.8rem 0 0;padding:.5rem .7rem;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 8%,transparent);font-size:.85rem}.plan-timeline{margin-top:.9rem}.plan-track{display:grid;grid-template-columns:3.2rem 1fr;align-items:center;gap:.5rem;margin:.35rem 0}.plan-track>span{color:var(--muted);font-size:.75rem}.plan-lane{position:relative;height:18px;border-radius:4px;background:color-mix(in srgb,var(--paper-deep) 55%,transparent)}
 .plan-seg{position:absolute;top:3px;bottom:3px;border-radius:3px}.plan-seg.grow{background:var(--green)}.plan-seg.regrow{background:color-mix(in srgb,var(--green) 55%,var(--paper-raised))}.plan-seg.run{background:var(--gold)}
 .plan-harvest{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -7px;border-radius:50%;background:var(--vermilion);border:2px solid var(--paper-raised)}
 .plan-axis{position:relative;height:1.2rem;margin-left:3.7rem;color:var(--muted);font-size:.7rem}.plan-axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}.plan-mark{position:absolute;top:0;bottom:0;border-left:1px dashed var(--muted)}.plan-mark.sold{border-left:2px solid var(--vermilion)}
 .plan-lanes{position:relative}.plan-marks{position:absolute;inset:0 0 0 3.7rem;pointer-events:none}.plan-legend{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.3rem;color:var(--muted);font-size:.75rem}.plan-legend i{display:inline-block;width:12px;height:8px;margin-right:.3rem;border-radius:2px;vertical-align:middle}
 @media(max-width:700px){.planner-table{overflow:visible;border:0!important;background:none!important;box-shadow:none!important}.planner-table table,.planner-table tbody{display:block}.planner-table thead tr{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem}.planner-table th{padding:0;border:0;background:none!important}.planner-table th .sort-header{padding:.35rem .7rem;border:1px solid var(--border);border-radius:999px;background:var(--paper-raised);font-size:.8rem}.planner-table th[aria-sort] .sort-header{border-color:var(--green)}
 .planner-table tbody tr:not(.plan-detail){display:grid;grid-template-columns:repeat(3,1fr);margin-top:.7rem;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised)}.planner-table tbody tr.plan-alt{margin-left:1rem;margin-top:.4rem}.planner-table tbody tr[data-open]{border-bottom-left-radius:0;border-bottom-right-radius:0}
-.planner-table tbody td{border:0;padding:.35rem .7rem;text-align:left!important;white-space:normal}.planner-table td.plan-name,.planner-table td.plan-daily{grid-column:1/-1}.planner-table td.plan-name{padding-top:.7rem}.planner-table td.plan-daily{display:flex;align-items:center;gap:.5rem}.planner-table td.plan-daily b{font-size:1.35rem;order:-1}.plan-bar{flex:1;width:auto;margin:0}
+.planner-table tbody td{border:0;padding:.35rem .7rem;text-align:left!important;white-space:normal}.planner-table td.plan-name,.planner-table td.plan-daily{grid-column:1/-1}.planner-table td.plan-name{padding-top:.7rem}.planner-table td.plan-daily{display:flex;align-items:center;gap:.5rem}.planner-table td.plan-daily b{min-width:0;font-size:1.35rem;text-align:left;order:-1}.plan-bar{flex:1;width:auto;margin:0}
 .planner-table td[data-label]::before{content:attr(data-label);display:block;color:var(--muted);font-size:.7rem}.planner-table td.plan-daily::before{display:none!important}.planner-table td:not(.plan-name):not(.plan-daily){padding-bottom:.7rem}
 .planner-table tr.plan-detail{display:block;border:1px solid var(--border);border-top:0;border-radius:0 0 8px 8px}.planner-table tr.plan-detail td{display:block}.plan-alt .plan-name-inner{padding-left:0}.plan-name-inner{flex-wrap:wrap}}
 details{margin:1rem 0}`}</style>
   </>;
 }
 
-function PlanDetail({option}:{option:CropProcessingResult}) {
+function PlanDetail({option,picks}:{option:CropProcessingResult;picks:{modelled:HarvestOption;others:HarvestOption[]}|null}) {
   const {t}=useI18n();
   const span=Math.max(MONTH,Math.ceil(option.finishDay));
   const at=(day:number)=>`${day/span*100}%`;
@@ -128,6 +132,7 @@ function PlanDetail({option}:{option:CropProcessingResult}) {
       {option.process&&<div><span>{t('加工')}</span><b>{t('{count} 批',{count:option.batches})}</b><small>{t('机器忙 {days} / {month} 天',{days:fmt(option.machineDays),month:MONTH})}</small></div>}
       <div><span>{t('整批净收益')}</span><b>{fmt(option.net)}</b>{option.process&&<small>{gain>=0?t('比直接出售多 {value}',{value:fmt(gain)}):t('比直接出售少 {value}',{value:fmt(-gain)})}</small>}</div>
     </div>
+    {picks?.others.map(pick=><p key={pick.item.id} className="plan-pick">{t('这里按{modelled}计算。也可以提早收{name}：成长点到 {first} 首收，之后每 {regrow} 点一次。只看卖出价，{name}每天约 {value}，{modelled}约 {modelledValue}。',{modelled:picks.modelled.item.name.zh_hans,name:pick.item.name.zh_hans,first:pick.firstPoints,regrow:pick.regrowPoints,value:fmt(pick.perDay??0),modelledValue:fmt(picks.modelled.perDay??0)})}</p>)}
     <div className="plan-timeline" aria-hidden="true">
       <div className="plan-lanes">
         <div className="plan-track"><span>{t('田地')}</span><div className="plan-lane">

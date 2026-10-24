@@ -4,6 +4,7 @@ import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import { durationText } from './duration';
+import { harvestOptions } from './harvestChoice';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappaExchange from '../../data/sources/game-kappa-exchange.json';
@@ -219,9 +220,11 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     }
     const stages = (entity.harvest_stages ?? []) as Array<{state:number;growth_points:number;item_id:string;quantity:number}>;
     if (stages.length) {
+      const choice = harvestChoiceNote(entity, catalog, quality, t);
       for (const stage of stages.filter(s=>[1,4,9].includes(s.state))) add('outputs',catalog.byId[stage.item_id],{
         quantity:stage.quantity,key:`${stage.state}:${stage.growth_points}:${stage.item_id}`,
         chips:[stage.state===9 ? t('入秋转化') : stage.state===4 ? t('再次收获') : t('初次生长'),stage.state===9 ? t('留株过季') : t('成长点 {points}',{points:stage.growth_points})],
+        ...(choice && stage.state===1 && stage.item_id===choice.itemId ? {note:choice.note} : {}),
       });
     } else for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
       add('outputs', catalog.byId[harvestId], { quantity: Number(entity.harvest_quantity ?? 1), chips: [t('收获物')] });
@@ -333,6 +336,17 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     const rows = groups.get(key);
     return rows?.length ? [{ key, label: t(groupLabels[key]), rows }] : [];
   });
+}
+
+/** Early-versus-late picking note for crops like 豌豆, attached to the early first-harvest row. */
+function harvestChoiceNote(crop: Entity, catalog: Catalog, quality: Quality, t: Translate): { itemId: string; note: string } | null {
+  const [early, late] = harvestOptions(crop, catalog, quality);
+  if (!early || !late || early.perDay == null || late.perDay == null) return null;
+  const better = late.perDay >= early.perDay ? late : early;
+  return { itemId: early.item.id, note: t('可以提早收：成长点到 {early} 收{earlyName}，到 {late} 收{lateName}；再生后{earlyName}每 {earlyRegrow} 点、{lateName}每 {lateRegrow} 点可收。按每日 100 成长点和卖出价，{earlyName}每天约 {earlyValue}，{lateName}约 {lateValue}，只看卖出价时收{betterName}更划算。', {
+    early: early.firstPoints, late: late.firstPoints, earlyName: early.item.name.zh_hans, lateName: late.item.name.zh_hans,
+    earlyRegrow: early.regrowPoints, lateRegrow: late.regrowPoints, earlyValue: numberText(early.perDay), lateValue: numberText(late.perDay), betterName: better.item.name.zh_hans,
+  }) };
 }
 
 function entitySellPrice(entity: Entity, catalog: Catalog, quality: Quality, t: Translate): string | undefined {
