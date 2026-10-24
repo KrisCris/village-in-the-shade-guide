@@ -1,9 +1,11 @@
 import type {Catalog, Entity} from '../data/types';
 import {qualityPrice, type Quality} from './quality';
 
-export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; soldWithinMonth: number; monthNet: number};
+export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; netPerDay: number; soldWithinMonth: number; monthNet: number};
 
 /** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs. */
+// netPerDay spreads the whole batch's net over planting → harvest → processing → last sale.
+const perDay = (net: number, finishDay: number) => finishDay > 0 ? net / finishDay : 0;
 export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Quality, days = 28, includeDirectSale = false): CropProcessingResult[] {
   const growth = Number(crop.growth_days);
   const quantity = Number(crop.harvest_quantity);
@@ -43,14 +45,14 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
     const revenue = batches * out.quantity * price + stored * rawPrice;
     const harvested = quantity * dates.length;
     return [{crop,process,output,harvestCount:dates.length,harvested,batches,seedCost,revenue,net:revenue-seedCost,
-      processingGain:revenue-harvested*rawPrice,machineDays:batches*batchDays,finishDay,
+      processingGain:revenue-harvested*rawPrice,machineDays:batches*batchDays,finishDay,netPerDay:perDay(revenue-seedCost,finishDay),
       soldWithinMonth,monthNet:soldWithinMonth*price+(dates[dates.length-1]<=days?stored*rawPrice:0)-seedCost}];
   });
   if (includeDirectSale) {
     const harvested=quantity*dates.length;
     const revenue=harvested*rawPrice;
     const soldWithinMonth=dates.filter(day=>day<=days).length*quantity;
-    options.push({crop,process:null,output:harvest,harvestCount:dates.length,harvested,batches:0,seedCost,revenue,net:revenue-seedCost,processingGain:0,machineDays:0,finishDay:dates[dates.length-1],soldWithinMonth,monthNet:soldWithinMonth*rawPrice-seedCost});
+    options.push({crop,process:null,output:harvest,harvestCount:dates.length,harvested,batches:0,seedCost,revenue,net:revenue-seedCost,processingGain:0,machineDays:0,finishDay:dates[dates.length-1],netPerDay:perDay(revenue-seedCost,dates[dates.length-1]),soldWithinMonth,monthNet:soldWithinMonth*rawPrice-seedCost});
   }
   return options;
 }

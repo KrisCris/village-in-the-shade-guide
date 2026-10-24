@@ -17,7 +17,7 @@ function setup(extra: Record<string, unknown> = {}, inputQuantity = 1, minutes =
 it('separates processing increment from whole-chain profit without double counting seeds', () => {
   const {crop,catalog}=setup();
   expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({
-    harvestCount:4,seedCost:40,revenue:200,processingGain:80,net:160,monthNet:110,finishDay:29,
+    harvestCount:4,seedCost:40,revenue:200,processingGain:80,net:160,monthNet:110,finishDay:29,netPerDay:160/29,
   });
 });
 
@@ -45,11 +45,17 @@ it('offers direct sale without inventing a machine or processing gain', () => {
   const {crop,catalog}=setup();
   catalog.entities=catalog.entities.filter(e=>e.kind!=='processes');
   expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toContainEqual(expect.objectContaining({
-    process:null,harvestCount:4,harvested:4,seedCost:40,revenue:120,net:80,monthNet:80,processingGain:0,machineDays:0,finishDay:28,
+    process:null,harvestCount:4,harvested:4,seedCost:40,revenue:120,net:80,monthNet:80,processingGain:0,machineDays:0,finishDay:28,netPerDay:80/28,
   }));
 });
 
 it('retains seed expense but no cash revenue for direct sales after month end', () => {
   const {crop,catalog}=setup({growth_days:50});
-  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toContainEqual(expect.objectContaining({process:null,net:20,monthNet:-10,finishDay:50}));
+  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toContainEqual(expect.objectContaining({process:null,net:20,monthNet:-10,finishDay:50,netPerDay:0.4}));
+});
+
+it('spreads daily profit over growth, processing queue and the last sale', () => {
+  const {crop,catalog}=setup({growth_days:10,harvest_quantity:4},1,4320);
+  // Harvests on days 10 and 20 queue eight three-day batches; the last finishes on day 34.
+  expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({batches:8,finishDay:34,net:380,netPerDay:380/34});
 });
