@@ -1,7 +1,7 @@
 import struct
 import pytest
 
-from honogurashi_extractor.harvest import mature_quantity, harvest_stages
+from honogurashi_extractor.harvest import mature_quantity, harvest_stages, shake_capacity
 from honogurashi_extractor.table import TableFormatError
 
 
@@ -29,3 +29,11 @@ def test_random_yield_or_unrelated_item_is_not_a_fixed_quantity():
 
 def test_truncated_drop_array_is_rejected():
     with pytest.raises(TableFormatError): mature_quantity(record()[:100],100150)
+
+
+def test_shake_capacity_is_the_shake_drop_maximum():
+    row = bytearray(record())
+    for offset, value in {52: 1300, 64: 1, 68: 3}.items():
+        struct.pack_into('<I', row, offset, value)
+    assert shake_capacity(bytes(row)) == 3
+    assert shake_capacity(record()) is None

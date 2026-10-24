@@ -1,6 +1,7 @@
 import {expect, it} from 'vitest';
 import type {Catalog, Entity} from '../data/types';
 import {cropProcessingOptions} from './cropProcessing';
+import {getCatalog} from '../data/repository';
 
 function setup(extra: Record<string, unknown> = {}, inputQuantity = 1, minutes = 1440) {
   const crop: Entity = {id:'crop',kind:'crops',name:{zh_hans:'作物',zh_hant:'作物',ja:'',internal:'crop',aliases:[],review_status:'test'},searchText:'作物',growth_days:7,harvest_quantity:1,seed_item_ids:['seed'],harvest_item_ids:['raw'],...extra};
@@ -58,6 +59,24 @@ it('spreads daily profit over growth, processing queue and the last sale', () =>
   const {crop,catalog}=setup({growth_days:10,harvest_quantity:4},1,4320);
   // Harvests on days 10 and 20 queue eight three-day batches; the last finishes on day 34.
   expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({batches:8,finishDay:34,net:380,netPerDay:380/34});
+});
+
+it('leaves perennial shrubs out instead of rebuying the sapling every harvest', () => {
+  const {crop,catalog}=setup({perennial:{kind:'shrub',bearing_seasons:['summer'],rebear_points:200,rebear_days:2},growth_days:10,harvest_quantity:2});
+  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
+});
+
+it('does not rank shrubs or fruit trees, which stay planted and bear only in season', () => {
+  const catalog=getCatalog();
+  for (const [id,kind,season] of [['CROPS_ID_MULBERRY','shrub','summer'],['CROPS_ID_TEA_TREE','shrub','spring'],['CROPS_ID_APPLE_TREE','fruit_tree','autumn']]) {
+    const crop=catalog.entities.find(e=>e.kind==='crops'&&e.id===id)!;
+    expect(crop.perennial).toMatchObject({kind,bearing_seasons:[season]});
+    expect(crop.profit_per_day).toBeNull();
+    expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
+  }
+  const blueberry=catalog.entities.find(e=>e.kind==='crops'&&e.id==='CROPS_ID_BLUEBERRY')!;
+  expect(blueberry.perennial).toBeNull();
+  expect(cropProcessingOptions(blueberry,catalog,'normal',28,true).length).toBeGreaterThan(0);
 });
 
 it('records plantings, per-seed profit and merged machine runs for the timeline', () => {

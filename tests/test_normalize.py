@@ -3,7 +3,7 @@ from __future__ import annotations
 import struct
 
 from honogurashi_extractor.localization import build_name
-from honogurashi_extractor.normalize import _growth_data, normalize_snapshot
+from honogurashi_extractor.normalize import _crop_record, _growth_data, _perennial, normalize_snapshot
 from honogurashi_extractor.table import read_table
 from tests.fixtures.build_table import build_table
 
@@ -103,6 +103,63 @@ def test_seven_language_item_scalars_description_and_seed_relationship():
     assert item.description_translations["zh-TW"] == "春天種植\n說明"
     assert snapshot.crops["CROPS_TEST"].seed_item_ids == (item.id,)
     assert snapshot.crops["CROPS_TEST"].seasons == ("spring",)
+
+
+
+def _crop_bytes(numeric_id, *, crop_type=1, suitable=(), sowing=(), harvest=(), land=(1,),
+                features=(), forms=None, language_count=7):
+    """A crops.dat record in the CropsData field order (village.exe 0x14001A090)."""
+    stride = 264 + (language_count - 6) * 8
+    change_form = 128 + (language_count - 6) * 8
+    out = bytearray(80 + (language_count - 7) * 8)
+    struct.pack_into("<I", out, 0, numeric_id)
+    out += struct.pack("<I", crop_type)
+    for values, fmt in ((suitable, "I"), (sowing, "I"), (harvest, "I"), (land, "q")):
+        out += struct.pack(f"<I{len(values)}{fmt}", len(values), *values)
+    out += struct.pack("<qI", 0, 80)
+    out += struct.pack(f"<I{len(features)}q", len(features), *features)
+    out += bytes(80)
+    forms = forms or {1: [(0, 0), (500, 0), (1000, 0)]}
+    out += struct.pack("<I", len(forms))
+    for form, stages in forms.items():
+        out += struct.pack("<II", form, len(stages))
+        for points, after in stages:
+            stage = bytearray(stride)
+            struct.pack_into("<I", stage, 0, points)
+            struct.pack_into("<I", stage, change_form, after)
+            out += stage
+    return bytes(out + bytes(24))
+
+
+def test_fruit_tree_reads_bearing_season_past_its_feature_array():
+    apple = _crop_bytes(1, crop_type=2, suitable=(2,), sowing=(0, 1, 2, 3), land=(1, 2),
+                        features=(10, 22, 8), forms={1: [(0, 0), (300, 0), (600, 0), (900, 0), (1200, 0)]})
+    banana = _crop_bytes(9, crop_type=2, suitable=(0, 1, 2, 3), features=(16, 22),
+                         forms={1: [(0, 0), (1200, 0)]})
+    assert _perennial(apple, 1, 7) == {"kind": "fruit_tree", "bearing_seasons": ["autumn"],
+                                       "fruit_per_day": 1, "greenhouse_only": False}
+    assert _perennial(banana, 9, 7)["greenhouse_only"] is True
+    # Growth used to be read at a fixed offset and failed whenever features were present.
+    assert _growth_data(apple, 7) == (1200, 12, None, None)
+
+
+def test_shrub_rebears_from_its_post_harvest_form_only_in_harvest_season():
+    forms = {1: [(0, 0), (500, 0), (1000, 5)], 4: [(0, 5)], 5: [(0, 0), (200, 5)], 10: [(0, 0)]}
+    mulberry = _crop_bytes(67, harvest=(1,), sowing=(0, 1, 2, 3), features=(), forms=forms)
+    tea = _crop_bytes(64, harvest=(0,), land=(2,), features=(8,), forms=forms)
+    assert _perennial(mulberry, 67, 7) == {"kind": "shrub", "bearing_seasons": ["summer"],
+                                           "rebear_points": 200, "rebear_days": 2}
+    assert _perennial(tea, 64, 7)["bearing_seasons"] == ["spring"]
+    assert _growth_data(tea, 7) == (1000, 10, None, None)
+    # Without RESEASON the shrub logic in village.exe does not apply.
+    assert _perennial(_crop_bytes(67, harvest=(1,), forms={k: v for k, v in forms.items() if k != 10}), 67, 7) is None
+
+
+def test_ordinary_crops_and_short_records_are_not_perennial():
+    regrowing = _crop_bytes(58, suitable=(0,), forms={1: [(0, 0), (800, 4)], 4: [(0, 0), (400, 4)]})
+    assert _perennial(regrowing, 58, 7) is None
+    assert _growth_data(regrowing, 7) == (800, 8, 400, 4)
+    assert _crop_record(regrowing[:150], 7) is None
 
 
 def test_seven_language_crop_stages_use_272_byte_stride():

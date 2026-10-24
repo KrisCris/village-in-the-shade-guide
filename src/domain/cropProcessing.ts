@@ -9,7 +9,8 @@ export type CropProcessingResult = {crop: Entity; process: Entity | null; output
   /** Merged [start, end] spans in days while the machine is processing. */
   machineRuns: Array<[number, number]>};
 
-/** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs. */
+/** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs.
+ * Perennial shrubs and fruit trees are excluded: they stay planted and only bear in their own season. */
 // netPerDay spreads the whole batch's net over planting → harvest → processing → last sale.
 const perDay = (net: number, finishDay: number) => finishDay > 0 ? net / finishDay : 0;
 export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Quality, days = 28, includeDirectSale = false): CropProcessingResult[] {
@@ -19,7 +20,7 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
   const seedId = (crop.seed_item_ids as string[] | undefined)?.[0];
   const seed = seedId ? catalog.byId[seedId] : undefined;
   const harvest = harvestId ? catalog.byId[harvestId] : undefined;
-  if (!growth || !quantity || !seed || seed.buy_price == null || !harvest) return [];
+  if (crop.perennial != null || !growth || !quantity || !seed || seed.buy_price == null || !harvest) return [];
   const rawPrice = qualityPrice(harvest.sell_price, harvest.quality_eligible === true, quality)?.value;
   if (rawPrice == null) return [];
   const regrow = Number(crop.regrow_days) || 0;

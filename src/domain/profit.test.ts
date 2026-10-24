@@ -57,3 +57,13 @@ it('does not invent crop profit when growth timing is unknown', () => {
 
   expect(calculateEntityCropProfit(tree, catalog, 'normal')).toBeNull();
 });
+
+it('gives no seasonal profit for a perennial shrub with known growth days', () => {
+  const catalog = { byId: {
+    seed: { id: 'seed', kind: 'items', buy_price: 2000, quality_eligible: false },
+    harvest: { id: 'harvest', kind: 'items', sell_price: 5, quality_eligible: true },
+  } } as never;
+  const shrub = { kind: 'crops', perennial: { kind: 'shrub', bearing_seasons: ['summer'], rebear_points: 200, rebear_days: 2 }, growth_days: 10, harvest_quantity: 2, seed_item_ids: ['seed'], harvest_item_ids: ['harvest'] } as never;
+
+  expect(calculateEntityCropProfit(shrub, catalog, 'normal')).toBeNull();
+});

@@ -47,6 +47,7 @@ class Crop:
     harvest_quantity: int | None = None
     harvest_stages: tuple[dict, ...] = ()
     cultivation_method: str = ""
+    perennial: dict | None = None
 
 
 @dataclass(frozen=True, slots=True)

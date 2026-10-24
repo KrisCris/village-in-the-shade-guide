@@ -29,6 +29,31 @@ def harvest_stages(record: bytes) -> list[dict]:
     return result
 
 
+def shake_capacity(record: bytes) -> int | None:
+    """maxDropCount of the ACTION_ID_PLAYER_SHAKE_TREE drop: how many fruits a tree holds.
+
+    village.exe 0x1400EF470 caps the fruit count at this value and a shake
+    yields every fruit held; minDropCount is not used for shaking.
+    """
+    def word(offset):
+        if offset + 4 > len(record):
+            raise TableFormatError('truncated crop harvest record')
+        return struct.unpack_from('<I', record, offset)[0]
+    cursor = 20
+    highs = set()
+    for _ in range(word(16)):
+        count = word(cursor + 4)
+        cursor += 8
+        for _ in range(count):
+            drops = word(cursor + 4)
+            cursor += 8
+            for _ in range(drops):
+                if word(cursor + 8) == 1300 and word(cursor + 28) == 100:
+                    highs.add(word(cursor + 24))
+                cursor += 44
+    return highs.pop() if len(highs) == 1 else None
+
+
 def mature_quantity(record: bytes, item_id: int) -> int | None:
     def word(offset):
         if offset + 4 > len(record):
@@ -70,4 +95,7 @@ def normalize_harvest_quantities(table, snapshot):
             stages = tuple({**row, 'item_id':by_numeric[row['item_numeric_id']]} for row in harvest_stages(record) if row['item_numeric_id'] in by_numeric)
             # Keep the default mature output first for existing profit consumers.
             outputs = tuple(dict.fromkeys((*crop.harvest_item_ids, *(row['item_id'] for row in stages if row['state'] in (1,4,9)))))
-            snapshot.crops[key] = replace(crop, harvest_quantity=mature_quantity(record, target), harvest_stages=stages, harvest_item_ids=outputs)
+            perennial = crop.perennial
+            if perennial and perennial["kind"] == "fruit_tree":
+                perennial = {**perennial, "fruit_capacity": shake_capacity(record)}
+            snapshot.crops[key] = replace(crop, harvest_quantity=mature_quantity(record, target), harvest_stages=stages, harvest_item_ids=outputs, perennial=perennial)
