@@ -1,3 +1,4 @@
+import type {Entity} from '../../data/types';
 import type {CropProcessingResult} from '../../domain/cropProcessing';
 
 export type PlannerSortKey = 'name' | 'netPerDay' | 'netPerSeed' | 'finishDay' | 'monthNet';
@@ -5,6 +6,12 @@ export type PlannerGroup = {crop: CropProcessingResult['crop']; options: CropPro
 
 /** Direction a column starts in: names A–Z, sell-out time shortest first, money largest first. */
 export const firstDirection = (key: PlannerSortKey): 'asc' | 'desc' => key === 'name' || key === 'finishDay' ? 'asc' : 'desc';
+
+/** Shrubs and fruit trees are listed in the season they bear in, not the seasons their sapling can go in. */
+export const listedIn = (crop: Entity, season: string) => crop.perennial ? crop.perennial.bearing_seasons.includes(season) : ((crop.seasons ?? []) as string[]).includes(season);
+
+/** The game starts on the first day of spring, so nothing can be planted the season before. */
+export const canPlantAhead = (year: number, season: string) => !(year === 1 && season === 'spring');
 
 export const optionKey = (row: CropProcessingResult) => row.crop.id + ':' + (row.process?.id ?? 'direct-sale');
 

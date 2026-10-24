@@ -61,22 +61,31 @@ it('spreads daily profit over growth, processing queue and the last sale', () =>
   expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({batches:8,finishDay:34,net:380,netPerDay:380/34});
 });
 
-it('leaves perennial shrubs out instead of rebuying the sapling every harvest', () => {
+it('buys a shrub sapling once and picks it every two days through its season', () => {
   const {crop,catalog}=setup({perennial:{kind:'shrub',bearing_seasons:['summer'],rebear_points:200,rebear_days:2},growth_days:10,harvest_quantity:2});
-  expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
+  const direct=cropProcessingOptions(crop,catalog,'normal',28,true).find(row=>!row.process)!;
+  expect(direct).toMatchObject({plantings:1,regrows:true,seedCost:10,harvestDays:[1,3,5,7,9,11,13,15,17,19,21,23,25,27],harvested:28,revenue:840,finishDay:27,
+    perennial:{plantedAhead:true,laterNet:840,laterNetPerDay:840/27}});
+  // Planted on day 1 instead, it is grown on day 10.
+  expect(cropProcessingOptions(crop,catalog,'normal',28,true,false).find(row=>!row.process)).toMatchObject({harvestDays:[10,12,14,16,18,20,22,24,26,28],harvested:20,
+    perennial:{plantedAhead:false,laterNet:840}});
 });
 
-it('does not rank shrubs or fruit trees, which stay planted and bear only in season', () => {
+it('models shrubs and fruit trees from the game data in their bearing season', () => {
   const catalog=getCatalog();
-  for (const [id,kind,season] of [['CROPS_ID_MULBERRY','shrub','summer'],['CROPS_ID_TEA_TREE','shrub','spring'],['CROPS_ID_APPLE_TREE','fruit_tree','autumn']]) {
-    const crop=catalog.entities.find(e=>e.kind==='crops'&&e.id===id)!;
-    expect(crop.perennial).toMatchObject({kind,bearing_seasons:[season]});
-    expect(crop.profit_per_day).toBeNull();
-    expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
-  }
-  const blueberry=catalog.entities.find(e=>e.kind==='crops'&&e.id==='CROPS_ID_BLUEBERRY')!;
+  const crop=(id:string)=>catalog.entities.find(e=>e.kind==='crops'&&e.id===id)!;
+  const mulberry=cropProcessingOptions(crop('CROPS_ID_MULBERRY'),catalog,'normal',28,true);
+  // Each mulberry pick gives 2 leaves and 2 berries; the berries are sold even when the leaves are processed.
+  expect(mulberry.find(row=>!row.process)).toMatchObject({harvestCount:14,harvested:28,coProducts:[{itemId:'ITEM_ID_CROPS_MULBERRY',count:28,value:560}],revenue:700,seedCost:2000,net:-1300});
+  expect(mulberry.find(row=>row.output.id==='ITEM_ID_RAW_SILK')).toMatchObject({batches:28,processingGain:28*(125-5),revenue:28*125+560});
+  // An apple tree adds a fruit a day and holds 3, so it is shaken every third day and on the last day.
+  const apple=cropProcessingOptions(crop('CROPS_ID_APPLE_TREE'),catalog,'normal',28,true).find(row=>!row.process)!;
+  expect(apple).toMatchObject({harvestDays:[3,6,9,12,15,18,21,24,27,28],harvested:28,seedCost:3000,net:28*120-3000,perennial:{laterNet:28*120,laterNetPerDay:120}});
+  const firstSpring=cropProcessingOptions(crop('CROPS_ID_APPLE_TREE'),catalog,'normal',28,true,false).find(row=>!row.process)!;
+  expect(firstSpring).toMatchObject({harvestDays:[14,17,20,23,26,28],harvested:17,perennial:{plantedAhead:false,laterNet:28*120}});
+  const blueberry=crop('CROPS_ID_BLUEBERRY');
   expect(blueberry.perennial).toBeNull();
-  expect(cropProcessingOptions(blueberry,catalog,'normal',28,true).length).toBeGreaterThan(0);
+  expect(cropProcessingOptions(blueberry,catalog,'normal',28,true).every(row=>row.perennial===null&&row.coProducts.length===0)).toBe(true);
 });
 
 it('records plantings, per-seed profit and merged machine runs for the timeline', () => {
