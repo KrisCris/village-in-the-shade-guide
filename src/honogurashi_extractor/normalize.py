@@ -42,8 +42,17 @@ MACHINE_ITEM_IDS = {
     403040,
 }
 
-# item.dat seed descriptions: "低木の苗" (mulberry, tea) and "果樹の苗" (fruit trees).
-PERENNIAL_SEED_TEXT = ("低木の苗", "果樹の苗")
+SEASON_IDS = ("spring", "summer", "autumn", "winter")
+# CropsData.type 2 is a tree; cropsfeature.dat ids for the tree features used here.
+CROP_TYPE_TREE = 2
+CROPS_FEATURE_GREENHOUSE = 16
+CROPS_FEATURE_FRUIT_TREE = 22
+# village.exe 0x1402B39B0 runs the harvest-season cycle only for tea (0x40) and
+# mulberry (0x43): grown in a harvestSeason they take CROPS_FORM_REHARVEST_1
+# (4), outside it CROPS_FORM_RESEASON (10), which has no harvest.
+SEASONAL_SHRUB_CROP_IDS = (64, 67)
+# 0x1400EF4D0 adds one fruit per in-season day; a shake takes what the tree holds.
+FRUIT_PER_DAY = 1
 
 
 def _u32(record: bytes, offset: int) -> int:
@@ -52,38 +61,62 @@ def _u32(record: bytes, offset: int) -> int:
     return int.from_bytes(record[offset : offset + 4], "little")
 
 
-def _growth_data(record: bytes, language_count: int = 6) -> tuple[int | None, int | None, int | None, int | None]:
-    """Read crop.dat's variable arrays and build-specific visual-stage stride.
+def _crop_record(record: bytes, language_count: int = 6) -> dict | None:
+    """Read crops.dat CropsData (field order from village.exe 0x14001A090).
 
-    State 1 is initial growth; state 4 is regrowth. Other states (including
+    type, suitableSeason, sowingSeason, harvestSeason, cropLand (i64),
+    suitableLand (i64), nonSuitableLandSpeed, feature (i64), 80 fixed bytes,
+    then forms, each a list of 264/272-byte GrowInfo stages.
+    """
+    def word(offset: int) -> int:
+        if offset + 4 > len(record):
+            raise IndexError(offset)
+        return _u32(record, offset)
+
+    try:
+        cursor = 76 + (language_count - 6) * 8
+        stride = 264 + (language_count - 6) * 8
+        change_form = 128 + (language_count - 6) * 8  # GrowInfo.changeForm
+        result: dict = {"type": word(cursor - 4)}
+        for key, width in (("suitable", 4), ("sowing", 4), ("harvest", 4), ("land", 8)):
+            count = word(cursor)
+            result[key] = [word(cursor + 4 + i * width) for i in range(count)]
+            cursor += 4 + width * count
+        cursor += 12
+        count = word(cursor)
+        result["features"] = [word(cursor + 4 + i * 8) for i in range(count)]
+        cursor += 4 + 8 * count + 80
+        forms: dict[int, list[tuple[int, int]]] = {}
+        form_count = word(cursor)
+        cursor += 4
+        for _ in range(form_count):
+            form, count = word(cursor), word(cursor + 4)
+            cursor += 8
+            forms[form] = [(word(cursor + i * stride), word(cursor + i * stride + change_form)) for i in range(count)]
+            cursor += count * stride
+        if cursor > len(record):
+            return None
+    except IndexError:
+        return None
+    result["forms"] = forms
+    return result
+
+
+def _growth_data(record: bytes, language_count: int = 6) -> tuple[int | None, int | None, int | None, int | None]:
+    """Growth and regrowth thresholds from crops.dat forms.
+
+    Form 1 is initial growth; form 4 is regrowth. Other forms (including
     withered and cursed crops) must not contribute to cultivation duration.
     Day estimates retain the ordinary 100-growth-points-per-day baseline.
     """
     missing = (None, None, None, None)
-    cursor = 76 + (language_count - 6) * 8
-    stride = 264 + (language_count - 6) * 8
-    for width in (4, 4, 4, 8):
-        if cursor + 4 > len(record):
-            return missing
-        cursor += 4 + width * _u32(record, cursor)
-        if cursor > len(record):
-            return missing
-    cursor += 96
-    if cursor + 4 > len(record):
+    crop = _crop_record(record, language_count)
+    if crop is None:
         return missing
-    state_count = _u32(record, cursor)
-    cursor += 4
     points_by_state: dict[int, int] = {}
-    for _ in range(state_count):
-        if cursor + 8 > len(record):
-            return missing
-        state, count = _u32(record, cursor), _u32(record, cursor + 4)
-        cursor += 8
-        if cursor + count * stride > len(record):
-            return missing
-        thresholds = [_u32(record, cursor + i * stride) for i in range(count)]
-        cursor += count * stride
-        if state in (1, 4) and thresholds and thresholds[-1] > 0:
+    for state in (1, 4):
+        thresholds = [points for points, _ in crop["forms"].get(state, ())]
+        if thresholds and thresholds[-1] > 0:
             if thresholds[0] != 0 or any(a >= b for a, b in zip(thresholds, thresholds[1:])):
                 return missing
             points_by_state[state] = thresholds[-1]
@@ -97,6 +130,31 @@ def _growth_data(record: bytes, language_count: int = 6) -> tuple[int | None, in
         regrow_points,
         math.ceil(regrow_points / 100) if regrow_points else None,
     )
+
+
+def _perennial(record: bytes, crop_numeric_id: int, language_count: int = 6) -> dict | None:
+    """Plants that stay in the ground and bear only in their own season(s)."""
+    crop = _crop_record(record, language_count)
+    if crop is None:
+        return None
+    if crop["type"] == CROP_TYPE_TREE and CROPS_FEATURE_FRUIT_TREE in crop["features"]:
+        # Shaking is limited to suitableSeason (0x1400EF080); trees need no water.
+        return {"kind": "fruit_tree",
+                "bearing_seasons": [SEASON_IDS[s] for s in crop["suitable"]],
+                "fruit_per_day": FRUIT_PER_DAY,
+                "greenhouse_only": CROPS_FEATURE_GREENHOUSE in crop["features"]}
+    if crop_numeric_id in SEASONAL_SHRUB_CROP_IDS:
+        # Each harvest moves the shrub to the stage's changeForm (REHARVEST_2),
+        # which must regrow to its last threshold before the next harvest.
+        grown = crop["forms"].get(1)
+        after = crop["forms"].get(grown[-1][1]) if grown else None
+        if not after or after[-1][0] <= 0 or 10 not in crop["forms"]:
+            return None
+        return {"kind": "shrub",
+                "bearing_seasons": [SEASON_IDS[s] for s in crop["harvest"]],
+                "rebear_points": after[-1][0],
+                "rebear_days": math.ceil(after[-1][0] / 100)}
+    return None
 
 
 def _name(group: tuple[str, ...], overrides: Mapping[str, str], language_count: int = 6, start: int = 1):
@@ -214,7 +272,6 @@ def normalize_snapshot(
             seeds: list[str] = []
             harvests: list[str] = []
             seasons: list[str] = []
-            perennial = False
             if item_table:
                 for item_record in item_table.records:
                     seed = items_by_numeric[_u32(item_record, 0)]
@@ -227,9 +284,6 @@ def normalize_snapshot(
                     # the crop changing into another harvest in a later season.
                     seed_group = item_groups_by_numeric[seed.numeric_id]
                     seasons.extend(_seasons(tuple(seed_group[1 + 2 * item_table.language_count:1 + 3 * item_table.language_count])))
-                    # Shrub and fruit-tree saplings stay planted and fruit only in
-                    # their stated season, so a one-season replanting cycle is wrong.
-                    perennial = perennial or any(text in seed.description_translations.get("ja", "") for text in PERENNIAL_SEED_TEXT)
                     if seed.related_item_id:
                         harvests.append(seed.related_item_id)
             name = _name(group, overrides, crop_table.language_count)
@@ -245,7 +299,7 @@ def normalize_snapshot(
                 growth_days=growth_days,
                 regrow_points=regrow_points,
                 regrow_days=regrow_days,
-                perennial=perennial,
+                perennial=_perennial(record, crop_numeric_id, crop_table.language_count),
                 cultivation_method='菌类栽培' if seeds and any('栽培キット' in items_by_numeric[_u32(r,0)].name.ja for r in item_table.records if items_by_numeric[_u32(r,0)].id in seeds) else '',
             )
 

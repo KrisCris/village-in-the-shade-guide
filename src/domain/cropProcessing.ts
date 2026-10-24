@@ -14,7 +14,7 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
   const seedId = (crop.seed_item_ids as string[] | undefined)?.[0];
   const seed = seedId ? catalog.byId[seedId] : undefined;
   const harvest = harvestId ? catalog.byId[harvestId] : undefined;
-  if (crop.perennial === true || !growth || !quantity || !seed || seed.buy_price == null || !harvest) return [];
+  if (crop.perennial != null || !growth || !quantity || !seed || seed.buy_price == null || !harvest) return [];
   const rawPrice = qualityPrice(harvest.sell_price, harvest.quality_eligible === true, quality)?.value;
   if (rawPrice == null) return [];
   const regrow = Number(crop.regrow_days) || 0;

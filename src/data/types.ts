@@ -41,8 +41,13 @@ export type Entity = Record<string, unknown> & {
   searchText: string;
   cultivation_method?: string;
   /** Shrub or fruit tree that stays planted; seasonal replanting maths do not apply. */
-  perennial?: boolean;
+  perennial?: Perennial | null;
 };
+
+/** Read from crops.dat and village.exe by the extractor; see honogurashi_extractor.normalize._perennial. */
+export type Perennial =
+  | {kind: 'shrub'; bearing_seasons: string[]; rebear_points: number; rebear_days: number}
+  | {kind: 'fruit_tree'; bearing_seasons: string[]; fruit_per_day: number; fruit_capacity: number | null; greenhouse_only: boolean};
 
 export type Catalog = {
   buildId: string;

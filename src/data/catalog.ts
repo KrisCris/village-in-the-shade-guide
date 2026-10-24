@@ -196,7 +196,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       entity.sell_price = harvest?.sell_price ?? null;
       const growthDays = Number(entity.growth_days ?? 0);
       const regrowDays = Number(entity.regrow_days ?? 0);
-      const profit = growthDays > 0 && entity.buy_price != null && entity.sell_price != null
+      const profit = entity.perennial == null && growthDays > 0 && entity.buy_price != null && entity.sell_price != null
         ? calculateCropProfit({seedCost: Number(entity.buy_price), harvestValue: Number(entity.sell_price) * Number(entity.harvest_quantity ?? 1), growthDays, regrowDays})
         : null;
       entity.harvests_per_season = profit?.harvests ?? null;

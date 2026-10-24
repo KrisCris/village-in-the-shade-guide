@@ -62,18 +62,19 @@ it('spreads daily profit over growth, processing queue and the last sale', () =>
 });
 
 it('leaves perennial shrubs out instead of rebuying the sapling every harvest', () => {
-  const {crop,catalog}=setup({perennial:true,growth_days:10,harvest_quantity:2});
+  const {crop,catalog}=setup({perennial:{kind:'shrub',bearing_seasons:['summer'],rebear_points:200,rebear_days:2},growth_days:10,harvest_quantity:2});
   expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
 });
 
-it('does not rank mulberry or tea, whose game seeds are year-round shrub saplings', () => {
+it('does not rank shrubs or fruit trees, which stay planted and bear only in season', () => {
   const catalog=getCatalog();
-  for (const id of ['CROPS_ID_MULBERRY','CROPS_ID_TEA_TREE']) {
+  for (const [id,kind,season] of [['CROPS_ID_MULBERRY','shrub','summer'],['CROPS_ID_TEA_TREE','shrub','spring'],['CROPS_ID_APPLE_TREE','fruit_tree','autumn']]) {
     const crop=catalog.entities.find(e=>e.kind==='crops'&&e.id===id)!;
-    expect(crop.perennial).toBe(true);
+    expect(crop.perennial).toMatchObject({kind,bearing_seasons:[season]});
+    expect(crop.profit_per_day).toBeNull();
     expect(cropProcessingOptions(crop,catalog,'normal',28,true)).toEqual([]);
   }
   const blueberry=catalog.entities.find(e=>e.kind==='crops'&&e.id==='CROPS_ID_BLUEBERRY')!;
-  expect(blueberry.perennial).toBe(false);
+  expect(blueberry.perennial).toBeNull();
   expect(cropProcessingOptions(blueberry,catalog,'normal',28,true).length).toBeGreaterThan(0);
 });
