@@ -105,6 +105,40 @@ def test_seven_language_item_scalars_description_and_seed_relationship():
     assert snapshot.crops["CROPS_TEST"].seasons == ("spring",)
 
 
+
+def test_shrub_and_fruit_tree_saplings_mark_their_crop_perennial():
+    def seed_group(internal, description):
+        values = [internal]
+        for ja in ("苗", "", description, "", ""):
+            values.extend([ja, "", "", "", "", "", ""])
+        return ("\0".join(values) + "\0").encode()
+
+    seeds = [
+        ("ITEM_ID_SEED_MULBERRY", "１年中、畑のみに植えられる低木の苗。", 67),
+        ("ITEM_ID_SEED_APPLE", "１年中植えられ、秋に実をつける果樹の苗。", 1),
+        ("ITEM_ID_SEED_RICE", "春に水田へ植えると育つ、作物の苗。", 58),
+    ]
+    groups = [seed_group(internal, text) for internal, text, _ in seeds]
+    records, cursor = [], 0
+    for index, ((_, _, crop), group) in enumerate(zip(seeds, groups), 1):
+        records.append(_record(544, {0: index, 8: cursor, 396: crop}))
+        cursor += len(group)
+    crop_groups = [("\0".join([internal, "作物", "", "", "", "", "", ""]) + "\0").encode()
+                   for internal in ("CROPS_ID_MULBERRY", "CROPS_ID_APPLE_TREE", "CROPS_ID_RICE")]
+    crop_records, cursor = [], 0
+    for crop, group in zip((67, 1, 58), crop_groups):
+        crop_records.append(_record(500, {0: crop, 8: cursor}))
+        cursor += len(group)
+    tables = {
+        "item": read_table(build_table(records=records, strings=b"".join(groups)), language_count=7),
+        "crops": read_table(build_table(records=crop_records, strings=b"".join(crop_groups)), language_count=7),
+    }
+    crops = normalize_snapshot(tables, {}, {}).crops
+    assert crops["CROPS_ID_MULBERRY"].perennial
+    assert crops["CROPS_ID_APPLE_TREE"].perennial
+    # A rice seedling is also 苗, but it is replanted every season.
+    assert not crops["CROPS_ID_RICE"].perennial
+
 def test_seven_language_crop_stages_use_272_byte_stride():
     record = _record(1048, {84: 0, 88: 0, 92: 0, 96: 0, 196: 1, 200: 1, 204: 3,
                              480: 100, 752: 400})

@@ -40,6 +40,8 @@ export type Entity = Record<string, unknown> & {
   icon_path?: string | null;
   searchText: string;
   cultivation_method?: string;
+  /** Shrub or fruit tree that stays planted; seasonal replanting maths do not apply. */
+  perennial?: boolean;
 };
 
 export type Catalog = {

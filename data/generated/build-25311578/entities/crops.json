@@ -33,6 +33,7 @@
       "zh_hant": "蘋果樹"
     },
     "numeric_id": 100,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -94,6 +95,7 @@
       "zh_hant": "蘆筍"
     },
     "numeric_id": 17,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -137,6 +139,7 @@
       "zh_hant": "香蕉樹"
     },
     "numeric_id": 111,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -175,6 +178,7 @@
       "zh_hant": "巨大作物_大白菜"
     },
     "numeric_id": 603,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -211,6 +215,7 @@
       "zh_hant": "巨大作物_玉米"
     },
     "numeric_id": 601,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -248,6 +253,7 @@
       "zh_hant": "巨大作物_芋頭"
     },
     "numeric_id": 602,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -285,6 +291,7 @@
       "zh_hant": "巨大作物_大頭菜"
     },
     "numeric_id": 600,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -339,6 +346,7 @@
       "zh_hant": "藍莓"
     },
     "numeric_id": 35,
+    "perennial": false,
     "regrow_days": 2,
     "regrow_points": 200,
     "seasons": [
@@ -397,6 +405,7 @@
       "zh_hant": "蕎麥"
     },
     "numeric_id": 45,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -456,6 +465,7 @@
       "zh_hant": "高麗菜"
     },
     "numeric_id": 2,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -499,6 +509,7 @@
       "zh_hant": "可可樹"
     },
     "numeric_id": 112,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -547,6 +558,7 @@
       "zh_hant": "康乃馨"
     },
     "numeric_id": 8,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -599,6 +611,7 @@
       "zh_hant": "紅蘿蔔"
     },
     "numeric_id": 11,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -649,6 +662,7 @@
       "zh_hant": "洋甘菊"
     },
     "numeric_id": 6,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -692,6 +706,7 @@
       "zh_hant": "櫻桃樹"
     },
     "numeric_id": 101,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -745,6 +760,7 @@
       "zh_hant": "大白菜"
     },
     "numeric_id": 61,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -795,6 +811,7 @@
       "zh_hant": "菊花"
     },
     "numeric_id": 51,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -852,6 +869,7 @@
       "zh_hant": "玉米"
     },
     "numeric_id": 25,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -902,6 +920,7 @@
       "zh_hant": "波斯菊"
     },
     "numeric_id": 50,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -968,6 +987,7 @@
       "zh_hant": "小黃瓜"
     },
     "numeric_id": 24,
+    "perennial": false,
     "regrow_days": 3,
     "regrow_points": 300,
     "seasons": [
@@ -1018,6 +1038,7 @@
       "zh_hant": "水仙"
     },
     "numeric_id": 62,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1068,6 +1089,7 @@
       "zh_hant": "大理花"
     },
     "numeric_id": 54,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1126,6 +1148,7 @@
       "zh_hant": "白蘿蔔"
     },
     "numeric_id": 57,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1177,6 +1200,7 @@
       "zh_hant": "瞿麥"
     },
     "numeric_id": 15,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1257,6 +1281,7 @@
       "zh_hant": "毛豆"
     },
     "numeric_id": 34,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -1314,6 +1339,7 @@
       "zh_hant": "茄子"
     },
     "numeric_id": 22,
+    "perennial": false,
     "regrow_days": 3,
     "regrow_points": 300,
     "seasons": [
@@ -1364,6 +1390,7 @@
       "zh_hant": "勿忘我"
     },
     "numeric_id": 16,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1414,6 +1441,7 @@
       "zh_hant": "大蒜"
     },
     "numeric_id": 43,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1472,6 +1500,7 @@
       "zh_hant": "薑"
     },
     "numeric_id": 33,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1515,6 +1544,7 @@
       "zh_hant": "葡萄樹"
     },
     "numeric_id": 109,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1569,6 +1599,7 @@
       "zh_hant": "滿天星"
     },
     "numeric_id": 37,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1619,6 +1650,7 @@
       "zh_hant": "木槿"
     },
     "numeric_id": 39,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1659,6 +1691,7 @@
       "zh_hant": "除魔南天竹"
     },
     "numeric_id": 510,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -1712,6 +1745,7 @@
       "zh_hant": "啤酒花"
     },
     "numeric_id": 36,
+    "perennial": false,
     "regrow_days": 3,
     "regrow_points": 300,
     "seasons": [
@@ -1763,6 +1797,7 @@
       "zh_hant": "風信子"
     },
     "numeric_id": 13,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1814,6 +1849,7 @@
       "zh_hant": "鳶尾花"
     },
     "numeric_id": 19,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1871,6 +1907,7 @@
       "zh_hant": "木耳"
     },
     "numeric_id": 56,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -1921,6 +1958,7 @@
       "zh_hant": "薰衣草"
     },
     "numeric_id": 31,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -1964,6 +2002,7 @@
       "zh_hant": "檸檬樹"
     },
     "numeric_id": 105,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2018,6 +2057,7 @@
       "zh_hant": "萵苣"
     },
     "numeric_id": 10,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2069,6 +2109,7 @@
       "zh_hant": "鈴蘭"
     },
     "numeric_id": 44,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2120,6 +2161,7 @@
       "zh_hant": "蓮藕"
     },
     "numeric_id": 66,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2164,6 +2206,7 @@
       "zh_hant": "橘子樹"
     },
     "numeric_id": 104,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2210,6 +2253,7 @@
       "zh_hant": "芒果樹"
     },
     "numeric_id": 113,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2259,6 +2303,7 @@
       "zh_hant": "萬壽菊"
     },
     "numeric_id": 38,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2309,6 +2354,7 @@
       "zh_hant": "甜瓜"
     },
     "numeric_id": 41,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2360,6 +2406,7 @@
       "zh_hant": "牽牛花"
     },
     "numeric_id": 29,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2401,6 +2448,7 @@
       "zh_hant": "泥土種子"
     },
     "numeric_id": 501,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2484,6 +2532,7 @@
       "zh_hant": "桑葉"
     },
     "numeric_id": 67,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -2527,6 +2576,7 @@
       "zh_hant": "木通"
     },
     "numeric_id": 2107,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2564,6 +2614,7 @@
       "zh_hant": "竹筍"
     },
     "numeric_id": 2100,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2600,6 +2651,7 @@
       "zh_hant": "竹子"
     },
     "numeric_id": 1600,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2637,6 +2689,7 @@
       "zh_hant": "楊梅"
     },
     "numeric_id": 2103,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2674,6 +2727,7 @@
       "zh_hant": "獨角仙"
     },
     "numeric_id": 2150,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2710,6 +2764,7 @@
       "zh_hant": "蕨"
     },
     "numeric_id": 2000,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2746,6 +2801,7 @@
       "zh_hant": "蜂斗菜花苞"
     },
     "numeric_id": 2101,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2782,6 +2838,7 @@
       "zh_hant": "石蒜"
     },
     "numeric_id": 2004,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2818,6 +2875,7 @@
       "zh_hant": "楤木芽"
     },
     "numeric_id": 2200,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2855,6 +2913,7 @@
       "zh_hant": "被埋起來的硬幣"
     },
     "numeric_id": 2201,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2891,6 +2950,7 @@
       "zh_hant": "芒草"
     },
     "numeric_id": 3000,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2927,6 +2987,7 @@
       "zh_hant": "蒲公英"
     },
     "numeric_id": 2001,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2964,6 +3025,7 @@
       "zh_hant": "當歸"
     },
     "numeric_id": 2300,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -2999,6 +3061,7 @@
       "zh_hant": "倒木"
     },
     "numeric_id": 1201,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3035,6 +3098,7 @@
       "zh_hant": "寒莓"
     },
     "numeric_id": 2112,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3072,6 +3136,7 @@
       "zh_hant": "銀杏果"
     },
     "numeric_id": 2113,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3107,6 +3172,7 @@
       "zh_hant": "牧草"
     },
     "numeric_id": 1500,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3144,6 +3210,7 @@
       "zh_hant": "筆頭菜"
     },
     "numeric_id": 2003,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3179,6 +3246,7 @@
       "zh_hant": "巨岩"
     },
     "numeric_id": 1400,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3216,6 +3284,7 @@
       "zh_hant": "堅硬的巨岩"
     },
     "numeric_id": 1401,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3253,6 +3322,7 @@
       "zh_hant": "非常堅硬的巨岩"
     },
     "numeric_id": 1402,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3290,6 +3360,7 @@
       "zh_hant": "三葉草"
     },
     "numeric_id": 2002,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3325,6 +3396,7 @@
       "zh_hant": "山椒"
     },
     "numeric_id": 2008,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3362,6 +3434,7 @@
       "zh_hant": "野山藥"
     },
     "numeric_id": 2108,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3399,6 +3472,7 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3010,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3436,6 +3510,7 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3011,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3473,6 +3548,7 @@
       "zh_hant": "木靈之岩"
     },
     "numeric_id": 3012,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3509,6 +3585,7 @@
       "zh_hant": "百合花"
     },
     "numeric_id": 2006,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3545,6 +3622,7 @@
       "zh_hant": "百合根"
     },
     "numeric_id": 2007,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3581,6 +3659,7 @@
       "zh_hant": "松茸"
     },
     "numeric_id": 2110,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3618,6 +3697,7 @@
       "zh_hant": "泥土種子（物品）"
     },
     "numeric_id": 500,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3654,6 +3734,7 @@
       "zh_hant": "松果"
     },
     "numeric_id": 2106,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3690,6 +3771,7 @@
       "zh_hant": "紫色的花"
     },
     "numeric_id": 2400,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3727,6 +3809,7 @@
       "zh_hant": "水田的雜草"
     },
     "numeric_id": 1700,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3763,6 +3846,7 @@
       "zh_hant": "岩石"
     },
     "numeric_id": 1350,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3800,6 +3884,7 @@
       "zh_hant": "銅礦脈的岩石"
     },
     "numeric_id": 1354,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3837,6 +3922,7 @@
       "zh_hant": "寶石礦脈的岩石"
     },
     "numeric_id": 1358,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3874,6 +3960,7 @@
       "zh_hant": "金礦脈的岩石"
     },
     "numeric_id": 1356,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3911,6 +3998,7 @@
       "zh_hant": "鐵礦脈的岩石"
     },
     "numeric_id": 1355,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3948,6 +4036,7 @@
       "zh_hant": "隕鐵礦脈的岩石"
     },
     "numeric_id": 1357,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -3985,6 +4074,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1351,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4022,6 +4112,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1352,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4059,6 +4150,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1353,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4095,6 +4187,7 @@
       "zh_hant": "枇杷"
     },
     "numeric_id": 2105,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4132,6 +4225,7 @@
       "zh_hant": "樹莓"
     },
     "numeric_id": 2104,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4169,6 +4263,7 @@
       "zh_hant": "小竹筍"
     },
     "numeric_id": 2005,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4206,6 +4301,7 @@
       "zh_hant": "鍬形蟲"
     },
     "numeric_id": 2151,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4243,6 +4339,7 @@
       "zh_hant": "石頭"
     },
     "numeric_id": 1300,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4280,6 +4377,7 @@
       "zh_hant": "銅礦脈的石頭"
     },
     "numeric_id": 1307,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4317,6 +4415,7 @@
       "zh_hant": "寶石礦脈的石頭"
     },
     "numeric_id": 1311,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4354,6 +4453,7 @@
       "zh_hant": "金礦脈的石頭"
     },
     "numeric_id": 1309,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4391,6 +4491,7 @@
       "zh_hant": "鐵礦脈的石頭"
     },
     "numeric_id": 1308,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4428,6 +4529,7 @@
       "zh_hant": "隕鐵礦脈的石頭"
     },
     "numeric_id": 1310,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4465,6 +4567,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1301,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4502,6 +4605,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1302,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4539,6 +4643,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1303,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4576,6 +4681,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1304,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4613,6 +4719,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1305,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4650,6 +4757,7 @@
       "zh_hant": "採石場的石頭"
     },
     "numeric_id": 1306,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4687,6 +4795,7 @@
       "zh_hant": "樹樁"
     },
     "numeric_id": 1202,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4724,6 +4833,7 @@
       "zh_hant": "堅硬的樹樁"
     },
     "numeric_id": 1203,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4761,6 +4871,7 @@
       "zh_hant": "非常堅硬的樹樁"
     },
     "numeric_id": 1204,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4797,6 +4908,7 @@
       "zh_hant": "栗子"
     },
     "numeric_id": 1000,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4833,6 +4945,7 @@
       "zh_hant": "柳杉"
     },
     "numeric_id": 1001,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4870,6 +4983,7 @@
       "zh_hant": "檜木"
     },
     "numeric_id": 1004,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4907,6 +5021,7 @@
       "zh_hant": "槲樹"
     },
     "numeric_id": 1003,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4944,6 +5059,7 @@
       "zh_hant": "松樹"
     },
     "numeric_id": 1002,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -4981,6 +5097,7 @@
       "zh_hant": "樹枝"
     },
     "numeric_id": 1200,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5018,6 +5135,7 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 520,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5055,6 +5173,7 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 521,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5092,6 +5211,7 @@
       "zh_hant": "陌生家畜_埋藏著的物品"
     },
     "numeric_id": 522,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5128,6 +5248,7 @@
       "zh_hant": "行走的石頭（DUMMY）"
     },
     "numeric_id": 3015,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5164,6 +5285,7 @@
       "zh_hant": "胡桃"
     },
     "numeric_id": 2109,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5201,6 +5323,7 @@
       "zh_hant": "布袋蓮"
     },
     "numeric_id": 2102,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5238,6 +5361,7 @@
       "zh_hant": "雜草"
     },
     "numeric_id": 1100,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5275,6 +5399,7 @@
       "zh_hant": "雜草"
     },
     "numeric_id": 1101,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5311,6 +5436,7 @@
       "zh_hant": "枸杞"
     },
     "numeric_id": 2111,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [],
@@ -5372,6 +5498,7 @@
       "zh_hant": "油橄欖"
     },
     "numeric_id": 49,
+    "perennial": false,
     "regrow_days": 3,
     "regrow_points": 300,
     "seasons": [
@@ -5430,6 +5557,7 @@
       "zh_hant": "洋蔥"
     },
     "numeric_id": 1,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5480,6 +5608,7 @@
       "zh_hant": "三色堇"
     },
     "numeric_id": 59,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5566,6 +5695,7 @@
       "zh_hant": "豌豆"
     },
     "numeric_id": 9,
+    "perennial": false,
     "regrow_days": 2,
     "regrow_points": 200,
     "seasons": [
@@ -5609,6 +5739,7 @@
       "zh_hant": "桃子樹"
     },
     "numeric_id": 108,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5655,6 +5786,7 @@
       "zh_hant": "梨子樹"
     },
     "numeric_id": 110,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5715,6 +5847,7 @@
       "zh_hant": "青椒"
     },
     "numeric_id": 23,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -5758,6 +5891,7 @@
       "zh_hant": "柿子樹"
     },
     "numeric_id": 103,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5813,6 +5947,7 @@
       "zh_hant": "鳳梨"
     },
     "numeric_id": 42,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5856,6 +5991,7 @@
       "zh_hant": "梅子樹"
     },
     "numeric_id": 107,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5910,6 +6046,7 @@
       "zh_hant": "罌粟花"
     },
     "numeric_id": 7,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -5962,6 +6099,7 @@
       "zh_hant": "馬鈴薯"
     },
     "numeric_id": 4,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6012,6 +6150,7 @@
       "zh_hant": "南瓜"
     },
     "numeric_id": 32,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6063,6 +6202,7 @@
       "zh_hant": "櫻桃蘿蔔"
     },
     "numeric_id": 18,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6113,6 +6253,7 @@
       "zh_hant": "稻米"
     },
     "numeric_id": 63,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6163,6 +6304,7 @@
       "zh_hant": "玫瑰"
     },
     "numeric_id": 40,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6213,6 +6355,7 @@
       "zh_hant": "迷迭香"
     },
     "numeric_id": 60,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6270,6 +6413,7 @@
       "zh_hant": "芝麻"
     },
     "numeric_id": 52,
+    "perennial": false,
     "regrow_days": 3,
     "regrow_points": 300,
     "seasons": [
@@ -6327,6 +6471,7 @@
       "zh_hant": "香菇"
     },
     "numeric_id": 55,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -6385,6 +6530,7 @@
       "zh_hant": "鴻喜菇"
     },
     "numeric_id": 53,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -6434,6 +6580,7 @@
       "zh_hant": "水芭蕉"
     },
     "numeric_id": 20,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6491,6 +6638,7 @@
       "zh_hant": "菠菜"
     },
     "numeric_id": 58,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6555,6 +6703,7 @@
       "zh_hant": "草莓"
     },
     "numeric_id": 12,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -6605,6 +6754,7 @@
       "zh_hant": "甘蔗"
     },
     "numeric_id": 28,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6655,6 +6805,7 @@
       "zh_hant": "向日葵"
     },
     "numeric_id": 30,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6706,6 +6857,7 @@
       "zh_hant": "地瓜"
     },
     "numeric_id": 47,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6757,6 +6909,7 @@
       "zh_hant": "芋頭"
     },
     "numeric_id": 46,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6822,6 +6975,7 @@
       "zh_hant": "茶葉"
     },
     "numeric_id": 64,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6890,6 +7044,7 @@
       "zh_hant": "番茄"
     },
     "numeric_id": 21,
+    "perennial": false,
     "regrow_days": 4,
     "regrow_points": 400,
     "seasons": [
@@ -6941,6 +7096,7 @@
       "zh_hant": "鬱金香"
     },
     "numeric_id": 14,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -6992,6 +7148,7 @@
       "zh_hant": "大頭菜"
     },
     "numeric_id": 3,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -7042,6 +7199,7 @@
       "zh_hant": "山葵"
     },
     "numeric_id": 65,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -7100,6 +7258,7 @@
       "zh_hant": "西瓜"
     },
     "numeric_id": 26,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -7157,6 +7316,7 @@
       "zh_hant": "小麥"
     },
     "numeric_id": 27,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -7215,6 +7375,7 @@
       "zh_hant": "蔥"
     },
     "numeric_id": 5,
+    "perennial": false,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [
@@ -7258,6 +7419,7 @@
       "zh_hant": "柚子樹"
     },
     "numeric_id": 102,
+    "perennial": true,
     "regrow_days": null,
     "regrow_points": null,
     "seasons": [

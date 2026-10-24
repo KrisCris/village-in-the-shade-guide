@@ -42,6 +42,9 @@ MACHINE_ITEM_IDS = {
     403040,
 }
 
+# item.dat seed descriptions: "低木の苗" (mulberry, tea) and "果樹の苗" (fruit trees).
+PERENNIAL_SEED_TEXT = ("低木の苗", "果樹の苗")
+
 
 def _u32(record: bytes, offset: int) -> int:
     if offset + 4 > len(record):
@@ -211,6 +214,7 @@ def normalize_snapshot(
             seeds: list[str] = []
             harvests: list[str] = []
             seasons: list[str] = []
+            perennial = False
             if item_table:
                 for item_record in item_table.records:
                     seed = items_by_numeric[_u32(item_record, 0)]
@@ -223,6 +227,9 @@ def normalize_snapshot(
                     # the crop changing into another harvest in a later season.
                     seed_group = item_groups_by_numeric[seed.numeric_id]
                     seasons.extend(_seasons(tuple(seed_group[1 + 2 * item_table.language_count:1 + 3 * item_table.language_count])))
+                    # Shrub and fruit-tree saplings stay planted and fruit only in
+                    # their stated season, so a one-season replanting cycle is wrong.
+                    perennial = perennial or any(text in seed.description_translations.get("ja", "") for text in PERENNIAL_SEED_TEXT)
                     if seed.related_item_id:
                         harvests.append(seed.related_item_id)
             name = _name(group, overrides, crop_table.language_count)
@@ -238,6 +245,7 @@ def normalize_snapshot(
                 growth_days=growth_days,
                 regrow_points=regrow_points,
                 regrow_days=regrow_days,
+                perennial=perennial,
                 cultivation_method='菌类栽培' if seeds and any('栽培キット' in items_by_numeric[_u32(r,0)].name.ja for r in item_table.records if items_by_numeric[_u32(r,0)].id in seeds) else '',
             )
 

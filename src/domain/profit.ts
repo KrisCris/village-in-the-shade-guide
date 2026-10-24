@@ -34,7 +34,7 @@ export function calculateEntityProcessProfit(entity: Entity, catalog: Catalog, q
 }
 
 export function calculateEntityCropProfit(entity: Entity, catalog: Catalog, quality: Quality): ProfitResult | null {
-  if (entity.kind !== 'crops') return null;
+  if (entity.kind !== 'crops' || entity.perennial === true) return null;
   const growthDays = typeof entity.growth_days === 'number' ? entity.growth_days : null;
   if (growthDays == null || growthDays <= 0) return null;
   const seedId = (entity.seed_item_ids as string[] | undefined)?.[0];
