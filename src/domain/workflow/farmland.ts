@@ -113,6 +113,10 @@ export function farmlandUsage(
     const resolved =
       result.intent?.resolvedNodes.find((r) => r.id === n.id) ?? n;
     const crop = entities.find((e) => e.id === resolved.cropId);
+    // Shrubs and fruit trees never leave their plots once planted.
+    const planted = result.intent?.nodes[n.id]?.firstDay;
+    if (crop?.perennial && planted !== undefined)
+      return [{ start: planted, end: Infinity }];
     // Regrowing crops keep their plots after the last harvest until season end.
     if (Number(crop?.regrow_days) > 0 && work.length) {
       const last = Math.max(...work.map((s) => s.end));

@@ -17,5 +17,7 @@ export function workflowPayload(catalog: Catalog): Entity[] {
     ...compactItemRow(e),
     ...(e.kind === "machines" ? { description: e.description, capacity: e.capacity } : {}),
     ...(e.kind === "store-offers" ? { excluded_flags: e.excluded_flags } : {}),
+    // A shrub pick drops every state-5 item, such as mulberry's berries with its leaves.
+    ...(e.kind === "crops" && e.perennial?.kind === "shrub" ? { harvest_stages: e.harvest_stages } : {}),
   }));
 }

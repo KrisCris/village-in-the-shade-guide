@@ -1,10 +1,13 @@
 import { parsePlan } from "../workflowEditor";
-import type { Entity } from "../../data/types";
+import type { Entity, Perennial } from "../../data/types";
+import { shrubCoProducts, type Harvest } from "../perennial";
 import { qualityPrice } from "../quality";
 import { seedAvailability } from "../seedAvailability";
 import { seasonAt, yearAt } from "./date";
 import { hasCycle, stringArray } from "./graph";
 import { autoAmount, autoDate, resolveIntent } from "./intent";
+import { perennialHarvests, plantingSeasons, seasonEnd } from "./perennial";
+import { bearingLabel } from "./catalog";
 import type {
   Amount,
   PlanEvent,
@@ -24,6 +27,9 @@ type Crop = {
   regrow: number;
   yield: number;
   seasons: string[];
+  /** Planted once; `yield` is a shrub's pick, and `extras` drop with every pick. */
+  perennial?: Perennial;
+  extras: Amount[];
 };
 type Recipe = {
   inputs: Amount[];
@@ -38,6 +44,8 @@ type Job = WorkInProgress & {
   regrow: number;
   lastDay: number;
   holding?: boolean;
+  /** A perennial's later picks or shakes, per plant. */
+  rest?: Harvest[];
 };
 const positive = (v: unknown): v is number =>
   typeof v === "number" && Number.isSafeInteger(v) && v > 0;
@@ -243,21 +251,30 @@ export function simulateIntentPlan(
       const c = catalog.get(n.cropId ?? ""),
         outputs = stringArray(c?.harvest_item_ids),
         seeds = stringArray(c?.seed_item_ids),
-        seasons = stringArray(c?.seasons);
+        perennial = c?.perennial ?? undefined,
+        seasons = perennial
+          ? plantingSeasons(perennial, stringArray(c?.seasons))
+          : stringArray(c?.seasons);
       if (!c) {
         block(n, tr('连接种子来源以推算作物，或手动选择作物。'), "draft");
         continue;
       }
+      const extras = perennial ? shrubCoProducts(c, outputs[0]) : [];
       if (
         !positive(c.growth_days) ||
-        !positive(c.harvest_quantity) ||
-        outputs.length !== 1 ||
+        (perennial
+          ? !perennialHarvests(perennial, Number(c.harvest_quantity), 1, 112)?.length ||
+            !outputs.length ||
+            !outputs.every((id) => id === outputs[0] || extras.some((a) => a.itemId === id)) ||
+            !extras.every((a) => catalog.has(a.itemId) && positive(a.quantity))
+          : !positive(c.harvest_quantity) ||
+            outputs.length !== 1 ||
+            (c.regrow_days != null &&
+              c.regrow_days !== 0 &&
+              !positive(c.regrow_days))) ||
         !catalog.has(outputs[0]) ||
         !seeds.length ||
-        !seasons.length ||
-        (c.regrow_days != null &&
-          c.regrow_days !== 0 &&
-          !positive(c.regrow_days))
+        !seasons.length
       ) {
         block(n, tr('生长时间、产量、种子或季节数据不完整。'));
         continue;
@@ -266,9 +283,11 @@ export function simulateIntentPlan(
         seeds,
         item: outputs[0],
         growth: c.growth_days,
-        regrow: Number(c.regrow_days ?? 0),
-        yield: c.harvest_quantity,
+        regrow: perennial ? 0 : Number(c.regrow_days ?? 0),
+        yield: perennial?.kind === "fruit_tree" ? 0 : Number(c.harvest_quantity),
         seasons,
+        perennial,
+        extras,
       });
     }
     if (n.kind === "process") {
@@ -334,6 +353,8 @@ export function simulateIntentPlan(
         notice(n, tr('尚未安排来源，连接产物后自动留货。'));
     }
   }
+  // A perennial stays on its tile, so it is planted once even when repeat is set.
+  const repeats = (n: WorkflowNode) => n.repeat && !crops.get(n.id)?.perennial;
   const inputAmounts = (n: WorkflowNode): Amount[] => {
     if (n.kind === "plant")
       return (crops.get(n.id)?.seeds ?? []).map((itemId) => ({
@@ -354,13 +375,13 @@ export function simulateIntentPlan(
     if (n.kind === "reserve" || n.kind === "delivery")
       return Math.max(0, a.quantity - heldAndUsed(n, item));
     if (n.kind === "plant") {
-      if (started.has(n.id) && !n.repeat) return 0;
+      if (started.has(n.id) && !repeats(n)) return 0;
       // Alternative seed ids share one planting target.
       const held = (crops.get(n.id)?.seeds ?? []).reduce(
         (s, id) => s + get(n, id),
         0,
       );
-      if (n.repeat && scale.has(n.id))
+      if (repeats(n) && scale.has(n.id))
         return Math.max(0, scale.get(n.id)! - held);
       if (!autoAmount(n))
         return Math.max(0, n.quantity - held - (started.get(n.id) ?? 0));
@@ -459,6 +480,28 @@ export function simulateIntentPlan(
         quantity,
         kind,
       }));
+  /** A perennial's next pick or shake; after the last one it holds its tile to the end of its last season. */
+  const rebear = (j: Job): Job => {
+    const [next, ...rest] = j.rest!;
+    return next
+      ? { ...j, finishDay: next.day, quantity: next.quantity * j.slots, rest, holding: false }
+      : { ...j, finishDay: j.lastDay + 1, quantity: 0, rest, holding: true };
+  };
+  const bear = (n: WorkflowNode, j: Job) => {
+    const next = rebear(j);
+    jobs.push(next);
+    if (!next.holding) projection(n).finishDay = next.finishDay;
+  };
+  /** Items a shrub pick drops besides its main harvest, such as mulberry's berries. */
+  const coHarvest = (n: WorkflowNode, j: Job) => {
+    if (j.kind !== "plant") return;
+    for (const a of crops.get(n.id)?.extras ?? []) {
+      const quantity = a.quantity * j.slots;
+      put(supplies.get(n.id)!, a.itemId, quantity);
+      projection(n).outputQuantity += quantity;
+      emit(n, "harvest", `${tr('收获')} ${name(a.itemId)} ×${quantity}`, { itemId: a.itemId, quantity });
+    }
+  };
   const startJob = (
     n: WorkflowNode,
     kind: "plant" | "process",
@@ -472,7 +515,7 @@ export function simulateIntentPlan(
       yieldCount = kind === "plant" ? c!.yield : r!.yield;
     const finishDay = day + duration,
       lastDay = n.seasonProtection ? Math.max(periodEnd, finishDay) : Math.ceil(day / 28) * 28;
-    jobs.push({
+    let job: Job = {
       nodeId: n.id,
       kind,
       finishDay,
@@ -481,8 +524,14 @@ export function simulateIntentPlan(
       slots: quantity,
       regrow: c?.regrow ?? 0,
       lastDay,
-    });
-    mark(n, quantity, finishDay);
+    };
+    // Grown on finishDay, a perennial bears in its seasons through the end of the plan's last season.
+    if (kind === "plant" && c!.perennial) {
+      const last = seasonEnd(periodEnd);
+      job = rebear({ ...job, lastDay: last, rest: perennialHarvests(c!.perennial, c!.yield, finishDay, last)! });
+    }
+    jobs.push(job);
+    mark(n, quantity, job.holding ? day : job.finishDay);
     started.set(n.id, (started.get(n.id) ?? 0) + quantity);
     if (kind === "plant") {
       scale.set(n.id, quantity);
@@ -523,7 +572,9 @@ export function simulateIntentPlan(
         n,
         kind,
         kind === "plant"
-          ? tr('播种 {quantity} 格 · {duration} 天后收获', { quantity, duration })
+          ? c!.perennial
+            ? tr('种下树苗 {quantity} 格 · {duration} 天后长成', { quantity, duration })
+            : tr('播种 {quantity} 格 · {duration} 天后收获', { quantity, duration })
           : tr('投料 {inputs} · {quantity} 批', { inputs: r!.inputs.map((a) => `${name(a.itemId)} ×${a.quantity * quantity}`).join(" + "), quantity }),
         { itemId: kind === "plant" ? c!.seeds[0] : itemId, quantity },
       );
@@ -554,7 +605,9 @@ export function simulateIntentPlan(
           `${j.kind === "plant" ? tr('收获') : tr('加工完成')} ${name(j.itemId)} ×${j.quantity}`,
           { itemId: j.itemId, quantity: j.quantity },
         );
-        if (j.kind === "plant" && j.regrow) {
+        coHarvest(n, j);
+        if (j.rest) bear(n, j);
+        else if (j.kind === "plant" && j.regrow) {
           if (day + j.regrow <= j.lastDay) {
             jobs.push({ ...j, finishDay: day + j.regrow });
             projection(n).finishDay = day + j.regrow;
@@ -574,7 +627,7 @@ export function simulateIntentPlan(
         if (day !== plan.startDay) continue;
         const c = crops.get(n.id);
         if (
-          c && !n.seasonProtection &&
+          c && !c.perennial && !n.seasonProtection &&
           (!c.seasons.includes(seasonAt(day)) ||
             day + n.remainingDays > Math.ceil(day / 28) * 28)
         ) {
@@ -633,7 +686,9 @@ export function simulateIntentPlan(
           tr('已有生产完成 {name} ×{quantity}', { name: name(j.itemId), quantity: j.quantity }),
           { itemId: j.itemId, quantity: j.quantity },
         );
-        if (j.kind === "plant" && j.regrow && day + j.regrow <= j.lastDay)
+        coHarvest(n, j);
+        if (j.rest) bear(n, j);
+        else if (j.kind === "plant" && j.regrow && day + j.regrow <= j.lastDay)
           jobs.push({ ...j, finishDay: day + j.regrow });
       }
     distribute();
@@ -648,7 +703,7 @@ export function simulateIntentPlan(
         const c = crops.get(n.id)!;
         if (
           jobs.some((j) => j.nodeId === n.id) ||
-          (started.has(n.id) && !n.repeat)
+          (started.has(n.id) && !repeats(n))
         )
           continue;
         if (day > Math.min(periodEnd, n.endDay ?? periodEnd)) continue;
@@ -658,7 +713,12 @@ export function simulateIntentPlan(
             ? Math.min(periodEnd, n.endDay ?? periodEnd)
             : Infinity,
         );
-        if ((!n.seasonProtection && !c.seasons.includes(seasonAt(day))) || day + c.growth > lastDay) {
+        // A perennial need not bear in the season it is planted.
+        if (
+          c.perennial
+            ? !c.seasons.includes(seasonAt(day))
+            : (!n.seasonProtection && !c.seasons.includes(seasonAt(day))) || day + c.growth > lastDay
+        ) {
           if (!started.has(n.id) && c.seeds.some((id) => get(n, id) > 0))
             notice(n, tr('种植季节不符，或本季已不足以完成首次收获。'), "blocked");
           continue;
@@ -846,7 +906,8 @@ export function simulateIntentPlan(
       continue;
     }
     const dates = [
-      ...jobs.map((j) => j.finishDay),
+      // A standing perennial with nothing left to pick does not extend the schedule.
+      ...jobs.filter((j) => !(j.holding && j.rest)).map((j) => j.finishDay),
       ...receipts.map((r) => r.day),
       ...nodes.flatMap((n) => {
         if (disabled.has(n.id) || !inboxes.get(n.id)!.size) return [];
@@ -880,7 +941,16 @@ export function simulateIntentPlan(
   for (const n of nodes) {
     const p = projection(n);
     if (disabled.has(n.id)) continue;
-    if (n.kind === "plant" && n.repeat && p.firstDay !== undefined) {
+    const perennial = n.kind === "plant" ? crops.get(n.id)?.perennial : undefined;
+    if (
+      perennial &&
+      p.firstDay !== undefined &&
+      !result.events.some((e) => e.nodeId === n.id && e.kind === "harvest")
+    )
+      p.notices.push(
+        tr('{bearing}，本计划内收不到。延长计划天数即可计入。', { bearing: bearingLabel(perennial) }),
+      );
+    if (n.kind === "plant" && repeats(n) && p.firstDay !== undefined) {
       const c = crops.get(n.id)!,
         lastPlant = result.events
           .filter((e) => e.nodeId === n.id && e.kind === "plant")

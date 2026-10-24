@@ -3,7 +3,9 @@ import { entity, node, plan } from "./test-helpers";
 import { simulatePlan } from "./simulate";
 import { resolveIntent, canConnectDraft } from "./intent";
 import { parsePlan, newNode } from "../workflowEditor";
-import type { WorkflowNode, WorkflowPlan } from "./types";
+import { getCatalog } from "../../data/repository";
+import { workflowPayload } from "../../data/workflowPayload";
+import type { SimulationResult, WorkflowNode, WorkflowPlan } from "./types";
 const data = [
   entity("seed", "items", { buy_price: 10 }),
   entity("fruit", "items", { sell_price: 20 }),
@@ -541,5 +543,139 @@ describe("intent workflow", () => {
           ),
         ).toBe(true);
       }
+  });
+});
+
+describe("shrubs and fruit trees", () => {
+  const game = workflowPayload(getCatalog());
+  const grow = (
+    cropId: string,
+    fields: Partial<WorkflowNode> = {},
+    range: Partial<WorkflowPlan> = {},
+  ) =>
+    simulatePlan(
+      p(
+        [
+          n("plant", "plant", {
+            cropId,
+            quantity: 1,
+            amountMode: "manual",
+            autoBuy: true,
+            // Ignored: a perennial is never replanted.
+            repeat: true,
+            ...fields,
+          }),
+        ],
+        [],
+        range,
+      ),
+      game,
+    );
+  const picks = (r: SimulationResult, itemId: string) =>
+    r.events
+      .filter((e) => e.kind === "harvest" && e.itemId === itemId)
+      .map((e) => [e.day, e.quantity]);
+  const every = (first: number, step: number, count: number, quantity: number) =>
+    Array.from({ length: count }, (_, i) => [first + step * i, quantity]);
+  it("buys mulberry saplings once and picks leaves and berries only in summer", () => {
+    const r = grow("CROPS_ID_MULBERRY", { quantity: 2 }, { days: 112 });
+    expect(
+      r.events
+        .filter((e) => e.kind === "purchase")
+        .map((e) => [e.day, e.itemId, e.quantity, e.amount, e.reason]),
+    ).toEqual([[1, "ITEM_ID_SEED_MULBERRY", 2, 4000, "initial"]]);
+    expect(r.events.filter((e) => e.kind === "plant").map((e) => e.day)).toEqual([1]);
+    // Grown on spring day 11, it is first picked on summer day 1 (day 29), then every 2 days.
+    expect(picks(r, "ITEM_ID_CROPS_MULBERRY_LEAF")).toEqual(every(29, 2, 14, 4));
+    expect(picks(r, "ITEM_ID_CROPS_MULBERRY")).toEqual(every(29, 2, 14, 4));
+    expect(r.spending).toBe(4000);
+    expect(r.intent?.nodes.plant.outputQuantity).toBe(14 * 8);
+    // The bushes keep their 2 tiles through autumn and winter.
+    expect(r.days.at(-1)).toMatchObject({ day: 112, land: 2 });
+    expect(r.issues).toEqual([]);
+  });
+  it("picks mulberry bushes that are already grown from the first summer day", () => {
+    const r = simulatePlan(
+      p(
+        [
+          n("plant", "plant", {
+            cropId: "CROPS_ID_MULBERRY",
+            quantity: 3,
+            amountMode: "manual",
+            remainingDays: 0,
+          }),
+          n("sale", "sale", { itemId: "ITEM_ID_CROPS_MULBERRY" }),
+        ],
+        [["plant", "sale"]],
+        { startDay: 29, days: 28 },
+      ),
+      game,
+    );
+    expect(r.events.filter((e) => e.kind === "purchase")).toEqual([]);
+    expect(picks(r, "ITEM_ID_CROPS_MULBERRY_LEAF")).toEqual(every(29, 2, 14, 6));
+    // The berries go to their own sale; the leaves stay unassigned.
+    expect(r.events.filter((e) => e.kind === "sale").map((e) => e.quantity)).toEqual(Array(14).fill(6));
+    expect(r.intent?.nodes.plant.notices.join()).toContain("桑叶 ×84");
+  });
+  it("waits through winter and picks tea from the first day of spring", () => {
+    const r = grow("CROPS_ID_TEA_TREE", {}, { startDay: 85, days: 56 });
+    expect(r.events.filter((e) => e.kind === "purchase")).toHaveLength(1);
+    expect(picks(r, "ITEM_ID_CROPS_TEA_TREE")).toEqual(every(113, 2, 14, 2));
+    expect(r.days.find((d) => d.day === 100)?.inProgress).toEqual([
+      { nodeId: "plant", finishDay: 113, itemId: "ITEM_ID_CROPS_TEA_TREE", quantity: 2, kind: "plant" },
+    ]);
+  });
+  it("picks tea once grown when planted in spring and says when a plan has no tea season", () => {
+    expect(picks(grow("CROPS_ID_TEA_TREE"), "ITEM_ID_CROPS_TEA_TREE")).toEqual(every(11, 2, 9, 2));
+    const summer = grow("CROPS_ID_TEA_TREE", {}, { startDay: 29, days: 28 });
+    expect(picks(summer, "ITEM_ID_CROPS_TEA_TREE")).toEqual([]);
+    expect(summer.intent?.nodes.plant.notices).toContain(
+      "春季结果，本计划内收不到。延长计划天数即可计入。",
+    );
+  });
+  it("shakes an apple tree every 3 days through autumn and on its last day", () => {
+    // Planted on summer day 17, the tree is grown on autumn day 1 (day 57).
+    const r = grow(
+      "CROPS_ID_APPLE_TREE",
+      { startDay: 45, dateMode: "manual" },
+      { startDay: 29, days: 84 },
+    );
+    expect(picks(r, "ITEM_ID_CROPS_APPLE")).toEqual([...every(59, 3, 9, 3), [84, 1]]);
+    expect(r.spending).toBe(3000);
+    expect(r.events.filter((e) => e.kind === "plant")).toHaveLength(1);
+    // Grown mid-autumn, it bears from that day: 16 fruit.
+    const late = grow(
+      "CROPS_ID_APPLE_TREE",
+      { startDay: 57, dateMode: "manual" },
+      { startDay: 57, days: 28 },
+    );
+    expect(picks(late, "ITEM_ID_CROPS_APPLE")).toEqual([...every(71, 3, 5, 3), [84, 1]]);
+  });
+  it("keeps a greenhouse banana tree bearing straight across the season boundary", () => {
+    const r = grow("CROPS_ID_BANANA_TREE", {}, { days: 56 });
+    expect(picks(r, "ITEM_ID_CROPS_BANANA")).toEqual([...every(15, 3, 14, 3), [56, 2]]);
+  });
+  it("lets a perennial take its saplings once and leaves later ones unplanted", () => {
+    const r = simulatePlan(
+      p(
+        [
+          n("buy", "purchase", { itemId: "ITEM_ID_SEED_TEA", quantity: 2 }),
+          n("plant", "plant", { cropId: "CROPS_ID_TEA_TREE", repeat: true }),
+          n("buy2", "purchase", {
+            itemId: "ITEM_ID_SEED_TEA",
+            quantity: 3,
+            startDay: 20,
+            dateMode: "manual",
+          }),
+        ],
+        [
+          ["buy", "plant"],
+          ["buy2", "plant"],
+        ],
+      ),
+      game,
+    );
+    expect(r.events.filter((e) => e.kind === "plant").map((e) => [e.day, e.quantity])).toEqual([[1, 2]]);
+    expect(r.intent?.nodes.buy2.notices.join()).toContain("茶树苗 ×3");
   });
 });

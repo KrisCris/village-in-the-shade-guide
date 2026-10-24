@@ -124,6 +124,22 @@ describe("workflow editing", () => {
       prepareDemand(next.plan, entities, "d", r, { x: 0, y: 0 }).plan.nodes,
     ).toHaveLength(3);
   });
+  it("uses a shrub for a demand only when the plan starts in its bearing season", () => {
+    const shrub = entities.map((e) =>
+      e.id === "crop"
+        ? { ...e, perennial: { kind: "shrub" as const, bearing_seasons: ["summer"], rebear_points: 200, rebear_days: 2 } }
+        : e,
+    );
+    const demand = (startDay: number) => {
+      const p = intent([
+        node("d", "delivery", { requirements: [{ itemId: "crop-item", quantity: 12 }], startDay }),
+      ]);
+      p.startDay = startDay;
+      return prepareDemand(p, shrub, "d", simulatePlan(p, shrub), { x: 0, y: 0 }).plan.nodes.map((n) => n.kind);
+    };
+    expect(demand(1)).not.toContain("plant");
+    expect(demand(29)).toContain("plant");
+  });
   it("unknown sources remain unconfirmed and repeated preparation adds no duplicate", () => {
     const p = intent([
       node("d", "delivery", {

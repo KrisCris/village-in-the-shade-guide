@@ -1,4 +1,5 @@
 import type {Catalog, Entity} from '../data/types';
+import {bearingHarvests, shrubCoProducts, type Harvest} from './perennial';
 import {qualityPrice, type Quality} from './quality';
 
 export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; netPerDay: number; soldWithinMonth: number; monthNet: number;
@@ -19,10 +20,8 @@ export type PerennialPlan = {
   /** A later bearing season, when the plant is already grown and no sapling is bought. */
   laterNet: number; laterNetPerDay: number};
 
-type Harvest = {day: number; quantity: number};
 type Extra = {itemId: string; quantity: number; price: number};
 type Recipe = {inputs: number; outputs: number; price: number; batchDays: number};
-type Stage = {state: number; item_id: string; quantity: number};
 
 /** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs.
  * A perennial's month is its bearing season; planted ahead, it is grown when the season starts. */
@@ -34,38 +33,24 @@ function schedule(crop: Entity, days: number, plantedAhead: boolean): {harvests:
   const quantity = Number(crop.harvest_quantity);
   const perennial = crop.perennial;
   if (!growth) return null;
-  const harvests: Harvest[] = [];
   if (!perennial) {
     if (!quantity) return null;
+    const harvests: Harvest[] = [];
     const regrow = Number(crop.regrow_days) || 0;
     for (let day = growth; day <= days; day += regrow || growth) harvests.push({day, quantity});
     // Long-growing crops retain a first-cycle estimate, but no fictitious monthly sale.
     if (!harvests.length) harvests.push({day: growth, quantity});
     return {harvests, plantings: regrow ? 1 : harvests.length, regrows: regrow > 0};
   }
-  const first = plantedAhead ? 1 : growth;
-  if (perennial.kind === 'shrub') {
-    if (!quantity || !(perennial.rebear_days > 0)) return null;
-    for (let day = first; day <= days; day += perennial.rebear_days) harvests.push({day, quantity});
-  } else {
-    // Fruit grows daily up to the tree's capacity; shake when it is full and on the last day.
-    const {fruit_per_day: fruit, fruit_capacity: capacity} = perennial;
-    if (!(fruit > 0) || capacity == null || !(capacity > 0)) return null;
-    const every = Math.max(1, Math.floor(capacity / fruit));
-    let last = first - 1;
-    for (let day = last + every; day <= days; day += every) {harvests.push({day, quantity: fruit * (day - last)}); last = day;}
-    if (first <= days && last < days) harvests.push({day: days, quantity: fruit * (days - last)});
-  }
-  return harvests.length ? {harvests, plantings: 1, regrows: true} : null;
+  const harvests = bearingHarvests(perennial, quantity, plantedAhead ? 1 : growth, days);
+  return harvests?.length ? {harvests, plantings: 1, regrows: true} : null;
 }
 
-/** Items a shrub harvest drops besides the modelled one; mulberry gives leaves and berries together. */
 function coHarvest(crop: Entity, harvestId: string, catalog: Catalog, quality: Quality): Extra[] {
-  if (crop.perennial?.kind !== 'shrub') return [];
-  return ((crop.harvest_stages ?? []) as Stage[]).filter(stage => stage.state === 5 && stage.item_id !== harvestId).flatMap(stage => {
-    const item = catalog.byId[stage.item_id];
+  return shrubCoProducts(crop, harvestId).flatMap(({itemId, quantity}) => {
+    const item = catalog.byId[itemId];
     const price = item && qualityPrice(item.sell_price, item.quality_eligible === true, quality)?.value;
-    return price == null ? [] : [{itemId: stage.item_id, quantity: stage.quantity, price}];
+    return price == null ? [] : [{itemId, quantity, price}];
   });
 }
 

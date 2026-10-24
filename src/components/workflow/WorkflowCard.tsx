@@ -13,6 +13,8 @@ export type CardData = {
   progress?: string;
   projection?: NodeProjection;
   problems: number;
+  /** A shrub or fruit tree, which is never replanted. */
+  perennial?: boolean;
   onAdd?: (id: string, side: "input" | "output") => void;
 };
 export type FlowNode = Node<CardData, "operation">;
@@ -39,7 +41,7 @@ export default memo(function WorkflowCard({
           <WorkflowIcon name={n.kind} size={14} />
           {nodeLabels[n.kind]}
         </span>
-        {n.repeat && ["plant", "purchase"].includes(n.kind) && (
+        {n.repeat && ["plant", "purchase"].includes(n.kind) && !data.perennial && (
           <b>
             <WorkflowIcon name="repeat" size={12} />
             {n.kind === "plant" ? tr('自动续种') : tr('循环')}
