@@ -1,7 +1,13 @@
 import type {Catalog, Entity} from '../data/types';
 import {qualityPrice, type Quality} from './quality';
 
-export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; netPerDay: number; soldWithinMonth: number; monthNet: number};
+export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; netPerDay: number; soldWithinMonth: number; monthNet: number;
+  /** Seeds sown on the plot: one for regrowing crops, one per harvest otherwise. */
+  plantings: number; seedPrice: number; regrows: boolean; netPerSeed: number;
+  /** Days after planting on which the plot is harvested. */
+  harvestDays: number[];
+  /** Merged [start, end] spans in days while the machine is processing. */
+  machineRuns: Array<[number, number]>};
 
 /** One plot, one machine, planting on day 1; no fertiliser or machine purchase costs.
  * Perennial shrubs and fruit trees are excluded: they stay planted and only bear in their own season. */
@@ -22,7 +28,10 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
   for (let day = growth; day <= days; day += regrow || growth) dates.push(day);
   // Long-growing crops retain a first-cycle estimate, but no fictitious monthly sale.
   if (!dates.length) dates.push(growth);
-  const seedCost = Number(seed.buy_price) * (regrow ? 1 : dates.length);
+  const seedPrice = Number(seed.buy_price);
+  const plantings = regrow ? 1 : dates.length;
+  const seedCost = seedPrice * plantings;
+  const plot = {plantings, seedPrice, regrows: regrow > 0, harvestDays: dates};
   const options:CropProcessingResult[] = catalog.entities.flatMap((process) => {
     if (process.kind !== 'processes') return [];
     const inputs = (process.inputs ?? []) as Array<{item_id: string; quantity: number}>;
@@ -33,11 +42,16 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
     if (price == null || !(Number(process.duration_minutes) > 0)) return [];
     let stored = 0, batches = 0, finishDay = 0, soldWithinMonth = 0;
     const batchDays = Number(process.duration_minutes) / 1440;
+    const machineRuns: Array<[number, number]> = [];
     for (const day of dates) {
       stored += quantity;
       while (stored >= inputs[0].quantity) {
         stored -= inputs[0].quantity;
-        finishDay = Math.max(finishDay, day) + batchDays;
+        const start = Math.max(finishDay, day);
+        finishDay = start + batchDays;
+        const last = machineRuns[machineRuns.length - 1];
+        if (last && start <= last[1]) last[1] = finishDay;
+        else machineRuns.push([start, finishDay]);
         batches++;
         if (finishDay <= days) soldWithinMonth += out.quantity;
       }
@@ -47,13 +61,15 @@ export function cropProcessingOptions(crop: Entity, catalog: Catalog, quality: Q
     const harvested = quantity * dates.length;
     return [{crop,process,output,harvestCount:dates.length,harvested,batches,seedCost,revenue,net:revenue-seedCost,
       processingGain:revenue-harvested*rawPrice,machineDays:batches*batchDays,finishDay,netPerDay:perDay(revenue-seedCost,finishDay),
-      soldWithinMonth,monthNet:soldWithinMonth*price+(dates[dates.length-1]<=days?stored*rawPrice:0)-seedCost}];
+      soldWithinMonth,monthNet:soldWithinMonth*price+(dates[dates.length-1]<=days?stored*rawPrice:0)-seedCost,
+      ...plot,netPerSeed:(revenue-seedCost)/plantings,machineRuns}];
   });
   if (includeDirectSale) {
     const harvested=quantity*dates.length;
     const revenue=harvested*rawPrice;
     const soldWithinMonth=dates.filter(day=>day<=days).length*quantity;
-    options.push({crop,process:null,output:harvest,harvestCount:dates.length,harvested,batches:0,seedCost,revenue,net:revenue-seedCost,processingGain:0,machineDays:0,finishDay:dates[dates.length-1],netPerDay:perDay(revenue-seedCost,dates[dates.length-1]),soldWithinMonth,monthNet:soldWithinMonth*rawPrice-seedCost});
+    options.push({crop,process:null,output:harvest,harvestCount:dates.length,harvested,batches:0,seedCost,revenue,net:revenue-seedCost,processingGain:0,machineDays:0,finishDay:dates[dates.length-1],netPerDay:perDay(revenue-seedCost,dates[dates.length-1]),soldWithinMonth,monthNet:soldWithinMonth*rawPrice-seedCost,
+      ...plot,netPerSeed:(revenue-seedCost)/plantings,machineRuns:[]});
   }
   return options;
 }
