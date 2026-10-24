@@ -59,3 +59,10 @@ it('spreads daily profit over growth, processing queue and the last sale', () =>
   // Harvests on days 10 and 20 queue eight three-day batches; the last finishes on day 34.
   expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({batches:8,finishDay:34,net:380,netPerDay:380/34});
 });
+
+it('records plantings, per-seed profit and merged machine runs for the timeline', () => {
+  const {crop,catalog}=setup({growth_days:10,harvest_quantity:4},1,4320);
+  expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({plantings:2,seedPrice:10,regrows:false,netPerSeed:190,harvestDays:[10,20],machineRuns:[[10,34]]});
+  const regrowing=setup({regrow_days:7});
+  expect(cropProcessingOptions(regrowing.crop,regrowing.catalog,'normal')[0]).toMatchObject({plantings:1,regrows:true,harvestDays:[7,14,21,28],machineRuns:[[7,8],[14,15],[21,22],[28,29]]});
+});

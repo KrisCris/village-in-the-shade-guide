@@ -10,7 +10,8 @@ export function plannerPayload(catalog:Catalog):Entity[] {
     ...(e.inputs as {item_id:string}[]).map(input=>input.item_id),
     (e.output as {item_id:string}).item_id,
   ])]);
+  // Crops keep their harvest stages so the planner can mention early picks such as 荷兰豆.
   return [...crops,...processes,...catalog.entities.filter(e=>
     e.kind==='items'?itemIds.has(e.id):e.kind==='store-offers'&&seeds.has(String(e.item_id))
-  )].map(compactItemRow);
+  )].map(e=>e.kind==='crops'&&e.harvest_stages?{...compactItemRow(e),harvest_stages:e.harvest_stages}:compactItemRow(e));
 }
