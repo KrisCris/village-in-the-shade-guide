@@ -221,11 +221,17 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     const stages = (entity.harvest_stages ?? []) as Array<{state:number;growth_points:number;item_id:string;quantity:number}>;
     if (stages.length) {
       const choice = harvestChoiceNote(entity, catalog, quality, t);
-      for (const stage of stages.filter(s=>[1,4,9].includes(s.state))) add('outputs',catalog.byId[stage.item_id],{
-        quantity:stage.quantity,key:`${stage.state}:${stage.growth_points}:${stage.item_id}`,
-        chips:[stage.state===9 ? t('入秋转化') : stage.state===4 ? t('再次收获') : t('初次生长'),stage.state===9 ? t('留株过季') : t('成长点 {points}',{points:stage.growth_points})],
-        ...(choice && stage.state===1 && stage.item_id===choice.itemId ? {note:choice.note} : {}),
-      });
+      // One row per item; each harvest stage that yields it becomes a chip.
+      const byItem = new Map<string, typeof stages>();
+      for (const stage of stages.filter(s=>[1,4,9].includes(s.state))) byItem.set(stage.item_id, [...(byItem.get(stage.item_id) ?? []), stage]);
+      for (const [itemId, itemStages] of byItem) {
+        const sameQuantity = new Set(itemStages.map(stage=>stage.quantity)).size === 1;
+        add('outputs',catalog.byId[itemId],{
+          ...(sameQuantity ? {quantity:itemStages[0].quantity} : {}),key:`stages:${itemId}`,
+          chips:itemStages.map(stage=>stageChip(stage, sameQuantity, t)),
+          ...(choice && itemId===choice.itemId ? {note:choice.note} : {}),
+        });
+      }
     } else for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
       add('outputs', catalog.byId[harvestId], { quantity: Number(entity.harvest_quantity ?? 1), chips: [t('收获物')] });
     }
@@ -343,10 +349,20 @@ function harvestChoiceNote(crop: Entity, catalog: Catalog, quality: Quality, t: 
   const [early, late] = harvestOptions(crop, catalog, quality);
   if (!early || !late || early.perDay == null || late.perDay == null) return null;
   const better = late.perDay >= early.perDay ? late : early;
-  return { itemId: early.item.id, note: t('可以提早收：成长点到 {early} 收{earlyName}，到 {late} 收{lateName}；再生后{earlyName}每 {earlyRegrow} 点、{lateName}每 {lateRegrow} 点可收。按每日 100 成长点和卖出价，{earlyName}每天约 {earlyValue}，{lateName}约 {lateValue}，只看卖出价时收{betterName}更划算。', {
-    early: early.firstPoints, late: late.firstPoints, earlyName: early.item.name.zh_hans, lateName: late.item.name.zh_hans,
-    earlyRegrow: early.regrowPoints, lateRegrow: late.regrowPoints, earlyValue: numberText(early.perDay), lateValue: numberText(late.perDay), betterName: better.item.name.zh_hans,
+  return { itemId: early.item.id, note: t('同一株可以提早收{earlyName}，也可以等{lateName}长成再收。按每日 100 成长点和卖出价，{earlyName}每天约 {earlyValue}，{lateName}约 {lateValue}，收{betterName}更划算。', {
+    earlyName: early.item.name.zh_hans, lateName: late.item.name.zh_hans,
+    earlyValue: numberText(early.perDay), lateValue: numberText(late.perDay), betterName: better.item.name.zh_hans,
   }) };
+}
+
+/** Days first (at the usual 100 growth points a day), with the game's growth points kept for reference. */
+function stageChip(stage: { state: number; growth_points: number; quantity: number }, sameQuantity: boolean, t: Translate): string {
+  const days = Math.ceil(stage.growth_points / 100);
+  const text = stage.state === 9 ? t('入秋后留在田里转化')
+    : stage.growth_points <= 0 ? (stage.state === 4 ? t('可再次收获') : t('初次生长'))
+    : stage.state === 4 ? t('再生约 {days} 天一次（成长点 {points}）', { days, points: stage.growth_points })
+    : t('种下后约 {days} 天（成长点 {points}）', { days, points: stage.growth_points });
+  return sameQuantity ? text : `${text} ×${stage.quantity}`;
 }
 
 function entitySellPrice(entity: Entity, catalog: Catalog, quality: Quality, t: Translate): string | undefined {
