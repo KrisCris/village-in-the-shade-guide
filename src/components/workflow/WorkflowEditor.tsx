@@ -686,6 +686,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
             subtitle,
             icon: icon ? withBase(icon) : undefined,
             problems,
+            perennial: n.kind === "plant" && !!entity?.perennial,
             today: events.length
               ? tr('{day} 日 · {summary}', {
                   day: ((day - 1) % 28) + 1,

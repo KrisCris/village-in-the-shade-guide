@@ -10,6 +10,7 @@ import { canConnectDraft, resolveIntent } from "./intent";
 import { canConnect, outputItems, stringArray } from "./graph";
 import { seedAvailability } from "../seedAvailability";
 import { seasonAt, yearAt } from "./date";
+import { bearingSeasons } from "./perennial";
 import { tr } from '../../i18n/active';
 
 export type AddAnchor = {
@@ -219,7 +220,8 @@ export function prepareDemand(
       (e) =>
         e.kind === "crops" &&
         stringArray(e.harvest_item_ids).includes(itemId) &&
-        stringArray(e.seasons).includes(seasonAt(plan.startDay)),
+        // A shrub or tree only helps when the plan starts in its bearing season.
+        (e.perennial ? bearingSeasons(e.perennial) : stringArray(e.seasons)).includes(seasonAt(plan.startDay)),
     );
     if (
       crops.length === 1 &&

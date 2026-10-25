@@ -73,7 +73,7 @@ describe("game map farmland orientation", () => {
       2,
     );
   });
-  const setup = (start: number, repeat = false, regrow = false) => {
+  const setup = (start: number, repeat = false, regrow = false, perennial = false) => {
     const shape = farmland.shapes[0];
     const selection = { shapeId: shape.id, cells: [shape.cells[0].join(",")] };
     const a = node("a", "plant", {
@@ -108,9 +108,15 @@ describe("game map farmland orientation", () => {
       ],
       { startDay: 1, days: 28, planningMode: "intent" },
     );
-    const catalog = regrow
-      ? entities.map((e) => (e.id === "crop" ? { ...e, regrow_days: 3 } : e))
-      : entities;
+    const catalog = entities.map((e) =>
+      e.id !== "crop"
+        ? e
+        : regrow
+          ? { ...e, regrow_days: 3 }
+          : perennial
+            ? { ...e, perennial: { kind: "shrub" as const, bearing_seasons: ["summer"], rebear_points: 200, rebear_days: 2 } }
+            : e,
+    );
     return {
       p,
       b,
@@ -149,6 +155,13 @@ describe("game map farmland orientation", () => {
           .get(selection.cells[0])![0].status,
       ).toBe("conflict");
     }
+  });
+  it("keeps a perennial's plot taken after planting, even with no harvest in the plan", () => {
+    const { p, b, catalog, result, shape, selection } = setup(20, false, false, true);
+    expect(result.events.some((e) => e.nodeId === "a" && e.kind === "harvest")).toBe(false);
+    expect(
+      farmlandUsage(p, b, result, catalog).occupied.get(shape.id)!.get(selection.cells[0])![0],
+    ).toMatchObject({ nodeId: "a", status: "conflict", spans: [{ start: 1, end: Infinity }] });
   });
   it("marks unscheduled allocations as unknown and keeps map identities separate", () => {
     const { p, b, catalog, shape, selection } = setup(2);

@@ -5,6 +5,7 @@ import { qualityPrice } from "../quality";
 import { autoAmount, autoDate, resolveIntent } from "./intent";
 import { canConnect, outputItems, stringArray } from "./graph";
 import { formatDay, seasonAt, yearAt } from "./date";
+import { bearingLabel } from "./catalog";
 import type { NodeKind, SimulationResult, WorkflowNode, WorkflowPlan } from "./types";
 import { tr } from '../../i18n/active';
 
@@ -55,7 +56,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
     for (const entity of entities) {
       if (entity.kind === "crops" && stringArray(entity.seed_item_ids).some(id => outputs.includes(id))) {
         assistance.next.push({ key: `plant:${entity.id}`, kind: "plant", sourceId: n.id, insertBefore,
-          label: tr('种植 {name}', { name: entity.name.zh_hans }), detail: `${tr('生长 {days} 天', { days: entity.growth_days ?? tr('未知') })}${suffix}`, create: { cropId: entity.id } });
+          label: tr('种植 {name}', { name: entity.name.zh_hans }), detail: `${tr('生长 {days} 天', { days: entity.growth_days ?? tr('未知') })}${entity.perennial ? ` · ${bearingLabel(entity.perennial)}` : ""}${suffix}`, create: { cropId: entity.id } });
       }
       if (entity.kind === "processes") {
         const knownMachine = entities.some(machine => machine.kind === "machines"

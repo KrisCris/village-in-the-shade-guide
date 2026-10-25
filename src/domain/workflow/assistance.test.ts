@@ -27,6 +27,14 @@ describe("workflow assistance", () => {
     expect(q.nodes).toHaveLength(1);
     expect(() => applyWorkflowAssistance(added.plan, data, "seed", "plant:crop")).toThrow();
   });
+  it("tells when a shrub or tree bears in its planting suggestion", () => {
+    const tree = data.map(e => e.id === "crop"
+      ? { ...e, perennial: { kind: "fruit_tree" as const, bearing_seasons: ["autumn"], fruit_per_day: 1, fruit_capacity: 3, greenhouse_only: false } }
+      : e);
+    const q = p([stock("seed")]);
+    expect(getWorkflowAssistance(q, tree, "seed").next.find(a => a.key === "plant:crop")?.detail).toBe("生长 3 天 · 秋季结果 · 自动数量与日期");
+    expect(options(q, "seed").next.find(a => a.key === "plant:crop")?.detail).toBe("生长 3 天 · 自动数量与日期");
+  });
   it("inserts processing before a sole automatic sale and preserves reserve edges", () => {
     const q = p([stock(), node("sale", "sale", { amountMode: "auto", dateMode: "auto" }), node("keep", "reserve", { requirements: [{ itemId: "pork", quantity: 2 }] })], [["pork", "sale"], ["pork", "keep"]]);
     expect(options(q, "pork").next.find(a => a.key === "process:recipe")?.detail).toContain("出售前");

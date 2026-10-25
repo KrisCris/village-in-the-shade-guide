@@ -20,6 +20,8 @@ import { DateField, EntityPicker, NumberField } from "./fields";
 import DemandDetails from "./DemandDetails";
 import FarmlandPicker from "./FarmlandPicker";
 import { farmlandUsage } from "../../domain/workflow/farmland";
+import { bearingLabel } from "../../domain/workflow/catalog";
+import { shrubCoProducts } from "../../domain/perennial";
 import { withBase } from "../../lib/sitePath";
 import { tr } from '../../i18n/active';
 
@@ -93,6 +95,34 @@ export default function NodeInspector({
   }, [entities]);
   const crop = entities.find((e) => e.id === resolved.cropId),
     recipe = entities.find((e) => e.id === resolved.recipeId);
+  // Shrubs and fruit trees are planted once and never replanted.
+  const perennial = node.kind === "plant" ? crop?.perennial ?? undefined : undefined;
+  const perennialNote = (() => {
+    if (!crop || !perennial) return "";
+    const days = String(crop.growth_days ?? "?"),
+      bearing = bearingLabel(perennial),
+      harvestId = String((crop.harvest_item_ids as string[] | undefined)?.[0] ?? "");
+    const habit =
+      perennial.kind === "shrub"
+        ? tr('生长 {days} 天，{bearing}。每 {rebear} 天收一次，每格收 {items}。', {
+            days,
+            bearing,
+            rebear: perennial.rebear_days,
+            items: [
+              { itemId: harvestId, quantity: Number(crop.harvest_quantity) },
+              ...shrubCoProducts(crop, harvestId),
+            ]
+              .map((a) => tr('{quantity} 个{name}', { quantity: a.quantity, name: name(a.itemId) }))
+              .join("、"),
+          })
+        : tr('生长 {days} 天，{bearing}。每天结 {count} 个，最多挂 {capacity} 个，挂满就摇。', {
+            days,
+            bearing,
+            count: perennial.fruit_per_day,
+            capacity: perennial.fruit_capacity ?? "?",
+          });
+    return `${habit}${perennial.kind === "fruit_tree" && perennial.greenhouse_only ? tr('只能种在温室里。') : ""}${tr('树苗只买一次，种下后一直留在地里。')}`;
+  })();
   const inferred = !node[field] && !!resolved[field];
   const resetProjection = node[field]
     ? resolveIntent(
@@ -155,7 +185,9 @@ export default function NodeInspector({
           {projection.quantity > 0 && (
             <span>
               {node.kind === "plant"
-                ? tr('占地 {land} 格 · 累计播种 {ceil} 轮 · 收获 {outputQuantity} 个', { land: projection.land, ceil: Math.ceil(projection.quantity / Math.max(1, projection.land)), outputQuantity: projection.outputQuantity })
+                ? perennial
+                  ? tr('占地 {land} 格 · 收获 {outputQuantity} 个', { land: projection.land, outputQuantity: projection.outputQuantity })
+                  : tr('占地 {land} 格 · 累计播种 {ceil} 轮 · 收获 {outputQuantity} 个', { land: projection.land, ceil: Math.ceil(projection.quantity / Math.max(1, projection.land)), outputQuantity: projection.outputQuantity })
                 : node.kind === "process"
                   ? tr('加工 {quantity} 批 · 产出 {outputQuantity} 个', { quantity: projection.quantity, outputQuantity: projection.outputQuantity })
                   : tr('已安排 {quantity} 个', { quantity: projection.quantity })}
@@ -244,13 +276,17 @@ export default function NodeInspector({
       )}
       {node.kind === "plant" && crop && (
         <p className="wf-note">
-          {tr('生长 {days} 天，每格收获 {count} 个。', { days: String(crop.growth_days ?? "?"), count: String(crop.harvest_quantity ?? "?") })}
-          {crop.regrow_days
-            ? tr('天然再生：每 {regrow_days} 天再收获，不消耗种子。', { regrow_days: crop.regrow_days })
-            : ""}
+          {perennial ? perennialNote : (
+            <>
+              {tr('生长 {days} 天，每格收获 {count} 个。', { days: String(crop.growth_days ?? "?"), count: String(crop.harvest_quantity ?? "?") })}
+              {crop.regrow_days
+                ? tr('天然再生：每 {regrow_days} 天再收获，不消耗种子。', { regrow_days: crop.regrow_days })
+                : ""}
+            </>
+          )}
         </p>
       )}
-      {node.kind === "plant" && (
+      {node.kind === "plant" && !perennial && (
         <label className="wf-check">
           <input
             type="checkbox"
@@ -478,26 +514,30 @@ export default function NodeInspector({
       )}
       {node.kind === "plant" && (
         <section className="wf-inspector-section">
-          <label className="wf-check">
-            <input
-              type="checkbox"
-              checked={node.repeat}
-              onChange={(e) => patch({ repeat: e.target.checked })}
-            />
-            {tr('收获清田后自动续种')}
-          </label>
-          <p className="wf-note">
-            {node.repeat
-              ? tr('保持首轮规模，优先使用已有种子；每次补买和播种都会列入日程。本季来不及收获时停止续种。')
-              : tr('只播种一次。框选并复制整条流程，可以单独安排下一轮日期和去向。')}
-          </p>
+          {!perennial && (
+            <>
+              <label className="wf-check">
+                <input
+                  type="checkbox"
+                  checked={node.repeat}
+                  onChange={(e) => patch({ repeat: e.target.checked })}
+                />
+                {tr('收获清田后自动续种')}
+              </label>
+              <p className="wf-note">
+                {node.repeat
+                  ? tr('保持首轮规模，优先使用已有种子；每次补买和播种都会列入日程。本季来不及收获时停止续种。')
+                  : tr('只播种一次。框选并复制整条流程，可以单独安排下一轮日期和去向。')}
+              </p>
+            </>
+          )}
           <label className="wf-check">
             <input
               type="checkbox"
               checked={node.autoBuy}
               onChange={(e) => patch({ autoBuy: e.target.checked })}
             />
-            {tr('种子不足时自动补买')}
+            {perennial ? tr('树苗不足时自动买入') : tr('种子不足时自动补买')}
           </label>
           <p className="wf-note">
             {tr('需要土地 {count} 格；整份计划按同时占地推算需求。', { count: projection?.land ?? 0 })}
@@ -532,7 +572,11 @@ export default function NodeInspector({
           </label>
           {node.remainingDays !== undefined && (
             <NumberField
-              label={tr('距完成还需天数（已有投入不扣费）')}
+              label={
+                perennial
+                  ? tr('距长成还需天数（0 表示已长成，不计树苗钱）')
+                  : tr('距完成还需天数（已有投入不扣费）')
+              }
               value={node.remainingDays}
               max={112}
               onChange={(remainingDays) => patch({ remainingDays })}
@@ -540,7 +584,7 @@ export default function NodeInspector({
           )}
         </details>
       )}
-      {node.repeat && ["plant", "purchase"].includes(node.kind) && (
+      {node.repeat && ["plant", "purchase"].includes(node.kind) && !perennial && (
         <details>
           <summary>{tr('停止新增安排')}</summary>
           <label className="wf-check">

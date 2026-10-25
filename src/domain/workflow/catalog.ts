@@ -1,4 +1,4 @@
-import type { Entity } from "../../data/types";
+import type { Entity, Perennial } from "../../data/types";
 import { tr } from '../../i18n/active';
 
 // These are wardrobe unlock categories, distinct from placeable furniture/accessories.
@@ -30,3 +30,8 @@ export const seasonNames: Record<string, string> = {
   autumn: tr('秋'),
   winter: tr('冬'),
 };
+/** When a shrub or fruit tree bears, such as 夏季结果. */
+export const bearingLabel = (perennial: Perennial) =>
+  perennial.kind === "fruit_tree" && perennial.greenhouse_only
+    ? tr('温室里四季结果')
+    : tr('{seasons}季结果', { seasons: perennial.bearing_seasons.map((s) => seasonNames[s] ?? s).join("、") });
