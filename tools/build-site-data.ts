@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { buildCatalog } from '../src/data/catalog';
 import {plannerPayload} from '../src/data/plannerPayload';
 import {workflowPayload} from '../src/data/workflowPayload';
+import { dailyPayload } from '../src/data/dailyPayload';
 import { defaultLocale, locales } from '../src/i18n/locales';
 
 const source = 'data/generated/build-25311578/entities';
@@ -20,6 +21,7 @@ for (const locale of locales) {
   await writeFile(join(dir, 'game-data.json'), JSON.stringify(publicCatalog));
   await writeFile(join(dir, 'planner-data.json'),JSON.stringify(plannerPayload(catalog)));
   await writeFile(join(dir, 'workflow-data.json'),JSON.stringify(workflowPayload(catalog)));
+  await writeFile(join(dir, 'daily-data.json'), JSON.stringify(dailyPayload(catalog)));
   const searchRows = catalog.entities.map((entity) => {
     const { name } = entity;
     const baseNames = new Set([entity.id, name.zh_hans, name.zh_hant, name.ja, name.internal]);
