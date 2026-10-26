@@ -3,10 +3,12 @@ import { normalizeSearch } from './clientSearch';
 import { buildPinyinAliases } from './serverSearchAliases';
 import type { Catalog, Entity, Name } from './types';
 import { calculateCropProfit } from '../domain/profit';
+import type { CropGrowthSource } from '../domain/cropGrowth';
 import mapMarkers from '../../data/sources/game-map-markers.json';
 import characterPortraits from '../../data/sources/official-character-portraits.json';
 import livestockProducts from '../../data/sources/game-livestock-products.json';
 import machineCapacities from '../../data/sources/game-machine-capacities.json';
+import cropGrowth from '../../data/sources/game-crop-growth.json';
 import { defaultLocale, type Locale } from '../i18n/locales';
 import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
@@ -114,6 +116,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if (kind === 'machines') {
         entity.capacity = machineCapacities.machines.find(machine => machine.item_id === entity.id)?.capacity;
       }
+      if (kind === 'crops') entity.growth = (cropGrowth.crops as unknown as Record<string, CropGrowthSource>)[entity.id] ?? null;
       if(kind==='characters') {
         const portrait=characterPortraits.portraits.find(p=>p.character_id===entity.id);
         if(portrait){entity.icon_path=portrait.path;entity.portrait_source=portrait.source;}
