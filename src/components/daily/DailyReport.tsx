@@ -175,10 +175,12 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
 
         <TodayList actions={plan.actions} names={names} name={name} horizon={plan.horizon} night={night} done={done} onToggle={toggle} onMap={showOnMap} />
         <DeliverySection deliveries={plan.deliveries} names={names} name={name} night={night} onMap={showOnMap} />
-        <ProcessingSection plan={plan.processing} machines={digest.machines} materials={plan.materials} seasonDays={daysLeft} horizon={settings.horizon} reserve={settings.reserve}
+        <ProcessingSection plan={plan.processing} machines={digest.machines} materials={plan.materials} seasonDays={daysLeft} horizon={settings.horizon} reserve={settings.reserve} picked={settings.choices}
           names={names} name={name} onMap={showOnMap}
           onHorizon={(days) => changeSettings({ horizon: days })} onReserve={(reserve) => changeSettings({ reserve })}
-          onChoice={(itemId, process) => changeSettings({ choices: { ...settings.choices, [itemId]: process } })} />
+          onChoice={(itemId, process) => changeSettings({ choices: process === undefined
+            ? Object.fromEntries(Object.entries(settings.choices).filter(([key]) => key !== String(itemId)))
+            : { ...settings.choices, [itemId]: process } })} />
         <PlantingSection land={land} ideas={plan.planting} housing={plan.livestock.housing} animals={plan.livestock.ideas} daysLeft={daysLeft} names={names} name={name}
           onEditArea={() => showOnMap(null)} />
       </>}

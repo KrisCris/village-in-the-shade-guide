@@ -182,6 +182,7 @@ button.daily-grow { display: flex; align-items: center; justify-content: center;
 .daily-produce { display: grid; grid-template-columns: 32px minmax(0, 1fr) minmax(9rem, 13rem); align-items: center; gap: .3rem .7rem; padding: .6rem .8rem; border: 1px solid var(--border); border-radius: 12px; background: var(--paper-raised); }
 .daily-produce .search-select-trigger { width: 100%; min-height: 38px; font-size: .82rem; }
 .daily-produce-note { grid-column: 2 / -1; font-size: .76rem; color: var(--vermilion); }
+.daily-produce-reset { grid-column: 2 / -1; justify-self: start; }
 .daily-material { display: grid; grid-template-rows: auto auto 1fr auto; gap: .65rem; padding: .95rem 1rem; }
 .daily-material.is-short { border-color: color-mix(in srgb, var(--vermilion) 35%, var(--border)); }
 .daily-material .daily-line-count { text-align: left; }

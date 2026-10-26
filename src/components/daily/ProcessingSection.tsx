@@ -12,7 +12,7 @@ const DAY_MINUTES = 1440;
 const HORIZONS = [7, 14, 28, 56];
 
 /** Machine capacity against the produce in hand and coming, plus the machines and materials to add. */
-export default function ProcessingSection({ plan, machines, materials, seasonDays, horizon, reserve, names, name, onHorizon, onReserve, onChoice, onMap }: {
+export default function ProcessingSection({ plan, machines, materials, seasonDays, horizon, reserve, picked, names, name, onHorizon, onReserve, onChoice, onMap }: {
   plan: ProcessingPlan;
   machines: DailyDigest['machines'];
   materials: MaterialLine[];
@@ -21,11 +21,14 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
   /** The saved horizon setting; 0 is the end of the season. */
   horizon: number;
   reserve: number;
+  /** Recipes the player picked by hand, by item; the rest follow the plan. */
+  picked: Readonly<Record<string, number>>;
   names: SaveNameTables;
   name: Names;
   onHorizon: (days: number) => void;
   onReserve: (share: number) => void;
-  onChoice: (itemId: number, process: number) => void;
+  /** `undefined` hands the item back to the plan's own choice. */
+  onChoice: (itemId: number, process: number | undefined) => void;
   onMap: (target: MapTarget) => void;
 }) {
   const days = (value: number) => Number.isFinite(value) ? name.number(Math.ceil(value * 10) / 10) : '∞';
@@ -93,6 +96,7 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
         </option>)}
       </SearchableSelect>
       {chosen && chosen.value <= line.rawPrice && <small className="daily-produce-note">{tr('加工后卖得比直接卖还少')}</small>}
+      {picked[line.itemId] !== undefined && <button type="button" className="button daily-link-button daily-produce-reset" onClick={() => onChoice(line.itemId, undefined)}>{tr('改回自动选择')}</button>}
     </li>;
   });
 
