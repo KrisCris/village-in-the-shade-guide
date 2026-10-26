@@ -102,6 +102,19 @@ def _crop_record(record: bytes, language_count: int = 6) -> dict | None:
     return result
 
 
+def _extractor_item(record: bytes) -> int:
+    """The item a sap extractor (树液采集器) collects from this plant, or 0.
+
+    A u64 24 bytes before the end of each crops.dat record. Build 25311578 sets
+    it only on the six trees the extractor fits, and each matches its item text
+    (栗子树 -> 甜甜的树液). The extractor's gimmickprocess.dat recipes take no
+    input, so this is the only link from a sap to its tree.
+    """
+    if len(record) < 24:
+        return 0
+    return int.from_bytes(record[len(record) - 24 : len(record) - 16], "little")
+
+
 def _growth_data(record: bytes, language_count: int = 6) -> tuple[int | None, int | None, int | None, int | None]:
     """Growth and regrowth thresholds from crops.dat forms.
 

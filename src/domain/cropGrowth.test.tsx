@@ -5,6 +5,7 @@ import {getCatalog} from '../data/repository';
 import {buildCropGrowthModel, cropForEntity} from './cropGrowth';
 import {buildEntityDetailModel} from './relations';
 import {compactDetailModel, pageEntity} from '../data/detailPayload';
+import sapTrees from '../../data/sources/game-sap-trees.json';
 import EntityDetail from '../components/entity/EntityDetail';
 
 const catalog: Catalog = getCatalog();
@@ -95,4 +96,19 @@ it('keeps the raw stage table out of crop page props', () => {
   expect(pageEntity(crop)).toMatchObject({id: crop.id, growth_days: crop.growth_days});
   expect(compact.growth).toEqual(model.growth);
   expect(crop.growth).toBeTruthy();
+});
+
+it('draws the wild trees that sap comes from and links each sap to its tree', () => {
+  expect(sapTrees.trees).toHaveLength(6);
+  for (const tree of sapTrees.trees) {
+    expect(byId(tree.crop_id).sap_item_id, tree.crop_id).toBe(tree.item_id);
+    expect(growth(tree.crop_id).lanes[0].stages.length, tree.crop_id).toBe(5);
+    expect(byId(tree.crop_id).icon_path, tree.crop_id).toMatch(/^\/maps\/farm\/sprites\/\w+\.webp$/);
+  }
+  const chestnut = growth('CROPS_ID_OBJECT_TREE');
+  expect([chestnut.seasonal, chestnut.grown!.art.length, chestnut.lanes.map(lane => [lane.title, lane.days]), chestnut.looks.map(look => look.title)])
+    .toEqual([true, 4, [['从种下到长成', 10]], ['树桩', '树桩']]);
+  expect([growth('CROPS_ID_OBJECT_BANBOO').seasonal, growth('CROPS_ID_OBJECT_BANBOO').lanes[0].days]).toEqual([false, 20]);
+  const sources = buildEntityDetailModel(byId('ITEM_ID_OBJECT_SWEET_SAP'), catalog, 'normal').groups.find(group => group.key === 'acquisition')!.rows;
+  expect(sources.map(row => [row.entity.id, row.chips])).toEqual([['CROPS_ID_OBJECT_TREE', ['装上树液采集器', '3 日']]]);
 });

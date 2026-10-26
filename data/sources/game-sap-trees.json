@@ -1,0 +1,30 @@
+{
+  "build_id": "25311578",
+  "source": "crops.dat u64 24 bytes before each record end; checked against the ITEM_ID_GIMMICK_SAP_EXTRACTOR recipes in gimmickprocess.dat",
+  "trees": [
+    {
+      "crop_id": "CROPS_ID_OBJECT_BANBOO",
+      "item_id": "ITEM_ID_OBJECT_BAMBOO_SAP"
+    },
+    {
+      "crop_id": "CROPS_ID_OBJECT_TREE",
+      "item_id": "ITEM_ID_OBJECT_SWEET_SAP"
+    },
+    {
+      "crop_id": "CROPS_ID_OBJECT_TREE_CEDAR",
+      "item_id": "ITEM_ID_OBJECT_STICKY_SAP"
+    },
+    {
+      "crop_id": "CROPS_ID_OBJECT_TREE_HINOKI",
+      "item_id": "ITEM_ID_OBJECT_SCENTED_SAP"
+    },
+    {
+      "crop_id": "CROPS_ID_OBJECT_TREE_OAK",
+      "item_id": "ITEM_ID_OBJECT_SAP"
+    },
+    {
+      "crop_id": "CROPS_ID_OBJECT_TREE_PINE",
+      "item_id": "ITEM_ID_OBJECT_PINE_FAT"
+    }
+  ]
+}

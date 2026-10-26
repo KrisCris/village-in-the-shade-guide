@@ -1,4 +1,4 @@
-"""Growth stages and stage art for every plantable crop, read-only.
+"""Growth stages and stage art for every plantable crop and sap tree, read-only.
 
 Stages and the form each harvest or axe cut leads to come from crops.dat
 (GrowInfo threshold and changeForm, village.exe 0x14001A090). Sprites are the
@@ -17,7 +17,7 @@ from PIL import Image
 from honogurashi_extractor.archive import FafullfsArchive
 from honogurashi_extractor.crop_growth import growth_forms, visible_box
 from honogurashi_extractor.gamedir import add_game_dir
-from honogurashi_extractor.normalize import _crop_record
+from honogurashi_extractor.normalize import _crop_record, _extractor_item
 from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.table import read_table
 
@@ -38,7 +38,8 @@ def main():
     boxes = {}
     crops = {}
     for crop in json.loads(SNAPSHOT.read_text(encoding='utf-8')):
-        if not crop['seed_item_ids']:
+        # Wild trees have no seed item, but sap pages link to the tree they come from.
+        if not crop['seed_item_ids'] and not _extractor_item(records[crop['id']]):
             continue
         parsed = _crop_record(records[crop['id']], 7)
         if parsed is None:
