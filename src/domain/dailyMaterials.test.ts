@@ -4,7 +4,7 @@ import type { SourceContext } from './dailySources';
 
 const WOOD = 230000, BAR = 210020, ORE = 240020, COAL = 230040, STONE = 230020;
 const context = (held: Map<number, number>): SourceContext => ({
-  season: 3, crops: new Map(), ripening: [], owned: new Set(), trees: [], held, quarryReached: 80,
+  season: 3, crops: new Map(), ripening: [], owned: new Set(), trees: [], held, quarryReached: 80, periods: [0, 1, 2, 3], daysLeft: 26,
   payload: { fish: {}, wild: {}, animals: [], quarry: [{ from: 71, to: 79, drops: [[ORE, 26.5]] }] },
   processes: [{ output: BAR, count: 1, inputs: [[ORE, 5], [COAL, 1]], minutes: 710, machine: 9 }],
 });

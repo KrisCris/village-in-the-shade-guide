@@ -43,12 +43,15 @@ export interface HouseOrder {
   inputs: Array<[itemId: number, count: number]>;
   money: number;
 }
+/** fishing.dat time periods in the order a game day runs from the 07:00 turnover: 7–12, 12–18, 18–24 and 0–7. */
+export const FISH_PERIODS = ['morning', 'day', 'evening', 'late-night'] as const;
+
 export interface DailyPayload {
   prices: Record<string, number>;
   bundles: DailyBundleSpec[];
   crafts: DailyCraft[];
-  /** Fish item → seasons (0–3) it bites in. */
-  fish: Record<string, number[]>;
+  /** Fish item → the seasons (0–3) and FISH_PERIODS indexes it bites in. */
+  fish: Record<string, Array<[season: number, period: number]>>;
   /** Wild plant item → the season whose fox shrine mountain-vegetable offering lists it. */
   wild: Record<string, number>;
   quarry: QuarryBand[];
@@ -90,11 +93,14 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
     return [{ machine: numeric.get(output)!, inputs: stacks(entity.inputs), flag, skill: flag === null ? null : skills.get(flag) ?? null }];
   });
 
-  const fish: Record<string, number[]> = {};
+  const fish: Record<string, Array<[number, number]>> = {};
   for (const entity of catalog.entities) {
     if (entity.kind !== 'fish' || !numeric.has(entity.id)) continue;
-    const seasons = new Set((entity.appearances ?? []).map((row) => ['spring', 'summer', 'autumn', 'winter'].indexOf(row.season)).filter((season) => season >= 0));
-    fish[numeric.get(entity.id)!] = [...seasons].sort();
+    const times = new Set((entity.appearances ?? []).map((row) => {
+      const season = ['spring', 'summer', 'autumn', 'winter'].indexOf(row.season), period = (FISH_PERIODS as readonly string[]).indexOf(row.time_period);
+      return season >= 0 && period >= 0 ? season * 4 + period : -1;
+    }).filter((time) => time >= 0));
+    fish[numeric.get(entity.id)!] = [...times].sort((a, b) => a - b).map((time): [number, number] => [Math.floor(time / 4), time % 4]);
   }
   const wildIds = new Set(catalog.entities.filter((entity) => entity.kind === 'items' && entity.category_id === 'ITEM_CATEGORY_WILD_VEGETABLE').map((entity) => numeric.get(entity.id)));
   const wild: Record<string, number> = {};

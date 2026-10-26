@@ -8,8 +8,10 @@ import { GrowList, Icon, ItemChip, MapButton, Meter, Section, sourceTarget, sour
 import { tr } from '../../i18n/active';
 
 /** Every delivery list, split into tabs: hand in today, can be completed this season, still far off, and the items set aside. */
-export default function DeliverySection({ deliveries, names, name, onMap }: {
+export default function DeliverySection({ deliveries, names, name, night, onMap }: {
   deliveries: DeliveryDigest;
+  /** After midnight the village head's house is closed until the 07:00 turnover. */
+  night: boolean;
   names: SaveNameTables;
   name: Names;
   onMap: (target: MapTarget) => void;
@@ -30,7 +32,9 @@ export default function DeliverySection({ deliveries, names, name, onMap }: {
           <span className="daily-list-tag">{listName[plan.spec.list]}<small>{where(plan)}</small></span>
           <h4>{plan.spec.name}</h4>
         </div>
-        {plan.ready ? <span className="daily-badge is-done"><Icon name="check" size={14} />{tr('可以交')}</span>
+        {plan.ready ? night && plan.spec.list === 'catalog'
+          ? <span className="daily-badge"><Icon name="clock" size={14} />{tr('7:00 后能交')}</span>
+          : <span className="daily-badge is-done"><Icon name="check" size={14} />{tr('可以交')}</span>
           : plan.eta !== undefined && <span className={`daily-badge${plan.eta ? '' : ' is-done'}`}><Icon name="clock" size={14} />{plan.eta ? tr('约 {days} 天后', { days: plan.eta }) : tr('今天能凑齐')}</span>}
       </header>
       {plan.ready ? <span className="daily-items">{plan.lines.map((line) => <ItemChip key={`${line.itemId}:${line.rank}`} names={names} itemId={line.itemId} label={label(line.itemId, line.rank)} count={`× ${line.remain}`} tone="done" />)}</span>

@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import type { CropRules } from './dailyDigest';
-import { bestRecipe, itemSources, type SourceContext } from './dailySources';
+import { bestRecipe, itemSources, periodsLeft, type SourceContext } from './dailySources';
 
-const CABBAGE = 1, TURNIP = 2, CABBAGE_ITEM = 100, TURNIP_ITEM = 101, FISH = 300, BERRY = 310, MILK = 320, ORE = 240020, BAR = 210020, COAL = 230040, CHARCOAL = 230041;
+const CABBAGE = 1, TURNIP = 2, CABBAGE_ITEM = 100, TURNIP_ITEM = 101, FISH = 300, GHOST = 162000, BERRY = 310, MILK = 320, ORE = 240020, BAR = 210020, COAL = 230040, CHARCOAL = 230041;
 const crops: CropRules = new Map([
   [CABBAGE, { seasons: ['winter'], harvest: [[CABBAGE_ITEM, 2]] }],
   [TURNIP, { seasons: ['spring'], harvest: [[TURNIP_ITEM, 1]] }],
 ]);
 const context = (fields: Partial<SourceContext> = {}): SourceContext => ({
-  season: 3, crops, ripening: [], owned: new Set(), trees: [], held: new Map(), processes: [], quarryReached: 0,
-  payload: { fish: { [FISH]: [0, 3] }, wild: { [BERRY]: 2 }, animals: [{ species: 7, house: 0, products: [MILK] }, { species: 8, house: 0, products: [MILK] }], quarry: [
+  season: 3, crops, ripening: [], owned: new Set(), trees: [], held: new Map(), processes: [], quarryReached: 0, periods: [0, 1, 2, 3], daysLeft: 26,
+  payload: { fish: { [FISH]: [[0, 0], [0, 1], [3, 0], [3, 2]], [GHOST]: [[0, 3], [3, 3]] }, wild: { [BERRY]: 2 }, animals: [{ species: 7, house: 0, products: [MILK] }, { species: 8, house: 0, products: [MILK] }], quarry: [
     { from: 11, to: 29, drops: [[ORE, 4]] },
     { from: 41, to: 49, drops: [[ORE, 12]] },
     { from: 71, to: 79, drops: [[ORE, 26.5]] },
@@ -26,9 +26,19 @@ describe('item sources', () => {
   });
 
   it('knows fish and wild plants by season and animals by whether one lives on the farm', () => {
-    expect(itemSources(FISH, context())).toEqual([{ kind: 'fish', seasons: [0, 3], now: true }]);
+    expect(itemSources(FISH, context())).toEqual([{ kind: 'fish', seasons: [0, 3], now: true, today: true, night: false }]);
     expect(itemSources(BERRY, context())).toEqual([{ kind: 'wild', season: 2, now: false }]);
     expect(itemSources(MILK, context({ owned: new Set([8]) }))).toEqual([{ kind: 'animal', species: [7, 8], owned: true }]);
+  });
+
+  it('knows which fish still bite before the 07:00 turnover', () => {
+    expect([periodsLeft(7), periodsLeft(13), periodsLeft(23), periodsLeft(0), periodsLeft(6)]).toEqual([[0, 1, 2, 3], [1, 2, 3], [2, 3], [3], [3]]);
+    // After midnight only the cursed fish bite; the day fish wait for the morning.
+    expect(itemSources(FISH, context({ periods: [3] }))).toEqual([{ kind: 'fish', seasons: [0, 3], now: true, today: false, night: false }]);
+    expect(itemSources(GHOST, context({ periods: [3] }))).toEqual([{ kind: 'fish', seasons: [0, 3], now: true, today: true, night: true }]);
+    // In the evening, a fish that only bites in the morning and afternoon is gone for today.
+    expect(itemSources(FISH, context({ periods: [2, 3] }))[0]).toMatchObject({ today: true });
+    expect(itemSources(FISH, context({ season: 0, periods: [2, 3] }))[0]).toMatchObject({ now: true, today: false });
   });
 
   it('points wood at the matching trees, saplings and tree seeds held', () => {

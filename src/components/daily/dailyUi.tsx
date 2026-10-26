@@ -136,7 +136,9 @@ export function sourceText(source: ItemSource, name: Names): string {
     case 'plant': return source.now
       ? tr('种{crop}，这季能种', { crop: name.crop(source.crop) })
       : tr('种{crop}，{seasons}季作物', { crop: name.crop(source.crop), seasons: name.seasons(source.seasons) });
-    case 'fish': return source.now ? tr('这季钓得到') : tr('{seasons}季才钓得到', { seasons: name.seasons(source.seasons) });
+    case 'fish': return !source.now ? tr('{seasons}季才钓得到', { seasons: name.seasons(source.seasons) })
+      : source.night ? tr('只在深夜（0:00–7:00）钓得到')
+      : source.today ? tr('这季钓得到') : tr('这季钓得到，但要等 7:00 换日以后');
     case 'wild': return source.now ? tr('这季能在山里采到') : tr('{season}季在山里采', { season: name.seasons([source.season]) });
     case 'animal': {
       const animals = source.species.map(name.animal).join(tr('、'));

@@ -7,21 +7,24 @@ import { Icon, MapButton, Meter, Section, sourceTarget, sourceText, type MapTarg
 import { tr } from '../../i18n/active';
 
 type Tone = 'urgent' | 'deliver' | 'craft' | 'gather' | 'field' | 'routine';
-interface Row { key: string; tag: string; tone: Tone; icon?: ReactNode; title: string; details: string[]; target?: MapTarget | null; section: string }
+interface Row { key: string; tag: string; tone: Tone; icon?: ReactNode; title: string; details: string[]; target?: MapTarget | null; section: string; later?: boolean }
 
 /** A key that survives changing the settings, so a ticked task stays ticked. */
 export function actionKey(action: DailyAction): string {
   switch (action.kind) {
-    case 'fetch': return `fetch:${action.trip}`;
+    case 'deliver': return action.later ? 'deliver:later' : 'deliver';
+    case 'fetch': return `fetch:${action.trip}${action.later ? ':later' : ''}`;
     case 'gather': return `gather:${action.lines[0].material.itemId}`;
     case 'animal': return `animal:${action.idea.species}`;
     default: return action.kind;
   }
 }
 
-/** Today's to-do list as a checklist: one line per job, with where it happens and a way to tick it off. */
-export default function TodayList({ actions, names, name, horizon, done, onToggle, onMap }: {
+/** Today's to-do list as a checklist: one line per job, with where it happens and a way to tick it off. Jobs that wait for the morning come last. */
+export default function TodayList({ actions, names, name, horizon, night, done, onToggle, onMap }: {
   actions: DailyAction[];
+  /** The save is after midnight, before the 07:00 turnover. */
+  night: boolean;
   names: SaveNameTables;
   name: Names;
   horizon: number;
@@ -50,15 +53,20 @@ export default function TodayList({ actions, names, name, horizon, done, onToggl
         };
       }
       case 'deliver': return {
-        key, tag: tr('交付'), tone: 'deliver', icon: icon('items', action.plans[0].lines[0].itemId), section: 'daily-deliveries',
-        title: tr('交付 {count} 项', { count: action.plans.length }), details: [list(action.plans.map((plan) => plan.spec.name))],
+        key, tag: tr('交付'), tone: 'deliver', icon: icon('items', action.plans[0].lines[0].itemId), section: 'daily-deliveries', later: action.later,
+        title: action.later ? tr('到村长家交付 {count} 项', { count: action.plans.length }) : tr('交付 {count} 项', { count: action.plans.length }),
+        details: [list(action.plans.map((plan) => plan.spec.name))],
       };
       case 'fetch': {
         const items = list(action.items.map(([itemId, count]) => `${name.item(itemId)} × ${count}`));
         return {
-          key, tag: action.trip === 'fish' ? tr('钓鱼') : tr('采集'), tone: 'deliver', icon: icon('items', action.items[0][0]), section: 'daily-deliveries',
+          key, tag: action.trip === 'fish' ? tr('钓鱼') : tr('采集'), tone: 'deliver', icon: icon('items', action.items[0][0]), section: 'daily-deliveries', later: action.later,
           title: action.trip === 'fish' ? tr('钓鱼：{items}', { items }) : tr('去山里采：{items}', { items }),
-          details: [tr('凑齐后能交{bundles}', { bundles: action.plans.map((plan) => `「${plan.spec.name}」`).join('') })],
+          details: [
+            tr('凑齐后能交{bundles}', { bundles: action.plans.map((plan) => `「${plan.spec.name}」`).join('') }),
+            ...night && action.trip === 'wild' ? [tr('深夜也能采，只要山菜还在')] : [],
+            ...action.later ? [tr('这些鱼要等 7:00 换日以后才钓得到')] : [],
+          ],
         };
       }
       case 'machines': return {
@@ -128,25 +136,32 @@ export default function TodayList({ actions, names, name, horizon, done, onToggl
   });
 
   const finished = rows.filter((row) => done.has(row.key)).length;
+  const task = (row: Row) => {
+    const checked = done.has(row.key), title = `daily-task-${row.key.replace(/\W/g, '-')}`;
+    return <li key={row.key} className={`daily-task is-${row.tone}${checked ? ' is-done' : ''}`}>
+      <input type="checkbox" className="daily-checkbox" checked={checked} aria-labelledby={title} onChange={() => onToggle(row.key)} />
+      <span className="daily-task-icon" aria-hidden="true">{row.icon ?? <Icon name="farm" size={22} />}</span>
+      <div className="daily-task-body">
+        <p className="daily-task-title"><span className="daily-tag">{row.tag}</span><strong id={title}>{row.title}</strong></p>
+        {row.details.map((detail) => <p key={detail} className="daily-task-detail">{detail}</p>)}
+      </div>
+      <div className="daily-task-links">
+        <MapButton target={row.target ?? null} onMap={onMap} />
+        <a className="button daily-link-button" href={`#${row.section}`} aria-label={tr('{name}的详情', { name: row.title })}>{tr('详情')}</a>
+      </div>
+    </li>;
+  };
+  const now = rows.filter((row) => !row.later), morning = rows.filter((row) => row.later);
   return <Section id="daily-today" icon="today" title={tr('今日待办')}
     summary={rows.length > 0 && <span className="daily-progress">
       <Meter value={finished} max={rows.length} tone={finished === rows.length ? 'done' : undefined} label={tr('已完成 {done} / {total} 项', { done: finished, total: rows.length })} />
       <span>{finished === rows.length ? tr('今天的事都做完了') : tr('已完成 {done} / {total} 项，勾选的记录只留到这一天', { done: finished, total: rows.length })}</span>
     </span>}>
-    {rows.length ? <ol className="daily-tasks">{rows.map((row) => {
-      const checked = done.has(row.key), title = `daily-task-${row.key.replace(/\W/g, '-')}`;
-      return <li key={row.key} className={`daily-task is-${row.tone}${checked ? ' is-done' : ''}`}>
-        <input type="checkbox" className="daily-checkbox" checked={checked} aria-labelledby={title} onChange={() => onToggle(row.key)} />
-        <span className="daily-task-icon" aria-hidden="true">{row.icon ?? <Icon name="farm" size={22} />}</span>
-        <div className="daily-task-body">
-          <p className="daily-task-title"><span className="daily-tag">{row.tag}</span><strong id={title}>{row.title}</strong></p>
-          {row.details.map((detail) => <p key={detail} className="daily-task-detail">{detail}</p>)}
-        </div>
-        <div className="daily-task-links">
-          <MapButton target={row.target ?? null} onMap={onMap} />
-          <a className="button daily-link-button" href={`#${row.section}`} aria-label={tr('{name}的详情', { name: row.title })}>{tr('详情')}</a>
-        </div>
-      </li>;
-    })}</ol> : <p className="daily-empty card">{tr('今天没有要紧的事。')}</p>}
+    {now.length ? <ol className="daily-tasks">{now.map(task)}</ol> : <p className="daily-empty card">{tr('今天没有要紧的事。')}</p>}
+    {morning.length > 0 && <>
+      <h3 className="daily-sub-head daily-later-head"><Icon name="clock" size={18} />{tr('7:00 以后')}</h3>
+      <p className="daily-note daily-later-note">{night ? tr('进别人家、钓被诅咒的鱼以外的鱼，都要等 7:00 换日以后。') : tr('今天剩下的时段钓不到这些鱼，换日以后再去。')}</p>
+      <ol className="daily-tasks">{morning.map(task)}</ol>
+    </>}
   </Section>;
 }

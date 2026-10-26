@@ -13,7 +13,8 @@ export type ItemSource =
   | { kind: 'field'; crop: number; cells: number[]; days: number; ready: number[]; each: number; count: number }
   /** A crop to plant: `now` when it grows this season. */
   | { kind: 'plant'; crop: number; seasons: number[]; now: boolean }
-  | { kind: 'fish'; seasons: number[]; now: boolean }
+  /** `now` when it bites this season, `today` when it bites in a period left before the 07:00 turnover, `night` when it only bites 0:00–7:00. */
+  | { kind: 'fish'; seasons: number[]; now: boolean; today: boolean; night: boolean }
   | { kind: 'wild'; season: number; now: boolean }
   /** Produced by these species; `owned` when one of them lives on the farm. */
   | { kind: 'animal'; species: number[]; owned: boolean }
@@ -33,8 +34,18 @@ export const TREE_SEEDS: Readonly<Record<number, number>> = { 140270: 1000, 1402
 export const TREE_SAPS: Readonly<Record<number, number>> = { 140300: 1000, 140310: 1001, 140320: 1002, 140370: 1003, 140340: 1004 };
 
 export interface SourceProcess { output: number; count: number; inputs: Array<[itemId: number, count: number]>; minutes: number; machine: number }
+/** Fishing periods (FISH_PERIODS indexes) still ahead before the 07:00 turnover; after midnight only the late-night one. */
+export function periodsLeft(hour: number): number[] {
+  const current = hour < 7 ? 3 : hour < 12 ? 0 : hour < 18 ? 1 : 2;
+  return [0, 1, 2, 3].filter((period) => period >= current);
+}
+
 export interface SourceContext {
   season: number;
+  /** Fishing periods left today, from periodsLeft. */
+  periods: number[];
+  /** Turnovers left in the season. */
+  daysLeft: number;
   crops: CropRules;
   ripening: Array<CellRow & { days: number }>;
   payload: Pick<DailyPayload, 'fish' | 'wild' | 'quarry' | 'animals'>;
@@ -62,7 +73,13 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     if (!sources.some((source) => source.kind === 'field' && source.crop === crop)) sources.push({ kind: 'plant', crop, seasons, now: seasons.includes(context.season) });
   }
   const fish = context.payload.fish[itemId];
-  if (fish) sources.push({ kind: 'fish', seasons: fish, now: fish.includes(context.season) });
+  if (fish?.length) {
+    const season = fish.filter(([entry]) => entry === context.season);
+    sources.push({
+      kind: 'fish', seasons: [...new Set(fish.map(([entry]) => entry))], now: season.length > 0,
+      today: season.some(([, period]) => context.periods.includes(period)), night: fish.every(([, period]) => period === 3),
+    });
+  }
   const wild = context.payload.wild[itemId];
   if (wild !== undefined) sources.push({ kind: 'wild', season: wild, now: wild === context.season });
   const species = context.payload.animals.filter((animal) => animal.products.includes(itemId)).map((animal) => animal.species);

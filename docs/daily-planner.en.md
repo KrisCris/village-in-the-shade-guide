@@ -12,7 +12,7 @@ At the top are the save's date, weather, money and a 28-cell season bar with tod
 
 The page has five parts, top to bottom:
 
-- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land and which animals the houses have room for. Routine care (harvesting, watering, feeding) comes last. You can tick entries off as you do them; ticks last for the save's day only. Each entry links to its section below, and entries with a place can mark it on the map.
+- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land and which animals the houses have room for. Routine care (harvesting, watering, feeding) comes last. Jobs that have to wait for the 07:00 turnover (entering houses after midnight, or fish that bite in none of today's remaining periods) sit in a final group, 7:00 以后 (after 7:00). You can tick entries off as you do them; ticks last for the save's day only. Each entry links to its section below, and entries with a place can mark it on the map.
 - **交付** (deliveries): the three lists (shrine repairs, fox shrine offerings and the village head's catalog), split into four tabs. 今天可以交 (ready today) holds the lists you can finish now. 物品交付 (item deliveries) holds the lists you can complete this season, with the expected wait and where each missing item comes from. 本季凑不齐 (not this season) holds the lists you cannot complete this season. 留给交付的物品 (set aside) lists the items reserved for deliveries; the processing plan never uses them.
 - **加工设备** (processing machines): 设备数量 (machine count) shows how many days each kind of machine needs to process the produce in hand plus what ripens within the time limit, and how many machines to build or upgrade when that runs past the limit. In 作物加工 (crop processing) you can pick another recipe for any produce, or none. 加造设备的材料 (materials for new machines) lists what the new machines need, whether you have enough, and where to get what is missing.
 - **空地和家畜** (empty land and livestock): 空地种植 (sowing) lists what to sow on the empty cells of your farm area. 家畜 (livestock) has one card per kind of house, showing how full it is and which animals you do not keep yet produce items the deliveries need; when their house is full, it names the renovation or new house to order from 树木建设 (the carpenter), with its materials and money.
@@ -20,7 +20,7 @@ The page has five parts, top to bottom:
 
 Each crop group, each scarecrow, and the trees to fell or tap have a "地图" (map) button that opens the map in a window and marks their cells; trees are counted one by one. The village minimap is drawn around the farm, so trees outside the farm show too. When you zoom out too far to see cells, marked places become red pins.
 
-A save made after midnight (00:00–06:59) still belongs to the previous day. The page shows how many hours remain before the 07:00 turnover.
+A save made after midnight (00:00–06:59) still belongs to the previous day. The page shows how many hours remain before the 07:00 turnover and orders the to-do list by the night rules; see "After midnight" below.
 
 ## How it plans
 
@@ -29,7 +29,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 - Only unfinished lists count. Shrine repairs go one at a time, so only the lowest-numbered unfinished repair is listed. The village head's catalog is left out until flag 12036 is on.
 - Items in the backpack and storage chests are handed out in this order: shrine repairs, this season's fox shrine offerings, the catalog, then offerings for other seasons. Lists that can be finished completely get their items first; what is left goes to unfinished lists.
 - Within the same order, lists with a quality requirement go first. Each list takes the lowest quality that qualifies, leaving better items for lists that ask for them.
-- An expected wait is shown only when every missing item can be had this season. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that bite this season, wild plants in season and products of animals already on the farm count as available today.
+- An expected wait is shown only when every missing item can be had this season. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that still bite in a period left today, wild plants in season and products of animals already on the farm count as available today. A fish of this season that bites in none of today's remaining periods counts as 1 day; on the last night of the season it counts as unavailable.
 
 ### Processing machines
 
@@ -45,6 +45,14 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 - Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days).
 - Sap: a sap extractor on a grown tree of the right kind collects it every 3 days.
 - Other sources: crops in the field, crops that can be sown this season, fishing, wild plants, animals and machine recipes.
+
+### After midnight
+
+A save from 00:00 until the 07:00 turnover follows the night rules:
+
+- You cannot enter other people's houses. The village head's catalog is handed in at the village head's house, so even a list ready today moves to 7:00 以后. Shrine repairs and fox shrines are outdoors and stay available.
+- Fishing follows the four periods in fishing.dat: 7–12, 12–18, 18–24 and 0–7. From 0 to 7 only the six cursed fish and junk bite, and the cursed fish bite at no other time. When a delivery only lacks fish that bite in the daytime this season, its fishing trip moves to 7:00 以后.
+- Wild plants can still be picked at night while they are there.
 
 ### What to sow
 
@@ -104,6 +112,7 @@ The rest comes from game data or existing site content:
 - How much wood one tree gives: the page lists the trees you can fell but not how many to fell. Trees outside the farm map (such as the forest to the northwest) have no data either.
 - Daily animal output and quality.
 - Quarry figures cover ordinary rocks only, not ore-vein rooms or bee nests.
+- Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
 
 ## Code
 

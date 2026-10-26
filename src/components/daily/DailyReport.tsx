@@ -68,6 +68,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const [data, setData] = useState<DailyData | null>(null), [dataError, setDataError] = useState(false), [attempt, setAttempt] = useState(0);
   const [settings, setSettings] = useState<DailySettings>(() => readSettings(browserStorage(), snapshot.player));
   const { date } = digest;
+  const night = digest.hoursToTurnover > 0;
   const day = `${date.year}-${date.season}-${date.day}`;
   const [done, setDone] = useState(() => new Set(readDone(browserStorage(), snapshot.player, day)));
   const dialog = useRef<HTMLDialogElement>(null);
@@ -150,7 +151,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
         <button type="button" className="daily-switch" onClick={onSwitch}><Icon name="swap" size={18} />{tr('换一个存档')}</button>
       </div>
     </header>
-    {digest.hoursToTurnover > 0 && <p className="daily-banner is-info"><Icon name="clock" size={18} />{tr('这是午夜后的存档：离 07:00 换日还有 {hours} 小时，下面的事今天还来得及做。', { hours: digest.hoursToTurnover })}</p>}
+    {digest.hoursToTurnover > 0 && <p className="daily-banner is-info"><Icon name="clock" size={18} />{tr('这是午夜后的存档：离 07:00 换日还有 {hours} 小时。这段时间进不了别人家，河里只钓得到被诅咒的鱼；要等天亮的事排在待办最后。', { hours: digest.hoursToTurnover })}</p>}
 
     {dataError ? <p className="save-status error" role="alert">{tr('交付和加工数据没能载入。')} <button type="button" onClick={() => setAttempt((count) => count + 1)}>{tr('重试')}</button></p>
       : !plan ? <p className="save-loading" role="status">{tr('正在核对交付、设备和材料…')}</p>
@@ -168,8 +169,8 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
           <button type="button" className="daily-nav-map" onClick={() => showOnMap(null)}><Icon name="map" size={18} />{tr('地图')}</button>
         </nav>
 
-        <TodayList actions={plan.actions} names={names} name={name} horizon={plan.horizon} done={done} onToggle={toggle} onMap={showOnMap} />
-        <DeliverySection deliveries={plan.deliveries} names={names} name={name} onMap={showOnMap} />
+        <TodayList actions={plan.actions} names={names} name={name} horizon={plan.horizon} night={night} done={done} onToggle={toggle} onMap={showOnMap} />
+        <DeliverySection deliveries={plan.deliveries} names={names} name={name} night={night} onMap={showOnMap} />
         <ProcessingSection plan={plan.processing} machines={digest.machines} materials={plan.materials} seasonDays={daysLeft} horizon={settings.horizon} reserve={settings.reserve}
           names={names} name={name} onMap={showOnMap}
           onHorizon={(days) => changeSettings({ horizon: days })} onReserve={(reserve) => changeSettings({ reserve })}

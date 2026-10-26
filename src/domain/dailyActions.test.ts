@@ -13,10 +13,11 @@ const digest = (fields: Partial<DailyDigest> = {}): DailyDigest => ({
   chores: { water: [], withered: [], spentScarecrows: [], hungry: 0, shipping: 0 },
   machines: { done: [], running: [], idle: [], freeSlots: 0 }, ...fields,
 });
-const fish: ItemSource = { kind: 'fish', seasons: [3], now: true };
+const fish: ItemSource = { kind: 'fish', seasons: [3], now: true, today: true, night: false };
+const dayFish: ItemSource = { ...fish, today: false }, cursed: ItemSource = { ...fish, night: true };
 const wild: ItemSource = { kind: 'wild', season: 3, now: true };
 const line = (itemId: number, remain: number, have: number, sources: ItemSource[] = []): DeliveryLine => ({ itemId, rank: 0, remain, have, sources });
-const plan = (id: number, lines: DeliveryLine[]): DeliveryPlan => ({ spec: { id, list: 'shrine', name: `b${id}`, place: '', items: [], rewards: [] } as DailyBundleSpec, ready: false, lines });
+const plan = (id: number, lines: DeliveryLine[], list: DailyBundleSpec['list'] = 'shrine'): DeliveryPlan => ({ spec: { id, list, name: `b${id}`, place: '', items: [], rewards: [] } as DailyBundleSpec, ready: false, lines });
 const deliveries = (fields: Partial<DeliveryDigest> = {}): DeliveryDigest => ({ ready: [], pending: [], done: 0, total: 0, catalogOpen: true, keep: [], ...fields });
 const family = (fields: Partial<FamilyLine>): FamilyLine => ({ family: 'jar', machine: 501, machines: 2, idle: 0, slots: 2, busy: 0, demand: 0, days: 0, extraSlots: 0, build: [], ...fields });
 const processing = (fields: Partial<ProcessingPlan> = {}): ProcessingPlan => ({ horizon: 7, produce: [], families: [], materials: [], ...fields });
@@ -62,13 +63,30 @@ describe('daily actions', () => {
     expect(actions.at(-1)).toEqual({ kind: 'routine', harvest: [9], water: [9, 10], hungry: 2 });
   });
 
+  it('leaves the catalog and day fishing for after the 07:00 turnover in a midnight save', () => {
+    const actions = run({
+      digest: digest({ date: { year: 1, season: 3, day: 2, hour: 1, minute: 0 }, hoursToTurnover: 6, chores: { water: [4], withered: [], spentScarecrows: [], hungry: 0, shipping: 0 } }),
+      deliveries: deliveries({
+        ready: [plan(40, [line(1, 1, 1)], 'catalog'), plan(30, [line(1, 1, 1)], 'repair')],
+        pending: [plan(1, [line(300, 1, 0, [dayFish])]), plan(2, [line(162000, 1, 0, [cursed])]), plan(3, [line(310, 1, 0, [wild])])],
+      }),
+    });
+    expect(actions.map((action) => action.kind === 'fetch' ? `fetch:${action.trip}:${action.plans.map((entry) => entry.spec.id)}${action.later ? ':later' : ''}`
+      : action.kind === 'deliver' ? `deliver:${action.plans.map((entry) => entry.spec.id)}${action.later ? ':later' : ''}` : action.kind)).toEqual([
+      'deliver:30', 'fetch:fish:2', 'fetch:wild:3', 'routine', 'deliver:40:later', 'fetch:fish:1:later',
+    ]);
+    // On the last night of the season the day fish never come back, so no trip is offered for them.
+    const last = run({ digest: digest({ hoursToTurnover: 6, daysLeft: 0 }), deliveries: deliveries({ pending: [plan(1, [line(300, 1, 0, [dayFish])])] }) });
+    expect(last).toEqual([]);
+  });
+
   it('warns first about crops that wither tomorrow', () => {
     const actions = run({ digest: digest({ seasonEnd: { lost: [], witherTomorrow: [{ crop: 1, cause: 'season', cells: [1] }] } }) });
     expect(actions[0].kind).toBe('wither');
   });
 
   it('leads with the trip that can happen today', () => {
-    expect(leadSource([{ kind: 'plant', crop: 1, seasons: [0], now: false }, { kind: 'fish', seasons: [0], now: false }])).toBeUndefined();
+    expect(leadSource([{ kind: 'plant', crop: 1, seasons: [0], now: false }, { kind: 'fish', seasons: [0], now: false, today: false, night: false }])).toBeUndefined();
     expect(leadSource([{ kind: 'machine', machine: 9, inputs: [], count: 1, minutes: 1 }, { kind: 'quarry', from: 1, to: 9, perHundred: 1, reached: true }])?.kind).toBe('quarry');
   });
 });

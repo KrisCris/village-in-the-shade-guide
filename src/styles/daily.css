@@ -57,6 +57,8 @@ button.daily-nav-map { display: inline-flex; align-items: center; gap: .35rem; f
 .daily-control { display: grid; gap: .2rem; font-size: .76rem; color: var(--muted); }
 .daily-control .search-select-trigger { min-width: 9.5rem; min-height: 38px; }
 .daily-sub-head { margin: 1.8rem 0 .8rem; font-size: 1.12rem; }
+.daily-later-head { display: flex; align-items: center; gap: .45rem; margin-bottom: .3rem; color: var(--muted); }
+.daily-later-note { margin: 0 0 .7rem; }
 .daily-section-head + .daily-sub-head, .daily-banner + .daily-sub-head { margin-top: .4rem; }
 .daily-sub-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .5rem 1rem; margin: 1.8rem 0 .8rem; }
 .daily-sub-row .daily-sub-head { margin: 0; }

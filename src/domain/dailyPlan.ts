@@ -10,7 +10,7 @@ import { livestockPlan } from './dailyLivestock';
 import { planMaterials } from './dailyMaterials';
 import { plantingIdeas } from './dailyPlanting';
 import { expectedHarvest, MIN_HORIZON, planProcessing } from './dailyProcessing';
-import type { SourceContext, SourceProcess } from './dailySources';
+import { periodsLeft, type SourceContext, type SourceProcess } from './dailySources';
 
 /** Item categories the processing plan treats as produce. */
 const PRODUCE = new Set(['ITEM_CATEGORY_CROPS', 'ITEM_CATEGORY_FRUIT', 'ITEM_CATEGORY_FLOWER', 'ITEM_CATEGORY_WILD_VEGETABLE', 'ITEM_CATEGORY_LIVESTOCK_PRODUCT']);
@@ -48,7 +48,7 @@ export function dailyPlan(input: {
   const held = new Map<number, number>();
   for (const stack of snapshot.held) held.set(stack.itemId, (held.get(stack.itemId) ?? 0) + stack.count);
   const context: SourceContext = {
-    season: snapshot.date.season, crops: DAILY_CROPS, ripening: rows, payload, owned: new Set(snapshot.houses.flatMap((house) => house.residents)),
+    season: snapshot.date.season, periods: periodsLeft(snapshot.date.hour), daysLeft: DAYS_PER_SEASON - snapshot.date.day, crops: DAILY_CROPS, ripening: rows, payload, owned: new Set(snapshot.houses.flatMap((house) => house.residents)),
     trees: snapshot.trees, held, processes: SOURCE_PROCESSES, quarryReached: snapshot.quarryReached,
   };
   const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.catalogOpen);

@@ -11,12 +11,15 @@ import type { ItemSource } from './dailySources';
  * that can be finished, trips that finish others, machine work, then the
  * longer jobs (building machines and gathering their materials, sowing empty
  * land, animals the deliveries call for) and last the routine farm care.
+ * After midnight (a save before the 07:00 turnover) houses are closed and only
+ * the cursed fish bite, so the catalog deliveries and day fishing are `later`:
+ * they wait for the morning.
  */
 export type DailyAction =
   | { kind: 'wither'; groups: StopGroup[] }
-  | { kind: 'deliver'; plans: DeliveryPlan[] }
-  /** A fishing or foraging trip today that brings in everything some deliveries still miss. */
-  | { kind: 'fetch'; trip: 'fish' | 'wild'; items: Array<[itemId: number, count: number]>; plans: DeliveryPlan[] }
+  | { kind: 'deliver'; plans: DeliveryPlan[]; later?: boolean }
+  /** A fishing or foraging trip that brings in everything some deliveries still miss. */
+  | { kind: 'fetch'; trip: 'fish' | 'wild'; items: Array<[itemId: number, count: number]>; plans: DeliveryPlan[]; later?: boolean }
   /** Finished products to take out, and idle machines with the produce the plan gives them. */
   | { kind: 'machines'; outputs: number; fill: Array<{ family: FamilyLine; produce: number[] }> }
   | { kind: 'build'; families: FamilyLine[]; short: MaterialLine[] }
@@ -44,16 +47,23 @@ export function dailyActions(input: {
   animals: AnimalIdea[];
 }): DailyAction[] {
   const { digest, deliveries, processing } = input;
+  const night = digest.hoursToTurnover > 0;
   const actions: DailyAction[] = [];
   if (digest.seasonEnd.witherTomorrow.length) actions.push({ kind: 'wither', groups: digest.seasonEnd.witherTomorrow });
-  if (deliveries.ready.length) actions.push({ kind: 'deliver', plans: deliveries.ready });
-  const trips = new Map<'fish' | 'wild', Extract<DailyAction, { kind: 'fetch' }>>();
+  // The catalog is handed in at the village head's house, which cannot be entered after midnight.
+  const indoors = (plan: DeliveryPlan) => night && plan.spec.list === 'catalog';
+  const handIn = deliveries.ready.filter((plan) => !indoors(plan)), morning = deliveries.ready.filter(indoors);
+  if (handIn.length) actions.push({ kind: 'deliver', plans: handIn });
+  const trips = new Map<string, Extract<DailyAction, { kind: 'fetch' }>>();
   for (const plan of deliveries.pending) {
     const missing = plan.lines.filter((line) => line.have < line.remain);
-    const kinds = missing.map((line) => line.sources.find((entry) => (entry.kind === 'fish' || entry.kind === 'wild') && entry.now)?.kind as 'fish' | 'wild' | undefined);
+    // Day fish missed tonight can still be caught tomorrow, unless the season ends at this turnover.
+    const sources = missing.map((line) => line.sources.find((entry): entry is Extract<ItemSource, { kind: 'fish' | 'wild' }> =>
+      entry.kind === 'wild' ? entry.now : entry.kind === 'fish' && (entry.today || entry.now && digest.daysLeft > 0)));
     // Only lists that one trip finishes; a list that also waits on crops shows under deliveries.
-    if (!missing.length || kinds.some((kind) => !kind) || new Set(kinds).size > 1) continue;
-    const trip = trips.get(kinds[0]!) ?? trips.set(kinds[0]!, { kind: 'fetch', trip: kinds[0]!, items: [], plans: [] }).get(kinds[0]!)!;
+    if (!missing.length || sources.some((source) => !source) || new Set(sources.map((source) => source!.kind)).size > 1) continue;
+    const kind = sources[0]!.kind, later = sources.some((source) => source!.kind === 'fish' && !source!.today), key = `${kind}:${later}`;
+    const trip = trips.get(key) ?? trips.set(key, { kind: 'fetch', trip: kind, items: [], plans: [], ...(later ? { later } : {}) }).get(key)!;
     for (const line of missing) {
       const entry = trip.items.find(([itemId]) => itemId === line.itemId);
       if (entry) entry[1] += line.remain - line.have;
@@ -61,7 +71,7 @@ export function dailyActions(input: {
     }
     trip.plans.push(plan);
   }
-  actions.push(...trips.values());
+  actions.push(...[...trips.values()].filter((trip) => !trip.later));
   const outputs = digest.machines.done.reduce((sum, row) => sum + row.count, 0);
   const fill = processing.families.flatMap((family) => {
     const produce = processing.produce.filter((line) => line.held > 0 && line.choice !== NOT_PROCESSED && line.options.find((option) => option.process === line.choice)?.family === family.family).map((line) => line.itemId);
@@ -83,5 +93,7 @@ export function dailyActions(input: {
   for (const idea of input.animals.filter((entry) => entry.room > 0).slice(0, 1)) actions.push({ kind: 'animal', idea });
   const harvest = digest.harvest.flatMap((group) => group.cells);
   if (harvest.length || digest.chores.water.length || digest.chores.hungry) actions.push({ kind: 'routine', harvest, water: digest.chores.water, hungry: digest.chores.hungry });
+  if (morning.length) actions.push({ kind: 'deliver', plans: morning, later: true });
+  actions.push(...[...trips.values()].filter((trip) => trip.later));
   return actions;
 }

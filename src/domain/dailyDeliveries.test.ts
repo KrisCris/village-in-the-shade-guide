@@ -6,10 +6,10 @@ import type { SourceContext } from './dailySources';
 
 const CABBAGE = 1, CABBAGE_ITEM = 100, FISH = 300, STONE = 400, WOOD = 230000, GEM = 500;
 const context: SourceContext = {
-  season: 3, owned: new Set(), trees: [], held: new Map(), processes: [], quarryReached: 0,
+  season: 3, owned: new Set(), trees: [], held: new Map(), processes: [], quarryReached: 0, periods: [0, 1, 2, 3], daysLeft: 26,
   crops: new Map([[CABBAGE, { seasons: ['winter'], harvest: [[CABBAGE_ITEM, 1]] }]]),
   ripening: [{ crop: CABBAGE, cell: 1, days: 6 }, { crop: CABBAGE, cell: 2, days: 4 }],
-  payload: { fish: { [FISH]: [3] }, wild: {}, animals: [], quarry: [] },
+  payload: { fish: { [FISH]: [[3, 0], [3, 1]] }, wild: {}, animals: [], quarry: [] },
 };
 const spec = (id: number, list: DailyBundleSpec['list'], extra: Partial<DailyBundleSpec> = {}): DailyBundleSpec =>
   ({ id, list, name: `b${id}`, place: '', items: [], rewards: [], ...extra });
@@ -56,6 +56,14 @@ describe('delivery plan', () => {
     // Two cabbages are growing, three are owed: no date.
     expect(second.eta).toBeUndefined();
     expect(third.eta).toBeUndefined();
-    expect(first.lines[1].sources).toEqual([{ kind: 'fish', seasons: [3], now: true }]);
+    expect(first.lines[1].sources).toEqual([{ kind: 'fish', seasons: [3], now: true, today: true, night: false }]);
+  });
+
+  it('moves day fishing to the next day after midnight, unless the season ends at the turnover', () => {
+    const specs = [spec(20, 'shrine', { season: 3 })], progress = [owed(20, [FISH, 1])];
+    const eta = (fields: Partial<SourceContext>) => planDeliveries(specs, progress, [], { ...context, ...fields }, true).pending[0].eta;
+    expect(eta({})).toBe(0);
+    expect(eta({ periods: [3] })).toBe(1);
+    expect(eta({ periods: [3], daysLeft: 0 })).toBeUndefined();
   });
 });

@@ -56,10 +56,14 @@ function take(items: Pool, itemId: number, rank: number, count: number): number 
   return taken;
 }
 
-/** When a missing item can be had this season, in turnovers: ripe crops, fish and wild plants in season. */
-function sourceDays(source: ItemSource, short: number): number | undefined {
+/**
+ * When a missing item can be had this season, in turnovers: ripe crops, fish and wild plants in season.
+ * Fish that do not bite before the turnover (day fish after midnight) wait a day, if the season has one left.
+ */
+function sourceDays(source: ItemSource, short: number, daysLeft: number): number | undefined {
   if (source.kind === 'field') return source.ready[Math.ceil(short / source.each) - 1];
-  if ((source.kind === 'fish' || source.kind === 'wild') && source.now) return 0;
+  if (source.kind === 'fish') return source.today ? 0 : source.now && daysLeft > 0 ? 1 : undefined;
+  if (source.kind === 'wild' && source.now) return 0;
   if (source.kind === 'animal' && source.owned) return 0;
   return undefined;
 }
@@ -101,7 +105,7 @@ export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[]
       return line(row, have);
     });
     const days = lines.filter((row) => row.have < row.remain).map((row) => {
-      const known = row.sources.map((source) => sourceDays(source, row.remain - row.have)).filter((value): value is number => value !== undefined);
+      const known = row.sources.map((source) => sourceDays(source, row.remain - row.have, context.daysLeft)).filter((value): value is number => value !== undefined);
       return known.length ? Math.min(...known) : undefined;
     });
     pending.push({ spec, ready: false, lines, ...(days.every((value) => value !== undefined) ? { eta: Math.max(...days as number[]) } : {}) });
