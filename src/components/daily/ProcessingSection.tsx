@@ -8,6 +8,7 @@ import { GrowList, Icon, ItemChip, MapButton, Meter, Section, sourceTarget, sour
 import { tr } from '../../i18n/active';
 
 const RESERVES = [0, 0.1, 0.2, 0.3, 0.5];
+const DAY_MINUTES = 1440;
 const HORIZONS = [7, 14, 28, 56];
 
 /** Machine capacity against the produce in hand and coming, plus the machines and materials to add. */
@@ -32,8 +33,17 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
   const quiet = plan.families.filter((family) => !working.includes(family));
   const collect = machines.done.reduce((sum, row) => sum + row.count, 0);
 
+  // Work is counted in slot-days: one slot running one batch for a whole game day.
   const machineCard = (family: FamilyLine) => {
     const short = family.days > plan.horizon;
+    const jobs = plan.produce.flatMap((line) => {
+      const option = line.options.find((entry) => entry.process === line.choice);
+      return option?.family === family.family ? [{ line, option }] : [];
+    });
+    const work = (family.busy + family.demand) / DAY_MINUTES, running = family.busy / DAY_MINUTES;
+    const steps = family.build.map((step) => step.upgrade
+      ? tr('升级 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })
+      : tr('新造 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })).join(tr('，'));
     return <li key={family.family} className={`card daily-machine${short ? ' is-short' : ''}`}>
       <header className="daily-machine-head">
         <SaveIcon names={names} kind="items" value={String(family.machine)} size={40} />
@@ -46,12 +56,25 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
         <span className="daily-gauge-limit">{tr('期限 {days} 天', { days: plan.horizon })}</span>
         <Meter value={family.days} max={plan.horizon} tone={short ? 'short' : 'done'} label={tr('要 {days} 天，期限 {horizon} 天', { days: days(family.days), horizon: plan.horizon })} />
       </div>
+      {jobs.length > 0 && <ul className="daily-machine-jobs">
+        {jobs.slice(0, 3).map(({ line, option }) => <li key={line.itemId}>
+          <SaveIcon names={names} kind="items" value={String(line.itemId)} size={24} />
+          <span>{tr('{item} {count} 个 → {output}', { item: name.item(line.itemId), count: line.held + line.coming, output: name.item(option.output) })}</span>
+          <small>{option.inputs > 1
+            ? tr('每 {inputs} 个约 {days} 天', { inputs: option.inputs, days: name.number(Math.round(option.minutes / DAY_MINUTES * 10) / 10) })
+            : tr('每个约 {days} 天', { days: name.number(Math.round(option.minutes / DAY_MINUTES * 10) / 10) })}</small>
+        </li>)}
+        {jobs.length > 3 && <li className="daily-machine-more">{tr('还有 {count} 种', { count: jobs.length - 3 })}</li>}
+      </ul>}
+      {work > 0 && <p className="daily-machine-math">{[
+        running >= 0.1 ? tr('加上正在加工的，只用一个槽位要做约 {work} 天（其中 {running} 天的已经在做）。', { work: name.number(Math.round(work)), running: name.number(Math.round(running * 10) / 10) })
+          : tr('只用一个槽位要做约 {work} 天。', { work: name.number(Math.round(work)) }),
+        family.slots ? tr('{slots} 个槽位分着做，要 {days} 天。', { slots: family.slots, days: days(family.days) }) : tr('农场里还没有这种设备。'),
+      ].join('')}</p>}
       <p className={`daily-machine-status${short ? ' is-short' : ''}`}>
         {!short ? tr('期限内能加工完')
-          : family.locked ? tr('还差 {slots} 个槽位，但还没学会做{machine}{skill}', { slots: family.extraSlots, machine: name.item(family.machine), skill: family.locked.skill ? tr('（祠堂能力「{skill}」）', { skill: family.locked.skill }) : '' })
-          : tr('还差 {slots} 个槽位：{steps}', { slots: family.extraSlots, steps: family.build.map((step) => step.upgrade
-            ? tr('升级 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })
-            : tr('新造 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })).join(tr('，')) })}
+          : family.locked ? tr('{horizon} 天内做完要 {need} 个槽位，还差 {slots} 个，但还没学会做{machine}{skill}', { horizon: plan.horizon, need: family.slots + family.extraSlots, slots: family.extraSlots, machine: name.item(family.machine), skill: family.locked.skill ? tr('（祠堂能力「{skill}」）', { skill: family.locked.skill }) : '' })
+          : tr('{horizon} 天内做完要 {need} 个槽位，还差 {slots} 个：{steps}', { horizon: plan.horizon, need: family.slots + family.extraSlots, slots: family.extraSlots, steps })}
       </p>
     </li>;
   };
@@ -109,7 +132,7 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
       <span className="daily-quiet-label">{tr('闲置的设备（{count} 种）', { count: quiet.length })}</span>
       <span className="daily-items">{quiet.map((family) => <ItemChip key={family.family} names={names} itemId={family.machine} label={name.item(family.machine)} count={tr('{count} 台', { count: family.machines })} />)}</span>
     </div>}
-    <p className="daily-note">{tr('天数包括正在加工的产品。每种作物只按一种配方算：优先选已有设备里有空闲、卖价最高的那种，没有空闲的设备时才建议加造。直接卖更划算的作物不加工。')}</p>
+    <p className="daily-note">{tr('一个槽位一次加工一份原料，一台设备有几个槽位就能同时做几份。天数 = 所有要做的活 ÷ 槽位数，包括正在加工的产品。每种作物只按一种配方算：优先选已有设备里有空闲、卖价最高的那种，没有空闲的设备时才建议加造。直接卖更划算的作物不加工。不急着加工完的话，可以把期限调长，或在下面把作物改成直接卖。')}</p>
 
     <h3 className="daily-sub-head">{tr('作物加工')}</h3>
     {produceRows.length ? <GrowList className="daily-produce-grid" items={produceRows} shown={8} /> : <p className="daily-empty card">{tr('现在没有要加工的作物。')}</p>}

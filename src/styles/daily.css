@@ -158,7 +158,14 @@ button.daily-grow { display: flex; align-items: center; justify-content: center;
 .daily-item.is-money { padding-left: .55rem; font-variant-numeric: tabular-nums; }
 
 /* Machines */
-.daily-machine { display: grid; grid-template-rows: auto auto 1fr; gap: .8rem; padding: 1rem; }
+.daily-machine { display: flex; flex-direction: column; gap: .75rem; padding: 1rem; }
+.daily-machine-jobs { display: grid; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+.daily-machine-jobs > li { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: .45rem; font-size: .82rem; line-height: 1.4; }
+.daily-machine-jobs > li > :first-child { grid-row: span 2; }
+.daily-machine-jobs > li > span { min-width: 0; overflow-wrap: anywhere; }
+.daily-machine-jobs small { grid-column: 2; font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.daily-machine-jobs > li.daily-machine-more { display: block; padding-left: calc(24px + .45rem); font-size: .76rem; color: var(--muted); }
+.daily-machine-math { margin: 0; font-size: .78rem; line-height: 1.55; color: var(--muted); }
 .daily-gauge { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .35rem .5rem; }
 .daily-gauge .daily-meter { grid-column: 1 / -1; height: 10px; }
 .daily-gauge-value { color: var(--muted); font-size: .85rem; }
@@ -166,7 +173,7 @@ button.daily-grow { display: flex; align-items: center; justify-content: center;
 .daily-gauge-limit { font-size: .76rem; color: var(--muted); }
 .daily-machine.is-short { border-color: color-mix(in srgb, var(--vermilion) 35%, var(--border)); }
 .daily-machine.is-short .daily-gauge-value b { color: var(--vermilion); }
-.daily-machine-status { align-self: end; margin: 0; padding: .45rem .65rem; border-radius: 8px; background: var(--green-soft); color: var(--green); font-size: .8rem; line-height: 1.5; }
+.daily-machine-status { margin: auto 0 0; padding: .45rem .65rem; border-radius: 8px; background: var(--green-soft); color: var(--green); font-size: .8rem; line-height: 1.5; }
 .daily-machine-status.is-short { background: color-mix(in srgb, var(--vermilion) 10%, transparent); color: var(--ink); }
 .daily-quiet { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; margin-top: .8rem; padding: .65rem .85rem; border: 1px dashed var(--border); border-radius: 12px; }
 .daily-quiet-label { font-size: .8rem; font-weight: 600; color: var(--muted); }
