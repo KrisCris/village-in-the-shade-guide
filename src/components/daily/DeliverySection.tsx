@@ -19,8 +19,8 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
   const listName: Record<DeliveryList, string> = { repair: tr('修复祠堂'), shrine: tr('狐狸神社'), catalog: tr('村长家目录') };
   const quality = (rank: number) => rank > 0 ? tr('{rank}及以上', { rank: ITEM_RANKS.find((entry) => entry.value === rank)?.label ?? rank }) : '';
   const label = (itemId: number, rank: number) => [name.item(itemId), quality(rank)].filter(Boolean).join(' · ');
-  const close = deliveries.pending.filter((plan) => plan.eta !== undefined);
-  const far = deliveries.pending.filter((plan) => plan.eta === undefined);
+  const close = deliveries.pending.filter((plan) => !plan.offSeason);
+  const far = deliveries.pending.filter((plan) => plan.offSeason);
 
   const where = ({ spec }: DeliveryPlan) => spec.list === 'repair' ? tr('第 {stage} 座', { stage: spec.stage! })
     : spec.list === 'shrine' && spec.season !== undefined ? tr('{season}季', { season: GAME_SEASONS[spec.season] }) : spec.place;
@@ -41,7 +41,7 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
         : <ul className="daily-lines">{owed.map((line) => <li key={`${line.itemId}:${line.rank}`} className="daily-line">
           <SaveIcon names={names} kind="items" value={String(line.itemId)} size={28} />
           <span className="daily-line-name">{label(line.itemId, line.rank)}
-            <small>{line.sources.length ? line.sources.map((source) => sourceText(source, name)).join(tr('；')) : tr('来源还没整理')}</small>
+            <small>{line.sources.length ? line.sources.map((source) => sourceText(source, name)).join(tr('；')) : tr('还没查到从哪里来')}</small>
           </span>
           <span className="daily-line-count"><span><b>{line.have}</b> / {line.remain}</span><Meter value={line.have} max={line.remain} tone="short" /></span>
           <MapButton target={sourceTarget(line.sources, name.item(line.itemId), name)} onMap={onMap} />

@@ -53,9 +53,10 @@ describe('delivery plan', () => {
     const progress = [owed(20, [CABBAGE_ITEM, 2], [FISH, 1]), owed(21, [CABBAGE_ITEM, 3]), owed(22, [FISH, 1], [GEM, 1])];
     const [first, second, third] = planDeliveries(specs, progress, [], context, true).pending;
     expect(first.eta).toBe(6);
-    // Two cabbages are growing, three are owed: no date.
-    expect(second.eta).toBeUndefined();
-    expect(third.eta).toBeUndefined();
+    // Two cabbages are growing, three are owed: no date, but more can still be sown this season.
+    expect([second.eta, second.offSeason]).toEqual([undefined, undefined]);
+    // Nothing is known about where the gem comes from.
+    expect([third.eta, third.offSeason]).toEqual([undefined, true]);
     expect(first.lines[1].sources).toEqual([{ kind: 'fish', seasons: [3], now: true, today: true, night: false }]);
   });
 
@@ -65,5 +66,6 @@ describe('delivery plan', () => {
     expect(eta({})).toBe(0);
     expect(eta({ periods: [3] })).toBe(1);
     expect(eta({ periods: [3], daysLeft: 0 })).toBeUndefined();
+    expect(planDeliveries(specs, progress, [], { ...context, periods: [3], daysLeft: 0 }, true).pending[0].offSeason).toBe(true);
   });
 });

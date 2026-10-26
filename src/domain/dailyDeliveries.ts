@@ -18,6 +18,8 @@ export interface DeliveryPlan {
   ready: boolean;
   /** Turnovers until the last missing item can be had, when every missing item has a dated source this season. */
   eta?: number;
+  /** Some missing item has no source this season: it is out of season, or where it comes from is unknown. */
+  offSeason?: boolean;
 }
 export interface KeepLine { itemId: number; rank: number; count: number; bundles: number[] }
 export interface DeliveryDigest {
@@ -68,6 +70,12 @@ function sourceDays(source: ItemSource, short: number, daysLeft: number): number
   return undefined;
 }
 
+/** Whether a source can still supply the item this season, dated or not: sowing, felling and machines count. */
+function inSeason(source: ItemSource, daysLeft: number): boolean {
+  if (source.kind === 'fish') return source.today || source.now && daysLeft > 0;
+  return 'now' in source ? source.now : true;
+}
+
 export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[], held: DailyStack[], context: SourceContext, catalogOpen: boolean): DeliveryDigest {
   const owed = new Map(progress.map((bundle) => [bundle.bundleId, bundle.items.filter((item) => item.remain > 0)]));
   const tracked = specs.filter((spec) => owed.has(spec.id));
@@ -108,7 +116,8 @@ export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[]
       const known = row.sources.map((source) => sourceDays(source, row.remain - row.have, context.daysLeft)).filter((value): value is number => value !== undefined);
       return known.length ? Math.min(...known) : undefined;
     });
-    pending.push({ spec, ready: false, lines, ...(days.every((value) => value !== undefined) ? { eta: Math.max(...days as number[]) } : {}) });
+    const offSeason = lines.some((row) => row.have < row.remain && !row.sources.some((source) => inSeason(source, context.daysLeft)));
+    pending.push({ spec, ready: false, lines, ...(days.every((value) => value !== undefined) ? { eta: Math.max(...days as number[]) } : {}), ...(offSeason ? { offSeason } : {}) });
   }
   return { ready, pending, done: tracked.length - open.length, total: tracked.length, catalogOpen, keep: [...keep.values()] };
 }
