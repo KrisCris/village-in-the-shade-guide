@@ -35,19 +35,22 @@ function useHeaderHeight() {
   return height;
 }
 
-/** The id of the section nearest the top of the screen. */
+/** The last section whose top has passed the upper third of the screen; none above the first, the last one at the page bottom. */
 function useActiveSection(ids: string[], enabled: boolean) {
-  const [active, setActive] = useState(ids[0]);
+  const [active, setActive] = useState<string>();
   useEffect(() => {
     if (!enabled) return;
-    const seen = new Map<string, boolean>();
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) seen.set(entry.target.id, entry.isIntersecting);
-      const first = ids.find((id) => seen.get(id));
-      if (first) setActive(first);
-    }, { rootMargin: '-30% 0px -60% 0px' });
-    for (const id of ids) { const element = document.getElementById(id); if (element) observer.observe(element); }
-    return () => observer.disconnect();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bottom = scrollY + innerHeight >= document.documentElement.scrollHeight - 2;
+      setActive(bottom ? ids.at(-1) : ids.filter((id) => (document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) <= innerHeight * 0.35).at(-1));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule);
+    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule); };
   }, [ids.join(), enabled]);
   return active;
 }
@@ -110,6 +113,15 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   }), [data, snapshot, digest, unlocked, names, settings, vacant]);
   const sections = ['daily-today', 'daily-deliveries', 'daily-machines', 'daily-land', 'daily-farm'];
   const active = useActiveSection(sections, Boolean(plan));
+  const navList = useRef<HTMLUListElement>(null);
+  // On a phone the menu scrolls sideways; keep the highlighted part in view.
+  useEffect(() => {
+    const list = navList.current, link = list?.querySelector<HTMLElement>('[aria-current]');
+    if (!list || !link) return;
+    const left = link.offsetLeft - list.offsetLeft, right = left + link.offsetWidth;
+    if (left < list.scrollLeft) list.scrollTo({ left: left - 8, behavior: 'smooth' });
+    else if (right > list.scrollLeft + list.clientWidth) list.scrollTo({ left: right - list.clientWidth + 8, behavior: 'smooth' });
+  }, [active]);
 
   const money = new Intl.NumberFormat(activeLocale()).format(snapshot.money);
   const weather = lookupName(names, 'weather', String(snapshot.weather));
@@ -169,7 +181,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
         </li>)}</ul>
 
         <nav className="daily-nav" aria-label={tr('页面目录')}>
-          <ul>{sections.map((id) => <li key={id}><a href={`#${id}`} aria-current={active === id ? 'true' : undefined}>{navLabel[id]}</a></li>)}</ul>
+          <ul ref={navList}>{sections.map((id) => <li key={id}><a href={`#${id}`} aria-current={active === id ? 'true' : undefined}>{navLabel[id]}</a></li>)}</ul>
           <button type="button" className="daily-nav-map" onClick={() => showOnMap(null)}><Icon name="map" size={18} />{tr('地图')}</button>
         </nav>
 
