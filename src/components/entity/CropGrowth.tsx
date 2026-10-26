@@ -32,21 +32,26 @@ function Yields({ rows }: { rows: GrowthYield[] }) {
   </span>)}</span>;
 }
 
-/** Lanes wider than the page scroll sideways; only then are they a tab stop, with a fade where more stages wait. */
+/** Lanes wider than the page scroll sideways; only then are they a tab stop, with a fade on each side where stages are hidden. */
 function ScrollLane({ label, children }: { label: string; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [scroll, setScroll] = useState({ overflow: false, end: true });
+  const [scroll, setScroll] = useState({ overflow: false, start: true, end: true });
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const measure = () => setScroll({ overflow: node.scrollWidth > node.clientWidth + 1, end: node.scrollLeft + node.clientWidth >= node.scrollWidth - 1 });
+    const measure = () => setScroll({
+      overflow: node.scrollWidth > node.clientWidth + 1,
+      start: node.scrollLeft <= 1,
+      end: node.scrollLeft + node.clientWidth >= node.scrollWidth - 1,
+    });
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(node);
     node.addEventListener('scroll', measure, { passive: true });
     return () => { observer.disconnect(); node.removeEventListener('scroll', measure); };
   }, []);
-  return <div ref={ref} className="growth-scroll" data-more={scroll.overflow && !scroll.end ? '' : undefined}
+  const fade = scroll.overflow ? [!scroll.start && 'start', !scroll.end && 'end'].filter(Boolean).join(' ') : '';
+  return <div ref={ref} className="growth-scroll" data-fade={fade || undefined}
     {...(scroll.overflow ? { tabIndex: 0, role: 'region', 'aria-label': label } : {})}>{children}</div>;
 }
 
@@ -83,7 +88,8 @@ export default function CropGrowth({ growth, entity, onOpen }: { growth: CropGro
     {growth.grown && <div className="growth-block">
       <div className="growth-block-head"><h3>{t('长成后的样子')}</h3><span>{t('选一个季节，下面各阶段也换成那个季节')}</span></div>
       <div className="growth-season-picker" role="group" aria-label={t('季节')}>
-        {growth.grown.art.map((sprite, index) => <button key={index} type="button" aria-pressed={season === index} onClick={() => setSeason(index)}>
+        {growth.grown.art.map((sprite, index) => <button key={index} type="button" aria-pressed={season === index} onClick={() => setSeason(index)}
+          aria-label={growth.bearing.includes(index) ? t('{season}（结果季）', { season: seasonName(index) }) : undefined}>
           <StageArt sprite={sprite} frame={growth.grown!.frame} alt="" />
           <span className="growth-season-name">{seasonName(index)}{growth.bearing.includes(index) && <span className="growth-tag">{t('结果季')}</span>}</span>
         </button>)}
@@ -135,7 +141,8 @@ export default function CropGrowth({ growth, entity, onOpen }: { growth: CropGro
       .growth-season-name{display:flex;align-items:center;justify-content:space-between;gap:.3rem;padding:0 .25rem;font-weight:600}
 
       .growth-scroll{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;border-radius:12px}
-      .growth-scroll[data-more]{mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent)}
+      .growth-scroll[data-fade]{--fade-start:#000;--fade-end:#000;mask-image:linear-gradient(to right,var(--fade-start),#000 40px,#000 calc(100% - 40px),var(--fade-end));-webkit-mask-image:linear-gradient(to right,var(--fade-start),#000 40px,#000 calc(100% - 40px),var(--fade-end))}
+      .growth-scroll[data-fade~=start]{--fade-start:transparent}.growth-scroll[data-fade~=end]{--fade-end:transparent}
       .growth-scroll:focus-visible{outline:2px solid var(--green);outline-offset:2px}
       .growth-track{--column:max(98px,calc(100cqi / var(--columns)));--scene:min(var(--scene-max),calc(var(--column) / var(--aspect)));position:relative;display:grid;grid-template-columns:repeat(var(--count),var(--column));width:max-content;margin:0;padding:0 0 .3rem;list-style:none}
       .growth-track::before{content:'';position:absolute;top:0;left:0;right:0;height:var(--scene);box-sizing:border-box;border:1px solid var(--border);border-radius:12px;background:linear-gradient(var(--sky) 0 var(--ground),var(--soil) 0,var(--soil-deep))}
