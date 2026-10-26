@@ -15,6 +15,20 @@ function catalog(...entities: Entity[]): Catalog {
 }
 
 describe('relation groups', () => {
+  it('links a sap to the tree its extractor is fitted to, and back', () => {
+    const sap = entity('sweet-sap', 'items', { sell_price: 15 });
+    const extractor = entity('extractor', 'machines');
+    const recipe = entity('sap-1', 'processes', { machine_ids: ['extractor'], inputs: [], output: { item_id: 'sweet-sap', quantity: 1 }, duration_minutes: 4320 });
+    const tree = entity('chestnut', 'crops', { sap_item_id: 'sweet-sap' });
+    const data = catalog(sap, extractor, recipe, tree);
+    const sources = buildEntityDetailModel(sap, data, 'normal').groups.find(group => group.key === 'acquisition')!.rows;
+    expect(sources.map(row => [row.entity.id, row.chips])).toEqual([['chestnut', ['装上extractor', '3 日']]]);
+    const outputs = buildRelationGroups(tree, data, 'normal').find(group => group.key === 'outputs')!.rows;
+    expect(outputs.map(row => [row.entity.id, row.chips])).toEqual([['sweet-sap', ['装上extractor', '3 日']]]);
+    expect(outputs[0].sellPrice).toContain('15');
+    expect(buildRelationGroups(extractor, data, 'normal').find(group => group.key === 'outputs')!.rows[0].chips[0]).toBe('装在chestnut上');
+  });
+
   it('tells same-product recipes apart by their ingredients on machine and ingredient pages', () => {
     const dye = entity('black-dye', 'items', { sell_price: 50 });
     const white = entity('white-dye', 'items', { sell_price: 20 });

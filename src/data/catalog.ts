@@ -9,6 +9,7 @@ import characterPortraits from '../../data/sources/official-character-portraits.
 import livestockProducts from '../../data/sources/game-livestock-products.json';
 import machineCapacities from '../../data/sources/game-machine-capacities.json';
 import cropGrowth from '../../data/sources/game-crop-growth.json';
+import sapTrees from '../../data/sources/game-sap-trees.json';
 import { defaultLocale, type Locale } from '../i18n/locales';
 import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
@@ -116,7 +117,11 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if (kind === 'machines') {
         entity.capacity = machineCapacities.machines.find(machine => machine.item_id === entity.id)?.capacity;
       }
-      if (kind === 'crops') entity.growth = (cropGrowth.crops as unknown as Record<string, CropGrowthSource>)[entity.id] ?? null;
+      if (kind === 'crops') {
+        entity.growth = (cropGrowth.crops as unknown as Record<string, CropGrowthSource>)[entity.id] ?? null;
+        const sap = sapTrees.trees.find(tree => tree.crop_id === entity.id);
+        if (sap) entity.sap_item_id = sap.item_id;
+      }
       if(kind==='characters') {
         const portrait=characterPortraits.portraits.find(p=>p.character_id===entity.id);
         if(portrait){entity.icon_path=portrait.path;entity.portrait_source=portrait.source;}
@@ -164,6 +169,12 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
   for (const entity of entities) {
     const itemId = iconItemIdFor(entity);
     if (itemId && itemIds.has(itemId)) entity.icon_path = `/icons/generated/items/${itemId}.webp`;
+    // Wild trees have no item icon; the grown tree in spring stands in for one.
+    if (entity.kind === 'crops' && !entity.icon_path) {
+      const grown = (entity.growth as CropGrowthSource | null | undefined)?.['1']?.at(-1)?.[2];
+      const sprite = Array.isArray(grown) ? grown[0] : grown;
+      if (sprite) entity.icon_path = `/maps/farm/${sprite.file}`;
+    }
   }
 
   for (const entity of entities) {

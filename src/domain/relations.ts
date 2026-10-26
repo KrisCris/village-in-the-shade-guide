@@ -186,12 +186,21 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     if(entity.id===document.document_item_id) add('unlocks',findCatalogEntity(catalog,document.target_item_id,'items'),{chips:[t('解锁此物品的制作配方')]});
   }
   // A process is named after its output, so several recipes for one product only differ by ingredients.
+  // A sap extractor's recipes take no input: the tree it is fitted to decides the sap.
+  const sapTree = (itemId: string | undefined) => itemId ? catalog.entities.find((row) => row.kind === 'crops' && row.sap_item_id === itemId) : undefined;
+  const sapChips = (itemId: string) => {
+    const recipe = catalog.entities.find((row) => row.kind === 'processes' && !recipeInputs(row).length && itemQuantity(row.output).item_id === itemId);
+    const machine = recipe ? findCatalogEntity(catalog, recipeMachineIds(recipe)[0], 'machines') : undefined;
+    return [machine ? t('装上{machine}', { machine: machine.name.zh_hans }) : null, durationChip(recipe?.duration_minutes, t)];
+  };
   const inputsChip = (source: Entity) => {
     const inputs = recipeInputs(source).flatMap((input) => {
       const item = input.item_id ? findCatalogEntity(catalog, input.item_id, 'items') : undefined;
       return item ? [`${item.name.zh_hans} ×${Number(input.quantity ?? 1)}`] : [];
     });
-    return inputs.length ? t('原料：{inputs}', { inputs: inputs.join(' + ') }) : null;
+    if (inputs.length) return t('原料：{inputs}', { inputs: inputs.join(' + ') });
+    const tree = sapTree(itemQuantity(source.output).item_id);
+    return tree ? t('装在{tree}上', { tree: tree.name.zh_hans }) : null;
   };
   const addOutput = (source: Entity, group: RelationGroupKey, context?: string | null) => {
     const output = itemQuantity(source.output);
@@ -237,6 +246,10 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       }
     } else for (const harvestId of entity.harvest_item_ids as string[] | undefined ?? []) {
       add('outputs', catalog.byId[harvestId], { quantity: Number(entity.harvest_quantity ?? 1), chips: [t('收获物')] });
+    }
+    if (typeof entity.sap_item_id === 'string') {
+      const sap = findCatalogEntity(catalog, entity.sap_item_id, 'items');
+      add('outputs', sap, { chips: sapChips(entity.sap_item_id), sellPrice: sap ? priceText(sap, 'sell_price', quality, t) : undefined, key: `sap:${entity.sap_item_id}` });
     }
   }
 
@@ -295,6 +308,9 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     }
     if (source.kind === 'crops' && ((source.harvest_item_ids as string[] | undefined) ?? []).some((id) => subjectIds.has(id))) {
       add('acquisition', source, { chips: [seasonList((source.seasons as string[] | undefined) ?? [], t), t('种植收获')] });
+    }
+    if (source.kind === 'crops' && typeof source.sap_item_id === 'string' && subjectIds.has(source.sap_item_id)) {
+      add('acquisition', source, { chips: sapChips(source.sap_item_id), key: `sap:${source.id}` });
     }
     if (source.kind === 'hunt-rewards') {
       const reward = ((source.rewards ?? []) as Array<{ item_id?: string; quantity?: number }>).find((row) => row.item_id && subjectIds.has(row.item_id));
