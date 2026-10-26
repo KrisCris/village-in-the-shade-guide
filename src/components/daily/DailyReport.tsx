@@ -69,13 +69,14 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const [settings, setSettings] = useState<DailySettings>(() => readSettings(browserStorage(), snapshot.player));
   const { date } = digest;
   const night = digest.hoursToTurnover > 0;
-  const day = `${date.year}-${date.season}-${date.day}`;
-  const [done, setDone] = useState(() => new Set(readDone(browserStorage(), snapshot.player, day)));
+  // Ticks belong to this save: a later save of the same day has its own jobs and counts.
+  const saveTime = `${date.year}-${date.season}-${date.day} ${date.hour}:${date.minute}`;
+  const [done, setDone] = useState(() => new Set(readDone(browserStorage(), snapshot.player, saveTime)));
   const dialog = useRef<HTMLDialogElement>(null);
   const headerHeight = useHeaderHeight();
 
   useEffect(() => { setSettings(readSettings(browserStorage(), snapshot.player)); }, [snapshot.player]);
-  useEffect(() => { setDone(new Set(readDone(browserStorage(), snapshot.player, day))); }, [snapshot.player, day]);
+  useEffect(() => { setDone(new Set(readDone(browserStorage(), snapshot.player, saveTime))); }, [snapshot.player, saveTime]);
   useEffect(() => {
     let current = true;
     setDataError(false);
@@ -97,7 +98,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const toggle = (key: string) => setDone((previous) => {
     const next = new Set(previous);
     if (!next.delete(key)) next.add(key);
-    writeDone(browserStorage(), snapshot.player, day, [...next]);
+    writeDone(browserStorage(), snapshot.player, saveTime, [...next]);
     return next;
   });
 

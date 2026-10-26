@@ -27,7 +27,7 @@ describe('daily settings', () => {
 });
 
 describe('ticked-off tasks', () => {
-  it('keeps one day per player and forgets other days', () => {
+  it('keeps one save per player and forgets other saves', () => {
     const storage = memory();
     expect(writeDone(storage, 'a', '1-3-1', ['deliver', 'routine'])).toBe(true);
     writeDone(storage, 'b', '1-3-2', ['build']);
@@ -40,7 +40,7 @@ describe('ticked-off tasks', () => {
 
   it('ignores damaged or missing storage', () => {
     expect(readDone(memory({ 'village-daily:done:v1': '{' }), 'a', 'd')).toEqual([]);
-    expect(readDone(memory({ 'village-daily:done:v1': '{"a":{"day":"d","keys":["x",3]}}' }), 'a', 'd')).toEqual(['x']);
+    expect(readDone(memory({ 'village-daily:done:v1': '{"a":{"save":"d","keys":["x",3]}}' }), 'a', 'd')).toEqual(['x']);
     expect(readDone(undefined, 'a', 'd')).toEqual([]);
     expect(writeDone(undefined, 'a', 'd', [])).toBe(false);
   });
