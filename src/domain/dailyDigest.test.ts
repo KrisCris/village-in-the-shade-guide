@@ -22,7 +22,7 @@ const snapshot = (fields: Partial<DailySnapshot> & { season?: number; day?: numb
   const seconds = (season * 28 + day - 1) * 86_400 + (hour - 7 + 24) % 24 * 3600;
   return {
     seconds, date: { year: 1, season, day, hour, minute: 0 }, weather: 1, money: 0, player: 'p',
-    cells: [], machines: [], scarecrows: [], deliveriesOpen: true, deliveries: [], held: [], shipping: [], animals: { total: 0, fed: 0 }, ...rest,
+    cells: [], machines: [], scarecrows: [], catalogOpen: true, bundles: [], trees: [], houses: [], quarryReached: 0, held: [], shipping: [], animals: { total: 0, fed: 0 }, ...rest,
   };
 };
 
@@ -134,7 +134,7 @@ describe('daily crop rules', () => {
   });
 });
 
-describe('daily machines, deliveries and chores', () => {
+describe('daily machines and chores', () => {
   it('splits machine slots into finished, running, idle machines and spare slots', () => {
     const base = snapshot({});
     const digest = buildDailyDigest({ ...base, machines: [
@@ -149,17 +149,11 @@ describe('daily machines, deliveries and chores', () => {
     expect(digest.machines.freeSlots).toBe(1);
   });
 
-  it('counts held items of the required quality or better toward deliveries', () => {
+  it('counts held items of the required quality or better', () => {
     const stacks = [{ itemId: 5, rank: 0, count: 3 }, { itemId: 5, rank: 4, count: 2 }, { itemId: 6, rank: 0, count: 9 }];
     expect(held(stacks, 5, 0)).toBe(5);
     expect(held(stacks, 5, 4)).toBe(2);
-    const digest = buildDailyDigest(snapshot({ held: stacks, deliveries: [
-      { bundleId: 1, index: 0, itemId: 5, rank: 4, count: 2, remain: 2 },
-      { bundleId: 1, index: 1, itemId: 6, rank: 0, count: 20, remain: 10 },
-      { bundleId: 2, index: 0, itemId: 6, rank: 0, count: 5, remain: 0 },
-    ] }), crops);
-    expect(digest.deliveries.ready).toEqual([{ bundleId: 1, index: 0, itemId: 5, rank: 4, remain: 2, have: 2 }]);
-    expect(digest.deliveries.missing).toEqual([{ bundleId: 1, index: 1, itemId: 6, rank: 0, remain: 10, have: 9 }]);
+    expect(held(stacks, 7, 0)).toBe(0);
   });
 
   it('counts hungry animals, items waiting in the shipping box and spent scarecrows', () => {

@@ -6,8 +6,9 @@ import { FARM_CELLS, FARM_SCENE } from './saveMapScene';
 import type { CropRules } from '../domain/dailyDigest';
 import { collectContainers, SHIPPING_BOX_ID } from './saveItems';
 import { machineJobs, machineSpec, mapValue } from './saveMachines';
-import { readDeliveries, UNLOCKS } from './saveDeliveries';
+import { UNLOCKS } from './saveDeliveries';
 import { flagEnabled } from './saveProgress';
+import { animalHouses, animalResidents } from './saveAnimals';
 import { tr } from '../i18n/active';
 
 /**
@@ -34,7 +35,12 @@ export interface DailyCell {
 export interface DailyStack { itemId: number; rank: number; count: number }
 export interface DailyJob { output: number; count: number; seconds: number; remaining: number }
 export interface DailyMachine { key: string; itemId: number; jobs: DailyJob[] }
-export interface DailyDelivery { bundleId: number; index: number; itemId: number; rank: number; count: number; remain: number }
+/** One delivery list entry as the save keeps it: what is still owed, item by item. */
+export interface DailyBundle { bundleId: number; items: Array<{ itemId: number; rank: number; remain: number }> }
+/** A timber tree on the village map; `grown` trees can be chopped for wood now. */
+export interface DailyTree { crop: number; cell: number; grown: boolean }
+/** An animal house with its slots and the species living in it. */
+export interface DailyHouse { id: number; type: number; title: string; slots: number; residents: number[] }
 export interface DailyScarecrow {
   key: string;
   itemId: number;
@@ -56,8 +62,13 @@ export interface DailySnapshot {
   cells: DailyCell[];
   machines: DailyMachine[];
   scarecrows: DailyScarecrow[];
-  deliveriesOpen: boolean;
-  deliveries: DailyDelivery[];
+  /** The village head's catalog opens with a story flag. */
+  catalogOpen: boolean;
+  bundles: DailyBundle[];
+  trees: DailyTree[];
+  houses: DailyHouse[];
+  /** Deepest quarry floor reached, in steps of ten (0 before floor 10). */
+  quarryReached: number;
   /** Backpack and storage chests. */
   held: DailyStack[];
   shipping: DailyStack[];
@@ -66,9 +77,41 @@ export interface DailySnapshot {
 
 const DAY = 86_400;
 const farmCrops = new Set(MAP_CROPS.map((crop) => crop.numeric_id));
+/** crops.dat harvest stages: state 1 is the first harvest, state 4 a regrown one. */
+const stageItems = (stages: Array<{ state: number; item_numeric_id: number; quantity: number }>, state: number) =>
+  stages.filter((stage) => stage.state === state).map((stage): [number, number] => [stage.item_numeric_id, stage.quantity]);
 export const DAILY_CROPS: CropRules = new Map(MAP_CROPS.map((crop) => [crop.numeric_id, {
   seasons: crop.seasons, perennial: crop.perennial, witheredHarvest: crop.harvest_stages.some((stage) => stage.state === 9),
+  harvest: stageItems(crop.harvest_stages, 1), regrow: crop.regrow_days ? { days: crop.regrow_days, items: stageItems(crop.harvest_stages, 4) } : undefined,
 }]));
+/** Timber trees (crops.dat 1000–1004): chestnut, cedar, pine, oak and hinoki. */
+export const TIMBER_TREES = [1000, 1001, 1002, 1003, 1004];
+/** gameflag.dat GAME_FLAG_DUNGEON_REACH_10 … _120, one per ten floors. */
+const QUARRY_FLAGS = Array.from({ length: 12 }, (_, index) => [21801 + index, (index + 1) * 10] as const);
+
+/** Read the given story and recipe flags; the daily rules only see the ones that are on. */
+export function enabledFlags(doc: SerDocument, ids: Iterable<number>): Set<number> {
+  return new Set([...ids].filter((id) => flagEnabled(doc, id)));
+}
+
+/** Every delivery list in the save: fox shrine offerings, shrine repairs and the village head's catalog. */
+export function readBundles(doc: SerDocument): DailyBundle[] {
+  const root = doc.resolve('bundleList_');
+  const value = (path: string, node: Parameters<SerDocument['resolve']>[1]) => { const found = doc.resolve(path, node); return found ? Number(readSigned(doc, found)) : 0; };
+  return (root ? doc.children(root).filter((_, index) => index % 2 === 1) : []).flatMap((pointer) => {
+    const id = doc.resolve('p/bundleID_', pointer), list = doc.resolve('p/bundleItems_', pointer);
+    if (!id || !list) return [];
+    return [{ bundleId: Number(readSigned(doc, id)), items: doc.children(list).map((item) => ({ itemId: value('pData_/dataID', item), rank: value('rank_', item), remain: value('remain_', item) })) }];
+  });
+}
+
+function readHouses(doc: SerDocument): DailyHouse[] {
+  const residents = animalResidents(doc);
+  return animalHouses(doc).map((house) => {
+    const slots = new Set(house.slots.map((slot) => slot.id));
+    return { id: house.id, type: house.type, title: house.title, slots: slots.size, residents: residents.filter((animal) => slots.has(animal.placement)).map((animal) => animal.species) };
+  });
+}
 
 /** Farm cells that could be tilled: unlocked ground with no building, facility or floor on it. */
 export function farmableCells(doc: SerDocument, ids: number[]): number[] {
@@ -149,8 +192,14 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     seconds, date: gameDate(seconds), weather: number('pWeatherData_/dataID'), money: number('money_/this->value_'),
     player: nameNode ? readString(doc, nameNode) : '',
     cells, machines, scarecrows: readScarecrows(doc),
-    deliveriesOpen: flagEnabled(doc, UNLOCKS.catalogFlag),
-    deliveries: [...readDeliveries(doc).values()].map(({ bundleId, itemId, rank, count, remain, key }) => ({ bundleId, index: Number(key.split(':')[1]), itemId, rank, count, remain })),
+    catalogOpen: flagEnabled(doc, UNLOCKS.catalogFlag),
+    bundles: readBundles(doc),
+    trees: mapCells(doc).filter((cell) => TIMBER_TREES.includes(cell.crop)).map((cell) => {
+      const growth = cropGrowth(doc, {}, FARM_SCENE, cell.id);
+      return { crop: cell.crop, cell: cell.id, grown: !!growth && growth.growth >= growth.maximum };
+    }),
+    houses: readHouses(doc),
+    quarryReached: Math.max(0, ...QUARRY_FLAGS.filter(([flag]) => flagEnabled(doc, flag)).map(([, floor]) => floor)),
     held: stacks(['backpack', 'storage']),
     shipping: stacks([], SHIPPING_BOX_ID),
     animals: { total: fed.length, fed: fed.filter(Boolean).length },

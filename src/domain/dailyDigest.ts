@@ -23,7 +23,7 @@ export const GROWTH_PER_DAY = 100;
 export const DAYS_PER_SEASON = 28;
 export const FORECAST_DAYS = 7;
 export const SCARECROW_DAYS = 28;
-const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
+export const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 const GROWING_FORMS = new Set([1, 4, 5]);
 const WITHERED = 2, WITHERED_HARVESTABLE = 9;
 
@@ -32,6 +32,10 @@ export interface CropRule {
   perennial?: { kind: string; bearing_seasons?: string[] } | null;
   /** A ripe plant left past its season withers into something harvestable (edamame turns into soybeans). */
   witheredHarvest?: boolean;
+  /** Items and counts of the first harvest. */
+  harvest?: Array<[itemId: number, count: number]>;
+  /** Crops that regrow after picking: the turnovers between picks and what each pick yields. */
+  regrow?: { days: number; items: Array<[itemId: number, count: number]> };
 }
 export type CropRules = ReadonlyMap<number, CropRule>;
 export interface CellGroup { crop: number; cells: number[] }
@@ -42,7 +46,6 @@ export interface StopGroup extends CellGroup { cause: StopCause }
 export interface LostGroup extends StopGroup { days: number; left: number }
 /** `daysLeft` counts like the season's: turnovers before it is spent, 0 on its last day. `crops` are the growing cells of its season in range. */
 export interface ScarecrowLine { key: string; itemId: number; season: number; daysLeft: number; cells: number[]; crops: number }
-export interface DeliveryLine { bundleId: number; index: number; itemId: number; rank: number; remain: number; have: number }
 export interface MachineOutput { itemId: number; count: number; slots: number; finish?: number }
 
 export interface DailyDigest {
@@ -58,14 +61,13 @@ export interface DailyDigest {
   scarecrows: ScarecrowLine[];
   chores: { water: number[]; withered: CellGroup[]; spentScarecrows: Array<{ key: string; itemId: number; cells: number[] }>; hungry: number; shipping: number };
   machines: { done: MachineOutput[]; running: MachineOutput[]; idle: Array<{ itemId: number; machines: number }>; freeSlots: number };
-  deliveries: { open: boolean; ready: DeliveryLine[]; missing: DeliveryLine[] };
 }
 
 /** Soil that needs watering every day for the crop on it to grow. */
 export const needsWater = (cell: Pick<DailyCell, 'soil'>) => cell.soil === 1 || cell.soil === 2;
 export const daysToRipe = (cell: Pick<DailyCell, 'growth' | 'maximum'>) => Math.ceil(Math.max(0, cell.maximum - cell.growth) / GROWTH_PER_DAY);
 
-type CellRow = { crop: number; cell: number };
+export type CellRow = { crop: number; cell: number };
 type StopRow = CellRow & { cause: StopCause; left: number };
 function byCrop(rows: CellRow[]): CellGroup[] {
   const groups = new Map<number, number[]>();
@@ -114,6 +116,30 @@ export function growingTurnovers(rule: CropRule, date: DailySnapshot['date'], co
   return best ?? { left: 0, cause: 'season' };
 }
 
+/** The active and spent scarecrows standing over each cell. */
+function scarecrowCover(snapshot: DailySnapshot): Map<number, DailyScarecrow[]> {
+  const covering = new Map<number, DailyScarecrow[]>();
+  for (const scarecrow of snapshot.scarecrows) for (const id of scarecrow.cells) covering.set(id, [...covering.get(id) ?? [], scarecrow]);
+  return covering;
+}
+
+/**
+ * Growing field crops and kits that ripen before they stop: turnovers to ripe
+ * (0 when ripe now) and turnovers left to grow. Fruit trees and shrubs are left
+ * out; their yields are not modelled here.
+ */
+export function ripening(snapshot: DailySnapshot, crops: CropRules): Array<CellRow & { days: number; left: number }> {
+  const covering = scarecrowCover(snapshot), season = SEASONS[snapshot.date.season];
+  return snapshot.cells.flatMap((cell) => {
+    const rule = cell.crop ? crops.get(cell.crop) : undefined;
+    if (!rule || rule.perennial || !GROWING_FORMS.has(cell.form) || cell.maximum <= 0) return [];
+    const { left, cause } = growingTurnovers(rule, snapshot.date, covering.get(cell.id));
+    const days = daysToRipe(cell);
+    if (days && cause === 'season' && !rule.seasons.includes(season)) return [];
+    return days > left ? [] : [{ crop: cell.crop, cell: cell.id, days, left }];
+  });
+}
+
 export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): DailyDigest {
   const { date } = snapshot;
   const season = SEASONS[date.season];
@@ -123,8 +149,7 @@ export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): Dai
   const lost: Array<StopRow & { days: number }> = [];
   const witherTomorrow: StopRow[] = [], withered: CellRow[] = [];
   const water: number[] = [];
-  const covering = new Map<number, DailyScarecrow[]>();
-  for (const scarecrow of snapshot.scarecrows) for (const id of scarecrow.cells) covering.set(id, [...covering.get(id) ?? [], scarecrow]);
+  const covering = scarecrowCover(snapshot);
   const protectedCells = new Map<string, number>();
 
   for (const cell of snapshot.cells) {
@@ -170,10 +195,6 @@ export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): Dai
     if (!used) { idle.set(machine.itemId, (idle.get(machine.itemId) ?? 0) + 1); freeSlots -= machine.jobs.length; }
   }
 
-  const lines = snapshot.deliveries.filter((row) => row.remain > 0).map((row) => ({
-    bundleId: row.bundleId, index: row.index, itemId: row.itemId, rank: row.rank, remain: row.remain, have: held(snapshot.held, row.itemId, row.rank),
-  }));
-
   return {
     date, daysLeft, hoursToTurnover: date.hour < 7 ? 7 - date.hour - (date.minute ? 1 : 0) : 0,
     harvest: (Object.keys(harvest) as HarvestGroup['kind'][]).flatMap((kind) => byCrop(harvest[kind]).map((group) => ({ ...group, kind }))).sort((a, b) => b.cells.length - a.cells.length),
@@ -194,7 +215,6 @@ export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): Dai
       idle: [...idle].map(([itemId, machines]) => ({ itemId, machines })).sort((a, b) => b.machines - a.machines),
       freeSlots,
     },
-    deliveries: { open: snapshot.deliveriesOpen, ready: lines.filter((line) => line.have >= line.remain), missing: lines.filter((line) => line.have < line.remain) },
   };
 }
 

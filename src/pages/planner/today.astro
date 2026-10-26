@@ -7,12 +7,12 @@ import { getI18n } from '../../i18n/server';
 const { t, locale } = getI18n(Astro.url);
 ---
 
-<BaseLayout title={t('每日规划')} description={t('读取存档，列出今天能收获的作物、要浇水的格子、做好的加工品和现在就能交付的委托。')}>
+<BaseLayout title={t('每日规划')} description={t('读取存档，核对交付、加工设备、材料和空地，列出今天该做的事。')}>
   <section class="save-page-heading daily-page-heading">
     <p class="eyebrow">{t('工具 · 读取存档')}</p>
     <h1>{t('每日规划')}</h1>
     <p>
-      {t('选一个存档，看今天要做什么：哪些作物能收，多少格要浇水，哪些加工品做好了，哪些委托现在就能交。')}
+      {t('选一个存档，看看今天有哪些交付能交、加工设备还要加造几台、缺的材料去哪里弄、空地种什么、畜舍还能养什么。')}
       {t('存档只在浏览器里读取，不会上传，也不会被修改。')}
     </p>
   </section>

@@ -50,6 +50,89 @@ button.daily-chip { display: inline-flex; align-items: center; gap: .35rem; min-
 .daily-planner .daily-card details.daily-more[open] > summary::before { transform: rotate(90deg); }
 .daily-planner .daily-card details.daily-more[open] > summary { margin-bottom: .2rem; }
 
+/* Page sections: heading, one-line summary, settings on the right */
+.daily-section { margin-top: 2.2rem; scroll-margin-top: 80px; }
+.daily-section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .6rem 1.2rem; margin-bottom: .9rem; }
+.daily-section-head h2 { margin: 0; }
+.daily-section-head p { max-width: 62ch; margin: .3rem 0 0; font-size: .88rem; line-height: 1.6; color: var(--muted); }
+.daily-controls { display: flex; flex-wrap: wrap; gap: .6rem; }
+.daily-control { display: grid; gap: .2rem; font-size: .76rem; color: var(--muted); }
+.daily-control .search-select-trigger { min-width: 9.5rem; min-height: 38px; }
+.daily-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 1rem; align-items: start; }
+.daily-card-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .5rem 1rem; margin-bottom: .6rem; }
+.daily-card-head h3 { margin: 0; }
+.daily-planner details.daily-panel { margin-top: 1rem; }
+.daily-planner details.daily-panel > summary { min-height: 28px; font-weight: 600; }
+.daily-planner details.daily-panel .daily-sub:first-of-type { margin-top: .2rem; }
+
+/* Today's list */
+.daily-today { margin-top: .4rem; padding: 1.1rem 1.2rem; border-color: color-mix(in srgb, var(--green) 45%, var(--border)); box-shadow: inset 4px 0 0 var(--green), var(--shadow); }
+.daily-today h2 { margin: 0 0 .7rem; font-size: 1.25rem; }
+.daily-action { display: grid; grid-template-columns: 1.7rem 32px minmax(0, 1fr) auto; align-items: center; gap: .6rem; min-height: 52px; padding: .3rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-action:last-child { border-bottom: 0; }
+.daily-action-number { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--green-soft); color: var(--green); font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.daily-action.is-urgent .daily-action-number { background: var(--vermilion); color: var(--paper-raised); }
+.daily-action.is-urgent .daily-row-name { color: var(--vermilion); font-weight: 600; }
+.daily-action-icon { display: grid; place-items: center; width: 32px; height: 32px; }
+.daily-action-links { display: flex; gap: .35rem; }
+.daily-action .daily-row-name { font-weight: 500; }
+a.button.daily-map-button { display: inline-flex; align-items: center; min-height: 34px; padding: .2rem .6rem; font-size: .78rem; color: var(--ink); text-decoration: none; }
+
+/* Item chips */
+.daily-items { display: flex; flex-wrap: wrap; gap: .3rem; }
+.daily-item { display: inline-flex; align-items: center; gap: .3rem; max-width: 100%; min-height: 30px; padding: .1rem .55rem .1rem .2rem; border: 1px solid var(--border); border-radius: 999px; background: var(--paper); font-size: .82rem; line-height: 1.3; }
+.daily-item > span { min-width: 0; overflow-wrap: anywhere; }
+.daily-item b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.daily-item.is-short { border-color: color-mix(in srgb, var(--vermilion) 45%, var(--border)); }
+.daily-item.is-short b { color: var(--vermilion); }
+.daily-item.is-done { border-color: color-mix(in srgb, var(--green) 40%, var(--border)); background: var(--green-soft); }
+.daily-item.is-done b { color: var(--green); }
+
+/* Deliveries */
+.daily-bundle { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: .45rem .6rem; padding: .7rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-bundle:first-child { padding-top: .2rem; }
+.daily-bundle:last-child { border-bottom: 0; }
+.daily-bundle > :not(.daily-bundle-name, .pill) { grid-column: 1 / -1; }
+.daily-bundle-name { min-width: 0; }
+.daily-bundle-name small { display: block; font-size: .76rem; line-height: 1.4; color: var(--muted); }
+.daily-bundle > .pill { white-space: nowrap; }
+.daily-reward { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; font-size: .76rem; color: var(--muted); }
+.daily-missing { display: grid; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+.daily-missing > li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .25rem .5rem; }
+.daily-missing .daily-item { justify-self: start; }
+.daily-missing .daily-source { grid-column: 1; }
+.daily-missing .daily-map-button { grid-column: 2; grid-row: 1 / span 2; }
+.daily-source { font-size: .78rem; line-height: 1.5; color: var(--muted); }
+
+/* Machines */
+.daily-family { display: grid; grid-template-columns: 32px minmax(0, 1fr) minmax(4rem, 7rem) auto; align-items: center; gap: .3rem .6rem; padding: .45rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-family:last-child { border-bottom: 0; }
+.daily-meter { position: relative; height: 8px; overflow: hidden; border-radius: 999px; background: var(--paper-deep); }
+.daily-meter > span { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--green); }
+.daily-family.is-short .daily-meter > span { background: var(--vermilion); }
+.daily-family.is-short .daily-count { color: var(--vermilion); }
+.daily-build { grid-column: 2 / -1; margin: 0; padding: .35rem .55rem; border-radius: 6px; background: color-mix(in srgb, var(--vermilion) 10%, transparent); font-size: .8rem; line-height: 1.5; }
+.daily-row.daily-produce { grid-template-columns: 32px minmax(0, 1fr) minmax(9rem, 15rem); }
+.daily-produce .search-select-trigger { width: 100%; min-height: 36px; font-size: .82rem; }
+.daily-produce-note { grid-column: 2 / -1; margin-top: -.2rem; font-size: .76rem; color: var(--vermilion); }
+.daily-materials { margin-top: 1rem; }
+.daily-material { display: grid; grid-template-columns: minmax(10rem, auto) minmax(0, 1fr) auto; align-items: center; gap: .25rem .7rem; padding: .5rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-material:last-child { border-bottom: 0; }
+.daily-material .daily-item { justify-self: start; }
+.daily-material > small { font-size: .76rem; color: var(--muted); }
+.daily-material .daily-source { grid-column: 1 / 3; }
+.daily-material .daily-map-button { grid-column: 3; grid-row: 1 / span 2; }
+
+/* Land and animals */
+.daily-row.daily-idea { grid-template-columns: 32px minmax(0, 1fr) auto; }
+.daily-idea .daily-row-name small + small { margin-top: .1rem; }
+.daily-card .daily-stats + .daily-sub { margin-top: 1rem; }
+.daily-order { display: grid; gap: .35rem; padding: .5rem .6rem; border-radius: 6px; background: color-mix(in srgb, var(--gold) 10%, transparent); }
+.daily-order p { margin: 0; font-size: .8rem; line-height: 1.5; }
+.daily-item.is-money { padding-left: .55rem; font-variant-numeric: tabular-nums; }
+
+.daily-planner :is(.daily-action-links, .daily-missing, .daily-material, .daily-section-head) :is(a, button):focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
 /* Farm-area map */
 .daily-map-anchor { scroll-margin-top: 80px; margin-top: 1.2rem; }
 .daily-map-loading { display: grid; place-items: center; color: #f5eed6; }
@@ -59,6 +142,19 @@ button.daily-chip { display: inline-flex; align-items: center; gap: .35rem; min-
 .daily-swatch.is-highlight { background: #ffd76a; }
 
 @media (max-width: 520px) {
+  .daily-today { padding: .9rem .8rem; }
+  .daily-action { grid-template-columns: 1.6rem minmax(0, 1fr); gap: .2rem .55rem; }
+  .daily-action-icon { display: none; }
+  .daily-action-links { grid-column: 2; }
+  .daily-family { grid-template-columns: 28px minmax(0, 1fr) auto; }
+  .daily-family .daily-meter { grid-column: 2 / -1; grid-row: 2; }
+  .daily-row.daily-produce { grid-template-columns: 28px minmax(0, 1fr); }
+  .daily-produce .search-select-trigger { grid-column: 1 / -1; }
+  .daily-material { grid-template-columns: minmax(0, 1fr) auto; }
+  .daily-material > small, .daily-material .daily-source { grid-column: 1; }
+  .daily-material .daily-map-button { grid-column: 2; grid-row: 1 / span 3; }
+  .daily-control { flex: 1 1 9rem; }
+  .daily-control .search-select-trigger { width: 100%; }
   .daily-row { grid-template-columns: 28px minmax(0, 1fr) auto; }
   .daily-row .daily-map-button { grid-column: 2 / -1; justify-self: start; }
   .daily-row.is-plain { grid-template-columns: minmax(0, 1fr) auto; }

@@ -35,9 +35,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
       { year: 1, season: 3, day: 2, hour: 7, minute: 0 },
     ]);
     const { snapshot } = saves['save.004'];
-    expect(snapshot).toMatchObject({ weather: 3, money: 60083, deliveriesOpen: true, animals: { total: 10, fed: 0 } });
+    expect(snapshot).toMatchObject({ weather: 3, money: 60083, catalogOpen: true, quarryReached: 120, animals: { total: 10, fed: 0 } });
     expect(snapshot.cells.filter((cell) => cell.crop)).toHaveLength(424);
-    expect(snapshot.deliveries).toHaveLength(100);
+    expect([snapshot.bundles.length, snapshot.bundles.filter((bundle) => bundle.items.every((item) => item.remain === 0)).length]).toEqual([61, 17]);
+    expect([snapshot.trees.length, snapshot.trees.filter((tree) => tree.grown).length]).toEqual([65, 31]);
+    expect(snapshot.houses.map(({ type, slots, residents }) => [type, slots, residents.length])).toEqual([[0, 4, 4], [1, 8, 4]]);
   });
 
   it('leaves wild grass and trees out of the crops', () => {
@@ -115,7 +117,6 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     expect(digest.seasonEnd).toEqual({ lost: [], witherTomorrow: [] });
     expect(digest.scarecrows.map(({ season, daysLeft }) => [season, daysLeft])).toEqual([[2, 25]]);
     expect(digest.machines.done.reduce((sum, row) => sum + row.slots, 0)).toBe(3);
-    expect(digest.deliveries.ready).toHaveLength(21);
   });
 
   it('remembers farmland that turned back into plain ground overnight', () => {
