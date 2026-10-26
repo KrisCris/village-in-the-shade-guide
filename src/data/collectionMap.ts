@@ -42,3 +42,12 @@ export const projectMinimap = (point: { x: number; y: number }, projection: Mini
   x: point.x / projection.scale_divisor + projection.offset_x,
   y: point.y / projection.scale_divisor + projection.offset_y,
 });
+/** The minimap images are square, this many pixels a side. */
+export const MINIMAP_PIXELS = 4096;
+/** The world rectangle the whole minimap image covers: left, top, right, bottom. */
+export const minimapWorldBounds = (projection: MinimapProjection) => [
+  -projection.offset_x * projection.scale_divisor,
+  -projection.offset_y * projection.scale_divisor,
+  (MINIMAP_PIXELS - projection.offset_x) * projection.scale_divisor,
+  (MINIMAP_PIXELS - projection.offset_y) * projection.scale_divisor,
+];

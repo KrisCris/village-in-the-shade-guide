@@ -16,6 +16,7 @@ import {
   type SceneGround,
   type SpriteArt
 } from '../../lib/saveMapScene';
+import { landPosition } from '../../lib/saveMap';
 import { withBase } from '../../lib/sitePath';
 import { tr } from '../../i18n/active';
 
@@ -71,8 +72,10 @@ export interface MapCanvasProps {
   onStroke: (start: boolean) => void;
   /** Dragging with the place tool lays one per cell (floors and paths). */
   dragPlace?: boolean;
-  /** Extra cell highlights drawn under the selection, such as a remembered farm area. */
-  marks?: { cells: number[]; fill: string; stroke?: string }[];
+  /** Extra cell highlights drawn under the selection, such as a remembered farm area. `pin` keeps them visible when zoomed out. */
+  marks?: { cells: number[]; fill: string; stroke?: string; pin?: boolean }[];
+  /** A world-space image drawn under the art, such as the village minimap around the farm; `view` is the part the corner overview shows. */
+  backdrop?: { src: string; bounds: number[]; view?: number[] };
 }
 
 export default function MapCanvas(props: MapCanvasProps) {
@@ -97,6 +100,7 @@ export default function MapCanvas(props: MapCanvasProps) {
   const alphaMasks = useRef(new Map<string, { width: number; height: number; alpha: Uint8Array }>());
   const overlay = useRef<HTMLCanvasElement>(null);
   const artCache = useRef<ArtCache | null>(null);
+  const backdrop = useRef<HTMLImageElement | null>(null);
   const artDirty = useRef(true);
   const frame = useRef(0);
   const settle = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -162,6 +166,14 @@ export default function MapCanvas(props: MapCanvasProps) {
     schedule();
   }, [camera, size, hover, marquee, touchTrail, regions, props.selected, props.selection, props.selectedCells,
     props.ghost, props.mirrored, props.previewValid, props.tool, props.brush, props.labels, props.marks]);
+  useEffect(() => {
+    const src = props.backdrop?.src;
+    if (!src) { backdrop.current = null; return; }
+    const img = new Image();
+    img.onload = () => { if (backdrop.current === img) schedule(); };
+    img.src = src;
+    backdrop.current = img;
+  }, [props.backdrop?.src]);
   useEffect(() => () => {
     cancelAnimationFrame(frame.current);
     frame.current = 0;
@@ -336,8 +348,12 @@ export default function MapCanvas(props: MapCanvasProps) {
     const z = camera.zoom;
     const ctx = main.getContext('2d')!;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.fillStyle = p.art.background ? '#111816' : '#263f3b';
+    ctx.fillStyle = p.backdrop ? '#8e745b' : p.art.background ? '#111816' : '#263f3b';
     ctx.fillRect(0, 0, size.width, size.height);
+    const back = backdrop.current, around = p.backdrop?.bounds;
+    if (back?.complete && back.naturalWidth && around)
+      ctx.drawImage(back, (around[0] - camera.x) * z + size.width / 2, (around[1] - camera.y) * z + size.height / 2,
+        (around[2] - around[0]) * z, (around[3] - around[1]) * z);
     if (cache.right > cache.left && cache.bottom > cache.top)
       ctx.drawImage(cache.canvas, (cache.left - camera.x) * z + size.width / 2, (cache.top - camera.y) * z + size.height / 2,
         (cache.right - cache.left) * z, (cache.bottom - cache.top) * z);
@@ -351,9 +367,25 @@ export default function MapCanvas(props: MapCanvasProps) {
     o.translate(-camera.x, -camera.y);
     const view = { left: camera.x - size.width / 2 / z, right: camera.x + size.width / 2 / z, top: camera.y - size.height / 2 / z, bottom: camera.y + size.height / 2 / z };
     const cells = p.terrain ?? FARM_CELLS;
-    for (const mark of p.marks ?? []) {
-      const marked = new Set(mark.cells);
-      for (const c of cells) if (marked.has(c.id)) diamond(o, z, c.x, c.y, mark.fill, mark.stroke);
+    // Marks are placed by cell id, so cells outside the terrain (trees across the village) show too.
+    for (const mark of p.marks ?? []) for (const id of mark.cells) {
+      const c = landPosition(id);
+      diamond(o, z, c.x, c.y, mark.fill, mark.stroke);
+    }
+    // A cell is under a few pixels wide when zoomed out; pins keep marked ones findable,
+    // one per 32-pixel patch of screen so a planted field does not turn into a carpet of pins.
+    const pinned = new Set<string>();
+    if (45 * z < 8) for (const mark of p.marks ?? []) if (mark.pin) for (const id of mark.cells) {
+      const c = landPosition(id), patch = `${Math.round(c.x * z / 32)},${Math.round(c.y * z / 32)}`;
+      if (pinned.has(patch)) continue;
+      pinned.add(patch);
+      o.beginPath();
+      o.arc(c.x, c.y, 8 / z, 0, Math.PI * 2);
+      o.fillStyle = '#d9483b'; o.fill();
+      o.strokeStyle = '#fffbea'; o.lineWidth = 2.5 / z; o.stroke();
+      o.beginPath();
+      o.arc(c.x, c.y, 2.5 / z, 0, Math.PI * 2);
+      o.fillStyle = '#fffbea'; o.fill();
     }
     const picked = new Set(p.selection);
     if (p.selected) picked.add(p.selected);
@@ -522,10 +554,11 @@ export default function MapCanvas(props: MapCanvasProps) {
     const matrix = svg.getScreenCTM();
     if (!matrix) return;
     const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(matrix.inverse());
-    const b = props.art.bounds;
+    const b = miniBounds;
     const x = Math.max(b[0], Math.min(b[2], p.x)), y = Math.max(b[1], Math.min(b[3], p.y));
     setCamera(c => ({ ...c, x, y }));
   }
+  const miniBounds = props.backdrop?.view ?? props.backdrop?.bounds ?? props.art.bounds;
   const zoom = (factor: number) =>
     setCamera((c) =>
       zoomCamera(c, factor, { x: size.width / 2, y: size.height / 2 }, size.width, size.height)
@@ -616,9 +649,16 @@ export default function MapCanvas(props: MapCanvasProps) {
         onClick={(e) => { if (e.detail === 0) setCamera(fitCamera(homeBounds, size.width, size.height)); }}
       >
         <svg
-          viewBox={`${props.art.bounds[0]} ${props.art.bounds[1]} ${props.art.bounds[2] - props.art.bounds[0]} ${props.art.bounds[3] - props.art.bounds[1]}`}
+          viewBox={`${miniBounds[0]} ${miniBounds[1]} ${miniBounds[2] - miniBounds[0]} ${miniBounds[3] - miniBounds[1]}`}
           aria-hidden="true"
         >
+          {props.backdrop && <image
+            href={props.backdrop.src}
+            x={props.backdrop.bounds[0]}
+            y={props.backdrop.bounds[1]}
+            width={props.backdrop.bounds[2] - props.backdrop.bounds[0]}
+            height={props.backdrop.bounds[3] - props.backdrop.bounds[1]}
+          />}
           <image
             href={withBase(`/maps/farm/${backgroundFile}`)}
             x={props.art.bounds[0]}
@@ -640,7 +680,7 @@ export default function MapCanvas(props: MapCanvasProps) {
             height={size.height / camera.zoom}
             fill="#ffe49a33"
             stroke="#ffe49a"
-            strokeWidth={90}
+            strokeWidth={(miniBounds[2] - miniBounds[0]) / 105}
           />
         </svg>
       </button>
