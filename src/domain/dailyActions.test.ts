@@ -81,8 +81,13 @@ describe('daily actions', () => {
   });
 
   it('warns first about crops that wither tomorrow', () => {
-    const actions = run({ digest: digest({ seasonEnd: { lost: [], witherTomorrow: [{ crop: 1, cause: 'season', cells: [1] }] } }) });
+    const actions = run({ digest: digest({
+      seasonEnd: { lost: [], witherTomorrow: [{ crop: 1, cause: 'season', cells: [1] }] },
+      harvest: [{ crop: 1, kind: 'ripe', cells: [1] }, { crop: 2, kind: 'ripe', cells: [2] }],
+    }) });
     expect(actions[0].kind).toBe('wither');
+    // The withering cell is harvested under the warning, not counted again in routine care.
+    expect(actions.at(-1)).toMatchObject({ kind: 'routine', harvest: [2] });
   });
 
   it('leads with the trip that can happen today', () => {

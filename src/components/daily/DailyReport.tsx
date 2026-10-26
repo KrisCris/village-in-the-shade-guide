@@ -121,12 +121,15 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
     const missing = plan.materials.filter((line) => line.short > 0).length;
     const free = plan.livestock.housing.reduce((sum, line) => sum + Math.max(0, line.slots - line.used), 0);
     const { deliveries } = plan;
+    // After midnight the catalog waits for the morning, like the to-do list says.
+    const handIn = night ? deliveries.ready.filter((entry) => entry.spec.list !== 'catalog') : deliveries.ready, waiting = deliveries.ready.length - handIn.length;
+    const roomy = plan.livestock.ideas.filter((idea) => idea.room > 0).length;
     tiles.push(
       { key: 'today', id: 'daily-today', icon: 'today', label: tr('今日待办'), value: tasks.length - ticked, caption: tasks.length ? tr('已完成 {done} / {total} 项', { done: ticked, total: tasks.length }) : tr('今天没有要紧的事。'), tone: tasks.length && ticked === tasks.length ? 'done' : undefined },
-      { key: 'deliver', id: 'daily-deliveries', icon: 'deliver', label: tr('今天可以交'), value: deliveries.ready.length, caption: tr('已完成 {done} / {total} 项', { done: deliveries.done, total: deliveries.total }), tone: deliveries.ready.length ? 'alert' : undefined },
+      { key: 'deliver', id: 'daily-deliveries', icon: 'deliver', label: tr('今天可以交'), value: handIn.length, caption: waiting ? tr('另有 {count} 项 7:00 后能交', { count: waiting }) : tr('已完成 {done} / {total} 项', { done: deliveries.done, total: deliveries.total }), tone: handIn.length ? 'alert' : undefined },
       { key: 'build', id: 'daily-machines', icon: 'machine', label: tr('要加造的设备'), value: builds, caption: !builds ? tr('现有设备够用') : missing ? tr('材料还差 {count} 种', { count: missing }) : tr('材料够用'), tone: builds ? 'alert' : 'done' },
       { key: 'land', id: 'daily-land', icon: 'land', label: tr('空着的农田'), value: vacant, caption: !vacant ? tr('农田都种上了') : !daysLeft ? tr('明天就换季') : tr('有 {count} 种作物来得及成熟', { count: plan.planting.length }) },
-      { key: 'animals', id: 'daily-land', icon: 'farm', label: tr('畜舍空位'), value: free, caption: plan.livestock.ideas.length ? tr('有 {count} 种动物可以养', { count: plan.livestock.ideas.length }) : tr('交付不需要新的动物') },
+      { key: 'animals', id: 'daily-land', icon: 'farm', label: tr('家畜空位'), value: free, caption: roomy ? tr('有 {count} 种动物现在就能养', { count: roomy }) : plan.livestock.ideas.length ? tr('交付要的动物得先扩建或新建') : tr('交付不需要新的动物') },
     );
   }
   const navLabel: Record<string, string> = {

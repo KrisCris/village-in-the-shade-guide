@@ -91,7 +91,9 @@ export function dailyActions(input: {
   if (saps.length) actions.push({ kind: 'gather', lines: saps });
   if (input.vacant > 0 && input.planting.length) actions.push({ kind: 'plant', ideas: input.planting.slice(0, 3), vacant: input.vacant });
   for (const idea of input.animals.filter((entry) => entry.room > 0).slice(0, 1)) actions.push({ kind: 'animal', idea });
-  const harvest = digest.harvest.flatMap((group) => group.cells);
+  // Crops that wither tomorrow already lead the list; routine care covers the rest.
+  const urgent = new Set(digest.seasonEnd.witherTomorrow.flatMap((group) => group.cells));
+  const harvest = digest.harvest.flatMap((group) => group.cells).filter((cell) => !urgent.has(cell));
   if (harvest.length || digest.chores.water.length || digest.chores.hungry) actions.push({ kind: 'routine', harvest, water: digest.chores.water, hungry: digest.chores.hungry });
   if (morning.length) actions.push({ kind: 'deliver', plans: morning, later: true });
   actions.push(...[...trips.values()].filter((trip) => trip.later));

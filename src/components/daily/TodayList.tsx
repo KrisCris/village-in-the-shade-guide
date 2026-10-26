@@ -34,7 +34,7 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
 }) {
   const icon = (kind: 'items' | 'crops', id: number) => <SaveIcon names={names} kind={kind} value={String(id)} size={36} />;
   const list = (values: string[]) => values.join(tr('、'));
-  const days = (value: number) => Number.isFinite(value) ? name.number(Math.ceil(value)) : '∞';
+  const days = (value: number) => Number.isFinite(value) ? name.number(Math.ceil(value * 10) / 10) : '∞';
   const step = (entry: BuildStep) => entry.upgrade
     ? tr('升级 {count} 台{machine}', { count: entry.count, machine: name.item(entry.machine) })
     : tr('新造 {count} 台{machine}', { count: entry.count, machine: name.item(entry.machine) });
