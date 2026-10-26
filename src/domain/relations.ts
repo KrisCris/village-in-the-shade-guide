@@ -5,6 +5,7 @@ import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import { durationText } from './duration';
 import { harvestOptions } from './harvestChoice';
+import { buildCropGrowthModel, type CropGrowthModel } from './cropGrowth';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappaExchange from '../../data/sources/game-kappa-exchange.json';
@@ -48,6 +49,8 @@ export type EntityDetailModel = {
   /** Static first batch; the client resolves the complete catalog before filtering. */
   totalProcessingPlans?: number;
   ingredientOptions: Array<{label:string;rows:RelationRowModel[]}>;
+  /** Stage art and days for a crop, or for the crop a seed or sapling grows into. */
+  growth?: CropGrowthModel | null;
 };
 
 // Translation keys; every builder below takes the page translator.
@@ -468,5 +471,6 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
       return item ? [{key:`${option.slot}:${id}`,entity:item,quantity:option.quantity,sellPrice:priceText(item,'sell_price',quality,t),fixedPrice:item.quality_eligible!==true,chips:[t('单个直接售价')]}] : [];
     }),
   }));
-  return { entity, quality, qualityName: qualityLabel(quality, t), facts, profit, groups, locations, processingPlans, ingredientOptions:alternatives };
+  const growth = ['crops', 'items'].includes(entity.kind) ? buildCropGrowthModel(entity, catalog, t) : null;
+  return { entity, quality, qualityName: qualityLabel(quality, t), facts, profit, groups, locations, processingPlans, ingredientOptions:alternatives, growth };
 }
