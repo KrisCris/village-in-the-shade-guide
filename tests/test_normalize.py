@@ -3,7 +3,7 @@ from __future__ import annotations
 import struct
 
 from honogurashi_extractor.localization import build_name
-from honogurashi_extractor.normalize import _crop_record, _growth_data, _perennial, normalize_snapshot
+from honogurashi_extractor.normalize import _crop_record, _extractor_item, _growth_data, _perennial, normalize_snapshot
 from honogurashi_extractor.table import read_table
 from tests.fixtures.build_table import build_table
 
@@ -317,3 +317,11 @@ def test_normalizes_crop_seed_and_processing_relationships():
     assert process.duration_minutes == 1380
     assert process.name.zh_hans == "腌洋葱"
     assert snapshot.cooking_recipes["COOKING_ID_ONION_SOUP"].name.zh_hans == "洋葱汤"
+
+
+def test_extractor_item_is_the_u64_24_bytes_before_the_record_end():
+    record = bytearray(64)
+    struct.pack_into("<Q", record, 40, 140300)
+    assert _extractor_item(bytes(record)) == 140300
+    assert _extractor_item(bytes(64)) == 0
+    assert _extractor_item(bytes(16)) == 0

@@ -47,10 +47,10 @@ Each `tools/extract-*.py` handles one kind of data and was written for a specifi
 | Area | Tools |
 | --- | --- |
 | Maps and exploration | `extract-map-markers.py`, `extract-exploration-markers.py`, `extract-night-pickups.py`, `extract-farmland.py`, `extract-quarry.py`, `extract-fishing.py` |
-| Rules and economy | `extract-game-rules.py`, `extract-machine-capacities.py`, `extract-livestock-products.py`, `extract-shrine-materials.py`, `extract-kappa-exchange.py`, `extract-night-exchanges.py`, `extract-construction.py` |
+| Rules and economy | `extract-game-rules.py`, `extract-machine-capacities.py`, `extract-livestock-products.py`, `extract-shrine-materials.py`, `extract-kappa-exchange.py`, `extract-night-exchanges.py`, `extract-construction.py`, `extract-sap-trees.py` |
 | Recipes and appearance | `extract-recipe-documents.py`, `extract-recipe-lessons.py`, `extract-appearance-groups.py` |
 | Save editor | `extract-save-editor-rules.py`, `extract-save-appearance.py`, `extract-save-unlocks.py`, `extract-save-v2-catalogs.py`, `extract-save-map.py`, `extract-save-editor-icons.py` |
-| Images | `extract-map-art.py`, `extract-scenery.py`, `extract-portrait-models.py`, `extract-portrait-options.py`; see [assets](assets.en.md) |
+| Images | `extract-map-art.py`, `extract-crop-growth.py`, `extract-scenery.py`, `extract-portrait-models.py`, `extract-portrait-options.py`; see [assets](assets.en.md) |
 | Research | `inspect-lua54.py`, `save_format.py`, `save-probes/` |
 
 ## After an update
