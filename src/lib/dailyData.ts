@@ -62,3 +62,27 @@ export function writeSettings(storage: Storage | undefined, player: string, sett
     try { storage.setItem(SETTINGS_KEY, JSON.stringify({ [player]: settings })); return true; } catch { return false; }
   }
 }
+
+/** Today's ticked-off tasks per player; a save from another day starts the list fresh. */
+const DONE_KEY = 'village-daily:done:v1';
+
+export function readDone(storage: Storage | undefined, player: string, day: string): string[] {
+  try {
+    const saved = (JSON.parse(storage?.getItem(DONE_KEY) ?? '{}') as Record<string, { day?: unknown; keys?: unknown }>)?.[player];
+    return saved?.day === day && Array.isArray(saved.keys) ? saved.keys.filter((key): key is string => typeof key === 'string') : [];
+  } catch {
+    return [];
+  }
+}
+
+export function writeDone(storage: Storage | undefined, player: string, day: string, keys: string[]): boolean {
+  if (!storage) return false;
+  const entry = { day, keys };
+  try {
+    const all = JSON.parse(storage.getItem(DONE_KEY) ?? '{}') as Record<string, unknown>;
+    storage.setItem(DONE_KEY, JSON.stringify({ ...(all && typeof all === 'object' ? all : {}), [player]: entry }));
+    return true;
+  } catch {
+    try { storage.setItem(DONE_KEY, JSON.stringify({ [player]: entry })); return true; } catch { return false; }
+  }
+}

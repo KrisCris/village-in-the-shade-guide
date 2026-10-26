@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_SETTINGS, readSettings, writeSettings } from './dailyData';
+import { DEFAULT_SETTINGS, readDone, readSettings, writeDone, writeSettings } from './dailyData';
 
 const memory = (initial: Record<string, string> = {}) => {
   const data = new Map(Object.entries(initial));
@@ -23,5 +23,25 @@ describe('daily settings', () => {
     expect(writeSettings(undefined, 'a', DEFAULT_SETTINGS)).toBe(false);
     const full = { getItem: () => null, setItem: () => { throw new Error('quota'); } } as unknown as Storage;
     expect(writeSettings(full, 'a', DEFAULT_SETTINGS)).toBe(false);
+  });
+});
+
+describe('ticked-off tasks', () => {
+  it('keeps one day per player and forgets other days', () => {
+    const storage = memory();
+    expect(writeDone(storage, 'a', '1-3-1', ['deliver', 'routine'])).toBe(true);
+    writeDone(storage, 'b', '1-3-2', ['build']);
+    expect(readDone(storage, 'a', '1-3-1')).toEqual(['deliver', 'routine']);
+    expect(readDone(storage, 'a', '1-3-2')).toEqual([]);
+    expect(readDone(storage, 'b', '1-3-2')).toEqual(['build']);
+    writeDone(storage, 'a', '1-3-2', ['plant']);
+    expect(readDone(storage, 'a', '1-3-1')).toEqual([]);
+  });
+
+  it('ignores damaged or missing storage', () => {
+    expect(readDone(memory({ 'village-daily:done:v1': '{' }), 'a', 'd')).toEqual([]);
+    expect(readDone(memory({ 'village-daily:done:v1': '{"a":{"day":"d","keys":["x",3]}}' }), 'a', 'd')).toEqual(['x']);
+    expect(readDone(undefined, 'a', 'd')).toEqual([]);
+    expect(writeDone(undefined, 'a', 'd', [])).toBe(false);
   });
 });
