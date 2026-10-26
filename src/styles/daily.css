@@ -1,0 +1,68 @@
+.daily-planner { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; margin-bottom: 3rem; }
+
+/* Date and quick facts */
+.daily-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin: 1.5rem 0 1rem; }
+.daily-head h2 { margin: .3rem 0 .6rem; }
+.daily-head .eyebrow { margin: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+.daily-facts { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+
+/* Cards */
+.daily-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1rem; align-items: start; }
+.daily-card { min-width: 0; padding: 1rem 1.1rem; }
+.daily-card h3 { margin: 0 0 .6rem; font-size: 1.05rem; }
+.daily-card.is-warning { border-color: var(--vermilion); box-shadow: inset 3px 0 0 var(--vermilion); }
+.daily-sub { margin: .9rem 0 .35rem; font-size: .82rem; font-weight: 600; color: var(--muted); }
+.daily-card h3 + .daily-sub { margin-top: 0; }
+.daily-empty { margin: 0; color: var(--muted); }
+.daily-note { margin: .8rem 0 0; font-size: .8rem; line-height: 1.65; color: var(--muted); }
+.daily-note.is-error { color: var(--vermilion); }
+
+/* Rows: icon, name with detail, count, map button */
+.daily-list { display: grid; gap: .2rem; margin: 0; padding: 0; list-style: none; }
+.daily-row { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto auto; align-items: center; gap: .6rem; min-height: 44px; padding: .15rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-row:last-child { border-bottom: 0; }
+.daily-row.is-plain { grid-template-columns: minmax(0, 1fr) auto auto; }
+.daily-row-name { min-width: 0; overflow-wrap: anywhere; }
+.daily-row-name small { display: block; font-size: .76rem; line-height: 1.4; color: var(--muted); }
+.daily-count { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+button.daily-map-button { min-height: 34px; padding: .2rem .6rem; font-size: .78rem; }
+
+/* Forecast */
+.daily-days > li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: start; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent); }
+.daily-days > li:last-child { border-bottom: 0; }
+.daily-days strong { padding-top: .45rem; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.daily-chips { display: flex; flex-wrap: wrap; gap: .35rem; }
+button.daily-chip { display: inline-flex; align-items: center; gap: .35rem; min-height: 36px; padding: .2rem .65rem .2rem .3rem; border-radius: 999px; font-size: .85rem; }
+.daily-chip b { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Land */
+.daily-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin: 0; }
+.daily-stats div { padding: .55rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--paper); }
+.daily-stats dt { font-size: .76rem; color: var(--muted); }
+.daily-stats dd { margin: 0; font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.daily-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+
+/* Folded rows inside a card: a plain disclosure line, not the boxed details used in articles. */
+.daily-planner .daily-card details.daily-more { margin: .3rem 0 0; padding: 0; border: 0; background: none; }
+.daily-planner .daily-card details.daily-more > summary { display: flex; align-items: center; gap: .4rem; min-height: 40px; color: var(--green); font-size: .85rem; cursor: pointer; list-style: none; }
+.daily-planner .daily-card details.daily-more > summary::-webkit-details-marker { display: none; }
+.daily-planner .daily-card details.daily-more > summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+.daily-planner .daily-card details.daily-more[open] > summary::before { transform: rotate(90deg); }
+.daily-planner .daily-card details.daily-more[open] > summary { margin-bottom: .2rem; }
+
+/* Farm-area map */
+.daily-map-anchor { scroll-margin-top: 80px; margin-top: 1.2rem; }
+.daily-map-loading { display: grid; place-items: center; color: #f5eed6; }
+.daily-map-placeholder { display: grid; place-items: center; min-height: min(62dvh, 560px); margin: 0; }
+.daily-swatch { display: inline-block; width: 14px; height: 14px; margin-right: .4rem; vertical-align: -2px; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.daily-swatch.is-area { background: #7fbf6a; }
+.daily-swatch.is-highlight { background: #ffd76a; }
+
+@media (max-width: 520px) {
+  .daily-row { grid-template-columns: 28px minmax(0, 1fr) auto; }
+  .daily-row .daily-map-button { grid-column: 2 / -1; justify-self: start; }
+  .daily-row.is-plain { grid-template-columns: minmax(0, 1fr) auto; }
+  .daily-row.is-plain .daily-map-button { grid-column: 1 / -1; }
+  .daily-days > li { grid-template-columns: 1fr; }
+  .daily-days strong { padding-top: 0; }
+}

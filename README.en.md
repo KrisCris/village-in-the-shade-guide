@@ -14,6 +14,7 @@ All data is extracted from the game files (currently Steam build `25311578`), so
 - **Database**: crops, machines, processing, cooking, fish, characters and every item. Search by name or pinyin, filter by season, time of day, fishing spot or quality, and sort by any column. The detail panel shows how to get an item, what it is used for, recipes, shops and deliveries, in both directions.
 - **Profit planner**: compares the value added by processing and the full return from buying seeds to selling the product.
 - **Production workflow**: lay out buying, planting, processing, stockpiling and selling on a canvas. The tool works out quantities, dates, land, machines and cash. See the [workflow guide](docs/workflow-planner.en.md).
+- **Daily farm tasks**: reads a save and lists today's harvest, the cells that need water, finished machine products and deliveries you can fill now, and remembers your farm area. Read-only; nothing is uploaded. See the [daily tasks guide](docs/daily-planner.en.md).
 - **Guides**: seasonal stockpiles, fishing spots by season, quarry drops, birthdays and gifts, book and shrine maps, getting started, story progression, exploration, appearance, hunting, livestock, cooking, night preparation, shrine skills and more.
 - **Save editor**: reads and edits a save in the browser and exports a new file. Nothing is uploaded. It covers player stats, items and containers, processing machines, livestock, NPC friendship, quests, collections and unlocks, plus the farm and indoor maps. See the [save editor guide](docs/save-editor.en.md).
 

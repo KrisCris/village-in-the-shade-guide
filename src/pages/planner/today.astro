@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DailyPlanner from '../../components/daily/DailyPlanner';
+import '../../styles/save-editor.css';
+import '../../styles/daily.css';
+import { getI18n } from '../../i18n/server';
+const { t, locale } = getI18n(Astro.url);
+---
+
+<BaseLayout title={t('今日农务')} description={t('读取存档，列出今天能收获的作物、要浇水的格子、做好的加工品和现在就能交付的委托。')}>
+  <section class="save-page-heading daily-page-heading">
+    <p class="eyebrow">{t('工具 · 读取存档')}</p>
+    <h1>{t('今日农务')}</h1>
+    <p>
+      {t('选一个存档，看今天要做什么：哪些作物能收，多少格要浇水，哪些加工品做好了，哪些委托现在就能交。')}
+      {t('存档只在浏览器里读取，不会上传，也不会被修改。')}
+    </p>
+  </section>
+  <DailyPlanner client:only="react" locale={locale}><p slot="fallback" class="save-loading daily-planner" role="status">{t('正在打开今日农务…')}</p></DailyPlanner>
+</BaseLayout>

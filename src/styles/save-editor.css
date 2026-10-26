@@ -31,6 +31,7 @@
 
 /* upload ------------------------------------------------------------------ */
 .save-dropzone { border: 1px dashed var(--green); border-radius: 8px; background: color-mix(in srgb, var(--paper-raised) 85%, transparent); padding: 1rem; box-shadow: var(--panel-shadow); }
+.save-dropzone.is-dragging { border-style: solid; background: var(--green-soft); }
 .save-file-label { min-height: 122px; display: flex; align-items: center; justify-content: center; gap: 1rem; cursor: pointer; text-align: left; }
 .save-file-label > span:nth-child(2) { display: grid; gap: .35rem; }
 .save-file-label strong { font-size: 1.1rem; }

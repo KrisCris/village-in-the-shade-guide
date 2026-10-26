@@ -71,6 +71,8 @@ export interface MapCanvasProps {
   onStroke: (start: boolean) => void;
   /** Dragging with the place tool lays one per cell (floors and paths). */
   dragPlace?: boolean;
+  /** Extra cell highlights drawn under the selection, such as a remembered farm area. */
+  marks?: { cells: number[]; fill: string; stroke?: string }[];
 }
 
 export default function MapCanvas(props: MapCanvasProps) {
@@ -159,7 +161,7 @@ export default function MapCanvas(props: MapCanvasProps) {
   useEffect(() => {
     schedule();
   }, [camera, size, hover, marquee, touchTrail, regions, props.selected, props.selection, props.selectedCells,
-    props.ghost, props.mirrored, props.previewValid, props.tool, props.brush, props.labels]);
+    props.ghost, props.mirrored, props.previewValid, props.tool, props.brush, props.labels, props.marks]);
   useEffect(() => () => {
     cancelAnimationFrame(frame.current);
     frame.current = 0;
@@ -349,6 +351,10 @@ export default function MapCanvas(props: MapCanvasProps) {
     o.translate(-camera.x, -camera.y);
     const view = { left: camera.x - size.width / 2 / z, right: camera.x + size.width / 2 / z, top: camera.y - size.height / 2 / z, bottom: camera.y + size.height / 2 / z };
     const cells = p.terrain ?? FARM_CELLS;
+    for (const mark of p.marks ?? []) {
+      const marked = new Set(mark.cells);
+      for (const c of cells) if (marked.has(c.id)) diamond(o, z, c.x, c.y, mark.fill, mark.stroke);
+    }
     const picked = new Set(p.selection);
     if (p.selected) picked.add(p.selected);
     for (const sprite of p.sprites) if (picked.has(sprite.key) && shownIn(p, sprite)) diamond(o, z, sprite.x, sprite.y, '', '#fff2aa');
