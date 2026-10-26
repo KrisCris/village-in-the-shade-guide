@@ -1,8 +1,8 @@
-# Daily farm tasks
+# Daily planner
 
 [简体中文](daily-planner.md) | **English**
 
-Open "今日农务" (daily farm tasks) from the top navigation or the profit planner page, at `/planner/today/`. Pick a slot save (`save.001`–`save.005`) and the page lists what to do today. The save is read in the browser only; it is not uploaded or changed.
+Open "每日规划" (daily planner) from the top navigation or the profit planner page, at `/planner/today/`. Pick a slot save (`save.001`–`save.005`) and the page lists what to do today. The save is read in the browser only; it is not uploaded or changed.
 
 The site's interface is in Chinese and Japanese. UI labels below are given in Chinese with an English gloss.
 

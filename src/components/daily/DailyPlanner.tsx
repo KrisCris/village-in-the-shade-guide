@@ -58,7 +58,7 @@ function Daily() {
     if (loaded) setStorageFailed(!writeFarmArea(browserStorage(), loaded.snapshot.player, next));
   }
 
-  return <section className="daily-planner" aria-label={tr('今日农务')}>
+  return <section className="daily-planner" aria-label={tr('每日规划')}>
     <input ref={fileInput} hidden type="file" disabled={busy} accept=".001,.002,.003,.004,.005,application/octet-stream"
       onChange={async (event) => { const file = event.target.files?.[0]; if (file) await loadFile(file); event.target.value = ''; }} />
     {!loaded && <>
