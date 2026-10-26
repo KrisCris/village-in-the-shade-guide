@@ -38,7 +38,8 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
   const step = (entry: BuildStep) => entry.upgrade
     ? tr('升级 {count} 台{machine}', { count: entry.count, machine: name.item(entry.machine) })
     : tr('新造 {count} 台{machine}', { count: entry.count, machine: name.item(entry.machine) });
-  const houseName = (type: number) => [tr('畜舍'), tr('禽舍'), tr('马棚')][type] ?? tr('畜舍');
+  // The game's own names for the barn, the coop and the stable.
+  const houseName = (type: number) => [tr('畜舍'), tr('鸡舍'), tr('马厩')][type] ?? tr('畜舍');
 
   const rows = actions.map((action): Row => {
     const key = actionKey(action);

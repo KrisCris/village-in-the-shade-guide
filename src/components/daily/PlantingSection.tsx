@@ -28,7 +28,11 @@ export default function PlantingSection({ land, ideas, housing, animals, daysLef
 }) {
   const vacant = land.tilled + land.plain;
   const money = (value: number) => name.number(Math.round(value));
-  const houseName = (type: number) => [tr('畜舍'), tr('禽舍'), tr('马棚')][type] ?? tr('畜舍');
+  // The game's own names for the barn, the coop and the stable.
+  const houseName = (type: number) => [tr('畜舍'), tr('鸡舍'), tr('马厩')][type] ?? tr('畜舍');
+  // "Turkey egg" already names the turkey; only products that do not get the animal in front.
+  const product = (species: number, itemId: number) => name.item(itemId).includes(name.animal(species)) ? name.item(itemId)
+    : tr('{animal}产的{item}', { animal: name.animal(species), item: name.item(itemId) });
 
   const ideaCards = ideas.map((idea) => {
     const crop = idea.crop.name.zh_hans, best = idea.best;
@@ -63,11 +67,11 @@ export default function PlantingSection({ land, ideas, housing, animals, daysLef
       {line && <Places used={line.used} slots={line.slots} />}
       {group.length > 0 && <>
         <p className="daily-idea-detail">{tr('交付要的畜产品，农场里还没有能产的动物')}</p>
-        <span className="daily-items">{group.flatMap((idea) => idea.items.map((itemId) => <ItemChip key={`${idea.species}:${itemId}`} names={names} itemId={itemId} label={tr('{animal}产的{item}', { animal: name.animal(idea.species), item: name.item(itemId) })} />))}</span>
+        <span className="daily-items">{group.flatMap((idea) => idea.items.map((itemId) => <ItemChip key={`${idea.species}:${itemId}`} names={names} itemId={itemId} label={product(idea.species, itemId)} />))}</span>
       </>}
       {order && <div className="daily-order">
         <p>{order.locked ? tr('第一座畜舍建好、收到木助的信后，才能在树木建设订「{name}」（{slots} 个位置）', { name: order.name, slots: order.slots })
-          : order.from ? tr('在树木建设改建成「{name}」，位置从 {from} 个变成 {slots} 个', { name: order.name, from: order.from, slots: order.slots })
+          : order.from ? tr('在树木建设订「{name}」改建，位置从 {from} 个变成 {slots} 个', { name: order.name, from: order.from, slots: order.slots })
           : tr('在树木建设新建「{name}」（{slots} 个位置）', { name: order.name, slots: order.slots })}</p>
         <span className="daily-items">
           {order.inputs.map(([itemId, count]) => <ItemChip key={itemId} names={names} itemId={itemId} label={name.item(itemId)} count={`× ${count}`} />)}
