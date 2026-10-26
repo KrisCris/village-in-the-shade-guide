@@ -1,11 +1,11 @@
 import { decodeSave } from './saveEditor';
 import { readSigned, readString, SerDocument } from './ser';
-import { areaAvailable, cropGrowth, draftObjects, mapCells, MAP_CROPS, objectFootprint, sceneCells } from './saveMap';
-import { containsPoint } from './saveMapGeometry';
-import { FARM_SCENE } from './saveMapScene';
+import { areaAvailable, cropGrowth, draftObjects, mapCells, mapObjects, MAP_CROPS, objectFootprint, sceneCells } from './saveMap';
+import { containsPoint, toGrid } from './saveMapGeometry';
+import { FARM_CELLS, FARM_SCENE } from './saveMapScene';
 import type { CropRules } from '../domain/dailyDigest';
 import { collectContainers, SHIPPING_BOX_ID } from './saveItems';
-import { machineJobs, machineSpec } from './saveMachines';
+import { machineJobs, machineSpec, mapValue } from './saveMachines';
 import { readDeliveries, UNLOCKS } from './saveDeliveries';
 import { flagEnabled } from './saveProgress';
 import { tr } from '../i18n/active';
@@ -35,6 +35,17 @@ export interface DailyStack { itemId: number; rank: number; count: number }
 export interface DailyJob { output: number; count: number; seconds: number; remaining: number }
 export interface DailyMachine { key: string; itemId: number; jobs: DailyJob[] }
 export interface DailyDelivery { bundleId: number; index: number; itemId: number; rank: number; count: number; remain: number }
+export interface DailyScarecrow {
+  key: string;
+  itemId: number;
+  /** 0 spring … 3 winter: crops of this season keep growing in its range out of season. */
+  season: number;
+  /** Turnovers since it was placed; it is spent at 28. */
+  days: number;
+  spent: boolean;
+  /** Farm cells in its effect range (5×5 around the cell it stands on). */
+  cells: number[];
+}
 export interface DailySnapshot {
   /** In-game seconds since year 1, spring 1, 07:00. */
   seconds: number;
@@ -44,6 +55,7 @@ export interface DailySnapshot {
   player: string;
   cells: DailyCell[];
   machines: DailyMachine[];
+  scarecrows: DailyScarecrow[];
   deliveriesOpen: boolean;
   deliveries: DailyDelivery[];
   /** Backpack and storage chests. */
@@ -64,6 +76,27 @@ export function farmableCells(doc: SerDocument, ids: number[]): number[] {
   const footprints = draftObjects(doc, {}).filter((object) => (object.spec || object.blocksPlacement) && !object.parent).map(objectFootprint);
   return sceneCells(FARM_SCENE).filter((cell) => wanted.has(cell.id) && cell.mask & 3 && areaAvailable(doc, cell.area) &&
     !footprints.some((polygons) => polygons.some((polygon) => containsPoint(polygon, cell)))).map((cell) => cell.id);
+}
+
+const SEASON_CODES = ['SPRING', 'SUMMER', 'AUTUMN', 'WINTER'];
+
+/**
+ * Placed scarecrows. The save keeps `season`, `days` (counted up at each turnover) and `disable`
+ * (set when the 28 days are used up) in the gimmick's status map; a spent scarecrow stays until
+ * it is chopped down.
+ */
+export function readScarecrows(doc: SerDocument): DailyScarecrow[] {
+  return mapObjects(doc).flatMap((object) => {
+    const spec = object.spec;
+    if (!spec?.features.includes('SCARECROW')) return [];
+    const range = Number(spec.features.find((feature) => feature.startsWith('PLACEMENT_EFFECT_RANGE_'))?.split('_').at(-1) ?? 2);
+    const status = doc.resolve('p/statusValueMap_', object.node), center = toGrid(object);
+    return [{
+      key: object.uid, itemId: spec.itemId, season: SEASON_CODES.findIndex((code) => spec.code.endsWith(code)),
+      days: mapValue(doc, status, 'days'), spent: !!mapValue(doc, status, 'disable'),
+      cells: FARM_CELLS.filter((cell) => { const at = toGrid(cell); return Math.abs(at.x - center.x) < range + .5 && Math.abs(at.y - center.y) < range + .5; }).map((cell) => cell.id),
+    }];
+  });
 }
 
 /** Calendar days turn over at 07:00, so 00:00–06:59 still belongs to the previous day. */
@@ -115,7 +148,7 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
   return {
     seconds, date: gameDate(seconds), weather: number('pWeatherData_/dataID'), money: number('money_/this->value_'),
     player: nameNode ? readString(doc, nameNode) : '',
-    cells, machines,
+    cells, machines, scarecrows: readScarecrows(doc),
     deliveriesOpen: flagEnabled(doc, UNLOCKS.catalogFlag),
     deliveries: [...readDeliveries(doc).values()].map(({ bundleId, itemId, rank, count, remain, key }) => ({ bundleId, index: Number(key.split(':')[1]), itemId, rank, count, remain })),
     held: stacks(['backpack', 'storage']),

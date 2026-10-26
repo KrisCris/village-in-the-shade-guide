@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { buildDailyDigest, landSummary, type CellGroup, type DeliveryLine } from '../../domain/dailyDigest';
+import { buildDailyDigest, landSummary, type CellGroup, type DeliveryLine, type LostGroup } from '../../domain/dailyDigest';
 import { DAILY_CROPS, gameDate, type DailySnapshot } from '../../lib/saveDaily';
 import { UNLOCKS } from '../../lib/saveDeliveries';
 import { ITEM_RANKS } from '../../lib/saveRules';
@@ -61,6 +61,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const money = new Intl.NumberFormat(activeLocale()).format(snapshot.money);
   const weather = lookupName(names, 'weather', String(snapshot.weather));
   const { date, chores, machines, deliveries, seasonEnd } = digest;
+  const stopCauses = new Set([...seasonEnd.witherTomorrow, ...seasonEnd.lost].map((group) => group.cause));
 
   const cropRow = (group: CellGroup, note?: string, key = String(group.crop)) => {
     const name = cropName(group.crop);
@@ -81,6 +82,9 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const deliveryRow = (line: DeliveryLine) => itemRow(`${line.bundleId}:${line.index}`, line.itemId,
     `${line.have} / ${line.remain}`, [bundleName(line.bundleId), quality(line.rank)].filter(Boolean).join(' · '));
   const harvestNote = { ripe: undefined, withered: tr('已枯萎，仍可收获'), shake: tr('摇树收果') };
+  const lostNote = ({ cause, days, left }: LostGroup) => cause === 'season'
+    ? left ? tr('还要 {days} 天，本季只剩 {left} 天', { days, left }) : tr('还要 {days} 天，明天就换季', { days })
+    : left ? tr('还要 {days} 天，稻草人只剩 {left} 天', { days, left }) : tr('还要 {days} 天，稻草人明天失效', { days });
 
   return <>
     <header className="daily-head">
@@ -98,18 +102,16 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
     {digest.hoursToTurnover > 0 && <p className="save-status">{tr('这是午夜后的存档：离 07:00 换日还有 {hours} 小时，下面的事今天还来得及做。', { hours: digest.hoursToTurnover })}</p>}
 
     <div className="daily-grid">
-      {(seasonEnd.witherAtChange.length > 0 || seasonEnd.lost.length > 0) && <Card title={tr('换季提醒')} tone="warning">
-        {seasonEnd.witherAtChange.length > 0 && <>
-          <p className="daily-sub">{tr('明天换季，这些作物今天不收就会枯萎')}</p>
-          <ul className="daily-list">{seasonEnd.witherAtChange.map((group) => cropRow(group))}</ul>
+      {stopCauses.size > 0 && <Card title={stopCauses.size > 1 ? tr('换季和稻草人提醒') : stopCauses.has('season') ? tr('换季提醒') : tr('稻草人提醒')} tone="warning">
+        {seasonEnd.witherTomorrow.length > 0 && <>
+          <p className="daily-sub">{tr('今天不收就会枯萎')}</p>
+          <ul className="daily-list">{seasonEnd.witherTomorrow.map((group) => cropRow(group, group.cause === 'season' ? tr('明天换季') : tr('稻草人明天失效'), `${group.cause}:${group.crop}`))}</ul>
         </>}
         {seasonEnd.lost.length > 0 && <>
-          <p className="daily-sub">{tr('换季前来不及成熟')}</p>
-          <ul className="daily-list">{seasonEnd.lost.map((group) => cropRow(group, digest.daysLeft
-            ? tr('还要 {days} 天，本季只剩 {left} 天', { days: group.days, left: digest.daysLeft })
-            : tr('还要 {days} 天，明天就换季', { days: group.days })))}</ul>
+          <p className="daily-sub">{tr('来不及成熟')}</p>
+          <ul className="daily-list">{seasonEnd.lost.map((group) => cropRow(group, lostNote(group), `${group.cause}:${group.left}:${group.crop}`))}</ul>
         </>}
-        <p className="daily-note">{tr('下一季不能生长的田间作物会在换季那天枯萎，长熟的毛豆会变成黄豆。栽培包和果树不受影响。')}</p>
+        <p className="daily-note">{tr('下一季不能生长的田间作物会在换季那天枯萎，长熟的毛豆会变成黄豆。稻草人能让周围 5×5 格里同季节的作物多长 28 天，失效时范围内过季的田间作物会枯萎。栽培包只在秋天生长。')}</p>
       </Card>}
 
       <Card title={tr('现在可以收获')}>
@@ -125,6 +127,11 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
             <b className="daily-count">{chores.water.length > 0 && tr('{count} 格', { count: chores.water.length })}</b>
             {chores.water.length > 0 && <button type="button" className="daily-map-button" aria-label={tr('在地图上标出{name}', { name: tr('要浇水的作物') })} onClick={() => showOnMap(tr('要浇水的作物'), chores.water)}>{tr('地图')}</button>}
           </li>
+          {chores.spentScarecrows.length > 0 && <li className="daily-row is-plain">
+            <span className="daily-row-name">{tr('拆掉失效的稻草人')}<small>{tr('28 天已经用完，用斧头可以拆掉')}</small></span>
+            <b className="daily-count">{tr('{count} 个', { count: chores.spentScarecrows.length })}</b>
+            <button type="button" className="daily-map-button" aria-label={tr('在地图上标出{name}', { name: tr('失效的稻草人') })} onClick={() => showOnMap(tr('失效的稻草人'), chores.spentScarecrows.flatMap((scarecrow) => scarecrow.cells))}>{tr('地图')}</button>
+          </li>}
           {chores.hungry > 0 && <li className="daily-row is-plain"><span className="daily-row-name">{tr('喂动物')}<small>{tr('今天还没喂过')}</small></span><b className="daily-count">{tr('{count} 只', { count: chores.hungry })}</b></li>}
           {chores.shipping > 0 && <li className="daily-row is-plain"><span className="daily-row-name">{tr('出货箱')}<small>{tr('07:00 换日时结算')}</small></span><b className="daily-count">{tr('{count} 件', { count: chores.shipping })}</b></li>}
         </ul>
@@ -184,6 +191,18 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
           <div><dt>{tr('要重新翻耕')}</dt><dd>{land.plain}</dd></div>
           {land.wild > 0 && <div><dt>{tr('长了杂草或树')}</dt><dd>{land.wild}</dd></div>}
         </dl>
+        {digest.scarecrows.length > 0 && <>
+          <p className="daily-sub">{tr('稻草人')}</p>
+          <ul className="daily-list">{digest.scarecrows.map((scarecrow) => {
+            const name = itemName(scarecrow.itemId);
+            return <li className="daily-row" key={scarecrow.key}>
+              <SaveIcon names={names} kind="items" value={String(scarecrow.itemId)} size={32} />
+              <span className="daily-row-name">{name}<small>{tr('范围内有 {count} 格{season}季作物', { count: scarecrow.crops, season: GAME_SEASONS[scarecrow.season] })}</small></span>
+              <b className="daily-count">{scarecrow.daysLeft ? tr('还剩 {days} 天', { days: scarecrow.daysLeft }) : tr('最后一天')}</b>
+              <button type="button" className="daily-map-button" aria-label={tr('在地图上标出{name}', { name })} onClick={() => showOnMap(name, scarecrow.cells)}>{tr('地图')}</button>
+            </li>;
+          })}</ul>
+        </>}
         <p className="daily-note">{tr('空着的耕地和田垄每晚约有一半会变回平地，存档不会记住它们。这里会记住你的农田范围，每读一次存档就补上新耕的格子。')}</p>
         {storageFailed && <p className="daily-note is-error">{tr('浏览器没能保存农田范围，关闭页面后会丢失。')}</p>}
         <div className="daily-actions">

@@ -46,20 +46,49 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     expect(saves['save.003'].snapshot.cells.filter((cell) => cell.wild)).toHaveLength(11);
   });
 
-  it('grows watered field crops by exactly 100 points overnight, and logs and trees without water', () => {
+  it('grows watered field crops by exactly 100 points overnight, and kits and trees without water', () => {
     const night = cellsOf('save.003'), morning = cellsOf('save.004');
-    const watered: number[] = [], unwateredLogsAndTrees: number[] = [];
+    const autumnScarecrow = new Set(saves['save.003'].snapshot.scarecrows.find((scarecrow) => scarecrow.season === 2)!.cells);
+    const watered: number[] = [], unwatered: number[] = [], kits: number[] = [];
     for (const [id, before] of night) {
       const after = morning.get(id);
       if (!before.crop || after?.crop !== before.crop || after.form !== before.form || before.growth >= before.maximum) continue;
       if (before.soil && before.wet) watered.push(after.growth - before.growth);
-      if (!before.soil && !before.wet) unwateredLogsAndTrees.push(after.growth - before.growth);
+      if (!before.soil && !before.wet) unwatered.push(after.growth - before.growth);
+      if (!before.soil && !DAILY_CROPS.get(before.crop)!.perennial) kits.push(id);
     }
     // These saves have no growing field crop left dry overnight, so that case stays unverified.
     expect(watered).toHaveLength(380);
     expect(new Set(watered)).toEqual(new Set([100]));
-    expect(unwateredLogsAndTrees.length).toBeGreaterThan(0);
-    expect(new Set(unwateredLogsAndTrees)).toEqual(new Set([100]));
+    expect(unwatered.length).toBeGreaterThan(0);
+    expect(new Set(unwatered)).toEqual(new Set([100]));
+    // The autumn kits grew in winter only because they all stand in an autumn scarecrow's range.
+    expect(kits.length).toBeGreaterThan(0);
+    expect(kits.every((id) => autumnScarecrow.has(id))).toBe(true);
+  });
+
+  it('reads scarecrows, and finds the summer crops withered where spent summer scarecrows stand', () => {
+    const summary = (name: string) => saves[name].snapshot.scarecrows.map(({ season, days, spent, cells }) => [season, days, spent, cells.length]);
+    expect(summary('save.005')).toEqual([[1, 28, true, 25], [1, 28, true, 25]]);
+    expect(summary('save.001')).toEqual([[2, 0, false, 25]]);
+    expect(summary('save.004')).toEqual([[2, 2, false, 25]]);
+    const { cells, scarecrows } = saves['save.005'].snapshot;
+    const covered = new Set(scarecrows.flatMap((scarecrow) => scarecrow.cells));
+    const withered = cells.filter((cell) => cell.form === 2);
+    expect(withered).toHaveLength(40);
+    expect(withered.every((cell) => covered.has(cell.id) && DAILY_CROPS.get(cell.crop)!.seasons.includes('summer'))).toBe(true);
+    expect(buildDailyDigest(saves['save.005'].snapshot, DAILY_CROPS).chores.spentScarecrows).toHaveLength(2);
+  });
+
+  it('keeps kits under the autumn scarecrow out of the season-change warnings', () => {
+    const kitCrops = new Set([cropId('CROPS_ID_SHIITAKE_MUSHROOM'), cropId('CROPS_ID_SHIMEJI'), cropId('CROPS_ID_KIKURAGE')]);
+    const { snapshot } = saves['save.001'];
+    const warnedKits = (digest: ReturnType<typeof buildDailyDigest>) => digest.seasonEnd.lost.filter((group) => kitCrops.has(group.crop)).length;
+    const digest = buildDailyDigest(snapshot, DAILY_CROPS);
+    expect(warnedKits(digest)).toBe(0);
+    expect(digest.scarecrows).toEqual([expect.objectContaining({ season: 2, daysLeft: 27, crops: 24 })]);
+    // Without it, the unripe kits would stop growing at the change.
+    expect(warnedKits(buildDailyDigest({ ...snapshot, scarecrows: [] }, DAILY_CROPS))).toBeGreaterThan(0);
   });
 
   it('predicts which crops wither at the season change', () => {
@@ -68,10 +97,10 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     const taro = cropId('CROPS_ID_TARO'), sesame = cropId('CROPS_ID_SESAME');
     expect(lastNight.daysLeft).toBe(0);
     expect(lastNight.hoursToTurnover).toBe(7);
-    const warned = [...lastNight.seasonEnd.witherAtChange, ...lastNight.seasonEnd.lost];
-    expect(warned.map((group) => [group.crop, group.cells.length])).toEqual([[taro, 50], [sesame, 2]]);
+    const warned = [...lastNight.seasonEnd.witherTomorrow, ...lastNight.seasonEnd.lost];
+    expect(warned.map((group) => [group.crop, group.cause, group.cells.length])).toEqual([[taro, 'season', 50], [sesame, 'season', 2]]);
     const witheredCells = (crop: number) => nextMorning.chores.withered.find((group) => group.crop === crop)?.cells.sort();
-    expect(witheredCells(taro)).toEqual(lastNight.seasonEnd.witherAtChange[0].cells.sort());
+    expect(witheredCells(taro)).toEqual(lastNight.seasonEnd.witherTomorrow[0].cells.sort());
     expect(witheredCells(sesame)).toEqual(lastNight.seasonEnd.lost[0].cells.sort());
   });
 
@@ -83,7 +112,8 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     expect(digest.forecast.map((day) => day.days)).toEqual([2, 3, 5, 6]);
     expect(digest.chores.water).toHaveLength(391);
     expect(digest.chores.hungry).toBe(10);
-    expect(digest.seasonEnd).toEqual({ lost: [], witherAtChange: [] });
+    expect(digest.seasonEnd).toEqual({ lost: [], witherTomorrow: [] });
+    expect(digest.scarecrows.map(({ season, daysLeft }) => [season, daysLeft])).toEqual([[2, 25]]);
     expect(digest.machines.done.reduce((sum, row) => sum + row.slots, 0)).toBe(3);
     expect(digest.deliveries.ready).toHaveLength(21);
   });

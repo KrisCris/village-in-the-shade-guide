@@ -1,4 +1,4 @@
-import type { DailyCell, DailySnapshot, DailyStack } from '../lib/saveDaily';
+import type { DailyCell, DailyScarecrow, DailySnapshot, DailyStack } from '../lib/saveDaily';
 
 /**
  * Daily rules, checked against five consecutive saves of one slot (autumn 28
@@ -10,15 +10,19 @@ import type { DailyCell, DailySnapshot, DailyStack } from '../lib/saveDaily';
  *   are taken not to need water.
  * - Watering and animal feeding reset at the turnover.
  * - At the season change, field crops that do not grow in the new season
- *   wither. Cultivation kits and trees keep growing. Withered crops stay until
- *   cleared. Ripe edamame is the exception the game data names: it withers
- *   into harvestable soybeans.
+ *   wither. Ripe edamame is the exception the game data names: it withers
+ *   into harvestable soybeans. Cultivation kits only grow in autumn (item
+ *   text); whether they wither or wait out of season is not in the saves.
+ * - A scarecrow keeps crops of its season growing in the 5×5 cells around it
+ *   for 28 days, whatever the season. When it is spent, out-of-season field
+ *   crops in its range wither (the 40 summer crops of the autumn 28 save).
  * - About half of the empty tilled soil and ridges turn back into plain ground
  *   each night; the save keeps nothing that predicts which.
  */
 export const GROWTH_PER_DAY = 100;
 export const DAYS_PER_SEASON = 28;
 export const FORECAST_DAYS = 7;
+export const SCARECROW_DAYS = 28;
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 const GROWING_FORMS = new Set([1, 4, 5]);
 const WITHERED = 2, WITHERED_HARVESTABLE = 9;
@@ -32,7 +36,12 @@ export interface CropRule {
 export type CropRules = ReadonlyMap<number, CropRule>;
 export interface CellGroup { crop: number; cells: number[] }
 export interface HarvestGroup extends CellGroup { kind: 'ripe' | 'withered' | 'shake' }
-export interface LostGroup extends CellGroup { days: number }
+/** What ends a crop's growing: the season change, or the scarecrow keeping it out of season running out. */
+export type StopCause = 'season' | 'scarecrow';
+export interface StopGroup extends CellGroup { cause: StopCause }
+export interface LostGroup extends StopGroup { days: number; left: number }
+/** `daysLeft` counts like the season's: turnovers before it is spent, 0 on its last day. `crops` are the growing cells of its season in range. */
+export interface ScarecrowLine { key: string; itemId: number; season: number; daysLeft: number; cells: number[]; crops: number }
 export interface DeliveryLine { bundleId: number; index: number; itemId: number; rank: number; remain: number; have: number }
 export interface MachineOutput { itemId: number; count: number; slots: number; finish?: number }
 
@@ -44,8 +53,10 @@ export interface DailyDigest {
   hoursToTurnover: number;
   harvest: HarvestGroup[];
   forecast: Array<{ days: number; groups: CellGroup[] }>;
-  seasonEnd: { lost: LostGroup[]; witherAtChange: CellGroup[] };
-  chores: { water: number[]; withered: CellGroup[]; hungry: number; shipping: number };
+  /** Crops that stop before they ripen, and ripe field crops that wither at tomorrow's turnover unless harvested today. */
+  seasonEnd: { lost: LostGroup[]; witherTomorrow: StopGroup[] };
+  scarecrows: ScarecrowLine[];
+  chores: { water: number[]; withered: CellGroup[]; spentScarecrows: Array<{ key: string; itemId: number; cells: number[] }>; hungry: number; shipping: number };
   machines: { done: MachineOutput[]; running: MachineOutput[]; idle: Array<{ itemId: number; machines: number }>; freeSlots: number };
   deliveries: { open: boolean; ready: DeliveryLine[]; missing: DeliveryLine[] };
 }
@@ -55,6 +66,7 @@ export const needsWater = (cell: Pick<DailyCell, 'soil'>) => cell.soil === 1 || 
 export const daysToRipe = (cell: Pick<DailyCell, 'growth' | 'maximum'>) => Math.ceil(Math.max(0, cell.maximum - cell.growth) / GROWTH_PER_DAY);
 
 type CellRow = { crop: number; cell: number };
+type StopRow = CellRow & { cause: StopCause; left: number };
 function byCrop(rows: CellRow[]): CellGroup[] {
   const groups = new Map<number, number[]>();
   for (const { crop, cell } of rows) {
@@ -62,6 +74,17 @@ function byCrop(rows: CellRow[]): CellGroup[] {
     if (cells) cells.push(cell); else groups.set(crop, [cell]);
   }
   return [...groups].map(([crop, cells]) => ({ crop, cells })).sort((a, b) => b.cells.length - a.cells.length || a.crop - b.crop);
+}
+
+/** Group stopping crops by crop, cause and turnovers left, so each row names one deadline. */
+function byStop(rows: StopRow[]): Array<StopGroup & { left: number }> {
+  const groups = new Map<string, StopRow[]>();
+  for (const row of rows) {
+    const key = `${row.crop}:${row.cause}:${row.left}`;
+    groups.set(key, [...groups.get(key) ?? [], row]);
+  }
+  return [...groups.values()].map((group) => ({ crop: group[0].crop, cause: group[0].cause, left: group[0].left, cells: group.map((row) => row.cell) }))
+    .sort((a, b) => b.cells.length - a.cells.length || a.crop - b.crop);
 }
 
 function sumOutputs(rows: Array<{ itemId: number; count: number; finish?: number }>): MachineOutput[] {
@@ -75,15 +98,34 @@ function sumOutputs(rows: Array<{ itemId: number; count: number; finish?: number
   return [...groups.values()];
 }
 
+/**
+ * Turnovers a seasonal crop still grows at before it stops, and what stops it:
+ * the season change, unless an active scarecrow of one of its seasons covers
+ * the cell for longer. Infinity when it also grows next season.
+ */
+export function growingTurnovers(rule: CropRule, date: DailySnapshot['date'], covering: DailyScarecrow[] = []): { left: number; cause: StopCause } {
+  let best: { left: number; cause: StopCause } | undefined = !rule.seasons.includes(SEASONS[date.season]) ? undefined
+    : { left: rule.seasons.includes(SEASONS[(date.season + 1) % 4]) ? Infinity : DAYS_PER_SEASON - date.day, cause: 'season' };
+  for (const scarecrow of covering) {
+    // Spent at the turnover that brings `days` to 28, so the crop grows at the ones before it.
+    const until = SCARECROW_DAYS - 1 - scarecrow.days;
+    if (!scarecrow.spent && rule.seasons.includes(SEASONS[scarecrow.season]) && (!best || until > best.left)) best = { left: until, cause: 'scarecrow' };
+  }
+  return best ?? { left: 0, cause: 'season' };
+}
+
 export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): DailyDigest {
   const { date } = snapshot;
-  const season = SEASONS[date.season], nextSeason = SEASONS[(date.season + 1) % 4];
+  const season = SEASONS[date.season];
   const daysLeft = DAYS_PER_SEASON - date.day;
   const harvest: Record<HarvestGroup['kind'], CellRow[]> = { ripe: [], withered: [], shake: [] };
   const forecast: Array<CellRow & { days: number }> = [];
-  const lost: Array<CellRow & { days: number }> = [];
-  const witherAtChange: CellRow[] = [], withered: CellRow[] = [];
+  const lost: Array<StopRow & { days: number }> = [];
+  const witherTomorrow: StopRow[] = [], withered: CellRow[] = [];
   const water: number[] = [];
+  const covering = new Map<number, DailyScarecrow[]>();
+  for (const scarecrow of snapshot.scarecrows) for (const id of scarecrow.cells) covering.set(id, [...covering.get(id) ?? [], scarecrow]);
+  const protectedCells = new Map<string, number>();
 
   for (const cell of snapshot.cells) {
     const rule = cell.crop ? crops.get(cell.crop) : undefined;
@@ -99,14 +141,17 @@ export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): Dai
       if (!days && perennial.bearing_seasons?.includes(season)) harvest.shake.push(row);
       continue;
     }
-    // Field crops wither at the season change unless they also grow next season.
-    const withers = !perennial && cell.soil > 0 && !rule.seasons.includes(nextSeason);
+    const { left, cause } = perennial ? { left: Infinity, cause: 'season' as const } : growingTurnovers(rule, date, covering.get(cell.id));
+    for (const scarecrow of covering.get(cell.id) ?? []) if (rule.seasons.includes(SEASONS[scarecrow.season])) protectedCells.set(scarecrow.key, (protectedCells.get(scarecrow.key) ?? 0) + 1);
     if (!days) {
       harvest.ripe.push(row);
-      if (withers && !daysLeft && !rule.witheredHarvest) witherAtChange.push(row);
+      // Field crops wither when they stop; kits are only known to stop growing.
+      if (left === 0 && cell.soil > 0 && !rule.witheredHarvest) witherTomorrow.push({ ...row, cause, left });
       continue;
     }
-    if (withers && days > daysLeft) { lost.push({ ...row, days }); continue; }
+    // Out of season with no scarecrow: a kit waits for autumn; field crops have already withered.
+    if (cause === 'season' && !rule.seasons.includes(season)) continue;
+    if (days > left) { lost.push({ ...row, cause, left, days }); continue; }
     if (needsWater(cell) && !cell.wet) water.push(cell.id);
     if (days <= FORECAST_DAYS) forecast.push({ ...row, days });
   }
@@ -134,10 +179,15 @@ export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): Dai
     harvest: (Object.keys(harvest) as HarvestGroup['kind'][]).flatMap((kind) => byCrop(harvest[kind]).map((group) => ({ ...group, kind }))).sort((a, b) => b.cells.length - a.cells.length),
     forecast: [...new Set(forecast.map((row) => row.days))].sort((a, b) => a - b).map((days) => ({ days, groups: byCrop(forecast.filter((row) => row.days === days)) })),
     seasonEnd: {
-      lost: byCrop(lost).map((group) => ({ ...group, days: Math.min(...lost.filter((row) => row.crop === group.crop).map((row) => row.days)) })),
-      witherAtChange: byCrop(witherAtChange),
+      lost: byStop(lost).map((group) => ({ ...group, days: Math.min(...lost.filter((row) => group.cells.includes(row.cell)).map((row) => row.days)) })),
+      witherTomorrow: byStop(witherTomorrow).map(({ crop, cells, cause }) => ({ crop, cells, cause })),
     },
-    chores: { water, withered: byCrop(withered), hungry: snapshot.animals.total - snapshot.animals.fed, shipping: snapshot.shipping.reduce((sum, stack) => sum + stack.count, 0) },
+    scarecrows: snapshot.scarecrows.filter((scarecrow) => !scarecrow.spent).map(({ key, itemId, season, days, cells }) => ({ key, itemId, season, daysLeft: SCARECROW_DAYS - 1 - days, cells, crops: protectedCells.get(key) ?? 0 }))
+      .sort((a, b) => a.daysLeft - b.daysLeft),
+    chores: {
+      water, withered: byCrop(withered), spentScarecrows: snapshot.scarecrows.filter((scarecrow) => scarecrow.spent).map(({ key, itemId, cells }) => ({ key, itemId, cells })),
+      hungry: snapshot.animals.total - snapshot.animals.fed, shipping: snapshot.shipping.reduce((sum, stack) => sum + stack.count, 0),
+    },
     machines: {
       done: sumOutputs(done).sort((a, b) => b.slots - a.slots),
       running: sumOutputs(running).sort((a, b) => a.finish! - b.finish!),
