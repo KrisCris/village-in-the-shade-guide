@@ -4,7 +4,7 @@ import type {Catalog} from '../data/types';
 import {getCatalog} from '../data/repository';
 import {buildCropGrowthModel, cropForEntity} from './cropGrowth';
 import {buildEntityDetailModel} from './relations';
-import {compactDetailModel} from '../data/detailPayload';
+import {compactDetailModel, pageEntity} from '../data/detailPayload';
 import EntityDetail from '../components/entity/EntityDetail';
 
 const catalog: Catalog = getCatalog();
@@ -80,6 +80,19 @@ it('renders the stages on a seed page with a link to its crop', () => {
   expect(html).toContain('href="/data/crops/CROPS_ID_APPLE_TREE/"');
   expect(html).toContain('长成后的样子');
   expect(html.match(/aria-pressed="true"/g)).toHaveLength(1);
-  expect(html).toMatch(/aria-pressed="true">(?:(?!<\/button>).)*growth-season-name">秋/);
+  expect(html).toContain('aria-pressed="true" aria-label="秋（结果季）"');
+  expect(html).toMatch(/aria-pressed="false">(?:(?!<\/button>).)*growth-season-name">春</);
   expect(html).toContain('/maps/farm/sprites/');
+});
+
+it('keeps the raw stage table out of crop page props', () => {
+  const crop = byId('CROPS_ID_APPLE_TREE');
+  const model = buildEntityDetailModel(crop, catalog, 'normal');
+  const compact = compactDetailModel(model);
+  expect(crop.growth).toBeTruthy();
+  expect(compact.entity.growth).toBeUndefined();
+  expect(pageEntity(crop).growth).toBeUndefined();
+  expect(pageEntity(crop)).toMatchObject({id: crop.id, growth_days: crop.growth_days});
+  expect(compact.growth).toEqual(model.growth);
+  expect(crop.growth).toBeTruthy();
 });

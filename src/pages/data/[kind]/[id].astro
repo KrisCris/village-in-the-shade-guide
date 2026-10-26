@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { compactDetailModel } from '../../../data/detailPayload';
+import { compactDetailModel, pageEntity } from '../../../data/detailPayload';
 import EntityPage from '../../../components/entity/EntityPage';
 import { getCatalog } from '../../../data/repository';
 import { buildEntityDetailModel } from '../../../domain/relations';
@@ -19,6 +19,6 @@ if (entity.kind === 'processes' && initialModel.entity.kind === 'items') return 
 ---
 <BaseLayout title={`${entity.name.zh_hans} · ${kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}`} description={t('{name}的价格、获取、材料、产物与关联数据。', { name: entity.name.zh_hans })}>
   <nav class="crumb" aria-label={t('面包屑')}><a href={href("/")}>{t('首页')}</a><span>›</span><a href={href(`/data/${entity.kind}/`)}>{kindLabels[entity.kind] ? t(kindLabels[entity.kind]) : entity.kind}</a><span>›</span><span>{entity.name.zh_hans}</span></nav>
-  <EntityPage client:load initialEntity={entity} initialModel={compactDetailModel(initialModel)} locale={locale} />
+  <EntityPage client:load initialEntity={pageEntity(entity)} initialModel={compactDetailModel(initialModel)} locale={locale} />
 </BaseLayout>
 <style>.crumb{display:flex;flex-wrap:wrap;gap:.5rem;color:var(--muted);font-size:.86rem;margin-bottom:1.5rem}.crumb a{color:var(--muted)}</style>

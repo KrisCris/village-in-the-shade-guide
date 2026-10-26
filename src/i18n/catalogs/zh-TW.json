@@ -200,6 +200,7 @@
   "{season} {day} 日": "{season} {day} 日",
   "{season}季": "{season}季",
   "{season}季：共 {count} 种鱼": "{season}季：共 {count} 種魚",
+  "{season}（结果季）": "{season}（結果季）",
   "{season}：{n} 种": "{season}：{n} 種",
   "{size} 字节": "{size} 位元組",
   "{title} · 任务记录": "{title} · 任務記錄",
