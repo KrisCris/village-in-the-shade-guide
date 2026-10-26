@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { ItemSource } from '../../domain/dailySources';
 import { ANIMALS } from '../../lib/saveAnimals';
 import { gameDuration } from '../../lib/saveMachines';
@@ -71,11 +71,24 @@ export function Meter({ value, max, tone, label }: { value: number; max: number;
 }
 
 /** Tabs with arrow-key movement; only the open panel is rendered. */
-export function Tabs({ label, tabs, initial }: { label: string; tabs: Array<{ id: string; label: string; count?: number; content: ReactNode }>; initial?: string }) {
+/** Tabs with an `anchor` open when a link to `#anchor` is followed, so a link elsewhere on the page can land on the right tab. */
+export function Tabs({ label, tabs, initial }: { label: string; tabs: Array<{ id: string; label: string; count?: number; content: ReactNode; anchor?: string }>; initial?: string }) {
   const [active, setActive] = useState(initial);
   const current = tabs.some((tab) => tab.id === active) ? active! : tabs[0]?.id;
   const buttons = useRef<Record<string, HTMLButtonElement | null>>({});
   const base = useId();
+  const anchors = tabs.flatMap((tab) => tab.anchor ? [[tab.anchor, tab.id]] : []);
+  useEffect(() => {
+    const open = (hash: string) => { const match = anchors.find(([anchor]) => `#${anchor}` === hash); if (match) setActive(match[1]); };
+    // A click, not hashchange: following the same link twice should open the tab again.
+    const click = (event: MouseEvent) => {
+      const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
+      if (link) open(link.getAttribute('href')!);
+    };
+    open(location.hash);
+    document.addEventListener('click', click);
+    return () => document.removeEventListener('click', click);
+  }, [anchors.join()]);
   const keys = (event: KeyboardEvent, index: number) => {
     const next = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: tabs.length - 1 }[event.key];
     if (next === undefined) return;
@@ -85,6 +98,7 @@ export function Tabs({ label, tabs, initial }: { label: string; tabs: Array<{ id
     buttons.current[tab.id]?.focus();
   };
   return <div className="daily-tabs">
+    {anchors.map(([anchor]) => <span key={anchor} id={anchor} className="daily-tab-anchor" />)}
     <div className="daily-tablist" role="tablist" aria-label={label}>
       {tabs.map((tab, index) => <button key={tab.id} ref={(element) => { buttons.current[tab.id] = element; }} type="button" role="tab"
         id={`${base}-${tab.id}`} aria-controls={`${base}-${tab.id}-panel`} aria-selected={tab.id === current} tabIndex={tab.id === current ? 0 : -1}

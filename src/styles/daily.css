@@ -47,6 +47,7 @@ button.daily-nav-map { display: inline-flex; align-items: center; gap: .35rem; f
 
 /* Sections */
 .daily-section { margin-top: 2.4rem; scroll-margin-top: calc(var(--daily-top, 64px) + 64px); }
+.daily-tab-anchor { display: block; scroll-margin-top: calc(var(--daily-top, 64px) + 64px); }
 .daily-section-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .6rem 1rem; margin-bottom: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--border); }
 .daily-section-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: var(--green-soft); color: var(--green); }
 .daily-section-title h2 { margin: 0; font-size: 1.55rem; }

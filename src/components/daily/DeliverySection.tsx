@@ -59,8 +59,8 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
       <span>{tr('已完成 {done} / {total} 项。背包和收纳箱里的物品先分给今天能交完的项目，剩下的留给还没凑齐的。', { done: deliveries.done, total: deliveries.total })}</span>
     </span>}>
     <Tabs label={tr('交付项目')} initial={deliveries.ready.length ? 'ready' : 'close'} tabs={[
-      { id: 'ready', label: tr('今天可以交'), count: deliveries.ready.length, content: cards(deliveries.ready, tr('手上的物品还不够交完任何一项。')) },
-      { id: 'close', label: tr('物品交付'), count: close.length, content: cards(close, tr('没有这季能凑齐的项目。')) },
+      { id: 'ready', anchor: 'daily-deliveries-ready', label: tr('今天可以交'), count: deliveries.ready.length, content: cards(deliveries.ready, tr('手上的物品还不够交完任何一项。')) },
+      { id: 'close', anchor: 'daily-deliveries-close', label: tr('物品交付'), count: close.length, content: cards(close, tr('没有这季能凑齐的项目。')) },
       { id: 'far', label: tr('本季凑不齐'), count: far.length, content: cards(far, tr('所有项目这季都能凑齐。'), 9) },
       {
         id: 'keep', label: tr('留给交付的物品'), count: deliveries.keep.length, content: deliveries.keep.length ? <div className="card daily-keep">

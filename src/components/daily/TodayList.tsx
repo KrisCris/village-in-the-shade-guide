@@ -53,14 +53,14 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
         };
       }
       case 'deliver': return {
-        key, tag: tr('交付'), tone: 'deliver', icon: icon('items', action.plans[0].lines[0].itemId), section: 'daily-deliveries', later: action.later,
+        key, tag: tr('交付'), tone: 'deliver', icon: icon('items', action.plans[0].lines[0].itemId), section: 'daily-deliveries-ready', later: action.later,
         title: action.later ? tr('到村长家交付 {count} 项', { count: action.plans.length }) : tr('交付 {count} 项', { count: action.plans.length }),
         details: [list(action.plans.map((plan) => plan.spec.name))],
       };
       case 'fetch': {
         const items = list(action.items.map(([itemId, count]) => `${name.item(itemId)} × ${count}`));
         return {
-          key, tag: action.trip === 'fish' ? tr('钓鱼') : tr('采集'), tone: 'deliver', icon: icon('items', action.items[0][0]), section: 'daily-deliveries', later: action.later,
+          key, tag: action.trip === 'fish' ? tr('钓鱼') : tr('采集'), tone: 'deliver', icon: icon('items', action.items[0][0]), section: 'daily-deliveries-close', later: action.later,
           title: action.trip === 'fish' ? tr('钓鱼：{items}', { items }) : tr('去山里采：{items}', { items }),
           details: [
             tr('凑齐后能交{bundles}', { bundles: action.plans.map((plan) => `「${plan.spec.name}」`).join('') }),
