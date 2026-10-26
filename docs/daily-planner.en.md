@@ -8,15 +8,17 @@ The site's interface is in Chinese and Japanese. UI labels below are given in Ch
 
 ## What the page shows
 
+At the top are the save's date, weather, money and a 28-cell season bar with today marked. A row of number cards below sums up each part: to-do items left, deliveries ready today, machines to build, empty farm-area cells and free animal places. Each card jumps to its part. While you scroll, a menu of the parts and a "地图" (map) button stay pinned to the top of the page.
+
 The page has five parts, top to bottom:
 
-- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land and which animals the houses have room for. Routine care (harvesting, watering, feeding) comes last. Each entry links to its section below, and entries with a place can mark it on the map.
-- **交付** (deliveries): the three lists (shrine repairs, fox shrine offerings and the village head's catalog). 今天可以交 (ready today) holds the lists you can finish now. 物品交付 (item deliveries) holds the lists you can complete this season, with the expected wait and where each missing item comes from. Lists you cannot complete this season are folded away at the bottom. Items set aside for deliveries are listed separately, and the processing plan never uses them.
+- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land and which animals the houses have room for. Routine care (harvesting, watering, feeding) comes last. You can tick entries off as you do them; ticks last for the save's day only. Each entry links to its section below, and entries with a place can mark it on the map.
+- **交付** (deliveries): the three lists (shrine repairs, fox shrine offerings and the village head's catalog), split into four tabs. 今天可以交 (ready today) holds the lists you can finish now. 物品交付 (item deliveries) holds the lists you can complete this season, with the expected wait and where each missing item comes from. 本季凑不齐 (not this season) holds the lists you cannot complete this season. 留给交付的物品 (set aside) lists the items reserved for deliveries; the processing plan never uses them.
 - **加工设备** (processing machines): 设备数量 (machine count) shows how many days each kind of machine needs to process the produce in hand plus what ripens within the time limit, and how many machines to build or upgrade when that runs past the limit. In 作物加工 (crop processing) you can pick another recipe for any produce, or none. 加造设备的材料 (materials for new machines) lists what the new machines need, whether you have enough, and where to get what is missing.
-- **空地和家畜** (empty land and livestock): 空地种植 (sowing) lists what to sow on the empty cells of your farm area. 家畜 (livestock) shows how full the barns, coops and stable are and which animals you do not keep yet produce items the deliveries need; when their house is full, it names the renovation or new house to order from 树木建设 (the carpenter), with its materials and money.
+- **空地和家畜** (empty land and livestock): 空地种植 (sowing) lists what to sow on the empty cells of your farm area. 家畜 (livestock) has one card per kind of house, showing how full it is and which animals you do not keep yet produce items the deliveries need; when their house is full, it names the renovation or new house to order from 树木建设 (the carpenter), with its materials and money.
 - **农场概况** (farm overview): season and scarecrow warnings, crops ready to harvest, chores such as watering and feeding, crops ripening in the next 7 days, farm-area cell counts and each scarecrow's days left.
 
-Each crop group, each scarecrow, and the trees to fell or tap have a "地图" (map) button that marks their cells on the farm map.
+Each crop group, each scarecrow, and the trees to fell or tap have a "地图" (map) button that opens the map in a window and marks their cells; trees are counted one by one. The village minimap is drawn around the farm, so trees outside the farm show too. When you zoom out too far to see cells, marked places become red pins.
 
 A save made after midnight (00:00–06:59) still belongs to the previous day. The page shows how many hours remain before the 07:00 turnover.
 
@@ -40,7 +42,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 ### Where materials come from
 
 - Quarry: expected drops per 100 rocks broken, from each floor's rock weights and each rock's drops. Floors with the same drops are merged into one band. The page picks the band with the most among floors already reached (flags 21801–21812 record reaching floors 10–120); if none has been reached, it lists the shallowest band and says so.
-- Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. The page lists grown trees on the map, saplings, and tree seeds held (trees grow in about 10 days).
+- Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days).
 - Sap: a sap extractor on a grown tree of the right kind collects it every 3 days.
 - Other sources: crops in the field, crops that can be sown this season, fishing, wild plants, animals and machine recipes.
 
@@ -57,7 +59,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 
 ### Settings
 
-The time limit, the reserve share and the recipe picked for each produce are stored in the browser per player name from the save (`localStorage` key `village-daily:settings:v1`).
+The time limit, the reserve share and the recipe picked for each produce are stored in the browser per player name from the save (`localStorage` key `village-daily:settings:v1`). Ticked to-do entries are stored per player name too (key `village-daily:done:v1`); a save from another day starts with nothing ticked.
 
 ## Farm area
 
@@ -110,5 +112,5 @@ The rest comes from game data or existing site content:
 - `src/domain/dailyDigest.ts`: the daily field rules, independent of the save format and tested with synthetic data.
 - `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`) and today's list (`dailyActions`).
 - `src/lib/dailyData.ts`: loads the page data and stores the settings; `src/lib/farmArea.ts`: merging and storing the farm area.
-- `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`).
+- `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`, drawn over the village minimap from `public/maps/`; `src/data/collectionMap.ts` converts its coordinates).
 - Tests that check against saves are in `src/lib/saveDaily.test.ts` and `src/domain/dailyPlan.test.ts`. They need the decrypted save fixtures (see `tests/gamesave/README.md`) and are skipped without them.
