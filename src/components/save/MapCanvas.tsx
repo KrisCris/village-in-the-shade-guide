@@ -1,6 +1,6 @@
 import { RestrictedTerrainOverlay } from '../../lib/saveMapOverlay';
 import { inSelection, selectionPolygon } from '../../lib/saveMapGeometry';
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import {
   FARM_BOUNDS,
   FARM_CELLS,
@@ -14,7 +14,8 @@ import {
   type Point,
   type SceneSprite,
   type SceneGround,
-  type SpriteArt
+  type SpriteArt,
+  type WorldArt
 } from '../../lib/saveMapScene';
 import { landPosition } from '../../lib/saveMap';
 import { withBase } from '../../lib/sitePath';
@@ -30,6 +31,9 @@ const ART_MARGIN = 0.5;
 const ART_PIXELS = 16e6;
 // Trees and roofs overhang the map edge slightly.
 const ART_PAD = 600;
+// Village tiles drawn at once; when more are in view the overview stands in, so a wide view
+// never loads dozens of tiles. Twice as many stay loaded, for panning back and forth.
+const WORLD_VIEW_TILES = 24, WORLD_TILES = 48;
 
 type View = { left: number; top: number; right: number; bottom: number };
 interface ArtCache extends View { canvas: HTMLCanvasElement; zoom: number; ratio: number }
@@ -74,8 +78,8 @@ export interface MapCanvasProps {
   dragPlace?: boolean;
   /** Extra cell highlights drawn under the selection, such as a remembered farm area. `pin` keeps them visible when zoomed out. */
   marks?: { cells: number[]; fill: string; stroke?: string; pin?: boolean }[];
-  /** A world-space image drawn under the art, such as the village minimap around the farm; `view` is the part the corner overview shows. */
-  backdrop?: { src: string; bounds: number[]; view?: number[] };
+  /** The rest of the village drawn under the art, tiles loading as they come into view; `view` is the part the corner overview shows. */
+  world?: { art: WorldArt; view?: number[] };
 }
 
 export default function MapCanvas(props: MapCanvasProps) {
@@ -100,7 +104,10 @@ export default function MapCanvas(props: MapCanvasProps) {
   const alphaMasks = useRef(new Map<string, { width: number; height: number; alpha: Uint8Array }>());
   const overlay = useRef<HTMLCanvasElement>(null);
   const artCache = useRef<ArtCache | null>(null);
-  const backdrop = useRef<HTMLImageElement | null>(null);
+  // Most recently drawn last, so the oldest tiles are dropped first.
+  const worldImages = useRef(new Map<string, HTMLImageElement>());
+  const worldSeason = props.world ? props.art.seasons[props.season] : undefined;
+  const worldTiles = useMemo(() => new Set(worldSeason ? props.world?.art.seasons[worldSeason] : []), [props.world, worldSeason]);
   const artDirty = useRef(true);
   const frame = useRef(0);
   const settle = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -124,8 +131,8 @@ export default function MapCanvas(props: MapCanvasProps) {
   const miniPointer = useRef<number | null>(null);
   const [marquee, setMarquee] = useState<{ start: Point; end: Point } | null>(null);
   const [touchTrail, setTouchTrail] = useState<Point[]>([]);
-  const latest = useRef({ props, camera, size, hover, marquee, touchTrail });
-  latest.current = { props, camera, size, hover, marquee, touchTrail };
+  const latest = useRef({ props, camera, size, hover, marquee, touchTrail, worldSeason, worldTiles });
+  latest.current = { props, camera, size, hover, marquee, touchTrail, worldSeason, worldTiles };
   useEffect(() => {
     const element = viewport.current!;
     const observer = new ResizeObserver((entries) => {
@@ -167,13 +174,8 @@ export default function MapCanvas(props: MapCanvasProps) {
   }, [camera, size, hover, marquee, touchTrail, regions, props.selected, props.selection, props.selectedCells,
     props.ghost, props.mirrored, props.previewValid, props.tool, props.brush, props.labels, props.marks]);
   useEffect(() => {
-    const src = props.backdrop?.src;
-    if (!src) { backdrop.current = null; return; }
-    const img = new Image();
-    img.onload = () => { if (backdrop.current === img) schedule(); };
-    img.src = src;
-    backdrop.current = img;
-  }, [props.backdrop?.src]);
+    schedule();
+  }, [worldSeason, worldTiles]);
   useEffect(() => () => {
     cancelAnimationFrame(frame.current);
     frame.current = 0;
@@ -204,6 +206,45 @@ export default function MapCanvas(props: MapCanvasProps) {
     if (img?.complete && img.naturalWidth) return img;
     if (counter && !failed.current.has(path)) counter.pending++;
     return undefined;
+  }
+  function worldImage(path: string) {
+    const cache = worldImages.current, key = `village/${path}`;
+    let img = cache.get(path);
+    if (img) {
+      cache.delete(path);
+      cache.set(path, img);
+    } else if (!failed.current.has(key)) {
+      img = new Image();
+      img.onload = () => schedule();
+      img.onerror = () => { failed.current.add(key); cache.delete(path); };
+      img.src = withBase(`/maps/village/${path}`);
+      cache.set(path, img);
+      // The overview stays; the tiles drawn longest ago go first.
+      for (const old of cache.keys()) {
+        if (cache.size <= WORLD_TILES) break;
+        if (old !== path && old.includes('/')) cache.delete(old);
+      }
+    }
+    return img?.complete && img.naturalWidth ? img : undefined;
+  }
+  /** The village overview everywhere, then the sharp tiles in view once the overview would look blurry. */
+  function drawWorld(ctx: CanvasRenderingContext2D, world: WorldArt, season: string, camera: Camera, size: { width: number; height: number }, ratio: number) {
+    const z = camera.zoom, b = world.bounds, t = world.tile;
+    const screenX = (x: number) => (x - camera.x) * z + size.width / 2, screenY = (y: number) => (y - camera.y) * z + size.height / 2;
+    const overview = worldImage(`${season}.webp`);
+    if (overview) ctx.drawImage(overview, screenX(b[0]), screenY(b[1]), (b[2] - b[0]) * z, (b[3] - b[1]) * z);
+    if (z * ratio * world.overview < 1.5) return;
+    const halfWidth = size.width / 2 / z, halfHeight = size.height / 2 / z, tiles = latest.current.worldTiles;
+    const top = Math.floor((camera.y - halfHeight) / t), bottom = Math.ceil((camera.y + halfHeight) / t);
+    const left = Math.floor((camera.x - halfWidth) / t), right = Math.ceil((camera.x + halfWidth) / t);
+    if ((bottom - top) * (right - left) > WORLD_VIEW_TILES) return;
+    for (let row = top; row < bottom; row++)
+      for (let column = left; column < right; column++) {
+        const name = `${column}_${row}`;
+        const img = tiles.has(name) ? worldImage(`${season}/${name}.webp`) : undefined;
+        // A pixel of overlap hides the seams between neighbouring tiles.
+        if (img) ctx.drawImage(img, screenX(column * t), screenY(row * t), t * z + 1, t * z + 1);
+      }
   }
   function darkened(path: string, img: HTMLImageElement) {
     let copy = shaded.current.get(path);
@@ -255,7 +296,8 @@ export default function MapCanvas(props: MapCanvasProps) {
   }
   /** The part of the map the art cache should hold: the view plus a margin, clipped to the map. */
   function artRect(p: MapCanvasProps, camera: Camera, size: { width: number; height: number }, margin: number, ratio = 1): View {
-    const b = p.art.bounds;
+    // Save sprites reach as far as the village around the art does.
+    const b = p.world?.art.bounds ?? p.art.bounds;
     const fit = Math.sqrt(ART_PIXELS / Math.max(1, size.width * size.height * ratio * ratio));
     margin = Math.max(0, Math.min(margin, (fit - 1) / 2));
     const halfWidth = size.width / 2 / camera.zoom * (1 + 2 * margin), halfHeight = size.height / 2 / camera.zoom * (1 + 2 * margin);
@@ -348,12 +390,9 @@ export default function MapCanvas(props: MapCanvasProps) {
     const z = camera.zoom;
     const ctx = main.getContext('2d')!;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    ctx.fillStyle = p.backdrop ? '#8e745b' : p.art.background ? '#111816' : '#263f3b';
+    ctx.fillStyle = p.art.background || p.world ? '#111816' : '#263f3b';
     ctx.fillRect(0, 0, size.width, size.height);
-    const back = backdrop.current, around = p.backdrop?.bounds;
-    if (back?.complete && back.naturalWidth && around)
-      ctx.drawImage(back, (around[0] - camera.x) * z + size.width / 2, (around[1] - camera.y) * z + size.height / 2,
-        (around[2] - around[0]) * z, (around[3] - around[1]) * z);
+    if (p.world && latest.current.worldSeason) drawWorld(ctx, p.world.art, latest.current.worldSeason, camera, size, ratio);
     if (cache.right > cache.left && cache.bottom > cache.top)
       ctx.drawImage(cache.canvas, (cache.left - camera.x) * z + size.width / 2, (cache.top - camera.y) * z + size.height / 2,
         (cache.right - cache.left) * z, (cache.bottom - cache.top) * z);
@@ -558,7 +597,7 @@ export default function MapCanvas(props: MapCanvasProps) {
     const x = Math.max(b[0], Math.min(b[2], p.x)), y = Math.max(b[1], Math.min(b[3], p.y));
     setCamera(c => ({ ...c, x, y }));
   }
-  const miniBounds = props.backdrop?.view ?? props.backdrop?.bounds ?? props.art.bounds;
+  const miniBounds = props.world?.view ?? props.world?.art.bounds ?? props.art.bounds;
   const zoom = (factor: number) =>
     setCamera((c) =>
       zoomCamera(c, factor, { x: size.width / 2, y: size.height / 2 }, size.width, size.height)
@@ -652,12 +691,12 @@ export default function MapCanvas(props: MapCanvasProps) {
           viewBox={`${miniBounds[0]} ${miniBounds[1]} ${miniBounds[2] - miniBounds[0]} ${miniBounds[3] - miniBounds[1]}`}
           aria-hidden="true"
         >
-          {props.backdrop && <image
-            href={props.backdrop.src}
-            x={props.backdrop.bounds[0]}
-            y={props.backdrop.bounds[1]}
-            width={props.backdrop.bounds[2] - props.backdrop.bounds[0]}
-            height={props.backdrop.bounds[3] - props.backdrop.bounds[1]}
+          {props.world && worldSeason && <image
+            href={withBase(`/maps/village/${worldSeason}.webp`)}
+            x={props.world.art.bounds[0]}
+            y={props.world.art.bounds[1]}
+            width={props.world.art.bounds[2] - props.world.art.bounds[0]}
+            height={props.world.art.bounds[3] - props.world.art.bounds[1]}
           />}
           <image
             href={withBase(`/maps/farm/${backgroundFile}`)}

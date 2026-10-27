@@ -267,10 +267,14 @@ def decals(head: bytes) -> list[dict]:
     return result
 
 
-def scenery_image(head: bytes, mat: bytes, bounds: tuple[int, int, int, int]) -> Image.Image:
-    """Draw the YMWR decals that overlap bounds, back to front, on a transparent layer."""
+def scenery_image(head: bytes, mat: bytes, bounds: tuple[int, int, int, int],
+                  textures: dict[int, Image.Image] | None = None) -> Image.Image:
+    """Draw the YMWR decals that overlap bounds, back to front, on a transparent layer.
+
+    Pass the same `textures` dict to several calls to decode each texture once.
+    """
     count = struct.unpack_from('<I', mat)[0]
-    textures: dict[int, Image.Image] = {}
+    textures = {} if textures is None else textures
     left, top, right, bottom = bounds
     out = Image.new('RGBA', (right-left, bottom-top))
     for decal in sorted(decals(head), key=lambda d: d['depth']):
@@ -295,7 +299,7 @@ def scenery_image(head: bytes, mat: bytes, bounds: tuple[int, int, int, int]) ->
             raise ValueError('Rotated YMWR decals are not supported')
         if decal['alpha'] < 255:
             image.putalpha(image.getchannel('A').point(lambda a, k=decal['alpha']: a*k//255))
-        layer = Image.new('RGBA', out.size)
-        layer.paste(image, (x-left, y-top))
-        out.alpha_composite(layer)
+        # Only the part of the decal inside bounds is blended.
+        clip = (max(0, left-x), max(0, top-y), min(w, right-x), min(h, bottom-y))
+        out.alpha_composite(image, (x-left+clip[0], y-top+clip[1]), clip)
     return out

@@ -37,6 +37,14 @@ export interface MapArt {
   fixtures?: RoomFixture[];
   fixedObjects?: (Point & { id: number; name: string; angle: number; require: number })[];
 }
+/** The whole open-world map from public/maps/village: `tile`-sized squares at `scale`, listed as `column_row` per season, and a 1/`overview` copy of it all. */
+export interface WorldArt {
+  bounds: number[];
+  tile: number;
+  scale: number;
+  overview: number;
+  seasons: Record<string, string[]>;
+}
 export interface SceneGround extends Point {
   id: number;
   soil: number;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { decodeSave } from './saveEditor';
 import { parseSaveModel } from './saveModel';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
@@ -14,7 +14,8 @@ import {
   screenToWorld,
   worldToScreen,
   zoomCamera,
-  type MapArt
+  type MapArt,
+  type WorldArt
 } from './saveMapScene';
 
 describe('farm viewport geometry', () => {
@@ -84,5 +85,25 @@ describe.skipIf(!hasPrivateSaveFixtures)('native farm scene from a save copy', (
       3
     ).find((s) => s.key === crop.key)!;
     expect(planted.art).toEqual(assets.crops[1].seasons[3][cropSequence(assets.crops[1], 1, 0)!]);
+  });
+});
+
+describe('village art around the farm', () => {
+  const world = JSON.parse(readFileSync('public/maps/village/manifest.json', 'utf8')) as WorldArt;
+  const farm = JSON.parse(readFileSync('public/maps/farm/manifest.json', 'utf8')) as MapArt;
+
+  it('covers every planner cell and lines up with the farm art', () => {
+    const [left, top, right, bottom] = world.bounds;
+    expect(FARM_CELLS.every((cell) => cell.x >= left && cell.x <= right && cell.y >= top && cell.y <= bottom)).toBe(true);
+    expect(world.scale).toBe(.5);
+    expect(farm.bounds.every((value) => value % 256 === 0)).toBe(true);
+  });
+
+  it('ships every tile and overview it lists for each farm season', () => {
+    for (const season of farm.seasons) {
+      expect(existsSync(`public/maps/village/${season}.webp`)).toBe(true);
+      expect(world.seasons[season].length).toBeGreaterThan(0);
+      for (const tile of world.seasons[season]) expect(existsSync(`public/maps/village/${season}/${tile}.webp`), tile).toBe(true);
+    }
   });
 });
