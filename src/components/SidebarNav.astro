@@ -11,6 +11,7 @@ const anchor = { system: '系统与生活', story: '剧情', explore: '探索' }
     <p>{t('资料库')}</p>
     {databaseLinks.map(link => <a href={href(link.href)}>{t(link.label)}</a>)}
     <a class="planner-link" href={href('/planner/')}>{t('收益规划')}</a>
+    <a href={href('/planner/today/')}>{t('每日规划')}</a>
     <a href={href('/planner/workflow/')}>{t('生产工作流')}</a>
     <p>{t('攻略')}</p>
     <a href={href("/guides/season-plan/")}>{t('四季留货规划')}</a>

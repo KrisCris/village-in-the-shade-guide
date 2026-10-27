@@ -18,6 +18,7 @@ import { loadSaveNames, type SaveNameTables } from '../../lib/saveNames';
 import { addMaterials, normalizeSlotEdits, slotChangeCount, transferSlots, type MaterialRequest } from '../../lib/saveInventory';
 import ItemsPanel from './ItemsPanel';
 import SystemSaveHint from './SystemSaveHint';
+import SaveFilePicker from './SaveFilePicker';
 import QuestsPanel from './QuestsPanel';
 import AnimalsPanel from './AnimalsPanel';
 import { animalEditCount, type AnimalEdits } from '../../lib/saveAnimals';
@@ -43,8 +44,6 @@ const MapPanel = lazy(() => import('./MapPanel'));
 function downloadName(name: string): string {
   return `${name}.edited`;
 }
-
-const SAVE_FOLDER = '%APPDATA%\\Nippon Ichi Software, Inc\\Honogurashinoniwa\\';
 
 export default function SaveEditor({ locale }: { locale?: Locale }) {
   return <I18nProvider locale={locale}><Editor /></I18nProvider>;
@@ -333,21 +332,7 @@ function Editor() {
 
   return <section ref={editorRoot} className={`save-editor${maximized ? ' is-maximized' : ''}`} aria-label={tr('游戏存档编辑器')}>
     <input ref={fileInput} style={{ display: 'none' }} type="file" disabled={busy || restoring} accept=".001,.002,.003,.004,.005,application/octet-stream" onChange={onFileChange} />
-    {!model && <><div className="save-dropzone">
-      <div className="save-file-label">
-        <span className="save-file-icon" aria-hidden="true">↑</span>
-        <span>
-          <button type="button" disabled={busy || restoring} onClick={chooseSave}>{tr('选择游戏存档')}</button>
-          <small>save.001–save.005</small>
-        </span>
-      </div>
-      <div className="save-location">
-        <span>{tr('Steam 存档位置')}</span>
-        <code>{SAVE_FOLDER}</code>
-        <button type="button" onClick={async () => { try { await navigator.clipboard.writeText(SAVE_FOLDER); setNotice(tr('已复制存档目录。')); } catch { setError(tr('复制失败，请手动复制上面的目录。')); } }}>{tr('复制路径')}</button>
-        <small>{tr('网页不能直接打开这个目录。点“选择游戏存档”后，把路径粘贴到文件窗口的地址栏，再进入以数字命名的 Steam ID 文件夹。')}</small>
-      </div>
-    </div>
+    {!model && <><SaveFilePicker disabled={busy || restoring} onChoose={chooseSave} onFile={loadFile} onNotice={setNotice} onError={setError} />
     <SystemSaveHint /></>}
     {busy && <p className="save-status" role="status">{notice}</p>}
     {!busy && notice && <p className="save-status success" role="status">{notice}</p>}

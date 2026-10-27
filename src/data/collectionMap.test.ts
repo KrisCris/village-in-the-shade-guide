@@ -3,7 +3,7 @@ import mapData from '../../data/sources/game-map-markers.json';
 import exploration from '../../data/sources/game-exploration-markers.json';
 import night from '../../data/sources/game-night-pickups.json';
 import { MAP_HOME } from '../lib/mapViewport';
-import { isVillageMap, mapArea, markerId, parseCollected, projectMinimap, type MapKind } from './collectionMap';
+import { isVillageMap, mapArea, markerId, MINIMAP_PIXELS, minimapWorldBounds, parseCollected, projectMinimap, type MapKind } from './collectionMap';
 
 describe('collection map markers', () => {
   it('recognizes the village map head before and after the ver120 rename', () => {
@@ -63,6 +63,17 @@ describe('collection map markers', () => {
     expect(markerId('book', 'pass', 'pop_lost_book10')).toBe('pop_lost_book10');
     expect(markerId('ghost_rat', 'bush', 'pop_ghostRat00')).toBe('bush-pop_ghostRat00');
     expect(markerId('ghost_rat', 'village', 'pop_ghostRat00')).toBe('pop_ghostRat00');
+  });
+});
+
+describe('minimap world bounds', () => {
+  it('cover the whole minimap image', () => {
+    const [left, top, right, bottom] = minimapWorldBounds(mapData.projection);
+    const corner = (x: number, y: number) => projectMinimap({ x, y }, mapData.projection);
+    expect(corner(left, top).x).toBeCloseTo(0);
+    expect(corner(left, top).y).toBeCloseTo(0);
+    expect(corner(right, bottom).x).toBeCloseTo(MINIMAP_PIXELS);
+    expect(corner(right, bottom).y).toBeCloseTo(MINIMAP_PIXELS);
   });
 });
 

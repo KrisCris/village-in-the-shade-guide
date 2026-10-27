@@ -28,7 +28,8 @@ export function gameDuration(seconds: number): string {
   return [days && tr('{days}天', { days }), hours && tr('{hours}小时', { hours }), (rest || !minutes) && tr('{rest}分钟', { rest })].filter(Boolean).join(' ');
 }
 const packedKey = (key: string) => [...key].reduce((value, character, index) => value | (BigInt(character.charCodeAt(0)) << BigInt(index * 8)), 0n);
-function mapValue(doc: SerDocument, node: SerNode | undefined, key: string): number {
+/** A number from a gimmick status map (`statusValueMap_` and kin), whose keys are short names packed into an integer. */
+export function mapValue(doc: SerDocument, node: SerNode | undefined, key: string): number {
   const children = node ? doc.children(node) : [];
   for (let index = 0; index < children.length; index += 2) {
     const id = doc.resolve('id_', children[index]);
