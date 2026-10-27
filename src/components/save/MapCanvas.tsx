@@ -18,6 +18,7 @@ import {
   type WorldArt
 } from '../../lib/saveMapScene';
 import { landPosition } from '../../lib/saveMap';
+import { wheelMove } from '../../lib/mapWheel';
 import { withBase } from '../../lib/sitePath';
 import { tr } from '../../i18n/active';
 
@@ -147,21 +148,42 @@ export default function MapCanvas(props: MapCanvasProps) {
   }, [props.focus.revision, props.focus.bounds, size.width, size.height]);
   useEffect(() => {
     const element = canvas.current!;
+    const wheelGesture = { last: -Infinity, mouse: false };
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
       const rect = element.getBoundingClientRect();
+      const move = wheelMove(event, wheelGesture, rect.height);
       setCamera((c) =>
         zoomCamera(
-          c,
-          Math.exp(-event.deltaY * 0.0015),
+          { ...c, x: c.x + move.x / c.zoom, y: c.y + move.y / c.zoom },
+          move.zoom,
           { x: event.clientX - rect.left, y: event.clientY - rect.top },
           rect.width,
           rect.height
         )
       );
     };
+    // Safari sends a trackpad pinch as gesture events, with the scale since the pinch began.
+    let pinchScale = 1;
+    const pinchStart = (event: Event) => {
+      event.preventDefault();
+      pinchScale = 1;
+    };
+    const pinch = (event: Event) => {
+      event.preventDefault();
+      const { scale, clientX, clientY } = event as Event & { scale: number; clientX: number; clientY: number };
+      const rect = element.getBoundingClientRect(), factor = scale / pinchScale;
+      pinchScale = scale;
+      setCamera((c) => zoomCamera(c, factor, { x: clientX - rect.left, y: clientY - rect.top }, rect.width, rect.height));
+    };
     element.addEventListener('wheel', wheel, { passive: false });
-    return () => element.removeEventListener('wheel', wheel);
+    element.addEventListener('gesturestart', pinchStart);
+    element.addEventListener('gesturechange', pinch);
+    return () => {
+      element.removeEventListener('wheel', wheel);
+      element.removeEventListener('gesturestart', pinchStart);
+      element.removeEventListener('gesturechange', pinch);
+    };
   }, []);
   // Map content changes rebuild the cached art; camera moves and pointer feedback only repaint.
   useEffect(() => {
@@ -609,7 +631,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         className={props.tool === 'pan' ? 'is-pan' : ''}
         tabIndex={0}
         role="application"
-        aria-label={tr('农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。')}
+        aria-label={tr('农场地图。左键点击选择，拖动框选或使用笔刷，中键拖动平移；触屏单指选择、双指平移；触控板双指滑动平移、捏合缩放。滚轮缩放；方向键移动视角，加减键缩放，Home 查看全貌。选择工具后点击地图编辑。')}
         onContextMenu={(e) => { e.preventDefault(); props.onCancel(); }}
         onKeyDown={(e) => {
           if(e.key.toLowerCase()==='r'){e.preventDefault();props.onRotate();}
@@ -745,7 +767,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           {tr('部分素材加载失败，请刷新重试。')}
         </span>
       )}
-      <div className="farm-canvas-hint">{tr('左键选择／框选 · 中键平移 · 双指平移 · 滚轮缩放')}</div>
+      <div className="farm-canvas-hint">{tr('左键选择／框选 · 中键或双指平移 · 滚轮或触控板捏合缩放')}</div>
     </div>
   );
 }

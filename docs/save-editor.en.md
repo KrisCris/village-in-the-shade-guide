@@ -51,7 +51,7 @@ The player name, date and play time on the load screen come from `save.lst`. The
 
 ### Map editing
 
-- **View**: zoom with the wheel; pan with the middle button, the pan tool, or by dragging while holding Space. The minimap jumps to a location. "季节与图层" (seasons and layers) toggles season preview, mature preview and the restricted-terrain overlay. Season and mature previews only change the picture, not the save.
+- **View**: zoom with the wheel; pan with the middle button, the pan tool, or by dragging while holding Space. On a trackpad, swipe with two fingers to pan and pinch to zoom. The minimap jumps to a location. "季节与图层" (seasons and layers) toggles season preview, mature preview and the restricted-terrain overlay. Season and mature previews only change the picture, not the save.
 - **Select**: click to select, drag to box-select. A box selection is grouped by kind. You can narrow it to one kind or to empty ground, then plant, lay floors, water, till or clear those cells in one go.
 - **Brushes**: plant, clear, water, till, ridges and paddy. Hold and drag to paint; one stroke is one undo step.
 - **Place**: pick a facility, building, floor or furniture from the catalog and press R to rotate. Floors can be laid continuously by dragging. A selected object can be moved, rotated, upgraded or deleted.
