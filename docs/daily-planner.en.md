@@ -18,7 +18,7 @@ The page has five parts, top to bottom:
 - **空地和家畜** (empty land and livestock): 空地种植 (sowing) lists what to sow on the empty cells of your farm area. 家畜 (livestock) has one card per kind of house, showing how full it is and which animals you do not keep yet produce items the deliveries need; when their house is full, it names the renovation or new house to order from 树木建设 (the carpenter), with its materials and money.
 - **农场概况** (farm overview): season and scarecrow warnings, crops ready to harvest, chores such as watering and feeding, crops ripening in the next 7 days, farm-area cell counts and each scarecrow's days left.
 
-Each crop group, each scarecrow, and the trees to fell or tap have a "地图" (map) button that opens the map in a window and marks their cells; trees are counted one by one. The village minimap is drawn around the farm, so trees outside the farm show too. When you zoom out too far to see cells, marked places become red pins.
+Each crop group, each scarecrow, and the trees to fell or tap have a "地图" (map) button that opens the map in a window and marks their cells; trees are counted one by one. The rest of the village is drawn around the farm, exported from the game's map files like the farm itself, so trees outside the farm show too. Zoomed out, the map shows one picture of the whole village; zooming in loads a sharp copy of the part in view. When you zoom out too far to see cells, marked places become red pins.
 
 A save made after midnight (00:00–06:59) still belongs to the previous day. The page shows how many hours remain before the 07:00 turnover and orders the to-do list by the night rules; see "After midnight" below.
 
@@ -44,7 +44,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 ### Where materials come from
 
 - Quarry: expected drops per 100 rocks broken, from each floor's rock weights and each rock's drops. Floors with the same drops are merged into one band. The page picks the band with the most among floors already reached (flags 21801–21812 record reaching floors 10–120); if none has been reached, it lists the shallowest band and says so.
-- Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days).
+- Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. By `cropsharvest.dat`, felling a grown tree with the axe gives 12–18 of its wood. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days). The 木材 sources also mention the stumps in 附身草丛 (the haunted thicket) north-west of the village.
 - Sap: a sap extractor on a grown tree of the right kind collects it every 3 days.
 - Other sources: crops in the field, crops that can be sown this season, fishing, wild plants, animals and machine recipes.
 
@@ -111,7 +111,7 @@ The rest comes from game data or existing site content:
 - Whether an out-of-season kit withers or waits for autumn: every kit in the saves was inside a scarecrow's range. The page never says a ripe kit withers at the season change.
 - Whether crops grow once more at the turnover that spends a scarecrow before they wither: the page assumes not, so a scarecrow's days left count the same way as the season's.
 - Whether fox shrine offerings for another season can be handed in outside it: the page lists them with this season's, after the other lists.
-- How much wood one tree gives: the page lists the trees you can fell but not how many to fell. Trees outside the farm map (such as the forest to the northwest) have no data either.
+- The stumps in 附身草丛: players say there are many, but `cropsplacement.dat` places no stumps in that map, so how many there are and how much wood each gives is unknown. 附身草丛 is not on the village map, so it cannot be marked.
 - Daily animal output and quality.
 - Quarry figures cover ordinary rocks only, not ore-vein rooms or bee nests.
 - Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
@@ -123,5 +123,5 @@ The rest comes from game data or existing site content:
 - `src/domain/dailyDigest.ts`: the daily field rules, independent of the save format and tested with synthetic data.
 - `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`) and today's list (`dailyActions`).
 - `src/lib/dailyData.ts`: loads the page data and stores the settings; `src/lib/farmArea.ts`: merging and storing the farm area.
-- `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`, drawn over the village minimap from `public/maps/`; `src/data/collectionMap.ts` converts its coordinates).
+- `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`; outside the farm it draws the village tiles in `public/maps/village/`, exported by `tools/extract-village-art.py`).
 - Tests that check against saves are in `src/lib/saveDaily.test.ts` and `src/domain/dailyPlan.test.ts`. They need the decrypted save fixtures (see `tests/gamesave/README.md`) and are skipped without them.

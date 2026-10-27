@@ -7,8 +7,6 @@ import { GAME_SEASONS } from '../../lib/saveTime';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import type { SerDocument } from '../../lib/ser';
 import type { FarmArea } from '../../lib/farmArea';
-import { withBase } from '../../lib/sitePath';
-import { minimapImage } from '../../data/collectionMap';
 import { Icon, useNames, type IconName, type MapTarget } from './dailyUi';
 import TodayList, { actionKey } from './TodayList';
 import DeliverySection from './DeliverySection';
@@ -202,7 +200,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
     <dialog ref={dialog} className="daily-map-dialog" aria-labelledby="daily-map-title" onClose={() => setMap(null)}
       onClick={(event) => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
       {map && <Suspense fallback={<p className="save-loading daily-map-placeholder" role="status">{tr('正在载入地图…')}</p>}>
-        <FarmAreaMap doc={doc} area={area.include} highlight={map.target} village={data ? { src: withBase(minimapImage(activeLocale())), bounds: data.payload.village } : undefined}
+        <FarmAreaMap doc={doc} area={area.include} highlight={map.target}
           onAdd={onAdd} onRemove={onRemove} onClearHighlight={() => setMap({ target: null })} onClose={() => dialog.current?.close()} />
       </Suspense>}
     </dialog>

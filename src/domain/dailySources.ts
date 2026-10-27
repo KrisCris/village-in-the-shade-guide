@@ -18,8 +18,8 @@ export type ItemSource =
   | { kind: 'wild'; season: number; now: boolean }
   /** Produced by these species; `owned` when one of them lives on the farm. */
   | { kind: 'animal'; species: number[]; owned: boolean }
-  /** Wood from felling these trees: grown ones on the map, saplings, and tree seeds held for planting. */
-  | { kind: 'trees'; crops: number[]; grown: number[]; young: number; seeds: Array<[itemId: number, count: number]> }
+  /** Wood from felling these trees: grown ones on the map, saplings, and tree seeds held for planting. `stumps`: the 附身草丛 stumps give it too. */
+  | { kind: 'trees'; crops: number[]; grown: number[]; young: number; seeds: Array<[itemId: number, count: number]>; stumps?: boolean }
   /** A sap extractor on this tree collects the sap in three days. */
   | { kind: 'sap'; tree: number; trees: number[] }
   | { kind: 'machine'; machine: number; inputs: Array<[itemId: number, count: number]>; count: number; minutes: number }
@@ -28,6 +28,13 @@ export type ItemSource =
 
 /** Item text: 木材 comes from chestnut, oak and pine; 好加工的木材 from cedar; 坚硬的木材 from hinoki. */
 export const WOOD_TREES: Readonly<Record<number, number[]>> = { 230000: [1000, 1003, 1002], 230001: [1001], 230002: [1004] };
+/** cropsharvest.dat: a grown timber tree of any kind drops this much of its wood to the axe. */
+export const TREE_WOOD = [12, 18] as const;
+/**
+ * 木材 also comes from the stumps in 附身草丛 (藪), north-west of the village. Players report many
+ * there; cropsplacement.dat places none in that map, so how many is unknown, and it is not on the village map.
+ */
+export const STUMP_WOOD = 230000;
 /** Tree seeds picked up when felling a tree (item text) and the tree each grows into. */
 export const TREE_SEEDS: Readonly<Record<number, number>> = { 140270: 1000, 140280: 1001, 140170: 1002, 140210: 1003, 140290: 1004 };
 /** What a sap extractor collects from each tree in three days (item text). */
@@ -90,6 +97,7 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     sources.push({
       kind: 'trees', crops: woods, grown: trees.filter((tree) => tree.grown).map((tree) => tree.cell), young: trees.filter((tree) => !tree.grown).length,
       seeds: Object.entries(TREE_SEEDS).filter(([, tree]) => woods.includes(tree)).map(([seed]): [number, number] => [Number(seed), context.held.get(Number(seed)) ?? 0]).filter(([, count]) => count > 0),
+      ...itemId === STUMP_WOOD ? { stumps: true } : {},
     });
   }
   const sapTree = TREE_SAPS[itemId];

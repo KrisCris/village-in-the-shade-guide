@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
-import type { ItemSource } from '../../domain/dailySources';
+import { TREE_WOOD, type ItemSource } from '../../domain/dailySources';
 import { ANIMALS } from '../../lib/saveAnimals';
 import { gameDuration } from '../../lib/saveMachines';
 import { GAME_SEASONS } from '../../lib/saveTime';
@@ -160,7 +160,8 @@ export function sourceText(source: ItemSource, name: Names): string {
     }
     case 'trees': {
       const trees = source.crops.map(name.tree).join(tr('、'));
-      const parts = [tr('砍{trees}：村里有 {grown} 棵长成的', { trees, grown: source.grown.length })];
+      const parts = [tr('砍{trees}：长成的一棵出 {low}–{high} 个，村里有 {grown} 棵', { trees, low: TREE_WOOD[0], high: TREE_WOOD[1], grown: source.grown.length })];
+      if (source.stumps) parts.push(tr('村子西北边的附身草丛有很多树桩，砍了也出木材（那里不在地图上）'));
       if (source.young) parts.push(tr('{young} 棵还在长', { young: source.young }));
       for (const [seed, count] of source.seeds) parts.push(tr('有 {count} 个{seed}可以种，约 10 天长成', { count, seed: name.item(seed) }));
       return parts.join(tr('；'));

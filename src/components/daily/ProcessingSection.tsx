@@ -152,7 +152,7 @@ export default function ProcessingSection({ plan, machines, materials, seasonDay
         </label>
       </header>
       <ul className="daily-material-grid">{materialRows}</ul>
-      <p className="daily-note">{shortMaterials.length ? tr('交付要用的材料已经扣掉，每种再按库存保留的比例留一部分。每棵树能砍出多少木材还没核实，所以只列出能砍的树。') : tr('材料够用，可以直接去工作台做。')}</p>
+      <p className="daily-note">{shortMaterials.length ? tr('交付要用的材料已经扣掉，每种再按库存保留的比例留一部分。') : tr('材料够用，可以直接去工作台做。')}</p>
     </div>}
   </Section>;
 }

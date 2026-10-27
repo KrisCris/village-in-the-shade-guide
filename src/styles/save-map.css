@@ -202,6 +202,7 @@
 .farm-minimap svg { display: block; width: 100%; height: auto; }
 .farm-zoom { position: absolute; right: 14px; top: 14px; display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 4px; background: #20342deb; border: 1px solid #e5e6c933; border-radius: 10px; box-shadow: 0 4px 20px #0003; }
 .farm-editor .farm-zoom button { background: #f2efdf; color: #29483f; border-color: transparent; min-width: 42px; padding: .3rem; font-size: .85rem; }
+.farm-editor .farm-zoom button:hover:not(:disabled) { background: #fffaea; border-color: var(--gold); }
 .farm-zoom output { font: 11px system-ui; text-align: center; color: #f5eed6; padding: 3px; }
 .farm-overlay-start { position: absolute; top: 14px; left: 14px; display: flex; align-items: center; gap: 6px; }
 .farm-compass { color: #fff7df; background: #20342dbb; padding: .5rem .65rem; border-radius: 8px; font-size: .75rem; pointer-events: none; }

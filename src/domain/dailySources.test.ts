@@ -41,10 +41,10 @@ describe('item sources', () => {
     expect(itemSources(FISH, context({ season: 0, periods: [2, 3] }))[0]).toMatchObject({ now: true, today: false });
   });
 
-  it('points wood at the matching trees, saplings and tree seeds held', () => {
+  it('points wood at the matching trees, saplings and tree seeds held, and 木材 also at the 附身草丛 stumps', () => {
     const trees = [{ crop: 1000, cell: 1, grown: true }, { crop: 1002, cell: 2, grown: false }, { crop: 1001, cell: 3, grown: true }];
     const held = new Map([[140270, 9], [140280, 4]]);
-    expect(itemSources(230000, context({ trees, held }))).toEqual([{ kind: 'trees', crops: [1000, 1003, 1002], grown: [1], young: 1, seeds: [[140270, 9]] }]);
+    expect(itemSources(230000, context({ trees, held }))).toEqual([{ kind: 'trees', crops: [1000, 1003, 1002], grown: [1], young: 1, seeds: [[140270, 9]], stumps: true }]);
     expect(itemSources(230001, context({ trees, held }))).toEqual([{ kind: 'trees', crops: [1001], grown: [3], young: 0, seeds: [[140280, 4]] }]);
   });
 

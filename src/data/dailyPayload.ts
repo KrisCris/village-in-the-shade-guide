@@ -3,8 +3,6 @@ import unlocks from '../../data/sources/game-save-unlocks.json';
 import livestock from '../../data/sources/game-livestock-products.json';
 import animals from '../../data/sources/game-save-animals.json';
 import construction from '../../data/sources/game-construction.json';
-import mapMarkers from '../../data/sources/game-map-markers.json';
-import { minimapWorldBounds } from './collectionMap';
 import type { Catalog } from './types';
 
 /**
@@ -58,8 +56,6 @@ export interface DailyPayload {
   /** Adult livestock (livestock.dat id) → its house type (0 barn, 1 coop, 2 stable) and the items it produces. */
   animals: Array<{ species: number; house: number; products: number[] }>;
   houses: HouseOrder[];
-  /** World rectangle of the village minimap, drawn around the farm art on the map. */
-  village: number[];
 }
 
 const SEASONS = ['SPRING', 'SUMMER', 'AUTUMN', 'WINTER'];
@@ -106,7 +102,7 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
   const wild: Record<string, number> = {};
   for (const bundle of bundles) if (bundle.list === 'shrine') for (const [itemId] of bundle.items) if (wildIds.has(itemId)) wild[itemId] = bundle.season!;
 
-  return { prices, bundles, crafts, fish, wild, quarry: quarryBands(numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks), village: minimapWorldBounds(mapMarkers.projection) };
+  return { prices, bundles, crafts, fish, wild, quarry: quarryBands(numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
 }
 
 /** Slot counts from each order's description in construction.dat. */

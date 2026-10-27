@@ -14,6 +14,7 @@
 | `public/icons/fallback/` | 缺图时的兜底图形 | 作者绘制，不代表物品实际外观 |
 | `public/maps/` | 游戏小地图（简体、繁体、日文各一张，叠加 1.2 版新增农地） | 标注与投影参数见 `data/sources/game-map-markers.json`、`game-exploration-markers.json`、`game-night-pickups.json` |
 | `public/maps/farm/` | 存档编辑器的农场、房间、作物和设施图 | `tools/extract-map-art.py`，见该目录的 README |
+| `public/maps/village/` | 每日规划地图里农场外的整个村子（四季分块图和全图） | `tools/extract-village-art.py`，见该目录的 README |
 | `public/art/` | 首页的山峦、云雾、四季树木与灌木 | `tools/extract-scenery.py`，逐图来源见 `data/sources/site-scenery.json` |
 | `public/art/portraits/` | 动态立绘 | `tools/extract-portrait-models.py`、`extract-portrait-options.py` 导出，`tools/package-portraits.mjs` 打包 |
 | `public/art/anomalies/` | 怪异页插图 | `tools/extract-anomaly-art.py` 从构建 `25311578` 的 `anime.dat`、`fairy_1_00.dat` 导出，`tools/render-anomaly-art.mjs` 渲染，逐图来源见 `data/sources/game-anomaly-art.json` |

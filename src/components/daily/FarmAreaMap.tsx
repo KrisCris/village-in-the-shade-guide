@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import MapCanvas from '../save/MapCanvas';
-import { buildFarmScene, farmGround, FARM_BOUNDS, FARM_CELLS, FARM_REGIONS, FARM_SCENE, pickFarmCell, saveSeason, type MapArt } from '../../lib/saveMapScene';
+import { buildFarmScene, farmGround, FARM_BOUNDS, FARM_CELLS, FARM_REGIONS, FARM_SCENE, pickFarmCell, saveSeason, type MapArt, type WorldArt } from '../../lib/saveMapScene';
 import { landPosition } from '../../lib/saveMap';
 import { farmableCells } from '../../lib/saveDaily';
 import type { SerDocument } from '../../lib/ser';
@@ -28,19 +28,18 @@ const cellBounds = (cells: number[]) => boundsOf(cells.map(landPosition), PAD);
 const VILLAGE_VIEW = boundsOf(FARM_CELLS, 600);
 const union = (a: number[], b: number[]) => [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[2], b[2]), Math.max(a[3], b[3])];
 
-/** The save editor's farm map, read-only, over the village minimap: marks a target and edits which cells are farmland. */
-export default function FarmAreaMap({ doc, area, highlight, village, onAdd, onRemove, onClearHighlight, onClose }: {
+/** The save editor's farm map, read-only, inside the rest of the village: marks a target and edits which cells are farmland. */
+export default function FarmAreaMap({ doc, area, highlight, onAdd, onRemove, onClearHighlight, onClose }: {
   doc: SerDocument;
   area: number[];
   highlight: MapTarget | null;
-  /** The village minimap image and the world rectangle it covers; absent until the planner data loads. */
-  village?: { src: string; bounds: number[] };
   onAdd: (cells: number[]) => void;
   onRemove: (cells: number[]) => void;
   onClearHighlight: () => void;
   onClose: () => void;
 }) {
   const [art, setArt] = useState<MapArt | null>(null), [loadError, setLoadError] = useState('');
+  const [world, setWorld] = useState<WorldArt | null>(null);
   const [tool, setTool] = useState<'inspect' | 'pan'>('inspect');
   const [selected, setSelected] = useState<number[]>([]);
   const [focus, setFocus] = useState(() => ({ bounds: highlight ? cellBounds(highlight.cells) : FARM_BOUNDS, revision: 0 }));
@@ -50,23 +49,36 @@ export default function FarmAreaMap({ doc, area, highlight, village, onAdd, onRe
       .then((response) => { if (!response.ok) throw new Error(tr('场景素材载入失败。')); return response.json(); })
       .then(setArt)
       .catch((error) => { if (error.name !== 'AbortError') setLoadError(error.message); });
+    // The village around the farm is optional: without it the farm still shows on its own.
+    fetch(withBase('/maps/village/manifest.json'), { signal: controller.signal })
+      .then((response) => response.ok ? response.json() : null)
+      .then(setWorld)
+      .catch(() => {});
     return () => controller.abort();
   }, []);
   useEffect(() => { if (highlight) setFocus((f) => ({ bounds: cellBounds(highlight.cells), revision: f.revision + 1 })); }, [highlight]);
   const season = useMemo(() => saveSeason(doc), [doc]);
-  const sprites = useMemo(() => art ? buildFarmScene(doc, {}, art, season, false, FARM_SCENE) : [], [doc, art, season]);
+  // With the village drawn, its trees and plants come from the save too. Village fixtures
+  // that have no sprite (only the farm's are exported) are left out rather than drawn as dots.
+  const sprites = useMemo(() => {
+    if (!art) return [];
+    if (!world) return buildFarmScene(doc, {}, art, season, false, FARM_SCENE);
+    const [left, top, right, bottom] = art.bounds;
+    return buildFarmScene(doc, {}, { ...art, bounds: world.bounds }, season, false, FARM_SCENE)
+      .filter((sprite) => sprite.art || sprite.x >= left && sprite.x <= right && sprite.y >= top && sprite.y <= bottom);
+  }, [doc, art, world, season]);
   const ground = useMemo(() => farmGround(doc, {}, FARM_SCENE), [doc]);
   const inArea = useMemo(() => new Set(area), [area]);
   const marks = useMemo(() => [
     { cells: area, ...AREA_MARK },
     ...(highlight ? [{ cells: highlight.cells, ...HIGHLIGHT_MARK }] : []),
   ], [area, highlight]);
-  const backdrop = useMemo(() => {
-    if (!village) return undefined;
+  const village = useMemo(() => {
+    if (!world) return undefined;
     const view = highlight ? union(VILLAGE_VIEW, cellBounds(highlight.cells)) : VILLAGE_VIEW;
-    const { bounds } = village;
-    return { ...village, view: [Math.max(view[0], bounds[0]), Math.max(view[1], bounds[1]), Math.min(view[2], bounds[2]), Math.min(view[3], bounds[3])] };
-  }, [village, highlight]);
+    const { bounds } = world;
+    return { art: world, view: [Math.max(view[0], bounds[0]), Math.max(view[1], bounds[1]), Math.min(view[2], bounds[2]), Math.min(view[3], bounds[3])] };
+  }, [world, highlight]);
   const adding = selected.filter((id) => !inArea.has(id)).length, removing = selected.length - adding;
   const count = (target: MapTarget) => target.unit === 'trees'
     ? tr('{label}：{count} 棵', { label: target.label, count: target.cells.length })
@@ -116,7 +128,7 @@ export default function FarmAreaMap({ doc, area, highlight, village, onAdd, onRe
         }}
         onStroke={() => {}}
         marks={marks}
-        backdrop={backdrop}
+        world={village}
       /> : <div className="farm-viewport daily-map-loading" role="status">{loadError || tr('正在载入地图…')}</div>}
       <aside className="farm-panel" aria-label={tr('农田范围')}>
         <div className="farm-section">

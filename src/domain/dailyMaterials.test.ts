@@ -14,7 +14,7 @@ describe('material plan', () => {
     const free = new Map([[WOOD, 100], [STONE, 50]]);
     const lines = planMaterials([[WOOD, 90], [STONE, 30]], free, 0.2, context(free));
     expect(lines.map(({ itemId, need, held, reserve, short }) => [itemId, need, held, reserve, short])).toEqual([[WOOD, 90, 100, 20, 10], [STONE, 30, 50, 10, 0]]);
-    expect(lines[0].sources).toEqual([{ kind: 'trees', crops: [1000, 1003, 1002], grown: [], young: 0, seeds: [] }]);
+    expect(lines[0].sources).toEqual([{ kind: 'trees', crops: [1000, 1003, 1002], grown: [], young: 0, seeds: [], stumps: true }]);
     expect(planMaterials([[WOOD, 90]], free, 0, context(free))[0].short).toBe(0);
   });
 
