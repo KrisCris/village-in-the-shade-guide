@@ -41,7 +41,7 @@ data = FafullfsArchive.open(game / 'data.dat')
 maps = FafullfsArchive.open(game / 'data/map_1_00.dat')
 u32 = lambda b, o: struct.unpack_from('<I', b, o)[0]
 u64 = lambda b, o: struct.unpack_from('<Q', b, o)[0]
-LOCALES = ('ja', 'zh-CN', 'zh-TW')
+LOCALES = ('ja', 'en', 'zh-CN', 'zh-TW')
 reviewed = {
     'event_farmland_expansion': '085c9f1ebb9c49cddb963fa9543f0466540988a8c2464d84724e2427d88e30ef',
     'gimmick_land_for_sale_sign': '4e3a240cb6ff0f7ad06521cb68b59950c33afd7ccb94973359c89f73e6beb750',
@@ -59,7 +59,8 @@ def table(name):
     return read_table(raw)
 def texts(group, start):
     block = localized_block(group, start, 7)
-    return {locale: block[locale].replace('\n', '') for locale in LOCALES}
+    # English wraps between words; the other languages wrap mid-text.
+    return {locale: block[locale].replace('\n', ' ' if locale == 'en' else '') for locale in LOCALES}
 
 flag_table = table('gameflag')
 flag_rows = {u64(r, 0): g for r, g in zip(flag_table.records, _string_groups(flag_table))}
@@ -70,7 +71,7 @@ flag_ids = {g[0]: id for id, g in flag_rows.items()}
 def description(group):
     # Up to three description lines, each a 7-slot block (8, 15, 22); a line may end mid-sentence.
     lines = [texts(group, start) for start in (8, 15, 22) if len(group) >= start + 7]
-    return {locale: ''.join(line[locale] for line in lines) for locale in LOCALES}
+    return {locale: (' ' if locale == 'en' else '').join(line[locale] for line in lines).strip() for locale in LOCALES}
 
 constructions = []
 t = table('construction')

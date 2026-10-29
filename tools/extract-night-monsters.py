@@ -103,7 +103,7 @@ def creature(r,g):
     w=struct.unpack_from(f'<{len(r)//4}I',r)
     S=lambda i: pool[w[i]:w[i]+w[i+1]].decode()
     i=next(k for k in range(34,60) if w[k] and w[k]<len(pool) and pool[w[k]-1:w[k]]==b'\0' and S(k).startswith('ai_'))
-    d=dict(id=g[0],ja=g[1],zh_hant=g[5],script=S(i)); i+=2
+    d=dict(id=g[0],ja=g[1],en=g[2],zh_hant=g[5],script=S(i)); i+=2
     i+=4  # scriptEntry, scriptArg
     d['move_speed']=round(struct.unpack_from('<f',r,i*4)[0],2); i+=1+6
     i+=1; d['pop_count']=[w[i],w[i+1]]; i+=2+4
@@ -273,10 +273,12 @@ MONSTERS=['CREATURE_ID_HORROR_MOYAMOYASAN_LV3','CREATURE_ID_HORROR_KUNEKUNE','CR
           'CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN','CREATURE_ID_HORROR_BLOCKAGE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_ONE',
           'CREATURE_ID_HORROR_WHELK','CREATURE_ID_HORROR_WALKING_STONE','CREATURE_ID_HORROR_TREASURE_BOX']
 def display(name):
-    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面, _顔, _1マス)."""
-    name=re.sub(r'_?(プレーン|平面)$','',name)
+    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面 / _Plane, _顔, _1マス)."""
+    name=re.sub(r'_?(プレーン|平面|Plane)$','',name)
+    name=re.sub(r'_(Face|1 Square)$',r' (\1)',name)
     return re.sub(r'_(顔|臉|1マス|1格)$',r'（\1）',name)
 assert display('塗り壁_顔_プレーン')=='塗り壁（顔）' and display('擋路妖_平面')=='擋路妖' and display('塗壁_1格')=='塗壁（1格）'
+assert display('Nurikabe_Face_Plane')=='Nurikabe (Face)' and display('Roadblocker_Plane')=='Roadblocker' and display('Nurikabe_1 Square')=='Nurikabe (1 Square)'
 SCRIPT_ATTACK={'CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE':'ATTACK_ID_ENEMY_HORROR_KNOCK_DOWN'}
 monsters={}
 for key in MONSTERS:
@@ -288,7 +290,7 @@ for key in MONSTERS:
         a=attack_by_name[attack]
         hp=damage(c['power'],a)
         hit=dict(attack=attack,hp=hp,hearts=hp/HEART,knockback=round(a['knockback']),stun_frames=a['stun_frames'])
-    monsters[key]=dict(ja=display(c['ja']),zh_hant=display(c['zh_hant']),script=c['script'],hp=c['hp'],power=c['power'],move_speed=c['move_speed'],
+    monsters[key]=dict(ja=display(c['ja']),en=display(c['en']),zh_hant=display(c['zh_hant']),script=c['script'],hp=c['hp'],power=c['power'],move_speed=c['move_speed'],
                        pop_time=c['pop_time'],vanish_time=c['vanish_time'],on_flags=c['on_flags'],hit=hit)
 expected={'CREATURE_ID_HORROR_MOYAMOYASAN_LV3':('たたずむ霊','佇立靈',1,4),'CREATURE_ID_HORROR_KUNEKUNE':('くねくね','扭扭妖',0,1),
           'CREATURE_ID_HORROR_WANDERING_GHOST':('うろうろお化け','徘徊妖怪',0,1),'CREATURE_ID_HORROR_WARP_GHOST':('ワープお化け','瞬移妖怪',0,3),
@@ -311,7 +313,7 @@ for key,story,map_id in (('CREATURE_ID_HORROR_ITSUMADE','story_05_01','MAP_ID_LO
     c=creatures[key]
     assert c['pop_count']==[0xffffffff]*2 or not c['anchors'],key
     assert not any(key in t['members'] for t in tables.values()),key
-    bosses.append(dict(id=key,ja=c['ja'],zh_hant=c['zh_hant'],chapter=int(story[6:8]),map=map_id))
+    bosses.append(dict(id=key,ja=c['ja'],en=c['en'],zh_hant=c['zh_hant'],chapter=int(story[6:8]),map=map_id))
 
 out=dict(
     source='placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, map heads '

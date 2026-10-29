@@ -2441,6 +2441,7 @@
  "monsters": {
   "CREATURE_ID_HORROR_MOYAMOYASAN_LV3": {
    "ja": "たたずむ霊",
+   "en": "Lingering Ghost",
    "zh_hant": "佇立靈",
    "script": "ai_creature_horror_moyamoyasan_lv3",
    "hp": 1,
@@ -2459,6 +2460,7 @@
   },
   "CREATURE_ID_HORROR_KUNEKUNE": {
    "ja": "くねくね",
+   "en": "Kunekune",
    "zh_hant": "扭扭妖",
    "script": "ai_creature_horror_kunekune",
    "hp": 0,
@@ -2477,6 +2479,7 @@
   },
   "CREATURE_ID_HORROR_WANDERING_GHOST": {
    "ja": "うろうろお化け",
+   "en": "Wandering Ghost",
    "zh_hant": "徘徊妖怪",
    "script": "ai_creature_horror_wandering_ghost",
    "hp": 0,
@@ -2495,6 +2498,7 @@
   },
   "CREATURE_ID_HORROR_WARP_GHOST": {
    "ja": "ワープお化け",
+   "en": "Warp Ghost",
    "zh_hant": "瞬移妖怪",
    "script": "ai_creature_horror_warp_ghost",
    "hp": 0,
@@ -2513,6 +2517,7 @@
   },
   "CREATURE_ID_HORROR_OBO": {
    "ja": "オボ",
+   "en": "Obo",
    "zh_hant": "歐柏妖",
    "script": "ai_creature_horror_obo",
    "hp": 0,
@@ -2531,6 +2536,7 @@
   },
   "CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN": {
    "ja": "二口女",
+   "en": "Two-Mouthed Woman",
    "zh_hant": "二口女",
    "script": "ai_creature_horror_two_mouths_woman",
    "hp": 0,
@@ -2549,6 +2555,7 @@
   },
   "CREATURE_ID_HORROR_BLOCKAGE_PLANE": {
    "ja": "通せんぼ",
+   "en": "Roadblocker",
    "zh_hant": "擋路妖",
    "script": "ai_creature_horror_blockage_plane",
    "hp": 0,
@@ -2567,6 +2574,7 @@
   },
   "CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE": {
    "ja": "塗り壁（顔）",
+   "en": "Nurikabe (Face)",
    "zh_hant": "塗壁（臉）",
    "script": "ai_creature_horror_plastered_wall_face",
    "hp": 0,
@@ -2585,6 +2593,7 @@
   },
   "CREATURE_ID_HORROR_PLASTERED_WALL_ONE": {
    "ja": "塗り壁（1マス）",
+   "en": "Nurikabe (1 Square)",
    "zh_hant": "塗壁（1格）",
    "script": "ai_creature_horror_plastered_wall_one",
    "hp": 0,
@@ -2597,6 +2606,7 @@
   },
   "CREATURE_ID_HORROR_WHELK": {
    "ja": "ツブ",
+   "en": "Whelk",
    "zh_hant": "小顆粒",
    "script": "ai_creature_horror_whelk",
    "hp": 0,
@@ -2611,6 +2621,7 @@
   },
   "CREATURE_ID_HORROR_WALKING_STONE": {
    "ja": "歩く石",
+   "en": "Walking Stone",
    "zh_hant": "行走的石頭",
    "script": "ai_creature_horror_walking_stone",
    "hp": 5,
@@ -2623,6 +2634,7 @@
   },
   "CREATURE_ID_HORROR_TREASURE_BOX": {
    "ja": "玉手箱",
+   "en": "Tamatebako",
    "zh_hant": "玉手箱",
    "script": "ai_creature_horror_treasure_box",
    "hp": 1,
@@ -2707,6 +2719,7 @@
   {
    "id": "CREATURE_ID_HORROR_ITSUMADE",
    "ja": "以津真天",
+   "en": "Itsumade",
    "zh_hant": "以津真天",
    "chapter": 5,
    "map": "MAP_ID_LOST_FOREST"
@@ -2714,6 +2727,7 @@
   {
    "id": "CREATURE_ID_HORROR_NUE",
    "ja": "鵺の皮",
+   "en": "Nue Pelt",
    "zh_hant": "鵺皮",
    "chapter": 5,
    "map": "MAP_ID_MOUNTAIN_PASS"
@@ -2721,6 +2735,7 @@
   {
    "id": "CREATURE_ID_HORROR_FIGURE",
    "ja": "人影",
+   "en": "Shadowy Figure",
    "zh_hant": "人影",
    "chapter": 5,
    "map": "MAP_ID_BUSHAREA"
@@ -2728,6 +2743,7 @@
   {
    "id": "CREATURE_ID_HORROR_SPOTTED_DOG",
    "ja": "斑犬",
+   "en": "Spotted Dog",
    "zh_hant": "斑點狗",
    "chapter": 5,
    "map": "MAP_ID_BUSHAREA"
@@ -2735,6 +2751,7 @@
   {
    "id": "CREATURE_ID_HORROR_KODAMA",
    "ja": "木霊",
+   "en": "Kodama",
    "zh_hant": "木靈",
    "chapter": 6,
    "map": "MAP_ID_BOTTOM_OF_HOLE"
