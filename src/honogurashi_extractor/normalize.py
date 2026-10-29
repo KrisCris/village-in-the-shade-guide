@@ -474,6 +474,11 @@ def _normalize_store(table, items_by_numeric, snapshot, flags=None):
         6102: "随身背包已扩充至Lv3", 6103: "已购买镰刀",
         18704: "完成进入今野房间的居民事件", 6465: "六角好感度突破Lv6",
         70003: "庙会场景开放",
+        # event.dat EVENT_ID_SALE_START_CAMP_SERIES / _BATH_SERIES / _SEEDER
+        # set these after GAME_FLAG_HUNTING_LICENSE_PHEASANT, _FOX and
+        # GAME_FLAG_BUNDLE_SHRINE_04 (the 1.30 notes call it shrine stage 3).
+        90000: "取得绿雉的狩猎执照后", 90110: "取得狐狸的狩猎执照后",
+        90101: "岔路祠堂修复完第三阶段后", 90100: "已购买播种机",
     }
     season_names = ("spring", "summer", "autumn", "winter")
     for record, group in zip(table.records, _string_groups(table), strict=True):
@@ -501,6 +506,8 @@ def _normalize_store(table, items_by_numeric, snapshot, flags=None):
                         conditions.append("前一份限量商品已售出" if required else "本份限量商品尚未售出")
                     elif label:
                         conditions.append(label if required else "不满足：" + label)
+                    elif flag_names.get(flag, ("",))[0].startswith("GAME_FLAG_BUY_GENERAL_ADDITIONAL_"):
+                        conditions.append("已购买过此商品" if required else "尚未购买过此商品")
                     else:
                         # Retain the raw predicate, including its polarity; an
                         # unknown flag must never become an unconditional offer.
@@ -515,6 +522,9 @@ def _normalize_store(table, items_by_numeric, snapshot, flags=None):
                 "GENERAL": "田上杂货店", "VENDOR": "行商", "RESTAURANT": "六角食堂",
                 "CRAFT": "树木建设", "HUNTER": "狩猎商店",
             }.items() if f"_{key}_" in internal), "商店")
+            if internal == "STORE_SALE_ID_SEEDER":
+                # LETTER_ID_ADDITIONAL_GENERAL_STORE_PURCHASE_01 announces it at the general store.
+                location = "田上杂货店"
             snapshot.store_offers[internal] = StoreOffer(
                 internal, record_id, item_id, tuple(dict.fromkeys(conditions)), location,
                 seasons, flag_lists[0], flag_lists[1],

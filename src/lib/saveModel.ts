@@ -34,6 +34,7 @@ import {
   type SerNode,
 } from './ser';
 import { tr } from '../i18n/active';
+import { NAME_LIMIT } from './saveText';
 
 export type SaveSectionId = 'basic' | 'player' | 'items' | 'barn' | 'npc' | 'brand' | 'progress' | 'quests' | 'raw' | 'map';
 export type FieldType = 'int' | 'float' | 'bool' | 'string' | 'bytes';
@@ -473,7 +474,7 @@ function payloadFor(doc: SerDocument, field: SaveField, raw: string): Uint8Array
   const node = doc.node(field.offset);
   const value = raw.trim();
   if (field.type === 'string') {
-    if ((node.name === 'name_' || node.name === 'dogName_' || field.label === tr('品牌名')) && Array.from(raw).length > 5) throw new Error(tr('{label}最多 5 个字符。', { label: field.label }));
+    if ((node.name === 'name_' || node.name === 'dogName_' || field.label === tr('品牌名')) && Array.from(raw).length > NAME_LIMIT) throw new Error(tr('{label}最多 {limit} 个字符。', { label: field.label, limit: NAME_LIMIT }));
     return encodeString(raw);
   }
   if (field.type === 'bytes') return fromHex(raw, node.size, field.label);

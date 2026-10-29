@@ -193,14 +193,23 @@ def _normalize_named(table, output, overrides):
         output[name.internal] = WorldEntry(name.internal, _u32(record, 0), name)
 
 
+# quest.dat fills unused description and objective slots with these
+# developer notes ("no text for this quest", "report if shown").
+_QUEST_PLACEHOLDERS = {"！このクエストではこのテキストはありません！", "！表示されている場合バグなので報告！"}
+
+
+def _without_placeholder(block):
+    return {locale: "" for locale in block} if block.get("ja") in _QUEST_PLACEHOLDERS else block
+
+
 def _normalize_quests(table, output, overrides):
     if not table:
         return
     for record, group in zip(table.records, _string_groups(table), strict=True):
         name = _standard_name(group, overrides, table.language_count)
         width = table.language_count
-        description = localized_block(group, 1 + 2 * width, width)
-        objective = localized_block(group, 1 + 3 * width, width)
+        description = _without_placeholder(localized_block(group, 1 + 2 * width, width))
+        objective = _without_placeholder(localized_block(group, 1 + 3 * width, width))
         count_offset = 296 + (width - 6) * 40
         count = _u32(record, count_offset)
         if count:

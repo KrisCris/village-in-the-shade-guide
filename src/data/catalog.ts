@@ -21,13 +21,17 @@ function kindFromPath(path: string) {
   return path.split('/').at(-1)!.replace('.json', '');
 }
 
+// i18n-ignore-next-line — quest.dat writes the player's name as a <player> tag.
+const playerWord: Record<Locale, string> = { 'zh-CN': '主角', 'zh-TW': '主角', ja: '主人公' };
+const withoutTags = (text: string, locale: Locale) => text.replace(/<cmd\b[^>]*>/g, '').replace(/<player>/g, playerWord[locale]);
+
 function withSearchAliases(name: Name): Name {
-  const readable=(text:string)=>text.replace(/<cmd\b[^>]*>/g,'').replace(/^\s*[＋+]\s*/,'').trim();
+  const readable=(text:string,locale:Locale)=>withoutTags(text,locale).replace(/^\s*[＋+]\s*/,'').trim();
   // Official Simplified Chinese ships since build 25311578; OpenCC only fills
   // authored overrides and names the game leaves untranslated.
-  const simplified = readable(name.translations?.['zh-CN'] || toSimplified(name.zh_hant || name.zh_hans));
+  const simplified = readable(name.translations?.['zh-CN'] || toSimplified(name.zh_hant || name.zh_hans), 'zh-CN');
   const aliases = [...new Set([simplified, ...name.aliases, ...buildPinyinAliases(simplified), ...buildPinyinAliases(name.zh_hant)])];
-  return { ...name, zh_hans: simplified, zh_hant: readable(name.zh_hant), ja: readable(name.ja), aliases };
+  return { ...name, zh_hans: simplified, zh_hant: readable(name.zh_hant, 'zh-TW'), ja: readable(name.ja, 'ja'), aliases };
 }
 
 /**
@@ -38,7 +42,7 @@ function withSearchAliases(name: Name): Name {
 function localizeName(name: Name, locale: Locale, t: Translate): Name {
   if (locale === defaultLocale || name.review_status === 'internal') return name;
   const official = locale === 'ja' ? name.translations?.ja || name.ja : name.translations?.['zh-TW'] || name.zh_hant;
-  const readable = official?.replace(/<cmd\b[^>]*>/g, '').trim();
+  const readable = official && withoutTags(official, locale).trim();
   // Keep the Simplified Chinese name reachable for cross-language labels.
   return { ...name, zh_hans: readable || translateLabel(name.zh_hans, t), translations: { ...name.translations, 'zh-CN': name.zh_hans } };
 }

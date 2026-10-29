@@ -56,6 +56,23 @@ def test_store_conditions_keep_year_season_and_exclusion_separate():
     assert offer.conditions == ("第二年秋起", "尚未解锁此款外观")
 
 
+def test_store_labels_one_time_purchases_and_the_seeder_shop():
+    from honogurashi_extractor.normalize import _normalize_store
+    from honogurashi_extractor.models import Snapshot
+    from types import SimpleNamespace
+    seeder = _record(64, {0: 3000, 16: 802021, 28: 1, 32: 90101, 40: 1, 44: 90100})
+    bath = _record(64, {0: 3100, 16: 802030, 28: 1, 32: 90110, 40: 1, 44: 90111})
+    table = read_table(build_table(records=[seeder, bath], strings=b"STORE_SALE_ID_SEEDER\0STORE_SALE_ID_GENERAL_ADDITIONAL_0011\0"))
+    flags = read_table(build_table(records=[_record(16, {0: 90111})], strings=b"GAME_FLAG_BUY_GENERAL_ADDITIONAL_0011\0"))
+    snapshot = Snapshot()
+    items = {802021: SimpleNamespace(id="ITEM_ID_TOOL_SEEDER_1"), 802030: SimpleNamespace(id="ITEM_ID_FIGURINE_M_BATHTUB_BROWN")}
+    _normalize_store(table, items, snapshot, flags)
+    offer = snapshot.store_offers["STORE_SALE_ID_SEEDER"]
+    assert offer.location == "田上杂货店"
+    assert offer.conditions == ("岔路祠堂修复完第三阶段后", "不满足：已购买播种机")
+    assert snapshot.store_offers["STORE_SALE_ID_GENERAL_ADDITIONAL_0011"].conditions == ("取得狐狸的狩猎执照后", "尚未购买过此商品")
+
+
 def test_official_names_and_aliases_are_preserved():
     name = build_name(
         ja="タマネギ",

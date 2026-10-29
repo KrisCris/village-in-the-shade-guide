@@ -3505,8 +3505,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0000"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90010
@@ -3522,8 +3522,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0001"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90011
@@ -3539,8 +3539,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0002"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90012
@@ -3556,8 +3556,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0003"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90013
@@ -3573,8 +3573,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0004"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90014
@@ -3590,8 +3590,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0005"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90015
@@ -3607,8 +3607,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0006"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90016
@@ -3624,8 +3624,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0007"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90017
@@ -3641,8 +3641,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0008"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90018
@@ -3658,8 +3658,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0009"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90019
@@ -3675,8 +3675,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_CAMP_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0010"
+      "取得绿雉的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90020
@@ -3692,8 +3692,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0011"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90111
@@ -3709,8 +3709,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0012"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90112
@@ -3726,8 +3726,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0013"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90113
@@ -3743,8 +3743,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0014"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90114
@@ -3760,8 +3760,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0015"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90115
@@ -3777,8 +3777,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0016"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90116
@@ -3794,8 +3794,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0017"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90117
@@ -3811,8 +3811,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0018"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90118
@@ -3828,8 +3828,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0019"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90119
@@ -3845,8 +3845,8 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_BATH_SERIES",
-      "需未满足条件：GAME_FLAG_BUY_GENERAL_ADDITIONAL_0020"
+      "取得狐狸的狩猎执照后",
+      "尚未购买过此商品"
     ],
     "excluded_flags": [
       90120
@@ -4369,15 +4369,15 @@
   },
   {
     "conditions": [
-      "需满足条件：GAME_FLAG_SALE_START_SEEDER",
-      "需未满足条件：GAME_FLAG_BUY_SEEDER"
+      "岔路祠堂修复完第三阶段后",
+      "不满足：已购买播种机"
     ],
     "excluded_flags": [
       90100
     ],
     "id": "STORE_SALE_ID_SEEDER",
     "item_id": "ITEM_ID_TOOL_SEEDER_1",
-    "location": "商店",
+    "location": "田上杂货店",
     "numeric_id": 3000,
     "required_flags": [
       90101

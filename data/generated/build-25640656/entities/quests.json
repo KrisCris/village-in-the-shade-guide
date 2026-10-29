@@ -170,15 +170,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "! There is no text for this quest!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAIN_CONTROLLED_VILLAGER_01",
     "name": {
@@ -205,15 +205,15 @@
       "zh_hant": "？？？？？？"
     },
     "numeric_id": 10,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "! If you can see this, it's a bug!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -1322,15 +1322,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_01",
     "name": {
@@ -1360,30 +1360,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至樹木處"
     },
     "numeric_id": 33,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_02",
     "name": {
@@ -1413,30 +1413,30 @@
       "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧頭砍倒樹木"
     },
     "numeric_id": 34,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_03",
     "name": {
@@ -1466,30 +1466,30 @@
       "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字鎬敲碎所有石頭"
     },
     "numeric_id": 35,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_04",
     "name": {
@@ -1519,30 +1519,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至田地"
     },
     "numeric_id": 36,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_05",
     "name": {
@@ -1572,30 +1572,30 @@
       "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>使用鋤頭鋤地"
     },
     "numeric_id": 37,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_06",
     "name": {
@@ -1625,30 +1625,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移動選擇要翻整的位置"
     },
     "numeric_id": 38,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_07",
     "name": {
@@ -1678,30 +1678,30 @@
       "zh_hant": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播種"
     },
     "numeric_id": 39,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_08",
     "name": {
@@ -1731,30 +1731,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至水邊"
     },
     "numeric_id": 40,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_09",
     "name": {
@@ -1784,30 +1784,30 @@
       "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺汲水"
     },
     "numeric_id": 41,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_10",
     "name": {
@@ -1836,30 +1836,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地"
     },
     "numeric_id": 42,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_11",
     "name": {
@@ -1889,15 +1889,15 @@
       "zh_hant": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺對種子澆水"
     },
     "numeric_id": 43,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -1957,15 +1957,15 @@
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_13",
     "name": {
@@ -1995,30 +1995,30 @@
       "zh_hant": "對田地澆水"
     },
     "numeric_id": 45,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_14",
     "name": {
@@ -2048,30 +2048,30 @@
       "zh_hant": "收穫作物"
     },
     "numeric_id": 46,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_15",
     "name": {
@@ -2102,30 +2102,30 @@
       "zh_hant": "將蔬菜供奉於祭壇吧"
     },
     "numeric_id": 47,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_18",
     "name": {
@@ -2155,30 +2155,30 @@
       "zh_hant": "吃掉筆頭菜"
     },
     "numeric_id": 60,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_19",
     "name": {
@@ -2207,30 +2207,30 @@
       "zh_hant": "查看商品"
     },
     "numeric_id": 61,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_20",
     "name": {
@@ -2260,30 +2260,30 @@
       "zh_hant": "將想要的商品記下來吧"
     },
     "numeric_id": 62,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_01_21",
     "name": {
@@ -2314,30 +2314,30 @@
       "zh_hant": "檢視筆記吧"
     },
     "numeric_id": 63,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
       "en": "",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "! There is no text for this quest!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_02_03",
     "name": {
@@ -2368,15 +2368,15 @@
       "zh_hant": "把墓地打掃乾淨吧"
     },
     "numeric_id": 65,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "! If you can see this, it's a bug!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [
@@ -2405,15 +2405,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!There is no text for this quest!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_04_09",
     "name": {
@@ -2443,15 +2443,15 @@
       "zh_hant": "若帷遇上危險，保護好她"
     },
     "numeric_id": 85,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -2511,15 +2511,15 @@
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_05_00_01",
     "name": {
@@ -2549,30 +2549,30 @@
       "zh_hant": "試著使用鵺皮"
     },
     "numeric_id": 87,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_05_00_02",
     "name": {
@@ -2602,30 +2602,30 @@
       "zh_hant": "<cmd CMD_INTERACTION_SQUARE>嘗試使用劈岩柴刀"
     },
     "numeric_id": 89,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_05_00_03",
     "name": {
@@ -2656,15 +2656,15 @@
       "zh_hant": "嘗試使用奇蹟的呼笛"
     },
     "numeric_id": 90,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
       "en": "",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -2724,15 +2724,15 @@
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "! There is no text for this quest!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_05_00_05",
     "name": {
@@ -2762,30 +2762,30 @@
       "zh_hant": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斬帷"
     },
     "numeric_id": 93,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "! If you can see this, it's a bug!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_06_01",
     "name": {
@@ -2815,30 +2815,30 @@
       "zh_hant": "移動至柴刀處"
     },
     "numeric_id": 103,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_06_02",
     "name": {
@@ -2868,30 +2868,30 @@
       "zh_hant": "撿起柴刀"
     },
     "numeric_id": 104,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_06_07",
     "name": {
@@ -2921,30 +2921,30 @@
       "zh_hant": "移開岩石"
     },
     "numeric_id": 109,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_CHAPTER_06_08",
     "name": {
@@ -2974,15 +2974,15 @@
       "zh_hant": "移開岩石吧"
     },
     "numeric_id": 110,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -3074,15 +3074,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_00",
     "name": {
@@ -3111,30 +3111,30 @@
       "zh_hant": "向村民打招呼吧　0/8"
     },
     "numeric_id": 50,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_01",
     "name": {
@@ -3163,30 +3163,30 @@
       "zh_hant": "向村民打招呼吧　1/8"
     },
     "numeric_id": 51,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_02",
     "name": {
@@ -3215,30 +3215,30 @@
       "zh_hant": "向村民打招呼吧　2/8"
     },
     "numeric_id": 52,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_03",
     "name": {
@@ -3267,30 +3267,30 @@
       "zh_hant": "向村民打招呼吧　3/8"
     },
     "numeric_id": 53,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug, veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_04",
     "name": {
@@ -3319,30 +3319,30 @@
       "zh_hant": "向村民打招呼吧　4/8"
     },
     "numeric_id": 54,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_05",
     "name": {
@@ -3371,30 +3371,30 @@
       "zh_hant": "向村民打招呼吧　5/8"
     },
     "numeric_id": 55,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_06",
     "name": {
@@ -3423,30 +3423,30 @@
       "zh_hant": "向村民打招呼吧　6/8"
     },
     "numeric_id": 56,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_07",
     "name": {
@@ -3475,30 +3475,30 @@
       "zh_hant": "向村民打招呼吧　7/8"
     },
     "numeric_id": 57,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_FIRST_MEETING_08",
     "name": {
@@ -3527,15 +3527,15 @@
       "zh_hant": "向村民打招呼吧　8/8"
     },
     "numeric_id": 58,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
       "en": "",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
+      "es": "",
       "fr": "",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -3712,15 +3712,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_HOLIDAY_NOTICE_AUTUMN",
     "name": {
@@ -3750,30 +3750,30 @@
       "zh_hant": "AM 10:00　收穫祭典"
     },
     "numeric_id": 117,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_HOLIDAY_NOTICE_FAIR",
     "name": {
@@ -3804,30 +3804,30 @@
       "zh_hant": "AM 10:00　評鑑會"
     },
     "numeric_id": 114,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_HOLIDAY_NOTICE_SPRING",
     "name": {
@@ -3857,30 +3857,30 @@
       "zh_hant": "AM 10:00　賞花"
     },
     "numeric_id": 115,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_HOLIDAY_NOTICE_SUMMER",
     "name": {
@@ -3910,30 +3910,30 @@
       "zh_hant": "PM 4:00　廟會日"
     },
     "numeric_id": 116,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_HOLIDAY_NOTICE_WINTER",
     "name": {
@@ -3963,15 +3963,15 @@
       "zh_hant": "PM 8:00　年終祭典"
     },
     "numeric_id": 118,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -4223,15 +4223,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_PLAYER_BIRTHDAY",
     "name": {
@@ -4260,15 +4260,15 @@
       "zh_hant": "<player>的生日"
     },
     "numeric_id": 200,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
+      "en": "",
+      "es": "",
       "fr": "",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
@@ -4575,15 +4575,15 @@
     ]
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_01",
     "name": {
@@ -4612,30 +4612,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>移動"
     },
     "numeric_id": 23,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_02",
     "name": {
@@ -4665,30 +4665,30 @@
       "zh_hant": "<cmd CMD_INTERACTION_HARVEST>動作"
     },
     "numeric_id": 24,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_03",
     "name": {
@@ -4718,30 +4718,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍"
     },
     "numeric_id": 25,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_04",
     "name": {
@@ -4771,30 +4771,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋轉"
     },
     "numeric_id": 26,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_05",
     "name": {
@@ -4823,30 +4823,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動"
     },
     "numeric_id": 27,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_06",
     "name": {
@@ -4876,30 +4876,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍2"
     },
     "numeric_id": 28,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
+      "en": "",
       "es": "",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_07",
     "name": {
@@ -4929,30 +4929,30 @@
       "zh_hant": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍3"
     },
     "numeric_id": 29,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_10",
     "name": {
@@ -4982,30 +4982,30 @@
       "zh_hant": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地圖"
     },
     "numeric_id": 32,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_11",
     "name": {
@@ -5035,30 +5035,30 @@
       "zh_hant": "試著吹手哨吧"
     },
     "numeric_id": 48,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_12",
     "name": {
@@ -5088,30 +5088,30 @@
       "zh_hant": "試著照樂譜吹手哨"
     },
     "numeric_id": 49,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],
     "steps": []
   },
   {
-    "description": "！这个任务没有这个字符串！",
+    "description": "",
     "description_translations": {
-      "en": "!This quest does not have this text!",
-      "es": "¡Este texto no debería aparecer en esta misión!",
-      "fr": "Il n’y a pas ce texte dans cette quête !",
-      "ja": "！このクエストではこのテキストはありません！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！这个任务没有这个字符串！",
-      "zh-TW": "！這個任務沒有這個字串！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "id": "QUEST_ID_TUTORIAL_16",
     "name": {
@@ -5142,15 +5142,15 @@
       "zh_hant": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移動"
     },
     "numeric_id": 88,
-    "objective": "！若显示此字符串必须回报！",
+    "objective": "",
     "objective_translations": {
-      "en": "!If this is displayed, it's a bug, so please report it!",
-      "es": "¡Si esto aparece, es un error, repórtalo!",
-      "fr": "Si ceci est affiché, il s’agit d’un bug. Veuillez le signaler !",
-      "ja": "！表示されている場合バグなので報告！",
-      "ko": "!미사용 텍스트!",
-      "zh-CN": "！若显示此字符串必须回报！",
-      "zh-TW": "！若顯示此字串必須回報！"
+      "en": "",
+      "es": "",
+      "fr": "",
+      "ja": "",
+      "ko": "",
+      "zh-CN": "",
+      "zh-TW": ""
     },
     "source": "quest.dat",
     "step_translations": [],

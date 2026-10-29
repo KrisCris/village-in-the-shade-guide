@@ -1,5 +1,6 @@
 import SearchableSelect from '../controls/SearchableSelect';
 import { valueProblem, type SaveField } from '../../lib/saveModel';
+import { NAME_LIMIT } from '../../lib/saveText';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from './SaveIcon';
 import { useState } from 'react';
@@ -69,7 +70,7 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact,
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={label}
       maxLength={nameField ? NAME_LIMIT : undefined}
-      aria-description={nameField ? tr('游戏内名称最多 5 个字符。') : undefined}
+      aria-description={nameField ? tr('游戏内名称最多 {limit} 个字符。', { limit: NAME_LIMIT }) : undefined}
       aria-invalid={(nameField && Array.from(value).length > NAME_LIMIT) || !!problem || undefined}
       spellCheck={false}
     />
@@ -82,8 +83,7 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact,
   </span>;
 }
 
-/** The game caps player, pet, animal and brand names at five characters in every language. */
-export const NAME_LIMIT = 5;
+export { NAME_LIMIT };
 
 export function NameCount({ value }: { value: string }) {
   const length = Array.from(value).length;
