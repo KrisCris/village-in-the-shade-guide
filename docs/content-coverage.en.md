@@ -2,14 +2,16 @@
 
 [简体中文](content-coverage.md) | **English**
 
-Game snapshot: Steam build `25311578`. Topic checklist: [AppMedia](https://appmedia.jp/honogurashi/), used only to compare which topics are covered.
+Game snapshot: Steam build `25640656` (patch 1.30). Topic checklist: [AppMedia](https://appmedia.jp/honogurashi/), used only to compare which topics are covered.
 
 ## Covered
 
 - **Structured data**: items, crops, machine processing, crafting and cooking, fish, residents, plus the shops, deliveries, unlocks and livestock relationships parsed so far. Every entry links both ways: an item shows its recipes, machines and shops, and those pages link back.
 - **Planners**: value added by processing, full return starting from seeds, and the production workflow.
+- **Patch 1.30**: the protagonist's birthday (unlock conditions, Rin's letter, the 14 residents' birthday presents), the Seeder's purchase condition and coverage per tier, the plumbing fixture furniture, and the other changes in the official update notes. The "???" event is covered only by its trigger, with no story spoilers.
 - **Original guides**: seasonal stockpiles, fishing spots, the quarry, birthdays and gifts, appearance unlocks, shrine skills, collection maps, fishing and cooking preparation, night preparation, anomaly conditions and counters, late-night monsters, special crops, hunting, livestock, buildings and the greenhouse, help tickets and progression goals, cursed items and the heart and stamina caps, and more.
 - **Save editor**: see the [save editor guide](save-editor.en.md).
+- **English pages**: names and descriptions of items, characters, places, quests and so on come straight from the game's official English text in 1.30. The interface and guide text are the site's own translation, using the game's terms. Titles and outlines of the AppMedia topics still to be written have their own English map (`data/sources/guide-translations.en.json`).
 
 Key numbers and conditions come from `data/generated/` and `data/sources/game-*.json`. How fishing spot names were derived is recorded in [`data-evidence/fishing-locations.md`](data-evidence/fishing-locations.md) (Chinese).
 

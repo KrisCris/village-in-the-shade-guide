@@ -5,9 +5,9 @@
 An unofficial database, profit planner and save editor for *Village in the Shade* (ほの暮しの庭).
 
 Site: <https://kriscris.github.io/village-in-the-shade-guide/>
-Available in Simplified Chinese, Traditional Chinese and Japanese.
+Available in Simplified Chinese, Traditional Chinese, Japanese and English.
 
-All data is extracted from the game files (currently Steam build `25311578`), so names, descriptions and icons match the game. Sites such as AppMedia are only used to compare topic coverage, never as a data source.
+All data is extracted from the game files (currently Steam build `25640656`, patch 1.30), so names, descriptions and icons match the game. Sites such as AppMedia are only used to compare topic coverage, never as a data source.
 
 ## What's on the site
 
@@ -15,7 +15,7 @@ All data is extracted from the game files (currently Steam build `25311578`), so
 - **Profit planner**: compares the value added by processing and the full return from buying seeds to selling the product.
 - **Production workflow**: lay out buying, planting, processing, stockpiling and selling on a canvas. The tool works out quantities, dates, land, machines and cash. See the [workflow guide](docs/workflow-planner.en.md).
 - **Daily planner**: reads a save, checks the three delivery lists, your processing machines and materials, and lists what to do today: deliveries to hand in, how many machines to build, which quarry floors or trees to visit for materials, what to sow on empty land and which animals your barns and coops have room for. It also remembers your farm area. Read-only; nothing is uploaded. See the [daily planner guide](docs/daily-planner.en.md).
-- **Guides**: seasonal stockpiles, fishing spots by season, quarry drops, birthdays and gifts, book and shrine maps, getting started, story progression, exploration, appearance, hunting, livestock, cooking, night preparation, shrine skills and more.
+- **Guides**: what's new in 1.30 (birthdays, the Seeder, plumbing fixtures), seasonal stockpiles, fishing spots by season, quarry drops, birthdays and gifts, book and shrine maps, getting started, story progression, exploration, appearance, hunting, livestock, cooking, night preparation, shrine skills and more.
 - **Save editor**: reads and edits a save in the browser and exports a new file. Nothing is uploaded. It covers player stats, items and containers, processing machines, livestock, NPC friendship, quests, collections and unlocks, plus the farm and indoor maps. See the [save editor guide](docs/save-editor.en.md).
 
 Numbers and conditions are backed by game data. Rules that have not been verified are marked as such on the page. Coverage and known gaps are listed in [content coverage](docs/content-coverage.en.md).
@@ -60,7 +60,7 @@ The save editor's regression tests use the author's test saves. The saves are no
 | `src/domain/` | profit calculations, workflow simulation and entity relationships |
 | `src/data/`, `src/lib/` | data access, save reading and writing, shared utilities |
 | `src/i18n/` | UI locales and translation catalogs |
-| `data/generated/build-25311578/` | current game snapshot (the older build `24969282` is kept for comparison) |
+| `data/generated/build-25640656/` | current game snapshot (patch 1.30; the older builds `25311578` and `24969282` are kept for comparison) |
 | `data/sources/` | maps, rules, save editor catalogs and other targeted data |
 | `docs/` | documentation and data evidence |
 | `public/` | icons, maps, scenery, portraits and other assets |

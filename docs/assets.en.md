@@ -8,11 +8,11 @@ Most images on the site are extracted from the game files and stored in the repo
 
 | Path | Contents | Source |
 | --- | --- | --- |
-| `public/icons/generated/items/` | item icons (fish and recipes reuse them by item ID) | build `25311578` item table → icon table → texture reference, cropped by coordinates |
+| `public/icons/generated/items/` | item icons (fish and recipes reuse them by item ID) | build `25640656` item table → icon table → texture reference, cropped by coordinates |
 | `public/icons/generated/livestock/` | livestock icons | the game's own livestock icons |
 | `public/icons/generated/ui/` | UI icons such as quality stars, friendship hearts and stamina | `tools/extract-save-editor-icons.py`; crop coordinates in the folder's `sources.json` |
 | `public/icons/fallback/` | placeholder shapes for missing icons | drawn by the author; not the item's real appearance |
-| `public/maps/` | in-game minimaps (Simplified Chinese, Traditional Chinese and Japanese labels, with the 1.2 farmland drawn in) | markers and projection in `data/sources/game-map-markers.json`, `game-exploration-markers.json`, and `game-night-pickups.json` |
+| `public/maps/` | in-game minimaps (Simplified Chinese, Traditional Chinese, Japanese and English labels, with the 1.2 farmland drawn in) | markers and projection in `data/sources/game-map-markers.json`, `game-exploration-markers.json`, and `game-night-pickups.json` |
 | `public/maps/farm/` | farm, room, crop and facility art for the save editor | `tools/extract-map-art.py`; see the folder's README |
 | `public/maps/village/` | the whole village around the farm on the daily planner's map (seasonal tiles and overviews) | `tools/extract-village-art.py`; see the folder's README |
 | `public/art/` | home page mountains, mist, seasonal trees and shrubs | `tools/extract-scenery.py`; per-image sources in `data/sources/site-scenery.json` |

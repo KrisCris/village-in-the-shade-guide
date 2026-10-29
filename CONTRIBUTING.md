@@ -31,7 +31,7 @@
 - 站内链接、素材路径和 `fetch` 一律经过 `src/lib/sitePath.ts` 的 `withBase`，不要把部署前缀写进数据。
 - 界面使用项目已有的主题控件（输入框、可搜索下拉、按钮），不要露出浏览器默认样式的控件。
 - 大列表要分批渲染、按需加载，筛选作用于完整数据，不能把整份数据塞进静态 HTML。
-- 页面上的中日文字一律经过 `tr()` / `t()`，并在 `src/i18n/catalogs/` 补齐翻译；`npm run i18n:check` 会拦下遗漏。
+- 页面上的文字一律经过 `tr()` / `t()`，并在 `src/i18n/catalogs/` 补齐日文（`ja.json`）和英文（`en.json`）翻译，繁中由同步脚本生成；`npm run i18n:check` 会拦下遗漏。
 - 测试与模块放在一起（`*.test.ts`），Python 测试放在 `tests/test_*.py`。
 
 ## 不要提交

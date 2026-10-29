@@ -8,13 +8,13 @@
 
 | 路径 | 内容 |
 | --- | --- |
-| `data/generated/build-25311578/` | 当前快照：基础提取结果加上补充、核对过的关联信息 |
-| `data/generated/build-24969282/` | 上一构建的快照和表结构，留作对照，不再更新 |
-| `data/schemas/build-25311578/` | 核对过的表字段偏移 |
+| `data/generated/build-25640656/` | 当前快照（1.30 版本）：基础提取结果加上补充、核对过的关联信息 |
+| `data/generated/build-25311578/`、`data/generated/build-24969282/` | 之前构建的快照，留作对照，不再更新 |
+| `data/schemas/build-25640656/` | 核对过的表字段偏移（旧构建的表结构也保留在同级目录） |
 | `data/sources/game-*.json` | 专项解析：地图、游戏规则、钓鱼、采石场、食谱传授、交换、家畜、设备容量、存档编辑器目录等 |
 | `data/sources/` 其余文件 | 站点素材来源、官方头像来源等参考数据 |
 
-构建 `25311578` 起游戏自带简体中文，名称和说明直接用官方简中；官方缺失时才从繁中转换。日文、繁中、韩文和预留语言槽按原表顺序保存在 `translations` 中，内部 ID 不变。
+构建 `25311578` 起游戏自带简体中文，名称和说明直接用官方简中；官方缺失时才从繁中转换。构建 `25640656`（1.30）起游戏也填好了英文、法文和西班牙文，英文版网站的名称和说明直接用官方英文。各语言按原表顺序保存在 `translations` 中，内部 ID 不变。
 
 `npm run build:data`（`tools/build-site-data.ts`）把快照和专项数据整理成网站用的 JSON，`npm run dev`、`npm test`、`npm run build` 都会先运行它。
 
@@ -26,10 +26,10 @@
 
 ```powershell
 uv sync --extra dev
-uv run honogurashi-data verify-schemas --build-id 25311578
-uv run honogurashi-data extract --build-id 25311578 --output data/raw/review-25311578
-uv run honogurashi-data audit data/raw/review-25311578
-uv run honogurashi-data extract-icons --snapshot data/raw/review-25311578 --output output/review-icons
+uv run honogurashi-data verify-schemas --build-id 25640656
+uv run honogurashi-data extract --build-id 25640656 --output data/raw/review-25640656
+uv run honogurashi-data audit data/raw/review-25640656
+uv run honogurashi-data extract-icons --snapshot data/raw/review-25640656 --output output/review-icons
 ```
 
 `honogurashi-data` 还有 `diff`（比较两个快照）、`inspect-archive`、`inspect-table` 和 `probe` 等子命令，用于研究表结构。
