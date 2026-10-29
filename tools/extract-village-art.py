@@ -83,7 +83,7 @@ def main():
     if not openworld.endswith('_spr.ymwr'):
         raise ValueError(f'Unexpected openworld map name: {openworld}')
     openworld = openworld.removesuffix('_spr.ymwr')
-    manifest: dict = {'source': 'Steam build 25311578, YMWR ground tiles and decals of the open-world map',
+    manifest: dict = {'source': 'Steam build 25640656, YMWR ground tiles and decals of the open-world map',
                       'tile': TILE, 'scale': SCALE, 'overview': OVERVIEW, 'seasons': {}}
     # Each season is its own map; one process each keeps a full run to a few minutes.
     with ProcessPoolExecutor(len(SEASONS)) as pool:
