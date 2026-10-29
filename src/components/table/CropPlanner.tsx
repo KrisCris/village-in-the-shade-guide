@@ -31,7 +31,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
   // Clicking the sorted column flips it; a new column starts from its best value.
   const sortBy=(key:PlannerSortKey)=>{if(key===sort)setDirection(direction==='asc'?'desc':'asc');else{setSort(key);setDirection(firstDirection(key));}};
   const [selected,setSelected]=useState<Entity|null>(null);
-  const catalog=useMemo<Catalog>(()=>({buildId:'25311578',generatedAt:'',entities,byId:Object.fromEntries(entities.filter(e=>e.kind==='items').map(e=>[e.id,e])),counts:{}}),[entities]);
+  const catalog=useMemo<Catalog>(()=>({buildId:'25640656',generatedAt:'',entities,byId:Object.fromEntries(entities.filter(e=>e.kind==='items').map(e=>[e.id,e])),counts:{}}),[entities]);
   const seasonal=useMemo(()=>entities.filter(e=>e.kind==='crops' && listedIn(e,season)),[entities,season]);
   const availability=useMemo(()=>new Map(seasonal.map(crop=>[crop.id,seedAvailability(crop,entities,year,season)])),[seasonal,entities,year,season]);
   const candidates=useMemo(()=>seasonal.filter(crop=>ownedSeeds||availability.get(crop.id)?.available),[seasonal,ownedSeeds,availability]);

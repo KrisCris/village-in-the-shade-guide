@@ -15,7 +15,7 @@ import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
 
 const toSimplified = Converter({ from: 'tw', to: 'cn' });
-const buildId = '25311578';
+const buildId = '25640656';
 
 function kindFromPath(path: string) {
   return path.split('/').at(-1)!.replace('.json', '');

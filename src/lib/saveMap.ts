@@ -2,7 +2,7 @@ import source from '../../data/sources/game-save-map.json';
 import { localizeGameData } from './saveText';
 import { containsPoint, footprint, polygonsOverlap } from './saveMapGeometry';
 import artData from '../../data/sources/game-map-rules.json';
-import crops from '../../data/generated/build-25311578/entities/crops.json';
+import crops from '../../data/generated/build-25640656/entities/crops.json';
 import places from '../../data/sources/game-save-placements.json';
 import { animalResidents, animalHouses, ANIMALS, type AnimalEdits } from './saveAnimals';
 import { flagEnabled, type ProgressEdits } from './saveProgress';

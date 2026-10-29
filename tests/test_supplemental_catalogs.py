@@ -89,7 +89,7 @@ def test_save_catalogs_preserve_official_names_and_native_step_thresholds(monkey
 
 
 def test_refreshed_supplemental_references_resolve():
-    entities=ROOT/'data/generated/build-25311578/entities'
+    entities=ROOT/'data/generated/build-25640656/entities'
     load=lambda name: json.loads((entities/f'{name}.json').read_text('utf8'))
     items={item['numeric_id']:item['id'] for item in load('items')}
     item_ids=set(items.values())

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import anomalies from '../../data/sources/game-anomalies.json';
-import items from '../../data/generated/build-25311578/entities/items.json';
+import items from '../../data/generated/build-25640656/entities/items.json';
 
 const RANDOM = 'GameGetRandomLateNightItemID';
 const itemIds = new Set(items.map((item) => item.id));

@@ -12,7 +12,7 @@ import { buildProgressEdits, type ProgressEdits } from './saveProgress';
 import { buildMachineEdits, type MachineEdits } from './saveMachines';
 import { buildAnimalEdits, type AnimalEdits } from './saveAnimals';
 import animals from '../../data/sources/game-save-animals.json';
-import characters from '../../data/generated/build-25311578/entities/characters.json';
+import characters from '../../data/generated/build-25640656/entities/characters.json';
 import { linkedToolDrafts } from './saveTools';
 import { SAVE_RULES } from './saveRules';
 import { GAME_SEASONS, splitGameTime } from './saveTime';

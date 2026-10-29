@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import data from '../../data/sources/game-night-monsters.json';
-import items from '../../data/generated/build-25311578/entities/items.json';
+import items from '../../data/generated/build-25640656/entities/items.json';
 import { heartText, monsterName, monsters, seconds, tiles } from './nightMonsters';
 
 const itemIds = new Set(items.map((item) => item.id));

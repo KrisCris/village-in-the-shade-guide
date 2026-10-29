@@ -60,7 +60,7 @@ for (const file of files) {
 }
 
 // Data strings: record what buildCatalog asks to translate.
-const entities = 'data/generated/build-25311578/entities';
+const entities = 'data/generated/build-25640656/entities';
 const input: Record<string, unknown> = {};
 const officialTerms: Array<[string, string]> = [];
 for (const file of (await readdir(entities)).filter((name) => name.endsWith('.json')).sort()) {

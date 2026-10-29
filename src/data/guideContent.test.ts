@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { characterGuideRedirects, guideCategories, guides, localizeGuide, pendingGuides, translateHeading } from './guideContent';
 import { toTraditional } from '../i18n/traditional';
-import characters from '../../data/generated/build-25311578/entities/characters.json';
+import characters from '../../data/generated/build-25640656/entities/characters.json';
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 
 const kana = /[ぁ-ゖァ-ヺ]/;

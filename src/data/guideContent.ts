@@ -1,7 +1,7 @@
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
 import guideTranslations from '../../data/sources/guide-translations.json';
-import characters from '../../data/generated/build-25311578/entities/characters.json';
+import characters from '../../data/generated/build-25640656/entities/characters.json';
 import { msg } from '../i18n/translate';
 import { toTraditional } from '../i18n/traditional';
 import type { Locale } from '../i18n/locales';

@@ -2,8 +2,8 @@ import { expect, it } from "vitest";
 import type { Catalog, Entity } from "./types";
 import { workflowPayload } from "./workflowPayload";
 import { buildCatalog } from "./catalog";
-import machines from "../../data/generated/build-25311578/entities/machines.json";
-import processes from "../../data/generated/build-25311578/entities/processes.json";
+import machines from "../../data/generated/build-25640656/entities/machines.json";
+import processes from "../../data/generated/build-25640656/entities/processes.json";
 import capacities from "../../data/sources/game-machine-capacities.json";
 
 it("delivers verified slot counts for every device used by the game processing recipes", () => {
