@@ -40,9 +40,9 @@
       },
       "nameTranslations": {
         "ja": "雷獣",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Raiju",
+        "fr": "Raiju",
+        "es": "Raiju, bestia del trueno",
         "zh-TW": "雷獸",
         "ko": "뇌수",
         "zh-CN": ""
@@ -77,9 +77,9 @@
       },
       "nameTranslations": {
         "ja": "豆腐小僧",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tofu Kozo",
+        "fr": "Tōfu-kozō",
+        "es": "Tofu Kozo",
         "zh-TW": "豆腐小僧",
         "ko": "두부동자",
         "zh-CN": ""
@@ -141,9 +141,9 @@
       },
       "nameTranslations": {
         "ja": "猫又",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Nekomata",
+        "fr": "Nekomata",
+        "es": "Nekomata",
         "zh-TW": "貓又",
         "ko": "네코마타",
         "zh-CN": ""

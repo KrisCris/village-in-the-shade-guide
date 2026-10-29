@@ -1,13 +1,13 @@
 {
-  "build_id": "25311578",
+  "build_id": "25640656",
   "source": "gimmick.dat first settingArg; gimmickprocess.dat machine references; item.dat IDs",
-  "native_rule": "GimmickProcessPushItem 0x14027BEB9-0x14027BF0B: first settingArg value \"2\" => 3 slots, otherwise 1",
+  "native_rule": "GimmickProcessPushItem 0x140284706-0x14028476D: first settingArg value \"2\" => 3 slots, otherwise 1",
   "unit": "simultaneous recipe batches per device",
   "sha256": {
-    "gimmick.dat": "df11eaf6c995fa2f052a2dbb5baf492c3de52e0194d9b01635fc2621414a2109",
-    "gimmickprocess.dat": "cac2fe3ccaa946b2a5ab9386b363b0dcee12ff8130e4b658a39ef75db91efc0d",
-    "item.dat": "8b123efa38cd8272e5c2bd3ae3fb3f73ef4d70872ee7122bca93b4a101e22e93",
-    "village.exe": "ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05"
+    "gimmick.dat": "3aae4b76e1311e8b98b9f116b42f2b9fe42877fd8aae2bf9963190447653dc17",
+    "gimmickprocess.dat": "4a2bbd8ce252b8b5a893c70549a230035a33da953dee618b3dffcccbca65f242",
+    "item.dat": "86673705b3697681be19c0f15772f276e4db92306a585a152deb1aa006d3aad0",
+    "village.exe": "979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5"
   },
   "machines": [
     {

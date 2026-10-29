@@ -14677,9 +14677,174 @@
       "name": "カタログ入手デモ"
     },
     {
+      "id": 90050,
+      "code": "GAME_FLAG_BIRTHDAY_SETTING_SEND_LETTER",
+      "name": "誕生日設定の手紙送付"
+    },
+    {
+      "id": 90051,
+      "code": "GAME_FLAG_BIRTHDAY_SETTING_DEMO",
+      "name": "誕生日設定のデモ"
+    },
+    {
+      "id": 90052,
+      "code": "GAME_FLAG_BIRTHDAY_SETTING_CLEAR",
+      "name": "誕生日設定完了"
+    },
+    {
+      "id": 90053,
+      "code": "GAME_FLAG_BIRTHDAY",
+      "name": "主人公誕生日フラグ"
+    },
+    {
+      "id": 90054,
+      "code": "GAME_FLAG_TALK_ORPHAN_BIRTHDAY",
+      "name": "みなしご_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90055,
+      "code": "GAME_FLAG_TALK_CARPENTER_BIRTHDAY",
+      "name": "大工_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90056,
+      "code": "GAME_FLAG_TALK_LUMBERJACK_BIRTHDAY",
+      "name": "木こり_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90057,
+      "code": "GAME_FLAG_TALK_VILLAGE_HEAD_BIRTHDAY",
+      "name": "村長_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90058,
+      "code": "GAME_FLAG_TALK_HUNTER_BIRTHDAY",
+      "name": "狩人_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90059,
+      "code": "GAME_FLAG_TALK_GENERAL_STORE_MANAGER_BIRTHDAY",
+      "name": "雑貨屋_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90060,
+      "code": "GAME_FLAG_TALK_OLD_MAN_BIRTHDAY",
+      "name": "おっさん_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90061,
+      "code": "GAME_FLAG_TALK_SECRETARY_BIRTHDAY",
+      "name": "秘書_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90062,
+      "code": "GAME_FLAG_TALK_CITY_HALL_STAFF_BIRTHDAY",
+      "name": "市役所員_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90063,
+      "code": "GAME_FLAG_TALK_GIRL_BIRTHDAY",
+      "name": "幼女_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90064,
+      "code": "GAME_FLAG_TALK_YOUNG_MAN_BIRTHDAY",
+      "name": "青年_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90065,
+      "code": "GAME_FLAG_TALK_BOY_BIRTHDAY",
+      "name": "少年_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90066,
+      "code": "GAME_FLAG_TALK_FEMALE_DOCTOR_BIRTHDAY",
+      "name": "女医_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90067,
+      "code": "GAME_FLAG_TALK_STREET_VENDOR_BIRTHDAY",
+      "name": "露天商_主人公誕生日会話フラグ"
+    },
+    {
+      "id": 90080,
+      "code": "GAME_FLAG_BIRTHDAY_SETTING_DEMO_NEXT_DAY",
+      "name": "DLC_03_誕生日設定イベント翌日チェックフラグ"
+    },
+    {
+      "id": 90081,
+      "code": "GAME_FLAG_DLC_03_001",
+      "name": "DLC_03_追加キャラ伏線イベント"
+    },
+    {
       "id": 90099,
       "code": "GAME_FLAG_SKILL_HARVEST_SICKLE",
       "name": "カマでの作物収穫機能解放フラグ"
+    },
+    {
+      "id": 90100,
+      "code": "GAME_FLAG_BUY_SEEDER",
+      "name": "種まき機の解放フラグ"
+    },
+    {
+      "id": 90101,
+      "code": "GAME_FLAG_SALE_START_SEEDER",
+      "name": "種まき機の販売解禁フラグ"
+    },
+    {
+      "id": 90110,
+      "code": "GAME_FLAG_SALE_START_BATH_SERIES",
+      "name": "雑貨屋_風呂シリーズ販売解禁フラグ"
+    },
+    {
+      "id": 90111,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0011",
+      "name": "バスタブ/茶_購入フラグ"
+    },
+    {
+      "id": 90112,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0012",
+      "name": "シャワー_購入フラグ"
+    },
+    {
+      "id": 90113,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0013",
+      "name": "風呂椅子/茶_購入フラグ"
+    },
+    {
+      "id": 90114,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0014",
+      "name": "風呂桶/茶_購入フラグ"
+    },
+    {
+      "id": 90115,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0015",
+      "name": "便器/茶_購入フラグ"
+    },
+    {
+      "id": 90116,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0016",
+      "name": "ペーパーホルダー_購入フラグ"
+    },
+    {
+      "id": 90117,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0017",
+      "name": "壁掛けタオル/茶_購入フラグ"
+    },
+    {
+      "id": 90118,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0018",
+      "name": "洗面台/茶_購入フラグ"
+    },
+    {
+      "id": 90119,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0019",
+      "name": "間仕切りカーテン/茶_購入フラグ"
+    },
+    {
+      "id": 90120,
+      "code": "GAME_FLAG_BUY_GENERAL_ADDITIONAL_0020",
+      "name": "パーテーション/茶_購入フラグ"
     }
   ],
   "recipes": [
@@ -14690,9 +14855,9 @@
       "itemId": 21020,
       "nameTranslations": {
         "ja": "鉄の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Fence",
+        "fr": "Clôture en fer",
+        "es": "Valla acero",
         "zh-TW": "鐵製柵欄",
         "ko": "철 울타리",
         "zh-CN": "铁制栅栏"
@@ -14705,9 +14870,9 @@
       "itemId": 21030,
       "nameTranslations": {
         "ja": "レンガの柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brick Fence",
+        "fr": "Clôture en briques",
+        "es": "Valla ladrillo",
         "zh-TW": "磚頭柵欄",
         "ko": "벽돌 울타리",
         "zh-CN": "砖头栅栏"
@@ -14720,9 +14885,9 @@
       "itemId": 21040,
       "nameTranslations": {
         "ja": "板材の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Picket Fence",
+        "fr": "Clôture en planches",
+        "es": "Valla tablones",
         "zh-TW": "木板柵欄",
         "ko": "널빤지 울타리",
         "zh-CN": "木板栅栏"
@@ -14735,9 +14900,9 @@
       "itemId": 21050,
       "nameTranslations": {
         "ja": "白い板材の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Picket Fence",
+        "fr": "Clôture en bois blanc",
+        "es": "Valla blanca",
         "zh-TW": "白色木板柵欄",
         "ko": "하얀 널빤지 울타리",
         "zh-CN": "白色木板栅栏"
@@ -14750,9 +14915,9 @@
       "itemId": 21060,
       "nameTranslations": {
         "ja": "鉄のガーデン柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Garden Fence",
+        "fr": "Clôture de jardin",
+        "es": "Valla jardín acero",
         "zh-TW": "鐵製花園柵欄",
         "ko": "철 정원 울타리",
         "zh-CN": "铁制花园栅栏"
@@ -14765,9 +14930,9 @@
       "itemId": 21070,
       "nameTranslations": {
         "ja": "縄の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rope Fence",
+        "fr": "Clôture en cordes",
+        "es": "Valla cuerda",
         "zh-TW": "繩子柵欄",
         "ko": "밧줄 울타리",
         "zh-CN": "绳子栅栏"
@@ -14780,9 +14945,9 @@
       "itemId": 21080,
       "nameTranslations": {
         "ja": "竹の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bamboo Fence",
+        "fr": "Clôture en bambou",
+        "es": "Valla bambú",
         "zh-TW": "竹子柵欄",
         "ko": "대나무 울타리",
         "zh-CN": "竹子栅栏"
@@ -14795,9 +14960,9 @@
       "itemId": 21090,
       "nameTranslations": {
         "ja": "網の柵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mesh Fence",
+        "fr": "Clôture en maille",
+        "es": "Valla red",
         "zh-TW": "網子柵欄",
         "ko": "그물 울타리",
         "zh-CN": "网子栅栏"
@@ -14810,9 +14975,9 @@
       "itemId": 21120,
       "nameTranslations": {
         "ja": "鉄のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Gate",
+        "fr": "Portillon en fer",
+        "es": "Puerta acero",
         "zh-TW": "鐵製柵欄門",
         "ko": "철로 만든 입구",
         "zh-CN": "铁制栅栏门"
@@ -14825,9 +14990,9 @@
       "itemId": 21130,
       "nameTranslations": {
         "ja": "レンガのゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brick Gate",
+        "fr": "Portillon en briques",
+        "es": "Puerta ladrillo",
         "zh-TW": "磚頭柵欄門",
         "ko": "벽돌로 만든 입구",
         "zh-CN": "砖头栅栏门"
@@ -14840,9 +15005,9 @@
       "itemId": 21140,
       "nameTranslations": {
         "ja": "板材のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Picket Gate",
+        "fr": "Portillon en planches",
+        "es": "Puerta tablones",
         "zh-TW": "木板柵欄門",
         "ko": "널빤지로 만든 입구",
         "zh-CN": "木板栅栏门"
@@ -14855,9 +15020,9 @@
       "itemId": 21150,
       "nameTranslations": {
         "ja": "白い板材のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Picket Gate",
+        "fr": "Portillon en bois blanc",
+        "es": "Puerta blanca",
         "zh-TW": "白色木板柵欄門",
         "ko": "하얀 널빤지로 만든 입구",
         "zh-CN": "白色木板栅栏门"
@@ -14870,9 +15035,9 @@
       "itemId": 21160,
       "nameTranslations": {
         "ja": "鉄のガーデンゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Garden Gate",
+        "fr": "Portillon de jardin",
+        "es": "Puerta jardín acero",
         "zh-TW": "鐵製花園柵欄門",
         "ko": "철로 만든 정원 입구",
         "zh-CN": "铁制花园栅栏门"
@@ -14885,9 +15050,9 @@
       "itemId": 21170,
       "nameTranslations": {
         "ja": "縄のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rope Gate",
+        "fr": "Portillon en cordes",
+        "es": "Puerta cuerda",
         "zh-TW": "繩子柵欄門",
         "ko": "밧줄로 만든 입구",
         "zh-CN": "绳子栅栏门"
@@ -14900,9 +15065,9 @@
       "itemId": 21180,
       "nameTranslations": {
         "ja": "竹のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bamboo Gate",
+        "fr": "Portillon en bambou",
+        "es": "Puerta bambú",
         "zh-TW": "竹子柵欄門",
         "ko": "대나무로 만든 입구",
         "zh-CN": "竹子栅栏门"
@@ -14915,9 +15080,9 @@
       "itemId": 21190,
       "nameTranslations": {
         "ja": "網のゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mesh Gate",
+        "fr": "Portillon en maille",
+        "es": "Puerta red",
         "zh-TW": "網子柵欄門",
         "ko": "그물로 만든 입구",
         "zh-CN": "网子栅栏门"
@@ -14930,9 +15095,9 @@
       "itemId": 21220,
       "nameTranslations": {
         "ja": "石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Stone Tile Path",
+        "fr": "Terrasse en dalles de pierre",
+        "es": "Suelo de jardín de losas de piedra",
         "zh-TW": "戶外石磚地板",
         "ko": "석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外石砖地板"
@@ -14945,9 +15110,9 @@
       "itemId": 21230,
       "nameTranslations": {
         "ja": "白石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Stone Tile Path",
+        "fr": "Terrasse blanche",
+        "es": "Suelo de jardín de losas blancas",
         "zh-TW": "戶外白石磚地板",
         "ko": "하얀 석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外白石砖地板"
@@ -14960,9 +15125,9 @@
       "itemId": 21240,
       "nameTranslations": {
         "ja": "黒石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Black Stone Tile Path",
+        "fr": "Terrasse noire",
+        "es": "Suelo de jardín de losas negras",
         "zh-TW": "戶外黑石磚地板",
         "ko": "까만 석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外黑石砖地板"
@@ -14975,9 +15140,9 @@
       "itemId": 21250,
       "nameTranslations": {
         "ja": "丸太の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Log Path",
+        "fr": "Terrasse en rondins",
+        "es": "Suelo de jardín de troncos",
         "zh-TW": "戶外原木地板",
         "ko": "통나무가 깔린 정원 바닥",
         "zh-CN": "户外原木地板"
@@ -14990,9 +15155,9 @@
       "itemId": 21260,
       "nameTranslations": {
         "ja": "レンガの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brick Path",
+        "fr": "Terrasse en briques",
+        "es": "Suelo de jardín de ladrillos",
         "zh-TW": "戶外磚頭地板",
         "ko": "벽돌이 깔린 정원 바닥",
         "zh-CN": "户外砖头地板"
@@ -15005,9 +15170,9 @@
       "itemId": 21270,
       "nameTranslations": {
         "ja": "落ち葉の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fallen Leaf Path",
+        "fr": "Terrasse automnale",
+        "es": "Suelo de jardín de hojas",
         "zh-TW": "戶外落葉地板",
         "ko": "낙엽이 깔린 정원 바닥",
         "zh-CN": "户外落叶地板"
@@ -15020,9 +15185,9 @@
       "itemId": 21280,
       "nameTranslations": {
         "ja": "藁の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Straw Path",
+        "fr": "Terrasse en paille",
+        "es": "Suelo de jardín de paja",
         "zh-TW": "戶外稻草地板",
         "ko": "짚이 깔린 정원 바닥",
         "zh-CN": "户外稻草地板"
@@ -15035,9 +15200,9 @@
       "itemId": 21290,
       "nameTranslations": {
         "ja": "花の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Path",
+        "fr": "Terrasse en fleurs",
+        "es": "Suelo de jardín de flores",
         "zh-TW": "戶外花朵地板",
         "ko": "꽃이 핀 정원 바닥",
         "zh-CN": "户外花朵地板"
@@ -15050,9 +15215,9 @@
       "itemId": 40000,
       "nameTranslations": {
         "ja": "撒き餌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish Bait",
+        "fr": "Appât",
+        "es": "Engodo",
         "zh-TW": "魚餌",
         "ko": "밑밥",
         "zh-CN": "鱼饵"
@@ -15065,9 +15230,9 @@
       "itemId": 40010,
       "nameTranslations": {
         "ja": "良質な撒き餌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Deluxe Fish Bait",
+        "fr": "Appât de qualité +",
+        "es": "Engodo prémium",
         "zh-TW": "優質魚餌",
         "ko": "질 좋은 밑밥",
         "zh-CN": "优质鱼饵"
@@ -15080,9 +15245,9 @@
       "itemId": 40020,
       "nameTranslations": {
         "ja": "白い撒き餌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Fish Bait",
+        "fr": "Appât blanc",
+        "es": "Engodo blanco",
         "zh-TW": "白色魚餌",
         "ko": "하얀 밑밥",
         "zh-CN": "白色鱼饵"
@@ -15095,9 +15260,9 @@
       "itemId": 50000,
       "nameTranslations": {
         "ja": "兵糧丸",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hyorogan",
+        "fr": "Boulettes énergisantes",
+        "es": "Bolas de ración",
         "zh-TW": "兵糧丸",
         "ko": "병량환",
         "zh-CN": "兵粮丸"
@@ -15110,9 +15275,9 @@
       "itemId": 400000,
       "nameTranslations": {
         "ja": "漬物樽",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Preserving Barrel",
+        "fr": "Tonneau à saumure",
+        "es": "Barril de encurtidos",
         "zh-TW": "醃菜桶",
         "ko": "절임통",
         "zh-CN": "腌菜桶"
@@ -15125,9 +15290,9 @@
       "itemId": 400001,
       "nameTranslations": {
         "ja": "漬物樽/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Preserving Barrel Mk II",
+        "fr": "Tonneau à saumure +",
+        "es": "Barril de encurtidos II",
         "zh-TW": "醃菜桶／改",
         "ko": "절임통/개량판",
         "zh-CN": "腌菜桶／改"
@@ -15140,9 +15305,9 @@
       "itemId": 400060,
       "nameTranslations": {
         "ja": "粉挽き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grinding Mill",
+        "fr": "Broyeur",
+        "es": "Molinillo",
         "zh-TW": "研磨機",
         "ko": "제분기",
         "zh-CN": "研磨机"
@@ -15155,9 +15320,9 @@
       "itemId": 400061,
       "nameTranslations": {
         "ja": "粉挽き/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grinding Mill Mk II",
+        "fr": "Broyeur +",
+        "es": "Molinillo II",
         "zh-TW": "研磨機／改",
         "ko": "제분기/개량판",
         "zh-CN": "研磨机／改"
@@ -15170,9 +15335,9 @@
       "itemId": 400080,
       "nameTranslations": {
         "ja": "溶鉱炉",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Blast Furnace",
+        "fr": "Haut-fourneau",
+        "es": "Horno de fundición",
         "zh-TW": "熔爐",
         "ko": "용광로",
         "zh-CN": "熔炉"
@@ -15185,9 +15350,9 @@
       "itemId": 400081,
       "nameTranslations": {
         "ja": "溶鉱炉/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Blast Furnace Mk II",
+        "fr": "Haut-fourneau +",
+        "es": "Horno de fundición II",
         "zh-TW": "熔爐／改",
         "ko": "용광로/개량판",
         "zh-CN": "熔炉／改"
@@ -15200,9 +15365,9 @@
       "itemId": 400020,
       "nameTranslations": {
         "ja": "マヨネーズ加工機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mayo Processor",
+        "fr": "Machine à mayonnaise",
+        "es": "Máquina de procesado de mayonesa",
         "zh-TW": "美乃滋加工機",
         "ko": "마요네즈 가공기",
         "zh-CN": "蛋黄酱加工机"
@@ -15215,9 +15380,9 @@
       "itemId": 400021,
       "nameTranslations": {
         "ja": "マヨネーズ加工機/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mayo Processor Mk II",
+        "fr": "Machine à mayonnaise +",
+        "es": "Máquina de procesado de mayonesa II",
         "zh-TW": "美乃滋加工機／改",
         "ko": "마요네즈 가공기/개량판",
         "zh-CN": "蛋黄酱加工机／改"
@@ -15230,9 +15395,9 @@
       "itemId": 400140,
       "nameTranslations": {
         "ja": "燻製器",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Smoker",
+        "fr": "Fumoir",
+        "es": "Ahumador",
         "zh-TW": "煙燻機",
         "ko": "훈제기",
         "zh-CN": "烟熏机"
@@ -15245,9 +15410,9 @@
       "itemId": 400141,
       "nameTranslations": {
         "ja": "燻製器/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Smoker Mk II",
+        "fr": "Fumoir +",
+        "es": "Ahumador II",
         "zh-TW": "煙燻機／改",
         "ko": "훈제기/개량판",
         "zh-CN": "烟熏机／改"
@@ -15260,9 +15425,9 @@
       "itemId": 400090,
       "nameTranslations": {
         "ja": "炭焼き窯",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Charcoal Kiln",
+        "fr": "Four à charbon",
+        "es": "Carbonera",
         "zh-TW": "木炭窯",
         "ko": "숯가마",
         "zh-CN": "木炭窑"
@@ -15275,9 +15440,9 @@
       "itemId": 400091,
       "nameTranslations": {
         "ja": "炭焼き窯/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Charcoal Kiln Mk II",
+        "fr": "Four à charbon +",
+        "es": "Carbonera II",
         "zh-TW": "木炭窯／改",
         "ko": "숯가마/개량판",
         "zh-CN": "木炭窑／改"
@@ -15290,9 +15455,9 @@
       "itemId": 400010,
       "nameTranslations": {
         "ja": "ミルク加工機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Milk Processor",
+        "fr": "Machine laitière",
+        "es": "Procesador de lácteos",
         "zh-TW": "牛奶加工機",
         "ko": "우유 가공기",
         "zh-CN": "牛奶加工机"
@@ -15305,9 +15470,9 @@
       "itemId": 400011,
       "nameTranslations": {
         "ja": "ミルク加工機/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Milk Processor Mk II",
+        "fr": "Machine laitière +",
+        "es": "Procesador de lácteos II",
         "zh-TW": "牛奶加工機／改",
         "ko": "우유 가공기/개량판",
         "zh-CN": "牛奶加工机／改"
@@ -15320,9 +15485,9 @@
       "itemId": 400030,
       "nameTranslations": {
         "ja": "醸造樽",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brewing Barrel",
+        "fr": "Fût de brassage",
+        "es": "Fermentador",
         "zh-TW": "釀造桶",
         "ko": "양조통",
         "zh-CN": "酿造桶"
@@ -15335,9 +15500,9 @@
       "itemId": 400031,
       "nameTranslations": {
         "ja": "醸造樽/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brewing Barrel Mk II",
+        "fr": "Fût de brassage +",
+        "es": "Fermentador II",
         "zh-TW": "釀造桶／改",
         "ko": "양조통/개량판",
         "zh-CN": "酿造桶／改"
@@ -15350,9 +15515,9 @@
       "itemId": 400040,
       "nameTranslations": {
         "ja": "熟成樽",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Aging Barrel",
+        "fr": "Fût de maturation",
+        "es": "Barrica de envejecimiento",
         "zh-TW": "熟成桶",
         "ko": "숙성통",
         "zh-CN": "熟成桶"
@@ -15365,9 +15530,9 @@
       "itemId": 400041,
       "nameTranslations": {
         "ja": "熟成樽/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Aging Barrel Mk II",
+        "fr": "Fût de maturation +",
+        "es": "Barrica de envejecimiento II",
         "zh-TW": "熟成桶／改",
         "ko": "숙성통/개량판",
         "zh-CN": "熟成桶／改"
@@ -15380,9 +15545,9 @@
       "itemId": 400050,
       "nameTranslations": {
         "ja": "乾燥機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dehydrator",
+        "fr": "Séchoir",
+        "es": "Deshidratador de alimentos",
         "zh-TW": "乾燥機",
         "ko": "건조기",
         "zh-CN": "干燥机"
@@ -15395,9 +15560,9 @@
       "itemId": 400051,
       "nameTranslations": {
         "ja": "乾燥機/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dehydrator Mk II",
+        "fr": "Séchoir +",
+        "es": "Deshidratador de alimentos II",
         "zh-TW": "乾燥機／改",
         "ko": "건조기/개량판",
         "zh-CN": "干燥机／改"
@@ -15410,9 +15575,9 @@
       "itemId": 400100,
       "nameTranslations": {
         "ja": "織り機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Loom",
+        "fr": "Métier à tisser",
+        "es": "Telar",
         "zh-TW": "織布機",
         "ko": "방직기",
         "zh-CN": "织布机"
@@ -15425,9 +15590,9 @@
       "itemId": 400101,
       "nameTranslations": {
         "ja": "織り機/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Loom Mk II",
+        "fr": "Métier à tisser +",
+        "es": "Telar II",
         "zh-TW": "織布機／改",
         "ko": "방직기/개량판",
         "zh-CN": "织布机／改"
@@ -15440,9 +15605,9 @@
       "itemId": 400070,
       "nameTranslations": {
         "ja": "搾油機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oil Press",
+        "fr": "Presse à huile",
+        "es": "Prensa de aceite",
         "zh-TW": "榨油機",
         "ko": "착유기",
         "zh-CN": "榨油机"
@@ -15455,9 +15620,9 @@
       "itemId": 400071,
       "nameTranslations": {
         "ja": "搾油機/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oil Press Mk II",
+        "fr": "Presse à huile +",
+        "es": "Prensa de aceite II",
         "zh-TW": "榨油機／改",
         "ko": "착유기/개량판",
         "zh-CN": "榨油机／改"
@@ -15470,9 +15635,9 @@
       "itemId": 400110,
       "nameTranslations": {
         "ja": "コンポスター",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Composter",
+        "fr": "Composteur",
+        "es": "Compostera",
         "zh-TW": "堆肥桶",
         "ko": "퇴비함",
         "zh-CN": "堆肥桶"
@@ -15485,9 +15650,9 @@
       "itemId": 400111,
       "nameTranslations": {
         "ja": "コンポスター/改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Composter Mk II",
+        "fr": "Composteur +",
+        "es": "Compostera II",
         "zh-TW": "堆肥桶／改",
         "ko": "퇴비함/개량판",
         "zh-CN": "堆肥桶／改"
@@ -15500,9 +15665,9 @@
       "itemId": 402040,
       "nameTranslations": {
         "ja": "養蜂箱",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Beehive Box",
+        "fr": "Ruche",
+        "es": "Colmena",
         "zh-TW": "蜂箱",
         "ko": "벌통",
         "zh-CN": "蜂箱"
@@ -15515,9 +15680,9 @@
       "itemId": 402050,
       "nameTranslations": {
         "ja": "樹液採取器",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tapper",
+        "fr": "Récolteur de sève",
+        "es": "Recolector de savia",
         "zh-TW": "樹液採集器",
         "ko": "수액 채취기",
         "zh-CN": "树液采集器"
@@ -15530,9 +15695,9 @@
       "itemId": 402070,
       "nameTranslations": {
         "ja": "養蚕箱",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Silkworm Box",
+        "fr": "Boîte à vers à soie",
+        "es": "Caja de gusanos de seda",
         "zh-TW": "蠶箱",
         "ko": "양잠통",
         "zh-CN": "蚕箱"
@@ -15545,9 +15710,9 @@
       "itemId": 402100,
       "nameTranslations": {
         "ja": "小さいスプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Sprinkler",
+        "fr": "Petit arroseur",
+        "es": "Aspersor pequeño",
         "zh-TW": "小型灑水器",
         "ko": "작은 스프링클러",
         "zh-CN": "小型洒水器"
@@ -15560,9 +15725,9 @@
       "itemId": 402110,
       "nameTranslations": {
         "ja": "普通のスプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Normal Sprinkler",
+        "fr": "Arroseur normal",
+        "es": "Aspersor normal",
         "zh-TW": "普通灑水器",
         "ko": "평범한 스프링클러",
         "zh-CN": "普通洒水器"
@@ -15575,9 +15740,9 @@
       "itemId": 402120,
       "nameTranslations": {
         "ja": "強化スプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Upgraded Sprinkler",
+        "fr": "Arroseur supérieur",
+        "es": "Aspersor II",
         "zh-TW": "強化灑水器",
         "ko": "강화 스프링클러",
         "zh-CN": "强化洒水器"
@@ -15590,9 +15755,9 @@
       "itemId": 403000,
       "nameTranslations": {
         "ja": "はんごう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mess Kit",
+        "fr": "Gamelle",
+        "es": "Utensilios de cocina",
         "zh-TW": "煮飯盒",
         "ko": "반합",
         "zh-CN": "煮饭盒"
@@ -15605,9 +15770,9 @@
       "itemId": 403010,
       "nameTranslations": {
         "ja": "かまど",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Stove",
+        "fr": "Fourneau",
+        "es": "Hornillo",
         "zh-TW": "爐灶",
         "ko": "아궁이",
         "zh-CN": "炉灶"
@@ -15620,9 +15785,9 @@
       "itemId": 403040,
       "nameTranslations": {
         "ja": "七輪",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Charcoal Grill",
+        "fr": "Gril de cuisine",
+        "es": "Parrilla de carbón",
         "zh-TW": "炭烤爐",
         "ko": "풍로",
         "zh-CN": "炭烤炉"
@@ -15631,211 +15796,211 @@
     {
       "flag": 80000,
       "category": "手作配方",
-      "name": "木制收纳箱／咖啡",
+      "name": "木制收纳箱／棕",
       "itemId": 410000,
       "nameTranslations": {
         "ja": "木の収納箱/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Chest (Br)",
+        "fr": "Boîte de rangement en bois (marron)",
+        "es": "Arcón de madera (marrón)",
         "zh-TW": "木製收納箱／咖啡",
         "ko": "목재 수납함/갈색",
-        "zh-CN": "木制收纳箱／咖啡"
+        "zh-CN": "木制收纳箱／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦收纳箱／咖啡",
+      "name": "时髦收纳箱／棕",
       "itemId": 410010,
       "nameTranslations": {
         "ja": "モダンな収納箱/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Chest (Br)",
+        "fr": "Boîte de rangement moderne (marron)",
+        "es": "Arcón moderno (marrón)",
         "zh-TW": "時髦收納箱／咖啡",
         "ko": "모던한 수납함/갈색",
-        "zh-CN": "时髦收纳箱／咖啡"
+        "zh-CN": "时髦收纳箱／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织收纳箱／咖啡",
+      "name": "编织收纳箱／棕",
       "itemId": 410020,
       "nameTranslations": {
         "ja": "あみあみ収納箱/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Chest (Br)",
+        "fr": "Boîte de rangement tressée (marron)",
+        "es": "Arcón de rejilla (marrón)",
         "zh-TW": "編織收納箱／咖啡",
         "ko": "엮어 만든 수납함/갈색",
-        "zh-CN": "编织收纳箱／咖啡"
+        "zh-CN": "编织收纳箱／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制衣柜／咖啡",
+      "name": "木制衣柜／棕",
       "itemId": 412000,
       "nameTranslations": {
         "ja": "木の洋服棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Wardrobe (Br)",
+        "fr": "Penderie en bois (marron)",
+        "es": "Armario de madera (marrón)",
         "zh-TW": "木製衣櫃／咖啡",
         "ko": "목재 옷장/갈색",
-        "zh-CN": "木制衣柜／咖啡"
+        "zh-CN": "木制衣柜／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风衣柜／咖啡",
+      "name": "成熟风衣柜／棕",
       "itemId": 412020,
       "nameTranslations": {
         "ja": "大人な洋服棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Wardrobe (Br)",
+        "fr": "Penderie chic (marron)",
+        "es": "Armario elegante (marrón)",
         "zh-TW": "成熟風衣櫃／咖啡",
         "ko": "성숙한 느낌의 옷장/갈색",
-        "zh-CN": "成熟风衣柜／咖啡"
+        "zh-CN": "成熟风衣柜／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制梳妆台／咖啡",
+      "name": "木制梳妆台／棕",
       "itemId": 413000,
       "nameTranslations": {
         "ja": "木の鏡台/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Vanity (Br)",
+        "fr": "Coiffeuse en bois (marron)",
+        "es": "Tocador de madera (marrón)",
         "zh-TW": "木製梳妝台／咖啡",
         "ko": "목재 화장대/갈색",
-        "zh-CN": "木制梳妆台／咖啡"
+        "zh-CN": "木制梳妆台／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦梳妆台／咖啡",
+      "name": "时髦梳妆台／棕",
       "itemId": 413020,
       "nameTranslations": {
         "ja": "モダンな鏡台/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Vanity (Brn)",
+        "fr": "Coiffeuse moderne (marron)",
+        "es": "Tocador moderno (marrón)",
         "zh-TW": "時髦梳妝台／咖啡",
         "ko": "모던한 화장대/갈색",
-        "zh-CN": "时髦梳妆台／咖啡"
+        "zh-CN": "时髦梳妆台／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织梳妆台／咖啡",
+      "name": "编织梳妆台／棕",
       "itemId": 413030,
       "nameTranslations": {
         "ja": "あみあみ鏡台/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Vanity (Br)",
+        "fr": "Coiffeuse tressée (marron)",
+        "es": "Tocador de rejilla (marrón)",
         "zh-TW": "編織梳妝台／咖啡",
         "ko": "엮어 만든 화장대/갈색",
-        "zh-CN": "编织梳妆台／咖啡"
+        "zh-CN": "编织梳妆台／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制桌灯／咖啡",
+      "name": "木制桌灯／棕",
       "itemId": 420000,
       "nameTranslations": {
         "ja": "木の卓上照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Desk Lamp (Br)",
+        "fr": "Lampe de table en bois (marron)",
+        "es": "Lámpara de mesa de madera (marrón)",
         "zh-TW": "木製桌燈／咖啡",
         "ko": "목재 탁상 조명/갈색",
-        "zh-CN": "木制桌灯／咖啡"
+        "zh-CN": "木制桌灯／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦桌灯／咖啡",
+      "name": "时髦桌灯／棕",
       "itemId": 420020,
       "nameTranslations": {
         "ja": "モダンな卓上照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Desk Lamp (Br)",
+        "fr": "Lampe de table moderne (marron)",
+        "es": "Lámpara de mesa moderna (marrón)",
         "zh-TW": "時髦桌燈／咖啡",
         "ko": "모던한 탁상 조명/갈색",
-        "zh-CN": "时髦桌灯／咖啡"
+        "zh-CN": "时髦桌灯／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风桌灯／咖啡",
+      "name": "成熟风桌灯／棕",
       "itemId": 420030,
       "nameTranslations": {
         "ja": "大人な卓上照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Desk Lamp (Br)",
+        "fr": "Lampe de table chic (marron)",
+        "es": "Lámpara de mesa elegante (marrón)",
         "zh-TW": "成熟風桌燈／咖啡",
         "ko": "성숙한 느낌의 탁상 조명/갈색",
-        "zh-CN": "成熟风桌灯／咖啡"
+        "zh-CN": "成熟风桌灯／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制灯具／咖啡",
+      "name": "木制灯具／棕",
       "itemId": 421000,
       "nameTranslations": {
         "ja": "木の照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Floor Lamp (Br)",
+        "fr": "Éclairage en bois (marron)",
+        "es": "Lámpara de madera (marrón)",
         "zh-TW": "木製燈具／咖啡",
         "ko": "목재 조명/갈색",
-        "zh-CN": "木制灯具／咖啡"
+        "zh-CN": "木制灯具／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅壁灯／咖啡",
+      "name": "酷帅壁灯／棕",
       "itemId": 422000,
       "nameTranslations": {
         "ja": "クールな壁照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Sconce (Br)",
+        "fr": "Éclairage mural élégant (marron)",
+        "es": "Lámpara de pared chula (marrón)",
         "zh-TW": "酷帥壁燈／咖啡",
         "ko": "쿨한 벽 조명/갈색",
-        "zh-CN": "酷帅壁灯／咖啡"
+        "zh-CN": "酷帅壁灯／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织壁灯／咖啡",
+      "name": "编织壁灯／棕",
       "itemId": 422010,
       "nameTranslations": {
         "ja": "あみあみ壁照明/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Sconce (Br)",
+        "fr": "Applique murale tressée (marron)",
+        "es": "Lámpara de pared de tejida (marrón)",
         "zh-TW": "編織壁燈／咖啡",
         "ko": "엮어 만든 벽 조명/갈색",
-        "zh-CN": "编织壁灯／咖啡"
+        "zh-CN": "编织壁灯／棕"
       }
     },
     {
@@ -15845,9 +16010,9 @@
       "itemId": 429000,
       "nameTranslations": {
         "ja": "焚き火",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Campfire",
+        "fr": "Feu de camp",
+        "es": "Hoguera",
         "zh-TW": "篝火",
         "ko": "모닥불",
         "zh-CN": "篝火"
@@ -15860,9 +16025,9 @@
       "itemId": 429100,
       "nameTranslations": {
         "ja": "小さい松明",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Torch",
+        "fr": "Petite torche",
+        "es": "Antorcha pequeña",
         "zh-TW": "小型火把",
         "ko": "작은 횃불",
         "zh-CN": "小型火把"
@@ -15875,9 +16040,9 @@
       "itemId": 429110,
       "nameTranslations": {
         "ja": "大きな松明",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Large Torch",
+        "fr": "Grande torche",
+        "es": "Antorcha grande",
         "zh-TW": "大型火把",
         "ko": "큰 횃불",
         "zh-CN": "大型火把"
@@ -15886,421 +16051,421 @@
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制餐桌／咖啡",
+      "name": "木制餐桌／棕",
       "itemId": 430000,
       "nameTranslations": {
         "ja": "木の食卓/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Table (Br)",
+        "fr": "Table à manger en bois (marron)",
+        "es": "Mesa de madera (marrón)",
         "zh-TW": "木製餐桌／咖啡",
         "ko": "목재 식탁/갈색",
-        "zh-CN": "木制餐桌／咖啡"
+        "zh-CN": "木制餐桌／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅餐桌／咖啡",
+      "name": "酷帅餐桌／棕",
       "itemId": 430010,
       "nameTranslations": {
         "ja": "クールな食卓/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Table (Br)",
+        "fr": "Table à manger élégante (marron)",
+        "es": "Mesa chula (marrón)",
         "zh-TW": "酷帥餐桌／咖啡",
         "ko": "쿨한 식탁/갈색",
-        "zh-CN": "酷帅餐桌／咖啡"
+        "zh-CN": "酷帅餐桌／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦餐桌／咖啡",
+      "name": "时髦餐桌／棕",
       "itemId": 430030,
       "nameTranslations": {
         "ja": "モダンな食卓/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Table (Br)",
+        "fr": "Table à manger moderne (marron)",
+        "es": "Mesa moderna (marrón)",
         "zh-TW": "時髦餐桌／咖啡",
         "ko": "모던한 식탁/갈색",
-        "zh-CN": "时髦餐桌／咖啡"
+        "zh-CN": "时髦餐桌／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织餐桌／咖啡",
+      "name": "编织餐桌／棕",
       "itemId": 430050,
       "nameTranslations": {
         "ja": "あみあみ食卓/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Table (Br)",
+        "fr": "Table à manger tressée (marron)",
+        "es": "Mesa tejida (marrón)",
         "zh-TW": "編織餐桌／咖啡",
         "ko": "엮어 만든 식탁/갈색",
-        "zh-CN": "编织餐桌／咖啡"
+        "zh-CN": "编织餐桌／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风餐桌／咖啡",
+      "name": "成熟风餐桌／棕",
       "itemId": 430060,
       "nameTranslations": {
         "ja": "大人な食卓/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Table (Br)",
+        "fr": "Table à manger chic (marron)",
+        "es": "Mesa elegante (marrón)",
         "zh-TW": "成熟風餐桌／咖啡",
         "ko": "성숙한 느낌의 식탁/갈색",
-        "zh-CN": "成熟风餐桌／咖啡"
+        "zh-CN": "成熟风餐桌／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制桌子／咖啡",
+      "name": "木制桌子／棕",
       "itemId": 431000,
       "nameTranslations": {
         "ja": "木の机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Desk (Br)",
+        "fr": "Bureau en bois (marron)",
+        "es": "Escritorio de madera (marrón)",
         "zh-TW": "木製桌子／咖啡",
         "ko": "목재 책상/갈색",
-        "zh-CN": "木制桌子／咖啡"
+        "zh-CN": "木制桌子／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅桌子／咖啡",
+      "name": "酷帅桌子／棕",
       "itemId": 431010,
       "nameTranslations": {
         "ja": "クールな机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Desk (Br)",
+        "fr": "Bureau élégant (marron)",
+        "es": "Escritorio chulo (marrón)",
         "zh-TW": "酷帥桌子／咖啡",
         "ko": "쿨한 책상/갈색",
-        "zh-CN": "酷帅桌子／咖啡"
+        "zh-CN": "酷帅桌子／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦桌子／咖啡",
+      "name": "时髦桌子／棕",
       "itemId": 431030,
       "nameTranslations": {
         "ja": "モダンな机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Desk (Br)",
+        "fr": "Bureau moderne (marron)",
+        "es": "Escritorio moderno (marrón)",
         "zh-TW": "時髦桌子／咖啡",
         "ko": "모던한 책상/갈색",
-        "zh-CN": "时髦桌子／咖啡"
+        "zh-CN": "时髦桌子／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织桌子／咖啡",
+      "name": "编织桌子／棕",
       "itemId": 431050,
       "nameTranslations": {
         "ja": "あみあみ机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Desk (Br)",
+        "fr": "Bureau tressé (marron)",
+        "es": "Escritorio tejido (marrón)",
         "zh-TW": "編織桌子／咖啡",
         "ko": "엮어 만든 책상/갈색",
-        "zh-CN": "编织桌子／咖啡"
+        "zh-CN": "编织桌子／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风桌子／咖啡",
+      "name": "成熟风桌子／棕",
       "itemId": 431060,
       "nameTranslations": {
         "ja": "大人な机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Desk (Br)",
+        "fr": "Bureau chic (marron)",
+        "es": "Escritorio elegante (marrón)",
         "zh-TW": "成熟風桌子／咖啡",
         "ko": "성숙한 느낌의 책상/갈색",
-        "zh-CN": "成熟风桌子／咖啡"
+        "zh-CN": "成熟风桌子／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制边桌／咖啡",
+      "name": "木制边桌／棕",
       "itemId": 432000,
       "nameTranslations": {
         "ja": "木の脇机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden End Table (Br)",
+        "fr": "Meuble à tiroirs en bois (marron)",
+        "es": "Mesita auxiliar de madera (marrón)",
         "zh-TW": "木製邊桌／咖啡",
         "ko": "목재 보조 책상/갈색",
-        "zh-CN": "木制边桌／咖啡"
+        "zh-CN": "木制边桌／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅边桌／咖啡",
+      "name": "酷帅边桌／棕",
       "itemId": 432010,
       "nameTranslations": {
         "ja": "クールな脇机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool End Table (Br)",
+        "fr": "Meuble à tiroirs élégant (marron)",
+        "es": "Mesita auxiliar chula (marrón)",
         "zh-TW": "酷帥邊桌／咖啡",
         "ko": "쿨한 보조 책상/갈색",
-        "zh-CN": "酷帅边桌／咖啡"
+        "zh-CN": "酷帅边桌／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织边桌／咖啡",
+      "name": "编织边桌／棕",
       "itemId": 432030,
       "nameTranslations": {
         "ja": "あみあみ脇机/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan End Table (Br)",
+        "fr": "Meuble à tiroirs tressé (marron)",
+        "es": "Mesita auxiliar tejida (marrón)",
         "zh-TW": "編織邊桌／咖啡",
         "ko": "엮어 만든 보조 책상/갈색",
-        "zh-CN": "编织边桌／咖啡"
+        "zh-CN": "编织边桌／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制书柜／咖啡",
+      "name": "木制书柜／棕",
       "itemId": 433000,
       "nameTranslations": {
         "ja": "木の本棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Bookcase (Br)",
+        "fr": "Bibliothèque en bois (marron)",
+        "es": "Estantería de madera (marrón)",
         "zh-TW": "木製書櫃／咖啡",
         "ko": "목재 책장/갈색",
-        "zh-CN": "木制书柜／咖啡"
+        "zh-CN": "木制书柜／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅书柜／咖啡",
+      "name": "酷帅书柜／棕",
       "itemId": 433010,
       "nameTranslations": {
         "ja": "クールな本棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Bookcase (Br)",
+        "fr": "Bibliothèque élégante (marron)",
+        "es": "Estantería chula (marrón)",
         "zh-TW": "酷帥書櫃／咖啡",
         "ko": "쿨한 책장/갈색",
-        "zh-CN": "酷帅书柜／咖啡"
+        "zh-CN": "酷帅书柜／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风书柜／咖啡",
+      "name": "成熟风书柜／棕",
       "itemId": 433040,
       "nameTranslations": {
         "ja": "大人な本棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Bookcase (Br)",
+        "fr": "Bibliothèque chic (marron)",
+        "es": "Estantería elegante (marrón)",
         "zh-TW": "成熟風書櫃／咖啡",
         "ko": "성숙한 느낌의 책장/갈색",
-        "zh-CN": "成熟风书柜／咖啡"
+        "zh-CN": "成熟风书柜／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制餐柜／咖啡",
+      "name": "木制餐柜／棕",
       "itemId": 434000,
       "nameTranslations": {
         "ja": "木の食器棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Cupboard (Br)",
+        "fr": "Buffet en bois (marron)",
+        "es": "Alacena de madera (marrón)",
         "zh-TW": "木製餐櫃／咖啡",
         "ko": "목재 식기장/갈색",
-        "zh-CN": "木制餐柜／咖啡"
+        "zh-CN": "木制餐柜／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅餐柜／咖啡",
+      "name": "酷帅餐柜／棕",
       "itemId": 434010,
       "nameTranslations": {
         "ja": "クールな食器棚/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Cupboard (Br)",
+        "fr": "Buffet élégant (marron)",
+        "es": "Alacena chula (marrón)",
         "zh-TW": "酷帥餐櫃／咖啡",
         "ko": "쿨한 식기장/갈색",
-        "zh-CN": "酷帅餐柜／咖啡"
+        "zh-CN": "酷帅餐柜／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制椅子／咖啡",
+      "name": "木制椅子／棕",
       "itemId": 440000,
       "nameTranslations": {
         "ja": "木の椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Chair (Br)",
+        "fr": "Chaise en bois (marron)",
+        "es": "Silla de madera (marrón)",
         "zh-TW": "木製椅子／咖啡",
         "ko": "목재 의자/갈색",
-        "zh-CN": "木制椅子／咖啡"
+        "zh-CN": "木制椅子／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅椅子／咖啡",
+      "name": "酷帅椅子／棕",
       "itemId": 440010,
       "nameTranslations": {
         "ja": "クールな椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Chair (Br)",
+        "fr": "Chaise élégante (marron)",
+        "es": "Silla chula (marrón)",
         "zh-TW": "酷帥椅子／咖啡",
         "ko": "쿨한 의자/갈색",
-        "zh-CN": "酷帅椅子／咖啡"
+        "zh-CN": "酷帅椅子／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦椅子／咖啡",
+      "name": "时髦椅子／棕",
       "itemId": 440030,
       "nameTranslations": {
         "ja": "モダンな椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Chair (Br)",
+        "fr": "Chaise moderne (marron)",
+        "es": "Silla moderna (marrón)",
         "zh-TW": "時髦椅子／咖啡",
         "ko": "모던한 의자/갈색",
-        "zh-CN": "时髦椅子／咖啡"
+        "zh-CN": "时髦椅子／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织椅子／咖啡",
+      "name": "编织椅子／棕",
       "itemId": 440050,
       "nameTranslations": {
         "ja": "あみあみ椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Chair (Br)",
+        "fr": "Chaise tressée (marron)",
+        "es": "Silla tejida (marrón)",
         "zh-TW": "編織椅子／咖啡",
         "ko": "엮어 만든 의자/갈색",
-        "zh-CN": "编织椅子／咖啡"
+        "zh-CN": "编织椅子／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风椅子／咖啡",
+      "name": "成熟风椅子／棕",
       "itemId": 440060,
       "nameTranslations": {
         "ja": "大人な椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Chair (Br)",
+        "fr": "Chaise chic (marron)",
+        "es": "Silla elegante (marrón)",
         "zh-TW": "成熟風椅子／咖啡",
         "ko": "성숙한 느낌의 의자/갈색",
-        "zh-CN": "成熟风椅子／咖啡"
+        "zh-CN": "成熟风椅子／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制长椅／咖啡",
+      "name": "木制长椅／棕",
       "itemId": 441000,
       "nameTranslations": {
         "ja": "木の長椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Bench (Br)",
+        "fr": "Banc en bois (marron)",
+        "es": "Banco de madera (marrón)",
         "zh-TW": "木製長椅／咖啡",
         "ko": "목재 장의자/갈색",
-        "zh-CN": "木制长椅／咖啡"
+        "zh-CN": "木制长椅／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅长椅／咖啡",
+      "name": "酷帅长椅／棕",
       "itemId": 441010,
       "nameTranslations": {
         "ja": "クールな長椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Bench (Br)",
+        "fr": "Banc élégant (marron)",
+        "es": "Banco chulo (marrón)",
         "zh-TW": "酷帥長椅／咖啡",
         "ko": "쿨한 장의자/갈색",
-        "zh-CN": "酷帅长椅／咖啡"
+        "zh-CN": "酷帅长椅／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦长椅／咖啡",
+      "name": "时髦长椅／棕",
       "itemId": 441030,
       "nameTranslations": {
         "ja": "モダンな長椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Bench (Br)",
+        "fr": "Banc moderne (marron)",
+        "es": "Banco moderno (marrón)",
         "zh-TW": "時髦長椅／咖啡",
         "ko": "모던한 장의자/갈색",
-        "zh-CN": "时髦长椅／咖啡"
+        "zh-CN": "时髦长椅／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织长椅／咖啡",
+      "name": "编织长椅／棕",
       "itemId": 441050,
       "nameTranslations": {
         "ja": "あみあみ長椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Bench (Br)",
+        "fr": "Banc tressé (marron)",
+        "es": "Banco tejido (marrón)",
         "zh-TW": "編織長椅／咖啡",
         "ko": "엮어 만든 장의자/갈색",
-        "zh-CN": "编织长椅／咖啡"
+        "zh-CN": "编织长椅／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风长椅／咖啡",
+      "name": "成熟风长椅／棕",
       "itemId": 441060,
       "nameTranslations": {
         "ja": "大人な長椅子/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Bench (Br)",
+        "fr": "Banc chic (marron)",
+        "es": "Banco elegante (marrón)",
         "zh-TW": "成熟風長椅／咖啡",
         "ko": "성숙한 느낌의 장의자/갈색",
-        "zh-CN": "成熟风长椅／咖啡"
+        "zh-CN": "成熟风长椅／棕"
       }
     },
     {
@@ -16310,9 +16475,9 @@
       "itemId": 639060,
       "nameTranslations": {
         "ja": "日本人形",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Japanese Doll",
+        "fr": "Poupée japonaise",
+        "es": "Muñeca japonesa",
         "zh-TW": "日本人偶",
         "ko": "일본 인형",
         "zh-CN": "日本人偶"
@@ -16321,61 +16486,61 @@
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦坐垫／咖啡",
+      "name": "时髦坐垫／棕",
       "itemId": 450110,
       "nameTranslations": {
         "ja": "モダンな座布団/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Cushion (Br)",
+        "fr": "Coussin moderne (marron)",
+        "es": "Cojín moderno (marrón)",
         "zh-TW": "時髦坐墊／咖啡",
         "ko": "모던한 방석/갈색",
-        "zh-CN": "时髦坐垫／咖啡"
+        "zh-CN": "时髦坐垫／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织坐垫／咖啡",
+      "name": "编织坐垫／棕",
       "itemId": 450130,
       "nameTranslations": {
         "ja": "あみあみ座布団/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Cushion (Br)",
+        "fr": "Coussin tressé (marron)",
+        "es": "Cojín con bordados (marrón)",
         "zh-TW": "編織坐墊／咖啡",
         "ko": "엮어 만든 방석/갈색",
-        "zh-CN": "编织坐垫／咖啡"
+        "zh-CN": "编织坐垫／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风坐垫／咖啡",
+      "name": "成熟风坐垫／棕",
       "itemId": 450140,
       "nameTranslations": {
         "ja": "大人な座布団/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Cushion (Br)",
+        "fr": "Coussin chic (marron)",
+        "es": "Cojín elegante (marrón)",
         "zh-TW": "成熟風坐墊／咖啡",
         "ko": "성숙한 느낌의 방석/갈색",
-        "zh-CN": "成熟风坐垫／咖啡"
+        "zh-CN": "成熟风坐垫／棕"
       }
     },
     {
       "flag": 80102,
       "category": "手作配方",
-      "name": "小泰迪熊／咖啡",
+      "name": "小泰迪熊／棕",
       "itemId": 451000,
       "nameTranslations": {
         "ja": "小さいテディベア/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Teddy Bear (Br)",
+        "fr": "Petit ours en peluche (marron)",
+        "es": "Osito de peluche pequeño (marrón)",
         "zh-TW": "小泰迪熊／咖啡",
         "ko": "작은 테디 베어/갈색",
-        "zh-CN": "小泰迪熊／咖啡"
+        "zh-CN": "小泰迪熊／棕"
       }
     },
     {
@@ -16385,9 +16550,9 @@
       "itemId": 451070,
       "nameTranslations": {
         "ja": "花瓶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Vase",
+        "fr": "Vase",
+        "es": "Jarrón",
         "zh-TW": "花瓶",
         "ko": "꽃병",
         "zh-CN": "花瓶"
@@ -16400,9 +16565,9 @@
       "itemId": 451080,
       "nameTranslations": {
         "ja": "木彫りの熊",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Carved Wooden Bear",
+        "fr": "Ours sculpté en bois",
+        "es": "Oso tallado en madera",
         "zh-TW": "木雕熊",
         "ko": "곰 모양 나무 조각상",
         "zh-CN": "木雕熊"
@@ -16415,9 +16580,9 @@
       "itemId": 451090,
       "nameTranslations": {
         "ja": "手編みマフラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Handknit Muffler",
+        "fr": "Écharpe tricotée",
+        "es": "Bufanda tejida a mano",
         "zh-TW": "手織圍巾",
         "ko": "손으로 뜬 머플러",
         "zh-CN": "手织围巾"
@@ -16430,9 +16595,9 @@
       "itemId": 451110,
       "nameTranslations": {
         "ja": "苔玉",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kokedama",
+        "fr": "Kokedama",
+        "es": "Bolita de musgo",
         "zh-TW": "苔球",
         "ko": "이끼 볼",
         "zh-CN": "苔球"
@@ -16445,9 +16610,9 @@
       "itemId": 451170,
       "nameTranslations": {
         "ja": "木魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Fish Bell",
+        "fr": "Mokugyo",
+        "es": "Pez de madera",
         "zh-TW": "木魚",
         "ko": "목어",
         "zh-CN": "木鱼"
@@ -16460,9 +16625,9 @@
       "itemId": 451190,
       "nameTranslations": {
         "ja": "そろばん",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Abacus",
+        "fr": "Boulier",
+        "es": "Ábaco",
         "zh-TW": "算盤",
         "ko": "주판",
         "zh-CN": "算盘"
@@ -16475,9 +16640,9 @@
       "itemId": 455010,
       "nameTranslations": {
         "ja": "竹細工のトンボ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bamboo Dragonfly",
+        "fr": "Libellule en bambou",
+        "es": "Libélula de bambú",
         "zh-TW": "竹編蜻蜓",
         "ko": "대나무 세공으로 만든 잠자리",
         "zh-CN": "竹编蜻蜓"
@@ -16490,9 +16655,9 @@
       "itemId": 455100,
       "nameTranslations": {
         "ja": "トロフィー/銅",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bronze Trophy",
+        "fr": "Trophée (bronze)",
+        "es": "Trofeo (cobre)",
         "zh-TW": "獎盃／銅",
         "ko": "트로피/동",
         "zh-CN": "奖杯／铜"
@@ -16505,9 +16670,9 @@
       "itemId": 455110,
       "nameTranslations": {
         "ja": "トロフィー/銀",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Silver Trophy",
+        "fr": "Trophée (argent)",
+        "es": "Trofeo (plata)",
         "zh-TW": "獎盃／銀",
         "ko": "트로피/은",
         "zh-CN": "奖杯／银"
@@ -16520,9 +16685,9 @@
       "itemId": 455120,
       "nameTranslations": {
         "ja": "トロフィー/金",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gold Trophy",
+        "fr": "Trophée (or)",
+        "es": "Trofeo (oro)",
         "zh-TW": "獎盃／金",
         "ko": "트로피/금",
         "zh-CN": "奖杯／金"
@@ -16535,9 +16700,9 @@
       "itemId": 451270,
       "nameTranslations": {
         "ja": "壺",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pot",
+        "fr": "Jarre",
+        "es": "Vasija",
         "zh-TW": "甕",
         "ko": "항아리",
         "zh-CN": "瓮"
@@ -16550,9 +16715,9 @@
       "itemId": 451341,
       "nameTranslations": {
         "ja": "薪の束",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Firewood Bundle",
+        "fr": "Fagot de bois",
+        "es": "Montón de leña",
         "zh-TW": "木柴捆",
         "ko": "장작 묶음",
         "zh-CN": "木柴捆"
@@ -16565,9 +16730,9 @@
       "itemId": 451640,
       "nameTranslations": {
         "ja": "畳まれた布団",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Folded Futon",
+        "fr": "Futon plié",
+        "es": "Futón plegado",
         "zh-TW": "折疊好的棉被",
         "ko": "갠 이불",
         "zh-CN": "折叠好的棉被"
@@ -16580,9 +16745,9 @@
       "itemId": 452030,
       "nameTranslations": {
         "ja": "イースターエッグ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Easter Eggs",
+        "fr": "Œufs de Pâques",
+        "es": "Huevos de Pascua",
         "zh-TW": "復活節彩蛋",
         "ko": "부활절 달걀",
         "zh-CN": "复活节彩蛋"
@@ -16595,9 +16760,9 @@
       "itemId": 453060,
       "nameTranslations": {
         "ja": "枝の山",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pile of Branches",
+        "fr": "Tas de branches",
+        "es": "Montón de ramas",
         "zh-TW": "樹枝堆",
         "ko": "가지 더미",
         "zh-CN": "树枝堆"
@@ -16606,16 +16771,16 @@
     {
       "flag": 80103,
       "category": "手作配方",
-      "name": "园艺推车／咖啡",
+      "name": "园艺推车／棕",
       "itemId": 453070,
       "nameTranslations": {
         "ja": "フラワーワゴン/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (Br)",
+        "fr": "Chariot fleuri (marron)",
+        "es": "Carrito de flores (marrón)",
         "zh-TW": "園藝推車／咖啡",
         "ko": "플라워 왜건/갈색",
-        "zh-CN": "园艺推车／咖啡"
+        "zh-CN": "园艺推车／棕"
       }
     },
     {
@@ -16625,9 +16790,9 @@
       "itemId": 453071,
       "nameTranslations": {
         "ja": "フラワーワゴン/赤",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (R)",
+        "fr": "Chariot fleuri (rouge)",
+        "es": "Carrito de flores (rojo)",
         "zh-TW": "園藝推車／紅",
         "ko": "플라워 왜건/빨간색",
         "zh-CN": "园艺推车／红"
@@ -16640,9 +16805,9 @@
       "itemId": 453072,
       "nameTranslations": {
         "ja": "フラワーワゴン/橙",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (O)",
+        "fr": "Chariot fleuri (orange)",
+        "es": "Carrito de flores (naranja)",
         "zh-TW": "園藝推車／橘",
         "ko": "플라워 왜건/오렌지색",
         "zh-CN": "园艺推车／橘"
@@ -16655,9 +16820,9 @@
       "itemId": 453073,
       "nameTranslations": {
         "ja": "フラワーワゴン/黄",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (Y)",
+        "fr": "Chariot fleuri (jaune)",
+        "es": "Carrito de flores (amarillo)",
         "zh-TW": "園藝推車／黃",
         "ko": "플라워 왜건/노란색",
         "zh-CN": "园艺推车／黄"
@@ -16670,9 +16835,9 @@
       "itemId": 453074,
       "nameTranslations": {
         "ja": "フラワーワゴン/緑",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (G)",
+        "fr": "Chariot fleuri (vert)",
+        "es": "Carrito de flores (verde)",
         "zh-TW": "園藝推車／綠",
         "ko": "플라워 왜건/초록색",
         "zh-CN": "园艺推车／绿"
@@ -16685,9 +16850,9 @@
       "itemId": 453075,
       "nameTranslations": {
         "ja": "フラワーワゴン/青",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (B)",
+        "fr": "Chariot fleuri (bleu)",
+        "es": "Carrito de flores (azul)",
         "zh-TW": "園藝推車／藍",
         "ko": "플라워 왜건/파란색",
         "zh-CN": "园艺推车／蓝"
@@ -16700,9 +16865,9 @@
       "itemId": 453076,
       "nameTranslations": {
         "ja": "フラワーワゴン/紫",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (P)",
+        "fr": "Chariot fleuri (violet)",
+        "es": "Carrito de flores (violeta)",
         "zh-TW": "園藝推車／紫",
         "ko": "플라워 왜건/보라색",
         "zh-CN": "园艺推车／紫"
@@ -16715,9 +16880,9 @@
       "itemId": 453077,
       "nameTranslations": {
         "ja": "フラワーワゴン/桃",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (Pk)",
+        "fr": "Chariot fleuri (rose)",
+        "es": "Carrito de flores (rosa)",
         "zh-TW": "園藝推車／粉紅",
         "ko": "플라워 왜건/분홍색",
         "zh-CN": "园艺推车／粉红"
@@ -16730,9 +16895,9 @@
       "itemId": 453078,
       "nameTranslations": {
         "ja": "フラワーワゴン/白",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (W)",
+        "fr": "Chariot fleuri (blanc)",
+        "es": "Carrito de flores (blanco)",
         "zh-TW": "園藝推車／白",
         "ko": "플라워 왜건/흰색",
         "zh-CN": "园艺推车／白"
@@ -16745,9 +16910,9 @@
       "itemId": 453079,
       "nameTranslations": {
         "ja": "フラワーワゴン/黒",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Wagon (Bk)",
+        "fr": "Chariot fleuri (noir)",
+        "es": "Carrito de flores (negro)",
         "zh-TW": "園藝推車／黑",
         "ko": "플라워 왜건/검정색",
         "zh-CN": "园艺推车／黑"
@@ -16760,9 +16925,9 @@
       "itemId": 453090,
       "nameTranslations": {
         "ja": "植木鉢",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flowerpot",
+        "fr": "Pot de fleurs",
+        "es": "Macetero",
         "zh-TW": "花盆",
         "ko": "화분",
         "zh-CN": "花盆"
@@ -16775,9 +16940,9 @@
       "itemId": 453130,
       "nameTranslations": {
         "ja": "積石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Stacked Stones",
+        "fr": "Pierres empilées",
+        "es": "Piedras apiladas",
         "zh-TW": "石堆",
         "ko": "쌓은 돌",
         "zh-CN": "石堆"
@@ -16790,9 +16955,9 @@
       "itemId": 453140,
       "nameTranslations": {
         "ja": "庭石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Garden Stones",
+        "fr": "Pierres de jardin",
+        "es": "Rocas de jardín",
         "zh-TW": "景觀石",
         "ko": "정원석",
         "zh-CN": "景观石"
@@ -16805,9 +16970,9 @@
       "itemId": 453160,
       "nameTranslations": {
         "ja": "睡蓮鉢",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Water Lily Pot",
+        "fr": "Pot de nénuphars",
+        "es": "Maceta de nenúfar",
         "zh-TW": "蓮花盆",
         "ko": "수련 화분",
         "zh-CN": "莲花盆"
@@ -16820,9 +16985,9 @@
       "itemId": 457000,
       "nameTranslations": {
         "ja": "立て札",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Signboard",
+        "fr": "Écriteau",
+        "es": "Señal",
         "zh-TW": "立牌",
         "ko": "팻말",
         "zh-CN": "立牌"
@@ -16835,9 +17000,9 @@
       "itemId": 457010,
       "nameTranslations": {
         "ja": "石積の灯籠",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rustic Rock Lantern",
+        "fr": "Lanterne en pierres",
+        "es": "Farol de piedra",
         "zh-TW": "石燈籠",
         "ko": "돌을 쌓아 만든 등롱",
         "zh-CN": "石灯笼"
@@ -16850,9 +17015,9 @@
       "itemId": 453210,
       "nameTranslations": {
         "ja": "苔むした石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mossy Stones",
+        "fr": "Pierre moussue",
+        "es": "Piedra cubierta de musgo",
         "zh-TW": "青苔石",
         "ko": "이끼 낀 돌",
         "zh-CN": "青苔石"
@@ -16865,9 +17030,9 @@
       "itemId": 453230,
       "nameTranslations": {
         "ja": "大きな飛び石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Large Stepping Stones",
+        "fr": "Grand pas japonais",
+        "es": "Piedra baldosa de jardín grande",
         "zh-TW": "大型墊腳石",
         "ko": "커다란 징검돌",
         "zh-CN": "大型垫脚石"
@@ -16880,9 +17045,9 @@
       "itemId": 453250,
       "nameTranslations": {
         "ja": "小さな飛び石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Stepping Stones",
+        "fr": "Petit pas japonais",
+        "es": "Piedra baldosa de jardín pequeña",
         "zh-TW": "小型墊腳石",
         "ko": "작은 징검돌",
         "zh-CN": "小型垫脚石"
@@ -16895,9 +17060,9 @@
       "itemId": 453300,
       "nameTranslations": {
         "ja": "低木と岩",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Shrub & Rock",
+        "fr": "Arbustes et rochers",
+        "es": "Arbusto y roca",
         "zh-TW": "灌木與岩石",
         "ko": "관목과 바위",
         "zh-CN": "灌木与岩石"
@@ -16910,9 +17075,9 @@
       "itemId": 453320,
       "nameTranslations": {
         "ja": "牧草ロールの山",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hay Bale Heap",
+        "fr": "Tas de bottes de foin",
+        "es": "Fardos de hierba forrajera",
         "zh-TW": "牧草捲堆",
         "ko": "곤포 사일리지 더미",
         "zh-CN": "牧草卷堆"
@@ -16921,166 +17086,166 @@
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制床铺／咖啡",
+      "name": "木制床铺／棕",
       "itemId": 460000,
       "nameTranslations": {
         "ja": "木のベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wooden Bed (Br)",
+        "fr": "Lit en bois (marron)",
+        "es": "Cama de madera (marrón)",
         "zh-TW": "木製床鋪／咖啡",
         "ko": "목재 침대/갈색",
-        "zh-CN": "木制床铺／咖啡"
+        "zh-CN": "木制床铺／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅床铺／咖啡",
+      "name": "酷帅床铺／棕",
       "itemId": 460010,
       "nameTranslations": {
         "ja": "クールなベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Bed (Br)",
+        "fr": "Lit élégant (marron)",
+        "es": "Cama chula (marrón)",
         "zh-TW": "酷帥床鋪／咖啡",
         "ko": "쿨한 침대/갈색",
-        "zh-CN": "酷帅床铺／咖啡"
+        "zh-CN": "酷帅床铺／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦床铺／咖啡",
+      "name": "时髦床铺／棕",
       "itemId": 460030,
       "nameTranslations": {
         "ja": "モダンなベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Bed (Br)",
+        "fr": "Lit moderne (marron)",
+        "es": "Cama moderna (marrón)",
         "zh-TW": "時髦床鋪／咖啡",
         "ko": "모던한 침대/갈색",
-        "zh-CN": "时髦床铺／咖啡"
+        "zh-CN": "时髦床铺／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织床铺／咖啡",
+      "name": "编织床铺／棕",
       "itemId": 460050,
       "nameTranslations": {
         "ja": "あみあみベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Bed (Br)",
+        "fr": "Lit tressé (marron)",
+        "es": "Cama tejida (marrón)",
         "zh-TW": "編織床鋪／咖啡",
         "ko": "엮어 만든 침대/갈색",
-        "zh-CN": "编织床铺／咖啡"
+        "zh-CN": "编织床铺／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风床铺／咖啡",
+      "name": "成熟风床铺／棕",
       "itemId": 460060,
       "nameTranslations": {
         "ja": "大人なベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Bed (Br)",
+        "fr": "Lit chic (marron)",
+        "es": "Cama elegante (marrón)",
         "zh-TW": "成熟風床鋪／咖啡",
         "ko": "성숙한 느낌의 침대/갈색",
-        "zh-CN": "成熟风床铺／咖啡"
+        "zh-CN": "成熟风床铺／棕"
       }
     },
     {
       "flag": 80101,
       "category": "手作配方",
-      "name": "木制大床／咖啡",
+      "name": "木制大床／棕",
       "itemId": 461000,
       "nameTranslations": {
         "ja": "木の大ベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big Wooden Bed (Br)",
+        "fr": "Grand lit en bois (marron)",
+        "es": "Cama grande de madera (marrón)",
         "zh-TW": "木製大床／咖啡",
         "ko": "목재 대형 침대/갈색",
-        "zh-CN": "木制大床／咖啡"
+        "zh-CN": "木制大床／棕"
       }
     },
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅大床／咖啡",
+      "name": "酷帅大床／棕",
       "itemId": 461010,
       "nameTranslations": {
         "ja": "クールな大ベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big Cool Bed (Br)",
+        "fr": "Grand lit en bois élégant (marron)",
+        "es": "Cama grande chula (marrón)",
         "zh-TW": "酷帥大床／咖啡",
         "ko": "쿨한 대형 침대/갈색",
-        "zh-CN": "酷帅大床／咖啡"
+        "zh-CN": "酷帅大床／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦大床／咖啡",
+      "name": "时髦大床／棕",
       "itemId": 461030,
       "nameTranslations": {
         "ja": "モダンな大ベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big Modern Bed (Br)",
+        "fr": "Grand lit en bois moderne (marron)",
+        "es": "Cama grande moderna (marrón)",
         "zh-TW": "時髦大床／咖啡",
         "ko": "모던한 대형 침대/갈색",
-        "zh-CN": "时髦大床／咖啡"
+        "zh-CN": "时髦大床／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织大床／咖啡",
+      "name": "编织大床／棕",
       "itemId": 461050,
       "nameTranslations": {
         "ja": "あみあみ大ベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big Rattan Bed (Br)",
+        "fr": "Grand lit en bois tressé (marron)",
+        "es": "Cama grande tejida (marrón)",
         "zh-TW": "編織大床／咖啡",
         "ko": "엮어 만든 대형 침대/갈색",
-        "zh-CN": "编织大床／咖啡"
+        "zh-CN": "编织大床／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风大床／咖啡",
+      "name": "成熟风大床／棕",
       "itemId": 461060,
       "nameTranslations": {
         "ja": "大人な大ベッド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big Mature Bed (Br)",
+        "fr": "Grand lit en bois chic (marron)",
+        "es": "Cama grande elegante (marrón)",
         "zh-TW": "成熟風大床／咖啡",
         "ko": "성숙한 느낌의 대형 침대/갈색",
-        "zh-CN": "成熟风大床／咖啡"
+        "zh-CN": "成熟风大床／棕"
       }
     },
     {
       "flag": 80104,
       "category": "手作配方",
-      "name": "干燥花／咖啡",
+      "name": "干燥花／棕",
       "itemId": 470010,
       "nameTranslations": {
         "ja": "ドライフラワー/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (Br)",
+        "fr": "Fleurs séchées (marrons)",
+        "es": "Flores secas (marrones)",
         "zh-TW": "乾燥花／咖啡",
         "ko": "드라이플라워/갈색",
-        "zh-CN": "干燥花／咖啡"
+        "zh-CN": "干燥花／棕"
       }
     },
     {
@@ -17090,9 +17255,9 @@
       "itemId": 470011,
       "nameTranslations": {
         "ja": "ドライフラワー/赤",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (R)",
+        "fr": "Fleurs séchées (rouges)",
+        "es": "Flores secas (rojas)",
         "zh-TW": "乾燥花／紅",
         "ko": "드라이플라워/빨간색",
         "zh-CN": "干燥花／红"
@@ -17105,9 +17270,9 @@
       "itemId": 470012,
       "nameTranslations": {
         "ja": "ドライフラワー/橙",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (O)",
+        "fr": "Fleurs séchées (oranges)",
+        "es": "Flores secas (naranjas)",
         "zh-TW": "乾燥花／橘",
         "ko": "드라이플라워/오렌지색",
         "zh-CN": "干燥花／橘"
@@ -17120,9 +17285,9 @@
       "itemId": 470013,
       "nameTranslations": {
         "ja": "ドライフラワー/黄",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (Y)",
+        "fr": "Fleurs séchées (jaunes)",
+        "es": "Flores secas (amarillas)",
         "zh-TW": "乾燥花／黃",
         "ko": "드라이플라워/노란색",
         "zh-CN": "干燥花／黄"
@@ -17135,9 +17300,9 @@
       "itemId": 470014,
       "nameTranslations": {
         "ja": "ドライフラワー/緑",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (G)",
+        "fr": "Fleurs séchées (vertes)",
+        "es": "Flores secas (verdes)",
         "zh-TW": "乾燥花／綠",
         "ko": "드라이플라워/초록색",
         "zh-CN": "干燥花／绿"
@@ -17150,9 +17315,9 @@
       "itemId": 470015,
       "nameTranslations": {
         "ja": "ドライフラワー/青",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (B)",
+        "fr": "Fleurs séchées (bleues)",
+        "es": "Flores secas (azules)",
         "zh-TW": "乾燥花／藍",
         "ko": "드라이플라워/파란색",
         "zh-CN": "干燥花／蓝"
@@ -17165,9 +17330,9 @@
       "itemId": 470016,
       "nameTranslations": {
         "ja": "ドライフラワー/紫",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (P)",
+        "fr": "Fleurs séchées (violettes)",
+        "es": "Flores secas (violetas)",
         "zh-TW": "乾燥花／紫",
         "ko": "드라이플라워/보라색",
         "zh-CN": "干燥花／紫"
@@ -17180,9 +17345,9 @@
       "itemId": 470017,
       "nameTranslations": {
         "ja": "ドライフラワー/桃",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (Pk)",
+        "fr": "Fleurs séchées (roses)",
+        "es": "Flores secas (rosas)",
         "zh-TW": "乾燥花／粉紅",
         "ko": "드라이플라워/분홍색",
         "zh-CN": "干燥花／粉红"
@@ -17195,9 +17360,9 @@
       "itemId": 470018,
       "nameTranslations": {
         "ja": "ドライフラワー/白",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (W)",
+        "fr": "Fleurs séchées (blanches)",
+        "es": "Flores secas (blancas)",
         "zh-TW": "乾燥花／白",
         "ko": "드라이플라워/흰색",
         "zh-CN": "干燥花／白"
@@ -17210,9 +17375,9 @@
       "itemId": 470019,
       "nameTranslations": {
         "ja": "ドライフラワー/黒",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dried Flowers (Bk)",
+        "fr": "Fleurs séchées (noires)",
+        "es": "Flores secas (negras)",
         "zh-TW": "乾燥花／黑",
         "ko": "드라이플라워/검정색",
         "zh-CN": "干燥花／黑"
@@ -17221,76 +17386,76 @@
     {
       "flag": 80105,
       "category": "手作配方",
-      "name": "小型图画／咖啡",
+      "name": "小型图画／棕",
       "itemId": 470020,
       "nameTranslations": {
         "ja": "小さい絵画/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Painting (Br)",
+        "fr": "Petit tableau (marron)",
+        "es": "Cuadro pequeño (marrón)",
         "zh-TW": "小型圖畫／咖啡",
         "ko": "작은 그림/갈색",
-        "zh-CN": "小型图画／咖啡"
+        "zh-CN": "小型图画／棕"
       }
     },
     {
       "flag": 80231,
       "category": "手作配方",
-      "name": "布制壁毯／咖啡",
+      "name": "布制壁毯／棕",
       "itemId": 470030,
       "nameTranslations": {
         "ja": "布タペストリー/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tapestry (Br)",
+        "fr": "Tapisserie en tissu (marron)",
+        "es": "Tapiz (marrón)",
         "zh-TW": "布製壁毯／咖啡",
         "ko": "천 태피스트리/갈색",
-        "zh-CN": "布制壁毯／咖啡"
+        "zh-CN": "布制壁毯／棕"
       }
     },
     {
       "flag": 80232,
       "category": "手作配方",
-      "name": "花圈／咖啡",
+      "name": "花圈／棕",
       "itemId": 470040,
       "nameTranslations": {
         "ja": "リース/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wreath (Br)",
+        "fr": "Couronne de fleurs (marron)",
+        "es": "Corona de flores (marrón)",
         "zh-TW": "花圈／咖啡",
         "ko": "화환/갈색",
-        "zh-CN": "花圈／咖啡"
+        "zh-CN": "花圈／棕"
       }
     },
     {
       "flag": 80233,
       "category": "手作配方",
-      "name": "横幅图画／咖啡",
+      "name": "横幅图画／棕",
       "itemId": 472020,
       "nameTranslations": {
         "ja": "横長の絵画/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oblong Painting (Br)",
+        "fr": "Tableau panoramique (marron)",
+        "es": "Cuadro apaisado (marrón)",
         "zh-TW": "橫幅圖畫／咖啡",
         "ko": "가로로 긴 그림/갈색",
-        "zh-CN": "横幅图画／咖啡"
+        "zh-CN": "横幅图画／棕"
       }
     },
     {
       "flag": 80234,
       "category": "手作配方",
-      "name": "墙壁挂饰／咖啡",
+      "name": "墙壁挂饰／棕",
       "itemId": 472030,
       "nameTranslations": {
         "ja": "ガーランド/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pennant Banner (Br)",
+        "fr": "Guirlande (marron)",
+        "es": "Guirnalda (marrón)",
         "zh-TW": "牆壁掛飾／咖啡",
         "ko": "갈런드/갈색",
-        "zh-CN": "墙壁挂饰／咖啡"
+        "zh-CN": "墙壁挂饰／棕"
       }
     },
     {
@@ -17300,9 +17465,9 @@
       "itemId": 631020,
       "nameTranslations": {
         "ja": "壁掛け狐面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hanging Kitsune Mask",
+        "fr": "Masque mural de renard",
+        "es": "Máscara de zorro de pared",
         "zh-TW": "壁掛狐狸面具",
         "ko": "벽걸이 여우 가면",
         "zh-CN": "壁挂狐狸面具"
@@ -17315,9 +17480,9 @@
       "itemId": 631030,
       "nameTranslations": {
         "ja": "壁掛け天狗面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hanging Tengu Mask",
+        "fr": "Masque mural de Tengu",
+        "es": "Máscara Tengu de pared",
         "zh-TW": "壁掛天狗面具",
         "ko": "벽걸이 텐구 가면",
         "zh-CN": "壁挂天狗面具"
@@ -17330,9 +17495,9 @@
       "itemId": 631040,
       "nameTranslations": {
         "ja": "壁掛け般若面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hanging Hannya Mask",
+        "fr": "Masque mural de Hannya",
+        "es": "Máscara de demonio Hannya de pared",
         "zh-TW": "壁掛般若面具",
         "ko": "벽걸이 반야 가면",
         "zh-CN": "壁挂般若面具"
@@ -17345,9 +17510,9 @@
       "itemId": 631050,
       "nameTranslations": {
         "ja": "壁掛けおかめ面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hanging Okame Mask",
+        "fr": "Masque mural d’Okame",
+        "es": "Máscara Okame de pared",
         "zh-TW": "壁掛阿龜面具",
         "ko": "벽걸이 오카메 가면",
         "zh-CN": "壁挂阿龟面具"
@@ -17356,61 +17521,61 @@
     {
       "flag": 80235,
       "category": "手作配方",
-      "name": "酷帅地毯／咖啡",
+      "name": "酷帅地毯／棕",
       "itemId": 480000,
       "nameTranslations": {
         "ja": "クールな絨毯/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cool Rug (Br)",
+        "fr": "Tapis élégant (marron)",
+        "es": "Alfombra chula (marrón)",
         "zh-TW": "酷帥地毯／咖啡",
         "ko": "쿨한 융단/갈색",
-        "zh-CN": "酷帅地毯／咖啡"
+        "zh-CN": "酷帅地毯／棕"
       }
     },
     {
       "flag": 80236,
       "category": "手作配方",
-      "name": "时髦地毯／咖啡",
+      "name": "时髦地毯／棕",
       "itemId": 480010,
       "nameTranslations": {
         "ja": "モダンな絨毯/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Modern Rug (Br)",
+        "fr": "Tapis moderne (marron)",
+        "es": "Alfombra moderna (marrón)",
         "zh-TW": "時髦地毯／咖啡",
         "ko": "모던한 융단/갈색",
-        "zh-CN": "时髦地毯／咖啡"
+        "zh-CN": "时髦地毯／棕"
       }
     },
     {
       "flag": 80237,
       "category": "手作配方",
-      "name": "编织地毯／咖啡",
+      "name": "编织地毯／棕",
       "itemId": 480020,
       "nameTranslations": {
         "ja": "あみあみ絨毯/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rattan Rug (Br)",
+        "fr": "Tapis tressé (marron)",
+        "es": "Alfombra tejida (marrón)",
         "zh-TW": "編織地毯／咖啡",
         "ko": "엮어 만든 융단/갈색",
-        "zh-CN": "编织地毯／咖啡"
+        "zh-CN": "编织地毯／棕"
       }
     },
     {
       "flag": 80238,
       "category": "手作配方",
-      "name": "成熟风地毯／咖啡",
+      "name": "成熟风地毯／棕",
       "itemId": 480040,
       "nameTranslations": {
         "ja": "大人な絨毯/茶",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mature Rug (Br)",
+        "fr": "Tapis chic (marron)",
+        "es": "Alfombra elegante (marrón)",
         "zh-TW": "成熟風地毯／咖啡",
         "ko": "성숙한 느낌의 융단/갈색",
-        "zh-CN": "成熟风地毯／咖啡"
+        "zh-CN": "成熟风地毯／棕"
       }
     },
     {
@@ -17420,9 +17585,9 @@
       "itemId": 520300,
       "nameTranslations": {
         "ja": "狐面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kitsune Mask",
+        "fr": "Masque de renard",
+        "es": "Máscara de zorro",
         "zh-TW": "狐狸面具",
         "ko": "여우 가면",
         "zh-CN": "狐狸面具"
@@ -17435,9 +17600,9 @@
       "itemId": 520370,
       "nameTranslations": {
         "ja": "天狗面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tengu Mask",
+        "fr": "Masque de Tengu",
+        "es": "Máscara Tengu",
         "zh-TW": "天狗面具",
         "ko": "텐구 가면",
         "zh-CN": "天狗面具"
@@ -17450,9 +17615,9 @@
       "itemId": 520310,
       "nameTranslations": {
         "ja": "般若面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hannya Mask",
+        "fr": "Masque de Hannya",
+        "es": "Máscara de demonio Hannya",
         "zh-TW": "般若面具",
         "ko": "반야 가면",
         "zh-CN": "般若面具"
@@ -17465,9 +17630,9 @@
       "itemId": 520320,
       "nameTranslations": {
         "ja": "おかめ面",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Okame Mask",
+        "fr": "Masque d’Okame",
+        "es": "Máscara Okame",
         "zh-TW": "阿龜面具",
         "ko": "오카메 가면",
         "zh-CN": "阿龟面具"
@@ -17480,9 +17645,9 @@
       "itemId": 660071,
       "nameTranslations": {
         "ja": "手持ち提灯",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Paper Lantern",
+        "fr": "Lanterne portative",
+        "es": "Farolillo de papel portátil",
         "zh-TW": "手提燈籠",
         "ko": "휴대용 등롱",
         "zh-CN": "手提灯笼"
@@ -17495,9 +17660,9 @@
       "itemId": 641100,
       "nameTranslations": {
         "ja": "清めの塩",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Purifying Salt",
+        "fr": "Sel purificateur",
+        "es": "Sal purificadora",
         "zh-TW": "淨化鹽",
         "ko": "정화의 소금",
         "zh-CN": "净化盐"
@@ -17510,9 +17675,9 @@
       "itemId": 641110,
       "nameTranslations": {
         "ja": "藁人形",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Straw Doll",
+        "fr": "Poupée en paille",
+        "es": "Muñeco de paja",
         "zh-TW": "稻草人偶",
         "ko": "짚 인형",
         "zh-CN": "稻草人偶"
@@ -17525,9 +17690,9 @@
       "itemId": 60000,
       "nameTranslations": {
         "ja": "素朴な朝食",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rustic Breakfast",
+        "fr": "Petit-déjeuner rustique",
+        "es": "Desayuno sencillo",
         "zh-TW": "簡單的早餐",
         "ko": "소박한 아침 식사",
         "zh-CN": "简单的早餐"
@@ -17540,9 +17705,9 @@
       "itemId": 60010,
       "nameTranslations": {
         "ja": "だし巻き卵",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rolled Omelet",
+        "fr": "Omelette dashimaki",
+        "es": "Rollitos de tortilla",
         "zh-TW": "高湯蛋捲",
         "ko": "계란말이",
         "zh-CN": "高汤蛋卷"
@@ -17555,9 +17720,9 @@
       "itemId": 60020,
       "nameTranslations": {
         "ja": "ゆでたまご",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Boiled Eggs",
+        "fr": "Œuf dur",
+        "es": "Huevo cocido",
         "zh-TW": "水煮蛋",
         "ko": "삶은 달걀",
         "zh-CN": "水煮蛋"
@@ -17570,9 +17735,9 @@
       "itemId": 60030,
       "nameTranslations": {
         "ja": "スクランブルエッグ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Scrambled Eggs",
+        "fr": "Œufs brouillés",
+        "es": "Huevos revueltos",
         "zh-TW": "炒蛋",
         "ko": "스크램블드에그",
         "zh-CN": "炒蛋"
@@ -17585,9 +17750,9 @@
       "itemId": 60040,
       "nameTranslations": {
         "ja": "ソーセージグリル",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grilled Sausages",
+        "fr": "Saucisse grillée",
+        "es": "Salchichas a la parrilla",
         "zh-TW": "烤香腸",
         "ko": "그릴소시지",
         "zh-CN": "烤香肠"
@@ -17600,9 +17765,9 @@
       "itemId": 60050,
       "nameTranslations": {
         "ja": "バタージャムトースト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Jam 'n' Butter Toast",
+        "fr": "Tartine beurre-confiture",
+        "es": "Tostadas con mantequilla y mermelada",
         "zh-TW": "果醬吐司",
         "ko": "버터 잼 토스트",
         "zh-CN": "果酱吐司"
@@ -17615,9 +17780,9 @@
       "itemId": 60060,
       "nameTranslations": {
         "ja": "クロワッサン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Croissants",
+        "fr": "Croissant",
+        "es": "Cruasán",
         "zh-TW": "可頌",
         "ko": "크루아상",
         "zh-CN": "可颂"
@@ -17630,9 +17795,9 @@
       "itemId": 60070,
       "nameTranslations": {
         "ja": "マルゲリータピザ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Margherita Pizza",
+        "fr": "Pizza margherita",
+        "es": "Pizza margarita",
         "zh-TW": "瑪格麗特披薩",
         "ko": "마르게리타 피자",
         "zh-CN": "玛格丽特披萨"
@@ -17645,9 +17810,9 @@
       "itemId": 60080,
       "nameTranslations": {
         "ja": "梅茶漬け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Plum Ochazuke",
+        "fr": "Ochazuke",
+        "es": "Ochazuke de ciruela",
         "zh-TW": "梅子茶泡飯",
         "ko": "매실 차즈케",
         "zh-CN": "梅子茶泡饭"
@@ -17660,9 +17825,9 @@
       "itemId": 60090,
       "nameTranslations": {
         "ja": "おにぎりと漬物定食",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rice Balls with Pickles",
+        "fr": "Onigiri et tsukemono",
+        "es": "Menú de bolas de arroz con encurtidos",
         "zh-TW": "飯糰與醃漬物定食",
         "ko": "주먹밥과 채소 절임 정식",
         "zh-CN": "饭团与腌渍物定食"
@@ -17675,9 +17840,9 @@
       "itemId": 60100,
       "nameTranslations": {
         "ja": "焼き魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grilled Fish",
+        "fr": "Poisson grillé",
+        "es": "Pescado a la parrilla",
         "zh-TW": "烤魚",
         "ko": "생선구이",
         "zh-CN": "烤鱼"
@@ -17690,9 +17855,9 @@
       "itemId": 60110,
       "nameTranslations": {
         "ja": "アスパラベーコン巻き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Aspara-Bacon",
+        "fr": "Asperges au bacon",
+        "es": "Rollitos de espárragos con beicon",
         "zh-TW": "培根蘆筍捲",
         "ko": "아스파라거스 베이컨 말이",
         "zh-CN": "培根芦笋卷"
@@ -17705,9 +17870,9 @@
       "itemId": 60120,
       "nameTranslations": {
         "ja": "オニオンスープ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "French Onion Soup",
+        "fr": "Soupe à l’oignon",
+        "es": "Sopa de cebolla",
         "zh-TW": "洋蔥湯",
         "ko": "양파 수프",
         "zh-CN": "洋葱汤"
@@ -17720,9 +17885,9 @@
       "itemId": 60130,
       "nameTranslations": {
         "ja": "タマネギのポトフ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Onion Pot-au-Feu",
+        "fr": "Pot-au-feu aux oignons",
+        "es": "Pot au feu de cebolla",
         "zh-TW": "洋蔥火上鍋",
         "ko": "양파 포토푀",
         "zh-CN": "洋葱火上锅"
@@ -17735,9 +17900,9 @@
       "itemId": 60140,
       "nameTranslations": {
         "ja": "エンドウ豆のお浸し",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Boiled Green Peas",
+        "fr": "Petits pois marinés",
+        "es": "Guisantes hervidos",
         "zh-TW": "涼拌豌豆",
         "ko": "완두콩 무침",
         "zh-CN": "凉拌豌豆"
@@ -17750,9 +17915,9 @@
       "itemId": 60150,
       "nameTranslations": {
         "ja": "カブの肉あんかけ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Turnip 'n' Meat Ankake",
+        "fr": "Navets sauce à la viande",
+        "es": "Nabos con carne en salsa",
         "zh-TW": "肉燥大頭菜",
         "ko": "순무 고기 소스 요리",
         "zh-CN": "肉燥大头菜"
@@ -17765,9 +17930,9 @@
       "itemId": 60160,
       "nameTranslations": {
         "ja": "ポテトグラタン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Potato Gratin",
+        "fr": "Gratin dauphinois",
+        "es": "Patatas gratinadas",
         "zh-TW": "焗烤馬鈴薯",
         "ko": "감자 그라탱",
         "zh-CN": "焗烤土豆"
@@ -17780,9 +17945,9 @@
       "itemId": 60170,
       "nameTranslations": {
         "ja": "フライドポテト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "French Fries",
+        "fr": "Frites",
+        "es": "Patatas fritas",
         "zh-TW": "薯條",
         "ko": "감자튀김",
         "zh-CN": "薯条"
@@ -17795,9 +17960,9 @@
       "itemId": 60180,
       "nameTranslations": {
         "ja": "大人なカレー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grown-Up Curry",
+        "fr": "Curry pour adultes",
+        "es": "Curry para adultos",
         "zh-TW": "大人咖哩",
         "ko": "어른 카레",
         "zh-CN": "大人咖喱"
@@ -17810,9 +17975,9 @@
       "itemId": 60190,
       "nameTranslations": {
         "ja": "おこさまカレー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kids' Curry",
+        "fr": "Curry pour enfants",
+        "es": "Curry para niños",
         "zh-TW": "兒童咖哩",
         "ko": "어린이 카레",
         "zh-CN": "儿童咖喱"
@@ -17825,9 +17990,9 @@
       "itemId": 60200,
       "nameTranslations": {
         "ja": "ラディッシュサラダ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Radish Salad",
+        "fr": "Salade de radis",
+        "es": "Ensalada de rábano",
         "zh-TW": "櫻桃蘿蔔沙拉",
         "ko": "래디시 샐러드",
         "zh-CN": "樱桃萝卜沙拉"
@@ -17840,9 +18005,9 @@
       "itemId": 60210,
       "nameTranslations": {
         "ja": "ロールキャベツ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cabbage Rolls",
+        "fr": "Chou farci",
+        "es": "Rollitos de col",
         "zh-TW": "高麗菜捲",
         "ko": "양배추 말이",
         "zh-CN": "卷心菜卷"
@@ -17855,9 +18020,9 @@
       "itemId": 60220,
       "nameTranslations": {
         "ja": "とんかつ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tonkatsu",
+        "fr": "Tonkatsu",
+        "es": "Tonkatsu",
         "zh-TW": "炸豬排",
         "ko": "돈가스",
         "zh-CN": "炸猪排"
@@ -17870,9 +18035,9 @@
       "itemId": 60230,
       "nameTranslations": {
         "ja": "野菜炒め",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Vegetable Stir-Fry",
+        "fr": "Sauté de légumes",
+        "es": "Salteado de verduras",
         "zh-TW": "炒青菜",
         "ko": "채소 볶음",
         "zh-CN": "炒青菜"
@@ -17885,9 +18050,9 @@
       "itemId": 60240,
       "nameTranslations": {
         "ja": "シーザーサラダ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Caesar Salad",
+        "fr": "Salade César",
+        "es": "Ensalada césar",
         "zh-TW": "凱撒沙拉",
         "ko": "시저 샐러드",
         "zh-CN": "凯撒沙拉"
@@ -17900,9 +18065,9 @@
       "itemId": 60250,
       "nameTranslations": {
         "ja": "ミネストローネ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Minestrone",
+        "fr": "Minestrone",
+        "es": "Minestrone",
         "zh-TW": "義式蔬菜湯",
         "ko": "미네스트로네",
         "zh-CN": "意式蔬菜汤"
@@ -17915,9 +18080,9 @@
       "itemId": 60260,
       "nameTranslations": {
         "ja": "豆腐ハンバーグ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tofu Hamburg Steak",
+        "fr": "Steak de tofu",
+        "es": "Hamburguesa de tofu",
         "zh-TW": "豆腐漢堡排",
         "ko": "두부 햄버그",
         "zh-CN": "豆腐汉堡排"
@@ -17930,9 +18095,9 @@
       "itemId": 60270,
       "nameTranslations": {
         "ja": "カプレーゼ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Caprese Salad",
+        "fr": "Salade caprese",
+        "es": "Ensalada caprese",
         "zh-TW": "番茄起司沙拉",
         "ko": "카프레제",
         "zh-CN": "西红柿干酪沙拉"
@@ -17945,9 +18110,9 @@
       "itemId": 60280,
       "nameTranslations": {
         "ja": "山盛りトマト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tomato Tower",
+        "fr": "Montagne de tomates",
+        "es": "Tomates a montones",
         "zh-TW": "番茄山",
         "ko": "산더미 토마토",
         "zh-CN": "西红柿山"
@@ -17960,9 +18125,9 @@
       "itemId": 60290,
       "nameTranslations": {
         "ja": "ナスづくし",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Eggplant Platter",
+        "fr": "Menu tout aubergine",
+        "es": "Berenjena total",
         "zh-TW": "茄子全餐",
         "ko": "가지 파티",
         "zh-CN": "茄子全餐"
@@ -17975,9 +18140,9 @@
       "itemId": 60300,
       "nameTranslations": {
         "ja": "ピーマンの肉詰め",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Stuffed Bell Peppers",
+        "fr": "Poivrons farcis",
+        "es": "Pimientos rellenos",
         "zh-TW": "青椒鑲肉",
         "ko": "다진 고기를 넣은 피망 구이",
         "zh-CN": "青椒镶肉"
@@ -17990,9 +18155,9 @@
       "itemId": 60310,
       "nameTranslations": {
         "ja": "カボチャのスープ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pumpkin Soup",
+        "fr": "Soupe à la citrouille",
+        "es": "Sopa de calabaza",
         "zh-TW": "南瓜湯",
         "ko": "호박 수프",
         "zh-CN": "南瓜汤"
@@ -18005,9 +18170,9 @@
       "itemId": 60320,
       "nameTranslations": {
         "ja": "カボチャの煮物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Simmered Pumpkin",
+        "fr": "Mijoté de citrouille",
+        "es": "Guiso de calabaza",
         "zh-TW": "燉南瓜",
         "ko": "호박 조림",
         "zh-CN": "炖南瓜"
@@ -18020,9 +18185,9 @@
       "itemId": 60330,
       "nameTranslations": {
         "ja": "山菜の天ぷら",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Forager's Tempura",
+        "fr": "Tempuras de légumes",
+        "es": "Tempura de verduras",
         "zh-TW": "山菜天婦羅",
         "ko": "산채 튀김",
         "zh-CN": "山菜天妇罗"
@@ -18035,9 +18200,9 @@
       "itemId": 60340,
       "nameTranslations": {
         "ja": "まるごとキュウリ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Whole Cucumbers",
+        "fr": "Concombre entier",
+        "es": "Pepino entero",
         "zh-TW": "一根小黃瓜",
         "ko": "통 오이 요리",
         "zh-CN": "一根黄瓜"
@@ -18050,9 +18215,9 @@
       "itemId": 60350,
       "nameTranslations": {
         "ja": "コーンスープ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Corn Soup",
+        "fr": "Soupe de maïs",
+        "es": "Sopa de maíz",
         "zh-TW": "玉米濃湯",
         "ko": "옥수수수프",
         "zh-CN": "玉米浓汤"
@@ -18065,9 +18230,9 @@
       "itemId": 60360,
       "nameTranslations": {
         "ja": "焼きとうもろこし",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grilled Corn",
+        "fr": "Maïs grillé",
+        "es": "Mazorca de maíz asada",
         "zh-TW": "烤玉米",
         "ko": "군옥수수",
         "zh-CN": "烤玉米"
@@ -18080,9 +18245,9 @@
       "itemId": 60370,
       "nameTranslations": {
         "ja": "肉と野菜の串焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meat 'n' Veggie Kabobs",
+        "fr": "Brochettes grillées",
+        "es": "Brochetas de carne y verdura",
         "zh-TW": "綜合串燒",
         "ko": "고기 채소 꼬치구이",
         "zh-CN": "综合串烧"
@@ -18095,9 +18260,9 @@
       "itemId": 60380,
       "nameTranslations": {
         "ja": "春巻き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spring Rolls",
+        "fr": "Rouleau de printemps",
+        "es": "Rollitos de primavera",
         "zh-TW": "春捲",
         "ko": "춘권",
         "zh-CN": "春卷"
@@ -18110,9 +18275,9 @@
       "itemId": 60390,
       "nameTranslations": {
         "ja": "生姜焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ginger Pork",
+        "fr": "Porc frit au gingembre",
+        "es": "Carne de cerdo al jengibre",
         "zh-TW": "薑汁燒肉",
         "ko": "생강 소스 고기구이",
         "zh-CN": "姜汁烧肉"
@@ -18125,9 +18290,9 @@
       "itemId": 60400,
       "nameTranslations": {
         "ja": "ニンニクホイル焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Foil-Roasted Garlic",
+        "fr": "Ail en papillote",
+        "es": "Ajo al papillote",
         "zh-TW": "鋁箔紙烤大蒜",
         "ko": "마늘 포일 구이",
         "zh-CN": "铝箔纸烤大蒜"
@@ -18140,9 +18305,9 @@
       "itemId": 60410,
       "nameTranslations": {
         "ja": "ステーキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steak",
+        "fr": "Steak",
+        "es": "Filete",
         "zh-TW": "牛排",
         "ko": "스테이크",
         "zh-CN": "牛排"
@@ -18155,9 +18320,9 @@
       "itemId": 60420,
       "nameTranslations": {
         "ja": "七面鳥の丸焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Roast Turkey",
+        "fr": "Dinde rôtie",
+        "es": "Pavo asado",
         "zh-TW": "烤火雞",
         "ko": "칠면조 통구이",
         "zh-CN": "烤火鸡"
@@ -18170,9 +18335,9 @@
       "itemId": 60430,
       "nameTranslations": {
         "ja": "ラムチョップ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Lamb Chops",
+        "fr": "Côtelettes d’agneau",
+        "es": "Chuletas de cordero",
         "zh-TW": "烤羊小排",
         "ko": "양갈비",
         "zh-CN": "烤羊小排"
@@ -18185,9 +18350,9 @@
       "itemId": 60440,
       "nameTranslations": {
         "ja": "デミグラスドリア",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Demi-Glace Doria",
+        "fr": "Doria demi-glace",
+        "es": "Gratinado con demi-glace",
         "zh-TW": "多蜜醬焗飯",
         "ko": "데미글라스 도리아",
         "zh-CN": "多蜜酱焗饭"
@@ -18200,9 +18365,9 @@
       "itemId": 60450,
       "nameTranslations": {
         "ja": "レンコンのピリ辛炒め",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spicy Lotus Root Sauté",
+        "fr": "Racine de lotus saisie",
+        "es": "Salteado de raíz de loto picante",
         "zh-TW": "辣炒蓮藕",
         "ko": "연근 매콤 볶음",
         "zh-CN": "辣炒莲藕"
@@ -18215,9 +18380,9 @@
       "itemId": 60460,
       "nameTranslations": {
         "ja": "おつまみ枝豆",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Side of Edamame",
+        "fr": "Edamames apéritifs",
+        "es": "Edamame para picar",
         "zh-TW": "涼拌毛豆",
         "ko": "술안주용 풋콩",
         "zh-CN": "凉拌毛豆"
@@ -18230,9 +18395,9 @@
       "itemId": 60470,
       "nameTranslations": {
         "ja": "ざるそば",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Zaru Soba",
+        "fr": "Zaru soba",
+        "es": "Fideos soba fríos",
         "zh-TW": "竹籠蕎麥麵",
         "ko": "자루 소바",
         "zh-CN": "竹笼荞麦面"
@@ -18245,9 +18410,9 @@
       "itemId": 60480,
       "nameTranslations": {
         "ja": "たぬきそば",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tanuki Soba",
+        "fr": "Tanuki soba",
+        "es": "Fideos soba con tempura",
         "zh-TW": "天婦羅花蕎麥麵",
         "ko": "타누키 소바",
         "zh-CN": "天妇罗花荞麦面"
@@ -18260,9 +18425,9 @@
       "itemId": 60490,
       "nameTranslations": {
         "ja": "ざるうどん",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Zaru Udon",
+        "fr": "Zaru udon",
+        "es": "Fideos udon fríos",
         "zh-TW": "竹籠烏龍麵",
         "ko": "자루 우동",
         "zh-CN": "竹笼乌冬面"
@@ -18275,9 +18440,9 @@
       "itemId": 60500,
       "nameTranslations": {
         "ja": "きつねうどん",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kitsune Udon",
+        "fr": "Kitsune udon",
+        "es": "Fideos udon con tofu frito",
         "zh-TW": "豆皮烏龍麵",
         "ko": "키츠네 우동",
         "zh-CN": "豆皮乌冬面"
@@ -18290,9 +18455,9 @@
       "itemId": 60510,
       "nameTranslations": {
         "ja": "実家の味定食",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "\"Taste of Home\" Meal",
+        "fr": "Menu maison",
+        "es": "Menú casero",
         "zh-TW": "家鄉味定食",
         "ko": "고향의 맛 정식",
         "zh-CN": "家乡味定食"
@@ -18305,9 +18470,9 @@
       "itemId": 60520,
       "nameTranslations": {
         "ja": "山の幸茶碗蒸し",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Montane Chawanmushi",
+        "fr": "Chawanmushi",
+        "es": "Chawanmushi",
         "zh-TW": "山珍茶碗蒸",
         "ko": "산의 진미 계란찜",
         "zh-CN": "山珍茶碗蒸"
@@ -18320,9 +18485,9 @@
       "itemId": 60530,
       "nameTranslations": {
         "ja": "焼き松茸",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Roasted Matsutakes",
+        "fr": "Matsutakes grillés",
+        "es": "Setas matsutake asadas al horno",
         "zh-TW": "烤松茸",
         "ko": "송이버섯 구이",
         "zh-CN": "烤松茸"
@@ -18335,9 +18500,9 @@
       "itemId": 60540,
       "nameTranslations": {
         "ja": "ぽかぽか鍋",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Warm 'n' Cozy Hotpot",
+        "fr": "Pot-au-feu réconfortant",
+        "es": "Cocido calentito",
         "zh-TW": "暖呼呼火鍋",
         "ko": "따끈따끈한 전골",
         "zh-CN": "暖呼呼火锅"
@@ -18350,9 +18515,9 @@
       "itemId": 60550,
       "nameTranslations": {
         "ja": "キクラゲと卵炒め",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Wood Ear 'n' Egg Sauté",
+        "fr": "Champignons sautés",
+        "es": "Setas heimuer con huevo",
         "zh-TW": "木耳炒蛋",
         "ko": "목이버섯과 계란 볶음",
         "zh-CN": "木耳炒蛋"
@@ -18365,9 +18530,9 @@
       "itemId": 60560,
       "nameTranslations": {
         "ja": "ピンチョス",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pinchos",
+        "fr": "Pintxos",
+        "es": "Pinchos",
         "zh-TW": "西班牙木籤小吃",
         "ko": "핀초",
         "zh-CN": "西班牙木签小吃"
@@ -18380,9 +18545,9 @@
       "itemId": 60570,
       "nameTranslations": {
         "ja": "焼き鳥串",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Yakitori Skewers",
+        "fr": "Brochettes yakitori",
+        "es": "Brochetas de pollo asado",
         "zh-TW": "烤雞肉串",
         "ko": "꼬치구이",
         "zh-CN": "烤鸡肉串"
@@ -18395,9 +18560,9 @@
       "itemId": 60580,
       "nameTranslations": {
         "ja": "餃子",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gyoza",
+        "fr": "Gyōzas",
+        "es": "Gyozas",
         "zh-TW": "煎餃",
         "ko": "교자",
         "zh-CN": "煎饺"
@@ -18410,9 +18575,9 @@
       "itemId": 60590,
       "nameTranslations": {
         "ja": "オムライス",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Omurice",
+        "fr": "Omurice",
+        "es": "Tortilla rellena de arroz",
         "zh-TW": "蛋包飯",
         "ko": "오므라이스",
         "zh-CN": "蛋包饭"
@@ -18425,9 +18590,9 @@
       "itemId": 60600,
       "nameTranslations": {
         "ja": "ビーフシチュー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Beef Stew",
+        "fr": "Ragoût de bœuf",
+        "es": "Estofado de ternera",
         "zh-TW": "燉牛肉",
         "ko": "비프스튜",
         "zh-CN": "炖牛肉"
@@ -18440,9 +18605,9 @@
       "itemId": 60610,
       "nameTranslations": {
         "ja": "ホワイトシチュー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Stew",
+        "fr": "Ragoût à la béchamel",
+        "es": "Estofado blanco",
         "zh-TW": "奶油燉菜",
         "ko": "크림스튜",
         "zh-CN": "黄油炖菜"
@@ -18455,9 +18620,9 @@
       "itemId": 60620,
       "nameTranslations": {
         "ja": "すき焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sukiyaki",
+        "fr": "Sukiyaki",
+        "es": "Sukiyaki",
         "zh-TW": "壽喜燒",
         "ko": "스키야키",
         "zh-CN": "寿喜烧"
@@ -18470,9 +18635,9 @@
       "itemId": 60630,
       "nameTranslations": {
         "ja": "バーニャカウダ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bagna Càuda",
+        "fr": "Bagna cauda",
+        "es": "Bagna cauda",
         "zh-TW": "熱沾醬沙拉",
         "ko": "바냐 카우다",
         "zh-CN": "热沾酱沙拉"
@@ -18485,9 +18650,9 @@
       "itemId": 60640,
       "nameTranslations": {
         "ja": "鮎の塩焼き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Salt-Grilled Sweetfish",
+        "fr": "Ayu grillé au sel",
+        "es": "Trucha a la sal",
         "zh-TW": "鹽烤香魚",
         "ko": "은어 소금구이",
         "zh-CN": "盐烤香鱼"
@@ -18500,9 +18665,9 @@
       "itemId": 60650,
       "nameTranslations": {
         "ja": "オリジナルラーメン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Signature Ramen",
+        "fr": "Ramen originaux",
+        "es": "Fideos ramen originales",
         "zh-TW": "自創拉麵",
         "ko": "오리지널 라면",
         "zh-CN": "自创拉面"
@@ -18515,9 +18680,9 @@
       "itemId": 60660,
       "nameTranslations": {
         "ja": "ミートパイ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meat Pie",
+        "fr": "Tourte à la viande",
+        "es": "Pastel de carne",
         "zh-TW": "肉餅",
         "ko": "미트 파이",
         "zh-CN": "肉饼"
@@ -18530,9 +18695,9 @@
       "itemId": 60670,
       "nameTranslations": {
         "ja": "スパゲッティ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spaghetti",
+        "fr": "Spaghettis",
+        "es": "Espaguetis",
         "zh-TW": "義大利麵",
         "ko": "스파게티",
         "zh-CN": "意大利面"
@@ -18545,9 +18710,9 @@
       "itemId": 60680,
       "nameTranslations": {
         "ja": "肉まん",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meat Buns",
+        "fr": "Pain à la viande",
+        "es": "Bollitos de carne",
         "zh-TW": "肉包",
         "ko": "고기 찐빵",
         "zh-CN": "肉包"
@@ -18560,9 +18725,9 @@
       "itemId": 60690,
       "nameTranslations": {
         "ja": "チャーハン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fried Rice",
+        "fr": "Riz sauté",
+        "es": "Arroz frito",
         "zh-TW": "炒飯",
         "ko": "볶음밥",
         "zh-CN": "炒饭"
@@ -18575,9 +18740,9 @@
       "itemId": 60700,
       "nameTranslations": {
         "ja": "お雑煮",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Zoni",
+        "fr": "Ozōni",
+        "es": "Zoni",
         "zh-TW": "年糕湯",
         "ko": "오조니",
         "zh-CN": "年糕汤"
@@ -18590,9 +18755,9 @@
       "itemId": 60710,
       "nameTranslations": {
         "ja": "七草粥",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Seven-Herb Porridge",
+        "fr": "Gruau aux sept herbes",
+        "es": "Gachas de arroz con siete hierbas",
         "zh-TW": "七草粥",
         "ko": "봄나물죽",
         "zh-CN": "七草粥"
@@ -18605,9 +18770,9 @@
       "itemId": 60720,
       "nameTranslations": {
         "ja": "うな重",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Unaju",
+        "fr": "Unaju",
+        "es": "Plato de anguila",
         "zh-TW": "鰻魚飯",
         "ko": "장어 찬합",
         "zh-CN": "鳗鱼饭"
@@ -18620,9 +18785,9 @@
       "itemId": 60730,
       "nameTranslations": {
         "ja": "アスパラサラダ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Asparagus Salad",
+        "fr": "Salade d’asperges",
+        "es": "Ensalada de espárragos",
         "zh-TW": "蘆筍沙拉",
         "ko": "아스파라거스 샐러드",
         "zh-CN": "芦笋沙拉"
@@ -18635,9 +18800,9 @@
       "itemId": 62000,
       "nameTranslations": {
         "ja": "柏餅",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kashiwa Mochi",
+        "fr": "Kashiwa mochis",
+        "es": "Mochi envuelto en hoja de roble",
         "zh-TW": "柏餅",
         "ko": "카시와모찌",
         "zh-CN": "柏饼"
@@ -18650,11 +18815,11 @@
       "itemId": 62010,
       "nameTranslations": {
         "ja": "山果実盛り",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mountain Fruit Mix",
+        "fr": "Salade de fruits",
+        "es": "Surtido de frutos del bosque",
         "zh-TW": "山中果實拼盤",
-        "ko": "모듬 산과일 세트",
+        "ko": "모듬 산과일",
         "zh-CN": "山中果实拼盘"
       }
     },
@@ -18665,9 +18830,9 @@
       "itemId": 62020,
       "nameTranslations": {
         "ja": "プリン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flan",
+        "fr": "Flan",
+        "es": "Flan",
         "zh-TW": "布丁",
         "ko": "푸딩",
         "zh-CN": "布丁"
@@ -18680,9 +18845,9 @@
       "itemId": 62030,
       "nameTranslations": {
         "ja": "夏のお供スイカ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Summery Watermelon",
+        "fr": "Pastèque estivale",
+        "es": "Sandía playera",
         "zh-TW": "夏日聖品西瓜",
         "ko": "여름의 친구 수박",
         "zh-CN": "夏日圣品西瓜"
@@ -18695,9 +18860,9 @@
       "itemId": 62040,
       "nameTranslations": {
         "ja": "夢いっぱいメロン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Reverie Melon",
+        "fr": "Melon de rêve",
+        "es": "Melón de ensueño",
         "zh-TW": "夢幻甜瓜",
         "ko": "꿈 가득 멜론",
         "zh-CN": "梦幻甜瓜"
@@ -18710,9 +18875,9 @@
       "itemId": 62050,
       "nameTranslations": {
         "ja": "モモゼリー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Peach Jelly",
+        "fr": "Gelée à la pêche",
+        "es": "Gelatina de melocotón",
         "zh-TW": "桃子果凍",
         "ko": "복숭아 젤리",
         "zh-CN": "桃子果冻"
@@ -18725,9 +18890,9 @@
       "itemId": 62060,
       "nameTranslations": {
         "ja": "ベリーパンナコッタ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Berry Panna Cotta",
+        "fr": "Panna cotta",
+        "es": "Panna cotta de frutos del bosque",
         "zh-TW": "莓果奶酪",
         "ko": "베리 판나코타",
         "zh-CN": "莓果奶冻"
@@ -18740,9 +18905,9 @@
       "itemId": 62070,
       "nameTranslations": {
         "ja": "ベリー・ベリーパフェ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Very Berry Parfait",
+        "fr": "Parfait aux fruits rouges",
+        "es": "Parfait de frutos del bosque",
         "zh-TW": "莓果百匯",
         "ko": "베리베리 파르페",
         "zh-CN": "莓果芭菲"
@@ -18755,9 +18920,9 @@
       "itemId": 62080,
       "nameTranslations": {
         "ja": "マンゴーパフェ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mango Parfait",
+        "fr": "Parfait à la mangue",
+        "es": "Parfait de mango",
         "zh-TW": "芒果百匯",
         "ko": "망고 파르페",
         "zh-CN": "芒果芭菲"
@@ -18770,9 +18935,9 @@
       "itemId": 62090,
       "nameTranslations": {
         "ja": "イチゴのケーキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Strawberry Cake",
+        "fr": "Fraisier",
+        "es": "Pastel de fresa",
         "zh-TW": "草莓蛋糕",
         "ko": "딸기 케이크",
         "zh-CN": "草莓蛋糕"
@@ -18785,9 +18950,9 @@
       "itemId": 62100,
       "nameTranslations": {
         "ja": "フルーツケーキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fresh Fruit Cake",
+        "fr": "Gâteau aux fruits",
+        "es": "Pastel de frutas",
         "zh-TW": "水果蛋糕",
         "ko": "과일 케이크",
         "zh-CN": "水果蛋糕"
@@ -18800,9 +18965,9 @@
       "itemId": 62110,
       "nameTranslations": {
         "ja": "モンブラン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mont Blanc",
+        "fr": "Mont-blanc",
+        "es": "Mont Blanc",
         "zh-TW": "蒙布朗",
         "ko": "몽블랑",
         "zh-CN": "蒙布朗"
@@ -18815,9 +18980,9 @@
       "itemId": 62120,
       "nameTranslations": {
         "ja": "ブドウのタルト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grape Tart",
+        "fr": "Tarte aux raisins",
+        "es": "Tarta de uvas",
         "zh-TW": "葡萄塔",
         "ko": "포도 타르트",
         "zh-CN": "葡萄塔"
@@ -18830,9 +18995,9 @@
       "itemId": 62130,
       "nameTranslations": {
         "ja": "アップルパイ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Apple Pie",
+        "fr": "Tarte aux pommes",
+        "es": "Tarta de manzana",
         "zh-TW": "蘋果派",
         "ko": "애플파이",
         "zh-CN": "苹果派"
@@ -18845,9 +19010,9 @@
       "itemId": 62140,
       "nameTranslations": {
         "ja": "牛乳寒天",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Agar Milk Jelly",
+        "fr": "Gelée de lait",
+        "es": "Gelatina de leche",
         "zh-TW": "牛奶寒天凍",
         "ko": "우유 푸딩",
         "zh-CN": "牛奶寒天冻"
@@ -18860,9 +19025,9 @@
       "itemId": 62150,
       "nameTranslations": {
         "ja": "杏仁豆腐",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Almond Tofu",
+        "fr": "Tofu aux amandes",
+        "es": "Gelatina de almendra",
         "zh-TW": "杏仁豆腐",
         "ko": "행인두부",
         "zh-CN": "杏仁豆腐"
@@ -18875,9 +19040,9 @@
       "itemId": 62160,
       "nameTranslations": {
         "ja": "チョコレートアソート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Assorted Chocolates",
+        "fr": "Chocolats assortis",
+        "es": "Surtido de chocolates",
         "zh-TW": "綜合巧克力",
         "ko": "초콜릿 모음",
         "zh-CN": "综合巧克力"
@@ -18890,9 +19055,9 @@
       "itemId": 62170,
       "nameTranslations": {
         "ja": "カキのコンポート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Persimmon Compote",
+        "fr": "Compote de kaki",
+        "es": "Compota de caqui",
         "zh-TW": "柿子蜜餞",
         "ko": "감 콩포트",
         "zh-CN": "柿子蜜饯"
@@ -18905,9 +19070,9 @@
       "itemId": 62180,
       "nameTranslations": {
         "ja": "レモンのはちみつ漬け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Honeyed Lemons",
+        "fr": "Citron confit au miel",
+        "es": "Limón confitado en miel",
         "zh-TW": "蜂蜜漬檸檬",
         "ko": "레몬 꿀절임",
         "zh-CN": "蜂蜜渍柠檬"
@@ -18920,9 +19085,9 @@
       "itemId": 62190,
       "nameTranslations": {
         "ja": "レモンケーキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Lemon Cake",
+        "fr": "Gâteau au citron",
+        "es": "Pastel de limón",
         "zh-TW": "檸檬蛋糕",
         "ko": "레몬 케이크",
         "zh-CN": "柠檬蛋糕"
@@ -18935,9 +19100,9 @@
       "itemId": 62200,
       "nameTranslations": {
         "ja": "ガトーショコラ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gâteau au Chocolat",
+        "fr": "Gâteau au chocolat",
+        "es": "Pastel de chocolate",
         "zh-TW": "古典巧克力蛋糕",
         "ko": "가토 쇼콜라",
         "zh-CN": "古典巧克力蛋糕"
@@ -18950,9 +19115,9 @@
       "itemId": 62210,
       "nameTranslations": {
         "ja": "スイートポテト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sweet Potato Cakes",
+        "fr": "Gâteau à la patate douce",
+        "es": "Pastelito de boniato",
         "zh-TW": "地瓜甜點",
         "ko": "으깬 고구마 오븐 구이",
         "zh-CN": "红薯甜点"
@@ -18965,9 +19130,9 @@
       "itemId": 62220,
       "nameTranslations": {
         "ja": "お茶アイス",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Three-Tea Ice Cream",
+        "fr": "Glace au thé",
+        "es": "Helado de té",
         "zh-TW": "茶香冰淇淋",
         "ko": "녹차 아이스크림",
         "zh-CN": "茶香冰激凌"
@@ -18980,9 +19145,9 @@
       "itemId": 62230,
       "nameTranslations": {
         "ja": "バナナヨーグルト",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Banana Yogurt",
+        "fr": "Yaourt à la banane",
+        "es": "Yogur de plátano",
         "zh-TW": "香蕉優格",
         "ko": "바나나 요거트",
         "zh-CN": "香蕉酸奶"
@@ -18995,9 +19160,9 @@
       "itemId": 62240,
       "nameTranslations": {
         "ja": "チョコバナナ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chocolate Bananas",
+        "fr": "Choco-banane",
+        "es": "Choco-banana",
         "zh-TW": "巧克力香蕉",
         "ko": "초코 바나나",
         "zh-CN": "巧克力香蕉"
@@ -19010,9 +19175,9 @@
       "itemId": 62250,
       "nameTranslations": {
         "ja": "ティーセット",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tea Set",
+        "fr": "Service à thé",
+        "es": "Set de té",
         "zh-TW": "下午茶套組",
         "ko": "티 세트",
         "zh-CN": "下午茶套组"
@@ -19025,9 +19190,9 @@
       "itemId": 62260,
       "nameTranslations": {
         "ja": "緑茶セット",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Green Tea Set",
+        "fr": "Service à thé vert",
+        "es": "Set de té verde",
         "zh-TW": "綠茶套組",
         "ko": "녹차 세트",
         "zh-CN": "绿茶套组"
@@ -19040,9 +19205,9 @@
       "itemId": 62270,
       "nameTranslations": {
         "ja": "烏龍茶セット",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oolong Tea Set",
+        "fr": "Service à thé oolong",
+        "es": "Set de té oolong",
         "zh-TW": "烏龍茶套組",
         "ko": "우롱차 세트",
         "zh-CN": "乌龙茶套组"
@@ -19055,9 +19220,9 @@
       "itemId": 62280,
       "nameTranslations": {
         "ja": "ほうじ茶セット",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hojicha Tea Set",
+        "fr": "Service à thé hojicha",
+        "es": "Set de té verde tostado",
         "zh-TW": "焙茶套組",
         "ko": "호지차 세트",
         "zh-CN": "焙茶套组"
@@ -19070,9 +19235,9 @@
       "itemId": 62290,
       "nameTranslations": {
         "ja": "抹茶セット",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Matcha Tea Set",
+        "fr": "Service à thé matcha",
+        "es": "Set de té matcha",
         "zh-TW": "抹茶套組",
         "ko": "말차 세트",
         "zh-CN": "抹茶套组"
@@ -19085,9 +19250,9 @@
       "itemId": 62300,
       "nameTranslations": {
         "ja": "ミックスジュース",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mixed Juice",
+        "fr": "Jus multifruits",
+        "es": "Zumo de frutas",
         "zh-TW": "綜合果汁",
         "ko": "믹스 주스",
         "zh-CN": "综合果汁"
@@ -19100,9 +19265,9 @@
       "itemId": 60740,
       "nameTranslations": {
         "ja": "塩むすび",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Salted Rice Balls",
+        "fr": "Onigiri au sel",
+        "es": "Bola de arroz a la sal",
         "zh-TW": "鹽味飯糰",
         "ko": "소금 주먹밥",
         "zh-CN": "盐味饭团"
@@ -19115,9 +19280,9 @@
       "itemId": 60750,
       "nameTranslations": {
         "ja": "金粉ちらし寿司",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gold Leaf Chirashi",
+        "fr": "Chirashi doré",
+        "es": "Sushi con virutas de oro",
         "zh-TW": "金粉散壽司",
         "ko": "금가루 치라시초밥",
         "zh-CN": "金粉散寿司"
@@ -19130,9 +19295,9 @@
       "itemId": 60760,
       "nameTranslations": {
         "ja": "醤油プリン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Soy Sauce Flan",
+        "fr": "Flan à la sauce soja",
+        "es": "Flan de soja",
         "zh-TW": "醬油布丁",
         "ko": "간장 푸딩",
         "zh-CN": "酱油布丁"
@@ -19145,9 +19310,9 @@
       "itemId": 60770,
       "nameTranslations": {
         "ja": "タピオカミルクティー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Boba Milk Tea",
+        "fr": "Bubble tea",
+        "es": "Té con leche y tapioca",
         "zh-TW": "珍珠奶茶",
         "ko": "버블티",
         "zh-CN": "珍珠奶茶"
@@ -19160,9 +19325,9 @@
       "itemId": 60780,
       "nameTranslations": {
         "ja": "焼き鮭定食",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grilled Salmon Meal",
+        "fr": "Menu saumon grillé",
+        "es": "Menú de salmón asado",
         "zh-TW": "烤鮭魚定食",
         "ko": "연어 구이 정식",
         "zh-CN": "烤三文鱼定食"
@@ -19175,9 +19340,9 @@
       "itemId": 60790,
       "nameTranslations": {
         "ja": "肉吸い豆腐",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meat and Tofu Soup",
+        "fr": "Nikusui au tofu",
+        "es": "Sopa de ternera con tofu",
         "zh-TW": "牛肉豆腐湯",
         "ko": "소고기 두붓국",
         "zh-CN": "牛肉豆腐汤"
@@ -19190,9 +19355,9 @@
       "itemId": 60800,
       "nameTranslations": {
         "ja": "いももち",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Potato Mochi",
+        "fr": "Imomochi",
+        "es": "Mochi de patata",
         "zh-TW": "馬鈴薯麻糬",
         "ko": "감자빵",
         "zh-CN": "土豆年糕"
@@ -19205,9 +19370,9 @@
       "itemId": 60810,
       "nameTranslations": {
         "ja": "メンチカツ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Menchi-Katsu",
+        "fr": "Menchi katsu",
+        "es": "Croqueta de carne",
         "zh-TW": "炸肉餅",
         "ko": "멘치카츠",
         "zh-CN": "炸肉饼"
@@ -19220,9 +19385,9 @@
       "itemId": 60820,
       "nameTranslations": {
         "ja": "レモネード",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sparkling Lemonade",
+        "fr": "Limonade",
+        "es": "Limonada",
         "zh-TW": "檸檬水",
         "ko": "레모네이드",
         "zh-CN": "柠檬水"
@@ -19235,9 +19400,9 @@
       "itemId": 60830,
       "nameTranslations": {
         "ja": "小魚の唐揚げ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small-Fry Fritters",
+        "fr": "Petits poissons frits",
+        "es": "Pescaditos fritos",
         "zh-TW": "油炸小魚",
         "ko": "작은 생선 튀김",
         "zh-CN": "油炸小鱼"
@@ -19250,9 +19415,9 @@
       "itemId": 60840,
       "nameTranslations": {
         "ja": "焼きそば",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Yakisoba",
+        "fr": "Yakisoba",
+        "es": "Yakisoba",
         "zh-TW": "日式炒麵",
         "ko": "야키소바",
         "zh-CN": "日式炒面"
@@ -19265,9 +19430,9 @@
       "itemId": 60850,
       "nameTranslations": {
         "ja": "リンゴ飴",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Candy Apple",
+        "fr": "Pomme d’amour",
+        "es": "Manzana caramelizada",
         "zh-TW": "蘋果糖",
         "ko": "캔디 애플",
         "zh-CN": "苹果糖"
@@ -19280,9 +19445,9 @@
       "itemId": 60860,
       "nameTranslations": {
         "ja": "ソーダフロート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ice Cream Float",
+        "fr": "Soda à la glace",
+        "es": "Refresco de helado",
         "zh-TW": "冰淇淋蘇打",
         "ko": "소다 플로트",
         "zh-CN": "冰淇淋苏打"
@@ -19295,24 +19460,24 @@
       "nodeId": 2,
       "flag": 6204,
       "name": "田垄技术",
-      "description": "再敲击一次田地即可形成「田垄」",
+      "description": "再敲击一次田地即可形成“田垄”",
       "nameTranslations": {
         "ja": "畝の技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Furrow Technique",
+        "fr": "Technique du sillon",
+        "es": "Técnica de montículos",
         "zh-TW": "田壟技術",
         "ko": "이랑 기술",
         "zh-CN": "田垄技术"
       },
       "descriptionTranslations": {
         "ja": "畑をもう一度叩くと「畝」にできる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Re-hoeing tilled soil creates a furrow",
+        "fr": "Bêcher à nouveau le champ crée un sillon.",
+        "es": "Al labrar el campo una vez más, se crean \"montículos\".",
         "zh-TW": "再敲擊一次田地即可形成「田壟」",
         "ko": "밭을 한 번 더 두드리면 「이랑」이 된다.",
-        "zh-CN": "再敲击一次田地即可形成「田垄」"
+        "zh-CN": "再敲击一次田地即可形成“田垄”"
       },
       "requires": [
         1
@@ -19326,18 +19491,18 @@
       "description": "减少挥动镰刀时的体力消耗量",
       "nameTranslations": {
         "ja": "カマの技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sickling Finesse",
+        "fr": "Technique de la faucille",
+        "es": "Técnica de hoz",
         "zh-TW": "鐮刀技術",
         "ko": "낫 기술",
         "zh-CN": "镰刀技术"
       },
       "descriptionTranslations": {
         "ja": "カマを振った時のスタミナ消費量が減少",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Reduce stamina expended by sickle usage",
+        "fr": "Dépense moins d’énergie à chaque coup de faucille.",
+        "es": "Reduce el consumo de resistencia al usar la hoz.",
         "zh-TW": "減少揮動鐮刀時的體力消耗量",
         "ko": "낫을 휘두를 때의 스태미나 소비량이 감소.",
         "zh-CN": "减少挥动镰刀时的体力消耗量"
@@ -19354,18 +19519,18 @@
       "description": "树木成长速度提升5%",
       "nameTranslations": {
         "ja": "樹木の育成術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Arboriculture Finesse",
+        "fr": "Technique d’arboriculture",
+        "es": "Cultivo de árboles",
         "zh-TW": "樹木培育術",
         "ko": "나무 육성술",
         "zh-CN": "树木培育术"
       },
       "descriptionTranslations": {
         "ja": "樹木の成長速度が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree growth speed +5%",
+        "fr": "Vitesse de croissance des arbres +5 %.",
+        "es": "Aumenta un 5 % la velocidad de crecimiento de árboles.",
         "zh-TW": "樹木成長速度提昇5%",
         "ko": "나무의 성장 속도가 5% 상승한다.",
         "zh-CN": "树木成长速度提升5%"
@@ -19383,18 +19548,18 @@
       "description": "在采石场发现矿脉的概率提升3%",
       "nameTranslations": {
         "ja": "鉱脈の発見術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Prospecting Finesse",
+        "fr": "Découverte de filons",
+        "es": "Descubrimiento de vetas",
         "zh-TW": "礦脈探查術",
         "ko": "광맥 발견술",
         "zh-CN": "矿脉探查术"
       },
       "descriptionTranslations": {
         "ja": "石切場で鉱脈が見つかる確率が3％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chance of finding quarry deposits +3%",
+        "fr": "Probabilité de trouver des filons à la carrière +3 %.",
+        "es": "Aumenta un 3% la probabilidad de vetas en la cantera.",
         "zh-TW": "在採石場發現礦脈的機率提昇3%",
         "ko": "채석장에서 광맥을 발견할 확률이 3% 상승한다.",
         "zh-CN": "在采石场发现矿脉的概率提升3%"
@@ -19411,18 +19576,18 @@
       "description": "有25%的概率可采集到2个采集物",
       "nameTranslations": {
         "ja": "野草の採取術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Foraging Finesse",
+        "fr": "Technique de cueillette",
+        "es": "Recolección de plantas silvestres",
         "zh-TW": "野草採取術",
         "ko": "들풀 채집술",
         "zh-CN": "野草采取术"
       },
       "descriptionTranslations": {
         "ja": "採取物が２５％の確率で２個採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "25% to forage two items instead of one",
+        "fr": "25 % de chance d’obtenir 2 objets lors de la cueillette.",
+        "es": "Aumenta un 25 % la probabilidad de obtener 2 unidades.",
         "zh-TW": "有25%的機率可採集到2個採集物",
         "ko": "25% 확률로 채집물을 2개씩 채집한다.",
         "zh-CN": "有25%的概率可采集到2个采集物"
@@ -19437,24 +19602,24 @@
       "nodeId": 31,
       "flag": 6209,
       "name": "镜与剑探查术",
-      "description": "在深夜时将更容易获得「镜」与「剑」",
+      "description": "在深夜时将更容易获得“镜”与“剑”",
       "nameTranslations": {
         "ja": "鏡と剣の発見術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Regalia Wrangler",
+        "fr": "Découverte du miroir et de l’épée",
+        "es": "Descubrimiento de espejo y espada",
         "zh-TW": "鏡與劍探查術",
         "ko": "거울과 검 발견술",
         "zh-CN": "镜与剑探查术"
       },
       "descriptionTranslations": {
         "ja": "深夜に「鏡」と「剣」が手に入れやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Make swords/mirrors easier to obtain at night",
+        "fr": "Obtention des miroirs et épées en pleine nuit facilitée.",
+        "es": "Facilita obtener \"Espejo\" y \"Espada\" de madrugada.",
         "zh-TW": "在深夜時將更容易獲得「鏡」與「劍」",
         "ko": "심야에 「거울」과 「검」을 획득하기 쉬워진다.",
-        "zh-CN": "在深夜时将更容易获得「镜」与「剑」"
+        "zh-CN": "在深夜时将更容易获得“镜”与“剑”"
       },
       "requires": [
         20
@@ -19468,18 +19633,18 @@
       "description": "动物亲密度更容易上升",
       "nameTranslations": {
         "ja": "動物仲良し術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Domestication Finesse",
+        "fr": "Ami des bêtes",
+        "es": "Afinidad con animales",
         "zh-TW": "動物友好術",
         "ko": "동물 친밀술",
         "zh-CN": "动物友好术"
       },
       "descriptionTranslations": {
         "ja": "動物のなつき度が上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain animal affection more easily",
+        "fr": "Hausse du niveau d’affection des animaux accélérée.",
+        "es": "Aumenta la facilidad para subir el afecto de los animales.",
         "zh-TW": "動物親密度更容易上昇",
         "ko": "동물의 친밀도가 잘 오르게 된다.",
         "zh-CN": "动物亲密度更容易上升"
@@ -19496,18 +19661,18 @@
       "description": "树木成长速度提升10%",
       "nameTranslations": {
         "ja": "樹木の育成術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Arboriculture Finesse+",
+        "fr": "Technique d’arboriculture +",
+        "es": "Cultivo de árboles +",
         "zh-TW": "樹木培育術＋",
         "ko": "나무 육성술+",
         "zh-CN": "树木培育术＋"
       },
       "descriptionTranslations": {
         "ja": "樹木の成長速度が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree growth speed +10%",
+        "fr": "Vitesse de croissance des arbres +10 %.",
+        "es": "Aumenta un 10 % la velocidad de crecimiento de árboles.",
         "zh-TW": "樹木成長速度提昇10%",
         "ko": "나무의 성장 속도가 10% 상승한다.",
         "zh-CN": "树木成长速度提升10%"
@@ -19524,18 +19689,18 @@
       "description": "作物加工品的售价提升5%",
       "nameTranslations": {
         "ja": "作物加工品の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship (C)",
+        "fr": "Vente de prod. agricoles transformés",
+        "es": "Venta de prod. agrícolas procesados",
         "zh-TW": "作物加工品出貨術",
         "ko": "작물 가공품 출하술",
         "zh-CN": "作物加工品出货术"
       },
       "descriptionTranslations": {
         "ja": "作物加工品の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed crop product sales price +5%",
+        "fr": "Prix de vente produits agricoles transformés +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "作物加工品的售價提昇5%",
         "ko": "작물 가공품의 판매 가격이 5% 상승한다.",
         "zh-CN": "作物加工品的售价提升5%"
@@ -19552,18 +19717,18 @@
       "description": "畜产品的售价提升5%",
       "nameTranslations": {
         "ja": "畜産物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ranching Salesmanship",
+        "fr": "Vente des produits d’élevage",
+        "es": "Venta de productos pecuarios",
         "zh-TW": "畜產品出貨術",
         "ko": "축산물 출하술",
         "zh-CN": "畜产品出货术"
       },
       "descriptionTranslations": {
         "ja": "畜産物の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal product sales price +5%",
+        "fr": "Prix de vente des produits d’élevage +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "畜產品的售價提昇5%",
         "ko": "축산물의 판매 가격이 5% 상승한다.",
         "zh-CN": "畜产品的售价提升5%"
@@ -19581,18 +19746,18 @@
       "description": "鱼类的售价提升5%",
       "nameTranslations": {
         "ja": "魚の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fishing Salesmanship",
+        "fr": "Vente du poisson",
+        "es": "Venta de pescado",
         "zh-TW": "魚類出貨術",
         "ko": "물고기 출하술",
         "zh-CN": "鱼类出货术"
       },
       "descriptionTranslations": {
         "ja": "魚の売価が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish sales price +5%",
+        "fr": "Prix de vente des poissons +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "魚類的售價提昇5%",
         "ko": "물고기의 판매 가격이 5% 상승한다.",
         "zh-CN": "鱼类的售价提升5%"
@@ -19609,18 +19774,18 @@
       "description": "畜产品加工品的售价提升5%",
       "nameTranslations": {
         "ja": "畜産加工品の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship (AP)",
+        "fr": "Vente de prod. d’élevage transformés",
+        "es": "Venta de productos procesados ganaderos",
         "zh-TW": "畜產品加工品出貨術",
         "ko": "축산 가공품 출하술",
         "zh-CN": "畜产品加工品出货术"
       },
       "descriptionTranslations": {
         "ja": "畜産加工品の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed animal product sales price +5%",
+        "fr": "Prix de vente produits d’élevage transformés +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "畜產品加工品的售價提昇5%",
         "ko": "축산 가공품의 판매 가격이 5% 상승한다.",
         "zh-CN": "畜产品加工品的售价提升5%"
@@ -19637,18 +19802,18 @@
       "description": "居民好感度更容易上升",
       "nameTranslations": {
         "ja": "仲良し術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Befriending Finesse",
+        "fr": "Technique de sociabilisation",
+        "es": "Afinidad social",
         "zh-TW": "友好術",
         "ko": "친밀술",
         "zh-CN": "友好术"
       },
       "descriptionTranslations": {
         "ja": "住人との好感度が上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain villager affection more easily",
+        "fr": "Hausse du niveau d’affinité avec les villageois accélérée.",
+        "es": "Aumenta la facilidad para subir la afinidad con los habitantes.",
         "zh-TW": "居民好感度更容易上昇",
         "ko": "주민과의 호감도가 더 잘 오르게 된다.",
         "zh-CN": "居民好感度更容易上升"
@@ -19665,18 +19830,18 @@
       "description": "采掘石头时，可额外获得1个石头",
       "nameTranslations": {
         "ja": "採掘の技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mining Finesse",
+        "fr": "Technique de minage",
+        "es": "Técnica de minería",
         "zh-TW": "採掘技術",
         "ko": "채굴 기술",
         "zh-CN": "采掘技术"
       },
       "descriptionTranslations": {
         "ja": "石を採掘した際、石が１個多く採れる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rock mining yield +1",
+        "fr": "Permet d’obtenir 1 pierre en plus par rocher.",
+        "es": "Al minar piedra, obtienes 1 unidad adicional.",
         "zh-TW": "採掘石頭時，可額外獲得1個石頭",
         "ko": "돌을 채굴할 때, 돌을 1개 더 획득한다.",
         "zh-CN": "采掘石头时，可额外获得1个石头"
@@ -19694,18 +19859,18 @@
       "description": "作物的售价提升5%",
       "nameTranslations": {
         "ja": "作物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Farming Salesmanship",
+        "fr": "Vente des récoltes agricoles",
+        "es": "Venta de cultivos",
         "zh-TW": "作物出貨術",
         "ko": "작물 출하술",
         "zh-CN": "作物出货术"
       },
       "descriptionTranslations": {
         "ja": "作物の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Crop sales price +5%",
+        "fr": "Prix de vente des récoltes +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "作物的售價提昇5%",
         "ko": "작물의 판매 가격이 5% 상승한다.",
         "zh-CN": "作物的售价提升5%"
@@ -19723,18 +19888,18 @@
       "description": "砍伐树木时，可额外获得1个木材",
       "nameTranslations": {
         "ja": "樹木の伐採術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Logging Finesse",
+        "fr": "Technique d’abattage d’arbres",
+        "es": "Tala de árboles",
         "zh-TW": "樹木砍伐術",
         "ko": "나무 벌채술",
         "zh-CN": "树木砍伐术"
       },
       "descriptionTranslations": {
         "ja": "樹木の伐採時、木材が１個多く採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree chopping yield +1",
+        "fr": "Permet d’obtenir 1 bois en plus par arbre abattu.",
+        "es": "Al talar árboles, obtienes 1 unidad adicional de madera.",
         "zh-TW": "砍伐樹木時，可額外獲得1個木材",
         "ko": "나무를 벌채할 때, 목재를 1개 더 채집한다.",
         "zh-CN": "砍伐树木时，可额外获得1个木材"
@@ -19751,18 +19916,18 @@
       "description": "狩猎报酬物的售价提升5%",
       "nameTranslations": {
         "ja": "獲物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting Salesmanship",
+        "fr": "Vente du gibier",
+        "es": "Venta de piezas de caza",
         "zh-TW": "獵物出貨術",
         "ko": "사냥감 출하술",
         "zh-CN": "猎物出货术"
       },
       "descriptionTranslations": {
         "ja": "狩りの報酬物の売価が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting reward sales price +5%",
+        "fr": "Prix de vente du gibier +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "狩獵報酬物的售價提昇5%",
         "ko": "사냥 보상물의 판매 가격이 5% 상승한다.",
         "zh-CN": "狩猎报酬物的售价提升5%"
@@ -19779,18 +19944,18 @@
       "description": "鱼类的售价提升10%",
       "nameTranslations": {
         "ja": "魚の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish Shipping Technique+",
+        "fr": "Vente du poisson +",
+        "es": "Venta de pescado +",
         "zh-TW": "魚類出貨術＋",
         "ko": "물고기 출하술+",
         "zh-CN": "鱼类出货术＋"
       },
       "descriptionTranslations": {
         "ja": "魚の売価が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish sales price +10%",
+        "fr": "Prix de vente des poissons +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "魚類的售價提昇10%",
         "ko": "물고기의 판매 가격이 10% 상승한다.",
         "zh-CN": "鱼类的售价提升10%"
@@ -19807,18 +19972,18 @@
       "description": "作物加工品的售价提升10%",
       "nameTranslations": {
         "ja": "作物加工品の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship+ (C)",
+        "fr": "Vente de prod. agricoles transformés +",
+        "es": "Venta de productos agrícolas procesados +",
         "zh-TW": "作物加工品出貨術＋",
         "ko": "작물 가공품 출하술+",
         "zh-CN": "作物加工品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "作物加工品の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed crop product sales price +10%",
+        "fr": "Prix de vente produits agricoles transformés +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "作物加工品的售價提昇10%",
         "ko": "작물 가공품의 판매 가격이 10% 상승한다.",
         "zh-CN": "作物加工品的售价提升10%"
@@ -19835,18 +20000,18 @@
       "description": "动物亲密度更加容易上升",
       "nameTranslations": {
         "ja": "動物仲良し術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Domestication Finesse+",
+        "fr": "Ami des bêtes +",
+        "es": "Afinidad con animales +",
         "zh-TW": "動物友好術＋",
         "ko": "동물 친밀술+",
         "zh-CN": "动物友好术＋"
       },
       "descriptionTranslations": {
         "ja": "動物のなつき度がもっと上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain animal affection even more easily",
+        "fr": "Hausse du niveau d’affection des animaux accélérée.",
+        "es": "Aumenta aún más la facilidad para subir el afecto de los animales.",
         "zh-TW": "動物親密度更加容易上昇",
         "ko": "동물의 친밀도가 더 잘 오르게 된다.",
         "zh-CN": "动物亲密度更加容易上升"
@@ -19864,18 +20029,18 @@
       "description": "可在多个收纳箱之间移动内容物",
       "nameTranslations": {
         "ja": "収納箱の連結術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Linked Storage Chests",
+        "fr": "Boîtes de rangement connectées",
+        "es": "Conexión de arcones",
         "zh-TW": "收納箱連結術",
         "ko": "수납함 연결술",
         "zh-CN": "收纳箱连结术"
       },
       "descriptionTranslations": {
         "ja": "複数の収納箱の間で、中身を移動できるようになる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to move items between storage chests",
+        "fr": "Permet de déplacer le contenu entre plusieurs boîtes.",
+        "es": "Permite mover objetos entre varios arcones.",
         "zh-TW": "可在多個收納箱之間移動內容物",
         "ko": "여러 수납함 사이에서 내용물을 이동할 수 있게 된다.",
         "zh-CN": "可在多个收纳箱之间移动内容物"
@@ -19892,18 +20057,18 @@
       "description": "宝石的售价提升5%",
       "nameTranslations": {
         "ja": "宝石の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone Salesmanship",
+        "fr": "Vente des minéraux",
+        "es": "Venta de joyas",
         "zh-TW": "寶石出貨術",
         "ko": "보석 출하술",
         "zh-CN": "宝石出货术"
       },
       "descriptionTranslations": {
         "ja": "宝石の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone sales price +5%",
+        "fr": "Prix de vente des minéraux +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "寶石的售價提昇5%",
         "ko": "보석의 판매 가격이 5% 상승한다.",
         "zh-CN": "宝石的售价提升5%"
@@ -19921,18 +20086,18 @@
       "description": "作物的售价提升10%",
       "nameTranslations": {
         "ja": "作物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Farming Salesmanship+",
+        "fr": "Vente des récoltes agricoles +",
+        "es": "Venta de cultivos +",
         "zh-TW": "作物出貨術＋",
         "ko": "작물 출하술+",
         "zh-CN": "作物出货术＋"
       },
       "descriptionTranslations": {
         "ja": "作物の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Crop sales price +10%",
+        "fr": "Prix de vente des récoltes +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "作物的售價提昇10%",
         "ko": "작물의 판매 가격이 10% 상승한다.",
         "zh-CN": "作物的售价提升10%"
@@ -19949,18 +20114,18 @@
       "description": "畜产品的售价提升10%",
       "nameTranslations": {
         "ja": "畜産物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ranching Salesmanship+",
+        "fr": "Vente des produits d’élevage +",
+        "es": "Venta de productos pecuarios +",
         "zh-TW": "畜產品出貨術＋",
         "ko": "축산물 출하술+",
         "zh-CN": "畜产品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "畜産物の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal product sales price +10%",
+        "fr": "Prix de vente des produits d’élevage +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "畜產品的售價提昇10%",
         "ko": "축산물의 판매 가격이 10% 상승한다.",
         "zh-CN": "畜产品的售价提升10%"
@@ -19977,18 +20142,18 @@
       "description": "砍伐树木时，可额外获得2个木材",
       "nameTranslations": {
         "ja": "樹木の伐採術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Logging Finesse+",
+        "fr": "Technique d’abattage d’arbres +",
+        "es": "Tala de árboles +",
         "zh-TW": "樹木砍伐術＋",
         "ko": "나무 벌채술+",
         "zh-CN": "树木砍伐术＋"
       },
       "descriptionTranslations": {
         "ja": "樹木の伐採時、木材が２個多く採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree chopping yield +2",
+        "fr": "Permet d’obtenir 2 bois en plus par arbre abattu.",
+        "es": "Al talar árboles, obtienes 2 unidades adicionales de madera.",
         "zh-TW": "砍伐樹木時，可額外獲得2個木材",
         "ko": "나무를 벌채할 때, 목재를 2개 더 채집한다.",
         "zh-CN": "砍伐树木时，可额外获得2个木材"
@@ -20005,18 +20170,18 @@
       "description": "居民好感度更加容易上升",
       "nameTranslations": {
         "ja": "仲良し術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Befriending Finesse+",
+        "fr": "Technique de sociabilisation +",
+        "es": "Afinidad social +",
         "zh-TW": "友好術＋",
         "ko": "친밀술+",
         "zh-CN": "友好术＋"
       },
       "descriptionTranslations": {
         "ja": "住人との好感度がもっと上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain villager affection even more easily",
+        "fr": "Hausse du niveau d’affinité avec les villageois accélérée.",
+        "es": "Aumenta aún más la afinidad con los habitantes.",
         "zh-TW": "居民好感度更加容易上昇",
         "ko": "주민과의 호감도가 훨씬 더 잘 오르게 된다.",
         "zh-CN": "居民好感度更加容易上升"
@@ -20034,18 +20199,18 @@
       "description": "在采石场发现矿脉的概率提升5%",
       "nameTranslations": {
         "ja": "鉱脈の発見術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Prospecting Finesse+",
+        "fr": "Découverte de filons +",
+        "es": "Descubrimiento de vetas +",
         "zh-TW": "礦脈探查術＋",
         "ko": "광맥 발견술+",
         "zh-CN": "矿脉探查术＋"
       },
       "descriptionTranslations": {
         "ja": "石切場で鉱脈が見つかる確率が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chance of finding quarry deposits +5%",
+        "fr": "Probabilité de trouver des filons à la carrière +5 %.",
+        "es": "Aumenta un 5 % la probabilidad de encontrar vetas en la cantera.",
         "zh-TW": "在採石場發現礦脈的機率提昇5%",
         "ko": "채석장에서 광맥을 발견할 확률이 5% 상승한다.",
         "zh-CN": "在采石场发现矿脉的概率提升5%"
@@ -20062,18 +20227,18 @@
       "description": "狩猎报酬物的售价提升10%",
       "nameTranslations": {
         "ja": "獲物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting Salesmanship+",
+        "fr": "Vente du gibier +",
+        "es": "Venta de piezas de caza +",
         "zh-TW": "獵物出貨術＋",
         "ko": "사냥감 출하술+",
         "zh-CN": "猎物出货术＋"
       },
       "descriptionTranslations": {
         "ja": "狩りの報酬物の売価が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting reward sales price +10%",
+        "fr": "Prix de vente du gibier +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "狩獵報酬物的售價提昇10%",
         "ko": "사냥 보상물의 판매 가격이 10% 상승한다.",
         "zh-CN": "狩猎报酬物的售价提升10%"
@@ -20090,18 +20255,18 @@
       "description": "宝石的售价提升10%",
       "nameTranslations": {
         "ja": "宝石の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone Salesmanship+",
+        "fr": "Vente des minéraux +",
+        "es": "Venta de joyas +",
         "zh-TW": "寶石出貨術＋",
         "ko": "보석 출하술+",
         "zh-CN": "宝石出货术＋"
       },
       "descriptionTranslations": {
         "ja": "宝石の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone sales price +10%",
+        "fr": "Prix de vente des minéraux +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "寶石的售價提昇10%",
         "ko": "보석의 판매 가격이 10% 상승한다.",
         "zh-CN": "宝石的售价提升10%"
@@ -20118,18 +20283,18 @@
       "description": "畜产品加工品的售价提升10%",
       "nameTranslations": {
         "ja": "畜産加工品の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship+ (AP)",
+        "fr": "Vente de prod. d’élevage transformés +",
+        "es": "Venta de prod. pecuarios procesados +",
         "zh-TW": "畜產品加工品出貨術＋",
         "ko": "축산 가공품 출하술+",
         "zh-CN": "畜产品加工品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "畜産加工品の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed animal product sale price +10%",
+        "fr": "Prix de vente produits d’élevage transformés +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "畜產品加工品的售價提昇10%",
         "ko": "축산 가공품의 판매 가격이 10% 상승한다.",
         "zh-CN": "畜产品加工品的售价提升10%"
@@ -20146,18 +20311,18 @@
       "description": "采掘石头时，可额外获得2个石头",
       "nameTranslations": {
         "ja": "採掘の技術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mining Finesse+",
+        "fr": "Technique de minage +",
+        "es": "Técnica de minería +",
         "zh-TW": "採掘技術＋",
         "ko": "채굴 기술+",
         "zh-CN": "采掘技术＋"
       },
       "descriptionTranslations": {
         "ja": "石を採掘した際、石が2個多く採れる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rock mining yield +2",
+        "fr": "Permet d’obtenir 2 pierres en plus par rocher.",
+        "es": "Al minar piedra, obtienes 2 unidades adicionales.",
         "zh-TW": "採掘石頭時，可額外獲得2個石頭",
         "ko": "돌을 채굴할 때, 돌을 2개 더 획득한다.",
         "zh-CN": "采掘石头时，可额外获得2个石头"
@@ -20167,5 +20332,5 @@
       ]
     }
   ],
-  "build_id": "25311578"
+  "build_id": "25640656"
 }

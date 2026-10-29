@@ -22,7 +22,7 @@ from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.table import read_table
 
 ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT = ROOT / 'data/generated/build-25311578/entities/crops.json'
+SNAPSHOT = ROOT / 'data/generated/build-25640656/entities/crops.json'
 ART = ROOT / 'public/maps/farm'
 
 
@@ -31,7 +31,7 @@ def main():
     add_game_dir(parser)
     parser.add_argument('--output', type=Path, default=ROOT / 'data/sources/game-crop-growth.json')
     args = parser.parse_args()
-    # Build 25311578 tables carry seven languages.
+    # Builds since 25311578 carry seven languages.
     table = read_table(FafullfsArchive.open(args.game_dir / 'data.dat').read_entry('data/database/crops.dat'), language_count=7)
     records = {group[0]: record for record, group in zip(table.records, _string_groups(table))}
     manifest = json.loads((ART / 'manifest.json').read_text(encoding='utf-8'))
@@ -58,7 +58,7 @@ def main():
                     sprite['paint'] = list(boxes[sprite['file']])
         crops[crop['id']] = forms
     output = {
-        'source': 'Steam build 25311578 crops.dat GrowInfo stages + public/maps/farm/manifest.json sprites',
+        'source': 'Steam build 25640656 crops.dat GrowInfo stages + public/maps/farm/manifest.json sprites',
         'note': 'crop -> crops.dat form id -> [growth points, form after harvest or axe (0 removes the plant), sprite or [spring, summer, autumn, winter] sprites]; paint: painted bounds around the ground point',
         'crops': crops,
     }

@@ -1,9 +1,9 @@
-"""Extract playable farming cells from build 25311578 YMWR heads, read-only.
+"""Extract playable farming cells from build 25640656 YMWR heads, read-only.
 
-Native verification: 0x1401CF660 scales terrain tile coordinates by 90 and adds
-45. Callback 0x1401D2860 reads four u64 ground masks at +0x30, taking the
+Native verification: 0x1401D2730 scales terrain tile coordinates by 90 and adds
+45. Callback 0x1401D5930 reads four u64 ground masks at +0x30, taking the
 north/west/east/south edge centres, then divides coordinates by 45 and inserts
-unique cell IDs (0x1401D28A2-0x1401D2987). Adjacent tile masks must agree.
+unique cell IDs (0x1401D5942-0x1401D5A75). Adjacent tile masks must agree.
 GROUND_ELEMENT_ABLE_FARMING is bit 0 in mapgroundelement.dat.
 """
 import argparse, hashlib, json, struct, zlib
@@ -48,7 +48,7 @@ def main():
     add_game_dir(parser)
     parser.add_argument('--output',type=Path,default=Path('data/sources/game-farmland.json'))
     args=parser.parse_args();exe_hash=hashlib.sha256((args.game_dir/'village.exe').read_bytes()).hexdigest()
-    assert exe_hash=='ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05', 'Unreviewed executable build'
+    assert exe_hash=='979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5', 'Unreviewed executable build'
     # Compatibility evidence comes from the previously committed catalog. These
     # cells are never counted as current terrain; saved plans use their origins.
     previous=json.loads(args.output.read_text(encoding='utf8')) if args.output.exists() else {}
@@ -84,8 +84,8 @@ def main():
             shapes.append(dict(id=f'{Path(entry.name).name}-{i}',label=label,map=entry.name,map_ids=sorted(set(references[entry.name])),
                 width=max_x-min_x+1,height=max_y-min_y+1,count=len(part),origin=[min_x,min_y],cells=[[x-min_x,y-min_y] for x,y in part],
                 sha256=hashlib.sha256(raw).hexdigest()))
-    result=dict(build_id='25311578',executable_sha256=exe_hash,source='map_1_00.dat YMWR terrain + mapgroundelement.dat + map.dat',
-        native_rule='0x1401CF660 and 0x1401D2860: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes',
+    result=dict(build_id='25640656',executable_sha256=exe_hash,source='map_1_00.dat YMWR terrain + mapgroundelement.dat + map.dat',
+        native_rule='0x1401D2730 and 0x1401D5930: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes',
         scanned_map_heads=len(scanned),excluded_nonplayable=excluded,scope='All referenced non-test map heads in the build; seasonal duplicates verified equal. Terrain capacity before buildings, objects, ownership and unlocks.',
         shapes=sorted(shapes,key=lambda s:s['label']),legacy_shapes=legacy_shapes)
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

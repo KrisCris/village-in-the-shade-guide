@@ -76,7 +76,7 @@ for row, strings in zip(table('map').records, _string_groups(table('map')), stri
               for (x, y), m in sorted(cells.items()) if compact_mask(m)]
     if usable:
         scenes.append(dict(id=mid, code=strings[0], label=strings[1], origin=origins[mid], cells=usable))
-items = {i['numeric_id']: i for i in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))}
+items = {i['numeric_id']: i for i in json.loads(Path('data/generated/build-25640656/entities/items.json').read_text(encoding='utf-8'))}
 placements = json.loads(Path('data/sources/game-save-placements.json').read_text(encoding='utf-8'))['placements']
 features = {u64(r, 0): g[0].removeprefix('GIMMICK_FEATURE_') for r,g in zip(table('gimmickfeature').records, _string_groups(table('gimmickfeature')))}
 constructs = []

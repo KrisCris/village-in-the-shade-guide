@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--snapshot', type=Path, default=Path('data/generated/build-25311578/entities'))
+parser.add_argument('--snapshot', type=Path, default=Path('data/generated/build-25640656/entities'))
 parser.add_argument('--output', type=Path, default=Path('data/sources/game-shrine-recipe-materials.json'))
 args = parser.parse_args()
 items = json.loads((args.snapshot / 'items.json').read_text(encoding='utf-8'))

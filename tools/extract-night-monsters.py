@@ -34,9 +34,9 @@ game=game_dir(__doc__)
 data=FafullfsArchive.open(game/'data.dat')
 maps=FafullfsArchive.open(game/'data/map_1_00.dat')
 reviewed={
-    'ai_creature_horror_moyamoyasan_lv3':'ffbc0f9265826db8d637c69934fe5e7324403f76272c637bb432e8811fa9a84d',
+    'ai_creature_horror_moyamoyasan_lv3':'7ebb55538599d1bf903744cedc539e8472c1ce2b69139b393745c175e707e07e',
     'ai_creature_horror_kunekune':'220855d5a5ed1916cc112bd2da60ac2092d05bb63a00e3f3126e07bc466f5bf8',
-    'ai_creature_horror_wandering_ghost':'96f2382889ee48daf1987e56fde2e6d3a6fa0167af46a82240ba9941ead8a330',
+    'ai_creature_horror_wandering_ghost':'8ae7e311b958808a0b6465ac4dd86940c2cff237c1df70f21316bb21f9918ca3',
     'ai_creature_horror_warp_ghost':'b19774bc5db8d2e718b4ff79620748de09219d893c3f79da293441d171ac85e8',
     'ai_creature_horror_obo':'a94dd59fdef6a4f81a0e1390b8713cf4b415921d6333fa727f2b820e7e4cd2cb',
     'ai_creature_horror_two_mouths_woman':'8c5a1962d3bda2b925ac1bda314b5b6e26ed91b06b59fb542617d3e9e3904c35',
@@ -50,9 +50,9 @@ reviewed={
     'mapevent_latenight_area':'3201be516f9fbabd5afe5787f885181eda33f18764b255cf4b902112a3a14b39',
     'event_check_late_night':'376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2',
     # Story chapters that create the bosses named in the task (not part of the night tables).
-    'story_05_01':'c8b2396ea70f875f851406f69d066f7acfb6a078625f19a523b01826a26ffcb4',
+    'story_05_01':'1c39916fa8756e069c99ea42f9c66b32484af975ea3c115ad24b01d93a080899',
     'story_05_02':'639acfa637563da58b038ce0fee5ded874fdc260cd29dd65d17e64a7052112ed',
-    'story_05_03':'0f82800041ed754e1b0e84ded0778db6729946ac8ed620b184df5424e277b7b5',
+    'story_05_03':'99378aaba664b6063a1cd8ae8dffdae0315b7c4a494508166e501ccc30186b39',
     'story_06_02':'d246bb7f0ccf5fe5910b077bbe4f385b4ce734f2b635d799d0e2a30c8bddcbf4',
 }
 scripts={}

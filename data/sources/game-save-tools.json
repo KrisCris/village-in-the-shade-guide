@@ -1,5 +1,5 @@
 {
-  "source": "item.dat parent u64@16, level u32@348; historical build24969282 native upgrade 0x140329AE8/0x140329B15/0x140329B46",
+  "source": "item.dat parent u64@16, level u32@348; build 25640656 native upgrade 0x140345BBB-0x140345C82 copies the new level to the hoe, plow, watering can and seeder range fields",
   "tools": [
     {
       "itemId": 660001,
@@ -9,9 +9,9 @@
       "name": "浇水壶",
       "nameTranslations": {
         "ja": "ジョウロ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Watering Can",
+        "fr": "Arrosoir",
+        "es": "Regadera",
         "zh-TW": "澆水壺",
         "ko": "물뿌리개",
         "zh-CN": "浇水壶"
@@ -25,9 +25,9 @@
       "name": "铜浇水壶",
       "nameTranslations": {
         "ja": "銅のジョウロ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Copper W. Can",
+        "fr": "Arrosoir en cuivre",
+        "es": "Regadera de cobre",
         "zh-TW": "銅澆水壺",
         "ko": "동제 물뿌리개",
         "zh-CN": "铜浇水壶"
@@ -41,9 +41,9 @@
       "name": "铁浇水壶",
       "nameTranslations": {
         "ja": "鋼のジョウロ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steel W. Can",
+        "fr": "Arrosoir en fer",
+        "es": "Regadera de acero",
         "zh-TW": "鐵澆水壺",
         "ko": "철제 물뿌리개",
         "zh-CN": "铁浇水壶"
@@ -57,9 +57,9 @@
       "name": "金浇水壶",
       "nameTranslations": {
         "ja": "金のジョウロ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Golden W. Can",
+        "fr": "Arrosoir en or",
+        "es": "Regadera de oro",
         "zh-TW": "金澆水壺",
         "ko": "금제 물뿌리개",
         "zh-CN": "金浇水壶"
@@ -73,9 +73,9 @@
       "name": "陨铁浇水壶",
       "nameTranslations": {
         "ja": "隕鉄のジョウロ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meteoric W. Can",
+        "fr": "Arrosoir en fer météorique",
+        "es": "Regadera meteórica",
         "zh-TW": "隕鐵澆水壺",
         "ko": "운철제 물뿌리개",
         "zh-CN": "陨铁浇水壶"
@@ -89,9 +89,9 @@
       "name": "锄头",
       "nameTranslations": {
         "ja": "クワ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hoe",
+        "fr": "Houe",
+        "es": "Azada",
         "zh-TW": "鋤頭",
         "ko": "괭이",
         "zh-CN": "锄头"
@@ -105,9 +105,9 @@
       "name": "铜锄头",
       "nameTranslations": {
         "ja": "銅のクワ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Copper Hoe",
+        "fr": "Houe en cuivre",
+        "es": "Azada de cobre",
         "zh-TW": "銅鋤頭",
         "ko": "동제 괭이",
         "zh-CN": "铜锄头"
@@ -121,9 +121,9 @@
       "name": "铁锄头",
       "nameTranslations": {
         "ja": "鋼のクワ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steel Hoe",
+        "fr": "Houe en fer",
+        "es": "Azada de acero",
         "zh-TW": "鐵鋤頭",
         "ko": "철제 괭이",
         "zh-CN": "铁锄头"
@@ -137,9 +137,9 @@
       "name": "金锄头",
       "nameTranslations": {
         "ja": "金のクワ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Golden Hoe",
+        "fr": "Houe en or",
+        "es": "Azada de oro",
         "zh-TW": "金鋤頭",
         "ko": "금제 괭이",
         "zh-CN": "金锄头"
@@ -153,9 +153,9 @@
       "name": "陨铁锄头",
       "nameTranslations": {
         "ja": "隕鉄のクワ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meteoric Hoe",
+        "fr": "Houe en fer météorique",
+        "es": "Azada de hierro meteórico",
         "zh-TW": "隕鐵鋤頭",
         "ko": "운철제 괭이",
         "zh-CN": "陨铁锄头"
@@ -169,9 +169,9 @@
       "name": "斧头",
       "nameTranslations": {
         "ja": "オノ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Axe",
+        "fr": "Hache",
+        "es": "Hacha",
         "zh-TW": "斧頭",
         "ko": "도끼",
         "zh-CN": "斧头"
@@ -185,9 +185,9 @@
       "name": "铜斧头",
       "nameTranslations": {
         "ja": "銅のオノ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Copper Axe",
+        "fr": "Hache en cuivre",
+        "es": "Hacha de cobre",
         "zh-TW": "銅斧頭",
         "ko": "동제 도끼",
         "zh-CN": "铜斧头"
@@ -201,9 +201,9 @@
       "name": "铁斧头",
       "nameTranslations": {
         "ja": "鋼のオノ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steel Axe",
+        "fr": "Hache en fer",
+        "es": "Hacha de acero",
         "zh-TW": "鐵斧頭",
         "ko": "철제 도끼",
         "zh-CN": "铁斧头"
@@ -217,9 +217,9 @@
       "name": "金斧头",
       "nameTranslations": {
         "ja": "金のオノ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Golden Axe",
+        "fr": "Hache en or",
+        "es": "Hacha de oro",
         "zh-TW": "金斧頭",
         "ko": "금제 도끼",
         "zh-CN": "金斧头"
@@ -233,9 +233,9 @@
       "name": "陨铁斧头",
       "nameTranslations": {
         "ja": "隕鉄のオノ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meteoric Axe",
+        "fr": "Hache en fer météorique",
+        "es": "Hacha de hierro meteórico",
         "zh-TW": "隕鐵斧頭",
         "ko": "운철제 도끼",
         "zh-CN": "陨铁斧头"
@@ -249,9 +249,9 @@
       "name": "十字镐",
       "nameTranslations": {
         "ja": "ツルハシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pickaxe",
+        "fr": "Pioche",
+        "es": "Pico",
         "zh-TW": "十字鎬",
         "ko": "곡괭이",
         "zh-CN": "十字镐"
@@ -265,9 +265,9 @@
       "name": "铜十字镐",
       "nameTranslations": {
         "ja": "銅のツルハシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Copper Pickaxe",
+        "fr": "Pioche en cuivre",
+        "es": "Pico de cobre",
         "zh-TW": "銅十字鎬",
         "ko": "동제 곡괭이",
         "zh-CN": "铜十字镐"
@@ -281,9 +281,9 @@
       "name": "铁十字镐",
       "nameTranslations": {
         "ja": "鋼のツルハシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steel Pickaxe",
+        "fr": "Pioche en fer",
+        "es": "Pico de acero",
         "zh-TW": "鐵十字鎬",
         "ko": "철제 곡괭이",
         "zh-CN": "铁十字镐"
@@ -297,9 +297,9 @@
       "name": "金十字镐",
       "nameTranslations": {
         "ja": "金のツルハシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Golden Pickaxe",
+        "fr": "Pioche en or",
+        "es": "Pico de oro",
         "zh-TW": "金十字鎬",
         "ko": "금제 곡괭이",
         "zh-CN": "金十字镐"
@@ -313,9 +313,9 @@
       "name": "陨铁十字镐",
       "nameTranslations": {
         "ja": "隕鉄のツルハシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meteoric Pickaxe",
+        "fr": "Pioche en fer météorique",
+        "es": "Pico de hierro meteórico",
         "zh-TW": "隕鐵十字鎬",
         "ko": "운철제 곡괭이",
         "zh-CN": "陨铁十字镐"
@@ -329,9 +329,9 @@
       "name": "镰刀",
       "nameTranslations": {
         "ja": "カマ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sickle",
+        "fr": "Faucille",
+        "es": "Hoz",
         "zh-TW": "鐮刀",
         "ko": "낫",
         "zh-CN": "镰刀"
@@ -345,9 +345,9 @@
       "name": "弓",
       "nameTranslations": {
         "ja": "弓",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bow",
+        "fr": "Arc",
+        "es": "Arco",
         "zh-TW": "弓",
         "ko": "활",
         "zh-CN": "弓"
@@ -361,9 +361,9 @@
       "name": "手电筒",
       "nameTranslations": {
         "ja": "懐中電灯",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flashlight",
+        "fr": "Lampe torche",
+        "es": "Linterna",
         "zh-TW": "手電筒",
         "ko": "손전등",
         "zh-CN": "手电筒"
@@ -377,9 +377,9 @@
       "name": "手提灯笼",
       "nameTranslations": {
         "ja": "手持ち提灯",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Paper Lantern",
+        "fr": "Lanterne portative",
+        "es": "Farolillo de papel portátil",
         "zh-TW": "手提燈籠",
         "ko": "휴대용 등롱",
         "zh-CN": "手提灯笼"
@@ -393,9 +393,9 @@
       "name": "犁",
       "nameTranslations": {
         "ja": "スキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spade",
+        "fr": "Bêche",
+        "es": "Arado",
         "zh-TW": "犁",
         "ko": "가래",
         "zh-CN": "犁"
@@ -409,9 +409,9 @@
       "name": "铜犁",
       "nameTranslations": {
         "ja": "銅のスキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Copper Spade",
+        "fr": "Bêche en cuivre",
+        "es": "Arado de cobre",
         "zh-TW": "銅犁",
         "ko": "동제 가래",
         "zh-CN": "铜犁"
@@ -425,9 +425,9 @@
       "name": "铁犁",
       "nameTranslations": {
         "ja": "鋼のスキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Steel Spade",
+        "fr": "Bêche en fer",
+        "es": "Arado de acero",
         "zh-TW": "鐵犁",
         "ko": "철제 가래",
         "zh-CN": "铁犁"
@@ -441,9 +441,9 @@
       "name": "金犁",
       "nameTranslations": {
         "ja": "金のスキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Golden Spade",
+        "fr": "Bêche en or",
+        "es": "Arado de oro",
         "zh-TW": "金犁",
         "ko": "금제 가래",
         "zh-CN": "金犁"
@@ -457,9 +457,9 @@
       "name": "陨铁犁",
       "nameTranslations": {
         "ja": "隕鉄のスキ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Meteoric Spade",
+        "fr": "Bêche en fer météorique",
+        "es": "Arado de hierro meteórico",
         "zh-TW": "隕鐵犁",
         "ko": "운철제 가래",
         "zh-CN": "陨铁犁"
@@ -473,9 +473,9 @@
       "name": "劈岩柴刀",
       "nameTranslations": {
         "ja": "岩切りナタ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rockrending Machete",
+        "fr": "Hachette brise-roc",
+        "es": "Machete parterrocas",
         "zh-TW": "劈岩柴刀",
         "ko": "절암의 손도끼",
         "zh-CN": "劈岩柴刀"
@@ -489,9 +489,9 @@
       "name": "大包包",
       "nameTranslations": {
         "ja": "大きなカバン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Large Bag",
+        "fr": "Grand sac à dos",
+        "es": "Mochila grande",
         "zh-TW": "大包包",
         "ko": "큰 가방",
         "zh-CN": "大包包"
@@ -505,9 +505,9 @@
       "name": "非常大的包包",
       "nameTranslations": {
         "ja": "とても大きなカバン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Very Large Bag",
+        "fr": "Très grand sac à dos",
+        "es": "Mochila enorme",
         "zh-TW": "非常大的包包",
         "ko": "아주 큰 가방",
         "zh-CN": "非常大的包包"
@@ -521,9 +521,9 @@
       "name": "春天稻草人",
       "nameTranslations": {
         "ja": "春のカカシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spring Scarecrow",
+        "fr": "Épouvantail printanier",
+        "es": "Espantapájaros de primavera",
         "zh-TW": "春天稻草人",
         "ko": "봄의 허수아비",
         "zh-CN": "春天稻草人"
@@ -537,9 +537,9 @@
       "name": "夏天稻草人",
       "nameTranslations": {
         "ja": "夏のカカシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Summer Scarecrow",
+        "fr": "Épouvantail estival",
+        "es": "Espantapájaros de verano",
         "zh-TW": "夏天稻草人",
         "ko": "여름의 허수아비",
         "zh-CN": "夏天稻草人"
@@ -553,9 +553,9 @@
       "name": "秋天稻草人",
       "nameTranslations": {
         "ja": "秋のカカシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Autumn Scarecrow",
+        "fr": "Épouvantail automnal",
+        "es": "Espantapájaros de otoño",
         "zh-TW": "秋天稻草人",
         "ko": "가을의 허수아비",
         "zh-CN": "秋天稻草人"
@@ -569,12 +569,92 @@
       "name": "冬天稻草人",
       "nameTranslations": {
         "ja": "冬のカカシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Winter Scarecrow",
+        "fr": "Épouvantail hivernal",
+        "es": "Espantapájaros de invierno",
         "zh-TW": "冬天稻草人",
         "ko": "겨울의 허수아비",
         "zh-CN": "冬天稻草人"
+      }
+    },
+    {
+      "itemId": 802021,
+      "family": 802020,
+      "level": 1,
+      "code": "ITEM_ID_TOOL_SEEDER_1",
+      "name": "播种机",
+      "nameTranslations": {
+        "ja": "種まき機",
+        "en": "Seeder",
+        "fr": "Semoir",
+        "es": "Sembradora",
+        "zh-TW": "播種機",
+        "ko": "파종기",
+        "zh-CN": "播种机"
+      }
+    },
+    {
+      "itemId": 802022,
+      "family": 802020,
+      "level": 2,
+      "code": "ITEM_ID_TOOL_SEEDER_2",
+      "name": "铜播种机",
+      "nameTranslations": {
+        "ja": "銅の種まき機",
+        "en": "Copper Seeder",
+        "fr": "Semoir en cuivre",
+        "es": "Sembradora de bronce",
+        "zh-TW": "銅播種機",
+        "ko": "동제 파종기",
+        "zh-CN": "铜播种机"
+      }
+    },
+    {
+      "itemId": 802023,
+      "family": 802020,
+      "level": 3,
+      "code": "ITEM_ID_TOOL_SEEDER_3",
+      "name": "铁播种机",
+      "nameTranslations": {
+        "ja": "鋼の種まき機",
+        "en": "Steel Seeder",
+        "fr": "Semoir en acier",
+        "es": "Sembradora de acero",
+        "zh-TW": "鐵播種機",
+        "ko": "철제 파종기",
+        "zh-CN": "铁播种机"
+      }
+    },
+    {
+      "itemId": 802024,
+      "family": 802020,
+      "level": 4,
+      "code": "ITEM_ID_TOOL_SEEDER_4",
+      "name": "金播种机",
+      "nameTranslations": {
+        "ja": "金の種まき機",
+        "en": "Gold Seeder",
+        "fr": "Semoir en or",
+        "es": "Sembradora de oro",
+        "zh-TW": "金播種機",
+        "ko": "금제 파종기",
+        "zh-CN": "金播种机"
+      }
+    },
+    {
+      "itemId": 802025,
+      "family": 802020,
+      "level": 5,
+      "code": "ITEM_ID_TOOL_SEEDER_5",
+      "name": "陨铁播种机",
+      "nameTranslations": {
+        "ja": "隕鉄の種まき機",
+        "en": "Meteor Seeder",
+        "fr": "Semoir en fer météorique",
+        "es": "Sembradora de hierro meteórico",
+        "zh-TW": "隕鐵播種機",
+        "ko": "운철제 파종기",
+        "zh-CN": "陨铁播种机"
       }
     }
   ],
@@ -3486,6 +3566,109 @@
     800207,
     800208,
     801001,
+    802001,
+    802002,
+    802003,
+    802004,
+    802005,
+    802006,
+    802007,
+    802008,
+    802009,
+    802010,
+    802011,
+    802012,
+    802013,
+    802014,
+    802020,
+    802021,
+    802022,
+    802023,
+    802024,
+    802025,
+    802030,
+    802031,
+    802032,
+    802033,
+    802034,
+    802035,
+    802036,
+    802037,
+    802038,
+    802039,
+    802040,
+    802050,
+    802051,
+    802052,
+    802053,
+    802054,
+    802055,
+    802056,
+    802057,
+    802058,
+    802059,
+    802060,
+    802061,
+    802062,
+    802063,
+    802064,
+    802065,
+    802066,
+    802067,
+    802068,
+    802069,
+    802070,
+    802071,
+    802072,
+    802073,
+    802074,
+    802075,
+    802076,
+    802077,
+    802078,
+    802079,
+    802080,
+    802090,
+    802091,
+    802092,
+    802093,
+    802094,
+    802095,
+    802096,
+    802097,
+    802098,
+    802099,
+    802100,
+    802101,
+    802102,
+    802103,
+    802104,
+    802105,
+    802106,
+    802107,
+    802108,
+    802109,
+    802110,
+    802111,
+    802112,
+    802113,
+    802114,
+    802115,
+    802116,
+    802117,
+    802118,
+    802119,
+    802120,
+    802121,
+    802122,
+    802123,
+    802124,
+    802125,
+    802126,
+    802127,
+    802128,
+    802129,
+    802130,
     990002,
     990003,
     990004,
@@ -3555,5 +3738,5 @@
     991009,
     991010
   ],
-  "build_id": "25311578"
+  "build_id": "25640656"
 }

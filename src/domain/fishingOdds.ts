@@ -6,7 +6,7 @@ export type CatchRow = { item: string; weight: number };
 /**
  * Chance of each item on one bite with no bait, from one spot/season/period's fishing.dat rows in table order.
  *
- * village.exe build 25311578, catch roll 0x14021AC00–0x14021B2C0 (see tools/extract-curse-items.py): every row
+ * village.exe build 25640656, catch roll 0x14021DC20–0x14021E3D7 (see tools/extract-curse-items.py): every row
  * weighs int(weight*100), but a white fish (kind 2) weighs the running total of the rows before it divided by 99
  * ((x + mulhi(x, 0xA57EB503)) >> 6), so it ends up near 1% wherever it sits last.
  */

@@ -32,7 +32,7 @@ def define_vector(name):
 # overlay the game draws centered on MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND.
 farmland = decode_nltx_image(textures.read_entry('data/texture/minimap_apde01_spr_v120.nltx')).convert('RGBA')
 farm_x, farm_y = define_vector('MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND')
-for suffix in ('_sc', '_tc', ''):
+for suffix in ('_sc', '_tc', '_en', ''):
     image = decode_nltx_image(textures.read_entry(f'data/texture/minimap_01_spr{suffix}.nltx')).convert('RGBA')
     image.alpha_composite(farmland, (farm_x - farmland.width // 2, farm_y - farmland.height // 2))
     image.convert('RGB').save(image_dir / f'minimap_01_spr{suffix}.webp', quality=82, method=6)

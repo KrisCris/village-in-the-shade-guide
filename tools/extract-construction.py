@@ -1,6 +1,6 @@
 """Extract 樹木建設 construction orders, land purchases and their unlock conditions, read-only.
 
-construction.dat record layout (build 25311578), verified against every row:
+construction.dat record layout (build 25640656), verified against every row:
   0 u64 id; 248 u32 money; 252/260/268 three (u32 item, u32 count) material slots;
   276 u32 build days (CConstructionStatus keeps a days_ counter; relocations are 0);
   280 u32 count limit; 284 u64 gimmick; from 324 four counted u64 flag vectors:
@@ -157,7 +157,7 @@ secret = next(r for r, g in zip(t.records, _string_groups(t)) if g[0] == 'SECRET
 milestones = [u32(secret, 28 + 44 * i) for i in range(u32(secret, 24))]
 
 result = dict(
-    build_id='25311578',
+    build_id='25640656',
     source='construction.dat, facility.dat, gamedefine.dat, event.dat, gameflag.dat, livingtank.dat, secretquest.dat, map_0000_ver120 head; hand-traced scripts listed in tools/extract-construction.py',
     sha256=dict(sorted(sources.items())), scripts=reviewed,
     shop=dict(facility_id='FACILITY_ID_CONSTRUCTION_SHED', hours=texts(shed, 8), closed=texts(shed, 15),

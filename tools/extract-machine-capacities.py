@@ -1,8 +1,8 @@
-"""Read processing slot counts from the verified 25311578 game tables.
+"""Read processing slot counts from the verified 25640656 game tables.
 
-Native GimmickProcessPushItem at 0x14027BE10 checks the first settingArg
+Native GimmickProcessPushItem at 0x140284670 checks the first settingArg
 value: exactly "2" allows three slots, otherwise only slot zero is used
-(0x14027BEB9-0x14027BF0B). This is slots per recipe batch, not output count.
+(0x140284706-0x14028476D). This is slots per recipe batch, not output count.
 Only devices referenced by gimmickprocess.dat belong to this model.
 """
 import argparse
@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     args = parser.parse_args()
     executable_hash = hashlib.sha256((args.game_dir / 'village.exe').read_bytes()).hexdigest()
-    if executable_hash != 'ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05':
+    if executable_hash != '979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5':
         raise ValueError('Unreviewed game executable; verify the native slot rule before extracting')
     archive = FafullfsArchive.open(args.game_dir / 'data.dat')
     raw = {name: archive.read_entry(f'data/database/{name}.dat')
@@ -58,9 +58,9 @@ def main():
     if len({m['item_id'] for m in machines}) != len(machines):
         raise ValueError('Duplicate machine items need a manual data review')
     result = {
-        'build_id': '25311578',
+        'build_id': '25640656',
         'source': 'gimmick.dat first settingArg; gimmickprocess.dat machine references; item.dat IDs',
-        'native_rule': 'GimmickProcessPushItem 0x14027BEB9-0x14027BF0B: first settingArg value "2" => 3 slots, otherwise 1',
+        'native_rule': 'GimmickProcessPushItem 0x140284706-0x14028476D: first settingArg value "2" => 3 slots, otherwise 1',
         'unit': 'simultaneous recipe batches per device',
         'sha256': {**{name + '.dat': hashlib.sha256(value).hexdigest() for name, value in raw.items()},
                    'village.exe': executable_hash},

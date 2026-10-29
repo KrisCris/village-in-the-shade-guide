@@ -7,9 +7,9 @@
       "name": "鸡",
       "nameTranslations": {
         "ja": "ニワトリ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chicken",
+        "fr": "Poule",
+        "es": "Gallina",
         "zh-TW": "雞",
         "ko": "닭",
         "zh-CN": "鸡"
@@ -48,9 +48,9 @@
       "name": "小鸡",
       "nameTranslations": {
         "ja": "ヒヨコ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chick",
+        "fr": "Poussin",
+        "es": "Polluelo",
         "zh-TW": "小雞",
         "ko": "병아리",
         "zh-CN": "小鸡"
@@ -89,9 +89,9 @@
       "name": "鸭",
       "nameTranslations": {
         "ja": "アヒル",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Duck",
+        "fr": "Cane",
+        "es": "Pato",
         "zh-TW": "鴨",
         "ko": "오리",
         "zh-CN": "鸭"
@@ -125,9 +125,9 @@
       "name": "小鸭",
       "nameTranslations": {
         "ja": "アヒルのヒヨコ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Duckling",
+        "fr": "Caneton",
+        "es": "Patito",
         "zh-TW": "小鴨",
         "ko": "새끼 오리",
         "zh-CN": "小鸭"
@@ -161,9 +161,9 @@
       "name": "火鸡",
       "nameTranslations": {
         "ja": "七面鳥",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Turkey",
+        "fr": "Dinde",
+        "es": "Pavo",
         "zh-TW": "火雞",
         "ko": "칠면조",
         "zh-CN": "火鸡"
@@ -190,9 +190,9 @@
       "name": "小火鸡",
       "nameTranslations": {
         "ja": "七面鳥のヒヨコ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Poult",
+        "fr": "Dindonneau",
+        "es": "Pavito",
         "zh-TW": "小火雞",
         "ko": "새끼 칠면조",
         "zh-CN": "小火鸡"
@@ -219,9 +219,9 @@
       "name": "牛",
       "nameTranslations": {
         "ja": "ウシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cow",
+        "fr": "Vache",
+        "es": "Vaca",
         "zh-TW": "牛",
         "ko": "소",
         "zh-CN": "牛"
@@ -258,9 +258,9 @@
       "name": "小牛",
       "nameTranslations": {
         "ja": "子ウシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Calf",
+        "fr": "Veau",
+        "es": "Ternero",
         "zh-TW": "小牛",
         "ko": "송아지",
         "zh-CN": "小牛"
@@ -297,9 +297,9 @@
       "name": "绵羊",
       "nameTranslations": {
         "ja": "ヒツジ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sheep",
+        "fr": "Mouton",
+        "es": "Oveja",
         "zh-TW": "綿羊",
         "ko": "양",
         "zh-CN": "绵羊"
@@ -330,9 +330,9 @@
       "name": "小绵羊",
       "nameTranslations": {
         "ja": "子ヒツジ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Lamb",
+        "fr": "Agneau",
+        "es": "Cordero",
         "zh-TW": "小綿羊",
         "ko": "새끼 양",
         "zh-CN": "小绵羊"
@@ -363,9 +363,9 @@
       "name": "山羊",
       "nameTranslations": {
         "ja": "ヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Goat",
+        "fr": "Chèvre",
+        "es": "Cabra",
         "zh-TW": "山羊",
         "ko": "염소",
         "zh-CN": "山羊"
@@ -402,9 +402,9 @@
       "name": "小山羊",
       "nameTranslations": {
         "ja": "子ヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kid",
+        "fr": "Chevreau",
+        "es": "Cabrito",
         "zh-TW": "小山羊",
         "ko": "새끼 염소",
         "zh-CN": "小山羊"
@@ -441,9 +441,9 @@
       "name": "克什米尔山羊",
       "nameTranslations": {
         "ja": "カシミヤヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cashmere Goat",
+        "fr": "Chèvre cachemire",
+        "es": "Cabra de cachemira",
         "zh-TW": "喀什米爾山羊",
         "ko": "캐시미어",
         "zh-CN": "克什米尔山羊"
@@ -468,9 +468,9 @@
       "name": "克什米尔小山羊",
       "nameTranslations": {
         "ja": "カシミヤ子ヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cashmere Kid",
+        "fr": "Chevreau cachemire",
+        "es": "Cabrito de cachemira",
         "zh-TW": "喀什米爾小山羊",
         "ko": "새끼 캐시미어",
         "zh-CN": "克什米尔小山羊"
@@ -495,9 +495,9 @@
       "name": "猪",
       "nameTranslations": {
         "ja": "ブタ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pig",
+        "fr": "Cochon",
+        "es": "Cerdo",
         "zh-TW": "豬",
         "ko": "돼지",
         "zh-CN": "猪"
@@ -531,9 +531,9 @@
       "name": "小猪",
       "nameTranslations": {
         "ja": "子ブタ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Piglet",
+        "fr": "Porcelet",
+        "es": "Cerdito",
         "zh-TW": "小豬",
         "ko": "새끼 돼지",
         "zh-CN": "小猪"
@@ -566,9 +566,9 @@
       "name": "马",
       "nameTranslations": {
         "ja": "ウマ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Horse",
+        "fr": "Cheval",
+        "es": "Caballo",
         "zh-TW": "馬",
         "ko": "말",
         "zh-CN": "马"
@@ -608,9 +608,9 @@
       "name": "小马",
       "nameTranslations": {
         "ja": "子ウマ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Foal",
+        "fr": "Poulain",
+        "es": "Potro",
         "zh-TW": "小馬",
         "ko": "망아지",
         "zh-CN": "小马"
@@ -650,9 +650,9 @@
       "name": "彩色小鸡／红色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/赤色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (R)",
+        "fr": "Poussin (Rouge)",
+        "es": "Polluelo (rojo)",
         "zh-TW": "彩色小雞／紅色",
         "ko": "컬러 병아리/빨간색",
         "zh-CN": "彩色小鸡／红色"
@@ -677,9 +677,9 @@
       "name": "彩色小鸡／橘色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/橙色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (O)",
+        "fr": "Poussin (Orange)",
+        "es": "Polluelo (naranja)",
         "zh-TW": "彩色小雞／橘色",
         "ko": "컬러 병아리/주황색",
         "zh-CN": "彩色小鸡／橘色"
@@ -704,9 +704,9 @@
       "name": "彩色小鸡／绿色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/緑色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (G)",
+        "fr": "Poussin (Vert)",
+        "es": "Polluelo (verde)",
         "zh-TW": "彩色小雞／綠色",
         "ko": "컬러 병아리/초록색",
         "zh-CN": "彩色小鸡／绿色"
@@ -731,9 +731,9 @@
       "name": "彩色小鸡／水蓝色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/水色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (L. B)",
+        "fr": "Poussin (Bleu clair)",
+        "es": "Polluelo (celeste)",
         "zh-TW": "彩色小雞／水藍色",
         "ko": "컬러 병아리/하늘색",
         "zh-CN": "彩色小鸡／水蓝色"
@@ -758,9 +758,9 @@
       "name": "彩色小鸡／蓝色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/青色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (B)",
+        "fr": "Poussin (Bleu)",
+        "es": "Polluelo (azul)",
         "zh-TW": "彩色小雞／藍色",
         "ko": "컬러 병아리/파란색",
         "zh-CN": "彩色小鸡／蓝色"
@@ -785,9 +785,9 @@
       "name": "彩色小鸡／紫色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/紫色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (P)",
+        "fr": "Poussin (Violet)",
+        "es": "Polluelo (morado)",
         "zh-TW": "彩色小雞／紫色",
         "ko": "컬러 병아리/보라색",
         "zh-CN": "彩色小鸡／紫色"
@@ -812,9 +812,9 @@
       "name": "彩色小鸡／灰色",
       "nameTranslations": {
         "ja": "カラーヒヨコ/灰色",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dyed Chick (Gy)",
+        "fr": "Poussin (Gris)",
+        "es": "Polluelo (gris)",
         "zh-TW": "彩色小雞／灰色",
         "ko": "컬러 병아리/회색",
         "zh-CN": "彩色小鸡／灰色"
@@ -839,9 +839,9 @@
       "name": "公鸡",
       "nameTranslations": {
         "ja": "雄鶏",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rooster",
+        "fr": "Coq",
+        "es": "Gallo",
         "zh-TW": "公雞",
         "ko": "수탉",
         "zh-CN": "公鸡"
@@ -866,9 +866,9 @@
       "name": "牛鬼",
       "nameTranslations": {
         "ja": "牛お化け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ghost Cow",
+        "fr": "Vache fantôme",
+        "es": "Vaca fantasma",
         "zh-TW": "牛鬼",
         "ko": "소 괴물",
         "zh-CN": "牛鬼"
@@ -890,9 +890,9 @@
       "name": "狗",
       "nameTranslations": {
         "ja": "犬",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dog",
+        "fr": "Chien",
+        "es": "Perro",
         "zh-TW": "狗",
         "ko": "개",
         "zh-CN": "狗"
@@ -923,9 +923,9 @@
       "name": "乌骨鸡的小鸡",
       "nameTranslations": {
         "ja": "ウコッケイのヒヨコ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Silkie Chick",
+        "fr": "Poussin Soie",
+        "es": "Polluelo de gallina sedosa",
         "zh-TW": "烏骨雞的小雞",
         "ko": "새끼 오골계",
         "zh-CN": "乌骨鸡的小鸡"
@@ -952,9 +952,9 @@
       "name": "乌骨鸡",
       "nameTranslations": {
         "ja": "ウコッケイ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Silkie",
+        "fr": "Poule Soie",
+        "es": "Gallina sedosa",
         "zh-TW": "烏骨雞",
         "ko": "오골계",
         "zh-CN": "乌骨鸡"
@@ -981,9 +981,9 @@
       "name": "野鸭的小鸭",
       "nameTranslations": {
         "ja": "カモのヒヨコ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mallard Duckling",
+        "fr": "Caneton sauvage",
+        "es": "Patito",
         "zh-TW": "野鴨的小鴨",
         "ko": "새끼 청둥오리",
         "zh-CN": "野鸭的小鸭"
@@ -1011,9 +1011,9 @@
       "name": "野鸭",
       "nameTranslations": {
         "ja": "カモ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mallard",
+        "fr": "Cane sauvage",
+        "es": "Pato",
         "zh-TW": "野鴨",
         "ko": "청둥오리",
         "zh-CN": "野鸭"
@@ -1041,9 +1041,9 @@
       "name": "毛茸茸的小牛",
       "nameTranslations": {
         "ja": "ふさふさの子ウシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fluffy Calf",
+        "fr": "Veau à poils longs",
+        "es": "Ternero peludo",
         "zh-TW": "毛茸茸的小牛",
         "ko": "복슬복슬 송아지",
         "zh-CN": "毛茸茸的小牛"
@@ -1068,9 +1068,9 @@
       "name": "毛茸茸的牛",
       "nameTranslations": {
         "ja": "ふさふさのウシ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fluffy Cow",
+        "fr": "Vache à poils longs",
+        "es": "Vaca peluda",
         "zh-TW": "毛茸茸的牛",
         "ko": "복슬복슬 소",
         "zh-CN": "毛茸茸的牛"
@@ -1095,9 +1095,9 @@
       "name": "斑纹小山羊",
       "nameTranslations": {
         "ja": "まだら子ヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spotted Kid",
+        "fr": "Chevreau tacheté",
+        "es": "Cabrito moteado",
         "zh-TW": "斑紋小山羊",
         "ko": "얼룩무늬 새끼 염소",
         "zh-CN": "斑纹小山羊"
@@ -1122,9 +1122,9 @@
       "name": "斑纹山羊",
       "nameTranslations": {
         "ja": "まだらヤギ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spotted Goat",
+        "fr": "Chèvre tachetée",
+        "es": "Cabra moteada",
         "zh-TW": "斑紋山羊",
         "ko": "얼룩무늬 염소",
         "zh-CN": "斑纹山羊"
@@ -1144,5 +1144,5 @@
       ]
     }
   ],
-  "build_id": "25311578"
+  "build_id": "25640656"
 }

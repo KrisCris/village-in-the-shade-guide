@@ -21,18 +21,18 @@ Re-trace when a script hash below changes.
   entries}. Each entry is {weight, item, weather list, required flag, excluded flag}.
 
 Native code in village.exe (hash below), re-trace when it changes:
-- 0x14024B460 (planting): a seed item with +0x184 set (泥の種) stores a uniform random pick among crops with
+- 0x14024DC20 (planting, pick at 0x14024DDFA): a seed item with +0x184 set (泥の種) stores a uniform random pick among crops with
   type 0, exactly one planting season equal to the current one, the tile's farmland in their soil list, a
   preferred soil other than the paddy (3), and no CROPS_FEATURE_GIANT_CROPS.
-- 0x1402B3F74: the grown mud seed is replaced by that pick, which is marked as mud-grown (+0x72).
-- 0x1402B412A-0x1402B4288 (daily growth): when a mud-grown crop enters the first stage whose form field (+0x98)
-  is set, a crop whose stage names a giant (+0xA8) becomes it if 0x1401E3D90 finds the 24 surrounding tiles of
+- 0x1402BD12B: the grown mud seed is replaced by that pick, which is marked as mud-grown (+0x72).
+- 0x1402BD2F7-0x1402BD441 (daily growth): when a mud-grown crop enters the first stage whose form field (+0x98)
+  is set, a crop whose stage names a giant (+0xA8) becomes it if 0x1401E6E60 finds the 24 surrounding tiles of
   the 5x5 square clear (farmable ground, no object, no type 2/6 crop, no CROPS_FEATURE_GIANT_NOT_REMOVE_CROPS);
-  0x1401E37D0 then removes the crops within 2 tiles. A failed check unmarks the crop, which stays ordinary.
+  0x1401E68A0 then removes the crops within 2 tiles. A failed check unmarks the crop, which stays ordinary.
   Without a giant the crop takes that form (CROPS_FORM_DISASTER). Nothing here is random.
-- 0x1402B3BAC (season change): a mature mud-grown crop 34 (枝豆) takes CROPS_FORM_DISASTER instead of
+- 0x1402BCD88 (season change): a mature mud-grown crop 34 (枝豆) takes CROPS_FORM_DISASTER instead of
   CROPS_FORM_WITHERED_HARVESTABLE.
-- 0x14021AC00-0x14021B2C0 (catch roll): each fishing.dat row weighs int(weight*100). While bait is active,
+- 0x14021DC20-0x14021E3D7 (catch roll): each fishing.dat row weighs int(weight*100). While bait is active,
   GAME_VALUE_GIMMICK_BAIT_TYPE holds its gimmick: 撒き餌 halves trash (fish.dat kind 0), 良質な撒き餌 halves
   trash and multiplies fish (kind 1) by 1.2, 白い撒き餌 gives white fish (kind 2) 3/97 of the running total.
   Without bait white fish get 1/99 of it. 怪異魚 (kind 3) keep their weight.
@@ -50,7 +50,7 @@ from honogurashi_extractor.probe import _string_groups
 read_chunk=runpy.run_path('tools/inspect-lua54.py')['read_chunk']
 game=game_dir(__doc__)
 exe_hash=hashlib.sha256((game/'village.exe').read_bytes()).hexdigest()
-assert exe_hash=='ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05', 'Unreviewed executable build'
+assert exe_hash=='979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5', 'Unreviewed executable build'
 data=FafullfsArchive.open(game/'data.dat')
 reviewed={
     'event_horror_abyss':'572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa',
@@ -75,7 +75,7 @@ def table(name):
 defines={g[1]:g[4] for _,g in table('gamedefine') if len(g)>4}
 def define(key): return int(defines[key])
 values={g[0]:struct.unpack_from('<11i',r) for r,g in table('gamevalue')}
-item_rows=json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))
+item_rows=json.loads(Path('data/generated/build-25640656/entities/items.json').read_text(encoding='utf-8'))
 items={it['numeric_id']:it['id'] for it in item_rows}
 cursed_items={it['id'] for it in item_rows if 10 in (it.get('feature_ids') or [])}
 flags={struct.unpack_from('<I',r)[0]:g[0] for r,g in table('gameflag')}

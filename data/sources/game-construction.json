@@ -1,15 +1,15 @@
 {
-  "build_id": "25311578",
+  "build_id": "25640656",
   "source": "construction.dat, facility.dat, gamedefine.dat, event.dat, gameflag.dat, livingtank.dat, secretquest.dat, map_0000_ver120 head; hand-traced scripts listed in tools/extract-construction.py",
   "sha256": {
-    "construction.dat": "c055e1d24376dee24cf0b275fd91454e328c6270c645621045b8e4b86eef4724",
-    "event.dat": "965cd3d35a56b993caf1753e8464c5af6ba8304f5d9819ad8587e233d594ccfe",
-    "facility.dat": "552a5e07d9093e63fc8b6fa51f69cbc5879e529c16048b2b14cbf6fc234901da",
-    "gamedefine.dat": "b2d5e92c88f3cd1dece9a3e79ad5ac90f79889cb8d6465dac3d9bfa2c41ccee0",
-    "gameflag.dat": "3a3677c73b62b7a2158775611c049831b3d323240de4098fbe0d50e94adaa317",
-    "gimmick.dat": "df11eaf6c995fa2f052a2dbb5baf492c3de52e0194d9b01635fc2621414a2109",
+    "construction.dat": "f2263be4eff01da114c1391ec15f0012c5890df039e08308cb7134623083a6c5",
+    "event.dat": "0087c8a5ab83fb4848d06741af74047467a2946233381fe0351095a65d286547",
+    "facility.dat": "edfa1da3e7b07dea02dfcecd5bc6ca465ebd1e4cf118d3bf627bf8002b5ea215",
+    "gamedefine.dat": "db3474fcb09e069565c395b2531f2a90f67c140a37d212c05e7ed9540a15958e",
+    "gameflag.dat": "e921afafd92d3b2434e78609971cb47f37c4ad973288f993388010a8d811102e",
+    "gimmick.dat": "3aae4b76e1311e8b98b9f116b42f2b9fe42877fd8aae2bf9963190447653dc17",
     "livingtank.dat": "a8a3bf3d1c2ee59ad69901f621fc1f845c0450f9d68f78b22e2acfd910b29a89",
-    "map_0000_ver120_aut.ymwr.head": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf",
+    "map_0000_ver120_aut.ymwr.head": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59",
     "secretquest.dat": "5bb88ef5cf63c58406f3377e3fbf54040c7a66138830415885c66aa795663487"
   },
   "scripts": {
@@ -27,7 +27,7 @@
     },
     "closed": {
       "ja": "土・日曜休み",
-      "zh-CN": "周六、日公休",
+      "zh-CN": "周六、日休息",
       "zh-TW": "週六、日公休"
     },
     "unlock_flag": {
@@ -106,7 +106,7 @@
       "version": null,
       "description": {
         "ja": "木材で建てられたとても広いお家。二階の部屋が広くなる。家の外装を変えることができるようになる。",
-        "zh-CN": "十分宽敞的木造房屋。二楼的房间会变得更加宽敞，并且可以变更房屋的外观。",
+        "zh-CN": "十分宽敞的木结构房屋。二楼的房间会变得更加宽敞，并且可以变更房屋的外观。",
         "zh-TW": "十分寬敞的木造房屋。二樓的房間會變得更加寬敞，並且可以變更房屋的外觀。"
       }
     },
@@ -629,7 +629,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の壁紙。赤が印象的で壁が主役になりそう。",
-        "zh-CN": "能够替换房间风格的壁纸。很抢眼的红色，感觉墙壁反而成为了注目焦点。",
+        "zh-CN": "能够替换房间风格的壁纸。十分抢眼的红色，让墙壁成了视觉焦点。",
         "zh-TW": "能夠替換房間風格的壁紙。很搶眼的紅色，感覺牆壁反而成為了注目焦點。"
       }
     },
@@ -1062,7 +1062,7 @@
       "version": 120,
       "description": {
         "ja": "庭の南側の瓦礫を撤去して、道の先の土地を農地として使えるようにする。費用にはリンに支払う土地代も含む。",
-        "zh-CN": "清理庭院南侧的瓦砾，即可将道路前方的土地开垦为农地。当中包含支付给林的土地费用。",
+        "zh-CN": "清理庭院南侧的瓦砾，即可将道路前方的土地开垦为农地。其中包含支付给林的土地费用。",
         "zh-TW": "清理庭院南側的瓦礫，即可將道路前方的土地開墾為農地。當中包含支付給林的土地費用。"
       }
     }
@@ -1166,21 +1166,6 @@
           "id": 90030,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
           "name_ja": "追加農地拡張の手紙送付"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1214,21 +1199,6 @@
           "id": 90030,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
           "name_ja": "追加農地拡張の手紙送付"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1247,21 +1217,6 @@
           "id": 90031,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00",
           "name_ja": "追加農地拡張のアナウンスデモ"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1280,21 +1235,6 @@
           "id": 90032,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_01",
           "name_ja": "追加農地拡張後の初回デモ"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     }

@@ -1,6 +1,6 @@
 {
   "source": "gamedefine.dat",
-  "build": "25311578",
+  "build": "25640656",
   "constants": {
     "MONEY_MAX": {
       "value": 99999999,
