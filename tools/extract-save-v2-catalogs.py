@@ -22,7 +22,7 @@ def table(name):
 def string(t, row, offset):
     return _table_string(t, row, offset)
 def localized(t, row, offset):
-    return {locale: string(t,row,offset+i*8) for i,locale in enumerate(('ja','slot-1','slot-2','slot-3','zh-TW','ko','zh-CN'))}
+    return {locale: string(t,row,offset+i*8) for i,locale in enumerate(('ja','en','fr','es','zh-TW','ko','zh-CN'))}
 
 def write(name, value):
     value['build_id'] = '25311578'

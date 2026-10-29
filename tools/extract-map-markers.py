@@ -54,7 +54,7 @@ books = {}
 for record, group in zip(table.records, _string_groups(table)):
     index = struct.unpack_from('<I', record, len(record)-20)[0]
     flag = struct.unpack_from('<I',record,len(record)-36)[0]
-    books[index] = dict(id=group[0], name=group[7], nameTranslations={locale:group[1+i] for i,locale in enumerate(('ja','slot-1','slot-2','slot-3','zh-TW','ko','zh-CN'))}, item_numeric_id=struct.unpack_from('<I',record,len(record)-52)[0], prerequisite_flag=flag, progress_label=progress_label(flag))
+    books[index] = dict(id=group[0], name=group[7], nameTranslations={locale:group[1+i] for i,locale in enumerate(('ja','en','fr','es','zh-TW','ko','zh-CN'))}, item_numeric_id=struct.unpack_from('<I',record,len(record)-52)[0], prerequisite_flag=flag, progress_label=progress_label(flag))
 markers = []
 for entry in maps.entries():
     if not entry.name.endswith('.head') or any(s in entry.name for s in ['_sum','_aut','_win']):

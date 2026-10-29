@@ -48,7 +48,7 @@ def test_seven_language_character_gifts_and_birthday_offsets():
     char = normalize_world({"character": table}, Snapshot(items={item.id: item}), {}).characters["CHARA_TEST"]
     assert [gift.preference for gift in char.gift_items] == [1, -1]
     assert (char.birthday_season, char.birthday_day) == ("autumn", 12)
-    assert char.name.translations == {"ja": "トバリ", "slot-1": "", "slot-2": "", "slot-3": "", "zh-TW": "帷", "ko": "토바리", "zh-CN": "帷"}
+    assert char.name.translations == {"ja": "トバリ", "en": "", "fr": "", "es": "", "zh-TW": "帷", "ko": "토바리", "zh-CN": "帷"}
 
 
 def test_seven_language_quest_keeps_ordered_translations():

@@ -1,0 +1,8030 @@
+[
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_APPLE"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_APPLE_TREE",
+    "name": {
+      "aliases": [
+        "苹果树",
+        "蘋果樹",
+        "リンゴの木",
+        "CROPS_ID_APPLE_TREE",
+        "Apple Tree",
+        "Pommier",
+        "Manzano",
+        "사과나무"
+      ],
+      "internal": "CROPS_ID_APPLE_TREE",
+      "ja": "リンゴの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Apple Tree",
+        "es": "Manzano",
+        "fr": "Pommier",
+        "ja": "リンゴの木",
+        "ko": "사과나무",
+        "zh-CN": "苹果树",
+        "zh-TW": "蘋果樹"
+      },
+      "zh_hans": "苹果树",
+      "zh_hant": "蘋果樹"
+    },
+    "numeric_id": 100,
+    "perennial": {
+      "bearing_seasons": [
+        "autumn"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_APPLE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 9,
+    "growth_points": 900,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ASPARAGUS"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "item_numeric_id": 100000,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_ASPARAGUS",
+        "item_numeric_id": 100000,
+        "quantity": 1,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_ASPARAGUS",
+    "name": {
+      "aliases": [
+        "芦笋",
+        "蘆筍",
+        "アスパラガス",
+        "CROPS_ID_ASPARAGUS",
+        "Asparagus",
+        "Asperge",
+        "Espárrago",
+        "아스파라거스"
+      ],
+      "internal": "CROPS_ID_ASPARAGUS",
+      "ja": "アスパラガス",
+      "review_status": "official",
+      "translations": {
+        "en": "Asparagus",
+        "es": "Espárrago",
+        "fr": "Asperge",
+        "ja": "アスパラガス",
+        "ko": "아스파라거스",
+        "zh-CN": "芦笋",
+        "zh-TW": "蘆筍"
+      },
+      "zh_hans": "芦笋",
+      "zh_hant": "蘆筍"
+    },
+    "numeric_id": 17,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ASPARAGUS"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BANANA"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_BANANA_TREE",
+    "name": {
+      "aliases": [
+        "香蕉树",
+        "香蕉樹",
+        "バナナの木",
+        "CROPS_ID_BANANA_TREE",
+        "Banana Tree",
+        "Bananier",
+        "Platanero",
+        "바나나나무"
+      ],
+      "internal": "CROPS_ID_BANANA_TREE",
+      "ja": "バナナの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Banana Tree",
+        "es": "Platanero",
+        "fr": "Bananier",
+        "ja": "バナナの木",
+        "ko": "바나나나무",
+        "zh-CN": "香蕉树",
+        "zh-TW": "香蕉樹"
+      },
+      "zh_hans": "香蕉树",
+      "zh_hant": "香蕉樹"
+    },
+    "numeric_id": 111,
+    "perennial": {
+      "bearing_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": true,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BANANA"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_BIG_CHINESE_CABBAGE",
+    "name": {
+      "aliases": [
+        "巨大作物_大白菜",
+        "巨大作物_ハクサイ",
+        "CROPS_ID_BIG_CHINESE_CABBAGE",
+        "GiantCrop_NapaCabbage",
+        "Cultures géantes_Chou chinois",
+        "Cultivo gigante_Col china",
+        "거대 작물_배추"
+      ],
+      "internal": "CROPS_ID_BIG_CHINESE_CABBAGE",
+      "ja": "巨大作物_ハクサイ",
+      "review_status": "official",
+      "translations": {
+        "en": "GiantCrop_NapaCabbage",
+        "es": "Cultivo gigante_Col china",
+        "fr": "Cultures géantes_Chou chinois",
+        "ja": "巨大作物_ハクサイ",
+        "ko": "거대 작물_배추",
+        "zh-CN": "巨大作物_大白菜",
+        "zh-TW": "巨大作物_大白菜"
+      },
+      "zh_hans": "巨大作物_大白菜",
+      "zh_hant": "巨大作物_大白菜"
+    },
+    "numeric_id": 603,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_BIG_CORN",
+    "name": {
+      "aliases": [
+        "巨大作物_玉米",
+        "巨大作物_トウモロコシ",
+        "CROPS_ID_BIG_CORN",
+        "GiantCrop_corn",
+        "Cultures géantes_Maïs",
+        "Cultivo gigante_Maíz",
+        "거대 작물_옥수수"
+      ],
+      "internal": "CROPS_ID_BIG_CORN",
+      "ja": "巨大作物_トウモロコシ",
+      "review_status": "official",
+      "translations": {
+        "en": "GiantCrop_corn",
+        "es": "Cultivo gigante_Maíz",
+        "fr": "Cultures géantes_Maïs",
+        "ja": "巨大作物_トウモロコシ",
+        "ko": "거대 작물_옥수수",
+        "zh-CN": "巨大作物_玉米",
+        "zh-TW": "巨大作物_玉米"
+      },
+      "zh_hans": "巨大作物_玉米",
+      "zh_hant": "巨大作物_玉米"
+    },
+    "numeric_id": 601,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_BIG_TARO",
+    "name": {
+      "aliases": [
+        "巨大作物_芋头",
+        "巨大作物_芋頭",
+        "巨大作物_サトイモ",
+        "CROPS_ID_BIG_TARO",
+        "GiantCrop_taro",
+        "Cultures géantes_Taro",
+        "Cultivo gigante_Taro",
+        "거대 작물_토란"
+      ],
+      "internal": "CROPS_ID_BIG_TARO",
+      "ja": "巨大作物_サトイモ",
+      "review_status": "official",
+      "translations": {
+        "en": "GiantCrop_taro",
+        "es": "Cultivo gigante_Taro",
+        "fr": "Cultures géantes_Taro",
+        "ja": "巨大作物_サトイモ",
+        "ko": "거대 작물_토란",
+        "zh-CN": "巨大作物_芋头",
+        "zh-TW": "巨大作物_芋頭"
+      },
+      "zh_hans": "巨大作物_芋头",
+      "zh_hant": "巨大作物_芋頭"
+    },
+    "numeric_id": 602,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_BIG_TURNIP",
+    "name": {
+      "aliases": [
+        "巨大作物_大头菜",
+        "巨大作物_大頭菜",
+        "巨大作物_カブ",
+        "CROPS_ID_BIG_TURNIP",
+        "GiantCrop_turnip",
+        "Cultures géantes_Navet",
+        "Cultivo gigante_Nabo",
+        "거대 작물_순무"
+      ],
+      "internal": "CROPS_ID_BIG_TURNIP",
+      "ja": "巨大作物_カブ",
+      "review_status": "official",
+      "translations": {
+        "en": "GiantCrop_turnip",
+        "es": "Cultivo gigante_Nabo",
+        "fr": "Cultures géantes_Navet",
+        "ja": "巨大作物_カブ",
+        "ko": "거대 작물_순무",
+        "zh-CN": "巨大作物_大头菜",
+        "zh-TW": "巨大作物_大頭菜"
+      },
+      "zh_hans": "巨大作物_大头菜",
+      "zh_hant": "巨大作物_大頭菜"
+    },
+    "numeric_id": 600,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BLUEBERRY"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "item_numeric_id": 100230,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_BLUEBERRY",
+        "item_numeric_id": 100230,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_BLUEBERRY",
+    "name": {
+      "aliases": [
+        "蓝莓",
+        "藍莓",
+        "ブルーベリー",
+        "CROPS_ID_BLUEBERRY",
+        "Blueberries",
+        "Myrtille",
+        "Arándano",
+        "블루베리"
+      ],
+      "internal": "CROPS_ID_BLUEBERRY",
+      "ja": "ブルーベリー",
+      "review_status": "official",
+      "translations": {
+        "en": "Blueberries",
+        "es": "Arándano",
+        "fr": "Myrtille",
+        "ja": "ブルーベリー",
+        "ko": "블루베리",
+        "zh-CN": "蓝莓",
+        "zh-TW": "藍莓"
+      },
+      "zh_hans": "蓝莓",
+      "zh_hant": "藍莓"
+    },
+    "numeric_id": 35,
+    "perennial": null,
+    "regrow_days": 2,
+    "regrow_points": 200,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BLUEBERRY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_BUCKWHEAT"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_BUCKWHEAT",
+        "item_numeric_id": 100270,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_BUCKWHEAT",
+        "item_numeric_id": 100271,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_BUCKWHEAT",
+    "name": {
+      "aliases": [
+        "荞麦",
+        "蕎麥",
+        "ソバ",
+        "CROPS_ID_BUCKWHEAT",
+        "Buckwheat",
+        "Sarrasin",
+        "Alforfón",
+        "메밀"
+      ],
+      "internal": "CROPS_ID_BUCKWHEAT",
+      "ja": "ソバ",
+      "review_status": "official",
+      "translations": {
+        "en": "Buckwheat",
+        "es": "Alforfón",
+        "fr": "Sarrasin",
+        "ja": "ソバ",
+        "ko": "메밀",
+        "zh-CN": "荞麦",
+        "zh-TW": "蕎麥"
+      },
+      "zh_hans": "荞麦",
+      "zh_hant": "蕎麥"
+    },
+    "numeric_id": 45,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_BUCKWHEAT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CABBAGE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_CABBAGE",
+        "item_numeric_id": 100060,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_CABBAGE",
+        "item_numeric_id": 100061,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_CABBAGE",
+    "name": {
+      "aliases": [
+        "卷心菜",
+        "高麗菜",
+        "キャベツ",
+        "CROPS_ID_CABBAGE",
+        "高丽菜",
+        "Cabbage",
+        "Chou",
+        "Col",
+        "양배추"
+      ],
+      "internal": "CROPS_ID_CABBAGE",
+      "ja": "キャベツ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cabbage",
+        "es": "Col",
+        "fr": "Chou",
+        "ja": "キャベツ",
+        "ko": "양배추",
+        "zh-CN": "卷心菜",
+        "zh-TW": "高麗菜"
+      },
+      "zh_hans": "卷心菜",
+      "zh_hant": "高麗菜"
+    },
+    "numeric_id": 2,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CABBAGE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CACAO"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_CACAO_TREE",
+    "name": {
+      "aliases": [
+        "可可树",
+        "可可樹",
+        "カカオの木",
+        "CROPS_ID_CACAO_TREE",
+        "Cacao Tree",
+        "Cacaoyer",
+        "Árbol de cacao",
+        "카카오나무"
+      ],
+      "internal": "CROPS_ID_CACAO_TREE",
+      "ja": "カカオの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Cacao Tree",
+        "es": "Árbol de cacao",
+        "fr": "Cacaoyer",
+        "ja": "カカオの木",
+        "ko": "카카오나무",
+        "zh-CN": "可可树",
+        "zh-TW": "可可樹"
+      },
+      "zh_hans": "可可树",
+      "zh_hant": "可可樹"
+    },
+    "numeric_id": 112,
+    "perennial": {
+      "bearing_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": true,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CACAO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CARNATION"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_CARNATION",
+        "item_numeric_id": 111070,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_CARNATION",
+    "name": {
+      "aliases": [
+        "康乃馨",
+        "カーネーション",
+        "CROPS_ID_CARNATION",
+        "Carnation",
+        "Œillet",
+        "Clavel",
+        "카네이션"
+      ],
+      "internal": "CROPS_ID_CARNATION",
+      "ja": "カーネーション",
+      "review_status": "official",
+      "translations": {
+        "en": "Carnation",
+        "es": "Clavel",
+        "fr": "Œillet",
+        "ja": "カーネーション",
+        "ko": "카네이션",
+        "zh-CN": "康乃馨",
+        "zh-TW": "康乃馨"
+      },
+      "zh_hans": "康乃馨",
+      "zh_hant": "康乃馨"
+    },
+    "numeric_id": 8,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CARNATION"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CARROT"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_CARROT",
+        "item_numeric_id": 100080,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_CARROT",
+    "name": {
+      "aliases": [
+        "胡萝卜",
+        "紅蘿蔔",
+        "ニンジン",
+        "CROPS_ID_CARROT",
+        "红萝卜",
+        "Carrot",
+        "Carotte",
+        "Zanahoria",
+        "당근"
+      ],
+      "internal": "CROPS_ID_CARROT",
+      "ja": "ニンジン",
+      "review_status": "official",
+      "translations": {
+        "en": "Carrot",
+        "es": "Zanahoria",
+        "fr": "Carotte",
+        "ja": "ニンジン",
+        "ko": "당근",
+        "zh-CN": "胡萝卜",
+        "zh-TW": "紅蘿蔔"
+      },
+      "zh_hans": "胡萝卜",
+      "zh_hant": "紅蘿蔔"
+    },
+    "numeric_id": 11,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CARROT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHAMOMILE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_CHAMOMILE",
+        "item_numeric_id": 111000,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_CHAMOMILE",
+    "name": {
+      "aliases": [
+        "洋甘菊",
+        "カモミール",
+        "CROPS_ID_CHAMOMILE",
+        "Chamomile",
+        "Camomille",
+        "Manzanilla",
+        "카모마일"
+      ],
+      "internal": "CROPS_ID_CHAMOMILE",
+      "ja": "カモミール",
+      "review_status": "official",
+      "translations": {
+        "en": "Chamomile",
+        "es": "Manzanilla",
+        "fr": "Camomille",
+        "ja": "カモミール",
+        "ko": "카모마일",
+        "zh-CN": "洋甘菊",
+        "zh-TW": "洋甘菊"
+      },
+      "zh_hans": "洋甘菊",
+      "zh_hant": "洋甘菊"
+    },
+    "numeric_id": 6,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHAMOMILE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHERRIES"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_CHERRY_TREE",
+    "name": {
+      "aliases": [
+        "樱桃树",
+        "櫻桃樹",
+        "サクランボの木",
+        "CROPS_ID_CHERRY_TREE",
+        "Cherry Tree",
+        "Cerisier",
+        "Cerezo",
+        "체리나무"
+      ],
+      "internal": "CROPS_ID_CHERRY_TREE",
+      "ja": "サクランボの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Cherry Tree",
+        "es": "Cerezo",
+        "fr": "Cerisier",
+        "ja": "サクランボの木",
+        "ko": "체리나무",
+        "zh-CN": "樱桃树",
+        "zh-TW": "櫻桃樹"
+      },
+      "zh_hans": "樱桃树",
+      "zh_hant": "櫻桃樹"
+    },
+    "numeric_id": 101,
+    "perennial": {
+      "bearing_seasons": [
+        "spring"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHERRIES"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHINESE_CABBAGE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+        "item_numeric_id": 100360,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_CHINESE_CABBAGE",
+    "name": {
+      "aliases": [
+        "大白菜",
+        "ハクサイ",
+        "CROPS_ID_CHINESE_CABBAGE",
+        "Napa Cabbage",
+        "Chou chinois",
+        "Col china",
+        "배추"
+      ],
+      "internal": "CROPS_ID_CHINESE_CABBAGE",
+      "ja": "ハクサイ",
+      "review_status": "official",
+      "translations": {
+        "en": "Napa Cabbage",
+        "es": "Col china",
+        "fr": "Chou chinois",
+        "ja": "ハクサイ",
+        "ko": "배추",
+        "zh-CN": "大白菜",
+        "zh-TW": "大白菜"
+      },
+      "zh_hans": "大白菜",
+      "zh_hant": "大白菜"
+    },
+    "numeric_id": 61,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHINESE_CABBAGE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CHRYSANTHEMUM"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_CHRYSANTHEMUM",
+        "item_numeric_id": 111190,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_CHRYSANTHEMUM",
+    "name": {
+      "aliases": [
+        "菊花",
+        "キク",
+        "CROPS_ID_CHRYSANTHEMUM",
+        "Chrysanthemum",
+        "Chrysanthème",
+        "Crisantemo",
+        "국화"
+      ],
+      "internal": "CROPS_ID_CHRYSANTHEMUM",
+      "ja": "キク",
+      "review_status": "official",
+      "translations": {
+        "en": "Chrysanthemum",
+        "es": "Crisantemo",
+        "fr": "Chrysanthème",
+        "ja": "キク",
+        "ko": "국화",
+        "zh-CN": "菊花",
+        "zh-TW": "菊花"
+      },
+      "zh_hans": "菊花",
+      "zh_hant": "菊花"
+    },
+    "numeric_id": 51,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CHRYSANTHEMUM"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 13,
+    "growth_points": 1300,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CORN"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1300,
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "item_numeric_id": 100160,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_CORN",
+        "item_numeric_id": 100160,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_CORN",
+    "name": {
+      "aliases": [
+        "玉米",
+        "トウモロコシ",
+        "CROPS_ID_CORN",
+        "Corn",
+        "Maïs",
+        "Maíz",
+        "옥수수"
+      ],
+      "internal": "CROPS_ID_CORN",
+      "ja": "トウモロコシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Corn",
+        "es": "Maíz",
+        "fr": "Maïs",
+        "ja": "トウモロコシ",
+        "ko": "옥수수",
+        "zh-CN": "玉米",
+        "zh-TW": "玉米"
+      },
+      "zh_hans": "玉米",
+      "zh_hant": "玉米"
+    },
+    "numeric_id": 25,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CORN"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_COSMOS"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_COSMOS",
+        "item_numeric_id": 111180,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_COSMOS",
+    "name": {
+      "aliases": [
+        "波斯菊",
+        "コスモス",
+        "CROPS_ID_COSMOS",
+        "Cosmos",
+        "코스모스"
+      ],
+      "internal": "CROPS_ID_COSMOS",
+      "ja": "コスモス",
+      "review_status": "official",
+      "translations": {
+        "en": "Cosmos",
+        "es": "Cosmos",
+        "fr": "Cosmos",
+        "ja": "コスモス",
+        "ko": "코스모스",
+        "zh-CN": "波斯菊",
+        "zh-TW": "波斯菊"
+      },
+      "zh_hans": "波斯菊",
+      "zh_hant": "波斯菊"
+    },
+    "numeric_id": 50,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_COSMOS"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 9,
+    "growth_points": 900,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_CUCUMBER"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "item_numeric_id": 100150,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_CUCUMBER",
+        "item_numeric_id": 100150,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_CUCUMBER",
+        "item_numeric_id": 100151,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_CUCUMBER",
+    "name": {
+      "aliases": [
+        "黄瓜",
+        "小黃瓜",
+        "キュウリ",
+        "CROPS_ID_CUCUMBER",
+        "小黄瓜",
+        "Cucumber",
+        "Concombre",
+        "Pepino",
+        "오이"
+      ],
+      "internal": "CROPS_ID_CUCUMBER",
+      "ja": "キュウリ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cucumber",
+        "es": "Pepino",
+        "fr": "Concombre",
+        "ja": "キュウリ",
+        "ko": "오이",
+        "zh-CN": "黄瓜",
+        "zh-TW": "小黃瓜"
+      },
+      "zh_hans": "黄瓜",
+      "zh_hant": "小黃瓜"
+    },
+    "numeric_id": 24,
+    "perennial": null,
+    "regrow_days": 3,
+    "regrow_points": 300,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_CUCUMBER"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAFFODIL"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_DAFFODIL",
+        "item_numeric_id": 111200,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_DAFFODIL",
+    "name": {
+      "aliases": [
+        "水仙",
+        "スイセン",
+        "CROPS_ID_DAFFODIL",
+        "Daffodil",
+        "Narcisse",
+        "Narciso",
+        "수선화"
+      ],
+      "internal": "CROPS_ID_DAFFODIL",
+      "ja": "スイセン",
+      "review_status": "official",
+      "translations": {
+        "en": "Daffodil",
+        "es": "Narciso",
+        "fr": "Narcisse",
+        "ja": "スイセン",
+        "ko": "수선화",
+        "zh-CN": "水仙",
+        "zh-TW": "水仙"
+      },
+      "zh_hans": "水仙",
+      "zh_hant": "水仙"
+    },
+    "numeric_id": 62,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DAFFODIL"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAHLIA"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_DAHLIA",
+        "item_numeric_id": 111170,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_DAHLIA",
+    "name": {
+      "aliases": [
+        "大理花",
+        "ダリア",
+        "CROPS_ID_DAHLIA",
+        "Dahlia",
+        "Dalia",
+        "다알리아"
+      ],
+      "internal": "CROPS_ID_DAHLIA",
+      "ja": "ダリア",
+      "review_status": "official",
+      "translations": {
+        "en": "Dahlia",
+        "es": "Dalia",
+        "fr": "Dahlia",
+        "ja": "ダリア",
+        "ko": "다알리아",
+        "zh-CN": "大理花",
+        "zh-TW": "大理花"
+      },
+      "zh_hans": "大理花",
+      "zh_hant": "大理花"
+    },
+    "numeric_id": 54,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DAHLIA"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 9,
+    "growth_points": 900,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DAIKON"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_DAIKON",
+        "item_numeric_id": 100370,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_DAIKON",
+        "item_numeric_id": 100371,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_DAIKON",
+    "name": {
+      "aliases": [
+        "白萝卜",
+        "白蘿蔔",
+        "ダイコン",
+        "CROPS_ID_DAIKON",
+        "Daikon",
+        "Radis blanc",
+        "Rábano blanco",
+        "무"
+      ],
+      "internal": "CROPS_ID_DAIKON",
+      "ja": "ダイコン",
+      "review_status": "official",
+      "translations": {
+        "en": "Daikon",
+        "es": "Rábano blanco",
+        "fr": "Radis blanc",
+        "ja": "ダイコン",
+        "ko": "무",
+        "zh-CN": "白萝卜",
+        "zh-TW": "白蘿蔔"
+      },
+      "zh_hans": "白萝卜",
+      "zh_hant": "白蘿蔔"
+    },
+    "numeric_id": 57,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_JAPANESE_WHITE_RADISH"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_DIANTHUS"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_DIANTHUS",
+        "item_numeric_id": 111040,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_DIANTHUS",
+    "name": {
+      "aliases": [
+        "瞿麦",
+        "瞿麥",
+        "なでしこ",
+        "CROPS_ID_DIANTHUS",
+        "Dianthus",
+        "Clavelina",
+        "술패랭이꽃"
+      ],
+      "internal": "CROPS_ID_DIANTHUS",
+      "ja": "なでしこ",
+      "review_status": "official",
+      "translations": {
+        "en": "Dianthus",
+        "es": "Clavelina",
+        "fr": "Dianthus",
+        "ja": "なでしこ",
+        "ko": "술패랭이꽃",
+        "zh-CN": "瞿麦",
+        "zh-TW": "瞿麥"
+      },
+      "zh_hans": "瞿麦",
+      "zh_hant": "瞿麥"
+    },
+    "numeric_id": 15,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_DIANTHUS"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 650,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_EDAMAME",
+      "ITEM_ID_CROPS_BEAN_SPROUTS",
+      "ITEM_ID_CROPS_SOYBEAN"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 130,
+        "item_id": "ITEM_ID_CROPS_BEAN_SPROUTS",
+        "item_numeric_id": 100450,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 650,
+        "item_id": "ITEM_ID_CROPS_EDAMAME",
+        "item_numeric_id": 100190,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_EDAMAME",
+        "item_numeric_id": 100190,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_SOYBEAN",
+        "item_numeric_id": 100330,
+        "quantity": 6,
+        "state": 9
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_SOYBEAN",
+        "item_numeric_id": 100331,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_EDAMAME",
+    "name": {
+      "aliases": [
+        "毛豆",
+        "エダマメ",
+        "CROPS_ID_EDAMAME",
+        "Edamame",
+        "풋콩"
+      ],
+      "internal": "CROPS_ID_EDAMAME",
+      "ja": "エダマメ",
+      "review_status": "official",
+      "translations": {
+        "en": "Edamame",
+        "es": "Edamame",
+        "fr": "Edamame",
+        "ja": "エダマメ",
+        "ko": "풋콩",
+        "zh-CN": "毛豆",
+        "zh-TW": "毛豆"
+      },
+      "zh_hans": "毛豆",
+      "zh_hant": "毛豆"
+    },
+    "numeric_id": 34,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_EDAMAME"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 11,
+    "growth_points": 1100,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_EGGPLANT"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "item_numeric_id": 100120,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_EGGPLANT",
+        "item_numeric_id": 100120,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_EGGPLANT",
+    "name": {
+      "aliases": [
+        "茄子",
+        "ナス",
+        "CROPS_ID_EGGPLANT",
+        "Eggplant",
+        "Aubergine",
+        "Berenjena",
+        "가지"
+      ],
+      "internal": "CROPS_ID_EGGPLANT",
+      "ja": "ナス",
+      "review_status": "official",
+      "translations": {
+        "en": "Eggplant",
+        "es": "Berenjena",
+        "fr": "Aubergine",
+        "ja": "ナス",
+        "ko": "가지",
+        "zh-CN": "茄子",
+        "zh-TW": "茄子"
+      },
+      "zh_hans": "茄子",
+      "zh_hant": "茄子"
+    },
+    "numeric_id": 22,
+    "perennial": null,
+    "regrow_days": 3,
+    "regrow_points": 300,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_EGGPLANT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_FORGET_ME_NOT"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_FORGET_ME_NOT",
+        "item_numeric_id": 111060,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_FORGET_ME_NOT",
+    "name": {
+      "aliases": [
+        "勿忘我",
+        "勿忘草",
+        "CROPS_ID_FORGET_ME_NOT",
+        "Forget-Me-Not",
+        "Myosotis",
+        "Nomeolvides",
+        "물망초"
+      ],
+      "internal": "CROPS_ID_FORGET_ME_NOT",
+      "ja": "勿忘草",
+      "review_status": "official",
+      "translations": {
+        "en": "Forget-Me-Not",
+        "es": "Nomeolvides",
+        "fr": "Myosotis",
+        "ja": "勿忘草",
+        "ko": "물망초",
+        "zh-CN": "勿忘我",
+        "zh-TW": "勿忘我"
+      },
+      "zh_hans": "勿忘我",
+      "zh_hant": "勿忘我"
+    },
+    "numeric_id": 16,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_FORGET_ME_NOT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GARLIC"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_GARLIC",
+        "item_numeric_id": 100180,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_GARLIC",
+    "name": {
+      "aliases": [
+        "大蒜",
+        "ニンニク",
+        "CROPS_ID_GARLIC",
+        "Garlic",
+        "Ail",
+        "Ajo",
+        "마늘"
+      ],
+      "internal": "CROPS_ID_GARLIC",
+      "ja": "ニンニク",
+      "review_status": "official",
+      "translations": {
+        "en": "Garlic",
+        "es": "Ajo",
+        "fr": "Ail",
+        "ja": "ニンニク",
+        "ko": "마늘",
+        "zh-CN": "大蒜",
+        "zh-TW": "大蒜"
+      },
+      "zh_hans": "大蒜",
+      "zh_hant": "大蒜"
+    },
+    "numeric_id": 43,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GARLIC"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GINGER"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_GINGER",
+        "item_numeric_id": 100170,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_GINGER",
+        "item_numeric_id": 100171,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_GINGER",
+    "name": {
+      "aliases": [
+        "姜",
+        "薑",
+        "ショウガ",
+        "CROPS_ID_GINGER",
+        "Ginger",
+        "Gingembre",
+        "Jengibre",
+        "생강"
+      ],
+      "internal": "CROPS_ID_GINGER",
+      "ja": "ショウガ",
+      "review_status": "official",
+      "translations": {
+        "en": "Ginger",
+        "es": "Jengibre",
+        "fr": "Gingembre",
+        "ja": "ショウガ",
+        "ko": "생강",
+        "zh-CN": "姜",
+        "zh-TW": "薑"
+      },
+      "zh_hans": "姜",
+      "zh_hant": "薑"
+    },
+    "numeric_id": 33,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GINGER"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GRAPES"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_GRAPE_TREE",
+    "name": {
+      "aliases": [
+        "葡萄树",
+        "葡萄樹",
+        "ブドウの木",
+        "CROPS_ID_GRAPE_TREE",
+        "Grapevine",
+        "Vigne",
+        "Vid",
+        "포도나무"
+      ],
+      "internal": "CROPS_ID_GRAPE_TREE",
+      "ja": "ブドウの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Grapevine",
+        "es": "Vid",
+        "fr": "Vigne",
+        "ja": "ブドウの木",
+        "ko": "포도나무",
+        "zh-CN": "葡萄树",
+        "zh-TW": "葡萄樹"
+      },
+      "zh_hans": "葡萄树",
+      "zh_hant": "葡萄樹"
+    },
+    "numeric_id": 109,
+    "perennial": {
+      "bearing_seasons": [
+        "summer"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GRAPES"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_GYPSOPHILA"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_GYPSOPHILA",
+        "item_numeric_id": 111100,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_GYPSOPHILA",
+    "name": {
+      "aliases": [
+        "满天星",
+        "滿天星",
+        "カスミソウ",
+        "CROPS_ID_GYPSOPHILA",
+        "Baby's Breath",
+        "Gypsophile",
+        "Flor de nube",
+        "안개꽃"
+      ],
+      "internal": "CROPS_ID_GYPSOPHILA",
+      "ja": "カスミソウ",
+      "review_status": "official",
+      "translations": {
+        "en": "Baby's Breath",
+        "es": "Flor de nube",
+        "fr": "Gypsophile",
+        "ja": "カスミソウ",
+        "ko": "안개꽃",
+        "zh-CN": "满天星",
+        "zh-TW": "滿天星"
+      },
+      "zh_hans": "满天星",
+      "zh_hant": "滿天星"
+    },
+    "numeric_id": 37,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_GYPSOPHILA"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 8,
+    "growth_points": 800,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HIBISCUS"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_HIBISCUS",
+        "item_numeric_id": 111130,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_HIBISCUS",
+    "name": {
+      "aliases": [
+        "木槿",
+        "ハイビスカス",
+        "CROPS_ID_HIBISCUS",
+        "Hibiscus",
+        "Hibisco",
+        "히비스커스"
+      ],
+      "internal": "CROPS_ID_HIBISCUS",
+      "ja": "ハイビスカス",
+      "review_status": "official",
+      "translations": {
+        "en": "Hibiscus",
+        "es": "Hibisco",
+        "fr": "Hibiscus",
+        "ja": "ハイビスカス",
+        "ko": "히비스커스",
+        "zh-CN": "木槿",
+        "zh-TW": "木槿"
+      },
+      "zh_hans": "木槿",
+      "zh_hant": "木槿"
+    },
+    "numeric_id": 39,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HIBISCUS"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_HIDING_GRASS",
+    "name": {
+      "aliases": [
+        "除魔南天竹",
+        "魔除けナンテン",
+        "CROPS_ID_HIDING_GRASS",
+        "Nandina",
+        "Bambou-talisman",
+        "Nandina protectora",
+        "액막이 남천"
+      ],
+      "internal": "CROPS_ID_HIDING_GRASS",
+      "ja": "魔除けナンテン",
+      "review_status": "official",
+      "translations": {
+        "en": "Nandina",
+        "es": "Nandina protectora",
+        "fr": "Bambou-talisman",
+        "ja": "魔除けナンテン",
+        "ko": "액막이 남천",
+        "zh-CN": "除魔南天竹",
+        "zh-TW": "除魔南天竹"
+      },
+      "zh_hans": "除魔南天竹",
+      "zh_hant": "除魔南天竹"
+    },
+    "numeric_id": 510,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 14,
+    "growth_points": 1400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HOPS"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_HOPS",
+        "item_numeric_id": 100250,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_HOPS",
+        "item_numeric_id": 100250,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_HOPS",
+    "name": {
+      "aliases": [
+        "啤酒花",
+        "ホップ",
+        "CROPS_ID_HOPS",
+        "Hops",
+        "Houblon",
+        "Lúpulo",
+        "홉"
+      ],
+      "internal": "CROPS_ID_HOPS",
+      "ja": "ホップ",
+      "review_status": "official",
+      "translations": {
+        "en": "Hops",
+        "es": "Lúpulo",
+        "fr": "Houblon",
+        "ja": "ホップ",
+        "ko": "홉",
+        "zh-CN": "啤酒花",
+        "zh-TW": "啤酒花"
+      },
+      "zh_hans": "啤酒花",
+      "zh_hant": "啤酒花"
+    },
+    "numeric_id": 36,
+    "perennial": null,
+    "regrow_days": 3,
+    "regrow_points": 300,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HOPS"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_HYACINTH"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_HYACINTH",
+        "item_numeric_id": 111010,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_HYACINTH",
+    "name": {
+      "aliases": [
+        "风信子",
+        "風信子",
+        "ヒヤシンス",
+        "CROPS_ID_HYACINTH",
+        "Hyacinth",
+        "Jacinthe",
+        "Jacinto",
+        "히아신스"
+      ],
+      "internal": "CROPS_ID_HYACINTH",
+      "ja": "ヒヤシンス",
+      "review_status": "official",
+      "translations": {
+        "en": "Hyacinth",
+        "es": "Jacinto",
+        "fr": "Jacinthe",
+        "ja": "ヒヤシンス",
+        "ko": "히아신스",
+        "zh-CN": "风信子",
+        "zh-TW": "風信子"
+      },
+      "zh_hans": "风信子",
+      "zh_hant": "風信子"
+    },
+    "numeric_id": 13,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_HYACINTH"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_IRIS"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_IRIS",
+        "item_numeric_id": 111020,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_IRIS",
+    "name": {
+      "aliases": [
+        "鸢尾花",
+        "鳶尾花",
+        "アヤメ",
+        "CROPS_ID_IRIS",
+        "Iris",
+        "붓꽃"
+      ],
+      "internal": "CROPS_ID_IRIS",
+      "ja": "アヤメ",
+      "review_status": "official",
+      "translations": {
+        "en": "Iris",
+        "es": "Iris",
+        "fr": "Iris",
+        "ja": "アヤメ",
+        "ko": "붓꽃",
+        "zh-CN": "鸢尾花",
+        "zh-TW": "鳶尾花"
+      },
+      "zh_hans": "鸢尾花",
+      "zh_hant": "鳶尾花"
+    },
+    "numeric_id": 19,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_IRIS"
+    ]
+  },
+  {
+    "cultivation_method": "菌类栽培",
+    "growth_days": 11,
+    "growth_points": 1100,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "item_numeric_id": 100320,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+        "item_numeric_id": 100320,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_KIKURAGE",
+    "name": {
+      "aliases": [
+        "木耳",
+        "キクラゲ",
+        "CROPS_ID_KIKURAGE",
+        "Wood Ear Mushroom",
+        "Champignon noir",
+        "Seta heimuer",
+        "목이버섯"
+      ],
+      "internal": "CROPS_ID_KIKURAGE",
+      "ja": "キクラゲ",
+      "review_status": "official",
+      "translations": {
+        "en": "Wood Ear Mushroom",
+        "es": "Seta heimuer",
+        "fr": "Champignon noir",
+        "ja": "キクラゲ",
+        "ko": "목이버섯",
+        "zh-CN": "木耳",
+        "zh-TW": "木耳"
+      },
+      "zh_hans": "木耳",
+      "zh_hant": "木耳"
+    },
+    "numeric_id": 56,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WOOD_EAR_MUSHROOM"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LAVENDER"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_LAVENDER",
+        "item_numeric_id": 111160,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_LAVENDER",
+    "name": {
+      "aliases": [
+        "薰衣草",
+        "ラベンダー",
+        "CROPS_ID_LAVENDER",
+        "Lavender",
+        "Lavande",
+        "Lavanda",
+        "라벤더"
+      ],
+      "internal": "CROPS_ID_LAVENDER",
+      "ja": "ラベンダー",
+      "review_status": "official",
+      "translations": {
+        "en": "Lavender",
+        "es": "Lavanda",
+        "fr": "Lavande",
+        "ja": "ラベンダー",
+        "ko": "라벤더",
+        "zh-CN": "薰衣草",
+        "zh-TW": "薰衣草"
+      },
+      "zh_hans": "薰衣草",
+      "zh_hant": "薰衣草"
+    },
+    "numeric_id": 31,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LAVENDER"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LEMON"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_LEMON_TREE",
+    "name": {
+      "aliases": [
+        "柠檬树",
+        "檸檬樹",
+        "レモンの木",
+        "CROPS_ID_LEMON_TREE",
+        "Lemon Tree",
+        "Citronnier",
+        "Limonero",
+        "레몬나무"
+      ],
+      "internal": "CROPS_ID_LEMON_TREE",
+      "ja": "レモンの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Lemon Tree",
+        "es": "Limonero",
+        "fr": "Citronnier",
+        "ja": "レモンの木",
+        "ko": "레몬나무",
+        "zh-CN": "柠檬树",
+        "zh-TW": "檸檬樹"
+      },
+      "zh_hans": "柠檬树",
+      "zh_hant": "檸檬樹"
+    },
+    "numeric_id": 105,
+    "perennial": {
+      "bearing_seasons": [
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LEMON"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 11,
+    "growth_points": 1100,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LETTUCE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_LETTUCE",
+        "item_numeric_id": 100070,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_LETTUCE",
+    "name": {
+      "aliases": [
+        "莴苣",
+        "萵苣",
+        "レタス",
+        "CROPS_ID_LETTUCE",
+        "Lettuce",
+        "Laitue",
+        "Lechuga",
+        "양상추"
+      ],
+      "internal": "CROPS_ID_LETTUCE",
+      "ja": "レタス",
+      "review_status": "official",
+      "translations": {
+        "en": "Lettuce",
+        "es": "Lechuga",
+        "fr": "Laitue",
+        "ja": "レタス",
+        "ko": "양상추",
+        "zh-CN": "莴苣",
+        "zh-TW": "萵苣"
+      },
+      "zh_hans": "莴苣",
+      "zh_hant": "萵苣"
+    },
+    "numeric_id": 10,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LETTUCE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_LILY_OF_THE_VALLEY",
+        "item_numeric_id": 111120,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_LILY_OF_THE_VALLEY",
+    "name": {
+      "aliases": [
+        "铃兰",
+        "鈴蘭",
+        "スズラン",
+        "CROPS_ID_LILY_OF_THE_VALLEY",
+        "Lily of the Valley",
+        "Muguet",
+        "Lirio del valle",
+        "은방울꽃"
+      ],
+      "internal": "CROPS_ID_LILY_OF_THE_VALLEY",
+      "ja": "スズラン",
+      "review_status": "official",
+      "translations": {
+        "en": "Lily of the Valley",
+        "es": "Lirio del valle",
+        "fr": "Muguet",
+        "ja": "スズラン",
+        "ko": "은방울꽃",
+        "zh-CN": "铃兰",
+        "zh-TW": "鈴蘭"
+      },
+      "zh_hans": "铃兰",
+      "zh_hant": "鈴蘭"
+    },
+    "numeric_id": 44,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LILY_OF_THE_VALLEY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_LOTUS_ROOT"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
+        "item_numeric_id": 100420,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_LOTUS_ROOT",
+    "name": {
+      "aliases": [
+        "莲藕",
+        "蓮藕",
+        "レンコン",
+        "CROPS_ID_LOTUS_ROOT",
+        "Lotus",
+        "Racine de lotus",
+        "Raíz de loto",
+        "연근"
+      ],
+      "internal": "CROPS_ID_LOTUS_ROOT",
+      "ja": "レンコン",
+      "review_status": "official",
+      "translations": {
+        "en": "Lotus",
+        "es": "Raíz de loto",
+        "fr": "Racine de lotus",
+        "ja": "レンコン",
+        "ko": "연근",
+        "zh-CN": "莲藕",
+        "zh-TW": "蓮藕"
+      },
+      "zh_hans": "莲藕",
+      "zh_hant": "蓮藕"
+    },
+    "numeric_id": 66,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_LOTUS_ROOT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ORANGE"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_MANDARIN_ORANGE_TREE",
+    "name": {
+      "aliases": [
+        "橘子树",
+        "橘子樹",
+        "ミカンの木",
+        "CROPS_ID_MANDARIN_ORANGE_TREE",
+        "Orange Tree",
+        "Mandarinier",
+        "Mandarino",
+        "귤나무"
+      ],
+      "internal": "CROPS_ID_MANDARIN_ORANGE_TREE",
+      "ja": "ミカンの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Orange Tree",
+        "es": "Mandarino",
+        "fr": "Mandarinier",
+        "ja": "ミカンの木",
+        "ko": "귤나무",
+        "zh-CN": "橘子树",
+        "zh-TW": "橘子樹"
+      },
+      "zh_hans": "橘子树",
+      "zh_hant": "橘子樹"
+    },
+    "numeric_id": 104,
+    "perennial": {
+      "bearing_seasons": [
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ORANGE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MANGO"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_MANGO_TREE",
+    "name": {
+      "aliases": [
+        "芒果树",
+        "芒果樹",
+        "マンゴーの木",
+        "CROPS_ID_MANGO_TREE",
+        "Mango Tree",
+        "Manguier",
+        "Árbol de mango",
+        "망고나무"
+      ],
+      "internal": "CROPS_ID_MANGO_TREE",
+      "ja": "マンゴーの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Mango Tree",
+        "es": "Árbol de mango",
+        "fr": "Manguier",
+        "ja": "マンゴーの木",
+        "ko": "망고나무",
+        "zh-CN": "芒果树",
+        "zh-TW": "芒果樹"
+      },
+      "zh_hans": "芒果树",
+      "zh_hant": "芒果樹"
+    },
+    "numeric_id": 113,
+    "perennial": {
+      "bearing_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": true,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MANGO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MARIGOLD"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_MARIGOLD",
+        "item_numeric_id": 111110,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_MARIGOLD",
+    "name": {
+      "aliases": [
+        "万寿菊",
+        "萬壽菊",
+        "マリーゴールド",
+        "CROPS_ID_MARIGOLD",
+        "Marigold",
+        "Souci",
+        "Caléndula",
+        "마리골드"
+      ],
+      "internal": "CROPS_ID_MARIGOLD",
+      "ja": "マリーゴールド",
+      "review_status": "official",
+      "translations": {
+        "en": "Marigold",
+        "es": "Caléndula",
+        "fr": "Souci",
+        "ja": "マリーゴールド",
+        "ko": "마리골드",
+        "zh-CN": "万寿菊",
+        "zh-TW": "萬壽菊"
+      },
+      "zh_hans": "万寿菊",
+      "zh_hant": "萬壽菊"
+    },
+    "numeric_id": 38,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MARIGOLD"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 14,
+    "growth_points": 1400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MELON"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_MELON",
+        "item_numeric_id": 100210,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_MELON",
+    "name": {
+      "aliases": [
+        "甜瓜",
+        "メロン",
+        "CROPS_ID_MELON",
+        "Melon",
+        "Melón",
+        "멜론"
+      ],
+      "internal": "CROPS_ID_MELON",
+      "ja": "メロン",
+      "review_status": "official",
+      "translations": {
+        "en": "Melon",
+        "es": "Melón",
+        "fr": "Melon",
+        "ja": "メロン",
+        "ko": "멜론",
+        "zh-CN": "甜瓜",
+        "zh-TW": "甜瓜"
+      },
+      "zh_hans": "甜瓜",
+      "zh_hant": "甜瓜"
+    },
+    "numeric_id": 41,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MELON"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MORNING_GLORY"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_MORNING_GLORY",
+        "item_numeric_id": 111090,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_MORNING_GLORY",
+    "name": {
+      "aliases": [
+        "牵牛花",
+        "牽牛花",
+        "アサガオ",
+        "CROPS_ID_MORNING_GLORY",
+        "Morning Glory",
+        "Liseron bleu",
+        "Campanilla",
+        "나팔꽃"
+      ],
+      "internal": "CROPS_ID_MORNING_GLORY",
+      "ja": "アサガオ",
+      "review_status": "official",
+      "translations": {
+        "en": "Morning Glory",
+        "es": "Campanilla",
+        "fr": "Liseron bleu",
+        "ja": "アサガオ",
+        "ko": "나팔꽃",
+        "zh-CN": "牵牛花",
+        "zh-TW": "牽牛花"
+      },
+      "zh_hans": "牵牛花",
+      "zh_hant": "牽牛花"
+    },
+    "numeric_id": 29,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MORNING_GLORY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 1,
+    "growth_points": 100,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_MUD_SEEDS",
+    "name": {
+      "aliases": [
+        "泥土种子",
+        "泥土種子",
+        "泥の種",
+        "CROPS_ID_MUD_SEEDS",
+        "Dorotabo Seed",
+        "Graines de boue",
+        "Semilla de barro",
+        "진흙 씨앗"
+      ],
+      "internal": "CROPS_ID_MUD_SEEDS",
+      "ja": "泥の種",
+      "review_status": "official",
+      "translations": {
+        "en": "Dorotabo Seed",
+        "es": "Semilla de barro",
+        "fr": "Graines de boue",
+        "ja": "泥の種",
+        "ko": "진흙 씨앗",
+        "zh-CN": "泥土种子",
+        "zh-TW": "泥土種子"
+      },
+      "zh_hans": "泥土种子",
+      "zh_hant": "泥土種子"
+    },
+    "numeric_id": 501,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_MULBERRY_LEAF",
+      "ITEM_ID_CROPS_MULBERRY"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "item_numeric_id": 100430,
+        "quantity": 2,
+        "state": 5
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_MULBERRY",
+        "item_numeric_id": 100440,
+        "quantity": 2,
+        "state": 5
+      }
+    ],
+    "id": "CROPS_ID_MULBERRY",
+    "name": {
+      "aliases": [
+        "桑叶",
+        "桑葉",
+        "桑の葉",
+        "CROPS_ID_MULBERRY",
+        "Mulberry Leaf",
+        "Feuille de mûrier",
+        "Hoja de morera",
+        "뽕잎"
+      ],
+      "internal": "CROPS_ID_MULBERRY",
+      "ja": "桑の葉",
+      "review_status": "official",
+      "translations": {
+        "en": "Mulberry Leaf",
+        "es": "Hoja de morera",
+        "fr": "Feuille de mûrier",
+        "ja": "桑の葉",
+        "ko": "뽕잎",
+        "zh-CN": "桑叶",
+        "zh-TW": "桑葉"
+      },
+      "zh_hans": "桑叶",
+      "zh_hant": "桑葉"
+    },
+    "numeric_id": 67,
+    "perennial": {
+      "bearing_seasons": [
+        "summer"
+      ],
+      "kind": "shrub",
+      "rebear_days": 2,
+      "rebear_points": 200
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_MULBERRY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_AKEBI",
+    "name": {
+      "aliases": [
+        "木通",
+        "アケビ",
+        "CROPS_ID_OBJECT_AKEBI",
+        "Akebi",
+        "Akébie",
+        "Akebia",
+        "으름"
+      ],
+      "internal": "CROPS_ID_OBJECT_AKEBI",
+      "ja": "アケビ",
+      "review_status": "official",
+      "translations": {
+        "en": "Akebi",
+        "es": "Akebia",
+        "fr": "Akébie",
+        "ja": "アケビ",
+        "ko": "으름",
+        "zh-CN": "木通",
+        "zh-TW": "木通"
+      },
+      "zh_hans": "木通",
+      "zh_hant": "木通"
+    },
+    "numeric_id": 2107,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
+    "name": {
+      "aliases": [
+        "竹笋",
+        "竹筍",
+        "タケノコ",
+        "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
+        "Bamboo Shoot",
+        "Pousse de bambou",
+        "Brote de bambú",
+        "죽순"
+      ],
+      "internal": "CROPS_ID_OBJECT_BAMBOO_SHOOTS",
+      "ja": "タケノコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Bamboo Shoot",
+        "es": "Brote de bambú",
+        "fr": "Pousse de bambou",
+        "ja": "タケノコ",
+        "ko": "죽순",
+        "zh-CN": "竹笋",
+        "zh-TW": "竹筍"
+      },
+      "zh_hans": "竹笋",
+      "zh_hant": "竹筍"
+    },
+    "numeric_id": 2100,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 20,
+    "growth_points": 2000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BANBOO",
+    "name": {
+      "aliases": [
+        "竹子",
+        "竹",
+        "CROPS_ID_OBJECT_BANBOO",
+        "Bamboo",
+        "Bambou",
+        "Bambú",
+        "대나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_BANBOO",
+      "ja": "竹",
+      "review_status": "official",
+      "translations": {
+        "en": "Bamboo",
+        "es": "Bambú",
+        "fr": "Bambou",
+        "ja": "竹",
+        "ko": "대나무",
+        "zh-CN": "竹子",
+        "zh-TW": "竹子"
+      },
+      "zh_hans": "竹子",
+      "zh_hant": "竹子"
+    },
+    "numeric_id": 1600,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BAYBERRY",
+    "name": {
+      "aliases": [
+        "杨梅",
+        "楊梅",
+        "ヤマモモ",
+        "CROPS_ID_OBJECT_BAYBERRY",
+        "Red Bayberry",
+        "Fraise chinoise",
+        "Madroño japonés",
+        "양매"
+      ],
+      "internal": "CROPS_ID_OBJECT_BAYBERRY",
+      "ja": "ヤマモモ",
+      "review_status": "official",
+      "translations": {
+        "en": "Red Bayberry",
+        "es": "Madroño japonés",
+        "fr": "Fraise chinoise",
+        "ja": "ヤマモモ",
+        "ko": "양매",
+        "zh-CN": "杨梅",
+        "zh-TW": "楊梅"
+      },
+      "zh_hans": "杨梅",
+      "zh_hant": "楊梅"
+    },
+    "numeric_id": 2103,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BEETLE",
+    "name": {
+      "aliases": [
+        "独角仙",
+        "獨角仙",
+        "カブトムシ",
+        "CROPS_ID_OBJECT_BEETLE",
+        "Rhinoceros Beetle",
+        "Scarabée rhinocéros",
+        "Escarabajo rinoceronte",
+        "장수풍뎅이"
+      ],
+      "internal": "CROPS_ID_OBJECT_BEETLE",
+      "ja": "カブトムシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Rhinoceros Beetle",
+        "es": "Escarabajo rinoceronte",
+        "fr": "Scarabée rhinocéros",
+        "ja": "カブトムシ",
+        "ko": "장수풍뎅이",
+        "zh-CN": "独角仙",
+        "zh-TW": "獨角仙"
+      },
+      "zh_hans": "独角仙",
+      "zh_hant": "獨角仙"
+    },
+    "numeric_id": 2150,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BRACKEN",
+    "name": {
+      "aliases": [
+        "蕨",
+        "ワラビ",
+        "CROPS_ID_OBJECT_BRACKEN",
+        "Bracken",
+        "Fougère",
+        "Helecho",
+        "고사리"
+      ],
+      "internal": "CROPS_ID_OBJECT_BRACKEN",
+      "ja": "ワラビ",
+      "review_status": "official",
+      "translations": {
+        "en": "Bracken",
+        "es": "Helecho",
+        "fr": "Fougère",
+        "ja": "ワラビ",
+        "ko": "고사리",
+        "zh-CN": "蕨",
+        "zh-TW": "蕨"
+      },
+      "zh_hans": "蕨",
+      "zh_hant": "蕨"
+    },
+    "numeric_id": 2000,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
+    "name": {
+      "aliases": [
+        "蜂斗菜花苞",
+        "ふきのとう",
+        "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
+        "Butterbur",
+        "Pétasite",
+        "Petasita",
+        "머위 줄기"
+      ],
+      "internal": "CROPS_ID_OBJECT_BUTTERBUR_SCAPE",
+      "ja": "ふきのとう",
+      "review_status": "official",
+      "translations": {
+        "en": "Butterbur",
+        "es": "Petasita",
+        "fr": "Pétasite",
+        "ja": "ふきのとう",
+        "ko": "머위 줄기",
+        "zh-CN": "蜂斗菜花苞",
+        "zh-TW": "蜂斗菜花苞"
+      },
+      "zh_hans": "蜂斗菜花苞",
+      "zh_hant": "蜂斗菜花苞"
+    },
+    "numeric_id": 2101,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
+    "name": {
+      "aliases": [
+        "石蒜",
+        "彼岸花",
+        "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
+        "Red Spider Lily",
+        "Lycoris rouge",
+        "Lirio rojo",
+        "석산"
+      ],
+      "internal": "CROPS_ID_OBJECT_CLUSTER_AMARYLLIS",
+      "ja": "彼岸花",
+      "review_status": "official",
+      "translations": {
+        "en": "Red Spider Lily",
+        "es": "Lirio rojo",
+        "fr": "Lycoris rouge",
+        "ja": "彼岸花",
+        "ko": "석산",
+        "zh-CN": "石蒜",
+        "zh-TW": "石蒜"
+      },
+      "zh_hans": "石蒜",
+      "zh_hant": "石蒜"
+    },
+    "numeric_id": 2004,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_COD_BUD",
+    "name": {
+      "aliases": [
+        "楤木芽",
+        "タラの芽",
+        "CROPS_ID_OBJECT_COD_BUD",
+        "Taranome",
+        "Pousse d’aralie",
+        "Brote de aralia",
+        "두릅"
+      ],
+      "internal": "CROPS_ID_OBJECT_COD_BUD",
+      "ja": "タラの芽",
+      "review_status": "official",
+      "translations": {
+        "en": "Taranome",
+        "es": "Brote de aralia",
+        "fr": "Pousse d’aralie",
+        "ja": "タラの芽",
+        "ko": "두릅",
+        "zh-CN": "楤木芽",
+        "zh-TW": "楤木芽"
+      },
+      "zh_hans": "楤木芽",
+      "zh_hant": "楤木芽"
+    },
+    "numeric_id": 2200,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_COIN",
+    "name": {
+      "aliases": [
+        "被埋起来的硬币",
+        "被埋起來的硬幣",
+        "埋められたコイン",
+        "CROPS_ID_OBJECT_COIN",
+        "Buried Token",
+        "Jeton enfoui",
+        "Moneda enterrada",
+        "묻힌 코인"
+      ],
+      "internal": "CROPS_ID_OBJECT_COIN",
+      "ja": "埋められたコイン",
+      "review_status": "official",
+      "translations": {
+        "en": "Buried Token",
+        "es": "Moneda enterrada",
+        "fr": "Jeton enfoui",
+        "ja": "埋められたコイン",
+        "ko": "묻힌 코인",
+        "zh-CN": "被埋起来的硬币",
+        "zh-TW": "被埋起來的硬幣"
+      },
+      "zh_hans": "被埋起来的硬币",
+      "zh_hant": "被埋起來的硬幣"
+    },
+    "numeric_id": 2201,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
+    "name": {
+      "aliases": [
+        "芒草",
+        "ススキ",
+        "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
+        "Silver Grass",
+        "Herbe à éléphant",
+        "Hierba de otoño",
+        "억새"
+      ],
+      "internal": "CROPS_ID_OBJECT_CUTTING_SILVER_GRASS",
+      "ja": "ススキ",
+      "review_status": "official",
+      "translations": {
+        "en": "Silver Grass",
+        "es": "Hierba de otoño",
+        "fr": "Herbe à éléphant",
+        "ja": "ススキ",
+        "ko": "억새",
+        "zh-CN": "芒草",
+        "zh-TW": "芒草"
+      },
+      "zh_hans": "芒草",
+      "zh_hant": "芒草"
+    },
+    "numeric_id": 3000,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_DANDELION",
+    "name": {
+      "aliases": [
+        "蒲公英",
+        "タンポポ",
+        "CROPS_ID_OBJECT_DANDELION",
+        "Dandelion",
+        "Pissenlit",
+        "Diente de león",
+        "민들레"
+      ],
+      "internal": "CROPS_ID_OBJECT_DANDELION",
+      "ja": "タンポポ",
+      "review_status": "official",
+      "translations": {
+        "en": "Dandelion",
+        "es": "Diente de león",
+        "fr": "Pissenlit",
+        "ja": "タンポポ",
+        "ko": "민들레",
+        "zh-CN": "蒲公英",
+        "zh-TW": "蒲公英"
+      },
+      "zh_hans": "蒲公英",
+      "zh_hant": "蒲公英"
+    },
+    "numeric_id": 2001,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_DONG_QUAI",
+    "name": {
+      "aliases": [
+        "当归",
+        "當歸",
+        "トウキ",
+        "CROPS_ID_OBJECT_DONG_QUAI",
+        "Toki Plant",
+        "Angélique",
+        "Angélica",
+        "당귀"
+      ],
+      "internal": "CROPS_ID_OBJECT_DONG_QUAI",
+      "ja": "トウキ",
+      "review_status": "official",
+      "translations": {
+        "en": "Toki Plant",
+        "es": "Angélica",
+        "fr": "Angélique",
+        "ja": "トウキ",
+        "ko": "당귀",
+        "zh-CN": "当归",
+        "zh-TW": "當歸"
+      },
+      "zh_hans": "当归",
+      "zh_hant": "當歸"
+    },
+    "numeric_id": 2300,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_FALLEN_TREE",
+    "name": {
+      "aliases": [
+        "倒木",
+        "CROPS_ID_OBJECT_FALLEN_TREE",
+        "Fallen Tree",
+        "Arbre déraciné",
+        "Árbol caído",
+        "쓰러진 나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_FALLEN_TREE",
+      "ja": "倒木",
+      "review_status": "official",
+      "translations": {
+        "en": "Fallen Tree",
+        "es": "Árbol caído",
+        "fr": "Arbre déraciné",
+        "ja": "倒木",
+        "ko": "쓰러진 나무",
+        "zh-CN": "倒木",
+        "zh-TW": "倒木"
+      },
+      "zh_hans": "倒木",
+      "zh_hant": "倒木"
+    },
+    "numeric_id": 1201,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_FUYUICHIGO",
+    "name": {
+      "aliases": [
+        "寒莓",
+        "フユイチゴ",
+        "CROPS_ID_OBJECT_FUYUICHIGO",
+        "Winter Raspberry",
+        "Framboise d’hiver",
+        "Frambuesa de invierno",
+        "겨울딸기"
+      ],
+      "internal": "CROPS_ID_OBJECT_FUYUICHIGO",
+      "ja": "フユイチゴ",
+      "review_status": "official",
+      "translations": {
+        "en": "Winter Raspberry",
+        "es": "Frambuesa de invierno",
+        "fr": "Framboise d’hiver",
+        "ja": "フユイチゴ",
+        "ko": "겨울딸기",
+        "zh-CN": "寒莓",
+        "zh-TW": "寒莓"
+      },
+      "zh_hans": "寒莓",
+      "zh_hant": "寒莓"
+    },
+    "numeric_id": 2112,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_GINKGO_NUT",
+    "name": {
+      "aliases": [
+        "银杏果",
+        "銀杏果",
+        "ギンナン",
+        "CROPS_ID_OBJECT_GINKGO_NUT",
+        "Ginkgo Nut",
+        "Noix de ginkgo",
+        "Nuez de ginkgo",
+        "은행"
+      ],
+      "internal": "CROPS_ID_OBJECT_GINKGO_NUT",
+      "ja": "ギンナン",
+      "review_status": "official",
+      "translations": {
+        "en": "Ginkgo Nut",
+        "es": "Nuez de ginkgo",
+        "fr": "Noix de ginkgo",
+        "ja": "ギンナン",
+        "ko": "은행",
+        "zh-CN": "银杏果",
+        "zh-TW": "銀杏果"
+      },
+      "zh_hans": "银杏果",
+      "zh_hant": "銀杏果"
+    },
+    "numeric_id": 2113,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_GRASS",
+    "name": {
+      "aliases": [
+        "牧草",
+        "CROPS_ID_OBJECT_GRASS",
+        "Hay",
+        "Fourrage",
+        "Hierba forrajera",
+        "목초"
+      ],
+      "internal": "CROPS_ID_OBJECT_GRASS",
+      "ja": "牧草",
+      "review_status": "official",
+      "translations": {
+        "en": "Hay",
+        "es": "Hierba forrajera",
+        "fr": "Fourrage",
+        "ja": "牧草",
+        "ko": "목초",
+        "zh-CN": "牧草",
+        "zh-TW": "牧草"
+      },
+      "zh_hans": "牧草",
+      "zh_hant": "牧草"
+    },
+    "numeric_id": 1500,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_HORSETAIL",
+    "name": {
+      "aliases": [
+        "笔头菜",
+        "筆頭菜",
+        "つくし",
+        "CROPS_ID_OBJECT_HORSETAIL",
+        "Horsetail",
+        "Prêle des champs",
+        "Cola de caballo",
+        "쇠뜨기"
+      ],
+      "internal": "CROPS_ID_OBJECT_HORSETAIL",
+      "ja": "つくし",
+      "review_status": "official",
+      "translations": {
+        "en": "Horsetail",
+        "es": "Cola de caballo",
+        "fr": "Prêle des champs",
+        "ja": "つくし",
+        "ko": "쇠뜨기",
+        "zh-CN": "笔头菜",
+        "zh-TW": "筆頭菜"
+      },
+      "zh_hans": "笔头菜",
+      "zh_hant": "筆頭菜"
+    },
+    "numeric_id": 2003,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK",
+    "name": {
+      "aliases": [
+        "巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK",
+        "Giant Boulder",
+        "Gros rocher",
+        "Roca gigante",
+        "거암"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK",
+      "ja": "巨岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Giant Boulder",
+        "es": "Roca gigante",
+        "fr": "Gros rocher",
+        "ja": "巨岩",
+        "ko": "거암",
+        "zh-CN": "巨岩",
+        "zh-TW": "巨岩"
+      },
+      "zh_hans": "巨岩",
+      "zh_hant": "巨岩"
+    },
+    "numeric_id": 1400,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
+    "name": {
+      "aliases": [
+        "坚硬的巨岩",
+        "堅硬的巨岩",
+        "堅い巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
+        "Giant Sturdy Boulder",
+        "Gros rocher solide",
+        "Roca gigante resistente",
+        "단단한 거암"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK_HARD",
+      "ja": "堅い巨岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Giant Sturdy Boulder",
+        "es": "Roca gigante resistente",
+        "fr": "Gros rocher solide",
+        "ja": "堅い巨岩",
+        "ko": "단단한 거암",
+        "zh-CN": "坚硬的巨岩",
+        "zh-TW": "堅硬的巨岩"
+      },
+      "zh_hans": "坚硬的巨岩",
+      "zh_hant": "堅硬的巨岩"
+    },
+    "numeric_id": 1401,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
+    "name": {
+      "aliases": [
+        "非常坚硬的巨岩",
+        "非常堅硬的巨岩",
+        "すごく堅い巨岩",
+        "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
+        "Giant Stalwart Boulder",
+        "Gros rocher très solide",
+        "Roca gigante muy resistente",
+        "무척 단단한 거암"
+      ],
+      "internal": "CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD",
+      "ja": "すごく堅い巨岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Giant Stalwart Boulder",
+        "es": "Roca gigante muy resistente",
+        "fr": "Gros rocher très solide",
+        "ja": "すごく堅い巨岩",
+        "ko": "무척 단단한 거암",
+        "zh-CN": "非常坚硬的巨岩",
+        "zh-TW": "非常堅硬的巨岩"
+      },
+      "zh_hans": "非常坚硬的巨岩",
+      "zh_hant": "非常堅硬的巨岩"
+    },
+    "numeric_id": 1402,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
+    "name": {
+      "aliases": [
+        "三叶草",
+        "三葉草",
+        "ミツバ",
+        "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
+        "Honewort",
+        "Mitsuba",
+        "Perejil",
+        "파드득나물"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_HONEYWORT",
+      "ja": "ミツバ",
+      "review_status": "official",
+      "translations": {
+        "en": "Honewort",
+        "es": "Perejil",
+        "fr": "Mitsuba",
+        "ja": "ミツバ",
+        "ko": "파드득나물",
+        "zh-CN": "三叶草",
+        "zh-TW": "三葉草"
+      },
+      "zh_hans": "三叶草",
+      "zh_hant": "三葉草"
+    },
+    "numeric_id": 2002,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
+    "name": {
+      "aliases": [
+        "山椒",
+        "CROPS_ID_OBJECT_JAPANESE_PEPPER",
+        "Prickly Ash",
+        "Poivre chinois",
+        "Pimienta japonesa",
+        "초피"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_PEPPER",
+      "ja": "山椒",
+      "review_status": "official",
+      "translations": {
+        "en": "Prickly Ash",
+        "es": "Pimienta japonesa",
+        "fr": "Poivre chinois",
+        "ja": "山椒",
+        "ko": "초피",
+        "zh-CN": "山椒",
+        "zh-TW": "山椒"
+      },
+      "zh_hans": "山椒",
+      "zh_hant": "山椒"
+    },
+    "numeric_id": 2008,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_JAPANESE_YAM",
+    "name": {
+      "aliases": [
+        "野山药",
+        "野山藥",
+        "自然薯",
+        "CROPS_ID_OBJECT_JAPANESE_YAM",
+        "Wild Yam",
+        "Igname sauvage",
+        "Ñame silvestre",
+        "참마"
+      ],
+      "internal": "CROPS_ID_OBJECT_JAPANESE_YAM",
+      "ja": "自然薯",
+      "review_status": "official",
+      "translations": {
+        "en": "Wild Yam",
+        "es": "Ñame silvestre",
+        "fr": "Igname sauvage",
+        "ja": "自然薯",
+        "ko": "참마",
+        "zh-CN": "野山药",
+        "zh-TW": "野山藥"
+      },
+      "zh_hans": "野山药",
+      "zh_hant": "野山藥"
+    },
+    "numeric_id": 2108,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_1",
+        "Large Kodama Rock",
+        "Rocher de Kodama",
+        "Roca de Kodama",
+        "나무 영혼의 방위"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_1",
+      "ja": "木霊の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Large Kodama Rock",
+        "es": "Roca de Kodama",
+        "fr": "Rocher de Kodama",
+        "ja": "木霊の岩",
+        "ko": "나무 영혼의 방위",
+        "zh-CN": "木灵之岩",
+        "zh-TW": "木靈之岩"
+      },
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3010,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_2",
+        "Large Kodama Rock",
+        "Rocher de Kodama",
+        "Roca de Kodama",
+        "나무 영혼의 방위"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_2",
+      "ja": "木霊の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Large Kodama Rock",
+        "es": "Roca de Kodama",
+        "fr": "Rocher de Kodama",
+        "ja": "木霊の岩",
+        "ko": "나무 영혼의 방위",
+        "zh-CN": "木灵之岩",
+        "zh-TW": "木靈之岩"
+      },
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3011,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
+    "name": {
+      "aliases": [
+        "木灵之岩",
+        "木靈之岩",
+        "木霊の岩",
+        "CROPS_ID_OBJECT_KODAMA_ROCK_3",
+        "Large Kodama Rock",
+        "Rocher de Kodama",
+        "Roca de Kodama",
+        "나무 영혼의 방위"
+      ],
+      "internal": "CROPS_ID_OBJECT_KODAMA_ROCK_3",
+      "ja": "木霊の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Large Kodama Rock",
+        "es": "Roca de Kodama",
+        "fr": "Rocher de Kodama",
+        "ja": "木霊の岩",
+        "ko": "나무 영혼의 방위",
+        "zh-CN": "木灵之岩",
+        "zh-TW": "木靈之岩"
+      },
+      "zh_hans": "木灵之岩",
+      "zh_hant": "木靈之岩"
+    },
+    "numeric_id": 3012,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_LILY",
+    "name": {
+      "aliases": [
+        "百合花",
+        "ユリ",
+        "CROPS_ID_OBJECT_LILY",
+        "Lily",
+        "Lys",
+        "Lirio",
+        "백합"
+      ],
+      "internal": "CROPS_ID_OBJECT_LILY",
+      "ja": "ユリ",
+      "review_status": "official",
+      "translations": {
+        "en": "Lily",
+        "es": "Lirio",
+        "fr": "Lys",
+        "ja": "ユリ",
+        "ko": "백합",
+        "zh-CN": "百合花",
+        "zh-TW": "百合花"
+      },
+      "zh_hans": "百合花",
+      "zh_hant": "百合花"
+    },
+    "numeric_id": 2006,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_LILY_ROOT",
+    "name": {
+      "aliases": [
+        "百合根",
+        "ユリ根",
+        "CROPS_ID_OBJECT_LILY_ROOT",
+        "Lily Bulb",
+        "Bulbe de lys",
+        "Raíz de lirio",
+        "백합 뿌리"
+      ],
+      "internal": "CROPS_ID_OBJECT_LILY_ROOT",
+      "ja": "ユリ根",
+      "review_status": "official",
+      "translations": {
+        "en": "Lily Bulb",
+        "es": "Raíz de lirio",
+        "fr": "Bulbe de lys",
+        "ja": "ユリ根",
+        "ko": "백합 뿌리",
+        "zh-CN": "百合根",
+        "zh-TW": "百合根"
+      },
+      "zh_hans": "百合根",
+      "zh_hant": "百合根"
+    },
+    "numeric_id": 2007,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_MATSUTAKE",
+    "name": {
+      "aliases": [
+        "松茸",
+        "マツタケ",
+        "CROPS_ID_OBJECT_MATSUTAKE",
+        "Matsutake Mushroom",
+        "Matsutake",
+        "Seta matsutake",
+        "송이버섯"
+      ],
+      "internal": "CROPS_ID_OBJECT_MATSUTAKE",
+      "ja": "マツタケ",
+      "review_status": "official",
+      "translations": {
+        "en": "Matsutake Mushroom",
+        "es": "Seta matsutake",
+        "fr": "Matsutake",
+        "ja": "マツタケ",
+        "ko": "송이버섯",
+        "zh-CN": "松茸",
+        "zh-TW": "松茸"
+      },
+      "zh_hans": "松茸",
+      "zh_hant": "松茸"
+    },
+    "numeric_id": 2110,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 2,
+    "growth_points": 200,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_MUD_SEEDS",
+    "name": {
+      "aliases": [
+        "泥土种子（物品）",
+        "泥土種子（物品）",
+        "泥の種(オブジェクト)",
+        "CROPS_ID_OBJECT_MUD_SEEDS",
+        "Dorotabo Seed (Object)",
+        "Graines de boue (objet)",
+        "Semilla de barro (Objeto)",
+        "진흙 씨앗(오브젝트)"
+      ],
+      "internal": "CROPS_ID_OBJECT_MUD_SEEDS",
+      "ja": "泥の種(オブジェクト)",
+      "review_status": "official",
+      "translations": {
+        "en": "Dorotabo Seed (Object)",
+        "es": "Semilla de barro (Objeto)",
+        "fr": "Graines de boue (objet)",
+        "ja": "泥の種(オブジェクト)",
+        "ko": "진흙 씨앗(오브젝트)",
+        "zh-CN": "泥土种子（物品）",
+        "zh-TW": "泥土種子（物品）"
+      },
+      "zh_hans": "泥土种子（物品）",
+      "zh_hant": "泥土種子（物品）"
+    },
+    "numeric_id": 500,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_PINE_CONE",
+    "name": {
+      "aliases": [
+        "松果",
+        "まつぼっくり",
+        "CROPS_ID_OBJECT_PINE_CONE",
+        "Pine Cone",
+        "Pignon",
+        "Piña",
+        "솔방울"
+      ],
+      "internal": "CROPS_ID_OBJECT_PINE_CONE",
+      "ja": "まつぼっくり",
+      "review_status": "official",
+      "translations": {
+        "en": "Pine Cone",
+        "es": "Piña",
+        "fr": "Pignon",
+        "ja": "まつぼっくり",
+        "ko": "솔방울",
+        "zh-CN": "松果",
+        "zh-TW": "松果"
+      },
+      "zh_hans": "松果",
+      "zh_hant": "松果"
+    },
+    "numeric_id": 2106,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_PURPLE_FLOWER",
+    "name": {
+      "aliases": [
+        "紫色的花",
+        "紫の花",
+        "CROPS_ID_OBJECT_PURPLE_FLOWER",
+        "Purple Flowers",
+        "Fleur violette",
+        "Flor morada",
+        "보라색 꽃"
+      ],
+      "internal": "CROPS_ID_OBJECT_PURPLE_FLOWER",
+      "ja": "紫の花",
+      "review_status": "official",
+      "translations": {
+        "en": "Purple Flowers",
+        "es": "Flor morada",
+        "fr": "Fleur violette",
+        "ja": "紫の花",
+        "ko": "보라색 꽃",
+        "zh-CN": "紫色的花",
+        "zh-TW": "紫色的花"
+      },
+      "zh_hans": "紫色的花",
+      "zh_hant": "紫色的花"
+    },
+    "numeric_id": 2400,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_RICEFIELD_WEED",
+    "name": {
+      "aliases": [
+        "水田的杂草",
+        "水田的雜草",
+        "水田の雑草",
+        "CROPS_ID_OBJECT_RICEFIELD_WEED",
+        "Paddy Weeds",
+        "Herbe de rizière",
+        "Hierbajo de arrozal",
+        "논의 잡초"
+      ],
+      "internal": "CROPS_ID_OBJECT_RICEFIELD_WEED",
+      "ja": "水田の雑草",
+      "review_status": "official",
+      "translations": {
+        "en": "Paddy Weeds",
+        "es": "Hierbajo de arrozal",
+        "fr": "Herbe de rizière",
+        "ja": "水田の雑草",
+        "ko": "논의 잡초",
+        "zh-CN": "水田的杂草",
+        "zh-TW": "水田的雜草"
+      },
+      "zh_hans": "水田的杂草",
+      "zh_hant": "水田的雜草"
+    },
+    "numeric_id": 1700,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK",
+    "name": {
+      "aliases": [
+        "岩石",
+        "岩",
+        "CROPS_ID_OBJECT_ROCK",
+        "Boulder",
+        "Rocher",
+        "Roca",
+        "바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK",
+      "ja": "岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Boulder",
+        "es": "Roca",
+        "fr": "Rocher",
+        "ja": "岩",
+        "ko": "바위",
+        "zh-CN": "岩石",
+        "zh-TW": "岩石"
+      },
+      "zh_hans": "岩石",
+      "zh_hant": "岩石"
+    },
+    "numeric_id": 1350,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+    "name": {
+      "aliases": [
+        "铜矿脉的岩石",
+        "銅礦脈的岩石",
+        "銅鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+        "Copper Deposit Boulder",
+        "Rocher (filon de cuivre)",
+        "Roca de veta de cobre",
+        "동광맥의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
+      "ja": "銅鉱脈の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Copper Deposit Boulder",
+        "es": "Roca de veta de cobre",
+        "fr": "Rocher (filon de cuivre)",
+        "ja": "銅鉱脈の岩",
+        "ko": "동광맥의 바위",
+        "zh-CN": "铜矿脉的岩石",
+        "zh-TW": "銅礦脈的岩石"
+      },
+      "zh_hans": "铜矿脉的岩石",
+      "zh_hant": "銅礦脈的岩石"
+    },
+    "numeric_id": 1354,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+    "name": {
+      "aliases": [
+        "宝石矿脉的岩石",
+        "寶石礦脈的岩石",
+        "宝石鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+        "Gemstone Deposit Boulder",
+        "Rocher (filon de pierres précieuses)",
+        "Roca de veta de joyas",
+        "보석광맥의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
+      "ja": "宝石鉱脈の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Gemstone Deposit Boulder",
+        "es": "Roca de veta de joyas",
+        "fr": "Rocher (filon de pierres précieuses)",
+        "ja": "宝石鉱脈の岩",
+        "ko": "보석광맥의 바위",
+        "zh-CN": "宝石矿脉的岩石",
+        "zh-TW": "寶石礦脈的岩石"
+      },
+      "zh_hans": "宝石矿脉的岩石",
+      "zh_hant": "寶石礦脈的岩石"
+    },
+    "numeric_id": 1358,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+    "name": {
+      "aliases": [
+        "金矿脉的岩石",
+        "金礦脈的岩石",
+        "金鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+        "Gold Deposit Boulder",
+        "Rocher (filon d’or)",
+        "Roca de veta de oro",
+        "금광맥의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
+      "ja": "金鉱脈の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Gold Deposit Boulder",
+        "es": "Roca de veta de oro",
+        "fr": "Rocher (filon d’or)",
+        "ja": "金鉱脈の岩",
+        "ko": "금광맥의 바위",
+        "zh-CN": "金矿脉的岩石",
+        "zh-TW": "金礦脈的岩石"
+      },
+      "zh_hans": "金矿脉的岩石",
+      "zh_hant": "金礦脈的岩石"
+    },
+    "numeric_id": 1356,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+    "name": {
+      "aliases": [
+        "铁矿脉的岩石",
+        "鐵礦脈的岩石",
+        "鉄鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+        "Iron Deposit Boulder",
+        "Rocher (filon de fer)",
+        "Roca de veta de hierro",
+        "철광맥의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
+      "ja": "鉄鉱脈の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Iron Deposit Boulder",
+        "es": "Roca de veta de hierro",
+        "fr": "Rocher (filon de fer)",
+        "ja": "鉄鉱脈の岩",
+        "ko": "철광맥의 바위",
+        "zh-CN": "铁矿脉的岩石",
+        "zh-TW": "鐵礦脈的岩石"
+      },
+      "zh_hans": "铁矿脉的岩石",
+      "zh_hant": "鐵礦脈的岩石"
+    },
+    "numeric_id": 1355,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+    "name": {
+      "aliases": [
+        "陨铁矿脉的岩石",
+        "隕鐵礦脈的岩石",
+        "隕鉄鉱脈の岩",
+        "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+        "Meteoric Iron Deposit Boulder",
+        "Rocher (filon de météorite)",
+        "Roca de veta de hierro meteórico",
+        "운철광맥의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
+      "ja": "隕鉄鉱脈の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Meteoric Iron Deposit Boulder",
+        "es": "Roca de veta de hierro meteórico",
+        "fr": "Rocher (filon de météorite)",
+        "ja": "隕鉄鉱脈の岩",
+        "ko": "운철광맥의 바위",
+        "zh-CN": "陨铁矿脉的岩石",
+        "zh-TW": "隕鐵礦脈的岩石"
+      },
+      "zh_hans": "陨铁矿脉的岩石",
+      "zh_hant": "隕鐵礦脈的岩石"
+    },
+    "numeric_id": 1357,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+        "Quarry Boulder",
+        "Rocher (carrière)",
+        "Roca de cantera",
+        "채석장의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
+      "ja": "石切場の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Boulder",
+        "es": "Roca de cantera",
+        "fr": "Rocher (carrière)",
+        "ja": "石切場の岩",
+        "ko": "채석장의 바위",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1351,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+        "Quarry Boulder",
+        "Rocher (carrière)",
+        "Roca de cantera",
+        "채석장의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
+      "ja": "石切場の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Boulder",
+        "es": "Roca de cantera",
+        "fr": "Rocher (carrière)",
+        "ja": "石切場の岩",
+        "ko": "채석장의 바위",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1352,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の岩",
+        "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+        "Quarry Boulder",
+        "Rocher (carrière)",
+        "Roca de cantera",
+        "채석장의 바위"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
+      "ja": "石切場の岩",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Boulder",
+        "es": "Roca de cantera",
+        "fr": "Rocher (carrière)",
+        "ja": "石切場の岩",
+        "ko": "채석장의 바위",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1353,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_ROQUAT",
+    "name": {
+      "aliases": [
+        "枇杷",
+        "ビワ",
+        "CROPS_ID_OBJECT_ROQUAT",
+        "Loquat",
+        "Bibace",
+        "Níspero",
+        "비파"
+      ],
+      "internal": "CROPS_ID_OBJECT_ROQUAT",
+      "ja": "ビワ",
+      "review_status": "official",
+      "translations": {
+        "en": "Loquat",
+        "es": "Níspero",
+        "fr": "Bibace",
+        "ja": "ビワ",
+        "ko": "비파",
+        "zh-CN": "枇杷",
+        "zh-TW": "枇杷"
+      },
+      "zh_hans": "枇杷",
+      "zh_hant": "枇杷"
+    },
+    "numeric_id": 2105,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_RUBUS",
+    "name": {
+      "aliases": [
+        "树莓",
+        "樹莓",
+        "キイチゴ",
+        "CROPS_ID_OBJECT_RUBUS",
+        "Wild Raspberry",
+        "Mûre sauvage",
+        "Frambuesa silvestre",
+        "나무딸기"
+      ],
+      "internal": "CROPS_ID_OBJECT_RUBUS",
+      "ja": "キイチゴ",
+      "review_status": "official",
+      "translations": {
+        "en": "Wild Raspberry",
+        "es": "Frambuesa silvestre",
+        "fr": "Mûre sauvage",
+        "ja": "キイチゴ",
+        "ko": "나무딸기",
+        "zh-CN": "树莓",
+        "zh-TW": "樹莓"
+      },
+      "zh_hans": "树莓",
+      "zh_hant": "樹莓"
+    },
+    "numeric_id": 2104,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_SASANOKO",
+    "name": {
+      "aliases": [
+        "小竹笋",
+        "小竹筍",
+        "ササノコ",
+        "CROPS_ID_OBJECT_SASANOKO",
+        "Bamaboo Grass Shoot",
+        "Bambou sasa",
+        "Brote de bambú enano",
+        "여린 조릿대"
+      ],
+      "internal": "CROPS_ID_OBJECT_SASANOKO",
+      "ja": "ササノコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Bamaboo Grass Shoot",
+        "es": "Brote de bambú enano",
+        "fr": "Bambou sasa",
+        "ja": "ササノコ",
+        "ko": "여린 조릿대",
+        "zh-CN": "小竹笋",
+        "zh-TW": "小竹筍"
+      },
+      "zh_hans": "小竹笋",
+      "zh_hant": "小竹筍"
+    },
+    "numeric_id": 2005,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STAG_BEETLE",
+    "name": {
+      "aliases": [
+        "锹形虫",
+        "鍬形蟲",
+        "クワガタムシ",
+        "CROPS_ID_OBJECT_STAG_BEETLE",
+        "Stag Beetle",
+        "Lucane",
+        "Escarabajo ciervo",
+        "사슴벌레"
+      ],
+      "internal": "CROPS_ID_OBJECT_STAG_BEETLE",
+      "ja": "クワガタムシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Stag Beetle",
+        "es": "Escarabajo ciervo",
+        "fr": "Lucane",
+        "ja": "クワガタムシ",
+        "ko": "사슴벌레",
+        "zh-CN": "锹形虫",
+        "zh-TW": "鍬形蟲"
+      },
+      "zh_hans": "锹形虫",
+      "zh_hant": "鍬形蟲"
+    },
+    "numeric_id": 2151,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE",
+    "name": {
+      "aliases": [
+        "石头",
+        "石頭",
+        "石",
+        "CROPS_ID_OBJECT_STONE",
+        "Rock",
+        "Pierre",
+        "Piedra",
+        "돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE",
+      "ja": "石",
+      "review_status": "official",
+      "translations": {
+        "en": "Rock",
+        "es": "Piedra",
+        "fr": "Pierre",
+        "ja": "石",
+        "ko": "돌",
+        "zh-CN": "石头",
+        "zh-TW": "石頭"
+      },
+      "zh_hans": "石头",
+      "zh_hant": "石頭"
+    },
+    "numeric_id": 1300,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_COPPER",
+    "name": {
+      "aliases": [
+        "铜矿脉的石头",
+        "銅礦脈的石頭",
+        "銅鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_COPPER",
+        "Copper Deposit Rock",
+        "Pierre (filon de cuivre)",
+        "Piedra de veta de cobre",
+        "동광맥의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_COPPER",
+      "ja": "銅鉱脈の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Copper Deposit Rock",
+        "es": "Piedra de veta de cobre",
+        "fr": "Pierre (filon de cuivre)",
+        "ja": "銅鉱脈の石",
+        "ko": "동광맥의 돌",
+        "zh-CN": "铜矿脉的石头",
+        "zh-TW": "銅礦脈的石頭"
+      },
+      "zh_hans": "铜矿脉的石头",
+      "zh_hant": "銅礦脈的石頭"
+    },
+    "numeric_id": 1307,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_GEM",
+    "name": {
+      "aliases": [
+        "宝石矿脉的石头",
+        "寶石礦脈的石頭",
+        "宝石鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_GEM",
+        "Gemstone Deposit Rock",
+        "Pierre (filon de pierres précieuses)",
+        "Piedra de veta de joyas",
+        "보석광맥의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_GEM",
+      "ja": "宝石鉱脈の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Gemstone Deposit Rock",
+        "es": "Piedra de veta de joyas",
+        "fr": "Pierre (filon de pierres précieuses)",
+        "ja": "宝石鉱脈の石",
+        "ko": "보석광맥의 돌",
+        "zh-CN": "宝石矿脉的石头",
+        "zh-TW": "寶石礦脈的石頭"
+      },
+      "zh_hans": "宝石矿脉的石头",
+      "zh_hant": "寶石礦脈的石頭"
+    },
+    "numeric_id": 1311,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_GOLD",
+    "name": {
+      "aliases": [
+        "金矿脉的石头",
+        "金礦脈的石頭",
+        "金鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_GOLD",
+        "Gold Deposit Rock",
+        "Pierre (filon d’or)",
+        "Piedra de veta de oro",
+        "금광맥의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_GOLD",
+      "ja": "金鉱脈の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Gold Deposit Rock",
+        "es": "Piedra de veta de oro",
+        "fr": "Pierre (filon d’or)",
+        "ja": "金鉱脈の石",
+        "ko": "금광맥의 돌",
+        "zh-CN": "金矿脉的石头",
+        "zh-TW": "金礦脈的石頭"
+      },
+      "zh_hans": "金矿脉的石头",
+      "zh_hant": "金礦脈的石頭"
+    },
+    "numeric_id": 1309,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_IRON",
+    "name": {
+      "aliases": [
+        "铁矿脉的石头",
+        "鐵礦脈的石頭",
+        "鉄鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_IRON",
+        "Iron Deposit Rock",
+        "Pierre (filon de fer)",
+        "Piedra de veta de hierro",
+        "철광맥의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_IRON",
+      "ja": "鉄鉱脈の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Iron Deposit Rock",
+        "es": "Piedra de veta de hierro",
+        "fr": "Pierre (filon de fer)",
+        "ja": "鉄鉱脈の石",
+        "ko": "철광맥의 돌",
+        "zh-CN": "铁矿脉的石头",
+        "zh-TW": "鐵礦脈的石頭"
+      },
+      "zh_hans": "铁矿脉的石头",
+      "zh_hant": "鐵礦脈的石頭"
+    },
+    "numeric_id": 1308,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+    "name": {
+      "aliases": [
+        "陨铁矿脉的石头",
+        "隕鐵礦脈的石頭",
+        "隕鉄鉱脈の石",
+        "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+        "Meteoric Iron Deposit Rock",
+        "Pierre (filon de météorite)",
+        "Piedra de veta de hierro meteórico",
+        "운철광맥의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
+      "ja": "隕鉄鉱脈の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Meteoric Iron Deposit Rock",
+        "es": "Piedra de veta de hierro meteórico",
+        "fr": "Pierre (filon de météorite)",
+        "ja": "隕鉄鉱脈の石",
+        "ko": "운철광맥의 돌",
+        "zh-CN": "陨铁矿脉的石头",
+        "zh-TW": "隕鐵礦脈的石頭"
+      },
+      "zh_hans": "陨铁矿脉的石头",
+      "zh_hant": "隕鐵礦脈的石頭"
+    },
+    "numeric_id": 1310,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1301,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1302,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1303,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1304,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1305,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+    "name": {
+      "aliases": [
+        "采石场的石头",
+        "採石場的石頭",
+        "石切場の石",
+        "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+        "Quarry Rock",
+        "Pierre (carrière)",
+        "Piedra de cantera",
+        "채석장의 돌"
+      ],
+      "internal": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
+      "ja": "石切場の石",
+      "review_status": "official",
+      "translations": {
+        "en": "Quarry Rock",
+        "es": "Piedra de cantera",
+        "fr": "Pierre (carrière)",
+        "ja": "石切場の石",
+        "ko": "채석장의 돌",
+        "zh-CN": "采石场的石头",
+        "zh-TW": "採石場的石頭"
+      },
+      "zh_hans": "采石场的石头",
+      "zh_hant": "採石場的石頭"
+    },
+    "numeric_id": 1306,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STUMP",
+    "name": {
+      "aliases": [
+        "树桩",
+        "樹樁",
+        "切り株",
+        "CROPS_ID_OBJECT_STUMP",
+        "Stump",
+        "Souche",
+        "Tocón",
+        "그루터기"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP",
+      "ja": "切り株",
+      "review_status": "official",
+      "translations": {
+        "en": "Stump",
+        "es": "Tocón",
+        "fr": "Souche",
+        "ja": "切り株",
+        "ko": "그루터기",
+        "zh-CN": "树桩",
+        "zh-TW": "樹樁"
+      },
+      "zh_hans": "树桩",
+      "zh_hant": "樹樁"
+    },
+    "numeric_id": 1202,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STUMP_HARD",
+    "name": {
+      "aliases": [
+        "坚硬的树桩",
+        "堅硬的樹樁",
+        "堅い切り株",
+        "CROPS_ID_OBJECT_STUMP_HARD",
+        "Sturdy Stump",
+        "Souche solide",
+        "Tocón resistente",
+        "단단한 그루터기"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP_HARD",
+      "ja": "堅い切り株",
+      "review_status": "official",
+      "translations": {
+        "en": "Sturdy Stump",
+        "es": "Tocón resistente",
+        "fr": "Souche solide",
+        "ja": "堅い切り株",
+        "ko": "단단한 그루터기",
+        "zh-CN": "坚硬的树桩",
+        "zh-TW": "堅硬的樹樁"
+      },
+      "zh_hans": "坚硬的树桩",
+      "zh_hant": "堅硬的樹樁"
+    },
+    "numeric_id": 1203,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
+    "name": {
+      "aliases": [
+        "非常坚硬的树桩",
+        "非常堅硬的樹樁",
+        "すごく堅い切り株",
+        "CROPS_ID_OBJECT_STUMP_VERY_HARD",
+        "Petrified Stump",
+        "Souche très solide",
+        "Tocón muy resistente",
+        "무척 단단한 그루터기"
+      ],
+      "internal": "CROPS_ID_OBJECT_STUMP_VERY_HARD",
+      "ja": "すごく堅い切り株",
+      "review_status": "official",
+      "translations": {
+        "en": "Petrified Stump",
+        "es": "Tocón muy resistente",
+        "fr": "Souche très solide",
+        "ja": "すごく堅い切り株",
+        "ko": "무척 단단한 그루터기",
+        "zh-CN": "非常坚硬的树桩",
+        "zh-TW": "非常堅硬的樹樁"
+      },
+      "zh_hans": "非常坚硬的树桩",
+      "zh_hant": "非常堅硬的樹樁"
+    },
+    "numeric_id": 1204,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TREE",
+    "name": {
+      "aliases": [
+        "栗子",
+        "クリ",
+        "CROPS_ID_OBJECT_TREE",
+        "Chestnut",
+        "Châtaigne",
+        "Castaño",
+        "밤"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE",
+      "ja": "クリ",
+      "review_status": "official",
+      "translations": {
+        "en": "Chestnut",
+        "es": "Castaño",
+        "fr": "Châtaigne",
+        "ja": "クリ",
+        "ko": "밤",
+        "zh-CN": "栗子",
+        "zh-TW": "栗子"
+      },
+      "zh_hans": "栗子",
+      "zh_hant": "栗子"
+    },
+    "numeric_id": 1000,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TREE_CEDAR",
+    "name": {
+      "aliases": [
+        "柳杉",
+        "スギ",
+        "CROPS_ID_OBJECT_TREE_CEDAR",
+        "Cedar",
+        "Cèdre",
+        "Cedro",
+        "삼나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_CEDAR",
+      "ja": "スギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cedar",
+        "es": "Cedro",
+        "fr": "Cèdre",
+        "ja": "スギ",
+        "ko": "삼나무",
+        "zh-CN": "柳杉",
+        "zh-TW": "柳杉"
+      },
+      "zh_hans": "柳杉",
+      "zh_hant": "柳杉"
+    },
+    "numeric_id": 1001,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TREE_HINOKI",
+    "name": {
+      "aliases": [
+        "桧木",
+        "檜木",
+        "ヒノキ",
+        "CROPS_ID_OBJECT_TREE_HINOKI",
+        "Cypress",
+        "Cyprès",
+        "Ciprés",
+        "편백나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_HINOKI",
+      "ja": "ヒノキ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cypress",
+        "es": "Ciprés",
+        "fr": "Cyprès",
+        "ja": "ヒノキ",
+        "ko": "편백나무",
+        "zh-CN": "桧木",
+        "zh-TW": "檜木"
+      },
+      "zh_hans": "桧木",
+      "zh_hant": "檜木"
+    },
+    "numeric_id": 1004,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TREE_OAK",
+    "name": {
+      "aliases": [
+        "槲树",
+        "槲樹",
+        "カシワ",
+        "CROPS_ID_OBJECT_TREE_OAK",
+        "Oak",
+        "Chêne",
+        "Roble",
+        "떡갈나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_OAK",
+      "ja": "カシワ",
+      "review_status": "official",
+      "translations": {
+        "en": "Oak",
+        "es": "Roble",
+        "fr": "Chêne",
+        "ja": "カシワ",
+        "ko": "떡갈나무",
+        "zh-CN": "槲树",
+        "zh-TW": "槲樹"
+      },
+      "zh_hans": "槲树",
+      "zh_hant": "槲樹"
+    },
+    "numeric_id": 1003,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TREE_PINE",
+    "name": {
+      "aliases": [
+        "松树",
+        "松樹",
+        "マツ",
+        "CROPS_ID_OBJECT_TREE_PINE",
+        "Pine",
+        "Pin",
+        "Pino",
+        "소나무"
+      ],
+      "internal": "CROPS_ID_OBJECT_TREE_PINE",
+      "ja": "マツ",
+      "review_status": "official",
+      "translations": {
+        "en": "Pine",
+        "es": "Pino",
+        "fr": "Pin",
+        "ja": "マツ",
+        "ko": "소나무",
+        "zh-CN": "松树",
+        "zh-TW": "松樹"
+      },
+      "zh_hans": "松树",
+      "zh_hant": "松樹"
+    },
+    "numeric_id": 1002,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_TWIG",
+    "name": {
+      "aliases": [
+        "树枝",
+        "樹枝",
+        "小枝",
+        "CROPS_ID_OBJECT_TWIG",
+        "Twig",
+        "Branche",
+        "Ramita",
+        "잔가지"
+      ],
+      "internal": "CROPS_ID_OBJECT_TWIG",
+      "ja": "小枝",
+      "review_status": "official",
+      "translations": {
+        "en": "Twig",
+        "es": "Ramita",
+        "fr": "Branche",
+        "ja": "小枝",
+        "ko": "잔가지",
+        "zh-CN": "树枝",
+        "zh-TW": "樹枝"
+      },
+      "zh_hans": "树枝",
+      "zh_hant": "樹枝"
+    },
+    "numeric_id": 1200,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
+        "UnfamiliarLivestock_BuriedItem",
+        "Bétail inconnu_Objet enfoui",
+        "Ganado desconocido_Objeto enterrado",
+        "본 적 없는 가축_묻혀 있는 아이템"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_01",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "official",
+      "translations": {
+        "en": "UnfamiliarLivestock_BuriedItem",
+        "es": "Ganado desconocido_Objeto enterrado",
+        "fr": "Bétail inconnu_Objet enfoui",
+        "ja": "見知らぬ家畜_埋まってるアイテム",
+        "ko": "본 적 없는 가축_묻혀 있는 아이템",
+        "zh-CN": "陌生家畜_埋藏着的物品",
+        "zh-TW": "陌生家畜_埋藏著的物品"
+      },
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 520,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
+        "UnfamiliarLivestock_BuriedItem",
+        "Bétail inconnu_Objet enfoui",
+        "Ganado desconocido_Objeto enterrado",
+        "본 적 없는 가축_묻혀 있는 아이템"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_02",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "official",
+      "translations": {
+        "en": "UnfamiliarLivestock_BuriedItem",
+        "es": "Ganado desconocido_Objeto enterrado",
+        "fr": "Bétail inconnu_Objet enfoui",
+        "ja": "見知らぬ家畜_埋まってるアイテム",
+        "ko": "본 적 없는 가축_묻혀 있는 아이템",
+        "zh-CN": "陌生家畜_埋藏着的物品",
+        "zh-TW": "陌生家畜_埋藏著的物品"
+      },
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 521,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
+    "name": {
+      "aliases": [
+        "陌生家畜_埋藏着的物品",
+        "陌生家畜_埋藏著的物品",
+        "見知らぬ家畜_埋まってるアイテム",
+        "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
+        "UnfamiliarLivestock_BuriedItem",
+        "Bétail inconnu_Objet enfoui",
+        "Ganado desconocido_Objeto enterrado",
+        "본 적 없는 가축_묻혀 있는 아이템"
+      ],
+      "internal": "CROPS_ID_OBJECT_UNKNOWN_LIVESTOCK_ITEM_03",
+      "ja": "見知らぬ家畜_埋まってるアイテム",
+      "review_status": "official",
+      "translations": {
+        "en": "UnfamiliarLivestock_BuriedItem",
+        "es": "Ganado desconocido_Objeto enterrado",
+        "fr": "Bétail inconnu_Objet enfoui",
+        "ja": "見知らぬ家畜_埋まってるアイテム",
+        "ko": "본 적 없는 가축_묻혀 있는 아이템",
+        "zh-CN": "陌生家畜_埋藏着的物品",
+        "zh-TW": "陌生家畜_埋藏著的物品"
+      },
+      "zh_hans": "陌生家畜_埋藏着的物品",
+      "zh_hant": "陌生家畜_埋藏著的物品"
+    },
+    "numeric_id": 522,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WALKING_STONE",
+    "name": {
+      "aliases": [
+        "行走的石头（DUMMY）",
+        "行走的石頭（DUMMY）",
+        "歩く石（ダミー・翻訳不要）",
+        "CROPS_ID_OBJECT_WALKING_STONE",
+        "Walking Stone (Dummy・No translation needed)",
+        "Pierkimarche"
+      ],
+      "internal": "CROPS_ID_OBJECT_WALKING_STONE",
+      "ja": "歩く石（ダミー・翻訳不要）",
+      "review_status": "official",
+      "translations": {
+        "en": "Walking Stone (Dummy・No translation needed)",
+        "es": "歩く石（ダミー・翻訳不要）",
+        "fr": "Pierkimarche",
+        "ja": "歩く石（ダミー・翻訳不要）",
+        "ko": "",
+        "zh-CN": "行走的石头（DUMMY）",
+        "zh-TW": "行走的石頭（DUMMY）"
+      },
+      "zh_hans": "行走的石头（DUMMY）",
+      "zh_hant": "行走的石頭（DUMMY）"
+    },
+    "numeric_id": 3015,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WALNUT",
+    "name": {
+      "aliases": [
+        "胡桃",
+        "クルミ",
+        "CROPS_ID_OBJECT_WALNUT",
+        "Walnut",
+        "Noix",
+        "Nuez",
+        "호두"
+      ],
+      "internal": "CROPS_ID_OBJECT_WALNUT",
+      "ja": "クルミ",
+      "review_status": "official",
+      "translations": {
+        "en": "Walnut",
+        "es": "Nuez",
+        "fr": "Noix",
+        "ja": "クルミ",
+        "ko": "호두",
+        "zh-CN": "胡桃",
+        "zh-TW": "胡桃"
+      },
+      "zh_hans": "胡桃",
+      "zh_hant": "胡桃"
+    },
+    "numeric_id": 2109,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WATER_HYACINTH",
+    "name": {
+      "aliases": [
+        "布袋莲",
+        "布袋蓮",
+        "ホテイアオイ",
+        "CROPS_ID_OBJECT_WATER_HYACINTH",
+        "Water Hyacinth",
+        "Jacinthe d’eau",
+        "Jacinto de agua",
+        "부레옥잠"
+      ],
+      "internal": "CROPS_ID_OBJECT_WATER_HYACINTH",
+      "ja": "ホテイアオイ",
+      "review_status": "official",
+      "translations": {
+        "en": "Water Hyacinth",
+        "es": "Jacinto de agua",
+        "fr": "Jacinthe d’eau",
+        "ja": "ホテイアオイ",
+        "ko": "부레옥잠",
+        "zh-CN": "布袋莲",
+        "zh-TW": "布袋蓮"
+      },
+      "zh_hans": "布袋莲",
+      "zh_hant": "布袋蓮"
+    },
+    "numeric_id": 2102,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WEED_COLOR_1",
+    "name": {
+      "aliases": [
+        "杂草",
+        "雜草",
+        "雑草",
+        "CROPS_ID_OBJECT_WEED_COLOR_1",
+        "Wild Grass",
+        "Herbe",
+        "Hierbajo",
+        "잡초"
+      ],
+      "internal": "CROPS_ID_OBJECT_WEED_COLOR_1",
+      "ja": "雑草",
+      "review_status": "official",
+      "translations": {
+        "en": "Wild Grass",
+        "es": "Hierbajo",
+        "fr": "Herbe",
+        "ja": "雑草",
+        "ko": "잡초",
+        "zh-CN": "杂草",
+        "zh-TW": "雜草"
+      },
+      "zh_hans": "杂草",
+      "zh_hant": "雜草"
+    },
+    "numeric_id": 1100,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WEED_COLOR_2",
+    "name": {
+      "aliases": [
+        "杂草",
+        "雜草",
+        "雑草",
+        "CROPS_ID_OBJECT_WEED_COLOR_2",
+        "Wild Grass",
+        "Herbe",
+        "Hierbajo",
+        "잡초"
+      ],
+      "internal": "CROPS_ID_OBJECT_WEED_COLOR_2",
+      "ja": "雑草",
+      "review_status": "official",
+      "translations": {
+        "en": "Wild Grass",
+        "es": "Hierbajo",
+        "fr": "Herbe",
+        "ja": "雑草",
+        "ko": "잡초",
+        "zh-CN": "杂草",
+        "zh-TW": "雜草"
+      },
+      "zh_hans": "杂草",
+      "zh_hant": "雜草"
+    },
+    "numeric_id": 1101,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": null,
+    "growth_points": null,
+    "harvest_item_ids": [],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_OBJECT_WOLFBERRY",
+    "name": {
+      "aliases": [
+        "枸杞",
+        "クコの実",
+        "CROPS_ID_OBJECT_WOLFBERRY",
+        "Goji Berry",
+        "Baie de goji",
+        "Bayas de goji",
+        "구기자"
+      ],
+      "internal": "CROPS_ID_OBJECT_WOLFBERRY",
+      "ja": "クコの実",
+      "review_status": "official",
+      "translations": {
+        "en": "Goji Berry",
+        "es": "Bayas de goji",
+        "fr": "Baie de goji",
+        "ja": "クコの実",
+        "ko": "구기자",
+        "zh-CN": "枸杞",
+        "zh-TW": "枸杞"
+      },
+      "zh_hans": "枸杞",
+      "zh_hant": "枸杞"
+    },
+    "numeric_id": 2111,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [],
+    "seed_item_ids": []
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_OLIVE"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_OLIVE",
+        "item_numeric_id": 100340,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_OLIVE",
+        "item_numeric_id": 100340,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_OLIVE",
+        "item_numeric_id": 100341,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_OLIVE",
+    "name": {
+      "aliases": [
+        "油橄榄",
+        "油橄欖",
+        "オリーブ",
+        "CROPS_ID_OLIVE",
+        "Olive",
+        "Olivo",
+        "올리브"
+      ],
+      "internal": "CROPS_ID_OLIVE",
+      "ja": "オリーブ",
+      "review_status": "official",
+      "translations": {
+        "en": "Olive",
+        "es": "Olivo",
+        "fr": "Olive",
+        "ja": "オリーブ",
+        "ko": "올리브",
+        "zh-CN": "油橄榄",
+        "zh-TW": "油橄欖"
+      },
+      "zh_hans": "油橄榄",
+      "zh_hant": "油橄欖"
+    },
+    "numeric_id": 49,
+    "perennial": null,
+    "regrow_days": 3,
+    "regrow_points": 300,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_OLIVE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ONION"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_ONION",
+        "item_numeric_id": 100010,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_ONION",
+        "item_numeric_id": 100011,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_ONION",
+    "name": {
+      "aliases": [
+        "洋葱",
+        "洋蔥",
+        "タマネギ",
+        "CROPS_ID_ONION",
+        "Onion",
+        "Oignon",
+        "Cebolla",
+        "양파"
+      ],
+      "internal": "CROPS_ID_ONION",
+      "ja": "タマネギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Onion",
+        "es": "Cebolla",
+        "fr": "Oignon",
+        "ja": "タマネギ",
+        "ko": "양파",
+        "zh-CN": "洋葱",
+        "zh-TW": "洋蔥"
+      },
+      "zh_hans": "洋葱",
+      "zh_hant": "洋蔥"
+    },
+    "numeric_id": 1,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ONION"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PANSY"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_PANSY",
+        "item_numeric_id": 111210,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_PANSY",
+    "name": {
+      "aliases": [
+        "三色堇",
+        "パンジー",
+        "CROPS_ID_PANSY",
+        "Pansy",
+        "Pensée",
+        "Viola",
+        "팬지"
+      ],
+      "internal": "CROPS_ID_PANSY",
+      "ja": "パンジー",
+      "review_status": "official",
+      "translations": {
+        "en": "Pansy",
+        "es": "Viola",
+        "fr": "Pensée",
+        "ja": "パンジー",
+        "ko": "팬지",
+        "zh-CN": "三色堇",
+        "zh-TW": "三色堇"
+      },
+      "zh_hans": "三色堇",
+      "zh_hant": "三色堇"
+    },
+    "numeric_id": 59,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PANSY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEA",
+      "ITEM_ID_CROPS_SNOW_PEAS"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 960,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 100,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 100,
+        "item_id": "ITEM_ID_CROPS_SNOW_PEAS",
+        "item_numeric_id": 100460,
+        "quantity": 3,
+        "state": 5
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_PEA",
+        "item_numeric_id": 100020,
+        "quantity": 3,
+        "state": 5
+      }
+    ],
+    "id": "CROPS_ID_PEA",
+    "name": {
+      "aliases": [
+        "豌豆",
+        "エンドウ豆",
+        "CROPS_ID_PEA",
+        "Green Peas",
+        "Petit pois",
+        "Guisante",
+        "완두콩"
+      ],
+      "internal": "CROPS_ID_PEA",
+      "ja": "エンドウ豆",
+      "review_status": "official",
+      "translations": {
+        "en": "Green Peas",
+        "es": "Guisante",
+        "fr": "Petit pois",
+        "ja": "エンドウ豆",
+        "ko": "완두콩",
+        "zh-CN": "豌豆",
+        "zh-TW": "豌豆"
+      },
+      "zh_hans": "豌豆",
+      "zh_hant": "豌豆"
+    },
+    "numeric_id": 9,
+    "perennial": null,
+    "regrow_days": 2,
+    "regrow_points": 200,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEA"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEACH"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_PEACH_TREE",
+    "name": {
+      "aliases": [
+        "桃子树",
+        "桃子樹",
+        "モモの木",
+        "CROPS_ID_PEACH_TREE",
+        "Peach Tree",
+        "Pêcher",
+        "Melocotonero",
+        "복숭아나무"
+      ],
+      "internal": "CROPS_ID_PEACH_TREE",
+      "ja": "モモの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Peach Tree",
+        "es": "Melocotonero",
+        "fr": "Pêcher",
+        "ja": "モモの木",
+        "ko": "복숭아나무",
+        "zh-CN": "桃子树",
+        "zh-TW": "桃子樹"
+      },
+      "zh_hans": "桃子树",
+      "zh_hant": "桃子樹"
+    },
+    "numeric_id": 108,
+    "perennial": {
+      "bearing_seasons": [
+        "summer"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEACH"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEAR"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_PEAR_TREE",
+    "name": {
+      "aliases": [
+        "梨子树",
+        "梨子樹",
+        "ナシの木",
+        "CROPS_ID_PEAR_TREE",
+        "Nashi Pear Tree",
+        "Poirier",
+        "Peral",
+        "배나무"
+      ],
+      "internal": "CROPS_ID_PEAR_TREE",
+      "ja": "ナシの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Nashi Pear Tree",
+        "es": "Peral",
+        "fr": "Poirier",
+        "ja": "ナシの木",
+        "ko": "배나무",
+        "zh-CN": "梨子树",
+        "zh-TW": "梨子樹"
+      },
+      "zh_hans": "梨子树",
+      "zh_hant": "梨子樹"
+    },
+    "numeric_id": 110,
+    "perennial": {
+      "bearing_seasons": [
+        "autumn"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEAR"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PEPPER"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "item_numeric_id": 100130,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_PEPPER",
+        "item_numeric_id": 100130,
+        "quantity": 3,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_PEPPER",
+    "name": {
+      "aliases": [
+        "青椒",
+        "ピーマン",
+        "CROPS_ID_PEPPER",
+        "Bell Pepper",
+        "Poivron",
+        "Pimiento",
+        "피망"
+      ],
+      "internal": "CROPS_ID_PEPPER",
+      "ja": "ピーマン",
+      "review_status": "official",
+      "translations": {
+        "en": "Bell Pepper",
+        "es": "Pimiento",
+        "fr": "Poivron",
+        "ja": "ピーマン",
+        "ko": "피망",
+        "zh-CN": "青椒",
+        "zh-TW": "青椒"
+      },
+      "zh_hans": "青椒",
+      "zh_hant": "青椒"
+    },
+    "numeric_id": 23,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PEPPER"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PERSIMMON"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_PERSIMMON_TREE",
+    "name": {
+      "aliases": [
+        "柿子树",
+        "柿子樹",
+        "カキの木",
+        "CROPS_ID_PERSIMMON_TREE",
+        "Persimmon Tree",
+        "Kaki",
+        "Caqui",
+        "감나무"
+      ],
+      "internal": "CROPS_ID_PERSIMMON_TREE",
+      "ja": "カキの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Persimmon Tree",
+        "es": "Caqui",
+        "fr": "Kaki",
+        "ja": "カキの木",
+        "ko": "감나무",
+        "zh-CN": "柿子树",
+        "zh-TW": "柿子樹"
+      },
+      "zh_hans": "柿子树",
+      "zh_hant": "柿子樹"
+    },
+    "numeric_id": 103,
+    "perennial": {
+      "bearing_seasons": [
+        "autumn"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PERSIMMON"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 13,
+    "growth_points": 1300,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PINEAPPLE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1300,
+        "item_id": "ITEM_ID_CROPS_PINEAPPLE",
+        "item_numeric_id": 100220,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_PINEAPPLE",
+    "name": {
+      "aliases": [
+        "菠萝",
+        "鳳梨",
+        "パイナップル",
+        "CROPS_ID_PINEAPPLE",
+        "凤梨",
+        "Pineapple",
+        "Ananas",
+        "Piña",
+        "파인애플"
+      ],
+      "internal": "CROPS_ID_PINEAPPLE",
+      "ja": "パイナップル",
+      "review_status": "official",
+      "translations": {
+        "en": "Pineapple",
+        "es": "Piña",
+        "fr": "Ananas",
+        "ja": "パイナップル",
+        "ko": "파인애플",
+        "zh-CN": "菠萝",
+        "zh-TW": "鳳梨"
+      },
+      "zh_hans": "菠萝",
+      "zh_hant": "鳳梨"
+    },
+    "numeric_id": 42,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PINEAPPLE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PLUM"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_PLUM_TREE",
+    "name": {
+      "aliases": [
+        "梅子树",
+        "梅子樹",
+        "梅の木",
+        "CROPS_ID_PLUM_TREE",
+        "Plum Tree",
+        "Prunier",
+        "Ciruelo",
+        "매실나무"
+      ],
+      "internal": "CROPS_ID_PLUM_TREE",
+      "ja": "梅の木",
+      "review_status": "official",
+      "translations": {
+        "en": "Plum Tree",
+        "es": "Ciruelo",
+        "fr": "Prunier",
+        "ja": "梅の木",
+        "ko": "매실나무",
+        "zh-CN": "梅子树",
+        "zh-TW": "梅子樹"
+      },
+      "zh_hans": "梅子树",
+      "zh_hant": "梅子樹"
+    },
+    "numeric_id": 107,
+    "perennial": {
+      "bearing_seasons": [
+        "spring"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PLUM"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_POPPY"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_POPPY",
+        "item_numeric_id": 111050,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_POPPY",
+    "name": {
+      "aliases": [
+        "罂粟花",
+        "罌粟花",
+        "ポピー",
+        "CROPS_ID_POPPY",
+        "Poppy",
+        "Coquelicot",
+        "Amapola",
+        "개양귀비"
+      ],
+      "internal": "CROPS_ID_POPPY",
+      "ja": "ポピー",
+      "review_status": "official",
+      "translations": {
+        "en": "Poppy",
+        "es": "Amapola",
+        "fr": "Coquelicot",
+        "ja": "ポピー",
+        "ko": "개양귀비",
+        "zh-CN": "罂粟花",
+        "zh-TW": "罌粟花"
+      },
+      "zh_hans": "罂粟花",
+      "zh_hant": "罌粟花"
+    },
+    "numeric_id": 7,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_POPPY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_POTATO"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_POTATO",
+        "item_numeric_id": 100040,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_POTATO",
+    "name": {
+      "aliases": [
+        "土豆",
+        "馬鈴薯",
+        "ジャガイモ",
+        "CROPS_ID_POTATO",
+        "马铃薯",
+        "Potato",
+        "Pomme de terre",
+        "Patata",
+        "감자"
+      ],
+      "internal": "CROPS_ID_POTATO",
+      "ja": "ジャガイモ",
+      "review_status": "official",
+      "translations": {
+        "en": "Potato",
+        "es": "Patata",
+        "fr": "Pomme de terre",
+        "ja": "ジャガイモ",
+        "ko": "감자",
+        "zh-CN": "土豆",
+        "zh-TW": "馬鈴薯"
+      },
+      "zh_hans": "土豆",
+      "zh_hant": "馬鈴薯"
+    },
+    "numeric_id": 4,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_POTATO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_PUMPKIN"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_PUMPKIN",
+        "item_numeric_id": 100140,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_PUMPKIN",
+    "name": {
+      "aliases": [
+        "南瓜",
+        "カボチャ",
+        "CROPS_ID_PUMPKIN",
+        "Pumpkin",
+        "Citrouille",
+        "Calabaza",
+        "호박"
+      ],
+      "internal": "CROPS_ID_PUMPKIN",
+      "ja": "カボチャ",
+      "review_status": "official",
+      "translations": {
+        "en": "Pumpkin",
+        "es": "Calabaza",
+        "fr": "Citrouille",
+        "ja": "カボチャ",
+        "ko": "호박",
+        "zh-CN": "南瓜",
+        "zh-TW": "南瓜"
+      },
+      "zh_hans": "南瓜",
+      "zh_hant": "南瓜"
+    },
+    "numeric_id": 32,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_PUMPKIN"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 8,
+    "growth_points": 800,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_RADISH"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_RADISH",
+        "item_numeric_id": 100050,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_RADISH",
+    "name": {
+      "aliases": [
+        "樱桃萝卜",
+        "櫻桃蘿蔔",
+        "ラディッシュ",
+        "CROPS_ID_RADISH",
+        "Radish",
+        "Radis",
+        "Rábano",
+        "래디시"
+      ],
+      "internal": "CROPS_ID_RADISH",
+      "ja": "ラディッシュ",
+      "review_status": "official",
+      "translations": {
+        "en": "Radish",
+        "es": "Rábano",
+        "fr": "Radis",
+        "ja": "ラディッシュ",
+        "ko": "래디시",
+        "zh-CN": "樱桃萝卜",
+        "zh-TW": "櫻桃蘿蔔"
+      },
+      "zh_hans": "樱桃萝卜",
+      "zh_hant": "櫻桃蘿蔔"
+    },
+    "numeric_id": 18,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_RADISH"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 50,
+    "growth_points": 5000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_RICE"
+    ],
+    "harvest_quantity": 10,
+    "harvest_stages": [
+      {
+        "growth_points": 5000,
+        "item_id": "ITEM_ID_CROPS_RICE",
+        "item_numeric_id": 100400,
+        "quantity": 10,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_RICE",
+    "name": {
+      "aliases": [
+        "稻米",
+        "お米",
+        "CROPS_ID_RICE",
+        "Rice",
+        "Riz",
+        "Arroz",
+        "쌀"
+      ],
+      "internal": "CROPS_ID_RICE",
+      "ja": "お米",
+      "review_status": "official",
+      "translations": {
+        "en": "Rice",
+        "es": "Arroz",
+        "fr": "Riz",
+        "ja": "お米",
+        "ko": "쌀",
+        "zh-CN": "稻米",
+        "zh-TW": "稻米"
+      },
+      "zh_hans": "稻米",
+      "zh_hant": "稻米"
+    },
+    "numeric_id": 63,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_RICE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 9,
+    "growth_points": 900,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ROSE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_ROSE",
+        "item_numeric_id": 111140,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_ROSE",
+    "name": {
+      "aliases": [
+        "玫瑰",
+        "バラ",
+        "CROPS_ID_ROSE",
+        "Rose",
+        "Rosa",
+        "장미"
+      ],
+      "internal": "CROPS_ID_ROSE",
+      "ja": "バラ",
+      "review_status": "official",
+      "translations": {
+        "en": "Rose",
+        "es": "Rosa",
+        "fr": "Rose",
+        "ja": "バラ",
+        "ko": "장미",
+        "zh-CN": "玫瑰",
+        "zh-TW": "玫瑰"
+      },
+      "zh_hans": "玫瑰",
+      "zh_hant": "玫瑰"
+    },
+    "numeric_id": 40,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ROSE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_ROSEMARY"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_ROSEMARY",
+        "item_numeric_id": 111220,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_ROSEMARY",
+    "name": {
+      "aliases": [
+        "迷迭香",
+        "ローズマリー",
+        "CROPS_ID_ROSEMARY",
+        "Rosemary",
+        "Romarin",
+        "Romero",
+        "로즈마리"
+      ],
+      "internal": "CROPS_ID_ROSEMARY",
+      "ja": "ローズマリー",
+      "review_status": "official",
+      "translations": {
+        "en": "Rosemary",
+        "es": "Romero",
+        "fr": "Romarin",
+        "ja": "ローズマリー",
+        "ko": "로즈마리",
+        "zh-CN": "迷迭香",
+        "zh-TW": "迷迭香"
+      },
+      "zh_hans": "迷迭香",
+      "zh_hant": "迷迭香"
+    },
+    "numeric_id": 60,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_ROSEMARY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 9,
+    "growth_points": 900,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SESAME"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 900,
+        "item_id": "ITEM_ID_CROPS_SESAME",
+        "item_numeric_id": 100350,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 300,
+        "item_id": "ITEM_ID_CROPS_SESAME",
+        "item_numeric_id": 100350,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_SESAME",
+    "name": {
+      "aliases": [
+        "芝麻",
+        "ゴマ",
+        "CROPS_ID_SESAME",
+        "Sesame",
+        "Sésame",
+        "Sésamo",
+        "참깨"
+      ],
+      "internal": "CROPS_ID_SESAME",
+      "ja": "ゴマ",
+      "review_status": "official",
+      "translations": {
+        "en": "Sesame",
+        "es": "Sésamo",
+        "fr": "Sésame",
+        "ja": "ゴマ",
+        "ko": "참깨",
+        "zh-CN": "芝麻",
+        "zh-TW": "芝麻"
+      },
+      "zh_hans": "芝麻",
+      "zh_hant": "芝麻"
+    },
+    "numeric_id": 52,
+    "perennial": null,
+    "regrow_days": 3,
+    "regrow_points": 300,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SESAME"
+    ]
+  },
+  {
+    "cultivation_method": "菌类栽培",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "item_numeric_id": 100300,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+        "item_numeric_id": 100300,
+        "quantity": 1,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_SHIITAKE_MUSHROOM",
+    "name": {
+      "aliases": [
+        "香菇",
+        "シイタケ",
+        "CROPS_ID_SHIITAKE_MUSHROOM",
+        "Shiitake Mushroom",
+        "Shiitake",
+        "Seta shiitake",
+        "표고버섯"
+      ],
+      "internal": "CROPS_ID_SHIITAKE_MUSHROOM",
+      "ja": "シイタケ",
+      "review_status": "official",
+      "translations": {
+        "en": "Shiitake Mushroom",
+        "es": "Seta shiitake",
+        "fr": "Shiitake",
+        "ja": "シイタケ",
+        "ko": "표고버섯",
+        "zh-CN": "香菇",
+        "zh-TW": "香菇"
+      },
+      "zh_hans": "香菇",
+      "zh_hant": "香菇"
+    },
+    "numeric_id": 55,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SHIITAKE_MUSHROOM"
+    ]
+  },
+  {
+    "cultivation_method": "菌类栽培",
+    "growth_days": 8,
+    "growth_points": 800,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 800,
+        "item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+        "item_numeric_id": 100310,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+        "item_numeric_id": 100310,
+        "quantity": 2,
+        "state": 4
+      }
+    ],
+    "id": "CROPS_ID_SHIMEJI",
+    "name": {
+      "aliases": [
+        "鸿喜菇",
+        "鴻喜菇",
+        "シメジ",
+        "CROPS_ID_SHIMEJI",
+        "Shimeji Mushroom",
+        "Shimeji",
+        "Seta shimeji",
+        "만가닥버섯"
+      ],
+      "internal": "CROPS_ID_SHIMEJI",
+      "ja": "シメジ",
+      "review_status": "official",
+      "translations": {
+        "en": "Shimeji Mushroom",
+        "es": "Seta shimeji",
+        "fr": "Shimeji",
+        "ja": "シメジ",
+        "ko": "만가닥버섯",
+        "zh-CN": "鸿喜菇",
+        "zh-TW": "鴻喜菇"
+      },
+      "zh_hans": "鸿喜菇",
+      "zh_hant": "鴻喜菇"
+    },
+    "numeric_id": 53,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SHIMEJI_MUSHROOM"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 5,
+    "growth_points": 500,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SKUNK_CABBAGE"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 500,
+        "item_id": "ITEM_ID_CROPS_SKUNK_CABBAGE",
+        "item_numeric_id": 111080,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_SKUNK_CABBAGE",
+    "name": {
+      "aliases": [
+        "水芭蕉",
+        "CROPS_ID_SKUNK_CABBAGE",
+        "Swamp Lantern",
+        "Lysichite blanc",
+        "Plátano de agua",
+        "물파초"
+      ],
+      "internal": "CROPS_ID_SKUNK_CABBAGE",
+      "ja": "水芭蕉",
+      "review_status": "official",
+      "translations": {
+        "en": "Swamp Lantern",
+        "es": "Plátano de agua",
+        "fr": "Lysichite blanc",
+        "ja": "水芭蕉",
+        "ko": "물파초",
+        "zh-CN": "水芭蕉",
+        "zh-TW": "水芭蕉"
+      },
+      "zh_hans": "水芭蕉",
+      "zh_hant": "水芭蕉"
+    },
+    "numeric_id": 20,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SKUNK_CABBAGE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SPINACH"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_SPINACH",
+        "item_numeric_id": 100380,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_SPINACH",
+        "item_numeric_id": 100381,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_SPINACH",
+    "name": {
+      "aliases": [
+        "菠菜",
+        "ホウレンソウ",
+        "CROPS_ID_SPINACH",
+        "Spinach",
+        "Épinard",
+        "Espinaca",
+        "시금치"
+      ],
+      "internal": "CROPS_ID_SPINACH",
+      "ja": "ホウレンソウ",
+      "review_status": "official",
+      "translations": {
+        "en": "Spinach",
+        "es": "Espinaca",
+        "fr": "Épinard",
+        "ja": "ホウレンソウ",
+        "ko": "시금치",
+        "zh-CN": "菠菜",
+        "zh-TW": "菠菜"
+      },
+      "zh_hans": "菠菜",
+      "zh_hant": "菠菜"
+    },
+    "numeric_id": 58,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SPINACH"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 14,
+    "growth_points": 1400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_STRAWBERRY"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1400,
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "item_numeric_id": 100090,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_STRAWBERRY",
+        "item_numeric_id": 100090,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_STRAWBERRY",
+        "item_numeric_id": 100091,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_STRAWBERRY",
+    "name": {
+      "aliases": [
+        "草莓",
+        "イチゴ",
+        "CROPS_ID_STRAWBERRY",
+        "Strawberry",
+        "Fraise",
+        "Fresa",
+        "딸기"
+      ],
+      "internal": "CROPS_ID_STRAWBERRY",
+      "ja": "イチゴ",
+      "review_status": "official",
+      "translations": {
+        "en": "Strawberry",
+        "es": "Fresa",
+        "fr": "Fraise",
+        "ja": "イチゴ",
+        "ko": "딸기",
+        "zh-CN": "草莓",
+        "zh-TW": "草莓"
+      },
+      "zh_hans": "草莓",
+      "zh_hant": "草莓"
+    },
+    "numeric_id": 12,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_STRAWBERRY"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SUGARCANE"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_SUGARCANE",
+        "item_numeric_id": 100260,
+        "quantity": 2,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_SUGARCANE",
+    "name": {
+      "aliases": [
+        "甘蔗",
+        "サトウキビ",
+        "CROPS_ID_SUGARCANE",
+        "Sugarcane",
+        "Canne à sucre",
+        "Caña de azúcar",
+        "사탕수수"
+      ],
+      "internal": "CROPS_ID_SUGARCANE",
+      "ja": "サトウキビ",
+      "review_status": "official",
+      "translations": {
+        "en": "Sugarcane",
+        "es": "Caña de azúcar",
+        "fr": "Canne à sucre",
+        "ja": "サトウキビ",
+        "ko": "사탕수수",
+        "zh-CN": "甘蔗",
+        "zh-TW": "甘蔗"
+      },
+      "zh_hans": "甘蔗",
+      "zh_hant": "甘蔗"
+    },
+    "numeric_id": 28,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SUGAR_CANE"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SUNFLOWER"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_SUNFLOWER",
+        "item_numeric_id": 111150,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_SUNFLOWER",
+    "name": {
+      "aliases": [
+        "向日葵",
+        "ヒマワリ",
+        "CROPS_ID_SUNFLOWER",
+        "Sunflower",
+        "Tournesol",
+        "Girasol",
+        "해바라기"
+      ],
+      "internal": "CROPS_ID_SUNFLOWER",
+      "ja": "ヒマワリ",
+      "review_status": "official",
+      "translations": {
+        "en": "Sunflower",
+        "es": "Girasol",
+        "fr": "Tournesol",
+        "ja": "ヒマワリ",
+        "ko": "해바라기",
+        "zh-CN": "向日葵",
+        "zh-TW": "向日葵"
+      },
+      "zh_hans": "向日葵",
+      "zh_hant": "向日葵"
+    },
+    "numeric_id": 30,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SUNFLOWER"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 7,
+    "growth_points": 700,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_SWEET_POTATO"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 700,
+        "item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+        "item_numeric_id": 100290,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_SWEET_POTATO",
+    "name": {
+      "aliases": [
+        "红薯",
+        "地瓜",
+        "サツマイモ",
+        "CROPS_ID_SWEET_POTATO",
+        "Sweet Potato",
+        "Patate douce",
+        "Boniato",
+        "고구마"
+      ],
+      "internal": "CROPS_ID_SWEET_POTATO",
+      "ja": "サツマイモ",
+      "review_status": "official",
+      "translations": {
+        "en": "Sweet Potato",
+        "es": "Boniato",
+        "fr": "Patate douce",
+        "ja": "サツマイモ",
+        "ko": "고구마",
+        "zh-CN": "红薯",
+        "zh-TW": "地瓜"
+      },
+      "zh_hans": "红薯",
+      "zh_hant": "地瓜"
+    },
+    "numeric_id": 47,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_SWEET_POTATO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TARO"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TARO",
+        "item_numeric_id": 100280,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_TARO",
+    "name": {
+      "aliases": [
+        "芋头",
+        "芋頭",
+        "サトイモ",
+        "CROPS_ID_TARO",
+        "Taro",
+        "토란"
+      ],
+      "internal": "CROPS_ID_TARO",
+      "ja": "サトイモ",
+      "review_status": "official",
+      "translations": {
+        "en": "Taro",
+        "es": "Taro",
+        "fr": "Taro",
+        "ja": "サトイモ",
+        "ko": "토란",
+        "zh-CN": "芋头",
+        "zh-TW": "芋頭"
+      },
+      "zh_hans": "芋头",
+      "zh_hant": "芋頭"
+    },
+    "numeric_id": 46,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "autumn"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TARO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TEA_TREE"
+    ],
+    "harvest_quantity": 2,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 4
+      },
+      {
+        "growth_points": 200,
+        "item_id": "ITEM_ID_CROPS_TEA_TREE",
+        "item_numeric_id": 100390,
+        "quantity": 2,
+        "state": 5
+      }
+    ],
+    "id": "CROPS_ID_TEA_TREE",
+    "name": {
+      "aliases": [
+        "茶叶",
+        "茶葉",
+        "お茶",
+        "CROPS_ID_TEA_TREE",
+        "Tea",
+        "Thé",
+        "Té",
+        "차나무"
+      ],
+      "internal": "CROPS_ID_TEA_TREE",
+      "ja": "お茶",
+      "review_status": "official",
+      "translations": {
+        "en": "Tea",
+        "es": "Té",
+        "fr": "Thé",
+        "ja": "お茶",
+        "ko": "차나무",
+        "zh-CN": "茶叶",
+        "zh-TW": "茶葉"
+      },
+      "zh_hans": "茶叶",
+      "zh_hant": "茶葉"
+    },
+    "numeric_id": 64,
+    "perennial": {
+      "bearing_seasons": [
+        "spring"
+      ],
+      "kind": "shrub",
+      "rebear_days": 2,
+      "rebear_points": 200
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TEA"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TOMATO"
+    ],
+    "harvest_quantity": 3,
+    "harvest_stages": [
+      {
+        "growth_points": 1200,
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "item_numeric_id": 100110,
+        "quantity": 3,
+        "state": 1
+      },
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TOMATO",
+        "item_numeric_id": 100110,
+        "quantity": 3,
+        "state": 4
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_TOMATO",
+        "item_numeric_id": 100111,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_TOMATO",
+    "name": {
+      "aliases": [
+        "西红柿",
+        "番茄",
+        "トマト",
+        "CROPS_ID_TOMATO",
+        "Tomato",
+        "Tomate",
+        "토마토"
+      ],
+      "internal": "CROPS_ID_TOMATO",
+      "ja": "トマト",
+      "review_status": "official",
+      "translations": {
+        "en": "Tomato",
+        "es": "Tomate",
+        "fr": "Tomate",
+        "ja": "トマト",
+        "ko": "토마토",
+        "zh-CN": "西红柿",
+        "zh-TW": "番茄"
+      },
+      "zh_hans": "西红柿",
+      "zh_hant": "番茄"
+    },
+    "numeric_id": 21,
+    "perennial": null,
+    "regrow_days": 4,
+    "regrow_points": 400,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TOMATO"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TULIP"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_TULIP",
+        "item_numeric_id": 111030,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_TULIP",
+    "name": {
+      "aliases": [
+        "郁金香",
+        "鬱金香",
+        "チューリップ",
+        "CROPS_ID_TULIP",
+        "Tulip",
+        "Tulipe",
+        "Tulipán",
+        "튤립"
+      ],
+      "internal": "CROPS_ID_TULIP",
+      "ja": "チューリップ",
+      "review_status": "official",
+      "translations": {
+        "en": "Tulip",
+        "es": "Tulipán",
+        "fr": "Tulipe",
+        "ja": "チューリップ",
+        "ko": "튤립",
+        "zh-CN": "郁金香",
+        "zh-TW": "鬱金香"
+      },
+      "zh_hans": "郁金香",
+      "zh_hant": "鬱金香"
+    },
+    "numeric_id": 14,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TULIP"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_TURNIP"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_TURNIP",
+        "item_numeric_id": 100030,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_TURNIP",
+    "name": {
+      "aliases": [
+        "大头菜",
+        "大頭菜",
+        "カブ",
+        "CROPS_ID_TURNIP",
+        "Turnip",
+        "Navet",
+        "Nabo",
+        "순무"
+      ],
+      "internal": "CROPS_ID_TURNIP",
+      "ja": "カブ",
+      "review_status": "official",
+      "translations": {
+        "en": "Turnip",
+        "es": "Nabo",
+        "fr": "Navet",
+        "ja": "カブ",
+        "ko": "순무",
+        "zh-CN": "大头菜",
+        "zh-TW": "大頭菜"
+      },
+      "zh_hans": "大头菜",
+      "zh_hant": "大頭菜"
+    },
+    "numeric_id": 3,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_TURNIP"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 10,
+    "growth_points": 1000,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WASABI"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1000,
+        "item_id": "ITEM_ID_CROPS_WASABI",
+        "item_numeric_id": 100410,
+        "quantity": 1,
+        "state": 1
+      }
+    ],
+    "id": "CROPS_ID_WASABI",
+    "name": {
+      "aliases": [
+        "山葵",
+        "ワサビ",
+        "CROPS_ID_WASABI",
+        "Wasabi",
+        "와사비"
+      ],
+      "internal": "CROPS_ID_WASABI",
+      "ja": "ワサビ",
+      "review_status": "official",
+      "translations": {
+        "en": "Wasabi",
+        "es": "Wasabi",
+        "fr": "Wasabi",
+        "ja": "ワサビ",
+        "ko": "와사비",
+        "zh-CN": "山葵",
+        "zh-TW": "山葵"
+      },
+      "zh_hans": "山葵",
+      "zh_hant": "山葵"
+    },
+    "numeric_id": 65,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WASABI"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 11,
+    "growth_points": 1100,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WATERMELON"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 1100,
+        "item_id": "ITEM_ID_CROPS_WATERMELON",
+        "item_numeric_id": 100200,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WATERMELON",
+        "item_numeric_id": 100201,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_WATERMELON",
+    "name": {
+      "aliases": [
+        "西瓜",
+        "スイカ",
+        "CROPS_ID_WATERMELON",
+        "Watermelon",
+        "Pastèque",
+        "Sandía",
+        "수박"
+      ],
+      "internal": "CROPS_ID_WATERMELON",
+      "ja": "スイカ",
+      "review_status": "official",
+      "translations": {
+        "en": "Watermelon",
+        "es": "Sandía",
+        "fr": "Pastèque",
+        "ja": "スイカ",
+        "ko": "수박",
+        "zh-CN": "西瓜",
+        "zh-TW": "西瓜"
+      },
+      "zh_hans": "西瓜",
+      "zh_hant": "西瓜"
+    },
+    "numeric_id": 26,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WATERMELON"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 4,
+    "growth_points": 400,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WHEAT"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 400,
+        "item_id": "ITEM_ID_CROPS_WHEAT",
+        "item_numeric_id": 100240,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WHEAT",
+        "item_numeric_id": 100241,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_WHEAT",
+    "name": {
+      "aliases": [
+        "小麦",
+        "小麥",
+        "CROPS_ID_WHEAT",
+        "Wheat",
+        "Blé",
+        "Trigo",
+        "밀"
+      ],
+      "internal": "CROPS_ID_WHEAT",
+      "ja": "小麦",
+      "review_status": "official",
+      "translations": {
+        "en": "Wheat",
+        "es": "Trigo",
+        "fr": "Blé",
+        "ja": "小麦",
+        "ko": "밀",
+        "zh-CN": "小麦",
+        "zh-TW": "小麥"
+      },
+      "zh_hans": "小麦",
+      "zh_hant": "小麥"
+    },
+    "numeric_id": 27,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WHEAT"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 6,
+    "growth_points": 600,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_WHITE_ONION"
+    ],
+    "harvest_quantity": 1,
+    "harvest_stages": [
+      {
+        "growth_points": 600,
+        "item_id": "ITEM_ID_CROPS_WHITE_ONION",
+        "item_numeric_id": 100100,
+        "quantity": 1,
+        "state": 1
+      },
+      {
+        "growth_points": 0,
+        "item_id": "ITEM_ID_CROPS_DISASTER_WHITE_ONION",
+        "item_numeric_id": 100101,
+        "quantity": 1,
+        "state": 3
+      }
+    ],
+    "id": "CROPS_ID_WHITE_ONION",
+    "name": {
+      "aliases": [
+        "葱",
+        "蔥",
+        "白ネギ",
+        "CROPS_ID_WHITE_ONION",
+        "Scallion",
+        "Poireau",
+        "Cebolleta",
+        "대파"
+      ],
+      "internal": "CROPS_ID_WHITE_ONION",
+      "ja": "白ネギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Scallion",
+        "es": "Cebolleta",
+        "fr": "Poireau",
+        "ja": "白ネギ",
+        "ko": "대파",
+        "zh-CN": "葱",
+        "zh-TW": "蔥"
+      },
+      "zh_hans": "葱",
+      "zh_hant": "蔥"
+    },
+    "numeric_id": 5,
+    "perennial": null,
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "summer"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_WHITE_ONION"
+    ]
+  },
+  {
+    "cultivation_method": "",
+    "growth_days": 12,
+    "growth_points": 1200,
+    "harvest_item_ids": [
+      "ITEM_ID_CROPS_YUZU"
+    ],
+    "harvest_quantity": null,
+    "harvest_stages": [],
+    "id": "CROPS_ID_YUZU_TREE",
+    "name": {
+      "aliases": [
+        "柚子树",
+        "柚子樹",
+        "ユズの木",
+        "CROPS_ID_YUZU_TREE",
+        "Yuzu Tree",
+        "Yuzu",
+        "Árbol de yuzu",
+        "유자나무"
+      ],
+      "internal": "CROPS_ID_YUZU_TREE",
+      "ja": "ユズの木",
+      "review_status": "official",
+      "translations": {
+        "en": "Yuzu Tree",
+        "es": "Árbol de yuzu",
+        "fr": "Yuzu",
+        "ja": "ユズの木",
+        "ko": "유자나무",
+        "zh-CN": "柚子树",
+        "zh-TW": "柚子樹"
+      },
+      "zh_hans": "柚子树",
+      "zh_hant": "柚子樹"
+    },
+    "numeric_id": 102,
+    "perennial": {
+      "bearing_seasons": [
+        "winter"
+      ],
+      "fruit_capacity": 3,
+      "fruit_per_day": 1,
+      "greenhouse_only": false,
+      "kind": "fruit_tree"
+    },
+    "regrow_days": null,
+    "regrow_points": null,
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
+    "seed_item_ids": [
+      "ITEM_ID_SEED_YUZU"
+    ]
+  }
+]

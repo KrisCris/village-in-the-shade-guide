@@ -1,0 +1,1076 @@
+[
+  {
+    "id": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+    "name": {
+      "aliases": [
+        "克什米尔小山羊",
+        "喀什米爾小山羊",
+        "カシミヤ子ヤギ",
+        "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+        "喀什米尔小山羊",
+        "Cashmere Kid",
+        "Chevreau cachemire",
+        "Cabrito de cachemira",
+        "새끼 캐시미어"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
+      "ja": "カシミヤ子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cashmere Kid",
+        "es": "Cabrito de cachemira",
+        "fr": "Chevreau cachemire",
+        "ja": "カシミヤ子ヤギ",
+        "ko": "새끼 캐시미어",
+        "zh-CN": "克什米尔小山羊",
+        "zh-TW": "喀什米爾小山羊"
+      },
+      "zh_hans": "克什米尔小山羊",
+      "zh_hant": "喀什米爾小山羊"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_GOAT",
+    "name": {
+      "aliases": [
+        "小山羊",
+        "子ヤギ",
+        "LIVESTOCK_ID_BABY_GOAT",
+        "Kid",
+        "Chevreau",
+        "Cabrito",
+        "새끼 염소"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_GOAT",
+      "ja": "子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Kid",
+        "es": "Cabrito",
+        "fr": "Chevreau",
+        "ja": "子ヤギ",
+        "ko": "새끼 염소",
+        "zh-CN": "小山羊",
+        "zh-TW": "小山羊"
+      },
+      "zh_hans": "小山羊",
+      "zh_hant": "小山羊"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+    "name": {
+      "aliases": [
+        "斑纹小山羊",
+        "斑紋小山羊",
+        "まだら子ヤギ",
+        "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+        "Spotted Kid",
+        "Chevreau tacheté",
+        "Cabrito moteado",
+        "얼룩무늬 새끼 염소"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
+      "ja": "まだら子ヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Spotted Kid",
+        "es": "Cabrito moteado",
+        "fr": "Chevreau tacheté",
+        "ja": "まだら子ヤギ",
+        "ko": "얼룩무늬 새끼 염소",
+        "zh-CN": "斑纹小山羊",
+        "zh-TW": "斑紋小山羊"
+      },
+      "zh_hans": "斑纹小山羊",
+      "zh_hant": "斑紋小山羊"
+    },
+    "numeric_id": 307
+  },
+  {
+    "id": "LIVESTOCK_ID_BABY_HORSE",
+    "name": {
+      "aliases": [
+        "小马",
+        "小馬",
+        "子ウマ",
+        "LIVESTOCK_ID_BABY_HORSE",
+        "Foal",
+        "Poulain",
+        "Potro",
+        "망아지"
+      ],
+      "internal": "LIVESTOCK_ID_BABY_HORSE",
+      "ja": "子ウマ",
+      "review_status": "official",
+      "translations": {
+        "en": "Foal",
+        "es": "Potro",
+        "fr": "Poulain",
+        "ja": "子ウマ",
+        "ko": "망아지",
+        "zh-CN": "小马",
+        "zh-TW": "小馬"
+      },
+      "zh_hans": "小马",
+      "zh_hant": "小馬"
+    },
+    "numeric_id": 18
+  },
+  {
+    "id": "LIVESTOCK_ID_CALF",
+    "name": {
+      "aliases": [
+        "小牛",
+        "子ウシ",
+        "LIVESTOCK_ID_CALF",
+        "Calf",
+        "Veau",
+        "Ternero",
+        "송아지"
+      ],
+      "internal": "LIVESTOCK_ID_CALF",
+      "ja": "子ウシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Calf",
+        "es": "Ternero",
+        "fr": "Veau",
+        "ja": "子ウシ",
+        "ko": "송아지",
+        "zh-CN": "小牛",
+        "zh-TW": "小牛"
+      },
+      "zh_hans": "小牛",
+      "zh_hant": "小牛"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "LIVESTOCK_ID_CASHMERE_GOAT",
+    "name": {
+      "aliases": [
+        "克什米尔山羊",
+        "喀什米爾山羊",
+        "カシミヤヤギ",
+        "LIVESTOCK_ID_CASHMERE_GOAT",
+        "喀什米尔山羊",
+        "Cashmere Goat",
+        "Chèvre cachemire",
+        "Cabra de cachemira",
+        "캐시미어"
+      ],
+      "internal": "LIVESTOCK_ID_CASHMERE_GOAT",
+      "ja": "カシミヤヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cashmere Goat",
+        "es": "Cabra de cachemira",
+        "fr": "Chèvre cachemire",
+        "ja": "カシミヤヤギ",
+        "ko": "캐시미어",
+        "zh-CN": "克什米尔山羊",
+        "zh-TW": "喀什米爾山羊"
+      },
+      "zh_hans": "克什米尔山羊",
+      "zh_hant": "喀什米爾山羊"
+    },
+    "numeric_id": 13
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICK",
+    "name": {
+      "aliases": [
+        "小鸡",
+        "小雞",
+        "ヒヨコ",
+        "LIVESTOCK_ID_CHICK",
+        "Chick",
+        "Poussin",
+        "Polluelo",
+        "병아리"
+      ],
+      "internal": "LIVESTOCK_ID_CHICK",
+      "ja": "ヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Chick",
+        "es": "Polluelo",
+        "fr": "Poussin",
+        "ja": "ヒヨコ",
+        "ko": "병아리",
+        "zh-CN": "小鸡",
+        "zh-TW": "小雞"
+      },
+      "zh_hans": "小鸡",
+      "zh_hant": "小雞"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICKEN",
+    "name": {
+      "aliases": [
+        "鸡",
+        "雞",
+        "ニワトリ",
+        "LIVESTOCK_ID_CHICKEN",
+        "Chicken",
+        "Poule",
+        "Gallina",
+        "닭"
+      ],
+      "internal": "LIVESTOCK_ID_CHICKEN",
+      "ja": "ニワトリ",
+      "review_status": "official",
+      "translations": {
+        "en": "Chicken",
+        "es": "Gallina",
+        "fr": "Poule",
+        "ja": "ニワトリ",
+        "ko": "닭",
+        "zh-CN": "鸡",
+        "zh-TW": "雞"
+      },
+      "zh_hans": "鸡",
+      "zh_hant": "雞"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICKEN_SILKIE",
+    "name": {
+      "aliases": [
+        "乌骨鸡",
+        "烏骨雞",
+        "ウコッケイ",
+        "LIVESTOCK_ID_CHICKEN_SILKIE",
+        "Silkie",
+        "Poule Soie",
+        "Gallina sedosa",
+        "오골계"
+      ],
+      "internal": "LIVESTOCK_ID_CHICKEN_SILKIE",
+      "ja": "ウコッケイ",
+      "review_status": "official",
+      "translations": {
+        "en": "Silkie",
+        "es": "Gallina sedosa",
+        "fr": "Poule Soie",
+        "ja": "ウコッケイ",
+        "ko": "오골계",
+        "zh-CN": "乌骨鸡",
+        "zh-TW": "烏骨雞"
+      },
+      "zh_hans": "乌骨鸡",
+      "zh_hant": "烏骨雞"
+    },
+    "numeric_id": 302
+  },
+  {
+    "id": "LIVESTOCK_ID_CHICK_SILKIE",
+    "name": {
+      "aliases": [
+        "乌骨鸡的小鸡",
+        "烏骨雞的小雞",
+        "ウコッケイのヒヨコ",
+        "LIVESTOCK_ID_CHICK_SILKIE",
+        "Silkie Chick",
+        "Poussin Soie",
+        "Polluelo de gallina sedosa",
+        "새끼 오골계"
+      ],
+      "internal": "LIVESTOCK_ID_CHICK_SILKIE",
+      "ja": "ウコッケイのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Silkie Chick",
+        "es": "Polluelo de gallina sedosa",
+        "fr": "Poussin Soie",
+        "ja": "ウコッケイのヒヨコ",
+        "ko": "새끼 오골계",
+        "zh-CN": "乌骨鸡的小鸡",
+        "zh-TW": "烏骨雞的小雞"
+      },
+      "zh_hans": "乌骨鸡的小鸡",
+      "zh_hant": "烏骨雞的小雞"
+    },
+    "numeric_id": 301
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／蓝色",
+        "彩色小雞／藍色",
+        "カラーヒヨコ/青色",
+        "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+        "Dyed Chick (B)",
+        "Poussin (Bleu)",
+        "Polluelo (azul)",
+        "컬러 병아리/파란색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
+      "ja": "カラーヒヨコ/青色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (B)",
+        "es": "Polluelo (azul)",
+        "fr": "Poussin (Bleu)",
+        "ja": "カラーヒヨコ/青色",
+        "ko": "컬러 병아리/파란색",
+        "zh-CN": "彩色小鸡／蓝色",
+        "zh-TW": "彩色小雞／藍色"
+      },
+      "zh_hans": "彩色小鸡／蓝色",
+      "zh_hant": "彩色小雞／藍色"
+    },
+    "numeric_id": 23
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+    "name": {
+      "aliases": [
+        "彩色小鸡／灰色",
+        "彩色小雞／灰色",
+        "カラーヒヨコ/灰色",
+        "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+        "Dyed Chick (Gy)",
+        "Poussin (Gris)",
+        "Polluelo (gris)",
+        "컬러 병아리/회색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
+      "ja": "カラーヒヨコ/灰色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (Gy)",
+        "es": "Polluelo (gris)",
+        "fr": "Poussin (Gris)",
+        "ja": "カラーヒヨコ/灰色",
+        "ko": "컬러 병아리/회색",
+        "zh-CN": "彩色小鸡／灰色",
+        "zh-TW": "彩色小雞／灰色"
+      },
+      "zh_hans": "彩色小鸡／灰色",
+      "zh_hant": "彩色小雞／灰色"
+    },
+    "numeric_id": 25
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+    "name": {
+      "aliases": [
+        "彩色小鸡／绿色",
+        "彩色小雞／綠色",
+        "カラーヒヨコ/緑色",
+        "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+        "Dyed Chick (G)",
+        "Poussin (Vert)",
+        "Polluelo (verde)",
+        "컬러 병아리/초록색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
+      "ja": "カラーヒヨコ/緑色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (G)",
+        "es": "Polluelo (verde)",
+        "fr": "Poussin (Vert)",
+        "ja": "カラーヒヨコ/緑色",
+        "ko": "컬러 병아리/초록색",
+        "zh-CN": "彩色小鸡／绿色",
+        "zh-TW": "彩色小雞／綠色"
+      },
+      "zh_hans": "彩色小鸡／绿色",
+      "zh_hant": "彩色小雞／綠色"
+    },
+    "numeric_id": 21
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／水蓝色",
+        "彩色小雞／水藍色",
+        "カラーヒヨコ/水色",
+        "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+        "Dyed Chick (L. B)",
+        "Poussin (Bleu clair)",
+        "Polluelo (celeste)",
+        "컬러 병아리/하늘색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
+      "ja": "カラーヒヨコ/水色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (L. B)",
+        "es": "Polluelo (celeste)",
+        "fr": "Poussin (Bleu clair)",
+        "ja": "カラーヒヨコ/水色",
+        "ko": "컬러 병아리/하늘색",
+        "zh-CN": "彩色小鸡／水蓝色",
+        "zh-TW": "彩色小雞／水藍色"
+      },
+      "zh_hans": "彩色小鸡／水蓝色",
+      "zh_hant": "彩色小雞／水藍色"
+    },
+    "numeric_id": 22
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／橘色",
+        "彩色小雞／橘色",
+        "カラーヒヨコ/橙色",
+        "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+        "Dyed Chick (O)",
+        "Poussin (Orange)",
+        "Polluelo (naranja)",
+        "컬러 병아리/주황색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
+      "ja": "カラーヒヨコ/橙色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (O)",
+        "es": "Polluelo (naranja)",
+        "fr": "Poussin (Orange)",
+        "ja": "カラーヒヨコ/橙色",
+        "ko": "컬러 병아리/주황색",
+        "zh-CN": "彩色小鸡／橘色",
+        "zh-TW": "彩色小雞／橘色"
+      },
+      "zh_hans": "彩色小鸡／橘色",
+      "zh_hant": "彩色小雞／橘色"
+    },
+    "numeric_id": 20
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+    "name": {
+      "aliases": [
+        "彩色小鸡／紫色",
+        "彩色小雞／紫色",
+        "カラーヒヨコ/紫色",
+        "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+        "Dyed Chick (P)",
+        "Poussin (Violet)",
+        "Polluelo (morado)",
+        "컬러 병아리/보라색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
+      "ja": "カラーヒヨコ/紫色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (P)",
+        "es": "Polluelo (morado)",
+        "fr": "Poussin (Violet)",
+        "ja": "カラーヒヨコ/紫色",
+        "ko": "컬러 병아리/보라색",
+        "zh-CN": "彩色小鸡／紫色",
+        "zh-TW": "彩色小雞／紫色"
+      },
+      "zh_hans": "彩色小鸡／紫色",
+      "zh_hant": "彩色小雞／紫色"
+    },
+    "numeric_id": 24
+  },
+  {
+    "id": "LIVESTOCK_ID_COLOR_CHICK_RED",
+    "name": {
+      "aliases": [
+        "彩色小鸡／红色",
+        "彩色小雞／紅色",
+        "カラーヒヨコ/赤色",
+        "LIVESTOCK_ID_COLOR_CHICK_RED",
+        "Dyed Chick (R)",
+        "Poussin (Rouge)",
+        "Polluelo (rojo)",
+        "컬러 병아리/빨간색"
+      ],
+      "internal": "LIVESTOCK_ID_COLOR_CHICK_RED",
+      "ja": "カラーヒヨコ/赤色",
+      "review_status": "official",
+      "translations": {
+        "en": "Dyed Chick (R)",
+        "es": "Polluelo (rojo)",
+        "fr": "Poussin (Rouge)",
+        "ja": "カラーヒヨコ/赤色",
+        "ko": "컬러 병아리/빨간색",
+        "zh-CN": "彩色小鸡／红色",
+        "zh-TW": "彩色小雞／紅色"
+      },
+      "zh_hans": "彩色小鸡／红色",
+      "zh_hant": "彩色小雞／紅色"
+    },
+    "numeric_id": 19
+  },
+  {
+    "id": "LIVESTOCK_ID_COW",
+    "name": {
+      "aliases": [
+        "牛",
+        "ウシ",
+        "LIVESTOCK_ID_COW",
+        "Cow",
+        "Vache",
+        "Vaca",
+        "소"
+      ],
+      "internal": "LIVESTOCK_ID_COW",
+      "ja": "ウシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Cow",
+        "es": "Vaca",
+        "fr": "Vache",
+        "ja": "ウシ",
+        "ko": "소",
+        "zh-CN": "牛",
+        "zh-TW": "牛"
+      },
+      "zh_hans": "牛",
+      "zh_hant": "牛"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "LIVESTOCK_ID_COWCHILD_FLUFFY",
+    "name": {
+      "aliases": [
+        "毛茸茸的小牛",
+        "ふさふさの子ウシ",
+        "LIVESTOCK_ID_COWCHILD_FLUFFY",
+        "Fluffy Calf",
+        "Veau à poils longs",
+        "Ternero peludo",
+        "복슬복슬 송아지"
+      ],
+      "internal": "LIVESTOCK_ID_COWCHILD_FLUFFY",
+      "ja": "ふさふさの子ウシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Fluffy Calf",
+        "es": "Ternero peludo",
+        "fr": "Veau à poils longs",
+        "ja": "ふさふさの子ウシ",
+        "ko": "복슬복슬 송아지",
+        "zh-CN": "毛茸茸的小牛",
+        "zh-TW": "毛茸茸的小牛"
+      },
+      "zh_hans": "毛茸茸的小牛",
+      "zh_hant": "毛茸茸的小牛"
+    },
+    "numeric_id": 305
+  },
+  {
+    "id": "LIVESTOCK_ID_COW_FLUFFY",
+    "name": {
+      "aliases": [
+        "毛茸茸的牛",
+        "ふさふさのウシ",
+        "LIVESTOCK_ID_COW_FLUFFY",
+        "Fluffy Cow",
+        "Vache à poils longs",
+        "Vaca peluda",
+        "복슬복슬 소"
+      ],
+      "internal": "LIVESTOCK_ID_COW_FLUFFY",
+      "ja": "ふさふさのウシ",
+      "review_status": "official",
+      "translations": {
+        "en": "Fluffy Cow",
+        "es": "Vaca peluda",
+        "fr": "Vache à poils longs",
+        "ja": "ふさふさのウシ",
+        "ko": "복슬복슬 소",
+        "zh-CN": "毛茸茸的牛",
+        "zh-TW": "毛茸茸的牛"
+      },
+      "zh_hans": "毛茸茸的牛",
+      "zh_hant": "毛茸茸的牛"
+    },
+    "numeric_id": 306
+  },
+  {
+    "id": "LIVESTOCK_ID_DOG",
+    "name": {
+      "aliases": [
+        "狗",
+        "犬",
+        "LIVESTOCK_ID_DOG",
+        "Dog",
+        "Chien",
+        "Perro",
+        "개"
+      ],
+      "internal": "LIVESTOCK_ID_DOG",
+      "ja": "犬",
+      "review_status": "official",
+      "translations": {
+        "en": "Dog",
+        "es": "Perro",
+        "fr": "Chien",
+        "ja": "犬",
+        "ko": "개",
+        "zh-CN": "狗",
+        "zh-TW": "狗"
+      },
+      "zh_hans": "狗",
+      "zh_hant": "狗"
+    },
+    "numeric_id": 200
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK",
+    "name": {
+      "aliases": [
+        "鸭",
+        "鴨",
+        "アヒル",
+        "LIVESTOCK_ID_DUCK",
+        "Duck",
+        "Cane",
+        "Pato",
+        "오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK",
+      "ja": "アヒル",
+      "review_status": "official",
+      "translations": {
+        "en": "Duck",
+        "es": "Pato",
+        "fr": "Cane",
+        "ja": "アヒル",
+        "ko": "오리",
+        "zh-CN": "鸭",
+        "zh-TW": "鴨"
+      },
+      "zh_hans": "鸭",
+      "zh_hant": "鴨"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_CHICK",
+    "name": {
+      "aliases": [
+        "小鸭",
+        "小鴨",
+        "アヒルのヒヨコ",
+        "LIVESTOCK_ID_DUCK_CHICK",
+        "Duckling",
+        "Caneton",
+        "Patito",
+        "새끼 오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_CHICK",
+      "ja": "アヒルのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Duckling",
+        "es": "Patito",
+        "fr": "Caneton",
+        "ja": "アヒルのヒヨコ",
+        "ko": "새끼 오리",
+        "zh-CN": "小鸭",
+        "zh-TW": "小鴨"
+      },
+      "zh_hans": "小鸭",
+      "zh_hant": "小鴨"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_CHICK_WILD",
+    "name": {
+      "aliases": [
+        "野鸭的小鸭",
+        "野鴨的小鴨",
+        "カモのヒヨコ",
+        "LIVESTOCK_ID_DUCK_CHICK_WILD",
+        "Mallard Duckling",
+        "Caneton sauvage",
+        "Patito",
+        "새끼 청둥오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_CHICK_WILD",
+      "ja": "カモのヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Mallard Duckling",
+        "es": "Patito",
+        "fr": "Caneton sauvage",
+        "ja": "カモのヒヨコ",
+        "ko": "새끼 청둥오리",
+        "zh-CN": "野鸭的小鸭",
+        "zh-TW": "野鴨的小鴨"
+      },
+      "zh_hans": "野鸭的小鸭",
+      "zh_hant": "野鴨的小鴨"
+    },
+    "numeric_id": 303
+  },
+  {
+    "id": "LIVESTOCK_ID_DUCK_WILD",
+    "name": {
+      "aliases": [
+        "野鸭",
+        "野鴨",
+        "カモ",
+        "LIVESTOCK_ID_DUCK_WILD",
+        "Mallard",
+        "Cane sauvage",
+        "Pato",
+        "청둥오리"
+      ],
+      "internal": "LIVESTOCK_ID_DUCK_WILD",
+      "ja": "カモ",
+      "review_status": "official",
+      "translations": {
+        "en": "Mallard",
+        "es": "Pato",
+        "fr": "Cane sauvage",
+        "ja": "カモ",
+        "ko": "청둥오리",
+        "zh-CN": "野鸭",
+        "zh-TW": "野鴨"
+      },
+      "zh_hans": "野鸭",
+      "zh_hant": "野鴨"
+    },
+    "numeric_id": 304
+  },
+  {
+    "id": "LIVESTOCK_ID_GHOST_COW",
+    "name": {
+      "aliases": [
+        "牛鬼",
+        "牛お化け",
+        "LIVESTOCK_ID_GHOST_COW",
+        "Ghost Cow",
+        "Vache fantôme",
+        "Vaca fantasma",
+        "소 괴물"
+      ],
+      "internal": "LIVESTOCK_ID_GHOST_COW",
+      "ja": "牛お化け",
+      "review_status": "official",
+      "translations": {
+        "en": "Ghost Cow",
+        "es": "Vaca fantasma",
+        "fr": "Vache fantôme",
+        "ja": "牛お化け",
+        "ko": "소 괴물",
+        "zh-CN": "牛鬼",
+        "zh-TW": "牛鬼"
+      },
+      "zh_hans": "牛鬼",
+      "zh_hant": "牛鬼"
+    },
+    "numeric_id": 100
+  },
+  {
+    "id": "LIVESTOCK_ID_GOAT",
+    "name": {
+      "aliases": [
+        "山羊",
+        "ヤギ",
+        "LIVESTOCK_ID_GOAT",
+        "Goat",
+        "Chèvre",
+        "Cabra",
+        "염소"
+      ],
+      "internal": "LIVESTOCK_ID_GOAT",
+      "ja": "ヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Goat",
+        "es": "Cabra",
+        "fr": "Chèvre",
+        "ja": "ヤギ",
+        "ko": "염소",
+        "zh-CN": "山羊",
+        "zh-TW": "山羊"
+      },
+      "zh_hans": "山羊",
+      "zh_hant": "山羊"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "LIVESTOCK_ID_GOAT_MOTTLED",
+    "name": {
+      "aliases": [
+        "斑纹山羊",
+        "斑紋山羊",
+        "まだらヤギ",
+        "LIVESTOCK_ID_GOAT_MOTTLED",
+        "Spotted Goat",
+        "Chèvre tachetée",
+        "Cabra moteada",
+        "얼룩무늬 염소"
+      ],
+      "internal": "LIVESTOCK_ID_GOAT_MOTTLED",
+      "ja": "まだらヤギ",
+      "review_status": "official",
+      "translations": {
+        "en": "Spotted Goat",
+        "es": "Cabra moteada",
+        "fr": "Chèvre tachetée",
+        "ja": "まだらヤギ",
+        "ko": "얼룩무늬 염소",
+        "zh-CN": "斑纹山羊",
+        "zh-TW": "斑紋山羊"
+      },
+      "zh_hans": "斑纹山羊",
+      "zh_hant": "斑紋山羊"
+    },
+    "numeric_id": 308
+  },
+  {
+    "id": "LIVESTOCK_ID_HORSE",
+    "name": {
+      "aliases": [
+        "马",
+        "馬",
+        "ウマ",
+        "LIVESTOCK_ID_HORSE",
+        "Horse",
+        "Cheval",
+        "Caballo",
+        "말"
+      ],
+      "internal": "LIVESTOCK_ID_HORSE",
+      "ja": "ウマ",
+      "review_status": "official",
+      "translations": {
+        "en": "Horse",
+        "es": "Caballo",
+        "fr": "Cheval",
+        "ja": "ウマ",
+        "ko": "말",
+        "zh-CN": "马",
+        "zh-TW": "馬"
+      },
+      "zh_hans": "马",
+      "zh_hant": "馬"
+    },
+    "numeric_id": 17
+  },
+  {
+    "id": "LIVESTOCK_ID_LAMB",
+    "name": {
+      "aliases": [
+        "小绵羊",
+        "小綿羊",
+        "子ヒツジ",
+        "LIVESTOCK_ID_LAMB",
+        "Lamb",
+        "Agneau",
+        "Cordero",
+        "새끼 양"
+      ],
+      "internal": "LIVESTOCK_ID_LAMB",
+      "ja": "子ヒツジ",
+      "review_status": "official",
+      "translations": {
+        "en": "Lamb",
+        "es": "Cordero",
+        "fr": "Agneau",
+        "ja": "子ヒツジ",
+        "ko": "새끼 양",
+        "zh-CN": "小绵羊",
+        "zh-TW": "小綿羊"
+      },
+      "zh_hans": "小绵羊",
+      "zh_hant": "小綿羊"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "LIVESTOCK_ID_PIG",
+    "name": {
+      "aliases": [
+        "猪",
+        "豬",
+        "ブタ",
+        "LIVESTOCK_ID_PIG",
+        "Pig",
+        "Cochon",
+        "Cerdo",
+        "돼지"
+      ],
+      "internal": "LIVESTOCK_ID_PIG",
+      "ja": "ブタ",
+      "review_status": "official",
+      "translations": {
+        "en": "Pig",
+        "es": "Cerdo",
+        "fr": "Cochon",
+        "ja": "ブタ",
+        "ko": "돼지",
+        "zh-CN": "猪",
+        "zh-TW": "豬"
+      },
+      "zh_hans": "猪",
+      "zh_hant": "豬"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "LIVESTOCK_ID_PIGLET",
+    "name": {
+      "aliases": [
+        "小猪",
+        "小豬",
+        "子ブタ",
+        "LIVESTOCK_ID_PIGLET",
+        "Piglet",
+        "Porcelet",
+        "Cerdito",
+        "새끼 돼지"
+      ],
+      "internal": "LIVESTOCK_ID_PIGLET",
+      "ja": "子ブタ",
+      "review_status": "official",
+      "translations": {
+        "en": "Piglet",
+        "es": "Cerdito",
+        "fr": "Porcelet",
+        "ja": "子ブタ",
+        "ko": "새끼 돼지",
+        "zh-CN": "小猪",
+        "zh-TW": "小豬"
+      },
+      "zh_hans": "小猪",
+      "zh_hant": "小豬"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "LIVESTOCK_ID_ROOSTER",
+    "name": {
+      "aliases": [
+        "公鸡",
+        "公雞",
+        "雄鶏",
+        "LIVESTOCK_ID_ROOSTER",
+        "Rooster",
+        "Coq",
+        "Gallo",
+        "수탉"
+      ],
+      "internal": "LIVESTOCK_ID_ROOSTER",
+      "ja": "雄鶏",
+      "review_status": "official",
+      "translations": {
+        "en": "Rooster",
+        "es": "Gallo",
+        "fr": "Coq",
+        "ja": "雄鶏",
+        "ko": "수탉",
+        "zh-CN": "公鸡",
+        "zh-TW": "公雞"
+      },
+      "zh_hans": "公鸡",
+      "zh_hant": "公雞"
+    },
+    "numeric_id": 30
+  },
+  {
+    "id": "LIVESTOCK_ID_SHEEP",
+    "name": {
+      "aliases": [
+        "绵羊",
+        "綿羊",
+        "ヒツジ",
+        "LIVESTOCK_ID_SHEEP",
+        "Sheep",
+        "Mouton",
+        "Oveja",
+        "양"
+      ],
+      "internal": "LIVESTOCK_ID_SHEEP",
+      "ja": "ヒツジ",
+      "review_status": "official",
+      "translations": {
+        "en": "Sheep",
+        "es": "Oveja",
+        "fr": "Mouton",
+        "ja": "ヒツジ",
+        "ko": "양",
+        "zh-CN": "绵羊",
+        "zh-TW": "綿羊"
+      },
+      "zh_hans": "绵羊",
+      "zh_hant": "綿羊"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "LIVESTOCK_ID_TURKEY",
+    "name": {
+      "aliases": [
+        "火鸡",
+        "火雞",
+        "七面鳥",
+        "LIVESTOCK_ID_TURKEY",
+        "Turkey",
+        "Dinde",
+        "Pavo",
+        "칠면조"
+      ],
+      "internal": "LIVESTOCK_ID_TURKEY",
+      "ja": "七面鳥",
+      "review_status": "official",
+      "translations": {
+        "en": "Turkey",
+        "es": "Pavo",
+        "fr": "Dinde",
+        "ja": "七面鳥",
+        "ko": "칠면조",
+        "zh-CN": "火鸡",
+        "zh-TW": "火雞"
+      },
+      "zh_hans": "火鸡",
+      "zh_hant": "火雞"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "LIVESTOCK_ID_TURKEY_CHICK",
+    "name": {
+      "aliases": [
+        "小火鸡",
+        "小火雞",
+        "七面鳥のヒヨコ",
+        "LIVESTOCK_ID_TURKEY_CHICK",
+        "Poult",
+        "Dindonneau",
+        "Pavito",
+        "새끼 칠면조"
+      ],
+      "internal": "LIVESTOCK_ID_TURKEY_CHICK",
+      "ja": "七面鳥のヒヨコ",
+      "review_status": "official",
+      "translations": {
+        "en": "Poult",
+        "es": "Pavito",
+        "fr": "Dindonneau",
+        "ja": "七面鳥のヒヨコ",
+        "ko": "새끼 칠면조",
+        "zh-CN": "小火鸡",
+        "zh-TW": "小火雞"
+      },
+      "zh_hans": "小火鸡",
+      "zh_hant": "小火雞"
+    },
+    "numeric_id": 6
+  }
+]

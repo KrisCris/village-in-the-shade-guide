@@ -1,0 +1,511 @@
+[
+  {
+    "id": "FACILITY_RELEASE_ID_ADDITIONAL_FARMLAND",
+    "name": {
+      "aliases": [
+        "买下了一座新庭院！",
+        "買下了一座新庭院！",
+        "新しい庭を買い取った！",
+        "FACILITY_RELEASE_ID_ADDITIONAL_FARMLAND",
+        "Farmland purchased!",
+        "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "¡Has comprado un nuevo jardín!",
+        "새로운 정원을 매수했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_ADDITIONAL_FARMLAND",
+      "ja": "新しい庭を買い取った！",
+      "review_status": "official",
+      "translations": {
+        "en": "Farmland purchased!",
+        "es": "¡Has comprado un nuevo jardín!",
+        "fr": "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "ja": "新しい庭を買い取った！",
+        "ko": "새로운 정원을 매수했다!",
+        "zh-CN": "买下了一座新庭院！",
+        "zh-TW": "買下了一座新庭院！"
+      },
+      "zh_hans": "买下了一座新庭院！",
+      "zh_hant": "買下了一座新庭院！"
+    },
+    "numeric_id": 17
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_CLINIC",
+    "name": {
+      "aliases": [
+        "可以使用樟树诊所了！",
+        "可以使用樟樹診所了！",
+        "くすのき診療所が利用できるようになった！",
+        "FACILITY_RELEASE_ID_CLINIC",
+        "Kusunoki Clinic is now accessible!",
+        "La clinique Kusunoki est désormais accessible !",
+        "Ahora puedes usar la clínica Kusunoki.",
+        "쿠스노키 진료소를 이용할 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_CLINIC",
+      "ja": "くすのき診療所が利用できるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "Kusunoki Clinic is now accessible!",
+        "es": "Ahora puedes usar la clínica Kusunoki.",
+        "fr": "La clinique Kusunoki est désormais accessible !",
+        "ja": "くすのき診療所が利用できるようになった！",
+        "ko": "쿠스노키 진료소를 이용할 수 있게 됐다!",
+        "zh-CN": "可以使用樟树诊所了！",
+        "zh-TW": "可以使用樟樹診所了！"
+      },
+      "zh_hans": "可以使用樟树诊所了！",
+      "zh_hant": "可以使用樟樹診所了！"
+    },
+    "numeric_id": 4
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_CONSTRUCTION_SHED",
+    "name": {
+      "aliases": [
+        "可以在树木建设委托建筑工程了！",
+        "可以在樹木建設委託建築工程了！",
+        "樹木建設で建築の依頼ができるようになった！",
+        "FACILITY_RELEASE_ID_CONSTRUCTION_SHED",
+        "Construction requests may now be made at Kiki Construction!",
+        "L’entreprise Kiki est désormais accessible !",
+        "Ya puedes construir en Construcciones Jumoku.",
+        "키키 건설에서 건축을 의뢰할 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_CONSTRUCTION_SHED",
+      "ja": "樹木建設で建築の依頼ができるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "Construction requests may now be made at Kiki Construction!",
+        "es": "Ya puedes construir en Construcciones Jumoku.",
+        "fr": "L’entreprise Kiki est désormais accessible !",
+        "ja": "樹木建設で建築の依頼ができるようになった！",
+        "ko": "키키 건설에서 건축을 의뢰할 수 있게 됐다!",
+        "zh-CN": "可以在树木建设委托建筑工程了！",
+        "zh-TW": "可以在樹木建設委託建築工程了！"
+      },
+      "zh_hans": "可以在树木建设委托建筑工程了！",
+      "zh_hant": "可以在樹木建設委託建築工程了！"
+    },
+    "numeric_id": 2
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1",
+    "name": {
+      "aliases": [
+        "买下了一座新庭院！",
+        "買下了一座新庭院！",
+        "新しい庭を買い取った！",
+        "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1",
+        "Farmland purchased!",
+        "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "¡Has comprado un nuevo jardín!",
+        "새로운 정원을 매수했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_1",
+      "ja": "新しい庭を買い取った！",
+      "review_status": "official",
+      "translations": {
+        "en": "Farmland purchased!",
+        "es": "¡Has comprado un nuevo jardín!",
+        "fr": "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "ja": "新しい庭を買い取った！",
+        "ko": "새로운 정원을 매수했다!",
+        "zh-CN": "买下了一座新庭院！",
+        "zh-TW": "買下了一座新庭院！"
+      },
+      "zh_hans": "买下了一座新庭院！",
+      "zh_hant": "買下了一座新庭院！"
+    },
+    "numeric_id": 14
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2",
+    "name": {
+      "aliases": [
+        "买下了一座新庭院！",
+        "買下了一座新庭院！",
+        "新しい庭を買い取った！",
+        "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2",
+        "Farmland purchased!",
+        "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "¡Has comprado un nuevo jardín!",
+        "새로운 정원을 매수했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_FARMLAND_EXPANTION_2",
+      "ja": "新しい庭を買い取った！",
+      "review_status": "official",
+      "translations": {
+        "en": "Farmland purchased!",
+        "es": "¡Has comprado un nuevo jardín!",
+        "fr": "Vous avez fait l’acquisition d’un nouveau jardin !",
+        "ja": "新しい庭を買い取った！",
+        "ko": "새로운 정원을 매수했다!",
+        "zh-CN": "买下了一座新庭院！",
+        "zh-TW": "買下了一座新庭院！"
+      },
+      "zh_hans": "买下了一座新庭院！",
+      "zh_hant": "買下了一座新庭院！"
+    },
+    "numeric_id": 15
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_GENERAL_STORE",
+    "name": {
+      "aliases": [
+        "可以在田上杂货店买东西了！",
+        "可以在田上雜貨店買東西了！",
+        "田上雑貨店で買い物ができるようになった！",
+        "FACILITY_RELEASE_ID_GENERAL_STORE",
+        "Merchandise may now be purchased at Tagami General Store!",
+        "La boutique Tagami est désormais accessible !",
+        "Ahora puedes comprar en el Bazar Tagami.",
+        "타가미 잡화점에서 물건을 살 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_GENERAL_STORE",
+      "ja": "田上雑貨店で買い物ができるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "Merchandise may now be purchased at Tagami General Store!",
+        "es": "Ahora puedes comprar en el Bazar Tagami.",
+        "fr": "La boutique Tagami est désormais accessible !",
+        "ja": "田上雑貨店で買い物ができるようになった！",
+        "ko": "타가미 잡화점에서 물건을 살 수 있게 됐다!",
+        "zh-CN": "可以在田上杂货店买东西了！",
+        "zh-TW": "可以在田上雜貨店買東西了！"
+      },
+      "zh_hans": "可以在田上杂货店买东西了！",
+      "zh_hant": "可以在田上雜貨店買東西了！"
+    },
+    "numeric_id": 1
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_HUNTING_LODGE",
+    "name": {
+      "aliases": [
+        "可以使用猎人哨站了！",
+        "可以使用獵人哨站了！",
+        "狩人詰所が利用できるようになった！",
+        "FACILITY_RELEASE_ID_HUNTING_LODGE",
+        "The hunting lodge is now accessible!",
+        "Le poste de garde est désormais accessible !",
+        "Ahora puedes usar la caseta de los cazadores.",
+        "사냥꾼 대기소를 이용할 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_HUNTING_LODGE",
+      "ja": "狩人詰所が利用できるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "The hunting lodge is now accessible!",
+        "es": "Ahora puedes usar la caseta de los cazadores.",
+        "fr": "Le poste de garde est désormais accessible !",
+        "ja": "狩人詰所が利用できるようになった！",
+        "ko": "사냥꾼 대기소를 이용할 수 있게 됐다!",
+        "zh-CN": "可以使用猎人哨站了！",
+        "zh-TW": "可以使用獵人哨站了！"
+      },
+      "zh_hans": "可以使用猎人哨站了！",
+      "zh_hant": "可以使用獵人哨站了！"
+    },
+    "numeric_id": 6
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_LIBRARY",
+    "name": {
+      "aliases": [
+        "可以使用图书馆了！",
+        "可以使用圖書館了！",
+        "図書館が利用できるようになった！",
+        "FACILITY_RELEASE_ID_LIBRARY",
+        "The library is now accessible!",
+        "La bibliothèque est désormais accessible !",
+        "Ahora puedes usar la biblioteca.",
+        "도서관을 이용할 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_LIBRARY",
+      "ja": "図書館が利用できるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "The library is now accessible!",
+        "es": "Ahora puedes usar la biblioteca.",
+        "fr": "La bibliothèque est désormais accessible !",
+        "ja": "図書館が利用できるようになった！",
+        "ko": "도서관을 이용할 수 있게 됐다!",
+        "zh-CN": "可以使用图书馆了！",
+        "zh-TW": "可以使用圖書館了！"
+      },
+      "zh_hans": "可以使用图书馆了！",
+      "zh_hant": "可以使用圖書館了！"
+    },
+    "numeric_id": 5
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_REMOVE_RUBBLE",
+    "name": {
+      "aliases": [
+        "庭院的小路开通了！",
+        "庭院的小路開通了！",
+        "庭の裏道が開通した！",
+        "FACILITY_RELEASE_ID_REMOVE_RUBBLE",
+        "Now I can access the road behind my farm!",
+        "Le passage à l’arrière du jardin est désormais accessible !",
+        "¡Ya puedes usar el paso de detrás del jardín!",
+        "정원 뒷길이 연결되었다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_REMOVE_RUBBLE",
+      "ja": "庭の裏道が開通した！",
+      "review_status": "official",
+      "translations": {
+        "en": "Now I can access the road behind my farm!",
+        "es": "¡Ya puedes usar el paso de detrás del jardín!",
+        "fr": "Le passage à l’arrière du jardin est désormais accessible !",
+        "ja": "庭の裏道が開通した！",
+        "ko": "정원 뒷길이 연결되었다!",
+        "zh-CN": "庭院的小路开通了！",
+        "zh-TW": "庭院的小路開通了！"
+      },
+      "zh_hans": "庭院的小路开通了！",
+      "zh_hant": "庭院的小路開通了！"
+    },
+    "numeric_id": 16
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_RESTAURANT",
+    "name": {
+      "aliases": [
+        "可以在茶碗亭用餐了！",
+        "茶碗亭で食事ができるようになった！",
+        "FACILITY_RELEASE_ID_RESTAURANT",
+        "Meals may now be purchased at Chawantei!",
+        "Les repas au pavillon de thé sont désormais accessibles !",
+        "Ahora puedes comer en la cafetería.",
+        "다완정에서 식사를 할 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_RESTAURANT",
+      "ja": "茶碗亭で食事ができるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "Meals may now be purchased at Chawantei!",
+        "es": "Ahora puedes comer en la cafetería.",
+        "fr": "Les repas au pavillon de thé sont désormais accessibles !",
+        "ja": "茶碗亭で食事ができるようになった！",
+        "ko": "다완정에서 식사를 할 수 있게 됐다!",
+        "zh-CN": "可以在茶碗亭用餐了！",
+        "zh-TW": "可以在茶碗亭用餐了！"
+      },
+      "zh_hans": "可以在茶碗亭用餐了！",
+      "zh_hant": "可以在茶碗亭用餐了！"
+    },
+    "numeric_id": 3
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_BUNDLE",
+    "name": {
+      "aliases": [
+        "修好岔路的祠堂了！",
+        "辻の祠を直した！",
+        "FACILITY_RELEASE_ID_SHRINE_BUNDLE",
+        "The hokora is now fully restored!",
+        "Vous avez réparé le sanctuaire du carrefour !",
+        "¡Has reparado el santuario del cruce!",
+        "갈림길의 사당을 고쳤다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_BUNDLE",
+      "ja": "辻の祠を直した！",
+      "review_status": "official",
+      "translations": {
+        "en": "The hokora is now fully restored!",
+        "es": "¡Has reparado el santuario del cruce!",
+        "fr": "Vous avez réparé le sanctuaire du carrefour !",
+        "ja": "辻の祠を直した！",
+        "ko": "갈림길의 사당을 고쳤다!",
+        "zh-CN": "修好岔路的祠堂了！",
+        "zh-TW": "修好岔路的祠堂了！"
+      },
+      "zh_hans": "修好岔路的祠堂了！",
+      "zh_hant": "修好岔路的祠堂了！"
+    },
+    "numeric_id": 9
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV2",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV2",
+        "Further repairs have been made to the hokora!",
+        "Vous avez réparé davantage le sanctuaire !",
+        "¡Has reparado aún más el santuario!",
+        "사당을 추가로 수복했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV2",
+      "ja": "祠をさらに修復した！",
+      "review_status": "official",
+      "translations": {
+        "en": "Further repairs have been made to the hokora!",
+        "es": "¡Has reparado aún más el santuario!",
+        "fr": "Vous avez réparé davantage le sanctuaire !",
+        "ja": "祠をさらに修復した！",
+        "ko": "사당을 추가로 수복했다!",
+        "zh-CN": "对祠堂进行了进一步的修缮！",
+        "zh-TW": "對祠堂進行了進一步的修繕！"
+      },
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 10
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV3",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV3",
+        "Further repairs have been made to the hokora!",
+        "Vous avez réparé davantage le sanctuaire !",
+        "¡Has reparado aún más el santuario!",
+        "사당을 추가로 수복했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV3",
+      "ja": "祠をさらに修復した！",
+      "review_status": "official",
+      "translations": {
+        "en": "Further repairs have been made to the hokora!",
+        "es": "¡Has reparado aún más el santuario!",
+        "fr": "Vous avez réparé davantage le sanctuaire !",
+        "ja": "祠をさらに修復した！",
+        "ko": "사당을 추가로 수복했다!",
+        "zh-CN": "对祠堂进行了进一步的修缮！",
+        "zh-TW": "對祠堂進行了進一步的修繕！"
+      },
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 11
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_SHRINE_LV4",
+    "name": {
+      "aliases": [
+        "对祠堂进行了进一步的修缮！",
+        "對祠堂進行了進一步的修繕！",
+        "祠をさらに修復した！",
+        "FACILITY_RELEASE_ID_SHRINE_LV4",
+        "Further repairs have been made to the hokora!",
+        "Vous avez réparé davantage le sanctuaire !",
+        "¡Has reparado aún más el santuario!",
+        "사당을 추가로 수복했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_SHRINE_LV4",
+      "ja": "祠をさらに修復した！",
+      "review_status": "official",
+      "translations": {
+        "en": "Further repairs have been made to the hokora!",
+        "es": "¡Has reparado aún más el santuario!",
+        "fr": "Vous avez réparé davantage le sanctuaire !",
+        "ja": "祠をさらに修復した！",
+        "ko": "사당을 추가로 수복했다!",
+        "zh-CN": "对祠堂进行了进一步的修缮！",
+        "zh-TW": "對祠堂進行了進一步的修繕！"
+      },
+      "zh_hans": "对祠堂进行了进一步的修缮！",
+      "zh_hant": "對祠堂進行了進一步的修繕！"
+    },
+    "numeric_id": 12
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_STREET_VENDOR",
+    "name": {
+      "aliases": [
+        "可以跟流动摊贩买东西了！",
+        "可以跟流動攤販買東西了！",
+        "露天商で買い物ができるようになった！",
+        "FACILITY_RELEASE_ID_STREET_VENDOR",
+        "Merchandise may now be purchased at the street vendor's stall!",
+        "Le marchand ambulant est désormais accessible !",
+        "Ahora puedes comprar en la buhonera.",
+        "노점상에서 물건을 살 수 있게 됐다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_STREET_VENDOR",
+      "ja": "露天商で買い物ができるようになった！",
+      "review_status": "official",
+      "translations": {
+        "en": "Merchandise may now be purchased at the street vendor's stall!",
+        "es": "Ahora puedes comprar en la buhonera.",
+        "fr": "Le marchand ambulant est désormais accessible !",
+        "ja": "露天商で買い物ができるようになった！",
+        "ko": "노점상에서 물건을 살 수 있게 됐다!",
+        "zh-CN": "可以跟流动摊贩买东西了！",
+        "zh-TW": "可以跟流動攤販買東西了！"
+      },
+      "zh_hans": "可以跟流动摊贩买东西了！",
+      "zh_hant": "可以跟流動攤販買東西了！"
+    },
+    "numeric_id": 7
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE",
+    "name": {
+      "aliases": [
+        "交付后再和林领取奖励吧！",
+        "交付後再和林領取獎勵吧！",
+        "納品してリンからごほうびを貰おう！",
+        "FACILITY_RELEASE_ID_VILLAGE_BUNDLE",
+        "交付後再和林领取奖励吧！",
+        "Fulfill deliveries, and receive rewards from Rin for doing so!",
+        "Faites la livraison pour obtenir une récompense de Rin !",
+        "Rin tiene una recompensa para ti. ¡Recógela!",
+        "납품하여 린에게 보상을 받자!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE",
+      "ja": "納品してリンからごほうびを貰おう！",
+      "review_status": "official",
+      "translations": {
+        "en": "Fulfill deliveries, and receive rewards from Rin for doing so!",
+        "es": "Rin tiene una recompensa para ti. ¡Recógela!",
+        "fr": "Faites la livraison pour obtenir une récompense de Rin !",
+        "ja": "納品してリンからごほうびを貰おう！",
+        "ko": "납품하여 린에게 보상을 받자!",
+        "zh-CN": "交付后再和林领取奖励吧！",
+        "zh-TW": "交付後再和林領取獎勵吧！"
+      },
+      "zh_hans": "交付后再和林领取奖励吧！",
+      "zh_hant": "交付後再和林領取獎勵吧！"
+    },
+    "numeric_id": 8
+  },
+  {
+    "id": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE",
+    "name": {
+      "aliases": [
+        "完成林所有的委托了！",
+        "完成林所有的委託了！",
+        "リンからの依頼をすべて達成した！",
+        "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE",
+        "All of Rin's requests have been completed!",
+        "Toutes les demandes de Rin ont été satisfaites !",
+        "¡Has completado todas las tareas de Rin!",
+        "린의 의뢰를 모두 달성했다!"
+      ],
+      "internal": "FACILITY_RELEASE_ID_VILLAGE_BUNDLE_COMPLETE",
+      "ja": "リンからの依頼をすべて達成した！",
+      "review_status": "official",
+      "translations": {
+        "en": "All of Rin's requests have been completed!",
+        "es": "¡Has completado todas las tareas de Rin!",
+        "fr": "Toutes les demandes de Rin ont été satisfaites !",
+        "ja": "リンからの依頼をすべて達成した！",
+        "ko": "린의 의뢰를 모두 달성했다!",
+        "zh-CN": "完成林所有的委托了！",
+        "zh-TW": "完成林所有的委託了！"
+      },
+      "zh_hans": "完成林所有的委托了！",
+      "zh_hant": "完成林所有的委託了！"
+    },
+    "numeric_id": 13
+  }
+]

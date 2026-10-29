@@ -20,7 +20,7 @@ def table(name): return read_table(archive.read_entry(f'data/database/{name}.dat
 def string(t, r, o): return _table_string(t, r, o)
 
 def localized(t, r, o):
-    return {locale: string(t,r,o+i*8) for i,locale in enumerate(('ja','slot-1','slot-2','slot-3','zh-TW','ko','zh-CN'))}
+    return {locale: string(t,r,o+i*8) for i,locale in enumerate(('ja','en','fr','es','zh-TW','ko','zh-CN'))}
 t = table('skilltree')
 nodes = []
 for r in t.records:
