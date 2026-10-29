@@ -3,7 +3,7 @@ import { setActiveI18n } from '../i18n/active';
 import { format } from '../i18n/translate';
 import { gameText, localizeGameData } from './saveText';
 
-const as = (locale: 'zh-CN' | 'zh-TW' | 'ja') => setActiveI18n({ locale, t: format });
+const as = (locale: 'zh-CN' | 'zh-TW' | 'ja' | 'en') => setActiveI18n({ locale, t: format });
 const tool = { itemId: 660001, code: 'ITEM_ID_TOOL_WATERING_CAN_1', name: '浇水壶', nameTranslations: { ja: 'ジョウロ', 'zh-TW': '澆水壺', 'zh-CN': '浇水壶' } };
 
 describe('game text for the page language', () => {
@@ -30,7 +30,7 @@ describe('game text for the page language', () => {
 
 describe('save editor game data', () => {
   const sources = import.meta.glob('../../data/sources/game-save-*.json', { eager: true, import: 'default' });
-  it('ships Japanese and Traditional Chinese text for every translated field', () => {
+  it('ships Japanese, English and Traditional Chinese text for every translated field', () => {
     const gaps: string[] = [];
     const walk = (value: unknown, path: string) => {
       if (Array.isArray(value)) return value.forEach((entry, index) => walk(entry, `${path}[${index}]`));
@@ -38,7 +38,7 @@ describe('save editor game data', () => {
       for (const [key, entry] of Object.entries(value)) {
         if (key.endsWith('Translations')) {
           const table = entry as Record<string, string>;
-          if (!table.ja || !table['zh-TW']) gaps.push(`${path}.${key}`);
+          if (!table.ja || !table.en || !table['zh-TW']) gaps.push(`${path}.${key}`);
         } else walk(entry, `${path}.${key}`);
       }
     };

@@ -96,7 +96,7 @@ export default function ShrinePanel({ model, names, edits = {}, onReplace, onMat
             const p = position(parent), q = position(n);
             return <line key={`${id}-${n.id}`} x1={p.x} y1={p.y} x2={q.x} y2={q.y} className={enabled(id) && enabled(n.id) ? 'unlocked' : ''} />;
           }))}</svg>
-          {UNLOCKS.nodes.map(n => { const p = position(n); return <button key={n.id} data-node-id={n.id} type="button" className={`save-shrine-node ${enabled(n.id) ? 'unlocked' : 'locked'} ${matching.has(n.id) ? '' : 'dimmed'}`} style={{ left: p.x, top: p.y }} aria-label={`${n.name}，${model ? enabled(n.id) ? tr('已解锁') : tr('未解锁') : tr('查看条件与配方')}`} aria-pressed={selected === n.id} onClick={e => openNode(n.id, e.currentTarget)}>
+          {UNLOCKS.nodes.map(n => { const p = position(n); return <button key={n.id} data-node-id={n.id} type="button" className={`save-shrine-node ${enabled(n.id) ? 'unlocked' : 'locked'} ${matching.has(n.id) ? '' : 'dimmed'}`} style={{ left: p.x, top: p.y }} aria-label={`${n.name}${tr('，')}${model ? enabled(n.id) ? tr('已解锁') : tr('未解锁') : tr('查看条件与配方')}`} aria-pressed={selected === n.id} onClick={e => openNode(n.id, e.currentTarget)}>
             <span className="save-shrine-orb"><span aria-hidden="true" className="save-shrine-glyph" style={{ maskImage: `url(${withBase(`/icons/generated/ui/shrine-${n.icon}.webp`)})` }} /><i aria-hidden="true">{enabled(n.id) ? '✓' : '◇'}</i></span>
             <span className="save-shrine-node-name">{n.name}</span>
           </button>; })}
@@ -107,7 +107,7 @@ export default function ShrinePanel({ model, names, edits = {}, onReplace, onMat
       <div className="save-unlock-detail-title"><span className="save-unlock-eyebrow">{node.skill ? tr('技能') : recipes.length ? tr('制作配方') : tr('神龛能力')}</span><h3>{node.name}</h3>{model && <span className="save-unlock-state" data-state={unlocked ? 'complete' : 'pending'}>{unlocked ? tr('✓ 已解锁') : tr('◇ 未解锁')}</span>}</div>
       <div className="save-unlock-detail-body">
         <p>{node.description}</p>
-        {!!shrineLearningMaterials(node.id).length && <div className="save-unlock-section"><h4>{tr('学习材料')}</h4><p>{shrineLearningMaterials(node.id).map(m => `${itemLabel(names, String(m.itemId))} × ${m.count}`).join('、')}</p>{onMaterials && <button type="button" onClick={() => onMaterials(shrineLearningMaterials(node.id))}>{tr('学习材料加入背包')}</button>}</div>}
+        {!!shrineLearningMaterials(node.id).length && <div className="save-unlock-section"><h4>{tr('学习材料')}</h4><p>{shrineLearningMaterials(node.id).map(m => `${itemLabel(names, String(m.itemId))} × ${m.count}`).join(tr('、'))}</p>{onMaterials && <button type="button" onClick={() => onMaterials(shrineLearningMaterials(node.id))}>{tr('学习材料加入背包')}</button>}</div>}
         <dl className="save-shrine-requirements"><div><dt>{tr('所需修缮等级')}</dt><dd>{node.level} {tr('级')}</dd></div>{level !== null && <div><dt>{tr('当前修缮等级')}</dt><dd>{level} {tr('级')}</dd></div>}{node.horrorOnly && <div><dt>{tr('适用模式')}</dt><dd>{tr('开启恐怖要素')}</dd></div>}</dl>
         {level !== null && level < node.level && <p className="save-shrine-level-note">{tr('修缮至 {level} 级后，此节点才会在游戏中开放。', { level: node.level })}</p>}
         {!!node.parents.length && <div className="save-unlock-section"><h4>{tr('前置节点')}</h4>{node.parents.map(id => <button className="save-shrine-parent" key={id} type="button" onClick={() => locate(id, true)}><span>{enabled(id) ? '✓' : '◇'}</span>{UNLOCKS.nodes.find(n => n.id === id)!.name}<span>↗</span></button>)}</div>}

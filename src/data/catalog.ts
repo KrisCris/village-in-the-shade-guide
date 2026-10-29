@@ -22,7 +22,7 @@ function kindFromPath(path: string) {
 }
 
 // i18n-ignore-next-line — quest.dat writes the player's name as a <player> tag.
-const playerWord: Record<Locale, string> = { 'zh-CN': '主角', 'zh-TW': '主角', ja: '主人公' };
+const playerWord: Record<Locale, string> = { 'zh-CN': '主角', 'zh-TW': '主角', ja: '主人公', en: 'Player' };
 const withoutTags = (text: string, locale: Locale) => text.replace(/<cmd\b[^>]*>/g, '').replace(/<player>/g, playerWord[locale]);
 
 function withSearchAliases(name: Name): Name {
@@ -41,7 +41,7 @@ function withSearchAliases(name: Name): Name {
  */
 function localizeName(name: Name, locale: Locale, t: Translate): Name {
   if (locale === defaultLocale || name.review_status === 'internal') return name;
-  const official = locale === 'ja' ? name.translations?.ja || name.ja : name.translations?.['zh-TW'] || name.zh_hant;
+  const official = locale === 'zh-TW' ? name.translations?.['zh-TW'] || name.zh_hant : locale === 'ja' ? name.translations?.ja || name.ja : name.translations?.[locale];
   const readable = official && withoutTags(official, locale).trim();
   // Keep the Simplified Chinese name reachable for cross-language labels.
   return { ...name, zh_hans: readable || translateLabel(name.zh_hans, t), translations: { ...name.translations, 'zh-CN': name.zh_hans } };

@@ -10,7 +10,7 @@ const catalog = getCatalog(locale);
 const item = (id: string) => catalog.entities.find(e => e.kind === 'items' && e.id === id);
 type Rock = { code: string; names: Record<string, string>; drops: { item: string; min: number; max: number; chance: number }[] };
 const rocks = quarry.rocks as Record<string, Rock>;
-const rockName = (id: number | string) => { const n = rocks[String(id)].names; return (locale === 'ja' ? n.ja : locale === 'zh-TW' ? n['zh-TW'] : n['zh-CN']) || n.ja; };
+const rockName = (id: number | string) => { const n = rocks[String(id)].names; return (locale === 'zh-CN' ? n['zh-CN'] : n[locale]) || n.ja; };
 
 // Floors with the same rock table form one band; every tenth floor is a rest area without rocks.
 const key = (rows: { rock: number; weight: number }[]) => JSON.stringify(rows);

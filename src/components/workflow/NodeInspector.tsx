@@ -113,7 +113,7 @@ export default function NodeInspector({
               ...shrubCoProducts(crop, harvestId),
             ]
               .map((a) => tr('{quantity} 个{name}', { quantity: a.quantity, name: name(a.itemId) }))
-              .join("、"),
+              .join(tr('、')),
           })
         : tr('生长 {days} 天，{bearing}。每天结 {count} 个，最多挂 {capacity} 个，挂满就摇。', {
             days,

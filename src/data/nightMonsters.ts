@@ -8,9 +8,10 @@ const toSimplified = Converter({ from: 'tw', to: 'cn' });
 export type MonsterKey = keyof typeof data.monsters;
 export const monsters = data.monsters;
 
-/** Official name: Japanese and Traditional Chinese from creature.dat, Simplified converted from the Traditional one. */
-export function monsterName(name: { ja: string; zh_hant: string }, locale: Locale) {
+/** Official name: Japanese, English and Traditional Chinese from creature.dat, Simplified converted from the Traditional one. */
+export function monsterName(name: { ja: string; en?: string; zh_hant: string }, locale: Locale) {
   if (locale === 'ja') return name.ja;
+  if (locale === 'en') return name.en || name.ja;
   return locale === 'zh-TW' ? name.zh_hant : toSimplified(name.zh_hant);
 }
 

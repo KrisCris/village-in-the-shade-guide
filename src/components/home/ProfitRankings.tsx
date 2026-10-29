@@ -3,7 +3,7 @@ import type { Entity } from '../../data/types';
 import { entityUrl } from '../../data/clientSearch';
 import { qualityLabel } from '../../domain/quality';
 import { useQuality } from '../quality/qualityPreference';
-import { secondaryName } from '../../data/types';
+import { secondaryName, showsJapaneseName } from '../../data/types';
 import { I18nProvider, useI18n } from '../../i18n/react';
 import type { Locale } from '../../i18n/locales';
 import type { Translate } from '../../i18n/translate';
@@ -26,7 +26,7 @@ function Ranking({ title, link, rows, quality }: { title: string; link: string; 
       return <a key={entity.id} href={href(entityUrl(entity))}>
         <b>{index + 1}</b>
         <img src={withBase(entity.icon_path || placeholder)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(placeholder); }} alt="" width="44" height="44" loading="lazy" />
-        <span>{entity.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(entity.name, locale)}</small>}</span>
+        <span>{entity.name.zh_hans}{showsJapaneseName(locale) && <small>{secondaryName(entity.name, locale)}</small>}</span>
         <strong>{metric(perDay, t)}<small>{quality}</small></strong>
       </a>;
     })}</div>

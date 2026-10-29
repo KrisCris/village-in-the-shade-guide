@@ -65,7 +65,7 @@ markers.sort((a,b)=>kindOrder.indexOf(a.kind)-kindOrder.indexOf(b.kind)||sortKey
 const count=(kind:MapKind,area?:MapArea)=>markers.filter(m=>m.kind===kind&&(!area||m.area===area)).length;
 const randomRats=night.markers.filter(m=>m.placement==='random').length;
 const sideAreas=(['pass','bush','lost-forest','subway'] as MapArea[]).map(area=>({area,name:areaNames[area],rows:markers.filter(m=>m.area===area)}));
-const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind===kind).map(m=>m.short).join('、');return list?t('{list} 号',{list}):'';};
+const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind===kind).map(m=>m.short).join(t('、'));return list?t('{list} 号',{list}):'';};
 ---
 <BaseLayout title={t('夜间收集地图')}>
 <h1>{t('夜间收集地图')}</h1>

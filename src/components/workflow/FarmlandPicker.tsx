@@ -344,8 +344,8 @@ export default function FarmlandPicker({
                 >
                   <title>
                     {cellUses(x, y)
-                      .map((u) => `${u.label}：${statusText[u.status]}`)
-                      .join("；") || tr('未被其他节点分配')}
+                      .map((u) => `${u.label}${tr('：')}${statusText[u.status]}`)
+                      .join(tr('；')) || tr('未被其他节点分配')}
                   </title>
                 </rect>
               ))}

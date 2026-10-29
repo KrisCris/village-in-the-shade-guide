@@ -1,7 +1,7 @@
 import { withBase } from '../../lib/sitePath';
 import { useState, type MouseEvent } from 'react';
 import { entityUrl } from '../../data/clientSearch';
-import { secondaryName, type Entity } from '../../data/types';
+import { secondaryName, showsJapaneseName, type Entity } from '../../data/types';
 import type { RelationRowModel } from '../../domain/relations';
 import { useI18n } from '../../i18n/react';
 
@@ -12,7 +12,7 @@ function isModifiedClick(event: MouseEvent) {
 export default function RelationRow({ row, onOpen, compact=false }: { row: RelationRowModel; onOpen?: (entity: Entity) => void; compact?:boolean }) {
   const { t, href, locale } = useI18n();
   const [hasIcon, setHasIcon] = useState(Boolean(row.entity.icon_path));
-  const secondary = locale === 'ja' ? '' : secondaryName(row.entity.name, locale) || row.entity.id;
+  const secondary = showsJapaneseName(locale) ? secondaryName(row.entity.name, locale) || row.entity.id : '';
   const chips=compact?row.chips.filter(chip=>chip!==t('加工原料')):row.chips;
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!onOpen || isModifiedClick(event)) return;

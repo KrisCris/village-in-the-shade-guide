@@ -1,6 +1,7 @@
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 import sourceOutlines from '../../data/sources/appmedia-outlines.json';
 import guideTranslations from '../../data/sources/guide-translations.json';
+import guideTranslationsEn from '../../data/sources/guide-translations.en.json';
 import characters from '../../data/generated/build-25640656/entities/characters.json';
 import { msg } from '../i18n/translate';
 import { toTraditional } from '../i18n/traditional';
@@ -151,12 +152,17 @@ export const guideCategories = [msg('系统与生活'), msg('剧情'), msg('怪�
 /** Story and anomaly guides hide their steps behind a spoiler toggle. */
 export const spoilerCategories = new Set([msg('剧情'), msg('怪异')]);
 
+const englishGuideText: Record<string, string> = guideTranslationsEn;
+
 /**
  * Title and checklist in the page language. Japanese readers get the AppMedia
- * originals; Traditional Chinese converts the Simplified renderings.
+ * originals, English readers a rendering keyed by the Japanese text, and
+ * Traditional Chinese converts the Simplified renderings.
  */
 export function localizeGuide(guide: GuideSource, locale: Locale) {
-  if (locale === 'ja') return { title: guide.title.replace(/【ほの暮しの庭】$/, ''), headings: guide.headings }; // i18n-ignore
+  const japaneseTitle = guide.title.replace(/【ほの暮しの庭】$/, ''); // i18n-ignore
+  if (locale === 'ja') return { title: japaneseTitle, headings: guide.headings };
+  if (locale === 'en') return { title: englishGuideText[japaneseTitle] ?? japaneseTitle, headings: guide.headings.map((heading) => englishGuideText[heading] ?? heading) };
   const convert = locale === 'zh-TW' ? toTraditional : (text: string) => text;
   return { title: convert(guide.chineseTitle), headings: guide.headings.map((heading) => convert(translateHeading(heading))) };
 }

@@ -1,4 +1,4 @@
-import type { Catalog, Entity } from '../data/types';
+import { showsJapaneseName, type Catalog, type Entity } from '../data/types';
 import { findCatalogEntity } from '../data/entityLookup';
 import type { Quality } from './quality';
 import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
@@ -464,7 +464,7 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
   const places = (entity.locations ?? []) as Array<{ location_id: string; name: { zh_hans: string; ja?: string } }>;
   const locations = places.flatMap((location) => {
     const appearances = entity.appearances?.filter((entry) => entry.location_id === location.location_id) ?? [];
-    if (!appearances.length) return [{id: location.location_id, name: location.name.zh_hans, secondary: location.name.ja === location.name.zh_hans ? '' : location.name.ja || location.location_id}];
+    if (!appearances.length) return [{id: location.location_id, name: location.name.zh_hans, secondary: !showsJapaneseName(catalog.locale ?? 'zh-CN') || location.name.ja === location.name.zh_hans ? '' : location.name.ja || location.location_id}];
     return Object.entries(seasons).flatMap(([season, label]) => {
       const times = [...new Set(appearances.filter((entry) => entry.season === season).map((entry) => entry.time_range))].filter(Boolean);
       return times.length ? [{id: `${location.location_id}-${season}`, name: `${location.name.zh_hans} · ${t(label)}`, secondary: times.join(' / ')}] : [];

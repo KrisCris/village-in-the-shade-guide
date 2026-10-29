@@ -71,7 +71,7 @@ export default function SaveChangeList({ model, names, changes, slotEdits, machi
     const slot = slotFields.get(change.field.offset), undo = () => onUndoDraft(change.field.offset);
     const quest = questFields.get(change.field.offset);
     if (quest) {
-      push('quests', { key: `field:${change.field.offset}`, undo, label: quest.label, text: quest.text(change.before) === quest.text(change.after) ? `${quest.text(change.after)}（${change.before} → ${change.after}）` : `${quest.text(change.before)} → ${quest.text(change.after)}` });
+      push('quests', { key: `field:${change.field.offset}`, undo, label: quest.label, text: quest.text(change.before) === quest.text(change.after) ? tr('{text}（{before} → {after}）', { text: quest.text(change.after), before: change.before, after: change.after }) : `${quest.text(change.before)} → ${quest.text(change.after)}` });
       continue;
     }
     const problem = change.field.offset === clock && !/^\d+$/.test(change.after) ? tr('请输入有效日期和时间。')
@@ -124,7 +124,7 @@ export default function SaveChangeList({ model, names, changes, slotEdits, machi
     ].filter(Boolean);
     push('machines', { key: `machine:${key}`, undo: () => onUndoMachine(key),
       label: <>{spec ? itemLabel(names, String(spec.itemId)) : tr('加工设备')} · {tr('栏位 {number}', { number: Number(index) + 1 })} <small>#{container ? deviceIdentity(model.doc, container) : id}</small></>,
-      text: parts.join('，') });
+      text: parts.join(tr('，')) });
   }
 
   for (const [group, entries] of Object.entries(progress) as [keyof ProgressEdits, Record<string, boolean | number>][]) for (const [id, value] of Object.entries(entries ?? {})) {

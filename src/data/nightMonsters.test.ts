@@ -7,7 +7,7 @@ const itemIds = new Set(items.map((item) => item.id));
 
 describe('night monster names', () => {
   it('uses creature.dat names and converts the Traditional ones to Simplified', () => {
-    const name = (id: keyof typeof monsters, locale: 'ja' | 'zh-TW' | 'zh-CN') => monsterName(monsters[id], locale);
+    const name = (id: keyof typeof monsters, locale: 'ja' | 'zh-TW' | 'zh-CN' | 'en') => monsterName(monsters[id], locale);
     expect(name('CREATURE_ID_HORROR_MOYAMOYASAN_LV3', 'ja')).toBe('たたずむ霊');
     expect(name('CREATURE_ID_HORROR_MOYAMOYASAN_LV3', 'zh-TW')).toBe('佇立靈');
     expect(name('CREATURE_ID_HORROR_MOYAMOYASAN_LV3', 'zh-CN')).toBe('伫立灵');
@@ -16,10 +16,12 @@ describe('night monster names', () => {
     expect(name('CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE', 'zh-CN')).toBe('涂壁（脸）');
     expect(name('CREATURE_ID_HORROR_WHELK', 'zh-CN')).toBe('小颗粒');
     expect(name('CREATURE_ID_HORROR_WALKING_STONE', 'zh-CN')).toBe('行走的石头');
+    expect(name('CREATURE_ID_HORROR_MOYAMOYASAN_LV3', 'en')).toBe('Lingering Ghost');
+    expect(name('CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE', 'en')).toBe('Nurikabe (Face)');
   });
 
   it('strips editor suffixes from the display names', () => {
-    for (const monster of Object.values(monsters)) expect(monster.ja).not.toMatch(/プレーン|平面|_/);
+    for (const monster of Object.values(monsters)) expect([monster.ja, monster.en].join(' ')).not.toMatch(/プレーン|平面|Plane|_/);
   });
 });
 

@@ -8,7 +8,7 @@ import type { Locale } from '../i18n/locales';
 export const isVillageMap = (map: string) => /(^|\/)map_0000(_ver\d+)?_spr\.ymwr/.test(map);
 
 /** Village map with place names in the site language; built by tools/extract-map-markers.py. */
-export const minimapImage = (locale: Locale) => `/maps/minimap_01_spr${({ 'zh-CN': '_sc', 'zh-TW': '_tc', ja: '' } as const)[locale]}.webp`;
+export const minimapImage = (locale: Locale) => `/maps/minimap_01_spr${({ 'zh-CN': '_sc', 'zh-TW': '_tc', ja: '', en: '_en' } as const)[locale]}.webp`;
 
 export type MapArea = 'village' | 'subway' | 'lost-forest' | 'bush' | 'pass';
 export type MapKind = 'book' | 'machine_part' | 'ghost_rat' | 'red_phone' | 'treasure' | 'turn_in' | 'shrine' | 'exchange';

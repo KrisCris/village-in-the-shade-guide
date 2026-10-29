@@ -3,6 +3,7 @@ import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { guideCategories, localizeGuide, pendingGuides } from '../../data/guideContent';
 import {getCatalog} from '../../data/repository';
+import { showsJapaneseName } from '../../data/types';
 import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
 const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
@@ -40,7 +41,7 @@ const iconOf=(key:string)=>(key.startsWith('ITEM_ID_')?items.find(e=>e.id===key)
     if(category===dataCategory)return null;
     const rows = pendingGuides.filter((guide) => guide.category === category);
     if (!rows.length) return null;
-    return <section id={category}><div class="section-heading"><h3>{t(category)}</h3></div><div class="guide-grid">{rows.map((guide) => {const {title}=localizeGuide(guide,locale);return <a class="card" href={href(`/guides/${guide.sourceId}/`)}><strong>{title}</strong>{title!==guide.title&&<small>{guide.title}</small>}</a>;})}</div></section>;
+    return <section id={category}><div class="section-heading"><h3>{t(category)}</h3></div><div class="guide-grid">{rows.map((guide) => {const {title}=localizeGuide(guide,locale);return <a class="card" href={href(`/guides/${guide.sourceId}/`)}><strong>{title}</strong>{showsJapaneseName(locale)&&title!==guide.title&&<small>{guide.title}</small>}</a>;})}</div></section>;
   })}
 </BaseLayout>
 <style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}</style>

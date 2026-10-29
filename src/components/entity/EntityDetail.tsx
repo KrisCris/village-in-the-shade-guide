@@ -40,6 +40,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={withBase(entity.icon_path)} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
     {locale !== 'ja' && <p className="aliases">{(locale === 'zh-TW'
       ? [[t('简中'), entity.name.translations?.['zh-CN']], [t('日文'), entity.name.ja]]
+      : locale === 'en' ? [[t('日文'), entity.name.ja]]
       : [[t('繁中'), entity.name.zh_hant], [t('日文'), entity.name.ja]]
     ).map(([label, value]) => t('{label}：{value}', { label: label ?? '', value: value || '—' })).join('　')}</p>}
     {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}

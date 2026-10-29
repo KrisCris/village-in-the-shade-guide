@@ -58,6 +58,14 @@ describe('localized guide titles', () => {
       expect(zhTW.headings).toEqual(zhCN.headings.map(toTraditional));
     }
   });
+  it('gives every guide page English pages render an English title and checklist', () => {
+    const japanese = /[\u3040-\u30ff\u4e00-\u9fff]/;
+    for (const guide of pendingGuides) {
+      const { title, headings } = localizeGuide(guide, 'en');
+      expect(title, guide.sourceId).not.toMatch(japanese);
+      for (const heading of headings) expect(heading, guide.sourceId).not.toMatch(japanese);
+    }
+  });
 });
 
 describe('guide index audit', () => {

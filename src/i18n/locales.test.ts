@@ -12,6 +12,7 @@ describe('locale routes', () => {
     expect(localizePath('/', 'ja')).toBe('/ja/');
     expect(localizePath('/data/items/', 'zh-TW')).toBe('/zh-TW/data/items/');
     expect(localizePath('/zh-TW/data/items/', 'ja')).toBe('/ja/data/items/');
+    expect(localizePath('/ja/data/items/', 'en')).toBe('/en/data/items/');
   });
 
   it('keeps query and hash, and leaves external or relative URLs alone', () => {
@@ -23,12 +24,14 @@ describe('locale routes', () => {
 
   it('does not treat a path that only starts with the prefix text as localized', () => {
     expect(localeFromPath('/japan/', '/')).toBe('zh-CN');
+    expect(localeFromPath('/english/', '/')).toBe('zh-CN');
     expect(stripLocale('/japan/', '/')).toBe('/japan/');
   });
 
   it('reads and strips the language with a deployment base', () => {
     expect(localeFromPath('/guide/ja/data/', '/guide/')).toBe('ja');
     expect(localeFromPath('/guide/zh-TW', '/guide/')).toBe('zh-TW');
+    expect(localeFromPath('/guide/en/guides/', '/guide/')).toBe('en');
     expect(localeFromPath('/guide/data/', '/guide/')).toBe('zh-CN');
     expect(stripLocale('/guide/ja/data/', '/guide/')).toBe('/data/');
     expect(stripLocale('/guide/ja', '/guide/')).toBe('/');
@@ -37,10 +40,12 @@ describe('locale routes', () => {
   it('serves non-default page data from per-language copies', () => {
     expect(localeDataPath('/workflow-data.json', 'zh-CN')).toBe('/workflow-data.json');
     expect(localeDataPath('/workflow-data.json', 'ja')).toBe('/locales/ja/workflow-data.json');
+    expect(localeDataPath('/workflow-data.json', 'en')).toBe('/locales/en/workflow-data.json');
   });
 
   it('recognizes only supported languages', () => {
     expect(isLocale('ja')).toBe(true);
+    expect(isLocale('en')).toBe(true);
     expect(isLocale('ko')).toBe(false);
     expect(isLocale(undefined)).toBe(false);
   });

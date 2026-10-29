@@ -12,7 +12,7 @@ const RUNTIME = {
   media: { name: 'media-v1', limit: 800 },
   maps: { name: 'maps-v1', limit: 30 },
 };
-const LOCALES = ['zh-TW', 'ja'];
+const LOCALES = ['zh-TW', 'ja', 'en'];
 // The offline download (src/lib/offlineStore.ts) stores the whole wiki in
 // caches named offline-*, marks its requests with this header and keeps those
 // caches up to date itself.

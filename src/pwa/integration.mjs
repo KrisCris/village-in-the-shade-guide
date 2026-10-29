@@ -10,7 +10,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const locales = ['', 'zh-TW/', 'ja/'];
+const locales = ['', 'zh-TW/', 'ja/', 'en/'];
 const icons = ['favicon.svg', 'app/favicon-32.png', 'app/icon-192.png', 'app/maskable-192.png'];
 
 export default function pwa() {

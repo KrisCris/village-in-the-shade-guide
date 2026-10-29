@@ -18,7 +18,7 @@ const absolute = (href: string) => Astro.site ? new URL(href, Astro.site).href :
 const alternates = i18n.alternates();
 const dynamicInterior = !immersive;
 const repo = 'https://github.com/KrisCris/village-in-the-shade-guide';
-const licensing = `${repo}/blob/main/${i18n.lang === 'ja' ? 'LICENSING.en.md' : 'LICENSING.md'}`;
+const licensing = `${repo}/blob/main/${i18n.lang === 'ja' || i18n.lang === 'en' ? 'LICENSING.en.md' : 'LICENSING.md'}`;
 ---
 <!doctype html>
 <html lang={i18n.lang} data-season="spring">

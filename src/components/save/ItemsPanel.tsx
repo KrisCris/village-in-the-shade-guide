@@ -150,7 +150,7 @@ export default function ItemsPanel({ model, drafts, slotEdits, names, onSlotEdit
           <span>{tr('容器')}</span>
           <SearchableSelect value={open.id} onChange={(event) => { setOpenId(event.target.value); setSelected(null); }}>
             {switchable.map((container) => <option key={container.id} value={container.id}>
-                {(container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title}（{describe(container, names, drafts, slotEdits)}）
+                {tr('{name}（{detail}）', { name: (container.nameOffset !== undefined && drafts[container.nameOffset]) || container.title, detail: describe(container, names, drafts, slotEdits) })}
               </option>)}
           </SearchableSelect>
         </label>

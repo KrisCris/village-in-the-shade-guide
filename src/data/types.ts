@@ -20,9 +20,12 @@ export type Name = {
   translations?: Record<string, string>;
 };
 
-/** The Japanese name shown under the primary one on Chinese pages; Japanese pages show none. */
+/** Chinese pages show the Japanese name under the primary one; Japanese and English pages do not. */
+export const showsJapaneseName = (locale: string) => locale === 'zh-CN' || locale === 'zh-TW';
+
+/** The Japanese name shown under the primary one on Chinese pages, else ''. */
 export function secondaryName(name: Name, locale: string): string {
-  return locale === 'ja' ? '' : name.ja || '';
+  return showsJapaneseName(locale) ? name.ja || '' : '';
 }
 
 export type Entity = Record<string, unknown> & {
