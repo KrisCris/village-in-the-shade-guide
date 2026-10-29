@@ -7,6 +7,7 @@ import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
 const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
 const planningGuides=[
+ [t('1.30 更新：生日、播种机与卫浴设备'),'/guides/patch-1-30/','ITEM_ID_BIRTHDAY_CAKE'],
  [t('四季留货与交付'),'/guides/season-plan/','CROPS'],
  [t('种植加工收益排行'),'/planner/','PROCESSED_PRODUCT'],
  [t('播种、跨季与菌类'),'/guides/cultivation-plan/','SEEDING'],

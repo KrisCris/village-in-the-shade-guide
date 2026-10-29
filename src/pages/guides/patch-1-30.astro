@@ -1,0 +1,77 @@
+---
+import GuideItem from '../../components/GuideItem.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getCatalog,entityUrl} from '../../data/repository';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const item=(id:string)=>catalog.byId[id];
+const url=(id:string)=>href(entityUrl(catalog.byId[id]));
+const money=(id:string)=>t('金钱 {money}',{money:Number(item(id)?.buy_price??0).toLocaleString('en-US')});
+// ai_chara_template.lub talkStart_birthday pairs each resident with ITEM_ID_BIRTHDAY_PRESENT_<role>.
+const roles=['VILLAGE_HEAD','ORPHAN','CARPENTER','LUMBERJACK','HUNTER','GENERAL_STORE_MANAGER','OLD_MAN','SECRETARY','CITY_HALL_STAFF','GIRL','YOUNG_MAN','BOY','FEMALE_DOCTOR','STREET_VENDOR'];
+const presents=roles.map(role=>({person:item(`CHARA_ID_${role}`),present:`ITEM_ID_BIRTHDAY_PRESENT_${role}`}));
+// Areas from each tier's item.dat description; blacksmith.dat rows 21–24 cost one mold and five ingots.
+const seeders=[
+  {id:'ITEM_ID_TOOL_SEEDER_1',area:'3×1'},
+  {id:'ITEM_ID_TOOL_SEEDER_2',area:'5×1',mold:'ITEM_ID_COPPER_MOLD',ingot:'ITEM_ID_COPPER_INGOT'},
+  {id:'ITEM_ID_TOOL_SEEDER_3',area:'3×3',mold:'ITEM_ID_IRON_MOLD',ingot:'ITEM_ID_IRON_INGOT'},
+  {id:'ITEM_ID_TOOL_SEEDER_4',area:'4×4',mold:'ITEM_ID_GOLD_MOLD',ingot:'ITEM_ID_GOLD_INGOT'},
+  {id:'ITEM_ID_TOOL_SEEDER_5',area:'5×5',mold:'ITEM_ID_MRTRORITE_MOLD',ingot:'ITEM_ID_METEORIC_IRON_INGOT'},
+];
+const bath=catalog.entities.filter(e=>e.kind==='store-offers'&&/^STORE_SALE_ID_GENERAL_ADDITIONAL_00(1[1-9]|20)$/.test(e.id)).map(e=>String(e.item_id));
+const greenDye=catalog.entities.filter(e=>e.kind==='processes'&&/^GIMMICK_PROCESS_ITEM_DYE_GREEN_1?[234]$/.test(e.id));
+const firstInput=(process:typeof greenDye[number])=>String((process.inputs as {item_id:string}[])[0].item_id);
+const greenInputs=[...new Set(greenDye.map(firstInput))];
+const link=(id:string)=>`<a href="${url(id)}">${item(id)?.name.zh_hans??id}</a>`;
+const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
+---
+<BaseLayout title={t('1.30 更新：生日、播种机与卫浴设备')}><h1>{t('1.30 更新：生日、播种机与卫浴设备')}</h1>
+<p>{t('1.30 版本加入了主角生日、播种机和卫浴设备家具。这些内容都要先满足条件，触发解锁事件或收到来信后才会开放。解锁事件在部分主线剧情期间和雷雨天不会发生。')}</p>
+<nav><a href="#birthday">{t('主角生日')}</a>　<a href="#seeder">{t('播种机')}</a>　<a href="#bath">{t('卫浴设备')}</a>　<a href="#mystery">{t('“？？？”事件')}</a>　<a href="#other">{t('其他改动')}</a></nav>
+
+<section id="birthday"><h2>{t('主角生日')}</h2>
+<p>{t('进入第二年后，林会寄来一封信，请你到地图上标记的地点见面（7:00–16:59）。见面时可以设定主角的生日。')}</p>
+<ul>
+<li>{t('静谧田园模式：通关主线后的隔天起。')}</li>
+<li>{t('安心生活模式：名护搬进村子后的隔天起。')}</li>
+</ul>
+<p set:html={tHtml('生日当天早上会收到林的信和一份<a href="{cake}">{cakeName}</a>，任务栏里会出现“{quest}”。信里说关系好的居民会记得你的生日，当天和他们交谈可以收到礼物。每位居民当天只送一份，背包满了会掉在脚边。',{cake:url('ITEM_ID_BIRTHDAY_CAKE'),cakeName:item('ITEM_ID_BIRTHDAY_CAKE')?.name.zh_hans??'',quest:birthdayQuest?.name.zh_hans??''})} />
+<table><thead><tr><th>{t('居民')}</th><th>{t('生日礼物')}</th></tr></thead><tbody>
+{presents.map(({person,present})=><tr><th scope="row">{person?<a href={href(entityUrl(person))}>{person.name.zh_hans}</a>:''}</th><td><GuideItem entity={item(present)} href={url(present)}/></td></tr>)}
+</tbody></table>
+<p>{t('这些礼物都是装饰品，可以摆在家里或农场里。')}</p>
+</section>
+
+<section id="seeder"><h2>{t('播种机')}</h2>
+<p set:html={tHtml('岔路祠堂修复完第三阶段后，茶梅会来信。之后可以在田上杂货店买到<a href="{url}">{name}</a>（{price}，限购一台）。',{url:url('ITEM_ID_TOOL_SEEDER_1'),name:item('ITEM_ID_TOOL_SEEDER_1')?.name.zh_hans??'',price:money('ITEM_ID_TOOL_SEEDER_1')})} />
+<p>{t('播种机能把选好的种子、秧苗或肥料一次撒在已经翻好的田地或水田上。和其他工具一样，可以在铁砧升级，每级用 1 个铸模和 5 根金属条。')}</p>
+<table><thead><tr><th>{t('播种机')}</th><th>{t('播种范围')}</th><th>{t('升级材料')}</th></tr></thead><tbody>
+{seeders.map(s=><tr><th scope="row"><GuideItem entity={item(s.id)} href={url(s.id)}/></th><td>{s.area}</td><td>{s.mold?<span class="pair"><GuideItem entity={item(s.mold)} href={url(s.mold)} note="×1"/><GuideItem entity={item(s.ingot!)} href={url(s.ingot!)} note="×5"/></span>:t('商店购买')}</td></tr>)}
+</tbody></table>
+</section>
+
+<section id="bath"><h2>{t('卫浴设备')}</h2>
+<p>{t('取得狐狸的狩猎执照后，茶梅会来信说进了卫浴设备。之后田上杂货店会出售下面 10 件家具，每件只能买一次。')}</p>
+<div class="items">{bath.map(id=><GuideItem entity={item(id)} href={url(id)} note={money(id)}/>)}</div>
+<p set:html={tHtml('狐狸执照的取得方法见<a href="/guides/hunting-plan/">狩猎执照与材料</a>。')} />
+</section>
+
+<section id="mystery"><h2>{t('“？？？”事件')}</h2>
+<p>{t('仅限静谧田园模式：设定生日的隔天起，会发生一段新事件。官方更新说明只写了“？？？”，这里不剧透内容。')}</p>
+</section>
+
+<section id="other"><h2>{t('其他改动')}</h2>
+<ul>
+<li set:html={t('{dye}更容易做了：{machine}除了{oak}，也能用{inputs}加{bones}或{resin}来做。',{dye:link('ITEM_ID_DYE_GREEN'),machine:link('ITEM_ID_GIMMICK_OIL_EXTRACTION_MACHINE'),oak:link('ITEM_ID_OBJECT_KASHIWA_LEAF'),inputs:greenInputs.map(link).join(t('、')),bones:link('ITEM_ID_HUNTING_SMALL_ANIMAL_BONES'),resin:link('ITEM_ID_OBJECT_PINE_FAT')})} />
+<li>{t('把东西交给居民的距离变远了。')}</li>
+<li>{t('畜舍、温室等建筑移建时可以左右翻转。建筑里摆着的家具会收进树木建设的箱子。')}</li>
+<li>{t('取名最多 8 个字，并且可以输入汉字。')}</li>
+<li>{t('品牌名可以在图鉴画面重新修改。')}</li>
+<li>{t('狗会进狗屋了。')}</li>
+</ul>
+</section>
+
+<details><summary>{t('数据来源')}</summary><p>{t('updatetext.dat 的 UPDATE_TEXT_1_30（官方更新说明）；event.dat 的 EVENT_ID_PLAYER_BIRTHDAY_*、EVENT_ID_SALE_START_SEEDER、EVENT_ID_SALE_START_BATH_SERIES 和 EVENT_ID_DLC_03_001；charactertalk.dat 与 ai_chara_template 脚本的生日对话；letter.dat 的生日信和茶梅来信；storesales.dat、blacksmith.dat 与 gimmickprocess.dat。')}</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}table{width:100%}td,th{vertical-align:middle}.pair{display:flex;flex-wrap:wrap;gap:.3rem 1rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.5rem}.items .guide-item{padding:.4rem .6rem;border-radius:10px;background:var(--paper-raised);color:var(--ink)}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

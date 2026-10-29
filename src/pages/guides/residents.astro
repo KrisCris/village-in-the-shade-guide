@@ -13,6 +13,7 @@ const people=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_day).s
 ---
 <BaseLayout title={t('生日与送礼规划')}><h1>{t('生日与送礼规划')}</h1>
 <p>{t('每天最多送一份礼物，每周最多两份。先确定要培养关系的村民，从喜爱清单中挑自己容易取得的物品；不要只看售价高低。具体礼物可点开查看获取方式、价格及其他用途。')}</p>
+<p set:html={tHtml('主角自己的生日和居民送的生日礼物见<a href="/guides/patch-1-30/#birthday">1.30 更新</a>。')} />
 <p>{t('临近生日时提前留好礼物。游戏角色主表列出的喜爱和讨厌物品各有 4 件；未列出的物品不能直接视为喜爱。注视村民也可以在游戏里查看好感度与礼物喜好。')}</p>
 <section><h2>{t('培养关系的顺序')}</h2><ol><li>{t('每天路过目标村民时先交谈。游戏基础交谈增量为 +{value}；无需先准备昂贵的礼物。',{value:rules.constants.NPC_LOVE_ADD_TALK.value})}</li><li>{t('每周两份礼物优先选择下方喜爱物品，生日临近时提前存货。')}</li><li set:html={tHtml('完成目标村民的委托，基础增量为 +{value}。固定帮忙券可按<a href="/guides/progression/#help">帮忙券清单</a>提前准备，随机交付仍以自己的任务面板为准。',{value:rules.constants.NPC_LOVE_ADD_QUEST_SUCCESS.value})} /><li>{t('好感度到阶段上限后查看人物事件和回访目标；继续送礼不能代替突破事件。')}</li><li>{t('完成 Lv1、Lv2、Lv3 的突破后回去交谈，分别有对应食谱可以学习。各人的食谱见下表，可根据想做的料理决定先培养谁。')}</li></ol>
 <table><thead><tr><th>{t('阶段')}</th><th>{t('累计上限')}</th></tr></thead><tbody>{[1,2,3,4,5,6].map(level=><tr><td>Lv{level}</td><td>{rules.constants[`NPC_LOVE_LEVEL${level}_MAX` as keyof typeof rules.constants].value}</td></tr>)}</tbody></table></section>
