@@ -75,7 +75,7 @@ def main():
     replacement_pool = read_table(archive.read_entry('data/database/animereplacetexture.dat')).string_pool
     banks = {2: FairyBank(fairy.read_entry('data/fairy/resident.fad')),
              3: FairyBank(fairy.read_entry('data/fairy/resident_2.fad'))}
-    metadata: dict = {'source': 'Steam build 25311578, YMWR ground tiles and FAD scene nodes',
+    metadata: dict = {'source': 'Steam build 25640656, YMWR ground tiles and FAD scene nodes',
                       'bounds': BOUNDS, 'scale': .5, 'seasons': list(SEASONS), 'crops': {}, 'objects': {}}
     specs = json.loads((ROOT/'data/sources/game-save-map.json').read_text(encoding='utf-8'))
     if args.update_objects:
