@@ -1,0 +1,37 @@
+---
+import { withBase } from '../lib/sitePath';
+import { getCatalog } from '../data/repository';
+import { guideGroupOf, guideIcon } from '../data/navigation';
+import { getI18n } from '../i18n/server';
+import { stripLocale } from '../i18n/locales';
+const { t, href, locale } = getI18n(Astro.url);
+const path = stripLocale(Astro.url.pathname);
+// Guide pages only: the profit ranking card points at the planner, which is a tool.
+const group = path.startsWith('/guides/') ? guideGroupOf(path) : undefined;
+const entities = group ? getCatalog(locale).entities : [];
+const guides = (group?.guides ?? []).filter(guide => guide.href !== path).map(guide => ({
+  title: t(guide.title), description: t(guide.description), url: href(guide.href), icon: guideIcon(entities, guide.icon),
+}));
+---
+{group && <aside class="related-guides" aria-labelledby="related-guides-title" data-pagefind-ignore>
+  <div class="related-heading"><h2 id="related-guides-title">{t('{topic}的其他攻略', { topic: t(group.label) })}</h2><a href={href('/guides/')}>{t('全部攻略')} →</a></div>
+  <div class="related-grid">{guides.map(({ title, description, url, icon }) => <a class="card" href={url}>
+    {icon && <img src={withBase(icon)} width="40" height="40" alt="" loading="lazy" />}
+    <span><strong>{title}</strong><small>{description}</small></span>
+  </a>)}</div>
+</aside>}
+<style>
+  .related-guides { margin-top: 3.5rem; }
+  /* The row carries the page's h2 underline so the link can sit beside the title. */
+  .related-heading { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-bottom: 1rem; padding-bottom: .65rem; border-bottom: 1px solid var(--border); }
+  .related-heading h2 { position: static; margin: 0; padding: 0; border: 0; font-size: 1.25rem; }
+  .related-heading a { color: var(--green); font-size: .9rem; text-decoration: none; }
+  .related-heading a:hover { text-decoration: underline; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: .75rem; }
+  .related-grid a { display: flex; align-items: center; gap: .75rem; padding: .9rem 1rem; color: var(--ink); text-decoration: none; }
+  .related-grid a:hover { border-color: var(--green); }
+  .related-grid a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .related-grid img { object-fit: contain; flex-shrink: 0; }
+  .related-grid span { display: grid; gap: .2rem; min-width: 0; }
+  .related-grid small { color: var(--muted); font-size: .82rem; line-height: 1.45; }
+</style>

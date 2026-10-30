@@ -5,23 +5,21 @@ import { stripLocale } from '../i18n/locales';
 import PageSettings from './PageSettings.astro';
 import LanguageSelector from './LanguageSelector.astro';
 import SupportDialog from './SupportDialog.astro';
+import { currentSection, sections } from '../data/navigation';
 const { t, href } = getI18n(Astro.url);
-const navigation = [
-  { href: '/data/', label: t('资料库') },
-  { href: '/planner/', label: t('收益规划') },
-  { href: '/planner/today/', label: t('每日规划') },
-  { href: '/planner/workflow/', label: t('工作流') },
-  { href: '/guides/', label: t('攻略') },
-  { href: '/save-editor/', label: t('存档工具') },
-  { href: '/search/', label: t('搜索') },
+// One tab per sidebar section, so the two menus share a structure.
+const navigation: Array<{ href: string; label: string; section: string }> = [
+  ...sections.map(section => ({ href: section.href, label: t(section.label), section: section.id })),
+  { href: '/save-editor/', label: t('存档工具'), section: 'save-editor' },
+  { href: '/search/', label: t('搜索'), section: 'search' },
 ];
 const path = stripLocale(Astro.url.pathname);
-const current = navigation.filter(item => path.startsWith(item.href)).sort((a,b)=>b.href.length-a.href.length)[0]?.href;
+const current = currentSection(path) ?? navigation.find(item => path.startsWith(item.href))?.section;
 ---
 
 <header class="site-header">
   <a class="brand" href={href("/")}><img src={withBase('/favicon.svg')} width="38" height="38" alt="" /><strong>{t('静谧田园 Wiki')}</strong></a>
-  <nav aria-label={t('页首导航')}>{navigation.map(item=><a href={href(item.href)} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a>)}</nav>
+  <nav aria-label={t('页首导航')}>{navigation.map(item=><a href={href(item.href)} aria-current={current === item.section ? 'page' : undefined}>{item.label}</a>)}</nav>
   <div class="header-controls"><SupportDialog /><LanguageSelector /><PageSettings /></div>
 </header>
 <style>

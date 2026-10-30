@@ -12,6 +12,7 @@ import SeasonScene from '../components/art/SeasonScene.astro';
 import HomePortraits from '../components/art/HomePortraits';
 import {entityUrl} from '../data/clientSearch';
 import {minimapImage} from '../data/collectionMap';
+import {allGuides, guideIcon} from '../data/navigation';
 import { getI18n } from '../i18n/server';
 import '../styles/home.css';
 const i18n = getI18n(Astro.url);
@@ -19,7 +20,6 @@ const { t, href, locale } = i18n;
 const catalog = getCatalog(locale);
 const number = (value: number) => value.toLocaleString(i18n.lang);
 const icon = (id: string) => catalog.byId[id]?.icon_path;
-const itemIcon = (category: string) => catalog.entities.find(e => e.kind === 'items' && e.category_id === `ITEM_CATEGORY_${category}` && e.icon_path)?.icon_path;
 const totalEntries = Object.values(catalog.counts).reduce((sum, count) => sum + count, 0);
 const featuredKinds = primaryKinds.map((kind) => ({ kind, label: t(kindLabels[kind]), count: catalog.counts[kind] ?? 0, icon:catalog.entities.find(e=>e.kind===kind&&e.icon_path)?.icon_path }));
 const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.icon_path);
@@ -42,14 +42,10 @@ const features = [
   { number: t('叁'), title: t('生产工作流'), text: t('把种植、加工、交付和出售连成流程，按天算出土地、机器和现金。'), link: '/planner/workflow/', anchor: '#chapter-winter', icon: icon('ITEM_ID_GIMMICK_FLOUR_MILL') },
   { number: t('肆'), title: t('存档编辑器'), text: t('在浏览器里改物品、田地布局、好感和任务进度。'), link: '/save-editor/', anchor: '#chapter-editor', icon: icon('ITEM_ID_GIMMICK_CHEST_CAMP_GREEN') },
 ];
-const featuredGuides = [
-  { title: t('四季留货与交付'), text: t('每季供奉和交付目录要留多少货'), link: '/guides/season-plan/', icon: itemIcon('CROPS') },
-  { title: t('四季钓点与留货'), text: t('每个钓点各时段的鱼、上钩概率和交付要留的鱼'), link: '/guides/fishing-spots/', icon: itemIcon('FISH') },
-  { title: t('采石场掉落分布'), text: t('每层石头掉什么、概率多少'), link: '/guides/quarry/', icon: itemIcon('ORE') },
-  { title: t('生日、送礼与食谱传授'), text: t('村民生日、喜好和传授的食谱'), link: '/guides/residents/', icon: itemIcon('FLOWER') },
-  { title: t('料理材料与食谱'), text: t('配方用料和可以替换的材料'), link: '/guides/cooking-plan/', icon: itemIcon('COOKING') },
-  { title: t('帮忙券与主线推进'), text: t('帮忙券任务和道路开放顺序'), link: '/guides/progression/', icon: itemIcon('FARM_TOOL') },
-];
+// The home page features six of the guides from the shared list.
+const featuredGuides = ['/guides/season-plan/', '/guides/fishing-spots/', '/guides/quarry/', '/guides/residents/', '/guides/cooking-plan/', '/guides/progression/']
+  .map(path => allGuides.find(guide => guide.href === path)!)
+  .map(guide => ({ title: t(guide.title), text: t(guide.description), link: guide.href, icon: guideIcon(catalog.entities, guide.icon) }));
 // A real one-step chain from the game data: wheat → flour mill → flour.
 const flour = catalog.byId['ITEM_ID_FLOUR'];
 const flowNodes = [
