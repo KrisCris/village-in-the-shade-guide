@@ -23,15 +23,16 @@ function kindFromPath(path: string) {
 
 // i18n-ignore-next-line — quest.dat writes the player's name as a <player> tag.
 const playerWord: Record<Locale, string> = { 'zh-CN': '主角', 'zh-TW': '主角', ja: '主人公', en: 'Player' };
-const withoutTags = (text: string, locale: Locale) => text.replace(/<cmd\b[^>]*>/g, '').replace(/<player>/g, playerWord[locale]);
+const withoutTags = (text: string, locale: Locale) => text.replace(/<cmd\b[^>]*>/g, '').replace(/<player>/g, playerWord[locale]).replace(/ {2,}/g, ' ');
 
 function withSearchAliases(name: Name): Name {
   const readable=(text:string,locale:Locale)=>withoutTags(text,locale).replace(/^\s*[＋+]\s*/,'').trim();
   // Official Simplified Chinese ships since build 25311578; OpenCC only fills
   // authored overrides and names the game leaves untranslated.
   const simplified = readable(name.translations?.['zh-CN'] || toSimplified(name.zh_hant || name.zh_hans), 'zh-CN');
-  const aliases = [...new Set([simplified, ...name.aliases, ...buildPinyinAliases(simplified), ...buildPinyinAliases(name.zh_hant)])];
-  return { ...name, zh_hans: simplified, zh_hant: readable(name.zh_hant, 'zh-TW'), ja: readable(name.ja, 'ja'), aliases };
+  const traditional = readable(name.zh_hant, 'zh-TW');
+  const aliases = [...new Set([simplified, ...name.aliases, ...buildPinyinAliases(simplified), ...buildPinyinAliases(traditional)])];
+  return { ...name, zh_hans: simplified, zh_hant: traditional, ja: readable(name.ja, 'ja'), aliases };
 }
 
 /**
