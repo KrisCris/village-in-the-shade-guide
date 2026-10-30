@@ -35,7 +35,9 @@ const current = navigation.filter(item => path.startsWith(item.href)).sort((a,b)
   nav { display: flex; gap: 1.2rem; } nav a { color: var(--ink); text-decoration: none; font-size: .92rem; }
   .header-controls{display:flex;align-items:center;gap:.8rem}nav a{position:relative;padding:.55rem 0}nav a::after{content:'';height:1px;background:var(--green);position:absolute;bottom:0;left:0;right:0;transform:scaleX(0);transform-origin:left;transition:transform .25s}nav a:hover::after{transform:scaleX(1)}
   nav a[aria-current="page"]{color:var(--green);font-weight:700}nav a[aria-current="page"]::after{transform:scaleX(1)}nav a{white-space:nowrap}
-  @media(max-width:520px){nav{gap:.5rem}nav a{font-size:.82rem}}
+  /* English and Japanese labels wrap to a second row; the tighter gap keeps Chinese on one. */
+  @media(max-width:520px){nav{column-gap:.8rem}nav:lang(zh){column-gap:.4rem}nav a{font-size:.82rem}}
+  @media(max-width:520px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto}.brand{justify-self:start}.brand strong{text-wrap:balance}nav{grid-column:1/-1}}
   @media(max-width:520px){.brand strong{font-size:.8rem}.brand{gap:.4rem}.header-controls{gap:.4rem}.site-header{gap:.3rem}.header-controls :global(.quality-selector label){display:none}.header-controls :global(.theme-switch){padding:.35rem .5rem}}
-  @media (max-width: 760px) { .site-header { height: auto; min-height: 64px; flex-wrap: wrap; padding-top: .55rem; padding-bottom: .55rem; } }
+  @media (max-width: 760px) { .site-header { height: auto; min-height: 64px; flex-wrap: wrap; padding-top: .55rem; padding-bottom: .55rem; } nav { flex-wrap: wrap; row-gap: 0; } }
 </style>
