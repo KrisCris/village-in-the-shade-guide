@@ -19,7 +19,10 @@ composed at native resolution, then reduced to 50% for transfer. Static YMWR
 decals (walls, fences, roofs, trees and rocks) go in separate `*-scenery.webp`
 layers with the same bounds, so the editor can hide them in its ground-only view.
 Each decal is drawn from its top-left position, scaled about its pivot, flipped
-and faded as recorded, and ordered by its depth line. Sprite anchors,
+and faded as recorded, and ordered by its depth line. The village buildings
+inside the farm window (Chawantei, Tagami General Store and the street vendor's
+stall) are drawn into the same layers, part by part as in `public/maps/village/`;
+the farm's own buildings, including My House, come from the save. Sprite anchors,
 first-frame transforms, texture substitutions, seasonal variations and crop
 growth thresholds come from game records. `manifest.json` contains world bounds
 and sprite metadata. Crops use their saved state and growth points, not an
