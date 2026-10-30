@@ -364,6 +364,7 @@ mud=[(u32(r,0),r) for r,g in table('cropsharvest') if u32(r,0)==u32(crop_rows['C
 (_,mud_row),=mud
 assert items[u32(mud_row,36)]=='ITEM_ID_CROPS_MUD_SEEDS' and items[u32(mud_row,96)]=='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE',mud_row
 # Cursed crops / fish: discarding or shipping adds to a pop count; EVENT_ID_LATE_NIGHT_START pops that many.
+# The category checks never match a cursed item, so nothing pops (see extract-curse-items.py).
 common_k=consts('event_horror_common')
 assert {'ITEM_FEATURE_CURSE','ITEM_CATEGORY_CROPS','ITEM_CATEGORY_FLOWER','ITEM_CATEGORY_FRUIT','ITEM_CATEGORY_FISH','CREATURE_ID_HORROR_VEGETABLE_MONSTER','CREATURE_ID_HORROR_FISH_MONSTER'}<=common_k
 assert event_hours['EVENT_ID_LATE_NIGHT_START'].startswith('0:00'),event_hours['EVENT_ID_LATE_NIGHT_START']

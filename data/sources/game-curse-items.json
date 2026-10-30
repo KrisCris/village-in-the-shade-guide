@@ -80,7 +80,21 @@
   },
   "curse_monsters": {
     "curse_feature": "ITEM_FEATURE_CURSE",
-    "leave_hour": 5
+    "checked_categories": {
+      "crop": [
+        "ITEM_CATEGORY_CROPS",
+        "ITEM_CATEGORY_FLOWER",
+        "ITEM_CATEGORY_FRUIT"
+      ],
+      "fish": [
+        "ITEM_CATEGORY_FISH"
+      ]
+    },
+    "cursed_item_categories": [
+      "ITEM_CATEGORY_DEFORMITY_CROPS",
+      "ITEM_CATEGORY_DEFORMITY_FISH"
+    ],
+    "pops": false
   },
   "unset_sparkle": {
     "mud_seeds_percent": 95,
