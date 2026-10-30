@@ -112,7 +112,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             name: archive.read_entry(f"data/database/{name}.dat")
             for name in table_names
         }
-        language_count = 7 if args.build_id == "25311578" else 6
+        # Build 24969282 had six native language slots; 25311578 added a seventh.
+        language_count = 6 if args.build_id == "24969282" else 7
         tables = {name: read_table(data, language_count=language_count) for name, data in raw_tables.items()}
         schema_root = args.schema_dir / f"build-{args.build_id}"
         schemas = {

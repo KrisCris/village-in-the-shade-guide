@@ -22,7 +22,7 @@ const bundles = catalog.entities.filter(e => e.kind === 'activities' && e.id.sta
   .filter(({ needs }) => needs.length);
 const neededBy = new Map<string, Entity[]>();
 for (const { bundle, needs } of bundles) for (const { item_id } of needs) neededBy.set(item_id, [...neededBy.get(item_id) ?? [], bundle]);
-const keepTitle = (id: string) => t('交付要用：{list}', { list: neededBy.get(id)!.map(bundle => bundle.name.zh_hans).join('、') });
+const keepTitle = (id: string) => t('交付要用：{list}', { list: neededBy.get(id)!.map(bundle => bundle.name.zh_hans).join(t('、')) });
 
 // The catch is drawn from one spot/season/period's rows, kept in fishing.dat order because white fish weigh the rows before them.
 type Spawn = (typeof fishing.spawns)[number];
@@ -97,7 +97,7 @@ const seasonData = seasons.map(([season, label]) => {
             <th scope="row"><a href={href(entityUrl(e))}>{e.icon_path && <img src={withBase(e.icon_path)} width="24" height="24" alt="" loading="lazy" />}<span>{e.name.zh_hans}</span>{neededBy.has(id) && <b class="keep-badge" title={keepTitle(id)}>{t('交付')}</b>}</a></th>
             {cells.map(({ spot, odds }) => {
               const text = odds.some(Boolean) ? periods.flatMap(([, name], i) => odds[i] ? [`${t(name)} ${percent(odds[i])}`] : []).join(' · ') : t('钓不到');
-              return <td title={`${spotNames.get(spot) ?? spot}：${text}`} aria-label={text} data-sort={odds.some(Boolean) ? String(odds.reduce((sum, value) => sum + value, 0)) : ''}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
+              return <td title={`${spotNames.get(spot) ?? spot}${t('：')}${text}`} aria-label={text} data-sort={odds.some(Boolean) ? String(odds.reduce((sum, value) => sum + value, 0)) : ''}>{odds.some(Boolean) && odds.map((value, i) => <i class={value ? `p${i}` : undefined}></i>)}</td>;
             })}
           </tr>; })}</tbody>
         </table>

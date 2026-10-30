@@ -4,7 +4,7 @@
     "event_check_late_night": "376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2",
     "gimmick_shinto_altar": "2e5594a5e4b313e109d9e9766a13b39d51148ecd1a451214466950e6a88e3ebf",
     "gimmick_event_black_daruma": "69286045c8a396852fb5a17dd9951083ad0dbc17ae4e4011a3c9526d2e2468e4",
-    "event_horror_statue_game": "19d2887a777717d8090ce876791370ae4df00c2f4677ce532a15f85fb41d392a",
+    "event_horror_statue_game": "9e77707ce0852f312a24c4e1e32d188a42e7d6570646fa4bfa83050e29ab651e",
     "event_horror_eye_of_hand": "4192f7f6143eb887df97b0fbff177ba6d7cb554e8c96564bb47218c67ba13949",
     "event_horror_soot_sprite": "d87ab5d936d9e9b21d00e7756e54664b748e8b7ecf0577c31d31199e39a3fc5a",
     "event_horror_grass": "2cd7ccd8be4c870bd64b1ffc20505948268a78e69f5e0a6c8c8da16cdb53270b",
@@ -27,7 +27,7 @@
     "ai_creature_horror_nozuchi_tail": "56e34dde60a89357a88d3e370599b0bee7b3058a1b3952fb264ffdf6929ba850",
     "ai_creature_horror_red_mask_ghost": "3ee2e47f733eb4a12c041fa4417fac81efb346f17a9c35d94010b3c9fee9c452",
     "ai_creature_horror_purple_mask_ghost": "0f9d7fe692a948ac1b87ecb9f22e9b50758902536262a430b0cdad5df3b8c4dd",
-    "gimmick_event_hat_gizo": "d05e7ab98e3e9bfae0c364c9657b8c10e4312032484674417c0c288336066dd4",
+    "gimmick_event_hat_gizo": "39a58fc3dd18f90c30f1196a4e9ef1103387c9fc7db9bb9b700f3f6dc40afebc",
     "ai_creature_horror_mizuchi_fujin_template": "0b66495d1fd8510ef11d3254c92bbded4e6389b32680295b7339603f414d17ee",
     "ai_creature_horror_mizuchi_raijin_template": "9ce5c025fa923196e67248b1d20f523a9e05b91a49d6abb0b0a42edaf7588624",
     "gimmick_snow_woman_husband_grave": "472bb109dad3bddd52b6bdfd51a5ab94a3e130a70c0ffbab1e4301eb9537d910",
@@ -38,7 +38,7 @@
     "ai_creature_horror_vegetable_monster": "605b2c00e94da8ab9e2b8147cf5c95dfa3439f6a53da25dadc4d9450e2882f94",
     "ai_creature_horror_fish_monster": "8ed1453024c390b585fb96e32de1c1ca786d2f6840aaa6f71bec57c47ed7d2c2",
     "event_horror_abyss": "572f5f481444378cd7c3e928f59ea61c95e4efeb395df5bccc278b8aa640f6fa",
-    "gimmick_event_evileye_stone_monument": "3a62f0be25c310941db5f9d735dab2d2ee0f65c02aa272779b3488de08c740f3"
+    "gimmick_event_evileye_stone_monument": "9d6435b43880c7a178026a16687335a629fa410f8afdafd3f3b38e4a83c21c8e"
   },
   "late_night": {
     "hours": [

@@ -5,7 +5,7 @@ import { readdirSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const prefixes = ['zh-TW', 'ja'];
+const prefixes = ['zh-TW', 'ja', 'en'];
 const pageExtensions = /\.(astro|ts|js)$/;
 
 function pageFiles(dir) {

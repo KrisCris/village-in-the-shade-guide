@@ -11,12 +11,15 @@ describe('offline file groups', () => {
     expect(offlineGroup('ja/list-data/kind-crops.json')).toBe('ja');
     expect(offlineGroup('locales/ja/game-data.json')).toBe('ja');
     expect(offlineGroup('locales/zh-TW/search-index.json')).toBe('zh-TW');
+    expect(offlineGroup('en/data/crops/index.html')).toBe('en');
+    expect(offlineGroup('locales/en/game-data.json')).toBe('en');
   });
 
   it('splits the search index by language and shares its scripts', () => {
     expect(offlineGroup('pagefind/index/zh-cn_12f00cf.pf_index')).toBe('zh-CN');
     expect(offlineGroup('pagefind/fragment/zh-tw_03c727b.pf_fragment')).toBe('zh-TW');
     expect(offlineGroup('pagefind/fragment/ja_0164fbd.pf_fragment')).toBe('ja');
+    expect(offlineGroup('pagefind/index/en_5a1b2c3.pf_index')).toBe('en');
     expect(offlineGroup('pagefind/pagefind-ui.js')).toBe('shared');
   });
 
@@ -27,7 +30,7 @@ describe('offline file groups', () => {
   });
 
   it('never stores the worker, manifests or the file lists themselves', () => {
-    for (const file of ['sw.js', 'robots.txt', 'manifest.webmanifest', 'ja/manifest.webmanifest', 'app/offline-shared.json']) {
+    for (const file of ['sw.js', 'robots.txt', 'manifest.webmanifest', 'ja/manifest.webmanifest', 'en/manifest.webmanifest', 'app/offline-shared.json']) {
       expect(offlineGroup(file)).toBeNull();
     }
   });

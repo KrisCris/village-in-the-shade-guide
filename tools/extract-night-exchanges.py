@@ -17,7 +17,7 @@ feature_ids={g[0]:struct.unpack_from('<Q',r)[0] for r,g in zip(features.records,
 creatures=read_table(archive.read_entry('data/database/creature.dat'))
 names={g[0]:build_name(ja=g[1],zh_hant=g[5],internal=g[0],overrides={},translations=localized_block(g,1,7)).zh_hans for g in _string_groups(creatures)}
 name_translations={g[0]:localized_block(g,1,7) for g in _string_groups(creatures)}
-items=json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))
+items=json.loads(Path('data/generated/build-25640656/entities/items.json').read_text(encoding='utf-8'))
 exchanges=[]
 reviewed_hashes={
     'thunder_beast':'afdf9e9bddd3abf4e68f2f5131c60efc5fb0154d1b022458622a0482bddcf213',

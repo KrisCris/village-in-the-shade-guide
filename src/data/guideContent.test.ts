@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { characterGuideRedirects, guideCategories, guides, localizeGuide, pendingGuides, translateHeading } from './guideContent';
 import { toTraditional } from '../i18n/traditional';
-import characters from '../../data/generated/build-25311578/entities/characters.json';
+import characters from '../../data/generated/build-25640656/entities/characters.json';
 import sourceCatalog from '../../data/sources/appmedia-honogurashi.json';
 
 const kana = /[ぁ-ゖァ-ヺ]/;
@@ -56,6 +56,14 @@ describe('localized guide titles', () => {
       expect(zhCN.title).toBe(guide.chineseTitle);
       expect(zhTW.title, guide.sourceId).toBe(toTraditional(guide.chineseTitle));
       expect(zhTW.headings).toEqual(zhCN.headings.map(toTraditional));
+    }
+  });
+  it('gives every guide page English pages render an English title and checklist', () => {
+    const japanese = /[\u3040-\u30ff\u4e00-\u9fff]/;
+    for (const guide of pendingGuides) {
+      const { title, headings } = localizeGuide(guide, 'en');
+      expect(title, guide.sourceId).not.toMatch(japanese);
+      for (const heading of headings) expect(heading, guide.sourceId).not.toMatch(japanese);
     }
   });
 });

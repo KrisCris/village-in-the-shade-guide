@@ -2,7 +2,7 @@ import {useProgressiveRows} from './useProgressiveRows';
 import SearchableSelect from '../controls/SearchableSelect';
 import { withBase } from '../../lib/sitePath';
 import { lazy, Suspense, useEffect, useMemo, useState, type KeyboardEvent, type MouseEvent } from 'react';
-import { secondaryName, type Entity } from '../../data/types';
+import { secondaryName, showsJapaneseName, type Entity } from '../../data/types';
 import { msg } from '../../i18n/translate';
 import { useI18n } from '../../i18n/react';
 import { entityUrl, normalizeSearch } from '../../data/clientSearch';
@@ -155,7 +155,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
       const periods = Object.keys(timeLabels).filter((period) => hits.some((entry) => entry.time_period === period));
       const metrics = entityMetrics(row, quality, priceIndex);
       return <tr key={row.id} tabIndex={0} aria-label={t('打开{name}详情', { name: row.name.zh_hans })} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
-        <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
+        <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{showsJapaneseName(locale) && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
         <td>{seasonText(row) || '—'}</td>
         <td className="fish-places">{places.map((place) => <span key={place.location_id}>{place.name.zh_hans}</span>)}</td>
         <td>{periods.map((period) => t(periodLabels[period])).join(t('、')) || '—'}</td>
@@ -173,7 +173,7 @@ export default function EntityExplorer({ rows, kind, machineOptions = [], fishin
           : t('{days} 日', { days: days(row.duration_minutes) })
         : null;
       return <tr key={row.id} tabIndex={0} aria-label={t('打开{name}详情', { name: row.name.zh_hans })} onClick={(event) => openFromRow(row, event)} onKeyDown={(event) => openFromKeyboard(row, event)}>
-        <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{locale !== 'ja' && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
+        <td><a className="entity-link" href={href(entityUrl(row))} onClick={(event) => openFromLink(row, event)}>{row.icon_path && <img src={withBase(row.icon_path)} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = withBase(rowFallback(row)); }} alt="" width="42" height="42" loading="lazy" />}<span>{row.name.zh_hans}{showsJapaneseName(locale) && <small>{secondaryName(row.name, locale)}</small>}</span></a></td>
         <td>{processGroup ? t('{count} 种配方', { count: Number(row.variant_count) }) : (kind === 'crops' && seasonText(row)) || row.category_name?.zh_hans || seasonText(row) || kind}{row.cultivation_method && <small>{String(row.cultivation_method)}</small>}{row.kind==='crops' && ((row.harvest_item_ids ?? []) as string[]).length>1 && <small>{String(row.harvest_names)}</small>}</td>
         <td className="price">{metricText(metrics.buy, kind === 'processes' ? qualityLabel(quality, t) : t('固定'))}</td>
         <td className="price">{metricText(metrics.sell, qualitySuffix)}</td>

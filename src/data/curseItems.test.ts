@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import curse from '../../data/sources/game-curse-items.json';
 import fishing from '../../data/sources/game-fishing.json';
-import items from '../../data/generated/build-25311578/entities/items.json';
-import crops from '../../data/generated/build-25311578/entities/crops.json';
+import items from '../../data/generated/build-25640656/entities/items.json';
+import crops from '../../data/generated/build-25640656/entities/crops.json';
 
 // The cursed-items guide reads these exports; check them against the catalog.
 const cursedCrops = (items as { id: string; category_id?: string; feature_ids?: number[] }[])

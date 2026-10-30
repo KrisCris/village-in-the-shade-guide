@@ -8,18 +8,18 @@
       "description": "林所说的生活目标。",
       "nameTranslations": {
         "ja": "彼ヶ津村の一員になる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Become a member of Kagatsu Village",
+        "fr": "Devenir membre de Kagatsu",
+        "es": "Intégrate en la villa de Kagatsu",
         "zh-TW": "成為彼津村的一員。",
         "ko": "카가츠 마을의 일원이 되기",
         "zh-CN": "成为彼津村的一员。"
       },
       "descriptionTranslations": {
         "ja": "リンから言われた、暮らしの目的。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The purpose of living, as told by Rin.",
+        "fr": "Le sens de la vie au village, selon Rin.",
+        "es": "El propósito vital que te ha dado Rin.",
         "zh-TW": "林所說的生活目標。",
         "ko": "린에게 들은 생활의 목적.",
         "zh-CN": "林所说的生活目标。"
@@ -30,33 +30,33 @@
       "id": 2,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_01",
       "name": "规矩之一，夜间十一点后禁止外出。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の一、午後十一時以降外出禁止",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 1: Do not be outside past 11 PM",
+        "fr": "Règle n° 1 : Ne pas sortir après 23 h",
+        "es": "1.ª norma: No salir después de las 23 h",
         "zh-TW": "規矩之一，夜間十一點後禁止外出。",
         "ko": "규율 1, 오후 11시 이후 외출 금지",
         "zh-CN": "规矩之一，夜间十一点后禁止外出。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "打破规矩，在深夜外出吧",
           "nameTranslations": {
             "ja": "掟を破って深夜に外へ出ろ",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Break the code and go outside at midnight",
+            "fr": "Brisez les règles et sortez la nuit.",
+            "es": "Sal fuera de noche y rompe la norma.",
             "zh-TW": "打破規矩，在深夜外出吧",
             "ko": "규율을 어기고 한밤중에 밖으로 나가라.",
             "zh-CN": "打破规矩，在深夜外出吧"
@@ -69,33 +69,33 @@
       "id": 3,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_02",
       "name": "规矩之二，要为村子尽一份力。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の二、村のために協力せよ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 2: Cooperate for the sake of the village",
+        "fr": "Règle n° 2 : Participer aux efforts du village",
+        "es": "2.ª norma: Coopera con los del pueblo",
         "zh-TW": "規矩之二，要為村子盡一份力。",
         "ko": "규율 2, 마을을 위해 협력할 것",
         "zh-CN": "规矩之二，要为村子尽一份力。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "用完所有的“帮忙券”吧",
           "nameTranslations": {
             "ja": "全ての「お手伝い券」を使い切ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Use up all of the errand coupons",
+            "fr": "Utilisez tous les tickets d’aide.",
+            "es": "Usa todos los vales de recado. Dile a",
             "zh-TW": "用完所有的「幫忙券」吧",
             "ko": "모든 「심부름 쿠폰」을 사용하자.",
             "zh-CN": "用完所有的“帮忙券”吧"
@@ -106,9 +106,9 @@
           "name": "告诉林已经帮完所有的忙了吧",
           "nameTranslations": {
             "ja": "お手伝いが終わったことをリンに伝えよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Let Rin know all the villagers' errands have been completed",
+            "fr": "Faites un rapport à Rin.",
+            "es": "Rin que has acabado las tareas. Entrega",
             "zh-TW": "告訴林已經幫完所有的忙了吧",
             "ko": "심부름을 완수했다고 린에게 알리자.",
             "zh-CN": "告诉林已经帮完所有的忙了吧"
@@ -119,9 +119,9 @@
           "name": "将委托物品交付至村长宅邸的目录吧",
           "nameTranslations": {
             "ja": "依頼品を村長邸の目録に納品しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Deliver the items to the catalog at Kiki Manor",
+            "fr": "Rassemblez les objets demandés au manoir de la cheffe.",
+            "es": "todo en la mansión de la alcaldesa.",
             "zh-TW": "將委託物品交付至村長宅邸的目錄吧",
             "ko": "의뢰한 물건을 촌장 저택의 목록에 납품하자.",
             "zh-CN": "将委托物品交付至村长宅邸的目录吧"
@@ -129,15 +129,15 @@
           "level": 2
         },
         {
-          "name": "去向林报告已经收集完委托清单了吧",
+          "name": "去向林回报已经收集完委托清单了吧",
           "nameTranslations": {
             "ja": "依頼品を集めたことをリンに報告しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report to Rin that the requested items are gathered",
+            "fr": "Prévenez ensuite Rin.",
+            "es": "Dile a Rin que ya lo tienes todo.",
             "zh-TW": "去向林報告已經收集完委託清單了吧",
             "ko": "의뢰받은 물건을 모두 모았다고 린에게 보고하자.",
-            "zh-CN": "去向林报告已经收集完委托清单了吧"
+            "zh-CN": "去向林回报已经收集完委托清单了吧"
           },
           "level": 3
         }
@@ -147,33 +147,33 @@
       "id": 4,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_03",
       "name": "规矩之三，别靠近陌生人。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の三、見知らぬ者に近づくな",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 3: Keep your distance from strangers",
+        "fr": "Règle n° 3 : Ne pas s’approcher des inconnus",
+        "es": "3.ª norma: No te acerques a desconocidos",
         "zh-TW": "規矩之三，別靠近陌生人。",
         "ko": "규율 3, 모르는 사람에게 접근하지 말 것",
         "zh-CN": "规矩之三，别靠近陌生人。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "去向林借图书馆的钥匙吧",
           "nameTranslations": {
             "ja": "リンに図書館の鍵を借りてこよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Borrow the library key from Rin",
+            "fr": "Empruntez la clé de la bibliothèque à Rin.",
+            "es": "Pídele la llave de la biblioteca a Rin.",
             "zh-TW": "去向林借圖書館的鑰匙吧",
             "ko": "린에게 도서관 열쇠를 빌려 오자.",
             "zh-CN": "去向林借图书馆的钥匙吧"
@@ -184,9 +184,9 @@
           "name": "收集两份酸酸的树液吧",
           "nameTranslations": {
             "ja": "酸っぱい樹液を２個集めよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Collect 2 containers of sour tree sap",
+            "fr": "Collectez 2 unités de sève acide.",
+            "es": "Consigue 2 savias agrias.",
             "zh-TW": "收集兩份酸酸的樹液吧",
             "ko": "시큼한 수액을 2개 모으자.",
             "zh-CN": "收集两份酸酸的树液吧"
@@ -197,9 +197,9 @@
           "name": "把两份酸酸的树液交给莲实吧",
           "nameTranslations": {
             "ja": "酸っぱい樹液を２個ハスミに渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Give the sour tree sap to Hasumi",
+            "fr": "Donnez la sève acide à Hasumi.",
+            "es": "Dale las savias agrias a Hasumi.",
             "zh-TW": "把兩份酸酸的樹液交給蓮實吧",
             "ko": "시큼한 수액 2개를 하스미에게 건네자.",
             "zh-CN": "把两份酸酸的树液交给莲实吧"
@@ -210,9 +210,9 @@
           "name": "在暗夜中去寻找名护的钱包吧",
           "nameTranslations": {
             "ja": "夜闇にナゴの財布を探しにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Find Nago's wallet late at night",
+            "fr": "Cherchez le portefeuille de Nago de nuit.",
+            "es": "Busca la cartera de Nago de noche.",
             "zh-TW": "在暗夜中去尋找名護的錢包吧",
             "ko": "심야에 나고의 지갑을 찾으러 가자.",
             "zh-CN": "在暗夜中去寻找名护的钱包吧"
@@ -223,9 +223,9 @@
           "name": "跟帷和驹子一起追鸡吧",
           "nameTranslations": {
             "ja": "トバリとコマコと一緒にニワトリを追おう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Chase the chicken with Tobari and Komako",
+            "fr": "Poursuivez la poule avec Tobari et Komako.",
+            "es": "Sigue a la gallina con Tobari y Komako.",
             "zh-TW": "跟帷和駒子一起追雞吧",
             "ko": "토바리, 코마코와 함께 닭을 쫓자.",
             "zh-CN": "跟帷和驹子一起追鸡吧"
@@ -236,9 +236,9 @@
           "name": "去图书馆看看吧",
           "nameTranslations": {
             "ja": "図書館に行ってみよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the library",
+            "fr": "Allez à la bibliothèque.",
+            "es": "Ve a la biblioteca.",
             "zh-TW": "去圖書館看看吧",
             "ko": "도서관에 가 보자.",
             "zh-CN": "去图书馆看看吧"
@@ -249,9 +249,9 @@
           "name": "在深夜找出遗失的书，并交给名护吧",
           "nameTranslations": {
             "ja": "深夜に失くなった本を探してナゴに渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Find lost books late at night and give them to Nago",
+            "fr": "Trouvez le livre perdu et donnez-le à Nago.",
+            "es": "Busca el libro de noche y dáselo a Nago.",
             "zh-TW": "在深夜找出遺失的書，並交給名護吧",
             "ko": "심야에 잃어버린 책을 찾아서 나고에게 건네자.",
             "zh-CN": "在深夜找出遗失的书，并交给名护吧"
@@ -262,9 +262,9 @@
           "name": "去钟楼看看吧",
           "nameTranslations": {
             "ja": "時計塔にいってみよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Meet up with Tobari and Komako at the clock tower tomorrow",
+            "fr": "Allez à la tour de l’horloge.",
+            "es": "Ve a la torre del reloj.",
             "zh-TW": "去鐘樓看看吧",
             "ko": "시계탑에 가 보자.",
             "zh-CN": "去钟楼看看吧"
@@ -275,9 +275,9 @@
           "name": "试着吹出奇迹的呼笛？吧",
           "nameTranslations": {
             "ja": "奇跡の呼笛？を吹いてみよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Try performing the Miracle Whistle?",
+            "fr": "Essayez le sifflement miraculeux.",
+            "es": "Prueba a usar el silbido milagroso.",
             "zh-TW": "試著吹出奇蹟的呼笛？吧",
             "ko": "기적의 휘파람 신호?를 불어 보자.",
             "zh-CN": "试着吹出奇迹的呼笛？吧"
@@ -288,9 +288,9 @@
           "name": "对鸡吹奏奇迹的呼笛？吧",
           "nameTranslations": {
             "ja": "ニワトリに奇跡の呼笛？を披露しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Perform the Miracle Whistle for the chicken",
+            "fr": "Sifflez devant la poule.",
+            "es": "Tócale el ¿silbato? a la gallina.",
             "zh-TW": "對雞吹奏奇蹟的呼笛？吧",
             "ko": "닭에게 기적의 휘파람 신호?를 불어 주자.",
             "zh-CN": "对鸡吹奏奇迹的呼笛？吧"
@@ -301,9 +301,9 @@
           "name": "在深夜前往桃树所在之处吧",
           "nameTranslations": {
             "ja": "深夜に桃の樹の元へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit the peach tree late at night",
+            "fr": "Allez au pêcher en pleine nuit.",
+            "es": "Ve al melocotonero de noche.",
             "zh-TW": "在深夜前往桃樹所在之處吧",
             "ko": "심야에 복숭아나무가 있는 곳으로 가자.",
             "zh-CN": "在深夜前往桃树所在之处吧"
@@ -314,9 +314,9 @@
           "name": "砍掉木珠的树",
           "nameTranslations": {
             "ja": "コダマの樹を切り倒せ",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Cut down Kodama's tree",
+            "fr": "Abattez le pêcher de Kodama.",
+            "es": "Derriba el árbol de Kodama.",
             "zh-TW": "砍掉木珠的樹",
             "ko": "코다마의 나무를 베어 쓰러뜨려라.",
             "zh-CN": "砍掉木珠的树"
@@ -327,9 +327,9 @@
           "name": "把钱包还给名护吧",
           "nameTranslations": {
             "ja": "ナゴに財布を返そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Return Nago's wallet",
+            "fr": "Rendez le portefeuille à Nago.",
+            "es": "Devuélvele la cartera a Nago.",
             "zh-TW": "把錢包還給名護吧",
             "ko": "나고에게 지갑을 돌려주자.",
             "zh-CN": "把钱包还给名护吧"
@@ -340,9 +340,9 @@
           "name": "去找名护领取谢礼吧",
           "nameTranslations": {
             "ja": "ナゴにお礼をもらいにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go receive a thank-you gift from Nago",
+            "fr": "Recevez votre récompense auprès de Nago.",
+            "es": "Acepta el agradecimiento de Nago.",
             "zh-TW": "去找名護領取謝禮吧",
             "ko": "나고에게 답례를 받으러 가자.",
             "zh-CN": "去找名护领取谢礼吧"
@@ -355,33 +355,33 @@
       "id": 5,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_04",
       "name": "规矩之四，别揭露他人秘密。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の四、他人の秘密を暴くな",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 4: Do not expose other people's secrets",
+        "fr": "Règle n° 4 : Ne pas révéler les secrets des autres",
+        "es": "4.ª norma: No husmees en secretos ajenos",
         "zh-TW": "規矩之四，別揭露他人祕密。",
         "ko": "규율 4, 타인의 비밀을 폭로하지 말 것",
         "zh-CN": "规矩之四，别揭露他人秘密。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "去今野的房间偷出钥匙吧",
           "nameTranslations": {
             "ja": "コンノの部屋から鍵を盗み出そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Take the key from Konno's room",
+            "fr": "Volez la clé dans la chambre de Kinno.",
+            "es": "Roba la llave de la habitación de Konno.",
             "zh-TW": "去今野的房間偷出鑰匙吧",
             "ko": "콘노의 방에서 열쇠를 훔치자.",
             "zh-CN": "去今野的房间偷出钥匙吧"
@@ -392,9 +392,9 @@
           "name": "在深夜前往帷的家吧",
           "nameTranslations": {
             "ja": "深夜にトバリの家を訪ねよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit Tobari's house late at night",
+            "fr": "Allez voir Tobari la nuit.",
+            "es": "Visita la casa de Tobari de noche.",
             "zh-TW": "在深夜前往帷的家吧",
             "ko": "심야에 토바리네 찾아가자.",
             "zh-CN": "在深夜前往帷的家吧"
@@ -405,9 +405,9 @@
           "name": "揭露林的秘密吧",
           "nameTranslations": {
             "ja": "リンの秘密を暴こう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Uncover Rin's secret",
+            "fr": "Découvrez le secret de Rin.",
+            "es": "Descubre el secreto de Rin.",
             "zh-TW": "揭露林的祕密吧",
             "ko": "린의 비밀을 폭로하자.",
             "zh-CN": "揭露林的秘密吧"
@@ -418,9 +418,9 @@
           "name": "调查林消失的走廊吧",
           "nameTranslations": {
             "ja": "リンが消えた廊下を調べよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Investigate the hallway where Rin disappeared",
+            "fr": "Inspectez le couloir où Rin a disparu.",
+            "es": "Investiga el sitio donde desapareció Rin.",
             "zh-TW": "調查林消失的走廊吧",
             "ko": "린이 사라진 복도를 조사하자.",
             "zh-CN": "调查林消失的走廊吧"
@@ -431,9 +431,9 @@
           "name": "照常过日子吧",
           "nameTranslations": {
             "ja": "いつも通り過ごそう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Spend the day as usual",
+            "fr": "Faites comme d’habitude.",
+            "es": "Actúa con normalidad.",
             "zh-TW": "照常過日子吧",
             "ko": "평소대로 지내자.",
             "zh-CN": "照常过日子吧"
@@ -444,9 +444,9 @@
           "name": "试着追寻狐狸吧",
           "nameTranslations": {
             "ja": "キツネを追いかけてみよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Catch the fox",
+            "fr": "Essayez de suivre le renard.",
+            "es": "Persigue al zorro.",
             "zh-TW": "試著追尋狐狸吧",
             "ko": "여우를 쫓아가 보자.",
             "zh-CN": "试着追寻狐狸吧"
@@ -457,9 +457,9 @@
           "name": "前往林所在的诊所吧",
           "nameTranslations": {
             "ja": "リンがいる診療所へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the clinic where Rin is",
+            "fr": "Allez à la clinique où se trouve Rin.",
+            "es": "Ve a la clínica donde está Rin.",
             "zh-TW": "前往林所在的診所吧",
             "ko": "린이 있는 진료소에 가자.",
             "zh-CN": "前往林所在的诊所吧"
@@ -470,9 +470,9 @@
           "name": "待在林身旁吧",
           "nameTranslations": {
             "ja": "リンの傍にいよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Stay by Rin's side",
+            "fr": "Restez auprès de Rin.",
+            "es": "Quédate con Rin.",
             "zh-TW": "待在林身旁吧",
             "ko": "린의 곁에 있자.",
             "zh-CN": "待在林身旁吧"
@@ -485,33 +485,33 @@
       "id": 6,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_05",
       "name": "规矩之五，不得擅自出村。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の五、村を出てはならぬ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 5: Do not leave the village",
+        "fr": "Règle n° 5 : Ne pas quitter le village",
+        "es": "5.ª norma: No debes abandonar el pueblo",
         "zh-TW": "規矩之五，不得擅自出村。",
         "ko": "규율 5, 마을에서 나가지 말 것",
         "zh-CN": "规矩之五，不得擅自出村。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "在深夜提着灯笼探索隘口吧",
           "nameTranslations": {
             "ja": "深夜に提灯を持って峠を探索しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Take a paper lantern to the mountain pass late at night",
+            "fr": "Explorez le col avec la lanterne tard le soir.",
+            "es": "Explora el paso con un farol de papel de madrugada.",
             "zh-TW": "在深夜提著燈籠探索隘口吧",
             "ko": "심야에 등롱을 들고 고개를 탐색해 보자.",
             "zh-CN": "在深夜提着灯笼探索隘口吧"
@@ -519,15 +519,15 @@
           "level": 0
         },
         {
-          "name": "在深夜于隘口最深处和堇怜碰面吧",
+          "name": "在深夜在隘口最深处和堇怜碰面吧",
           "nameTranslations": {
             "ja": "深夜に峠の最奥でスミレに会おう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Meet Sumire deep in the pass late at night",
+            "fr": "Trouvez Sumire au fond du col tard le soir.",
+            "es": "Encuentra a Sumire al final del paso de madrugada.",
             "zh-TW": "在深夜於隘口最深處和堇怜碰面吧",
             "ko": "심야에 고개의 가장 깊은 곳에서 스미레를 만나자.",
-            "zh-CN": "在深夜于隘口最深处和堇怜碰面吧"
+            "zh-CN": "在深夜在隘口最深处和堇怜碰面吧"
           },
           "level": 1
         },
@@ -535,11 +535,11 @@
           "name": "去诊所打听消息吧",
           "nameTranslations": {
             "ja": "診療所へ話を聞きにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the clinic to hear the story",
+            "fr": "Recueillez des informations à la clinique.",
+            "es": "Ve a la clínica a preguntar.",
             "zh-TW": "去診所打聽消息吧",
-            "ko": "진료소에서 가서 이야기를 듣자.",
+            "ko": "진료소에 가서 이야기를 듣자",
             "zh-CN": "去诊所打听消息吧"
           },
           "level": 2
@@ -548,9 +548,9 @@
           "name": "帮助堇怜吧",
           "nameTranslations": {
             "ja": "スミレを助けてあげよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Help Sumire",
+            "fr": "Aidez Sumire.",
+            "es": "Ayuda a Sumire.",
             "zh-TW": "幫助堇怜吧",
             "ko": "스미레를 구해 주자.",
             "zh-CN": "帮助堇怜吧"
@@ -563,33 +563,33 @@
       "id": 7,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_06",
       "name": "规矩之六，别回应山里传来的声音。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の六、山からの声に応えるな",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 6: Do not respond to voices from the mountains",
+        "fr": "Règle n° 6 : Ignorer les voix venant de la montagne",
+        "es": "6.ª norma: Ignora las voces de la montaña",
         "zh-TW": "規矩之六，別回應山裡傳來的聲音。",
         "ko": "규율 6, 산에서 부르는 목소리에 대답하지 말 것",
         "zh-CN": "规矩之六，别回应山里传来的声音。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "去深山的大桥看看洋在不在吧",
           "nameTranslations": {
             "ja": "山奥の大橋にヨウが居ないか見にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Search for Yoh at the bridge deep in the mountains",
+            "fr": "Cherchez Yoh au grand pont de la montagne.",
+            "es": "Ve al puente de la montaña a buscar a Yoh",
             "zh-TW": "去深山的大橋看看洋在不在吧",
             "ko": "산속의 대교에 요우가 없는지 확인하러 가자.",
             "zh-CN": "去深山的大桥看看洋在不在吧"
@@ -600,9 +600,9 @@
           "name": "再次前往深山大桥的另一头吧",
           "nameTranslations": {
             "ja": "もう一度、山奥の大橋の先へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Cross the bridge deep in the mountains once more",
+            "fr": "Retournez au-delà du pont.",
+            "es": "Cruza el puente de nuevo",
             "zh-TW": "再次前往深山大橋的另一頭吧",
             "ko": "다시 한번 산속의 대교 앞으로 가자.",
             "zh-CN": "再次前往深山大桥的另一头吧"
@@ -613,9 +613,9 @@
           "name": "在废弃屋里寻找声音来源吧",
           "nameTranslations": {
             "ja": "廃屋で声の主を探そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Search the abandoned house for the source of the voice",
+            "fr": "Trouvez la voix dans la maison abandonnée.",
+            "es": "Busca la voz en la casa abandonada",
             "zh-TW": "在廢棄屋裡尋找聲音來源吧",
             "ko": "폐가에서 목소리의 주인을 찾아보자.",
             "zh-CN": "在废弃屋里寻找声音来源吧"
@@ -626,9 +626,9 @@
           "name": "去餐厅找六角谈谈吧",
           "nameTranslations": {
             "ja": "食堂へロッカクの話を聞きにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the diner to hear Rokkaku's story",
+            "fr": "Allez au restaurant parler à Rokkaku.",
+            "es": "Habla con Rokkaku en el restaurante",
             "zh-TW": "去餐廳找六角談談吧",
             "ko": "식당으로 가서 롯카쿠의 이야기를 듣자",
             "zh-CN": "去餐厅找六角谈谈吧"
@@ -639,9 +639,9 @@
           "name": "去大桥的另一头寻找声音来源吧",
           "nameTranslations": {
             "ja": "大橋の向こうへ、声の主を探しにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Cross the large bridge to search for the source of the voice",
+            "fr": "Traversez le pont à la recherche de la voix.",
+            "es": "Ve al puente y busca al dueño de la voz",
             "zh-TW": "去大橋的另一頭尋找聲音來源吧",
             "ko": "큰 다리 너머, 목소리의 주인을 찾으러 가자.",
             "zh-CN": "去大桥的另一头寻找声音来源吧"
@@ -654,33 +654,33 @@
       "id": 8,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_07",
       "name": "规矩之七，别寻找遗失的物品。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の七、失った物を探すな",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 7: Do not search for what has been lost",
+        "fr": "Règle n° 7 : Ne pas chercher ce que l’on a perdu",
+        "es": "7.ª norma: No busques lo que has perdido",
         "zh-TW": "規矩之七，別尋找遺失的物品。",
         "ko": "규율 7, 잃어버린 물건은 찾지 말 것",
         "zh-CN": "规矩之七，别寻找遗失的物品。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "用金条改良斧头吧",
           "nameTranslations": {
             "ja": "オノを金の延べ棒で改良しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Upgrade the axe with gold ingots",
+            "fr": "Améliorez la hache avec un lingot d’or.",
+            "es": "Mejora el hacha con lingotes de oro",
             "zh-TW": "用金條改良斧頭吧",
             "ko": "도끼를 금 주괴로 개량하자.",
             "zh-CN": "用金条改良斧头吧"
@@ -691,9 +691,9 @@
           "name": "在下午5点之前前往附身草丛吧",
           "nameTranslations": {
             "ja": "午後５時までに憑き藪へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the Haunted Thicket by 5:00 PM",
+            "fr": "Allez au fourré maudit avant 17 h.",
+            "es": "Ve a la Espesura Maldita antes de las 17:00",
             "zh-TW": "在下午5點之前前往附身草叢吧",
             "ko": "오후 5시까지 미혹의 대숲에 가자.",
             "zh-CN": "在下午5点之前前往附身草丛吧"
@@ -704,9 +704,9 @@
           "name": "与茶梅一起穿越草丛吧",
           "nameTranslations": {
             "ja": "サザンカと藪を進もう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go through the thicket with Sazanka",
+            "fr": "Progressez dans le fourré avec Sazanka.",
+            "es": "Avanza con Sazanka.",
             "zh-TW": "與茶梅一起穿越草叢吧",
             "ko": "사잔카와 미혹의 대숲을 나아가자.",
             "zh-CN": "与茶梅一起穿越草丛吧"
@@ -717,9 +717,9 @@
           "name": "在下午5点之前前往附身草丛吧",
           "nameTranslations": {
             "ja": "午後５時までに憑き藪へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the Haunted Thicket by 5:00 PM",
+            "fr": "Allez au fourré maudit avant 17 h.",
+            "es": "Ve a la Espesura Maldita antes de las 17:00.",
             "zh-TW": "在下午5點之前前往附身草叢吧",
             "ko": "오후 5시까지 미혹의 대숲에 가자.",
             "zh-CN": "在下午5点之前前往附身草丛吧"
@@ -730,9 +730,9 @@
           "name": "与驹子一起穿越草丛吧",
           "nameTranslations": {
             "ja": "コマコと藪を進もう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go through the thicket with Komako",
+            "fr": "Progressez dans le fourré avec Komako.",
+            "es": "Avanza por la Espesura con Komako",
             "zh-TW": "與駒子一起穿越草叢吧",
             "ko": "코마코와 미혹의 대숲을 나아가자.",
             "zh-CN": "与驹子一起穿越草丛吧"
@@ -743,9 +743,9 @@
           "name": "在下午5点之前前往附身草丛吧",
           "nameTranslations": {
             "ja": "午後５時までに憑き藪へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to the Haunted Thicket by 5:00 PM",
+            "fr": "Allez au fourré maudit avant 17 h.",
+            "es": "Ve a la Espesura Maldita antes de las 17:00.",
             "zh-TW": "在下午5點之前前往附身草叢吧",
             "ko": "오후 5시까지 미혹의 대숲에 가자.",
             "zh-CN": "在下午5点之前前往附身草丛吧"
@@ -756,9 +756,9 @@
           "name": "在草丛里寻找神器吧",
           "nameTranslations": {
             "ja": "藪で神器を探そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Search for the sacred treasure in the thicket",
+            "fr": "Cherchez le trésor sacré dans le fourré.",
+            "es": "Busca el tesoro sagrado.",
             "zh-TW": "在草叢裡尋找神器吧",
             "ko": "미혹의 대숲에서 신기를 찾자.",
             "zh-CN": "在草丛里寻找神器吧"
@@ -771,33 +771,33 @@
       "id": 9,
       "code": "QUEST_ID_CHAIN_VILLAGE_RULES_08",
       "name": "规矩之八，愿望需要相应的代价。",
-      "description": "流传于彼津村，必须遵守的规矩之一。",
+      "description": "在彼津村中流传，必须遵守的规矩之一。",
       "nameTranslations": {
         "ja": "掟の八、願いには相応の代償が必要",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rule 8: Every request requires appropriate compensation",
+        "fr": "Règle n° 8 : Chaque souhait exige une compensation égale",
+        "es": "8.ª norma: Todo deseo exige un precio",
         "zh-TW": "規矩之八，願望需要相應的代價。",
         "ko": "규율 8, 소원에는 그에 상응하는 대가가 필요",
         "zh-CN": "规矩之八，愿望需要相应的代价。"
       },
       "descriptionTranslations": {
         "ja": "彼ヶ津村に伝わる、守るべき掟の一つ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "One of the rules that must be followed in Kagatsu Village.",
+        "fr": "Une des règles à suivre à Kagatsu :",
+        "es": "Esta es una de las normas de Kagatsu:",
         "zh-TW": "流傳於彼津村，必須遵守的規矩之一。",
         "ko": "카가츠 마을에 전해지는 지켜야 하는 규율 중 하나.",
-        "zh-CN": "流传于彼津村，必须遵守的规矩之一。"
+        "zh-CN": "在彼津村中流传，必须遵守的规矩之一。"
       },
       "steps": [
         {
           "name": "回彼津村吧",
           "nameTranslations": {
             "ja": "彼ヶ津村に帰ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Return to Kagatsu Village",
+            "fr": "Retournez au village de Kagatsu.",
+            "es": "Regresa a Kagatsu.",
             "zh-TW": "回彼津村吧",
             "ko": "카가츠 마을에 돌아가자.",
             "zh-CN": "回彼津村吧"
@@ -808,9 +808,9 @@
           "name": "要协助木助守护彼津村吗？",
           "nameTranslations": {
             "ja": "キスケに協力して彼ヶ津村を守る？",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Work with Kisuke to protect Kagatsu Village?",
+            "fr": "Aidez Kisuke à protéger le village ?",
+            "es": "¿Protege Kagatsu junto a Kisuke?",
             "zh-TW": "要協助木助守護彼津村嗎？",
             "ko": "키스케를 도와 카가츠 마을을 지킬까?",
             "zh-CN": "要协助木助守护彼津村吗？"
@@ -821,9 +821,9 @@
           "name": "在深夜前往大洞吧",
           "nameTranslations": {
             "ja": "深夜に大穴にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Head to the chasm late at night",
+            "fr": "Allez au gouffre en pleine nuit.",
+            "es": "Ve al gran agujero de noche.",
             "zh-TW": "在深夜前往大洞吧",
             "ko": "심야에 큰 구덩이로 가자.",
             "zh-CN": "在深夜前往大洞吧"
@@ -834,9 +834,9 @@
           "name": "杀死土地神",
           "nameTranslations": {
             "ja": "土地神を殺す",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Kill the local god",
+            "fr": "Tuez la divinité locale.",
+            "es": "Acaba con el dios de la tierra.",
             "zh-TW": "殺死土地神",
             "ko": "토지신을 죽이자.",
             "zh-CN": "杀死土地神"
@@ -852,18 +852,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "？？？？？？",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "???",
+        "fr": "???",
+        "es": "¿¿¿???",
         "zh-TW": "？？？？？？",
         "ko": "??????",
         "zh-CN": "？？？？？？"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "! There is no text for this quest!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -877,18 +877,18 @@
       "description": "交出帮忙券，接下了驹子的委托。",
       "nameTranslations": {
         "ja": "コマコのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Komako's Errand",
+        "fr": "Coup de main à Komako",
+        "es": "Ayuda a Komako",
         "zh-TW": "幫忙駒子",
         "ko": "코마코의 심부름",
         "zh-CN": "帮忙驹子"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、コマコから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Komako an errand coupon.",
+        "fr": "Komako vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Komako por un vale.",
         "zh-TW": "交出幫忙券，接下了駒子的委託。",
         "ko": "심부름 쿠폰을 건네고, 코마코에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了驹子的委托。"
@@ -898,9 +898,9 @@
           "name": "收集材料，修复岔路的祠堂吧",
           "nameTranslations": {
             "ja": "素材を集めて辻の祠を修復しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Repair the hokora",
+            "fr": "Rassemblez des matériaux et réparez le sanctuaire.",
+            "es": "Reúne materiales y repara el santuario.",
             "zh-TW": "收集材料，修復岔路的祠堂吧",
             "ko": "재료를 모아 갈림길의 사당을 수복하자.",
             "zh-CN": "收集材料，修复岔路的祠堂吧"
@@ -911,9 +911,9 @@
           "name": "告诉驹子祠堂已经修好了吧",
           "nameTranslations": {
             "ja": "祠が直ったことをコマコに伝えにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report to Komako",
+            "fr": "Informez Komako une fois fini.",
+            "es": "Informa a Komako.",
             "zh-TW": "告訴駒子祠堂已經修好了吧",
             "ko": "사당을 고쳤다고 코마코에게 알리러 가자.",
             "zh-CN": "告诉驹子祠堂已经修好了吧"
@@ -924,9 +924,9 @@
           "name": "去岔路的祠堂参拜吧",
           "nameTranslations": {
             "ja": "辻の祠へお参りにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Pray at the repaired hokora",
+            "fr": "Priez au sanctuaire au carrefour.",
+            "es": "Ve a rezar al santuario.",
             "zh-TW": "去岔路的祠堂參拜吧",
             "ko": "갈림길의 사당에 참배를 가자.",
             "zh-CN": "去岔路的祠堂参拜吧"
@@ -942,18 +942,18 @@
       "description": "交出帮忙券，接下了帷的委托。",
       "nameTranslations": {
         "ja": "トバリのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tobari's Errand",
+        "fr": "Coup de main à Tobari",
+        "es": "Ayuda a Tobari",
         "zh-TW": "幫忙帷",
         "ko": "토바리의 심부름",
         "zh-CN": "帮忙帷"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、トバリから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Tobari an errand coupon.",
+        "fr": "Tobari vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Tobari por un vale.",
         "zh-TW": "交出幫忙券，接下了帷的委託。",
         "ko": "심부름 쿠폰을 건네고, 토바리에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了帷的委托。"
@@ -963,9 +963,9 @@
           "name": "打扫村长宅邸的仓库吧",
           "nameTranslations": {
             "ja": "村長邸の蔵を掃除しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Clean Kiki Storehouse",
+            "fr": "Nettoyez l’entrepôt.",
+            "es": "Limpia el almacén de la alcaldesa.",
             "zh-TW": "打掃村長宅邸的倉庫吧",
             "ko": "촌장 저택의 창고를 청소하자.",
             "zh-CN": "打扫村长宅邸的仓库吧"
@@ -976,9 +976,9 @@
           "name": "告诉帷已经打扫完毕了吧",
           "nameTranslations": {
             "ja": "掃除が終わったことをトバリに伝えよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report to Tobari",
+            "fr": "Informez Tobari quand c’est prêt.",
+            "es": "Dile a Tobari que has acabado.",
             "zh-TW": "告訴帷已經打掃完畢了吧",
             "ko": "청소를 끝냈다고 토바리에게 알리자.",
             "zh-CN": "告诉帷已经打扫完毕了吧"
@@ -989,9 +989,9 @@
           "name": "再去一次仓库吧",
           "nameTranslations": {
             "ja": "もう一度蔵にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Return to the storehouse",
+            "fr": "Retournez à l’entrepôt.",
+            "es": "Vuelve al almacén.",
             "zh-TW": "再去一次倉庫吧",
             "ko": "한 번 더 창고로 가자.",
             "zh-CN": "再去一次仓库吧"
@@ -1007,18 +1007,18 @@
       "description": "交出帮忙券，接下了堇怜的委托。",
       "nameTranslations": {
         "ja": "スミレのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sumire's Errand",
+        "fr": "Coup de main à Sumire",
+        "es": "Ayuda a Sumire",
         "zh-TW": "幫忙堇怜",
         "ko": "스미레의 심부름",
         "zh-CN": "帮忙堇怜"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、スミレから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Sumire an errand coupon.",
+        "fr": "Sumire vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Sumire por un vale.",
         "zh-TW": "交出幫忙券，接下了堇怜的委託。",
         "ko": "심부름 쿠폰을 건네고, 스미레에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了堇怜的委托。"
@@ -1028,9 +1028,9 @@
           "name": "去山里采集紫色的花吧",
           "nameTranslations": {
             "ja": "山で紫の花を取ってこよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Find a plant with purple flowers near the mountains",
+            "fr": "Cueillez une fleur violette en montagne.",
+            "es": "Recoge flores moradas.",
             "zh-TW": "去山裡採集紫色的花吧",
             "ko": "산에서 보라색 꽃을 꺾어 오자.",
             "zh-CN": "去山里采集紫色的花吧"
@@ -1041,9 +1041,9 @@
           "name": "把紫色的花交给堇怜吧",
           "nameTranslations": {
             "ja": "紫の花をスミレに渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Give the plant to Sumire",
+            "fr": "Donnez la fleur à Sumire.",
+            "es": "Dale las flores a Sumire.",
             "zh-TW": "把紫色的花交給堇怜吧",
             "ko": "보라색 꽃을 스미레에게 건네자.",
             "zh-CN": "把紫色的花交给堇怜吧"
@@ -1054,9 +1054,9 @@
           "name": "去堇怜的家吧",
           "nameTranslations": {
             "ja": "スミレの家にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to Sumire's house",
+            "fr": "Allez chez Sumire.",
+            "es": "Ve a casa de Sumire.",
             "zh-TW": "去堇怜的家吧",
             "ko": "스미레의 집에 가자.",
             "zh-CN": "去堇怜的家吧"
@@ -1072,18 +1072,18 @@
       "description": "交出帮忙券，接下了琪娜娜的委托。",
       "nameTranslations": {
         "ja": "チナナのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chinana's Errand",
+        "fr": "Coup de main à Chinana",
+        "es": "Ayuda a Chinana",
         "zh-TW": "幫忙琪娜娜",
         "ko": "치나나의 심부름",
         "zh-CN": "帮忙琪娜娜"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、チナナから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Chinana an errand coupon.",
+        "fr": "Chinana vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Chinana por un vale.",
         "zh-TW": "交出幫忙券，接下了琪娜娜的委託。",
         "ko": "심부름 쿠폰을 건네고, 치나나에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了琪娜娜的委托。"
@@ -1093,9 +1093,9 @@
           "name": "去通往隘口的路寻找琪娜娜的石头吧",
           "nameTranslations": {
             "ja": "チナナの石を峠へ続く道で探そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Search for the stone on the road south of Kagatsu",
+            "fr": "Cherchez la pierre de Chinana sur le chemin du col.",
+            "es": "Busca la piedra yendo hacia el paso.",
             "zh-TW": "去通往隘口的路尋找琪娜娜的石頭吧",
             "ko": "치나나의 돌을 고갯길에서 찾자.",
             "zh-CN": "去通往隘口的路寻找琪娜娜的石头吧"
@@ -1106,9 +1106,9 @@
           "name": "把石头搬到琪娜娜那里吧",
           "nameTranslations": {
             "ja": "石をチナナの元へ運ぼう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Bring the stone to Chinana",
+            "fr": "Apportez la pierre à Chinana.",
+            "es": "Dale la piedra a Chinana.",
             "zh-TW": "把石頭搬到琪娜娜那裡吧",
             "ko": "돌을 치나나가 있는 곳으로 옮기자.",
             "zh-CN": "把石头搬到琪娜娜那里吧"
@@ -1119,9 +1119,9 @@
           "name": "去见琪娜娜吧",
           "nameTranslations": {
             "ja": "チナナに会いにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit Chinana",
+            "fr": "Allez voir Chinana.",
+            "es": "Ve a ver a Chinana.",
             "zh-TW": "去見琪娜娜吧",
             "ko": "치나나를 만나러 가자.",
             "zh-CN": "去见琪娜娜吧"
@@ -1137,18 +1137,18 @@
       "description": "交出帮忙券，接下了洋的委托。",
       "nameTranslations": {
         "ja": "ヨウのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Yoh's Errand",
+        "fr": "Coup de main à Yoh",
+        "es": "Ayuda a Yoh",
         "zh-TW": "幫忙洋",
         "ko": "요우의 심부름",
         "zh-CN": "帮忙洋"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、ヨウから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Yoh an errand coupon.",
+        "fr": "Yoh vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Yoh por un vale.",
         "zh-TW": "交出幫忙券，接下了洋的委託。",
         "ko": "심부름 쿠폰을 건네고, 요우에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了洋的委托。"
@@ -1158,9 +1158,9 @@
           "name": "帮洋钓山女鱼吧",
           "nameTranslations": {
             "ja": "ヨウのためにヤマメを釣ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Catch a yamame trout for Yoh",
+            "fr": "Pêchez un saumon masou pour Yoh.",
+            "es": "Pesca un salmón masu para Yoh.",
             "zh-TW": "幫洋釣山女魚吧",
             "ko": "요우를 위해 산천어를 낚자.",
             "zh-CN": "帮洋钓山女鱼吧"
@@ -1171,9 +1171,9 @@
           "name": "把山女鱼交给洋吧",
           "nameTranslations": {
             "ja": "ヤマメをヨウに渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Give the yamame trout to Yoh",
+            "fr": "Donnez le saumon masou à Yoh.",
+            "es": "Dale el salmón masu a Yoh.",
             "zh-TW": "把山女魚交給洋吧",
             "ko": "산천어를 요우에게 건네자.",
             "zh-CN": "把山女鱼交给洋吧"
@@ -1184,9 +1184,9 @@
           "name": "去见在餐厅里的六角吧",
           "nameTranslations": {
             "ja": "食堂にいるロッカクに会いにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit Rokkaku at the diner",
+            "fr": "Allez voir Rokkaku au restaurant.",
+            "es": "Ve a ver a Rokkaku al restaurante.",
             "zh-TW": "去見在餐廳裡的六角吧",
             "ko": "식당에 있는 롯카쿠를 만나러 가자.",
             "zh-CN": "去见在餐厅里的六角吧"
@@ -1202,18 +1202,18 @@
       "description": "交出帮忙券，接下了茶梅的委托。",
       "nameTranslations": {
         "ja": "サザンカのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sazanka's Errand",
+        "fr": "Coup de main à Sazanka",
+        "es": "Ayuda a Sazanka",
         "zh-TW": "幫忙茶梅",
         "ko": "사잔카의 심부름",
         "zh-CN": "帮忙茶梅"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、サザンカから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Sazanka an errand coupon.",
+        "fr": "Sazanka vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Sazanka por un vale.",
         "zh-TW": "交出幫忙券，接下了茶梅的委託。",
         "ko": "심부름 쿠폰을 건네고, 사잔카에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了茶梅的委托。"
@@ -1223,9 +1223,9 @@
           "name": "找来5个铜矿石吧",
           "nameTranslations": {
             "ja": "銅鉱石を５個持ってこよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Acquire 5 copper ores",
+            "fr": "Ramenez 5 minerais de cuivre.",
+            "es": "Consigue 5 menas de cobre.",
             "zh-TW": "找來5個銅礦石吧",
             "ko": "동광석을 5개 가지고 오자.",
             "zh-CN": "找来5个铜矿石吧"
@@ -1236,9 +1236,9 @@
           "name": "把5个铜矿石交给茶梅吧",
           "nameTranslations": {
             "ja": "サザンカに銅鉱石を５個渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Deliver the 5 copper ores to Sazanka",
+            "fr": "Donnez les 5 minerais à Sazanka.",
+            "es": "Dale a Sazanka las menas de cobre.",
             "zh-TW": "把5個銅礦石交給茶梅吧",
             "ko": "사잔카에게 동광석 5개를 건네자.",
             "zh-CN": "把5个铜矿石交给茶梅吧"
@@ -1249,9 +1249,9 @@
           "name": "去见茶梅吧",
           "nameTranslations": {
             "ja": "サザンカに会いにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Talk to Sazanka",
+            "fr": "Allez voir Sazanka.",
+            "es": "Ve a ver a Sazanka.",
             "zh-TW": "去見茶梅吧",
             "ko": "사잔카를 만나러 가자.",
             "zh-CN": "去见茶梅吧"
@@ -1267,18 +1267,18 @@
       "description": "交出帮忙券，接下了裕太的委托。",
       "nameTranslations": {
         "ja": "ユータのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Yuta's Errand",
+        "fr": "Coup de main à Yuta",
+        "es": "Ayuda a Yuta",
         "zh-TW": "幫忙裕太",
         "ko": "유타의 심부름",
         "zh-CN": "帮忙裕太"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、ユータから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Yuta an errand coupon.",
+        "fr": "Yuta vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Yuta por un vale.",
         "zh-TW": "交出幫忙券，接下了裕太的委託。",
         "ko": "심부름 쿠폰을 건네고, 유타에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了裕太的委托。"
@@ -1288,9 +1288,9 @@
           "name": "去山里捕捉5只蜜蜂吧",
           "nameTranslations": {
             "ja": "山でミツバチを５匹捕まえよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Catch 5 honeybees near the mountains",
+            "fr": "Attrapez 5 abeilles en montagne.",
+            "es": "Atrapa 5 abejas en la montaña.",
             "zh-TW": "去山裡捕捉5隻蜜蜂吧",
             "ko": "산에서 꿀벌 5마리를 잡자.",
             "zh-CN": "去山里捕捉5只蜜蜂吧"
@@ -1301,9 +1301,9 @@
           "name": "把5只蜜蜂交给裕太吧",
           "nameTranslations": {
             "ja": "ユータにミツバチを５匹渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Give the 5 honeybees to Yuta",
+            "fr": "Donnez les 5 abeilles à Yuta.",
+            "es": "Dale las abejas a Yuta.",
             "zh-TW": "把5隻蜜蜂交給裕太吧",
             "ko": "유타에게 꿀벌 5마리를 건네자.",
             "zh-CN": "把5只蜜蜂交给裕太吧"
@@ -1314,9 +1314,9 @@
           "name": "去裕太的家吧",
           "nameTranslations": {
             "ja": "ユータの家にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to Yuta's house",
+            "fr": "Allez chez Yuta.",
+            "es": "Ve a casa de Yuta.",
             "zh-TW": "去裕太的家吧",
             "ko": "유타의 집에 가자.",
             "zh-CN": "去裕太的家吧"
@@ -1332,18 +1332,18 @@
       "description": "交出帮忙券，接下了六角的委托。",
       "nameTranslations": {
         "ja": "ロッカクのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rokkaku's Errand",
+        "fr": "Coup de main à Rokkaku",
+        "es": "Ayuda a Rokkaku",
         "zh-TW": "幫忙六角",
         "ko": "롯카쿠의 심부름",
         "zh-CN": "帮忙六角"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、ロッカクから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Rokkaku an errand coupon.",
+        "fr": "Rokkaku vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Rokkaku por un vale.",
         "zh-TW": "交出幫忙券，接下了六角的委託。",
         "ko": "심부름 쿠폰을 건네고, 롯카쿠에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了六角的委托。"
@@ -1353,9 +1353,9 @@
           "name": "把林的便当送过去吧",
           "nameTranslations": {
             "ja": "リンのお弁当を届けよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Deliver Rin's bento",
+            "fr": "Livrez le bento à Rin.",
+            "es": "Dale el bento a Rin.",
             "zh-TW": "把林的便當送過去吧",
             "ko": "린에게 도시락을 전해 주자.",
             "zh-CN": "把林的便当送过去吧"
@@ -1363,15 +1363,15 @@
           "level": 0
         },
         {
-          "name": "向六角报告便当已经送达了吧",
+          "name": "向六角回报便当已经送达了吧",
           "nameTranslations": {
             "ja": "届けたことをロッカクに報告しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report back to Rokkaku",
+            "fr": "Informez Rokkaku de la livraison.",
+            "es": "Dile a Rokkaku que entregaste el bento.",
             "zh-TW": "向六角報告便當已經送達了吧",
             "ko": "전해 줬다고 롯카쿠에게 보고하자.",
-            "zh-CN": "向六角报告便当已经送达了吧"
+            "zh-CN": "向六角回报便当已经送达了吧"
           },
           "level": 1
         }
@@ -1384,18 +1384,18 @@
       "description": "交出帮忙券，接下了今野的委托。",
       "nameTranslations": {
         "ja": "コンノのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Konno's Errand",
+        "fr": "Coup de main à Kinno",
+        "es": "Ayuda a Konno",
         "zh-TW": "幫忙今野",
         "ko": "콘노의 심부름",
         "zh-CN": "帮忙今野"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、コンノから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Konno an errand coupon.",
+        "fr": "Kinno vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Konno por un vale.",
         "zh-TW": "交出幫忙券，接下了今野的委託。",
         "ko": "심부름 쿠폰을 건네고, 콘노에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了今野的委托。"
@@ -1405,9 +1405,9 @@
           "name": "制作木柴捆吧",
           "nameTranslations": {
             "ja": "薪の束を作ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Make a bundle of firewood",
+            "fr": "Fabriquez un fagot de bois.",
+            "es": "Prepara leña.",
             "zh-TW": "製作木柴捆吧",
             "ko": "장작 묶음을 만들자.",
             "zh-CN": "制作木柴捆吧"
@@ -1418,9 +1418,9 @@
           "name": "把木柴捆拿到今野的房间吧",
           "nameTranslations": {
             "ja": "薪の束をコンノの部屋に持っていこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Take the bundle of firewood to Konno's room",
+            "fr": "Apportez le fagot chez Kinno.",
+            "es": "Llévale la leña a Konno a su habitación.",
             "zh-TW": "把木柴捆拿到今野的房間吧",
             "ko": "장작 묶음을 콘노의 방에 가져가자.",
             "zh-CN": "把木柴捆拿到今野的房间吧"
@@ -1431,9 +1431,9 @@
           "name": "去今野的房间吧",
           "nameTranslations": {
             "ja": "コンノの部屋にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Go to Konno's room",
+            "fr": "Allez dans la chambre de Kinno.",
+            "es": "Ve a la habitación de Konno.",
             "zh-TW": "去今野的房間吧",
             "ko": "콘노의 방에 가자.",
             "zh-CN": "去今野的房间吧"
@@ -1449,18 +1449,18 @@
       "description": "交出帮忙券，接下了莲实的委托。",
       "nameTranslations": {
         "ja": "ハスミのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hasumi's Errand",
+        "fr": "Coup de main à Hasumi",
+        "es": "Ayuda a Hasumi",
         "zh-TW": "幫忙蓮實",
         "ko": "하스미의 심부름",
         "zh-CN": "帮忙莲实"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、ハスミから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Hasumi an errand coupon.",
+        "fr": "Hasumi vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Hasumi por un vale.",
         "zh-TW": "交出幫忙券，接下了蓮實的委託。",
         "ko": "심부름 쿠폰을 건네고, 하스미에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了莲实的委托。"
@@ -1470,9 +1470,9 @@
           "name": "到山里采集当归吧",
           "nameTranslations": {
             "ja": "山にトウキを採りにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Find a toki plant somewhere in the mountains",
+            "fr": "Cueilliez une angélique en montagne.",
+            "es": "Recoge angélica en la montaña.",
             "zh-TW": "到山裡採集當歸吧",
             "ko": "당귀를 캐러 산에 가자.",
             "zh-CN": "到山里采集当归吧"
@@ -1483,9 +1483,9 @@
           "name": "在樟树诊所把当归交给莲实吧",
           "nameTranslations": {
             "ja": "くすのき診療所でハスミにトウキを渡そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Give the toki plant to Hasumi at Kusunoki Clinic",
+            "fr": "Donnez l’angélique à Hasumi à la clinique Kusunoki.",
+            "es": "Lleva la angélica a la clínica Kusunoki.",
             "zh-TW": "在樟樹診所把當歸交給蓮實吧",
             "ko": "쿠스노키 진료소에서 하스미에게 당귀를 건네자.",
             "zh-CN": "在樟树诊所把当归交给莲实吧"
@@ -1496,9 +1496,9 @@
           "name": "去樟树诊所吧",
           "nameTranslations": {
             "ja": "くすのき診療所にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit Kusunoki Clinic",
+            "fr": "Allez à la clinique Kusunoki.",
+            "es": "Ve a la clínica.",
             "zh-TW": "去樟樹診所吧",
             "ko": "쿠스노키 진료소에 가자.",
             "zh-CN": "去樟树诊所吧"
@@ -1514,18 +1514,18 @@
       "description": "交出帮忙券，接下了木助的委托。",
       "nameTranslations": {
         "ja": "キスケのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kisuke's Errand",
+        "fr": "Coup de main à Kisuke",
+        "es": "Ayuda a Kisuke",
         "zh-TW": "幫忙木助",
         "ko": "키스케의 심부름",
         "zh-CN": "帮忙木助"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、キスケから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Kisuke an errand coupon.",
+        "fr": "Kisuke vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Kisuke por un vale.",
         "zh-TW": "交出幫忙券，接下了木助的委託。",
         "ko": "심부름 쿠폰을 건네고, 키스케에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了木助的委托。"
@@ -1535,9 +1535,9 @@
           "name": "破坏山里营地附近的落石吧",
           "nameTranslations": {
             "ja": "山のキャンプ近くの落石を壊そう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Destroy the boulder near the campsite",
+            "fr": "Détruisez le rocher près du campement de la montagne.",
+            "es": "Rompe el desprendimiento del campamento.",
             "zh-TW": "破壞山裡營地附近的落石吧",
             "ko": "산에 있는 캠프 근처의 낙석을 부수자.",
             "zh-CN": "破坏山里营地附近的落石吧"
@@ -1545,15 +1545,15 @@
           "level": 0
         },
         {
-          "name": "向木助报告已经破坏落石了吧",
+          "name": "向木助回报已经破坏落石了吧",
           "nameTranslations": {
             "ja": "落石を壊したことをキスケに報告しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Tell Kisuke the boulder has been destroyed",
+            "fr": "Informez Kisuke quand c’est fini.",
+            "es": "Dile a Kisuke que has acabado.",
             "zh-TW": "向木助報告已經破壞落石了吧",
             "ko": "낙석을 부쉈다고 키스케에게 보고하자.",
-            "zh-CN": "向木助报告已经破坏落石了吧"
+            "zh-CN": "向木助回报已经破坏落石了吧"
           },
           "level": 1
         },
@@ -1561,9 +1561,9 @@
           "name": "去树木建设前吧",
           "nameTranslations": {
             "ja": "樹木建設前にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Visit Kiki Construction",
+            "fr": "Allez à l’Entreprise Kiki.",
+            "es": "Ve a Construcciones Jumoku.",
             "zh-TW": "去樹木建設前吧",
             "ko": "키키 건설 앞으로 가자.",
             "zh-CN": "去树木建设前吧"
@@ -1579,18 +1579,18 @@
       "description": "交出帮忙券，接下了四郎治的委托。",
       "nameTranslations": {
         "ja": "シロージのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Shiroji's Errand",
+        "fr": "Coup de main à Shiroji",
+        "es": "Ayuda a Shiroji",
         "zh-TW": "幫忙四郎治",
         "ko": "시로지의 심부름",
         "zh-CN": "帮忙四郎治"
       },
       "descriptionTranslations": {
         "ja": "お手伝い券を渡し、シロージから依頼を受けた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I gave Shiroji an errand coupon.",
+        "fr": "Shiroji vous a confié une requête contre un ticket d’aide.",
+        "es": "Has aceptado un recado de Shiroji por un vale.",
         "zh-TW": "交出幫忙券，接下了四郎治的委託。",
         "ko": "심부름 쿠폰을 건네고, 시로지에게서 의뢰를 받았다.",
         "zh-CN": "交出帮忙券，接下了四郎治的委托。"
@@ -1600,9 +1600,9 @@
           "name": "去查看陷阱的状况吧",
           "nameTranslations": {
             "ja": "罠の様子を見にいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Check on the traps",
+            "fr": "Vérifiez les pièges.",
+            "es": "Revisa las trampas.",
             "zh-TW": "去查看陷阱的狀況吧",
             "ko": "덫이 어떤지 보러 가자.",
             "zh-CN": "去查看陷阱的状况吧"
@@ -1610,15 +1610,15 @@
           "level": 0
         },
         {
-          "name": "去向四郎治报告吧",
+          "name": "去向四郎治回报吧",
           "nameTranslations": {
             "ja": "シロージに報告しにいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report to Shiroji",
+            "fr": "Faites un rapport à Shiroji.",
+            "es": "Informa a Shiroji.",
             "zh-TW": "去向四郎治報告吧",
             "ko": "시로지에게 보고하러 가자.",
-            "zh-CN": "去向四郎治报告吧"
+            "zh-CN": "去向四郎治回报吧"
           },
           "level": 1
         },
@@ -1626,9 +1626,9 @@
           "name": "把狩猎证明放进猎人哨站的缴交箱吧",
           "nameTranslations": {
             "ja": "狩人詰所の提出箱に狩猟証明を入れよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Put the hunting certificate in the box at the hunter's lodge",
+            "fr": "Déposez le certificat de chasse au poste de garde.",
+            "es": "Lleva el informe a la caseta de cazadores.",
             "zh-TW": "把狩獵證明放進獵人哨站的繳交箱吧",
             "ko": "사냥꾼 대기소에 있는 제출함에 수렵 증명서를 넣자.",
             "zh-CN": "把狩猎证明放进猎人哨站的缴交箱吧"
@@ -1639,9 +1639,9 @@
           "name": "前往深山吧",
           "nameTranslations": {
             "ja": "山の奥へいこう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Head back into the mountains",
+            "fr": "Allez au fond de la montagne.",
+            "es": "",
             "zh-TW": "前往深山吧",
             "ko": "산속으로 가자.",
             "zh-CN": "前往深山吧"
@@ -1657,18 +1657,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>移動",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK> Move",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>Se déplacer",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>Moverse",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK>移動",
         "ko": "<cmd CMD_UNIT_MOVE_STICK>이동",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK>移动"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1682,18 +1682,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_INTERACTION_HARVEST>アクション",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_INTERACTION_HARVEST> Action",
+        "fr": "<cmd CMD_INTERACTION_HARVEST>Intéragir",
+        "es": "<cmd CMD_INTERACTION_HARVEST>Acción",
         "zh-TW": "<cmd CMD_INTERACTION_HARVEST>動作",
         "ko": "<cmd CMD_INTERACTION_HARVEST>액션",
         "zh-CN": "<cmd CMD_INTERACTION_HARVEST>动作"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1707,18 +1707,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP> Jump",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Saut",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Saltar",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍",
         "ko": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>점프",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1732,18 +1732,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>その場で回転",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK> Rotate in place",
+        "fr": "<cmd CMD_UNIT_MOVE_ANGLE>+<cmd CMD_UNIT_MOVE_STICK>Tourner sur place",
+        "es": "<cmd CMD_UNIT_MOVE_ANGLE>+<cmd CMD_UNIT_MOVE_STICK>Girar en el sitio",
         "zh-TW": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋轉",
         "ko": "<cmd CMD_UNIT_MOVE_ANGLE>+<cmd CMD_UNIT_MOVE_STICK>제자리 회전",
         "zh-CN": "<cmd CMD_UNIT_MOVE_ANGLE>＋<cmd CMD_UNIT_MOVE_STICK>原地旋转"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1757,18 +1757,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK> Sidestep",
+        "fr": "<cmd CMD_UNIT_MOVE_PARALLEL>+<cmd CMD_UNIT_MOVE_STICK>Pas de côté",
+        "es": "<cmd CMD_UNIT_MOVE_PARALLEL>+<cmd CMD_UNIT_MOVE_STICK>Desplazamiento lateral",
         "zh-TW": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移動",
         "ko": "<cmd CMD_UNIT_MOVE_PARALLEL>+<cmd CMD_UNIT_MOVE_STICK>평행 이동",
         "zh-CN": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>平行移动"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1782,18 +1782,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ２",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP> Jump 2",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Saut 2",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Salto 2",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍2",
         "ko": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>점프2",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃2"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1807,18 +1807,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>ジャンプ３",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP> Jump 3",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Saut 3",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>Salto 3",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳躍3",
         "ko": "<cmd CMD_UNIT_MOVE_STICK>+<cmd CMD_UNIT_JUMP>점프3",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK>＋<cmd CMD_UNIT_JUMP>跳跃3"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1832,18 +1832,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MAIN_MENU>地図を見る",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MAIN_MENU> View the map",
+        "fr": "<cmd CMD_UNIT_MAIN_MENU>Consultez la carte",
+        "es": "<cmd CMD_UNIT_MAIN_MENU>Mira el mapa",
         "zh-TW": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地圖",
         "ko": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>지도 보기",
         "zh-CN": "<cmd CMD_UNIT_MAIN_MENU -offsetY -5>查看地图"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1857,18 +1857,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>木まで移動する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK> Move to the tree",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>Allez à l’arbre",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>Ve hasta el árbol",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至樹木處",
         "ko": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>나무까지 이동하기",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至树木处"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1882,18 +1882,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_ACTION>オノで木を切り倒せ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_ACTION> Use the axe to cut down the tree",
+        "fr": "<cmd CMD_UNIT_ACTION>Utilisez la hache pour abattre l’arbre",
+        "es": "<cmd CMD_UNIT_ACTION>Usa el hacha para talar",
         "zh-TW": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧頭砍倒樹木",
         "ko": "<cmd CMD_UNIT_ACTION -offsetY -5> 도끼로 나무를 베어 쓰러뜨려라",
         "zh-CN": "<cmd CMD_UNIT_ACTION -offsetY -5>使用斧头砍倒树木"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1907,18 +1907,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_ACTION>ツルハシで全ての石を壊せ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_ACTION> Break all the rocks with the pickaxe",
+        "fr": "<cmd CMD_UNIT_ACTION>Cassez toutes les pierres à l’aide de la pioche",
+        "es": "<cmd CMD_UNIT_ACTION>Rompe todas las piedras con el pico",
         "zh-TW": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字鎬敲碎所有石頭",
         "ko": "<cmd CMD_UNIT_ACTION -offsetY -5> 곡괭이로 모든 돌을 부숴라",
         "zh-CN": "<cmd CMD_UNIT_ACTION -offsetY -5>使用十字镐敲碎所有石头"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1932,18 +1932,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>畑まで移動する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK> Move to the field",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>Allez au champ",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>Ve hasta la parcela",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至田地",
         "ko": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>밭까지 이동하기",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至田地"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1957,18 +1957,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_ACTION>クワで土を耕せ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_ACTION> Use the hoe to till the soil",
+        "fr": "<cmd CMD_UNIT_ACTION>Utilisez la houe pour labourer le sol",
+        "es": "<cmd CMD_UNIT_ACTION>Ara con la azada",
         "zh-TW": "<cmd CMD_UNIT_ACTION -offsetY -5>使用鋤頭鋤地",
         "ko": "<cmd CMD_UNIT_ACTION -offsetY -5> 괭이로 흙을 일궈라",
         "zh-CN": "<cmd CMD_UNIT_ACTION -offsetY -5>使用锄头锄地"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -1982,18 +1982,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_PARALLEL>＋<cmd CMD_UNIT_MOVE_STICK>並行移動で耕す場所を選ぶ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hold <cmd CMD_UNIT_MOVE_PARALLEL> to strafe and <cmd CMD_UNIT_MOVE_STICK> to choose where to till",
+        "fr": "<cmd CMD_UNIT_MOVE_PARALLEL>+<cmd CMD_UNIT_MOVE_STICK>Déplacez-vous latéralement et labourez le sol",
+        "es": "<cmd CMD_UNIT_MOVE_PARALLEL>+<cmd CMD_UNIT_MOVE_STICK>Muévete lateralmente para seleccionar dónde arar",
         "zh-TW": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移動選擇要翻整的位置",
         "ko": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>+<cmd CMD_UNIT_MOVE_STICK -offsetY -5>평행 이동으로 어느 땅을 일굴지 고르기",
         "zh-CN": "<cmd CMD_UNIT_MOVE_PARALLEL -offsetY -5>＋<cmd CMD_UNIT_MOVE_STICK -offsetY -5>以平行移动选择要翻整的位置"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2007,18 +2007,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_INTERACTION_TRIANGLE>種を撒け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_INTERACTION_TRIANGLE> Sow seeds",
+        "fr": "<cmd CMD_INTERACTION_TRIANGLE>Semez les graines",
+        "es": "<cmd CMD_INTERACTION_TRIANGLE>Planta semillas",
         "zh-TW": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播種",
         "ko": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5> 씨를 뿌려라",
         "zh-CN": "<cmd CMD_INTERACTION_TRIANGLE -offsetY -5>播种"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2032,18 +2032,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>水辺まで移動する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK> Move to the water",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>Approchez-vous de l’eau",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>Ve hasta el agua",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移動至水邊",
         "ko": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>물가까지 이동하기",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>移动至水边"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2057,18 +2057,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_ACTION>ジョウロに水をくむ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_ACTION> Fill the watering can with water",
+        "fr": "<cmd CMD_UNIT_ACTION>Remplissez l’arrosoir",
+        "es": "<cmd CMD_UNIT_ACTION>Llena la regadera",
         "zh-TW": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺汲水",
         "ko": "<cmd CMD_UNIT_ACTION -offsetY -5>물뿌리개로 물을 뜨기",
         "zh-CN": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶汲水"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2082,18 +2082,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_MOVE_STICK>畑まで戻る",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_MOVE_STICK> Return to the field",
+        "fr": "<cmd CMD_UNIT_MOVE_STICK>Retournez au champ",
+        "es": "<cmd CMD_UNIT_MOVE_STICK>Vuelve a la parcela",
         "zh-TW": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地",
         "ko": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>밭으로 돌아가기",
         "zh-CN": "<cmd CMD_UNIT_MOVE_STICK -offsetY -5>回到田地"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2107,18 +2107,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_UNIT_ACTION>ジョウロで種に水を撒け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_UNIT_ACTION> Use the watering can to water the seeds",
+        "fr": "<cmd CMD_UNIT_ACTION>Arrosez les graines avec l’arrosoir",
+        "es": "<cmd CMD_UNIT_ACTION>Riega las semillas",
         "zh-TW": "<cmd CMD_UNIT_ACTION -offsetY -5>用澆水壺對種子澆水",
         "ko": "<cmd CMD_UNIT_ACTION -offsetY -5> 물뿌리개로 씨에 물을 뿌려라",
         "zh-CN": "<cmd CMD_UNIT_ACTION -offsetY -5>用浇水壶对种子浇水"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2132,18 +2132,18 @@
       "description": "被木助拜托帮忙了。",
       "nameTranslations": {
         "ja": "植えた野菜を大切にしろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Take care of the vegetables",
+        "fr": "Prenez soin des légumes plantés",
+        "es": "Cuida las verduras que has plantado",
         "zh-TW": "用心照料種下的蔬菜",
         "ko": "심은 채소를 소중하게 가꿔라",
         "zh-CN": "用心照料种下的蔬菜"
       },
       "descriptionTranslations": {
         "ja": "キスケからお願いされた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Kisuke told me to.",
+        "fr": "Kisuke a demandé un service.",
+        "es": "Kisuke te hizo un encargo.",
         "zh-TW": "被木助拜託幫忙了。",
         "ko": "키스케가 부탁을 했다.",
         "zh-CN": "被木助拜托帮忙了。"
@@ -2157,18 +2157,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "畑に水を撒け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Water the field",
+        "fr": "Arrosez le champ",
+        "es": "Riega el campo",
         "zh-TW": "對田地澆水",
         "ko": "밭에 물을 줘라",
         "zh-CN": "对田地浇水"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2182,18 +2182,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "作物を収穫しろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Harvest the crops",
+        "fr": "Récoltez les légumes",
+        "es": "Cosecha los cultivos",
         "zh-TW": "收穫作物",
         "ko": "작물을 수확하라",
         "zh-CN": "收获作物"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2203,22 +2203,22 @@
     {
       "id": 47,
       "code": "QUEST_ID_CHAPTER_01_15",
-      "name": "将蔬菜供奉于祭坛吧",
+      "name": "将蔬菜供奉到祭坛吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "祭壇に野菜を捧げろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Offer the vegetables at the altar",
+        "fr": "Offrez des légumes à l’autel",
+        "es": "Ofrece verduras en el altar",
         "zh-TW": "將蔬菜供奉於祭壇吧",
         "ko": "제단에 채소를 바치자",
-        "zh-CN": "将蔬菜供奉于祭坛吧"
+        "zh-CN": "将蔬菜供奉到祭坛吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2232,18 +2232,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "指笛を吹いてみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Try whistling",
+        "fr": "Sifflez avec les doigts",
+        "es": "Prueba a silbar",
         "zh-TW": "試著吹手哨吧",
         "ko": "손가락 휘파람을 불어 보자",
         "zh-CN": "试着吹手哨吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2257,18 +2257,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "楽譜に合わせて指笛を吹いてみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Try whistling the song from the sheet music",
+        "fr": "Sifflez en suivant la partition",
+        "es": "Intenta silbar siguiendo la partitura",
         "zh-TW": "試著照樂譜吹手哨",
         "ko": "악보에 맞춰서 손가락 휘파람을 불어 보자",
         "zh-CN": "试着照乐谱吹手哨"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2282,18 +2282,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　０/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 0/8",
+        "fr": "Saluez les habitants du village 0/8",
+        "es": "Saluda a la gente del pueblo 0/8",
         "zh-TW": "向村民打招呼吧　0/8",
         "ko": "마을 사람들에게 인사하러 다니자 0/8",
         "zh-CN": "向村民打招呼吧　0/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2307,18 +2307,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　１/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 1/8",
+        "fr": "Saluez les habitants du village 1/8",
+        "es": "Saluda a la gente del pueblo 1/8",
         "zh-TW": "向村民打招呼吧　1/8",
         "ko": "마을 사람들에게 인사하러 다니자 1/8",
         "zh-CN": "向村民打招呼吧　1/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2332,18 +2332,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　２/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 2/8",
+        "fr": "Saluez les habitants du village 2/8",
+        "es": "Saluda a la gente del pueblo 2/8",
         "zh-TW": "向村民打招呼吧　2/8",
         "ko": "마을 사람들에게 인사하러 다니자 2/8",
         "zh-CN": "向村民打招呼吧　2/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2357,18 +2357,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　３/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 3/8",
+        "fr": "Saluez les habitants du village 3/8",
+        "es": "Saluda a la gente del pueblo 3/8",
         "zh-TW": "向村民打招呼吧　3/8",
         "ko": "마을 사람들에게 인사하러 다니자 3/8",
         "zh-CN": "向村民打招呼吧　3/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2382,18 +2382,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　４/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 4/8",
+        "fr": "Saluez les habitants du village 4/8",
+        "es": "Saluda a la gente del pueblo 4/8",
         "zh-TW": "向村民打招呼吧　4/8",
         "ko": "마을 사람들에게 인사하러 다니자 4/8",
         "zh-CN": "向村民打招呼吧　4/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2407,18 +2407,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　５/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 5/8",
+        "fr": "Saluez les habitants du village 5/8",
+        "es": "Saluda a la gente del pueblo 5/8",
         "zh-TW": "向村民打招呼吧　5/8",
         "ko": "마을 사람들에게 인사하러 다니자 5/8",
         "zh-CN": "向村民打招呼吧　5/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2432,18 +2432,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　６/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 6/8",
+        "fr": "Saluez les habitants du village 6/8",
+        "es": "Saluda a la gente del pueblo 6/8",
         "zh-TW": "向村民打招呼吧　6/8",
         "ko": "마을 사람들에게 인사하러 다니자 6/8",
         "zh-CN": "向村民打招呼吧　6/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2457,18 +2457,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　７/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 7/8",
+        "fr": "Saluez les habitants du village 7/8",
+        "es": "Saluda a la gente del pueblo 7/8",
         "zh-TW": "向村民打招呼吧　7/8",
         "ko": "마을 사람들에게 인사하러 다니자 7/8",
         "zh-CN": "向村民打招呼吧　7/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2482,18 +2482,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "村の人に挨拶して回ろう　８/８",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Greet the villagers 8/8",
+        "fr": "Saluez les habitants du village 8/8",
+        "es": "Saluda a la gente del pueblo 8/8",
         "zh-TW": "向村民打招呼吧　8/8",
         "ko": "마을 사람들에게 인사하러 다니자 8/8",
         "zh-CN": "向村民打招呼吧　8/8"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2507,18 +2507,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "つくしを食べろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Eat the horsetail",
+        "fr": "Mangez des prêles des champs",
+        "es": "Come cola de caballo",
         "zh-TW": "吃掉筆頭菜",
         "ko": "쇠뜨기를 먹어라",
         "zh-CN": "吃掉笔头菜"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2532,18 +2532,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "商品を見ろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Look at the merchandise",
+        "fr": "Examinez les articles",
+        "es": "Mira los productos",
         "zh-TW": "查看商品",
         "ko": "상품을 봐라",
         "zh-CN": "查看商品"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2557,18 +2557,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "欲しい商品をメモしてみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Note down an item to purchase",
+        "fr": "Notez les articles intéressants",
+        "es": "Apunta los productos que quieres",
         "zh-TW": "將想要的商品記下來吧",
         "ko": "사고 싶은 상품을 메모해 보자",
         "zh-CN": "将想要的商品记下来吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2578,22 +2578,22 @@
     {
       "id": 63,
       "code": "QUEST_ID_CHAPTER_01_21",
-      "name": "检视笔记吧",
+      "name": "查看笔记吧",
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "メモしたものを確認してみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Check the notebook",
+        "fr": "Consultez vos notes",
+        "es": "Revisa lo que anotaste",
         "zh-TW": "檢視筆記吧",
         "ko": "메모한 내용을 확인해 보자",
-        "zh-CN": "检视笔记吧"
+        "zh-CN": "查看笔记吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2607,18 +2607,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "墓地をキレイにしよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Cemetery Cleanup",
+        "fr": "Nettoyez le cimetière",
+        "es": "Limpia el cementerio",
         "zh-TW": "把墓地打掃乾淨吧",
         "ko": "묘지를 깔끔하게 정리하자",
         "zh-CN": "把墓地打扫干净吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "! There is no text for this quest!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2628,9 +2628,9 @@
           "name": "割掉所有杂草吧",
           "nameTranslations": {
             "ja": "雑草をすべて刈り取ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Remove all the weeds",
+            "fr": "Enlevez les mauvaises herbes.",
+            "es": "Corta toda la maleza.",
             "zh-TW": "割掉所有雜草吧",
             "ko": "잡초를 전부 베자.",
             "zh-CN": "割掉所有杂草吧"
@@ -2638,15 +2638,15 @@
           "level": 0
         },
         {
-          "name": "向林报告吧",
+          "name": "向林回报吧",
           "nameTranslations": {
             "ja": "リンに報告しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Report to Rin",
+            "fr": "Faites un rapport à Rin.",
+            "es": "Informa a Rin.",
             "zh-TW": "向林報告吧",
             "ko": "린에게 보고하자.",
-            "zh-CN": "向林报告吧"
+            "zh-CN": "向林回报吧"
           },
           "level": 1
         }
@@ -2659,18 +2659,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "トバリに危機が迫ったら守れ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Protect Tobari",
+        "fr": "Protégez Tobari en cas de danger",
+        "es": "Protege a Tobari cuando esté en peligro",
         "zh-TW": "若帷遇上危險，保護好她",
         "ko": "토바리가 위험해지면 지켜라",
         "zh-CN": "若帷遇上危险，保护好她"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!There is no text for this quest!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2681,24 +2681,24 @@
       "id": 86,
       "code": "QUEST_ID_CHAPTER_04_10",
       "name": "再继续修缮祠堂吧",
-      "description": "把位于岔路的祠堂修得更气派吧。",
+      "description": "把位在岔路的祠堂修得更气派吧。",
       "nameTranslations": {
         "ja": "もっともっと祠を直そう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Make further repairs to the shrine",
+        "fr": "Réparez encore et encore le sanctuaire",
+        "es": "Repara aún más el santuario",
         "zh-TW": "再繼續修繕祠堂吧",
         "ko": "사당을 더, 더 고치자",
         "zh-CN": "再继续修缮祠堂吧"
       },
       "descriptionTranslations": {
         "ja": "辻にある祠をもっと立派にしてあげよう。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Make the shrine on the crossroads even more splendid",
+        "fr": "Améliorez le sanctuaire du carrefour.",
+        "es": "Haz el santuario del cruce aún más imponente",
         "zh-TW": "把位於岔路的祠堂修得更氣派吧。",
         "ko": "갈림길에 있는 사당을 좀 더 근사하게 만들어 주자.",
-        "zh-CN": "把位于岔路的祠堂修得更气派吧。"
+        "zh-CN": "把位在岔路的祠堂修得更气派吧。"
       },
       "steps": []
     },
@@ -2709,18 +2709,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "鵺の皮を試せ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Test the nue pelt",
+        "fr": "Essayez la peau de Nue",
+        "es": "Prueba el pelaje de Nue",
         "zh-TW": "試著使用鵺皮",
         "ko": "누에 가죽을 시험하라",
         "zh-CN": "试着使用鵺皮"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2734,18 +2734,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 鵺の皮で早駆け",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> Dash with the nue pelt",
+        "fr": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK>Courez avec la peau de Nue",
+        "es": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK>Corre con el pelaje de Nue",
         "zh-TW": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移動",
         "ko": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 누에 가죽으로 빠르게 달려라",
         "zh-CN": "<cmd CMD_INTERACTION_LONG_CANCEL>＋<cmd CMD_UNIT_MOVE_STICK> 用鵺皮快速移动"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2759,18 +2759,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_INTERACTION_SQUARE>岩切りナタを試してみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_INTERACTION_SQUARE> Try the Rockrending Machete",
+        "fr": "<cmd CMD_INTERACTION_SQUARE>Utilisez la hachette brise-roc",
+        "es": "<cmd CMD_INTERACTION_SQUARE>Prueba a usar el machete parterrocas",
         "zh-TW": "<cmd CMD_INTERACTION_SQUARE>嘗試使用劈岩柴刀",
         "ko": "<cmd CMD_INTERACTION_SQUARE> 절암의 손도끼를 시험해 보자",
         "zh-CN": "<cmd CMD_INTERACTION_SQUARE>尝试使用劈岩柴刀"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2784,18 +2784,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "奇跡の呼笛を試せ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Test the Miracle Whistle",
+        "fr": "Utilisez le sifflement miraculeux",
+        "es": "Prueba el silbido milagroso",
         "zh-TW": "嘗試使用奇蹟的呼笛",
         "ko": "기적의 휘파람 신호를 시험해 봐라",
         "zh-CN": "尝试使用奇迹的呼笛"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2809,18 +2809,18 @@
       "description": "想起了某一天许下的约定。",
       "nameTranslations": {
         "ja": "神器を持って大穴に戻れ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Return to the chasm with the sacred treasures",
+        "fr": "Retournez au gouffre avec les trésors sacrés",
+        "es": "Vuelve al gran agujero con el tesoro sagrado",
         "zh-TW": "帶著神器回到大洞",
         "ko": "신기를 가지고 큰 구덩이로 돌아가라",
         "zh-CN": "带着神器回到大洞"
       },
       "descriptionTranslations": {
         "ja": "思い出した、いつかの約束。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I just remembered my promise.",
+        "fr": "Je me souviens d’une vieille promesse.",
+        "es": "Recordé una promesa de hace mucho tiempo.",
         "zh-TW": "想起了某一天許下的約定。",
         "ko": "다시 생각 난 언젠가의 약속.",
         "zh-CN": "想起了某一天许下的约定。"
@@ -2834,18 +2834,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "<cmd CMD_INTERACTION_SQUARE>トバリを岩切りナタで斬れ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "<cmd CMD_INTERACTION_SQUARE> Cut Tobari down with the Rockrending Machete",
+        "fr": "<cmd CMD_INTERACTION_SQUARE>Coupez Tobari avec la hachette brise-roc",
+        "es": "<cmd CMD_INTERACTION_SQUARE>Ataca a Tobari con el machete parterrocas",
         "zh-TW": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斬帷",
         "ko": "<cmd CMD_INTERACTION_SQUARE> 토바리를 절암의 손도끼로 베어라",
         "zh-CN": "<cmd CMD_INTERACTION_SQUARE>用劈岩柴刀劈斩帷"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "! There is no text for this quest!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2859,18 +2859,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "ナタの前まで移動しろ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pick up the machete",
+        "fr": "Allez jusqu’à la hachette",
+        "es": "Ve hasta el machete",
         "zh-TW": "移動至柴刀處",
         "ko": "손도끼의 앞까지 이동하라",
         "zh-CN": "移动至柴刀处"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2884,18 +2884,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "ナタを拾え",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pick up the machete",
+        "fr": "Prenez la hachette",
+        "es": "Recoge el machete",
         "zh-TW": "撿起柴刀",
         "ko": "손도끼를 주워라",
         "zh-CN": "捡起柴刀"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2909,18 +2909,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "岩を退かせ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Move the boulder",
+        "fr": "Déplacez le rocher",
+        "es": "Retira la roca",
         "zh-TW": "移開岩石",
         "ko": "바위를 치워라",
         "zh-CN": "移开岩石"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2934,18 +2934,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "岩を退かそう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Move the boulder",
+        "fr": "Déplacez le rocher",
+        "es": "Retira la roca",
         "zh-TW": "移開岩石吧",
         "ko": "바위를 치우자",
         "zh-CN": "移开岩石吧"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -2959,18 +2959,18 @@
       "description": "林说这个很方便，建议制作。",
       "nameTranslations": {
         "ja": "収納箱を作ってみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Make a storage chest",
+        "fr": "Fabriquez une boîte de rangement",
+        "es": "Intenta fabricar un arcón",
         "zh-TW": "試著製作收納箱吧",
         "ko": "수납함을 만들어 보자",
         "zh-CN": "试着制作收纳箱吧"
       },
       "descriptionTranslations": {
         "ja": "便利だからと、リンに作ることを勧められた。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rin recommended making them because they're convenient.",
+        "fr": "Rin conseille d’en fabriquer.",
+        "es": "Rin te recomendó prepararlas por su utilidad.",
         "zh-TW": "林說這個很方便，建議製作。",
         "ko": "편리하니 만들어 두라고 린이 권했다.",
         "zh-CN": "林说这个很方便，建议制作。"
@@ -2980,9 +2980,9 @@
           "name": "用工作台制作收纳箱吧",
           "nameTranslations": {
             "ja": "作業台で収納箱を作ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Make a storage chest at the workbench",
+            "fr": "Fabriquez une boîte de rangement à l’établi.",
+            "es": "Fabrica un arcón en el banco de trabajo.",
             "zh-TW": "用工作台製作收納箱吧",
             "ko": "작업대에서 수납함을 만들자.",
             "zh-CN": "用工作台制作收纳箱吧"
@@ -2998,18 +2998,18 @@
       "description": "据莲实所说，这是以前的应急粮食。",
       "nameTranslations": {
         "ja": "兵糧丸を作ってみよう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Try making hyorogan",
+        "fr": "Fabriquez des boulettes énergisantes",
+        "es": "Intenta preparar bolas de ración",
         "zh-TW": "試著製作兵糧丸吧",
         "ko": "병량환을 만들어 보자",
         "zh-CN": "试着制作兵粮丸吧"
       },
       "descriptionTranslations": {
         "ja": "ハスミ曰く、昔の非常食なのだという。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hasumi said they're an old-timey emergency food.",
+        "fr": "Selon Hasumi, ce sont des rations de survie traditionnelles.",
+        "es": "Comida de emergencia antigua.",
         "zh-TW": "據蓮實所說，這是以前的應急糧食。",
         "ko": "옛날에 비상식량으로 쓰였다고 하스미가 알려 줬다.",
         "zh-CN": "据莲实所说，这是以前的应急粮食。"
@@ -3019,9 +3019,9 @@
           "name": "用工作台制作兵粮丸吧",
           "nameTranslations": {
             "ja": "作業台で兵糧丸を作ろう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Make hyorogan at the workbench",
+            "fr": "Fabriquez des boulettes énergisantes à l’établi.",
+            "es": "Prepara bolas de ración en el banco de trabajo.",
             "zh-TW": "用工作台製作兵糧丸吧",
             "ko": "작업대에서 병량환을 만들자.",
             "zh-CN": "用工作台制作兵粮丸吧"
@@ -3037,18 +3037,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "AM １０：００　品評会",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "10:00 AM Evaluation",
+        "fr": "10 h : Concours",
+        "es": "10 h Competición",
         "zh-TW": "AM 10:00　評鑑會",
         "ko": "오전 10시 품평회",
         "zh-CN": "AM 10:00　评鉴会"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -3062,18 +3062,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "AM １０：００　お花見",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "10:00 AM Cherry Blossom Festival",
+        "fr": "10 h : Cerisiers en fleur",
+        "es": "10 h Festival de cerezos en flor",
         "zh-TW": "AM 10:00　賞花",
         "ko": "오전 10시 꽃놀이",
         "zh-CN": "AM 10:00　赏花"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -3087,18 +3087,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "PM ４：００　縁日",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "4:00 PM Summer Festival",
+        "fr": "16 h : Jour de fête",
+        "es": "16 h Festival",
         "zh-TW": "PM 4:00　廟會日",
         "ko": "오후 4시 축제/축제 날",
         "zh-CN": "PM 4:00　庙会日"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -3112,18 +3112,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "AM １０：００　収穫祭",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "10:00 AM Harvest Festival",
+        "fr": "10 h : Festival des récoltes",
+        "es": "10 h Festival de la cosecha",
         "zh-TW": "AM 10:00　收穫祭典",
         "ko": "오전 10시 수확제",
         "zh-CN": "AM 10:00　收获祭典"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "Il n’y a pas ce texte dans cette quête !",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -3137,18 +3137,18 @@
       "description": "！这个任务没有这个字符串！",
       "nameTranslations": {
         "ja": "PM ８：００　年末祭",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "8:00 PM New Year's Festival",
+        "fr": "20 h : festival de fin d’année",
+        "es": "20 h Festival de Año Nuevo",
         "zh-TW": "PM 8:00　年終祭典",
         "ko": "오후 8시 연말 축제",
         "zh-CN": "PM 8:00　年终祭典"
       },
       "descriptionTranslations": {
         "ja": "！このクエストではこのテキストはありません！",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "!This quest does not have this text!",
+        "fr": "",
+        "es": "¡Este texto no debería aparecer en esta misión!",
         "zh-TW": "！這個任務沒有這個字串！",
         "ko": "!미사용 텍스트!",
         "zh-CN": "！这个任务没有这个字符串！"
@@ -3159,33 +3159,33 @@
       "id": 119,
       "code": "QUEST_ID_CHAIN_SHRINE_REPAIR_REQUEST",
       "name": "修复岔路祠堂的委托",
-      "description": "修好位于岔路的破旧祠堂吧。",
+      "description": "修好位在岔路的破旧祠堂吧。",
       "nameTranslations": {
         "ja": "辻の祠の修復依頼",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Request to repair the hokora at the crossroads",
+        "fr": "Demande de réparation du sanctuaire du carrefour",
+        "es": "Reparación del santuario del cruce",
         "zh-TW": "修復岔路祠堂的委託",
         "ko": "갈림길의 사당의 수복 의뢰",
         "zh-CN": "修复岔路祠堂的委托"
       },
       "descriptionTranslations": {
         "ja": "辻にあるボロボロの祠を直そう。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fix the dilapidated hokora on the crossroads.",
+        "fr": "Réparez le sanctuaire délabré du carrefour.",
+        "es": "Repara el santuario del cruce en ruinas.",
         "zh-TW": "修好位於岔路的破舊祠堂吧。",
         "ko": "갈림길에 있는 다 무너져 가는 사당을 고치자.",
-        "zh-CN": "修好位于岔路的破旧祠堂吧。"
+        "zh-CN": "修好位在岔路的破旧祠堂吧。"
       },
       "steps": [
         {
           "name": "修复祠堂吧",
           "nameTranslations": {
             "ja": "祠を修復しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Fix the hokora",
+            "fr": "Réparez le sanctuaire.",
+            "es": "Repara el santuario",
             "zh-TW": "修復祠堂吧",
             "ko": "사당을 수복하자.",
             "zh-CN": "修复祠堂吧"
@@ -3196,9 +3196,9 @@
           "name": "进一步修复祠堂吧",
           "nameTranslations": {
             "ja": "祠をもっと修復しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Fix the hokora some more",
+            "fr": "Réparez encore le sanctuaire.",
+            "es": "Repara más el santuario",
             "zh-TW": "進一步修復祠堂吧",
             "ko": "사당을 더 수복하자.",
             "zh-CN": "进一步修复祠堂吧"
@@ -3209,9 +3209,9 @@
           "name": "更进一步地修复祠堂吧",
           "nameTranslations": {
             "ja": "祠をもっともっと修復しよう",
-            "slot-1": "",
-            "slot-2": "",
-            "slot-3": "",
+            "en": "Fix the hokora even more",
+            "fr": "Réparez encore et encore le sanctuaire.",
+            "es": "Repara aún más el santuario",
             "zh-TW": "更進一步地修復祠堂吧",
             "ko": "사당을 더 많이 수복하자.",
             "zh-CN": "更进一步地修复祠堂吧"
@@ -3227,24 +3227,49 @@
       "description": "若想击退土地神，必须凑齐三件神器。",
       "nameTranslations": {
         "ja": "三つの神器を探そう",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Search for the three sacred treasures",
+        "fr": "Cherchez les trois trésors sacrés",
+        "es": "Busca los tres tesoros sagrados",
         "zh-TW": "尋找三件神器",
         "ko": "3개의 신기를 찾자",
         "zh-CN": "寻找三件神器"
       },
       "descriptionTranslations": {
         "ja": "土地神を退けるには、三つの神器が必要だ。",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The three sacred treasures are needed to fight the local god.",
+        "fr": "Il faut les trésors sacrés pour repousser la divinité locale.",
+        "es": "Para expulsar al dios de la tierra, se necesitan los tesoros sagrados.",
         "zh-TW": "若想擊退土地神，必須湊齊三件神器。",
         "ko": "토지신을 물리치기 위해서는 3개의 신기가 필요하다.",
         "zh-CN": "若想击退土地神，必须凑齐三件神器。"
       },
       "steps": []
+    },
+    {
+      "id": 200,
+      "code": "QUEST_ID_PLAYER_BIRTHDAY",
+      "name": "<player>的生日",
+      "description": "！这个任务没有这个字符串！",
+      "nameTranslations": {
+        "ja": "<player>の誕生日",
+        "en": "<player>'s Birthday",
+        "fr": "Anniversaire de <player>",
+        "es": "Cumpleaños de <player>",
+        "zh-TW": "<player>的生日",
+        "ko": "<player>의 생일",
+        "zh-CN": "<player>的生日"
+      },
+      "descriptionTranslations": {
+        "ja": "！このクエストではこのテキストはありません！",
+        "en": "!This quest does not have this text!",
+        "fr": "",
+        "es": "¡Este texto no debería aparecer en esta misión!",
+        "zh-TW": "！這個任務沒有這個字串！",
+        "ko": "!미사용 텍스트!",
+        "zh-CN": "！这个任务没有这个字符串！"
+      },
+      "steps": []
     }
   ],
-  "build_id": "25311578"
+  "build_id": "25640656"
 }

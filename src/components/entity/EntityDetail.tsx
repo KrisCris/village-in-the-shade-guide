@@ -40,6 +40,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
     <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>{entity.icon_path && <img key={entity.id} src={withBase(entity.icon_path)} alt="" width="88" height="88" style={{objectFit:'contain',borderRadius:12}} />}<h1>{entity.name.zh_hans}</h1></div>
     {locale !== 'ja' && <p className="aliases">{(locale === 'zh-TW'
       ? [[t('简中'), entity.name.translations?.['zh-CN']], [t('日文'), entity.name.ja]]
+      : locale === 'en' ? [[t('日文'), entity.name.ja]]
       : [[t('繁中'), entity.name.zh_hant], [t('日文'), entity.name.ja]]
     ).map(([label, value]) => t('{label}：{value}', { label: label ?? '', value: value || '—' })).join('　')}</p>}
     {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}
@@ -71,7 +72,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     {model.ingredientOptions.length>0&&<section><h2>{t('可替换材料')}</h2>{model.ingredientOptions.map((option,index)=><details key={index}><summary>{option.label} · {t('{count} 种',{count:option.rows.length})}</summary><div className="relation-list">{option.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></details>)}</section>}
 
-    {import.meta.env.DEV && <details><summary>{t('别名与数据来源')}</summary><p>{entity.name.aliases.join(' · ')}</p><p>{t('游戏数据构建 25311578；中文优先使用游戏官方简体中文，缺失时由繁体中文转换，并保留日文和内部 ID。')}</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>}
+    {import.meta.env.DEV && <details><summary>{t('别名与数据来源')}</summary><p>{entity.name.aliases.join(' · ')}</p><p>{t('游戏数据构建 25640656；中文优先使用游戏官方简体中文，缺失时由繁体中文转换，并保留日文和内部 ID。')}</p>{typeof entity.source === 'string' && entity.source && <p>{entity.source}</p>}</details>}
     <style>{`
       .plan-filters{display:flex;flex-wrap:wrap;align-items:end;gap:1rem}.plan-filters label{display:grid;gap:.4rem;min-width:160px}.entity-detail{max-width:960px}.aliases{color:var(--muted);margin-top:-.6rem}.entity-detail section{margin:2rem 0}.entity-detail h2{font-size:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.55rem}
       .processing-plan{padding:1rem;border:1px solid var(--border);border-radius:12px;margin:.7rem 0}.processing-plan h3{margin-top:0}.processing-plan h4{margin:.8rem 0 .4rem}

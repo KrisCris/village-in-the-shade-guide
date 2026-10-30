@@ -6,7 +6,7 @@ import { defaultLocale, type Locale } from '../i18n/locales';
 
 export { entityUrl, normalizeSearch, rankEntities } from './clientSearch';
 
-const modules = import.meta.glob('../../data/generated/build-25311578/entities/*.json', {
+const modules = import.meta.glob('../../data/generated/build-25640656/entities/*.json', {
   eager: true,
   import: 'default',
 }) as Record<string, unknown>;

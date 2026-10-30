@@ -16,7 +16,7 @@ from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.localization import localized_block
 
 archive = FafullfsArchive.open(game_dir(__doc__) / 'data.dat')
-items = {item['numeric_id']: item['id'] for item in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8')) if item.get('numeric_id')}
+items = {item['numeric_id']: item['id'] for item in json.loads(Path('data/generated/build-25640656/entities/items.json').read_text(encoding='utf-8')) if item.get('numeric_id')}
 
 dungeon = read_table(archive.read_entry('data/database/dungeon.dat'))
 records = {}
@@ -62,6 +62,6 @@ if missing:
     raise SystemExit(f'rocks without drop rolls: {sorted(missing)}')
 
 Path('data/sources/game-quarry.json').write_text(json.dumps(dict(
-    source='dungeon.dat + cropsharvest.dat + crops.dat (build 25311578)',
+    source='dungeon.dat + cropsharvest.dat + crops.dat (build 25640656)',
     floors=floors, rooms=rooms, rocks={str(k): v for k, v in sorted(rocks.items())}), ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
 print(f'quarry: {len(floors)} floors, {len(rooms)} special rooms, {len(rocks)} rock types')

@@ -1,0 +1,85 @@
+{
+  "table": "quest",
+  "build_id": "25640656",
+  "record_size": 416,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    416,
+    476,
+    536,
+    596,
+    656,
+    716,
+    836,
+    896,
+    1256
+  ],
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 950
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 25
+        },
+        {
+          "record_id": 2,
+          "value": 31
+        }
+      ]
+    },
+    {
+      "name": "objective_count",
+      "offset": 336,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "language_count": 7,
+  "notes": "Localized text width 7. Objective count at336; entries start340, stride60 (seven text pointers plus index at56)."
+}

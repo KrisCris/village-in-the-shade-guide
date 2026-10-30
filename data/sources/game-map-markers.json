@@ -17,9 +17,9 @@
       "name": "《桃子的灵性》",
       "nameTranslations": {
         "ja": "桃の実の霊性",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Mystical Nature of Peaches",
+        "fr": "Le pouvoir spirituel de la pêche",
+        "es": "El poder espiritual de los melocotones",
         "zh-TW": "《桃子的靈性》",
         "ko": "복숭아의 영성",
         "zh-CN": "《桃子的灵性》"
@@ -66,9 +66,9 @@
       "name": "《伊邪那岐的敕令》",
       "nameTranslations": {
         "ja": "イザナギの勅命",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Izanagi's Imperial Decree",
+        "fr": "Le décret d’Izanagi",
+        "es": "El edicto de Izanagi",
         "zh-TW": "《伊邪那岐的敕令》",
         "ko": "이자나기의 칙명",
         "zh-CN": "《伊邪那岐的敕令》"
@@ -87,9 +87,9 @@
       "name": "《彼津村的起源》",
       "nameTranslations": {
         "ja": "彼ヶ津村のなりたち",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Origins of Kagatsu Village",
+        "fr": "L’origine du village de Kagatsu",
+        "es": "El origen de la villa de Kagatsu",
         "zh-TW": "《彼津村的起源》",
         "ko": "카가츠 마을의 내력",
         "zh-CN": "《彼津村的起源》"
@@ -108,9 +108,9 @@
       "name": "《战败而逃的君主大人》",
       "nameTranslations": {
         "ja": "落ち延びた殿様",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Fugitive Lord",
+        "fr": "Le seigneur en fuite",
+        "es": "El señor feudal que huyó",
         "zh-TW": "《戰敗而逃的君主大人》",
         "ko": "도망간 영주님",
         "zh-CN": "《战败而逃的君主大人》"
@@ -129,9 +129,9 @@
       "name": "《平息灾厄的人祭》",
       "nameTranslations": {
         "ja": "災いを鎮めた人柱",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Calamity-Quelling Sacrifice",
+        "fr": "Le sacrifice qui apaisa le fléau",
+        "es": "El sacrificio que aplacó la calamidad",
         "zh-TW": "《平息災厄的人祭》",
         "ko": "재앙을 잠재운 인간 제물",
         "zh-CN": "《平息灾厄的人祭》"
@@ -150,9 +150,9 @@
       "name": "《不信者的末路》",
       "nameTranslations": {
         "ja": "不信心者の末路",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Fate of the Unbeliever",
+        "fr": "Le destin de l’impie",
+        "es": "El destino del hombre cruel",
         "zh-TW": "《不信者的末路》",
         "ko": "불신자의 말로",
         "zh-CN": "《不信者的末路》"
@@ -171,9 +171,9 @@
       "name": "《诱人入睡的桃香》",
       "nameTranslations": {
         "ja": "眠りを誘う桃の香",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Soporific Peaches",
+        "fr": "Une senteur de pêche soporifique",
+        "es": "El melocotonero soporífero",
         "zh-TW": "《誘人入睡的桃香》",
         "ko": "잠을 부르는 복숭아 향기",
         "zh-CN": "《诱人入睡的桃香》"
@@ -192,9 +192,9 @@
       "name": "《神从天而降》",
       "nameTranslations": {
         "ja": "神、天より来る",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The God from Above",
+        "fr": "Le dieu venu des cieux",
+        "es": "El dios caído del cielo",
         "zh-TW": "《神從天而降》",
         "ko": "신, 하늘에서 오시다",
         "zh-CN": "《神从天而降》"
@@ -213,9 +213,9 @@
       "name": "《无名之村的故事》",
       "nameTranslations": {
         "ja": "名もなき村の話",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Tale of the Nameless Village",
+        "fr": "L’histoire du village sans nom",
+        "es": "La historia de una villa sin nombre",
         "zh-TW": "《無名之村的故事》",
         "ko": "이름 없는 마을 이야기",
         "zh-CN": "《无名之村的故事》"
@@ -234,9 +234,9 @@
       "name": "《裂了一半的书》",
       "nameTranslations": {
         "ja": "半分に破れた本",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Half-Torn Book",
+        "fr": "Le livre déchiré en deux",
+        "es": "Un libro partido por la mitad",
         "zh-TW": "《裂了一半的書》",
         "ko": "반으로 갈라진 책",
         "zh-CN": "《裂了一半的书》"
@@ -255,9 +255,9 @@
       "name": "《鬼的奇迹之歌》",
       "nameTranslations": {
         "ja": "鬼の奇跡の歌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Demon's Miraculous Song",
+        "fr": "Le chant miraculeux du démon",
+        "es": "La canción milagrosa del demonio",
         "zh-TW": "《鬼的奇蹟之歌》",
         "ko": "오니의 기적의 노래",
         "zh-CN": "《鬼的奇迹之歌》"
@@ -276,9 +276,9 @@
       "name": "《鬼的劈岩柴刀》",
       "nameTranslations": {
         "ja": "鬼の岩切り鉈",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Demon's Rockrending Machete",
+        "fr": "La hachette brise-roc du démon",
+        "es": "El hacha parterrocas del demonio",
         "zh-TW": "《鬼的劈岩柴刀》",
         "ko": "오니의 절암의 손도끼",
         "zh-CN": "《鬼的劈岩柴刀》"
@@ -297,9 +297,9 @@
       "name": "《招财之物》",
       "nameTranslations": {
         "ja": "富をもたらすもの",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "That Which Brings Wealth",
+        "fr": "Porteur de fortune",
+        "es": "El precio de la riqueza",
         "zh-TW": "《招財之物》",
         "ko": "부를 가져다주는 것",
         "zh-CN": "《招财之物》"
@@ -315,15 +315,15 @@
       "y": 16583,
       "kind": "book",
       "id": "LOSTBOOK_ID_16",
-      "name": "《消失于怪物背上的少女》",
+      "name": "《消失在怪物背上的少女》",
       "nameTranslations": {
         "ja": "異形の背に消えし娘",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gone with the Grotesque",
+        "fr": "La fille disparue sur le dos du monstre",
+        "es": "La doncella y la criatura",
         "zh-TW": "《消失於怪物背上的少女》",
         "ko": "요괴의 등 뒤로 사라진 처자",
-        "zh-CN": "《消失于怪物背上的少女》"
+        "zh-CN": "《消失在怪物背上的少女》"
       },
       "item_numeric_id": 639216,
       "prerequisite_flag": 14999,
@@ -339,9 +339,9 @@
       "name": "《火灾的新闻报道》",
       "nameTranslations": {
         "ja": "火事の新聞記事",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Article About a House Fire",
+        "fr": "Article de journal sur l’incendie",
+        "es": "Artículo sobre un incendio",
         "zh-TW": "《火災的新聞報導》",
         "ko": "화재에 관한 신문 기사",
         "zh-CN": "《火灾的新闻报道》"
@@ -360,9 +360,9 @@
       "name": "《连续杀人事件的报道》",
       "nameTranslations": {
         "ja": "連続殺人の新聞記事",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Article About a Serial Murder",
+        "fr": "Article sur des meurtres en série",
+        "es": "Artículo sobre asesinatos en serie",
         "zh-TW": "《連續殺人事件的報導》",
         "ko": "연속 살인에 관한 신문 기사",
         "zh-CN": "《连续杀人事件的报道》"
@@ -381,9 +381,9 @@
       "name": "《夜鸣的牛》",
       "nameTranslations": {
         "ja": "夜鳴き牛",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Night-Mooing Bovine",
+        "fr": "La vache qui pleure la nuit",
+        "es": "La vaca que mugía a la luna",
         "zh-TW": "《夜鳴的牛》",
         "ko": "밤중에 우는 소",
         "zh-CN": "《夜鸣的牛》"
@@ -402,9 +402,9 @@
       "name": "《老鼠的宝藏》",
       "nameTranslations": {
         "ja": "ネズミの宝",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Rodent's Riches",
+        "fr": "Le trésor des souris",
+        "es": "El tesoro de la rata",
         "zh-TW": "《老鼠的寶藏》",
         "ko": "쥐의 보물",
         "zh-CN": "《老鼠的宝藏》"
@@ -423,9 +423,9 @@
       "name": "《虔诚的狐狸》",
       "nameTranslations": {
         "ja": "信心ぶかいキツネ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Devout Fox",
+        "fr": "Le renard dévot",
+        "es": "La devoción del zorro",
         "zh-TW": "《虔誠的狐狸》",
         "ko": "신앙심 깊은 여우",
         "zh-CN": "《虔诚的狐狸》"
@@ -444,9 +444,9 @@
       "name": "《愚者的黄金》",
       "nameTranslations": {
         "ja": "愚か者の黄金",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Fool's Gold",
+        "fr": "L’or des fous",
+        "es": "El oro de los tontos",
         "zh-TW": "《愚者的黃金》",
         "ko": "어리석은 자의 황금",
         "zh-CN": "《愚者的黄金》"
@@ -465,9 +465,9 @@
       "name": "《池主传》",
       "nameTranslations": {
         "ja": "池ノ主伝",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Lord of the Pond",
+        "fr": "La légende du maître de l’étang",
+        "es": "La leyenda del señor del estanque",
         "zh-TW": "《池主傳》",
         "ko": "연못의 주인 전설",
         "zh-CN": "《池主传》"
@@ -486,9 +486,9 @@
       "name": "《诱人的灯火》",
       "nameTranslations": {
         "ja": "誘う灯火",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Enticing Lamplight",
+        "fr": "La lueur invitante",
+        "es": "Luz cautivadora",
         "zh-TW": "《誘人的燈火》",
         "ko": "꾀어내는 등불",
         "zh-CN": "《诱人的灯火》"
@@ -507,9 +507,9 @@
       "name": "《不倒翁的呼唤》",
       "nameTranslations": {
         "ja": "だるまさんの呼び声",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Call of the Daruma Doll",
+        "fr": "L’appel du Daruma",
+        "es": "Jugando al escondite inglés",
         "zh-TW": "《不倒翁的呼喚》",
         "ko": "술래가 부르는 소리",
         "zh-CN": "《不倒翁的呼唤》"
@@ -528,9 +528,9 @@
       "name": "《口传故事“黑影”》",
       "nameTranslations": {
         "ja": "口伝「黒きもの」",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oral Lore: The Black Figure",
+        "fr": "Légende de : « La chose noire »",
+        "es": "Leyenda urbana: \"La cosa negra\"",
         "zh-TW": "《口傳故事「黑影」》",
         "ko": "구전 「검은 것」",
         "zh-CN": "《口传故事“黑影”》"
@@ -546,15 +546,15 @@
       "y": 15392,
       "kind": "book",
       "id": "LOSTBOOK_ID_31",
-      "name": "《潜伏于地底的蛇》",
+      "name": "《潜伏在地底的蛇》",
       "nameTranslations": {
         "ja": "地に潜むヘビ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Earth-Lurking Snake",
+        "fr": "Le serpent tapi dans la terre",
+        "es": "La serpiente bajo tierra",
         "zh-TW": "《潛伏於地底的蛇》",
         "ko": "땅에 숨은 뱀",
-        "zh-CN": "《潜伏于地底的蛇》"
+        "zh-CN": "《潜伏在地底的蛇》"
       },
       "item_numeric_id": 639231,
       "prerequisite_flag": 13000,
@@ -570,9 +570,9 @@
       "name": "《生命之火》",
       "nameTranslations": {
         "ja": "命の火",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Light of Life",
+        "fr": "Le feu de la vie",
+        "es": "La llama de la vida",
         "zh-TW": "《生命之火》",
         "ko": "생명의 불",
         "zh-CN": "《生命之火》"
@@ -591,9 +591,9 @@
       "name": "《斗笠妖怪》",
       "nameTranslations": {
         "ja": "笠の化け物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Sedge-Hatted Monster",
+        "fr": "Le monstre au chapeau de paille",
+        "es": "El monstruo del sombrero",
         "zh-TW": "《斗笠妖怪》",
         "ko": "삿갓 괴물",
         "zh-CN": "《斗笠妖怪》"
@@ -612,9 +612,9 @@
       "name": "《口传故事“白女”》",
       "nameTranslations": {
         "ja": "口伝「真白き女」",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oral Lore: The Woman in White",
+        "fr": "Légende de : « La Dame Blanche »",
+        "es": "Leyenda urbana: \"La dama de blanco\"",
         "zh-TW": "《口傳故事「白女」》",
         "ko": "구전 「새하얀 여자」",
         "zh-CN": "《口传故事“白女”》"
@@ -633,9 +633,9 @@
       "name": "《年幼的守护者》",
       "nameTranslations": {
         "ja": "幼き守り手",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Juvenile Guardians",
+        "fr": "Les jeunes gardiennes",
+        "es": "Las pequeñas guardianas",
         "zh-TW": "《年幼的守護者》",
         "ko": "어린 수호자",
         "zh-CN": "《年幼的守护者》"
@@ -654,9 +654,9 @@
       "name": "《神隐之子》",
       "nameTranslations": {
         "ja": "神かくしの子",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Child Spirited Away",
+        "fr": "L’enfant de la disparition divine",
+        "es": "La desaparición",
         "zh-TW": "《神隱之子》",
         "ko": "행방불명된 아이",
         "zh-CN": "《神隐之子》"
@@ -675,9 +675,9 @@
       "name": "《遗书》",
       "nameTranslations": {
         "ja": "遺言書",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Last Will and Testament",
+        "fr": "Testament",
+        "es": "Testamento",
         "zh-TW": "《遺書》",
         "ko": "유언서",
         "zh-CN": "《遗书》"
@@ -696,9 +696,9 @@
       "name": "《向鬼发誓的恶童》",
       "nameTranslations": {
         "ja": "鬼に誓った悪童",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Vow Unto a Demon",
+        "fr": "L’enfant terrible voué au démon",
+        "es": "El niño que juró al demonio",
         "zh-TW": "《向鬼發誓的惡童》",
         "ko": "오니에게 맹세한 악동",
         "zh-CN": "《向鬼发誓的恶童》"
@@ -714,15 +714,15 @@
       "y": 21416,
       "kind": "book",
       "id": "LOSTBOOK_ID_40",
-      "name": "《风土病的报告书》",
+      "name": "《风土病的回报书》",
       "nameTranslations": {
         "ja": "風土病の報告書",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Endemic Disease Report",
+        "fr": "Rapport sur la maladie endémique",
+        "es": "Informe sobre enfermedad endémica",
         "zh-TW": "《風土病的報告書》",
         "ko": "풍토병 보고서",
-        "zh-CN": "《风土病的报告书》"
+        "zh-CN": "《风土病的回报书》"
       },
       "item_numeric_id": 639240,
       "prerequisite_flag": 14999,
@@ -738,9 +738,9 @@
       "name": "《祭品仪式》",
       "nameTranslations": {
         "ja": "贄の儀式",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Sacrificial Ritual",
+        "fr": "Le rituel sacrificiel",
+        "es": "Ritual de sacrificio",
         "zh-TW": "《祭品儀式》",
         "ko": "제물을 바치는 의식",
         "zh-CN": "《祭品仪式》"
@@ -759,9 +759,9 @@
       "name": "《向鬼许下的心愿》",
       "nameTranslations": {
         "ja": "鬼への願い事",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Wish Upon a Demon",
+        "fr": "Le vœu fait au démon",
+        "es": "Ruego a un demonio",
         "zh-TW": "《向鬼許下的心願》",
         "ko": "오니에게 빈 소원",
         "zh-CN": "《向鬼许下的心愿》"
@@ -780,9 +780,9 @@
       "name": "《“看到喽”妖怪》",
       "nameTranslations": {
         "ja": "見たぞの怪物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "You Saw Me, I See You",
+        "fr": "Le monstre « Je t’ai vu »",
+        "es": "\"¡Te pillé!\"",
         "zh-TW": "《「看到囉」妖怪》",
         "ko": "「보았다」 괴물",
         "zh-CN": "《“看到喽”妖怪》"
@@ -801,9 +801,9 @@
       "name": "《独眼不倒翁》",
       "nameTranslations": {
         "ja": "ひとつ目のダルマ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The One-Eyed Daruma",
+        "fr": "Le Daruma à un œil",
+        "es": "El daruma de un solo ojo",
         "zh-TW": "《獨眼不倒翁》",
         "ko": "외눈박이 오뚝이",
         "zh-CN": "《独眼不倒翁》"
@@ -822,9 +822,9 @@
       "name": "《黑色的雾》",
       "nameTranslations": {
         "ja": "黒いモヤの話",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Tale of the Black Mist",
+        "fr": "L’histoire de la brume noire",
+        "es": "La historia de la niebla negra",
         "zh-TW": "《黑色的霧》",
         "ko": "검은 연기 이야기",
         "zh-CN": "《黑色的雾》"
@@ -843,9 +843,9 @@
       "name": "《使大地翻涌的大蛇》",
       "nameTranslations": {
         "ja": "大地をうねる大蛇",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Earthrippling Serpent",
+        "fr": "Le serpent géant ondoyant",
+        "es": "La serpiente que emerge de la tierra",
         "zh-TW": "《使大地翻湧的大蛇》",
         "ko": "대지를 출렁이게 하는 거대한 뱀",
         "zh-CN": "《使大地翻涌的大蛇》"
@@ -864,9 +864,9 @@
       "name": "《蒙面的蜡烛商人》",
       "nameTranslations": {
         "ja": "仮面のロウソク売り",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Masked Candle Seller",
+        "fr": "Le marchand de bougies masqué",
+        "es": "El vendedor de velas enmascarado",
         "zh-TW": "《蒙面的蠟燭商人》",
         "ko": "가면을 쓴 양초 장수",
         "zh-CN": "《蒙面的蜡烛商人》"
@@ -885,9 +885,9 @@
       "name": "《地藏菩萨和雨怪》",
       "nameTranslations": {
         "ja": "地蔵と雨の怪",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Jizo and the Rainbogey",
+        "fr": "Statue de pierre et monstre de pluie",
+        "es": "Jizo y el espíritu de la lluvia",
         "zh-TW": "《地藏菩薩和雨怪》",
         "ko": "지장보살과 비의 요괴",
         "zh-CN": "《地藏菩萨和雨怪》"
@@ -906,9 +906,9 @@
       "name": "《雪夜女子与婴儿》",
       "nameTranslations": {
         "ja": "雪夜の女と赤子",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mother and Babe in the Snow",
+        "fr": "La dame de la nuit enneigée et le bébé",
+        "es": "La mujer y el bebé en la nieve",
         "zh-TW": "《雪夜女子與嬰兒》",
         "ko": "설야의 여자와 갓난아이",
         "zh-CN": "《雪夜女子与婴儿》"
@@ -927,9 +927,9 @@
       "name": "《风神、雷神与乌龟》",
       "nameTranslations": {
         "ja": "風神と雷神と亀",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fujin, Raijin, and the Turtles",
+        "fr": "Fūjin, Raijin et la tortue",
+        "es": "Los dioses de la tormenta y la tortuga",
         "zh-TW": "《風神、雷神與烏龜》",
         "ko": "바람신과 번개신과 거북이",
         "zh-CN": "《风神、雷神与乌龟》"
@@ -948,9 +948,9 @@
       "name": "《自地而出的神》",
       "nameTranslations": {
         "ja": "地より出でし神",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The God from Below",
+        "fr": "Le dieu qui surgit de la terre",
+        "es": "El dios que emergió de la tierra",
         "zh-TW": "《自地而出的神》",
         "ko": "땅에서 나온 신",
         "zh-CN": "《自地而出的神》"
@@ -969,9 +969,9 @@
       "name": "《村长的日记》",
       "nameTranslations": {
         "ja": "村長の日記",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Village Head's Journal",
+        "fr": "Le journal du chef du village",
+        "es": "Diario del alcalde",
         "zh-TW": "《村長的日記》",
         "ko": "촌장의 일기",
         "zh-CN": "《村长的日记》"
@@ -990,9 +990,9 @@
       "name": "《巨大的白萝卜》",
       "nameTranslations": {
         "ja": "大きなダイコン",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Giant Daikon",
+        "fr": "L’énorme radis blanc",
+        "es": "La enorme hortaliza",
         "zh-TW": "《巨大的白蘿蔔》",
         "ko": "커다란 무",
         "zh-CN": "《巨大的白萝卜》"
@@ -1011,9 +1011,9 @@
       "name": "《公布新规矩》",
       "nameTranslations": {
         "ja": "新たな掟、掲示",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Notice of Code Amendment",
+        "fr": "Affichage d’une nouvelle règle",
+        "es": "Aviso de nueva norma",
         "zh-TW": "《公布新規矩》",
         "ko": "새로운 규율, 게시",
         "zh-CN": "《公布新规矩》"
@@ -1032,9 +1032,9 @@
       "name": "《某个女孩的秘密》",
       "nameTranslations": {
         "ja": "ある娘の秘密",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Young Woman's Secret",
+        "fr": "Le secret d’une jeune fille",
+        "es": "El secreto de la joven",
         "zh-TW": "《某個女孩的祕密》",
         "ko": "어떤 처자의 비밀",
         "zh-CN": "《某个女孩的秘密》"
@@ -1053,9 +1053,9 @@
       "name": "《无法返回的山路》",
       "nameTranslations": {
         "ja": "帰れずの峠道",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The One-Way Mountain Pass",
+        "fr": "Le col sans retour",
+        "es": "Camino sin retorno",
         "zh-TW": "《無法返回的山路》",
         "ko": "돌아올 수 없는 고갯길",
         "zh-CN": "《无法返回的山路》"
@@ -1074,9 +1074,9 @@
       "name": "《新规矩的公告》",
       "nameTranslations": {
         "ja": "新しい掟の掲示",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Code Update Notice",
+        "fr": "Ajout d’une nouvelle règle",
+        "es": "Aviso de nueva norma",
         "zh-TW": "《新規矩的公告》",
         "ko": "새로운 규율 게시",
         "zh-CN": "《新规矩的公告》"
@@ -1095,9 +1095,9 @@
       "name": "《愿望成真的旅人》",
       "nameTranslations": {
         "ja": "願いを叶えた旅人",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Traveler's Granted Wish",
+        "fr": "Le voyageur dont le vœu fut exaucé",
+        "es": "El viajero y su deseo cumplido",
         "zh-TW": "《願望成真的旅人》",
         "ko": "소원을 이룬 여행자",
         "zh-CN": "《愿望成真的旅人》"
@@ -1116,9 +1116,9 @@
       "name": "《鬼的条纹布》",
       "nameTranslations": {
         "ja": "鬼の縞模様の布",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Demon's Striped Cloth",
+        "fr": "L’étoffe rayée du démon",
+        "es": "La tela estampada del demonio",
         "zh-TW": "《鬼的條紋布》",
         "ko": "오니의 줄무늬 천",
         "zh-CN": "《鬼的条纹布》"
@@ -1137,9 +1137,9 @@
       "name": "《夜夜回响的脚步声》",
       "nameTranslations": {
         "ja": "夜ごとひびく足音",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Nightly Echoing Footfalls",
+        "fr": "L’écho de pas résonnant dans la nuit",
+        "es": "Pasos que resuenan en la noche",
         "zh-TW": "《夜夜迴響的腳步聲》",
         "ko": "밤마다 들리는 발소리",
         "zh-CN": "《夜夜回响的脚步声》"
@@ -1158,9 +1158,9 @@
       "name": "《破旧的日记》",
       "nameTranslations": {
         "ja": "古い日記",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Old Diary Entry",
+        "fr": "Vieux journal intime",
+        "es": "Diario antiguo",
         "zh-TW": "《破舊的日記》",
         "ko": "오래된 일기",
         "zh-CN": "《破旧的日记》"
@@ -1179,9 +1179,9 @@
       "name": "《遗失之物》",
       "nameTranslations": {
         "ja": "失ったもの",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "The Missing Treasure",
+        "fr": "L’objet perdu",
+        "es": "Lo perdido",
         "zh-TW": "《遺失之物》",
         "ko": "잃어버린 것",
         "zh-CN": "《遗失之物》"

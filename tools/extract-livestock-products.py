@@ -25,7 +25,7 @@ u32=lambda r,o:struct.unpack_from('<I',r,o)[0]
 u64=lambda r,o:struct.unpack_from('<Q',r,o)[0]
 rows=list(zip(table.records,_string_groups(table),strict=True))
 animals={u64(r,0):g[0] for r,g in rows}
-items={i['numeric_id']:i['id'] for i in json.loads(Path('data/generated/build-25311578/entities/items.json').read_text(encoding='utf-8'))}
+items={i['numeric_id']:i['id'] for i in json.loads(Path('data/generated/build-25640656/entities/items.json').read_text(encoding='utf-8'))}
 result=[]
 icon_table=read_table(archive.read_entry('data/database/icon.dat'))
 texture_table=read_table(archive.read_entry('data/database/texture.dat'))

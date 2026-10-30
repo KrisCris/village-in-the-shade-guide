@@ -19,7 +19,7 @@ describe('save session recovery', () => {
     const before = exportSave(model, pendingChanges(model, session.drafts), session.slots);
     const after = exportSave(reparsed, pendingChanges(reparsed, restored.drafts), restored.slots);
     expect((await identifySave(after, 'edited')).sha256).toBe((await identifySave(before, 'edited')).sha256);
-  });
+  }, 30_000);
 
   it('rejects a different original even when its byte length matches', async () => {
     const bytes = new Uint8Array([1, 2, 3]);

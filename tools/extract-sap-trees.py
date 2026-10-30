@@ -15,7 +15,7 @@ from honogurashi_extractor.probe import _string_groups
 from honogurashi_extractor.table import read_table
 
 ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT = ROOT / 'data/generated/build-25311578/entities'
+SNAPSHOT = ROOT / 'data/generated/build-25640656/entities'
 EXTRACTOR = 'ITEM_ID_GIMMICK_SAP_EXTRACTOR'
 
 
@@ -24,7 +24,7 @@ def main():
     add_game_dir(parser)
     parser.add_argument('--output', type=Path, default=ROOT / 'data/sources/game-sap-trees.json')
     args = parser.parse_args()
-    # Build 25311578 tables carry seven languages.
+    # Builds since 25311578 carry seven languages.
     table = read_table(FafullfsArchive.open(args.game_dir / 'data.dat').read_entry('data/database/crops.dat'), language_count=7)
     items = {item['numeric_id']: item['id'] for item in json.loads((SNAPSHOT / 'items.json').read_text(encoding='utf-8'))}
     trees = []
@@ -39,7 +39,7 @@ def main():
     if sorted(tree['item_id'] for tree in trees) != sorted(recipe['output']['item_id'] for recipe in recipes):
         raise ValueError('Sap trees and sap extractor recipes name different items')
     output = {
-        'build_id': '25311578',
+        'build_id': '25640656',
         'source': 'crops.dat u64 24 bytes before each record end; checked against the ITEM_ID_GIMMICK_SAP_EXTRACTOR recipes in gimmickprocess.dat',
         'trees': sorted(trees, key=lambda tree: tree['crop_id']),
     }

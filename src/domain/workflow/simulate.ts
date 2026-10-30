@@ -52,7 +52,7 @@ export function simulatePlan(plan:WorkflowPlan,entities:Entity[]):SimulationResu
  const issueSet=new Set<string>();
  const emit=(node:WorkflowNode,kind:PlanEvent['kind'],message:string,extra:Partial<PlanEvent>={})=>result.events.push({day,nodeId:node.id,kind,message,...extra});
  const warn=(node:WorkflowNode,message:string)=>{
-  const full=`${node.label || node.id}：${message}`;
+  const full=`${node.label || node.id}${tr('：')}${message}`;
   if(!issueSet.has(full)){issueSet.add(full);result.issues.push(full);}
   emit(node,'warning',message);
  };

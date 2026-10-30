@@ -34,9 +34,9 @@ game=game_dir(__doc__)
 data=FafullfsArchive.open(game/'data.dat')
 maps=FafullfsArchive.open(game/'data/map_1_00.dat')
 reviewed={
-    'ai_creature_horror_moyamoyasan_lv3':'ffbc0f9265826db8d637c69934fe5e7324403f76272c637bb432e8811fa9a84d',
+    'ai_creature_horror_moyamoyasan_lv3':'7ebb55538599d1bf903744cedc539e8472c1ce2b69139b393745c175e707e07e',
     'ai_creature_horror_kunekune':'220855d5a5ed1916cc112bd2da60ac2092d05bb63a00e3f3126e07bc466f5bf8',
-    'ai_creature_horror_wandering_ghost':'96f2382889ee48daf1987e56fde2e6d3a6fa0167af46a82240ba9941ead8a330',
+    'ai_creature_horror_wandering_ghost':'8ae7e311b958808a0b6465ac4dd86940c2cff237c1df70f21316bb21f9918ca3',
     'ai_creature_horror_warp_ghost':'b19774bc5db8d2e718b4ff79620748de09219d893c3f79da293441d171ac85e8',
     'ai_creature_horror_obo':'a94dd59fdef6a4f81a0e1390b8713cf4b415921d6333fa727f2b820e7e4cd2cb',
     'ai_creature_horror_two_mouths_woman':'8c5a1962d3bda2b925ac1bda314b5b6e26ed91b06b59fb542617d3e9e3904c35',
@@ -50,9 +50,9 @@ reviewed={
     'mapevent_latenight_area':'3201be516f9fbabd5afe5787f885181eda33f18764b255cf4b902112a3a14b39',
     'event_check_late_night':'376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2',
     # Story chapters that create the bosses named in the task (not part of the night tables).
-    'story_05_01':'c8b2396ea70f875f851406f69d066f7acfb6a078625f19a523b01826a26ffcb4',
+    'story_05_01':'1c39916fa8756e069c99ea42f9c66b32484af975ea3c115ad24b01d93a080899',
     'story_05_02':'639acfa637563da58b038ce0fee5ded874fdc260cd29dd65d17e64a7052112ed',
-    'story_05_03':'0f82800041ed754e1b0e84ded0778db6729946ac8ed620b184df5424e277b7b5',
+    'story_05_03':'99378aaba664b6063a1cd8ae8dffdae0315b7c4a494508166e501ccc30186b39',
     'story_06_02':'d246bb7f0ccf5fe5910b077bbe4f385b4ce734f2b635d799d0e2a30c8bddcbf4',
 }
 scripts={}
@@ -103,7 +103,7 @@ def creature(r,g):
     w=struct.unpack_from(f'<{len(r)//4}I',r)
     S=lambda i: pool[w[i]:w[i]+w[i+1]].decode()
     i=next(k for k in range(34,60) if w[k] and w[k]<len(pool) and pool[w[k]-1:w[k]]==b'\0' and S(k).startswith('ai_'))
-    d=dict(id=g[0],ja=g[1],zh_hant=g[5],script=S(i)); i+=2
+    d=dict(id=g[0],ja=g[1],en=g[2],zh_hant=g[5],script=S(i)); i+=2
     i+=4  # scriptEntry, scriptArg
     d['move_speed']=round(struct.unpack_from('<f',r,i*4)[0],2); i+=1+6
     i+=1; d['pop_count']=[w[i],w[i+1]]; i+=2+4
@@ -273,10 +273,12 @@ MONSTERS=['CREATURE_ID_HORROR_MOYAMOYASAN_LV3','CREATURE_ID_HORROR_KUNEKUNE','CR
           'CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN','CREATURE_ID_HORROR_BLOCKAGE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_ONE',
           'CREATURE_ID_HORROR_WHELK','CREATURE_ID_HORROR_WALKING_STONE','CREATURE_ID_HORROR_TREASURE_BOX']
 def display(name):
-    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面, _顔, _1マス)."""
-    name=re.sub(r'_?(プレーン|平面)$','',name)
+    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面 / _Plane, _顔, _1マス)."""
+    name=re.sub(r'_?(プレーン|平面|Plane)$','',name)
+    name=re.sub(r'_(Face|1 Square)$',r' (\1)',name)
     return re.sub(r'_(顔|臉|1マス|1格)$',r'（\1）',name)
 assert display('塗り壁_顔_プレーン')=='塗り壁（顔）' and display('擋路妖_平面')=='擋路妖' and display('塗壁_1格')=='塗壁（1格）'
+assert display('Nurikabe_Face_Plane')=='Nurikabe (Face)' and display('Roadblocker_Plane')=='Roadblocker' and display('Nurikabe_1 Square')=='Nurikabe (1 Square)'
 SCRIPT_ATTACK={'CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE':'ATTACK_ID_ENEMY_HORROR_KNOCK_DOWN'}
 monsters={}
 for key in MONSTERS:
@@ -288,7 +290,7 @@ for key in MONSTERS:
         a=attack_by_name[attack]
         hp=damage(c['power'],a)
         hit=dict(attack=attack,hp=hp,hearts=hp/HEART,knockback=round(a['knockback']),stun_frames=a['stun_frames'])
-    monsters[key]=dict(ja=display(c['ja']),zh_hant=display(c['zh_hant']),script=c['script'],hp=c['hp'],power=c['power'],move_speed=c['move_speed'],
+    monsters[key]=dict(ja=display(c['ja']),en=display(c['en']),zh_hant=display(c['zh_hant']),script=c['script'],hp=c['hp'],power=c['power'],move_speed=c['move_speed'],
                        pop_time=c['pop_time'],vanish_time=c['vanish_time'],on_flags=c['on_flags'],hit=hit)
 expected={'CREATURE_ID_HORROR_MOYAMOYASAN_LV3':('たたずむ霊','佇立靈',1,4),'CREATURE_ID_HORROR_KUNEKUNE':('くねくね','扭扭妖',0,1),
           'CREATURE_ID_HORROR_WANDERING_GHOST':('うろうろお化け','徘徊妖怪',0,1),'CREATURE_ID_HORROR_WARP_GHOST':('ワープお化け','瞬移妖怪',0,3),
@@ -311,7 +313,7 @@ for key,story,map_id in (('CREATURE_ID_HORROR_ITSUMADE','story_05_01','MAP_ID_LO
     c=creatures[key]
     assert c['pop_count']==[0xffffffff]*2 or not c['anchors'],key
     assert not any(key in t['members'] for t in tables.values()),key
-    bosses.append(dict(id=key,ja=c['ja'],zh_hant=c['zh_hant'],chapter=int(story[6:8]),map=map_id))
+    bosses.append(dict(id=key,ja=c['ja'],en=c['en'],zh_hant=c['zh_hant'],chapter=int(story[6:8]),map=map_id))
 
 out=dict(
     source='placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, map heads '

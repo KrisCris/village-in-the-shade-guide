@@ -46,7 +46,7 @@ def normalize_activities(tables, snapshot, overrides, archive=None):
         item = items.get(_u32(record, 20))
         if not item: continue
         item_name = snapshot.items[item].name
-        translations = {locale: {"ja": "納品候補：", "zh-TW": "交付候選：", "zh-CN": "交付候选：", "ko": "납품 후보: "}.get(locale, "") + text if text else ""
+        translations = {locale: {"ja": "納品候補：", "en": "Delivery option: ", "zh-TW": "交付候選：", "zh-CN": "交付候选：", "ko": "납품 후보: "}.get(locale, "") + text if text else ""
                         for locale, text in item_name.translations.items()}
         name = build_name(ja="納品候補：" + item_name.ja, zh_hant="交付候選：" + (item_name.zh_hant or item_name.zh_hans), internal=group[0], overrides=overrides, translations=translations)
         snapshot.activities[name.internal] = Activity(name.internal, _u32(record, 0), name, "居民交付候选",
@@ -66,7 +66,7 @@ def normalize_activities(tables, snapshot, overrides, archive=None):
         item_id = items.get(_u32(record,len(record)-52))
         if not item_id: continue
         internal = "RETURN_" + group[0]
-        translations = {locale: {"ja": "図書返却：", "zh-TW": "圖書歸還：", "zh-CN": "图书归还：", "ko": "도서 반환: "}.get(locale, "") + text if text else ""
+        translations = {locale: {"ja": "図書返却：", "en": "Book return: ", "zh-TW": "圖書歸還：", "zh-CN": "图书归还：", "ko": "도서 반환: "}.get(locale, "") + text if text else ""
                         for locale, text in localized_block(group, 1, tables["lostbook"].language_count).items()}
         name = build_name(ja="図書返却："+group[1], zh_hant="圖書歸還："+group[5], internal=internal, overrides=overrides, translations=translations)
         snapshot.activities[internal] = Activity(internal,_u32(record,0),name,"图书归还",inputs=(ItemQuantity(item_id,1),),location="图书馆",source="lostbook.dat:记录末尾前52字节")

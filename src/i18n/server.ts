@@ -1,3 +1,4 @@
+import en from './catalogs/en.json';
 import ja from './catalogs/ja.json';
 import zhTW from './catalogs/zh-TW.json';
 import { withBase } from '../lib/sitePath';
@@ -5,7 +6,7 @@ import { defaultLocale, htmlLang, localeDataPath, localeFromPath, localizePath, 
 import { createTranslate, createTranslateHtml, type Messages } from './translate';
 
 /** Build-time catalogs; pages render every locale, so all are loaded here. */
-export const serverMessages: Record<Locale, Messages> = { 'zh-CN': {}, 'zh-TW': zhTW, ja };
+export const serverMessages: Record<Locale, Messages> = { 'zh-CN': {}, 'zh-TW': zhTW, ja, en };
 
 export function translatorFor(locale: Locale) {
   return createTranslate(locale, serverMessages[locale]);

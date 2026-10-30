@@ -8,11 +8,11 @@
 
 | 路径 | 内容 | 来源 |
 | --- | --- | --- |
-| `public/icons/generated/items/` | 物品图标（鱼和配方按物品 ID 复用） | 构建 `25311578` 的物品表 → 图标表 → 纹理引用，按坐标裁切 |
+| `public/icons/generated/items/` | 物品图标（鱼和配方按物品 ID 复用） | 构建 `25640656` 的物品表 → 图标表 → 纹理引用，按坐标裁切 |
 | `public/icons/generated/livestock/` | 家畜图标 | 游戏原生家畜图标 |
 | `public/icons/generated/ui/` | 星级、好感心形、体力等界面图标 | `tools/extract-save-editor-icons.py`，裁切坐标见目录内 `sources.json` |
 | `public/icons/fallback/` | 缺图时的兜底图形 | 作者绘制，不代表物品实际外观 |
-| `public/maps/` | 游戏小地图（简体、繁体、日文各一张，叠加 1.2 版新增农地） | 标注与投影参数见 `data/sources/game-map-markers.json`、`game-exploration-markers.json`、`game-night-pickups.json` |
+| `public/maps/` | 游戏小地图（简体、繁体、日文、英文各一张，叠加 1.2 版新增农地） | 标注与投影参数见 `data/sources/game-map-markers.json`、`game-exploration-markers.json`、`game-night-pickups.json` |
 | `public/maps/farm/` | 存档编辑器的农场、房间、作物和设施图 | `tools/extract-map-art.py`，见该目录的 README |
 | `public/maps/village/` | 每日规划地图里农场外的整个村子（四季分块图和全图） | `tools/extract-village-art.py`，见该目录的 README |
 | `public/art/` | 首页的山峦、云雾、四季树木与灌木 | `tools/extract-scenery.py`，逐图来源见 `data/sources/site-scenery.json` |

@@ -22,8 +22,8 @@ describe('save editor name tables', () => {
   it('leaves out the items the game keeps out of its encyclopedia', () => {
     const hidden = new Set(tables.encyclopediaHidden);
     // Building rewards, recipe documents, tool bases and demo dummies carry ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA.
-    expect(hidden.size).toBe(76);
-    for (const id of ['660020', '990014', '230000']) expect(hidden.has(id)).toBe(id !== '230000');
+    expect(hidden.size).toBe(77);
+    for (const id of ['660020', '802020', '990014', '230000']) expect(hidden.has(id)).toBe(id !== '230000');
   });
 
   it('rebuilds icon URLs from the stems it ships', () => {

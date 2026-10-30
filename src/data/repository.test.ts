@@ -17,6 +17,12 @@ describe('data repository', () => {
     expect(data.byId.CHARA_ID_OLD_MAN.portrait_source).toBe('https://nippon1.jp/consumer/honogurashi/character.html');
     expect(data.byId.CHARA_ID_MOTHER.icon_path).toBeUndefined();
   });
+  it('names the player in quest titles instead of showing the <player> tag', () => {
+    const name = { zh_hans: '<player>的生日', zh_hant: '<player>的生日', ja: '<player>の誕生日', internal: 'QUEST_ID_PLAYER_BIRTHDAY', aliases: [], review_status: 'official', translations: { ja: '<player>の誕生日', 'zh-TW': '<player>的生日', 'zh-CN': '<player>的生日' } };
+    const input = { '/entities/quests.json': [{ id: 'QUEST_ID_PLAYER_BIRTHDAY', name }] };
+    expect(buildCatalog(input).byId.QUEST_ID_PLAYER_BIRTHDAY.name.zh_hans).toBe('主角的生日');
+    expect(buildCatalog(input, '', 'ja').byId.QUEST_ID_PLAYER_BIRTHDAY.name.zh_hans).toBe('主人公の誕生日');
+  });
   const row = { id: 'CROPS_ID_ONION', name: { zh_hans: '洋葱', zh_hant: '洋蔥', ja: 'タマネギ', internal: 'CROPS_ID_ONION', aliases: ['洋葱', '洋蔥', 'タマネギ', 'CROPS_ID_ONION'], review_status: 'override' } };
   const catalog = buildCatalog({
     '/entities/items.json': [

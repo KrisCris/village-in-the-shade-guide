@@ -5,7 +5,7 @@ assets for the unofficial Village in the Shade guide, not original artwork by
 the guide's author, and the project's licenses do not cover them (see
 `LICENSING.md`).
 
-Source: Steam build 25311578, `map_1_00.dat`, `fairy_1_00.dat`,
+Source: Steam build 25640656, `map_1_00.dat`, `fairy_1_00.dat`,
 `texture_1_00.dat`, and the crop/animation/texture/farmland/gimmick databases.
 
 Reproduce with:

@@ -91,7 +91,7 @@ The first time an older plan stored in the browser is upgraded, a backup of the 
 
 Machine capacities live in `data/sources/game-machine-capacities.json`, extracted by `tools/extract-machine-capacities.py --game-dir <game directory> --output <review file>`. They come from the first `settingArg` group in `gimmick.dat` and the slot branch in the native `GimmickProcessPushItem`, never from machine names. The file records SHA-256 hashes of the source table and the executable.
 
-Build 25311578 has 29 recipe-processing machines: the 13 improved models have 3 slots, and the other 16 have 1 (including the beehive, sap extractor and silkworm box). A machine with unknown capacity is never assumed to have 1 slot; it gets no processing and shows "数据尚未核实" (data not verified). Workbenches, stoves, sprinklers and the like are outside this recipe-processing model.
+Build 25640656 has 29 recipe-processing machines: the 13 improved models have 3 slots, and the other 16 have 1 (including the beehive, sap extractor and silkworm box). A machine with unknown capacity is never assumed to have 1 slot; it gets no processing and shows "数据尚未核实" (data not verified). Workbenches, stoves, sprinklers and the like are outside this recipe-processing model.
 
 Plan files are version 1, marked with `planningMode: intent` plus automatic and manual fields.
 

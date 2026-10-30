@@ -23,18 +23,18 @@
       "description": "将这座祠堂让给你",
       "nameTranslations": {
         "ja": "祠の解放",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Unlock Hokora",
+        "fr": "Débloquer le sanctuaire",
+        "es": "Desbloqueo del santuario",
         "zh-TW": "解鎖祠堂",
         "ko": "사당 해방",
         "zh-CN": "解锁祠堂"
       },
       "descriptionTranslations": {
         "ja": "あなたにこの祠を譲ります",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "I yield this hokora to you",
+        "fr": "Je te cède ce sanctuaire.",
+        "es": "Te cedo este santuario.",
         "zh-TW": "將這座祠堂讓給你",
         "ko": "당신에게 이 사당을 넘겨줍니다.",
         "zh-CN": "将这座祠堂让给你"
@@ -62,24 +62,24 @@
         0
       ],
       "name": "田垄技术",
-      "description": "再敲击一次田地即可形成「田垄」",
+      "description": "再敲击一次田地即可形成“田垄”",
       "nameTranslations": {
         "ja": "畝の技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Furrow Technique",
+        "fr": "Technique du sillon",
+        "es": "Técnica de montículos",
         "zh-TW": "田壟技術",
         "ko": "이랑 기술",
         "zh-CN": "田垄技术"
       },
       "descriptionTranslations": {
         "ja": "畑をもう一度叩くと「畝」にできる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Re-hoeing tilled soil creates a furrow",
+        "fr": "Bêcher à nouveau le champ crée un sillon.",
+        "es": "Al labrar el campo una vez más, se crean \"montículos\".",
         "zh-TW": "再敲擊一次田地即可形成「田壟」",
         "ko": "밭을 한 번 더 두드리면 「이랑」이 된다.",
-        "zh-CN": "再敲击一次田地即可形成「田垄」"
+        "zh-CN": "再敲击一次田地即可形成“田垄”"
       }
     },
     {
@@ -104,24 +104,24 @@
         0
       ],
       "name": "户外稻草地板",
-      "description": "解锁「户外稻草地板」的制作方式",
+      "description": "解锁“户外稻草地板”的制作方式",
       "nameTranslations": {
         "ja": "藁の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Straw Path",
+        "fr": "Terrasse en paille",
+        "es": "Suelo de jardín de paja",
         "zh-TW": "戶外稻草地板",
         "ko": "짚이 깔린 정원 바닥",
         "zh-CN": "户外稻草地板"
       },
       "descriptionTranslations": {
         "ja": "「藁の庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Straw Paths",
+        "fr": "Permet de fabriquer une terrasse en paille.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de paja\".",
         "zh-TW": "解鎖「戶外稻草地板」的製作方式",
         "ko": "「짚이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外稻草地板」的制作方式"
+        "zh-CN": "解锁“户外稻草地板”的制作方式"
       }
     },
     {
@@ -146,24 +146,24 @@
         0
       ],
       "name": "堆肥桶",
-      "description": "解锁「堆肥桶」的制作方式",
+      "description": "解锁“堆肥桶”的制作方式",
       "nameTranslations": {
         "ja": "コンポスター",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Composter",
+        "fr": "Composteur",
+        "es": "Compostera",
         "zh-TW": "堆肥桶",
         "ko": "퇴비함",
         "zh-CN": "堆肥桶"
       },
       "descriptionTranslations": {
         "ja": "「コンポスター」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Composters",
+        "fr": "Permet de fabriquer un composteur.",
+        "es": "Aprendes a fabricar \"Compostera\".",
         "zh-TW": "解鎖「堆肥桶」的製作方式",
         "ko": "「퇴비함」 제작법을 습득한다.",
-        "zh-CN": "解锁「堆肥桶」的制作方式"
+        "zh-CN": "解锁“堆肥桶”的制作方式"
       }
     },
     {
@@ -188,24 +188,24 @@
         0
       ],
       "name": "户外砖头地板",
-      "description": "解锁「户外砖头地板」的制作方式",
+      "description": "解锁“户外砖头地板”的制作方式",
       "nameTranslations": {
         "ja": "レンガの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brick Path",
+        "fr": "Terrasse en briques",
+        "es": "Suelo de jardín de ladrillos",
         "zh-TW": "戶外磚頭地板",
         "ko": "벽돌이 깔린 정원 바닥",
         "zh-CN": "户外砖头地板"
       },
       "descriptionTranslations": {
         "ja": "「レンガの庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Brick Paths",
+        "fr": "Permet de fabriquer une terrasse en briques.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de ladrillos\".",
         "zh-TW": "解鎖「戶外磚頭地板」的製作方式",
         "ko": "「벽돌이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外砖头地板」的制作方式"
+        "zh-CN": "解锁“户外砖头地板”的制作方式"
       }
     },
     {
@@ -230,24 +230,24 @@
         0
       ],
       "name": "净化盐",
-      "description": "解锁「净化盐」的制作方式",
+      "description": "解锁“净化盐”的制作方式",
       "nameTranslations": {
         "ja": "清めの塩",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Purifying Salt",
+        "fr": "Sel purificateur",
+        "es": "Sal purificadora",
         "zh-TW": "淨化鹽",
         "ko": "정화의 소금",
         "zh-CN": "净化盐"
       },
       "descriptionTranslations": {
         "ja": "「清めの塩」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Purifying Salt",
+        "fr": "Permet de fabriquer du sel purificateur.",
+        "es": "Aprendes a fabricar \"Sal purificadora\".",
         "zh-TW": "解鎖「淨化鹽」的製作方式",
         "ko": "「정화의 소금」 제작법을 습득한다.",
-        "zh-CN": "解锁「净化盐」的制作方式"
+        "zh-CN": "解锁“净化盐”的制作方式"
       }
     },
     {
@@ -272,24 +272,24 @@
         0
       ],
       "name": "榨油机",
-      "description": "解锁「榨油机」的制作方式",
+      "description": "解锁“榨油机”的制作方式",
       "nameTranslations": {
         "ja": "搾油機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oil Press",
+        "fr": "Presse à huile",
+        "es": "Prensa de aceite",
         "zh-TW": "榨油機",
         "ko": "착유기",
         "zh-CN": "榨油机"
       },
       "descriptionTranslations": {
         "ja": "「搾油機」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Oil Presses",
+        "fr": "Permet de fabriquer une presse à huile.",
+        "es": "Aprendes a fabricar \"Prensa de aceite\".",
         "zh-TW": "解鎖「榨油機」的製作方式",
         "ko": "「착유기」 제작법을 습득한다.",
-        "zh-CN": "解锁「榨油机」的制作方式"
+        "zh-CN": "解锁“榨油机”的制作方式"
       }
     },
     {
@@ -314,24 +314,24 @@
         0
       ],
       "name": "户外石砖地板",
-      "description": "解锁「户外石砖地板」的制作方式",
+      "description": "解锁“户外石砖地板”的制作方式",
       "nameTranslations": {
         "ja": "石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Stone Tile Path",
+        "fr": "Terrasse en dalles de pierre",
+        "es": "Suelo de jardín de losas de piedra",
         "zh-TW": "戶外石磚地板",
         "ko": "석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外石砖地板"
       },
       "descriptionTranslations": {
         "ja": "「石タイルの庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Stone Tile Paths",
+        "fr": "Permet de fabriquer une terrasse en pierre.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de losas de piedra\".",
         "zh-TW": "解鎖「戶外石磚地板」的製作方式",
         "ko": "「석재 타일이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外石砖地板」的制作方式"
+        "zh-CN": "解锁“户外石砖地板”的制作方式"
       }
     },
     {
@@ -356,24 +356,24 @@
         0
       ],
       "name": "研磨机",
-      "description": "解锁「研磨机」的制作方式",
+      "description": "解锁“研磨机”的制作方式",
       "nameTranslations": {
         "ja": "粉挽き",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grinding Mill",
+        "fr": "Broyeur",
+        "es": "Molinillo",
         "zh-TW": "研磨機",
         "ko": "제분기",
         "zh-CN": "研磨机"
       },
       "descriptionTranslations": {
         "ja": "「粉挽き」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Grinding Mills",
+        "fr": "Permet de fabriquer un broyeur.",
+        "es": "Aprendes a fabricar \"Molinillo\".",
         "zh-TW": "解鎖「研磨機」的製作方式",
         "ko": "「제분기」 제작법을 습득한다.",
-        "zh-CN": "解锁「研磨机」的制作方式"
+        "zh-CN": "解锁“研磨机”的制作方式"
       }
     },
     {
@@ -398,24 +398,24 @@
         0
       ],
       "name": "稻草人偶",
-      "description": "解锁「稻草人偶」的制作方式",
+      "description": "解锁“稻草人偶”的制作方式",
       "nameTranslations": {
         "ja": "藁人形",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Straw Doll",
+        "fr": "Poupée en paille",
+        "es": "Muñeco de paja",
         "zh-TW": "稻草人偶",
         "ko": "짚 인형",
         "zh-CN": "稻草人偶"
       },
       "descriptionTranslations": {
         "ja": "「藁人形」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Straw Dolls",
+        "fr": "Permet de fabriquer une poupée en paille.",
+        "es": "Aprendes a fabricar \"Muñeco de paja\".",
         "zh-TW": "解鎖「稻草人偶」的製作方式",
         "ko": "「짚 인형」 제작법을 습득한다.",
-        "zh-CN": "解锁「稻草人偶」的制作方式"
+        "zh-CN": "解锁“稻草人偶”的制作方式"
       }
     },
     {
@@ -440,24 +440,24 @@
         0
       ],
       "name": "户外原木地板",
-      "description": "解锁「户外原木地板」的制作方式",
+      "description": "解锁“户外原木地板”的制作方式",
       "nameTranslations": {
         "ja": "丸太の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Log Path",
+        "fr": "Terrasse en rondins",
+        "es": "Suelo de jardín de troncos",
         "zh-TW": "戶外原木地板",
         "ko": "통나무가 깔린 정원 바닥",
         "zh-CN": "户外原木地板"
       },
       "descriptionTranslations": {
         "ja": "「丸太の庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Log Paths",
+        "fr": "Permet de fabriquer une terrasse en rondins.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de troncos\".",
         "zh-TW": "解鎖「戶外原木地板」的製作方式",
         "ko": "「통나무가 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外原木地板」的制作方式"
+        "zh-CN": "解锁“户外原木地板”的制作方式"
       }
     },
     {
@@ -482,24 +482,24 @@
         0
       ],
       "name": "牛奶加工机",
-      "description": "解锁「牛奶加工机」的制作方式",
+      "description": "解锁“牛奶加工机”的制作方式",
       "nameTranslations": {
         "ja": "ミルク加工機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Milk Processor",
+        "fr": "Machine laitière",
+        "es": "Procesador de lácteos",
         "zh-TW": "牛奶加工機",
         "ko": "우유 가공기",
         "zh-CN": "牛奶加工机"
       },
       "descriptionTranslations": {
         "ja": "「ミルク加工機」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Milk Processors",
+        "fr": "Permet de fabriquer une machine laitière.",
+        "es": "Aprendes a fabricar \"Procesador de lácteos\".",
         "zh-TW": "解鎖「牛奶加工機」的製作方式",
         "ko": "「우유 가공기」 제작법을 습득한다.",
-        "zh-CN": "解锁「牛奶加工机」的制作方式"
+        "zh-CN": "解锁“牛奶加工机”的制作方式"
       }
     },
     {
@@ -524,24 +524,24 @@
         0
       ],
       "name": "砖头栅栏与栅栏门",
-      "description": "解锁「砖头栅栏」、「砖头栅栏门」的制作方式",
+      "description": "解锁“砖头栅栏”、“砖头栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "レンガの柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brick Fence/Gate",
+        "fr": "Clôture et portillon en briques",
+        "es": "Valla y puerta ladrillo",
         "zh-TW": "磚頭柵欄與柵欄門",
         "ko": "벽돌 울타리나 입구",
         "zh-CN": "砖头栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「レンガの柵」「レンガのゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Brick Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en briques.",
+        "es": "Aprendes a fabricar \"Valla ladrillo\" y \"Puerta ladrillo\".",
         "zh-TW": "解鎖「磚頭柵欄」、「磚頭柵欄門」的製作方式",
         "ko": "「벽돌 울타리」, 「벽돌로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「砖头栅栏」、「砖头栅栏门」的制作方式"
+        "zh-CN": "解锁“砖头栅栏”、“砖头栅栏门”的制作方式"
       }
     },
     {
@@ -566,24 +566,24 @@
         0
       ],
       "name": "木炭窑",
-      "description": "解锁「木炭窑」的制作方式",
+      "description": "解锁“木炭窑”的制作方式",
       "nameTranslations": {
         "ja": "炭焼き窯",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Charcoal Kiln",
+        "fr": "Four à charbon",
+        "es": "Carbonera",
         "zh-TW": "木炭窯",
         "ko": "숯가마",
         "zh-CN": "木炭窑"
       },
       "descriptionTranslations": {
         "ja": "「炭焼き窯」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Charcoal Kilns",
+        "fr": "Permet de fabriquer un four à charbon.",
+        "es": "Aprendes a fabricar \"Carbonera\".",
         "zh-TW": "解鎖「木炭窯」的製作方式",
         "ko": "「숯가마」 제작법을 습득한다.",
-        "zh-CN": "解锁「木炭窑」的制作方式"
+        "zh-CN": "解锁“木炭窑”的制作方式"
       }
     },
     {
@@ -608,24 +608,24 @@
         0
       ],
       "name": "腌菜桶／改",
-      "description": "解锁「腌菜桶／改」的制作方式",
+      "description": "解锁“腌菜桶／改”的制作方式",
       "nameTranslations": {
         "ja": "漬物樽／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Preserving Barrel Mk II",
+        "fr": "Tonneau à saumure +",
+        "es": "Barril de encurtidos II",
         "zh-TW": "醃菜桶／改",
         "ko": "절임통/개량판",
         "zh-CN": "腌菜桶／改"
       },
       "descriptionTranslations": {
         "ja": "「漬物樽/改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Preserving Barrels",
+        "fr": "Permet de fabriquer un tonneau à saumure +.",
+        "es": "Aprendes a fabricar \"Barril de encurtidos II\".",
         "zh-TW": "解鎖「醃菜桶／改」的製作方式",
         "ko": "「절임통/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「腌菜桶／改」的制作方式"
+        "zh-CN": "解锁“腌菜桶／改”的制作方式"
       }
     },
     {
@@ -650,24 +650,24 @@
         0
       ],
       "name": "堆肥桶／改",
-      "description": "解锁「堆肥桶／改」的制作方式",
+      "description": "解锁“堆肥桶／改”的制作方式",
       "nameTranslations": {
         "ja": "コンポスター／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Composter Mk II",
+        "fr": "Composteur +",
+        "es": "Compostera II",
         "zh-TW": "堆肥桶／改",
         "ko": "퇴비함/개량판",
         "zh-CN": "堆肥桶／改"
       },
       "descriptionTranslations": {
         "ja": "「コンポスター／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Composters",
+        "fr": "Permet de fabriquer un composteur +.",
+        "es": "Aprendes a fabricar \"Compostera II\".",
         "zh-TW": "解鎖「堆肥桶／改」的製作方式",
         "ko": "「퇴비함/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「堆肥桶／改」的制作方式"
+        "zh-CN": "解锁“堆肥桶／改”的制作方式"
       }
     },
     {
@@ -692,24 +692,24 @@
         0
       ],
       "name": "织布机",
-      "description": "解锁「织布机」的制作方式",
+      "description": "解锁“织布机”的制作方式",
       "nameTranslations": {
         "ja": "織り機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Loom",
+        "fr": "Métier à tisser",
+        "es": "Telar",
         "zh-TW": "織布機",
         "ko": "방직기",
         "zh-CN": "织布机"
       },
       "descriptionTranslations": {
         "ja": "「織り機」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Looms",
+        "fr": "Permet de fabriquer un métier à tisser.",
+        "es": "Aprendes a fabricar \"Telar\".",
         "zh-TW": "解鎖「織布機」的製作方式",
         "ko": "「방직기」 제작법을 습득한다.",
-        "zh-CN": "解锁「织布机」的制作方式"
+        "zh-CN": "解锁“织布机”的制作方式"
       }
     },
     {
@@ -734,24 +734,24 @@
         0
       ],
       "name": "户外白石砖地板",
-      "description": "解锁「户外白石砖地板」的制作方式",
+      "description": "解锁“户外白石砖地板”的制作方式",
       "nameTranslations": {
         "ja": "白石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Stone Tile Path",
+        "fr": "Terrasse blanche",
+        "es": "Suelo de jardín de losas blancas",
         "zh-TW": "戶外白石磚地板",
         "ko": "하얀 석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外白石砖地板"
       },
       "descriptionTranslations": {
         "ja": "「白石タイルの庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make White Stone Tile Paths",
+        "fr": "Permet de fabriquer une terrasse blanche.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de losas blancas\".",
         "zh-TW": "解鎖「戶外白石磚地板」的製作方式",
         "ko": "「하얀 석재 타일이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外白石砖地板」的制作方式"
+        "zh-CN": "解锁“户外白石砖地板”的制作方式"
       }
     },
     {
@@ -776,24 +776,24 @@
         0
       ],
       "name": "绳子栅栏与栅栏门",
-      "description": "解锁「绳子栅栏」、「绳子栅栏门」的制作方式",
+      "description": "解锁“绳子栅栏”、“绳子栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "縄の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rope Fence/Gate",
+        "fr": "Clôture et portillon en cordes",
+        "es": "Valla y puerta cuerda",
         "zh-TW": "繩子柵欄與柵欄門",
         "ko": "밧줄 울타리와 입구",
         "zh-CN": "绳子栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「縄の柵」「縄のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Rope Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en cordes.",
+        "es": "Aprendes a fabricar \"Valla cuerda\" y \"Puerta cuerda\".",
         "zh-TW": "解鎖「繩子柵欄」、「繩子柵欄門」的製作方式",
         "ko": "「밧줄 울타리」, 「밧줄로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「绳子栅栏」、「绳子栅栏门」的制作方式"
+        "zh-CN": "解锁“绳子栅栏”、“绳子栅栏门”的制作方式"
       }
     },
     {
@@ -821,18 +821,18 @@
       "description": "减少挥动镰刀时的体力消耗量",
       "nameTranslations": {
         "ja": "カマの技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Sickling Finesse",
+        "fr": "Technique de la faucille",
+        "es": "Técnica de hoz",
         "zh-TW": "鐮刀技術",
         "ko": "낫 기술",
         "zh-CN": "镰刀技术"
       },
       "descriptionTranslations": {
         "ja": "カマを振った時のスタミナ消費量が減少",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Reduce stamina expended by sickle usage",
+        "fr": "Dépense moins d’énergie à chaque coup de faucille.",
+        "es": "Reduce el consumo de resistencia al usar la hoz.",
         "zh-TW": "減少揮動鐮刀時的體力消耗量",
         "ko": "낫을 휘두를 때의 스태미나 소비량이 감소.",
         "zh-CN": "减少挥动镰刀时的体力消耗量"
@@ -864,18 +864,18 @@
       "description": "树木成长速度提升5%",
       "nameTranslations": {
         "ja": "樹木の育成術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Arboriculture Finesse",
+        "fr": "Technique d’arboriculture",
+        "es": "Cultivo de árboles",
         "zh-TW": "樹木培育術",
         "ko": "나무 육성술",
         "zh-CN": "树木培育术"
       },
       "descriptionTranslations": {
         "ja": "樹木の成長速度が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree growth speed +5%",
+        "fr": "Vitesse de croissance des arbres +5 %.",
+        "es": "Aumenta un 5 % la velocidad de crecimiento de árboles.",
         "zh-TW": "樹木成長速度提昇5%",
         "ko": "나무의 성장 속도가 5% 상승한다.",
         "zh-CN": "树木成长速度提升5%"
@@ -903,24 +903,24 @@
         0
       ],
       "name": "户外黑石砖地板",
-      "description": "解锁「户外黑石砖地板」的制作方式",
+      "description": "解锁“户外黑石砖地板”的制作方式",
       "nameTranslations": {
         "ja": "黒石タイルの庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Black Stone Tile Paths",
+        "fr": "Terrasse noire",
+        "es": "Suelo de jardín de losas negras",
         "zh-TW": "戶外黑石磚地板",
         "ko": "까만 석재 타일이 깔린 정원 바닥",
         "zh-CN": "户外黑石砖地板"
       },
       "descriptionTranslations": {
         "ja": "「黒石タイルの庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Black Stone Tile Paths",
+        "fr": "Permet de fabriquer une terrasse noire.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de losas negras\".",
         "zh-TW": "解鎖「戶外黑石磚地板」的製作方式",
         "ko": "「까만 석재 타일이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外黑石砖地板」的制作方式"
+        "zh-CN": "解锁“户外黑石砖地板”的制作方式"
       }
     },
     {
@@ -945,24 +945,24 @@
         0
       ],
       "name": "木板栅栏与栅栏门",
-      "description": "解锁「木板栅栏」、「木板栅栏门」的制作方式",
+      "description": "解锁“木板栅栏”、“木板栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "板材の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Picket Fence/Gate",
+        "fr": "Clôture et portillon en planches",
+        "es": "Valla y puerta madera",
         "zh-TW": "木板柵欄與柵欄門",
         "ko": "널빤지 울타리와 입구",
         "zh-CN": "木板栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「板材の柵」「板材のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Picket Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en planches.",
+        "es": "Aprendes a fabricar \"Valla tablones\" y \"Puerta tablones\".",
         "zh-TW": "解鎖「木板柵欄」、「木板柵欄門」的製作方式",
         "ko": "「널빤지 울타리」, 「널빤지로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「木板栅栏」、「木板栅栏门」的制作方式"
+        "zh-CN": "解锁“木板栅栏”、“木板栅栏门”的制作方式"
       }
     },
     {
@@ -990,18 +990,18 @@
       "description": "在采石场发现矿脉的概率提升3%",
       "nameTranslations": {
         "ja": "鉱脈の発見術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Prospecting Finesse",
+        "fr": "Découverte de filons",
+        "es": "Descubrimiento de vetas",
         "zh-TW": "礦脈探查術",
         "ko": "광맥 발견술",
         "zh-CN": "矿脉探查术"
       },
       "descriptionTranslations": {
         "ja": "石切場で鉱脈が見つかる確率が3％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chance of finding quarry deposits +3%",
+        "fr": "Probabilité de trouver des filons à la carrière +3 %.",
+        "es": "Aumenta un 3% la probabilidad de vetas en la cantera.",
         "zh-TW": "在採石場發現礦脈的機率提昇3%",
         "ko": "채석장에서 광맥을 발견할 확률이 3% 상승한다.",
         "zh-CN": "在采石场发现矿脉的概率提升3%"
@@ -1030,24 +1030,24 @@
         0
       ],
       "name": "蚕箱",
-      "description": "解锁「蚕箱」的制作方式",
+      "description": "解锁“蚕箱”的制作方式",
       "nameTranslations": {
         "ja": "養蚕箱",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Silkworm Box",
+        "fr": "Boîte à vers à soie",
+        "es": "Caja de gusanos de seda",
         "zh-TW": "蠶箱",
         "ko": "양잠통",
         "zh-CN": "蚕箱"
       },
       "descriptionTranslations": {
         "ja": "「養蚕箱」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Silkworm Boxes",
+        "fr": "Permet de fabriquer une boîte à vers à soie.",
+        "es": "Aprendes a fabricar \"Caja de gusanos de seda\".",
         "zh-TW": "解鎖「蠶箱」的製作方式",
         "ko": "「양잠통」 제작법을 습득한다.",
-        "zh-CN": "解锁「蚕箱」的制作方式"
+        "zh-CN": "解锁“蚕箱”的制作方式"
       }
     },
     {
@@ -1073,24 +1073,24 @@
         0
       ],
       "name": "烟熏机",
-      "description": "解锁「烟熏机」的制作方式",
+      "description": "解锁“烟熏机”的制作方式",
       "nameTranslations": {
         "ja": "燻製機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Smoker",
+        "fr": "Fumoir",
+        "es": "Ahumador",
         "zh-TW": "煙燻機",
         "ko": "훈제기",
         "zh-CN": "烟熏机"
       },
       "descriptionTranslations": {
         "ja": "「燻製機」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Smokers",
+        "fr": "Permet de fabriquer un fumoir.",
+        "es": "Aprendes a fabricar \"Ahumador\".",
         "zh-TW": "解鎖「煙燻機」的製作方式",
         "ko": "「훈제기」 제작법을 습득한다.",
-        "zh-CN": "解锁「烟熏机」的制作方式"
+        "zh-CN": "解锁“烟熏机”的制作方式"
       }
     },
     {
@@ -1116,24 +1116,24 @@
         0
       ],
       "name": "竹子栅栏与栅栏门",
-      "description": "解锁「竹子栅栏」、「竹子栅栏门」的制作方式",
+      "description": "解锁“竹子栅栏”、“竹子栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "竹の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Bamboo Fence/Gate",
+        "fr": "Clôture et portillon en bambou",
+        "es": "Valla y puerta bambú",
         "zh-TW": "竹子柵欄與柵欄門",
         "ko": "대나무 울타리와 문",
         "zh-CN": "竹子栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「竹の柵」「竹のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Bamboo Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en bambou.",
+        "es": "Aprendes a fabricar \"Valla bambú\" y \"Puerta bambú\".",
         "zh-TW": "解鎖「竹子柵欄」、「竹子柵欄門」的製作方式",
         "ko": "「대나무 울타리」, 「대나무로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「竹子栅栏」、「竹子栅栏门」的制作方式"
+        "zh-CN": "解锁“竹子栅栏”、“竹子栅栏门”的制作方式"
       }
     },
     {
@@ -1158,24 +1158,24 @@
         0
       ],
       "name": "白色木板栅栏与栅栏门",
-      "description": "解锁「白色木板栅栏」、「白色木板栅栏门」的制作方式",
+      "description": "解锁“白色木板栅栏”、“白色木板栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "白い板材の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Picket Fence/Gate",
+        "fr": "Clôture et portillon en bois blanc",
+        "es": "Valla y puerta blanca",
         "zh-TW": "白色木板柵欄與柵欄門",
         "ko": "하얀 널빤지 울타리와 입구",
         "zh-CN": "白色木板栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「白い板材の柵」「白い板材のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make White Picket Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en bois blanc.",
+        "es": "Aprendes a fabricar \"Valla blanca\" y \"Puerta blanca\".",
         "zh-TW": "解鎖「白色木板柵欄」、「白色木板柵欄門」的製作方式",
         "ko": "「하얀 널빤지 울타리」, 「하얀 널빤지로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「白色木板栅栏」、「白色木板栅栏门」的制作方式"
+        "zh-CN": "解锁“白色木板栅栏”、“白色木板栅栏门”的制作方式"
       }
     },
     {
@@ -1204,18 +1204,18 @@
       "description": "有25%的概率可采集到2个采集物",
       "nameTranslations": {
         "ja": "野草の採取術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Foraging Finesse",
+        "fr": "Technique de cueillette",
+        "es": "Recolección de plantas silvestres",
         "zh-TW": "野草採取術",
         "ko": "들풀 채집술",
         "zh-CN": "野草采取术"
       },
       "descriptionTranslations": {
         "ja": "採取物が２５％の確率で２個採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "25% to forage two items instead of one",
+        "fr": "25 % de chance d’obtenir 2 objets lors de la cueillette.",
+        "es": "Aumenta un 25 % la probabilidad de obtener 2 unidades.",
         "zh-TW": "有25%的機率可採集到2個採集物",
         "ko": "25% 확률로 채집물을 2개씩 채집한다.",
         "zh-CN": "有25%的概率可采集到2个采集物"
@@ -1243,24 +1243,24 @@
         0
       ],
       "name": "网子栅栏与栅栏门",
-      "description": "解锁「网子栅栏」、「网子栅栏门」的制作方式",
+      "description": "解锁“网子栅栏”、“网子栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "網の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mesh Fence/Gate",
+        "fr": "Clôture et portillon en maille",
+        "es": "Valla y puerta red",
         "zh-TW": "網子柵欄與柵欄門",
         "ko": "그물로 만든 울타리와 입구",
         "zh-CN": "网子栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「網の柵」「網のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Mesh Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en maille.",
+        "es": "Aprendes a fabricar \"Valla red\" y \"Puerta red\".",
         "zh-TW": "解鎖「網子柵欄」、「網子柵欄門」的製作方式",
         "ko": "「그물 울타리」, 「그물로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「网子栅栏」、「网子栅栏门」的制作方式"
+        "zh-CN": "解锁“网子栅栏”、“网子栅栏门”的制作方式"
       }
     },
     {
@@ -1285,24 +1285,24 @@
         0
       ],
       "name": "镜与剑探查术",
-      "description": "在深夜时将更容易获得「镜」与「剑」",
+      "description": "在深夜时将更容易获得“镜”与“剑”",
       "nameTranslations": {
         "ja": "鏡と剣の発見術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Regalia Wrangler",
+        "fr": "Découverte du miroir et de l’épée",
+        "es": "Descubrimiento de espejo y espada",
         "zh-TW": "鏡與劍探查術",
         "ko": "거울과 검 발견술",
         "zh-CN": "镜与剑探查术"
       },
       "descriptionTranslations": {
         "ja": "深夜に「鏡」と「剣」が手に入れやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Make swords/mirrors easier to obtain at night",
+        "fr": "Obtention des miroirs et épées en pleine nuit facilitée.",
+        "es": "Facilita obtener \"Espejo\" y \"Espada\" de madrugada.",
         "zh-TW": "在深夜時將更容易獲得「鏡」與「劍」",
         "ko": "심야에 「거울」과 「검」을 획득하기 쉬워진다.",
-        "zh-CN": "在深夜时将更容易获得「镜」与「剑」"
+        "zh-CN": "在深夜时将更容易获得“镜”与“剑”"
       }
     },
     {
@@ -1327,24 +1327,24 @@
         0
       ],
       "name": "美乃滋加工机／改",
-      "description": "解锁「美乃滋加工机／改」的制作方式",
+      "description": "解锁“美乃滋加工机／改”的制作方式",
       "nameTranslations": {
         "ja": "マヨネーズ加工機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mayo Processor Mk II",
+        "fr": "Machine à mayonnaise +",
+        "es": "Máquina de procesado de mayonesa II",
         "zh-TW": "美乃滋加工機／改",
         "ko": "마요네즈 가공기/개량판",
         "zh-CN": "美乃滋加工机／改"
       },
       "descriptionTranslations": {
         "ja": "「マヨネーズ加工機/改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Mayo Processors",
+        "fr": "Permet de fabriquer une machine à mayonnaise +.",
+        "es": "Aprendes a fabricar \"Máquina de procesado de mayonesa II\".",
         "zh-TW": "解鎖「美乃滋加工機／改」的製作方式",
         "ko": "「마요네즈 가공기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「美乃滋加工机／改」的制作方式"
+        "zh-CN": "解锁“美乃滋加工机／改”的制作方式"
       }
     },
     {
@@ -1372,18 +1372,18 @@
       "description": "动物亲密度更容易上升",
       "nameTranslations": {
         "ja": "動物仲良し術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Domestication Finesse",
+        "fr": "Ami des bêtes",
+        "es": "Afinidad con animales",
         "zh-TW": "動物友好術",
         "ko": "동물 친밀술",
         "zh-CN": "动物友好术"
       },
       "descriptionTranslations": {
         "ja": "動物のなつき度が上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain animal affection more easily",
+        "fr": "Hausse du niveau d’affection des animaux accélérée.",
+        "es": "Aumenta la facilidad para subir el afecto de los animales.",
         "zh-TW": "動物親密度更容易上昇",
         "ko": "동물의 친밀도가 잘 오르게 된다.",
         "zh-CN": "动物亲密度更容易上升"
@@ -1411,24 +1411,24 @@
         0
       ],
       "name": "小型洒水器",
-      "description": "解锁「小型洒水器」的制作方式",
+      "description": "解锁“小型洒水器”的制作方式",
       "nameTranslations": {
         "ja": "小さいスプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Sprinkler",
+        "fr": "Petit arroseur",
+        "es": "Aspersor pequeño",
         "zh-TW": "小型灑水器",
         "ko": "작은 스프링클러",
         "zh-CN": "小型洒水器"
       },
       "descriptionTranslations": {
         "ja": "「小さいスプリンクラー」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Small Sprinklers",
+        "fr": "Permet de fabriquer un petit arroseur.",
+        "es": "Aprendes a fabricar \"Aspersor pequeño\".",
         "zh-TW": "解鎖「小型灑水器」的製作方式",
         "ko": "「작은 스프링클러」 제작법을 습득한다.",
-        "zh-CN": "解锁「小型洒水器」的制作方式"
+        "zh-CN": "解锁“小型洒水器”的制作方式"
       }
     },
     {
@@ -1453,24 +1453,24 @@
         0
       ],
       "name": "铁制栅栏与栅栏门",
-      "description": "解锁「铁制栅栏」、「铁制栅栏门」的制作方式",
+      "description": "解锁“铁制栅栏”、“铁制栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "鉄の柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Fence/Gate",
+        "fr": "Clôture et portillon en fer",
+        "es": "Valla y puerta acero",
         "zh-TW": "鐵製柵欄與柵欄門",
         "ko": "철 울타리와 입구",
         "zh-CN": "铁制栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「鉄の柵」「鉄のゲート」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn how to make Iron Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon en fer.",
+        "es": "Aprendes a fabricar \"Valla acero\" y \"Puerta acero\".",
         "zh-TW": "解鎖「鐵製柵欄」、「鐵製柵欄門」的製作方式",
         "ko": "「철 울타리」, 「철로 만든 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「铁制栅栏」、「铁制栅栏门」的制作方式"
+        "zh-CN": "解锁“铁制栅栏”、“铁制栅栏门”的制作方式"
       }
     },
     {
@@ -1495,24 +1495,24 @@
         1
       ],
       "name": "研磨机／改",
-      "description": "解锁「研磨机／改」的制作方式",
+      "description": "解锁“研磨机／改”的制作方式",
       "nameTranslations": {
         "ja": "粉挽き／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Grinding Mill Mk II",
+        "fr": "Broyeur +",
+        "es": "Molinillo II",
         "zh-TW": "研磨機／改",
         "ko": "제분기/개량판",
         "zh-CN": "研磨机／改"
       },
       "descriptionTranslations": {
         "ja": "「粉挽き/改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Grinding Mills",
+        "fr": "Permet de fabriquer un broyeur +.",
+        "es": "Aprendes a fabricar \"Molinillo II\".",
         "zh-TW": "解鎖「研磨機／改」的製作方式",
         "ko": "「제분기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「研磨机／改」的制作方式"
+        "zh-CN": "解锁“研磨机／改”的制作方式"
       }
     },
     {
@@ -1540,18 +1540,18 @@
       "description": "树木成长速度提升10%",
       "nameTranslations": {
         "ja": "樹木の育成術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Arboriculture Finesse+",
+        "fr": "Technique d’arboriculture +",
+        "es": "Cultivo de árboles +",
         "zh-TW": "樹木培育術＋",
         "ko": "나무 육성술+",
         "zh-CN": "树木培育术＋"
       },
       "descriptionTranslations": {
         "ja": "樹木の成長速度が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree growth speed +10%",
+        "fr": "Vitesse de croissance des arbres +10 %.",
+        "es": "Aumenta un 10 % la velocidad de crecimiento de árboles.",
         "zh-TW": "樹木成長速度提昇10%",
         "ko": "나무의 성장 속도가 10% 상승한다.",
         "zh-CN": "树木成长速度提升10%"
@@ -1580,24 +1580,24 @@
         0
       ],
       "name": "牛奶加工机／改",
-      "description": "解锁「牛奶加工机／改」的制作方式",
+      "description": "解锁“牛奶加工机／改”的制作方式",
       "nameTranslations": {
         "ja": "ミルク加工機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Milk Processor Mk II",
+        "fr": "Machine laitière +",
+        "es": "Procesador de lácteos II",
         "zh-TW": "牛奶加工機／改",
         "ko": "우유 가공기/개량판",
         "zh-CN": "牛奶加工机／改"
       },
       "descriptionTranslations": {
         "ja": "「ミルク加工機／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Milk Processors",
+        "fr": "Permet de fabriquer une machine laitière +.",
+        "es": "Aprendes a fabricar \"Procesador de lácteos II\".",
         "zh-TW": "解鎖「牛奶加工機／改」的製作方式",
         "ko": "「우유 가공기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「牛奶加工机／改」的制作方式"
+        "zh-CN": "解锁“牛奶加工机／改”的制作方式"
       }
     },
     {
@@ -1622,24 +1622,24 @@
         0
       ],
       "name": "户外花朵地板",
-      "description": "解锁「户外花朵地板」的制作方式",
+      "description": "解锁“户外花朵地板”的制作方式",
       "nameTranslations": {
         "ja": "花の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Path",
+        "fr": "Terrasse en fleurs",
+        "es": "Suelo de jardín de flores",
         "zh-TW": "戶外花朵地板",
         "ko": "꽃이 핀 정원 바닥",
         "zh-CN": "户外花朵地板"
       },
       "descriptionTranslations": {
         "ja": "「花の庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Flower Paths",
+        "fr": "Permet de fabriquer une terrasse en fleurs.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de flores\".",
         "zh-TW": "解鎖「戶外花朵地板」的製作方式",
         "ko": "「꽃이 핀 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外花朵地板」的制作方式"
+        "zh-CN": "解锁“户外花朵地板”的制作方式"
       }
     },
     {
@@ -1664,24 +1664,24 @@
         0
       ],
       "name": "优质鱼饵",
-      "description": "解锁「优质鱼饵」的制作方式",
+      "description": "解锁“优质鱼饵”的制作方式",
       "nameTranslations": {
         "ja": "良質な撒き餌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Deluxe Fishing Bait",
+        "fr": "Appât de qualité +",
+        "es": "Engodo prémium",
         "zh-TW": "優質魚餌",
         "ko": "질 좋은 밑밥",
         "zh-CN": "优质鱼饵"
       },
       "descriptionTranslations": {
         "ja": "「良質な撒き餌」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Deluxe Fishing Bait",
+        "fr": "Permet de fabriquer un appât de qualité +.",
+        "es": "Aprendes a fabricar \"Engodo prémium\".",
         "zh-TW": "解鎖「優質魚餌」的製作方式",
         "ko": "「질 좋은 밑밥」 제작법을 습득한다.",
-        "zh-CN": "解锁「优质鱼饵」的制作方式"
+        "zh-CN": "解锁“优质鱼饵”的制作方式"
       }
     },
     {
@@ -1706,24 +1706,24 @@
         1
       ],
       "name": "木炭窑／改",
-      "description": "解锁「木炭窑／改」的制作方式",
+      "description": "解锁“木炭窑／改”的制作方式",
       "nameTranslations": {
         "ja": "炭焼き窯／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Charcoal Kiln Mk II",
+        "fr": "Four à charbon +",
+        "es": "Carbonera II",
         "zh-TW": "木炭窯／改",
         "ko": "숯가마/개량판",
         "zh-CN": "木炭窑／改"
       },
       "descriptionTranslations": {
         "ja": "「炭焼き窯／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Charcoal Kilns",
+        "fr": "Permet de fabriquer un four à charbon +.",
+        "es": "Aprendes a fabricar \"Carbonera II\".",
         "zh-TW": "解鎖「木炭窯／改」的製作方式",
         "ko": "「숯가마/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「木炭窑／改」的制作方式"
+        "zh-CN": "解锁“木炭窑／改”的制作方式"
       }
     },
     {
@@ -1751,18 +1751,18 @@
       "description": "作物加工品的售价提升5%",
       "nameTranslations": {
         "ja": "作物加工品の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship (C)",
+        "fr": "Vente de prod. agricoles transformés",
+        "es": "Venta de prod. agrícolas procesados",
         "zh-TW": "作物加工品出貨術",
         "ko": "작물 가공품 출하술",
         "zh-CN": "作物加工品出货术"
       },
       "descriptionTranslations": {
         "ja": "作物加工品の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed crop product sales price +5%",
+        "fr": "Prix de vente produits agricoles transformés +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "作物加工品的售價提昇5%",
         "ko": "작물 가공품의 판매 가격이 5% 상승한다.",
         "zh-CN": "作物加工品的售价提升5%"
@@ -1790,24 +1790,24 @@
         0
       ],
       "name": "酿造桶",
-      "description": "解锁「酿造桶」的制作方式",
+      "description": "解锁“酿造桶”的制作方式",
       "nameTranslations": {
         "ja": "醸造樽",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brewing Barrel",
+        "fr": "Fût de brassage",
+        "es": "Fermentador",
         "zh-TW": "釀造桶",
         "ko": "양조통",
         "zh-CN": "酿造桶"
       },
       "descriptionTranslations": {
         "ja": "「醸造樽」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Brewing Barrels",
+        "fr": "Permet de fabriquer un fût de brassage.",
+        "es": "Aprendes a fabricar \"Fermentador\".",
         "zh-TW": "解鎖「釀造桶」的製作方式",
         "ko": "「양조통」 제작법을 습득한다.",
-        "zh-CN": "解锁「酿造桶」的制作方式"
+        "zh-CN": "解锁“酿造桶”的制作方式"
       }
     },
     {
@@ -1833,24 +1833,24 @@
         0
       ],
       "name": "户外落叶地板",
-      "description": "解锁「户外落叶地板」的制作方式",
+      "description": "解锁“户外落叶地板”的制作方式",
       "nameTranslations": {
         "ja": "落ち葉の庭床",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fallen Leaf Path",
+        "fr": "Terrasse automnale",
+        "es": "Suelo de jardín de hojas",
         "zh-TW": "戶外落葉地板",
         "ko": "낙엽이 깔린 정원 바닥",
         "zh-CN": "户外落叶地板"
       },
       "descriptionTranslations": {
         "ja": "「落ち葉の庭床」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn how to make Fallen Leaf Paths",
+        "fr": "Permet de fabriquer une terrasse automnale.",
+        "es": "Aprendes a fabricar \"Suelo de jardín de hojas\".",
         "zh-TW": "解鎖「戶外落葉地板」的製作方式",
         "ko": "「낙엽이 깔린 정원 바닥」 제작법을 습득한다.",
-        "zh-CN": "解锁「户外落叶地板」的制作方式"
+        "zh-CN": "解锁“户外落叶地板”的制作方式"
       }
     },
     {
@@ -1875,24 +1875,24 @@
         0
       ],
       "name": "熔炉／改",
-      "description": "解锁「熔炉／改」的制作方式",
+      "description": "解锁“熔炉／改”的制作方式",
       "nameTranslations": {
         "ja": "溶鉱炉／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Blast Furnace Mk II",
+        "fr": "Haut-fourneau +",
+        "es": "Horno de fundición II",
         "zh-TW": "熔爐／改",
         "ko": "용광로/개량판",
         "zh-CN": "熔炉／改"
       },
       "descriptionTranslations": {
         "ja": "「溶鉱炉/改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Blast Furnaces",
+        "fr": "Permet de fabriquer un haut-fourneau +.",
+        "es": "Aprendes a fabricar \"Horno de fundición II\".",
         "zh-TW": "解鎖「熔爐／改」的製作方式",
         "ko": "「용광로/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「熔炉／改」的制作方式"
+        "zh-CN": "解锁“熔炉／改”的制作方式"
       }
     },
     {
@@ -1917,24 +1917,24 @@
         0
       ],
       "name": "干燥机",
-      "description": "解锁「干燥机」的制作方式",
+      "description": "解锁“干燥机”的制作方式",
       "nameTranslations": {
         "ja": "乾燥機",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dehydrator",
+        "fr": "Séchoir",
+        "es": "Deshidratador de alimentos",
         "zh-TW": "乾燥機",
         "ko": "건조기",
         "zh-CN": "干燥机"
       },
       "descriptionTranslations": {
         "ja": "「乾燥機」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Dehydrators",
+        "fr": "Permet de fabriquer un séchoir.",
+        "es": "Aprendes a fabricar \"Deshidratador de alimentos\".",
         "zh-TW": "解鎖「乾燥機」的製作方式",
         "ko": "「건조기」 제작법을 습득한다.",
-        "zh-CN": "解锁「干燥机」的制作方式"
+        "zh-CN": "解锁“干燥机”的制作方式"
       }
     },
     {
@@ -1959,24 +1959,24 @@
         0
       ],
       "name": "烟熏机／改",
-      "description": "解锁「烟熏机／改」的制作方式",
+      "description": "解锁“烟熏机／改”的制作方式",
       "nameTranslations": {
         "ja": "燻製機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Smoker Mk II",
+        "fr": "Fumoir +",
+        "es": "Ahumador II",
         "zh-TW": "煙燻機／改",
         "ko": "훈제기/개량판",
         "zh-CN": "烟熏机／改"
       },
       "descriptionTranslations": {
         "ja": "「燻製機／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Smokers",
+        "fr": "Permet de fabriquer un fumoir +.",
+        "es": "Aprendes a fabricar \"Ahumador II\".",
         "zh-TW": "解鎖「煙燻機／改」的製作方式",
         "ko": "「훈제기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「烟熏机／改」的制作方式"
+        "zh-CN": "解锁“烟熏机／改”的制作方式"
       }
     },
     {
@@ -2005,18 +2005,18 @@
       "description": "畜产品的售价提升5%",
       "nameTranslations": {
         "ja": "畜産物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ranching Salesmanship",
+        "fr": "Vente des produits d’élevage",
+        "es": "Venta de productos pecuarios",
         "zh-TW": "畜產品出貨術",
         "ko": "축산물 출하술",
         "zh-CN": "畜产品出货术"
       },
       "descriptionTranslations": {
         "ja": "畜産物の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal product sales price +5%",
+        "fr": "Prix de vente des produits d’élevage +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "畜產品的售價提昇5%",
         "ko": "축산물의 판매 가격이 5% 상승한다.",
         "zh-CN": "畜产品的售价提升5%"
@@ -2044,24 +2044,24 @@
         0
       ],
       "name": "熟成桶",
-      "description": "解锁「熟成桶」的制作方式",
+      "description": "解锁“熟成桶”的制作方式",
       "nameTranslations": {
         "ja": "熟成樽",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Aging Barrel",
+        "fr": "Fût de maturation",
+        "es": "Barrica de envejecimiento",
         "zh-TW": "熟成桶",
         "ko": "숙성통",
         "zh-CN": "熟成桶"
       },
       "descriptionTranslations": {
         "ja": "「熟成樽」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Aging Barrels",
+        "fr": "Permet de fabriquer un fût de maturation.",
+        "es": "Aprendes a fabricar \"Barrica de envejecimiento\".",
         "zh-TW": "解鎖「熟成桶」的製作方式",
         "ko": "「숙성통」 제작법을 습득한다.",
-        "zh-CN": "解锁「熟成桶」的制作方式"
+        "zh-CN": "解锁“熟成桶”的制作方式"
       }
     },
     {
@@ -2086,24 +2086,24 @@
         0
       ],
       "name": "花园栅栏与栅栏门",
-      "description": "解锁「铁制花园栅栏」、「铁制花园栅栏门」的制作方式",
+      "description": "解锁“铁制花园栅栏”、“铁制花园栅栏门”的制作方式",
       "nameTranslations": {
         "ja": "ガーデンの柵とゲート",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Iron Garden Fence/Gate",
+        "fr": "Clôture et portillon de jardin",
+        "es": "Valla y puerta jardín acero",
         "zh-TW": "花園柵欄與柵欄門",
         "ko": "정원 펜스와 문",
         "zh-CN": "花园栅栏与栅栏门"
       },
       "descriptionTranslations": {
         "ja": "「鉄のガーデン柵」「鉄のガーデンゲート」を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Iron Garden Fences/Gates",
+        "fr": "Permet de fabriquer clôture et portillon de jardin.",
+        "es": "Aprendes \"Valla jardín acero\" y \"Puerta jardín acero\".",
         "zh-TW": "解鎖「鐵製花園柵欄」、「鐵製花園柵欄門」的製作方式",
         "ko": "「철 정원 울타리」, 「철로 만든 정원 입구」 제작법을 습득한다.",
-        "zh-CN": "解锁「铁制花园栅栏」、「铁制花园栅栏门」的制作方式"
+        "zh-CN": "解锁“铁制花园栅栏”、“铁制花园栅栏门”的制作方式"
       }
     },
     {
@@ -2131,18 +2131,18 @@
       "description": "鱼类的售价提升5%",
       "nameTranslations": {
         "ja": "魚の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fishing Salesmanship",
+        "fr": "Vente du poisson",
+        "es": "Venta de pescado",
         "zh-TW": "魚類出貨術",
         "ko": "물고기 출하술",
         "zh-CN": "鱼类出货术"
       },
       "descriptionTranslations": {
         "ja": "魚の売価が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish sales price +5%",
+        "fr": "Prix de vente des poissons +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "魚類的售價提昇5%",
         "ko": "물고기의 판매 가격이 5% 상승한다.",
         "zh-CN": "鱼类的售价提升5%"
@@ -2170,24 +2170,24 @@
         0
       ],
       "name": "干燥机／改",
-      "description": "解锁「干燥机／改」的制作方式",
+      "description": "解锁“干燥机／改”的制作方式",
       "nameTranslations": {
         "ja": "乾燥機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Dehydrator Mk II",
+        "fr": "Séchoir +",
+        "es": "Deshidratador de alimentos II",
         "zh-TW": "乾燥機／改",
         "ko": "건조기/개량판",
         "zh-CN": "干燥机／改"
       },
       "descriptionTranslations": {
         "ja": "「乾燥機／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Dehydrators",
+        "fr": "Permet de fabriquer un séchoir +.",
+        "es": "Aprendes a fabricar \"Deshidratador de alimentos II\".",
         "zh-TW": "解鎖「乾燥機／改」的製作方式",
         "ko": "「건조기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「干燥机／改」的制作方式"
+        "zh-CN": "解锁“干燥机／改”的制作方式"
       }
     },
     {
@@ -2212,24 +2212,24 @@
         0
       ],
       "name": "织布机／改",
-      "description": "解锁「织布机／改」的制作方式",
+      "description": "解锁“织布机／改”的制作方式",
       "nameTranslations": {
         "ja": "織り機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Loom Mk II",
+        "fr": "Métier à tisser +",
+        "es": "Telar II",
         "zh-TW": "織布機／改",
         "ko": "방직기/개량판",
         "zh-CN": "织布机／改"
       },
       "descriptionTranslations": {
         "ja": "「織り機／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Looms",
+        "fr": "Permet de fabriquer un métier à tisser +.",
+        "es": "Aprendes a fabricar \"Telar II\".",
         "zh-TW": "解鎖「織布機／改」的製作方式",
         "ko": "「방직기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「织布机／改」的制作方式"
+        "zh-CN": "解锁“织布机／改”的制作方式"
       }
     },
     {
@@ -2257,18 +2257,18 @@
       "description": "畜产品加工品的售价提升5%",
       "nameTranslations": {
         "ja": "畜産加工品の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship (AP)",
+        "fr": "Vente de prod. d’élevage transformés",
+        "es": "Venta de productos procesados ganaderos",
         "zh-TW": "畜產品加工品出貨術",
         "ko": "축산 가공품 출하술",
         "zh-CN": "畜产品加工品出货术"
       },
       "descriptionTranslations": {
         "ja": "畜産加工品の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed animal product sales price +5%",
+        "fr": "Prix de vente produits d’élevage transformés +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "畜產品加工品的售價提昇5%",
         "ko": "축산 가공품의 판매 가격이 5% 상승한다.",
         "zh-CN": "畜产品加工品的售价提升5%"
@@ -2299,18 +2299,18 @@
       "description": "居民好感度更容易上升",
       "nameTranslations": {
         "ja": "仲良し術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Befriending Finesse",
+        "fr": "Technique de sociabilisation",
+        "es": "Afinidad social",
         "zh-TW": "友好術",
         "ko": "친밀술",
         "zh-CN": "友好术"
       },
       "descriptionTranslations": {
         "ja": "住人との好感度が上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain villager affection more easily",
+        "fr": "Hausse du niveau d’affinité avec les villageois accélérée.",
+        "es": "Aumenta la facilidad para subir la afinidad con los habitantes.",
         "zh-TW": "居民好感度更容易上昇",
         "ko": "주민과의 호감도가 더 잘 오르게 된다.",
         "zh-CN": "居民好感度更容易上升"
@@ -2342,18 +2342,18 @@
       "description": "采掘石头时，可额外获得1个石头",
       "nameTranslations": {
         "ja": "採掘の技術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mining Finesse",
+        "fr": "Technique de minage",
+        "es": "Técnica de minería",
         "zh-TW": "採掘技術",
         "ko": "채굴 기술",
         "zh-CN": "采掘技术"
       },
       "descriptionTranslations": {
         "ja": "石を採掘した際、石が１個多く採れる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rock mining yield +1",
+        "fr": "Permet d’obtenir 1 pierre en plus par rocher.",
+        "es": "Al minar piedra, obtienes 1 unidad adicional.",
         "zh-TW": "採掘石頭時，可額外獲得1個石頭",
         "ko": "돌을 채굴할 때, 돌을 1개 더 획득한다.",
         "zh-CN": "采掘石头时，可额外获得1个石头"
@@ -2385,18 +2385,18 @@
       "description": "作物的售价提升5%",
       "nameTranslations": {
         "ja": "作物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Farming Salesmanship",
+        "fr": "Vente des récoltes agricoles",
+        "es": "Venta de cultivos",
         "zh-TW": "作物出貨術",
         "ko": "작물 출하술",
         "zh-CN": "作物出货术"
       },
       "descriptionTranslations": {
         "ja": "作物の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Crop sales price +5%",
+        "fr": "Prix de vente des récoltes +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "作物的售價提昇5%",
         "ko": "작물의 판매 가격이 5% 상승한다.",
         "zh-CN": "作物的售价提升5%"
@@ -2424,24 +2424,24 @@
         1
       ],
       "name": "榨油机／改",
-      "description": "解锁「榨油机／改」的制作方式",
+      "description": "解锁“榨油机／改”的制作方式",
       "nameTranslations": {
         "ja": "搾油機／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Oil Press Mk II",
+        "fr": "Presse à huile +",
+        "es": "Prensa de aceite II",
         "zh-TW": "榨油機／改",
         "ko": "착유기/개량판",
         "zh-CN": "榨油机／改"
       },
       "descriptionTranslations": {
         "ja": "「搾油機／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Oil Presses",
+        "fr": "Permet de fabriquer une presse à huile +.",
+        "es": "Aprendes a fabricar \"Prensa de aceite II\".",
         "zh-TW": "解鎖「榨油機／改」的製作方式",
         "ko": "「착유기/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「榨油机／改」的制作方式"
+        "zh-CN": "解锁“榨油机／改”的制作方式"
       }
     },
     {
@@ -2466,24 +2466,24 @@
         0
       ],
       "name": "酿造桶／改",
-      "description": "解锁「酿造桶／改」的制作方式",
+      "description": "解锁“酿造桶／改”的制作方式",
       "nameTranslations": {
         "ja": "醸造樽／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Brewing Barrel Mk II",
+        "fr": "Fût de brassage +",
+        "es": "Fermentador II",
         "zh-TW": "釀造桶／改",
         "ko": "양조통/개량판",
         "zh-CN": "酿造桶／改"
       },
       "descriptionTranslations": {
         "ja": "「醸造樽／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Brewing Barrels",
+        "fr": "Permet de fabriquer un fût de brassage +.",
+        "es": "Aprendes a fabricar \"Fermentador II\".",
         "zh-TW": "解鎖「釀造桶／改」的製作方式",
         "ko": "「양조통/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「酿造桶／改」的制作方式"
+        "zh-CN": "解锁“酿造桶／改”的制作方式"
       }
     },
     {
@@ -2511,18 +2511,18 @@
       "description": "砍伐树木时，可额外获得1个木材",
       "nameTranslations": {
         "ja": "樹木の伐採術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Logging Finesse",
+        "fr": "Technique d’abattage d’arbres",
+        "es": "Tala de árboles",
         "zh-TW": "樹木砍伐術",
         "ko": "나무 벌채술",
         "zh-CN": "树木砍伐术"
       },
       "descriptionTranslations": {
         "ja": "樹木の伐採時、木材が１個多く採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree chopping yield +1",
+        "fr": "Permet d’obtenir 1 bois en plus par arbre abattu.",
+        "es": "Al talar árboles, obtienes 1 unidad adicional de madera.",
         "zh-TW": "砍伐樹木時，可額外獲得1個木材",
         "ko": "나무를 벌채할 때, 목재를 1개 더 채집한다.",
         "zh-CN": "砍伐树木时，可额外获得1个木材"
@@ -2553,18 +2553,18 @@
       "description": "狩猎报酬物的售价提升5%",
       "nameTranslations": {
         "ja": "獲物の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting Salesmanship",
+        "fr": "Vente du gibier",
+        "es": "Venta de piezas de caza",
         "zh-TW": "獵物出貨術",
         "ko": "사냥감 출하술",
         "zh-CN": "猎物出货术"
       },
       "descriptionTranslations": {
         "ja": "狩りの報酬物の売価が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting reward sales price +5%",
+        "fr": "Prix de vente du gibier +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "狩獵報酬物的售價提昇5%",
         "ko": "사냥 보상물의 판매 가격이 5% 상승한다.",
         "zh-CN": "狩猎报酬物的售价提升5%"
@@ -2595,18 +2595,18 @@
       "description": "鱼类的售价提升10%",
       "nameTranslations": {
         "ja": "魚の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish Shipping Technique+",
+        "fr": "Vente du poisson +",
+        "es": "Venta de pescado +",
         "zh-TW": "魚類出貨術＋",
         "ko": "물고기 출하술+",
         "zh-CN": "鱼类出货术＋"
       },
       "descriptionTranslations": {
         "ja": "魚の売価が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish sales price +10%",
+        "fr": "Prix de vente des poissons +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "魚類的售價提昇10%",
         "ko": "물고기의 판매 가격이 10% 상승한다.",
         "zh-CN": "鱼类的售价提升10%"
@@ -2637,18 +2637,18 @@
       "description": "作物加工品的售价提升10%",
       "nameTranslations": {
         "ja": "作物加工品の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship+ (C)",
+        "fr": "Vente de prod. agricoles transformés +",
+        "es": "Venta de productos agrícolas procesados +",
         "zh-TW": "作物加工品出貨術＋",
         "ko": "작물 가공품 출하술+",
         "zh-CN": "作物加工品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "作物加工品の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed crop product sales price +10%",
+        "fr": "Prix de vente produits agricoles transformés +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "作物加工品的售價提昇10%",
         "ko": "작물 가공품의 판매 가격이 10% 상승한다.",
         "zh-CN": "作物加工品的售价提升10%"
@@ -2680,18 +2680,18 @@
       "description": "动物亲密度更加容易上升",
       "nameTranslations": {
         "ja": "動物仲良し術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Domestication Finesse+",
+        "fr": "Ami des bêtes +",
+        "es": "Afinidad con animales +",
         "zh-TW": "動物友好術＋",
         "ko": "동물 친밀술+",
         "zh-CN": "动物友好术＋"
       },
       "descriptionTranslations": {
         "ja": "動物のなつき度がもっと上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain animal affection even more easily",
+        "fr": "Hausse du niveau d’affection des animaux accélérée.",
+        "es": "Aumenta aún más la facilidad para subir el afecto de los animales.",
         "zh-TW": "動物親密度更加容易上昇",
         "ko": "동물의 친밀도가 더 잘 오르게 된다.",
         "zh-CN": "动物亲密度更加容易上升"
@@ -2722,18 +2722,18 @@
       "description": "可在多个收纳箱之间移动内容物",
       "nameTranslations": {
         "ja": "収納箱の連結術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Linked Storage Chests",
+        "fr": "Boîtes de rangement connectées",
+        "es": "Conexión de arcones",
         "zh-TW": "收納箱連結術",
         "ko": "수납함 연결술",
         "zh-CN": "收纳箱连结术"
       },
       "descriptionTranslations": {
         "ja": "複数の収納箱の間で、中身を移動できるようになる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to move items between storage chests",
+        "fr": "Permet de déplacer le contenu entre plusieurs boîtes.",
+        "es": "Permite mover objetos entre varios arcones.",
         "zh-TW": "可在多個收納箱之間移動內容物",
         "ko": "여러 수납함 사이에서 내용물을 이동할 수 있게 된다.",
         "zh-CN": "可在多个收纳箱之间移动内容物"
@@ -2765,18 +2765,18 @@
       "description": "宝石的售价提升5%",
       "nameTranslations": {
         "ja": "宝石の出荷術",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone Salesmanship",
+        "fr": "Vente des minéraux",
+        "es": "Venta de joyas",
         "zh-TW": "寶石出貨術",
         "ko": "보석 출하술",
         "zh-CN": "宝石出货术"
       },
       "descriptionTranslations": {
         "ja": "宝石の売値が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone sales price +5%",
+        "fr": "Prix de vente des minéraux +5 %.",
+        "es": "Aumenta un 5 % el precio de venta.",
         "zh-TW": "寶石的售價提昇5%",
         "ko": "보석의 판매 가격이 5% 상승한다.",
         "zh-CN": "宝石的售价提升5%"
@@ -2807,18 +2807,18 @@
       "description": "作物的售价提升10%",
       "nameTranslations": {
         "ja": "作物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Farming Salesmanship+",
+        "fr": "Vente des récoltes agricoles +",
+        "es": "Venta de cultivos +",
         "zh-TW": "作物出貨術＋",
         "ko": "작물 출하술+",
         "zh-CN": "作物出货术＋"
       },
       "descriptionTranslations": {
         "ja": "作物の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Crop sales price +10%",
+        "fr": "Prix de vente des récoltes +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "作物的售價提昇10%",
         "ko": "작물의 판매 가격이 10% 상승한다.",
         "zh-CN": "作物的售价提升10%"
@@ -2849,18 +2849,18 @@
       "description": "畜产品的售价提升10%",
       "nameTranslations": {
         "ja": "畜産物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ranching Salesmanship+",
+        "fr": "Vente des produits d’élevage +",
+        "es": "Venta de productos pecuarios +",
         "zh-TW": "畜產品出貨術＋",
         "ko": "축산물 출하술+",
         "zh-CN": "畜产品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "畜産物の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal product sales price +10%",
+        "fr": "Prix de vente des produits d’élevage +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "畜產品的售價提昇10%",
         "ko": "축산물의 판매 가격이 10% 상승한다.",
         "zh-CN": "畜产品的售价提升10%"
@@ -2889,24 +2889,24 @@
         0
       ],
       "name": "普通洒水器",
-      "description": "解锁「普通洒水器」的制作方式",
+      "description": "解锁“普通洒水器”的制作方式",
       "nameTranslations": {
         "ja": "普通のスプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Normal Sprinkler",
+        "fr": "Arroseur normal",
+        "es": "Aspersor normal",
         "zh-TW": "普通灑水器",
         "ko": "평범한 스프링클러",
         "zh-CN": "普通洒水器"
       },
       "descriptionTranslations": {
         "ja": "「普通のスプリンクラー」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Normal Sprinklers",
+        "fr": "Permet de fabriquer un arroseur normal.",
+        "es": "Aprendes a fabricar \"Aspersor normal\".",
         "zh-TW": "解鎖「普通灑水器」的製作方式",
         "ko": "「평범한 스프링클러」 제작법을 습득한다.",
-        "zh-CN": "解锁「普通洒水器」的制作方式"
+        "zh-CN": "解锁“普通洒水器”的制作方式"
       }
     },
     {
@@ -2932,24 +2932,24 @@
         0
       ],
       "name": "白色鱼饵",
-      "description": "解锁「白色鱼饵」的制作方式",
+      "description": "解锁“白色鱼饵”的制作方式",
       "nameTranslations": {
         "ja": "白い撒き餌",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "White Fishing Bait",
+        "fr": "Appât blanc",
+        "es": "Engodo blanco",
         "zh-TW": "白色魚餌",
         "ko": "하얀 밑밥",
         "zh-CN": "白色鱼饵"
       },
       "descriptionTranslations": {
         "ja": "「白い撒き餌」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make White Fishing Bait",
+        "fr": "Permet de fabriquer un appât blanc.",
+        "es": "Aprendes a fabricar \"Engodo blanco\".",
         "zh-TW": "解鎖「白色魚餌」的製作方式",
         "ko": "「하얀 밑밥」 제작법을 습득한다.",
-        "zh-CN": "解锁「白色鱼饵」的制作方式"
+        "zh-CN": "解锁“白色鱼饵”的制作方式"
       }
     },
     {
@@ -2977,18 +2977,18 @@
       "description": "砍伐树木时，可额外获得2个木材",
       "nameTranslations": {
         "ja": "樹木の伐採術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Logging Finesse+",
+        "fr": "Technique d’abattage d’arbres +",
+        "es": "Tala de árboles +",
         "zh-TW": "樹木砍伐術＋",
         "ko": "나무 벌채술+",
         "zh-CN": "树木砍伐术＋"
       },
       "descriptionTranslations": {
         "ja": "樹木の伐採時、木材が２個多く採取できる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Tree chopping yield +2",
+        "fr": "Permet d’obtenir 2 bois en plus par arbre abattu.",
+        "es": "Al talar árboles, obtienes 2 unidades adicionales de madera.",
         "zh-TW": "砍伐樹木時，可額外獲得2個木材",
         "ko": "나무를 벌채할 때, 목재를 2개 더 채집한다.",
         "zh-CN": "砍伐树木时，可额外获得2个木材"
@@ -3020,18 +3020,18 @@
       "description": "居民好感度更加容易上升",
       "nameTranslations": {
         "ja": "仲良し術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Befriending Finesse+",
+        "fr": "Technique de sociabilisation +",
+        "es": "Afinidad social +",
         "zh-TW": "友好術＋",
         "ko": "친밀술+",
         "zh-CN": "友好术＋"
       },
       "descriptionTranslations": {
         "ja": "住人との好感度がもっと上がりやすくなる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gain villager affection even more easily",
+        "fr": "Hausse du niveau d’affinité avec les villageois accélérée.",
+        "es": "Aumenta aún más la afinidad con los habitantes.",
         "zh-TW": "居民好感度更加容易上昇",
         "ko": "주민과의 호감도가 훨씬 더 잘 오르게 된다.",
         "zh-CN": "居民好感度更加容易上升"
@@ -3062,18 +3062,18 @@
       "description": "在采石场发现矿脉的概率提升5%",
       "nameTranslations": {
         "ja": "鉱脈の発見術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Prospecting Finesse+",
+        "fr": "Découverte de filons +",
+        "es": "Descubrimiento de vetas +",
         "zh-TW": "礦脈探查術＋",
         "ko": "광맥 발견술+",
         "zh-CN": "矿脉探查术＋"
       },
       "descriptionTranslations": {
         "ja": "石切場で鉱脈が見つかる確率が５％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Chance of finding quarry deposits +5%",
+        "fr": "Probabilité de trouver des filons à la carrière +5 %.",
+        "es": "Aumenta un 5 % la probabilidad de encontrar vetas en la cantera.",
         "zh-TW": "在採石場發現礦脈的機率提昇5%",
         "ko": "채석장에서 광맥을 발견할 확률이 5% 상승한다.",
         "zh-CN": "在采石场发现矿脉的概率提升5%"
@@ -3101,24 +3101,24 @@
         0
       ],
       "name": "熟成桶／改",
-      "description": "解锁「熟成桶／改」的制作方式",
+      "description": "解锁“熟成桶／改”的制作方式",
       "nameTranslations": {
         "ja": "熟成樽／改",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Aging Barrel Mk II",
+        "fr": "Fût de maturation +",
+        "es": "Barrica de envejecimiento II",
         "zh-TW": "熟成桶／改",
         "ko": "숙성통/개량판",
         "zh-CN": "熟成桶／改"
       },
       "descriptionTranslations": {
         "ja": "「熟成樽／改」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make improved Aging Barrels",
+        "fr": "Permet de fabriquer un fût de maturation +.",
+        "es": "Aprendes a fabricar \"Barrica de envejecimiento II\".",
         "zh-TW": "解鎖「熟成桶／改」的製作方式",
         "ko": "「숙성통/개량판」 제작법을 습득한다.",
-        "zh-CN": "解锁「熟成桶／改」的制作方式"
+        "zh-CN": "解锁“熟成桶／改”的制作方式"
       }
     },
     {
@@ -3146,18 +3146,18 @@
       "description": "狩猎报酬物的售价提升10%",
       "nameTranslations": {
         "ja": "獲物の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting Salesmanship+",
+        "fr": "Vente du gibier +",
+        "es": "Venta de piezas de caza +",
         "zh-TW": "獵物出貨術＋",
         "ko": "사냥감 출하술+",
         "zh-CN": "猎物出货术＋"
       },
       "descriptionTranslations": {
         "ja": "狩りの報酬物の売価が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting reward sales price +10%",
+        "fr": "Prix de vente du gibier +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "狩獵報酬物的售價提昇10%",
         "ko": "사냥 보상물의 판매 가격이 10% 상승한다.",
         "zh-CN": "狩猎报酬物的售价提升10%"
@@ -3188,18 +3188,18 @@
       "description": "宝石的售价提升10%",
       "nameTranslations": {
         "ja": "宝石の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone Salesmanship+",
+        "fr": "Vente des minéraux +",
+        "es": "Venta de joyas +",
         "zh-TW": "寶石出貨術＋",
         "ko": "보석 출하술+",
         "zh-CN": "宝石出货术＋"
       },
       "descriptionTranslations": {
         "ja": "宝石の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Gemstone sales price +10%",
+        "fr": "Prix de vente des minéraux +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "寶石的售價提昇10%",
         "ko": "보석의 판매 가격이 10% 상승한다.",
         "zh-CN": "宝石的售价提升10%"
@@ -3230,18 +3230,18 @@
       "description": "畜产品加工品的售价提升10%",
       "nameTranslations": {
         "ja": "畜産加工品の出荷術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processing Salesmanship+ (AP)",
+        "fr": "Vente de prod. d’élevage transformés +",
+        "es": "Venta de prod. pecuarios procesados +",
         "zh-TW": "畜產品加工品出貨術＋",
         "ko": "축산 가공품 출하술+",
         "zh-CN": "畜产品加工品出货术＋"
       },
       "descriptionTranslations": {
         "ja": "畜産加工品の売値が１０％上昇する",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed animal product sale price +10%",
+        "fr": "Prix de vente produits d’élevage transformés +10 %.",
+        "es": "Aumenta un 10 % el precio de venta.",
         "zh-TW": "畜產品加工品的售價提昇10%",
         "ko": "축산 가공품의 판매 가격이 10% 상승한다.",
         "zh-CN": "畜产品加工品的售价提升10%"
@@ -3269,24 +3269,24 @@
         2
       ],
       "name": "强化洒水器",
-      "description": "解锁「强化洒水器」的制作方式",
+      "description": "解锁“强化洒水器”的制作方式",
       "nameTranslations": {
         "ja": "強化スプリンクラー",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Upgraded Sprinkler",
+        "fr": "Arroseur supérieur",
+        "es": "Aspersor II",
         "zh-TW": "強化灑水器",
         "ko": "강화 스프링클러",
         "zh-CN": "强化洒水器"
       },
       "descriptionTranslations": {
         "ja": "「強化スプリンクラー」の作り方を覚える",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn to make Upgraded Sprinklers",
+        "fr": "Permet de fabriquer un arroseur supérieur.",
+        "es": "Aprendes a fabricar \"Aspersor II\".",
         "zh-TW": "解鎖「強化灑水器」的製作方式",
         "ko": "「강화 스프링클러」 제작법을 습득한다.",
-        "zh-CN": "解锁「强化洒水器」的制作方式"
+        "zh-CN": "解锁“强化洒水器”的制作方式"
       }
     },
     {
@@ -3314,18 +3314,18 @@
       "description": "采掘石头时，可额外获得2个石头",
       "nameTranslations": {
         "ja": "採掘の技術+",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mining Finesse+",
+        "fr": "Technique de minage +",
+        "es": "Técnica de minería +",
         "zh-TW": "採掘技術＋",
         "ko": "채굴 기술+",
         "zh-CN": "采掘技术＋"
       },
       "descriptionTranslations": {
         "ja": "石を採掘した際、石が2個多く採れる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rock mining yield +2",
+        "fr": "Permet d’obtenir 2 pierres en plus par rocher.",
+        "es": "Al minar piedra, obtienes 2 unidades adicionales.",
         "zh-TW": "採掘石頭時，可額外獲得2個石頭",
         "ko": "돌을 채굴할 때, 돌을 2개 더 획득한다.",
         "zh-CN": "采掘石头时，可额外获得2个石头"
@@ -3356,18 +3356,18 @@
       "description": "将可使用镰刀收获作物。",
       "nameTranslations": {
         "ja": "カマの強化",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Upgraded Sickle",
+        "fr": "Amélioration de la faucille",
+        "es": "Mejora de hoz",
         "zh-TW": "強化鐮刀",
         "ko": "낫 강화",
         "zh-CN": "强化镰刀"
       },
       "descriptionTranslations": {
         "ja": "カマで作物を収穫できるようになる",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Learn how to harvest crops with a sickle",
+        "fr": "Permet de récolter les cultures à l’aide d’une faucille.",
+        "es": "Ahora puedes cosechar cultivos con la hoz.",
         "zh-TW": "將可使用鐮刀收穫作物。",
         "ko": "낫으로 작물을 수확할 수 있다.",
         "zh-CN": "将可使用镰刀收获作物。"
@@ -3380,9 +3380,9 @@
       "name": "协助林",
       "nameTranslations": {
         "ja": "リンのお手伝い",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rin's Errand",
+        "fr": "Coup de main à Rin",
+        "es": "Ayudar a Rin",
         "zh-TW": "協助林",
         "ko": "린의 심부름",
         "zh-CN": "协助林"
@@ -3401,9 +3401,9 @@
       "name": "交付蔬菜",
       "nameTranslations": {
         "ja": "野菜の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Vegetable Delivery",
+        "fr": "Collecte potagère",
+        "es": "Verduras",
         "zh-TW": "交付蔬菜",
         "ko": "채소 납품",
         "zh-CN": "交付蔬菜"
@@ -3423,9 +3423,9 @@
       "name": "交付水果",
       "nameTranslations": {
         "ja": "果物の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fruit Delivery",
+        "fr": "Collecte de fruits",
+        "es": "Frutas",
         "zh-TW": "交付水果",
         "ko": "과일 납품",
         "zh-CN": "交付水果"
@@ -3445,9 +3445,9 @@
       "name": "交付花卉",
       "nameTranslations": {
         "ja": "花の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Flower Delivery",
+        "fr": "Collecte de fleurs",
+        "es": "Flores",
         "zh-TW": "交付花卉",
         "ko": "꽃 납품",
         "zh-CN": "交付花卉"
@@ -3467,9 +3467,9 @@
       "name": "交付加工品",
       "nameTranslations": {
         "ja": "加工品の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed Delivery",
+        "fr": "Produits transformés",
+        "es": "Productos procesados",
         "zh-TW": "交付加工品",
         "ko": "가공품 납품",
         "zh-CN": "交付加工品"
@@ -3489,9 +3489,9 @@
       "name": "交付畜产品",
       "nameTranslations": {
         "ja": "畜産物の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Ranching Delivery",
+        "fr": "Produits d’élevage",
+        "es": "Productos pecuarios",
         "zh-TW": "交付畜產品",
         "ko": "축산물 납품",
         "zh-CN": "交付畜产品"
@@ -3511,9 +3511,9 @@
       "name": "交付狩猎品",
       "nameTranslations": {
         "ja": "狩猟品の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Hunting Delivery",
+        "fr": "Collecte de gibier",
+        "es": "Productos de caza",
         "zh-TW": "交付狩獵品",
         "ko": "수렵품 납품",
         "zh-CN": "交付狩猎品"
@@ -3533,9 +3533,9 @@
       "name": "交付渔产品",
       "nameTranslations": {
         "ja": "魚の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Fish Delivery",
+        "fr": "Collecte de poisson",
+        "es": "Peces",
         "zh-TW": "交付漁產品",
         "ko": "생선 납품",
         "zh-CN": "交付渔产品"
@@ -3555,9 +3555,9 @@
       "name": "交付奢侈品",
       "nameTranslations": {
         "ja": "高級品の納品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "High-Quality Delivery",
+        "fr": "Collecte d’articles de luxe",
+        "es": "Productos de lujo",
         "zh-TW": "交付奢侈品",
         "ko": "고급품 납품",
         "zh-CN": "交付奢侈品"
@@ -3579,9 +3579,9 @@
       "name": "木材的订单",
       "nameTranslations": {
         "ja": "木材の依頼",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Timber Request",
+        "fr": "Demande de bois",
+        "es": "Encargo de madera",
         "zh-TW": "木材的訂單",
         "ko": "목재 의뢰",
         "zh-CN": "木材的订单"
@@ -3606,9 +3606,9 @@
       "name": "石材的订单",
       "nameTranslations": {
         "ja": "石材の依頼",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mineral Request",
+        "fr": "Demande de pierre",
+        "es": "Encargo de piedra",
         "zh-TW": "石材的訂單",
         "ko": "석재 의뢰",
         "zh-CN": "石材的订单"
@@ -3633,9 +3633,9 @@
       "name": "食品的订单",
       "nameTranslations": {
         "ja": "食品の依頼",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Foodstuff Request",
+        "fr": "Demande de nourriture",
+        "es": "Encargo de alimentos",
         "zh-TW": "食品的訂單",
         "ko": "식품 의뢰",
         "zh-CN": "食品的订单"
@@ -3660,9 +3660,9 @@
       "name": "春季蔬菜",
       "nameTranslations": {
         "ja": "春の野菜",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spring Vegetables",
+        "fr": "Légumes printaniers",
+        "es": "Verduras de primavera",
         "zh-TW": "春季蔬菜",
         "ko": "봄의 채소",
         "zh-CN": "春季蔬菜"
@@ -3692,9 +3692,9 @@
       "name": "夏季蔬菜",
       "nameTranslations": {
         "ja": "夏の野菜",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Summer Vegetables",
+        "fr": "Légumes estivaux",
+        "es": "Verduras de verano",
         "zh-TW": "夏季蔬菜",
         "ko": "여름의 채소",
         "zh-CN": "夏季蔬菜"
@@ -3724,9 +3724,9 @@
       "name": "秋季蔬菜",
       "nameTranslations": {
         "ja": "秋の野菜",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Autumn Vegetables",
+        "fr": "Légumes automnaux",
+        "es": "Verduras de otoño",
         "zh-TW": "秋季蔬菜",
         "ko": "가을의 채소",
         "zh-CN": "秋季蔬菜"
@@ -3756,9 +3756,9 @@
       "name": "冬季蔬菜",
       "nameTranslations": {
         "ja": "冬の野菜",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Winter Vegetables",
+        "fr": "Légumes hivernaux",
+        "es": "Verduras de invierno",
         "zh-TW": "冬季蔬菜",
         "ko": "겨울의 채소",
         "zh-CN": "冬季蔬菜"
@@ -3788,9 +3788,9 @@
       "name": "春季水果",
       "nameTranslations": {
         "ja": "春の果物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spring Fruits",
+        "fr": "Fruits printaniers",
+        "es": "Frutas de primavera",
         "zh-TW": "春季水果",
         "ko": "봄의 과일",
         "zh-CN": "春季水果"
@@ -3820,9 +3820,9 @@
       "name": "夏季水果",
       "nameTranslations": {
         "ja": "夏の果物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Summer Fruits",
+        "fr": "Fruits estivaux",
+        "es": "Frutas de verano",
         "zh-TW": "夏季水果",
         "ko": "여름의 과일",
         "zh-CN": "夏季水果"
@@ -3852,9 +3852,9 @@
       "name": "秋季水果",
       "nameTranslations": {
         "ja": "秋の果物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Autumn Fruits",
+        "fr": "Fruits automnaux",
+        "es": "Frutas de otoño",
         "zh-TW": "秋季水果",
         "ko": "가을의 과일",
         "zh-CN": "秋季水果"
@@ -3884,9 +3884,9 @@
       "name": "冬季水果",
       "nameTranslations": {
         "ja": "冬の果物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Winter Fruits",
+        "fr": "Fruits hivernaux",
+        "es": "Frutas de invierno",
         "zh-TW": "冬季水果",
         "ko": "겨울의 과일",
         "zh-CN": "冬季水果"
@@ -3916,9 +3916,9 @@
       "name": "春季花卉",
       "nameTranslations": {
         "ja": "春の花",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Spring Flowers",
+        "fr": "Fleurs printanières",
+        "es": "Flores de primavera",
         "zh-TW": "春季花卉",
         "ko": "봄의 꽃",
         "zh-CN": "春季花卉"
@@ -3948,9 +3948,9 @@
       "name": "夏季花卉",
       "nameTranslations": {
         "ja": "夏の花",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Summer Flowers",
+        "fr": "Fleurs estivales",
+        "es": "Flores de verano",
         "zh-TW": "夏季花卉",
         "ko": "여름의 꽃",
         "zh-CN": "夏季花卉"
@@ -3980,9 +3980,9 @@
       "name": "秋季花卉",
       "nameTranslations": {
         "ja": "秋の花",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Autumn Flowers",
+        "fr": "Fleurs automnales",
+        "es": "Flores de otoño",
         "zh-TW": "秋季花卉",
         "ko": "가을의 꽃",
         "zh-CN": "秋季花卉"
@@ -4012,9 +4012,9 @@
       "name": "冬季花卉",
       "nameTranslations": {
         "ja": "冬の花",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Winter Flowers",
+        "fr": "Fleurs hivernales",
+        "es": "Flores de invierno",
         "zh-TW": "冬季花卉",
         "ko": "겨울의 꽃",
         "zh-CN": "冬季花卉"
@@ -4044,9 +4044,9 @@
       "name": "腌渍物",
       "nameTranslations": {
         "ja": "漬物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Pickles",
+        "fr": "Saumures",
+        "es": "Encurtidos",
         "zh-TW": "醃漬物",
         "ko": "채소 절임",
         "zh-CN": "腌渍物"
@@ -4076,9 +4076,9 @@
       "name": "酒",
       "nameTranslations": {
         "ja": "お酒",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Alcohols",
+        "fr": "Alcools",
+        "es": "Alcohol",
         "zh-TW": "酒",
         "ko": "술",
         "zh-CN": "酒"
@@ -4108,9 +4108,9 @@
       "name": "调味料",
       "nameTranslations": {
         "ja": "調味料",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Seasonings",
+        "fr": "Assaisonnements",
+        "es": "Condimentos",
         "zh-TW": "調味料",
         "ko": "조미료",
         "zh-CN": "调味料"
@@ -4140,9 +4140,9 @@
       "name": "加工品",
       "nameTranslations": {
         "ja": "加工品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Processed Products",
+        "fr": "Divers",
+        "es": "Procesados",
         "zh-TW": "加工品",
         "ko": "가공품",
         "zh-CN": "加工品"
@@ -4172,9 +4172,9 @@
       "name": "蛋",
       "nameTranslations": {
         "ja": "タマゴ",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Eggs",
+        "fr": "Œufs",
+        "es": "Huevos",
         "zh-TW": "蛋",
         "ko": "알",
         "zh-CN": "蛋"
@@ -4204,9 +4204,9 @@
       "name": "畜产品",
       "nameTranslations": {
         "ja": "畜産品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal Products",
+        "fr": "Produits fermiers",
+        "es": "Productos pecuarios",
         "zh-TW": "畜產品",
         "ko": "축산품",
         "zh-CN": "畜产品"
@@ -4236,9 +4236,9 @@
       "name": "家畜毛",
       "nameTranslations": {
         "ja": "家畜の毛",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal Fibers",
+        "fr": "Fourrures",
+        "es": "Pelaje animal",
         "zh-TW": "家畜毛",
         "ko": "가축의 털",
         "zh-CN": "家畜毛"
@@ -4268,9 +4268,9 @@
       "name": "家畜肉",
       "nameTranslations": {
         "ja": "家畜の肉",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Animal Meats",
+        "fr": "Viandes",
+        "es": "Carne animal",
         "zh-TW": "家畜肉",
         "ko": "가축의 고기",
         "zh-CN": "家畜肉"
@@ -4300,9 +4300,9 @@
       "name": "小动物的材料",
       "nameTranslations": {
         "ja": "小動物の素材",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small-Game Spoils",
+        "fr": "Petits animaux",
+        "es": "Animales pequeños",
         "zh-TW": "小動物的材料",
         "ko": "소형 동물의 재료",
         "zh-CN": "小动物的材料"
@@ -4327,9 +4327,9 @@
       "name": "小动物的稀有材料",
       "nameTranslations": {
         "ja": "小動物の希少素材",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rare Small-Game Spoils",
+        "fr": "Petits animaux rares",
+        "es": "Animales peq. raros",
         "zh-TW": "小動物的稀有材料",
         "ko": "소형 동물의 희귀 재료",
         "zh-CN": "小动物的稀有材料"
@@ -4359,9 +4359,9 @@
       "name": "大型动物的材料",
       "nameTranslations": {
         "ja": "大型動物の素材",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Big-Game Spoils",
+        "fr": "Grands animaux",
+        "es": "Animales grandes",
         "zh-TW": "大型動物的材料",
         "ko": "대형 동물의 재료",
         "zh-CN": "大型动物的材料"
@@ -4386,9 +4386,9 @@
       "name": "大型动物的稀有材料",
       "nameTranslations": {
         "ja": "大型動物の希少素材",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rare Big-Game Spoils",
+        "fr": "Grands animaux rares",
+        "es": "Animales gra. raros",
         "zh-TW": "大型動物的稀有材料",
         "ko": "대형 동물의 희귀 재료",
         "zh-CN": "大型动物的稀有材料"
@@ -4418,9 +4418,9 @@
       "name": "小型鱼",
       "nameTranslations": {
         "ja": "小型の魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Small Fish",
+        "fr": "Poissons petits",
+        "es": "Peces pequeños",
         "zh-TW": "小型魚",
         "ko": "소형 어류",
         "zh-CN": "小型鱼"
@@ -4450,9 +4450,9 @@
       "name": "中型鱼",
       "nameTranslations": {
         "ja": "中型の魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Medium Fish",
+        "fr": "Poissons moyens",
+        "es": "Peces medianos",
         "zh-TW": "中型魚",
         "ko": "중형 어류",
         "zh-CN": "中型鱼"
@@ -4482,9 +4482,9 @@
       "name": "大型鱼",
       "nameTranslations": {
         "ja": "大型の魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Large Fish",
+        "fr": "Poissons massifs",
+        "es": "Peces grandes",
         "zh-TW": "大型魚",
         "ko": "대형 어류",
         "zh-CN": "大型鱼"
@@ -4514,9 +4514,9 @@
       "name": "梦幻之鱼",
       "nameTranslations": {
         "ja": "幻の魚",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Mythical Fish",
+        "fr": "Poissons fantômes",
+        "es": "Peces legendarios",
         "zh-TW": "夢幻之魚",
         "ko": "환상의 어류",
         "zh-CN": "梦幻之鱼"
@@ -4546,9 +4546,9 @@
       "name": "高质量作物",
       "nameTranslations": {
         "ja": "高品質の作物",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "High-Quality Crops",
+        "fr": "Récoltes +",
+        "es": "Cultivos de calidad",
         "zh-TW": "高品質作物",
         "ko": "고품질의 작물",
         "zh-CN": "高质量作物"
@@ -4578,9 +4578,9 @@
       "name": "高质量畜产品",
       "nameTranslations": {
         "ja": "高品質の畜産品",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "High-Quality Animal Products",
+        "fr": "Produits fermiers +",
+        "es": "P. pecuarios de calidad",
         "zh-TW": "高品質畜產品",
         "ko": "고품질의 축산품",
         "zh-CN": "高质量畜产品"
@@ -4610,9 +4610,9 @@
       "name": "高质量家畜毛",
       "nameTranslations": {
         "ja": "高品質な家畜の毛",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "High-Quality Animal Fibers",
+        "fr": "Fourrures +",
+        "es": "Pelaje de calidad",
         "zh-TW": "高品質家畜毛",
         "ko": "고품질의 가축의 털",
         "zh-CN": "高质量家畜毛"
@@ -4642,9 +4642,9 @@
       "name": "稀有宝石",
       "nameTranslations": {
         "ja": "希少な宝石",
-        "slot-1": "",
-        "slot-2": "",
-        "slot-3": "",
+        "en": "Rare Gemstones",
+        "fr": "Minéraux +",
+        "es": "Joyas raras",
         "zh-TW": "稀有寶石",
         "ko": "희소한 보석",
         "zh-CN": "稀有宝石"

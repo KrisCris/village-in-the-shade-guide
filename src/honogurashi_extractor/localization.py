@@ -122,6 +122,9 @@ _TRADITIONAL_TO_SIMPLIFIED = str.maketrans(
 )
 
 
+NATIVE_LOCALES = ("ja", "en", "fr", "es", "zh-TW", "ko", "zh-CN")
+
+
 def build_name(
     *, ja: str, zh_hant: str, internal: str, overrides: Mapping[str, str],
     translations: Mapping[str, str] | None = None,
@@ -153,8 +156,9 @@ def build_name(
 
 
 def localized_block(group: tuple[str, ...], start: int, language_count: int = 6) -> dict[str, str]:
-    """Preserve native slot order, including the three reserved empty slots."""
-    locales = ("ja", "slot-1", "slot-2", "slot-3", "zh-TW", "ko", "zh-CN")
+    """Preserve native slot order. Build 25640656 filled the three slots that
+    25311578 left empty with English, French and Spanish."""
+    locales = NATIVE_LOCALES
     return {locale: group[start + index] if start + index < len(group) else ""
             for index, locale in enumerate(locales[:language_count])}
 

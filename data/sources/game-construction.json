@@ -1,15 +1,15 @@
 {
-  "build_id": "25311578",
+  "build_id": "25640656",
   "source": "construction.dat, facility.dat, gamedefine.dat, event.dat, gameflag.dat, livingtank.dat, secretquest.dat, map_0000_ver120 head; hand-traced scripts listed in tools/extract-construction.py",
   "sha256": {
-    "construction.dat": "c055e1d24376dee24cf0b275fd91454e328c6270c645621045b8e4b86eef4724",
-    "event.dat": "965cd3d35a56b993caf1753e8464c5af6ba8304f5d9819ad8587e233d594ccfe",
-    "facility.dat": "552a5e07d9093e63fc8b6fa51f69cbc5879e529c16048b2b14cbf6fc234901da",
-    "gamedefine.dat": "b2d5e92c88f3cd1dece9a3e79ad5ac90f79889cb8d6465dac3d9bfa2c41ccee0",
-    "gameflag.dat": "3a3677c73b62b7a2158775611c049831b3d323240de4098fbe0d50e94adaa317",
-    "gimmick.dat": "df11eaf6c995fa2f052a2dbb5baf492c3de52e0194d9b01635fc2621414a2109",
+    "construction.dat": "f2263be4eff01da114c1391ec15f0012c5890df039e08308cb7134623083a6c5",
+    "event.dat": "0087c8a5ab83fb4848d06741af74047467a2946233381fe0351095a65d286547",
+    "facility.dat": "edfa1da3e7b07dea02dfcecd5bc6ca465ebd1e4cf118d3bf627bf8002b5ea215",
+    "gamedefine.dat": "db3474fcb09e069565c395b2531f2a90f67c140a37d212c05e7ed9540a15958e",
+    "gameflag.dat": "e921afafd92d3b2434e78609971cb47f37c4ad973288f993388010a8d811102e",
+    "gimmick.dat": "3aae4b76e1311e8b98b9f116b42f2b9fe42877fd8aae2bf9963190447653dc17",
     "livingtank.dat": "a8a3bf3d1c2ee59ad69901f621fc1f845c0450f9d68f78b22e2acfd910b29a89",
-    "map_0000_ver120_aut.ymwr.head": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf",
+    "map_0000_ver120_aut.ymwr.head": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59",
     "secretquest.dat": "5bb88ef5cf63c58406f3377e3fbf54040c7a66138830415885c66aa795663487"
   },
   "scripts": {
@@ -22,12 +22,14 @@
     "facility_id": "FACILITY_ID_CONSTRUCTION_SHED",
     "hours": {
       "ja": "営業時間：AM10:00～PM5:00",
+      "en": "Business Hours: 10:00 AM - 5:00 PM",
       "zh-CN": "营业时间：AM10:00～PM5:00",
       "zh-TW": "營業時間：AM10:00～PM5:00"
     },
     "closed": {
       "ja": "土・日曜休み",
-      "zh-CN": "周六、日公休",
+      "en": "Closed Weekends",
+      "zh-CN": "周六、日休息",
       "zh-TW": "週六、日公休"
     },
     "unlock_flag": {
@@ -53,6 +55,7 @@
       "version": null,
       "description": {
         "ja": "新しくリフォームされた、小さなお家。キッチンが設置され、部屋も少し広くなる。壁紙と床の変更ができるようになる。",
+        "en": "A small, newly renovated house. Installs a kitchen, and increases the size of the interior. Wallpaper and flooring can be changed.",
         "zh-CN": "翻新后的小房屋。可以设置厨房，房间也会稍微变宽敞。并且可以更换房间壁纸与地板的式样。",
         "zh-TW": "翻新後的小房屋。可以設置廚房，房間也會稍微變寬敞。並且可以更換房間壁紙與地板的樣式。"
       }
@@ -79,6 +82,7 @@
       "version": null,
       "description": {
         "ja": "二階が増築されたお家。部屋が増え、土間も少し広くなる。たくさんの家具を置けるようになる。",
+        "en": "A house with an additional floor. Adds rooms, and increases the size of the central living space. Its spaciousness allows for the placement of more furniture.",
         "zh-CN": "增建了二楼的房屋。可以增加房间，玄关处也会稍微变宽敞。并且可以放得下更多家具，",
         "zh-TW": "增建了二樓的房屋。可以增加房間，玄關處也會稍微變寬敞。並且可以放得下更多家具，"
       }
@@ -106,7 +110,8 @@
       "version": null,
       "description": {
         "ja": "木材で建てられたとても広いお家。二階の部屋が広くなる。家の外装を変えることができるようになる。",
-        "zh-CN": "十分宽敞的木造房屋。二楼的房间会变得更加宽敞，并且可以变更房屋的外观。",
+        "en": "A very sizeable wooden house. Its second story has ample amounts of room. Its exterior appearance can be changed.",
+        "zh-CN": "十分宽敞的木结构房屋。二楼的房间会变得更加宽敞，并且可以变更房屋的外观。",
         "zh-TW": "十分寬敞的木造房屋。二樓的房間會變得更加寬敞，並且可以變更房屋的外觀。"
       }
     },
@@ -143,6 +148,7 @@
       "version": null,
       "description": {
         "ja": "古民家風の落ち着いたお家の外装。自宅の見た目だけを変えられる。",
+        "en": "A serene-looking exterior patterned after a traditional Japanese house. Will only change the house's exterior appearance.",
         "zh-CN": "氛围沉稳的古民家房屋外观。只会变更房屋的外观。",
         "zh-TW": "氛圍沉穩的古民家房屋外觀。只會變更房屋的外觀。"
       }
@@ -180,6 +186,7 @@
       "version": null,
       "description": {
         "ja": "自然に溶け込むお家の外装。自宅の見た目だけを変えられる。",
+        "en": "An exterior that blends in seamlessly with the surrounding nature. Will only change the house's exterior appearance.",
         "zh-CN": "与大自然融为一体的房屋外观。只会变更房屋的外观。",
         "zh-TW": "與大自然融為一體的房屋外觀。只會變更房屋的外觀。"
       }
@@ -217,6 +224,7 @@
       "version": null,
       "description": {
         "ja": "レンガの温かみあるお家の外装。自宅の見た目だけを変えられる。",
+        "en": "A warm, brick exterior. Will only change the house's exterior appearance.",
         "zh-CN": "令人感到温馨的房屋外观。只会变更房屋的外观。",
         "zh-TW": "令人感到溫馨的房屋外觀。只會變更房屋的外觀。"
       }
@@ -243,6 +251,7 @@
       "version": null,
       "description": {
         "ja": "お家の下に増築される小部屋。秘密基地みたいでワクワクする。",
+        "en": "A small room below the house's living space. Gives one the sense of having their own secret base.",
         "zh-CN": "在房屋地下增建的小房间。就像是秘密基地一样，令人兴奋。",
         "zh-TW": "在房屋地下增建的小房間。就像是祕密基地一樣，令人興奮。"
       }
@@ -261,6 +270,7 @@
       "version": null,
       "description": {
         "ja": "素材を加工して、道具を強化する作業台。庭には最大３つまで建てられる。３×２マスの建築スペースが必要。",
+        "en": "A tool for processing materials and strengthening equipment. Maximum of 3 to a farm. Requires 3×2 squares of construction space.",
         "zh-CN": "可以加工材料、强化道具的作业台。庭院中最多可建造3座。需要3×2格的建筑空间。",
         "zh-TW": "可以加工材料、強化道具的作業台。庭院中最多可建造3座。需要3×2格的建築空間。"
       }
@@ -279,6 +289,7 @@
       "version": null,
       "description": {
         "ja": "鳥の家畜を、８羽まで飼育できる小屋。庭には最大４軒まで建てられる。６×７マスの建築スペースが必要。",
+        "en": "A coop that can house up to 8 fowl. Maximum of 4 to a farm. Requires 6×7 squares of construction space.",
         "zh-CN": "最多可以饲养8只家禽的鸟屋。庭院中最多可建造4座。需要6×7格的建筑空间。",
         "zh-TW": "最多可以飼養8隻家禽的鳥屋。庭院中最多可建造4座。需要6×7格的建築空間。"
       }
@@ -297,6 +308,7 @@
       "version": null,
       "description": {
         "ja": "広々としたゆとりのある鶏小屋。鳥の家畜を、１２羽まで飼育できる。ホッパーの牧草を自動給餌する機械付き。",
+        "en": "A spacious and comfortable chicken coop. Can house up to 12 fowl. Comes with an automatic feeder.",
         "zh-CN": "拥有大空间的鸡舍。最多可以饲养12只家禽。附带连接储料斗的自动牧草喂食器。",
         "zh-TW": "擁有大空間的雞舍。最多可以飼養12隻家禽。附帶連接儲料斗的自動牧草餵食器。"
       }
@@ -315,6 +327,7 @@
       "version": null,
       "description": {
         "ja": "鳥の家畜を、８羽まで飼育できる小屋。庭には最大４軒まで建てられる。６×７マスの建築スペースが必要。",
+        "en": "A coop that can house up to 8 fowl. Maximum of 4 to a farm. Requires 6×7 squares of construction space.",
         "zh-CN": "最多可以饲养8只家禽的鸟屋。庭院中最多可建造4座。需要6×7格的建筑空间。",
         "zh-TW": "最多可以飼養8隻家禽的鳥屋。庭院中最多可建造4座。需要6×7格的建築空間。"
       }
@@ -333,6 +346,7 @@
       "version": null,
       "description": {
         "ja": "ウシやヒツジを、４頭まで飼育できる小屋。庭には最大４軒まで建てられる。１２×９マスの建築スペースが必要。",
+        "en": "A barn that can house up to 4 cows or sheep. Maximum of 4 to a farm. Requires 12×9 squares of construction space.",
         "zh-CN": "最多可以饲养4头牛或绵羊的畜舍。庭院中最多可建造4座。需要12×9格的建筑空间。",
         "zh-TW": "最多可以飼養4頭牛或綿羊的畜舍。庭院中最多可建造4座。需要12×9格的建築空間。"
       }
@@ -351,6 +365,7 @@
       "version": null,
       "description": {
         "ja": "たくさんの動物を飼える広さの家畜小屋。大きな家畜を、８頭まで飼育できる。",
+        "en": "A barn large enough to raise plenty of animals in. Can house up to 8 large livestock.",
         "zh-CN": "能够饲养许多动物的宽敞畜舍。最多可以饲养8头大型家畜。",
         "zh-TW": "能夠飼養許多動物的寬敞畜舍。最多可以飼養8頭大型家畜。"
       }
@@ -369,6 +384,7 @@
       "version": null,
       "description": {
         "ja": "広々としたゆとりのある家畜小屋。大きな家畜を、１２頭まで飼育できる。ホッパーの牧草を自動給餌する機械付き。",
+        "en": "A spacious and comfortable barn. Can house up to 12 large livestock. Comes with an automatic feeder.",
         "zh-CN": "拥有大空间的畜舍。最多可以饲养12头大型家畜。附带连接储料斗的自动牧草喂食器。",
         "zh-TW": "擁有大空間的畜舍。最多可以飼養12頭大型家畜。附帶連接儲料斗的自動牧草餵食器。"
       }
@@ -387,6 +403,7 @@
       "version": null,
       "description": {
         "ja": "牧草の最大貯蔵量を９９９個に増やす設備。この建物は、庭に１つしか建てられない。３×３マスの建築スペースが必要。",
+        "en": "A facility that increases the hay stockpile capacity to 999 units. Maximum of 1 to a farm. Requires 3×3 squares of construction space.",
         "zh-CN": "能够将牧草的储藏量增加到999份的设备。此建筑物于庭院中最多只可建造1座。需要3×3格的建筑空间。",
         "zh-TW": "能夠將牧草的儲藏量增加到999份的設備。此建築物於庭院中最多只可建造1座。需要3×3格的建築空間。"
       }
@@ -413,6 +430,7 @@
       "version": null,
       "description": {
         "ja": "ウマを３頭まで飼育できる小屋。この建物は、庭に１つしか建てられない。８×４マスの建築スペースが必要。",
+        "en": "A stable that can house up to 3 horses. Maximum of 1 to a farm. Requires 8×4 squares of construction space.",
         "zh-CN": "最多可以饲养3头马的马厩。此建筑物于庭院中最多只可建造1座。需要8×4格的建筑空间。",
         "zh-TW": "最多可以飼養3頭馬的馬廄。此建築物於庭院中最多只可建造1座。需要8×4格的建築空間。"
       }
@@ -431,6 +449,7 @@
       "version": null,
       "description": {
         "ja": "内部の部屋にいろいろな物を置ける建物。庭には最大２軒まで建てられる。５×４マスの建築スペースが必要。",
+        "en": "A building in which various items can be stored. Maximum of 2 to a farm. Requires 5×4 squares of construction space.",
         "zh-CN": "能够在里面放置各种物品的建筑物。庭院中最多可建造2座。需要5×4格的建筑空间。",
         "zh-TW": "能夠在裡面放置各種物品的建築物。庭院中最多可建造2座。需要5×4格的建築空間。"
       }
@@ -455,6 +474,7 @@
       "version": null,
       "description": {
         "ja": "小鳥が訪れ、植物の種を落としていく設備。庭には最大３つまで建てられる。２×２マスの建築スペースが必要。",
+        "en": "A water-filled basin that attracts seed-dropping birds. Maximum of 3 to a farm. Requires 2×2 squares of construction space.",
         "zh-CN": "能够吸引小鸟来访，并掉落植物种子的设施。庭院中最多可建造3座。需要2×2格的建筑空间。",
         "zh-TW": "能夠吸引小鳥來訪，並掉落植物種子的設施。庭院中最多可建造3座。需要2×2格的建築空間。"
       }
@@ -473,6 +493,7 @@
       "version": null,
       "description": {
         "ja": "ジョウロに水を汲むための水場。庭には最大３つまで建てられる。２×２マスの建築スペースが必要。",
+        "en": "A structure from which one can fill a watering can. Maximum of 3 to a farm. Requires 2×2 squares of construction space.",
         "zh-CN": "浇水壶的取水处。庭院中最多可建造3座。需要2×2格的建筑空间。",
         "zh-TW": "澆水壺的取水處。庭院中最多可建造3座。需要2×2格的建築空間。"
       }
@@ -491,6 +512,7 @@
       "version": null,
       "description": {
         "ja": "お魚を１０匹まで入れられる生け簀。庭には最大３つまで建てられる。３×３マスの建築スペースが必要。",
+        "en": "A tank that can house up to 10 fish. Maximum of 3 to a farm. Requires 3×3 squares of construction space.",
         "zh-CN": "最多可容纳10条鱼的养鱼池。庭院中最多可建造3座。需要3×3格的建筑空间。",
         "zh-TW": "最多可容納10條魚的養魚池。庭院中最多可建造3座。需要3×3格的建築空間。"
       }
@@ -515,6 +537,7 @@
       "version": null,
       "description": {
         "ja": "お魚を入れて育てるための、大きな生け簀。お魚が３０匹まで入れられるようになる。",
+        "en": "A large fish tank, which can be used to farm fish. Can house up to 30 fish.",
         "zh-CN": "可以养殖鱼类的大型养鱼池。最多可容纳30条鱼。",
         "zh-TW": "可以養殖魚類的大型養魚池。最多可容納30條魚。"
       }
@@ -533,6 +556,7 @@
       "version": null,
       "description": {
         "ja": "犬のための小さなお家。この建物は、庭に１つしか建てられない。２×３マスの建築スペースが必要。",
+        "en": "A small house for a dog. Maximum of 1 to a farm. Requires 2×3 squares of construction space.",
         "zh-CN": "给狗狗住的小房子。此建筑物于庭院中最多只可建造1座。需要2×3格的建筑空间。",
         "zh-TW": "給狗狗住的小房子。此建築物於庭院中最多只可建造1座。需要2×3格的建築空間。"
       }
@@ -557,6 +581,7 @@
       "version": null,
       "description": {
         "ja": "季節に関係なく作物を育てられる設備。この建物は、庭に１つしか建てられない。９×７マスの建築スペースが必要。",
+        "en": "A facility that will enable you to grow crops regardless of season. Maximum of 1 to a farm. Requires 9×7 squares of construction space.",
         "zh-CN": "能够不分季节种植作物的设施。此建筑物于庭院中最多只可建造1座。需要9×7格的建筑空间。",
         "zh-TW": "能夠不分季節種植作物的設施。此建築物於庭院中最多只可建造1座。需要9×7格的建築空間。"
       }
@@ -581,6 +606,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の壁紙。これが本来のお家の壁。",
+        "en": "Wallpaper intended for remodeling purposes. This is what the house's walls actually look like.",
         "zh-CN": "能够替换房间风格的壁纸。这是这间房子原本的墙壁。",
         "zh-TW": "能夠替換房間風格的壁紙。這是這間房子原本的牆壁。"
       }
@@ -605,6 +631,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の壁紙。白くてどんな家具とも合いやすい。",
+        "en": "Wallpaper intended for remodeling purposes. Its vibrant ivory goes well with any furniture.",
         "zh-CN": "能够替换房间风格的壁纸。白色跟任何家具都很搭。",
         "zh-TW": "能夠替換房間風格的壁紙。白色跟任何家具都很搭。"
       }
@@ -629,7 +656,8 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の壁紙。赤が印象的で壁が主役になりそう。",
-        "zh-CN": "能够替换房间风格的壁纸。很抢眼的红色，感觉墙壁反而成为了注目焦点。",
+        "en": "Wallpaper intended for remodeling purposes. Its impactful red turns any wall it adorns into a main attraction.",
+        "zh-CN": "能够替换房间风格的壁纸。十分抢眼的红色，让墙壁成了视觉焦点。",
         "zh-TW": "能夠替換房間風格的壁紙。很搶眼的紅色，感覺牆壁反而成為了注目焦點。"
       }
     },
@@ -653,6 +681,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の壁紙。どんな部屋になるか、個性がでそう。",
+        "en": "Wallpaper intended for remodeling purposes. Any room decorated with this wallpaper is sure to have a strong personality.",
         "zh-CN": "能够替换房间风格的壁纸。会变成怎样的房间，要看房间主人的品味。",
         "zh-TW": "能夠替換房間風格的壁紙。會變成怎樣的房間，要看房間主人的品味。"
       }
@@ -677,6 +706,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の床材。これが本来のお家の床。",
+        "en": "Flooring intended for remodeling purposes. This is what the house's floors actually look like.",
         "zh-CN": "能够替换房间风格的地板材质。这是这间房子原本的地板。",
         "zh-TW": "能夠替換房間風格的地板材質。這是這間房子原本的地板。"
       }
@@ -701,6 +731,7 @@
       "version": null,
       "description": {
         "ja": "お部屋の模様替え用の床材。落ち着いた雰囲気にしてくれそう。",
+        "en": "Flooring intended for remodeling purposes. Likely to create an atmosphere of utmost tranquility.",
         "zh-CN": "能够替换房间风格的地板材质。感觉能营造出沉稳的氛围。",
         "zh-TW": "能夠替換房間風格的地板材質。感覺能營造出沉穩的氛圍。"
       }
@@ -719,6 +750,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -737,6 +769,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -755,6 +788,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -773,6 +807,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -791,6 +826,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -809,6 +845,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -827,6 +864,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -845,6 +883,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -863,6 +902,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -881,6 +921,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -899,6 +940,7 @@
       "version": null,
       "description": {
         "ja": "",
+        "en": "",
         "zh-CN": "",
         "zh-TW": ""
       }
@@ -936,6 +978,7 @@
       "version": null,
       "description": {
         "ja": "おしゃれな雰囲気のお家の外装。自宅の見た目だけを変えられる。",
+        "en": "An exterior with a stylish vibe. Will only change the house's exterior appearance.",
         "zh-CN": "流行时尚的房屋外观。只会变更房屋的外观。",
         "zh-TW": "流行時尚的房屋外觀。只會變更房屋的外觀。"
       }
@@ -973,6 +1016,7 @@
       "version": null,
       "description": {
         "ja": "昔ながらの良さがあるお家の外装。自宅の見た目だけを変えられる。",
+        "en": "A pleasantly old-fashioned exterior. Will only change the house's exterior appearance.",
         "zh-CN": "保有昔日魅力的房屋外观。只会变更房屋的外观。",
         "zh-TW": "保有昔日魅力的房屋外觀。只會變更房屋的外觀。"
       }
@@ -1010,6 +1054,7 @@
       "version": null,
       "description": {
         "ja": "漆喰の壁の味わい深いお家の外装。自宅の見た目だけを変えられる。",
+        "en": "An exterior whose stucco walls give it a subtle charm. Will only change the house's exterior appearance.",
         "zh-CN": "韵味十足的灰泥墙房屋外观。只会变更房屋的外观。",
         "zh-TW": "韻味十足的灰泥牆房屋外觀。只會變更房屋的外觀。"
       }
@@ -1036,6 +1081,7 @@
       "version": null,
       "description": {
         "ja": "庭の裏道を塞いでいる瓦礫の撤去。庭から石切場へ繋がる道が開通する。",
+        "en": "Removing the debris from behind the farm will allow for travel from between the farm to the quarry.",
         "zh-CN": "清除堵住庭院小路的瓦砾，能够开通通往采石场的道路。",
         "zh-TW": "清除堵住庭院小路的瓦礫，能夠開通通往採石場的道路。"
       }
@@ -1062,7 +1108,8 @@
       "version": 120,
       "description": {
         "ja": "庭の南側の瓦礫を撤去して、道の先の土地を農地として使えるようにする。費用にはリンに支払う土地代も含む。",
-        "zh-CN": "清理庭院南侧的瓦砾，即可将道路前方的土地开垦为农地。当中包含支付给林的土地费用。",
+        "en": "Kisuke Construction will remove the debris on the south side of the farm, rendering the land usable for farming. Cost includes Rin's property fees.",
+        "zh-CN": "清理庭院南侧的瓦砾，即可将道路前方的土地开垦为农地。其中包含支付给林的土地费用。",
         "zh-TW": "清理庭院南側的瓦礫，即可將道路前方的土地開墾為農地。當中包含支付給林的土地費用。"
       }
     }
@@ -1166,21 +1213,6 @@
           "id": 90030,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
           "name_ja": "追加農地拡張の手紙送付"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1214,21 +1246,6 @@
           "id": 90030,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_SEND_LETTER",
           "name_ja": "追加農地拡張の手紙送付"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1247,21 +1264,6 @@
           "id": 90031,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_00",
           "name_ja": "追加農地拡張のアナウンスデモ"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     },
@@ -1280,21 +1282,6 @@
           "id": 90032,
           "code": "GAME_FLAG_ADDITIONAL_FARMLAND_EXPANTION_DEMO_01",
           "name_ja": "追加農地拡張後の初回デモ"
-        },
-        {
-          "id": 41,
-          "code": "GAME_FLAG_LANGUAGE_EN",
-          "name_ja": "英語"
-        },
-        {
-          "id": 42,
-          "code": "GAME_FLAG_LANGUAGE_FR",
-          "name_ja": "フランス語"
-        },
-        {
-          "id": 43,
-          "code": "GAME_FLAG_LANGUAGE_ES",
-          "name_ja": "スペイン語"
         }
       ]
     }

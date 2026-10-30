@@ -10,7 +10,7 @@
     "ai_creature_horror_fish_monster": "8ed1453024c390b585fb96e32de1c1ca786d2f6840aaa6f71bec57c47ed7d2c2",
     "ai_creature_horror_dorotabo": "50562b1557454516ccca0438c0d86acddac6864d4e5f078aca9f6ce47a551b98"
   },
-  "executable_sha256": "ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05",
+  "executable_sha256": "979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5",
   "caps": {
     "hp": {
       "initial": 12,

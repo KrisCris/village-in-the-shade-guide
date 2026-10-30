@@ -33,7 +33,7 @@ export default function ProgressPanel({ model, edits, names, onChange, onReplace
     if (tab === 'skills') return PROGRESSION.skills.map(skill => ({ id: String(skill.id), name: skill.name, item: '', category: '', description: skill.description, original: skills.has(String(skill.id)) }));
     const flags = new Map<number, typeof PROGRESSION.recipes>();
     for (const recipe of PROGRESSION.recipes) flags.set(recipe.flag, [...flags.get(recipe.flag) ?? [], recipe]);
-    return [...flags].map(([flag, recipes]) => ({ id: String(flag), name: recipes.map(recipe => itemLabel(names, String(recipe.itemId))).join('、'), item: String(recipes[0].itemId), category: recipes[0].category, description: recipes.length > 1 ? tr('此配方同时解锁 {count} 种物品。', { count: recipes.length }) : '', original: flagEnabled(model.doc, flag) }));
+    return [...flags].map(([flag, recipes]) => ({ id: String(flag), name: recipes.map(recipe => itemLabel(names, String(recipe.itemId))).join(tr('、')), item: String(recipes[0].itemId), category: recipes[0].category, description: recipes.length > 1 ? tr('此配方同时解锁 {count} 种物品。', { count: recipes.length }) : '', original: flagEnabled(model.doc, flag) }));
   }, [model, names, tab, known, skills]);
   const group: ProgressToggleGroup = tab === 'recipes' ? 'flags' : tab === 'skills' ? 'skills' : 'encyclopedia';
   const indexed = useMemo(() => rows.map(row => ({ ...row, searchText: buildSaveSearchText(row.name, row.id, row.item) })), [rows]);

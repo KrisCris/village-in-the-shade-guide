@@ -5,7 +5,7 @@ assets for the unofficial Village in the Shade guide, not original artwork by
 the guide's author, and the project's licenses do not cover them (see
 `LICENSING.md`).
 
-Source: Steam build 25311578, the open-world map in `map_1_00.dat`
+Source: Steam build 25640656, the open-world map in `map_1_00.dat`
 (`map_0000_ver120_{spr,sum,aut,win}.ymwr`), named by `map.dat`.
 
 Reproduce with:

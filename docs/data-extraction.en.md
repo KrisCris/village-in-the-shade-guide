@@ -8,13 +8,13 @@ Only needed when the game updates or when checking data. Browsing and building t
 
 | Path | Contents |
 | --- | --- |
-| `data/generated/build-25311578/` | current snapshot: base extraction plus supplemented, reviewed relationships |
-| `data/generated/build-24969282/` | snapshot and schemas of the previous build, kept for comparison and no longer updated |
-| `data/schemas/build-25311578/` | verified table field offsets |
+| `data/generated/build-25640656/` | current snapshot (patch 1.30): base extraction plus supplemented, reviewed relationships |
+| `data/generated/build-25311578/`, `data/generated/build-24969282/` | snapshots of earlier builds, kept for comparison and no longer updated |
+| `data/schemas/build-25640656/` | verified table field offsets (earlier builds keep theirs in sibling folders) |
 | `data/sources/game-*.json` | targeted extractions: maps, game rules, fishing, the quarry, recipe lessons, exchanges, livestock, machine capacities, save editor catalogs and more |
 | other files in `data/sources/` | reference data such as asset sources and official portrait sources |
 
-Since build `25311578` the game ships official Simplified Chinese, and names and descriptions use it directly. Only when it is missing is the text converted from Traditional Chinese. Japanese, Traditional Chinese, Korean and the reserved language slots are kept in `translations` in table order. Internal IDs never change.
+Since build `25311578` the game ships official Simplified Chinese, and names and descriptions use it directly. Only when it is missing is the text converted from Traditional Chinese. Since build `25640656` (patch 1.30) the game also fills its English, French and Spanish slots, and the English site uses the official English names and descriptions directly. Every language is kept in `translations` in table order. Internal IDs never change.
 
 `npm run build:data` (`tools/build-site-data.ts`) turns the snapshot and targeted data into the JSON the site uses. `npm run dev`, `npm test` and `npm run build` all run it first.
 
@@ -26,10 +26,10 @@ You need Python 3.11+, uv and your own copy of the game. Every tool only reads g
 
 ```powershell
 uv sync --extra dev
-uv run honogurashi-data verify-schemas --build-id 25311578
-uv run honogurashi-data extract --build-id 25311578 --output data/raw/review-25311578
-uv run honogurashi-data audit data/raw/review-25311578
-uv run honogurashi-data extract-icons --snapshot data/raw/review-25311578 --output output/review-icons
+uv run honogurashi-data verify-schemas --build-id 25640656
+uv run honogurashi-data extract --build-id 25640656 --output data/raw/review-25640656
+uv run honogurashi-data audit data/raw/review-25640656
+uv run honogurashi-data extract-icons --snapshot data/raw/review-25640656 --output output/review-icons
 ```
 
 `honogurashi-data` also has `diff` (compare two snapshots), `inspect-archive`, `inspect-table` and `probe` for studying table layouts.

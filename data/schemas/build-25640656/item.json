@@ -1,0 +1,198 @@
+{
+  "table": "item",
+  "build_id": "25640656",
+  "record_size": 536,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    536,
+    544,
+    552,
+    560,
+    568,
+    576,
+    584,
+    600
+  ],
+  "notes": "Seven native language slots; five blocks add 40 bytes. Icons are relative to record end because features are variable length.",
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 10000
+        },
+        {
+          "record_id": 100010,
+          "value": 100010
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 0
+        },
+        {
+          "record_id": 10010,
+          "value": 1143
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 22
+        },
+        {
+          "record_id": 10010,
+          "value": 18
+        }
+      ]
+    },
+    {
+      "name": "related_item_id",
+      "offset": 24,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 100000
+        },
+        {
+          "record_id": 10010,
+          "value": 100010
+        }
+      ]
+    },
+    {
+      "name": "buy_price",
+      "offset": 332,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 10010,
+          "value": 40
+        },
+        {
+          "record_id": 10350,
+          "value": 90
+        }
+      ]
+    },
+    {
+      "name": "sell_price",
+      "offset": 336,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 100010,
+          "value": 63
+        },
+        {
+          "record_id": 200140,
+          "value": 32
+        }
+      ]
+    },
+    {
+      "name": "category_numeric_id",
+      "offset": 320,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 1
+        },
+        {
+          "record_id": 10010,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "feature_count",
+      "offset": 384,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 0
+        },
+        {
+          "record_id": 10010,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "seed_crop_id",
+      "offset": 396,
+      "kind": "u32",
+      "required": false,
+      "evidence": [
+        {
+          "record_id": 10000,
+          "value": 17
+        },
+        {
+          "record_id": 10010,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "language_count": 7,
+  "variable_fields": [
+    {
+      "name": "icon_id",
+      "distance_from_end": 52,
+      "evidence": [
+        {
+          "record_id": 100000,
+          "record_size": 576,
+          "value": 1482
+        },
+        {
+          "record_id": 100010,
+          "record_size": 576,
+          "value": 1483
+        }
+      ]
+    },
+    {
+      "name": "outline_icon_id",
+      "distance_from_end": 44,
+      "evidence": [
+        {
+          "record_id": 100000,
+          "record_size": 576,
+          "value": 4456
+        },
+        {
+          "record_id": 100010,
+          "record_size": 576,
+          "value": 4457
+        }
+      ]
+    }
+  ]
+}

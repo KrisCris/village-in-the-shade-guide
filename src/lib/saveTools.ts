@@ -6,7 +6,7 @@ import { tr } from '../i18n/active';
 const data = localizeGameData(source);
 export const TOOLS = data.tools;
 export const TOOL_RANGE_FIELDS: Record<number, string> = {
-  660000: 'wateringCanRangeLevel_', 660010: 'mullberryRangeLevel_', 660080: 'plowRangeLevel_',
+  660000: 'wateringCanRangeLevel_', 660010: 'mullberryRangeLevel_', 660080: 'plowRangeLevel_', 802020: 'seederRangeLevel_',
 };
 
 /** Native upgrade routine assigns ItemData.level to the selected range.

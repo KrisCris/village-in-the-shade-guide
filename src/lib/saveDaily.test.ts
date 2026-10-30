@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
-import crops from '../../data/generated/build-25311578/entities/crops.json';
+import crops from '../../data/generated/build-25640656/entities/crops.json';
 import { DAILY_CROPS, farmableCells, gameDate, readDailySave, type DailySnapshot } from './saveDaily';
 import { buildDailyDigest, landSummary } from '../domain/dailyDigest';
 import { emptyFarmArea, learnFarmArea } from './farmArea';

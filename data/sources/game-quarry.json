@@ -1,5 +1,5 @@
 {
- "source": "dungeon.dat + cropsharvest.dat + crops.dat (build 25311578)",
+ "source": "dungeon.dat + cropsharvest.dat + crops.dat (build 25640656)",
  "floors": [
   {
    "floor": 1,
@@ -6411,9 +6411,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A1",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6485,9 +6485,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A2",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6565,9 +6565,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_A3",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6645,9 +6645,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B1",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6719,9 +6719,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B2",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6799,9 +6799,9 @@
    "code": "CROPS_ID_OBJECT_STONE_TUNNEL_B3",
    "names": {
     "ja": "石切場の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Rock",
+    "fr": "Pierre (carrière)",
+    "es": "Piedra de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 돌",
     "zh-CN": "采石场的石头"
@@ -6879,9 +6879,9 @@
    "code": "CROPS_ID_OBJECT_STONE_COPPER",
    "names": {
     "ja": "銅鉱脈の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Copper Deposit Rock",
+    "fr": "Pierre (filon de cuivre)",
+    "es": "Piedra de veta de cobre",
     "zh-TW": "銅礦脈的石頭",
     "ko": "동광맥의 돌",
     "zh-CN": "铜矿脉的石头"
@@ -6899,9 +6899,9 @@
    "code": "CROPS_ID_OBJECT_STONE_IRON",
    "names": {
     "ja": "鉄鉱脈の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Iron Deposit Rock",
+    "fr": "Pierre (filon de fer)",
+    "es": "Piedra de veta de hierro",
     "zh-TW": "鐵礦脈的石頭",
     "ko": "철광맥의 돌",
     "zh-CN": "铁矿脉的石头"
@@ -6919,9 +6919,9 @@
    "code": "CROPS_ID_OBJECT_STONE_GOLD",
    "names": {
     "ja": "金鉱脈の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Gold Deposit Rock",
+    "fr": "Pierre (filon d’or)",
+    "es": "Piedra de veta de oro",
     "zh-TW": "金礦脈的石頭",
     "ko": "금광맥의 돌",
     "zh-CN": "金矿脉的石头"
@@ -6939,9 +6939,9 @@
    "code": "CROPS_ID_OBJECT_STONE_METEORIC_IRON",
    "names": {
     "ja": "隕鉄鉱脈の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Meteoric Iron Deposit Rock",
+    "fr": "Pierre (filon de météorite)",
+    "es": "Piedra de veta de hierro meteórico",
     "zh-TW": "隕鐵礦脈的石頭",
     "ko": "운철광맥의 돌",
     "zh-CN": "陨铁矿脉的石头"
@@ -6959,9 +6959,9 @@
    "code": "CROPS_ID_OBJECT_STONE_GEM",
    "names": {
     "ja": "宝石鉱脈の石",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Gemstone Deposit Rock",
+    "fr": "Pierre (filon de pierres précieuses)",
+    "es": "Piedra de veta de joyas",
     "zh-TW": "寶石礦脈的石頭",
     "ko": "보석광맥의 돌",
     "zh-CN": "宝石矿脉的石头"
@@ -7045,9 +7045,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_1",
    "names": {
     "ja": "石切場の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Boulder",
+    "fr": "Rocher (carrière)",
+    "es": "Roca de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 바위",
     "zh-CN": "采石场的石头"
@@ -7119,9 +7119,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_2",
    "names": {
     "ja": "石切場の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Boulder",
+    "fr": "Rocher (carrière)",
+    "es": "Roca de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 바위",
     "zh-CN": "采石场的石头"
@@ -7199,9 +7199,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_TUNNEL_BIG_3",
    "names": {
     "ja": "石切場の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Quarry Boulder",
+    "fr": "Rocher (carrière)",
+    "es": "Roca de cantera",
     "zh-TW": "採石場的石頭",
     "ko": "채석장의 바위",
     "zh-CN": "采石场的石头"
@@ -7279,9 +7279,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_COPPER_BIG",
    "names": {
     "ja": "銅鉱脈の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Copper Deposit Boulder",
+    "fr": "Rocher (filon de cuivre)",
+    "es": "Roca de veta de cobre",
     "zh-TW": "銅礦脈的岩石",
     "ko": "동광맥의 바위",
     "zh-CN": "铜矿脉的岩石"
@@ -7299,9 +7299,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_IRON_BIG",
    "names": {
     "ja": "鉄鉱脈の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Iron Deposit Boulder",
+    "fr": "Rocher (filon de fer)",
+    "es": "Roca de veta de hierro",
     "zh-TW": "鐵礦脈的岩石",
     "ko": "철광맥의 바위",
     "zh-CN": "铁矿脉的岩石"
@@ -7319,9 +7319,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_GOLD_BIG",
    "names": {
     "ja": "金鉱脈の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Gold Deposit Boulder",
+    "fr": "Rocher (filon d’or)",
+    "es": "Roca de veta de oro",
     "zh-TW": "金礦脈的岩石",
     "ko": "금광맥의 바위",
     "zh-CN": "金矿脉的岩石"
@@ -7339,9 +7339,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_METEORIC_IRON_BIG",
    "names": {
     "ja": "隕鉄鉱脈の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Meteoric Iron Deposit Boulder",
+    "fr": "Rocher (filon de météorite)",
+    "es": "Roca de veta de hierro meteórico",
     "zh-TW": "隕鐵礦脈的岩石",
     "ko": "운철광맥의 바위",
     "zh-CN": "陨铁矿脉的岩石"
@@ -7359,9 +7359,9 @@
    "code": "CROPS_ID_OBJECT_ROCK_GEM_BIG",
    "names": {
     "ja": "宝石鉱脈の岩",
-    "slot-1": "",
-    "slot-2": "",
-    "slot-3": "",
+    "en": "Gemstone Deposit Boulder",
+    "fr": "Rocher (filon de pierres précieuses)",
+    "es": "Roca de veta de joyas",
     "zh-TW": "寶石礦脈的岩石",
     "ko": "보석광맥의 바위",
     "zh-CN": "宝石矿脉的岩石"

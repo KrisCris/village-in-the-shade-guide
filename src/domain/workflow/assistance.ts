@@ -97,7 +97,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
     if (!["reserve", "delivery"].includes(target.kind) || !canConnect(nodes, plan.edges, n.id, target.id, entities)) continue;
     const matching = (target.requirements ?? []).filter(a => outputs.includes(a.itemId));
     assistance.next.unshift({ key: `target:${target.id}`, kind: target.kind, sourceId: n.id, targetId: target.id,
-      label: tr('留给 {label}', { label: target.label }), detail: matching.map(a => `${name(a.itemId)} ×${a.quantity}`).join("、") + tr(' · 连接后优先留货') });
+      label: tr('留给 {label}', { label: target.label }), detail: matching.map(a => `${name(a.itemId)} ×${a.quantity}`).join(tr('、')) + tr(' · 连接后优先留货') });
   }
   // Existing in-progress batches have already consumed their ingredients in the game.
   if (n.kind !== "process" || n.remainingDays !== undefined) return assistance;
@@ -128,7 +128,7 @@ export function getWorkflowAssistance(plan: WorkflowPlan, entities: Entity[], no
       const availability = item ? seedAvailability({ ...item, seed_item_ids: [itemId] }, entities, yearAt(day), seasonAt(day)) : undefined;
       if (typeof item?.buy_price === "number" && Number.isFinite(item.buy_price) && item.buy_price >= 0 && availability?.available)
         need.actions.push({ key: `buy:${itemId}`, kind: "purchase", sourceId: n.id,
-          label: tr('买入 {name} ×{quantity}', { name: name(itemId), quantity }), detail: tr('{date} · 支出 {amount}{conditions}', { date: formatDay(day), amount: quantity * item.buy_price, conditions: availability.conditions.length ? " · " + availability.conditions.join("；") : "" }),
+          label: tr('买入 {name} ×{quantity}', { name: name(itemId), quantity }), detail: tr('{date} · 支出 {amount}{conditions}', { date: formatDay(day), amount: quantity * item.buy_price, conditions: availability.conditions.length ? " · " + availability.conditions.join(tr('；')) : "" }),
           create: { itemId, quantity, startDay: day } });
       need.actions.push({ key: `stock:${itemId}`, kind: "inventory", sourceId: n.id,
         label: tr('使用已有 {name} ×{quantity}', { name: name(itemId), quantity }), detail: tr('{day} 可用 · 不计历史购买成本', { day: formatDay(day) }), create: { itemId, quantity, startDay: day } });

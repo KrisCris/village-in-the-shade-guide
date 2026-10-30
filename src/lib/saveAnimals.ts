@@ -1,9 +1,10 @@
 import data from '../../data/sources/game-save-animals.json';
-import { localizeGameData } from './saveText';
+import { localizeGameData, NAME_LIMIT } from './saveText';
 import places from '../../data/sources/game-save-placements.json';
 import { flagEnabled, type ProgressEdits } from './saveProgress';
 import { builtChild, captureBuilt, encodeFloat, encodeSigned, encodeString, readSigned, readString, type SerBuiltNode, type SerDocument, type SerNode } from './ser';
 import { tr } from '../i18n/active';
+
 export const ANIMALS = localizeGameData(data.animals);
 export interface AnimalEdits { moves?: Record<string, number>; added?: Record<string, { species: number; name: string; variant?: number }> }
 export function animalEditCount(edits: AnimalEdits) { return Object.keys(edits.moves ?? {}).length + Object.keys(edits.added ?? {}).length; }
@@ -75,7 +76,7 @@ export function buildAnimalEdits(doc: SerDocument, edits: AnimalEdits, leafEdits
     const variant = animal?.variants.find(v => v.index === (addition.variant ?? 0));
     const donor = residents.find(resident => resident.species === addition.species) ?? residents.find(resident => ANIMALS.some(a => a.id === resident.species && a.id < 100 && a.houseType < 3));
     if (!animal || !variant || !donor || !addition.name.trim()) throw new Error(tr('请填写名字，并选择有效的动物品种。'));
-    if (Array.from(addition.name).length > 5) throw new Error(tr('动物名字最多 5 个字符。'));
+    if (Array.from(addition.name).length > NAME_LIMIT) throw new Error(tr('动物名字最多 {limit} 个字符。', { limit: NAME_LIMIT }));
     const target = captureBuilt(doc, donor.pointer); target.pointer = 'self';
     target.nameOffset = -1; target.name = String(built.children!.length);
     for (const name of ['statusValueMap_', 'statusIDValueMap_', 'statusTableValueMap_']) {

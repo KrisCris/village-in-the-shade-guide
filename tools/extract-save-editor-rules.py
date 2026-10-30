@@ -23,5 +23,5 @@ for row in _string_groups(table):
     if len(row) >= 5 and pattern.search(row[1]):
         constants[row[1]] = dict(value=int(row[4]), description_ja=row[2])
 args.output.parent.mkdir(parents=True, exist_ok=True)
-args.output.write_text(json.dumps(dict(source='gamedefine.dat', build='25311578', constants=constants), ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+args.output.write_text(json.dumps(dict(source='gamedefine.dat', build='25640656', constants=constants), ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
 print(f'{len(constants)} verified constants -> {args.output}')

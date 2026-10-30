@@ -64,7 +64,7 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
           key, tag: action.trip === 'fish' ? tr('钓鱼') : tr('采集'), tone: 'deliver', icon: icon('items', action.items[0][0]), section: 'daily-deliveries-close', later: action.later,
           title: action.trip === 'fish' ? tr('钓鱼：{items}', { items }) : tr('去山里采：{items}', { items }),
           details: [
-            tr('凑齐后能交{bundles}', { bundles: action.plans.map((plan) => `「${plan.spec.name}」`).join('') }),
+            tr('凑齐后能交{bundles}', { bundles: action.plans.map((plan) => tr('「{name}」', { name: plan.spec.name })).join(tr('、')) }),
             ...night && action.trip === 'wild' ? [tr('深夜也能采，只要山菜还在')] : [],
             ...action.later ? [tr('这些鱼要等 7:00 换日以后才钓得到')] : [],
           ],
@@ -100,7 +100,7 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
           case 'sap': return {
             ...base, tag: tr('树液'),
             title: tr('用树液采集器收集{items}', { items: list(action.lines.map((line) => name.item(line.material.itemId))) }),
-            details: action.lines.map((line) => `${tr('{item}还差 {count} 个', { item: name.item(line.material.itemId), count: line.material.short })}：${sourceText(line.source, name)}`),
+            details: action.lines.map((line) => `${tr('{item}还差 {count} 个', { item: name.item(line.material.itemId), count: line.material.short })}${tr('：')}${sourceText(line.source, name)}`),
           };
           case 'trees': return { ...base, tag: tr('砍树'), title: tr('砍树收集{item}，还差 {count} 个', { item, count: material.short }), details: [...reason, sourceText(source, name)] };
           case 'machine': return { ...base, tag: tr('加工'), title: tr('用{machine}做{item}，还差 {count} 个', { machine: name.item(source.machine), item, count: material.short }), details: [...reason, sourceText(source, name)] };

@@ -1,12 +1,13 @@
 /**
  * Keep the translation catalogs in step with the source.
  *
- *   tsx tools/i18n/sync-catalogs.ts          prune ja.json, regenerate zh-TW and client catalogs
+ *   tsx tools/i18n/sync-catalogs.ts          prune ja.json and en.json, regenerate zh-TW and client catalogs
  *   tsx tools/i18n/sync-catalogs.ts --check  fail on missing or stale translations and unwrapped text
  *
  * Keys come from t()/tHtml()/msg()/tr() literals in src and from the
- * authored data strings buildCatalog translates. Japanese is written by hand
- * in src/i18n/catalogs/ja.json. Traditional Chinese is converted with OpenCC
+ * authored data strings buildCatalog translates. Japanese and English are
+ * written by hand in src/i18n/catalogs/ja.json and en.json, using the game's
+ * own terms for each language. Traditional Chinese is converted with OpenCC
  * (Taiwan phrasing); official game names and zh-TW.vocabulary.json are
  * protected from conversion (written to zh-TW.terms.json), and whole keys can
  * be corrected in zh-TW.overrides.json.
@@ -60,7 +61,7 @@ for (const file of files) {
 }
 
 // Data strings: record what buildCatalog asks to translate.
-const entities = 'data/generated/build-25311578/entities';
+const entities = 'data/generated/build-25640656/entities';
 const input: Record<string, unknown> = {};
 const officialTerms: Array<[string, string]> = [];
 for (const file of (await readdir(entities)).filter((name) => name.endsWith('.json')).sort()) {
@@ -76,28 +77,37 @@ for (const file of (await readdir(entities)).filter((name) => name.endsWith('.js
 }
 const dataKeys = new Set<string>();
 // Each language falls back to the catalog for names the game leaves blank in
-// that language only (zh-TW item categories, for example), so record both.
-for (const locale of ['ja', 'zh-TW'] as const) buildCatalog(input, '', locale, (source) => {
+// that language only (zh-TW item categories, English fishing spots), so record
+// which language asked for each.
+const localeDataKeys = { ja: new Set<string>(), 'zh-TW': new Set<string>(), en: new Set<string>() };
+for (const locale of ['ja', 'zh-TW', 'en'] as const) buildCatalog(input, '', locale, (source) => {
   dataKeys.add(source);
+  localeDataKeys[locale].add(source);
   return source;
 });
 for (const key of extraDataKeys()) {
   dataKeys.add(key);
   clientKeys.add(key);
+  for (const keys of Object.values(localeDataKeys)) keys.add(key);
 }
 
 const allKeys = [...new Set([...codeKeys.keys(), ...dataKeys])].filter((key) => key.trim());
 const ja = await readJson(join(catalogDir, 'ja.json'));
+const en = await readJson(join(catalogDir, 'en.json'));
 const overrides = await readJson(join(catalogDir, 'zh-TW.overrides.json'));
 const vocabulary = await readJson(join(catalogDir, 'zh-TW.vocabulary.json'));
 const terms = sorted([...officialTerms, ...Object.entries(vocabulary)].filter(([source], i, all) => all.findLastIndex(([other]) => other === source) === i));
 const toTaiwan = createTraditional(terms);
 
 const problems: string[] = [];
-const missing = allKeys.filter((key) => !(key in ja));
+/** Keys a hand-written catalog must cover: every code key and the data labels its own pages translate. */
+const needed = (locale: 'ja' | 'en') => allKeys.filter((key) => codeKeys.has(key) || localeDataKeys[locale].has(key));
+const missing = needed('ja').filter((key) => !(key in ja));
+const missingEn = needed('en').filter((key) => !(key in en));
 for (const key of missing) problems.push(`missing ja: ${JSON.stringify(key)}  (${[...(codeKeys.get(key) ?? ['data'])].join(', ')})`);
+for (const key of missingEn) problems.push(`missing en: ${JSON.stringify(key)}  (${[...(codeKeys.get(key) ?? ['data'])].join(', ')})`);
 for (const key of allKeys) {
-  for (const [name, value] of [['ja', ja[key]], ['zh-TW override', overrides[key]]] as const) {
+  for (const [name, value] of [['ja', ja[key]], ['en', en[key]], ['zh-TW override', overrides[key]]] as const) {
     if (value !== undefined && placeholders(value) !== placeholders(key)) problems.push(`${name} placeholders differ: ${JSON.stringify(key)} → ${JSON.stringify(value)}`);
   }
 }
@@ -105,13 +115,16 @@ for (const key of Object.keys(overrides)) if (!allKeys.includes(key)) problems.p
 for (const line of unwrapped) problems.push(`unwrapped text: ${line}`);
 
 const jaOut = sorted(allKeys.filter((key) => key in ja).map((key) => [key, ja[key]]));
+const enOut = sorted(allKeys.filter((key) => key in en).map((key) => [key, en[key]]));
 const zhTW = sorted(allKeys.map((key) => [key, overrides[key] ?? toTaiwan(key)]));
 const pick = (messages: Record<string, string>) => sorted(Object.entries(messages).filter(([key]) => clientKeys.has(key)));
 const outputs: Record<string, unknown> = {
   'zh-TW.terms.json': terms,
   'ja.json': jaOut,
+  'en.json': enOut,
   'zh-TW.json': zhTW,
   'client/ja.json': pick(jaOut),
+  'client/en.json': pick(enOut),
   'client/zh-TW.json': pick(zhTW),
 };
 
@@ -129,7 +142,7 @@ for (const [name, value] of Object.entries(outputs)) {
   else await writeFile(path, text);
 }
 
-console.log(`i18n keys=${allKeys.length} code=${codeKeys.size} data=${dataKeys.size} client=${clientKeys.size} ja=${Object.keys(jaOut).length} missing=${missing.length} unwrapped=${unwrapped.length}${check ? '' : ` updated=${stale}`}`);
+console.log(`i18n keys=${allKeys.length} code=${codeKeys.size} data=${dataKeys.size} client=${clientKeys.size} ja=${Object.keys(jaOut).length} en=${Object.keys(enOut).length} missing=${missing.length} missingEn=${missingEn.length} unwrapped=${unwrapped.length}${check ? '' : ` updated=${stale}`}`);
 if (problems.length) {
   console.error(problems.slice(0, Number(process.env.I18N_LIMIT ?? 200)).join('\n'));
   if (problems.length > Number(process.env.I18N_LIMIT ?? 200)) console.error(`… ${problems.length - Number(process.env.I18N_LIMIT ?? 200)} more`);

@@ -34,4 +34,4 @@ export const seasonNames: Record<string, string> = {
 export const bearingLabel = (perennial: Perennial) =>
   perennial.kind === "fruit_tree" && perennial.greenhouse_only
     ? tr('温室里四季结果')
-    : tr('{seasons}季结果', { seasons: perennial.bearing_seasons.map((s) => seasonNames[s] ?? s).join("、") });
+    : tr('{seasons}季结果', { seasons: perennial.bearing_seasons.map((s) => seasonNames[s] ?? s).join(tr('、')) });

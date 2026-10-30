@@ -25,7 +25,7 @@ for item_pc,quantity_pc,condition in [(153,154,'首次奖励；已解锁该服�
     assert quantity_instruction&127 == 1  # LOADI
     rewards.append(dict(item_id=proto['constants'][item_instruction>>24],quantity=(quantity_instruction>>15)-65535,condition=condition))
 result=dict(input_item_id='ITEM_ID_CROPS_CUCUMBER',input_quantity=quantity,partial_delivery=True,rewards=rewards,
-    condition='与河童交谈后分批交付，累计完成当轮剩余需求才发放该阶段奖励；不是同时取得三项奖励',
+    condition='与河童交谈后可以分批交付，交够当轮的需求后发放该阶段奖励；三项奖励按阶段依次领取',
     source='ai_creature_horror_kappa.lub: talk lines 51–195; event_horror_item_trade.lub: event_reset_summer; gamedefine.dat: KAPPA_CUCUMBER_NUM',source_sha256=hashlib.sha256(raw).hexdigest())
 Path('data/sources/game-kappa-exchange.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(result)

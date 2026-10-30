@@ -165,7 +165,7 @@ export function simulateIntentPlan(
     const key = n.id + message;
     if (!seen.has(key)) {
       seen.add(key);
-      result.issues.push(`${n.label}：${message}`);
+      result.issues.push(`${n.label}${tr('：')}${message}`);
       emit(n, "warning", message);
     }
   };
@@ -215,7 +215,7 @@ export function simulateIntentPlan(
       return false;
     }
     if (availability.conditions.length)
-      notice(n, tr('购买条件需确认：{conditions}', { conditions: availability.conditions.join("；") }));
+      notice(n, tr('购买条件需确认：{conditions}', { conditions: availability.conditions.join(tr('；')) }));
     const amount = quantity * price;
     spending += amount;
     account(-amount);
@@ -867,7 +867,7 @@ export function simulateIntentPlan(
           emit(
             n,
             "delivery",
-            tr('交付 {items}，从留货中扣除。', { items: (n.requirements ?? []).map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、") }),
+            tr('交付 {items}，从留货中扣除。', { items: (n.requirements ?? []).map((a) => `${name(a.itemId)} ×${a.quantity}`).join(tr('、')) }),
             {
               quantity: (n.requirements ?? []).reduce(
                 (s, a) => s + a.quantity,
@@ -985,7 +985,7 @@ export function simulateIntentPlan(
       notice(
         n,
         missing.length
-          ? tr('余料尚不够一批：{items}。', { items: missing.join("，") })
+          ? tr('余料尚不够一批：{items}。', { items: missing.join(tr('，')) })
           : tr('仍有原料等待加工。'),
       );
     }
@@ -1002,7 +1002,7 @@ export function simulateIntentPlan(
       if (missing.length)
         notice(
           n,
-          tr('还需 {items}。', { items: missing.map((a) => `${name(a.itemId)} ×${a.quantity}`).join("、") }),
+          tr('还需 {items}。', { items: missing.map((a) => `${name(a.itemId)} ×${a.quantity}`).join(tr('、')) }),
         );
     }
     if (!p.firstDay && p.notices.length === 0)
@@ -1024,7 +1024,7 @@ export function simulateIntentPlan(
     if (left.length)
       notice(
         n,
-        tr('未安排去向：{items}。', { items: left.map(([id, q]) => `${name(id)} ×${q}`).join("、") }),
+        tr('未安排去向：{items}。', { items: left.map(([id, q]) => `${name(id)} ×${q}`).join(tr('、')) }),
       );
   }
   return result;

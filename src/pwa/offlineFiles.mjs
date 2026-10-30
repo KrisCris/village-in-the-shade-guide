@@ -6,15 +6,16 @@ import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-export const offlineGroups = ['shared', 'zh-CN', 'zh-TW', 'ja'];
-const pagefindLanguages = { 'zh-cn': 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja' };
+export const offlineGroups = ['shared', 'zh-CN', 'zh-TW', 'ja', 'en'];
+const pagefindLanguages = { 'zh-cn': 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', en: 'en' };
+const localeFolders = new Set(offlineGroups.slice(2));
 
 /** Which offline set a built file belongs to, or null when it is never stored. */
 export function offlineGroup(file) {
   if (file === 'sw.js' || file === 'robots.txt' || file.endsWith('.webmanifest') || file.startsWith('app/offline-')) return null;
   const [top, second] = file.split('/');
-  if (top === 'zh-TW' || top === 'ja') return top;
-  if (top === 'locales') return second === 'zh-TW' || second === 'ja' ? second : null;
+  if (localeFolders.has(top)) return top;
+  if (top === 'locales') return localeFolders.has(second) ? second : null;
   if (top === 'pagefind') {
     const language = /^pagefind\/(?:index|fragment|filter)\/([a-z-]+)_/.exec(file)?.[1];
     return language ? pagefindLanguages[language] ?? null : 'shared';

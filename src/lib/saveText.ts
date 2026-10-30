@@ -1,6 +1,9 @@
 import { Converter } from 'opencc-js/t2cn';
 import { activeLocale } from '../i18n/active';
 
+/** Player, pet, animal and brand names. Patch 1.30 raised the cap from 5 to 8 characters (UPDATE_TEXT_1_30). */
+export const NAME_LIMIT = 8;
+
 /**
  * Traditional → Simplified, for search normalization only. Never apply it to
  * display text: Japanese kanji share Traditional forms (漬物樽 would become

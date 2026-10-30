@@ -6,7 +6,7 @@ import {workflowPayload} from '../src/data/workflowPayload';
 import { dailyPayload } from '../src/data/dailyPayload';
 import { defaultLocale, locales } from '../src/i18n/locales';
 
-const source = 'data/generated/build-25311578/entities';
+const source = 'data/generated/build-25640656/entities';
 const input: Record<string, unknown> = {};
 for (const file of (await readdir(source)).filter((name) => name.endsWith('.json')).sort()) {
   input[`/entities/${file}`] = JSON.parse(await readFile(join(source, file), 'utf8'));

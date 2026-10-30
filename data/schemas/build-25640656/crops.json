@@ -1,0 +1,91 @@
+{
+  "table": "crops",
+  "build_id": "25640656",
+  "record_size": 504,
+  "allow_trailing": true,
+  "observed_record_sizes": [
+    504,
+    520,
+    528,
+    536,
+    544,
+    548,
+    552,
+    560,
+    568,
+    576,
+    816,
+    848,
+    856,
+    1096,
+    1384,
+    1632,
+    1892,
+    1900,
+    2172,
+    2180,
+    2188,
+    2192,
+    2196,
+    2452,
+    2712,
+    2996,
+    3276,
+    3284,
+    3300,
+    3308,
+    3820
+  ],
+  "notes": "Seven language slots; initial variable arrays start84. Nested visual stages use272-byte stride; states1/4 give growth/regrowth thresholds.",
+  "fields": [
+    {
+      "name": "id",
+      "offset": 0,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 1
+        },
+        {
+          "record_id": 2,
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "internal_string_offset",
+      "offset": 8,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 0
+        },
+        {
+          "record_id": 2,
+          "value": 242
+        }
+      ]
+    },
+    {
+      "name": "internal_id_length",
+      "offset": 12,
+      "kind": "u32",
+      "required": true,
+      "evidence": [
+        {
+          "record_id": 1,
+          "value": 14
+        },
+        {
+          "record_id": 2,
+          "value": 16
+        }
+      ]
+    }
+  ],
+  "language_count": 7
+}

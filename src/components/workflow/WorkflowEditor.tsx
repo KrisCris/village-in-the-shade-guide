@@ -502,7 +502,7 @@ export default function WorkflowEditor({ entities }: { entities: Entity[] }) {
       change(prepared.plan);
       setNotice(
         prepared.unresolved.length
-          ? tr('已生成可推算的前置流程；{items} 仍需确认来源，尚未计入可交付数量。', { items: [...new Set(prepared.unresolved)].join("、") })
+          ? tr('已生成可推算的前置流程；{items} 仍需确认来源，尚未计入可交付数量。', { items: [...new Set(prepared.unresolved)].join(tr('、')) })
           : tr('已按剩余缺口生成前置流程，可一次撤销。'),
       );
     } catch (error) {

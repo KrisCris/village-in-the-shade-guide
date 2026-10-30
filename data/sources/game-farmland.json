@@ -1,8 +1,8 @@
 {
-  "build_id": "25311578",
-  "executable_sha256": "ac7d955baa915929b185df85cfa13f7e81ad57a9c68f308da769739775869a05",
+  "build_id": "25640656",
+  "executable_sha256": "979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5",
   "source": "map_1_00.dat YMWR terrain + mapgroundelement.dat + map.dat",
-  "native_rule": "0x1401CF660 and 0x1401D2860: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes",
+  "native_rule": "0x1401D2730 and 0x1401D5930: 90px terrain tile, four edge centres, unique 45px cell IDs; rotate to farming axes",
   "scanned_map_heads": 198,
   "excluded_nonplayable": [
     "data/map/9999_testmap_spr.ymwr.head",
@@ -2852,7 +2852,7 @@
           13
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_0000_ver120_aut.ymwr.head-1",
@@ -2930,7 +2930,7 @@
           4
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_0000_ver120_aut.ymwr.head-2",
@@ -4696,7 +4696,7 @@
           19
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_0000_ver120_aut.ymwr.head-3",
@@ -5022,7 +5022,7 @@
           5
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_0000_ver120_aut.ymwr.head-4",
@@ -8172,7 +8172,7 @@
           26
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_0000_ver120_aut.ymwr.head-5",
@@ -11390,7 +11390,7 @@
           24
         ]
       ],
-      "sha256": "251d9f4f9592b4d7abaf86846602c00fb970ac097a92f0fb80571027c366afaf"
+      "sha256": "8bfc4ba0f271a6602bc33d02eeb2fbf43484554f62b9c13923f99fe827900e59"
     },
     {
       "id": "map_1140.ymwr.head-0",

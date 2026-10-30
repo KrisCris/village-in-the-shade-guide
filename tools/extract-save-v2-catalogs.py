@@ -22,18 +22,18 @@ def table(name):
 def string(t, row, offset):
     return _table_string(t, row, offset)
 def localized(t, row, offset):
-    return {locale: string(t,row,offset+i*8) for i,locale in enumerate(('ja','slot-1','slot-2','slot-3','zh-TW','ko','zh-CN'))}
+    return {locale: string(t,row,offset+i*8) for i,locale in enumerate(('ja','en','fr','es','zh-TW','ko','zh-CN'))}
 
 def write(name, value):
-    value['build_id'] = '25311578'
+    value['build_id'] = '25640656'
     a.output_dir.mkdir(parents=True, exist_ok=True)
     (a.output_dir / f'game-save-{name}.json').write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', 'utf8')
 
 items = table('item')
 item_rows = {u64(row, 0): row for row in items.records}
 item_names = {u64(row, 0): string(items, row, 80) for row in items.records}
-tools = [dict(itemId=u64(row, 0), family=u64(row, 16), level=u32(row, 348), code=string(items, row, 8), name=string(items, row, 80), nameTranslations=localized(items,row,32)) for row in items.records if 660000 <= u64(row, 0) <= 662003 and (u64(row, 16) or u64(row, 0) in [660050, 660070, 660071, 660090, 661000, 661010, 662000, 662001, 662002, 662003])]
-write('tools', dict(source='item.dat parent u64@16, level u32@348; historical build24969282 native upgrade 0x140329AE8/0x140329B15/0x140329B46', tools=tools, itemIds=list(item_names)))
+tools = [dict(itemId=u64(row, 0), family=u64(row, 16), level=u32(row, 348), code=string(items, row, 8), name=string(items, row, 80), nameTranslations=localized(items,row,32)) for row in items.records if (660000 <= u64(row, 0) <= 662003 or 802021 <= u64(row, 0) <= 802025) and (u64(row, 16) or u64(row, 0) in [660050, 660070, 660071, 660090, 661000, 661010, 662000, 662001, 662002, 662003])]
+write('tools', dict(source='item.dat parent u64@16, level u32@348; build 25640656 native upgrade 0x140345BBB-0x140345C82 copies the new level to the hoe, plow, watering can and seeder range fields', tools=tools, itemIds=list(item_names)))
 
 flags = table('gameflag')
 flag_rows = [dict(id=u64(row, 0), code=string(flags, row, 8), name=string(flags, row, 16)) for row in flags.records]

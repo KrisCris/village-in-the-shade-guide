@@ -6,7 +6,7 @@ This is an Astro static wiki with React interactive components and Pagefind sear
 
 - `src/pages/`: routes; `src/components/`: UI; `src/layouts/` and `src/styles/`: shared presentation.
 - `src/domain/`: calculations and relationships; `src/data/`: catalog access; `src/lib/`: shared utilities.
-- `data/generated/build-25311578/`: current committed game snapshot (`build-24969282` is kept for comparison); `data/sources/`: supplementary references.
+- `data/generated/build-25640656/`: current committed game snapshot (patch 1.30; `build-25311578` and `build-24969282` are kept for comparison); `data/sources/`: supplementary references.
 - `public/`: shipped icons, maps, portraits, and other assets.
 - `src/honogurashi_extractor/`, `tools/`, and `tests/`: Python extraction, maintenance scripts, and extractor tests. TypeScript tests live beside their modules.
 

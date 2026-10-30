@@ -88,7 +88,6 @@ const milestones=construction.construction_milestones.join(' / ');
 <li>{t('到树木建设订“农地扩建”。完工后南边的瓦砾被清走，多出一块田地。')}</li>
 </ol>
 <div class="orders">{land.map(row=><div class="order"><div class="order-head"><a href={href(entityUrl(row.activity))}>{row.activity.name.zh_hans}</a><span>{t('工期 {days} 天',{days:row.data.days})}</span></div><p>{description(row)}{row.conditions.length>0&&<> {t('条件：')}{row.conditions.join(t('，'))}</>}</p><div class="costs"><b>{money(Number(row.activity.money_cost))}</b>{row.inputs.map(input=>{const e=item(input.item_id);return e&&<a href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{e.name.zh_hans} ×{input.quantity}</a>;})}</div></div>)}</div>
-<p class="note">{t('游戏语言设为英语、法语或西班牙语时，数据里林的这封信不会触发，原因不明。')}</p>
 </section>
 
 <section id="house"><h2>{t('改建自宅')}</h2>
