@@ -13,6 +13,7 @@ from PIL import Image, ImageChops, ImageDraw
 
 from honogurashi_extractor.gamedir import add_game_dir
 from honogurashi_extractor.archive import FafullfsArchive
+from honogurashi_extractor.buildings import BuildingArt
 from honogurashi_extractor.gimmick import gimmick_features
 from honogurashi_extractor.map_art import FairyBank, ground_image, scenery_image
 from honogurashi_extractor.probe import _string_groups
@@ -185,6 +186,10 @@ def main():
                           and floor['bounds'][1]-80 <= f['y'] <= floor['bounds'][3]+80]}
             for floor in room_cache[path]]
     if not args.skip_ground:
+        # Village buildings inside the farm window (the restaurant, general store and
+        # street stall) belong to the scenery layer; the save draws the farm's own buildings.
+        buildings = BuildingArt(archive, textures, banks)
+        saved = {o['id'] for o in specs['objects']}
         for season in SEASONS:
             print('Ground', season, flush=True)
             mat = maps.read_entry(f'{openworld}_{season}.ymwr.mat')
@@ -194,7 +199,8 @@ def main():
             head = maps.read_entry(f'{openworld}_{season}.ymwr.head')
             if head.startswith(b'YKCMP_V1'):
                 head = zlib.decompress(head[20:])
-            image = scenery_image(head, mat, BOUNDS)
+            sprites = buildings.sprites(buildings.placed(head, saved), SEASONS.index(season))
+            image = scenery_image(head, mat, BOUNDS, sprites=sprites)
             image.resize((image.width//2, image.height//2), Image.Resampling.LANCZOS).save(dest/f'{season}-scenery.webp', quality=80, method=6)
 
     @lru_cache(maxsize=24)

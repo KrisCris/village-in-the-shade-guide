@@ -3,7 +3,7 @@ import struct
 import pytest
 from PIL import Image
 
-from honogurashi_extractor.map_art import FairyBank, decals, ground_image, multiply, point, scenery_image
+from honogurashi_extractor.map_art import FairyBank, decals, fixtures, ground_image, multiply, point, scenery_image
 
 
 def test_affine_parent_translation_and_mirroring():
@@ -107,3 +107,40 @@ def test_decals_are_placed_by_top_left_and_scaled_about_the_pivot(monkeypatch):
     # Half scale around the bottom-centre pivot (32, 24): drawn at (31, 22) as a 2x2 sprite whose red column is x=31.
     assert image.getbbox() == (13, 20, 32, 24)
     assert image.getpixel((31, 22))[3] > 0
+
+
+def test_fad_sort_line_is_the_pri_node_origins():
+    bank = fad_bank(names={1: b'pri01', 2: b'pri02'})
+    assert bank.origins('test_map', 1) == {'pri01': [10.0, 20.0], 'pri02': [10.0, 20.0]}
+    assert bank.sort_line('test_map', 1) == ([10.0, 20.0], [10.0, 20.0])
+    assert fad_bank(names={1: b'pri01'}).sort_line('test_map', 1) is None
+
+
+def test_fixtures_follow_the_actor_sections():
+    head = bytearray(76)
+    struct.pack_into('<3I', head, 9*4, 1, 1, 2)
+    head += bytes(56+48)
+    for id, x, y, scale, mirror, require in ((101050000, 17725, 17674, 1.0, 0, -1), (102010002, 18630, 17370, 1.5, 1, 15219)):
+        row = bytearray(208)
+        struct.pack_into('<4ifI', row, 0, id, x, y, 0, scale, mirror)
+        struct.pack_into('<i', row, 36, require)
+        head += row
+    assert fixtures(bytes(head)) == [
+        {'id': 101050000, 'x': 17725, 'y': 17674, 'angle': 0, 'scale': 1.0, 'mirror': False, 'require': -1},
+        {'id': 102010002, 'x': 18630, 'y': 17370, 'angle': 0, 'scale': 1.5, 'mirror': True, 'require': 15219}]
+
+
+def test_sprites_sort_in_with_decals_by_depth_and_clip_to_bounds(monkeypatch):
+    mat = bytearray(16)
+    struct.pack_into('<III', mat, 0, 1, 0, 0)
+    monkeypatch.setattr('honogurashi_extractor.map_art.decode_nltx_image', lambda blob: Image.new('RGBA', (8, 8), 'red'))
+    # A red 4x4 decal at (10, 10) sorts by its line at y=14.
+    head = decal_head((0, 10, 10, 4, 4, 2, 4, 1.0, 0, 255))
+    behind, front = Image.new('RGBA', (4, 4), 'blue'), Image.new('RGBA', (4, 4), 'lime')
+    image = scenery_image(head, bytes(mat), (0, 0, 16, 16), sprites=[(behind, (8, 8), 13), (front, (13, 13), 15)])
+    assert image.getpixel((9, 9)) == (0, 0, 255, 255)
+    assert image.getpixel((11, 11)) == (255, 0, 0, 255)
+    assert image.getpixel((13, 13)) == (0, 255, 0, 255)
+    # The part of a sprite outside the bounds is cut off, not shifted in.
+    assert image.getbbox() == (8, 8, 16, 16)
+    assert scenery_image(head, bytes(mat), (20, 20, 30, 30), sprites=[(front, (13, 13), 15)]).getbbox() is None

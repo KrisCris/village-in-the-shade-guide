@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import math
 import struct
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 
 from PIL import Image
 
@@ -95,6 +95,16 @@ class FairyBank:
 
     def slots(self, name: str, sequence: int) -> dict[str, list[float]]:
         """Where items placed on furniture sit: the origins of `posNN` nodes, e.g. tabletop spots."""
+        return {label: xy for label, xy in self.origins(name, sequence).items()
+                if label.startswith('pos') and label[3:].isdigit()}
+
+    def sort_line(self, name: str, sequence: int) -> tuple[list[float], list[float]] | None:
+        """The `pri01`–`pri02` line a building part is depth-sorted by, like a YMWR decal's."""
+        points = self.origins(name, sequence)
+        return (points['pri01'], points['pri02']) if 'pri01' in points and 'pri02' in points else None
+
+    def origins(self, name: str, sequence: int) -> dict[str, list[float]]:
+        """The origins of a frame's named nodes."""
         pos, size = self.entries[name]
         data = self.data[pos:pos+size]
         count = struct.unpack_from('<H', data, 40)[0]
@@ -115,7 +125,7 @@ class FairyBank:
                 co, si = math.cos(f[13]), math.sin(f[13])
                 transform = multiply(parent, (f[11]*co, f[11]*si, -f[12]*si, f[12]*co, f[9], f[10]))
                 label = data[node:node+8].rstrip(bytes(1)).decode('ascii', errors='replace')
-                if label.startswith('pos') and label[3:].isdigit():
+                if label:
                     result[label] = [round(v, 2) for v in point(transform, 0, 0)]
             walk(child, transform)
             walk(sibling, parent)
@@ -267,38 +277,64 @@ def decals(head: bytes) -> list[dict]:
     return result
 
 
+def fixtures(head: bytes) -> list[dict]:
+    """Gimmicks the YMWR places (buildings, signs, shared boxes), stored after its two actor sections.
+
+    `require` is the story flag a fixture waits for, or -1 when it is always there.
+    """
+    header = struct.unpack_from('<19I', head)
+    start = 76+header[3]*72+header[12]*112+header[8]*84+header[9]*56+header[10]*48
+    result = []
+    for i in range(header[11]):
+        offset = start+i*208
+        id, x, y, angle = struct.unpack_from('<4i', head, offset)
+        scale, mirror = struct.unpack_from('<fI', head, offset+16)
+        require = struct.unpack_from('<i', head, offset+36)[0]
+        result.append(dict(id=id, x=x, y=y, angle=angle, scale=scale, mirror=bool(mirror), require=require))
+    return result
+
+
 def scenery_image(head: bytes, mat: bytes, bounds: tuple[int, int, int, int],
-                  textures: dict[int, Image.Image] | None = None) -> Image.Image:
+                  textures: dict[int, Image.Image] | None = None,
+                  sprites: Sequence[tuple[Image.Image, tuple[int, int], float]] = ()) -> Image.Image:
     """Draw the YMWR decals that overlap bounds, back to front, on a transparent layer.
 
     Pass the same `textures` dict to several calls to decode each texture once.
+    `sprites` are (image, top-left, depth) pieces such as building parts, sorted in with the decals.
     """
     count = struct.unpack_from('<I', mat)[0]
     textures = {} if textures is None else textures
     left, top, right, bottom = bounds
     out = Image.new('RGBA', (right-left, bottom-top))
-    for decal in sorted(decals(head), key=lambda d: d['depth']):
-        scale = decal['scale']
-        x = round(decal['x']+decal['px']*(1-scale))
-        y = round(decal['y']+decal['py']*(1-scale))
-        w, h = round(decal['w']*scale), round(decal['h']*scale)
-        if x+w <= left or x >= right or y+h <= top or y >= bottom or w <= 0 or h <= 0:
-            continue
-        index = decal['texture']
-        if not 0 <= index < count:
-            raise ValueError(f'YMWR decal texture {index} outside {count} textures')
-        if index not in textures:
-            offset, size = struct.unpack_from('<II', mat, 8+index*8)
-            textures[index] = decode_nltx_image(mat[offset:offset+size])
-        image = textures[index].crop((0, 0, decal['w'], decal['h']))
-        if decal['flip']:
-            image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
-        if (w, h) != image.size:
-            image = image.resize((w, h), Image.Resampling.LANCZOS)
-        if abs(decal['rotation']) > 1e-6:
-            raise ValueError('Rotated YMWR decals are not supported')
-        if decal['alpha'] < 255:
-            image.putalpha(image.getchannel('A').point(lambda a, k=decal['alpha']: a*k//255))
+    pieces = decals(head)+[dict(image=image, x=x, y=y, depth=depth) for image, (x, y), depth in sprites]
+    for decal in sorted(pieces, key=lambda piece: piece['depth']):
+        if 'image' in decal:
+            image, x, y = decal['image'], decal['x'], decal['y']
+            w, h = image.size
+            if x+w <= left or x >= right or y+h <= top or y >= bottom:
+                continue
+        else:
+            scale = decal['scale']
+            x = round(decal['x']+decal['px']*(1-scale))
+            y = round(decal['y']+decal['py']*(1-scale))
+            w, h = round(decal['w']*scale), round(decal['h']*scale)
+            if x+w <= left or x >= right or y+h <= top or y >= bottom or w <= 0 or h <= 0:
+                continue
+            index = decal['texture']
+            if not 0 <= index < count:
+                raise ValueError(f'YMWR decal texture {index} outside {count} textures')
+            if index not in textures:
+                offset, size = struct.unpack_from('<II', mat, 8+index*8)
+                textures[index] = decode_nltx_image(mat[offset:offset+size])
+            image = textures[index].crop((0, 0, decal['w'], decal['h']))
+            if decal['flip']:
+                image = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+            if (w, h) != image.size:
+                image = image.resize((w, h), Image.Resampling.LANCZOS)
+            if abs(decal['rotation']) > 1e-6:
+                raise ValueError('Rotated YMWR decals are not supported')
+            if decal['alpha'] < 255:
+                image.putalpha(image.getchannel('A').point(lambda a, k=decal['alpha']: a*k//255))
         # Only the part of the decal inside bounds is blended.
         clip = (max(0, left-x), max(0, top-y), min(w, right-x), min(h, bottom-y))
         out.alpha_composite(image, (x-left+clip[0], y-top+clip[1]), clip)
