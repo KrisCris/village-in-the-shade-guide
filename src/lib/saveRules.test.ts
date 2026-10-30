@@ -14,11 +14,11 @@ beforeAll(() => { model = parseSaveModel(decodeSave(new Uint8Array(readFileSync(
 const pathDrafts = (entries: Record<string, string>) => Object.fromEntries(Object.entries(entries).map(([path, value]) => [model.doc.resolve(path)!.offset, value]));
 
 describe.skipIf(!hasPrivateSaveFixtures)('verified save editor rules', () => {
-  it('limits editable names to five Unicode characters', () => {
+  it('limits editable names to eight Unicode characters', () => {
     for (const path of ['pPlayerStatus_/p/name_', 'pPlayerStatus_/p/dogName_']) {
-      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: 'abcdef' })))).toThrow('5');
-      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '甲乙丙丁戊' })))).not.toThrow();
-      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '😀😀😀😀😀' })))).not.toThrow();
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: 'abcdefghi' })))).toThrow('8');
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '甲乙丙丁戊己庚辛' })))).not.toThrow();
+      expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '😀😀😀😀😀😀😀😀' })))).not.toThrow();
     }
   });
   it('uses non-linear NPC heart thresholds', () => {
