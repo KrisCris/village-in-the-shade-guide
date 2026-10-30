@@ -2,21 +2,20 @@
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { guideCategories, localizeGuide, pendingGuides } from '../../data/guideContent';
-import { guideGroups, patchGuide, type GuideLink } from '../../data/navigation';
+import { guideGroups, guideIcon, patchGuide, type GuideLink } from '../../data/navigation';
 import {getCatalog} from '../../data/repository';
 import { showsJapaneseName } from '../../data/types';
 import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
-const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
+const entities=getCatalog(locale).entities;
 // AppMedia's data pages are covered by the wiki's own catalog (资料库 → 物品分类).
 const dataCategory=guideCategories[guideCategories.length-1];
-const iconOf=(key:string)=>(key.startsWith('ITEM_ID_')?items.find(e=>e.id===key):items.find(e=>e.category_id===`ITEM_CATEGORY_${key}`&&e.icon_path))?.icon_path;
-const card=(guide:GuideLink)=>({title:t(guide.title),url:href(guide.href),icon:iconOf(guide.icon)});
+const card=(guide:GuideLink)=>({title:t(guide.title),description:t(guide.description),url:href(guide.href),icon:guideIcon(entities,guide.icon)});
 const sections:Array<{id?:string;label?:string;guides:ReturnType<typeof card>[]}>=[{guides:[card(patchGuide)]},...guideGroups.map(group=>({id:group.id,label:t(group.label),guides:group.guides.map(card)}))];
 ---
 <BaseLayout title={t('攻略一览')}>
   <h1>{t('攻略')}</h1>
-  {sections.map(({id,label,guides})=><section id={id}>{label&&<div class="section-heading"><h2>{label}</h2></div>}<div class="guide-grid planning">{guides.map(({title,url,icon})=><a class="card" href={url}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>)}</div></section>)}
+  {sections.map(({id,label,guides})=><section id={id}>{label&&<div class="section-heading"><h2>{label}</h2></div>}<div class="guide-grid planning">{guides.map(({title,description,url,icon})=><a class="card" href={url}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<span class="card-text"><strong>{title}</strong><small>{description}</small></span></a>)}</div></section>)}
   <div class="pending-intro"><h2>{t('待补充的主题')}</h2><p>{t('这些主题目前只有提纲，写成完整攻略后会移到上方。')}</p></div>
   {guideCategories.map((category) => {
     if(category===dataCategory)return null;
@@ -25,5 +24,5 @@ const sections:Array<{id?:string;label?:string;guides:ReturnType<typeof card>[]}
     return <section id={category}><div class="section-heading"><h3>{t(category)}</h3></div><div class="guide-grid">{rows.map((guide) => {const {title}=localizeGuide(guide,locale);return <a class="card" href={href(`/guides/${guide.sourceId}/`)}><strong>{title}</strong>{showsJapaneseName(locale)&&title!==guide.title&&<small>{guide.title}</small>}</a>;})}</div></section>;
   })}
 </BaseLayout>
-<style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}</style>
-<style>.pending-intro{margin-top:3.5rem}.pending-intro h2{font-size:1.5rem;margin-bottom:.3rem}.pending-intro p{color:var(--muted);margin:0}section{margin-top:2rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.35rem;margin:.4rem 0 .6rem}.section-heading h3{font-size:1.2rem;margin:.4rem 0 .6rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>
+<style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}.card-text{display:grid;gap:.25rem;min-width:0}.card-text small{font-size:.84rem;line-height:1.45}</style>
+<style>.pending-intro{margin-top:3.5rem}.pending-intro h2{font-size:1.5rem;margin-bottom:.3rem}.pending-intro p{color:var(--muted);margin:0}section{margin-top:2rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.35rem;margin:.4rem 0 .6rem}.section-heading h3{font-size:1.2rem;margin:.4rem 0 .6rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}</style>

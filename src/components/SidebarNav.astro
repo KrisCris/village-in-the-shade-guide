@@ -1,30 +1,46 @@
 ---
-import { currentLink, databaseLinks, guideGroups, patchGuide, plannerLinks } from '../data/navigation';
+import { currentLink, currentSection, databaseLinks, guideGroups, patchGuide, plannerLinks, sections, type SectionId } from '../data/navigation';
 import { getI18n } from '../i18n/server';
 import { stripLocale } from '../i18n/locales';
 const { t, href } = getI18n(Astro.url);
-// The profit ranking card on /guides/ is the planner, already listed above the guides.
+const path = stripLocale(Astro.url.pathname);
+type Block = { group?: string; links: Array<{ href: string; label: string }> };
+const translated = (links: Array<{ href: string; label: string }>) => links.map(link => ({ href: link.href, label: t(link.label) }));
+// The profit ranking card on /guides/ is the planner, already listed in its own section.
 const groups = guideGroups.map(group => ({ ...group, guides: group.guides.filter(guide => guide.href.startsWith('/guides/')) }));
-const current = currentLink(stripLocale(Astro.url.pathname), [
-  ...databaseLinks.map(link => link.href), ...plannerLinks.map(link => link.href),
-  '/guides/', patchGuide.href, ...groups.flatMap(group => group.guides.map(guide => guide.href)),
-]);
-const ariaCurrent = (path: string) => path === current ? 'page' : undefined;
+const blocks: Record<SectionId, Block[]> = {
+  database: [{ links: translated(databaseLinks) }],
+  planner: [{ links: translated(plannerLinks) }],
+  guides: [
+    { links: [{ href: '/guides/', label: t('全部攻略') }, { href: patchGuide.href, label: t(patchGuide.label ?? patchGuide.title) }] },
+    ...groups.map(group => ({ group: t(group.label), links: group.guides.map(guide => ({ href: guide.href, label: t(guide.label ?? guide.title) })) })),
+  ],
+};
+// Counts what a section holds; the guide index link is not a guide.
+const count = (id: SectionId) => blocks[id].flatMap(block => block.links).filter(link => link.href !== '/guides/').length;
+const sectionId = currentSection(path);
+const current = sections.find(section => section.id === sectionId);
+const others = sections.filter(section => section !== current);
+const active = current && currentLink(path, blocks[current.id].flatMap(block => block.links.map(link => link.href)));
 ---
 <aside class="sidebar">
-  <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">{t('资料库与攻略')}<span aria-hidden="true">⌄</span></button>
+  <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">{current ? `${t(current.label)} · ${count(current.id)}` : t('主要分类')}<span aria-hidden="true">⌄</span></button>
   <nav id="sidebar-links" aria-label={t('主要分类')}>
-    <p class="section">{t('资料库')}</p>
-    {databaseLinks.map(link => <a href={href(link.href)} aria-current={ariaCurrent(link.href)}>{t(link.label)}</a>)}
-    <p class="section">{t('规划')}</p>
-    {plannerLinks.map(link => <a href={href(link.href)} aria-current={ariaCurrent(link.href)}>{t(link.label)}</a>)}
-    <p class="section">{t('攻略')}</p>
-    <a href={href('/guides/')} aria-current={ariaCurrent('/guides/')}>{t('全部攻略')}</a>
-    <a href={href(patchGuide.href)} aria-current={ariaCurrent(patchGuide.href)}>{t(patchGuide.label ?? patchGuide.title)}</a>
-    {groups.map(group => <>
-      <p class="group">{t(group.label)}</p>
-      {group.guides.map(guide => <a href={href(guide.href)} aria-current={ariaCurrent(guide.href)}>{t(guide.label ?? guide.title)}</a>)}
-    </>)}
+    {current && <>
+      <p class="section">{t(current.label)}</p>
+      {blocks[current.id].map(block => <>
+        {block.group && <p class="group">{block.group}</p>}
+        {block.links.map(link => <a href={href(link.href)} aria-current={link.href === active ? 'page' : undefined}>{link.label}</a>)}
+      </>)}
+      <p class="section">{t('其他栏目')}</p>
+    </>}
+    {others.map(section => <details>
+      <summary><span>{t(section.label)}</span><span class="count">{count(section.id)}</span></summary>
+      <div class="section-links">{blocks[section.id].map(block => <>
+        {block.group && <p class="group">{block.group}</p>}
+        {block.links.map(link => <a href={href(link.href)}>{link.label}</a>)}
+      </>)}</div>
+    </details>)}
   </nav>
 </aside>
 <script>
@@ -35,15 +51,12 @@ const ariaCurrent = (path: string) => path === current ? 'page' : undefined;
       button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
     });
   });
-  // The links outgrow the window, so the sticky list scrolls; show the current page's
-  // section, or at least its link, when the link starts out of view.
+  // A long section can outgrow the window, so the sticky list scrolls; keep the
+  // current page's link in view when it starts below the fold.
   const nav = document.getElementById('sidebar-links');
   const active = nav?.querySelector<HTMLElement>('a[aria-current="page"]');
   if (nav && active && nav.scrollHeight > nav.clientHeight && active.offsetTop + active.offsetHeight > nav.clientHeight) {
-    let section: Element | null = active;
-    while (section && !section.classList.contains('section')) section = section.previousElementSibling;
-    const top = section instanceof HTMLElement ? section.offsetTop : active.offsetTop;
-    nav.scrollTop = active.offsetTop + active.offsetHeight - top <= nav.clientHeight ? top : active.offsetTop - nav.clientHeight / 3;
+    nav.scrollTop = active.offsetTop - nav.clientHeight / 3;
   }
   });
   if(import.meta.hot)import.meta.hot.dispose(dispose);
@@ -54,16 +67,26 @@ const ariaCurrent = (path: string) => path === current ? 'page' : undefined;
   nav { position: sticky; top: 86px; max-height: calc(100vh - 96px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: grid; align-content: start; gap: .25rem; padding: 2px; }
   p { margin: 1rem .7rem .35rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
   nav > p.section:first-child { margin-top: .2rem; }
-  nav > p.group { margin: .7rem .7rem .15rem; color: var(--muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; }
+  nav p.group { margin: .7rem .7rem .15rem; color: var(--muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; }
   a { padding: .58rem .7rem; border-radius: 8px; color: var(--ink); text-decoration: none; } a:hover { background: var(--green-soft); color: var(--green); }
-  nav > a[aria-current="page"] { background: var(--green-soft); color: var(--green); font-weight: 700; border-left-color: var(--green); }
-  a:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+  nav a[aria-current="page"] { background: var(--green-soft); color: var(--green); font-weight: 700; border-left-color: var(--green); }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+  summary { display: flex; align-items: center; gap: .5rem; padding: .45rem .7rem; border-radius: 8px; color: var(--ink); cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { background: var(--green-soft); color: var(--green); }
+  summary span:first-child { flex: 1; }
+  .count { color: var(--muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+  summary::after { content: '›'; color: var(--muted); transition: transform .2s; }
+  details[open] > summary::after { transform: rotate(90deg); }
+  .section-links { display: grid; gap: .1rem; padding: .15rem 0 .4rem .6rem; }
   @media (max-width: 800px) {
     .sidebar { border-right: 0; border-bottom: 1px solid var(--border); padding: .6rem 1rem; }
     .mobile-nav-toggle { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--paper-raised); color: var(--ink); font: inherit; cursor: pointer; }
     .mobile-nav-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
     nav { display: none; position: static; max-height: none; overflow: visible; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: .5rem; }
     .mobile-nav-toggle[aria-expanded="true"] + nav { display: grid; }
-    p { grid-column: 1 / -1; }
+    p, details { grid-column: 1 / -1; }
+    summary { min-height: 44px; }
+    .section-links { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 0; }
   }
 </style>
