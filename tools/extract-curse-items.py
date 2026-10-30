@@ -12,9 +12,11 @@ Re-trace when a script hash below changes.
   PlayerAddSTGaugeMax(1). event_monthly_check clears the four GAME_FLAG_FOX_SHRINE_BUNDLE_GROUP flags
   while GAME_VALUE_HORROR_INARI_SHRINE_CLEAR_COUNT < 4. event_clear_all also gives 狛狐の置物 ×2.
 - event_rankup rankUp_HP / rankUp_ST: PlayerAddHPMax(1) / PlayerAddSTGaugeMax(1), the あんしん暮し store path.
-- event_horror_common: shipping or discarding an ITEM_FEATURE_CURSE crop (crops/flower/fruit category) or fish
-  adds the item count to GAME_VALUE_HORROR_VEGETABLE/FISH_MONSTER_POP_COUNT; late-night start pops that many
-  怪異野菜 / 怪異魚, and each one that appears subtracts 1 (ai_creature_horror_*_monster).
+- event_horror_common: shipping or discarding an ITEM_FEATURE_CURSE item whose ItemGetCategoryByID is
+  ITEM_CATEGORY_CROPS/FLOWER/FRUIT (or ITEM_CATEGORY_FISH) adds the item count to
+  GAME_VALUE_HORROR_VEGETABLE/FISH_MONSTER_POP_COUNT; late-night start pops that many 怪異野菜 / 怪異魚, and each
+  one that appears subtracts 1 (ai_creature_horror_*_monster). Every cursed item is ITEM_CATEGORY_DEFORMITY_CROPS
+  or _FISH, so neither check passes and no other script raises the counts: in this build no monster pops.
 - gimmick_event_kirakira: a sparkle with no item set gives 泥の種 when Random(100) < 95, else 小型洒水器.
 - ai_creature_horror_dorotabo: 泥田坊 plants CROPS_ID_OBJECT_MUD_SEEDS, whose harvest is 幽霊花の花瓶.
 - placementitem.dat: per map, groups of {gimmick, required flag pairs, excluded flag pairs, count range,
@@ -36,6 +38,9 @@ Native code in village.exe (hash below), re-trace when it changes:
   GAME_VALUE_GIMMICK_BAIT_TYPE holds its gimmick: 撒き餌 halves trash (fish.dat kind 0), 良質な撒き餌 halves
   trash and multiplies fish (kind 1) by 1.2, 白い撒き餌 gives white fish (kind 2) 3/97 of the running total.
   Without bait white fish get 1/99 of it. 怪異魚 (kind 3) keep their weight.
+- 0x1404B6070 (ItemGetCategoryByID): returns the item record's own category (+0x160), the field 0x1400F389B
+  compares with 5 (DEFORMITY_CROPS) and 0x1403B7D3A with 12 (FISH). Nothing maps the DEFORMITY categories to
+  their base ones.
 """
 import hashlib
 import json
@@ -127,6 +132,11 @@ assert 'PlayerAddSTGaugeMax' in consts('event_rankup',10) and 1 in code_ints('ev
 common=scripts['event_horror_common']
 assert consts('event_horror_common',1)[3:]==['ITEM_FEATURE_CURSE','ItemGetCategoryByID','ITEM_CATEGORY_CROPS','ITEM_CATEGORY_FLOWER','ITEM_CATEGORY_FRUIT']
 assert consts('event_horror_common',3)[1]=='GAME_VALUE_HORROR_VEGETABLE_MONSTER_POP_COUNT' and consts('event_horror_common',4)[1]=='GAME_VALUE_HORROR_FISH_MONSTER_POP_COUNT'
+# The ship/discard checks only accept these categories; the cursed items sit in the DEFORMITY ones.
+checked_categories=dict(crop=consts('event_horror_common',1)[5:8],fish=consts('event_horror_common',2)[5:])
+assert checked_categories['fish']==['ITEM_CATEGORY_FISH'],checked_categories
+cursed_categories=sorted({it['category_id'] for it in item_rows if it['id'] in cursed_items})
+assert cursed_categories==['ITEM_CATEGORY_DEFORMITY_CROPS','ITEM_CATEGORY_DEFORMITY_FISH'],'cursed items changed category; re-check whether shipping them pops monsters'
 for name,key in (('vegetable','VEGETABLE'),('fish','FISH')):
     c=consts(f'ai_creature_horror_{name}_monster',0)
     assert c[1]==f'GAME_VALUE_HORROR_{key}_MONSTER_POP_COUNT' and -1 in code_ints(f'ai_creature_horror_{name}_monster',0)
@@ -249,7 +259,7 @@ out=dict(
     ),
     abyss=dict(info_cost=1000,night_hours=[0,5],levels=rewards,level_range=[level_value[9],level_value[10]]),
     inari=dict(clears=4,stamina_gauges_per_clear=1,final_guardian_fox=2),
-    curse_monsters=dict(curse_feature='ITEM_FEATURE_CURSE',leave_hour=5),
+    curse_monsters=dict(curse_feature='ITEM_FEATURE_CURSE',checked_categories=checked_categories,cursed_item_categories=cursed_categories,pops=False),
     unset_sparkle=dict(mud_seeds_percent=95,other='ITEM_ID_GIMMICK_SPRINKLER_SMALL'),
     dorotabo_harvest='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE',
     pickup_pools=pools,
