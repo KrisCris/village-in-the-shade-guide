@@ -54,7 +54,7 @@ export interface SaveField {
   note?: string;
   readOnly?: boolean;
   lookup?: LookupKind;
-  /** A player-visible name the game limits to 5 characters. */
+  /** A player-visible name the game limits to NAME_LIMIT (8) characters. */
   nameLimit?: boolean;
 }
 

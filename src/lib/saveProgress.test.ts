@@ -18,7 +18,8 @@ describe.skipIf(!hasPrivateSaveFixtures)('game language', () => {
     const restored = parseSaveModel(decodeSave(exportSave(model, [], {}, edits), 'edited'));
     expect([40, 41, 42, 43, 44, 45, 46].filter(id => flagEnabled(restored.doc, id))).toEqual([44]);
     expect(withGameLanguage(model.doc, edits, 45).flags).toEqual({});
-    expect(() => withGameLanguage(model.doc, {}, 41)).toThrow();
+    expect(withGameLanguage(model.doc, {}, 41).flags).toEqual({ 41: true, 45: false });
+    expect(() => withGameLanguage(model.doc, {}, 47)).toThrow();
   });
 });
 

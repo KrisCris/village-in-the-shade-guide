@@ -30,9 +30,9 @@ export function flagEnabled(doc: SerDocument, id: number, edits: ProgressEdits =
 
 /** GAME_FLAG_LANGUAGE_JP…KO (40–46): each save keeps exactly one on. */
 export const LANGUAGE_FLAGS = [40, 41, 42, 43, 44, 45, 46];
-/** The languages with game text in this build; EN/FR/ES flags exist but have no text. */
+/** The game languages; English, French and Spanish have game text since build 25640656 (patch 1.30). */
 export const GAME_LANGUAGES = [
-  { flag: 44, name: '简体中文' }, { flag: 45, name: '繁體中文' }, { flag: 40, name: '日本語' }, { flag: 46, name: '한국어' }, // i18n-ignore — language names stay in their own script
+  { flag: 44, name: '简体中文' }, { flag: 45, name: '繁體中文' }, { flag: 40, name: '日本語' }, { flag: 41, name: 'English' }, { flag: 42, name: 'Français' }, { flag: 43, name: 'Español' }, { flag: 46, name: '한국어' }, // i18n-ignore — language names stay in their own script
 ];
 export function gameLanguage(doc: SerDocument, edits: ProgressEdits = {}): number | undefined {
   return LANGUAGE_FLAGS.find(id => flagEnabled(doc, id, edits));

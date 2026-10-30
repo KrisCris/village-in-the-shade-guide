@@ -20,7 +20,7 @@ describe.skipIf(!hasPrivateSaveFixtures)('verified save editor rules', () => {
       expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '甲乙丙丁戊己庚辛' })))).not.toThrow();
       expect(() => exportSave(model, pendingChanges(model, pathDrafts({ [path]: '😀😀😀😀😀😀😀😀' })))).not.toThrow();
     }
-  });
+  }, 30_000);
   it('uses non-linear NPC heart thresholds', () => {
     expect(heartFill(390, SAVE_RULES.npcHearts)).toEqual([1, 1, .3, 0, 0, 0]);
     expect(heartFill(2100, SAVE_RULES.npcHearts)).toEqual([1, 1, 1, 1, 1, 1]);

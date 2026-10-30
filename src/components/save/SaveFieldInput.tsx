@@ -69,7 +69,6 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact,
       size={compact ? 10 : undefined}
       onChange={(event) => onChange(field, event.target.value)}
       aria-label={label}
-      maxLength={nameField ? NAME_LIMIT : undefined}
       aria-description={nameField ? tr('游戏内名称最多 {limit} 个字符。', { limit: NAME_LIMIT }) : undefined}
       aria-invalid={(nameField && Array.from(value).length > NAME_LIMIT) || !!problem || undefined}
       spellCheck={false}
