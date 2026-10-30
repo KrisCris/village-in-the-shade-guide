@@ -40,11 +40,12 @@ const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
 <table><thead><tr><th>{t('居民')}</th><th>{t('生日礼物')}</th></tr></thead><tbody>
 {presents.map(({person,present})=><tr><th scope="row">{person?<a href={href(entityUrl(person))}>{person.name.zh_hans}</a>:''}</th><td><GuideItem entity={item(present)} href={url(present)}/></td></tr>)}
 </tbody></table>
-<p>{t('这些礼物都是装饰品，可以摆在家里或农场里。')}</p>
+<p>{t('这些礼物都是摆件，大多放在桌子或架子上。')}</p>
 </section>
 
 <section id="seeder"><h2>{t('播种机')}</h2>
 <p set:html={tHtml('岔路祠堂修复完第三阶段后，茶梅会来信。之后可以在田上杂货店买到<a href="{url}">{name}</a>（{price}，限购一台）。',{url:url('ITEM_ID_TOOL_SEEDER_1'),name:item('ITEM_ID_TOOL_SEEDER_1')?.name.zh_hans??'',price:money('ITEM_ID_TOOL_SEEDER_1')})} />
+<p>{t('官方更新说明写的是“祠堂修复到第三阶段”；游戏数据检查的是第 4 组祠堂修复交付（木材和石材）是否完成。')}</p>
 <p>{t('播种机能把选好的种子、秧苗或肥料一次撒在已经翻好的田地或水田上。和其他工具一样，可以在铁砧升级，每级用 1 个铸模和 5 根金属条。')}</p>
 <table><thead><tr><th>{t('播种机')}</th><th>{t('播种范围')}</th><th>{t('升级材料')}</th></tr></thead><tbody>
 {seeders.map(s=><tr><th scope="row"><GuideItem entity={item(s.id)} href={url(s.id)}/></th><td>{s.area}</td><td>{s.mold?<span class="pair"><GuideItem entity={item(s.mold)} href={url(s.mold)} note="×1"/><GuideItem entity={item(s.ingot!)} href={url(s.ingot!)} note="×5"/></span>:t('商店购买')}</td></tr>)}
