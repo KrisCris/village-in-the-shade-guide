@@ -2,40 +2,21 @@
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { guideCategories, localizeGuide, pendingGuides } from '../../data/guideContent';
+import { guideGroups, patchGuide, type GuideLink } from '../../data/navigation';
 import {getCatalog} from '../../data/repository';
 import { showsJapaneseName } from '../../data/types';
 import { getI18n } from '../../i18n/server';
 const {t,href,locale}=getI18n(Astro.url);
 const items=getCatalog(locale).entities.filter(e=>e.kind==='items'&&e.category_id);
-const planningGuides=[
- [t('1.30 更新：生日、播种机与卫浴设备'),'/guides/patch-1-30/','ITEM_ID_BIRTHDAY_CAKE'],
- [t('四季留货与交付'),'/guides/season-plan/','CROPS'],
- [t('种植加工收益排行'),'/planner/','PROCESSED_PRODUCT'],
- [t('播种、跨季与菌类'),'/guides/cultivation-plan/','SEEDING'],
- [t('四季钓点与留货'),'/guides/fishing-spots/','FISH'],
- [t('料理材料与食谱'),'/guides/cooking-plan/','COOKING'],
- [t('家畜解锁、品评会与产物'),'/guides/livestock-plan/','ITEM_ID_LIVESTOCK_COW_NORMAL'],
- [t('建筑、扩地与温室'),'/guides/buildings/','ITEM_ID_BUNDLE_REWARD_08'],
- [t('狩猎执照与材料'),'/guides/hunting-plan/','HUNTING_LICENSE'],
- [t('采石场掉落分布'),'/guides/quarry/','ORE'],
- [t('帮忙券与主线推进'),'/guides/progression/','FARM_TOOL'],
- [t('生日、送礼与食谱传授'),'/guides/residents/','FLOWER'],
- [t('夜间收集地图'),'/guides/collection-map/','CURSE'],
- [t('咒物与心、活力上限'),'/guides/cursed-items/','ITEM_ID_CURSED_HEART_SCALE'],
- [t('夜间交换与勾玉'),'/guides/night-preparation/','KEYITEM'],
- [t('怪异出现条件与对策'),'/guides/anomalies/','ITEM_ID_CURSED_TENGU_MODE'],
- [t('深夜出没的妖怪'),'/guides/night-monsters/','ITEM_ID_CURSED_RED_CANDLE'],
- [t('祠堂能力与配方解锁'),'/guides/skills/','MACHINE'],
- [t('服装与装饰获取'),'/guides/appearance/','CLOTHES'],
-];
 // AppMedia's data pages are covered by the wiki's own catalog (资料库 → 物品分类).
 const dataCategory=guideCategories[guideCategories.length-1];
-// The third column is an item category, or one item ID when the category's first icon does not fit.
 const iconOf=(key:string)=>(key.startsWith('ITEM_ID_')?items.find(e=>e.id===key):items.find(e=>e.category_id===`ITEM_CATEGORY_${key}`&&e.icon_path))?.icon_path;
+const card=(guide:GuideLink)=>({title:t(guide.title),url:href(guide.href),icon:iconOf(guide.icon)});
+const sections:Array<{id?:string;label?:string;guides:ReturnType<typeof card>[]}>=[{guides:[card(patchGuide)]},...guideGroups.map(group=>({id:group.id,label:t(group.label),guides:group.guides.map(card)}))];
 ---
 <BaseLayout title={t('攻略一览')}>
   <h1>{t('攻略')}</h1>
-  <div class="guide-grid planning">{planningGuides.map(([title,url,key])=>{const icon=iconOf(key);return <a class="card" href={href(url)}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>;})}</div>
+  {sections.map(({id,label,guides})=><section id={id}>{label&&<div class="section-heading"><h2>{label}</h2></div>}<div class="guide-grid planning">{guides.map(({title,url,icon})=><a class="card" href={url}>{icon&&<img src={withBase(icon)} width="48" height="48" alt="" loading="lazy"/>}<strong>{title}</strong></a>)}</div></section>)}
   <div class="pending-intro"><h2>{t('待补充的主题')}</h2><p>{t('这些主题目前只有提纲，写成完整攻略后会移到上方。')}</p></div>
   {guideCategories.map((category) => {
     if(category===dataCategory)return null;
@@ -45,4 +26,4 @@ const iconOf=(key:string)=>(key.startsWith('ITEM_ID_')?items.find(e=>e.id===key)
   })}
 </BaseLayout>
 <style>.planning a{display:flex!important;align-items:center;gap:.75rem!important}.planning img{object-fit:contain;flex-shrink:0}</style>
-<style>.pending-intro{margin-top:3.5rem}.pending-intro h2{font-size:1.5rem;margin-bottom:.3rem}.pending-intro p{color:var(--muted);margin:0}section{margin-top:2rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h3{font-size:1.2rem;margin:.4rem 0 .6rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>
+<style>.pending-intro{margin-top:3.5rem}.pending-intro h2{font-size:1.5rem;margin-bottom:.3rem}.pending-intro p{color:var(--muted);margin:0}section{margin-top:2rem;scroll-margin-top:80px}.section-heading{display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border);margin-bottom:1rem}.section-heading h2{font-size:1.35rem;margin:.4rem 0 .6rem}.section-heading h3{font-size:1.2rem;margin:.4rem 0 .6rem}.section-heading span{color:var(--muted)}.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}.guide-grid a{display:grid;gap:.4rem;padding:1rem;color:var(--ink);text-decoration:none}.guide-grid a:hover{border-color:var(--green)}.guide-grid small{color:var(--muted)}.guide-grid span{margin-top:.3rem;color:var(--green);font-size:.85rem}</style>
