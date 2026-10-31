@@ -23,5 +23,6 @@ export function compactDetailModel(model: EntityDetailModel, embedded = false): 
     ingredientOptions: model.ingredientOptions.map(option => ({ ...option, rows: option.rows.map(row) })),
     totalProcessingPlans: model.processingPlans.length,
     processingPlans: model.processingPlans.slice(0, 12).map(plan => compactDetailModel(plan, true)),
+    qualityTarget: model.qualityTarget && { ...model.qualityTarget, countItem: card(model.qualityTarget.countItem), shared: model.qualityTarget.shared.map(card) },
   };
 }

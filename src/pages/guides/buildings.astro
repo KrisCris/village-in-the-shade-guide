@@ -113,7 +113,7 @@ const milestones=construction.construction_milestones.join(' / ');
 <h3>{t('卡住进度的地方')}</h3>
 <ul>
 <li set:html={tHtml('畜产品和家畜毛需要牛、鸡、猪、羊、开司米山羊和马。猪和开司米山羊要在品评会拿到名次才会上架，马要先建畜舍再建马厩，见<a href="/guides/livestock-plan/#unlock">家畜解锁条件</a>。品评会每季只有 27 日一次，所以无法排出固定的最早日期。')} />
-<li>{t('“品牌”是游戏里最高的品质档。品评会拿到 S 的家畜会成为品牌家畜，但品牌家畜的产物是否直接是品牌品质，作物又怎样拿到品牌品质，本站还没核实。')}</li>
+<li set:html={tHtml('“品牌”是最高一档品质。作物要拿金★去品评会拿 S，畜产品要来自在品评会拿过 S 的那只家畜。每次品评会只能出品一样东西，见<a href="/guides/crop-quality/#greenhouse">作物品质与品牌</a>。')} />
 <li set:html={tHtml('{gems}不要求品质，在<a href="/guides/quarry/">采石场</a>挖。',{gems})} />
 <li>{t('建温室还要 {count} 个玻璃棒，可以在等品评会的时候先做。',{count:greenhouse.inputs.find(i=>i.item_id==='ITEM_ID_GLASS_ROD')?.quantity??0})}</li>
 </ul>

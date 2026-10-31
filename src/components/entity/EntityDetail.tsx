@@ -8,6 +8,7 @@ import type { EntityDetailModel } from '../../domain/relations';
 import { durationText } from '../../domain/duration';
 import RelationRow from './RelationRow';
 import CropGrowth from './CropGrowth';
+import QualityTarget from './QualityTarget';
 import AnimatedPortrait from '../art/AnimatedPortrait';
 import {portraits} from '../art/portraitCatalog';
 import { useI18n } from '../../i18n/react';
@@ -51,6 +52,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
 
     <section><h2>{t('基础数据')}</h2><dl className="facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd className={fact.price ? 'price' : ''}>{fact.value}</dd></div>)}</dl></section>
     {model.growth && <CropGrowth growth={model.growth} entity={entity} onOpen={onOpen} />}
+    {model.qualityTarget && <QualityTarget target={model.qualityTarget} />}
     {machines&&<section><h2>{machines.label}</h2><div className="relation-list">{machines.rows.map(row=><RelationRow key={row.key} row={row} onOpen={onOpen}/>)}</div></section>}
     {model.processingPlans?.length > 0 && <section><h2>{t('加工方案')}</h2>{partialPlans && <p>{t('先显示 {shown} / {total} 个方案；完整数据载入后可筛选与排序。',{shown:model.processingPlans.length,total:model.totalProcessingPlans ?? model.processingPlans.length})}</p>}{!partialPlans && model.processingPlans.length > 1 && <div className="plan-filters"><label>{t('原材料')}<SearchableSelect value={ingredient} onChange={e => setIngredient(e.target.value)}><option value="">{t('全部原材料')}</option>{materials.map(([id, name]) => <option key={id} value={id}>{name}</option>)}</SearchableSelect></label><label>{t('排序')}<SearchableSelect value={sort} onChange={e => setSort(e.target.value)}><option value="default">{t('游戏顺序')}</option><option value="net">{t('加工增值从高到低')}</option><option value="perDay">{t('每日增值从高到低')}</option><option value="duration">{t('耗时从短到长')}</option></SearchableSelect></label><span>{t('{count} 个方案',{count:plans.length})}</span></div>}{planRows.visible.map((plan, index) => <div className="processing-plan" key={plan.entity.id}>
       <div className="plan-heading"><h3>{planTitle(plan) || t('方案 {number}',{number:index + 1})}</h3><span>{durationText(Number(plan.entity.duration_minutes), t)}</span></div>
