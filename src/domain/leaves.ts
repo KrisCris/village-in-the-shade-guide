@@ -5,7 +5,7 @@ export function particleViewport(width:number,height:number){
   return {spawnRate:Math.max(.6,Math.min(10,(1/.3)*w*h/(1280*800))),speedScale:Math.max(.5,Math.min(2.2,h/800))};
 }
 
-/** Leaves drift 20-40 px/s, so ~60 updates a second look the same as 120-165 and halve the compositor work. */
+/** Leaves drift 20-50 px/s, so ~60 updates a second look the same as 120-165 and halve the compositor work. */
 export const LEAF_FRAME_MS=12;
 export const shouldDrawLeaves=(sinceLast:number)=>sinceLast>=LEAF_FRAME_MS;
 
@@ -16,6 +16,8 @@ export type Leaf={
   ex:number;ey:number;
   /** Pendulum flutter: phase, swings per second, sideways glide and sink speed (px/s), tilt (rad). */
   phase:number;freq:number;swing:number;sink:number;tilt:number;
+  /** Sideways lean (-1..1) and a slow drift of the swing's width and pace (phase, rad/s), so no two leaves keep step. */
+  lean:number;mood:number;moodRate:number;
   /** Flip speed for leaves that tumble end over end (rad/s), 0 for gliders. */
   tumble:number;flip:number;angle:number;spin:number;
   state:LeafState;age:number;slide:number;release:number;
@@ -75,10 +77,11 @@ export class LeafWorld {
     const wide=snow?1:.72+.28*Math.abs(Math.cos(id*1.3));
     Object.assign(leaf,{
       id,season,r,x,y,vx:0,vy:0,ex:0,ey:0,
-      phase:noise(id,1)*Math.PI*2,freq:snow?.22+.16*noise(id,2):.5+.4*noise(id,2),
+      phase:noise(id,1)*Math.PI*2,freq:snow?.14+.1*noise(id,2):petal?.34+.22*noise(id,2):.28+.2*noise(id,2),
       swing:snow?7+6*noise(id,3):petal?26+16*noise(id,3):18+16*noise(id,3),
-      sink:snow?16+6*noise(id,4):petal?23+8*noise(id,4):27+10*noise(id,4),
-      tilt:snow?0:.45+.4*noise(id,5),tumble:!snow&&noise(id,6)<.16?2.6+1.8*noise(id,7):0,
+      sink:snow?20+8*noise(id,4):petal?31+11*noise(id,4):36+14*noise(id,4),
+      tilt:snow?0:.45+.4*noise(id,5),tumble:!snow&&noise(id,6)<.16?1.6+1.4*noise(id,7):0,
+      lean:noise(id,16)*2-1,mood:noise(id,17)*Math.PI*2,moodRate:.25+.35*noise(id,18),
       flip:noise(id,8)*Math.PI*2,angle:noise(id,9)*Math.PI*2*(snow?1:0),spin:0,
       state:'air',age:0,slide:0,release:0,support:0,half:r*1.12*wide,thick:snow?r*.5:r*.6,wide,
     } satisfies Leaf);
@@ -133,15 +136,20 @@ export class LeafWorld {
       leaf.age+=dt;
       if(gust&&leaf.state!=='air'){leaf.state='air';leaf.age=0;leaf.ey=-80;}
       if(leaf.state==='air'){
-        leaf.phase+=Math.PI*2*leaf.freq*dt;
+        // The swing widens and narrows, and speeds up and slows down, over a few seconds.
+        leaf.mood+=leaf.moodRate*dt;
+        const width=.4+.6*(.5+.5*Math.sin(leaf.mood));
+        leaf.phase+=Math.PI*2*leaf.freq*(1+.3*Math.sin(leaf.mood*1.7+leaf.lean*3))*dt;
         const swing=Math.cos(leaf.phase);
+        // Wind varies across the window: neighbours drift together, leaves far apart do not.
+        const wind=7*Math.sin(leaf.x*.0045+this.time*.35)+5*Math.sin(leaf.y*.007-this.time*.23+2);
         let glide:number,sink:number;
-        if(leaf.tumble){leaf.flip+=leaf.tumble*dt;glide=leaf.swing*.7*Math.sin(2*leaf.flip);sink=leaf.sink*1.15;}
-        // Like a pendulum: fastest and lowest mid-swing, almost hanging at each end of the glide.
-        else{glide=leaf.swing*swing;sink=leaf.sink*(.35+1.3*swing*swing);}
+        if(leaf.tumble){leaf.flip+=leaf.tumble*(.8+.4*width)*dt;glide=leaf.swing*(.5*leaf.lean+.2*Math.sin(leaf.flip));sink=leaf.sink*1.15;}
+        // Like a pendulum: fastest and lowest mid-swing, almost hanging at each end of the glide. A narrow swing falls steadier.
+        else{glide=leaf.swing*(width*swing+.25*leaf.lean);sink=leaf.sink*(1+width*(1.3*swing*swing-.65));}
         if(gust)leaf.ex+=gust.dir*GUST*Math.min(1,gust.time/.4)*dt;
         leaf.ex*=decay;leaf.ey*=decay;leaf.spin*=spinDecay;
-        leaf.vx=(breeze+glide)*speedScale+leaf.ex;leaf.vy=sink*speedScale+leaf.ey;
+        leaf.vx=(breeze+wind+glide)*speedScale+leaf.ex;leaf.vy=sink*speedScale+leaf.ey;
         leaf.x+=leaf.vx*dt;leaf.y+=leaf.vy*dt;
         const tilt=leaf.tumble||leaf.season===3?leaf.angle+(leaf.season===3?.4:.9)*dt:leaf.angle+(leaf.tilt*Math.sin(leaf.phase)-leaf.angle)*(1-Math.exp(-6*dt));
         leaf.angle=tilt+leaf.spin*dt;

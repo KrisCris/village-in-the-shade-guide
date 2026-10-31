@@ -14,7 +14,12 @@ it('glides from side to side and sinks slowly instead of falling like rain',()=>
   expect(left&&right).toBe(true);
   // Pendulum flutter: almost hanging at the ends of a swing, fastest through the middle.
   expect(fastest).toBeGreaterThan(slowest*3);
-  expect(leaf.y).toBeGreaterThan(100);expect(leaf.y).toBeLessThan(450);
+  expect(leaf.y).toBeGreaterThan(150);expect(leaf.y).toBeLessThan(650);
+});
+it('varies the swing pace of each leaf over time instead of repeating one rhythm',()=>{
+  const w=world(1000,4000);const leaf=w.spawn(500,0,1)!;const rates:number[]=[];
+  for(let second=0;second<20;second++){const start=leaf.phase;run(w,1);rates.push(leaf.phase-start);}
+  expect(Math.max(...rates)/Math.min(...rates)).toBeGreaterThan(1.3);
 });
 it('lands on the bottom edge and lies flat in the drift',()=>{
   const w=world();const leaf=w.spawn(200,250,1)!;run(w,10);
