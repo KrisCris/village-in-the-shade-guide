@@ -164,3 +164,31 @@ def test_character_gift_and_fish_location_relations_use_stable_ids():
     ]
     assert world.fish[fish_item.id].seasons == ("spring", "autumn")
     assert world.fish[fish_item.id].time_periods == ("morning", "evening")
+
+
+def test_hunt_reward_keeps_weights_and_draw_count_from_four_fixed_slots():
+    bones = _item("ITEM_ID_HUNTING_SMALL_ANIMAL_BONES", 150020, "小动物的骨头")
+    meat = _item("ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT", 150000, "野生小动物的肉")
+    plume = _item("ITEM_ID_HUNTING_PHEASANT_PLUME", 150040, "绿雉的饰羽")
+    certificate = _item("ITEM_ID_HUNTING_CERTIFICATE_PHEASANT", 155060, "绿雉的狩猎证明")
+    items = {entry.id: entry for entry in (bones, meat, plume, certificate)}
+    # dropNum (byte 20) is 4 here, more than the three filled slots, so it
+    # must not be read as a slot count. Slot 4 names an item with Rate 0,
+    # which the game skips, and bytes 72-88 hold version and platform words.
+    record = _record(88, {
+        0: 6, 16: 155060, 20: 4,
+        24: 150020, 28: 1, 32: 50,
+        36: 150000, 40: 1, 44: 40,
+        48: 150040, 52: 1, 56: 10,
+        60: 150040, 64: 2, 68: 0,
+        72: 150020, 76: 1, 80: 1,
+    })
+    table = read_table(build_table(records=[record], strings=b"HUNT_REWARD_PHEASANT\0"), language_count=7)
+    reward = normalize_world({"huntreward": table}, Snapshot(items=items), {}).hunt_rewards["HUNT_REWARD_PHEASANT"]
+    assert reward.certificate_item_id == "ITEM_ID_HUNTING_CERTIFICATE_PHEASANT"
+    assert reward.draw_count == 4
+    assert [(entry.item_id, entry.quantity, entry.weight) for entry in reward.rewards] == [
+        ("ITEM_ID_HUNTING_SMALL_ANIMAL_BONES", 1, 50),
+        ("ITEM_ID_HUNTING_SMALL_ANIMAL_GAME_MEAT", 1, 40),
+        ("ITEM_ID_HUNTING_PHEASANT_PLUME", 1, 10),
+    ]

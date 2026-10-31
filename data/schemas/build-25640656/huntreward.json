@@ -71,7 +71,7 @@
       ]
     },
     {
-      "name": "reward_count",
+      "name": "draw_count",
       "offset": 20,
       "kind": "u32",
       "required": true,

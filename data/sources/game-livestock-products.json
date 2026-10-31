@@ -24,7 +24,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:1; adult_id@76; production array@120; variant items@256"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_TAIL_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:1; adult_id@76; production array@120; variant items@256; sale gift@280"
     },
     {
       "livestock_id": "LIVESTOCK_ID_CHICK",
@@ -38,7 +58,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:2; adult_id@76; production array@120; variant items@224"
+      "sale_gift": null,
+      "source": "livestock.dat:2; adult_id@76; production array@120; variant items@224; sale gift@248"
     },
     {
       "livestock_id": "LIVESTOCK_ID_DUCK",
@@ -63,7 +84,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:3; adult_id@76; production array@128; variant items@264"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_DUCK_WHITE_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:3; adult_id@76; production array@128; variant items@264; sale gift@288"
     },
     {
       "livestock_id": "LIVESTOCK_ID_DUCK_CHICK",
@@ -76,7 +117,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:4; adult_id@76; production array@128; variant items@232"
+      "sale_gift": null,
+      "source": "livestock.dat:4; adult_id@76; production array@128; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_TURKEY",
@@ -100,7 +142,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:5; adult_id@76; production array@120; variant items@256"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_TURKEY",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_TURKEY_TAIL_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:5; adult_id@76; production array@120; variant items@256; sale gift@280"
     },
     {
       "livestock_id": "LIVESTOCK_ID_TURKEY_CHICK",
@@ -112,7 +174,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:6; adult_id@76; production array@120; variant items@224"
+      "sale_gift": null,
+      "source": "livestock.dat:6; adult_id@76; production array@120; variant items@224; sale gift@248"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COW",
@@ -133,7 +196,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:7; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 12,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+            "fixed": 3,
+            "weight": 60
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_COW_SKIN",
+            "fixed": 2,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_COW_HORN",
+            "fixed": 0,
+            "weight": 10
+          }
+        ]
+      },
+      "source": "livestock.dat:7; adult_id@76; production array@112; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_CALF",
@@ -147,7 +230,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:8; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:8; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_SHEEP",
@@ -167,7 +251,22 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:9; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 7,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_LAMB",
+            "fixed": 2,
+            "weight": 55
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:9; adult_id@76; production array@112; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_LAMB",
@@ -180,7 +279,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:10; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:10; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_GOAT",
@@ -201,7 +301,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:11; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 7,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+            "fixed": 2,
+            "weight": 55
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_GOAT_HORN",
+            "fixed": 0,
+            "weight": 15
+          }
+        ]
+      },
+      "source": "livestock.dat:11; adult_id@76; production array@112; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_BABY_GOAT",
@@ -215,7 +335,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:12; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:12; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_CASHMERE_GOAT",
@@ -234,7 +355,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:13; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 7,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+            "fixed": 2,
+            "weight": 55
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CASHMERE_GOAT_HORN",
+            "fixed": 0,
+            "weight": 15
+          }
+        ]
+      },
+      "source": "livestock.dat:13; adult_id@76; production array@112; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_BABY_CASHMERE_GOAT",
@@ -246,7 +387,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:14; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:14; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_PIG",
@@ -266,7 +408,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:15; adult_id@76; production array@128; variant items@248"
+      "sale_gift": {
+        "count": 8,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_PORK",
+            "fixed": 2,
+            "weight": 60
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_PIG_SKIN",
+            "fixed": 0,
+            "weight": 10
+          }
+        ]
+      },
+      "source": "livestock.dat:15; adult_id@76; production array@128; variant items@248; sale gift@272"
     },
     {
       "livestock_id": "LIVESTOCK_ID_PIGLET",
@@ -279,7 +441,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:16; adult_id@76; production array@120; variant items@224"
+      "sale_gift": null,
+      "source": "livestock.dat:16; adult_id@76; production array@120; variant items@224; sale gift@248"
     },
     {
       "livestock_id": "LIVESTOCK_ID_HORSE",
@@ -300,7 +463,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:17; adult_id@76; production array@128; variant items@248"
+      "sale_gift": {
+        "count": 10,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_HORSE_MEAT",
+            "fixed": 3,
+            "weight": 60
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_LARGE_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_HORSESHOE",
+            "fixed": 0,
+            "weight": 10
+          }
+        ]
+      },
+      "source": "livestock.dat:17; adult_id@76; production array@128; variant items@248; sale gift@272"
     },
     {
       "livestock_id": "LIVESTOCK_ID_BABY_HORSE",
@@ -314,7 +497,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:18; adult_id@76; production array@128; variant items@232"
+      "sale_gift": null,
+      "source": "livestock.dat:18; adult_id@76; production array@128; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_RED",
@@ -326,7 +510,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:19; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:19; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_ORANGE",
@@ -338,7 +523,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:20; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:20; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_GREEN",
@@ -350,7 +536,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:21; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:21; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_LIGHT_BLUE",
@@ -362,7 +549,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:22; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:22; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_BLUE",
@@ -374,7 +562,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:23; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:23; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_PURPLE",
@@ -386,7 +575,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:24; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:24; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COLOR_CHICK_GRAY",
@@ -398,7 +588,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:25; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:25; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_ROOSTER",
@@ -421,7 +612,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:30; adult_id@76; production array@112; variant items@248"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_TAIL_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:30; adult_id@76; production array@112; variant items@248; sale gift@272"
     },
     {
       "livestock_id": "LIVESTOCK_ID_GHOST_COW",
@@ -431,7 +642,8 @@
       "variant_item_ids": [],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:100; adult_id@76; production array@136; variant items@240"
+      "sale_gift": null,
+      "source": "livestock.dat:100; adult_id@76; production array@136; variant items@240; sale gift@264"
     },
     {
       "livestock_id": "LIVESTOCK_ID_DOG",
@@ -441,7 +653,8 @@
       "variant_item_ids": [],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:200; adult_id@76; production array@152; variant items@256"
+      "sale_gift": null,
+      "source": "livestock.dat:200; adult_id@76; production array@152; variant items@256; sale gift@280"
     },
     {
       "livestock_id": "LIVESTOCK_ID_CHICK_SILKIE",
@@ -453,7 +666,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:301; adult_id@76; production array@120; variant items@224"
+      "sale_gift": null,
+      "source": "livestock.dat:301; adult_id@76; production array@120; variant items@224; sale gift@248"
     },
     {
       "livestock_id": "LIVESTOCK_ID_CHICKEN_SILKIE",
@@ -477,7 +691,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:302; adult_id@76; production array@120; variant items@256"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN_TAIL_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:302; adult_id@76; production array@120; variant items@256; sale gift@280"
     },
     {
       "livestock_id": "LIVESTOCK_ID_DUCK_CHICK_WILD",
@@ -489,7 +723,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:303; adult_id@76; production array@128; variant items@232"
+      "sale_gift": null,
+      "source": "livestock.dat:303; adult_id@76; production array@128; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_DUCK_WILD",
@@ -513,7 +748,27 @@
           "weight": 3
         }
       ],
-      "source": "livestock.dat:304; adult_id@76; production array@128; variant items@264"
+      "sale_gift": {
+        "count": 3,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_CHICKEN",
+            "fixed": 1,
+            "weight": 40
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BIRD_FEATHER",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_DUCK_WHITE_FEATHER",
+            "fixed": 0,
+            "weight": 30
+          }
+        ]
+      },
+      "source": "livestock.dat:304; adult_id@76; production array@128; variant items@264; sale gift@288"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COWCHILD_FLUFFY",
@@ -525,7 +780,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:305; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:305; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_COW_FLUFFY",
@@ -544,7 +800,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:306; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 12,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_BEEF",
+            "fixed": 3,
+            "weight": 60
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_COW_SKIN",
+            "fixed": 2,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_COW_HORN",
+            "fixed": 0,
+            "weight": 10
+          }
+        ]
+      },
+      "source": "livestock.dat:306; adult_id@76; production array@112; variant items@232; sale gift@256"
     },
     {
       "livestock_id": "LIVESTOCK_ID_BABY_GOAT_MOTTLED",
@@ -556,7 +832,8 @@
       ],
       "product_item_ids": [],
       "raw_candidates": [],
-      "source": "livestock.dat:307; adult_id@76; production array@112; variant items@216"
+      "sale_gift": null,
+      "source": "livestock.dat:307; adult_id@76; production array@112; variant items@216; sale gift@240"
     },
     {
       "livestock_id": "LIVESTOCK_ID_GOAT_MOTTLED",
@@ -575,7 +852,27 @@
           "weight": 100
         }
       ],
-      "source": "livestock.dat:308; adult_id@76; production array@112; variant items@232"
+      "sale_gift": {
+        "count": 7,
+        "items": [
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_GOAT_MEAT",
+            "fixed": 2,
+            "weight": 55
+          },
+          {
+            "item_id": "ITEM_ID_HUNTING_SMALL_ANIMAL_BONES",
+            "fixed": 1,
+            "weight": 30
+          },
+          {
+            "item_id": "ITEM_ID_LIVESTOCK_GOAT_HORN",
+            "fixed": 0,
+            "weight": 15
+          }
+        ]
+      },
+      "source": "livestock.dat:308; adult_id@76; production array@112; variant items@232; sale gift@256"
     }
   ]
 }
