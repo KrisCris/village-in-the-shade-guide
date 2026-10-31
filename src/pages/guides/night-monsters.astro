@@ -43,14 +43,14 @@ const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['m
 <li>{t('附身草丛和迷途森林也有这样的入口。这两处不在村庄小地图上，下面没有画出来。')}</li>
 <li>{t('伤害按 4 点生命 = 1 颗心换算。')}</li>
 </ul>
-<table class="spawn"><thead><tr><th>{t('区域')}</th><th>{t('每次进入出现')}</th></tr></thead><tbody>
+<div class="table-scroll"><table class="spawn"><thead><tr><th>{t('区域')}</th><th>{t('每次进入出现')}</th></tr></thead><tbody>
 <tr><td>{t('通往隘口的路')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['1'].count)})}</td></tr>
 <tr><td>{t('山中')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['2'].count)})}<br/>{t('另有{woman} {a} 只、{block} {b} 只，以及{wall}',{woman:nm('TWO_MOUTHS_WOMAN'),a:range(T['4'].count),block:nm('BLOCKAGE_PLANE'),b:range(T['5'].count),wall:t('涂壁')})}</td></tr>
 <tr><td>{t('农场')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['3'].count)})}</td></tr>
 <tr><td>{t('追加农地')}</td><td>{t('{names}，共 {count} 只',{names:generic,count:range(T['100'].count)})}</td></tr>
 <tr><td>{t('附身草丛')}</td><td>{t('{kune} {a} 只、{obo} {b} 只、{woman} 1 只',{kune:nm('KUNEKUNE'),a:range(T['15'].count),obo:nm('OBO'),b:range(T['16'].count),woman:nm('TWO_MOUTHS_WOMAN')})}</td></tr>
 <tr><td>{t('迷途森林')}</td><td>{t('{woman} 1 只',{woman:nm('TWO_MOUTHS_WOMAN')})}</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">{t('各区域共用的 5 种妖怪每次随机抽取，表中数量是它们的总数。')}</p></section>
 
 <section id="maps"><h2>{t('出现范围地图')}</h2>
@@ -124,9 +124,9 @@ const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['m
 <p class="conds"><span class="pill">{t('村庄地图上的石头')}</span></p>
 <h4>{t('会做什么')}</h4><p>{t('深夜开始时，村庄地图上最多 {n} 块普通石头会变成行走的石头，混在其他石头里。用十字镐敲它，它会站起来逃跑；跑出画面后停下。深夜结束时，没敲碎的变回普通石头。',{n:b.walking_stone_max})}</p>
 <h4>{t('怎么应对')}</h4><p>{t('追上去继续敲。每敲一下都会掉东西，敲 {a}～{b} 下（随机）后碎掉。它不会伤人。',{a:b.walking_stone_hits[0],b:b.walking_stone_hits[1]})}</p>
-<h4>{t('每敲一下，各自独立判定掉落')}</h4><table class="drops"><thead><tr><th>{t('物品')}</th><th>{t('数量')}</th><th>{t('几率')}</th></tr></thead><tbody>
+<h4>{t('每敲一下，各自独立判定掉落')}</h4><div class="table-scroll"><table class="drops"><thead><tr><th>{t('物品')}</th><th>{t('数量')}</th><th>{t('几率')}</th></tr></thead><tbody>
 {drops.map(d=><tr><td>{d.url&&<a class="item" href={d.url}>{d.icon&&<img src={withBase(d.icon)} width="28" height="28" alt="" loading="lazy"/>}{d.name}</a>}</td><td>{range([d.min,d.max])}</td><td>{d.chance}%</td></tr>)}
-</tbody></table></article>
+</tbody></table></div></article>
 
 <article class="card" id="whelk"><h3>{nm('WHELK')}</h3>
 <p class="conds"><span class="pill">{t('第一章结束后')}</span><span class="pill">{t('村庄地图')}</span></p>

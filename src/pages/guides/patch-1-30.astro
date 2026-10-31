@@ -47,9 +47,9 @@ const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
 <p set:html={tHtml('岔路祠堂修复完第三阶段后，茶梅会来信。之后可以在田上杂货店买到<a href="{url}">{name}</a>（{price}，限购一台）。',{url:entityUrl(item('ITEM_ID_TOOL_SEEDER_1')),name:item('ITEM_ID_TOOL_SEEDER_1')?.name.zh_hans??'',price:money('ITEM_ID_TOOL_SEEDER_1')})} />
 <p>{t('官方更新说明写的是“祠堂修复到第三阶段”；游戏数据检查的是第 4 组祠堂修复交付（木材和石材）是否完成。')}</p>
 <p>{t('播种机能把选好的种子、秧苗或肥料一次撒在已经翻好的田地或水田上。和其他工具一样，可以在铁砧升级，每级用 1 个铸模和 5 根金属条。')}</p>
-<table><thead><tr><th>{t('播种机')}</th><th>{t('播种范围')}</th><th>{t('升级材料')}</th></tr></thead><tbody>
+<div class="table-scroll"><table><thead><tr><th>{t('播种机')}</th><th>{t('播种范围')}</th><th>{t('升级材料')}</th></tr></thead><tbody>
 {seeders.map(s=><tr><th scope="row"><GuideItem entity={item(s.id)} href={url(s.id)}/></th><td>{s.area}</td><td>{s.mold?<span class="pair"><GuideItem entity={item(s.mold)} href={url(s.mold)} note="×1"/><GuideItem entity={item(s.ingot!)} href={url(s.ingot!)} note="×5"/></span>:t('商店购买')}</td></tr>)}
-</tbody></table>
+</tbody></table></div>
 </section>
 
 <section id="bath"><h2>{t('卫浴设备')}</h2>
@@ -74,6 +74,6 @@ const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
 </ul>
 </section>
 
-<details><summary>{t('数据来源')}</summary><p>{t('updatetext.dat 的 UPDATE_TEXT_1_30（官方更新说明）；event.dat 的 EVENT_ID_PLAYER_BIRTHDAY_*、EVENT_ID_SALE_START_SEEDER、EVENT_ID_SALE_START_BATH_SERIES 和 EVENT_ID_DLC_03_001；charactertalk.dat 与 ai_chara_template 脚本的生日对话；letter.dat 的生日信和茶梅来信；storesales.dat、blacksmith.dat 与 gimmickprocess.dat。')}</p></details>
+<details class="sources"><summary>{t('数据来源')}</summary><p>{t('updatetext.dat 的 UPDATE_TEXT_1_30（官方更新说明）；event.dat 的 EVENT_ID_PLAYER_BIRTHDAY_*、EVENT_ID_SALE_START_SEEDER、EVENT_ID_SALE_START_BATH_SERIES 和 EVENT_ID_DLC_03_001；charactertalk.dat 与 ai_chara_template 脚本的生日对话；letter.dat 的生日信和茶梅来信；storesales.dat、blacksmith.dat 与 gimmickprocess.dat。')}</p></details>
 </BaseLayout>
 <style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}table{width:100%}td,th{vertical-align:middle}.pair{display:flex;flex-wrap:wrap;gap:.3rem 1rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.5rem}.items .guide-item{padding:.4rem .6rem;border-radius:10px;background:var(--paper-raised);color:var(--ink)}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

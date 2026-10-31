@@ -106,9 +106,9 @@ const url=(id:string)=>{const e=item(id);return e?href(entityUrl(e)):'';};
 <p>{t('游戏脚本里写着：出货或丢弃被诅咒的作物和鱼，深夜会冒出妖怪蔬菜和妖怪鱼。不过 1.30 的判断条件只认普通的作物、花、果实和鱼，被诅咒的作物和鱼分类不同，条件对不上。按游戏数据，卖掉或扔进垃圾桶都不会招来妖怪。想换奖励，就攒着扔进龙神渊。')}</p>
 <h3>{t('被诅咒的作物')}</h3><p set:html={tHtml('只能用泥土种子种出来，种法见<a href="#grow">怎么种</a>。')} /><div class="items">{cursedCrops.map(e=><GuideItem entity={e} href={url(e.id)}/>)}</div>
 <h3>{t('被诅咒的鱼')}</h3><p set:html={tHtml('每个<a href="/guides/fishing-spots/">钓点</a>各有一种，只在深夜 0:00～6:00 上钩，四季都有。深夜钓上来的除了它就是垃圾。')} />
-<table class="fish-rates"><thead><tr><th scope="col">{t('被诅咒的鱼')}</th><th scope="col">{t('钓点')}</th><th scope="col">{t('不撒饵')}</th><th scope="col">{t('撒鱼饵')}</th></tr></thead><tbody>
+<div class="table-scroll"><table class="fish-rates"><thead><tr><th scope="col">{t('被诅咒的鱼')}</th><th scope="col">{t('钓点')}</th><th scope="col">{t('不撒饵')}</th><th scope="col">{t('撒鱼饵')}</th></tr></thead><tbody>
 {cursedFish.map(e=><tr><td><GuideItem entity={e} href={url(e.id)}/></td><td>{fishSpot(e.id)}</td><td>{pct(fishShare(e.id))}</td><td>{pct(fishShare(e.id,trashBait))}</td></tr>)}
-</tbody></table>
+</tbody></table></div>
 <p>{t('表里是每次上钩时钓到它的机会。{bait}和{good}都会让垃圾的权重减半，被诅咒的鱼不受影响，所以机会差不多翻倍；按物品说明，两种饵还会提高上钩率。{white}只对白色的稀有鱼起作用，深夜用它没有帮助。想多钓，就带鱼饵去{spots}。',{spots:bestSpots.join(t('、')),bait:name('ITEM_ID_SPRINKLING_BAIT'),good:name('ITEM_ID_SPRINKLING_BAIT_HIGH_GRADE'),white:name('ITEM_ID_SPRINKLING_BAIT_WHITE')})}</p></section>
 
 <section id="mud-seeds"><h2>{t('泥土种子')}</h2>
@@ -122,7 +122,7 @@ const url=(id:string)=>{const e=item(id);return e?href(entityUrl(e)):'';};
 </tbody></table>
 <p>{t('机会按单个闪光点算，晴天和雨天相同。区间的低值算上了全部 5 种怪异木牌，高值是一块木牌都还没解锁时；木牌要先遇到对应的怪异才会进池子。')}</p>
 <p>{t('天狗面具怪异开始到结束之间，游戏改用红、蓝两套闪光点池，普通的夜间池停用，怪异结束后恢复。这两套池子里泥土种子少得多。')}</p>
-<details><summary>{t('村里夜间闪光点的全部物品')}</summary><table><thead><tr><th scope="col">{t('物品')}</th><th scope="col">{t('权重')}</th><th scope="col">{t('天气')}</th><th scope="col">{t('条件')}</th></tr></thead><tbody>{nightPool.entries.map(e=><tr><td><GuideItem entity={item(e.item)} href={url(e.item)}/></td><td>{e.weight}</td><td>{weatherLabel(e.weather)}</td><td>{e.required_flag?t('先遇到对应怪异'):'—'}</td></tr>)}</tbody></table></details>
+<details><summary>{t('村里夜间闪光点的全部物品')}</summary><div class="table-scroll"><table><thead><tr><th scope="col">{t('物品')}</th><th scope="col">{t('权重')}</th><th scope="col">{t('天气')}</th><th scope="col">{t('条件')}</th></tr></thead><tbody>{nightPool.entries.map(e=><tr><td><GuideItem entity={item(e.item)} href={url(e.item)}/></td><td>{e.weight}</td><td>{weatherLabel(e.weather)}</td><td>{e.required_flag?t('先遇到对应怪异'):'—'}</td></tr>)}</tbody></table></div></details>
 <p>{t('泥田坊也会种泥土种子，它种的那一株收获的是摆设{vase}。',{vase:name(curse.dorotabo_harvest)})}</p>
 <p>{t('闪光点没有指定物品时，有 {n}% 给泥土种子，其余给{other}。',{n:curse.unset_sparkle.mud_seeds_percent,other:name(curse.unset_sparkle.other)})}</p></section>
 

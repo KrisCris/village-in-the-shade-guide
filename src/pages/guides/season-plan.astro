@@ -58,7 +58,7 @@ return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={wi
  const selected=offers.filter(e=>((e.required_flags ?? []) as number[]).some(f=>(flags as number[]).includes(f)));
  return <article><h3>{String(year)}</h3><div class="needs reserves">{[...new Set(selected.map(e=>String(e.item_id)))].map(id=>{const target=item(id);const conditions=[...new Set(selected.filter(e=>e.item_id===id).flatMap(e=>e.conditions as string[]))];return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{conditions.join(t('；'))}</small></span></a>;})}</div></article>;
 })}</section>
-<details><summary>{t('数据来源')}</summary><p>{t('供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。')}</p></details>
+<details class="sources"><summary>{t('数据来源')}</summary><p>{t('供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。')}</p></details>
 </div>
 </BaseLayout>
 <style>@media(min-width:801px){.season-guide{padding-right:64px}}</style>

@@ -108,7 +108,7 @@ const numbers=(rows:MapMarker[],kind:MapKind)=>{const list=rows.filter(m=>m.kind
 <tbody>{sideAreas.map(a=><tr><th scope="row">{a.name}</th><td>{a.rows.filter(m=>m.kind==='book').map(m=><a href={m.href}>{m.label}</a>)}{!a.rows.some(m=>m.kind==='book')&&'—'}</td><td>{numbers(a.rows,'machine_part')||'—'}</td><td>{numbers(a.rows,'ghost_rat')||'—'}</td></tr>)}</tbody>
 </table></div>
 
-<details class="map-sources"><summary>{t('数据来源')}</summary><p>{t('底图：minimap_01_spr（按网站语言用简体、繁体或日文版），叠加 1.2 版新增农地 minimap_apde01_spr_V120，位置取自 gamedefine.dat 的 MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND。图书：lostbook.dat 与地图锚点。机械部件、幽灵老鼠、鲜红的手机：event_horror_chirping_machine、event_horror_ghost_rat、event_horror_phone_booth 脚本中的放置逻辑与地图锚点。坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）和 X/Y 偏移（348、−145）换算到底图像素。')}</p></details>
+<details class="map-sources sources"><summary>{t('数据来源')}</summary><p>{t('底图：minimap_01_spr（按网站语言用简体、繁体或日文版），叠加 1.2 版新增农地 minimap_apde01_spr_V120，位置取自 gamedefine.dat 的 MINI_MAP_SHOW_POS_ADDITIONAL_FARMLAND。图书：lostbook.dat 与地图锚点。机械部件、幽灵老鼠、鲜红的手机：event_horror_chirping_machine、event_horror_ghost_rat、event_horror_phone_booth 脚本中的放置逻辑与地图锚点。坐标按 gamedefine.dat 的 MINIMAP_ZOOM_RATE（8.274）和 X/Y 偏移（348、−145）换算到底图像素。')}</p></details>
 </section>
 </BaseLayout>
 <style>
