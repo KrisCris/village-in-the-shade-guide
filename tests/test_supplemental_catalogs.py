@@ -88,6 +88,32 @@ def test_save_catalogs_preserve_official_names_and_native_step_thresholds(monkey
     assert quest['steps'][1]['nameTranslations']['ja'] == '二'
 
 
+def test_livestock_sale_gift_follows_the_variant_items(monkeypatch, tmp_path):
+    # No feature IDs and one production entry put the variants at 232 and
+    # SellingInfo at 256: count, then three (item u64, weight, fixed) slots.
+    # The third slot has a weight but item 0, which the game skips.
+    row = fixture_table(344, {0:1, 112:1, 116:130040, 124:97, 232:700010,
+                              256:3, 260:131020, 268:40, 272:1, 276:130180, 284:30, 288:1, 300:15},
+                        {8:'LIVESTOCK_ID_TEST', **block(16,'ニワトリ','雞','鸡')})
+    entities = tmp_path/'data/generated/build-25640656/entities'
+    entities.mkdir(parents=True)
+    (tmp_path/'data/sources').mkdir()
+    (entities/'items.json').write_text(json.dumps([
+        {'numeric_id':130040,'id':'ITEM_ID_LIVESTOCK_CHICKEN_EGG'},
+        {'numeric_id':700010,'id':'ITEM_ID_LIVESTOCK_CHICKEN_WHITE'},
+        {'numeric_id':131020,'id':'ITEM_ID_LIVESTOCK_CHICKEN'},
+        {'numeric_id':130180,'id':'ITEM_ID_LIVESTOCK_BIRD_FEATHER'},
+    ]), 'utf8')
+    monkeypatch.chdir(tmp_path)
+    run_extractor(monkeypatch,'extract-livestock-products.py',{'livestock':row},['--game-dir',str(tmp_path)])
+    animal = json.loads((tmp_path/'data/sources/game-livestock-products.json').read_text('utf8'))['animals'][0]
+    assert animal['variant_item_ids'] == ['ITEM_ID_LIVESTOCK_CHICKEN_WHITE']
+    assert animal['sale_gift'] == {'count':3, 'items':[
+        {'item_id':'ITEM_ID_LIVESTOCK_CHICKEN','fixed':1,'weight':40},
+        {'item_id':'ITEM_ID_LIVESTOCK_BIRD_FEATHER','fixed':1,'weight':30},
+    ]}
+
+
 def test_refreshed_supplemental_references_resolve():
     entities=ROOT/'data/generated/build-25640656/entities'
     load=lambda name: json.loads((entities/f'{name}.json').read_text('utf8'))
@@ -102,6 +128,12 @@ def test_refreshed_supplemental_references_resolve():
         assert all(not v['itemId'] or v['itemId'] in items for v in row['variants'])
     for row in source('livestock-products')['animals']:
         assert set(row['product_item_ids']+row['variant_item_ids']) <= item_ids
+        gift = row['sale_gift']
+        # The game sends no gift for juveniles (growthID set).
+        assert not (row['adult_id'] and gift)
+        if gift:
+            assert {entry['item_id'] for entry in gift['items']} <= item_ids
+            assert sum(entry['fixed'] for entry in gift['items']) <= gift['count']
     for rows in source('save-appearance')['tables'].values():
         for row in rows:
             assert all(v['itemId'] in items for v in row['variants'])
