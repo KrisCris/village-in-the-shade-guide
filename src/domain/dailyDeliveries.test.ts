@@ -68,4 +68,16 @@ describe('delivery plan', () => {
     expect(eta({ periods: [3], daysLeft: 0 })).toBeUndefined();
     expect(planDeliveries(specs, progress, [], { ...context, periods: [3], daysLeft: 0 }, true).pending[0].offSeason).toBe(true);
   });
+
+  it('dates fruit from grown trees in their season at one a day each', () => {
+    const ORANGE_TREE = 104, ORANGE = 122110;
+    const crops = new Map([[ORANGE_TREE, { seasons: ['spring', 'summer', 'autumn', 'winter'], perennial: { kind: 'fruit_tree', bearing_seasons: ['winter'] }, harvest: [] }]]);
+    const at = (season: number) => ({ ...context, season, crops, orchard: [{ crop: ORANGE_TREE, cell: 1, days: 0 }, { crop: ORANGE_TREE, cell: 2, days: 0 }],
+      payload: { ...context.payload, seeds: { [ORANGE_TREE]: { seed: 12110, days: 12, items: [ORANGE], sales: [] } } } });
+    const specs = [spec(40, 'catalog')], progress = [owed(40, [ORANGE, 5])];
+    expect(planDeliveries(specs, progress, [], at(3), true).pending[0].eta).toBe(2);
+    // Out of season the trees bear nothing until winter.
+    const spring = planDeliveries(specs, progress, [], at(0), true).pending[0];
+    expect([spring.eta, spring.offSeason]).toEqual([undefined, true]);
+  });
 });

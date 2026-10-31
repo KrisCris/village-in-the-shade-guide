@@ -5,7 +5,7 @@ import { MACHINES } from '../lib/saveMachines';
 import { MAP_DATA } from '../lib/saveMap';
 import { dailyActions } from './dailyActions';
 import { collectPlan } from './dailyCollect';
-import { DAYS_PER_SEASON, harvestToday, ripening, type DailyDigest } from './dailyDigest';
+import { DAYS_PER_SEASON, harvestToday, orchard, ripening, type DailyDigest } from './dailyDigest';
 import { freeAfterDeliveries, planDeliveries } from './dailyDeliveries';
 import { livestockPlan } from './dailyLivestock';
 import { planMaterials } from './dailyMaterials';
@@ -29,7 +29,8 @@ export const dayLeft = ({ hour, minute }: { hour: number; minute: number }) => (
 
 /** Unlock flags the plan needs read from the save: machine recipes, animal house orders and wild spawns that wait for the story. */
 export const planFlags = (payload: DailyPayload) => [...[...payload.crafts, ...payload.houses].flatMap((entry) => entry.flag === null ? [] : [entry.flag]),
-  ...Object.values(payload.wild).flatMap((spawn) => spawn.flag === undefined ? [] : [spawn.flag])];
+  ...Object.values(payload.wild).flatMap((spawn) => spawn.flag === undefined ? [] : [spawn.flag]),
+  ...Object.values(payload.seeds).flatMap((seed) => seed.sales.flatMap((sale) => sale.flags))];
 
 /**
  * Every part of the daily page from one save: deliveries, what goes in the
@@ -59,7 +60,7 @@ export function dailyPlan(input: {
   for (const machine of snapshot.machines) if (EXTRACTORS.has(machine.itemId)) for (const job of machine.jobs) if (job.output) collectors.set(job.output, (collectors.get(job.output) ?? 0) + 1);
   const context: SourceContext = {
     season: snapshot.date.season, periods: periodsLeft(snapshot.date.hour), daysLeft: DAYS_PER_SEASON - snapshot.date.day, crops: DAILY_CROPS, ripening: rows, payload, owned: new Set(snapshot.houses.flatMap((house) => house.residents)),
-    trees: snapshot.trees, held, processes: SOURCE_PROCESSES, quarryReached: snapshot.quarryReached, collectors, unlocked,
+    trees: snapshot.trees, held, processes: SOURCE_PROCESSES, quarryReached: snapshot.quarryReached, collectors, unlocked, orchard: orchard(snapshot, DAILY_CROPS),
   };
   const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.catalogOpen);
   const free = freeAfterDeliveries(snapshot.held, deliveries);

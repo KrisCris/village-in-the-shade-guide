@@ -31,7 +31,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 - Only unfinished lists count. Shrine repairs go one at a time, so only the lowest-numbered unfinished repair is listed. The village head's catalog is left out until flag 12036 is on.
 - Items in the backpack and storage chests are handed out in this order: shrine repairs, this season's fox shrine offerings, the catalog, then offerings for other seasons. Lists that can be finished completely get their items first; what is left goes to unfinished lists.
 - Within the same order, lists with a quality requirement go first. Each list takes the lowest quality that qualifies, leaving better items for lists that ask for them.
-- A list goes under 物品交付 when every missing item has a source this season: crops in the field, crops you can sow now, fish that bite, wild plants, animals, trees, machines or the quarry. It goes under 本季凑不齐 only when something is out of season or its source is unknown.
+- A list goes under 物品交付 when every missing item has a source this season: crops in the field, crops you can sow now, fruit trees that bear this season, fish that bite, wild plants, animals, gifts for selling animals, hunting certificates, trees, machines or the quarry. It goes under 本季凑不齐 only when something is out of season or its source is unknown.
 - An expected wait is shown only when every missing item has a dated source. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that still bite in a period left today, wild plants that grow outdoors this season and products of animals already on the farm count as available today. A fish of this season that bites in none of today's remaining periods counts as 1 day; on the last night of the season it counts as unavailable.
 
 ### Processing machines
@@ -62,7 +62,10 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 - Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. By `cropsharvest.dat`, felling a grown tree with the axe gives 12–18 of its wood. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days). The 木材 sources also mention the stumps in 附身草丛 (the haunted thicket) north-west of the village.
 - Sap: a sap extractor on a grown tree of the right kind collects it every 3 days.
 - Wild plants and bugs: by the seasons in `naturaloccurrence.dat`; see "Collect today" above.
-- Other sources: crops in the field, crops that can be sown this season, fishing, animals and machine recipes.
+- Crops, fruit trees and tea: crops growing in the field, or crops to plant. A crop to plant comes with its seed's or sapling's growing days, how many are held and which shop sells it. When a sale has a condition (a `storesales` flag, such as "50 fruit shipped in total, from autumn of Year 1"), the page reads the flag from the save and names the condition while it is unmet. Fruit trees and tea already on the farm are listed instead with their count, the days left and the season they bear in; grown fruit trees in season are dated at one fruit per tree per day (`perennial.fruit_per_day`). Soybeans come from edamame: leave it unpicked when ripe and harvest it once it withers at the season change.
+- Meat: by the item text and `livestock.dat`, selling a cow (beef), a chicken or duck (chicken), a turkey (turkey meat) or a pig (pork) brings a gift the next day, and the meat is one of the possible gifts.
+- Hunting spoils: by `huntreward.dat`, trading the matching hunting certificate in the box at the hunter's hut can give them. The page shows how many certificates are held.
+- Other sources: fishing, animal products and machine recipes.
 
 ### After midnight
 
@@ -117,7 +120,8 @@ The rest comes from game data or existing site content:
 - Fruit trees bear only in their `perennial.bearing_seasons`; greenhouse-only trees list all four seasons.
 - The scarecrow's range and duration come from its item text (5×5 cells from the center, 28 days); the map catalog tags it `PLACEMENT_EFFECT_RANGE_2`. A spent scarecrow stays until it is chopped down with an axe.
 - The kit item text says it only grows in autumn. Outside autumn and outside an autumn scarecrow's range, the page treats a kit as stopped and leaves it out of the forecast and warnings.
-- Deliveries accept the required quality or better and have no deadline. The catalog opens with flag 12036.
+- Deliveries accept the required quality or better and have no deadline. The catalog opens with flag 12036. 品牌 (Brand) is the top quality, so a Brand requirement is shown without "or better".
+- A crop needed at Brand quality gets one more line: harvest a Gold star one, then have it certified at the Evaluation and name it. This comes from a player's account and has not been checked against game data.
 - Paddies do not need watering.
 
 ## Not verified yet
@@ -132,11 +136,13 @@ The rest comes from game data or existing site content:
 - Quarry figures cover ordinary rocks only, not ore-vein rooms or bee nests.
 - Where wild plants and bugs grow: `naturaloccurrence.dat` has only spawn groups and seasons, and the group names do not appear in the map files.
 - Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
+- Gifts for selling an animal and hunting certificate rewards: `livestock.dat` and `huntreward.dat` list a few items for each with weights that add up to 100, which looks like one weighted draw, but the game code has not been checked yet. The page says the item "may" come and gives no odds.
+- Crop quality: `HARVEST_COUNT_RATE_*` in `gamedefine.dat` shows quality rises with the harvest count, but how many harvests each crop needs has not been extracted yet, so the page cannot say how many seeds to plant.
 
 ## Code
 
 - `src/lib/saveDaily.ts`: reads cells, machines, items, delivery progress, trees, animal houses, quarry progress, scarecrows and the field guide record from the save.
-- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish seasons and bite chances per spot, wild plant and bug seasons, quarry drops, animal products and house orders.
+- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish seasons and bite chances per spot, wild plant and bug seasons, quarry drops, each crop's seed and the shops that sell it, what hunting certificates trade for, animal products and house orders.
 - `src/domain/dailyDigest.ts`: the daily field rules, independent of the save format and tested with synthetic data.
 - `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`), collect today (`dailyCollect`) and today's list (`dailyActions`).
 - `src/lib/dailyData.ts`: loads the page data and stores the settings; `src/lib/farmArea.ts`: merging and storing the farm area.

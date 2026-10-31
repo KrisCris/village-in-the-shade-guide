@@ -51,6 +51,10 @@ export const FISH_PERIODS = ['morning', 'day', 'evening', 'late-night'] as const
 export interface FishSpot { id: string; name: string; catches: Array<[season: number, period: number, itemId: number, chance: number]> }
 /** A wild plant or insect: the season it springs up in (0–3, 4 all year) and the story flag it waits for. */
 export interface WildSpawn { season: number; flag?: number }
+/** A shop selling a seed or sapling: the seasons it is on sale (empty: all year), the flags it waits for and their text. */
+export interface SeedSale { place: string; seasons: number[]; flags: number[]; conditions: string[] }
+/** A crop's seed or sapling, the turnovers it takes to grow, what it is harvested for and where the seed is sold. */
+export interface DailySeed { seed: number; days: number; items: number[]; sales: SeedSale[] }
 
 export interface DailyPayload {
   prices: Record<string, number>;
@@ -62,6 +66,10 @@ export interface DailyPayload {
   /** Wild plant and insect items that spring up on their own (naturaloccurrence.dat). */
   wild: Record<string, WildSpawn>;
   quarry: QuarryBand[];
+  /** Crop (crops.dat id) → its seed and where to buy it. */
+  seeds: Record<string, DailySeed>;
+  /** Hunting reward item → the certificates that can be traded for it at the hunter's hut. */
+  hunts: Record<string, number[]>;
   /** Adult livestock (livestock.dat id) → its house type (0 barn, 1 coop, 2 stable) and the items it produces. */
   animals: Array<{ species: number; house: number; products: number[] }>;
   houses: HouseOrder[];
@@ -110,7 +118,28 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
   const wild: Record<string, WildSpawn> = {};
   for (const row of natural.groups.flatMap((group) => group.rows)) wild[row.item_numeric_id] = { season: row.season, ...'flag' in row ? { flag: row.flag } : {} };
 
-  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+  const seasonIndex = (season: unknown) => ['spring', 'summer', 'autumn', 'winter'].indexOf(String(season));
+  const offers = catalog.entities.filter((entity) => entity.kind === 'store-offers');
+  const seeds: Record<string, DailySeed> = {};
+  for (const crop of catalog.entities) {
+    const seed = (crop.seed_item_ids as string[] | undefined)?.[0];
+    if (crop.kind !== 'crops' || typeof crop.numeric_id !== 'number' || !seed || !numeric.has(seed) || typeof crop.growth_days !== 'number') continue;
+    seeds[crop.numeric_id] = {
+      seed: numeric.get(seed)!, days: crop.growth_days,
+      items: ((crop.harvest_item_ids ?? []) as string[]).flatMap((id) => numeric.has(id) ? [numeric.get(id)!] : []),
+      sales: offers.filter((offer) => offer.item_id === seed).map((offer) => ({
+        place: String(offer.location ?? ''), seasons: ((offer.seasons ?? []) as string[]).map(seasonIndex).filter((season) => season >= 0),
+        flags: (offer.required_flags ?? []) as number[], conditions: (offer.conditions ?? []) as string[],
+      })),
+    };
+  }
+  const hunts: Record<string, number[]> = {};
+  for (const reward of catalog.entities.filter((entity) => entity.kind === 'hunt-rewards')) {
+    const certificate = numeric.get(String(reward.certificate_item_id));
+    for (const [itemId] of stacks(reward.rewards)) if (certificate) hunts[itemId] = [...new Set([...hunts[itemId] ?? [], certificate])];
+  }
+
+  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
 }
 
 /** Catch odds per spot as the fishing spots guide shows them; spot names come from the fish entries. */

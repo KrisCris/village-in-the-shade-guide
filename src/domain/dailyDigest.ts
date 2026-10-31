@@ -162,6 +162,14 @@ export function ripening(snapshot: DailySnapshot, crops: CropRules): Array<CellR
   });
 }
 
+/** Fruit trees and shrubs on the farm, with turnovers until each is grown or bears again (0: now). */
+export function orchard(snapshot: DailySnapshot, crops: CropRules): Array<CellRow & { days: number }> {
+  return snapshot.cells.flatMap((cell) => {
+    const rule = cell.crop ? crops.get(cell.crop) : undefined;
+    return rule?.perennial && GROWING_FORMS.has(cell.form) && cell.maximum > 0 ? [{ crop: cell.crop, cell: cell.id, days: daysToRipe(cell) }] : [];
+  });
+}
+
 export function buildDailyDigest(snapshot: DailySnapshot, crops: CropRules): DailyDigest {
   const { date } = snapshot;
   const season = SEASONS[date.season];

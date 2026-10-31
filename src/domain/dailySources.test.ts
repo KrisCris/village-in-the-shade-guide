@@ -25,6 +25,42 @@ describe('item sources', () => {
     expect(itemSources(TURNIP_ITEM, context())).toEqual([{ kind: 'plant', crop: TURNIP, seasons: [0], now: false }]);
   });
 
+  it('offers fruit trees, shrubs and soybeans to plant, with the sapling held or the shop and what its sale waits for', () => {
+    const APPLE_TREE = 100, TEA = 64, EDAMAME = 34, APPLE = 122100, TEA_LEAF = 100390, EDAMAME_ITEM = 100190, SOYBEAN = 100330;
+    const SAPLING = 12100, TEA_SAPLING = 12390, EDAMAME_SEED = 10190;
+    const orchard: CropRules = new Map([
+      [APPLE_TREE, { seasons: ['spring', 'summer', 'autumn', 'winter'], perennial: { kind: 'fruit_tree', bearing_seasons: ['autumn'] }, harvest: [] }],
+      [TEA, { seasons: ['spring', 'summer', 'autumn', 'winter'], perennial: { kind: 'shrub', bearing_seasons: ['spring'] }, harvest: [] }],
+      [EDAMAME, { seasons: ['summer'], harvest: [[EDAMAME_ITEM, 2]], withered: [[SOYBEAN, 6]], witheredHarvest: true }],
+    ]);
+    const seeds = {
+      [APPLE_TREE]: { seed: SAPLING, days: 12, items: [APPLE], sales: [{ place: '田上杂货店', seasons: [], flags: [529], conditions: ['夏季蔬菜出货后'] }] },
+      [TEA]: { seed: TEA_SAPLING, days: 10, items: [TEA_LEAF], sales: [{ place: '田上杂货店', seasons: [], flags: [532], conditions: ['首次参加品评会后'] }] },
+      [EDAMAME]: { seed: EDAMAME_SEED, days: 7, items: [EDAMAME_ITEM, SOYBEAN], sales: [{ place: '田上杂货店', seasons: [1], flags: [], conditions: [] }, { place: '行商', seasons: [1], flags: [], conditions: [] }] },
+    };
+    const at = (fields: Partial<SourceContext> = {}) => context({ crops: orchard, payload: { ...context().payload, seeds }, ...fields });
+    // The sapling waits for its flag; once it is on, the shop sells it.
+    expect(itemSources(APPLE, at())).toEqual([{ kind: 'plant', crop: APPLE_TREE, seasons: [0, 1, 2, 3], now: false, bearing: { kind: 'fruit_tree', seasons: [2] },
+      seed: { itemId: SAPLING, held: 0, days: 12, sale: { places: ['田上杂货店'], open: false, seasons: [], conditions: ['夏季蔬菜出货后'] } } }]);
+    expect(itemSources(APPLE, at({ season: 2, unlocked: new Set([529]) }))[0]).toMatchObject({ now: true, seed: { sale: { open: true, conditions: [] } } });
+    expect(itemSources(APPLE, at({ held: new Map([[SAPLING, 2]]) }))[0]).toMatchObject({ seed: { held: 2 } });
+    // Shrubs and trees already planted are counted instead; a picked shrub bears again in a day.
+    const planted = [{ crop: TEA, cell: 7, days: 0 }, { crop: TEA, cell: 8, days: 1 }, { crop: TEA, cell: 9, days: 3 }];
+    expect(itemSources(TEA_LEAF, at({ season: 0, orchard: planted }))).toEqual([{ kind: 'orchard', crop: TEA, cells: [7, 8, 9], grown: 1, days: 1, bearing: { kind: 'shrub', seasons: [0] }, now: true }]);
+    // Soybeans are what ripe edamame leaves when it withers; edamame is sold in summer by both shops.
+    expect(itemSources(SOYBEAN, at({ season: 1 }))).toEqual([{ kind: 'plant', crop: EDAMAME, seasons: [1], now: true, withered: true,
+      seed: { itemId: EDAMAME_SEED, held: 0, days: 7, sale: { places: ['田上杂货店', '行商'], open: true, seasons: [1], conditions: [] } } }]);
+    expect(itemSources(SOYBEAN, at())[0]).toMatchObject({ now: false, seed: { sale: { places: ['田上杂货店'], open: false, seasons: [1] } } });
+  });
+
+  it('sends meat to selling the animal and hunting spoils to the certificate held', () => {
+    const CHICKEN_MEAT = 131020, FEATHER = 150040, PHEASANT = 155060;
+    expect(itemSources(CHICKEN_MEAT, context({ owned: new Set([3]) }))).toEqual([{ kind: 'sell', species: [1, 3, 30, 302, 304], owned: true }]);
+    expect(itemSources(131040, context())).toEqual([{ kind: 'sell', species: [15], owned: false }]);
+    const payload = { ...context().payload, hunts: { [FEATHER]: [PHEASANT] } };
+    expect(itemSources(FEATHER, context({ payload, held: new Map([[PHEASANT, 2]]) }))).toEqual([{ kind: 'hunt', certificates: [PHEASANT], held: 2 }]);
+  });
+
   it('knows fish and wild plants by season and animals by whether one lives on the farm', () => {
     expect(itemSources(FISH, context())).toEqual([{ kind: 'fish', seasons: [0, 3], now: true, today: true, night: false }]);
     expect(itemSources(BERRY, context())).toEqual([{ kind: 'wild', season: 2, now: false }]);

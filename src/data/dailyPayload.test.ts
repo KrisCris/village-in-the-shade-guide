@@ -43,6 +43,16 @@ describe('daily payload', () => {
     expect(payload.wild[numeric.get('ITEM_ID_OBJECT_COIN')!]).toEqual({ season: 4, flag: 12902 });
   });
 
+  it('gives each crop its seed or sapling, growing days, harvest items and shops, and each hunting reward its certificates', () => {
+    const crop = (id: string) => catalog.byId[id].numeric_id as number;
+    expect(payload.seeds[crop('CROPS_ID_APPLE_TREE')]).toEqual({ seed: numeric.get('ITEM_ID_SEED_APPLE'), days: 12, items: [numeric.get('ITEM_ID_CROPS_APPLE')],
+      sales: [{ place: '田上杂货店', seasons: [], flags: [529], conditions: ['夏季蔬菜出货后'] }] });
+    // Edamame left to wither gives soybeans; the shop and the travelling merchant sell its seeds in summer.
+    expect(payload.seeds[crop('CROPS_ID_EDAMAME')].items).toContain(numeric.get('ITEM_ID_CROPS_SOYBEAN'));
+    expect(payload.seeds[crop('CROPS_ID_EDAMAME')].sales.map((sale) => [sale.place, sale.seasons])).toEqual([['田上杂货店', [1]], ['行商', [1]]]);
+    expect(payload.hunts[numeric.get('ITEM_ID_HUNTING_PHEASANT_FEATHER')!]).toEqual([numeric.get('ITEM_ID_HUNTING_CERTIFICATE_PHEASANT')]);
+  });
+
   it('carries machine recipes, animal products and the animal house orders', () => {
     const barrel = payload.crafts.find((craft) => craft.machine === 400030);
     expect(barrel?.inputs.length).toBeGreaterThan(0);
