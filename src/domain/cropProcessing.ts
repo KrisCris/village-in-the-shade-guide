@@ -1,6 +1,6 @@
 import type {Catalog, Entity} from '../data/types';
 import {bearingHarvests, shrubCoProducts, type Harvest} from './perennial';
-import {qualityPrice, type Quality} from './quality';
+import {qualityPrice, type Quality, type QualityTarget} from './quality';
 
 export type CropProcessingResult = {crop: Entity; process: Entity | null; output: Entity; harvestCount: number; harvested: number; batches: number; seedCost: number; revenue: number; net: number; processingGain: number; machineDays: number; finishDay: number; netPerDay: number; soldWithinMonth: number; monthNet: number;
   /** Seeds sown on the plot: one for regrowing crops and perennials, one per harvest otherwise. */
@@ -44,6 +44,20 @@ function schedule(crop: Entity, days: number, plantedAhead: boolean): {harvests:
   }
   const harvests = bearingHarvests(perennial, quantity, plantedAhead ? 1 : growth, days);
   return harvests?.length ? {harvests, plantings: 1, regrows: true} : null;
+}
+
+/** Pieces one seed adds to its crop's harvest count over `days`: one harvest for a crop that is replanted, every regrowth for one
+ * that regrows, and a perennial's bearing season (grown before it starts unless plantedAhead is false). Items picked together count
+ * when they share the crop's quality target, such as mulberry's berries with its leaves. */
+export function seasonCountPerSeed(crop: Entity, catalog: Catalog, days = 28, plantedAhead = true): {harvests: number; perSeed: number} | null {
+  const plot = schedule(crop, days, plantedAhead);
+  const harvestId = (crop.harvest_item_ids as string[] | undefined)?.[0];
+  const target = crop.quality_target as QualityTarget | null | undefined;
+  if (!plot || !harvestId || !target) return null;
+  const together = shrubCoProducts(crop, harvestId).filter(extra => (catalog.byId[extra.itemId]?.quality_target as QualityTarget | null | undefined)?.seed_item_id === target.seed_item_id)
+    .reduce((sum, extra) => sum + extra.quantity, 0);
+  const harvests = plot.plantings === 1 ? plot.harvests : plot.harvests.slice(0, 1);
+  return {harvests: harvests.length, perSeed: harvests.reduce((sum, harvest) => sum + harvest.quantity + together, 0)};
 }
 
 function coHarvest(crop: Entity, harvestId: string, catalog: Catalog, quality: Quality): Extra[] {
