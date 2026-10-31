@@ -65,7 +65,9 @@ const licensing = `${repo}/blob/main/${i18n.lang === 'ja' || i18n.lang === 'en' 
     </script>
     <script>
       import { registerApp } from '../lib/pwa';
+      import { keepRootStateAcrossSwaps } from '../lib/rootState';
       registerApp();
+      keepRootStateAcrossSwaps();
     </script>
   </body>
 </html>

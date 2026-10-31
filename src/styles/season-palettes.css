@@ -15,6 +15,17 @@
   transition-duration:1.6s;
   transition-timing-function:ease-in-out;
 }
+/* Where View Transitions exist, crossfadeRoot() fades one page snapshot instead: no element restyles per frame. */
+/* The live new snapshot keeps the theme switch's own sun/moon motion. */
+:root[data-season-swap],:root[data-season-swap] :not(.theme-orbit>svg){transition:none!important}
+:root[data-season-swap]::view-transition{pointer-events:none}
+:root[data-season-swap]::view-transition-old(root),:root[data-season-swap]::view-transition-new(root){animation-duration:1.6s;animation-timing-function:ease-in-out}
+/* Leaves keep moving above the crossfade instead of ghosting in the old snapshot; the header stays above them. */
+:root[data-season-swap] .falling-leaves{view-transition-name:falling-leaves}
+:root[data-season-swap]::view-transition-old(falling-leaves){display:none}
+:root[data-season-swap]::view-transition-new(falling-leaves){animation:none}
+:root[data-season-swap] .site-header{view-transition-name:site-header}
+:root[data-season-swap]::view-transition-old(site-header),:root[data-season-swap]::view-transition-new(site-header){animation-duration:1.6s;animation-timing-function:ease-in-out}
 :root{--spring-paper:#f0ede3;--spring-paper-raised:#faf6ef;--spring-paper-deep:#e1e5d4;--spring-ink:#2d4033;--spring-muted:#5b6554;--spring-green:#426346;--spring-green-soft:#dfe7d3;--spring-vermilion:#88465a;--spring-gold:#805b27;--spring-border:#b8c1a7;}
 :root[data-season="spring"] {
   --paper:var(--spring-paper);--paper-raised:var(--spring-paper-raised);--paper-deep:var(--spring-paper-deep);
