@@ -14,11 +14,12 @@ it('scales speed with viewport height while bounding extreme screens',()=>{
 });
 it('covers the same fraction of a taller viewport without accelerating particle lifetimes',()=>{
   const small=new LeafWorld(),large=new LeafWorld();
+  small.resize(1280,800);large.resize(1280,1200);
   const a=small.spawn(100,0,0)!,b=large.spawn(100,0,0)!;
   for(let i=0;i<600;i++){
-    small.step(1/60,1280,800,[],particleViewport(1280,800).speedScale);
-    large.step(1/60,1280,1200,[],particleViewport(1280,1200).speedScale);
+    small.step(1/60,particleViewport(1280,800).speedScale);
+    large.step(1/60,particleViewport(1280,1200).speedScale);
   }
   expect(Math.abs(a.y/800-b.y/1200)).toBeLessThan(.01);
-  expect(a.opacity).toBe(1);expect(b.opacity).toBe(1);
+  expect(a.state).toBe('air');expect(b.state).toBe('air');
 });
