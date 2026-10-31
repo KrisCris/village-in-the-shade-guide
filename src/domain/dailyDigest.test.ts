@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildDailyDigest, daysToRipe, growingTurnovers, held, landSummary, needsWater, type CropRules } from './dailyDigest';
+import { buildDailyDigest, daysToRipe, growingTurnovers, harvestToday, held, landSummary, needsWater, type CropRules } from './dailyDigest';
 import type { DailyCell, DailyScarecrow, DailySnapshot } from '../lib/saveDaily';
 
 const TARO = 46, SPINACH = 58, RICE = 63, SHIITAKE = 55, CHERRY = 101, MANDARIN = 104, TEA = 64, CABBAGE = 1, EDAMAME = 34;
@@ -22,7 +22,7 @@ const snapshot = (fields: Partial<DailySnapshot> & { season?: number; day?: numb
   const seconds = (season * 28 + day - 1) * 86_400 + (hour - 7 + 24) % 24 * 3600;
   return {
     seconds, date: { year: 1, season, day, hour, minute: 0 }, weather: 1, money: 0, player: 'p',
-    cells: [], machines: [], scarecrows: [], catalogOpen: true, bundles: [], trees: [], houses: [], quarryReached: 0, held: [], shipping: [], animals: { total: 0, fed: 0 }, ...rest,
+    cells: [], machines: [], scarecrows: [], catalogOpen: true, bundles: [], trees: [], houses: [], quarryReached: 0, held: [], shipping: [], animals: { total: 0, fed: 0 }, encyclopedia: [], ...rest,
   };
 };
 
@@ -62,6 +62,20 @@ describe('daily crop rules', () => {
     expect(winter.harvest.map(({ crop, kind }) => [crop, kind])).toEqual([[MANDARIN, 'shake']]);
     expect(winter.forecast).toEqual([]);
     expect(buildDailyDigest(snapshot({ cells: trees, season: 0 }), crops).harvest.map((g) => g.crop)).toEqual([CHERRY]);
+  });
+
+  it('adds up what today’s harvest brings: first picks, regrow picks, withered plants and shaken fruit', () => {
+    const rules: CropRules = new Map([...crops,
+      [TARO, { seasons: ['autumn'], harvest: [[900, 2]], regrow: { days: 3, items: [[900, 1]] } }],
+      [EDAMAME, { seasons: ['summer'], witheredHarvest: true, withered: [[901, 1]] }],
+    ]);
+    const cells = [
+      cell({ crop: TARO, growth: 400, maximum: 400 }), cell({ crop: TARO, form: 4, growth: 400, maximum: 400 }), cell({ crop: EDAMAME, form: 9 }),
+      // A tree that was already shaken today drops nothing more.
+      cell({ crop: CHERRY, soil: 0, growth: 900, maximum: 900, shake: 1 }), cell({ crop: CHERRY, soil: 0, growth: 900, maximum: 900 }),
+    ];
+    const digest = buildDailyDigest(snapshot({ cells, season: 0 }), rules);
+    expect(harvestToday(cells, digest.harvest, rules, (crop) => crop === CHERRY ? 902 : undefined)).toEqual(new Map([[900, 3], [901, 1], [902, 1]]));
   });
 
   it('warns about crops that cannot ripen before the season change', () => {

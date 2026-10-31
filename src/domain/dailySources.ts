@@ -15,13 +15,14 @@ export type ItemSource =
   | { kind: 'plant'; crop: number; seasons: number[]; now: boolean }
   /** `now` when it bites this season, `today` when it bites in a period left before the 07:00 turnover, `night` when it only bites 0:00–7:00. */
   | { kind: 'fish'; seasons: number[]; now: boolean; today: boolean; night: boolean }
+  /** Springs up on its own outdoors in `season` (4: all year). */
   | { kind: 'wild'; season: number; now: boolean }
   /** Produced by these species; `owned` when one of them lives on the farm. */
   | { kind: 'animal'; species: number[]; owned: boolean }
   /** Wood from felling these trees: grown ones on the map, saplings, and tree seeds held for planting. `stumps`: the 附身草丛 stumps give it too. */
   | { kind: 'trees'; crops: number[]; grown: number[]; young: number; seeds: Array<[itemId: number, count: number]>; stumps?: boolean }
-  /** A sap extractor on this tree collects the sap in three days. */
-  | { kind: 'sap'; tree: number; trees: number[] }
+  /** A sap extractor on this tree collects the sap in three days; `collectors` are already running for it. */
+  | { kind: 'sap'; tree: number; trees: number[]; collectors: number }
   | { kind: 'machine'; machine: number; inputs: Array<[itemId: number, count: number]>; count: number; minutes: number }
   /** The quarry band with the most of this item per 100 rocks among floors already reached. */
   | { kind: 'quarry'; from: number; to: number; perHundred: number; reached: boolean };
@@ -63,6 +64,10 @@ export interface SourceContext {
   held: ReadonlyMap<number, number>;
   processes: SourceProcess[];
   quarryReached: number;
+  /** Sap extractors on the map by the sap they collect. */
+  collectors?: ReadonlyMap<number, number>;
+  /** Story flags that are on, for the wild spawns that wait for one. */
+  unlocked?: ReadonlySet<number>;
 }
 
 export function itemSources(itemId: number, context: SourceContext): ItemSource[] {
@@ -88,7 +93,7 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     });
   }
   const wild = context.payload.wild[itemId];
-  if (wild !== undefined) sources.push({ kind: 'wild', season: wild, now: wild === context.season });
+  if (wild && (wild.flag === undefined || context.unlocked?.has(wild.flag))) sources.push({ kind: 'wild', season: wild.season, now: wild.season === 4 || wild.season === context.season });
   const species = context.payload.animals.filter((animal) => animal.products.includes(itemId)).map((animal) => animal.species);
   if (species.length) sources.push({ kind: 'animal', species, owned: species.some((id) => context.owned.has(id)) });
   const woods = WOOD_TREES[itemId];
@@ -101,7 +106,7 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     });
   }
   const sapTree = TREE_SAPS[itemId];
-  if (sapTree) sources.push({ kind: 'sap', tree: sapTree, trees: context.trees.filter((tree) => tree.crop === sapTree && tree.grown).map((tree) => tree.cell) });
+  if (sapTree) sources.push({ kind: 'sap', tree: sapTree, trees: context.trees.filter((tree) => tree.crop === sapTree && tree.grown).map((tree) => tree.cell), collectors: context.collectors?.get(itemId) ?? 0 });
   const recipe = sapTree ? undefined : bestRecipe(itemId, context);
   if (recipe) sources.push({ kind: 'machine', machine: recipe.machine, inputs: recipe.inputs, count: recipe.count, minutes: recipe.minutes });
   const quarry = quarrySource(itemId, context);

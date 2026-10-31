@@ -2,14 +2,14 @@ import { describe, expect, it } from 'vitest';
 import type { CropRules } from './dailyDigest';
 import { bestRecipe, itemSources, periodsLeft, type SourceContext } from './dailySources';
 
-const CABBAGE = 1, TURNIP = 2, CABBAGE_ITEM = 100, TURNIP_ITEM = 101, FISH = 300, GHOST = 162000, BERRY = 310, MILK = 320, ORE = 240020, BAR = 210020, COAL = 230040, CHARCOAL = 230041;
+const CABBAGE = 1, TURNIP = 2, CABBAGE_ITEM = 100, TURNIP_ITEM = 101, FISH = 300, GHOST = 162000, BERRY = 310, COIN = 311, MILK = 320, ORE = 240020, BAR = 210020, COAL = 230040, CHARCOAL = 230041;
 const crops: CropRules = new Map([
   [CABBAGE, { seasons: ['winter'], harvest: [[CABBAGE_ITEM, 2]] }],
   [TURNIP, { seasons: ['spring'], harvest: [[TURNIP_ITEM, 1]] }],
 ]);
 const context = (fields: Partial<SourceContext> = {}): SourceContext => ({
   season: 3, crops, ripening: [], owned: new Set(), trees: [], held: new Map(), processes: [], quarryReached: 0, periods: [0, 1, 2, 3], daysLeft: 26,
-  payload: { fish: { [FISH]: [[0, 0], [0, 1], [3, 0], [3, 2]], [GHOST]: [[0, 3], [3, 3]] }, wild: { [BERRY]: 2 }, animals: [{ species: 7, house: 0, products: [MILK] }, { species: 8, house: 0, products: [MILK] }], quarry: [
+  payload: { fish: { [FISH]: [[0, 0], [0, 1], [3, 0], [3, 2]], [GHOST]: [[0, 3], [3, 3]] }, wild: { [BERRY]: { season: 2 }, [COIN]: { season: 4, flag: 12902 } }, animals: [{ species: 7, house: 0, products: [MILK] }, { species: 8, house: 0, products: [MILK] }], quarry: [
     { from: 11, to: 29, drops: [[ORE, 4]] },
     { from: 41, to: 49, drops: [[ORE, 12]] },
     { from: 71, to: 79, drops: [[ORE, 26.5]] },
@@ -28,6 +28,9 @@ describe('item sources', () => {
   it('knows fish and wild plants by season and animals by whether one lives on the farm', () => {
     expect(itemSources(FISH, context())).toEqual([{ kind: 'fish', seasons: [0, 3], now: true, today: true, night: false }]);
     expect(itemSources(BERRY, context())).toEqual([{ kind: 'wild', season: 2, now: false }]);
+    // Buried coins turn up all year, once the story flag for them is on.
+    expect(itemSources(COIN, context())).toEqual([]);
+    expect(itemSources(COIN, context({ unlocked: new Set([12902]) }))).toEqual([{ kind: 'wild', season: 4, now: true }]);
     expect(itemSources(MILK, context({ owned: new Set([8]) }))).toEqual([{ kind: 'animal', species: [7, 8], owned: true }]);
   });
 
@@ -48,10 +51,11 @@ describe('item sources', () => {
     expect(itemSources(230001, context({ trees, held }))).toEqual([{ kind: 'trees', crops: [1001], grown: [3], young: 0, seeds: [[140280, 4]] }]);
   });
 
-  it('sends sap to a sap extractor on grown trees instead of the machine recipe', () => {
-    const trees = [{ crop: 1000, cell: 1, grown: true }, { crop: 1000, cell: 2, grown: false }];
+  it('sends sap to a sap extractor on grown trees instead of the machine recipe, counting the extractors already running', () => {
+    const trees = [{ crop: 1000, cell: 1, grown: true }, { crop: 1000, cell: 2, grown: false }, { crop: 1000, cell: 3, grown: true }];
     const processes = [{ output: 140300, count: 1, inputs: [[1, 1]] as Array<[number, number]>, minutes: 4320, machine: 9 }];
-    expect(itemSources(140300, context({ trees, processes }))).toEqual([{ kind: 'sap', tree: 1000, trees: [1] }]);
+    expect(itemSources(140300, context({ trees, processes }))).toEqual([{ kind: 'sap', tree: 1000, trees: [1, 3], collectors: 0 }]);
+    expect(itemSources(140300, context({ trees, collectors: new Map([[140300, 2], [140370, 5]]) }))).toEqual([{ kind: 'sap', tree: 1000, trees: [1, 3], collectors: 2 }]);
   });
 
   it('picks the richest quarry floors already reached, or the shallowest ones that have the item', () => {

@@ -24,7 +24,7 @@ export const DAYS_PER_SEASON = 28;
 export const FORECAST_DAYS = 7;
 export const SCARECROW_DAYS = 28;
 export const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
-const GROWING_FORMS = new Set([1, 4, 5]);
+const GROWING_FORMS = new Set([1, 4, 5]), REGROWING_FORMS = new Set([4, 5]);
 const WITHERED = 2, WITHERED_HARVESTABLE = 9;
 
 export interface CropRule {
@@ -34,6 +34,8 @@ export interface CropRule {
   witheredHarvest?: boolean;
   /** Items and counts of the first harvest. */
   harvest?: Array<[itemId: number, count: number]>;
+  /** What a withered plant still gives when picked. */
+  withered?: Array<[itemId: number, count: number]>;
   /** Crops that regrow after picking: the turnovers between picks and what each pick yields. */
   regrow?: { days: number; items: Array<[itemId: number, count: number]> };
 }
@@ -61,6 +63,26 @@ export interface DailyDigest {
   scarecrows: ScarecrowLine[];
   chores: { water: number[]; withered: CellGroup[]; spentScarecrows: Array<{ key: string; itemId: number; cells: number[] }>; hungry: number; shipping: number };
   machines: { done: MachineOutput[]; running: MachineOutput[]; idle: Array<{ itemId: number; machines: number }>; freeSlots: number };
+}
+
+/**
+ * What today's harvest brings: each ripe crop's pick (the regrow pick for one
+ * picked before), what withered plants still give, and the fruit each tree
+ * drops when shaken. `fruit` names a fruit tree's fruit item.
+ */
+export function harvestToday(cells: DailyCell[], groups: HarvestGroup[], crops: CropRules, fruit: (crop: number) => number | undefined): Map<number, number> {
+  const cellOf = new Map(cells.map((cell) => [cell.id, cell]));
+  const result = new Map<number, number>();
+  const add = (itemId: number, count: number) => { if (count > 0) result.set(itemId, (result.get(itemId) ?? 0) + count); };
+  for (const group of groups) {
+    const rule = crops.get(group.crop), item = group.kind === 'shake' ? fruit(group.crop) : undefined;
+    for (const cell of group.cells.flatMap((id) => cellOf.get(id) ?? [])) {
+      if (group.kind === 'shake') { if (item) add(item, cell.shake ?? 0); continue; }
+      const items = group.kind === 'withered' ? rule?.withered : REGROWING_FORMS.has(cell.form) ? rule?.regrow?.items : rule?.harvest;
+      for (const [itemId, count] of items ?? []) add(itemId, count);
+    }
+  }
+  return result;
 }
 
 /** Soil that needs watering every day for the crop on it to grow. */
