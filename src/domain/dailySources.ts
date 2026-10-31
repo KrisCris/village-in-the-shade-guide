@@ -1,6 +1,6 @@
-import type { DailyPayload } from '../data/dailyPayload';
+import type { DailyPayload, SeedSale } from '../data/dailyPayload';
 import type { DailyTree } from '../lib/saveDaily';
-import type { CellRow, CropRules } from './dailyDigest';
+import type { CellRow, CropRule, CropRules } from './dailyDigest';
 import { SEASONS } from './dailyDigest';
 
 /**
@@ -11,17 +11,27 @@ import { SEASONS } from './dailyDigest';
 export type ItemSource =
   /** Growing on the farm; `days` until the first of these cells is ripe (0: ripe now), `ready` for each cell in order. */
   | { kind: 'field'; crop: number; cells: number[]; days: number; ready: number[]; each: number; count: number }
-  /** A crop to plant: `now` when it grows this season. */
-  | { kind: 'plant'; crop: number; seasons: number[]; now: boolean }
+  /**
+   * A crop to plant: `now` when it grows this season (a fruit tree or shrub: bears this season). `bearing` is set for those.
+   * `withered`: the item is what a ripe plant leaves when it withers at the season's end (edamame turns into soybeans).
+   */
+  | { kind: 'plant'; crop: number; seasons: number[]; now: boolean; seed?: SeedSource; bearing?: { kind: string; seasons: number[] }; withered?: boolean }
+  /** Fruit trees or shrubs of this crop on the farm: `grown` of them bear, the rest need `days` more; `now` when they bear this season. */
+  | { kind: 'orchard'; crop: number; cells: number[]; grown: number; days: number; bearing: { kind: string; seasons: number[] }; now: boolean }
+  /** Among the gifts sent home the day after selling one of these species; `owned` when one lives on the farm. */
+  | { kind: 'sell'; species: number[]; owned: boolean }
+  /** Traded for one of these hunting certificates in the box at the hunter's hut; `held` certificates in stock. */
+  | { kind: 'hunt'; certificates: number[]; held: number }
   /** `now` when it bites this season, `today` when it bites in a period left before the 07:00 turnover, `night` when it only bites 0:00–7:00. */
   | { kind: 'fish'; seasons: number[]; now: boolean; today: boolean; night: boolean }
+  /** Springs up on its own outdoors in `season` (4: all year). */
   | { kind: 'wild'; season: number; now: boolean }
   /** Produced by these species; `owned` when one of them lives on the farm. */
   | { kind: 'animal'; species: number[]; owned: boolean }
   /** Wood from felling these trees: grown ones on the map, saplings, and tree seeds held for planting. `stumps`: the 附身草丛 stumps give it too. */
   | { kind: 'trees'; crops: number[]; grown: number[]; young: number; seeds: Array<[itemId: number, count: number]>; stumps?: boolean }
-  /** A sap extractor on this tree collects the sap in three days. */
-  | { kind: 'sap'; tree: number; trees: number[] }
+  /** A sap extractor on this tree collects the sap in three days; `collectors` are already running for it. */
+  | { kind: 'sap'; tree: number; trees: number[]; collectors: number }
   | { kind: 'machine'; machine: number; inputs: Array<[itemId: number, count: number]>; count: number; minutes: number }
   /** The quarry band with the most of this item per 100 rocks among floors already reached. */
   | { kind: 'quarry'; from: number; to: number; perHundred: number; reached: boolean };
@@ -40,6 +50,17 @@ export const TREE_SEEDS: Readonly<Record<number, number>> = { 140270: 1000, 1402
 /** What a sap extractor collects from each tree in three days (item text). */
 export const TREE_SAPS: Readonly<Record<number, number>> = { 140300: 1000, 140310: 1001, 140320: 1002, 140370: 1003, 140340: 1004 };
 
+/**
+ * A crop's seed or sapling: how many are held, the turnovers it takes to grow and the shop for it.
+ * `open` when the shop sells it today; otherwise `seasons` it is on sale in, or the `conditions` not met yet.
+ */
+export interface SeedSource { itemId: number; held: number; days: number; sale?: { places: string[]; open: boolean; seasons: number[]; conditions: string[] } }
+/**
+ * livestock.dat lists these meats among the gifts sent home the day after selling these species, as the item text says:
+ * 牛肉 (cows), 鸡肉 (chickens and ducks), 火鸡肉 (turkeys) and 猪肉 (pigs).
+ */
+export const SALE_MEAT: Readonly<Record<number, number[]>> = { 131000: [7, 306], 131020: [1, 3, 30, 302, 304], 131030: [5], 131040: [15] };
+
 export interface SourceProcess { output: number; count: number; inputs: Array<[itemId: number, count: number]>; minutes: number; machine: number }
 /** Fishing periods (FISH_PERIODS indexes) still ahead before the 07:00 turnover; after midnight only the late-night one. */
 export function periodsLeft(hour: number): number[] {
@@ -55,7 +76,7 @@ export interface SourceContext {
   daysLeft: number;
   crops: CropRules;
   ripening: Array<CellRow & { days: number }>;
-  payload: Pick<DailyPayload, 'fish' | 'wild' | 'quarry' | 'animals'>;
+  payload: Pick<DailyPayload, 'fish' | 'wild' | 'quarry' | 'animals'> & Partial<Pick<DailyPayload, 'seeds' | 'hunts'>>;
   /** Species living on the farm. */
   owned: ReadonlySet<number>;
   trees: DailyTree[];
@@ -63,21 +84,41 @@ export interface SourceContext {
   held: ReadonlyMap<number, number>;
   processes: SourceProcess[];
   quarryReached: number;
+  /** Sap extractors on the map by the sap they collect. */
+  collectors?: ReadonlyMap<number, number>;
+  /** Story flags that are on, for the wild spawns and seed sales that wait for one. */
+  unlocked?: ReadonlySet<number>;
+  /** Fruit trees and shrubs on the farm; `days` until grown (0: grown). */
+  orchard?: Array<{ crop: number; cell: number; days: number }>;
 }
 
 export function itemSources(itemId: number, context: SourceContext): ItemSource[] {
   const sources: ItemSource[] = [];
-  const growers = [...context.crops].filter(([, rule]) => !rule.perennial && [...rule.harvest ?? [], ...rule.regrow?.items ?? []].some(([id]) => id === itemId));
-  for (const [crop] of growers) {
+  const picked = (rule: CropRule) => [...rule.harvest ?? [], ...rule.regrow?.items ?? []].some(([id]) => id === itemId);
+  // Fruit trees and shrubs list their fruit only among the crop's harvest items.
+  const growers = [...context.crops].filter(([crop, rule]) => picked(rule) || rule.withered?.some(([id]) => id === itemId) || context.payload.seeds?.[crop]?.items.includes(itemId));
+  for (const [crop, rule] of growers) {
     const rows = context.ripening.filter((row) => row.crop === crop);
-    if (!rows.length) continue;
-    const yieldOf = context.crops.get(crop)?.harvest?.find(([id]) => id === itemId)?.[1] ?? 1;
+    if (!rows.length || rule.perennial || !picked(rule)) continue;
+    const yieldOf = rule.harvest?.find(([id]) => id === itemId)?.[1] ?? 1;
     const ready = rows.map((row) => row.days).sort((a, b) => a - b);
     sources.push({ kind: 'field', crop, cells: rows.map((row) => row.cell), days: ready[0], ready, each: yieldOf, count: rows.length * yieldOf });
   }
   for (const [crop, rule] of growers) {
+    if (sources.some((source) => source.kind === 'field' && source.crop === crop)) continue;
     const seasons = rule.seasons.map((season) => SEASONS.indexOf(season)).filter((season) => season >= 0);
-    if (!sources.some((source) => source.kind === 'field' && source.crop === crop)) sources.push({ kind: 'plant', crop, seasons, now: seasons.includes(context.season) });
+    const bearing = rule.perennial ? { kind: rule.perennial.kind, seasons: (rule.perennial.bearing_seasons ?? []).map((season) => SEASONS.indexOf(season)).filter((season) => season >= 0) } : undefined;
+    const trees = (context.orchard ?? []).filter((row) => row.crop === crop);
+    if (bearing && trees.length) {
+      const young = trees.filter((row) => row.days > 0);
+      sources.push({ kind: 'orchard', crop, cells: trees.map((row) => row.cell), grown: trees.length - young.length, days: young.length ? Math.min(...young.map((row) => row.days)) : 0, bearing, now: bearing.seasons.includes(context.season) });
+      continue;
+    }
+    const seed = seedSource(crop, context);
+    sources.push({
+      kind: 'plant', crop, seasons, now: (bearing?.seasons ?? seasons).includes(context.season),
+      ...seed ? { seed } : {}, ...bearing ? { bearing } : {}, ...!picked(rule) && !bearing ? { withered: true } : {},
+    });
   }
   const fish = context.payload.fish[itemId];
   if (fish?.length) {
@@ -88,9 +129,13 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     });
   }
   const wild = context.payload.wild[itemId];
-  if (wild !== undefined) sources.push({ kind: 'wild', season: wild, now: wild === context.season });
+  if (wild && (wild.flag === undefined || context.unlocked?.has(wild.flag))) sources.push({ kind: 'wild', season: wild.season, now: wild.season === 4 || wild.season === context.season });
   const species = context.payload.animals.filter((animal) => animal.products.includes(itemId)).map((animal) => animal.species);
   if (species.length) sources.push({ kind: 'animal', species, owned: species.some((id) => context.owned.has(id)) });
+  const sold = SALE_MEAT[itemId];
+  if (sold) sources.push({ kind: 'sell', species: sold, owned: sold.some((id) => context.owned.has(id)) });
+  const certificates = context.payload.hunts?.[itemId];
+  if (certificates?.length) sources.push({ kind: 'hunt', certificates, held: certificates.reduce((sum, id) => sum + (context.held.get(id) ?? 0), 0) });
   const woods = WOOD_TREES[itemId];
   if (woods) {
     const trees = context.trees.filter((tree) => woods.includes(tree.crop));
@@ -101,12 +146,30 @@ export function itemSources(itemId: number, context: SourceContext): ItemSource[
     });
   }
   const sapTree = TREE_SAPS[itemId];
-  if (sapTree) sources.push({ kind: 'sap', tree: sapTree, trees: context.trees.filter((tree) => tree.crop === sapTree && tree.grown).map((tree) => tree.cell) });
+  if (sapTree) sources.push({ kind: 'sap', tree: sapTree, trees: context.trees.filter((tree) => tree.crop === sapTree && tree.grown).map((tree) => tree.cell), collectors: context.collectors?.get(itemId) ?? 0 });
   const recipe = sapTree ? undefined : bestRecipe(itemId, context);
   if (recipe) sources.push({ kind: 'machine', machine: recipe.machine, inputs: recipe.inputs, count: recipe.count, minutes: recipe.minutes });
   const quarry = quarrySource(itemId, context);
   if (quarry) sources.push(quarry);
   return sources;
+}
+
+/**
+ * The seed or sapling of a crop and the shop for it. A shop sells it today when the save has all
+ * the sale's flags and the season is one it is on sale in; otherwise the sale whose flags are met
+ * comes first, so the text can say when it goes on sale, or what it waits for.
+ */
+function seedSource(crop: number, context: SourceContext): SeedSource | undefined {
+  const info = context.payload.seeds?.[crop];
+  if (!info) return undefined;
+  const met = (sale: SeedSale) => sale.flags.every((flag) => context.unlocked?.has(flag));
+  const open = info.sales.filter((sale) => met(sale) && (!sale.seasons.length || sale.seasons.includes(context.season)));
+  const sale = open[0] ?? info.sales.find(met) ?? info.sales[0];
+  const held = context.held.get(info.seed) ?? 0;
+  return {
+    itemId: info.seed, held, days: info.days,
+    ...sale ? { sale: { places: [...new Set((open.length ? open : [sale]).map((row) => row.place))], open: open.length > 0, seasons: sale.seasons, conditions: met(sale) ? [] : sale.conditions } } : {},
+  };
 }
 
 /** The recipe for an item whose other inputs are best covered by what is held (ingots take coal or charcoal). */

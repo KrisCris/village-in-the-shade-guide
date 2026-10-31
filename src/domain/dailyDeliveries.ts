@@ -67,6 +67,8 @@ function sourceDays(source: ItemSource, short: number, daysLeft: number): number
   if (source.kind === 'fish') return source.today ? 0 : source.now && daysLeft > 0 ? 1 : undefined;
   if (source.kind === 'wild' && source.now) return 0;
   if (source.kind === 'animal' && source.owned) return 0;
+  // A grown fruit tree bears one fruit a day (perennial.fruit_per_day) while in season.
+  if (source.kind === 'orchard' && source.now && source.grown && source.bearing.kind === 'fruit_tree') return Math.ceil(short / source.grown) - 1;
   return undefined;
 }
 

@@ -1,158 +1,155 @@
-import type { DailyDigest } from '../../domain/dailyDigest';
-import type { MaterialLine } from '../../domain/dailyMaterials';
-import { NOT_PROCESSED, type FamilyLine, type ProcessingPlan } from '../../domain/dailyProcessing';
+import { NOT_PROCESSED, optionGain, type FillLine, type MachineDay, type ProcessingPlan, type ProduceLine, type ProduceOption } from '../../domain/dailyProcessing';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
 import SearchableSelect from '../controls/SearchableSelect';
-import { GrowList, Icon, ItemChip, MapButton, Meter, Section, sourceTarget, sourceText, type MapTarget, type Names } from './dailyUi';
+import { finishTime, GrowList, Icon, ItemChip, Section, type Names } from './dailyUi';
 import { tr } from '../../i18n/active';
 
-const RESERVES = [0, 0.1, 0.2, 0.3, 0.5];
-const DAY_MINUTES = 1440;
-const HORIZONS = [7, 14, 28, 56];
-
-/** Machine capacity against the produce in hand and coming, plus the machines and materials to add. */
-export default function ProcessingSection({ plan, machines, materials, seasonDays, horizon, reserve, picked, names, name, onHorizon, onReserve, onChoice, onMap }: {
+/** What to load into each machine today, what it sells for, and which machine each kind of produce goes to. */
+export default function ProcessingSection({ plan, now, names, name, onChoice }: {
   plan: ProcessingPlan;
-  machines: DailyDigest['machines'];
-  materials: MaterialLine[];
-  /** Turnovers left in the season, the default horizon. */
-  seasonDays: number;
-  /** The saved horizon setting; 0 is the end of the season. */
-  horizon: number;
-  reserve: number;
-  /** Recipes the player picked by hand, by item; the rest follow the plan. */
-  picked: Readonly<Record<string, number>>;
+  /** The save's game clock, in seconds. */
+  now: number;
   names: SaveNameTables;
   name: Names;
-  onHorizon: (days: number) => void;
-  onReserve: (share: number) => void;
   /** `undefined` hands the item back to the plan's own choice. */
   onChoice: (itemId: number, process: number | undefined) => void;
-  onMap: (target: MapTarget) => void;
 }) {
-  const days = (value: number) => Number.isFinite(value) ? name.number(Math.ceil(value * 10) / 10) : '∞';
-  const working = plan.families.filter((family) => family.demand > 0 || family.build.length > 0);
-  const quiet = plan.families.filter((family) => !working.includes(family));
-  const collect = machines.done.reduce((sum, row) => sum + row.count, 0);
+  const money = (value: number) => name.number(Math.round(value));
+  const opened = (machine: MachineDay) => machine.free + machine.later.reduce((sum, entry) => sum + entry.slots, 0);
+  // Every slot that opens today already has something to take.
+  const full = (machine: MachineDay) => opened(machine) <= sum(machine.fill, (entry) => entry.batches);
+  const machineOf = new Map(plan.machines.map((machine) => [machine.family, machine]));
+  const lineOf = new Map(plan.produce.map((line) => [line.itemId, line]));
+  // What a batch sells for once made, and what the same items fetch raw.
+  const sold = (entry: FillLine) => entry.count * entry.option.value;
+  const raw = (entry: FillLine) => entry.count * lineOf.get(entry.itemId)!.rawPrice;
+  const sum = (entries: FillLine[], value: (entry: FillLine) => number) => entries.reduce((total, entry) => total + value(entry), 0);
+  const loading = plan.machines.filter((machine) => machine.fill.length);
+  const empty = plan.machines.filter((machine) => !machine.fill.length && opened(machine));
+  const busy = plan.machines.filter((machine) => !opened(machine));
+  const ready = plan.machines.reduce((total, machine) => total + machine.ready, 0);
+  const fills = loading.flatMap((machine) => machine.fill);
+  const slots = sum(fills, (entry) => entry.batches);
+  // Items loaded today past what is in storage: the rest comes from today's harvest.
+  const unpicked = (itemId: number) => { const line = lineOf.get(itemId)!; return sum(fills.filter((entry) => entry.itemId === itemId), (entry) => entry.count) - (line.held - line.harvest); };
 
-  // Work is counted in slot-days: one slot running one batch for a whole game day.
-  const machineCard = (family: FamilyLine) => {
-    const short = family.days > plan.horizon;
-    const jobs = plan.produce.flatMap((line) => {
-      const option = line.options.find((entry) => entry.process === line.choice);
-      return option?.family === family.family ? [{ line, option }] : [];
-    });
-    const work = (family.busy + family.demand) / DAY_MINUTES, running = family.busy / DAY_MINUTES;
-    const steps = family.build.map((step) => step.upgrade
-      ? tr('升级 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })
-      : tr('新造 {count} 台{machine}', { count: step.count, machine: name.item(step.machine) })).join(tr('，'));
-    return <li key={family.family} className={`card daily-machine${short ? ' is-short' : ''}`}>
+  const card = (machine: MachineDay) => {
+    const spare = opened(machine) - sum(machine.fill, (entry) => entry.batches);
+    return <li key={machine.family} className="card daily-machine">
       <header className="daily-machine-head">
-        <SaveIcon names={names} kind="items" value={String(family.machine)} size={40} />
-        <span className="daily-row-name">{name.item(family.machine)}
-          <small>{tr('{machines} 台 · {slots} 个槽位', { machines: family.machines, slots: family.slots })}{family.idle > 0 && ` · ${tr('{count} 台空着', { count: family.idle })}`}</small>
+        <SaveIcon names={names} kind="items" value={String(machine.machine)} size={40} />
+        <span className="daily-row-name">{name.item(machine.machine)}
+          <small>{tr('{machines} 台 · {slots} 个槽位', { machines: machine.machines, slots: machine.slots })}</small>
         </span>
+        <span className="daily-badge is-done">{tr('多赚 {money}', { money: money(sum(machine.fill, (entry) => entry.gain)) })}</span>
       </header>
-      <div className="daily-gauge">
-        <span className="daily-gauge-value"><b>{days(family.days)}</b> {tr('天')}</span>
-        <span className="daily-gauge-limit">{tr('期限 {days} 天', { days: plan.horizon })}</span>
-        <Meter value={family.days} max={plan.horizon} tone={short ? 'short' : 'done'} label={tr('要 {days} 天，期限 {horizon} 天', { days: days(family.days), horizon: plan.horizon })} />
-      </div>
-      {jobs.length > 0 && <ul className="daily-machine-jobs">
-        {jobs.slice(0, 3).map(({ line, option }) => <li key={line.itemId}>
-          <SaveIcon names={names} kind="items" value={String(line.itemId)} size={24} />
-          <span>{tr('{item} {count} 个 → {output}', { item: name.item(line.itemId), count: line.held + line.coming, output: name.item(option.output) })}</span>
-          <small>{option.inputs > 1
-            ? tr('每 {inputs} 个约 {days} 天', { inputs: option.inputs, days: name.number(Math.round(option.minutes / DAY_MINUTES * 10) / 10) })
-            : tr('每个约 {days} 天', { days: name.number(Math.round(option.minutes / DAY_MINUTES * 10) / 10) })}</small>
+      <ul className="daily-openings">
+        {machine.free > machine.ready && <li><b>{tr('现在')}</b>{tr('空着 {count} 个', { count: machine.free - machine.ready })}</li>}
+        {machine.ready > 0 && <li><b>{tr('现在')}</b>{tr('{count} 个做好了，取出后放', { count: machine.ready })}</li>}
+        {machine.later.map((entry) => <li key={entry.after}><b>{finishTime(now, entry.after)}</b>{tr('做好 {count} 个，取出后放', { count: entry.slots })}</li>)}
+      </ul>
+      <ul className="daily-machine-jobs">
+        {machine.fill.map((entry) => <li key={entry.itemId}>
+          <SaveIcon names={names} kind="items" value={String(entry.itemId)} size={24} />
+          <span>{tr('{item} × {count} → {output}', { item: name.item(entry.itemId), count: entry.count, output: name.item(entry.option.output) })}</span>
+          <b className="daily-machine-gain">+{money(entry.gain)}</b>
+          <small>{tr('做好能卖 {value}，直接卖 {raw}', { value: money(sold(entry)), raw: money(raw(entry)) })}</small>
+          {unpicked(entry.itemId) > 0 && <small>{tr('有 {count} 个要先收今天熟的', { count: unpicked(entry.itemId) })}</small>}
         </li>)}
-        {jobs.length > 3 && <li className="daily-machine-more">{tr('还有 {count} 种', { count: jobs.length - 3 })}</li>}
-      </ul>}
-      {work > 0 && <p className="daily-machine-math">{[
-        running >= 0.1 ? tr('加上正在加工的，只用一个槽位要做约 {work} 天（其中 {running} 天的已经在做）。', { work: name.number(Math.round(work)), running: name.number(Math.round(running * 10) / 10) })
-          : tr('只用一个槽位要做约 {work} 天。', { work: name.number(Math.round(work)) }),
-        family.slots ? tr('{slots} 个槽位分着做，要 {days} 天。', { slots: family.slots, days: days(family.days) }) : tr('农场里还没有这种设备。'),
-      ].join('')}</p>}
-      <p className={`daily-machine-status${short ? ' is-short' : ''}`}>
-        {!short ? tr('期限内能加工完')
-          : family.locked ? tr('{horizon} 天内做完要 {need} 个槽位，还差 {slots} 个，但还没学会做{machine}{skill}', { horizon: plan.horizon, need: family.slots + family.extraSlots, slots: family.extraSlots, machine: name.item(family.machine), skill: family.locked.skill ? tr('（祠堂能力「{skill}」）', { skill: family.locked.skill }) : '' })
-          : tr('{horizon} 天内做完要 {need} 个槽位，还差 {slots} 个：{steps}', { horizon: plan.horizon, need: family.slots + family.extraSlots, slots: family.extraSlots, steps })}
-      </p>
+      </ul>
+      {spare > 0 && <p className="daily-machine-math">{tr('还有 {count} 个槽位没有能放的原料。', { count: spare })}</p>}
     </li>;
   };
 
-  const produceRows = plan.produce.map((line) => {
-    const chosen = line.options.find((option) => option.process === line.choice);
+  // An option is the machine alone; the product only tells apart two recipes on one machine.
+  const label = (line: ProduceLine, process: number) => {
+    const option = line.options.find((entry) => entry.process === process);
+    if (!option) return tr('不加工');
+    return line.options.filter((entry) => entry.machine === option.machine).length > 1
+      ? tr('{machine}（{output}）', { machine: name.item(option.machine), output: name.item(option.output) }) : name.item(option.machine);
+  };
+  // Why an item gets nothing today.
+  const idle = (line: ProduceLine, option: ProduceOption | undefined) => {
+    if (!option) return tr('不加工');
+    const machine = machineOf.get(option.family), item = name.item(option.machine);
+    if (line.held < option.inputs) return tr('每批需要 {count} 个', { count: option.inputs });
+    if (!machine) return tr('尚未拥有{machine}', { machine: item });
+    if (!opened(machine) && machine.next !== undefined) return tr('{machine} {time} 有空位', { machine: item, time: finishTime(now, machine.next) });
+    return tr('{machine}今日已排满', { machine: item });
+  };
+  const numbers = (entries: FillLine[]) => <>
+    <span className="daily-produce-num"><span className="daily-produce-label">{tr('加工数量')}</span>{name.number(sum(entries, (entry) => entry.count))}</span>
+    <span className="daily-produce-num"><span className="daily-produce-label">{tr('加工收益')}</span>{money(sum(entries, sold))}</span>
+    <b className="daily-produce-num is-gain"><span className="daily-produce-label">{tr('加工增益')}</span>+{money(sum(entries, (entry) => entry.gain))}</b>
+  </>;
+
+  const listed = plan.produce.filter((line) => line.pick !== undefined || line.options.some((option) => option.value > line.rawPrice))
+    .map((line) => ({ line, today: fills.filter((entry) => entry.itemId === line.itemId) }))
+    // In the order of the plan's own batches, so a row stays put when the player picks another machine for it.
+    .sort((a, b) => b.line.planned - a.line.planned || sum(b.today, (entry) => entry.gain) - sum(a.today, (entry) => entry.gain) || b.line.held - a.line.held);
+  const rows = listed.map(({ line, today }) => {
+    const value = line.pick ?? line.best, chosen = line.options.find((option) => option.process === value), top = line.options[0];
+    const notes: Array<{ text: string; short?: boolean }> = [];
+    if (line.pick !== undefined && line.pick !== line.best) notes.push({ text: tr('推荐：{machine}', { machine: label(line, line.best) }) });
+    if (chosen && chosen.value <= line.rawPrice) notes.push({ text: tr('加工后售价低于原料售价'), short: true });
+    // The plan skipped a recipe that pays more: say why.
+    const topMachine = machineOf.get(top.family), topVars = { machine: name.item(top.machine), gain: money(optionGain(line, top)) };
+    if (line.pick === undefined && chosen && top !== chosen && optionGain(line, top) > optionGain(line, chosen) && (!topMachine || full(topMachine))) {
+      notes.push({ text: topMachine ? tr('{machine}每个增益 {gain}，今日已排满', topVars) : tr('{machine}每个增益 {gain}，尚未拥有', topVars) });
+    }
+    if (today.length > 1) notes.push({ text: tr('今日分配：{list}', { list: today.map((entry) => tr('{machine} {count} 个', { machine: name.item(entry.option.machine), count: entry.count })).join(tr('、')) }) });
     return <li key={line.itemId} className="daily-produce">
-      <SaveIcon names={names} kind="items" value={String(line.itemId)} size={32} />
-      <span className="daily-row-name">{name.item(line.itemId)}
-        <small>{[line.held && tr('库存 {count}', { count: line.held }), line.coming && tr('{days} 天内还会收 {count}', { days: plan.horizon, count: line.coming })].filter(Boolean).join(' · ')}</small>
-      </span>
-      <SearchableSelect value={line.choice} aria-label={tr('{item}的加工方式', { item: name.item(line.itemId) })} onChange={(event) => onChoice(line.itemId, Number(event.target.value))}>
-        <option value={NOT_PROCESSED}>{tr('直接卖 {price}', { price: line.rawPrice })}</option>
-        {line.options.map((option) => <option key={option.process} value={option.process}>
-          {tr('{output} {value} · {machine}', { output: name.item(option.output), machine: name.item(option.machine), value: name.number(option.value) })}
-        </option>)}
-      </SearchableSelect>
-      {chosen && chosen.value <= line.rawPrice && <small className="daily-produce-note">{tr('加工后卖得比直接卖还少')}</small>}
-      {picked[line.itemId] !== undefined && <button type="button" className="button daily-link-button daily-produce-reset" onClick={() => onChoice(line.itemId, undefined)}>{tr('改回自动选择')}</button>}
-    </li>;
-  });
-
-  const materialRows = materials.map((line) => {
-    const usable = Math.max(0, line.held - line.reserve);
-    return <li key={`${line.itemId}:${line.for ?? ''}`} className={`card daily-material${line.short ? ' is-short' : ''}`}>
-      <header className="daily-material-head">
+      <span className="daily-produce-item">
         <SaveIcon names={names} kind="items" value={String(line.itemId)} size={32} />
-        <span className="daily-row-name">{name.item(line.itemId)}
-          {line.for !== undefined && <small>{tr('做{item}用', { item: name.item(line.for) })}</small>}
-        </span>
-        <span className={`daily-badge${line.short ? ' is-short' : ' is-done'}`}>{line.short ? tr('还差 {count}', { count: line.short }) : tr('够了')}</span>
-      </header>
-      <span className="daily-line-count">
-        <span>{line.held ? tr('需要 {need}，可用 {usable}（库存 {held}，留 {reserve}）', { need: line.need, usable, held: line.held, reserve: line.reserve }) : tr('需要 {need}，库存里没有', { need: line.need })}</span>
-        <Meter value={usable} max={line.need} tone={line.short ? 'short' : 'done'} />
+        <span className="daily-row-name">{name.item(line.itemId)}<small>{[line.held > line.harvest && tr('库存 {count}', { count: name.number(line.held - line.harvest) }),
+          line.harvest > 0 && tr('今日收获 {count}', { count: name.number(line.harvest) })].filter(Boolean).join(' · ')}</small></span>
       </span>
-      {line.sources.length > 0 && <p className="daily-source">{line.sources.map((source) => sourceText(source, name)).join(tr('；'))}</p>}
-      <MapButton target={sourceTarget(line.sources, name.item(line.itemId), name)} onMap={onMap} />
+      <span className="daily-produce-choice">
+        <SearchableSelect value={value} aria-label={tr('{item}的加工设备', { item: name.item(line.itemId) })}
+          onChange={(event) => { const next = Number(event.target.value); onChoice(line.itemId, next === line.best ? undefined : next); }}>
+          {line.options.map((option) => <option key={option.process} value={option.process}>{label(line, option.process)}</option>)}
+          <option value={NOT_PROCESSED}>{label(line, NOT_PROCESSED)}</option>
+        </SearchableSelect>
+        {notes.map((note) => <small key={note.text} className={note.short ? 'is-short' : undefined}>{note.text}</small>)}
+      </span>
+      {today.length ? numbers(today) : <span className="daily-produce-idle">{idle(line, chosen)}</span>}
     </li>;
   });
+  const shown = Math.max(6, listed.findLastIndex((entry) => entry.today.length || entry.line.planned > 0) + 1);
 
-  const shortMaterials = materials.filter((line) => line.short > 0);
   return <Section id="daily-machines" icon="machine" title={tr('加工设备')}
-    summary={tr('按现有设备算，手上和 {days} 天内要收的作物要几天才能加工完。', { days: plan.horizon })}
-    controls={<label className="daily-control">{tr('期限')}
-      <SearchableSelect value={horizon} onChange={(event) => onHorizon(Number(event.target.value))}>
-        <option value={0}>{tr('本季结束（{days} 天）', { days: Math.max(seasonDays, 7) })}</option>
-        {HORIZONS.map((value) => <option key={value} value={value}>{tr('{days} 天', { days: value })}</option>)}
-      </SearchableSelect>
-    </label>}>
-    {collect > 0 && <p className="daily-banner"><Icon name="check" size={18} />{tr('有 {count} 件产品已经做好，先取出来再放新的。', { count: collect })}</p>}
+    summary={slots ? tr('今天有 {slots} 个槽位要放原料，照下面放。', { slots }) : tr('今天没有要放原料的槽位。')}>
+    {fills.length > 0 && <dl className="daily-stats daily-today-money">
+      <div><dt>{tr('加工数量')}</dt><dd>{tr('{count} 个', { count: name.number(sum(fills, (entry) => entry.count)) })}</dd></div>
+      <div><dt>{tr('加工收益')}</dt><dd>{money(sum(fills, sold))}</dd></div>
+      <div className="is-gain"><dt>{tr('加工增益')}</dt><dd>+{money(sum(fills, (entry) => entry.gain))}</dd></div>
+    </dl>}
+    {ready > 0 && <p className="daily-banner"><Icon name="check" size={18} />{tr('有 {count} 个槽位的产品已经做好，先取出来再放新的。', { count: ready })}</p>}
 
-    <h3 className="daily-sub-head">{tr('设备数量')}</h3>
-    {working.length ? <ul className="daily-machine-grid">{working.map(machineCard)}</ul> : <p className="daily-empty card">{tr('现在没有要加工的作物。')}</p>}
-    {quiet.length > 0 && <div className="daily-quiet">
-      <span className="daily-quiet-label">{tr('闲置的设备（{count} 种）', { count: quiet.length })}</span>
-      <span className="daily-items">{quiet.map((family) => <ItemChip key={family.family} names={names} itemId={family.machine} label={name.item(family.machine)} count={tr('{count} 台', { count: family.machines })} />)}</span>
+    {loading.length ? <ul className="daily-machine-grid">{loading.map(card)}</ul>
+      : <p className="daily-empty card">{tr('今天没有空出来的槽位，或者仓库里没有值得加工的原料。')}</p>}
+    {busy.length > 0 && <div className="daily-quiet">
+      <span className="daily-quiet-label">{tr('今天不用管')}</span>
+      <span className="daily-items">{busy.map((machine) => <ItemChip key={machine.family} names={names} itemId={machine.machine} label={name.item(machine.machine)}
+        count={machine.next !== undefined ? tr('{time} 做好', { time: finishTime(now, machine.next) }) : undefined} />)}</span>
     </div>}
-    <p className="daily-note">{tr('一个槽位一次加工一份原料，一台设备有几个槽位就能同时做几份。天数 = 所有要做的活 ÷ 槽位数，包括正在加工的产品。每种作物只按一种配方算：优先选已有设备里有空闲、卖价最高的那种，没有空闲的设备时才建议加造。直接卖更划算的作物不加工。不急着加工完的话，可以把期限调长，或在下面把作物改成直接卖。')}</p>
-
-    <h3 className="daily-sub-head">{tr('作物加工')}</h3>
-    {produceRows.length ? <GrowList className="daily-produce-grid" items={produceRows} shown={8} /> : <p className="daily-empty card">{tr('现在没有要加工的作物。')}</p>}
-    <p className="daily-note">{tr('选项里的数字是每个原料最后能卖多少钱。交付要用的数量已经扣掉。你选的加工方式会保存在这个浏览器里。')}</p>
-
-    {materials.length > 0 && <div id="daily-materials" className="daily-materials">
-      <header className="daily-sub-row">
-        <h3 className="daily-sub-head">{tr('加造设备的材料')}</h3>
-        <label className="daily-control">{tr('库存保留')}
-          <SearchableSelect value={reserve} onChange={(event) => onReserve(Number(event.target.value))}>
-            {RESERVES.map((value) => <option key={value} value={value}>{`${Math.round(value * 100)}%`}</option>)}
-          </SearchableSelect>
-        </label>
-      </header>
-      <ul className="daily-material-grid">{materialRows}</ul>
-      <p className="daily-note">{shortMaterials.length ? tr('交付要用的材料已经扣掉，每种再按库存保留的比例留一部分。') : tr('材料够用，可以直接去工作台做。')}</p>
+    {empty.length > 0 && <div className="daily-quiet">
+      <span className="daily-quiet-label">{tr('空着，但没有能放的农产品')}</span>
+      <span className="daily-items">{empty.map((machine) => <ItemChip key={machine.family} names={names} itemId={machine.machine} label={name.item(machine.machine)} count={tr('{count} 个槽位', { count: opened(machine) })} />)}</span>
     </div>}
+    <p className="daily-note">{tr('算上了今天熟的作物和能摇下的果子，没算家畜今天的产物。交付要用的已经留出来了。价钱按普通品质算。')}</p>
+
+    {rows.length > 0 && <>
+      <h3 className="daily-sub-head">{tr('各原料的加工设备')}</h3>
+      <div className="card daily-produce-table">
+        <div className="daily-produce-head" aria-hidden="true">
+          <span>{tr('原料')}</span><span>{tr('设备')}</span><span>{tr('加工数量')}</span><span>{tr('加工收益')}</span><span>{tr('加工增益')}</span>
+        </div>
+        <GrowList className="daily-produce-list" items={rows} shown={shown}
+          after={fills.length > 0 && <p className="daily-produce daily-produce-total"><strong className="daily-produce-item">{tr('合计')}</strong><span />{numbers(fills)}</p>} />
+      </div>
+      <p className="daily-note">{tr('默认按今日空位收益最高的方式安排。改选设备后，该原料只放入所选设备；选回推荐的设备即恢复默认。选择只保存在本浏览器。')}</p>
+    </>}
   </Section>;
 }

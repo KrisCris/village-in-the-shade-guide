@@ -28,13 +28,10 @@ export function loadDailyData(): Promise<DailyData> {
 
 /** Per-player choices on the daily page, kept in the browser beside the farm area. */
 export interface DailySettings {
-  /** Days the machines should finish within; 0 means the end of the season. */
-  horizon: number;
-  reserve: number;
-  /** Recipe per produce item; 0 to leave it unprocessed. */
+  /** Recipe per produce item; 0 to sell it raw. Items not listed follow the plan. */
   choices: Record<string, number>;
 }
-export const DEFAULT_SETTINGS: DailySettings = { horizon: 0, reserve: 0.2, choices: {} };
+export const DEFAULT_SETTINGS: DailySettings = { choices: {} };
 const SETTINGS_KEY = 'village-daily:settings:v1';
 
 export function readSettings(storage: Storage | undefined, player: string): DailySettings {
@@ -42,11 +39,7 @@ export function readSettings(storage: Storage | undefined, player: string): Dail
     const all = JSON.parse(storage?.getItem(SETTINGS_KEY) ?? '{}') as Record<string, Partial<DailySettings>>;
     const saved = all?.[player];
     if (!saved || typeof saved !== 'object') return DEFAULT_SETTINGS;
-    return {
-      horizon: Number.isInteger(saved.horizon) && saved.horizon! >= 0 ? saved.horizon! : DEFAULT_SETTINGS.horizon,
-      reserve: typeof saved.reserve === 'number' && saved.reserve >= 0 && saved.reserve < 1 ? saved.reserve : DEFAULT_SETTINGS.reserve,
-      choices: Object.fromEntries(Object.entries(saved.choices ?? {}).filter(([, value]) => Number.isInteger(value))),
-    };
+    return { choices: Object.fromEntries(Object.entries(saved.choices ?? {}).filter(([, value]) => Number.isInteger(value))) };
   } catch {
     return DEFAULT_SETTINGS;
   }

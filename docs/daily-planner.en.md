@@ -8,13 +8,15 @@ The site's interface is in Chinese and Japanese. UI labels below are given in Ch
 
 ## What the page shows
 
-At the top are the save's date, weather, money and a 28-cell season bar with today marked. A row of number cards below sums up each part: to-do items left, deliveries ready today, machines to build, empty farm-area cells and free animal places. Each card jumps to its part. While you scroll, a menu of the parts and a "地图" (map) button stay pinned to the top of the page.
+At the top are the save's date, weather, money and a 28-cell season bar with today marked. A row of number cards below sums up each part: to-do items left, deliveries ready today, field guide entries you can fill today, machines to build, empty farm-area cells and free animal places. Each card jumps to its part. While you scroll, a menu of the parts and a "地图" (map) button stay pinned to the top of the page.
 
-The page has five parts, top to bottom:
+The page has seven parts, top to bottom:
 
-- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land and which animals the houses have room for. Routine care (harvesting, watering, feeding) comes last. Jobs that have to wait for the 07:00 turnover (entering houses after midnight, or fish that bite in none of today's remaining periods) sit in a final group, 7:00 以后 (after 7:00). You can tick entries off as you do them; ticks belong to that save, so a later save from the same day starts a fresh list. Each entry links to its section below, and entries with a place can mark it on the map.
+- **今日待办** (today's to-do list): what to do today, in order. It runs from crops that wither tomorrow, deliveries you can hand in today, and deliveries that one fishing or foraging trip completes, through collecting finished products and filling idle machines, machines to build, and where to get their materials (which quarry floors, which trees to fell, which trees to tap with a sap extractor), to what to sow on empty land, which animals the houses have room for and the field guide entries within reach today. Routine care (harvesting, watering, feeding) comes last. Jobs that have to wait for the 07:00 turnover (entering houses after midnight, or fish that bite in none of today's remaining periods) sit in a final group, 7:00 以后 (after 7:00). You can tick entries off as you do them; ticks belong to that save, so a later save from the same day starts a fresh list. Each entry links to its section below, and entries with a place can mark it on the map.
 - **交付** (deliveries): the three lists (shrine repairs, fox shrine offerings and the village head's catalog), split into four tabs. 今天可以交 (ready today) holds the lists you can finish now. 物品交付 (item deliveries) holds the lists you can complete this season, with where each missing item comes from and, when it can be dated, the expected wait. 本季凑不齐 (not this season) holds the lists missing something you cannot get this season. 留给交付的物品 (set aside) lists the items reserved for deliveries; the processing plan never uses them.
-- **加工设备** (processing machines): 设备数量 (machine count) shows how many days each kind of machine needs to process the produce in hand plus what ripens within the time limit, and how many machines to build or upgrade when that runs past the limit. Each card lists the produce assigned to it, the days per batch, the total work and the slots it needs. In 作物加工 (crop processing) you can pick another recipe for any produce, or none, and hand a picked one back to the automatic choice. 加造设备的材料 (materials for new machines) lists what the new machines need, whether you have enough, and where to get what is missing.
+- **今日可收集** (collect today): things missing from your field guide, or still short for deliveries, that you can get today. Fishing has one card per spot with the fish to catch and their bite chance in each period left today. Everything else is grouped by source: wild plants and bugs that grow outdoors this season, sap from grown trees, drops on quarry floors you have reached, and products your machines can make from the ingredients in stock.
+- **加工设备** (processing machines): what goes into each slot that is empty, finished, or finishes today. Three figures at the top give the items loaded today, what the products sell for and how much more that is than selling the items raw. One card per kind of machine shows when its slots open, what to load and how many, what the products sell for and what the same items fetch raw. Below, 各原料的加工设备 (machine per ingredient) has one row per ingredient; its dropdown picks another machine or no processing, and picking the recommended machine again restores the default.
+- **加造设备** (machines to add): machines that, at their current number, need more than 7 days to work through the ingredients in storage. Each card lists the waiting ingredients, about how much each extra slot earns per day, what one more machine or one upgrade costs, how many the stock covers, and where to get missing materials.
 - **空地和家畜** (empty land and livestock): 空地种植 (sowing) lists what to sow on the empty cells of your farm area. 家畜 (livestock) has one card per kind of house, showing how full it is and which animals you do not keep yet produce items the deliveries need; when their house is full, it names the renovation or new house to order from 树木建设 (the carpenter), with its materials and money.
 - **农场概况** (farm overview): season and scarecrow warnings, crops ready to harvest, chores such as watering and feeding, crops ripening in the next 7 days, farm-area cell counts and each scarecrow's days left.
 
@@ -29,24 +31,41 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 - Only unfinished lists count. Shrine repairs go one at a time, so only the lowest-numbered unfinished repair is listed. The village head's catalog is left out until flag 12036 is on.
 - Items in the backpack and storage chests are handed out in this order: shrine repairs, this season's fox shrine offerings, the catalog, then offerings for other seasons. Lists that can be finished completely get their items first; what is left goes to unfinished lists.
 - Within the same order, lists with a quality requirement go first. Each list takes the lowest quality that qualifies, leaving better items for lists that ask for them.
-- A list goes under 物品交付 when every missing item has a source this season: crops in the field, crops you can sow now, fish that bite, wild plants, animals, trees, machines or the quarry. It goes under 本季凑不齐 only when something is out of season or its source is unknown.
-- An expected wait is shown only when every missing item has a dated source. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that still bite in a period left today, wild plants in season and products of animals already on the farm count as available today. A fish of this season that bites in none of today's remaining periods counts as 1 day; on the last night of the season it counts as unavailable.
+- A list goes under 物品交付 when every missing item has a source this season: crops in the field, crops you can sow now, fruit trees that bear this season, fish that bite, wild plants, animals, gifts for selling animals, hunting certificates, trees, machines or the quarry. It goes under 本季凑不齐 only when something is out of season or its source is unknown.
+- An expected wait is shown only when every missing item has a dated source. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that still bite in a period left today, wild plants that grow outdoors this season and products of animals already on the farm count as available today. A fish of this season that bites in none of today's remaining periods counts as 1 day; on the last night of the season it counts as unavailable.
 
 ### Processing machines
 
-- The time limit defaults to the end of the season, at least 7 days; 7, 14, 28 or 56 days can be picked instead.
-- The produce to process is what is held after deliveries take theirs, plus what ripens within the limit (including regrowth picks). Only crops, fruit, flowers, wild plants and animal products count.
-- Each kind of produce goes to one recipe. A recipe picked on the page wins. Otherwise produce is taken in order of how much processing adds over selling it raw, and placed on the most valuable recipe whose machines are on the farm and still have time free; when none has time, on the most valuable recipe among owned machines. A machine the farm does not have is suggested only when the recipe adds at least 20 per input item over selling raw.
-- A slot is one batch a machine can process at a time; a machine has as many slots as batches it runs at once. Work is counted in slot-days, one slot busy for a whole day: each assigned produce needs ⌊count ÷ inputs per batch⌋ batches times the recipe's time, plus the time left on running jobs.
-- Days = total work ÷ slots. Finishing within the limit takes ⌈total work ÷ limit in days⌉ slots; the shortfall is that minus the slots on the farm. For example, 146 hops brewed into beer take about 3 days per batch in a brewing barrel, about 432 slot-days; with about 11 days of brewing already running the total is about 443. Six barrels need 74 days, and finishing in 27 days takes 17 slots, 11 more than the farm has. Past the limit, the plan first upgrades existing first-level machines to their "／改" version, then builds new first-level machines and upgrades them. If the upgrade recipe is not learned yet, it builds first-level machines only; if that recipe is not learned either, it names the shrine skill that unlocks it.
-- Materials needed for deliveries are taken off first, then a share of each material is kept back (the 库存保留 setting, 20% by default). When a material made in a machine, such as iron bars, is short, its inputs (ore, coal) are planned too, one level deep.
+- The ingredients are what is held after deliveries take theirs, plus today's harvest: crops ripe today (regrowth picks included), withered crops that can still be harvested and the fruit trees drop when shaken today, less what deliveries still lack. Animal products made today are not counted. Only crops, fruit, flowers, wild plants and animal products count, priced at normal quality.
+- Slots loaded today are the empty ones, the ones holding finished products and the ones that finish before the day ends (midnight, or the 07:00 turnover for a save after midnight). Slots that finish within an hour of each other count as one round, shown at the time the last one finishes.
+- Each slot takes one batch. Within these slots the plan finds the loading that adds the most money over selling raw (a min-cost flow), and one ingredient may go to several machines. Recipes worth no more than the raw item are not loaded.
+- An ingredient with a machine picked in the table goes only into that machine; "不加工" (no processing) keeps it out. The recommended machine is the plan's choice without a pick. For ingredients that do not fit today, it is the most valuable recipe on a machine the farm has, or else one the farm can build that adds at least 20 per item.
+
+### Machines to add
+
+- Ingredients left after today's loading queue on their recommended machines. When a kind of machine's running jobs, today's batches and that queue take more than 7 days across its slots, it is listed under 加造设备.
+- The plan first suggests upgrading first-level machines to their "／改" version, then building a new "／改" outright, then building new first-level machines. The game has no recipe that makes a "／改" from scratch: the upgrade recipe uses up a first-level machine. Building one outright therefore costs both recipes together: craft a first-level machine and upgrade it without placing it. The "／改" slot count then fits in the space of one machine. If the upgrade recipe is not learned yet, it builds first-level machines only; if that recipe is not learned either, it names the shrine skill that unlocks it.
+- "Earns per extra slot per day" is the queued ingredient that adds the most money for one slot working a whole day.
+- How many machines the stock covers counts what is left after deliveries. When a material made in a machine, such as iron bars, is short, its inputs (ore, coal) are planned too, one level deep.
+
+### Collect today
+
+- Whether an item is registered comes from the save's field guide record (`encyclopediaReleaseMap_`). Items the game's field guide never lists (`ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA`) appear only when a delivery lacks them. Delivery shortfalls match 物品交付.
+- Fishing: computed from fishing.dat per spot, for this season and the periods left today, the same way as the fishing spot guide (`/guides/fishing-spots/`): the chance that one bite without bait is that fish, junk left out. Periods follow the ranges fishing.dat gives, 7–12, 12–18, 18–24 and 0–6; neighbouring periods with the same chance are shown as one range. Spots are ordered by how many wanted fish they have; within a spot, fish the deliveries lack come first, then the rest by chance.
+- Outdoors: the wild plant and bug spawn groups in `naturaloccurrence.dat` give the season each one grows in (buried coins appear all year, but only after the chapter 2 flag 12902), and `cropsharvest.dat` gives the item picked; `tools/extract-natural-occurrence.py` exports both. The groups do not say where on which map they spawn, so the page lists seasons only. Every wild plant in the fox shrine offerings has the same season in this table.
+- Sap: a grown tree of the right kind stands in the village. Quarry: a floor you have reached drops it. Machines: the farm has that machine and the stock left after deliveries covers one batch.
+- The to-do list sums these up in one "补图鉴" (field guide) entry, counting only unregistered items; delivery shortfalls already have their fishing, foraging and delivery entries.
 
 ### Where materials come from
 
 - Quarry: expected drops per 100 rocks broken, from each floor's rock weights and each rock's drops. Floors with the same drops are merged into one band. The page picks the band with the most among floors already reached (flags 21801–21812 record reaching floors 10–120); if none has been reached, it lists the shallowest band and says so.
 - Wood: by the item text, 木材 (wood) comes from chestnut, oak and pine trees, 好加工的木材 (easy-to-work wood) from cedar, and 坚硬的木材 (hard wood) from hinoki. By `cropsharvest.dat`, felling a grown tree with the axe gives 12–18 of its wood. The page lists grown trees in the village, saplings, and tree seeds held (trees grow in about 10 days). The 木材 sources also mention the stumps in 附身草丛 (the haunted thicket) north-west of the village.
 - Sap: a sap extractor on a grown tree of the right kind collects it every 3 days.
-- Other sources: crops in the field, crops that can be sown this season, fishing, wild plants, animals and machine recipes.
+- Wild plants and bugs: by the seasons in `naturaloccurrence.dat`; see "Collect today" above.
+- Crops, fruit trees and tea: crops growing in the field, or crops to plant. A crop to plant comes with its seed's or sapling's growing days, how many are held and which shop sells it. When a sale has a condition (a `storesales` flag, such as "50 fruit shipped in total, from autumn of Year 1"), the page reads the flag from the save and names the condition while it is unmet. Fruit trees and tea already on the farm are listed instead with their count, the days left and the season they bear in; grown fruit trees in season are dated at one fruit per tree per day (`perennial.fruit_per_day`). Soybeans come from edamame: leave it unpicked when ripe and harvest it once it withers at the season change.
+- Meat: by the item text and `livestock.dat`, selling a cow (beef), a chicken or duck (chicken), a turkey (turkey meat) or a pig (pork) brings a gift the next day, and the meat is one of the possible gifts.
+- Hunting spoils: by `huntreward.dat`, trading the matching hunting certificate in the box at the hunter's hut can give them. The page shows how many certificates are held.
+- Other sources: fishing, animal products and machine recipes.
 
 ### After midnight
 
@@ -60,7 +79,7 @@ A save from 00:00 until the 07:00 turnover follows the night rules:
 
 - Empty land is the tilled-and-unplanted and back-to-plain cells in the farm area.
 - Only crops that grow this season on tilled soil or ridges, can ripen in the days left (crops that also grow next season may cross over), and have seeds held or on sale this season are listed.
-- Crops the deliveries still need come first; the rest are ranked by the profit planner's profit per cell (seed cost taken off, regrowth and processing included). Processing counts only machines that are on the farm and have time free within the limit.
+- Crops the deliveries still need come first; the rest are ranked by the profit planner's profit per cell (seed cost taken off, regrowth and processing included). Processing counts only machines that are on the farm and need no more of their kind.
 
 ### Livestock
 
@@ -69,7 +88,7 @@ A save from 00:00 until the 07:00 turnover follows the night rules:
 
 ### Settings
 
-The time limit, the reserve share and the recipe picked for each produce are stored in the browser per player name from the save (`localStorage` key `village-daily:settings:v1`). Ticked to-do entries are stored per player name too (key `village-daily:done:v1`) and apply only to a save with the same date and time.
+The machine picked for each ingredient is stored in the browser per player name from the save (`localStorage` key `village-daily:settings:v1`). Ticked to-do entries are stored per player name too (key `village-daily:done:v1`) and apply only to a save with the same date and time.
 
 ## Farm area
 
@@ -101,7 +120,8 @@ The rest comes from game data or existing site content:
 - Fruit trees bear only in their `perennial.bearing_seasons`; greenhouse-only trees list all four seasons.
 - The scarecrow's range and duration come from its item text (5×5 cells from the center, 28 days); the map catalog tags it `PLACEMENT_EFFECT_RANGE_2`. A spent scarecrow stays until it is chopped down with an axe.
 - The kit item text says it only grows in autumn. Outside autumn and outside an autumn scarecrow's range, the page treats a kit as stopped and leaves it out of the forecast and warnings.
-- Deliveries accept the required quality or better and have no deadline. The catalog opens with flag 12036.
+- Deliveries accept the required quality or better and have no deadline. The catalog opens with flag 12036. 品牌 (Brand) is the top quality, so a Brand requirement is shown without "or better".
+- A crop needed at Brand quality gets one more line: harvest a Gold star one, then have it certified at the Evaluation and name it. This comes from a player's account and has not been checked against game data.
 - Paddies do not need watering.
 
 ## Not verified yet
@@ -114,14 +134,17 @@ The rest comes from game data or existing site content:
 - The stumps in 附身草丛: players say there are many, but `cropsplacement.dat` places no stumps in that map, so how many there are and how much wood each gives is unknown. 附身草丛 is not on the village map, so it cannot be marked.
 - Daily animal output and quality.
 - Quarry figures cover ordinary rocks only, not ore-vein rooms or bee nests.
+- Where wild plants and bugs grow: `naturaloccurrence.dat` has only spawn groups and seasons, and the group names do not appear in the map files.
 - Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
+- Gifts for selling an animal and hunting certificate rewards: `livestock.dat` and `huntreward.dat` list a few items for each with weights that add up to 100, which looks like one weighted draw, but the game code has not been checked yet. The page says the item "may" come and gives no odds.
+- Crop quality: `HARVEST_COUNT_RATE_*` in `gamedefine.dat` shows quality rises with the harvest count, but how many harvests each crop needs has not been extracted yet, so the page cannot say how many seeds to plant.
 
 ## Code
 
-- `src/lib/saveDaily.ts`: reads cells, machines, items, delivery progress, trees, animal houses, quarry progress and scarecrows from the save.
-- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish and wild-plant seasons, quarry drops, animal products and house orders.
+- `src/lib/saveDaily.ts`: reads cells, machines, items, delivery progress, trees, animal houses, quarry progress, scarecrows and the field guide record from the save.
+- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish seasons and bite chances per spot, wild plant and bug seasons, quarry drops, each crop's seed and the shops that sell it, what hunting certificates trade for, animal products and house orders.
 - `src/domain/dailyDigest.ts`: the daily field rules, independent of the save format and tested with synthetic data.
-- `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`) and today's list (`dailyActions`).
+- `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`), collect today (`dailyCollect`) and today's list (`dailyActions`).
 - `src/lib/dailyData.ts`: loads the page data and stores the settings; `src/lib/farmArea.ts`: merging and storing the farm area.
 - `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`; outside the farm it draws the village tiles in `public/maps/village/`, exported by `tools/extract-village-art.py`).
 - Tests that check against saves are in `src/lib/saveDaily.test.ts` and `src/domain/dailyPlan.test.ts`. They need the decrypted save fixtures (see `tests/gamesave/README.md`) and are skipped without them.

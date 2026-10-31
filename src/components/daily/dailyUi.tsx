@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
-import { TREE_WOOD, type ItemSource } from '../../domain/dailySources';
+import { TREE_WOOD, type ItemSource, type SeedSource } from '../../domain/dailySources';
 import { ANIMALS } from '../../lib/saveAnimals';
 import { gameDuration } from '../../lib/saveMachines';
+import { gameDate } from '../../lib/saveDaily';
 import { GAME_SEASONS } from '../../lib/saveTime';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
@@ -13,6 +14,7 @@ export interface MapTarget { label: string; cells: number[]; unit?: 'trees' }
 const ICONS = {
   today: <><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 3.5h6v3H9z" /><path d="m9 13.5 2 2 4-4" /></>,
   deliver: <><path d="M3.5 7.5 12 3.2l8.5 4.3v9L12 20.8l-8.5-4.3z" /><path d="M3.5 7.5 12 12l8.5-4.5M12 12v8.8" /></>,
+  build: <><path d="m13.5 6.5 4 4" /><path d="M10.5 3.5 15 8l-2.2 2.2-4.5-4.5z" /><path d="m11.4 9.6-7 7a1.8 1.8 0 0 0 2.6 2.6l7-7" /><path d="M16 15.5h4.5M18.25 13.25v4.5" /></>,
   machine: <><circle cx="12" cy="12" r="3.2" /><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M5.5 18.5l2.1-2.1M16.4 7.6l2.1-2.1" /></>,
   land: <><path d="M12 20.5v-8.5" /><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5z" /><path d="M12 14.5c0-3-2.5-5-6-5 0 3 2.5 5 6 5z" /><path d="M5 20.5h14" /></>,
   farm: <><path d="M3 11 12 4l9 7" /><path d="M5.5 9.5V20h13V9.5" /><path d="M10 20v-5h4v5" /></>,
@@ -22,6 +24,7 @@ const ICONS = {
   close: <path d="M6 6l12 12M18 6 6 18" />,
   swap: <path d="M6.5 8h11l-3-3M17.5 16h-11l3 3" />,
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
+  book: <><path d="M3.5 5.8c2.9-1.1 5.7-1 8.5.7 2.8-1.7 5.6-1.8 8.5-.7v12.9c-2.9-1.1-5.7-1-8.5.7-2.8-1.7-5.6-1.8-8.5-.7z" /><path d="M12 6.5v12.9" /></>,
 };
 export type IconName = keyof typeof ICONS;
 
@@ -29,11 +32,12 @@ export function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   return <svg className="daily-icon" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">{ICONS[name]}</svg>;
 }
 
-/** Long lists show their first entries; a button reveals the rest in place. */
-export function GrowList({ items, shown, className }: { items: ReactNode[]; shown: number; className: string }) {
+/** Long lists show their first entries; a button reveals the rest in place. `after` sits between the list and the button. */
+export function GrowList({ items, shown, className, after }: { items: ReactNode[]; shown: number; className: string; after?: ReactNode }) {
   const [open, setOpen] = useState(false);
   return <>
     <ul className={className}>{open ? items : items.slice(0, shown)}</ul>
+    {after}
     {items.length > shown && <button type="button" className="daily-grow" aria-expanded={open} onClick={() => setOpen(!open)}>
       {open ? tr('收起') : tr('显示其余 {count} 项', { count: items.length - shown })}
     </button>}
@@ -124,6 +128,16 @@ export function useNames(names: SaveNameTables) {
 }
 export type Names = ReturnType<typeof useNames>;
 
+/** A game clock time, `after` game seconds past `now`: the hour alone today, 凌晨 past midnight, then 明天 or a count of days. */
+export function finishTime(now: number, after: number): string {
+  const { hour, minute } = gameDate(now + after), time = `${hour}:${String(minute).padStart(2, '0')}`;
+  // Game days turn over at 07:00, which is where whole days of game seconds start.
+  const days = Math.floor((now + after) / 86_400) - Math.floor(now / 86_400);
+  if (days > 1) return tr('{days} 天后', { days });
+  if (days === 1) return tr('明天 {time}', { time });
+  return gameDate(now).hour >= 7 && hour < 7 ? tr('凌晨 {time}', { time }) : time;
+}
+
 /** An item chip: icon, name and a count. */
 export function ItemChip({ names, itemId, label, count, tone }: { names: SaveNameTables; itemId: number; label: string; count?: ReactNode; tone?: 'short' | 'done' }) {
   return <span className={`daily-item${tone ? ` is-${tone}` : ''}`}>
@@ -147,26 +161,58 @@ export function sourceText(source: ItemSource, name: Names): string {
     case 'field': return source.days
       ? tr('田里有 {cells} 格{crop}，{days} 天后开始成熟', { cells: source.cells.length, crop: name.crop(source.crop), days: source.days })
       : tr('田里有 {cells} 格{crop}已经成熟', { cells: source.cells.length, crop: name.crop(source.crop) });
-    case 'plant': return source.now
-      ? tr('种{crop}，这季能种', { crop: name.crop(source.crop) })
-      : tr('种{crop}，{seasons}季作物', { crop: name.crop(source.crop), seasons: name.seasons(source.seasons) });
+    case 'plant': {
+      const crop = name.crop(source.crop), seed = source.seed, parts: string[] = [];
+      if (source.bearing) parts.push(seed ? tr('种{seed}，{days} 天长成', { seed: name.item(seed.itemId), days: seed.days }) : tr('种{crop}', { crop }), bearingText(source.bearing, source.now, name));
+      else if (source.withered) parts.push(source.now ? tr('种{crop}，这季能种', { crop }) : tr('种{crop}，{seasons}季作物', { crop, seasons: name.seasons(source.seasons) }), tr('熟了先不收，换季枯萎后再收'));
+      else if (seed) parts.push(source.now ? tr('种{crop}，这季能种，{days} 天成熟', { crop, days: seed.days })
+        : tr('种{crop}，{seasons}季作物，{days} 天成熟', { crop, seasons: name.seasons(source.seasons), days: seed.days }));
+      else parts.push(source.now ? tr('种{crop}，这季能种', { crop }) : tr('种{crop}，{seasons}季作物', { crop, seasons: name.seasons(source.seasons) }));
+      if (seed) parts.push(seedText(seed, name));
+      return parts.filter(Boolean).join(tr('；'));
+    }
+    case 'orchard': {
+      const crop = name.crop(source.crop), young = source.cells.length - source.grown;
+      return [
+        !source.grown ? tr('农场里种了 {count} 棵{crop}，还要 {days} 天', { count: young, crop, days: source.days })
+          : young ? tr('农场里有 {count} 棵{crop}，另有 {young} 棵还要 {days} 天', { count: source.grown, crop, young, days: source.days })
+          : tr('农场里有 {count} 棵{crop}', { count: source.grown, crop }),
+        bearingText(source.bearing, source.now, name),
+      ].join(tr('；'));
+    }
+    case 'sell': {
+      const names = source.species.map(name.animal), animals = names.length > 1 ? `${names.slice(0, -1).join(tr('、'))}${tr('或')}${names.at(-1)}` : names[0];
+      return source.owned ? tr('卖掉一只{animals}，隔天寄来的回礼里可能有', { animals }) : tr('卖掉{animals}后隔天寄来的回礼里可能有，农场里还没有', { animals });
+    }
+    case 'hunt': {
+      const certificates = source.certificates.map(name.item).join(tr('或'));
+      return source.held ? tr('有 {count} 张{certificates}，交到猎人小屋的小箱子可能换到', { count: source.held, certificates })
+        : tr('狩猎拿到{certificates}后交到猎人小屋的小箱子，可能换到', { certificates });
+    }
     case 'fish': return !source.now ? tr('{seasons}季才钓得到', { seasons: name.seasons(source.seasons) })
       : source.night ? tr('只在深夜（0:00–7:00）钓得到')
       : source.today ? tr('这季钓得到') : tr('这季钓得到，但要等 7:00 换日以后');
-    case 'wild': return source.now ? tr('这季能在山里采到') : tr('{season}季在山里采', { season: name.seasons([source.season]) });
+    case 'wild': return source.now ? tr('这季在野外采得到') : tr('{season}季在野外采', { season: name.seasons([source.season]) });
     case 'animal': {
       const animals = source.species.map(name.animal).join(tr('、'));
       return source.owned ? tr('农场里的{animals}会产', { animals }) : tr('{animals}产，农场里还没有', { animals });
     }
     case 'trees': {
       const trees = source.crops.map(name.tree).join(tr('、'));
-      const parts = [tr('砍{trees}：长成的一棵出 {low}–{high} 个，村里有 {grown} 棵', { trees, low: TREE_WOOD[0], high: TREE_WOOD[1], grown: source.grown.length })];
+      const parts = [tr('砍{trees}：长成的一棵出 {low}–{high} 个，现在长成的有 {grown} 棵', { trees, low: TREE_WOOD[0], high: TREE_WOOD[1], grown: source.grown.length })];
       if (source.stumps) parts.push(tr('村子西北边的附身草丛有很多树桩，砍了也出木材（那里不在地图上）'));
       if (source.young) parts.push(tr('{young} 棵还在长', { young: source.young }));
       for (const [seed, count] of source.seeds) parts.push(tr('有 {count} 个{seed}可以种，约 10 天长成', { count, seed: name.item(seed) }));
       return parts.join(tr('；'));
     }
-    case 'sap': return tr('在{tree}上放树液采集器，3 天收一次（村里有 {count} 棵长成的）', { tree: name.tree(source.tree), count: source.trees.length });
+    case 'sap': {
+      const tree = name.tree(source.tree), spare = Math.max(0, source.trees.length - source.collectors);
+      if (!source.collectors) return tr('在长成的{tree}上放树液采集器，3 天收一次（长成的有 {count} 棵）', { tree, count: source.trees.length });
+      return [
+        tr('{count} 台树液采集器在收，每 3 天共 {count} 个', { count: source.collectors }),
+        spare ? tr('还有 {count} 棵长成的{tree}没放采集器', { count: spare, tree }) : tr('长成的{tree}都放了采集器，要更多就得再种{tree}', { tree }),
+      ].join(tr('；'));
+    }
     case 'machine': return tr('{machine}：{inputs}，做 {count} 个要 {time}', {
       machine: name.item(source.machine), count: source.count, time: gameDuration(source.minutes * 60),
       inputs: source.inputs.map(([id, count]) => `${name.item(id)} × ${count}`).join(tr('、')),
@@ -177,9 +223,28 @@ export function sourceText(source: ItemSource, name: Names): string {
   }
 }
 
+/** When a fruit tree or shrub bears: this season, or the seasons it bears in. */
+function bearingText(bearing: { kind: string; seasons: number[] }, now: boolean, name: Names): string {
+  const fruit = bearing.kind === 'fruit_tree';
+  if (now) return fruit ? tr('这季结果') : tr('这季能采');
+  const seasons = name.seasons(bearing.seasons);
+  return fruit ? tr('到{seasons}季才结果', { seasons }) : tr('到{seasons}季才能采', { seasons });
+}
+
+/** Seeds held, or the shop for them: on sale now, in which seasons, or what the sale still waits for. */
+function seedText(seed: SeedSource, name: Names): string {
+  const item = name.item(seed.itemId), sale = seed.sale;
+  if (seed.held) return tr('有 {count} 个{seed}', { count: seed.held, seed: item });
+  if (!sale) return '';
+  const places = sale.places.join(tr('、'));
+  if (sale.open) return tr('{places}有卖{seed}', { places, seed: item });
+  if (sale.conditions.length) return tr('{places}卖{seed}，要先达成：{conditions}', { places, seed: item, conditions: sale.conditions.join(tr('、')) });
+  return tr('{places}{seasons}季卖{seed}', { places, seasons: name.seasons(sale.seasons), seed: item });
+}
+
 /** Cells a source can be shown at on the map: crops in the field and the trees to fell or tap. */
 export function sourceCells(source: ItemSource): number[] {
-  return source.kind === 'field' ? source.cells : source.kind === 'trees' ? source.grown : source.kind === 'sap' ? source.trees : [];
+  return source.kind === 'field' || source.kind === 'orchard' ? source.cells : source.kind === 'trees' ? source.grown : source.kind === 'sap' ? source.trees : [];
 }
 
 /** What the map should mark for these sources: tree sources are labelled and counted as trees, anything else under `item`. */
