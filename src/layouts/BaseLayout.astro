@@ -37,6 +37,7 @@ const licensing = `${repo}/blob/main/${i18n.lang === 'ja' || i18n.lang === 'en' 
     <script is:inline data-astro-rerun>
       (()=>{let particles;try{particles=localStorage.getItem('village-particles');}catch{}document.documentElement.dataset.particles=particles==='off'?'off':'on';})();
       (()=>{let season;try{season=localStorage.getItem('village-season');}catch{}const preference=['spring','summer','autumn','winter'].includes(season)?season:'auto';document.documentElement.dataset.seasonPreference=preference;if(preference!=='auto')document.documentElement.dataset.season=preference;})();
+      document.documentElement.dataset.scrollbars=matchMedia('(hover: hover) and (pointer: fine)').matches?'overlay':'native';
       (()=>{let theme;try{theme=localStorage.getItem('village-theme');}catch{}document.documentElement.dataset.theme=theme==='day'||theme==='night'?theme:matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';document.querySelector('meta[name=theme-color]')?.setAttribute('content',document.documentElement.dataset.theme==='night'?'#14251f':'#ece8db');})();
     </script>
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
@@ -66,8 +67,10 @@ const licensing = `${repo}/blob/main/${i18n.lang === 'ja' || i18n.lang === 'en' 
     <script>
       import { registerApp } from '../lib/pwa';
       import { keepRootStateAcrossSwaps } from '../lib/rootState';
+      import { installOverlayScrollbars } from '../lib/overlayScrollbars';
       registerApp();
       keepRootStateAcrossSwaps();
+      installOverlayScrollbars();
     </script>
   </body>
 </html>
