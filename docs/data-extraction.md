@@ -47,7 +47,7 @@ uv run honogurashi-data extract-icons --snapshot data/raw/review-25640656 --outp
 | 类别 | 工具 |
 | --- | --- |
 | 地图与探索 | `extract-map-markers.py`、`extract-exploration-markers.py`、`extract-night-pickups.py`、`extract-farmland.py`、`extract-quarry.py`、`extract-fishing.py` |
-| 规则与经济 | `extract-game-rules.py`、`extract-machine-capacities.py`、`extract-livestock-products.py`、`extract-shrine-materials.py`、`extract-kappa-exchange.py`、`extract-night-exchanges.py`、`extract-construction.py`、`extract-sap-trees.py` |
+| 规则与经济 | `extract-game-rules.py`、`extract-machine-capacities.py`、`extract-livestock-products.py`、`extract-shrine-materials.py`、`extract-kappa-exchange.py`、`extract-night-exchanges.py`、`extract-construction.py`、`extract-sap-trees.py`、`extract-crop-quality.py` |
 | 食谱与外观 | `extract-recipe-documents.py`、`extract-recipe-lessons.py`、`extract-appearance-groups.py` |
 | 存档编辑器 | `extract-save-editor-rules.py`、`extract-save-appearance.py`、`extract-save-unlocks.py`、`extract-save-v2-catalogs.py`、`extract-save-map.py`、`extract-save-editor-icons.py` |
 | 图像 | `extract-map-art.py`、`extract-village-art.py`、`extract-crop-growth.py`、`extract-scenery.py`、`extract-portrait-models.py`、`extract-portrait-options.py`；见 [素材说明](assets.md) |

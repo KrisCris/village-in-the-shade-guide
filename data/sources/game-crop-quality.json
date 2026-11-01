@@ -1,0 +1,1172 @@
+{
+  "source": "Steam build 25640656 gamedefine.dat, item.dat tagID@24 / needValue@28, fertilizer.dat rate@16, gameflag.dat; village.exe for the rules",
+  "build": "25640656",
+  "harvest_count_rates": {
+    "copper": 0.1,
+    "silver": 0.4,
+    "gold": 1.0
+  },
+  "sell_price_rates": {
+    "normal": 1.0,
+    "copper": 1.25,
+    "silver": 1.5,
+    "gold": 1.75,
+    "brand": 2.0
+  },
+  "item_ranks": {
+    "ITEM_RANK_NORMAL": 0,
+    "ITEM_RANK_COPPER": 1,
+    "ITEM_RANK_SILVER": 2,
+    "ITEM_RANK_GOLD": 3,
+    "ITEM_RANK_BRAND": 4
+  },
+  "flags": {
+    "GAME_FLAG_SALE_START_SEED_FIRST_FAIR": {
+      "numeric_id": 532,
+      "description_ja": "品評会初参加後に解禁されるもの"
+    },
+    "GAME_FLAG_SALE_START_SEED_AUT_FAIR": {
+      "numeric_id": 533,
+      "description_ja": "秋の品評会の翌日から解禁されるもの"
+    },
+    "GAME_FLAG_FAIR_REPLYED": {
+      "numeric_id": 600,
+      "description_ja": "品評会アンケート回答済み"
+    },
+    "GAME_FLAG_FAIR_CROPS": {
+      "numeric_id": 601,
+      "description_ja": "品評会_作物"
+    },
+    "GAME_FLAG_FAIR_LIVESTOCK": {
+      "numeric_id": 602,
+      "description_ja": "品評会_家畜"
+    },
+    "GAME_FLAG_FAIR_HORSE": {
+      "numeric_id": 603,
+      "description_ja": "品評会_馬"
+    },
+    "GAME_FLAG_FAIR_ENTRY": {
+      "numeric_id": 605,
+      "description_ja": "品評会_エントリーした"
+    },
+    "GAME_FLAG_FAIR_GET_S_RANK": {
+      "numeric_id": 606,
+      "description_ja": "品評会_Sランク獲得"
+    },
+    "GAME_FLAG_STORY_01_022": {
+      "numeric_id": 11076,
+      "description_ja": "１章_祭壇へ捧げる"
+    }
+  },
+  "fertilizers": [
+    {
+      "id": "FERTILIZER_NORMAL",
+      "numeric_id": 1,
+      "item_id": "ITEM_ID_FERTILIZER",
+      "rate_percent": 20
+    },
+    {
+      "id": "FERTILIZER_MIDDLE_GRADE",
+      "numeric_id": 2,
+      "item_id": "ITEM_ID_FERTILIZER_MIDDLE_GRADE",
+      "rate_percent": 40
+    },
+    {
+      "id": "FERTILIZER_HIGH_GRADE",
+      "numeric_id": 3,
+      "item_id": "ITEM_ID_FERTILIZER_HIGH_GRADE",
+      "rate_percent": 60
+    }
+  ],
+  "seeds": [
+    {
+      "seed_item_id": "ITEM_ID_SEED_ASPARAGUS",
+      "count_item_id": "ITEM_ID_CROPS_ASPARAGUS",
+      "count_item_numeric_id": 100000,
+      "need": 300,
+      "copper": 30,
+      "silver": 120,
+      "gold": 300,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_ASPARAGUS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_ONION",
+      "count_item_id": "ITEM_ID_CROPS_ONION",
+      "count_item_numeric_id": 100010,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_ONION"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PEA",
+      "count_item_id": "ITEM_ID_CROPS_PEA",
+      "count_item_numeric_id": 100020,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PEA",
+        "ITEM_ID_CROPS_SNOW_PEAS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_TURNIP",
+      "count_item_id": "ITEM_ID_CROPS_TURNIP",
+      "count_item_numeric_id": 100030,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_TURNIP"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_POTATO",
+      "count_item_id": "ITEM_ID_CROPS_POTATO",
+      "count_item_numeric_id": 100040,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_POTATO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_RADISH",
+      "count_item_id": "ITEM_ID_CROPS_RADISH",
+      "count_item_numeric_id": 100050,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_RADISH"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CABBAGE",
+      "count_item_id": "ITEM_ID_CROPS_CABBAGE",
+      "count_item_numeric_id": 100060,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CABBAGE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_LETTUCE",
+      "count_item_id": "ITEM_ID_CROPS_LETTUCE",
+      "count_item_numeric_id": 100070,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_LETTUCE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CARROT",
+      "count_item_id": "ITEM_ID_CROPS_CARROT",
+      "count_item_numeric_id": 100080,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CARROT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_STRAWBERRY",
+      "count_item_id": "ITEM_ID_CROPS_STRAWBERRY",
+      "count_item_numeric_id": 100090,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_STRAWBERRY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_WHITE_ONION",
+      "count_item_id": "ITEM_ID_CROPS_WHITE_ONION",
+      "count_item_numeric_id": 100100,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_WHITE_ONION"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_TOMATO",
+      "count_item_id": "ITEM_ID_CROPS_TOMATO",
+      "count_item_numeric_id": 100110,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_TOMATO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_EGGPLANT",
+      "count_item_id": "ITEM_ID_CROPS_EGGPLANT",
+      "count_item_numeric_id": 100120,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_EGGPLANT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PEPPER",
+      "count_item_id": "ITEM_ID_CROPS_PEPPER",
+      "count_item_numeric_id": 100130,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PEPPER"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PUMPKIN",
+      "count_item_id": "ITEM_ID_CROPS_PUMPKIN",
+      "count_item_numeric_id": 100140,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PUMPKIN"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CUCUMBER",
+      "count_item_id": "ITEM_ID_CROPS_CUCUMBER",
+      "count_item_numeric_id": 100150,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CUCUMBER"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CORN",
+      "count_item_id": "ITEM_ID_CROPS_CORN",
+      "count_item_numeric_id": 100160,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CORN"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_GINGER",
+      "count_item_id": "ITEM_ID_CROPS_GINGER",
+      "count_item_numeric_id": 100170,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_GINGER"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_GARLIC",
+      "count_item_id": "ITEM_ID_CROPS_GARLIC",
+      "count_item_numeric_id": 100180,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_GARLIC"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_EDAMAME",
+      "count_item_id": "ITEM_ID_CROPS_EDAMAME",
+      "count_item_numeric_id": 100190,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_EDAMAME",
+        "ITEM_ID_CROPS_SOYBEAN",
+        "ITEM_ID_CROPS_BEAN_SPROUTS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_WATERMELON",
+      "count_item_id": "ITEM_ID_CROPS_WATERMELON",
+      "count_item_numeric_id": 100200,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_WATERMELON"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_MELON",
+      "count_item_id": "ITEM_ID_CROPS_MELON",
+      "count_item_numeric_id": 100210,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_MELON"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PINEAPPLE",
+      "count_item_id": "ITEM_ID_CROPS_PINEAPPLE",
+      "count_item_numeric_id": 100220,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PINEAPPLE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_BLUEBERRY",
+      "count_item_id": "ITEM_ID_CROPS_BLUEBERRY",
+      "count_item_numeric_id": 100230,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_BLUEBERRY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_WHEAT",
+      "count_item_id": "ITEM_ID_CROPS_WHEAT",
+      "count_item_numeric_id": 100240,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_WHEAT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_HOPS",
+      "count_item_id": "ITEM_ID_CROPS_HOPS",
+      "count_item_numeric_id": 100250,
+      "need": 900,
+      "copper": 90,
+      "silver": 360,
+      "gold": 900,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_HOPS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SUGAR_CANE",
+      "count_item_id": "ITEM_ID_CROPS_SUGARCANE",
+      "count_item_numeric_id": 100260,
+      "need": 400,
+      "copper": 40,
+      "silver": 160,
+      "gold": 400,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SUGARCANE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_BUCKWHEAT",
+      "count_item_id": "ITEM_ID_CROPS_BUCKWHEAT",
+      "count_item_numeric_id": 100270,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_BUCKWHEAT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_TARO",
+      "count_item_id": "ITEM_ID_CROPS_TARO",
+      "count_item_numeric_id": 100280,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_TARO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SWEET_POTATO",
+      "count_item_id": "ITEM_ID_CROPS_SWEET_POTATO",
+      "count_item_numeric_id": 100290,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SWEET_POTATO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SHIITAKE_MUSHROOM",
+      "count_item_id": "ITEM_ID_CROPS_SHIITAKE_MUSHROOM",
+      "count_item_numeric_id": 100300,
+      "need": 300,
+      "copper": 30,
+      "silver": 120,
+      "gold": 300,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SHIITAKE_MUSHROOM"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SHIMEJI_MUSHROOM",
+      "count_item_id": "ITEM_ID_CROPS_SHIMEJI_MUSHROOM",
+      "count_item_numeric_id": 100310,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SHIMEJI_MUSHROOM"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_WOOD_EAR_MUSHROOM",
+      "count_item_id": "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM",
+      "count_item_numeric_id": 100320,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_WOOD_EAR_MUSHROOM"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_OLIVE",
+      "count_item_id": "ITEM_ID_CROPS_OLIVE",
+      "count_item_numeric_id": 100340,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_OLIVE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SESAME",
+      "count_item_id": "ITEM_ID_CROPS_SESAME",
+      "count_item_numeric_id": 100350,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SESAME"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CHINESE_CABBAGE",
+      "count_item_id": "ITEM_ID_CROPS_CHINESE_CABBAGE",
+      "count_item_numeric_id": 100360,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CHINESE_CABBAGE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_JAPANESE_WHITE_RADISH",
+      "count_item_id": "ITEM_ID_CROPS_DAIKON",
+      "count_item_numeric_id": 100370,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_DAIKON"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SPINACH",
+      "count_item_id": "ITEM_ID_CROPS_SPINACH",
+      "count_item_numeric_id": 100380,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SPINACH"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_TEA",
+      "count_item_id": "ITEM_ID_CROPS_TEA_TREE",
+      "count_item_numeric_id": 100390,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_TEA_TREE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_RICE",
+      "count_item_id": "ITEM_ID_CROPS_RICE",
+      "count_item_numeric_id": 100400,
+      "need": 1000,
+      "copper": 100,
+      "silver": 400,
+      "gold": 1000,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_RICE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_WASABI",
+      "count_item_id": "ITEM_ID_CROPS_WASABI",
+      "count_item_numeric_id": 100410,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_WASABI"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_LOTUS_ROOT",
+      "count_item_id": "ITEM_ID_CROPS_LOTUS_ROOT",
+      "count_item_numeric_id": 100420,
+      "need": 200,
+      "copper": 20,
+      "silver": 80,
+      "gold": 200,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_LOTUS_ROOT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_MULBERRY",
+      "count_item_id": "ITEM_ID_CROPS_MULBERRY_LEAF",
+      "count_item_numeric_id": 100430,
+      "need": 600,
+      "copper": 60,
+      "silver": 240,
+      "gold": 600,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_MULBERRY_LEAF",
+        "ITEM_ID_CROPS_MULBERRY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CHAMOMILE",
+      "count_item_id": "ITEM_ID_CROPS_CHAMOMILE",
+      "count_item_numeric_id": 111000,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CHAMOMILE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_HYACINTH",
+      "count_item_id": "ITEM_ID_CROPS_HYACINTH",
+      "count_item_numeric_id": 111010,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_HYACINTH"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_IRIS",
+      "count_item_id": "ITEM_ID_CROPS_IRIS",
+      "count_item_numeric_id": 111020,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_IRIS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_TULIP",
+      "count_item_id": "ITEM_ID_CROPS_TULIP",
+      "count_item_numeric_id": 111030,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_TULIP"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_DIANTHUS",
+      "count_item_id": "ITEM_ID_CROPS_DIANTHUS",
+      "count_item_numeric_id": 111040,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_DIANTHUS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_POPPY",
+      "count_item_id": "ITEM_ID_CROPS_POPPY",
+      "count_item_numeric_id": 111050,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_POPPY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_FORGET_ME_NOT",
+      "count_item_id": "ITEM_ID_CROPS_FORGET_ME_NOT",
+      "count_item_numeric_id": 111060,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_FORGET_ME_NOT"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CARNATION",
+      "count_item_id": "ITEM_ID_CROPS_CARNATION",
+      "count_item_numeric_id": 111070,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CARNATION"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SKUNK_CABBAGE",
+      "count_item_id": "ITEM_ID_CROPS_SKUNK_CABBAGE",
+      "count_item_numeric_id": 111080,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SKUNK_CABBAGE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_MORNING_GLORY",
+      "count_item_id": "ITEM_ID_CROPS_MORNING_GLORY",
+      "count_item_numeric_id": 111090,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_MORNING_GLORY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_GYPSOPHILA",
+      "count_item_id": "ITEM_ID_CROPS_GYPSOPHILA",
+      "count_item_numeric_id": 111100,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_GYPSOPHILA"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_MARIGOLD",
+      "count_item_id": "ITEM_ID_CROPS_MARIGOLD",
+      "count_item_numeric_id": 111110,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_MARIGOLD"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_LILY_OF_THE_VALLEY",
+      "count_item_id": "ITEM_ID_CROPS_LILY_OF_THE_VALLEY",
+      "count_item_numeric_id": 111120,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_LILY_OF_THE_VALLEY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_HIBISCUS",
+      "count_item_id": "ITEM_ID_CROPS_HIBISCUS",
+      "count_item_numeric_id": 111130,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_HIBISCUS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_ROSE",
+      "count_item_id": "ITEM_ID_CROPS_ROSE",
+      "count_item_numeric_id": 111140,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_ROSE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_SUNFLOWER",
+      "count_item_id": "ITEM_ID_CROPS_SUNFLOWER",
+      "count_item_numeric_id": 111150,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_SUNFLOWER"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_LAVENDER",
+      "count_item_id": "ITEM_ID_CROPS_LAVENDER",
+      "count_item_numeric_id": 111160,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_LAVENDER"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_DAHLIA",
+      "count_item_id": "ITEM_ID_CROPS_DAHLIA",
+      "count_item_numeric_id": 111170,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_DAHLIA"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_COSMOS",
+      "count_item_id": "ITEM_ID_CROPS_COSMOS",
+      "count_item_numeric_id": 111180,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_COSMOS"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CHRYSANTHEMUM",
+      "count_item_id": "ITEM_ID_CROPS_CHRYSANTHEMUM",
+      "count_item_numeric_id": 111190,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CHRYSANTHEMUM"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_DAFFODIL",
+      "count_item_id": "ITEM_ID_CROPS_DAFFODIL",
+      "count_item_numeric_id": 111200,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_DAFFODIL"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PANSY",
+      "count_item_id": "ITEM_ID_CROPS_PANSY",
+      "count_item_numeric_id": 111210,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PANSY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_ROSEMARY",
+      "count_item_id": "ITEM_ID_CROPS_ROSEMARY",
+      "count_item_numeric_id": 111220,
+      "need": 100,
+      "copper": 10,
+      "silver": 40,
+      "gold": 100,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_ROSEMARY"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_YUZU",
+      "count_item_id": "ITEM_ID_CROPS_YUZU",
+      "count_item_numeric_id": 122000,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_YUZU"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CHERRIES",
+      "count_item_id": "ITEM_ID_CROPS_CHERRIES",
+      "count_item_numeric_id": 122010,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CHERRIES"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PLUM",
+      "count_item_id": "ITEM_ID_CROPS_PLUM",
+      "count_item_numeric_id": 122020,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PLUM"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PEACH",
+      "count_item_id": "ITEM_ID_CROPS_PEACH",
+      "count_item_numeric_id": 122030,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PEACH"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_MANGO",
+      "count_item_id": "ITEM_ID_CROPS_MANGO",
+      "count_item_numeric_id": 122040,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_MANGO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_BANANA",
+      "count_item_id": "ITEM_ID_CROPS_BANANA",
+      "count_item_numeric_id": 122050,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_BANANA"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_CACAO",
+      "count_item_id": "ITEM_ID_CROPS_CACAO",
+      "count_item_numeric_id": 122060,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_CACAO"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_GRAPES",
+      "count_item_id": "ITEM_ID_CROPS_GRAPES",
+      "count_item_numeric_id": 122070,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_GRAPES"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PERSIMMON",
+      "count_item_id": "ITEM_ID_CROPS_PERSIMMON",
+      "count_item_numeric_id": 122080,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PERSIMMON"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_PEAR",
+      "count_item_id": "ITEM_ID_CROPS_PEAR",
+      "count_item_numeric_id": 122090,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_PEAR"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_APPLE",
+      "count_item_id": "ITEM_ID_CROPS_APPLE",
+      "count_item_numeric_id": 122100,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_APPLE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_ORANGE",
+      "count_item_id": "ITEM_ID_CROPS_ORANGE",
+      "count_item_numeric_id": 122110,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_ORANGE"
+      ]
+    },
+    {
+      "seed_item_id": "ITEM_ID_SEED_LEMON",
+      "count_item_id": "ITEM_ID_CROPS_LEMON",
+      "count_item_numeric_id": 122120,
+      "need": 60,
+      "copper": 6,
+      "silver": 24,
+      "gold": 60,
+      "harvest_item_ids": [
+        "ITEM_ID_CROPS_LEMON"
+      ]
+    }
+  ],
+  "animal_products": {
+    "source": "village.exe 0x140117570 (rank roll), 0x140118080 (shown rank); feature bit 3 is LIVESTOCK_FEATURE_BRAND",
+    "love_rate_max": 2000,
+    "love_rate_max_easy": 1500,
+    "love_rate_per_level": 400,
+    "love_rate_per_level_easy": 300,
+    "mood_threshold_normal": 30,
+    "mood_threshold_good": 180,
+    "note": "odds[love level 0-5][mood <= normal, <= good, > good] = percent for normal, copper, silver, gold; brand animals always give brand",
+    "odds": [
+      [
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          90,
+          10,
+          0,
+          0
+        ],
+        [
+          80,
+          20,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          80,
+          20,
+          0,
+          0
+        ],
+        [
+          70,
+          30,
+          0,
+          0
+        ],
+        [
+          60,
+          40,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          80,
+          20,
+          0
+        ],
+        [
+          0,
+          70,
+          30,
+          0
+        ],
+        [
+          0,
+          60,
+          40,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          90,
+          10
+        ],
+        [
+          0,
+          0,
+          80,
+          20
+        ],
+        [
+          0,
+          0,
+          70,
+          30
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          100
+        ],
+        [
+          0,
+          0,
+          0,
+          100
+        ],
+        [
+          0,
+          0,
+          0,
+          100
+        ]
+      ]
+    ]
+  },
+  "save": {
+    "harvest_counts": "pHarvestStatus_/p/nowValue_: Map<i64 count_item_numeric_id, i32 harvested units>",
+    "brand_crops": "brandCropsNameMap_: Map<i64 count_item_numeric_id, string brand name>",
+    "brand_livestock": "brandLivestockNameMap_: Map<livestock type, string brand name>; each S-ranked animal also gets LIVESTOCK_FEATURE_BRAND"
+  }
+}

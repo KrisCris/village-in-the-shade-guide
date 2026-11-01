@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Catalog, Entity } from '../data/types';
-import { buildEntityDetailModel, buildRelationGroups } from './relations';
+import { buildEntityDetailModel, buildQualityTargetModel, buildRelationGroups } from './relations';
+import { getCatalog } from '../data/repository';
 
 const entity = (id: string, kind: string, extra: Record<string, unknown> = {}): Entity => ({
   id,
@@ -296,5 +297,20 @@ describe('relation groups', () => {
     expect(source?.quantity).toBeUndefined();
     const white=entity('ITEM_ID_LIVESTOCK_CHICKEN_WHITE','items');
     expect(buildRelationGroups(white,catalog(white,egg), 'normal').find(g=>g.key==='outputs')?.rows[0].entity).toBe(egg);
+  });
+});
+
+describe('quality targets on crop pages', () => {
+  it('shows a shared count on every page that harvests into it', () => {
+    const catalog = getCatalog();
+    const model = (id: string) => buildQualityTargetModel(catalog.byId[id], catalog);
+    const soybean = model('ITEM_ID_CROPS_SOYBEAN')!;
+    expect(soybean.countItem.id).toBe('ITEM_ID_CROPS_EDAMAME');
+    expect(soybean.shared.map(item => item.id).sort()).toEqual(['ITEM_ID_CROPS_BEAN_SPROUTS', 'ITEM_ID_CROPS_SOYBEAN']);
+    expect(soybean.steps.map(step => [step.quality, step.count, step.seeds])).toEqual([['copper', 60, 5], ['silver', 240, 20], ['gold', 600, 50]]);
+    // The crop, its seed and its main harvest give the same numbers.
+    for (const id of ['CROPS_ID_EDAMAME', 'ITEM_ID_SEED_EDAMAME', 'ITEM_ID_CROPS_EDAMAME']) expect(model(id)?.steps).toEqual(soybean.steps);
+    expect(model('ITEM_ID_SEED_TEA')).toMatchObject({ perennial: true, harvests: 14, perSeed: 28 });
+    expect(model('ITEM_ID_LIVESTOCK_COW_MILK')).toBeNull();
   });
 });
