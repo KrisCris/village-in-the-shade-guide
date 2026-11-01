@@ -35,7 +35,12 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
       { year: 1, season: 3, day: 2, hour: 7, minute: 0 },
     ]);
     const { snapshot } = saves['save.004'];
-    expect(snapshot).toMatchObject({ weather: 3, money: 60083, catalogOpen: true, quarryReached: 120, animals: { total: 10, fed: 0 } });
+    expect(snapshot).toMatchObject({ weather: 3, money: 60083, quarryReached: 120, animals: { total: 10, fed: 0 } });
+    // Autumn was the third fox shrine clear, so the shrine stays away until winter; the toolbox waits for a fifth repair that never opens.
+    expect(order.map((name) => saves[name].snapshot.gates.shrine)).toEqual([
+      ...Array(2).fill({ clears: 3, open: false, gone: false }), ...Array(3).fill({ clears: 3, open: true, gone: false }),
+    ]);
+    expect(snapshot.gates).toMatchObject({ catalogOpen: true, repair: { level: 4, open: false, last: 4 } });
     expect(snapshot.cells.filter((cell) => cell.crop)).toHaveLength(424);
     expect([snapshot.bundles.length, snapshot.bundles.filter((bundle) => bundle.items.every((item) => item.remain === 0)).length]).toEqual([61, 17]);
     expect([snapshot.trees.length, snapshot.trees.filter((tree) => tree.grown).length]).toEqual([65, 31]);

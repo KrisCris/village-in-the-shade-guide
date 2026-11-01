@@ -56,7 +56,8 @@ export default function TodayList({ actions, names, name, horizon, night, done, 
       case 'deliver': return {
         key, tag: tr('交付'), tone: 'deliver', icon: icon('items', action.plans[0].lines[0].itemId), section: 'daily-deliveries-ready', later: action.later,
         title: action.later ? tr('到村长家交付 {count} 项', { count: action.plans.length }) : tr('交付 {count} 项', { count: action.plans.length }),
-        details: [list(action.plans.map((plan) => plan.spec.name))],
+        details: [list(action.plans.map((plan) => plan.spec.name)),
+          ...!night && action.plans.some((plan) => plan.spec.list === 'shrine') ? [tr('狐狸神社深夜才出现，供品要夜里去交')] : []],
       };
       case 'fetch': {
         const items = list(action.items.map(([itemId, count]) => `${name.item(itemId)} × ${count}`));

@@ -45,6 +45,7 @@ return <section id={season}><h2>{title}</h2>
 <h3>{t('生日安排')}</h3><p>{residents.map(e=><a class="birthday" href={href(entityUrl(e))}>{t('{day} 日 · {name}',{day:String(e.birthday_day),name:e.name.zh_hans})}</a>)}</p>
 <h3>{t('本季交付总需求')}</h3>
 <p>{t('以下合计包含本季供奉与交付目录，不含礼物；已完成的组别可以扣除。种子开放较晚的物品要提前看年份，不能默认第一年就能凑齐。')}</p>
+<p set:html={tHtml('狐狸神社不是每季都要 4 份：第几次完成，那一季就只要前几份。合计按 4 份都要算，是最多的情况，规则见<a href="/guides/cursed-items/#fox-shrine">狐狸神社</a>。')} />
 <div class="needs reserves">{[...new Set(bundles.flatMap(e=>inputs(e).map(i=>i.item_id)))].map(id=>{
 const target=item(id);const uses=bundles.filter(e=>inputs(e).some(i=>i.item_id===id));const quantity=uses.flatMap(e=>inputs(e)).filter(i=>i.item_id===id).reduce((n,i)=>n+i.quantity,0);
 return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{uses.map(e=>e.name.zh_hans).join(t('、'))}</small>{shopConditions(id)&&<small>{t('种子：{conditions}',{conditions:shopConditions(id)})}</small>}</span><b>×{quantity}</b></a>;

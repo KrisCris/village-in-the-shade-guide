@@ -18,7 +18,7 @@ const dayFish: ItemSource = { ...fish, today: false }, cursed: ItemSource = { ..
 const wild: ItemSource = { kind: 'wild', season: 3, now: true };
 const line = (itemId: number, remain: number, have: number, sources: ItemSource[] = []): DeliveryLine => ({ itemId, rank: 0, remain, have, sources });
 const plan = (id: number, lines: DeliveryLine[], list: DailyBundleSpec['list'] = 'shrine'): DeliveryPlan => ({ spec: { id, list, name: `b${id}`, place: '', items: [], rewards: [] } as DailyBundleSpec, ready: false, lines });
-const deliveries = (fields: Partial<DeliveryDigest> = {}): DeliveryDigest => ({ ready: [], pending: [], done: 0, total: 0, catalogOpen: true, keep: [], ...fields });
+const deliveries = (fields: Partial<DeliveryDigest> = {}): DeliveryDigest => ({ ready: [], pending: [], done: 0, total: 0, gates: { catalogOpen: true, shrine: { clears: 0, open: true, gone: false }, repair: { level: 0, open: true, last: 4 } }, keep: [], ...fields });
 const family = (fields: Partial<FamilyLine>): FamilyLine => ({ family: 'jar', machine: 501, machines: 2, idle: 0, slots: 2, busy: 0, demand: 0, days: 0, extraSlots: 0, build: [], ...fields });
 const processing = (fields: Partial<ProcessingPlan> = {}): ProcessingPlan => ({ horizon: 7, produce: [], families: [], materials: [], ...fields });
 const material = (itemId: number, short: number, sources: ItemSource[], parent?: number): MaterialLine => ({ itemId, need: short, held: 0, reserve: 0, short, sources, ...(parent ? { for: parent } : {}) });

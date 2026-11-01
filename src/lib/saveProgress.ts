@@ -27,6 +27,17 @@ export function flagEnabled(doc: SerDocument, id: number, edits: ProgressEdits =
   const bytes = node && doc.payload(node);
   return !!bytes && !!(bytes[id >> 3] & (1 << (id & 7)));
 }
+/** A gamevalue.dat counter from the save's `gameValues_` map; null when the save has never set it. */
+export function gameValue(doc: SerDocument, id: number): number | null {
+  const root = doc.resolve('gameValues_');
+  const children = root ? doc.children(root) : [];
+  for (let i = 0; i < children.length; i += 2) {
+    if (readSigned(doc, children[i]) !== BigInt(id)) continue;
+    const value = doc.resolve('this->value_', children[i + 1]);
+    return value ? Number(readSigned(doc, value)) : null;
+  }
+  return null;
+}
 
 /** GAME_FLAG_LANGUAGE_JP…KO (40–46): each save keeps exactly one on. */
 export const LANGUAGE_FLAGS = [40, 41, 42, 43, 44, 45, 46];

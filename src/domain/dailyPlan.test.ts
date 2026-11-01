@@ -25,8 +25,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily plan on the winter 2 fixture sav
   });
 
   it('finds the deliveries that can be handed in today', () => {
-    expect([plan.deliveries.done, plan.deliveries.total]).toEqual([17, 61]);
-    expect(plan.deliveries.ready.map((entry) => entry.spec.name)).toEqual(['石材', '小动物的材料', '稀有宝石', '供奉夏季渔产', '供奉秋季渔产']);
+    // The fifth shrine repair never opens in normal mode, so its two lists drop out of the count.
+    expect([plan.deliveries.done, plan.deliveries.total]).toEqual([17, 59]);
+    expect(plan.deliveries.ready.map((entry) => entry.spec.name)).toEqual(['小动物的材料', '稀有宝石']);
+    // After three clears the shrine takes all four winter offerings and nothing from other seasons.
+    expect(plan.deliveries.pending.filter((entry) => entry.spec.list !== 'catalog').map((entry) => entry.spec.name)).toEqual(['供奉冬季山菜', '供奉冬季蔬菜', '供奉冬季花卉', '供奉冬季渔产']);
     // The winter fish offering only lacks a salmon, which bites in winter.
     expect(plan.deliveries.pending.find((entry) => entry.spec.name === '供奉冬季渔产')?.eta).toBe(0);
   });
@@ -35,13 +38,13 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily plan on the winter 2 fixture sav
     expect(plan.horizon).toBe(26);
     expect(plan.processing.families.filter((family) => family.build.length).map((family) => [family.family, family.build])).toEqual([
       ['gimmick_brewing_barrel', [{ machine: 400030, count: 11, upgrade: false }]],
-      ['gimmick_beehive', [{ machine: 402040, count: 11, upgrade: false }]],
+      ['gimmick_beehive', [{ machine: 402040, count: 12, upgrade: false }]],
     ]);
   });
 
   it('sends the player to quarry floors 71–79 for the iron bars and to the trees for wood', () => {
     const short = Object.fromEntries(plan.materials.filter((line) => line.short).map((line) => [line.itemId, line.short]));
-    expect(short).toMatchObject({ 210020: 22, 240020: 108, 230000: 578 });
+    expect(short).toMatchObject({ 210020: 22, 240020: 108, 230000: 538 });
     const gather = plan.actions.flatMap((action) => action.kind === 'gather' ? action.lines.map((line) => [line.material.itemId, line.source.kind]) : []);
     expect(gather).toEqual([[240020, 'quarry'], [230000, 'trees'], [140300, 'sap'], [140370, 'sap']]);
     expect(plan.materials.find((line) => line.itemId === 240020)?.sources).toContainEqual({ kind: 'quarry', from: 71, to: 79, perHundred: 26.5, reached: true });
