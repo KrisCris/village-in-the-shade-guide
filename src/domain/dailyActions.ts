@@ -1,16 +1,18 @@
 import type { DailyDigest, StopGroup } from './dailyDigest';
 import type { DeliveryDigest, DeliveryPlan } from './dailyDeliveries';
+import type { CollectLine, CollectPlan } from './dailyCollect';
 import type { AnimalIdea } from './dailyLivestock';
 import type { MaterialLine } from './dailyMaterials';
 import type { PlantingIdea } from './dailyPlanting';
-import { NOT_PROCESSED, type FamilyLine, type ProcessingPlan } from './dailyProcessing';
+import type { BuildLine, MachineDay, ProcessingPlan } from './dailyProcessing';
 import type { ItemSource } from './dailySources';
 
 /**
  * Today's to-do list, most pressing first: what is lost tonight, deliveries
  * that can be finished, trips that finish others, machine work, then the
  * longer jobs (building machines and gathering their materials, sowing empty
- * land, animals the deliveries call for) and last the routine farm care.
+ * land, animals the deliveries call for), what the encyclopedia still lacks and
+ * last the routine farm care.
  * After midnight (a save before the 07:00 turnover) houses are closed and only
  * the cursed fish bite, so the catalog deliveries and day fishing are `later`:
  * they wait for the morning.
@@ -20,14 +22,17 @@ export type DailyAction =
   | { kind: 'deliver'; plans: DeliveryPlan[]; later?: boolean }
   /** A fishing or foraging trip that brings in everything some deliveries still miss. */
   | { kind: 'fetch'; trip: 'fish' | 'wild'; items: Array<[itemId: number, count: number]>; plans: DeliveryPlan[]; later?: boolean }
-  /** Finished products to take out, and idle machines with the produce the plan gives them. */
-  | { kind: 'machines'; outputs: number; fill: Array<{ family: FamilyLine; produce: number[] }> }
-  | { kind: 'build'; families: FamilyLine[]; short: MaterialLine[] }
+  /** Finished products to take out, and the machines with slots to load today; `harvest` is produce to pick first because storage alone falls short. */
+  | { kind: 'machines'; outputs: number; fill: MachineDay[]; harvest: number[] }
+  /** Machines with a long queue that can be built or upgraded; `short` lists what is missing for one where nothing is in stock. */
+  | { kind: 'build'; lines: BuildLine[]; short: MaterialLine[] }
   /** One material, or several saps gathered the same way. */
   | { kind: 'gather'; lines: Array<{ material: MaterialLine; source: ItemSource }> }
   /** The best few crops for the empty land. */
   | { kind: 'plant'; ideas: PlantingIdea[]; vacant: number }
   | { kind: 'animal'; idea: AnimalIdea }
+  /** Encyclopedia entries to fill today: fish on the hook in the periods left, and everything else. */
+  | { kind: 'collect'; fish: number[]; lines: CollectLine[] }
   | { kind: 'routine'; harvest: number[]; water: number[]; hungry: number };
 
 /** Sources that a trip today can act on, best first. */
@@ -45,6 +50,7 @@ export function dailyActions(input: {
   planting: PlantingIdea[];
   vacant: number;
   animals: AnimalIdea[];
+  collect?: CollectPlan;
 }): DailyAction[] {
   const { digest, deliveries, processing } = input;
   const night = digest.hoursToTurnover > 0;
@@ -73,14 +79,12 @@ export function dailyActions(input: {
   }
   actions.push(...[...trips.values()].filter((trip) => !trip.later));
   const outputs = digest.machines.done.reduce((sum, row) => sum + row.count, 0);
-  const fill = processing.families.flatMap((family) => {
-    const produce = processing.produce.filter((line) => line.held > 0 && line.choice !== NOT_PROCESSED && line.options.find((option) => option.process === line.choice)?.family === family.family).map((line) => line.itemId);
-    return family.idle && produce.length ? [{ family, produce }] : [];
-  });
-  if (outputs || fill.length) actions.push({ kind: 'machines', outputs, fill });
+  const fill = processing.machines.filter((machine) => machine.fill.length);
+  const picks = processing.produce.filter((line) => line.today > line.held - line.harvest).map((line) => line.itemId);
+  if (outputs || fill.length) actions.push({ kind: 'machines', outputs, fill, harvest: picks });
   const short = input.materials.filter((line) => line.short > 0);
-  const building = processing.families.filter((family) => family.build.length);
-  if (building.length) actions.push({ kind: 'build', families: building, short: short.filter((line) => !line.for) });
+  const building = processing.build.filter((line) => line.options.length);
+  if (building.length) actions.push({ kind: 'build', lines: building, short: short.filter((line) => !line.for) });
   // The deepest shortfall is the first thing to fetch: ore before the bars made from it.
   const saps: Array<{ material: MaterialLine; source: ItemSource }> = [];
   for (const material of short.filter((line) => !short.some((other) => other.for === line.itemId))) {
@@ -91,6 +95,10 @@ export function dailyActions(input: {
   if (saps.length) actions.push({ kind: 'gather', lines: saps });
   if (input.vacant > 0 && input.planting.length) actions.push({ kind: 'plant', ideas: input.planting.slice(0, 3), vacant: input.vacant });
   for (const idea of input.animals.filter((entry) => entry.room > 0).slice(0, 1)) actions.push({ kind: 'animal', idea });
+  // Delivery shortfalls already have their trips above; this one is for the encyclopedia.
+  const fish = [...new Set(input.collect?.spots.flatMap((spot) => spot.catches.filter((entry) => entry.missing).map((entry) => entry.itemId)))];
+  const lines = input.collect?.lines.filter((line) => line.missing) ?? [];
+  if (fish.length || lines.length) actions.push({ kind: 'collect', fish, lines });
   // Crops that wither tomorrow already lead the list; routine care covers the rest.
   const urgent = new Set(digest.seasonEnd.witherTomorrow.flatMap((group) => group.cells));
   const harvest = digest.harvest.flatMap((group) => group.cells).filter((cell) => !urgent.has(cell));
