@@ -60,9 +60,16 @@ export class LeafWorld {
   get depth(){return this.fullAt*3;}
   /** Height of the drift under a footprint. */
   surface(x:number,half:number){
-    const from=Math.max(0,Math.floor((x-half)/CELL)),to=Math.min(this.heights.length-1,Math.ceil((x+half)/CELL));
+    const [from,to]=this.columns(x,half);
     let top=0;for(let i=from;i<=to;i++)if(this.heights[i]>top)top=this.heights[i];
     return top;
+  }
+  /**
+   * Height columns inside a footprint. Rounding outward would let a leaf raise a column past its tip, and a
+   * neighbour landing there would rest on nothing. Every footprint queried is wider than CELL, so none is empty.
+   */
+  private columns(x:number,half:number){
+    return [Math.max(0,Math.ceil((x-half)/CELL)),Math.min(this.heights.length-1,Math.floor((x+half)/CELL))] as const;
   }
   resize(width:number,height:number){
     if(this.height)for(const leaf of this.leaves)if(leaf.state!=='air')leaf.y+=height-this.height;
@@ -222,7 +229,7 @@ export class LeafWorld {
   }
   /** A leaf lies along the drift, so every column under it gains its thickness (thinner toward its tips). */
   private deposit(leaf:Leaf){
-    const from=Math.max(0,Math.floor((leaf.x-leaf.half)/CELL)),to=Math.min(this.heights.length-1,Math.ceil((leaf.x+leaf.half)/CELL));
+    const [from,to]=this.columns(leaf.x,leaf.half);
     for(let i=from;i<=to;i++){
       const across=Math.min(1,Math.abs(i*CELL-leaf.x)/leaf.half);
       this.heights[i]+=leaf.thick*(.45+.55*Math.cos(across*Math.PI/2));
