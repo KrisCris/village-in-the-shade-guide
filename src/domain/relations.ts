@@ -1,7 +1,8 @@
 import { showsJapaneseName, type Catalog, type Entity } from '../data/types';
 import { findCatalogEntity } from '../data/entityLookup';
-import type { Quality } from './quality';
-import { formatQualityPrice, qualityLabel, qualityPrice } from './quality';
+import type { Quality, QualityTarget, QualityTargetStep } from './quality';
+import { formatQualityPrice, qualityLabel, qualityPrice, qualityTargetSteps } from './quality';
+import { seasonCountPerSeed } from './cropProcessing';
 import { calculateEntityCropProfit, calculateEntityProcessProfit } from './profit';
 import { durationText } from './duration';
 import { harvestOptions } from './harvestChoice';
@@ -51,6 +52,16 @@ export type EntityDetailModel = {
   ingredientOptions: Array<{label:string;rows:RelationRowModel[]}>;
   /** Stage art and days for a crop, or for the crop a seed or sapling grows into. */
   growth?: CropGrowthModel | null;
+  /** Harvest counts that raise a crop's quality, for the crop, its seed and its harvest items. */
+  qualityTarget?: QualityTargetModel | null;
+};
+
+export type QualityTargetModel = {
+  /** The item whose count decides the grade, and the others counted with it. */
+  countItem: Entity; shared: Entity[];
+  /** One seed's harvests and pieces over a 28-day season; null when the crop's schedule is unknown. */
+  harvests: number | null; perSeed: number | null; perennial: boolean;
+  steps: Array<QualityTargetStep & { label: string }>;
 };
 
 // Translation keys; every builder below takes the page translator.
@@ -488,5 +499,19 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     }),
   }));
   const growth = ['crops', 'items'].includes(entity.kind) ? buildCropGrowthModel(entity, catalog, t) : null;
-  return { entity, quality, qualityName: qualityLabel(quality, t), facts, profit, groups, locations, processingPlans, ingredientOptions:alternatives, growth };
+  return { entity, quality, qualityName: qualityLabel(quality, t), facts, profit, groups, locations, processingPlans, ingredientOptions:alternatives, growth, qualityTarget: buildQualityTargetModel(entity, catalog, t) };
+}
+
+/** The grade thresholds on a crop, seed or harvest item page; the per-seed count assumes a full season on one plot. */
+export function buildQualityTargetModel(entity: Entity, catalog: Catalog, t: Translate = format): QualityTargetModel | null {
+  const target = entity.quality_target as QualityTarget | null | undefined;
+  const countItem = target && catalog.byId[target.count_item_id];
+  if (!target || !countItem) return null;
+  const crop = entity.kind === 'crops' ? entity : catalog.entities.find(row => row.kind === 'crops' && (row.seed_item_ids as string[] | undefined)?.[0] === target.seed_item_id);
+  const plot = crop ? seasonCountPerSeed(crop, catalog) : null;
+  const shared = catalog.entities.filter(row => row.kind === 'items' && row.id !== countItem.id && (row.quality_target as QualityTarget | null | undefined)?.seed_item_id === target.seed_item_id && row.id !== target.seed_item_id);
+  return {
+    countItem, shared, harvests: plot?.harvests ?? null, perSeed: plot?.perSeed ?? null, perennial: Boolean(crop?.perennial),
+    steps: qualityTargetSteps(target, plot?.perSeed ?? null).map(step => ({ ...step, label: qualityLabel(step.quality, t) })),
+  };
 }

@@ -3,6 +3,12 @@
 No per-drop quantity or probability is asserted: those also depend on runtime
 production state. Zero item IDs (e.g. rooster's empty result) are retained only
 in the raw evidence, not represented as an obtainable item.
+
+sale_gift is the thank-you letter sent after selling an adult (SellingInfo,
+right after the three variant item IDs): count items in total, each listed item
+gives its fixed amount, and the remaining count minus the fixed amounts are drawn
+one at a time by weight. Slots with item ID 0 are skipped, as in village.exe.
+See docs/data-evidence/livestock-sale-gifts.md.
 """
 import argparse
 import json
@@ -42,6 +48,12 @@ for r,g in rows:
     variants_offset=cursor+12+16*count+100
     variants=[u64(r,variants_offset+8*i) for i in range(3)]
     assert all(not variant or variant in items for variant in variants)
+    sale_offset=variants_offset+24
+    assert sale_offset+52 <= len(r)
+    sale_slots=[(u64(r,sale_offset+4+16*i),u32(r,sale_offset+12+16*i),u32(r,sale_offset+16+16*i)) for i in range(3)]
+    assert all(not item or item in items for item,_,_ in sale_slots)
+    sale_items=[dict(item_id=items[item],fixed=fixed,weight=weight) for item,weight,fixed in sale_slots if item]
+    sale_gift=dict(count=u32(r,sale_offset),items=sale_items) if u32(r,sale_offset) or sale_items else None
     icon_id=u64(r,cursor+12+16*count+44)
     icon_path=None
     if icon_id and not any(variants):
@@ -55,6 +67,6 @@ for r,g in rows:
         output.parent.mkdir(parents=True,exist_ok=True)
         atlas.crop((x,y,x+w,y+h)).save(output,'WEBP',lossless=True)
         icon_path=f'/icons/generated/livestock/{g[0]}.webp'
-    result.append(dict(livestock_id=g[0],adult_id=animals.get(adult),icon_id=icon_id,icon_path=icon_path,variant_item_ids=[items[v] for v in variants if v],product_item_ids=[items[x['item_numeric_id']] for x in raw if x['item_numeric_id']],raw_candidates=raw,source=f'livestock.dat:{u64(r,0)}; adult_id@76; production array@{cursor+8}; variant items@{variants_offset}'))
+    result.append(dict(livestock_id=g[0],adult_id=animals.get(adult),icon_id=icon_id,icon_path=icon_path,variant_item_ids=[items[v] for v in variants if v],product_item_ids=[items[x['item_numeric_id']] for x in raw if x['item_numeric_id']],raw_candidates=raw,sale_gift=sale_gift,source=f'livestock.dat:{u64(r,0)}; adult_id@76; production array@{cursor+8}; variant items@{variants_offset}; sale gift@{sale_offset}'))
 Path('data/sources/game-livestock-products.json').write_text(json.dumps(dict(animals=result),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('animals:',len(result),'productive adults:',sum(bool(r['product_item_ids']) for r in result))

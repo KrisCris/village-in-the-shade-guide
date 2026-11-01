@@ -42,3 +42,11 @@ h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: .25rem 0 1rem; }
 @media (max-width: 640px) { .main { padding-inline: .75rem; } }
 @media (max-width: 760px) { .site-header nav { order: 3; width: 100%; justify-content: center; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation:none!important; } }
+/* Mouse devices: hide native scrollbars and draw thin overlay thumbs instead (src/lib/overlayScrollbars.ts). Touch devices keep their own overlay bars. */
+:root[data-scrollbars="overlay"], :root[data-scrollbars="overlay"] * { scrollbar-width: none !important; }
+:root[data-scrollbars="overlay"] ::-webkit-scrollbar { display: none; }
+.overlay-scroll-thumb { --thumb-size: 0px; --thumb-thickness: 6px; position: fixed; z-index: 2147483000; top: 0; left: 0; width: var(--thumb-thickness); height: var(--thumb-size); border-radius: 999px; background: color-mix(in srgb, var(--ink) 34%, transparent); opacity: 0; pointer-events: none; translate: -100% 0; transition: opacity .3s ease, width .15s ease, height .15s ease, background-color .15s ease; touch-action: none; }
+.overlay-scroll-thumb[data-axis="x"] { width: var(--thumb-size); height: var(--thumb-thickness); translate: 0 -100%; }
+.overlay-scroll-thumb.is-visible { opacity: 1; pointer-events: auto; transition-duration: .12s, .15s, .15s, .15s; }
+.overlay-scroll-thumb:hover, .overlay-scroll-thumb.is-dragging { --thumb-thickness: 10px; background: color-mix(in srgb, var(--ink) 52%, transparent); }
+@media (prefers-reduced-motion: reduce) { .overlay-scroll-thumb { transition: none; } }

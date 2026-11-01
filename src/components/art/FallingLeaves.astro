@@ -1,220 +1,144 @@
 <canvas class="falling-leaves" aria-hidden="true"></canvas>
 <script>
-  import {LeafWorld,particleViewport,type Ledge} from '../../domain/leaves';
+  import {LeafWorld,SETTLE,particleViewport,shouldDrawLeaves,type Leaf} from '../../domain/leaves';
   import {onPageMount} from '../../lib/pageLifecycle';
+  import {crossfadeRoot} from '../../lib/rootCrossfade';
   import {fixedSeason} from '../../lib/seasonPreference';
+  const colors=[['#f8c4d7','#efb1c8','#ffe2e9'],['#70974e','#a4b868','#527c4a'],['#c74f3f','#de733e','#aa353c'],['#e4edf0','#f5f5ed','#cbdfe8']];
+  // Cache the painted leaves once, not hundreds of paths on every frame.
+  const sprites=colors.map((palette,season)=>palette.map(color=>{
+    const tile=document.createElement('canvas');tile.width=48;tile.height=48;
+    const p=tile.getContext('2d')!;p.translate(24,24);
+    p.beginPath();
+    if(season===0){
+      // Single notched sakura petal, not a whole blossom.
+      p.moveTo(0,17);p.bezierCurveTo(-17,6,-17,-13,-5,-15);p.quadraticCurveTo(-1,-14,0,-8);p.quadraticCurveTo(4,-16,9,-13);p.bezierCurveTo(20,-4,10,11,0,17);
+    }else if(season===1){
+      p.moveTo(-17,0);p.bezierCurveTo(-8,-15,10,-12,17,0);p.bezierCurveTo(4,11,-7,12,-17,0);
+    }else if(season===2){
+      const points=[[0,-20],[5,-9],[9,-13],[9,-3],[18,-7],[15,1],[20,3],[7,10],[3,10],[1,18],[-1,18],[-2,10],[-9,11],[-19,3],[-14,1],[-18,-7],[-8,-3],[-9,-13],[-4,-9]];
+      points.forEach(([x,y],i)=>i?p.lineTo(x,y):p.moveTo(x,y));p.closePath();
+    }else{
+      p.strokeStyle=color;p.lineWidth=1.6;p.lineCap='round';
+      for(let i=0;i<6;i++){p.save();p.rotate(i*Math.PI/3);p.moveTo(0,0);p.lineTo(0,-16);p.moveTo(0,-10);p.lineTo(-4,-13);p.moveTo(0,-10);p.lineTo(4,-13);p.restore();}p.stroke();return tile;
+    }
+    const fill=p.createLinearGradient(-10,-12,10,14);fill.addColorStop(0,color);fill.addColorStop(1,season===0?'#e6a1bb':season===2?'#923d31':'#586044');p.fillStyle=fill;p.fill();
+    if(season!==0){p.strokeStyle='#eed7a47a';p.lineWidth=.8;p.beginPath();if(season===1){p.moveTo(-17,0);p.lineTo(15,0);}else{p.moveTo(0,16);p.lineTo(0,-14);p.moveTo(0,6);p.lineTo(-12,-2);p.moveTo(0,6);p.lineTo(12,-2);}p.stroke();}
+    return tile;
+  }));
+  // Seen from our slightly top-down view, a leaf lying in the drift shows mostly its edge.
+  const FLAT=.3;
+  const seasons=['spring','summer','autumn','winter'];
+  // The drift outlives page swaps, like leaves on the ground.
+  const world=new LeafWorld(800);
+  // Settled leaves are painted once into this strip; each frame copies it instead of redrawing hundreds of leaves.
+  const drift=document.createElement('canvas'),driftContext=drift.getContext('2d')!;
   const dispose=onPageMount(()=>{
   const canvas=document.querySelector<HTMLCanvasElement>('.falling-leaves');
-  if(canvas){
-    const context=canvas.getContext('2d');
-    if(context){
-      const ctx=context;
-      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-      let world:LeafWorld,frame=0,last=0,spawnClock=0,geometryClock=0,statsClock=0,transitionLeft=0;
-      let width=innerWidth,height=innerHeight,dirty=true,targets:HTMLElement[]=[],ledges:Ledge[]=[];
-      let viewport=particleViewport(width,height),spawnRate=viewport.spawnRate,speedScale=viewport.speedScale;
-      let textAreas:DOMRect[]=[];
-      const ids=new WeakMap<Node,number[]>();let nextId=0;
-      const colors=[['#f8c4d7','#efb1c8','#ffe2e9'],['#70974e','#a4b868','#527c4a'],['#c74f3f','#de733e','#aa353c'],['#e4edf0','#f5f5ed','#cbdfe8']];
-      // Cache the painted leaves once, not hundreds of paths on every frame.
-      const sprites=colors.map((palette,season)=>palette.map(color=>{
-        const tile=document.createElement('canvas');tile.width=48;tile.height=48;
-        const p=tile.getContext('2d')!;p.translate(24,24);
-        p.beginPath();
-        if(season===0){
-          // Single notched sakura petal, not a whole blossom.
-          p.moveTo(0,17);p.bezierCurveTo(-17,6,-17,-13,-5,-15);p.quadraticCurveTo(-1,-14,0,-8);p.quadraticCurveTo(4,-16,9,-13);p.bezierCurveTo(20,-4,10,11,0,17);
-        }else if(season===1){
-          p.moveTo(-17,0);p.bezierCurveTo(-8,-15,10,-12,17,0);p.bezierCurveTo(4,11,-7,12,-17,0);
-        }else if(season===2){
-          const points=[[0,-20],[5,-9],[9,-13],[9,-3],[18,-7],[15,1],[20,3],[7,10],[3,10],[1,18],[-1,18],[-2,10],[-9,11],[-19,3],[-14,1],[-18,-7],[-8,-3],[-9,-13],[-4,-9]];
-          points.forEach(([x,y],i)=>i?p.lineTo(x,y):p.moveTo(x,y));p.closePath();
-        }else{
-          p.strokeStyle=color;p.lineWidth=1.6;p.lineCap='round';
-          for(let i=0;i<6;i++){p.save();p.rotate(i*Math.PI/3);p.moveTo(0,0);p.lineTo(0,-16);p.moveTo(0,-10);p.lineTo(-4,-13);p.moveTo(0,-10);p.lineTo(4,-13);p.restore();}p.stroke();return tile;
-        }
-        const fill=p.createLinearGradient(-10,-12,10,14);fill.addColorStop(0,color);fill.addColorStop(1,season===0?'#e6a1bb':season===2?'#923d31':'#586044');p.fillStyle=fill;p.fill();
-        if(season!==0){p.strokeStyle='#eed7a47a';p.lineWidth=.8;p.beginPath();if(season===1){p.moveTo(-17,0);p.lineTo(15,0);}else{p.moveTo(0,16);p.lineTo(0,-14);p.moveTo(0,6);p.lineTo(-12,-2);p.moveTo(0,6);p.lineTo(12,-2);}p.stroke();}
-        return tile;
-      }));
-      const paintedPixels=sprites.map(palette=>palette.map(tile=>{
-        const data=tile.getContext('2d')!.getImageData(0,0,48,48).data;
-        const pixels:{x:number;y:number}[]=[];
-        for(let y=0;y<48;y++)for(let x=0;x<48;x++)if(data[(y*48+x)*4+3]>32)pixels.push({x:x-23.5,y:y-23.5});
-        return pixels;
-      }));
-      // Seen from our slightly top-down view, a leaf lying on a surface shows mostly its edge:
-      // full width (narrowed by its random heading), a fraction of its height.
-      const FLAT=.3;
-      const breadth=(leaf:import('../../domain/leaves').Leaf)=>leaf.resting?.72+.28*Math.abs(Math.cos(leaf.id*1.3)):1;
-      const contactBottom=(leaf:import('../../domain/leaves').Leaf)=>{
-        const sin=Math.sin(leaf.angle),cos=Math.cos(leaf.angle),wide=breadth(leaf),tall=leaf.resting?FLAT:1;
-        let bottom=0;
-        for(const pixel of paintedPixels[leaf.season][leaf.id%3])bottom=Math.max(bottom,pixel.x*wide*sin+pixel.y*tall*cos);
-        return bottom*leaf.r*2.8/48;
-      };
-      const lowest=paintedPixels.map(palette=>palette.map(pixels=>Math.max(...pixels.map(p=>p.y))));
-      world=new LeafWorld(800,contactBottom);
-      const imageBounds=new WeakMap<HTMLImageElement,{source:string;left:number;top:number;right:number}>();
-      const refresh=()=>{
-        targets=[...document.querySelectorAll<HTMLElement>('.toolbar,.planner-controls,.global-search,#pagefind-search,.card,.database-grid>a,.guide-grid>a,.needs>a,.table-wrap,main button,main input,main select,main textarea,main img,main video,main summary,main th,main td,.sidebar button,.sidebar a')];
-        dirty=true;
-      };
-      const geometry=()=>{
-        ledges=[];
-        const edges=new Set<string>();
-        const edge=(node:Node,rect:DOMRect,index=0)=>{
-          if(rect.width<3||rect.top<0||rect.top>height)return;
-          const key=`${Math.round(rect.left)}:${Math.round(rect.right)}:${Math.round(rect.top)}`;
-          if(edges.has(key))return;edges.add(key);
-          let list=ids.get(node);if(!list){list=[];ids.set(node,list);}if(!list[index])list[index]=++nextId;
-          ledges.push({id:list[index],left:rect.left,right:rect.right,top:rect.top});
-        };
-        for(const target of targets){
-          const rect=target.getBoundingClientRect();
-          if(!target.isConnected || rect.width<30 || rect.top<0 || rect.top>height+30)continue;
-          if(!target.checkVisibility())continue;
-          const style=getComputedStyle(target);
-          if(target instanceof HTMLImageElement&&target.complete&&target.naturalWidth){
-            let bounds=imageBounds.get(target);
-            if(!bounds||bounds.source!==target.currentSrc){
-              try{
-                const probe=document.createElement('canvas');probe.width=probe.height=128;
-                const p=probe.getContext('2d')!;p.drawImage(target,0,0,128,128);
-                const pixels=p.getImageData(0,0,128,128).data;
-                let left=128,right=0,top=128;
-                for(let y=0;y<128;y++)for(let x=0;x<128;x++)if(pixels[(y*128+x)*4+3]>32){left=Math.min(left,x);right=Math.max(right,x+1);top=Math.min(top,y);}
-                bounds={source:target.currentSrc,left:left/128,right:right/128,top:top/128};imageBounds.set(target,bounds);
-              }catch{continue;}
-            }
-            const insetLeft=parseFloat(style.paddingLeft)+parseFloat(style.borderLeftWidth),insetTop=parseFloat(style.paddingTop)+parseFloat(style.borderTopWidth);
-            const contentWidth=rect.width-insetLeft-parseFloat(style.paddingRight)-parseFloat(style.borderRightWidth);
-            const contentHeight=rect.height-insetTop-parseFloat(style.paddingBottom)-parseFloat(style.borderBottomWidth);
-            const scale=Math.min(contentWidth/target.naturalWidth,contentHeight/target.naturalHeight);
-            const imageWidth=style.objectFit==='contain'?target.naturalWidth*scale:contentWidth;
-            const imageHeight=style.objectFit==='contain'?target.naturalHeight*scale:contentHeight;
-            edge(target,new DOMRect(rect.left+insetLeft+(contentWidth-imageWidth)/2+bounds.left*imageWidth,rect.top+insetTop+(contentHeight-imageHeight)/2+bounds.top*imageHeight,(bounds.right-bounds.left)*imageWidth,imageHeight));
-            continue;
-          }
-          // Transparent layout boxes have no physical surface. Their text lines
-          // below are separate colliders; padding must not become an invisible shelf.
-          const painted=style.backgroundColor!=='rgba(0, 0, 0, 0)'&&style.backgroundColor!=='transparent';
-          const bordered=parseFloat(style.borderTopWidth)>0&&style.borderTopStyle!=='none';
-          if(painted||bordered||target instanceof HTMLInputElement||target instanceof HTMLSelectElement)edge(target,rect);
-        }
-        // Text is a foreground safety layer, not another shelf to bury in leaves.
-        // Cache visible line boxes with the other geometry, never read layout per leaf.
-        textAreas=[];
-        const nodes=[...document.querySelectorAll<HTMLElement>('main h1,main h2,main h3,main p,main label,main button,main input,main summary,main th,main td,main a,.sidebar button,.sidebar a,.sidebar p,.site-footer')];
-        const visible=nodes.filter(node=>{const r=node.getBoundingClientRect();return r.width>0&&r.bottom>0&&r.top<height;});
-        const chosen=new Set(visible);
-        for(const node of visible){
-          let parent=node.parentElement,covered=false;
-          while(parent){if(chosen.has(parent)){covered=true;break;}parent=parent.parentElement;}
-          if(covered)continue;
-          if(node instanceof HTMLInputElement){textAreas.push(node.getBoundingClientRect());continue;}
-          const walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);
-          while(walker.nextNode()){
-            const text=walker.currentNode;if(!text.textContent?.trim())continue;
-            const range=document.createRange();range.selectNodeContents(text);
-            let index=0;
-            for(const rect of range.getClientRects()){
-              if(rect.width&&rect.bottom>0&&rect.top<height){
-                textAreas.push(rect);
-                const style=getComputedStyle(text.parentElement!);
-                ctx.save();ctx.font=`${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-                const metrics=ctx.measureText(text.textContent!);ctx.restore();
-                const fontAscent=metrics.fontBoundingBoxAscent||metrics.actualBoundingBoxAscent;
-                const fontDescent=metrics.fontBoundingBoxDescent||metrics.actualBoundingBoxDescent;
-                const baseline=rect.top+(rect.height-fontAscent-fontDescent)/2+fontAscent;
-                const inkTop=Math.max(rect.top,baseline-metrics.actualBoundingBoxAscent);
-                edge(text,new DOMRect(rect.left,inkTop,rect.width,rect.bottom-inkTop),index);
-              }
-              index++;
-            }
-          }
-        }
-        dirty=false;
-      };
-      const resize=()=>{
-        width=innerWidth;height=innerHeight;
-        viewport=particleViewport(width,height);
-        const scale=Math.min(devicePixelRatio||1,1.5);
-        canvas.width=Math.round(width*scale);canvas.height=Math.round(height*scale);ctx.setTransform(scale,0,0,scale,0,0);dirty=true;
-      };
-      const seasons=['spring','summer','autumn','winter'];
-      const draw=(now:number)=>{
-        frame=0;
-        if(document.hidden||reduced.matches||document.documentElement.dataset.particles==='off')return;
-        const dt=Math.min((now-(last||now))/1000,1/30);last=now;
-        const adapt=1-Math.exp(-2*dt);
-        spawnRate+=(viewport.spawnRate-spawnRate)*adapt;speedScale+=(viewport.speedScale-speedScale)*adapt;
-        geometryClock+=dt;spawnClock+=dt*spawnRate;statsClock+=dt;
-        if(dirty||geometryClock>.25){geometry();geometryClock=0;}
-        // A gentle trickle; 800 is the pool ceiling, not a burst of 800 particles.
-        const season=Math.max(0,seasons.indexOf(document.documentElement.dataset.season||'spring'));
-        transitionLeft=Math.max(0,transitionLeft-dt);
-        if(spawnClock>=1&&transitionLeft===0){
-          spawnClock%=1;
-          world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);
-        }
-        const nextSeason=world.step(dt,width,height,ledges,speedScale);
-        if(nextSeason!==undefined){
-          transitionLeft=1.6;spawnClock=0;
-          const fixed=fixedSeason();
-          document.documentElement.dataset.season=fixed==='auto'?seasons[(season+1)%4]:fixed;
-          window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:nextSeason}));
-        }
-        ctx.clearRect(0,0,width,height);
-        for(const leaf of world.active){
-          if(leaf.y < -20)continue;
-          const size=leaf.r*2.8;
-          let wide=1,tall=leaf.season===3?1:.35+Math.abs(Math.sin(now*.00065+leaf.id))*.65,lift=0;
-          if(leaf.resting){
-            // Ease from the falling pose to lying flat, keeping the lowest edge on the surface.
-            wide=breadth(leaf);tall=FLAT+(1-FLAT)*Math.max(0,1-leaf.restAge/.18);
-            lift=lowest[leaf.season][leaf.id%3]*(tall-FLAT)*size/48;
-          }
-          ctx.save();ctx.translate(leaf.x,leaf.y-lift);ctx.rotate(leaf.angle);
-          ctx.globalAlpha=.88*leaf.opacity;ctx.drawImage(sprites[leaf.season][leaf.id%3],-size/2*wide,-size/2*tall,size*wide,size*tall);ctx.restore();
-        }
-        for(const rect of textAreas)ctx.clearRect(rect.left-2,rect.top-1,rect.width+4,rect.height+2);
-        if(import.meta.env.DEV&&statsClock>1){canvas.dataset.leaves=String(world.active.length);canvas.dataset.resting=String(world.active.filter(l=>l.resting).length);statsClock=0;}
-        frame=requestAnimationFrame(draw);
-      };
-      const resume=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;if(!document.hidden&&!reduced.matches&&document.documentElement.dataset.particles!=='off')frame=requestAnimationFrame(draw);};
-      const reset=()=>{
-        world=new LeafWorld(800,contactBottom);spawnClock=0;transitionLeft=0;ctx.clearRect(0,0,width,height);
-        const fixed=fixedSeason();document.documentElement.dataset.season=fixed==='auto'?'spring':fixed;
-        window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:0}));
-      };
-      const motion=()=>{if(reduced.matches)reset();resume();};
-      let pointer:{x:number;y:number;time:number}|undefined;
-      const sweep=(event:PointerEvent)=>{
-        if(event.pointerType==='touch')return;
-        if(pointer&&event.timeStamp-pointer.time<150)world.sweep(pointer.x,pointer.y,event.clientX,event.clientY);
-        pointer={x:event.clientX,y:event.clientY,time:event.timeStamp};
-      };
-      const scrolled=()=>{dirty=true;pointer=undefined;};
-      window.addEventListener('pointermove',sweep,{passive:true});
-      window.addEventListener('scroll',scrolled,{passive:true});window.addEventListener('resize',resize);
-      document.addEventListener('visibilitychange',resume);reduced.addEventListener('change',motion);
-      window.addEventListener('particles-preference-change',resume);
-      const observer=new MutationObserver(refresh);
-      const main=document.querySelector('main');if(main)observer.observe(main,{childList:true,subtree:true});
-      const hide=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;reset();};
-      const show=()=>{refresh();resize();resume();};
-      window.addEventListener('pagehide',hide);
-      window.addEventListener('pageshow',show);
-      refresh();resize();resume();
-      return()=>{
-        if(frame)cancelAnimationFrame(frame);observer.disconnect();
-        window.removeEventListener('pointermove',sweep);window.removeEventListener('scroll',scrolled);window.removeEventListener('resize',resize);
-        document.removeEventListener('visibilitychange',resume);reduced.removeEventListener('change',motion);
-        window.removeEventListener('particles-preference-change',resume);
-        window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',show);
-      };
-    }
+  const context=canvas?.getContext('2d');
+  if(canvas&&context){
+    const ctx=context;
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    let frame=0,last=0,spawnClock=0,statsClock=0,scale=1,width=innerWidth,height=innerHeight,driftTop=0,painted=true;
+    let viewport=particleViewport(width,height),spawnRate=viewport.spawnRate,speedScale=viewport.speedScale;
+    const pose=(leaf:Leaf):[number,number]=>{
+      if(leaf.state==='pile'||leaf.state==='slide')return [leaf.wide,FLAT];
+      if(leaf.state==='settle'){const t=Math.min(1,leaf.age/SETTLE);return [1+(leaf.wide-1)*t,FLAT+(1-FLAT)*(1-t)];}
+      if(leaf.season===3)return [1,1];
+      // Edge-on at the end of each swing; tumblers flip over and over.
+      return [1,leaf.tumble?.15+.85*Math.abs(Math.cos(leaf.flip)):.45+.55*Math.abs(Math.cos(leaf.phase))];
+    };
+    const paint=(target:CanvasRenderingContext2D,leaf:Leaf,top:number)=>{
+      const [wide,tall]=pose(leaf),size=leaf.r*2.8,cos=Math.cos(leaf.angle)*scale,sin=Math.sin(leaf.angle)*scale;
+      target.setTransform(cos,sin,-sin,cos,leaf.x*scale,(leaf.y-top)*scale);
+      target.drawImage(sprites[leaf.season][leaf.id%3],-size/2*wide,-size/2*tall,size*wide,size*tall);
+    };
+    const paintDrift=()=>{
+      if(world.pileChanged){
+        const strip=Math.ceil(world.depth+40),w=Math.round(width*scale),h=Math.round(strip*scale);
+        driftTop=height-strip;
+        if(drift.width!==w||drift.height!==h){drift.width=w;drift.height=h;}
+        else{driftContext.setTransform(1,0,0,1,0,0);driftContext.clearRect(0,0,w,h);}
+        driftContext.globalAlpha=.88;
+        for(const leaf of world.pile)paint(driftContext,leaf,driftTop);
+        world.pileChanged=false;world.landed.length=0;
+      }else{
+        for(const leaf of world.landed)paint(driftContext,leaf,driftTop);
+        world.landed.length=0;
+      }
+    };
+    const resize=()=>{
+      width=innerWidth;height=innerHeight;
+      viewport=particleViewport(width,height);
+      scale=Math.min(devicePixelRatio||1,1.5);
+      canvas.width=Math.round(width*scale);canvas.height=Math.round(height*scale);
+      world.resize(width,height);painted=true;
+    };
+    const running=()=>!document.hidden&&!reduced.matches&&document.documentElement.dataset.particles!=='off';
+    const draw=(now:number)=>{
+      frame=0;
+      if(!running())return;
+      frame=requestAnimationFrame(draw);
+      if(last&&!shouldDrawLeaves(now-last))return;
+      const dt=Math.min((now-(last||now))/1000,1/30);last=now;
+      const adapt=1-Math.exp(-2*dt);
+      spawnRate+=(viewport.spawnRate-spawnRate)*adapt;speedScale+=(viewport.speedScale-speedScale)*adapt;
+      spawnClock+=dt*spawnRate;statsClock+=dt;
+      const root=document.documentElement,season=Math.max(0,seasons.indexOf(root.dataset.season||'spring'));
+      // A gentle trickle; 800 is the pool ceiling, not a burst of 800 particles.
+      if(spawnClock>=1){spawnClock%=1;world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);}
+      if(world.step(dt,speedScale)){
+        // A full drift: a gust clears it while the page crossfades into the next season.
+        const fixed=fixedSeason(),next=fixed==='auto'?seasons[(season+1)%4]:fixed;
+        const apply=()=>{root.dataset.season=next;window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:seasons.indexOf(next)}));};
+        if(next!==root.dataset.season)crossfadeRoot(apply);else apply();
+        spawnClock=0;
+      }
+      if(import.meta.env.DEV&&statsClock>1){canvas.dataset.leaves=String(world.leaves.length);canvas.dataset.resting=String(world.pile.length);statsClock=0;}
+      // Nothing moving and the drift unchanged: the canvas already shows it, and an untouched canvas costs nothing.
+      const idle=!world.leaves.length&&!world.pileChanged&&!world.landed.length;
+      if(idle&&!painted)return;
+      paintDrift();
+      ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+      if(world.pile.length)ctx.drawImage(drift,0,Math.round(driftTop*scale));
+      ctx.globalAlpha=.88;
+      for(const leaf of world.leaves)if(leaf.y>-20)paint(ctx,leaf,0);
+      ctx.globalAlpha=1;
+      painted=!idle;
+    };
+    const resume=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;if(running())frame=requestAnimationFrame(draw);};
+    const reset=()=>{
+      world.clear();spawnClock=0;ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+      const fixed=fixedSeason();document.documentElement.dataset.season=fixed==='auto'?'spring':fixed;
+      window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:0}));
+    };
+    const motion=()=>{if(reduced.matches)reset();resume();};
+    // Swipes blow leaves around. Small pointer steps accumulate until the movement is worth a gust of air.
+    let pointer:{x:number;y:number;time:number}|undefined;
+    const sweep=(event:PointerEvent)=>{
+      if(pointer&&event.timeStamp-pointer.time<150){
+        if((event.clientX-pointer.x)**2+(event.clientY-pointer.y)**2<16)return;
+        world.blow(pointer.x,pointer.y,event.clientX,event.clientY,(event.timeStamp-pointer.time)/1000);
+      }
+      pointer={x:event.clientX,y:event.clientY,time:event.timeStamp};
+    };
+    const lift=()=>{pointer=undefined;};
+    window.addEventListener('pointermove',sweep,{passive:true});window.addEventListener('pointercancel',lift);
+    window.addEventListener('resize',resize);
+    document.addEventListener('visibilitychange',resume);reduced.addEventListener('change',motion);
+    window.addEventListener('particles-preference-change',resume);
+    const hide=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;};
+    window.addEventListener('pagehide',hide);
+    window.addEventListener('pageshow',resume);
+    resize();resume();
+    return()=>{
+      if(frame)cancelAnimationFrame(frame);
+      window.removeEventListener('pointermove',sweep);window.removeEventListener('pointercancel',lift);
+      window.removeEventListener('resize',resize);
+      document.removeEventListener('visibilitychange',resume);reduced.removeEventListener('change',motion);
+      window.removeEventListener('particles-preference-change',resume);
+      window.removeEventListener('pagehide',hide);window.removeEventListener('pageshow',resume);
+    };
   }
   });
   if(import.meta.hot)import.meta.hot.dispose(dispose);

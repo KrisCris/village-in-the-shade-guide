@@ -12,8 +12,8 @@ from .models import (
     FishLocation,
     GiftItem,
     HuntReward,
+    HuntRewardEntry,
     Item,
-    ItemQuantity,
     Snapshot,
     WorldEntry,
     Quest,
@@ -251,18 +251,22 @@ def _normalize_hunt_rewards(table, output, items_by_numeric):
     for record, group in zip(table.records, _string_groups(table), strict=True):
         if not group:
             continue
-        count = _u32(record, 20)
+        # Byte 20 is dropNum, the number of draws per certificate. Four fixed
+        # Reward slots (ID, Num, Rate) follow; the game skips a slot whose ID
+        # or Rate is zero. See docs/data-evidence/hunt-rewards.md.
         rewards = []
-        for index in range(count):
+        for index in range(4):
             offset = 24 + index * 12
             item = items_by_numeric.get(_u32(record, offset))
-            if item:
-                rewards.append(ItemQuantity(item.id, _u32(record, offset + 4)))
+            weight = _u32(record, offset + 8)
+            if item and weight:
+                rewards.append(HuntRewardEntry(item.id, _u32(record, offset + 4), weight))
         certificate = items_by_numeric.get(_u32(record, 16))
         internal = group[0]
         output[internal] = HuntReward(
             internal,
             _u32(record, 0),
             certificate.id if certificate else None,
+            _u32(record, 20),
             tuple(rewards),
         )

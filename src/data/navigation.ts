@@ -39,6 +39,7 @@ export const guideGroups: Array<{id: string; label: string; guides: GuideLink[]}
     {title: msg('四季留货与交付'), label: msg('四季留货规划'), description: msg('每季供奉和交付目录要留多少货'), href: '/guides/season-plan/', icon: 'CROPS'},
     {title: msg('种植加工收益排行'), description: msg('按每天收益比较作物和加工品'), href: '/planner/', icon: 'PROCESSED_PRODUCT'},
     {title: msg('播种、跨季与菌类'), label: msg('播种与菌类'), description: msg('每季种什么，毛豆、稻米和果树怎么安排'), href: '/guides/cultivation-plan/', icon: 'SEEDING'},
+    {title: msg('作物品质、品评会与品牌'), label: msg('品质与品牌'), description: msg('收多少个出金★，怎样拿到品牌作物和畜产品'), href: '/guides/crop-quality/', icon: 'ITEM_ID_FERTILIZER_HIGH_GRADE'},
     {title: msg('料理材料与食谱'), label: msg('料理与食谱'), description: msg('配方用料和可以替换的材料'), href: '/guides/cooking-plan/', icon: 'COOKING'},
     {title: msg('家畜解锁、品评会与产物'), label: msg('家畜与品评会'), description: msg('家畜什么时候能买、怎么照料、产什么'), href: '/guides/livestock-plan/', icon: 'ITEM_ID_LIVESTOCK_COW_NORMAL'},
     {title: msg('建筑、扩地与温室'), label: msg('建筑与扩地'), description: msg('向木助订的扩地、改建、温室和养鱼池'), href: '/guides/buildings/', icon: 'ITEM_ID_BUNDLE_REWARD_08'},

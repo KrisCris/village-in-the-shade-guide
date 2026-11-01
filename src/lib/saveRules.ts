@@ -11,6 +11,8 @@ export const SAVE_RULES = {
 };
 
 /** The game's final rank is BRAND, not an independently defined platinum rank. */
+/** The top quality: 品牌, given to a crop or animal at the fair. Nothing ranks above it. */
+export const BRAND_RANK = constants.ITEM_RANK_BRAND.value;
 export const ITEM_RANKS = [
   { value: constants.ITEM_RANK_NORMAL.value, label: tr('普通') },
   { value: constants.ITEM_RANK_COPPER.value, label: tr('铜星') },

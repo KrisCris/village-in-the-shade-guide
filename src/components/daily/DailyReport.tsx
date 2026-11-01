@@ -11,6 +11,8 @@ import { Icon, useNames, type IconName, type MapTarget } from './dailyUi';
 import TodayList, { actionKey } from './TodayList';
 import DeliverySection from './DeliverySection';
 import ProcessingSection from './ProcessingSection';
+import BuildSection from './BuildSection';
+import CollectSection from './CollectSection';
 import PlantingSection from './PlantingSection';
 import FarmSection from './FarmSection';
 import { activeLocale, tr } from '../../i18n/active';
@@ -106,10 +108,11 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const daysLeft = DAYS_PER_SEASON - snapshot.date.day;
   const unlocked = useMemo(() => data ? enabledFlags(doc, planFlags(data.payload)) : new Set<number>(), [doc, data]);
   const vacant = land.tilled + land.plain;
+  const hidden = useMemo(() => new Set((names.encyclopediaHidden ?? []).map(Number)), [names]);
   const plan = useMemo(() => data && dailyPlan({
-    snapshot, digest, payload: data.payload, crops: data.crops, unlocked, itemCategory: (itemId) => names.itemCategories?.[itemId], settings, vacant,
-  }), [data, snapshot, digest, unlocked, names, settings, vacant]);
-  const sections = ['daily-today', 'daily-deliveries', 'daily-machines', 'daily-land', 'daily-farm'];
+    snapshot, digest, payload: data.payload, crops: data.crops, unlocked, itemCategory: (itemId) => names.itemCategories?.[itemId], hidden, settings, vacant,
+  }), [data, snapshot, digest, unlocked, names, hidden, settings, vacant]);
+  const sections = ['daily-today', 'daily-deliveries', 'daily-collect', 'daily-machines', 'daily-build', 'daily-land', 'daily-farm'];
   const active = useActiveSection(sections, Boolean(plan));
   const navList = useRef<HTMLUListElement>(null);
   // On a phone the menu scrolls sideways; keep the highlighted part in view.
@@ -127,23 +130,26 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const tiles: Array<{ key: string; id: string; icon: IconName; label: string; value: string | number; caption: string; tone?: 'alert' | 'done' }> = [];
   if (plan) {
     const tasks = plan.actions.map(actionKey), ticked = tasks.filter((key) => done.has(key)).length;
-    const builds = plan.processing.families.flatMap((family) => family.build).reduce((sum, step) => sum + step.count, 0);
-    const missing = plan.materials.filter((line) => line.short > 0).length;
+    const builds = plan.processing.build.filter((line) => line.options.length);
+    const affordable = builds.filter((line) => line.options.some((option) => option.afford > 0)).length;
     const free = plan.livestock.housing.reduce((sum, line) => sum + Math.max(0, line.slots - line.used), 0);
     const { deliveries } = plan;
     // After midnight the catalog waits for the morning, like the to-do list says.
     const handIn = night ? deliveries.ready.filter((entry) => entry.spec.list !== 'catalog') : deliveries.ready, waiting = deliveries.ready.length - handIn.length;
     const roomy = plan.livestock.ideas.filter((idea) => idea.room > 0).length;
+    const { collect } = plan, caught = new Set(collect.spots.flatMap((spot) => spot.catches.map((entry) => entry.itemId))).size;
     tiles.push(
       { key: 'today', id: 'daily-today', icon: 'today', label: tr('今日待办'), value: tasks.length - ticked, caption: tasks.length ? tr('已完成 {done} / {total} 项', { done: ticked, total: tasks.length }) : tr('今天没有要紧的事。'), tone: tasks.length && ticked === tasks.length ? 'done' : undefined },
       { key: 'deliver', id: 'daily-deliveries', icon: 'deliver', label: tr('今天可以交'), value: handIn.length, caption: waiting ? tr('另有 {count} 项 7:00 后能交', { count: waiting }) : tr('已完成 {done} / {total} 项', { done: deliveries.done, total: deliveries.total }), tone: handIn.length ? 'alert' : undefined },
-      { key: 'build', id: 'daily-machines', icon: 'machine', label: tr('要加造的设备'), value: builds, caption: !builds ? tr('现有设备够用') : missing ? tr('材料还差 {count} 种', { count: missing }) : tr('材料够用'), tone: builds ? 'alert' : 'done' },
+      { key: 'collect', id: 'daily-collect', icon: 'book', label: tr('今日可收集'), value: caught + collect.lines.length,
+        caption: caught + collect.lines.length ? tr('钓鱼 {fish} 种 · 其他 {other} 种', { fish: caught, other: collect.lines.length }) : tr('今天拿得到的都已登记') },
+      { key: 'build', id: 'daily-build', icon: 'build', label: tr('要加造的设备'), value: builds.length, caption: !builds.length ? tr('现有设备够用') : affordable === builds.length ? tr('材料都够造一台以上') : tr('材料够造的有 {count} 种', { count: affordable }), tone: builds.length ? 'alert' : 'done' },
       { key: 'land', id: 'daily-land', icon: 'land', label: tr('空着的农田'), value: vacant, caption: !vacant ? tr('农田都种上了') : !daysLeft ? tr('明天就换季') : tr('有 {count} 种作物来得及成熟', { count: plan.planting.length }) },
       { key: 'animals', id: 'daily-land', icon: 'farm', label: tr('家畜空位'), value: free, caption: roomy ? tr('有 {count} 种动物现在就能养', { count: roomy }) : plan.livestock.ideas.length ? tr('交付要的动物得先扩建或新建') : tr('交付不需要新的动物') },
     );
   }
   const navLabel: Record<string, string> = {
-    'daily-today': tr('待办'), 'daily-deliveries': tr('交付'), 'daily-machines': tr('设备'), 'daily-land': tr('空地和家畜'), 'daily-farm': tr('农场概况'),
+    'daily-today': tr('待办'), 'daily-deliveries': tr('交付'), 'daily-collect': tr('收集'), 'daily-machines': tr('设备'), 'daily-build': tr('加造'), 'daily-land': tr('空地和家畜'), 'daily-farm': tr('农场概况'),
   };
 
   return <div className="daily-report" style={{ '--daily-top': `${headerHeight}px` } as CSSProperties}>
@@ -183,14 +189,14 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
           <button type="button" className="daily-nav-map" onClick={() => showOnMap(null)}><Icon name="map" size={18} />{tr('地图')}</button>
         </nav>
 
-        <TodayList actions={plan.actions} names={names} name={name} horizon={plan.horizon} night={night} done={done} onToggle={toggle} onMap={showOnMap} />
+        <TodayList actions={plan.actions} names={names} name={name} now={snapshot.seconds} night={night} done={done} onToggle={toggle} onMap={showOnMap} />
         <DeliverySection deliveries={plan.deliveries} names={names} name={name} night={night} onMap={showOnMap} />
-        <ProcessingSection plan={plan.processing} machines={digest.machines} materials={plan.materials} seasonDays={daysLeft} horizon={settings.horizon} reserve={settings.reserve} picked={settings.choices}
-          names={names} name={name} onMap={showOnMap}
-          onHorizon={(days) => changeSettings({ horizon: days })} onReserve={(reserve) => changeSettings({ reserve })}
+        <CollectSection plan={plan.collect} names={names} name={name} onMap={showOnMap} />
+        <ProcessingSection plan={plan.processing} now={snapshot.seconds} names={names} name={name}
           onChoice={(itemId, process) => changeSettings({ choices: process === undefined
             ? Object.fromEntries(Object.entries(settings.choices).filter(([key]) => key !== String(itemId)))
             : { ...settings.choices, [itemId]: process } })} />
+        <BuildSection lines={plan.processing.build} sources={plan.sources} names={names} name={name} onMap={showOnMap} />
         <PlantingSection land={land} ideas={plan.planting} housing={plan.livestock.housing} animals={plan.livestock.ideas} daysLeft={daysLeft} names={names} name={name}
           onEditArea={() => showOnMap(null)} />
       </>}

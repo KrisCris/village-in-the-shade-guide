@@ -3,6 +3,12 @@ import unlocks from '../../data/sources/game-save-unlocks.json';
 import livestock from '../../data/sources/game-livestock-products.json';
 import animals from '../../data/sources/game-save-animals.json';
 import construction from '../../data/sources/game-construction.json';
+import natural from '../../data/sources/game-natural-occurrence.json';
+import fishing from '../../data/sources/game-fishing.json';
+import curse from '../../data/sources/game-curse-items.json';
+import { catchChances } from '../domain/fishingOdds';
+import { seasonCountPerSeed } from '../domain/cropProcessing';
+import type { QualityTarget } from '../domain/quality';
 import type { Catalog } from './types';
 
 /**
@@ -45,6 +51,20 @@ export interface HouseOrder {
 }
 /** fishing.dat time periods in the order a game day runs from the 07:00 turnover: 7–12, 12–18, 18–24 and 0–7. */
 export const FISH_PERIODS = ['morning', 'day', 'evening', 'late-night'] as const;
+/** A fishing spot and each fish's chance on one bite with no bait, by season (0–3) and FISH_PERIODS index. Trash is left out. */
+export interface FishSpot { id: string; name: string; catches: Array<[season: number, period: number, itemId: number, chance: number]> }
+/** A wild plant or insect: the season it springs up in (0–3, 4 all year) and the story flag it waits for. */
+export interface WildSpawn { season: number; flag?: number }
+/** A shop selling a seed or sapling: the seasons it is on sale (empty: all year), the flags it waits for and their text. */
+export interface SeedSale { place: string; seasons: number[]; flags: number[]; conditions: string[] }
+/** A crop's seed or sapling, the turnovers it takes to grow, what it is harvested for and where the seed is sold. */
+export interface DailySeed { seed: number; days: number; items: number[]; sales: SeedSale[] }
+/**
+ * The harvest count an item's grade follows (item.dat needValue × HARVEST_COUNT_RATE_*): the save keeps it under `count`,
+ * and harvests come out 铜星, 银星 and 金星 once it reaches `ranks`. `pick` is what one harvest of the crop adds;
+ * a fruit tree or shrub has `season` instead, what one grown plant adds over a bearing season.
+ */
+export interface DailyQuality { count: number; crop: number; ranks: [copper: number, silver: number, gold: number]; pick?: number; season?: number }
 
 export interface DailyPayload {
   prices: Record<string, number>;
@@ -52,9 +72,16 @@ export interface DailyPayload {
   crafts: DailyCraft[];
   /** Fish item → the seasons (0–3) and FISH_PERIODS indexes it bites in. */
   fish: Record<string, Array<[season: number, period: number]>>;
-  /** Wild plant item → the season whose fox shrine mountain-vegetable offering lists it. */
-  wild: Record<string, number>;
+  fishing: FishSpot[];
+  /** Wild plant and insect items that spring up on their own (naturaloccurrence.dat). */
+  wild: Record<string, WildSpawn>;
   quarry: QuarryBand[];
+  /** Crop (crops.dat id) → its seed and where to buy it. */
+  seeds: Record<string, DailySeed>;
+  /** Hunting reward item → the certificates that can be traded for it at the hunter's hut. */
+  hunts: Record<string, number[]>;
+  /** Harvest item → the count its grade follows. */
+  quality: Record<string, DailyQuality>;
   /** Adult livestock (livestock.dat id) → its house type (0 barn, 1 coop, 2 stable) and the items it produces. */
   animals: Array<{ species: number; house: number; products: number[] }>;
   houses: HouseOrder[];
@@ -101,11 +128,67 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
     }).filter((time) => time >= 0));
     fish[numeric.get(entity.id)!] = [...times].sort((a, b) => a - b).map((time): [number, number] => [Math.floor(time / 4), time % 4]);
   }
-  const wildIds = new Set(catalog.entities.filter((entity) => entity.kind === 'items' && entity.category_id === 'ITEM_CATEGORY_WILD_VEGETABLE').map((entity) => numeric.get(entity.id)));
-  const wild: Record<string, number> = {};
-  for (const bundle of bundles) if (bundle.list === 'shrine') for (const [itemId] of bundle.items) if (wildIds.has(itemId)) wild[itemId] = bundle.season!;
+  const wild: Record<string, WildSpawn> = {};
+  for (const row of natural.groups.flatMap((group) => group.rows)) wild[row.item_numeric_id] = { season: row.season, ...'flag' in row ? { flag: row.flag } : {} };
 
-  return { prices, bundles, crafts, fish, wild, quarry: quarryBands(numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+  const seasonIndex = (season: unknown) => ['spring', 'summer', 'autumn', 'winter'].indexOf(String(season));
+  const offers = catalog.entities.filter((entity) => entity.kind === 'store-offers');
+  const seeds: Record<string, DailySeed> = {};
+  for (const crop of catalog.entities) {
+    const seed = (crop.seed_item_ids as string[] | undefined)?.[0];
+    if (crop.kind !== 'crops' || typeof crop.numeric_id !== 'number' || !seed || !numeric.has(seed) || typeof crop.growth_days !== 'number') continue;
+    seeds[crop.numeric_id] = {
+      seed: numeric.get(seed)!, days: crop.growth_days,
+      items: ((crop.harvest_item_ids ?? []) as string[]).flatMap((id) => numeric.has(id) ? [numeric.get(id)!] : []),
+      sales: offers.filter((offer) => offer.item_id === seed).map((offer) => ({
+        place: String(offer.location ?? ''), seasons: ((offer.seasons ?? []) as string[]).map(seasonIndex).filter((season) => season >= 0),
+        flags: (offer.required_flags ?? []) as number[], conditions: (offer.conditions ?? []) as string[],
+      })),
+    };
+  }
+  const hunts: Record<string, number[]> = {};
+  for (const reward of catalog.entities.filter((entity) => entity.kind === 'hunt-rewards')) {
+    const certificate = numeric.get(String(reward.certificate_item_id));
+    for (const [itemId] of stacks(reward.rewards)) if (certificate) hunts[itemId] = [...new Set([...hunts[itemId] ?? [], certificate])];
+  }
+
+  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, quality: qualityCounts(catalog, numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+}
+
+function qualityCounts(catalog: Catalog, numeric: ReadonlyMap<string, number>): Record<string, DailyQuality> {
+  const crops = catalog.entities.filter((entity) => entity.kind === 'crops' && typeof entity.numeric_id === 'number');
+  const quality: Record<string, DailyQuality> = {};
+  for (const item of catalog.entities) {
+    const target = item.quality_target as QualityTarget | null | undefined;
+    const crop = target && crops.find((row) => ((row.seed_item_ids ?? []) as string[]).includes(target.seed_item_id));
+    if (item.kind !== 'items' || item.id === target?.seed_item_id || !numeric.has(item.id) || !crop) continue;
+    const perennial = !!crop.perennial;
+    const plot = seasonCountPerSeed(crop, catalog, perennial ? 28 : Number(crop.growth_days));
+    quality[numeric.get(item.id)!] = {
+      count: target.count_item_numeric_id, crop: crop.numeric_id as number, ranks: [target.copper, target.silver, target.gold],
+      ...plot?.perSeed ? perennial ? { season: plot.perSeed } : { pick: plot.perSeed } : {},
+    };
+  }
+  return quality;
+}
+
+/** Catch odds per spot as the fishing spots guide shows them; spot names come from the fish entries. */
+function fishingSpots(catalog: Catalog, numeric: ReadonlyMap<string, number>): FishSpot[] {
+  const names = new Map(catalog.entities.filter((entity) => entity.kind === 'fish').flatMap((entity) =>
+    ((entity.locations ?? []) as Array<{ location_id: string; name: { zh_hans: string } }>).map((location) => [location.location_id, location.name.zh_hans] as const)));
+  const pools = new Map<string, Array<(typeof fishing.spawns)[number]>>();
+  for (const spawn of fishing.spawns) {
+    const key = `${spawn.spot}|${spawn.season}|${spawn.period}`;
+    pools.set(key, [...pools.get(key) ?? [], spawn]);
+  }
+  const seasons = ['spring', 'summer', 'autumn', 'winter'];
+  return fishing.spots.map((spot) => ({
+    id: spot, name: names.get(spot) ?? spot,
+    catches: seasons.flatMap((season, seasonIndex) => FISH_PERIODS.flatMap((period, periodIndex) =>
+      [...catchChances(pools.get(`${spot}|${season}|${period}`) ?? [], curse.fish_kind as Record<string, number>)]
+        .filter(([item]) => !item.startsWith('ITEM_ID_TRASH_') && numeric.has(item))
+        .map(([item, chance]): [number, number, number, number] => [seasonIndex, periodIndex, numeric.get(item)!, Math.round(chance * 10000) / 10000]))),
+  }));
 }
 
 /** Slot counts from each order's description in construction.dat. */

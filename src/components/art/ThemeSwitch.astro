@@ -9,6 +9,7 @@ const { t } = getI18n(Astro.url);
 <script>
   import {resolveTheme} from '../../domain/scenery';
   import {onPageMount} from '../../lib/pageLifecycle';
+  import {crossfadeRoot} from '../../lib/rootCrossfade';
   const dispose=onPageMount(()=>{
   const root=document.documentElement;
   const button=document.querySelector<HTMLButtonElement>('[data-theme-switch]');
@@ -16,9 +17,8 @@ const { t } = getI18n(Astro.url);
   sync();
   button?.addEventListener('click',()=>{
     const next=root.dataset.theme==='night'?'day':'night';
-    root.dataset.theme=next;
     try{localStorage.setItem('village-theme',next);}catch{/* Theme works without storage. */}
-    sync();
+    crossfadeRoot(()=>{root.dataset.theme=next;sync();});
   });
   const storage=(event:StorageEvent)=>{
     if(event.key==='village-theme'){root.dataset.theme=resolveTheme(event.newValue,matchMedia('(prefers-color-scheme: dark)').matches);sync();}
