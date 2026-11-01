@@ -7,6 +7,8 @@ import natural from '../../data/sources/game-natural-occurrence.json';
 import fishing from '../../data/sources/game-fishing.json';
 import curse from '../../data/sources/game-curse-items.json';
 import { catchChances } from '../domain/fishingOdds';
+import { seasonCountPerSeed } from '../domain/cropProcessing';
+import type { QualityTarget } from '../domain/quality';
 import type { Catalog } from './types';
 
 /**
@@ -55,6 +57,12 @@ export interface WildSpawn { season: number; flag?: number }
 export interface SeedSale { place: string; seasons: number[]; flags: number[]; conditions: string[] }
 /** A crop's seed or sapling, the turnovers it takes to grow, what it is harvested for and where the seed is sold. */
 export interface DailySeed { seed: number; days: number; items: number[]; sales: SeedSale[] }
+/**
+ * The harvest count an item's grade follows (item.dat needValue × HARVEST_COUNT_RATE_*): the save keeps it under `count`,
+ * and harvests come out 铜星, 银星 and 金星 once it reaches `ranks`. `pick` is what one harvest of the crop adds;
+ * a fruit tree or shrub has `season` instead, what one grown plant adds over a bearing season.
+ */
+export interface DailyQuality { count: number; crop: number; ranks: [copper: number, silver: number, gold: number]; pick?: number; season?: number }
 
 export interface DailyPayload {
   prices: Record<string, number>;
@@ -70,6 +78,8 @@ export interface DailyPayload {
   seeds: Record<string, DailySeed>;
   /** Hunting reward item → the certificates that can be traded for it at the hunter's hut. */
   hunts: Record<string, number[]>;
+  /** Harvest item → the count its grade follows. */
+  quality: Record<string, DailyQuality>;
   /** Adult livestock (livestock.dat id) → its house type (0 barn, 1 coop, 2 stable) and the items it produces. */
   animals: Array<{ species: number; house: number; products: number[] }>;
   houses: HouseOrder[];
@@ -139,7 +149,24 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
     for (const [itemId] of stacks(reward.rewards)) if (certificate) hunts[itemId] = [...new Set([...hunts[itemId] ?? [], certificate])];
   }
 
-  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, quality: qualityCounts(catalog, numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+}
+
+function qualityCounts(catalog: Catalog, numeric: ReadonlyMap<string, number>): Record<string, DailyQuality> {
+  const crops = catalog.entities.filter((entity) => entity.kind === 'crops' && typeof entity.numeric_id === 'number');
+  const quality: Record<string, DailyQuality> = {};
+  for (const item of catalog.entities) {
+    const target = item.quality_target as QualityTarget | null | undefined;
+    const crop = target && crops.find((row) => ((row.seed_item_ids ?? []) as string[]).includes(target.seed_item_id));
+    if (item.kind !== 'items' || item.id === target?.seed_item_id || !numeric.has(item.id) || !crop) continue;
+    const perennial = !!crop.perennial;
+    const plot = seasonCountPerSeed(crop, catalog, perennial ? 28 : Number(crop.growth_days));
+    quality[numeric.get(item.id)!] = {
+      count: target.count_item_numeric_id, crop: crop.numeric_id as number, ranks: [target.copper, target.silver, target.gold],
+      ...plot?.perSeed ? perennial ? { season: plot.perSeed } : { pick: plot.perSeed } : {},
+    };
+  }
+  return quality;
 }
 
 /** Catch odds per spot as the fishing spots guide shows them; spot names come from the fish entries. */

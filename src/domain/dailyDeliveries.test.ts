@@ -80,4 +80,16 @@ describe('delivery plan', () => {
     const spring = planDeliveries(specs, progress, [], at(0), true).pending[0];
     expect([spring.eta, spring.offSeason]).toEqual([undefined, true]);
   });
+
+  it('dates graded lines from the field only once the harvest count gives that grade', () => {
+    const quality = { [CABBAGE_ITEM]: { count: CABBAGE_ITEM, crop: CABBAGE, ranks: [10, 40, 100] as [number, number, number], pick: 1 } };
+    const graded = (harvested: number, brands: number[] = []) => planDeliveries([spec(40, 'catalog')], [owed(40, [CABBAGE_ITEM, 2, 4])], [],
+      { ...context, payload: { ...context.payload, quality }, harvested: { [CABBAGE_ITEM]: harvested }, brands: new Set(brands) }, true).pending[0];
+    // 金星 is not reached yet: the ripening cabbages come out plain, so the line has no date this season.
+    expect(graded(50)).toMatchObject({ offSeason: true, lines: [{ quality: { grade: 2, harvested: 50, target: 100 } }] });
+    expect(graded(50).eta).toBeUndefined();
+    // Once the cabbage has a brand name, every harvest is 品牌.
+    expect(graded(120, [CABBAGE_ITEM])).toMatchObject({ eta: 6 });
+    expect(graded(120, [CABBAGE_ITEM]).lines[0].quality).toBeUndefined();
+  });
 });

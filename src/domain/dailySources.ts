@@ -76,7 +76,7 @@ export interface SourceContext {
   daysLeft: number;
   crops: CropRules;
   ripening: Array<CellRow & { days: number }>;
-  payload: Pick<DailyPayload, 'fish' | 'wild' | 'quarry' | 'animals'> & Partial<Pick<DailyPayload, 'seeds' | 'hunts'>>;
+  payload: Pick<DailyPayload, 'fish' | 'wild' | 'quarry' | 'animals'> & Partial<Pick<DailyPayload, 'seeds' | 'hunts' | 'quality'>>;
   /** Species living on the farm. */
   owned: ReadonlySet<number>;
   trees: DailyTree[];
@@ -90,6 +90,9 @@ export interface SourceContext {
   unlocked?: ReadonlySet<number>;
   /** Fruit trees and shrubs on the farm; `days` until grown (0: grown). */
   orchard?: Array<{ crop: number; cell: number; days: number }>;
+  /** The save's harvest counts by count item, and the count items whose crop has a brand name. */
+  harvested?: Readonly<Record<number, number>>;
+  brands?: ReadonlySet<number>;
 }
 
 export function itemSources(itemId: number, context: SourceContext): ItemSource[] {

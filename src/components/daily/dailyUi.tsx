@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { TREE_WOOD, type ItemSource, type SeedSource } from '../../domain/dailySources';
+import type { QualityProgress } from '../../domain/dailyQuality';
 import { ANIMALS } from '../../lib/saveAnimals';
 import { gameDuration } from '../../lib/saveMachines';
 import { gameDate } from '../../lib/saveDaily';
@@ -240,6 +241,30 @@ function seedText(seed: SeedSource, name: Names): string {
   if (sale.open) return tr('{places}有卖{seed}', { places, seed: item });
   if (sale.conditions.length) return tr('{places}卖{seed}，要先达成：{conditions}', { places, seed: item, conditions: sale.conditions.join(tr('、')) });
   return tr('{places}{seasons}季卖{seed}', { places, seasons: name.seasons(sale.seasons), seed: item });
+}
+
+/**
+ * How far a crop's harvest count is from the grade a line asks for, and what to plant for the rest.
+ * 品牌 needs a 金星 harvest scored S at the crop fair (day 27 of each season), which names the crop.
+ */
+export function qualityText(progress: QualityProgress, rank: number, name: Names, gradeLabel: (rank: number) => string): string {
+  const crop = name.crop(progress.crop), plant = progress.plant, parts: string[] = [];
+  if (progress.harvested >= progress.target) return tr('{crop}已经收得出金星：每季 27 日拿金星的去作物品评会，评到 S 起了品牌名，以后收的都是品牌', { crop });
+  parts.push(tr('{crop}已收 {harvested} / {target} 个，收满后再收的才是{grade}', { crop, harvested: progress.harvested, target: progress.target, grade: gradeLabel(Math.min(rank, 3)) }));
+  if (plant?.kind === 'sow') {
+    const seed = name.item(plant.seed), count = plant.seeds, first = name.seasons(plant.seasons.slice(0, 1)), last = name.seasons(plant.seasons.slice(-1));
+    if (plant.scarecrow) parts.push(plant.today ? tr('今天种 {count} 个{seed}', { count, seed }) : tr('{season}季第一天种 {count} 个{seed}', { season: first, count, seed }),
+      tr('{season}季最后一天在田里放 {count} 个{scarecrow}（每个管周围 24 格），等它们长过换季收完就够', { season: last, count: plant.scarecrow.count, scarecrow: name.item(plant.scarecrow.item) }));
+    else parts.push(!plant.today ? tr('{season}季第一天种 {count} 个{seed}就够', { season: first, count, seed })
+      : plant.seasons.length > 1 ? tr('今天种 {count} 个{seed}，收到{season}季末就够', { count, seed, season: last })
+      : tr('今天种 {count} 个{seed}，这季收完就够', { count, seed }));
+  } else if (plant) {
+    parts.push(plant.have >= plant.plants ? tr('农场里的 {count} 棵{crop}结一季就够', { count: plant.have, crop })
+      : plant.have ? tr('要 {count} 棵{crop}结一季才够，农场里有 {have} 棵', { count: plant.plants, crop, have: plant.have })
+      : tr('要 {count} 棵{crop}结一季才够', { count: plant.plants, crop }));
+  }
+  if (rank > 3) parts.push(tr('再拿金星的去每季 27 日的作物品评会，评到 S 起名后才是品牌'));
+  return parts.join(tr('；'));
 }
 
 /** Cells a source can be shown at on the map: crops in the field and the trees to fell or tap. */

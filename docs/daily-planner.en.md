@@ -121,7 +121,9 @@ The rest comes from game data or existing site content:
 - The scarecrow's range and duration come from its item text (5×5 cells from the center, 28 days); the map catalog tags it `PLACEMENT_EFFECT_RANGE_2`. A spent scarecrow stays until it is chopped down with an axe.
 - The kit item text says it only grows in autumn. Outside autumn and outside an autumn scarecrow's range, the page treats a kit as stopped and leaves it out of the forecast and warnings.
 - Deliveries accept the required quality or better and have no deadline. The catalog opens with flag 12036. 品牌 (Brand) is the top quality, so a Brand requirement is shown without "or better".
-- A crop needed at Brand quality gets one more line: harvest a Gold star one, then have it certified at the Evaluation and name it. This comes from a player's account and has not been checked against game data.
+- A crop's harvest grade follows the harvest count in the save (`pHarvestStatus_`): harvests come out at the best grade the count has reached. A crop with a brand name (`brandCropsNameMap_`) always harvests at Brand. The thresholds are `needValue` in `item.dat` times `HARVEST_COUNT_RATE_*`; the rules are in the crop quality guide (`/guides/crop-quality/`).
+- When a delivery asks for a higher grade than the crop harvests at now, the line shows the count so far, the count needed and what to plant. If a seed sown today can still ripen, it gives the seeds to sow today, harvesting until the end of the last season the crop grows in. Otherwise it gives the seeds to sow on day 1 of the next season the crop grows in. Fruit trees and tea give how many plants bearing for one season it takes, and how many are on the farm. A seed counts as one harvest, or for crops that regrow, every harvest until the season ends. Rice grows only in spring but takes 50 days, so the page sows it within the first 5 days of spring and has spring scarecrows placed in the field on the last day of spring (each covers the 24 cells around it) to keep it growing past the change, and says how many. That crop growing in the field harvests below the grade, so it does not count toward the line's estimate.
+- A Brand line also says: enter a Gold star crop at the Crop Evaluation on day 27 of a season; it becomes Brand once it scores S and is named. When the count already gives Gold star, the line says only this.
 - Paddies do not need watering.
 
 ## Not verified yet
@@ -137,14 +139,15 @@ The rest comes from game data or existing site content:
 - Where wild plants and bugs grow: `naturaloccurrence.dat` has only spawn groups and seasons, and the group names do not appear in the map files.
 - Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
 - Gifts for selling an animal and hunting certificate rewards: `livestock.dat` and `huntreward.dat` list a few items for each with weights that add up to 100, which looks like one weighted draw, but the game code has not been checked yet. The page says the item "may" come and gives no odds.
-- Crop quality: `HARVEST_COUNT_RATE_*` in `gamedefine.dat` shows quality rises with the harvest count, but how many harvests each crop needs has not been extracted yet, so the page cannot say how many seeds to plant.
+- Rice growing past the season change under scarecrows: inferred from grow kits that kept growing under a scarecrow; the saves have no growing rice to check against.
+- Fertiliser's chance of raising the harvest grade: the page leaves it out, so the seed counts may be high. Whether soybeans picked from withered edamame add to the count is not checked either; the page counts edamame picks only.
 
 ## Code
 
-- `src/lib/saveDaily.ts`: reads cells, machines, items, delivery progress, trees, animal houses, quarry progress, scarecrows and the field guide record from the save.
-- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish seasons and bite chances per spot, wild plant and bug seasons, quarry drops, each crop's seed and the shops that sell it, what hunting certificates trade for, animal products and house orders.
+- `src/lib/saveDaily.ts`: reads cells, machines, items, delivery progress, trees, animal houses, quarry progress, scarecrows, the field guide record, each crop's harvest count and the crops with a brand name from the save.
+- `src/data/dailyPayload.ts`: builds `daily-data.json`: delivery lists, machine recipes, sell prices, fish seasons and bite chances per spot, wild plant and bug seasons, quarry drops, each crop's seed and the shops that sell it, each harvest item's grade thresholds, what hunting certificates trade for, animal products and house orders.
 - `src/domain/dailyDigest.ts`: the daily field rules, independent of the save format and tested with synthetic data.
-- `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`), collect today (`dailyCollect`) and today's list (`dailyActions`).
+- `src/domain/dailyPlan.ts`: ties together deliveries (`dailyDeliveries`), processing (`dailyProcessing`), materials (`dailyMaterials`, `dailySources`), sowing (`dailyPlanting`), livestock (`dailyLivestock`), collect today (`dailyCollect`) and today's list (`dailyActions`). Delivery grade progress and the planting counts are in `dailyQuality`.
 - `src/lib/dailyData.ts`: loads the page data and stores the settings; `src/lib/farmArea.ts`: merging and storing the farm area.
 - `src/components/daily/`: the page and the farm map (reusing the save editor's `MapCanvas`; outside the farm it draws the village tiles in `public/maps/village/`, exported by `tools/extract-village-art.py`).
 - Tests that check against saves are in `src/lib/saveDaily.test.ts` and `src/domain/dailyPlan.test.ts`. They need the decrypted save fixtures (see `tests/gamesave/README.md`) and are skipped without them.

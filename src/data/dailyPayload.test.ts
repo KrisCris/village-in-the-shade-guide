@@ -53,6 +53,17 @@ describe('daily payload', () => {
     expect(payload.hunts[numeric.get('ITEM_ID_HUNTING_PHEASANT_FEATHER')!]).toEqual([numeric.get('ITEM_ID_HUNTING_CERTIFICATE_PHEASANT')]);
   });
 
+  it('keys each harvest item to the count its grade follows, with what a seed or a grown plant adds', () => {
+    const item = (id: string) => payload.quality[numeric.get(id)!];
+    expect(item('ITEM_ID_CROPS_RICE')).toEqual({ count: numeric.get('ITEM_ID_CROPS_RICE'), crop: catalog.byId.CROPS_ID_RICE.numeric_id, ranks: [100, 400, 1000], pick: 10 });
+    // Soybeans count under edamame, mulberries under the leaves; perennials add a bearing season per plant.
+    expect(item('ITEM_ID_CROPS_SOYBEAN').count).toBe(numeric.get('ITEM_ID_CROPS_EDAMAME'));
+    expect(item('ITEM_ID_CROPS_MULBERRY').count).toBe(numeric.get('ITEM_ID_CROPS_MULBERRY_LEAF'));
+    expect(item('ITEM_ID_CROPS_TEA_TREE')).toMatchObject({ ranks: [60, 240, 600], season: 28 });
+    expect(item('ITEM_ID_CROPS_TEA_TREE').pick).toBeUndefined();
+    expect(payload.quality[numeric.get('ITEM_ID_SEED_RICE')!]).toBeUndefined();
+  });
+
   it('carries machine recipes, animal products and the animal house orders', () => {
     const barrel = payload.crafts.find((craft) => craft.machine === 400030);
     expect(barrel?.inputs.length).toBeGreaterThan(0);

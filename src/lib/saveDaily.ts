@@ -77,6 +77,10 @@ export interface DailySnapshot {
   animals: { total: number; fed: number };
   /** Items the encyclopedia has recorded. */
   encyclopedia: number[];
+  /** Pieces harvested per crop count (pHarvestStatus_), keyed by the item the count is kept under. */
+  harvested: Record<number, number>;
+  /** Count items whose crop has a brand name (brandCropsNameMap_): every harvest of it is 品牌. */
+  brands: number[];
 }
 
 const DAY = 86_400;
@@ -210,5 +214,13 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     shipping: stacks([], SHIPPING_BOX_ID),
     animals: { total: fed.length, fed: fed.filter(Boolean).length },
     encyclopedia: [...readEncyclopedia(doc)].map(Number),
+    harvested: Object.fromEntries(mapPairs(doc, 'pHarvestStatus_/p/nowValue_').map(([key, value]) => [Number(readSigned(doc, key)), Number(readSigned(doc, value))])),
+    brands: mapPairs(doc, 'brandCropsNameMap_').map(([key]) => Number(readSigned(doc, key))),
   };
+}
+
+/** A save map's children as key/value node pairs. */
+function mapPairs(doc: SerDocument, path: string) {
+  const map = doc.resolve(path), children = map ? doc.children(map) : [];
+  return Array.from({ length: Math.floor(children.length / 2) }, (_, index) => [children[index * 2], children[index * 2 + 1]] as const);
 }

@@ -2,6 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { hasPrivateSaveFixtures } from '../../tests/support/privateSaveFixtures';
 import crops from '../../data/generated/build-25640656/entities/crops.json';
+import cropQuality from '../../data/sources/game-crop-quality.json';
 import { DAILY_CROPS, farmableCells, gameDate, readDailySave, type DailySnapshot } from './saveDaily';
 import { buildDailyDigest, landSummary } from '../domain/dailyDigest';
 import { emptyFarmArea, learnFarmArea } from './farmArea';
@@ -126,5 +127,13 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     expect(landSummary(saves['save.004'].snapshot.cells, new Set(area.include))).toEqual({ area: 586, planted: 394, tilled: 96, plain: 96, wild: 0 });
     // Learned cells are all ground that could be farmed again.
     expect(farmableCells(saves['save.004'].doc, area.include)).toHaveLength(586);
+  });
+
+  it('reads harvest counts and brand names under the items the counts are kept under', () => {
+    const counts = new Set(cropQuality.seeds.map((seed) => seed.count_item_numeric_id));
+    const { harvested, brands } = saves['save.004'].snapshot;
+    expect(Object.keys(harvested).length).toBeGreaterThan(0);
+    expect(Object.entries(harvested).every(([id, count]) => counts.has(Number(id)) && Number.isInteger(count) && count > 0)).toBe(true);
+    expect(brands.every((id) => counts.has(id))).toBe(true);
   });
 });

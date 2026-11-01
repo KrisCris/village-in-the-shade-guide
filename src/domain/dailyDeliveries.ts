@@ -1,6 +1,7 @@
 import type { DailyBundleSpec } from '../data/dailyPayload';
 import type { DailyBundle, DailyStack } from '../lib/saveDaily';
 import { itemSources, type ItemSource, type SourceContext } from './dailySources';
+import { qualityProgress, type QualityProgress } from './dailyQuality';
 
 /**
  * Which delivery lists to hand in today. A save keeps what is still owed for
@@ -10,7 +11,8 @@ import { itemSources, type ItemSource, type SourceContext } from './dailySources
  * finish today, then to unfinished lists, which keep them back from selling
  * and processing.
  */
-export interface DeliveryLine { itemId: number; rank: number; remain: number; have: number; sources: ItemSource[] }
+/** `quality` is set when the crop's harvest count does not give the grade the line asks for yet. */
+export interface DeliveryLine { itemId: number; rank: number; remain: number; have: number; sources: ItemSource[]; quality?: QualityProgress }
 export interface DeliveryPlan {
   spec: DailyBundleSpec;
   lines: DeliveryLine[];
@@ -72,6 +74,10 @@ function sourceDays(source: ItemSource, short: number, daysLeft: number): number
   return undefined;
 }
 
+/** Sources that give the grade a line asks for: crops harvest below it until their count reaches it. */
+const GROWN = new Set<ItemSource['kind']>(['field', 'plant', 'orchard']);
+const supply = (line: DeliveryLine) => line.quality ? line.sources.filter((source) => !GROWN.has(source.kind)) : line.sources;
+
 /** Whether a source can still supply the item this season, dated or not: sowing, felling and machines count. */
 function inSeason(source: ItemSource, daysLeft: number): boolean {
   if (source.kind === 'fish') return source.today || source.now && daysLeft > 0;
@@ -94,8 +100,11 @@ export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[]
 
   const items = pool(held);
   const ready: DeliveryPlan[] = [], pending: DeliveryPlan[] = [];
-  const line = (item: { itemId: number; rank: number; remain: number }, have: number): DeliveryLine =>
-    ({ ...item, have, sources: have < item.remain ? itemSources(item.itemId, context) : [] });
+  const line = (item: { itemId: number; rank: number; remain: number }, have: number): DeliveryLine => {
+    if (have >= item.remain) return { ...item, have, sources: [] };
+    const quality = qualityProgress(item.itemId, item.rank, context);
+    return { ...item, have, sources: itemSources(item.itemId, context), ...(quality ? { quality } : {}) };
+  };
   for (const spec of candidates) {
     const rows = owed.get(spec.id)!;
     if (!rows.every((row) => available(items, row.itemId, row.rank) >= row.remain)) continue;
@@ -115,10 +124,10 @@ export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[]
       return line(row, have);
     });
     const days = lines.filter((row) => row.have < row.remain).map((row) => {
-      const known = row.sources.map((source) => sourceDays(source, row.remain - row.have, context.daysLeft)).filter((value): value is number => value !== undefined);
+      const known = supply(row).map((source) => sourceDays(source, row.remain - row.have, context.daysLeft)).filter((value): value is number => value !== undefined);
       return known.length ? Math.min(...known) : undefined;
     });
-    const offSeason = lines.some((row) => row.have < row.remain && !row.sources.some((source) => inSeason(source, context.daysLeft)));
+    const offSeason = lines.some((row) => row.have < row.remain && !supply(row).some((source) => inSeason(source, context.daysLeft)));
     pending.push({ spec, ready: false, lines, ...(days.every((value) => value !== undefined) ? { eta: Math.max(...days as number[]) } : {}), ...(offSeason ? { offSeason } : {}) });
   }
   return { ready, pending, done: tracked.length - open.length, total: tracked.length, catalogOpen, keep: [...keep.values()] };

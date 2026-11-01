@@ -119,7 +119,9 @@
 - 稻草人的范围和时长来自道具说明（“对中心起算5×5格，可以发挥28天效果”），存档里的范围标记是 `PLACEMENT_EFFECT_RANGE_2`。失效的稻草人不会自己消失，要用斧头拆掉。
 - 栽培包的道具说明写着“只在秋天生长”。页面把秋天以外、又不在秋天稻草人范围内的栽培包当作停止生长，不列进预测和提醒。
 - 交付接受要求品质及以上的物品，没有期限。目录在标志 12036 开启后开放。品牌是最高的品质，所以要求品牌时不写“及以上”。
-- 要求品牌品质的作物另附一句：先收到金星的作物，再拿去品评会认定并起名。这条来自玩家说明，还没对照游戏数据。
+- 作物的收获品质看存档里的收获数（`pHarvestStatus_`）：收出的是收获数已达到的最高一档。起了品牌名的作物（`brandCropsNameMap_`）每次都收出品牌。门槛来自 `item.dat` 的 `needValue` 乘 `HARVEST_COUNT_RATE_*`，规则见作物品质指南（`/guides/crop-quality/`）。
+- 交付要求的品质比作物现在收出的高时，这一行写已收多少、要收到多少，以及要种多少：今天种来得及就写今天种几个种子，能一直收到这种作物还能长的最后一季季末；来不及就写下一个能种的季节第一天种几个。果树和茶树写要几棵结一季才够，以及农场里已经有几棵。一颗种子按收一次算，会再生的作物算到季末的每一次。稻米只在春季长，却要 50 天：页面让它在春季前 5 天种下，春季最后一天在田里放春天稻草人（每个管周围 24 格），靠稻草人长过换季，并写出要放几个。田里正在长的这种作物收出来还不到这一档，不算进这一行的预计天数。
+- 要品牌时还写：金星的作物在每季 27 日拿去作物品评会，评到 S 起了品牌名才是品牌。收获数已经到金星时只写这一句。
 - 水田不用浇水。
 
 ## 还没核实
@@ -135,14 +137,15 @@
 - 山菜和昆虫长在哪里：`naturaloccurrence.dat` 只有生成组和季节，地图文件里也没有出现这些组的名字。
 - 深夜时商店能不能买种子、树木建设能不能下订单、采石场能不能进：页面没有按时间调整这些事项。
 - 卖掉家畜后的回礼和狩猎证明的报酬：`livestock.dat` 和 `huntreward.dat` 每种都列了几样东西和加起来是 100 的权重，看起来是按权重抽一样，但还没在游戏代码里确认，所以页面只写“可能有”“可能换到”，不写概率。
-- 作物的品质：`gamedefine.dat` 的 `HARVEST_COUNT_RATE_*` 说明品质随收获数上升，但每种作物要收多少还没导出，页面还不能算要种几颗。
+- 稻米靠稻草人长过换季：这是按栽培包在稻草人下长过换季的观察推的，存档里没有在长的稻米可以对照。
+- 肥料让收获品质提高的机会：页面不算，所以要种的数量可能偏多。毛豆枯萎后收的黄豆算不算进收获数也没核对，页面只按收毛豆计算。
 
 ## 代码位置
 
-- `src/lib/saveDaily.ts`：从存档读出格子、设备、物品、交付进度、树木、畜舍、采石场进度、稻草人和图鉴记录。
-- `src/data/dailyPayload.ts`：生成 `daily-data.json`，包括交付清单、设备配方、卖价、鱼的季节和各钓点的上钩概率、山菜和昆虫的季节、采石场掉落、各作物的种子和出售商店、狩猎证明能换的东西、畜产品和畜舍订单。
+- `src/lib/saveDaily.ts`：从存档读出格子、设备、物品、交付进度、树木、畜舍、采石场进度、稻草人、图鉴记录、各作物的收获数和起了品牌名的作物。
+- `src/data/dailyPayload.ts`：生成 `daily-data.json`，包括交付清单、设备配方、卖价、鱼的季节和各钓点的上钩概率、山菜和昆虫的季节、采石场掉落、各作物的种子和出售商店、各收获物的品质门槛、狩猎证明能换的东西、畜产品和畜舍订单。
 - `src/domain/dailyDigest.ts`：田里的每日规则，不依赖存档，测试用合成数据。
-- `src/domain/dailyPlan.ts`：把交付（`dailyDeliveries`）、加工（`dailyProcessing`）、材料（`dailyMaterials`、`dailySources`）、种植（`dailyPlanting`）、家畜（`dailyLivestock`）、今日可收集（`dailyCollect`）和今日待办（`dailyActions`）串起来。
+- `src/domain/dailyPlan.ts`：把交付（`dailyDeliveries`）、加工（`dailyProcessing`）、材料（`dailyMaterials`、`dailySources`）、种植（`dailyPlanting`）、家畜（`dailyLivestock`）、今日可收集（`dailyCollect`）和今日待办（`dailyActions`）串起来。交付的品质进度和要种的数量在 `dailyQuality`。
 - `src/lib/dailyData.ts`：载入页面数据，保存设置；`src/lib/farmArea.ts`：农田范围的合并和存储。
 - `src/components/daily/`：页面和农田地图（复用存档编辑器的 `MapCanvas`，农场外是 `public/maps/village/` 里的村子分块图，由 `tools/extract-village-art.py` 导出）。
 - 用存档核对的测试在 `src/lib/saveDaily.test.ts` 和 `src/domain/dailyPlan.test.ts`，需要解密的存档样本（见 `tests/gamesave/README.md`），没有样本时自动跳过。

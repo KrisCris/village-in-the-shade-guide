@@ -61,6 +61,7 @@ export function dailyPlan(input: {
   const context: SourceContext = {
     season: snapshot.date.season, periods: periodsLeft(snapshot.date.hour), daysLeft: DAYS_PER_SEASON - snapshot.date.day, crops: DAILY_CROPS, ripening: rows, payload, owned: new Set(snapshot.houses.flatMap((house) => house.residents)),
     trees: snapshot.trees, held, processes: SOURCE_PROCESSES, quarryReached: snapshot.quarryReached, collectors, unlocked, orchard: orchard(snapshot, DAILY_CROPS),
+    harvested: snapshot.harvested, brands: new Set(snapshot.brands),
   };
   const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.catalogOpen);
   const free = freeAfterDeliveries(snapshot.held, deliveries);
