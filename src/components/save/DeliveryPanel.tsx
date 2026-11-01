@@ -2,6 +2,7 @@ import type { MaterialRequest } from '../../lib/saveInventory';
 import { useMemo, useState } from 'react';
 import { readDeliveries, UNLOCKS } from '../../lib/saveDeliveries';
 import { flagEnabled, type ProgressEdits } from '../../lib/saveProgress';
+import { BRAND_RANK } from '../../lib/saveRules';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
 import type { SaveModel } from '../../lib/saveModel';
 import type { SaveNameTables } from '../../lib/saveNames';
@@ -48,7 +49,7 @@ export default function DeliveryPanel({ model, names, edits, onReplace, onMateri
       <div className="save-delivery-scroll">{bundles.map(b => <article className="save-delivery-bundle" key={b.id}>
         <header><h4>{b.name}</h4><span className="save-unlock-state" data-state={complete(b.id) ? 'complete' : 'pending'}>{complete(b.id) ? tr('✓ 已交付') : tr('○ 交付中')}</span></header>
         <div className="save-delivery-materials">{b.items.map((item, i) => { const key = `${b.id}:${i}`, row = rows.get(key); return <label key={key} className={count(key) === item.count ? 'complete' : ''}>
-          <SaveIcon names={names} kind="items" value={String(item.itemId)} size={44} /><span><strong>{itemLabel(names, String(item.itemId))}</strong><small>{row ? `${ranks[row.rank] ?? tr('未知品质')}${row.rank > 0 ? tr('及以上') : ''}` : tr('此存档没有该项记录')}</small></span>
+          <SaveIcon names={names} kind="items" value={String(item.itemId)} size={44} /><span><strong>{itemLabel(names, String(item.itemId))}</strong><small>{row ? `${ranks[row.rank] ?? tr('未知品质')}${row.rank > 0 && row.rank !== BRAND_RANK ? tr('及以上') : ''}` : tr('此存档没有该项记录')}</small></span>
           <span className="save-delivery-count"><small>{tr('已交付')}</small><span><input type="number" min="0" max={item.count} step="1" disabled={!row} aria-label={tr('{name} · {itemLabel}已交付数量', { name: b.name, itemLabel: itemLabel(names, String(item.itemId)) })} value={count(key)} onChange={e => { const n = e.target.valueAsNumber; if (Number.isInteger(n)) change({ [key]: Math.max(0, Math.min(item.count, n)) }); }} /><span>/ {item.count}</span></span></span>
         </label>; })}</div>
         <footer><div className="save-delivery-reward"><SaveIcon names={names} kind="items" value={String(b.reward)} size={28} /><small>{tr('奖励：')}{itemLabel(names, String(b.reward))} × {b.rewardCount}</small></div><div className="save-delivery-buttons"><button type="button" disabled={complete(b.id) || b.items.some((_, i) => !rows.has(`${b.id}:${i}`))} onClick={() => onMaterials(b.items.map((item, i) => ({ itemId: item.itemId, rank: item.rank, count: Math.max(0, item.count - count(`${b.id}:${i}`)) })))}>{tr('剩余材料加入背包')}</button><button type="button" onClick={() => fill(b.id, true)}>{tr('留最后一件')}</button><button type="button" onClick={() => fill(b.id, false)}>{tr('标记完成')}</button>{b.items.some((_, i) => edits.deliveries?.[`${b.id}:${i}`] !== undefined) && <button type="button" onClick={() => change(Object.fromEntries(b.items.map((_, i) => [`${b.id}:${i}`, undefined])))}>{tr('撤销')}</button>}</div></footer>

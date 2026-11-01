@@ -16,29 +16,20 @@ const blocks: Record<SectionId, Block[]> = {
     ...groups.map(group => ({ group: t(group.label), links: group.guides.map(guide => ({ href: guide.href, label: t(guide.label ?? guide.title) })) })),
   ],
 };
-// Counts what a section holds; the guide index link is not a guide.
-const count = (id: SectionId) => blocks[id].flatMap(block => block.links).filter(link => link.href !== '/guides/').length;
 const sectionId = currentSection(path);
-const current = sections.find(section => section.id === sectionId);
-const others = sections.filter(section => section !== current);
-const active = current && currentLink(path, blocks[current.id].flatMap(block => block.links.map(link => link.href)));
+const active = sectionId && currentLink(path, blocks[sectionId].flatMap(block => block.links.map(link => link.href)));
+// Sections keep their order on every page; only the open state follows the page.
+// Pages outside all sections (search, save tools) open everything.
+const open = (id: SectionId) => !sectionId || id === sectionId;
 ---
 <aside class="sidebar">
-  <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">{current ? `${t(current.label)} · ${count(current.id)}` : t('主要分类')}<span aria-hidden="true">⌄</span></button>
+  <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">{t('主要分类')}<span aria-hidden="true">⌄</span></button>
   <nav id="sidebar-links" aria-label={t('主要分类')}>
-    {current && <>
-      <p class="section">{t(current.label)}</p>
-      {blocks[current.id].map(block => <>
-        {block.group && <p class="group">{block.group}</p>}
-        {block.links.map(link => <a href={href(link.href)} aria-current={link.href === active ? 'page' : undefined}>{link.label}</a>)}
-      </>)}
-      <p class="section">{t('其他栏目')}</p>
-    </>}
-    {others.map(section => <details>
-      <summary><span>{t(section.label)}</span><span class="count">{count(section.id)}</span></summary>
+    {sections.map(section => <details open={open(section.id)}>
+      <summary>{t(section.label)}</summary>
       <div class="section-links">{blocks[section.id].map(block => <>
-        {block.group && <p class="group">{block.group}</p>}
-        {block.links.map(link => <a href={href(link.href)}>{link.label}</a>)}
+        {block.group && <p>{block.group}</p>}
+        {block.links.map(link => <a href={href(link.href)} aria-current={link.href === active ? 'page' : undefined}>{link.label}</a>)}
       </>)}</div>
     </details>)}
   </nav>
@@ -65,28 +56,25 @@ const active = current && currentLink(path, blocks[current.id].flatMap(block => 
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }
   .mobile-nav-toggle { display: none; }
   nav { position: sticky; top: 86px; max-height: calc(100vh - 96px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: grid; align-content: start; gap: .25rem; padding: 2px; }
-  p { margin: 1rem .7rem .35rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
-  nav > p.section:first-child { margin-top: .2rem; }
-  nav p.group { margin: .7rem .7rem .15rem; color: var(--muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; }
+  summary { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .6rem; padding: .4rem .7rem; border-radius: 8px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; cursor: pointer; list-style: none; }
+  details:first-child > summary { margin-top: 0; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '›'; font-size: 1rem; letter-spacing: 0; transition: transform .2s; }
+  details[open] > summary::after { transform: rotate(90deg); }
+  summary:hover { background: var(--green-soft); }
+  p { margin: .7rem .7rem .15rem; color: var(--muted); font-size: .74rem; font-weight: 700; letter-spacing: .04em; }
+  .section-links { display: grid; gap: .1rem; }
   a { padding: .58rem .7rem; border-radius: 8px; color: var(--ink); text-decoration: none; } a:hover { background: var(--green-soft); color: var(--green); }
   nav a[aria-current="page"] { background: var(--green-soft); color: var(--green); font-weight: 700; border-left-color: var(--green); }
   a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
-  summary { display: flex; align-items: center; gap: .5rem; padding: .45rem .7rem; border-radius: 8px; color: var(--ink); cursor: pointer; list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  summary:hover { background: var(--green-soft); color: var(--green); }
-  summary span:first-child { flex: 1; }
-  .count { color: var(--muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
-  summary::after { content: '›'; color: var(--muted); transition: transform .2s; }
-  details[open] > summary::after { transform: rotate(90deg); }
-  .section-links { display: grid; gap: .1rem; padding: .15rem 0 .4rem .6rem; }
   @media (max-width: 800px) {
     .sidebar { border-right: 0; border-bottom: 1px solid var(--border); padding: .6rem 1rem; }
     .mobile-nav-toggle { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: space-between; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--paper-raised); color: var(--ink); font: inherit; cursor: pointer; }
     .mobile-nav-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
-    nav { display: none; position: static; max-height: none; overflow: visible; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: .5rem; }
+    nav { display: none; position: static; max-height: none; overflow: visible; padding-bottom: .5rem; }
     .mobile-nav-toggle[aria-expanded="true"] + nav { display: grid; }
-    p, details { grid-column: 1 / -1; }
     summary { min-height: 44px; }
-    .section-links { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 0; }
+    .section-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    p { grid-column: 1 / -1; }
   }
 </style>

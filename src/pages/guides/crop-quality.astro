@@ -1,0 +1,106 @@
+---
+import { withBase } from '../../lib/sitePath';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RankIcon from '../../components/save/RankIcon';
+import {getCatalog,entityUrl} from '../../data/repository';
+import quality from '../../../data/sources/game-crop-quality.json';
+import unlocks from '../../../data/sources/game-save-unlocks.json';
+import production from '../../../data/sources/game-livestock-products.json';
+import { getI18n } from '../../i18n/server';
+const {t,tHtml,href,locale}=getI18n(Astro.url);
+const catalog=getCatalog(locale);
+const byId=new Map(catalog.entities.map(e=>[`${e.kind}:${e.id}`,e]));
+const item=(id:string)=>byId.get(`items:${id}`)!;
+const numeric=new Map(catalog.entities.filter(e=>e.kind==='items').map(e=>[e.numeric_id,e]));
+const names=(ids:string[])=>ids.map(id=>item(id).name.zh_hans).join(t('、'));
+const rankNames=[t('无星'),t('铜★'),t('银★'),t('金★'),t('品牌')];
+const rates=quality.sell_price_rates;
+const tiers=[
+  [rates.normal,t('收获数不到门槛的 10%')],
+  [rates.copper,t('收到门槛的 10%')],
+  [rates.silver,t('收到门槛的 40%')],
+  [rates.gold,t('收满门槛')],
+  [rates.brand,t('金★作物在品评会拿 S')],
+] as const;
+// One row per harvest requirement; plants that share a requirement share a row.
+const needs=[...new Set(quality.seeds.map(s=>s.need))].sort((a,b)=>a-b).map(need=>({need,seeds:quality.seeds.filter(s=>s.need===need)}));
+const seedById=(id:string)=>quality.seeds.find(s=>s.seed_item_id===id)!;
+const rice=seedById('ITEM_ID_SEED_RICE');
+const best=quality.fertilizers.reduce((a,b)=>b.rate_percent>a.rate_percent?b:a);
+const shared=quality.seeds.filter(s=>s.harvest_item_ids.length>1);
+const seedOf=(id:string)=>quality.seeds.find(s=>s.harvest_item_ids.includes(id));
+const fertilizers=quality.fertilizers.map(f=>t('{item} {rate}%',{item:item(f.item_id).name.zh_hans,rate:f.rate_percent})).join(t('、'));
+const animals=quality.animal_products;
+const moods=[t('心情 {max} 以下',{max:animals.mood_threshold_normal}),t('{min}–{max}',{min:animals.mood_threshold_normal+1,max:animals.mood_threshold_good}),t('高于 {min}',{min:animals.mood_threshold_good})];
+const odds=(row:number[])=>row.map((percent,rank)=>percent?t('{rank} {percent}%',{rank:rankNames[rank],percent}):'').filter(Boolean).join(' · ');
+// The deliveries that ask for brand quality, with what makes each item.
+const luxury=unlocks.groups.find(g=>g.bundles.some(id=>unlocks.bundles.find(b=>b.id===id)!.items.some(need=>need.rank===4)))!;
+const localized=(row:{name:string;nameTranslations:Record<string,string>})=>locale==='zh-CN'?row.name:row.nameTranslations[locale]||row.name;
+const bundleEntity=(id:number)=>catalog.entities.find(e=>e.kind==='activities'&&e.numeric_id===id&&e.id.startsWith('BUNDLE_ID_'));
+const producers=(id:string)=>production.animals.filter(a=>(a.product_item_ids as string[]).includes(id)).map(a=>byId.get(`livestock:${a.livestock_id}`)!);
+const brandBundles=luxury.bundles.map(id=>unlocks.bundles.find(b=>b.id===id)!).filter(b=>b.items.some(need=>need.rank===4)).map(bundle=>({bundle,entity:bundleEntity(bundle.id),items:bundle.items.map(need=>{
+  const product=numeric.get(need.itemId)!,seed=seedOf(product.id);
+  if(seed){
+    const crop=item(seed.count_item_id).name.zh_hans;
+    const route=seed.count_item_id===product.id?t('{crop}收满 {gold} 个后出金★',{crop,gold:seed.gold}):t('算在{crop}的计数里，{crop}收满 {gold} 个后出金★',{crop,gold:seed.gold});
+    const extra=product.id==='ITEM_ID_CROPS_TEA_TREE'?t('茶树苗要等第一次在品评会出品后才在杂货店上架，茶叶只在春季收。'):'';
+    return {product,need,seed:seed.seed_item_id,route:[route,extra].filter(Boolean).join(t('；'))};
+  }
+  const from=producers(product.id);
+  return {product,need,animal:from[0].id,route:t('让一只{animals}在品评会拿到 S',{animals:from.map(a=>a.name.zh_hans).join(t('或'))})};
+})}));
+const entries=brandBundles.flatMap(b=>b.items);
+const fairs=new Set(entries.map(e=>e.seed??e.animal)).size;
+---
+<BaseLayout title={t('作物品质、品评会与品牌')}><h1>{t('作物品质、品评会与品牌')}</h1>
+<nav><a href="#ranks">{t('品质与售价')}</a>　<a href="#count">{t('收获数门槛')}</a>　<a href="#fertilizer">{t('肥料')}</a>　<a href="#fair">{t('作物品评会')}</a>　<a href="#animals">{t('畜产品')}</a>　<a href="#greenhouse">{t('温室委托')}</a></nav>
+<section id="ranks"><h2>{t('五档品质和售价')}</h2><p>{t('作物和畜产品都分五档品质，售价按下表的倍率算。品牌是最高一档。')}</p>
+<div class="table-box"><table><thead><tr><th scope="col">{t('品质')}</th><th scope="col">{t('售价')}</th><th scope="col">{t('作物怎么得到')}</th></tr></thead><tbody>{tiers.map(([rate,how],rank)=><tr><th scope="row"><span class="rank">{rank>0&&<RankIcon rank={rank} decorative className="rank-star"/>}{rankNames[rank]}</span></th><td class="num">×{rate}</td><td>{how}</td></tr>)}</tbody></table></div></section>
+<section id="count"><h2>{t('收获越多，品质越高')}</h2><p>{t('每种作物有一个收获数门槛。这种作物累计收到门槛的 {copper}% 后出铜★，{silver}% 后出银★，收满门槛后出金★。按收到的个数算，一次收 10 个稻米就加 10。',{copper:quality.harvest_count_rates.copper*100,silver:quality.harvest_count_rates.silver*100})}</p><ul>
+<li>{t('品质按收获前的计数定。正好跨过门槛的那次收获还是原来的品质，下一次才升档；跨过门槛时会弹出品质提升的提示。')}</li>
+<li>{t('计数从第 1 章向祭坛供奉之后才开始，之前收的不算。')}</li>
+<li>{t('已经收进背包或仓库的作物不会跟着升档。')}</li>
+<li>{t('同一株作物收的不同东西共用一个计数，后面说的品牌也一起算：{list}。',{list:shared.map(s=>t('{items}算在{crop}里',{items:names(s.harvest_item_ids.slice(1)),crop:item(s.count_item_id).name.zh_hans})).join(t('；'))})}</li>
+</ul>
+<div class="table-box"><table class="needs"><thead><tr><th scope="col">{t('作物')}</th>{[1,2,3].map(rank=><th scope="col" class="num"><span class="rank"><RankIcon rank={rank} decorative className="rank-star"/>{rankNames[rank]}</span></th>)}</tr></thead><tbody>{needs.map(row=><tr><td><div class="crops">{row.seeds.map(seed=>{const crop=item(seed.count_item_id);return <a href={href(entityUrl(crop))}>{crop.icon_path&&<img src={withBase(crop.icon_path)} width="28" height="28" alt="" loading="lazy"/>}{crop.name.zh_hans}</a>;})}</div></td><td class="num">{row.seeds[0].copper}</td><td class="num">{row.seeds[0].silver}</td><td class="num">{row.seeds[0].gold}</td></tr>)}</tbody></table></div>
+<p class="note">{t('数字是这种作物要累计收获的个数。')}</p></section>
+<section id="fertilizer"><h2>{t('施肥能多升一档')}</h2><p>{t('施过肥的作物收获时按肥料的成功率判定：{list}。成功时无星、铜★、银★各升一档，已经是金★或品牌的则收获数量翻倍。果树和菌类栽培包不受肥料影响。',{list:fertilizers})}</p><p>{t('收到银★门槛后施肥，收获时就有机会直接出金★，不必等收满门槛再去品评会。以{crop}为例：收满 {gold} 个才一定出金★；收到 {silver} 个后施{fertilizer}，有 {rate}% 的成功率出金★。',{crop:item(rice.count_item_id).name.zh_hans,gold:rice.gold,silver:rice.silver,fertilizer:item(best.item_id).name.zh_hans,rate:best.rate_percent})}</p></section>
+<section id="fair"><h2>{t('在作物品评会拿品牌')}</h2><ol>
+<li set:html={tHtml('品评会每季 27 日上午 10 点到下午 4 点在广场举行。之前会收到通知信，回信时在作物、家畜、马三个部门里选一个参加。家畜和马的评分见<a href="/guides/livestock-plan/#fair">家畜品评会</a>。')} />
+<li>{t('当天和工作人员说话，从背包里选一样作物出品。评分只看这件作物的品质：金★ S，银★ A，铜★ B，无星 C。评完作物会还给你。')}</li>
+<li>{t('作物拿到 S 后要给它起品牌名。从此这种作物每次收获都是品牌，不再看收获数；共用计数的收获物也一起变成品牌。')}</li>
+<li>{t('已经是品牌的作物再出品，评语还是 S，不会再起名，所以每次品评会最好换一种还没有品牌的作物。')}</li>
+</ol><p>{t('第一次在品评会出品后，不论哪个部门，杂货店开始卖茶树苗；秋季品评会的第二天起，杂货店开始卖香菇、鸿喜菇和木耳栽培包。')}</p></section>
+<section id="animals"><h2>{t('畜产品的品质')}</h2><p set:html={tHtml('畜产品不看收获数，看产出它的那只家畜。在家畜或马的品评会拿到 S 的那一只会成为品牌家畜，它产的东西全部是品牌。拿 S 要多少分见<a href="/guides/livestock-plan/#fair">品评会怎么算名次</a>。')} /><p>{t('其他家畜按亲密度等级和心情决定品质，最高只到金★。亲密度每 {per} 点一级，鸡等亲密度上限 {easyMax} 的家畜每 {easyPer} 点一级，最高 5 级。',{per:animals.love_rate_per_level,easyMax:animals.love_rate_max_easy,easyPer:animals.love_rate_per_level_easy})}</p>
+<div class="table-box"><table class="odds"><thead><tr><th scope="col">{t('亲密度等级')}</th>{moods.map(mood=><th scope="col">{mood}</th>)}</tr></thead><tbody>{animals.odds.map((row,level)=><tr><th scope="row" class="num">{level}</th>{row.map(cell=><td>{odds(cell)}</td>)}</tr>)}</tbody></table></div></section>
+<section id="greenhouse"><h2>{t('温室委托要的品牌货')}</h2><p set:html={tHtml('林的“{group}”委托里有 {count} 组要品牌品质，交完才能建<a href="/guides/buildings/#greenhouse">温室</a>。',{group:localized(luxury),count:brandBundles.length})} />
+<div class="bundles">{brandBundles.map(({bundle,entity,items})=><div class="bundle card"><h3>{entity?<a href={href(entityUrl(entity))}>{entity.name.zh_hans}</a>:localized(bundle)}</h3>{items.map(({product,need,route})=><div class="need"><a href={href(entityUrl(product))}>{product.icon_path&&<img src={withBase(product.icon_path)} width="32" height="32" alt="" loading="lazy"/>}<span>{product.name.zh_hans} ×{need.count}</span></a><p>{route}</p></div>)}</div>)}</div>
+<p set:html={tHtml('每次品评会只能出品一样东西。这些品牌货分别来自 {count} 种作物或家畜，所以至少要参加 {count} 次品评会，每次都拿 S。猪和克什米尔山羊要先在品评会拿到规定的名次才会上架，见<a href="/guides/livestock-plan/#unlock">家畜解锁条件</a>。',{count:fairs})} /></section>
+<details class="sources"><summary>{t('游戏数据来源')}</summary><p>{t('gamedefine.dat 的 HARVEST_COUNT_RATE_COPPER／SILVER／GOLD（0.1、0.4、1.0）、ITEM_SELLING_PRICE_RATE_*、LIVESTOCK_LOVE_RATE_MAX_EASY、LIVESTOCK_MOOD_THRESHOLD_NORMAL／GOOD；item.dat：种苗的 tagID（计数记在哪个收获物下）和 needValue（收获数门槛），收获物的 tagID（指回种苗）；fertilizer.dat：三种肥料的成功率；storesales.dat：茶树苗和菌类栽培包的上架条件；event_holiday_fair、event_rankup 脚本和 talk.dat：品评会部门、评分、起品牌名和升档提示；village.exe 0x140177470（收获时的品质）、0x1400f3500（计数、肥料）、0x140117570（畜产品品质）。存档里 pHarvestStatus_ 记每种作物的累计收获数，brandCropsNameMap_ 记已经起了品牌名的作物。')}</p><p>{t('还没核对：出品菜单会列出背包里的哪些东西；肥料是每次收获判定一次还是每个收获物各判定一次；品评会从哪一年哪一季开始举行。gamedefine 里另有 FERTITIZER_RATE_*（5、15、35），收获时用的是 fertilizer.dat 的数值。')}</p></details>
+</BaseLayout>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.note{color:var(--muted);font-size:.88rem}
+.table-box{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--paper-raised)}
+.table-box table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+.table-box th,.table-box td{padding:.5rem .7rem;border-bottom:1px solid color-mix(in srgb,var(--border) 60%,transparent);text-align:left;vertical-align:middle}
+.table-box tbody tr:last-child>*{border-bottom:0}
+.table-box thead th{background:var(--paper);font-weight:600;white-space:nowrap}
+.table-box .num{text-align:center;white-space:nowrap}
+.rank{display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap}
+.rank :global(.rank-star){width:20px;height:auto;flex:none}
+.needs th:first-child{width:100%}
+.crops{display:flex;flex-wrap:wrap;gap:.3rem .9rem}
+.crops a{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;white-space:nowrap}
+.crops a:hover{text-decoration:underline}
+.crops img,.need img{object-fit:contain;flex:none}
+@media (max-width:560px){
+  .needs tr{display:grid;grid-template-columns:repeat(3,1fr)}
+  .needs thead th:first-child{display:none}
+  .needs td.num{border-bottom:0;padding-bottom:.2rem;font-weight:600}
+  .needs td:first-child{grid-column:1/-1;order:1;padding-top:.3rem}
+}
+.odds td{min-width:9rem}
+.bundles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:.8rem;margin:.8rem 0}
+.bundle{padding:.9rem 1rem;margin:0}.bundle h3{margin:0 0 .5rem;font-size:1rem}
+.need{margin:.6rem 0}.need a{display:flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:600}
+.need p{margin:.2rem 0 0;font-size:.85rem;color:var(--muted);line-height:1.6}
+nav{line-height:2}</style>

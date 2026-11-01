@@ -7,7 +7,7 @@ import type { CropRules } from '../domain/dailyDigest';
 import { collectContainers, SHIPPING_BOX_ID } from './saveItems';
 import { machineJobs, machineSpec, mapValue } from './saveMachines';
 import { UNLOCKS } from './saveDeliveries';
-import { flagEnabled } from './saveProgress';
+import { flagEnabled, readEncyclopedia } from './saveProgress';
 import { animalHouses, animalResidents } from './saveAnimals';
 import { tr } from '../i18n/active';
 
@@ -31,6 +31,8 @@ export interface DailyCell {
   /** Growth points of the last stage of the current form; 0 when the form does not grow. */
   maximum: number;
   fertilizer: number;
+  /** Fruit a grown fruit tree still drops when shaken today. */
+  shake?: number;
 }
 export interface DailyStack { itemId: number; rank: number; count: number }
 export interface DailyJob { output: number; count: number; seconds: number; remaining: number }
@@ -73,6 +75,12 @@ export interface DailySnapshot {
   held: DailyStack[];
   shipping: DailyStack[];
   animals: { total: number; fed: number };
+  /** Items the encyclopedia has recorded. */
+  encyclopedia: number[];
+  /** Pieces harvested per crop count (pHarvestStatus_), keyed by the item the count is kept under. */
+  harvested: Record<number, number>;
+  /** Count items whose crop has a brand name (brandCropsNameMap_): every harvest of it is 品牌. */
+  brands: number[];
 }
 
 const DAY = 86_400;
@@ -82,7 +90,7 @@ const stageItems = (stages: Array<{ state: number; item_numeric_id: number; quan
   stages.filter((stage) => stage.state === state).map((stage): [number, number] => [stage.item_numeric_id, stage.quantity]);
 export const DAILY_CROPS: CropRules = new Map(MAP_CROPS.map((crop) => [crop.numeric_id, {
   seasons: crop.seasons, perennial: crop.perennial, witheredHarvest: crop.harvest_stages.some((stage) => stage.state === 9),
-  harvest: stageItems(crop.harvest_stages, 1), regrow: crop.regrow_days ? { days: crop.regrow_days, items: stageItems(crop.harvest_stages, 4) } : undefined,
+  harvest: stageItems(crop.harvest_stages, 1), withered: stageItems(crop.harvest_stages, 9), regrow: crop.regrow_days ? { days: crop.regrow_days, items: stageItems(crop.harvest_stages, 4) } : undefined,
 }]));
 /** Timber trees (crops.dat 1000–1004): chestnut, cedar, pine, oak and hinoki. */
 export const TIMBER_TREES = [1000, 1001, 1002, 1003, 1004];
@@ -164,11 +172,13 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     const farm = farmCrops.has(cell.crop);
     if (!cell.soil && !farm) continue;
     const growth = farm ? cropGrowth(doc, {}, FARM_SCENE, cell.id) : null;
+    const drops = number('p/pCropsStatus_/p/maxShakeDropCount_', cell.node) - number('p/pCropsStatus_/p/shakeDropCount_', cell.node);
     cells.push({
       id: cell.id, crop: farm ? cell.crop : 0, wild: !!cell.crop && !farm, soil: cell.soil,
       wet: !!number('p/pFarmlandStatus_/p/water_/this->value_', cell.node),
       form: growth?.form ?? 0, growth: growth?.growth ?? 0, maximum: growth?.maximum ?? 0,
       fertilizer: number('p/pFarmlandStatus_/p/pFertilizerData_/dataID', cell.node),
+      ...(farm && drops > 0 ? { shake: drops } : {}),
     });
   }
 
@@ -203,5 +213,14 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     held: stacks(['backpack', 'storage']),
     shipping: stacks([], SHIPPING_BOX_ID),
     animals: { total: fed.length, fed: fed.filter(Boolean).length },
+    encyclopedia: [...readEncyclopedia(doc)].map(Number),
+    harvested: Object.fromEntries(mapPairs(doc, 'pHarvestStatus_/p/nowValue_').map(([key, value]) => [Number(readSigned(doc, key)), Number(readSigned(doc, value))])),
+    brands: mapPairs(doc, 'brandCropsNameMap_').map(([key]) => Number(readSigned(doc, key))),
   };
+}
+
+/** A save map's children as key/value node pairs. */
+function mapPairs(doc: SerDocument, path: string) {
+  const map = doc.resolve(path), children = map ? doc.children(map) : [];
+  return Array.from({ length: Math.floor(children.length / 2) }, (_, index) => [children[index * 2], children[index * 2 + 1]] as const);
 }
