@@ -1,15 +1,16 @@
 ---
 import { getI18n } from '../../i18n/server';
+import { SEASON_GLYPHS } from './seasonGlyphs';
 const { t } = getI18n(Astro.url);
 const seasons = [
-  { id: 'spring', name: t('春'), label: t('春季留货') },
-  { id: 'summer', name: t('夏'), label: t('夏季留货') },
-  { id: 'autumn', name: t('秋'), label: t('秋季留货') },
-  { id: 'winter', name: t('冬'), label: t('冬季留货') },
-];
+  { id: 'spring', label: t('春季留货') },
+  { id: 'summer', label: t('夏季留货') },
+  { id: 'autumn', label: t('秋季留货') },
+  { id: 'winter', label: t('冬季留货') },
+] as const;
 ---
 <nav class="season-nav" aria-label={t('四季留货导航')}>
-  {seasons.map(season=><a href={`#${season.id}`} aria-label={season.label}>{season.name}</a>)}
+  {seasons.map(season=><a href={`#${season.id}`} aria-label={season.label} title={season.label}><svg viewBox="-24 -24 48 48" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">{SEASON_GLYPHS[season.id].map(shape=><path d={shape.d} fill={shape.fill ?? 'none'} stroke={shape.stroke} stroke-width={shape.strokeWidth} transform={shape.transform} />)}</svg></a>)}
 </nav>
 <script>
   import {onPageMount} from '../../lib/pageLifecycle';
@@ -52,7 +53,8 @@ const seasons = [
 </script>
 <style>
   .season-nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:28;display:flex;flex-direction:column;gap:4px;padding:8px;border:1px solid var(--border);border-radius:100px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px)}
-  a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-family:serif;font-size:1.45rem;color:var(--muted);text-decoration:none;transition:background .2s,color .2s}
-  a:hover{color:var(--ink);background:var(--green-soft)}a[aria-current]{background:var(--green);color:var(--paper)}a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-  @media(max-width:800px){.season-nav{position:sticky;top:var(--season-header,106px);transform:none;flex-direction:row;justify-content:center;width:fit-content;max-width:100%;margin:0 auto 1rem;padding:6px 12px;gap:16px}a{width:38px;height:38px}}
+  a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;text-decoration:none;transition:background .2s,box-shadow .2s}
+  svg{width:26px;height:26px}
+  a:hover{background:var(--green-soft)}a[aria-current]{background:var(--green-soft);box-shadow:inset 0 0 0 1.5px var(--green)}a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  @media(max-width:800px){.season-nav{position:sticky;top:var(--season-header,106px);transform:none;flex-direction:row;justify-content:center;width:fit-content;max-width:100%;margin:0 auto 1rem;padding:6px 12px;gap:16px}a{width:38px;height:38px}svg{width:24px;height:24px}}
 </style>
