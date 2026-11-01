@@ -1,5 +1,6 @@
 import type { Locale } from '../i18n/locales';
 import { msg } from '../i18n/translate';
+import type { QualityTarget } from '../domain/quality';
 
 export type Name = {
   /**
@@ -45,6 +46,8 @@ export type Entity = Record<string, unknown> & {
   cultivation_method?: string;
   /** Shrub or fruit tree that stays planted; seasonal replanting maths do not apply. */
   perennial?: Perennial | null;
+  /** Crops, seeds and harvest items: the harvest count that raises the crop's quality. */
+  quality_target?: QualityTarget | null;
 };
 
 /** Read from crops.dat and village.exe by the extractor; see honogurashi_extractor.normalize._perennial. */

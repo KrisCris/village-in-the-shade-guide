@@ -1,6 +1,6 @@
 import {expect, it} from 'vitest';
 import type {Catalog, Entity} from '../data/types';
-import {cropProcessingOptions} from './cropProcessing';
+import {cropProcessingOptions, seasonCountPerSeed} from './cropProcessing';
 import {getCatalog} from '../data/repository';
 
 function setup(extra: Record<string, unknown> = {}, inputQuantity = 1, minutes = 1440) {
@@ -93,4 +93,20 @@ it('records plantings, per-seed profit and merged machine runs for the timeline'
   expect(cropProcessingOptions(crop,catalog,'normal')[0]).toMatchObject({plantings:2,seedPrice:10,regrows:false,netPerSeed:190,harvestDays:[10,20],machineRuns:[[10,34]]});
   const regrowing=setup({regrow_days:7});
   expect(cropProcessingOptions(regrowing.crop,regrowing.catalog,'normal')[0]).toMatchObject({plantings:1,regrows:true,harvestDays:[7,14,21,28],machineRuns:[[7,8],[14,15],[21,22],[28,29]]});
+});
+
+it('counts what one seed adds to its crop quality target over a season', () => {
+  const catalog=getCatalog();
+  const crop=(id:string)=>catalog.entities.find(e=>e.kind==='crops'&&e.id===id)!;
+  // Rice takes 50 days, so one seedling is one harvest of 10.
+  expect(seasonCountPerSeed(crop('CROPS_ID_RICE'),catalog)).toEqual({harvests:1,perSeed:10});
+  // Edamame regrows every 4 days from day 7: days 7–27, 2 pods each.
+  expect(seasonCountPerSeed(crop('CROPS_ID_EDAMAME'),catalog)).toEqual({harvests:6,perSeed:12});
+  // A tea bush planted ahead is picked every other day of spring.
+  expect(seasonCountPerSeed(crop('CROPS_ID_TEA_TREE'),catalog)).toEqual({harvests:14,perSeed:28});
+  // Mulberry berries are counted with the leaves picked alongside them.
+  expect(seasonCountPerSeed(crop('CROPS_ID_MULBERRY'),catalog)).toEqual({harvests:14,perSeed:56});
+  expect(seasonCountPerSeed(crop('CROPS_ID_APPLE_TREE'),catalog)).toEqual({harvests:10,perSeed:28});
+  const {crop:untargeted,catalog:test}=setup();
+  expect(seasonCountPerSeed(untargeted,test)).toBeNull();
 });

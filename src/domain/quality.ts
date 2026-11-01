@@ -47,3 +47,20 @@ export function formatQualityPrice(result: QualityPrice | null, t: Translate = f
   if (!result) return t('数据不足');
   return `${result.exact ? '' : '≈'}${Number.isInteger(result.value) ? result.value : result.value.toFixed(2)}`;
 }
+
+/** A crop's harvest-count target, from data/sources/game-crop-quality.json (item.dat needValue × gamedefine HARVEST_COUNT_RATE_*).
+ * The save keeps the count in pHarvestStatus_ under count_item_numeric_id; the crop's harvests come out at the best grade whose count is reached. */
+export type QualityTarget = {seed_item_id: string; count_item_id: string; count_item_numeric_id: number; need: number; copper: number; silver: number; gold: number};
+export const TARGET_QUALITIES = ['copper', 'silver', 'gold'] as const satisfies readonly Quality[];
+export type TargetQuality = typeof TARGET_QUALITIES[number];
+export type QualityTargetStep = {quality: TargetQuality; count: number; remaining: number; seeds: number | null};
+
+/** How many more pieces to harvest before harvests come out at each grade, and the seeds that takes.
+ * `harvested` is the save's count; `perSeed` is what one seed adds to it (cropProcessing's seasonCountPerSeed), null when unknown.
+ * A harvest takes the grade of the count before it, so once remaining is 0 the next harvest is that grade. */
+export function qualityTargetSteps(target: QualityTarget, perSeed: number | null, harvested = 0): QualityTargetStep[] {
+  return TARGET_QUALITIES.map(quality => {
+    const remaining = Math.max(0, target[quality] - harvested);
+    return {quality, count: target[quality], remaining, seeds: perSeed != null && perSeed > 0 ? Math.ceil(remaining / perSeed) : null};
+  });
+}

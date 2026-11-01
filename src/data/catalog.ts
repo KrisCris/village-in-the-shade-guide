@@ -10,6 +10,7 @@ import livestockProducts from '../../data/sources/game-livestock-products.json';
 import machineCapacities from '../../data/sources/game-machine-capacities.json';
 import cropGrowth from '../../data/sources/game-crop-growth.json';
 import sapTrees from '../../data/sources/game-sap-trees.json';
+import cropQuality from '../../data/sources/game-crop-quality.json';
 import { defaultLocale, type Locale } from '../i18n/locales';
 import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
@@ -103,6 +104,9 @@ export function iconItemIdFor(entity: Entity) {
           : ['items', 'machines', 'fish'].includes(entity.kind) ? entity.id : undefined;
 }
 
+// Each seed's harvest-count target, under the seed and every item counted with it; crops find theirs by seed.
+const qualityTargets = new Map(cropQuality.seeds.flatMap(({harvest_item_ids, ...target}) => [target.seed_item_id, ...harvest_item_ids].map(id => [id, target] as const)));
+
 export function buildCatalog(input: Record<string, unknown>, generatedAt = new Date().toISOString(), locale: Locale = defaultLocale, translate?: Translate): Catalog {
   const t = translate ?? translatorFor(locale);
   // Official game text for this language, else the authored catalog.
@@ -127,6 +131,8 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
         const sap = sapTrees.trees.find(tree => tree.crop_id === entity.id);
         if (sap) entity.sap_item_id = sap.item_id;
       }
+      const target = qualityTargets.get(kind === 'crops' ? (entity.seed_item_ids as string[] | undefined)?.[0] ?? '' : entity.id);
+      if (target && ['crops', 'items'].includes(kind)) entity.quality_target = target;
       if(kind==='characters') {
         const portrait=characterPortraits.portraits.find(p=>p.character_id===entity.id);
         if(portrait){entity.icon_path=portrait.path;entity.portrait_source=portrait.source;}
