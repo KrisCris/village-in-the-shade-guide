@@ -204,11 +204,21 @@ class Activity:
 
 
 @dataclass(frozen=True, slots=True)
+class HuntRewardEntry:
+    item_id: str
+    quantity: int
+    weight: int
+
+
+@dataclass(frozen=True, slots=True)
 class HuntReward:
     id: str
     numeric_id: int
     certificate_item_id: str | None
-    rewards: tuple[ItemQuantity, ...]
+    # One certificate makes draw_count independent draws; each draw picks an
+    # entry with probability weight / sum of weights (village.exe 0x14026b320).
+    draw_count: int
+    rewards: tuple[HuntRewardEntry, ...]
 
 
 @dataclass(slots=True)
