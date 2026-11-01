@@ -63,7 +63,7 @@ export function dailyPlan(input: {
     trees: snapshot.trees, held, processes: SOURCE_PROCESSES, quarryReached: snapshot.quarryReached, collectors, unlocked, orchard: orchard(snapshot, DAILY_CROPS),
     harvested: snapshot.harvested, brands: new Set(snapshot.brands),
   };
-  const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.catalogOpen);
+  const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.gates);
   const free = freeAfterDeliveries(snapshot.held, deliveries);
   const needs = new Map<number, number>();
   for (const pending of deliveries.pending) for (const line of pending.lines) if (line.have < line.remain) needs.set(line.itemId, (needs.get(line.itemId) ?? 0) + line.remain - line.have);

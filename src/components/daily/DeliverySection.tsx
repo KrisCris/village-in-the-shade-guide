@@ -10,7 +10,7 @@ import { pageHref, tr } from '../../i18n/active';
 /** Every delivery list, split into tabs: hand in today, can be completed this season, still far off, and the items set aside. */
 export default function DeliverySection({ deliveries, names, name, night, onMap }: {
   deliveries: DeliveryDigest;
-  /** After midnight the village head's house is closed until the 07:00 turnover. */
+  /** After midnight the village head's house is closed until the 07:00 turnover, and the fox shrine is out. */
   night: boolean;
   names: SaveNameTables;
   name: Names;
@@ -22,6 +22,10 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
   const label = (itemId: number, rank: number) => [name.item(itemId), quality(rank)].filter(Boolean).join(' · ');
   const close = deliveries.pending.filter((plan) => !plan.offSeason);
   const far = deliveries.pending.filter((plan) => plan.offSeason);
+  const { catalogOpen, shrine } = deliveries.gates;
+  const shrineNote = shrine.gone ? tr('狐狸神社已经完成 {count} 次，不会再出现，没要过的供品也交不了了。', { count: shrine.clears })
+    : !shrine.open && shrine.clears ? tr('狐狸神社这一季已经完成，下一季才会再出现。')
+    : tr('狐狸神社深夜出现，只收本季的供品：没完成过时只收山菜，之后每完成一次多收一份，依次加上蔬菜、花卉和渔产。');
 
   const where = ({ spec }: DeliveryPlan) => spec.list === 'repair' ? tr('第 {stage} 座', { stage: spec.stage! })
     : spec.list === 'shrine' && spec.season !== undefined ? tr('{season}季', { season: GAME_SEASONS[spec.season] }) : spec.place;
@@ -35,6 +39,8 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
         </div>
         {plan.ready ? night && plan.spec.list === 'catalog'
           ? <span className="daily-badge"><Icon name="clock" size={14} />{tr('7:00 后能交')}</span>
+          : !night && plan.spec.list === 'shrine'
+          ? <span className="daily-badge"><Icon name="clock" size={14} />{tr('深夜能交')}</span>
           : <span className="daily-badge is-done"><Icon name="check" size={14} />{tr('可以交')}</span>
           : plan.eta !== undefined && <span className={`daily-badge${plan.eta ? '' : ' is-done'}`}><Icon name="clock" size={14} />{plan.eta ? tr('约 {days} 天后', { days: plan.eta }) : tr('今天能凑齐')}</span>}
       </header>
@@ -72,8 +78,9 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
       },
     ]} />
     <p className="daily-note">{[
-      !deliveries.catalogOpen && tr('村长家的交付目录还没开放，暂时不列。'),
-      tr('修复祠堂一次只能做一座，这里只列当前这一座。狐狸神社其他季节的供奉也列在这里，但还没核实不在当季时能不能交。'),
+      !catalogOpen && tr('村长家的交付目录还没开放，暂时不列。'),
+      tr('修复祠堂只列工具箱现在收的那一座。'),
+      shrineNote,
     ].filter(Boolean).join(' ')}</p>
   </Section>;
 }

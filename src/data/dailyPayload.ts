@@ -24,6 +24,8 @@ export interface DailyBundleSpec {
   list: DeliveryList;
   /** Fox shrine offerings: 0 spring … 3 winter. */
   season?: number;
+  /** Fox shrine offerings: the place in the season's group (1–4, mountain vegetables to fish), which sets when the shrine asks for it. */
+  slot?: number;
   /** Shrine repairs: which of the five repairs (1–5). */
   stage?: number;
   name: string;
@@ -100,8 +102,9 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
   const bundles = catalog.entities.flatMap((entity): DailyBundleSpec[] => {
     if (entity.kind !== 'activities' || typeof entity.numeric_id !== 'number') return [];
     const base = { id: entity.numeric_id, name: entity.name.zh_hans, place: String(entity.location ?? ''), items: stacks(entity.inputs), rewards: stacks(entity.rewards) };
-    const seasonal = /^BUNDLE_ID_(SPRING|SUMMER|AUTUMN|WINTER)_\d+$/.exec(entity.id);
-    if (seasonal) return [{ ...base, list: 'shrine', season: SEASONS.indexOf(seasonal[1]) }];
+    // bundlegroup.dat lists each season's offerings in ID order: BUNDLE_ID_SPRING_01 is the first slot.
+    const seasonal = /^BUNDLE_ID_(SPRING|SUMMER|AUTUMN|WINTER)_(\d+)$/.exec(entity.id);
+    if (seasonal) return [{ ...base, list: 'shrine', season: SEASONS.indexOf(seasonal[1]), slot: Number(seasonal[2]) }];
     const repair = /^BUNDLE_ID_SHRINE_REPAIR_(\d+)_\d+$/.exec(entity.id);
     if (repair) return [{ ...base, list: 'repair', stage: Number(repair[1]) }];
     return entity.id.startsWith('BUNDLE_ID_VILLAGE_HEAD_') ? [{ ...base, list: 'catalog' }] : [];

@@ -28,8 +28,12 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 
 ### Deliveries
 
-- Only unfinished lists count. Shrine repairs go one at a time, so only the lowest-numbered unfinished repair is listed. The village head's catalog is left out until flag 12036 is on.
-- Items in the backpack and storage chests are handed out in this order: shrine repairs, this season's fox shrine offerings, the catalog, then offerings for other seasons. Lists that can be finished completely get their items first; what is left goes to unfinished lists.
+- Only unfinished lists the game takes now are listed:
+  - Shrine repairs: only the one the toolbox takes now, which is the repair after those done (`GAME_VALUE_SHRINE_LEVEL`), and only while the toolbox is out. Per the `gimmick_shrine` script each repair has a request flag (the hunter's request 18400, the chapter 2, 3 and 4 shrine repair requests 12039, 13208 and 14236, and `SHRINE_REPAIR_ENABLE_05` 7104); the toolbox is out while a request is on and that repair's done flag (6658–6662) is off. No script, data table or village.exe code in this build turns 7104 on, and chapter 6 sets the repair level to 5 and then 6, so the fifth repair cannot be done in normal mode. In あんしん暮し mode (flag 399) the toolbox stays out from the chapter 2 request until the fifth repair is done.
+  - The fox shrine appears late at night once chapter 1 is over (`EVENT_ID_INARI_SHRINE_REPLACEMENT`). It takes this season's group only, and only the first few offerings of it: after N clears it takes the first N+1 (`GAME_VALUE_HORROR_INARI_SHRINE_CLEAR_COUNT`, where village.exe's `CTask_Menu_Bundle::initialize_Inner` cuts the list). Each group runs wild plants, vegetables, flowers, then fish. After a clear the shrine stays away for the rest of the season (flag 20404), and after the fourth clear for good (20405). In a daytime save, offerings you can finish are marked 深夜能交 (late at night).
+  - The village head's catalog is left out until flag 12036 is on.
+- The total in 已完成 N / M 项 (N of M done) counts only lists that are done or can still be handed in. Fox shrine offerings left after the fourth clear, the fifth shrine repair in normal mode and repairs the repair level skipped are left out.
+- Items in the backpack and storage chests are handed out in this order: shrine repairs, fox shrine offerings, the catalog. Lists that can be finished completely get their items first; what is left goes to unfinished lists.
 - Within the same order, lists with a quality requirement go first. Each list takes the lowest quality that qualifies, leaving better items for lists that ask for them.
 - A list goes under 物品交付 when every missing item has a source this season: crops in the field, crops you can sow now, fruit trees that bear this season, fish that bite, wild plants, animals, gifts for selling animals, hunting certificates, trees, machines or the quarry. It goes under 本季凑不齐 only when something is out of season or its source is unknown.
 - An expected wait is shown only when every missing item has a dated source. Growing crops count cell by cell, in the order they ripen, until there are enough. Fish that still bite in a period left today, wild plants that grow outdoors this season and products of animals already on the farm count as available today. A fish of this season that bites in none of today's remaining periods counts as 1 day; on the last night of the season it counts as unavailable.
@@ -71,7 +75,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 
 A save from 00:00 until the 07:00 turnover follows the night rules:
 
-- You cannot enter other people's houses. The village head's catalog is handed in at the village head's house, so even a list ready today moves to 7:00 以后. Shrine repairs and fox shrines are outdoors and stay available.
+- You cannot enter other people's houses. The village head's catalog is handed in at the village head's house, so even a list ready today moves to 7:00 以后. Shrine repairs are outdoors and stay available; this is when the fox shrine is out.
 - Fishing follows the four periods in fishing.dat: 7–12, 12–18, 18–24 and 0–7. From 0 to 7 only the six cursed fish and junk bite, and the cursed fish bite at no other time. When a delivery only lacks fish that bite in the daytime this season, its fishing trip moves to 7:00 以后.
 - Wild plants can still be picked at night while they are there.
 
@@ -132,7 +136,7 @@ The rest comes from game data or existing site content:
 - Whether rain waters crops, how fertilizer affects growth, and greenhouse cells: the saves have no such cases.
 - Whether an out-of-season kit withers or waits for autumn: every kit in the saves was inside a scarecrow's range. The page never says a ripe kit withers at the season change.
 - Whether crops grow once more at the turnover that spends a scarecrow before they wither: the page assumes not, so a scarecrow's days left count the same way as the season's.
-- Whether fox shrine offerings for another season can be handed in outside it: the page lists them with this season's, after the other lists.
+- When the fox shrine leaves in the morning: the script uses the start of this season's `TIME_ZONE_MORNING`. The page does not read that time per season and treats the shrine as present from 00:00 until the 07:00 turnover.
 - The stumps in 附身草丛: players say there are many, but `cropsplacement.dat` places no stumps in that map, so how many there are and how much wood each gives is unknown. 附身草丛 is not on the village map, so it cannot be marked.
 - Daily animal output and quality.
 - Quarry figures cover ordinary rocks only, not ore-vein rooms or bee nests.

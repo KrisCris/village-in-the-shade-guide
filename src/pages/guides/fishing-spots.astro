@@ -77,7 +77,7 @@ const seasonData = seasons.map(([season, label]) => {
   {seasonData.map(({ season, label, spots, grid, keep, species }, index) => <section id={`season-${season}`} class="fish-season" role="tabpanel" aria-labelledby={`tab-${season}`} hidden={index > 0}>
     <h2>{t('{season}季：共 {count} 种鱼', { season: t(label), count: species })}</h2>
     <details class="fish-keep" open>
-      <summary><h3>{t('本季要留的鱼')}</h3><small>{t('每个交付目录只交一次，交过的可以不看')}</small></summary>
+      <summary><h3>{t('本季要留的鱼')}</h3><small>{t('每个交付目录只交一次，交过的可以不看。狐狸神社第 {n} 次完成时才要渔产供奉。', { n: curse.inari.clears })}</small></summary>
       <div class="keep-grid">{keep.map(({ bundle, here, elsewhere }) => <article class="keep-card">
         <h4><a href={href(entityUrl(bundle))}>{bundle.name.zh_hans}</a><small>{String(bundle.location).split(' · ')[0]}</small></h4>
         <ul>{here.map(({ item_id, quantity, where }) => { const e = fish.get(item_id)!; return <li>

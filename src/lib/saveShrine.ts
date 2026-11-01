@@ -1,17 +1,11 @@
 import { UNLOCKS } from './saveDeliveries';
-import { flagEnabled, readSkills, type ProgressEdits } from './saveProgress';
-import { readSigned, type SerDocument } from './ser';
+import { flagEnabled, gameValue, readSkills, type ProgressEdits } from './saveProgress';
+import type { SerDocument } from './ser';
 import { tr } from '../i18n/active';
 
+/** GAME_VALUE_SHRINE_LEVEL: the shrine repairs done. Chapter 6 sets it to 5 when the shrine is wrecked and to 6 once it is rebuilt. */
 export function shrineLevel(doc: SerDocument): number | null {
-  const root = doc.resolve('gameValues_');
-  const children = root ? doc.children(root) : [];
-  for (let i = 0; i < children.length; i += 2) {
-    if (readSigned(doc, children[i]) !== 20000000n) continue;
-    const value = doc.resolve('this->value_', children[i + 1]);
-    return value ? Number(readSigned(doc, value)) : null;
-  }
-  return null;
+  return gameValue(doc, 20000000);
 }
 
 export function shrineEnabled(doc: SerDocument, id: number, edits: ProgressEdits): boolean {

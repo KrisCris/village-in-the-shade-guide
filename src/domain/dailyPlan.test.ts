@@ -32,8 +32,11 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily plan on the winter 2 fixture sav
   beforeAll(() => { plan = planFor('save.004', 129); });
 
   it('finds the deliveries that can be handed in today', () => {
-    expect([plan.deliveries.done, plan.deliveries.total]).toEqual([17, 61]);
-    expect(plan.deliveries.ready.map((entry) => entry.spec.name)).toEqual(['石材', '小动物的材料', '稀有宝石', '供奉夏季渔产', '供奉秋季渔产']);
+    // The fifth shrine repair never opens in normal mode, so its two lists drop out of the count.
+    expect([plan.deliveries.done, plan.deliveries.total]).toEqual([17, 59]);
+    expect(plan.deliveries.ready.map((entry) => entry.spec.name)).toEqual(['小动物的材料', '稀有宝石']);
+    // After three clears the shrine takes all four winter offerings and nothing from other seasons.
+    expect(plan.deliveries.pending.filter((entry) => entry.spec.list !== 'catalog').map((entry) => entry.spec.name)).toEqual(['供奉冬季山菜', '供奉冬季蔬菜', '供奉冬季花卉', '供奉冬季渔产']);
     // The winter fish offering only lacks a salmon, which bites in winter.
     expect(plan.deliveries.pending.find((entry) => entry.spec.name === '供奉冬季渔产')?.eta).toBe(0);
   });
@@ -90,9 +93,10 @@ describe.skipIf(!springSave)('machines on the spring 26 fixture save', () => {
 
   it('counts today’s ripe crops and the fruit to shake, less what deliveries still lack', () => {
     const line = (itemId: number) => plan.processing.produce.find((entry) => entry.itemId === itemId);
-    // Three plum trees drop one plum each; 205 onions ripen and a delivery still lacks 3.
+    // Three plum trees drop one plum each; all 205 onions that ripen are free, because the fox shrine is gone
+    // after its fourth clear and its spring vegetable offering no longer holds 3 back.
     expect(line(PLUM)).toMatchObject({ held: 18, harvest: 3 });
-    expect(line(ONION)).toMatchObject({ held: 202, harvest: 202 });
+    expect(line(ONION)).toMatchObject({ held: 205, harvest: 205 });
   });
 
   it('refills the pickling barrels at 10:48 and the beehives at 19:08 with what pays most', () => {

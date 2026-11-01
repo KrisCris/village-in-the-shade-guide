@@ -22,7 +22,7 @@ const snapshot = (fields: Partial<DailySnapshot> & { season?: number; day?: numb
   const seconds = (season * 28 + day - 1) * 86_400 + (hour - 7 + 24) % 24 * 3600;
   return {
     seconds, date: { year: 1, season, day, hour, minute: 0 }, weather: 1, money: 0, player: 'p',
-    cells: [], machines: [], scarecrows: [], catalogOpen: true, bundles: [], trees: [], houses: [], quarryReached: 0, held: [], shipping: [], animals: { total: 0, fed: 0 }, encyclopedia: [], harvested: {}, brands: [], ...rest,
+    cells: [], machines: [], scarecrows: [], gates: { catalogOpen: true, shrine: { clears: 0, open: true, gone: false }, repair: { level: 0, open: true, last: 4 } }, bundles: [], trees: [], houses: [], quarryReached: 0, held: [], shipping: [], animals: { total: 0, fed: 0 }, encyclopedia: [], harvested: {}, brands: [], ...rest,
   };
 };
 

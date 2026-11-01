@@ -3,11 +3,13 @@ import { readSigned, readString, SerDocument } from './ser';
 import { areaAvailable, cropGrowth, draftObjects, mapCells, mapObjects, MAP_CROPS, objectFootprint, sceneCells } from './saveMap';
 import { containsPoint, toGrid } from './saveMapGeometry';
 import { FARM_CELLS, FARM_SCENE } from './saveMapScene';
+import type { DeliveryGates } from '../domain/dailyDeliveries';
 import type { CropRules } from '../domain/dailyDigest';
 import { collectContainers, SHIPPING_BOX_ID } from './saveItems';
 import { machineJobs, machineSpec, mapValue } from './saveMachines';
 import { UNLOCKS } from './saveDeliveries';
-import { flagEnabled, readEncyclopedia } from './saveProgress';
+import { flagEnabled, gameValue, readEncyclopedia } from './saveProgress';
+import { shrineLevel } from './saveShrine';
 import { animalHouses, animalResidents } from './saveAnimals';
 import { tr } from '../i18n/active';
 
@@ -64,8 +66,8 @@ export interface DailySnapshot {
   cells: DailyCell[];
   machines: DailyMachine[];
   scarecrows: DailyScarecrow[];
-  /** The village head's catalog opens with a story flag. */
-  catalogOpen: boolean;
+  /** Which delivery lists the game takes now. */
+  gates: DeliveryGates;
   bundles: DailyBundle[];
   trees: DailyTree[];
   houses: DailyHouse[];
@@ -111,6 +113,29 @@ export function readBundles(doc: SerDocument): DailyBundle[] {
     if (!id || !list) return [];
     return [{ bundleId: Number(readSigned(doc, id)), items: doc.children(list).map((item) => ({ itemId: value('pData_/dataID', item), rank: value('rank_', item), remain: value('remain_', item) })) }];
   });
+}
+
+/** gameflag.dat: GAME_FLAG_STORY_01_END, HORROR_EVENT_INARI_SHRINE_CLEAR / _CLEAR_ALL / _END, HORROR_OFF_MODE, SHRINE_REPAIR_ENABLE_05. */
+const STORY_01_END = 11999, INARI_CLEAR = 20404, INARI_CLEAR_ALL = 20405, INARI_END = 20406, HORROR_OFF = 399, REPAIR_ENABLE_05 = 7104;
+/** gamevalue.dat GAME_VALUE_HORROR_INARI_SHRINE_CLEAR_COUNT. */
+const INARI_CLEARS = 30003001;
+/**
+ * gimmick_shrine puts the toolbox out while a repair's request flag is on and its GAME_FLAG_BUNDLE_SHRINE_0n is off:
+ * NPC_QUEST_HUNTER_001, STORY_02_024, STORY_03_063, STORY_04_058 and SHRINE_REPAIR_ENABLE_05.
+ */
+const REPAIR_REQUESTS = [[18400, 6658], [12039, 6659], [13208, 6660], [14236, 6661], [REPAIR_ENABLE_05, 6662]];
+
+export function deliveryGates(doc: SerDocument): DeliveryGates {
+  const on = (id: number) => flagEnabled(doc, id);
+  // あんしん暮し mode puts the toolbox out from chapter 2's request until the fifth repair is done.
+  const easy = on(HORROR_OFF);
+  const toolbox = easy && on(12039) && !on(6662) || REPAIR_REQUESTS.some(([request, done]) => on(request) && !on(done));
+  return {
+    catalogOpen: on(UNLOCKS.catalogFlag),
+    // event.dat: EVENT_ID_INARI_SHRINE_REPLACEMENT needs STORY_01_END and is blocked by CLEAR and END.
+    shrine: { clears: gameValue(doc, INARI_CLEARS) ?? 0, open: on(STORY_01_END) && !on(INARI_CLEAR) && !on(INARI_CLEAR_ALL), gone: on(INARI_CLEAR_ALL) || on(INARI_END) },
+    repair: { level: shrineLevel(doc) ?? 0, open: toolbox, last: easy || on(REPAIR_ENABLE_05) ? 5 : 4 },
+  };
 }
 
 function readHouses(doc: SerDocument): DailyHouse[] {
@@ -202,7 +227,7 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     seconds, date: gameDate(seconds), weather: number('pWeatherData_/dataID'), money: number('money_/this->value_'),
     player: nameNode ? readString(doc, nameNode) : '',
     cells, machines, scarecrows: readScarecrows(doc),
-    catalogOpen: flagEnabled(doc, UNLOCKS.catalogFlag),
+    gates: deliveryGates(doc),
     bundles: readBundles(doc),
     trees: mapCells(doc).filter((cell) => TIMBER_TREES.includes(cell.crop)).map((cell) => {
       const growth = cropGrowth(doc, {}, FARM_SCENE, cell.id);

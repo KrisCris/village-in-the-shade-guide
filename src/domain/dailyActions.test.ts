@@ -18,7 +18,7 @@ const dayFish: ItemSource = { ...fish, today: false }, cursed: ItemSource = { ..
 const wild: ItemSource = { kind: 'wild', season: 3, now: true };
 const line = (itemId: number, remain: number, have: number, sources: ItemSource[] = []): DeliveryLine => ({ itemId, rank: 0, remain, have, sources });
 const plan = (id: number, lines: DeliveryLine[], list: DailyBundleSpec['list'] = 'shrine'): DeliveryPlan => ({ spec: { id, list, name: `b${id}`, place: '', items: [], rewards: [] } as DailyBundleSpec, ready: false, lines });
-const deliveries = (fields: Partial<DeliveryDigest> = {}): DeliveryDigest => ({ ready: [], pending: [], done: 0, total: 0, catalogOpen: true, keep: [], ...fields });
+const deliveries = (fields: Partial<DeliveryDigest> = {}): DeliveryDigest => ({ ready: [], pending: [], done: 0, total: 0, gates: { catalogOpen: true, shrine: { clears: 0, open: true, gone: false }, repair: { level: 0, open: true, last: 4 } }, keep: [], ...fields });
 const day = (fields: Partial<MachineDay>): MachineDay => ({ family: 'jar', machine: 501, machines: 2, slots: 2, free: 1, ready: 0, later: [], fill: [], ...fields });
 const buildLine = (fields: Partial<BuildLine>): BuildLine => ({
   family: 'barrel', machine: 601, machines: 6, slots: 6, stored: 0, days: 74, waiting: [], perSlot: 25, options: [{ machine: 601, upgrade: false, slots: 1, inputs: [], afford: 0 }], ...fields,
