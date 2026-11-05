@@ -85,7 +85,7 @@ const springSave = hasPrivateSaveFixtures && (() => {
   return date.year === 2 && date.season === 0 && date.day === 26;
 })();
 describe.skipIf(!springSave)('machines on the spring 26 fixture save', () => {
-  const PICKLING = 400000, BREWING = 400030, BREWING_2 = 400031, BEEHIVE = 402040, MILK = 130000, PEA = 100020, PLUM = 122020, PANSY = 111210, ONION = 100010;
+  const PICKLING = 400000, BREWING = 400030, BREWING_2 = 400031, BEEHIVE = 402040, DRYING = 400050, MILK = 130000, PEA = 100020, PLUM = 122020, PANSY = 111210, ONION = 100010;
   const IRON_BAR = 210020, SWEET_SAP = 140300;
   let plan: ReturnType<typeof dailyPlan>;
   beforeAll(() => { plan = planFor('save.004', 0); });
@@ -97,25 +97,31 @@ describe.skipIf(!springSave)('machines on the spring 26 fixture save', () => {
     // after its fourth clear and its spring vegetable offering no longer holds 3 back.
     expect(line(PLUM)).toMatchObject({ held: 18, harvest: 3 });
     expect(line(ONION)).toMatchObject({ held: 205, harvest: 205 });
+    // 195 onions were picked before today: the first 5 come out 银星, and from the 200th on they are 金星.
+    expect(line(ONION)?.grades.map(({ rank, count, harvest }) => [rank, count, harvest])).toEqual([[3, 200, 200], [2, 5, 5]]);
   });
 
   it('refills the pickling barrels at 10:48 and the beehives at 19:08 with what pays most', () => {
     // All 201 pickling slots finish 3 h 48 min after the 07:00 save; the plums shaken today go in too.
+    // Both are 金星, so each adds 1.75 times the plain gain: 30 for a pea, 100 for a plum.
     expect(machine(PICKLING)).toMatchObject({ free: 0, later: [{ after: 13_680, slots: 201 }] });
-    expect(machine(PICKLING).fill.map(({ itemId, count, gain }) => [itemId, count, gain])).toEqual([[PEA, 183, 5490], [PLUM, 18, 1800]]);
+    expect(machine(PICKLING).fill.map(({ itemId, rank, count, gain }) => [itemId, rank, count, gain])).toEqual([[PEA, 3, 183, 9607.5], [PLUM, 3, 18, 3150]]);
     // Peas pay most as soup in a brewing barrel, but those are full: the pickling barrel is the recommendation.
     const peas = plan.processing.produce.find((line) => line.itemId === PEA)!;
     expect([peas.options[0].machine, peas.options.find((option) => option.process === peas.best)?.machine]).toEqual([BREWING, PICKLING]);
     expect(machine(BEEHIVE).fill.map(({ itemId, count }) => [itemId, count])).toEqual([[PANSY, 32]]);
-    // Milk adds more as yoghurt in a pickling barrel, but those slots earn more with peas; the milk processor takes it.
-    expect(machine(400010).fill.map(({ itemId, count }) => [itemId, count])).toEqual([[MILK, 7]]);
+    // 金星 pansies left over dry for 136.5 each, more than the spider lilies and lilies, which wait.
+    expect(machine(DRYING).fill.map(({ itemId, rank, count }) => [itemId, rank, count])).toEqual([[PANSY, 3, 30]]);
+    // Milk adds more as yoghurt in a pickling barrel, but those slots earn more with peas; the milk processor takes it, one batch per grade.
+    expect(machine(400010).fill.map(({ itemId, rank, count }) => [itemId, rank, count])).toEqual([[MILK, 0, 6], [MILK, 1, 1]]);
     // The brewing barrels are full until tomorrow.
     expect(machine(BREWING)).toMatchObject({ free: 0, later: [], fill: [] });
     expect(machine(BREWING).next).toBeGreaterThan(24 * 3600);
   });
 
-  it('asks for brewing barrels and beehives, priced per machine', () => {
-    expect(plan.processing.build.map((line) => line.machine)).toEqual([BREWING, BEEHIVE]);
+  it('asks for brewing barrels, beehives and dryers, priced per machine', () => {
+    // The flowers the pansies push out of the dryer today take it past a week.
+    expect(plan.processing.build.map((line) => line.machine)).toEqual([BREWING, BEEHIVE, DRYING]);
     const [brewing, beehive] = plan.processing.build;
     // A new upgraded barrel takes 2 iron bars for the barrel and 5 for the upgrade.
     expect(brewing.options.map(({ machine, upgrade, via, slots, afford, limit }) => ({ machine, upgrade, via, slots, afford, limit }))).toEqual([

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { DailyAction } from '../../domain/dailyActions';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
-import { finishTime, Icon, MapButton, Meter, Section, sourceTarget, sourceText, type MapTarget, type Names } from './dailyUi';
+import { finishTime, gradedName, Icon, MapButton, Meter, Section, sourceTarget, sourceText, type MapTarget, type Names } from './dailyUi';
 import { tr } from '../../i18n/active';
 
 type Tone = 'urgent' | 'deliver' | 'craft' | 'gather' | 'field' | 'routine';
@@ -73,7 +73,7 @@ export default function TodayList({ actions, names, name, now, night, done, onTo
           : action.outputs ? tr('取出 {count} 件做好的产品', { count: action.outputs }) : tr('给设备放新原料'),
         // Produce picked today first, then the machines in the order the slots open: free ones first, then by the time they finish.
         details: [...action.harvest.length ? [tr('先收今天熟的{items}，再往设备里放', { items: list(action.harvest.map((itemId) => name.item(itemId))) })] : [], ...[...action.fill].sort((a, b) => (a.free ? 0 : a.later[0].after) - (b.free ? 0 : b.later[0].after)).map((machine) => {
-          const items = list(machine.fill.map((entry) => tr('{item} {count} 个', { item: name.item(entry.itemId), count: entry.count })));
+          const items = list(machine.fill.map((entry) => tr('{item} {count} 个', { item: gradedName(name, entry.itemId, entry.rank), count: entry.count })));
           return machine.free ? tr('{machine}现在就能放：{items}', { machine: name.item(machine.machine), items })
             : tr('{machine} {time} 做好后放：{items}', { machine: name.item(machine.machine), time: finishTime(now, machine.later[0].after), items });
         })],

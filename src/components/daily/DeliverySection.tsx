@@ -1,10 +1,10 @@
 import type { DeliveryDigest, DeliveryPlan } from '../../domain/dailyDeliveries';
 import type { DeliveryList } from '../../data/dailyPayload';
-import { BRAND_RANK, ITEM_RANKS } from '../../lib/saveRules';
+import { BRAND_RANK } from '../../lib/saveRules';
 import type { SaveNameTables } from '../../lib/saveNames';
 import { GAME_SEASONS } from '../../lib/saveTime';
 import SaveIcon from '../save/SaveIcon';
-import { GrowList, Icon, ItemChip, MapButton, Meter, qualityText, Section, sourceTarget, sourceText, Tabs, type MapTarget, type Names } from './dailyUi';
+import { GrowList, Icon, ItemChip, MapButton, Meter, qualityText, rankLabel, Section, sourceTarget, sourceText, Tabs, type MapTarget, type Names } from './dailyUi';
 import { pageHref, tr } from '../../i18n/active';
 
 /** Every delivery list, split into tabs: hand in today, can be completed this season, still far off, and the items set aside. */
@@ -17,8 +17,7 @@ export default function DeliverySection({ deliveries, names, name, night, onMap 
   onMap: (target: MapTarget) => void;
 }) {
   const listName: Record<DeliveryList, string> = { repair: tr('修复祠堂'), shrine: tr('狐狸神社'), catalog: tr('村长家目录') };
-  const rankLabel = (rank: number) => ITEM_RANKS.find((entry) => entry.value === rank)?.label ?? String(rank);
-  const quality = (rank: number) => rank === BRAND_RANK ? rankLabel(rank) : rank > 0 ? tr('{rank}及以上', { rank: rankLabel(rank) }) : '';
+  const quality =(rank: number) => rank === BRAND_RANK ? rankLabel(rank) : rank > 0 ? tr('{rank}及以上', { rank: rankLabel(rank) }) : '';
   const label = (itemId: number, rank: number) => [name.item(itemId), quality(rank)].filter(Boolean).join(' · ');
   const close = deliveries.pending.filter((plan) => !plan.offSeason);
   const far = deliveries.pending.filter((plan) => plan.offSeason);

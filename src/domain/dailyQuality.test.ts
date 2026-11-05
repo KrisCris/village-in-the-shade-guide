@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { DailyQuality } from '../data/dailyPayload';
 import type { CropRules } from './dailyDigest';
-import { qualityProgress } from './dailyQuality';
+import { harvestGrade, harvestGrades, qualityProgress } from './dailyQuality';
 import type { SourceContext } from './dailySources';
 
 const RICE = 63, EDAMAME = 34, TEA = 64, TOMATO = 21, PADDY = 65;
@@ -35,9 +35,23 @@ describe('crop grade progress', () => {
     expect(qualityProgress(RICE_ITEM, 2, context())).toMatchObject({ grade: 1, harvested: 150, target: 400 });
     expect(qualityProgress(RICE_ITEM, 4, context({ harvested: { [RICE_ITEM]: 1000 } }))).toEqual({ crop: RICE, grade: 3, harvested: 1000, target: 1000 });
     expect(qualityProgress(RICE_ITEM, 4, context({ brands: new Set([RICE_ITEM]) }))).toBeUndefined();
+    // Today's harvest comes out at the same grade; soybeans share edamame's count.
+    expect([harvestGrade(RICE_ITEM, context()), harvestGrade(SOYBEAN, context()), harvestGrade(TOMATO_ITEM, context()), harvestGrade(999, context())]).toEqual([1, 2, 0, 0]);
+    expect(harvestGrade(RICE_ITEM, context({ brands: new Set([RICE_ITEM]) }))).toBe(4);
     // Plain lines and items without a count have nothing to track.
     expect(qualityProgress(RICE_ITEM, 0, context())).toBeUndefined();
     expect(qualityProgress(999, 4, context())).toBeUndefined();
+  });
+
+  it('splits today\'s harvest where the count crosses a grade threshold', () => {
+    // 150 rice is 铜星; 250 more reach 银星's 400, so the last 50 come out 银星.
+    expect(harvestGrades(RICE_ITEM, 300, context())).toEqual([{ rank: 1, count: 250 }, { rank: 2, count: 50 }]);
+    // Tomatoes come 3 a plant: the plant picked at 358 is still 铜星, so 6 are 铜星, not 5.
+    expect(harvestGrades(TOMATO_ITEM, 12, context({ harvested: { [TOMATO_ITEM]: 355 } }))).toEqual([{ rank: 1, count: 6 }, { rank: 2, count: 6 }]);
+    // A big enough harvest crosses every threshold.
+    expect(harvestGrades(PADDY_ITEM, 1100, context())).toEqual([{ rank: 0, count: 100 }, { rank: 1, count: 300 }, { rank: 2, count: 600 }, { rank: 3, count: 100 }]);
+    expect(harvestGrades(RICE_ITEM, 30, context({ brands: new Set([RICE_ITEM]) }))).toEqual([{ rank: 4, count: 30 }]);
+    expect([harvestGrades(999, 5, context()), harvestGrades(RICE_ITEM, 0, context())]).toEqual([[{ rank: 0, count: 5 }], []]);
   });
 
   it('counts the seeds to sow today, through every season the crop keeps growing in', () => {

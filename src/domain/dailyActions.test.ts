@@ -45,7 +45,7 @@ describe('daily actions', () => {
 
   it('puts machine work, building and gathering before sowing, animals and routine care', () => {
     const option = { process: 11, output: 900, family: 'jar', machine: 501, minutes: 1440, inputs: 1, outputs: 1, value: 40 };
-    const jar = day({ fill: [{ itemId: 100, option, batches: 1, count: 1, gain: 30 }] }), mill = day({ family: 'mill', machine: 701 });
+    const jar = day({ fill: [{ itemId: 100, rank: 0, option, batches: 1, count: 1, gain: 30 }] }), mill = day({ family: 'mill', machine: 701 });
     // A machine the farm owns but cannot craft yet is not a job for today.
     const barrel = buildLine({}), locked = buildLine({ family: 'kiln', machine: 801, options: [], locked: { skill: null } });
     const quarry: ItemSource = { kind: 'quarry', from: 71, to: 79, perHundred: 26.5, reached: true };
@@ -53,7 +53,7 @@ describe('daily actions', () => {
     const actions = run({
       digest: digest({ harvest: [{ crop: 1, kind: 'ripe', cells: [9] }], chores: { water: [9, 10], withered: [], spentScarecrows: [], hungry: 2, shipping: 0 }, machines: { done: [{ itemId: 7, count: 2, slots: 1 }], running: [], idle: [], freeSlots: 0 } }),
       deliveries: deliveries({ ready: [plan(8, [line(1, 1, 1)])] }),
-      processing: processing({ machines: [jar, mill], build: [barrel, locked], produce: [{ itemId: 100, held: 5, harvest: 4, rawPrice: 10, best: option.process, planned: 30, today: 2, options: [option] }] }),
+      processing: processing({ machines: [jar, mill], build: [barrel, locked], produce: [{ itemId: 100, held: 5, harvest: 4, grades: [{ rank: 0, count: 5, harvest: 4, today: 2 }], rawPrice: 10, best: option.process, planned: 30, today: 2, options: [option] }] }),
       materials: [material(210020, 22, [{ kind: 'machine', machine: 9, inputs: [], count: 1, minutes: 710 }]), material(240020, 108, [quarry], 210020), material(140300, 33, [sapSweet]), material(140370, 28, [sapSour])],
       vacant: 10, planting: [{ needed: 0 } as never],
       animals: [{ species: 5, house: 1, items: [130080], bundles: [59], room: 4, housed: true }, { species: 3, house: 0, items: [130100], bundles: [60], room: 0, housed: true }],

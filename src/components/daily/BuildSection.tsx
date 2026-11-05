@@ -55,7 +55,7 @@ export default function BuildSection({ lines, sources, names, name, onMap }: {
         {line.machines > 0 && <span className="daily-badge is-short">{tr('要排 {days} 天', { days: Math.ceil(line.days) })}</span>}
       </header>
       <div className="daily-build-why">
-        <p>{line.machines ? tr('仓库里等着放进来的：') : tr('仓库里这些原料用它加工最值钱：')}</p>
+        <p>{line.machines ? tr('库存和今天收获里等着放进来的：') : tr('库存和今天收获里，这些原料用它加工最值钱：')}</p>
         <span className="daily-items">
           {shown.map((entry) => <ItemChip key={entry.itemId} names={names} itemId={entry.itemId} label={name.item(entry.itemId)} count={entry.count} />)}
           {line.waiting.length > shown.length && <span className="daily-build-more">{tr('等 {count} 种', { count: line.waiting.length })}</span>}
@@ -71,8 +71,8 @@ export default function BuildSection({ lines, sources, names, name, onMap }: {
   };
 
   return <Section id="daily-build" icon="build" title={tr('加造设备')}
-    summary={lines.length ? tr('按现在的数量，这些设备要 {days} 天以上才做得完仓库里的原料。多造几台，原料就能早点做完卖钱。', { days: BUILD_DAYS })
-      : tr('现有设备够用：仓库里的原料 {days} 天内都能做完。', { days: BUILD_DAYS })}>
+    summary={lines.length ? tr('按现在的数量，这些设备要 {days} 天以上才做得完库存和今天收获的原料。多造几台，原料就能早点做完卖钱。', { days: BUILD_DAYS })
+      : tr('现有设备够用：库存和今天收获的原料 {days} 天内都能做完。', { days: BUILD_DAYS })}>
     {lines.length > 0 && <ul className="daily-build-grid">{lines.map(card)}</ul>}
   </Section>;
 }

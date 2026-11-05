@@ -42,6 +42,21 @@ describe('processing plan', () => {
     expect(result.produce.map(({ itemId, held, harvest, today }) => [itemId, held, harvest, today])).toEqual([[RICE, 3, 2, 2], [HOP, 1, 1, 0]]);
   });
 
+  it('prices each grade at its sell rate and loads the best grade first', () => {
+    const machines = [machine('a', JAR)];
+    // One jar slot. Plain beans add 45 there; rice adds 30, or 52.5 at 金星 (×1.75) and 37.5 at 铜星 (×1.25).
+    const stock = [{ itemId: BEAN, rank: 0, count: 1 }, { itemId: RICE, rank: 1, count: 3 }];
+    const graded = plan([[BEAN, 1], [RICE, 3]], { machines, stock, harvest: new Map([[RICE, 2]]), harvestGrades: (itemId) => itemId === RICE ? [{ rank: 3, count: 2 }] : undefined });
+    expect(graded.machines[0].fill).toMatchObject([{ itemId: RICE, rank: 3, count: 1, gain: 52.5 }]);
+    expect(graded.produce.find((line) => line.itemId === RICE)?.grades).toEqual([{ rank: 3, count: 2, harvest: 2, today: 1 }, { rank: 1, count: 3, harvest: 0, today: 0 }]);
+    // At 铜星 the rice adds less than plain beans, so the beans go in.
+    const copper = plan([[BEAN, 1], [RICE, 3]], { machines, stock });
+    expect(copper.machines[0].fill).toMatchObject([{ itemId: BEAN, rank: 0, gain: 45 }]);
+    // The two jars take two of four 金星 rice today; the rice left waiting is worth its grades' average, (2 × 52.5 + 3 × 37.5) / 5 per item.
+    const queued = plan([[BEAN, 30], [RICE, 3]], { stock: [{ itemId: BEAN, rank: 0, count: 30 }, { itemId: RICE, rank: 1, count: 3 }], harvest: new Map([[RICE, 4]]), harvestGrades: () => [{ rank: 3, count: 4 }] });
+    expect(queued.build[0].waiting.find((entry) => entry.itemId === RICE)?.gain).toBeCloseTo(43.5);
+  });
+
   it('counts finished slots as free and loads the ones that finish before the day ends', () => {
     const result = plan([[RICE, 10]], { machines: [machine('a', JAR, 0), machine('b', JAR, 2 * HOUR + 30), machine('c', JAR, 30 * HOUR), machine('d', BARREL, 20 * HOUR)] });
     const jar = result.machines.find((day) => day.family === 'jar')!, barrel = result.machines.find((day) => day.family === 'barrel')!;

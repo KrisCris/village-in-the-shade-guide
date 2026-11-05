@@ -40,7 +40,8 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 
 ### Processing machines
 
-- The ingredients are what is held after deliveries take theirs, plus today's harvest: crops ripe today (regrowth picks included), withered crops that can still be harvested and the fruit trees drop when shaken today, less what deliveries still lack. Animal products made today are not counted. Only crops, fruit, flowers, wild plants and animal products count, priced at normal quality.
+- The ingredients are what is held after deliveries take theirs, plus today's harvest: crops ripe today (regrowth picks included), withered crops that can still be harvested and the fruit trees drop when shaken today, less what deliveries still lack. Animal products made today are not counted. Only crops, fruit, flowers, wild plants and animal products count.
+- Ingredients are counted by grade. Stock takes the grade of each stack in the save. Today's harvest is graded plant by plant: each plant takes the grade of the count before it is picked, and all the pieces from one plant share it, so when a field crosses a threshold partway, the part picked after it comes out a grade higher. Deliveries still short of the crop first take the grades they accept from today's harvest. Sell prices are multiplied by the grade's rate (`ITEM_SELLING_PRICE_RATE_*`): 铜星 (Copper) ×1.25, 银星 (Silver) ×1.5, 金星 (Gold) ×1.75, 品牌 (Brand) ×2. Processed goods in the saves carry grades too (Gold flour, Silver tofu), so a product sells at its ingredient's grade and the money over selling raw takes the same rate. A batch holds one grade, and the better grades of an ingredient go in first.
 - Slots loaded today are the empty ones, the ones holding finished products and the ones that finish before the day ends (midnight, or the 07:00 turnover for a save after midnight). Slots that finish within an hour of each other count as one round, shown at the time the last one finishes.
 - Each slot takes one batch. Within these slots the plan finds the loading that adds the most money over selling raw (a min-cost flow), and one ingredient may go to several machines. Recipes worth no more than the raw item are not loaded.
 - An ingredient with a machine picked in the table goes only into that machine; "不加工" (no processing) keeps it out. The recommended machine is the plan's choice without a pick. For ingredients that do not fit today, it is the most valuable recipe on a machine the farm has, or else one the farm can build that adds at least 20 per item.
@@ -49,7 +50,7 @@ A save made after midnight (00:00–06:59) still belongs to the previous day. Th
 
 - Ingredients left after today's loading queue on their recommended machines. When a kind of machine's running jobs, today's batches and that queue take more than 7 days across its slots, it is listed under 加造设备.
 - The plan first suggests upgrading first-level machines to their "／改" version, then building a new "／改" outright, then building new first-level machines. The game has no recipe that makes a "／改" from scratch: the upgrade recipe uses up a first-level machine. Building one outright therefore costs both recipes together: craft a first-level machine and upgrade it without placing it. The "／改" slot count then fits in the space of one machine. If the upgrade recipe is not learned yet, it builds first-level machines only; if that recipe is not learned either, it names the shrine skill that unlocks it.
-- "Earns per extra slot per day" is the queued ingredient that adds the most money for one slot working a whole day.
+- "Earns per extra slot per day" is the queued ingredient that adds the most money for one slot working a whole day. An ingredient's queue is valued at the average gain of the grades left.
 - How many machines the stock covers counts what is left after deliveries. When a material made in a machine, such as iron bars, is short, its inputs (ore, coal) are planned too, one level deep.
 
 ### Collect today
@@ -144,7 +145,7 @@ The rest comes from game data or existing site content:
 - Whether shops sell seeds, the carpenter takes orders, or the quarry is open late at night: the page does not adjust those jobs for the hour.
 - Gifts for selling an animal and hunting certificate rewards: `livestock.dat` and `huntreward.dat` list a few items for each with weights that add up to 100, which looks like one weighted draw, but the game code has not been checked yet. The page says the item "may" come and gives no odds.
 - Rice growing past the season change under scarecrows: inferred from grow kits that kept growing under a scarecrow; the saves have no growing rice to check against.
-- Fertiliser's chance of raising the harvest grade: the page leaves it out, so the seed counts may be high. Whether soybeans picked from withered edamame add to the count is not checked either; the page counts edamame picks only.
+- Fertiliser's chance of raising the harvest grade: the page leaves it out, so the seed counts may be high. Whether soybeans picked from withered edamame add to the count is not checked either; the page counts edamame picks only. Harvest items that share a count (peas and snow peas, for example) are each split by grade on their own, without regard to which is picked first that day.
 
 ## Code
 
