@@ -6,6 +6,7 @@ import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import { animalHouses, animalResidents, ANIMALS, type AnimalEdits } from '../../lib/saveAnimals';
 import { deviceIdentity, machineSpec, specialSpec, MACHINES, type MachineEdits } from '../../lib/saveMachines';
 import { PROGRESSION, type ProgressEdits } from '../../lib/saveProgress';
+import { storedBrands, withBrandFeature, withBrandName, type BrandEdits } from '../../lib/saveBrands';
 import { UNLOCKS } from '../../lib/saveDeliveries';
 import { ITEM_RANKS } from '../../lib/saveRules';
 import { itemLabel } from './ItemGrid';
@@ -21,8 +22,8 @@ type GroupId = SaveSectionId | 'machines';
 
 const rankName = (rank: string | number | undefined) => ITEM_RANKS.find(entry => String(entry.value) === String(rank))?.label ?? String(rank);
 
-export default function SaveChangeList({ model, names, changes, slotEdits, machines, progress, animals, map, onUndoDraft, onUndoSlots, onUndoMachine, onUndoProgress, onAnimals, onMap }: {
-  model: SaveModel; names: SaveNameTables; changes: SaveChange[]; slotEdits: SlotEdits; machines: MachineEdits; progress: ProgressEdits; animals: AnimalEdits; map: MapEdits;
+export default function SaveChangeList({ model, names, changes, slotEdits, machines, progress, animals, map, brands = {}, onUndoDraft, onUndoSlots, onUndoMachine, onUndoProgress, onAnimals, onMap, onBrands }: {
+  model: SaveModel; names: SaveNameTables; changes: SaveChange[]; slotEdits: SlotEdits; machines: MachineEdits; progress: ProgressEdits; animals: AnimalEdits; map: MapEdits; brands?: BrandEdits; onBrands: (edits: BrandEdits) => void;
   onUndoDraft: (offset: number) => void; onUndoSlots: (pointers: number[]) => void; onUndoMachine: (key: string) => void;
   onUndoProgress: (group: keyof ProgressEdits, id: string) => void; onAnimals: (edits: AnimalEdits) => void; onMap: (edits: MapEdits) => void;
 }) {
@@ -153,6 +154,20 @@ export default function SaveChangeList({ model, names, changes, slotEdits, machi
   for (const [placement, addition] of Object.entries(animals.added ?? {})) {
     push('barn', { key: `animal-add:${placement}`, label: addition.name, text: tr('新增{species}，放入 {slot}', { species: breedName(addition.species, addition.variant), slot: slotName(Number(placement)) }),
       undo: () => { const added = { ...animals.added }; delete added[placement]; onAnimals({ ...animals, added }); } });
+  }
+
+  for (const kind of ['crops', 'livestock'] as const) {
+    const stored = storedBrands(model.doc, kind);
+    for (const [key, name] of Object.entries(brands[kind] ?? {})) {
+      const before = stored.find(entry => entry.key === key)?.name;
+      push('brand', { key: `brand:${kind}:${key}`, label: `${kind === 'crops' ? tr('作物品牌') : tr('畜产品牌')} · ${itemLabel(names, key)}`,
+        text: name === null ? tr('删除品牌“{name}”', { name: before ?? '' }) : tr('新增品牌“{name}”', { name }),
+        undo: () => onBrands(withBrandName(model.doc, brands, kind, key, before ?? null)) });
+    }
+  }
+  for (const [index, on] of Object.entries(brands.features ?? {})) {
+    push('brand', { key: `brand:feature:${index}`, label: `${residents[Number(index)]?.name ?? tr('动物')} · ${tr('品牌种')}`, text: on ? tr('设为品牌种') : tr('取消品牌种'),
+      undo: () => onBrands(withBrandFeature(model.doc, brands, Number(index), !on)) });
   }
 
   const cropName = (id?: number) => id === undefined ? tr('作物') : names.names?.crops?.[id] ?? MAP_CROPS.find(c => c.numeric_id === id)?.name.zh_hans ?? String(id);

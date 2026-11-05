@@ -43,11 +43,11 @@ The player name, date and play time on the load screen come from `save.lst`. The
 | Basics | player name, dog name, money, offering money, in-game date and time, real play time, weather |
 | Player | health, stamina, appearance and colors, hair color |
 | Items | backpack, toolbar, shipping box, storage chests, processing machines and special containers; add and remove items, change quantity and quality, drag to move; upgrade tools; fill materials needed for deliveries or skills |
-| Livestock | grouped by barn, coop and stable; name, friendship, mood and feeding; add animals; move them between pens |
+| Livestock | grouped by barn, coop and stable; name, friendship, mood and feeding; mark as branded; add animals; move them between pens |
 | NPCs | friendship |
 | Map | crops, terrain, facilities, buildings and furniture on the farm and indoors; see "Map editing" below |
 | Quests | visibility and checklist progress of existing quests |
-| Collection and unlocks | encyclopedia, skill tree, recipes, appearance, the village chief's delivery catalog, brand names |
+| Collection and unlocks | encyclopedia, skill tree, recipes, appearance, the village chief's delivery catalog; add, rename and delete crop and animal product brands |
 
 ### Map editing
 
@@ -131,7 +131,8 @@ SAVEDATA
 ├── livestockList_                    animals
 ├── npcStatusList_                    NPC friendship and schedules
 ├── questMap_ / encyclopediaReleaseMap_ / skills_ / bundleList_
-├── brandCropsNameMap_                map: harvested item ID → brand name
+├── brandCropsNameMap_                map: crop item ID → brand name
+├── brandLivestockNameMap_            map: a breed's main product ID → brand name
 └── statusUniqueIDGenerator_/idSeed_  unique ID generator
 ```
 
@@ -188,6 +189,16 @@ These rules come from the game's tables and native code. Research notes such as 
 - Skill tree: unlocking a node also unlocks its prerequisites, and locking one locks its dependents, keeping `skills_` and the flag bits in sync. The shrine repair level is never changed automatically. The six learning materials are, in order, magatama, rain magatama, twin magatama, child magatama, bronze mirror and sword (items 650000, 650010, 650020, 650030, 650040, 650060); "补齐材料" (fill materials) puts them into the backpack in that order.
 - Village chief deliveries: required materials are read as `itemId u32, rank u32, count u32`, and high quality means rank 4. The editor only changes the remaining count. When a whole book is delivered it sets the book's completion flag, but it doesn't fire the delivery event or grant rewards. "留最后一件" (leave the last one) lets you make the final delivery in the game. "开放村长家的交付目录" (open the delivery catalog) only sets `GAME_FLAG_STORY_02_022`.
 
+### Brands
+
+The game registers a brand name when an entry gets an S at a 评鉴会 (fair). The editor can add, rename and delete brands by hand. Names are limited to 8 characters.
+
+- Crops: `brandCropsNameMap_` is keyed by the crop's item ID (`count_item_numeric_id` in `game-crop-quality.json`). While a crop is in the map, every harvest of it is quality 4 and shows the brand name. The editor only accepts crops, one entry each.
+- Livestock has two parts. Bit 3 of the animal's `feature_/flags_` (`LIVESTOCK_FEATURE_BRAND`) makes its products quality 4. The name is in `brandLivestockNameMap_`, keyed by the breed's first product (chickens and silkies both give egg 130040, cows and fluffy cows both give milk 130000), so breeds with the same product share one name. Roosters and young animals have no product to judge and can't be branded. If you turn on 品牌种 (branded) in the Livestock tab and the product has no name yet, the editor asks for one and writes both together. Deleting an animal product brand name leaves the animals' branded bit alone, so their products stay quality 4.
+- The number of entries in `brandLivestockNameMap_` is what `LivestockGetBrandedCount` returns. With at least one, cashmere goats go on sale at the next livestock fair.
+- A brand added by hand doesn't set `GAME_FLAG_FAIR_GET_S_RANK` or fire the sale events a fair unlocks. At a fair, an entry that already has a brand is judged `RANK_X`.
+- Adding or deleting rebuilds the whole map: `Nk`/`Nv` are renumbered and `ref` is set to the entry count, the same as the encyclopedia map. A rename only rewrites the string.
+
 ### Map
 
 - **Scenes**: 64 outdoor and indoor scenes. Terrain comes from YMWR on a 45-unit grid, and a cell ID is `round(y/45)*1000000 + round(x/45) + 1`. Only cells allowed by the ground mask can be edited, and farm expansions are checked separately against flags 147/148.
@@ -211,7 +222,7 @@ These rules come from the game's tables and native code. Research notes such as 
 | `src/lib/ser.ts` | SER parsing and serialization (offset layout, pointer rewriting) |
 | `src/lib/saveModel.ts` | field sections, change collection and export |
 | `src/lib/saveItems.ts`, `saveInventory.ts`, `saveMachines.ts`, `saveTools.ts` | items, containers, processing machines and tools |
-| `src/lib/saveAnimals.ts`, `saveQuests.ts`, `saveProgress.ts`, `saveShrine.ts`, `saveDeliveries.ts` | livestock, quests, unlocks, skill tree and deliveries |
+| `src/lib/saveAnimals.ts`, `saveBrands.ts`, `saveQuests.ts`, `saveProgress.ts`, `saveShrine.ts`, `saveDeliveries.ts` | livestock, brands, quests, unlocks, skill tree and deliveries |
 | `src/lib/saveMap*.ts` | map scenes, geometry, rooms, placement rules and editing |
 | `src/lib/saveSession.ts` | draft restore in the browser |
 | `src/lib/saveValidation.ts` | checks before export |

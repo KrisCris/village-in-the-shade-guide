@@ -43,11 +43,11 @@
 | 基础信息 | 玩家名、犬名、金钱、供奉金、游戏日期和时刻、实际游玩时长、天气 |
 | 玩家 | 生命、体力、外观和配色、发色 |
 | 物品 | 背包、工具栏、出货箱、收纳箱、加工设备和特殊容器；增删物品、改数量和品质、拖放移动；升级工具；按交付或技能需求补齐材料 |
-| 畜牧 | 按畜舍、禽舍、马棚分组；改名字、好感、心情、喂食，新增动物，在栏位间移动 |
+| 畜牧 | 按畜舍、禽舍、马棚分组；改名字、好感、心情、喂食，设为品牌种，新增动物，在栏位间移动 |
 | NPC | 好感度 |
 | 地图 | 农场和室内的作物、地形、设施、建筑和家具；见下方“地图编辑” |
 | 任务 | 已有任务的显示状态和清单勾选 |
-| 收集与解锁 | 图鉴、技能树、配方、外观、村长交付目录、品牌名 |
+| 收集与解锁 | 图鉴、技能树、配方、外观、村长交付目录；作物和畜产品牌的新增、改名、删除 |
 
 ### 地图编辑
 
@@ -131,7 +131,8 @@ SAVEDATA
 ├── livestockList_                    动物
 ├── npcStatusList_                    NPC 好感和日程
 ├── questMap_ / encyclopediaReleaseMap_ / skills_ / bundleList_
-├── brandCropsNameMap_                Map：收获物物品 ID → 品牌名
+├── brandCropsNameMap_                Map：作物物品 ID → 品牌名
+├── brandLivestockNameMap_            Map：品种的主要产物 ID → 品牌名
 └── statusUniqueIDGenerator_/idSeed_  唯一 ID 生成器
 ```
 
@@ -188,6 +189,16 @@ SAVEDATA
 - 技能树：解锁会补齐前置节点，锁定会联动后继节点，`skills_` 和标记位同步更新。神龛修缮等级不自动修改。学习成本的六种材料依次是勾玉、雨勾玉、双子勾玉、小孩勾玉、铜镜、剑（物品 650000、650010、650020、650030、650040、650060），“补齐材料”按这个顺序放入背包。
 - 村长交付：交付材料按 `itemId u32、rank u32、count u32` 读取，高品质要求是 rank 4。编辑器只修改剩余数量；全部交付后设置该册的完成标记，但不触发交付事件或补发奖励。可以“留最后一件”，到游戏里完成最后一次交付。“开放村长家的交付目录”只设置 `GAME_FLAG_STORY_02_022`。
 
+### 品牌
+
+评鉴会拿到 S 评价时，游戏登记品牌名；编辑器可以手动新增、改名和删除。名字最多 8 个字符。
+
+- 作物：`brandCropsNameMap_` 的键是作物物品 ID（`game-crop-quality.json` 的 `count_item_numeric_id`）。作物在表里时，每次收获都是品质 4，并显示品牌名。编辑器只允许登记作物，每种一条。
+- 家畜：分两部分。动物 `feature_/flags_` 的第 3 位（`LIVESTOCK_FEATURE_BRAND`）决定它的产物是不是品质 4。名字在 `brandLivestockNameMap_` 里，键是品种第一项产物（鸡和乌骨鸡都是鸡蛋 130040，牛和毛茸茸的牛都是牛奶 130000），同产物的品种共用一个名字。公鸡和幼崽没有可评鉴的产物，不能设为品牌种。在畜牧页打开品牌种时，如果这种产物还没有名字，编辑器会先要求起名，再一起写入。删除畜产品牌名不会清除动物的品牌种标记，产物仍是品质 4。
+- `brandLivestockNameMap_` 的条数就是 `LivestockGetBrandedCount` 的返回值，至少 1 条时，下一次家畜评鉴会开始出售克什米尔山羊。
+- 手动登记不会设置 `GAME_FLAG_FAIR_GET_S_RANK`，也不会触发评鉴会解锁的销售事件。已有品牌的展品在评鉴会上判为 `RANK_X`。
+- 新增或删除时整张表重建：`Nk`/`Nv` 重新编号，`ref` 写成条目数，和图鉴表的处理相同。只改名时只写字符串本身。
+
 ### 地图
 
 - **场景**：64 个室外和室内场景，地形来自 YMWR，格距 45 单位，格 ID 为 `round(y/45)*1000000 + round(x/45) + 1`。只有地面掩码允许的格子可以编辑，田地扩张另外检查标记 147/148。
@@ -211,7 +222,7 @@ SAVEDATA
 | `src/lib/ser.ts` | SER 解析和序列化（重排偏移、改写指针） |
 | `src/lib/saveModel.ts` | 字段分类、改动收集和导出 |
 | `src/lib/saveItems.ts`、`saveInventory.ts`、`saveMachines.ts`、`saveTools.ts` | 物品、容器、加工设备和工具 |
-| `src/lib/saveAnimals.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts` | 畜牧、任务、解锁、技能树和交付 |
+| `src/lib/saveAnimals.ts`、`saveBrands.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts` | 畜牧、品牌、任务、解锁、技能树和交付 |
 | `src/lib/saveMap*.ts` | 地图场景、几何、房间、放置规则和编辑 |
 | `src/lib/saveSession.ts` | 浏览器草稿恢复 |
 | `src/lib/saveValidation.ts` | 导出前检查 |

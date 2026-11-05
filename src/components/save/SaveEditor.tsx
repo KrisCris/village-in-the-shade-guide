@@ -22,6 +22,8 @@ import SaveFilePicker from './SaveFilePicker';
 import QuestsPanel from './QuestsPanel';
 import AnimalsPanel from './AnimalsPanel';
 import { animalEditCount, type AnimalEdits } from '../../lib/saveAnimals';
+import { brandEditCount, type BrandEdits } from '../../lib/saveBrands';
+import BrandPanel from './BrandPanel';
 import { type MachineEdits, type MachineEdit } from '../../lib/saveMachines';
 import RawTree from './RawTree';
 import ProgressPanel from './ProgressPanel';
@@ -57,6 +59,7 @@ function Editor() {
   const [animals, setAnimals] = useState<AnimalEdits>({});
   const [machines, setMachines] = useState<MachineEdits>({});
   const [progress, setProgress] = useState<ProgressEdits>({});
+  const [brands, setBrands] = useState<BrandEdits>({});
   const [names, setNames] = useState<SaveNameTables>({});
   const [tab, setTab] = useState<SaveSectionId>('basic');
   const [busy, setBusy] = useState(false);
@@ -117,7 +120,7 @@ function Editor() {
         const slots = new Set(parsed.containers.flatMap(container => container.slots.map(slot => slot.pointer)));
         if (Object.keys(session.slots).some(offset => !slots.has(Number(offset)))) throw new Error(tr('暂存草稿中的格子已无法匹配，请重新选择原始存档。'));
         setModel(parsed); setIdentity(session.identity); setDrafts(session.drafts);
-        setSlotEdits(normalizeSlotEdits(parsed.containers, session.slots)); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setMap(withoutNoOpWatering(parsed.doc, session.map ?? {})); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
+        setSlotEdits(normalizeSlotEdits(parsed.containers, session.slots)); setProgress(session.progress ?? {}); setMachines(session.machines ?? {}); setAnimals(session.animals ?? {}); setBrands(session.brands ?? {}); setMap(withoutNoOpWatering(parsed.doc, session.map ?? {})); setTab(session.tab === 'brand' ? 'progress' : session.tab); setNotice(tr('已恢复本次浏览会话的存档和未导出修改。'));
       } catch (caught) {
         if (!cancelled) setStorageError(caught instanceof Error ? caught.message : tr('无法恢复暂存草稿。'));
       } finally { if (!cancelled) setRestoring(false); }
@@ -128,14 +131,14 @@ function Editor() {
     if (!model || !identity || restoring) return;
     const persist = () => {
       try {
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 2, identity, drafts, slots: slotEdits, progress, machines, animals, map, tab }));
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 2, identity, drafts, slots: slotEdits, progress, machines, animals, map, brands, tab }));
         setStorageError('');
       } catch { setStorageError(tr('浏览器无法暂存草稿；离开前请导出修改副本。')); }
     };
     persist();
     window.addEventListener('pagehide', persist);
     return () => window.removeEventListener('pagehide', persist);
-  }, [model, identity, drafts, slotEdits, progress, machines, animals, map, tab, restoring]);
+  }, [model, identity, drafts, slotEdits, progress, machines, animals, map, brands, tab, restoring]);
 
   const changeState = useMemo(() => {
     if (!model) return { changes: [], error: '' };
@@ -162,7 +165,7 @@ function Editor() {
 
   const slotEditCount = slotChangeCount(slotEdits);
   const progressEditCount = progressCount(progress);
-  const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals) + mapEditCount(map);
+  const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals) + mapEditCount(map) + brandEditCount(brands);
   function updateMachine(key: string, value?: MachineEdit) { setMachines(current => { const next = { ...current }; if (value) next[key] = value; else delete next[key]; return next; }); }
   function updateProgress(group: keyof ProgressEdits, id: string, value: boolean | number | undefined) {
     setProgress(current => {
@@ -213,6 +216,7 @@ function Editor() {
       setProgress({});
       setMachines({});
       setAnimals({});
+      setBrands({});
       setMap({});
       setTab('basic');
       setNotice('');
@@ -286,9 +290,9 @@ function Editor() {
   const preview = useMemo(() => {
     if (!reviewing || !model || !editCount) return { problem: '' };
     if (changeState.error) return { problem: changeState.error };
-    try { return { problem: '', packed: exportSave(model, changes, slotEdits, progress, machines, animals, map) }; }
+    try { return { problem: '', packed: exportSave(model, changes, slotEdits, progress, machines, animals, map, brands) }; }
     catch (caught) { return { problem: caught instanceof Error ? caught.message : tr('重新打包失败。') }; }
-  }, [reviewing, model, editCount, changeState, changes, slotEdits, progress, machines, animals, map]);
+  }, [reviewing, model, editCount, changeState, changes, slotEdits, progress, machines, animals, map, brands]);
   function onDownload() {
     if (!model || !editCount) return;
     if (changeState.error) { setError(changeState.error); return; }
@@ -298,7 +302,7 @@ function Editor() {
     setError('');
     setNotice(tr('正在生成修改副本…'));
     try {
-      const packed = preview.packed ?? exportSave(model, changes, slotEdits, progress, machines, animals, map);
+      const packed = preview.packed ?? exportSave(model, changes, slotEdits, progress, machines, animals, map, brands);
       const url = URL.createObjectURL(new Blob([packed.buffer as ArrayBuffer], { type: 'application/octet-stream' }));
       const anchor = document.createElement('a');
       anchor.href = url;
@@ -369,12 +373,12 @@ function Editor() {
       {preview.problem && <p className="save-status error" role="alert">{tr('还不能导出：{reason}', { reason: preview.problem })}</p>}
       <div className="save-changes">
         <p>{tr('待写入的修改（{count}）', { count: editCount })}</p>
-        <SaveChangeList model={model} names={names} changes={reviewChanges} slotEdits={slotEdits} machines={machines} progress={progress} animals={animals} map={map}
+        <SaveChangeList model={model} names={names} changes={reviewChanges} slotEdits={slotEdits} machines={machines} progress={progress} animals={animals} map={map} brands={brands}
           onUndoDraft={offset => setDrafts(current => undoToolDraft(model, current, offset))}
           onUndoSlots={pointers => setSlotEdits(current => { const next = { ...current }; for (const pointer of pointers) delete next[pointer]; return next; })}
           onUndoMachine={key => updateMachine(key)}
           onUndoProgress={(group, id) => updateProgress(group, id, undefined)}
-          onAnimals={setAnimals} onMap={setMap} />
+          onAnimals={setAnimals} onMap={setMap} onBrands={setBrands} />
       </div>
 
         <div className="save-review-actions"><button type="button" onClick={() => setReviewing(false)}>{tr('继续编辑')}</button><button type="button" className="save-download" disabled={busy || !editCount || !!preview.problem || (risks.length > 0 && !riskAcknowledged)} onClick={onDownload}>{tr('下载修改副本 ↓')}</button></div>
@@ -414,9 +418,9 @@ function Editor() {
       </header>
       <div className="save-workspace-body">
       {tab === 'map' ? <Suspense fallback={<p>{tr('正在读取地图…')}</p>}><MapPanel model={model} edits={map} names={names} onChange={setMap} /></Suspense> : tab === 'quests' ? <QuestsPanel model={model} drafts={drafts} onChange={updateField} /> : tab === 'progress' ? <ProgressPanel onMaterials={insertMaterials} model={model} edits={progress} names={names} onChange={updateProgress} onReplace={setProgress}
-          brands={model.sections.find(entry => entry.id === 'brand')?.tables.map(table => <SaveDataTable key={table.id} table={table} drafts={drafts} names={names} onChange={updateField} cards />)} /> : tab === 'raw'
+          brands={<BrandPanel model={model} names={names} drafts={drafts} edits={brands} onEdit={setBrands} onField={updateField} onClearDraft={offset => setDrafts(current => { const next = { ...current }; delete next[offset]; return next; })} />} /> : tab === 'raw'
         ? <RawTree model={model} doc={model.doc} drafts={drafts} names={names} onChange={updateField} />
-        : tab === 'barn' ? <AnimalsPanel mapEdits={map} progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map, model.doc).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} />
+        : tab === 'barn' ? <AnimalsPanel mapEdits={map} progress={{ ...progress, flags: { ...progress.flags, ...mapBuildingFlags(map, model.doc).flags } }} model={model} drafts={drafts} names={names} edits={animals} onEdit={setAnimals} onField={updateField} brands={brands} onBrands={setBrands} />
         : tab === 'items'
         ? <>
           <ItemsPanel
