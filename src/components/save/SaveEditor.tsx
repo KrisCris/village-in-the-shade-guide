@@ -26,6 +26,7 @@ import { type MachineEdits, type MachineEdit } from '../../lib/saveMachines';
 import RawTree from './RawTree';
 import ProgressPanel from './ProgressPanel';
 import { progressCount, type ProgressEdits } from '../../lib/saveProgress';
+import { fairDayEditCount, withoutFairDayEdits } from '../../lib/saveFair';
 import SaveDialog from './SaveDialog';
 import SaveChangeList from './SaveChangeList';
 import SaveDataTable from './SaveDataTable';
@@ -161,7 +162,8 @@ function Editor() {
   const reviewChanges = changes.filter(change => !linkedRanges.has(change.field.offset));
 
   const slotEditCount = slotChangeCount(slotEdits);
-  const progressEditCount = progressCount(progress);
+  const unlockEditCount = progressCount(withoutFairDayEdits(progress));
+  const progressEditCount = unlockEditCount + fairDayEditCount(progress);
   const editCount = reviewChanges.length + slotEditCount + progressEditCount + Object.keys(machines).length + animalEditCount(animals) + mapEditCount(map);
   function updateMachine(key: string, value?: MachineEdit) { setMachines(current => { const next = { ...current }; if (value) next[key] = value; else delete next[key]; return next; }); }
   function updateProgress(group: keyof ProgressEdits, id: string, value: boolean | number | undefined) {
@@ -177,7 +179,8 @@ function Editor() {
     });
   }
   const risks = model ? achievementWarnings(model, changes, slotEdits) : [];
-  if (progressEditCount) risks.push(tr('收集、配方及技能解锁可能推进游戏进度或永久解锁成就。'));
+  // The fair-day entry only changes which judging runs today.
+  if (unlockEditCount) risks.push(tr('收集、配方及技能解锁可能推进游戏进度或永久解锁成就。'));
   useEffect(() => setRiskAcknowledged(false), [drafts, slotEdits, progress]);
 
   async function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -318,7 +321,7 @@ function Editor() {
   const clockOffset = model?.doc.resolve('gameTime_/second_')?.offset;
   const clockDraft = clockOffset === undefined ? undefined : drafts[clockOffset];
   const workspace = {
-    basic: [tr('基础信息'), tr('管理名字、金钱、日期与天气。')],
+    basic: [tr('基础信息'), tr('管理名字、金钱、日期、天气与评鉴会项目。')],
     player: [tr('玩家'), tr('调整生命与体力，选择角色外观。')],
     items: [tr('物品'), tr('整理物品容器，管理设备加工与特殊设施。')],
     barn: [tr('畜牧'), tr('查看伙伴与安置位置，点击卡片编辑。')],
