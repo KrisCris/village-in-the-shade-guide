@@ -41,6 +41,13 @@ export default function SaveFieldInput({ field, draft, names, onChange, compact,
   if (field.control === 'animal-friendship') return <FriendshipInput value={Number(value)} thresholds={Array.from({ length: 5 }, (_, index) => (index + 1) * Number(field.max) / 5)} label={label} onChange={next => onChange(field, next)} />;
   if (field.control === 'slider') return <label className="save-bounded-slider"><input type="range" min={field.min} max={field.max} step={1} value={value} aria-label={label} onChange={event => onChange(field, event.target.value)} /><small>{Math.round(Number(value) / Number(field.max) * 100)}%</small></label>;
 
+  if (field.options) return <span className={`save-cell${dirty ? ' dirty' : ''}`}>
+    <SearchableSelect value={value} onChange={(event) => onChange(field, event.target.value)} aria-label={label}>
+      {!field.options.some(option => option.value === value) && <option value={value}>{tr('未知值 {value}', { value })}</option>}
+      {field.options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+    </SearchableSelect>
+  </span>;
+
   if (field.type === 'bool') {
     return <span className={`save-cell${dirty ? ' dirty' : ''}`}>
       <SearchableSelect value={value === '0' ? '0' : '1'} onChange={(event) => onChange(field, event.target.value)} aria-label={label}>
