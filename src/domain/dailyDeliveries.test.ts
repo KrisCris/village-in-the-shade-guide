@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { DailyBundleSpec } from '../data/dailyPayload';
 import type { DailyBundle } from '../lib/saveDaily';
-import { freeAfterDeliveries, planDeliveries, type DeliveryGates } from './dailyDeliveries';
+import { freeAfterDeliveries, freeStacks, harvestAfterDeliveries, planDeliveries, type DeliveryGates } from './dailyDeliveries';
 import type { SourceContext } from './dailySources';
 
 const CABBAGE = 1, CABBAGE_ITEM = 100, FISH = 300, STONE = 400, WOOD = 230000, GEM = 500;
@@ -44,6 +44,24 @@ describe('delivery plan', () => {
     const short = planDeliveries(specs, progress, stacks.slice(1), context, gates());
     expect(short.ready.map((entry) => entry.spec.id)).toEqual([41]);
     expect(short.pending[0].lines[0].have).toBe(0);
+  });
+
+  it('leaves the stock free by grade, after the lists take the lowest grades that qualify', () => {
+    const specs = [spec(40, 'catalog'), spec(41, 'catalog')];
+    // List 40 takes plain gems, list 41 two at 银星 or better, and only one 金星 is left for it to set aside.
+    const progress = [owed(40, [GEM, 2]), owed(41, [GEM, 2, 2])];
+    const stacks = [{ itemId: GEM, rank: 0, count: 3 }, { itemId: GEM, rank: 1, count: 4 }, { itemId: GEM, rank: 3, count: 1 }];
+    const plan = planDeliveries(specs, progress, stacks, context, gates());
+    expect(freeStacks(stacks, plan)).toEqual([{ itemId: GEM, rank: 0, count: 1 }, { itemId: GEM, rank: 1, count: 4 }]);
+    expect(freeAfterDeliveries(stacks, plan).get(GEM)).toBe(5);
+  });
+
+  it('lets the unfinished lists take the harvest grades they accept, the stricter list first', () => {
+    const specs = [spec(40, 'catalog'), spec(41, 'catalog'), spec(42, 'catalog')];
+    // Nothing is held: list 40 lacks one plain gem, list 41 two at 银星 or better, list 42 one 品牌 the harvest has none of.
+    const plan = planDeliveries(specs, [owed(40, [GEM, 1]), owed(41, [GEM, 2, 2]), owed(42, [GEM, 1, 4])], [], context, gates());
+    const harvest = [{ itemId: GEM, rank: 0, count: 3 }, { itemId: GEM, rank: 3, count: 4 }, { itemId: STONE, rank: 0, count: 5 }];
+    expect(harvestAfterDeliveries(harvest, plan)).toEqual([{ itemId: GEM, rank: 0, count: 2 }, { itemId: GEM, rank: 3, count: 2 }, { itemId: STONE, rank: 0, count: 5 }]);
   });
 
   it('counts finished lists, takes only the current repair and skips a closed catalog', () => {

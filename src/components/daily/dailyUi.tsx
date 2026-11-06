@@ -4,6 +4,7 @@ import type { QualityProgress } from '../../domain/dailyQuality';
 import { ANIMALS } from '../../lib/saveAnimals';
 import { gameDuration } from '../../lib/saveMachines';
 import { gameDate } from '../../lib/saveDaily';
+import { ITEM_RANKS } from '../../lib/saveRules';
 import { GAME_SEASONS } from '../../lib/saveTime';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
@@ -128,6 +129,11 @@ export function useNames(names: SaveNameTables) {
   return { item, crop, animal, seasons, number, tree };
 }
 export type Names = ReturnType<typeof useNames>;
+
+/** A grade's name: 普通, 铜星, 银星, 金星 or 品牌. */
+export const rankLabel = (rank: number) => ITEM_RANKS.find((entry) => entry.value === rank)?.label ?? String(rank);
+/** An item with its grade; the plain grade is left out. */
+export const gradedName = (name: Names, itemId: number, rank: number) => rank > 0 ? `${name.item(itemId)} · ${rankLabel(rank)}` : name.item(itemId);
 
 /** A game clock time, `after` game seconds past `now`: the hour alone today, 凌晨 past midnight, then 明天 or a count of days. */
 export function finishTime(now: number, after: number): string {

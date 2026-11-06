@@ -31,12 +31,44 @@ const SCARECROW_ITEM = 662000;
 /** A scarecrow covers the 5×5 cells around it, its own cell left out. */
 const SCARECROW_CELLS = 24;
 
+/**
+ * The grade an item harvests at now: 4 when its crop is named, else the
+ * thresholds its harvest count has reached; 0 for items with no grades.
+ */
+export function harvestGrade(itemId: number, context: Pick<SourceContext, 'payload' | 'harvested' | 'brands'>): number {
+  const entry = context.payload.quality?.[itemId];
+  if (!entry) return 0;
+  const harvested = context.harvested?.[entry.count] ?? 0;
+  return context.brands?.has(entry.count) ? 4 : entry.ranks.filter((count) => harvested >= count).length;
+}
+
+/**
+ * How `count` pieces of an item picked today split by grade, lowest first. Each plant takes the grade
+ * of the count before it is picked, so a field that crosses a threshold partway comes out at two
+ * grades, and one plant's `pick` pieces never split. Items that share a count are each split as if
+ * picked alone.
+ */
+export function harvestGrades(itemId: number, count: number, context: Pick<SourceContext, 'payload' | 'harvested' | 'brands'>): Array<{ rank: number; count: number }> {
+  const entry = context.payload.quality?.[itemId];
+  if (count <= 0) return [];
+  if (!entry || context.brands?.has(entry.count)) return [{ rank: entry ? 4 : 0, count }];
+  const before = context.harvested?.[entry.count] ?? 0, pick = entry.pick ?? 1, parts: Array<{ rank: number; count: number }> = [];
+  for (let rank = harvestGrade(itemId, context), picked = 0; picked < count; rank++) {
+    // ranks[rank] is the count the next grade needs; the plants picked before it is reached keep this grade.
+    const next = rank < 3 ? entry.ranks[rank] : Infinity;
+    const take = Math.min(count - picked, Math.max(0, Math.ceil((next - before - picked) / pick) * pick));
+    if (take > 0) parts.push({ rank, count: take });
+    picked += take;
+  }
+  return parts;
+}
+
 /** Harvests of `crop` that can fill a line at `rank`, undefined when its count already gives that grade or it has none. */
 export function qualityProgress(itemId: number, rank: number, context: SourceContext): QualityProgress | undefined {
   const entry = context.payload.quality?.[itemId];
   if (!entry || rank <= 0) return undefined;
   const harvested = context.harvested?.[entry.count] ?? 0;
-  const grade = context.brands?.has(entry.count) ? 4 : entry.ranks.filter((count) => harvested >= count).length;
+  const grade = harvestGrade(itemId, context);
   if (grade >= rank) return undefined;
   const target = entry.ranks[Math.min(rank, 3) - 1];
   const remaining = target - harvested;

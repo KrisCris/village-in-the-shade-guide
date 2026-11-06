@@ -1,12 +1,15 @@
 import type { DailyCraft } from '../data/dailyPayload';
-import type { DailyMachine } from '../lib/saveDaily';
+import type { DailyMachine, DailyStack } from '../lib/saveDaily';
+import { QUALITY_MULTIPLIERS, QUALITY_VALUES } from './quality';
 
 /**
  * Today's machine work and the machines worth adding. A slot runs one batch.
  * Slots that are empty, hold finished products or finish before the day ends
- * take the produce held after deliveries, the batch that adds most per item
- * over selling it raw going in first. The player's pick for an item keeps it
- * to that recipe, or out of the machines.
+ * take the produce held after deliveries, the batch that adds most over
+ * selling it raw going in first. A batch uses one grade of an item, and the
+ * product keeps that grade (the saves hold 金星 flour and 银星 tofu), so a
+ * grade's money is the plain money times its sell price rate. The player's
+ * pick for an item keeps it to that recipe, or out of the machines.
  *
  * Produce left over waits for its most valuable recipe on a machine the farm
  * has, or on one it can build when that adds at least NEW_MACHINE_GAIN per
@@ -23,12 +26,24 @@ export const BUILD_DAYS = 7;
 
 /** `machine` is the machine item that runs the recipe; `value` is the sale value per input item. */
 export interface ProduceOption { process: number; output: number; family: string; machine: number; minutes: number; inputs: number; outputs: number; value: number }
+/** One grade of an item: rank 0 plain, 1 铜星, 2 银星, 3 金星, 4 品牌. */
+export interface ProduceGrade {
+  rank: number;
+  count: number;
+  /** The part of `count` today's harvest brings. */
+  harvest: number;
+  /** Items of this grade going into machines today. */
+  today: number;
+}
 export interface ProduceLine {
   itemId: number;
   /** Held after deliveries take theirs, with today's harvest. */
   held: number;
   /** The part of `held` today's harvest brings. */
   harvest: number;
+  /** `held` by grade, best first; only grades there are some of. */
+  grades: ProduceGrade[];
+  /** The plain price; a grade sells for this times its rate. */
   rawPrice: number;
   /** Most valuable first. */
   options: ProduceOption[];
@@ -44,8 +59,8 @@ export interface ProduceLine {
   /** Items going into machines today. */
   today: number;
 }
-/** `count` items in `batches` slots; `gain` is the money over selling them raw. */
-export interface FillLine { itemId: number; option: ProduceOption; batches: number; count: number; gain: number }
+/** `count` items of grade `rank` in `batches` slots; `gain` is the money over selling them raw. */
+export interface FillLine { itemId: number; rank: number; option: ProduceOption; batches: number; count: number; gain: number }
 export interface MachineDay {
   family: string;
   /** The first-level machine's item, used for its name and icon. */
@@ -100,7 +115,12 @@ export interface BuildLine {
 export interface ProcessingPlan { produce: ProduceLine[]; machines: MachineDay[]; build: BuildLine[] }
 
 const DAY_MINUTES = 1440;
-export const optionGain = (line: Pick<ProduceLine, 'rawPrice'>, option: ProduceOption) => option.value - line.rawPrice;
+/** A grade's sell price rate (ITEM_SELLING_PRICE_RATE_*): ×1 plain up to ×2 品牌. */
+export const rankRate = (rank: number) => QUALITY_MULTIPLIERS[QUALITY_VALUES[Math.min(Math.max(rank, 0), QUALITY_VALUES.length - 1)]];
+/** What one item of grade `rank` adds over selling it raw. */
+export const optionGain = (line: Pick<ProduceLine, 'rawPrice'>, option: ProduceOption, rank = 0) => (option.value - line.rawPrice) * rankRate(rank);
+/** The best grade of an item held. */
+export const topRank = (line: Pick<ProduceLine, 'grades'>) => line.grades[0]?.rank ?? 0;
 
 export function planProcessing(input: {
   machines: DailyMachine[];
@@ -111,8 +131,12 @@ export function planProcessing(input: {
   unlocked: ReadonlySet<number>;
   /** Held items free after deliveries. */
   free: ReadonlyMap<number, number>;
+  /** `free` by grade; an item it leaves out counts as plain. */
+  stock?: ReadonlyArray<Pick<DailyStack, 'itemId' | 'rank' | 'count'>>;
   /** Produce today's harvest brings once deliveries take what they still lack; it can go in today too. */
   harvest?: ReadonlyMap<number, number>;
+  /** Today's harvest of an item by grade, adding up to its `harvest` count; plain when left out. */
+  harvestGrades?: (itemId: number) => ReadonlyArray<{ rank: number; count: number }> | undefined;
   /** Produce the plan should consider: crops, fruit, flowers, wild plants and animal products. */
   isProduce: (itemId: number) => boolean;
   choices?: Readonly<Record<string, number>>;
@@ -134,6 +158,23 @@ export function planProcessing(input: {
   const capacity = (list: DailyMachine[]) => list.reduce((sum, machine) => sum + (specByItem.get(machine.itemId)?.capacity ?? 0), 0);
   const running = (job: DailyMachine['jobs'][number]) => !!job.output && job.seconds > 0;
 
+  const stocked = new Map<number, Map<number, number>>();
+  for (const stack of input.stock ?? []) {
+    const ranks = stocked.get(stack.itemId) ?? stocked.set(stack.itemId, new Map()).get(stack.itemId)!;
+    ranks.set(stack.rank, (ranks.get(stack.rank) ?? 0) + stack.count);
+  }
+  const grades = (itemId: number, stock: number, harvest: number): ProduceGrade[] => {
+    const rows = new Map<number, ProduceGrade>();
+    const add = (rank: number, count: number, picked: number) => {
+      const row = rows.get(rank) ?? rows.set(rank, { rank, count: 0, harvest: 0, today: 0 }).get(rank)!;
+      row.count += count;
+      row.harvest += picked;
+    };
+    for (const [rank, count] of stocked.get(itemId) ?? new Map([[0, stock]])) add(rank, count, 0);
+    if (harvest > 0) for (const part of input.harvestGrades?.(itemId) ?? [{ rank: 0, count: harvest }]) add(part.rank, part.count, part.count);
+    return [...rows.values()].filter((row) => row.count > 0).sort((a, b) => b.rank - a.rank);
+  };
+
   const produce: ProduceLine[] = [];
   for (const itemId of new Set([...free.keys(), ...input.harvest?.keys() ?? []])) {
     const harvest = input.harvest?.get(itemId) ?? 0, held = Math.max(free.get(itemId) ?? 0, 0) + harvest;
@@ -147,7 +188,7 @@ export function planProcessing(input: {
     if (!options.length) continue;
     const pick = input.choices?.[itemId];
     const valid = pick === NOT_PROCESSED || options.some((option) => option.process === pick);
-    produce.push({ itemId, held, harvest, rawPrice: prices[itemId] ?? 0, options, ...(valid ? { pick } : {}), best: NOT_PROCESSED, planned: 0, today: 0 });
+    produce.push({ itemId, held, harvest, grades: grades(itemId, held - harvest, harvest), rawPrice: prices[itemId] ?? 0, options, ...(valid ? { pick } : {}), best: NOT_PROCESSED, planned: 0, today: 0 });
   }
   produce.sort((a, b) => b.held - a.held || a.itemId - b.itemId);
   // Every recipe that sells for more than the raw item, or the player's pick in their place.
@@ -183,9 +224,11 @@ export function planProcessing(input: {
 
   const openings = new Map(days.map((day) => [day.family, day.free + day.later.reduce((sum, entry) => sum + entry.slots, 0)]));
   const fill = bestFill(produce, allowed, openings);
-  for (const { line, option, batches } of fill) {
-    line.today += batches * option.inputs;
-    days.find((day) => day.family === option.family)!.fill.push({ itemId: line.itemId, option, batches, count: batches * option.inputs, gain: batches * option.inputs * optionGain(line, option) });
+  for (const { line, grade, option, batches } of fill) {
+    const count = batches * option.inputs;
+    line.today += count;
+    grade.today += count;
+    days.find((day) => day.family === option.family)!.fill.push({ itemId: line.itemId, rank: grade.rank, option, batches, count, gain: count * optionGain(line, option, grade.rank) });
   }
   for (const day of days) day.fill.sort((a, b) => b.gain - a.gain || b.count - a.count);
   // The plan's own choice for every item, picked ones included, so the player can see what it would do.
@@ -193,7 +236,7 @@ export function planProcessing(input: {
   for (const line of produce) {
     const uses = auto.filter((use) => use.line === line), [main] = [...uses].sort((a, b) => b.batches * b.option.inputs - a.batches * a.option.inputs);
     line.best = (main?.option ?? waitFor(line, paying(line), false))?.process ?? NOT_PROCESSED;
-    line.planned = uses.reduce((sum, use) => sum + use.batches * use.option.inputs * optionGain(line, use.option), 0);
+    line.planned = uses.reduce((sum, use) => sum + use.batches * use.option.inputs * optionGain(line, use.option, use.grade.rank), 0);
   }
   days.sort((a, b) => b.fill.reduce((sum, entry) => sum + entry.gain, 0) - a.fill.reduce((sum, entry) => sum + entry.gain, 0) || b.slots - a.slots);
 
@@ -201,7 +244,9 @@ export function planProcessing(input: {
   for (const line of produce) {
     const left = line.held - line.today, option = waitFor(line, allowed(line), line.pick !== undefined);
     if (!option || left < option.inputs) continue;
-    waiting.set(option.family, [...waiting.get(option.family) ?? [], { itemId: line.itemId, count: left, option, gain: optionGain(line, option) }]);
+    // Per item, averaged over the grades left.
+    const gain = line.grades.reduce((sum, grade) => sum + (grade.count - grade.today) * optionGain(line, option, grade.rank), 0) / left;
+    waiting.set(option.family, [...waiting.get(option.family) ?? [], { itemId: line.itemId, count: left, option, gain }]);
   }
 
   const build: BuildLine[] = [];
@@ -254,10 +299,10 @@ export function planProcessing(input: {
 
 /**
  * The batches that earn most over selling raw, within each machine's open
- * slots: a min-cost flow from the produce through its recipes to the machines,
- * one unit per batch, augmented while a path still adds money. A recipe the
- * player picked that sells for no more than the raw item still runs, after
- * everything that pays.
+ * slots: a min-cost flow from each grade of the produce through its recipes to
+ * the machines, one unit per batch, augmented while a path still adds money. A
+ * recipe the player picked that sells for no more than the raw item still runs,
+ * after everything that pays.
  */
 function bestFill(produce: ProduceLine[], allowed: (line: ProduceLine) => ProduceOption[], openings: ReadonlyMap<string, number>) {
   interface Edge { to: number; cap: number; cost: number; back: number }
@@ -271,13 +316,18 @@ function bestFill(produce: ProduceLine[], allowed: (line: ProduceLine) => Produc
   const source = node(), sink = node(), machine = new Map<string, number>();
   for (const [family, open] of openings) if (open > 0) machine.set(family, node());
   for (const [family, id] of machine) link(id, sink, openings.get(family)!, 0);
-  const uses: Array<{ line: ProduceLine; option: ProduceOption; edge: Edge }> = [];
+  const uses: Array<{ line: ProduceLine; grade: ProduceGrade; option: ProduceOption; edge: Edge }> = [];
   for (const line of produce) {
     const options = allowed(line).filter((option) => machine.has(option.family));
     if (!options.length) continue;
-    const id = node();
-    link(source, id, Math.floor(line.held / Math.min(...options.map((option) => option.inputs))), 0);
-    for (const option of options) uses.push({ line, option, edge: link(id, machine.get(option.family)!, Infinity, -Math.max(optionGain(line, option) * option.inputs, 0.5)) });
+    const least = Math.min(...options.map((option) => option.inputs));
+    for (const grade of line.grades) {
+      const id = node();
+      link(source, id, Math.floor(grade.count / least), 0);
+      for (const option of options) {
+        uses.push({ line, grade, option, edge: link(id, machine.get(option.family)!, Infinity, -Math.max(optionGain(line, option, grade.rank) * option.inputs, 0.5)) });
+      }
+    }
   }
   for (;;) {
     const cost = graph.map(() => Infinity), via: Array<[from: number, index: number]> = [];
@@ -300,5 +350,5 @@ function bestFill(produce: ProduceLine[], allowed: (line: ProduceLine) => Produc
       graph[edge.to][edge.back].cap += push;
     }
   }
-  return uses.map(({ line, option, edge }) => ({ line, option, batches: graph[edge.to][edge.back].cap })).filter((use) => use.batches > 0);
+  return uses.map(({ line, grade, option, edge }) => ({ line, grade, option, batches: graph[edge.to][edge.back].cap })).filter((use) => use.batches > 0);
 }

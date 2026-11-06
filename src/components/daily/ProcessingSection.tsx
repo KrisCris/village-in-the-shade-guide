@@ -1,9 +1,26 @@
-import { NOT_PROCESSED, optionGain, type FillLine, type MachineDay, type ProcessingPlan, type ProduceLine, type ProduceOption } from '../../domain/dailyProcessing';
+import { NOT_PROCESSED, optionGain, rankRate, topRank, type FillLine, type MachineDay, type ProcessingPlan, type ProduceLine, type ProduceOption } from '../../domain/dailyProcessing';
 import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
 import SearchableSelect from '../controls/SearchableSelect';
-import { finishTime, GrowList, Icon, ItemChip, Section, type Names } from './dailyUi';
+import { finishTime, gradedName, GrowList, Icon, ItemChip, rankLabel, Section, type Names } from './dailyUi';
 import { tr } from '../../i18n/active';
+
+/**
+ * The produce table's rows and how many show before the rest fold away. Rows
+ * keep the order of the plan's own batches, so a row stays put when the player
+ * picks another machine for it. Today's harvest that gets no slot comes next and
+ * stays in view, so the table says why it waits.
+ */
+export function produceRows(plan: ProcessingPlan) {
+  const fills = plan.machines.flatMap((machine) => machine.fill);
+  const gain = (entries: FillLine[]) => entries.reduce((total, entry) => total + entry.gain, 0);
+  const listed = plan.produce.filter((line) => line.pick !== undefined || line.options.some((option) => option.value > line.rawPrice))
+    .map((line) => ({ line, today: fills.filter((entry) => entry.itemId === line.itemId) }))
+    .sort((a, b) => b.line.planned - a.line.planned || gain(b.today) - gain(a.today)
+      || Number(b.line.harvest > 0) - Number(a.line.harvest > 0) || b.line.held - a.line.held);
+  const shown = Math.max(6, listed.findLastIndex((entry) => entry.today.length || entry.line.planned > 0 || entry.line.harvest > 0) + 1);
+  return { listed, shown };
+}
 
 /** What to load into each machine today, what it sells for, and which machine each kind of produce goes to. */
 export default function ProcessingSection({ plan, now, names, name, onChoice }: {
@@ -21,9 +38,9 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
   const full = (machine: MachineDay) => opened(machine) <= sum(machine.fill, (entry) => entry.batches);
   const machineOf = new Map(plan.machines.map((machine) => [machine.family, machine]));
   const lineOf = new Map(plan.produce.map((line) => [line.itemId, line]));
-  // What a batch sells for once made, and what the same items fetch raw.
-  const sold = (entry: FillLine) => entry.count * entry.option.value;
-  const raw = (entry: FillLine) => entry.count * lineOf.get(entry.itemId)!.rawPrice;
+  // What a batch sells for once made, and what the same items fetch raw, at the grade loaded.
+  const sold = (entry: FillLine) => entry.count * entry.option.value * rankRate(entry.rank);
+  const raw = (entry: FillLine) => entry.count * lineOf.get(entry.itemId)!.rawPrice * rankRate(entry.rank);
   const sum = (entries: FillLine[], value: (entry: FillLine) => number) => entries.reduce((total, entry) => total + value(entry), 0);
   const loading = plan.machines.filter((machine) => machine.fill.length);
   const empty = plan.machines.filter((machine) => !machine.fill.length && opened(machine));
@@ -31,8 +48,11 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
   const ready = plan.machines.reduce((total, machine) => total + machine.ready, 0);
   const fills = loading.flatMap((machine) => machine.fill);
   const slots = sum(fills, (entry) => entry.batches);
-  // Items loaded today past what is in storage: the rest comes from today's harvest.
-  const unpicked = (itemId: number) => { const line = lineOf.get(itemId)!; return sum(fills.filter((entry) => entry.itemId === itemId), (entry) => entry.count) - (line.held - line.harvest); };
+  // Items of a grade loaded today past what is in storage: the rest comes from today's harvest.
+  const unpicked = ({ itemId, rank }: FillLine) => {
+    const grade = lineOf.get(itemId)!.grades.find((entry) => entry.rank === rank);
+    return grade ? sum(fills.filter((entry) => entry.itemId === itemId && entry.rank === rank), (entry) => entry.count) - (grade.count - grade.harvest) : 0;
+  };
 
   const card = (machine: MachineDay) => {
     const spare = opened(machine) - sum(machine.fill, (entry) => entry.batches);
@@ -50,12 +70,12 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
         {machine.later.map((entry) => <li key={entry.after}><b>{finishTime(now, entry.after)}</b>{tr('做好 {count} 个，取出后放', { count: entry.slots })}</li>)}
       </ul>
       <ul className="daily-machine-jobs">
-        {machine.fill.map((entry) => <li key={entry.itemId}>
+        {machine.fill.map((entry) => <li key={`${entry.itemId}:${entry.rank}`}>
           <SaveIcon names={names} kind="items" value={String(entry.itemId)} size={24} />
-          <span>{tr('{item} × {count} → {output}', { item: name.item(entry.itemId), count: entry.count, output: name.item(entry.option.output) })}</span>
+          <span>{tr('{item} × {count} → {output}', { item: gradedName(name, entry.itemId, entry.rank), count: entry.count, output: name.item(entry.option.output) })}</span>
           <b className="daily-machine-gain">+{money(entry.gain)}</b>
           <small>{tr('做好能卖 {value}，直接卖 {raw}', { value: money(sold(entry)), raw: money(raw(entry)) })}</small>
-          {unpicked(entry.itemId) > 0 && <small>{tr('有 {count} 个要先收今天熟的', { count: unpicked(entry.itemId) })}</small>}
+          {unpicked(entry) > 0 && <small>{tr('有 {count} 个要先收今天熟的', { count: unpicked(entry) })}</small>}
         </li>)}
       </ul>
       {spare > 0 && <p className="daily-machine-math">{tr('还有 {count} 个槽位没有能放的原料。', { count: spare })}</p>}
@@ -76,7 +96,8 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
     if (line.held < option.inputs) return tr('每批需要 {count} 个', { count: option.inputs });
     if (!machine) return tr('尚未拥有{machine}', { machine: item });
     if (!opened(machine) && machine.next !== undefined) return tr('{machine} {time} 有空位', { machine: item, time: finishTime(now, machine.next) });
-    return tr('{machine}今日已排满', { machine: item });
+    // The slots went to produce that adds more per item; the gain, at the best grade held, lets the player compare with the rows above.
+    return tr('{machine}每个增益 {gain}，今日已排满', { machine: item, gain: money(optionGain(line, option, topRank(line))) });
   };
   const numbers = (entries: FillLine[]) => <>
     <span className="daily-produce-num"><span className="daily-produce-label">{tr('加工数量')}</span>{name.number(sum(entries, (entry) => entry.count))}</span>
@@ -84,26 +105,26 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
     <b className="daily-produce-num is-gain"><span className="daily-produce-label">{tr('加工增益')}</span>+{money(sum(entries, (entry) => entry.gain))}</b>
   </>;
 
-  const listed = plan.produce.filter((line) => line.pick !== undefined || line.options.some((option) => option.value > line.rawPrice))
-    .map((line) => ({ line, today: fills.filter((entry) => entry.itemId === line.itemId) }))
-    // In the order of the plan's own batches, so a row stays put when the player picks another machine for it.
-    .sort((a, b) => b.line.planned - a.line.planned || sum(b.today, (entry) => entry.gain) - sum(a.today, (entry) => entry.gain) || b.line.held - a.line.held);
+  const { listed, shown } = produceRows(plan);
   const rows = listed.map(({ line, today }) => {
     const value = line.pick ?? line.best, chosen = line.options.find((option) => option.process === value), top = line.options[0];
     const notes: Array<{ text: string; short?: boolean }> = [];
     if (line.pick !== undefined && line.pick !== line.best) notes.push({ text: tr('推荐：{machine}', { machine: label(line, line.best) }) });
     if (chosen && chosen.value <= line.rawPrice) notes.push({ text: tr('加工后售价低于原料售价'), short: true });
     // The plan skipped a recipe that pays more: say why.
-    const topMachine = machineOf.get(top.family), topVars = { machine: name.item(top.machine), gain: money(optionGain(line, top)) };
+    const topMachine = machineOf.get(top.family), topVars = { machine: name.item(top.machine), gain: money(optionGain(line, top, topRank(line))) };
     if (line.pick === undefined && chosen && top !== chosen && optionGain(line, top) > optionGain(line, chosen) && (!topMachine || full(topMachine))) {
       notes.push({ text: topMachine ? tr('{machine}每个增益 {gain}，今日已排满', topVars) : tr('{machine}每个增益 {gain}，尚未拥有', topVars) });
     }
-    if (today.length > 1) notes.push({ text: tr('今日分配：{list}', { list: today.map((entry) => tr('{machine} {count} 个', { machine: name.item(entry.option.machine), count: entry.count })).join(tr('、')) }) });
+    // Grades of one item on one machine add up.
+    const split = [...today.reduce((machines, entry) => machines.set(entry.option.machine, (machines.get(entry.option.machine) ?? 0) + entry.count), new Map<number, number>())];
+    if (split.length > 1) notes.push({ text: tr('今日分配：{list}', { list: split.map(([machine, count]) => tr('{machine} {count} 个', { machine: name.item(machine), count })).join(tr('、')) }) });
     return <li key={line.itemId} className="daily-produce">
       <span className="daily-produce-item">
         <SaveIcon names={names} kind="items" value={String(line.itemId)} size={32} />
         <span className="daily-row-name">{name.item(line.itemId)}<small>{[line.held > line.harvest && tr('库存 {count}', { count: name.number(line.held - line.harvest) }),
-          line.harvest > 0 && tr('今日收获 {count}', { count: name.number(line.harvest) })].filter(Boolean).join(' · ')}</small></span>
+          line.harvest > 0 && tr('今日收获 {count}', { count: name.number(line.harvest) })].filter(Boolean).join(' · ')}</small>
+          {topRank(line) > 0 && <small>{line.grades.map((grade) => `${rankLabel(grade.rank)} ${name.number(grade.count)}`).join(' · ')}</small>}</span>
       </span>
       <span className="daily-produce-choice">
         <SearchableSelect value={value} aria-label={tr('{item}的加工设备', { item: name.item(line.itemId) })}
@@ -116,7 +137,6 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
       {today.length ? numbers(today) : <span className="daily-produce-idle">{idle(line, chosen)}</span>}
     </li>;
   });
-  const shown = Math.max(6, listed.findLastIndex((entry) => entry.today.length || entry.line.planned > 0) + 1);
 
   return <Section id="daily-machines" icon="machine" title={tr('加工设备')}
     summary={slots ? tr('今天有 {slots} 个槽位要放原料，照下面放。', { slots }) : tr('今天没有要放原料的槽位。')}>
@@ -138,7 +158,8 @@ export default function ProcessingSection({ plan, now, names, name, onChoice }: 
       <span className="daily-quiet-label">{tr('空着，但没有能放的农产品')}</span>
       <span className="daily-items">{empty.map((machine) => <ItemChip key={machine.family} names={names} itemId={machine.machine} label={name.item(machine.machine)} count={tr('{count} 个槽位', { count: opened(machine) })} />)}</span>
     </div>}
-    <p className="daily-note">{tr('算上了今天熟的作物和能摇下的果子，没算家畜今天的产物。交付要用的已经留出来了。价钱按普通品质算。')}</p>
+    <p className="daily-note">{tr('算上了今天熟的作物和能摇下的果子，没算家畜今天的产物。交付要用的已经留出来了。')}</p>
+    <p className="daily-note">{tr('价钱按原料的品质算：铜星 ×1.25、银星 ×1.5、金星 ×1.75、品牌 ×2，做出的产品品质和原料一样。同一种原料先放品质高的。今天收的作物按收获数定品质，收到一半跨过门槛的，后面收的升一档。')}</p>
 
     {rows.length > 0 && <>
       <h3 className="daily-sub-head">{tr('各原料的加工设备')}</h3>

@@ -80,7 +80,8 @@ export function dailyActions(input: {
   actions.push(...[...trips.values()].filter((trip) => !trip.later));
   const outputs = digest.machines.done.reduce((sum, row) => sum + row.count, 0);
   const fill = processing.machines.filter((machine) => machine.fill.length);
-  const picks = processing.produce.filter((line) => line.today > line.held - line.harvest).map((line) => line.itemId);
+  // A grade loaded past its stock comes from today's harvest.
+  const picks = processing.produce.filter((line) => line.grades.some((grade) => grade.today > grade.count - grade.harvest)).map((line) => line.itemId);
   if (outputs || fill.length) actions.push({ kind: 'machines', outputs, fill, harvest: picks });
   const short = input.materials.filter((line) => line.short > 0);
   const building = processing.build.filter((line) => line.options.length);

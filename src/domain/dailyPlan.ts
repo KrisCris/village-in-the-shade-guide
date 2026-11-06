@@ -1,16 +1,17 @@
 import type { DailyPayload } from '../data/dailyPayload';
 import type { Catalog } from '../data/types';
-import { DAILY_CROPS, type DailySnapshot } from '../lib/saveDaily';
+import { DAILY_CROPS, type DailySnapshot, type DailyStack } from '../lib/saveDaily';
 import { MACHINES } from '../lib/saveMachines';
 import { MAP_DATA } from '../lib/saveMap';
 import { dailyActions } from './dailyActions';
 import { collectPlan } from './dailyCollect';
 import { DAYS_PER_SEASON, harvestToday, orchard, ripening, type DailyDigest } from './dailyDigest';
-import { freeAfterDeliveries, planDeliveries } from './dailyDeliveries';
+import { freeAfterDeliveries, freeStacks, harvestAfterDeliveries, planDeliveries } from './dailyDeliveries';
 import { livestockPlan } from './dailyLivestock';
 import { planMaterials } from './dailyMaterials';
 import { plantingIdeas } from './dailyPlanting';
 import { planProcessing } from './dailyProcessing';
+import { harvestGrades } from './dailyQuality';
 import { itemSources, periodsLeft, type ItemSource, type SourceContext, type SourceProcess } from './dailySources';
 
 /** Item categories the processing plan treats as produce. */
@@ -64,7 +65,7 @@ export function dailyPlan(input: {
     harvested: snapshot.harvested, brands: new Set(snapshot.brands),
   };
   const deliveries = planDeliveries(payload.bundles, snapshot.bundles, snapshot.held, context, snapshot.gates);
-  const free = freeAfterDeliveries(snapshot.held, deliveries);
+  const free = freeAfterDeliveries(snapshot.held, deliveries), stock = freeStacks(snapshot.held, deliveries);
   const needs = new Map<number, number>();
   for (const pending of deliveries.pending) for (const line of pending.lines) if (line.have < line.remain) needs.set(line.itemId, (needs.get(line.itemId) ?? 0) + line.remain - line.have);
   // Today's ripe crops and fruit can go in the machines today too, once the deliveries that still lack them take theirs.
@@ -72,10 +73,17 @@ export function dailyPlan(input: {
     const id = (input.crops.entities.find((entity) => entity.kind === 'crops' && entity.numeric_id === crop)?.harvest_item_ids as string[] | undefined)?.[0];
     return id ? input.crops.byId[id]?.numeric_id as number | undefined : undefined;
   };
-  const harvest = new Map([...harvestToday(snapshot.cells, input.digest.harvest, DAILY_CROPS, fruit)]
-    .map(([itemId, count]): [number, number] => [itemId, count - (needs.get(itemId) ?? 0)]).filter(([, count]) => count > 0));
+  // A field that crosses a grade threshold partway comes out at two grades; the lists still short of an item take the grades they accept.
+  const picked = [...harvestToday(snapshot.cells, input.digest.harvest, DAILY_CROPS, fruit)]
+    .flatMap(([itemId, count]) => harvestGrades(itemId, count, context).map((part) => ({ itemId, ...part })));
+  const graded = new Map<number, DailyStack[]>(), harvest = new Map<number, number>();
+  for (const stack of harvestAfterDeliveries(picked, deliveries)) {
+    (graded.get(stack.itemId) ?? graded.set(stack.itemId, []).get(stack.itemId)!).push(stack);
+    harvest.set(stack.itemId, (harvest.get(stack.itemId) ?? 0) + stack.count);
+  }
   const processing = planProcessing({
-    machines: snapshot.machines, specs: MACHINES.machines, processes: MACHINES.processes, prices: payload.prices, crafts: payload.crafts, unlocked, free, harvest,
+    machines: snapshot.machines, specs: MACHINES.machines, processes: MACHINES.processes, prices: payload.prices, crafts: payload.crafts, unlocked, free, stock, harvest,
+    harvestGrades: (itemId) => graded.get(itemId),
     isProduce: (itemId) => PRODUCE.has(input.itemCategory(itemId) ?? ''), choices: settings.choices, dayLeft: dayLeft(snapshot.date),
   });
   // Where to get the material that runs out first for each machine, and what one of each machine nothing is in stock for would take.

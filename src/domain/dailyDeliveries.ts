@@ -162,12 +162,33 @@ export function planDeliveries(specs: DailyBundleSpec[], progress: DailyBundle[]
   return { ready, pending, done: finished.length, total, gates, keep: [...keep.values()] };
 }
 
-/** Held items left free once deliveries take theirs: what processing and crafting may use. */
+/**
+ * Held stacks left free once deliveries take theirs, one per item and grade:
+ * the lists take the same lowest qualifying grades as when they were planned.
+ */
+export function freeStacks(held: DailyStack[], digest: Pick<DeliveryDigest, 'ready' | 'keep'>): DailyStack[] {
+  const items = pool(held);
+  for (const plan of digest.ready) for (const row of plan.lines) take(items, row.itemId, row.rank, row.remain);
+  for (const row of digest.keep) take(items, row.itemId, row.rank, row.count);
+  return stacks(items);
+}
+
+/**
+ * Today's harvest by grade once the unfinished lists take what they still lack and the harvest
+ * qualifies for. Lines asking for a better grade go first; each takes the lowest grade that qualifies.
+ */
+export function harvestAfterDeliveries(harvest: DailyStack[], digest: Pick<DeliveryDigest, 'pending'>): DailyStack[] {
+  const items = pool(harvest);
+  const short = digest.pending.flatMap((plan) => plan.lines).filter((line) => line.have < line.remain).sort((a, b) => b.rank - a.rank);
+  for (const line of short) take(items, line.itemId, line.rank, line.remain - line.have);
+  return stacks(items);
+}
+
+const stacks = (items: Pool): DailyStack[] => [...items].flatMap(([itemId, ranks]) => ranks.flatMap((count, rank) => count > 0 ? [{ itemId, rank, count }] : []));
+
+/** Held items left free once deliveries take theirs: what processing and crafting may use. Items the deliveries use up stay at 0. */
 export function freeAfterDeliveries(held: DailyStack[], digest: Pick<DeliveryDigest, 'ready' | 'keep'>): Map<number, number> {
-  const free = new Map<number, number>();
-  for (const stack of held) free.set(stack.itemId, (free.get(stack.itemId) ?? 0) + stack.count);
-  const spend = (itemId: number, count: number) => free.set(itemId, Math.max(0, (free.get(itemId) ?? 0) - count));
-  for (const plan of digest.ready) for (const row of plan.lines) spend(row.itemId, row.remain);
-  for (const row of digest.keep) spend(row.itemId, row.count);
+  const free = new Map(held.map((stack): [number, number] => [stack.itemId, 0]));
+  for (const stack of freeStacks(held, digest)) free.set(stack.itemId, free.get(stack.itemId)! + stack.count);
   return free;
 }
