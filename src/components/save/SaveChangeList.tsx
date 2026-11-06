@@ -7,6 +7,7 @@ import { animalHouses, animalResidents, ANIMALS, type AnimalEdits } from '../../
 import { deviceIdentity, machineSpec, specialSpec, MACHINES, type MachineEdits } from '../../lib/saveMachines';
 import { PROGRESSION, type ProgressEdits } from '../../lib/saveProgress';
 import { storedBrands, withBrandFeature, withBrandName, type BrandEdits } from '../../lib/saveBrands';
+import { FAIR_FLAGS, fairDayEntry, fairEntryName } from '../../lib/saveFair';
 import { UNLOCKS } from '../../lib/saveDeliveries';
 import { ITEM_RANKS } from '../../lib/saveRules';
 import { itemLabel } from './ItemGrid';
@@ -56,7 +57,7 @@ export default function SaveChangeList({ model, names, changes, slotEdits, machi
   // Current HP/stamina are checked against the pending maximum on export, not the stored one.
   const current = new Set(['hp_', 'st_'].map(key => model.doc.resolve(`pPlayerStatus_/p/${key}/this->value_`)?.offset));
   const show = (change: SaveChange, value: string) => change.field.offset === clock && /^\d+$/.test(value) ? describeGameTime(BigInt(value))
-    : lookupName(names, change.field.lookup, value) ?? (value || tr('（空）'));
+    : change.field.options?.find(option => option.value === value)?.label ?? lookupName(names, change.field.lookup, value) ?? (value || tr('（空）'));
   // Quest records are raw state_/checkLevel_ leaves; name the quest and say what the numbers mean.
   const questFields = new Map<number, { label: string; text: (value: string) => string }>();
   const questMap = model.doc.resolve('questMap_');
@@ -128,7 +129,15 @@ export default function SaveChangeList({ model, names, changes, slotEdits, machi
       text: parts.join(tr('，')) });
   }
 
+  // The fair-day entry rewrites up to six flags; it reads and undoes as one choice.
+  const fairFlags = Object.keys(progress.flags ?? {}).filter(id => FAIR_FLAGS.has(Number(id)));
+  if (fairFlags.length) {
+    const before = fairDayEntry(model.doc), after = fairDayEntry(model.doc, progress);
+    push('basic', { key: 'progress:fair', label: tr('今天的评鉴项目'), undo: () => fairFlags.forEach(id => onUndoProgress('flags', id)),
+      text: <>{before === undefined ? tr('未知') : fairEntryName(before)} → {after === undefined ? tr('未知') : fairEntryName(after)}</> });
+  }
   for (const [group, entries] of Object.entries(progress) as [keyof ProgressEdits, Record<string, boolean | number>][]) for (const [id, value] of Object.entries(entries ?? {})) {
+    if (group === 'flags' && FAIR_FLAGS.has(Number(id))) continue;
     const bundle = group === 'deliveries' ? UNLOCKS.bundles.find(b => b.id === Number(id.split(':')[0])) : undefined;
     const subject = group === 'deliveries' ? `${bundle?.name} · ${itemLabel(names, String(bundle?.items[Number(id.split(':')[1])]?.itemId))}`
       : group === 'encyclopedia' ? itemLabel(names, id)

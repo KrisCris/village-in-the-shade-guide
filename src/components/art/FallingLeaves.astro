@@ -41,16 +41,35 @@
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
     let frame=0,last=0,spawnClock=0,statsClock=0,scale=1,width=innerWidth,height=innerHeight,driftTop=0,painted=true;
     let viewport=particleViewport(width,height),spawnRate=viewport.spawnRate,speedScale=viewport.speedScale;
+    // repick: the season may have changed under leaves of another one (picked by hand, or while this canvas was away).
+    // turning: the crossfade has not yet switched the season, so new leaves would still be of the old one.
+    let repick=true,turning=false;
+    const upcoming=(season:number)=>{const fixed=fixedSeason();return fixed==='auto'?seasons[(season+1)%4]:fixed;};
     const pose=(leaf:Leaf):[number,number]=>{
       if(leaf.state==='pile'||leaf.state==='slide')return [leaf.wide,FLAT];
       if(leaf.state==='settle'){const t=Math.min(1,leaf.age/SETTLE);return [1+(leaf.wide-1)*t,FLAT+(1-FLAT)*(1-t)];}
       if(leaf.season===3)return [1,1];
-      // Edge-on at the end of each swing; tumblers flip over and over.
-      return [1,leaf.tumble?.15+.85*Math.abs(Math.cos(leaf.flip)):.45+.55*Math.abs(Math.cos(leaf.phase))];
+      const swing=Math.abs(Math.cos(leaf.phase));
+      switch(leaf.fall){
+        // Flips over and over.
+        case 'tumble':return [1,.15+.85*Math.abs(Math.cos(leaf.flip))];
+        // Lies almost flat as it whirls.
+        case 'spin':return [1,.75+.25*swing];
+        // Turns side-on while it moves toward or away from us.
+        case 'spiral':return [.4+.6*swing,.75];
+        // Edge-on at the end of each swing; a swooper stalls almost edge-on.
+        case 'swoop':return [1,.25+.75*swing];
+        default:return [1,.45+.55*swing];
+      }
     };
     const paint=(target:CanvasRenderingContext2D,leaf:Leaf,top:number)=>{
-      const [wide,tall]=pose(leaf),size=leaf.r*2.8,cos=Math.cos(leaf.angle)*scale,sin=Math.sin(leaf.angle)*scale;
-      target.setTransform(cos,sin,-sin,cos,leaf.x*scale,(leaf.y-top)*scale);
+      // Fading leaves turn transparent; melting snowflakes also shrink, and those in the drift sink onto the snow below.
+      // A corkscrewing leaf looks a little larger on the near side of its circle.
+      const near=leaf.state==='air'&&leaf.fall==='spiral'?1+.14*Math.cos(leaf.phase):1;
+      const [wide,tall]=pose(leaf),full=leaf.r*2.8,melt=leaf.season===3?.25+.75*leaf.life:1,size=full*melt*near;
+      const sink=leaf.state==='pile'?(full-full*melt)*FLAT/2:0,cos=Math.cos(leaf.angle)*scale,sin=Math.sin(leaf.angle)*scale;
+      target.globalAlpha=.88*leaf.life;
+      target.setTransform(cos,sin,-sin,cos,leaf.x*scale,(leaf.y+sink-top)*scale);
       target.drawImage(sprites[leaf.season][leaf.id%3],-size/2*wide,-size/2*tall,size*wide,size*tall);
     };
     const paintDrift=()=>{
@@ -59,7 +78,6 @@
         driftTop=height-strip;
         if(drift.width!==w||drift.height!==h){drift.width=w;drift.height=h;}
         else{driftContext.setTransform(1,0,0,1,0,0);driftContext.clearRect(0,0,w,h);}
-        driftContext.globalAlpha=.88;
         for(const leaf of world.pile)paint(driftContext,leaf,driftTop);
         world.pileChanged=false;world.landed.length=0;
       }else{
@@ -85,12 +103,21 @@
       spawnRate+=(viewport.spawnRate-spawnRate)*adapt;speedScale+=(viewport.speedScale-speedScale)*adapt;
       spawnClock+=dt*spawnRate;statsClock+=dt;
       const root=document.documentElement,season=Math.max(0,seasons.indexOf(root.dataset.season||'spring'));
+      // Leaves left over from another season fade out instead of lying under the new palette.
+      if(repick){repick=false;world.fade(season);}
       // A gentle trickle; 800 is the pool ceiling, not a burst of 800 particles.
-      if(spawnClock>=1){spawnClock%=1;world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);}
-      if(world.step(dt,speedScale)){
-        // A full drift: a gust clears it while the page crossfades into the next season.
-        const fixed=fixedSeason(),next=fixed==='auto'?seasons[(season+1)%4]:fixed;
-        const apply=()=>{root.dataset.season=next;window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:seasons.indexOf(next)}));};
+      if(spawnClock>=1){spawnClock%=1;if(!turning)world.spawn(12+Math.random()*Math.max(1,width-24),-16,season);}
+      const event=world.step(dt,speedScale);
+      if(event==='full'){
+        // Into spring, the breeze lifts the loose snow and the packed snow under it melts. Anything else, and snow that
+        // stays winter, blows away.
+        let snow=0;for(const leaf of world.pile)if(leaf.season===3)snow++;
+        world.sweep(snow*2>world.pile.length&&upcoming(season)!=='winter'?'thaw':'gust');
+        spawnClock=0;
+      }else if(event==='cleared'){
+        // The season turns only once the drift has mostly gone, so old leaves never lie on the new palette.
+        const next=upcoming(season);turning=true;
+        const apply=()=>{turning=false;root.dataset.season=next;window.dispatchEvent(new CustomEvent('season-bottom-exit',{detail:seasons.indexOf(next)}));};
         if(next!==root.dataset.season)crossfadeRoot(apply);else apply();
         spawnClock=0;
       }
@@ -101,7 +128,6 @@
       paintDrift();
       ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
       if(world.pile.length)ctx.drawImage(drift,0,Math.round(driftTop*scale));
-      ctx.globalAlpha=.88;
       for(const leaf of world.leaves)if(leaf.y>-20)paint(ctx,leaf,0);
       ctx.globalAlpha=1;
       painted=!idle;
@@ -123,6 +149,8 @@
       pointer={x:event.clientX,y:event.clientY,time:event.timeStamp};
     };
     const lift=()=>{pointer=undefined;};
+    const picked=()=>{repick=true;};
+    window.addEventListener('season-preference-change',picked);
     window.addEventListener('pointermove',sweep,{passive:true});window.addEventListener('pointercancel',lift);
     window.addEventListener('resize',resize);
     document.addEventListener('visibilitychange',resume);reduced.addEventListener('change',motion);
@@ -133,6 +161,7 @@
     resize();resume();
     return()=>{
       if(frame)cancelAnimationFrame(frame);
+      window.removeEventListener('season-preference-change',picked);
       window.removeEventListener('pointermove',sweep);window.removeEventListener('pointercancel',lift);
       window.removeEventListener('resize',resize);
       document.removeEventListener('visibilitychange',resume);reduced.removeEventListener('change',motion);

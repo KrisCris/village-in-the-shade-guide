@@ -9,6 +9,7 @@ import { applyMapEdits, mapBuildingFlags, mapAnimalEdits, stablePosition, type M
  */
 
 import { buildProgressEdits, type ProgressEdits } from './saveProgress';
+import { FAIR_ENTRIES, fairEntryName, fairLetterChoice } from './saveFair';
 import { buildMachineEdits, type MachineEdits } from './saveMachines';
 import { buildAnimalEdits, type AnimalEdits } from './saveAnimals';
 import { buildBrandEdits, type BrandEdits } from './saveBrands';
@@ -57,6 +58,8 @@ export interface SaveField {
   lookup?: LookupKind;
   /** A player-visible name the game limits to NAME_LIMIT (8) characters. */
   nameLimit?: boolean;
+  /** A closed set of values, shown as a dropdown and named in the change list. */
+  options?: { value: string; label: string }[];
 }
 
 export interface SaveTableRow {
@@ -235,6 +238,15 @@ function buildGroups(doc: SerDocument, groups: { title: string; specs: ScalarSpe
     .filter((group) => group.fields.length > 0);
 }
 
+export const FAIR_GROUP = tr('评鉴会');
+/** The fair notice's answer, while the save still holds a letter the preparation will read. */
+function fairGroup(doc: SerDocument): SaveGroup[] {
+  const node = fairLetterChoice(doc);
+  if (!node) return [];
+  const options = [-1, ...FAIR_ENTRIES].map(entry => ({ value: String(entry), label: fairEntryName(entry) }));
+  return [{ title: FAIR_GROUP, fields: [{ ...scalarField(doc, node, { path: 'choiceIndex_', label: tr('评鉴会报名项目'), min: -1n, max: 2n }), options }] }];
+}
+
 /** The object a pointer element wraps, skipping an optional `className` node. */
 function pointee(doc: SerDocument, pointer: SerNode): SerNode | undefined {
   return doc.children(pointer).find((child) => child.tag === SerTag.Object);
@@ -368,8 +380,8 @@ export function parseSaveModel(save: DecodedSave): SaveModel {
     {
       id: 'basic',
       label: tr('基础信息'),
-      description: tr('修改名字、金钱、时间和天气。'),
-      groups: buildGroups(doc, BASIC_GROUPS),
+      description: tr('修改名字、金钱、时间、天气和评鉴会项目。'),
+      groups: [...buildGroups(doc, BASIC_GROUPS), ...fairGroup(doc)],
       tables: [],
     },
     {

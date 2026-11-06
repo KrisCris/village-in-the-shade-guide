@@ -40,7 +40,7 @@ The player name, date and play time on the load screen come from `save.lst`. The
 
 | Section | Contents |
 | --- | --- |
-| Basics | player name, dog name, money, offering money, in-game date and time, real play time, weather |
+| Basics | player name, dog name, money, offering money, in-game date and time, real play time, weather, evaluation entry |
 | Player | health, stamina, appearance and colors, hair color |
 | Items | backpack, toolbar, shipping box, storage chests, processing machines and special containers; add and remove items, change quantity and quality, drag to move; upgrade tools; fill materials needed for deliveries or skills |
 | Livestock | grouped by barn, coop and stable; name, friendship, mood and feeding; mark as branded; add animals; move them between pens |
@@ -131,8 +131,9 @@ SAVEDATA
 ├── livestockList_                    animals
 ├── npcStatusList_                    NPC friendship and schedules
 ├── questMap_ / encyclopediaReleaseMap_ / skills_ / bundleList_
-├── brandCropsNameMap_                map: crop item ID → brand name
+├── brandCropsNameMap_                map: harvested item ID → brand name
 ├── brandLivestockNameMap_            map: a breed's main product ID → brand name
+├── letterStatus_/p/letterList_       letters: dataID_, isReaded_, choiceIndex_ and more
 └── statusUniqueIDGenerator_/idSeed_  unique ID generator
 ```
 
@@ -188,6 +189,7 @@ These rules come from the game's tables and native code. Research notes such as 
 - Encyclopedia: `encyclopediaReleaseMap_` records item IDs, always with the value 1. The 76 items with `ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA` (itemfeature 8), such as building rewards, recipe documents, tool bases and demo props, never appear in the game's encyclopedia, so the editor doesn't list them either. Existing entries for them in a save are kept as they are.
 - Skill tree: unlocking a node also unlocks its prerequisites, and locking one locks its dependents, keeping `skills_` and the flag bits in sync. The shrine repair level is never changed automatically. The six learning materials are, in order, magatama, rain magatama, twin magatama, child magatama, bronze mirror and sword (items 650000, 650010, 650020, 650030, 650040, 650060); "补齐材料" (fill materials) puts them into the backpack in that order.
 - Village chief deliveries: required materials are read as `itemId u32, rank u32, count u32`, and high quality means rank 4. The editor only changes the remaining count. When a whole book is delivered it sets the book's completion flag, but it doesn't fire the delivery event or grant rewards. "留最后一件" (leave the last one) lets you make the final delivery in the game. "开放村长家的交付目录" (open the delivery catalog) only sets `GAME_FLAG_STORY_02_022`.
+- Evaluation (评鉴会): `LETTER_ID_FAIR_NOTICE` (letter.dat 7) arrives on the 19th of each season, and the reply is that letter's `choiceIndex_`: -1 unanswered, 0 crops, 1 livestock, 2 horses. The game lets you answer only once. On the 26th, `EVENT_ID_FAIR_MAP_PREPARATION` calls `EventSetFairFlagByReply` (village.exe 0x1402797b0). It clears `GAME_FLAG_FAIR_CROPS/_LIVESTOCK/_HORSE` (601–603) and the venue flags `GAME_FLAG_MAP_DIFF_FAIR` (70001) and `_FAIR_CROPS` (70006), then reads the last evaluation letter in `letterList_`. An answered letter sets `GAME_FLAG_FAIR_REPLYED` (600); an unanswered one gets a random entry. It then sets the entry's flag and venue: 70006 for crops, 70001 for livestock and horses. The events on the 27th only read these flags. While the letter is still there, the editor changes `choiceIndex_` (setting it back to -1 lets you reply again in the game); once a venue flag is on, it rewrites those flags the same way the function does.
 
 ### Brands
 
@@ -222,7 +224,7 @@ The game registers a brand name when an entry gets an S at a 评鉴会 (fair). T
 | `src/lib/ser.ts` | SER parsing and serialization (offset layout, pointer rewriting) |
 | `src/lib/saveModel.ts` | field sections, change collection and export |
 | `src/lib/saveItems.ts`, `saveInventory.ts`, `saveMachines.ts`, `saveTools.ts` | items, containers, processing machines and tools |
-| `src/lib/saveAnimals.ts`, `saveBrands.ts`, `saveQuests.ts`, `saveProgress.ts`, `saveShrine.ts`, `saveDeliveries.ts` | livestock, brands, quests, unlocks, skill tree and deliveries |
+| `src/lib/saveAnimals.ts`, `saveBrands.ts`, `saveQuests.ts`, `saveProgress.ts`, `saveShrine.ts`, `saveDeliveries.ts`, `saveFair.ts` | livestock, brands, quests, unlocks, skill tree, deliveries and evaluations |
 | `src/lib/saveMap*.ts` | map scenes, geometry, rooms, placement rules and editing |
 | `src/lib/saveSession.ts` | draft restore in the browser |
 | `src/lib/saveValidation.ts` | checks before export |

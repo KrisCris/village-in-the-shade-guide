@@ -40,7 +40,7 @@
 
 | 分类 | 内容 |
 | --- | --- |
-| 基础信息 | 玩家名、犬名、金钱、供奉金、游戏日期和时刻、实际游玩时长、天气 |
+| 基础信息 | 玩家名、犬名、金钱、供奉金、游戏日期和时刻、实际游玩时长、天气、评鉴会项目 |
 | 玩家 | 生命、体力、外观和配色、发色 |
 | 物品 | 背包、工具栏、出货箱、收纳箱、加工设备和特殊容器；增删物品、改数量和品质、拖放移动；升级工具；按交付或技能需求补齐材料 |
 | 畜牧 | 按畜舍、禽舍、马棚分组；改名字、好感、心情、喂食，设为品牌种，新增动物，在栏位间移动 |
@@ -131,8 +131,9 @@ SAVEDATA
 ├── livestockList_                    动物
 ├── npcStatusList_                    NPC 好感和日程
 ├── questMap_ / encyclopediaReleaseMap_ / skills_ / bundleList_
-├── brandCropsNameMap_                Map：作物物品 ID → 品牌名
+├── brandCropsNameMap_                Map：收获物物品 ID → 品牌名
 ├── brandLivestockNameMap_            Map：品种的主要产物 ID → 品牌名
+├── letterStatus_/p/letterList_       信件：dataID_、isReaded_、choiceIndex_ 等
 └── statusUniqueIDGenerator_/idSeed_  唯一 ID 生成器
 ```
 
@@ -188,6 +189,7 @@ SAVEDATA
 - 图鉴：`encyclopediaReleaseMap_` 记录物品 ID，值固定为 1。带 `ITEM_FEATURE_NOT_PUBLISH_ENCYCLOPEDIA`（itemfeature 8）的 76 个物品不在游戏图鉴里显示，包括建筑奖励、配方书、工具基底和演示用道具，编辑器也不列出它们；存档里已有的这类记录原样保留。
 - 技能树：解锁会补齐前置节点，锁定会联动后继节点，`skills_` 和标记位同步更新。神龛修缮等级不自动修改。学习成本的六种材料依次是勾玉、雨勾玉、双子勾玉、小孩勾玉、铜镜、剑（物品 650000、650010、650020、650030、650040、650060），“补齐材料”按这个顺序放入背包。
 - 村长交付：交付材料按 `itemId u32、rank u32、count u32` 读取，高品质要求是 rank 4。编辑器只修改剩余数量；全部交付后设置该册的完成标记，但不触发交付事件或补发奖励。可以“留最后一件”，到游戏里完成最后一次交付。“开放村长家的交付目录”只设置 `GAME_FLAG_STORY_02_022`。
+- 评鉴会：每季 19 日寄来 `LETTER_ID_FAIR_NOTICE`（letter.dat 7），回信存在该信的 `choiceIndex_`：-1 未回答，0 作物、1 家畜、2 马匹，游戏里只能回答一次。26 日的 `EVENT_ID_FAIR_MAP_PREPARATION` 调用 `EventSetFairFlagByReply`（village.exe 0x1402797b0）：清掉 `GAME_FLAG_FAIR_CROPS/_LIVESTOCK/_HORSE`（601–603）和会场标记 `GAME_FLAG_MAP_DIFF_FAIR`（70001）、`_FAIR_CROPS`（70006），读 `letterList_` 里最后一封评鉴会信；已回答就设置 `GAME_FLAG_FAIR_REPLYED`（600），未回答则随机选一项；再设置对应项目的标记和会场（作物用 70006，家畜和马匹用 70001）。27 日的流程只看这些标记。所以编辑器在信还在时改 `choiceIndex_`（可以改回 -1，让玩家在游戏里重新回信）；会场标记已经打开时，按这个函数的写法改这几个标记。
 
 ### 品牌
 
@@ -222,7 +224,7 @@ SAVEDATA
 | `src/lib/ser.ts` | SER 解析和序列化（重排偏移、改写指针） |
 | `src/lib/saveModel.ts` | 字段分类、改动收集和导出 |
 | `src/lib/saveItems.ts`、`saveInventory.ts`、`saveMachines.ts`、`saveTools.ts` | 物品、容器、加工设备和工具 |
-| `src/lib/saveAnimals.ts`、`saveBrands.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts` | 畜牧、品牌、任务、解锁、技能树和交付 |
+| `src/lib/saveAnimals.ts`、`saveBrands.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts`、`saveFair.ts` | 畜牧、品牌、任务、解锁、技能树、交付和评鉴会 |
 | `src/lib/saveMap*.ts` | 地图场景、几何、房间、放置规则和编辑 |
 | `src/lib/saveSession.ts` | 浏览器草稿恢复 |
 | `src/lib/saveValidation.ts` | 导出前检查 |
