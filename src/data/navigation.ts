@@ -71,7 +71,7 @@ export function guideGroupOf(path: string) {
   return guideGroups.find(group => group.guides.some(guide => guide.href === path));
 }
 
-/** Top-level sections. The header shows them as tabs; the sidebar lists the current one in full. */
+/** Top-level sections. The header shows them as tabs; the sidebar lists every section in full. */
 export const sections = [
   {id: 'database', label: msg('资料库'), href: '/data/', paths: ['/data/', '/categories/']},
   {id: 'planner', label: msg('规划'), href: '/planner/', paths: ['/planner/']},

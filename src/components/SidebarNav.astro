@@ -18,14 +18,13 @@ const blocks: Record<SectionId, Block[]> = {
 };
 const sectionId = currentSection(path);
 const active = sectionId && currentLink(path, blocks[sectionId].flatMap(block => block.links.map(link => link.href)));
-// Sections keep their order on every page; only the open state follows the page.
-// Pages outside all sections (search, save tools) open everything.
-const open = (id: SectionId) => !sectionId || id === sectionId;
+// Sections keep their order and all render open; the script scrolls to the current link
+// instead of folding the others (the phone menu still opens only the current section).
 ---
 <aside class="sidebar">
   <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-links">{t('主要分类')}<span aria-hidden="true">⌄</span></button>
-  <nav id="sidebar-links" aria-label={t('主要分类')}>
-    {sections.map(section => <details open={open(section.id)}>
+  <nav id="sidebar-links" aria-label={t('主要分类')} data-section={sectionId}>
+    {sections.map(section => <details open data-section={section.id}>
       <summary>{t(section.label)}</summary>
       <div class="section-links">{blocks[section.id].map(block => <>
         {block.group && <p>{block.group}</p>}
@@ -36,21 +35,17 @@ const open = (id: SectionId) => !sectionId || id === sectionId;
 </aside>
 <script>
   import {onPageMount} from '../lib/pageLifecycle';
+  import {keepSidebarAcrossSwaps, prepareSidebar} from '../lib/sidebarNav';
+  const stopKeeping=keepSidebarAcrossSwaps();
   const dispose=onPageMount(()=>{
   document.querySelectorAll<HTMLButtonElement>('.mobile-nav-toggle').forEach(button => {
     button.addEventListener('click', () => {
       button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
     });
   });
-  // A long section can outgrow the window, so the sticky list scrolls; keep the
-  // current page's link in view when it starts below the fold.
-  const nav = document.getElementById('sidebar-links');
-  const active = nav?.querySelector<HTMLElement>('a[aria-current="page"]');
-  if (nav && active && nav.scrollHeight > nav.clientHeight && active.offsetTop + active.offsetHeight > nav.clientHeight) {
-    nav.scrollTop = active.offsetTop - nav.clientHeight / 3;
-  }
+  prepareSidebar();
   });
-  if(import.meta.hot)import.meta.hot.dispose(dispose);
+  if(import.meta.hot)import.meta.hot.dispose(()=>{dispose();stopKeeping();});
 </script>
 <style>
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }
