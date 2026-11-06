@@ -1,5 +1,6 @@
 import { parseMapPreset, type MapEdits } from './saveMap';
 import type { AnimalEdits } from './saveAnimals';
+import type { BrandEdits } from './saveBrands';
 import type { MachineEdits } from './saveMachines';
 import type { ProgressEdits } from './saveProgress';
 import type { SlotEdits } from './saveItems';
@@ -17,6 +18,7 @@ export interface SaveSession {
   machines?: MachineEdits;
   animals?: AnimalEdits;
   map?: MapEdits;
+  brands?: BrandEdits;
   tab: SaveSectionId;
 }
 
@@ -47,6 +49,9 @@ export function readSession(storage: Storage): SaveSession | null {
   if (value.progress && Object.entries(value.progress).some(([group, entries]) => !['encyclopedia', 'skills', 'flags', 'deliveries'].includes(group) || !entries || Object.entries(entries).some(([id, checked]) => group === 'deliveries' ? !/^\d+:[0-2]$/.test(id) || !Number.isSafeInteger(checked) || Number(checked) < 0 : !/^\d+$/.test(id) || typeof checked !== 'boolean'))) throw new Error(tr('暂存的收集记录格式不兼容。'));
   if (value.machines && Object.entries(value.machines).some(([key, edit]) => !/^gimmick-\d+\/[0-2]$/.test(key) || !edit || typeof edit.finish !== 'boolean' || (edit.recipeId !== undefined && !Number.isSafeInteger(edit.recipeId)) || (edit.rank !== undefined && (!Number.isInteger(edit.rank) || edit.rank < 0 || edit.rank > 4)))) throw new Error(tr('暂存的加工记录格式不兼容。'));
   if (value.animals && (Object.values(value.animals.moves ?? {}).some(id => !Number.isSafeInteger(id)) || Object.values(value.animals.added ?? {}).some(animal => !animal || !Number.isSafeInteger(animal.species) || typeof animal.name !== 'string' || (animal.variant !== undefined && (!Number.isInteger(animal.variant) || animal.variant < 0 || animal.variant > 2))))) throw new Error(tr('暂存的动物记录格式不兼容。'));
+  if (value.brands && (Object.entries(value.brands).some(([group, entries]) => !['crops', 'livestock', 'features'].includes(group) || !entries || typeof entries !== 'object')
+    || [value.brands.crops, value.brands.livestock].some(entries => Object.entries(entries ?? {}).some(([id, name]) => !/^\d+$/.test(id) || (name !== null && typeof name !== 'string')))
+    || Object.entries(value.brands.features ?? {}).some(([index, on]) => !/^\d+$/.test(index) || typeof on !== 'boolean'))) throw new Error(tr('暂存的品牌记录格式不兼容。'));
   if (value.map) parseMapPreset(JSON.stringify({ version: 1, game: 'honogurashi', edits: value.map }));
   return value;
 }

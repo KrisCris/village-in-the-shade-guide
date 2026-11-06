@@ -43,11 +43,11 @@
 | 基础信息 | 玩家名、犬名、金钱、供奉金、游戏日期和时刻、实际游玩时长、天气、评鉴会项目 |
 | 玩家 | 生命、体力、外观和配色、发色 |
 | 物品 | 背包、工具栏、出货箱、收纳箱、加工设备和特殊容器；增删物品、改数量和品质、拖放移动；升级工具；按交付或技能需求补齐材料 |
-| 畜牧 | 按畜舍、禽舍、马棚分组；改名字、好感、心情、喂食，新增动物，在栏位间移动 |
+| 畜牧 | 按畜舍、禽舍、马棚分组；改名字、好感、心情、喂食，设为品牌种，新增动物，在栏位间移动 |
 | NPC | 好感度 |
 | 地图 | 农场和室内的作物、地形、设施、建筑和家具；见下方“地图编辑” |
 | 任务 | 已有任务的显示状态和清单勾选 |
-| 收集与解锁 | 图鉴、技能树、配方、外观、村长交付目录、品牌名 |
+| 收集与解锁 | 图鉴、技能树、配方、外观、村长交付目录；作物和畜产品牌的新增、改名、删除 |
 
 ### 地图编辑
 
@@ -132,6 +132,7 @@ SAVEDATA
 ├── npcStatusList_                    NPC 好感和日程
 ├── questMap_ / encyclopediaReleaseMap_ / skills_ / bundleList_
 ├── brandCropsNameMap_                Map：收获物物品 ID → 品牌名
+├── brandLivestockNameMap_            Map：品种的主要产物 ID → 品牌名
 ├── letterStatus_/p/letterList_       信件：dataID_、isReaded_、choiceIndex_ 等
 └── statusUniqueIDGenerator_/idSeed_  唯一 ID 生成器
 ```
@@ -190,6 +191,16 @@ SAVEDATA
 - 村长交付：交付材料按 `itemId u32、rank u32、count u32` 读取，高品质要求是 rank 4。编辑器只修改剩余数量；全部交付后设置该册的完成标记，但不触发交付事件或补发奖励。可以“留最后一件”，到游戏里完成最后一次交付。“开放村长家的交付目录”只设置 `GAME_FLAG_STORY_02_022`。
 - 评鉴会：每季 19 日寄来 `LETTER_ID_FAIR_NOTICE`（letter.dat 7），回信存在该信的 `choiceIndex_`：-1 未回答，0 作物、1 家畜、2 马匹，游戏里只能回答一次。26 日的 `EVENT_ID_FAIR_MAP_PREPARATION` 调用 `EventSetFairFlagByReply`（village.exe 0x1402797b0）：清掉 `GAME_FLAG_FAIR_CROPS/_LIVESTOCK/_HORSE`（601–603）和会场标记 `GAME_FLAG_MAP_DIFF_FAIR`（70001）、`_FAIR_CROPS`（70006），读 `letterList_` 里最后一封评鉴会信；已回答就设置 `GAME_FLAG_FAIR_REPLYED`（600），未回答则随机选一项；再设置对应项目的标记和会场（作物用 70006，家畜和马匹用 70001）。27 日的流程只看这些标记。所以编辑器在信还在时改 `choiceIndex_`（可以改回 -1，让玩家在游戏里重新回信）；会场标记已经打开时，按这个函数的写法改这几个标记。
 
+### 品牌
+
+评鉴会拿到 S 评价时，游戏登记品牌名；编辑器可以手动新增、改名和删除。名字最多 8 个字符。
+
+- 作物：`brandCropsNameMap_` 的键是作物物品 ID（`game-crop-quality.json` 的 `count_item_numeric_id`）。作物在表里时，每次收获都是品质 4，并显示品牌名。编辑器只允许登记作物，每种一条。
+- 家畜：分两部分。动物 `feature_/flags_` 的第 3 位（`LIVESTOCK_FEATURE_BRAND`）决定它的产物是不是品质 4。名字在 `brandLivestockNameMap_` 里，键是品种第一项产物（鸡和乌骨鸡都是鸡蛋 130040，牛和毛茸茸的牛都是牛奶 130000），同产物的品种共用一个名字。公鸡和幼崽没有可评鉴的产物，不能设为品牌种。在畜牧页打开品牌种时，如果这种产物还没有名字，编辑器会先要求起名，再一起写入。删除畜产品牌名不会清除动物的品牌种标记，产物仍是品质 4。
+- `brandLivestockNameMap_` 的条数就是 `LivestockGetBrandedCount` 的返回值，至少 1 条时，下一次家畜评鉴会开始出售克什米尔山羊。
+- 手动登记不会设置 `GAME_FLAG_FAIR_GET_S_RANK`，也不会触发评鉴会解锁的销售事件。已有品牌的展品在评鉴会上判为 `RANK_X`。
+- 新增或删除时整张表重建：`Nk`/`Nv` 重新编号，`ref` 写成条目数，和图鉴表的处理相同。只改名时只写字符串本身。
+
 ### 地图
 
 - **场景**：64 个室外和室内场景，地形来自 YMWR，格距 45 单位，格 ID 为 `round(y/45)*1000000 + round(x/45) + 1`。只有地面掩码允许的格子可以编辑，田地扩张另外检查标记 147/148。
@@ -213,7 +224,7 @@ SAVEDATA
 | `src/lib/ser.ts` | SER 解析和序列化（重排偏移、改写指针） |
 | `src/lib/saveModel.ts` | 字段分类、改动收集和导出 |
 | `src/lib/saveItems.ts`、`saveInventory.ts`、`saveMachines.ts`、`saveTools.ts` | 物品、容器、加工设备和工具 |
-| `src/lib/saveAnimals.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts`、`saveFair.ts` | 畜牧、任务、解锁、技能树、交付和评鉴会 |
+| `src/lib/saveAnimals.ts`、`saveBrands.ts`、`saveQuests.ts`、`saveProgress.ts`、`saveShrine.ts`、`saveDeliveries.ts`、`saveFair.ts` | 畜牧、品牌、任务、解锁、技能树、交付和评鉴会 |
 | `src/lib/saveMap*.ts` | 地图场景、几何、房间、放置规则和编辑 |
 | `src/lib/saveSession.ts` | 浏览器草稿恢复 |
 | `src/lib/saveValidation.ts` | 导出前检查 |

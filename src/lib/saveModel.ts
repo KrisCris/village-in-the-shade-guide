@@ -12,6 +12,7 @@ import { buildProgressEdits, type ProgressEdits } from './saveProgress';
 import { FAIR_ENTRIES, fairEntryName, fairLetterChoice } from './saveFair';
 import { buildMachineEdits, type MachineEdits } from './saveMachines';
 import { buildAnimalEdits, type AnimalEdits } from './saveAnimals';
+import { buildBrandEdits, type BrandEdits } from './saveBrands';
 import animals from '../../data/sources/game-save-animals.json';
 import characters from '../../data/generated/build-25640656/entities/characters.json';
 import { linkedToolDrafts } from './saveTools';
@@ -585,7 +586,7 @@ export function pendingChanges(model: SaveModel, drafts: SaveDrafts): SaveChange
  * Value edits that land inside a slot being replaced or emptied are dropped:
  * the node they addressed will not be written out at all.
  */
-export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotEdits = {}, progress: ProgressEdits = {}, machines: MachineEdits = {}, animalEdits: AnimalEdits = {}, mapEdits: MapEdits = {}): Uint8Array {
+export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotEdits = {}, progress: ProgressEdits = {}, machines: MachineEdits = {}, animalEdits: AnimalEdits = {}, mapEdits: MapEdits = {}, brandEdits: BrandEdits = {}): Uint8Array {
   progress = { ...progress, flags: { ...progress.flags, ...mapBuildingFlags(mapEdits, model.doc).flags } };
   animalEdits = mapAnimalEdits(model.doc, mapEdits, animalEdits, progress);
   const processing = buildMachineEdits(model.doc, model.containers, machines);
@@ -600,11 +601,20 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
   const seedNode = model.doc.resolve('statusUniqueIDGenerator_/idSeed_');
   const seed = idSeed ? new DataView(idSeed.payload.buffer).getBigInt64(0, true) : seedNode ? readSigned(model.doc, seedNode) : 0n;
   const animalLeaves = new Map(changes.filter(change => { const list = model.doc.resolve('livestockList_'); return list && change.field.offset >= list.offset && change.field.offset < list.end; }).map(change => [change.field.offset, payloadFor(model.doc, change.field, change.after)]));
+  const brands = buildBrandEdits(model.doc, brandEdits, node => {
+    const change = changedLeaves.get(node.offset);
+    return change ? payloadFor(model.doc, change.field, change.after) : undefined;
+  });
+  for (const [offset, payload] of brands.payloads) {
+    if (changedLeaves.has(offset)) throw new Error(tr('同一动物的品牌种标记同时在完整字段树和畜牧页面被修改，请先撤销其中一项。'));
+    animalLeaves.set(offset, payload);
+  }
   const livestock = buildAnimalEdits(model.doc, animalEdits, animalLeaves, seed, progress, stablePosition(model.doc, mapEdits));
   livestock.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   const progression = buildProgressEdits(model.doc, progress);
   processing.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   progression.subtrees.forEach((node, offset) => subtrees.set(offset, node));
+  brands.subtrees.forEach((node, offset) => subtrees.set(offset, node));
   for (const offset of subtrees.keys()) {
     const node = model.doc.node(offset);
     if ([...model.aliasTargets].some(target => target >= node.offset && target < node.end)) throw new Error(tr('格子 0x{string} 被其他指针引用，不能替换。', { string: offset.toString(16) }));
@@ -614,6 +624,8 @@ export function exportSave(model: SaveModel, changes: SaveChange[], slots: SlotE
     replaced.some((node) => offset >= node.offset && offset < node.end);
 
   const payloads = new Map<number, Uint8Array>([...progression.payloads, ...processing.payloads]);
+  // A rebuilt livestockList_ already carries the feature bits as leaf edits.
+  for (const [offset, payload] of brands.payloads) if (!shadowed(offset)) payloads.set(offset, payload);
   for (const change of changes) {
     if (shadowed(change.field.offset)) continue;
     if (payloads.has(change.field.offset)) throw new Error(tr('同一解锁记录同时在完整字段树和解锁页面被修改，请先撤销其中一项。'));

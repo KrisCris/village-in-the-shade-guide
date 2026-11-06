@@ -9,9 +9,11 @@ import SaveIcon from './SaveIcon';
 import SaveDialog from './SaveDialog';
 import SaveFieldInput, { NAME_LIMIT, NameCount } from './SaveFieldInput';
 import { buildSaveSearchText, normalizeSearch } from '../../lib/saveSearch';
+import { brandFeature, brandNames, brandProduct, storedBrandFeature, withBrandFeature, withBrandName, type BrandEdits } from '../../lib/saveBrands';
+import { itemLabel } from './ItemGrid';
 import { tr } from '../../i18n/active';
 
-export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, onEdit: changeEdits, onField, progress, mapEdits = {} }: { mapEdits?: MapEdits; progress?: ProgressEdits; model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
+export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, onEdit: changeEdits, onField, progress, mapEdits = {}, brands = {}, onBrands }: { brands?: BrandEdits; onBrands: (edits: BrandEdits) => void; mapEdits?: MapEdits; progress?: ProgressEdits; model: SaveModel; names: SaveNameTables; edits: AnimalEdits; drafts: Record<number, string>; onEdit: (edits: AnimalEdits) => void; onField: (field: SaveField, value: string) => void }) {
   let edits=rawEdits, migrationError='';
   try { edits=mapAnimalEdits(model.doc,mapEdits,rawEdits,progress??{}); } catch(error) { migrationError=(error as Error).message; }
   function onEdit(next:AnimalEdits) {
@@ -25,7 +27,7 @@ export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, on
   const grid = useRef<HTMLDivElement>(null);
   const rows = model.sections.find(section => section.id === 'barn')?.tables[0]?.rows ?? [];
   const [selected, setSelected] = useState<number | null>(null), [adding, setAdding] = useState<number | null>(null), [species, setSpecies] = useState(''), [name, setName] = useState('');
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(''), [brandName, setBrandName] = useState<string | null>(null);
   const detail = selected === null ? null : residents.find(resident => resident.index === selected);
   const tableRow = detail && rows[detail.index];
   const speciesName = (id: number) => names.names?.livestock?.[id] ?? ANIMALS.find(animal => animal.id === id)?.name ?? String(id);
@@ -59,7 +61,17 @@ export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, on
     if (occupant && occupant.index !== detail.index) moves[occupant.index] = detail.placement;
     onEdit({ ...edits, moves });
   }
-  const animalButton = (resident: typeof residents[number]) => <button type="button" className={`save-animal-card${resident.index === selected ? ' active' : ''}`} key={resident.index} onClick={() => setSelected(resident.index)}>{portrait(resident.species, resident.variant)}<b>{drafts[rows[resident.index]?.cells[0]?.offset ?? -1] ?? resident.name}</b><small>{variantName(resident.species, resident.variant)}</small></button>;
+  // LIVESTOCK_FEATURE_BRAND; the product's rank-4 name comes from brandLivestockNameMap_.
+  const product = detail ? brandProduct(detail.species) : undefined;
+  const productNamed = product !== undefined && brandNames(model.doc, 'livestock', brands, drafts).has(String(product));
+  const brandLimitExceeded = brandName !== null && Array.from(brandName).length > NAME_LIMIT;
+  function setBrand(on: boolean) {
+    if (!detail) return;
+    if (on && product !== undefined && !productNamed) { setBrandName(''); return; }
+    setBrandName(null);
+    onBrands(withBrandFeature(model.doc, brands, detail.index, on));
+  }
+  const animalButton = (resident: typeof residents[number]) => <button type="button" className={`save-animal-card${resident.index === selected ? ' active' : ''}`} key={resident.index} onClick={() => setSelected(resident.index)}>{portrait(resident.species, resident.variant)}<b>{drafts[rows[resident.index]?.cells[0]?.offset ?? -1] ?? resident.name}</b><small>{variantName(resident.species, resident.variant)}{brandFeature(model.doc, resident.index, brands) ? tr(' · 品牌种') : ''}</small></button>;
   const housePanel = (house: typeof houses[number]) => <section className={`save-container-panel save-animal-house${house.type === 2 ? ' save-animal-stable' : ''}`} key={house.id}><header className="save-container-head"><h3>{house.title}</h3><small>{house.slots.length} {tr('个安置位置')}</small></header><div className="save-animal-slots">{house.slots.map((slot, index) => {
       const resident = residents.find(resident => resident.placement === slot.id), addition = edits.added?.[slot.id];
       return <div key={slot.id} className="save-animal-position"><small>{tr('位置')} {index + 1}</small>{resident ? animalButton(resident) : addition ? <div className="save-animal-card">{portrait(addition.species, addition.variant)}<b>{addition.name}</b><small>{tr('新增 ·')} {variantName(addition.species, addition.variant)}</small><button type="button" onClick={() => { const added = { ...edits.added }; delete added[slot.id]; onEdit({ ...edits, added }); }}>{tr('撤销新增')}</button></div> : <button type="button" className="save-animal-card empty" disabled={!canAdd} onClick={() => { setAdding(slot.id); setSpecies(''); setName(''); setQuery(''); }}><span>＋</span><small>{tr('添加动物')}</small></button>}</div>;
@@ -69,7 +81,10 @@ export default function AnimalsPanel({ model, names, edits: rawEdits, drafts, on
     {!canAdd && houses.length > 0 && <div className="save-animal-tile save-animal-notice"><p className="save-notice">{tr('先在游戏中领养一只普通家畜或家禽，再添加新伙伴。')}</p></div>}
     {houses.map(house => <div className="save-animal-tile" key={house.id}>{housePanel(house)}</div>)}
     {loose.length > 0 && <div className="save-animal-tile"><section className="save-container-panel"><header className="save-container-head"><h3>{tr('其他伙伴')}</h3><small>{loose.length} {tr('位伙伴')}</small></header><div className="save-animal-slots">{loose.map(animalButton)}</div></section></div>}
-    {detail && tableRow && <SaveDialog title={`${detail.name} · ${speciesName(detail.species)}`} onClose={() => setSelected(null)}><div className="save-animal-fields">{tableRow.cells.filter(field => field && !field.readOnly).map(field => field && <label key={field.offset}><span>{field.label}</span><SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onField} /></label>)}</div>
+    {detail && tableRow && <SaveDialog title={`${detail.name} · ${speciesName(detail.species)}`} onClose={() => { setSelected(null); setBrandName(null); }}><div className="save-animal-fields">{tableRow.cells.filter(field => field && !field.readOnly).map(field => field && <label key={field.offset}><span>{field.label}</span><SaveFieldInput field={field} draft={drafts[field.offset]} names={names} onChange={onField} /></label>)}
+      {(product !== undefined || storedBrandFeature(model.doc, detail.index)) && <label><span>{tr('品牌种')}</span><span className={`save-cell${brandFeature(model.doc, detail.index, brands) !== storedBrandFeature(model.doc, detail.index) ? ' dirty' : ''}`}><SearchableSelect aria-label={tr('品牌种')} value={brandName !== null || brandFeature(model.doc, detail.index, brands) ? '1' : '0'} onChange={event => setBrand(event.target.value === '1')}><option value="0">{tr('否')}</option><option value="1">{tr('是')}</option></SearchableSelect></span></label>}</div>
+      {brandName !== null && product !== undefined && <div className="save-animal-add-footer save-brand-prompt"><label className="save-animal-move"><span>{tr('{item}还没有品牌名，先起一个', { item: itemLabel(names, String(product)) })}</span><input aria-label={tr('新品牌名')} placeholder={tr('最多 {limit} 个字符', { limit: NAME_LIMIT })} value={brandName} aria-invalid={brandLimitExceeded || undefined} onChange={event => setBrandName(event.target.value)} /><NameCount value={brandName} /></label>
+        <button type="button" onClick={() => setBrandName(null)}>{tr('取消')}</button><button type="button" className="save-download" disabled={!brandName.trim() || brandLimitExceeded} onClick={() => { onBrands(withBrandFeature(model.doc, withBrandName(model.doc, brands, 'livestock', String(product), brandName.trim()), detail.index, true)); setBrandName(null); }}>{tr('设为品牌种')}</button></div>}
       {houses.some(house => house.slots.some(slot => slot.id === detail.placement)) && <label className="save-animal-move"><span>{tr('安置位置')}</span><SearchableSelect aria-label={tr('安置位置')} value={detail.placement} onChange={event => move(Number(event.target.value))}>{houses.filter(house => house.type === ANIMALS.find(animal => animal.id === detail.species)?.houseType).map(house => <optgroup key={house.id} label={house.title}>{house.slots.filter(slot => !edits.added?.[slot.id]).map((slot, index) => <option value={slot.id} key={slot.id}>{tr('位置')} {index + 1}{residents.find(resident => resident.placement === slot.id && resident.index !== detail.index) ? tr(' · 交换位置') : ''}</option>)}</optgroup>)}</SearchableSelect></label>}
     </SaveDialog>}
     {adding !== null && <SaveDialog title={tr('添加动物')} onClose={() => setAdding(null)}><div className="save-animal-picker">

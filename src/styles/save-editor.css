@@ -308,6 +308,21 @@ html:has(.save-editor) { scrollbar-gutter: stable; }
 .save-carried-items { display:grid; align-content:start; gap:1rem; min-width:0; }
 .save-equipment-tools { grid-column:1 / -1; min-width:0; }
 .save-editor [data-section=brand] .save-record-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)); }
+.save-brands { display:grid; gap:1.5rem; }
+.save-brands .save-record-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)); }
+.save-brand-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.6rem; margin:0 0 .7rem; padding-bottom:.4rem; border-bottom:1px solid color-mix(in srgb, var(--border) 60%, transparent); }
+.save-brand-head h3 { margin:0; padding:0; border:0; }
+.save-brand-head button { font-size:.85rem; cursor:pointer; border-radius:6px; }
+.save-brand-head button:hover, .save-record-actions button:hover { border-color:var(--green); background:var(--green-soft); }
+.save-brand-group .save-tab-description { margin:0 0 .9rem; }
+.save-record-card.removed { border-style:dashed; opacity:.75; }
+.save-record-card.removed .save-cell-value { text-decoration:line-through; }
+.save-brand-tag { display:inline-block; margin-inline-start:.5rem; padding:.05rem .45rem; border-radius:999px; background:var(--green-soft); color:var(--green); font-size:.7rem; font-weight:500; text-decoration:none; vertical-align:middle; }
+.save-record-actions { display:flex; justify-content:flex-end; gap:.5rem; }
+.save-record-actions button { min-height:36px; border-radius:6px; font-size:.8rem; cursor:pointer; }
+.save-brand-picker { display:grid; gap:1rem; min-width:0; }
+.save-brand-prompt { margin-top:1rem; }
+.save-brand-prompt > button:not(.save-download) { flex:none; min-height:42px; padding:.5rem .9rem; border:1px solid var(--border); border-radius:6px; background:var(--paper-raised); color:var(--ink); font:inherit; cursor:pointer; }
 .save-editor .save-delivery-scroll { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr)); grid-auto-rows:max-content; gap:1rem; align-content:start; align-items:start; }
 .save-editor .save-delivery-bundle { margin:0; }
 .save-editor .save-animal-slots { grid-template-columns:repeat(auto-fit,minmax(min(100%,112px),1fr)); }
