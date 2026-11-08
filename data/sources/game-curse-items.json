@@ -750,18 +750,33 @@
       {
         "crop": "CROPS_ID_ONION",
         "ridge": false,
+        "points": [
+          100,
+          500
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_ONION"
       },
       {
         "crop": "CROPS_ID_CABBAGE",
         "ridge": false,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_CABBAGE"
       },
       {
         "crop": "CROPS_ID_TURNIP",
         "ridge": true,
+        "points": [
+          80,
+          400
+        ],
+        "other_soil": 80,
         "outcome": "giant",
         "giant": "CROPS_ID_BIG_TURNIP",
         "item": "ITEM_ID_CROPS_DISASTER_TURNIP"
@@ -769,37 +784,72 @@
       {
         "crop": "CROPS_ID_POTATO",
         "ridge": false,
+        "points": [
+          100,
+          600
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_PEA",
         "ridge": true,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_LETTUCE",
         "ridge": true,
+        "points": [
+          220,
+          1100
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_CARROT",
         "ridge": true,
+        "points": [
+          100,
+          700
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_STRAWBERRY",
         "ridge": true,
+        "points": [
+          300,
+          1400
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_STRAWBERRY"
       },
       {
         "crop": "CROPS_ID_ASPARAGUS",
         "ridge": false,
+        "points": [
+          100,
+          900
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_RADISH",
         "ridge": false,
+        "points": [
+          100,
+          800
+        ],
+        "other_soil": 80,
         "outcome": "none"
       }
     ],
@@ -807,34 +857,64 @@
       {
         "crop": "CROPS_ID_WHITE_ONION",
         "ridge": true,
+        "points": [
+          100,
+          600
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_WHITE_ONION"
       },
       {
         "crop": "CROPS_ID_TOMATO",
         "ridge": true,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_TOMATO"
       },
       {
         "crop": "CROPS_ID_EGGPLANT",
         "ridge": true,
+        "points": [
+          220,
+          1100
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_PEPPER",
         "ridge": true,
+        "points": [
+          200,
+          1000
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_CUCUMBER",
         "ridge": false,
+        "points": [
+          100,
+          900
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_CUCUMBER"
       },
       {
         "crop": "CROPS_ID_CORN",
         "ridge": false,
+        "points": [
+          260,
+          1300
+        ],
+        "other_soil": 80,
         "outcome": "giant",
         "giant": "CROPS_ID_BIG_CORN",
         "item": "ITEM_ID_CROPS_DISASTER_CORN"
@@ -842,60 +922,115 @@
       {
         "crop": "CROPS_ID_WATERMELON",
         "ridge": false,
+        "points": [
+          220,
+          1100
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_WATERMELON"
       },
       {
         "crop": "CROPS_ID_WHEAT",
         "ridge": false,
+        "points": [
+          80,
+          400
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_WHEAT"
       },
       {
         "crop": "CROPS_ID_SUGARCANE",
         "ridge": true,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_PUMPKIN",
         "ridge": false,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_GINGER",
         "ridge": false,
+        "points": [
+          100,
+          500
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_GINGER"
       },
       {
         "crop": "CROPS_ID_EDAMAME",
         "ridge": false,
+        "points": [
+          130,
+          650
+        ],
+        "other_soil": 80,
         "outcome": "season_end",
         "item": "ITEM_ID_CROPS_DISASTER_SOYBEAN"
       },
       {
         "crop": "CROPS_ID_BLUEBERRY",
         "ridge": false,
+        "points": [
+          200,
+          1000
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_HOPS",
         "ridge": true,
+        "points": [
+          280,
+          1400
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_MELON",
         "ridge": false,
+        "points": [
+          280,
+          1400
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_PINEAPPLE",
         "ridge": false,
+        "points": [
+          260,
+          1300
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_GARLIC",
         "ridge": false,
+        "points": [
+          100,
+          700
+        ],
+        "other_soil": 80,
         "outcome": "none"
       }
     ],
@@ -903,12 +1038,22 @@
       {
         "crop": "CROPS_ID_BUCKWHEAT",
         "ridge": false,
+        "points": [
+          100,
+          500
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_BUCKWHEAT"
       },
       {
         "crop": "CROPS_ID_TARO",
         "ridge": true,
+        "points": [
+          80,
+          400
+        ],
+        "other_soil": 80,
         "outcome": "giant",
         "giant": "CROPS_ID_BIG_TARO",
         "item": "ITEM_ID_CROPS_DISASTER_TARO"
@@ -916,17 +1061,32 @@
       {
         "crop": "CROPS_ID_SWEET_POTATO",
         "ridge": true,
+        "points": [
+          100,
+          700
+        ],
+        "other_soil": 80,
         "outcome": "none"
       },
       {
         "crop": "CROPS_ID_OLIVE",
         "ridge": false,
+        "points": [
+          200,
+          1000
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_OLIVE"
       },
       {
         "crop": "CROPS_ID_SESAME",
         "ridge": false,
+        "points": [
+          100,
+          900
+        ],
+        "other_soil": 80,
         "outcome": "none"
       }
     ],
@@ -934,23 +1094,42 @@
       {
         "crop": "CROPS_ID_DAIKON",
         "ridge": true,
+        "points": [
+          100,
+          900
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_DAIKON"
       },
       {
         "crop": "CROPS_ID_SPINACH",
         "ridge": true,
+        "points": [
+          100,
+          700
+        ],
+        "other_soil": 80,
         "outcome": "cursed",
         "item": "ITEM_ID_CROPS_DISASTER_SPINACH"
       },
       {
         "crop": "CROPS_ID_CHINESE_CABBAGE",
         "ridge": true,
+        "points": [
+          240,
+          1200
+        ],
+        "other_soil": 80,
         "outcome": "giant",
         "giant": "CROPS_ID_BIG_CHINESE_CABBAGE",
         "item": "ITEM_ID_CROPS_DISASTER_CHINESE_CABBAGE"
       }
     ]
+  },
+  "mud_growth": {
+    "preferred_soil": 100,
+    "seed_nights": 1
   },
   "giants": {
     "CROPS_ID_BIG_TURNIP": {

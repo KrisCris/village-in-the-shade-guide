@@ -26,14 +26,35 @@ Native code in village.exe (hash below), re-trace when it changes:
 - 0x14024DC20 (planting, pick at 0x14024DDFA): a seed item with +0x184 set (泥の種) stores a uniform random pick among crops with
   type 0, exactly one planting season equal to the current one, the tile's farmland in their soil list, a
   preferred soil other than the paddy (3), and no CROPS_FEATURE_GIANT_CROPS.
-- 0x1402BD12B: the grown mud seed is replaced by that pick, which is marked as mud-grown (+0x72).
-- 0x1402BD2F7-0x1402BD441 (daily growth): when a mud-grown crop enters the first stage whose form field (+0x98)
-  is set, a crop whose stage names a giant (+0xA8) becomes it if 0x1401E6E60 finds the 24 surrounding tiles of
-  the 5x5 square clear (farmable ground, no object, no type 2/6 crop, no CROPS_FEATURE_GIANT_NOT_REMOVE_CROPS);
-  0x1401E68A0 then removes the crops within 2 tiles. A failed check unmarks the crop, which stays ordinary.
-  Without a giant the crop takes that form (CROPS_FORM_DISASTER). Nothing here is random.
-- 0x1402BCD88 (season change): a mature mud-grown crop 34 (枝豆) takes CROPS_FORM_DISASTER instead of
-  CROPS_FORM_WITHERED_HARVESTABLE.
+  0x140143120 draws one candidate with Random(n) (0x1406808C0, a Mersenne twister), so every candidate is equally likely.
+  Random(n) here uses generator slot 0, which CGame (vtable slot 3, 0x1401651A0) seeds once at startup from
+  QueryPerformanceCounter in milliseconds. Only ai_creature_horror_kodama reseeds, and it uses RandomSetSeed on
+  RANDOM_SEED_SCRIPT_FIX. event_check_daily runs GameAddDay, GameDailyUpdate, then TaskCreate_AutoSave, so a save
+  always holds the pick already grown; replanting after loading an earlier save draws again.
+- 0x1402BC150 (nightly crop update): a crop on farmland gains 100 growth points, or the crop's
+  nonSuitableLandSpeed (+0x110, 80 for every candidate) when the tile's farmland differs from its preferred
+  soil (+0x108); 0x1400F0B40 adds them. The mud seed itself prefers tilled soil at speed 100, so either soil
+  gives it the 100 points it needs in one night.
+- 0x1402BD12B: in that same update the grown mud seed is replaced by the pick, which is marked as mud-grown
+  (+0x72) and starts with the threshold of its first stage (0x1402BD11C reads the next GrowInfo, stride 0x110).
+  So a pick ripens after 1 + ceil((ripe - first) / speed) nights.
+- 0x1402BD2F7-0x1402BD441 (same update, after the season check): when a mud-grown crop enters the first stage
+  whose form field (+0x98) is set, a crop whose stage names a giant (+0xA8) becomes it if
+  CMapInformation::isBigFormCheck (0x1401E6E60) passes every tile at Chebyshev distance 1-2. A tile fails
+  (0x1401E7050) when getGimmickByLandID (0x1401E59F0) finds any CGimmickStatus on it (garden floors,
+  sprinklers and scarecrows are gimmicks too), when its crop is type 2 (trees, bamboo), type 6 (mushroom logs)
+  or has CROPS_FEATURE_GIANT_NOT_REMOVE_CROPS (stumps, fallen trees, big rocks), when the terrain lacks the
+  farming bit (0x1401935E0), or when such a crop's collision body overlaps it. Tilled soil is not required.
+  setFarmlandCheckRemoveCrops (0x1401E68A0, radius 2) then removes every other crop and resets the soil.
+  A failed check unmarks the crop, which stays ordinary. Without a giant the crop takes that form
+  (CROPS_FORM_DISASTER). Nothing here is random.
+- 0x1402BCD17-0x1402BCF7D (season check, before the step above): unless the map is a greenhouse (211400001 or
+  211400101), a crop out of its first season list withers (form 2) or is removed while a seedling; a crop with
+  CROPS_FEATURE_GIANT_CROPS is removed. So cursed crops and giants left in the field are lost at the season
+  change, and a crop that would ripen that night withers first.
+- 0x1402BCD88 (same check): a fully grown mud-grown crop 34 (枝豆) takes CROPS_FORM_DISASTER instead of
+  CROPS_FORM_WITHERED_HARVESTABLE and stores the season (+0x80); it stays through that season and is removed
+  at the next change. The greenhouse skips this check, so 枝豆 never turns there.
 - 0x14021DC20-0x14021E3D7 (catch roll): each fishing.dat row weighs int(weight*100). While bait is active,
   GAME_VALUE_GIMMICK_BAIT_TYPE holds its gimmick: 撒き餌 halves trash (fish.dat kind 0), 良質な撒き餌 halves
   trash and multiplies fish (kind 1) by 1.2, 白い撒き餌 gives white fish (kind 2) 3/97 of the running total.
@@ -180,27 +201,36 @@ u32=lambda r,o:struct.unpack_from('<I',r,o)[0]
 i64=lambda r,o:struct.unpack_from('<q',r,o)[0]
 def ids(name): return {g[0]:u32(r,0) for r,g in table(name)}
 crop_feature,crop_form,soil=ids('cropsfeature'),ids('cropsform'),ids('farmland')
-assert (crop_feature['CROPS_FEATURE_GIANT_CROPS'],crop_form['CROPS_FORM_DISASTER'],crop_form['CROPS_FORM_WITHERED_HARVESTABLE'])==(19,3,9)
+assert (crop_feature['CROPS_FEATURE_GIANT_CROPS'],crop_feature['CROPS_FEATURE_GIANT_NOT_REMOVE_CROPS'],crop_form['CROPS_FORM_DISASTER'],crop_form['CROPS_FORM_WITHERED_HARVESTABLE'])==(19,20,3,9)
 assert (soil['FARMLAND_PLOWED'],soil['FARMLAND_FURROW'],soil['FARMLAND_RICEFIELD'])==(1,2,3)
 assert read_table(data.read_entry('data/database/crops.dat')).language_count==6
 def crop_record(r):
-    """type, three season lists, soil list, preferred soil, a word, features, 80 fixed bytes, growth states."""
+    """type, three season lists, soil list, preferred soil, other-soil speed, features, 80 fixed bytes, growth states.
+
+    Each growth stage is (threshold, form, giant): GrowInfo +0, +0x98 and +0xA8, stride 272.
+    """
     c=84;kind=u32(r,80);lists=[]
     for _ in range(3):
         n=u32(r,c);lists.append([u32(r,c+4+4*i) for i in range(n)]);c+=4+4*n
     n=u32(r,c);soils=[i64(r,c+4+8*i) for i in range(n)];c+=4+8*n
-    preferred=i64(r,c);c+=12
+    preferred=i64(r,c);slow=u32(r,c+8);c+=12
     n=u32(r,c);features=[i64(r,c+4+8*i) for i in range(n)];c+=4+8*n
     master=i64(r,c);c+=80
     states={}
     count=u32(r,c);c+=4
     for _ in range(count):
         state,n=u32(r,c),u32(r,c+4);c+=8
-        states[state]=[(u32(r,c+k*272+0x98),i64(r,c+k*272+0xA8)) for k in range(n)];c+=n*272
+        states[state]=[(u32(r,c+k*272),u32(r,c+k*272+0x98),i64(r,c+k*272+0xA8)) for k in range(n)];c+=n*272
     assert c<=len(r)
-    return dict(kind=kind,plant=lists[1],soils=soils,preferred=preferred,features=features,master=master,states=states)
+    return dict(kind=kind,plant=lists[1],soils=soils,preferred=preferred,slow=slow,features=features,master=master,states=states)
 crop_rows={g[0]:(i64(r,0),crop_record(r)) for r,g in table('crops')}
 crop_names={number:name for name,(number,_) in crop_rows.items()}
+# What the giant check refuses besides placed gimmicks: trees and bamboo (type 2), mushroom logs (type 6) and
+# the GIANT_NOT_REMOVE debris. Weeds, grass, twigs and small stones are ordinary crops it clears.
+assert sorted(name for name,(_,c) in crop_rows.items() if 20 in c['features'])==['CROPS_ID_OBJECT_FALLEN_TREE','CROPS_ID_OBJECT_HUGE_ROCK','CROPS_ID_OBJECT_HUGE_ROCK_HARD','CROPS_ID_OBJECT_HUGE_ROCK_VERY_HARD','CROPS_ID_OBJECT_ROCK','CROPS_ID_OBJECT_STUMP','CROPS_ID_OBJECT_STUMP_HARD','CROPS_ID_OBJECT_STUMP_VERY_HARD']
+assert {name for name,(_,c) in crop_rows.items() if c['kind']==6}=={'CROPS_ID_SHIMEJI','CROPS_ID_SHIITAKE_MUSHROOM','CROPS_ID_KIKURAGE'}
+assert {'CROPS_ID_OBJECT_TREE','CROPS_ID_OBJECT_BANBOO','CROPS_ID_APPLE_TREE'}<={name for name,(_,c) in crop_rows.items() if c['kind']==2}
+assert not any(20 in c['features'] or c['kind'] in (2,6) for name,(_,c) in crop_rows.items() if 'WEED' in name or name in ('CROPS_ID_OBJECT_GRASS','CROPS_ID_OBJECT_TWIG','CROPS_ID_OBJECT_STONE'))
 def drops(r):
     out=[];c=20
     for _ in range(u32(r,16)):
@@ -214,7 +244,8 @@ harvest_records={u32(r,0):r for r,g in table("cropsharvest")}
 harvest=lambda number:drops(harvest_records[number])
 actions={u32(r,0):g[0] for r,g in table('action')}
 mud_crop=crop_rows['CROPS_ID_MUD_SEEDS'][1]
-assert mud_crop['soils']==[1,2]
+# One night on either soil: tilled is preferred and the other soil also grows 100.
+assert mud_crop['soils']==[1,2] and mud_crop['preferred']==1 and mud_crop['slow']==100 and [p for p,_,_ in mud_crop['states'][1]]==[0,100]
 seasons=('spring','summer','autumn','winter')
 mud_pool={season:[] for season in seasons}
 giants={}
@@ -222,8 +253,12 @@ for name,(number,c) in crop_rows.items():
     if not (c['kind']==0 and len(c['plant'])==1 and c['preferred']!=3 and 19 not in c['features'] and c['master']):
         continue
     assert c['soils']==[1,2],name  # every candidate takes plowed fields and ridges alike
-    form,giant=next(((f,g) for f,g in c['states'][1] if f),(0,0))
-    entry=dict(crop=name,ridge=c['preferred']==2)
+    stages=c['states'][1]
+    form,giant=next(((f,g) for _,f,g in stages if f),(0,0))
+    # Growth points it starts with after the seed night, and those of the stage where it turns (or ripens).
+    ripe=next((p for p,f,_ in stages if f),stages[-1][0])
+    assert stages[0][0]==0 and len(stages)>1 and ripe==stages[-1][0],name
+    entry=dict(crop=name,ridge=c['preferred']==2,points=[stages[1][0],ripe],other_soil=c['slow'])
     if giant:
         assert form==3
         rows=harvest(giant)
@@ -242,6 +277,7 @@ for name,(number,c) in crop_rows.items():
         entry.update(outcome='none')
     mud_pool[seasons[c['plant'][0]]].append(entry)
 assert sum(e['outcome'] in ('cursed','giant','season_end') for p in mud_pool.values() for e in p)==18
+assert {e['other_soil'] for p in mud_pool.values() for e in p}=={80}
 
 # Bait in the catch roll (see the native notes above).
 fish_kind={items[u32(r,0)]:u32(r,16) for r in read_table(data.read_entry('data/database/fish.dat')).records}
@@ -264,6 +300,8 @@ out=dict(
     dorotabo_harvest='ITEM_ID_CURSE_FURNITURE_GHOST_FLOWER_VASE',
     pickup_pools=pools,
     mud_pool=mud_pool,
+    # Watered growth per night on the preferred soil; each pool entry gives its other-soil rate.
+    mud_growth=dict(preferred_soil=100,seed_nights=1),
     giants=giants,
     cursed_pull=dict(frames=define('HORROR_MULFORM_HARVEST_TIME'),interval=define('HORROR_MULFORM_HARVEST_DAMAGE_INTERVAL'),damage=define('HORROR_MULFORM_HARVEST_DAMAGE_VALUE'),per_heart=100),
     fish_kind=fish_kind,
