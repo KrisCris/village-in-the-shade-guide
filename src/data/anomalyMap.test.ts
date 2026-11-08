@@ -22,6 +22,15 @@ describe('anomaly map crop', () => {
     expect(edge.y + edge.height).toBeLessThanOrEqual(MINIMAP_SIZE);
   });
 
+  it('widens close points to a requested minimum width', () => {
+    const points = [{ x: 2000, y: 2000 }, { x: 2100, y: 2000 }];
+    const wide = mapPins([{ label: 'a', color: '#fff', shape: 'dot', points }], projection, 900).frame;
+    expect(wide.width).toBe(900);
+    expect(wide.x).toBeLessThan(2000);
+    expect(wide.x + wide.width).toBeGreaterThan(2100);
+    expect(mapPins([{ label: 'a', color: '#fff', shape: 'dot', points }], projection).frame.width).toBe(380);
+  });
+
   it('places pins in percent and continues numbering across layers', () => {
     const { pins } = mapPins([
       { label: 'a', color: '#fff', shape: 'number', points: [{ x: 1000, y: 1000 }, { x: 1300, y: 1100 }] },

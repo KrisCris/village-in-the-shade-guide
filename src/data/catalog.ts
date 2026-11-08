@@ -11,6 +11,7 @@ import machineCapacities from '../../data/sources/game-machine-capacities.json';
 import cropGrowth from '../../data/sources/game-crop-growth.json';
 import sapTrees from '../../data/sources/game-sap-trees.json';
 import cropQuality from '../../data/sources/game-crop-quality.json';
+import { visitorRow } from './mysteryVisitor';
 import { defaultLocale, type Locale } from '../i18n/locales';
 import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
@@ -118,7 +119,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
   const counts: Record<string, number> = {};
   for (const [path, raw] of Object.entries(input)) {
     const kind = kindFromPath(path);
-    const rows = raw as Array<Record<string, unknown> & { id: string; name?: Name }>;
+    const rows = (kind === 'characters' ? [...(raw as unknown[]), visitorRow()] : raw) as Array<Record<string, unknown> & { id: string; name?: Name }>;
     counts[kind] = rows.length;
     for (const row of rows) {
       const fallback: Name = { zh_hans: row.id, zh_hant: '', ja: '', internal: row.id, aliases: [row.id], review_status: 'internal' };
@@ -143,6 +144,7 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       if (typeof entity.location === 'string') entity.location = text(toSimplified(entity.location));
       if (typeof entity.activity_type === 'string') entity.activity_type = text(entity.activity_type);
       if (typeof entity.cultivation_method === 'string') entity.cultivation_method = text(entity.cultivation_method);
+      if (typeof entity.guide_label === 'string') entity.guide_label = text(entity.guide_label);
       if (Array.isArray(entity.ingredient_options)) entity.ingredient_options = (entity.ingredient_options as Array<Record<string, unknown>>).map(option => typeof option.feature_name === 'string' ? { ...option, feature_name: text(option.feature_name) } : option);
       // i18n-ignore-next-line — rewrites extractor wording before translation.
       if (Array.isArray(entity.conditions)) entity.conditions = entity.conditions.map((condition) => typeof condition === 'string' ? text(toSimplified(condition).replace('尚未解锁此款外观', '仅在尚未拥有此款外观时出售，购买后解锁').replace('尚未解锁此制作配方', '仅在尚未学会此配方时出售')) : condition);

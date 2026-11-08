@@ -23,7 +23,7 @@ const check = process.argv.includes('--check');
 const catalogDir = 'src/i18n/catalogs';
 const sourceExtensions = /\.(astro|ts|tsx|mjs)$/;
 /** Modules that only run while rendering pages; their keys stay out of the browser catalogs. */
-const serverOnly = [/\.astro$/, /^src\/data\/(catalog|guideContent|navigation)\.ts$/];
+const serverOnly = [/\.astro$/, /^src\/data\/(catalog|guideContent|navigation|mysteryVisitor)\.ts$/];
 
 async function sourceFiles(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });

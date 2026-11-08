@@ -20,17 +20,22 @@ archive = FafullfsArchive.open(cli.game_dir / 'data.dat')
 roles = ['ORPHAN','CARPENTER','WOODCUTTER','VILLAGE_HEAD','HUNTER','GENERAL_STORE_MASTER','OLD_MAN','SECRETARY','CITY_HALL_STAFF','GIRL','YOUNG_MAN','BOY','FEMALE_DOCTOR','STREET_VENDOR','GHOST_GIRL']
 definitions = list(_string_groups(read_table(archive.read_entry('data/database/talkdefine.dat'))))
 result = {}
-for number, role in enumerate(roles, 2):
+# 1.30's unnamed visitor has no role; his faces are TALK_BU_FACE_CHA_0170_*.
+prefixes = {f'BU_{number*10:04}': role for number, role in enumerate(roles, 2)} | {'BU_0170': 'CHA_0170'}
+for model, role in prefixes.items():
     prefix = f'TALK_BU_FACE_{role}_'
-    result[f'BU_{number*10:04}'] = {s[4]: {'name': s[2], 'symbol': s[1]} for s in definitions if s[1].startswith(prefix)}
+    result[model] = {s[4]: {'name': s[2], 'symbol': s[1]} for s in definitions if s[1].startswith(prefix)}
 (cli.output / 'expressions.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf8')
 print('Exported', sum(map(len, result.values())), 'named expressions')
 
+# bu.dat names its model by anime.dat ID; 1.30's BU_0170 (1661) breaks the old 1630+n run.
+anime_table = read_table(archive.read_entry('data/database/anime.dat'))
+models = {struct.unpack_from('<I', record)[0]: strings[2] for record, strings in zip(anime_table.records, _string_groups(anime_table)) if strings[0].startswith('ANIME_ID_BU_')}
 bu = {}
 for record, strings in zip(read_table(archive.read_entry('data/database/bu.dat')).records, _string_groups(read_table(archive.read_entry('data/database/bu.dat')))):
     bu_id = struct.unpack_from('<Q', record)[0]
     resource, pose, companion = struct.unpack_from('<3i', record, 52)
-    bu[bu_id] = dict(symbol=strings[0], label=strings[1], model=f'BU_{(resource-1630)*10:04}', pose=pose, companion=companion, layers=list(strings[3:]))
+    bu[bu_id] = dict(symbol=strings[0], label=strings[1], model=models[resource], pose=pose, companion=companion, layers=list(strings[3:]))
 uses = defaultdict(Counter)
 examples = defaultdict(list)
 table = read_table(archive.read_entry('data/database/talk.dat'))

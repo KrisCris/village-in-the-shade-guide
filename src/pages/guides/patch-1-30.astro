@@ -1,8 +1,14 @@
 ---
 import GuideItem from '../../components/GuideItem.astro';
+import AnomalyMap from '../../components/AnomalyMap.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
 import { getI18n } from '../../i18n/server';
+import { withBase } from '../../lib/sitePath';
+import { minimapImage } from '../../data/collectionMap';
+import { visitorId } from '../../data/mysteryVisitor';
+import visitorData from '../../../data/sources/game-mystery-visitor.json';
+import anomalyData from '../../../data/sources/game-anomalies.json';
 const {t,tHtml,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
 const item=(id:string)=>catalog.byId[id];
@@ -25,6 +31,14 @@ const firstInput=(process:typeof greenDye[number])=>String((process.inputs as {i
 const greenInputs=[...new Set(greenDye.map(firstInput))];
 const link=(id:string)=>`<a href="${url(id)}">${item(id)?.name.zh_hans??id}</a>`;
 const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
+// The "？？？" event (tools/extract-mystery-visitor.py): the game's own lines in the page language.
+const visitor=item(visitorId);
+const visitorLines=visitorData.dialogue.flatMap(step=>step.lines.map(line=>line[locale]));
+const visitorMap=[
+  {label:t('事件发生处'),color:'#f2b632',shape:'star' as const,points:[visitorData.anchor]},
+  {label:t('触发位置'),color:'#f4f1e8',shape:'dot' as const,points:visitorData.triggers.map(({center:[x,y]})=>({x,y}))},
+  {label:t('电话亭'),color:'#e2553f',shape:'square' as const,points:anomalyData.map_points.phone_box},
+];
 ---
 <BaseLayout title={t('1.30 更新：生日、播种机与卫浴设备')}><h1>{t('1.30 更新：生日、播种机与卫浴设备')}</h1>
 <p>{t('1.30 版本加入了主角生日、播种机和卫浴设备家具。这些内容都要先满足条件，触发解锁事件或收到来信后才会开放。解锁事件在部分主线剧情期间和雷雨天不会发生。')}</p>
@@ -59,7 +73,18 @@ const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
 </section>
 
 <section id="mystery"><h2>{t('“？？？”事件')}</h2>
-<p>{t('仅限静谧田园模式：设定生日的隔天起，会发生一段新事件。官方更新说明只写了“？？？”，这里不剧透内容。')}</p>
+<p>{t('仅限静谧田园模式：设定生日的隔天起，会发生一段新事件。官方更新说明只写了“？？？”。')}</p>
+<details class="spoiler"><summary>{t('剧透：触发地点和对话')}</summary>
+<p set:html={tHtml('事件里出现的是一位还没有名字的人物，对话时名字只显示“{name}”。立绘和资料见<a href="{href}">他的角色页</a>。',{name:visitor?.name.zh_hans??'',href:url(visitorId)})} />
+<ul>
+<li>{t('7:00–16:59 走上村子南边的桥，或桥东边的小路，就会触发。事件在桥头、电话亭附近进行。')}</li>
+<li>{t('雷雨天不会发生。每个存档只发生一次。')}</li>
+</ul>
+<AnomalyMap image={withBase(minimapImage(locale))} label={t('“？？？”事件的触发位置')} layers={visitorMap} minWidth={900}/>
+<h3>{t('对话')}</h3>
+<blockquote class="talk">{visitorLines.map(line=><p><b>{visitor?.name.zh_hans}</b>{line}</p>)}</blockquote>
+<p>{t('游戏数据把这段事件标为“追加角色的伏笔”，他的立绘资源叫“角色_01（暂定）”。1.30 里没有别的事件、对话或日程再用到他，“我会再来的”要等以后的更新。')}</p>
+</details>
 </section>
 
 <section id="other"><h2>{t('其他改动')}</h2>
@@ -74,6 +99,6 @@ const birthdayQuest=item('QUEST_ID_PLAYER_BIRTHDAY');
 </ul>
 </section>
 
-<details class="sources"><summary>{t('数据来源')}</summary><p>{t('updatetext.dat 的 UPDATE_TEXT_1_30（官方更新说明）；event.dat 的 EVENT_ID_PLAYER_BIRTHDAY_*、EVENT_ID_SALE_START_SEEDER、EVENT_ID_SALE_START_BATH_SERIES 和 EVENT_ID_DLC_03_001；charactertalk.dat 与 ai_chara_template 脚本的生日对话；letter.dat 的生日信和茶梅来信；storesales.dat、blacksmith.dat 与 gimmickprocess.dat。')}</p></details>
+<details class="sources"><summary>{t('数据来源')}</summary><p>{t('updatetext.dat 的 UPDATE_TEXT_1_30（官方更新说明）；event.dat 的 EVENT_ID_PLAYER_BIRTHDAY_*、EVENT_ID_SALE_START_SEEDER、EVENT_ID_SALE_START_BATH_SERIES 和 EVENT_ID_DLC_03_001；charactertalk.dat 与 ai_chara_template 脚本的生日对话；letter.dat 的生日信和茶梅来信；storesales.dat、blacksmith.dat 与 gimmickprocess.dat；“？？？”事件：dlc_03_01 脚本、talk.dat 的 TALK_ID_90_3002_001_*、demolist.dat 的 DEMO_ID_DLC_03_001_L/R 与村庄地图里的触发区域、creature.dat 与 anime.dat 的人物条目。')}</p></details>
 </BaseLayout>
-<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}table{width:100%}td,th{vertical-align:middle}.pair{display:flex;flex-wrap:wrap;gap:.3rem 1rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.5rem}.items .guide-item{padding:.4rem .6rem;border-radius:10px;background:var(--paper-raised);color:var(--ink)}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}table{width:100%}td,th{vertical-align:middle}.pair{display:flex;flex-wrap:wrap;gap:.3rem 1rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.5rem}.items .guide-item{padding:.4rem .6rem;border-radius:10px;background:var(--paper-raised);color:var(--ink)}details{padding:1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}.spoiler[open] summary{margin-bottom:.8rem}.talk{margin:.5rem 0;padding:.4rem 1rem;border-left:3px solid var(--border);background:var(--paper-raised);border-radius:0 10px 10px 0}.talk p{margin:.35rem 0}.talk b{margin-right:.8em;color:var(--muted)}</style>

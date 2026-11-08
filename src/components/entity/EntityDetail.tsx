@@ -45,6 +45,7 @@ export default function EntityDetail({ model, onOpen }: { model: EntityDetailMod
       : [[t('繁中'), entity.name.zh_hant], [t('日文'), entity.name.ja]]
     ).map(([label, value]) => t('{label}：{value}', { label: label ?? '', value: value || '—' })).join('　')}</p>}
     {entity.kind!=='quests'&&typeof entity.description==='string'&&entity.description&&<p style={{whiteSpace:'pre-line',lineHeight:1.7}}>{entity.description}</p>}
+    {typeof entity.guide_href==='string'&&typeof entity.guide_label==='string'&&<p><a href={href(entity.guide_href)}>{entity.guide_label} →</a></p>}
     </div>{portrait&&<AnimatedPortrait key={entity.id} portrait={portrait} controls/>}</div>
 
     {entity.kind==='quests' && <section><h2>{t('任务目标')}</h2><p>{String(entity.description ?? '')}</p><p>{String(entity.objective ?? '')}</p>{((entity.steps ?? []) as string[]).length>0&&<ol>{((entity.steps ?? []) as string[]).map((step,index)=><li key={index}>{step}</li>)}</ol>}</section>}
