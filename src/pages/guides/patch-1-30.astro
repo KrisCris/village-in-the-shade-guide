@@ -75,7 +75,7 @@ const visitorMap=[
 <section id="mystery"><h2>{t('“？？？”事件')}</h2>
 <p>{t('仅限静谧田园模式：设定生日的隔天起，会发生一段新事件。官方更新说明只写了“？？？”。')}</p>
 <details class="spoiler"><summary>{t('剧透：触发地点和对话')}</summary>
-<p set:html={tHtml('事件里出现的是一位还没有名字的人物，对话时名字只显示“{name}”。立绘和资料见<a href="{href}">他的角色页</a>。',{name:visitor?.name.zh_hans??'',href:url(visitorId)})} />
+<p set:html={tHtml('事件里出现的是一位还没有名字的人物，对话时名字只显示“{name}”。立绘和资料见<a href="{href}">他的角色页</a>。',{name:visitor?.name.zh_hans??'',href:entityUrl(visitor)})} />
 <ul>
 <li>{t('7:00–16:59 走上村子南边的桥，或桥东边的小路，就会触发。事件在桥头、电话亭附近进行。')}</li>
 <li>{t('雷雨天不会发生。每个存档只发生一次。')}</li>
