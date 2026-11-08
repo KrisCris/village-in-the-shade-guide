@@ -1,5 +1,5 @@
 {
- "source": "dungeon.dat + cropsharvest.dat + crops.dat (build 25640656)",
+ "source": "dungeon.dat + map.dat + cropsharvest.dat + crops.dat + event_dungeon_floor_entry (build 25640656)",
  "floors": [
   {
    "floor": 1,
@@ -21,8 +21,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 5,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 2,
@@ -44,8 +63,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 5,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 3,
@@ -67,8 +105,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 5,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 4,
@@ -90,8 +147,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 5,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 5,
@@ -113,8 +189,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 5,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 6,
@@ -136,8 +231,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 7,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 7,
@@ -159,8 +273,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 7,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 8,
@@ -182,8 +315,27 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 7,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 9,
@@ -205,14 +357,39 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 7,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "normal"
   },
   {
    "floor": 10,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 7,
+   "layouts": [
+    "3102_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 11,
@@ -242,6 +419,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 10,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -252,7 +447,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 12,
@@ -282,6 +478,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 10,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -292,7 +506,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 13,
@@ -322,6 +537,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 10,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -332,7 +565,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 14,
@@ -362,6 +596,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 10,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -372,7 +624,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 15,
@@ -402,6 +655,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 10,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -412,7 +683,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 16,
@@ -442,6 +714,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 12,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -452,7 +742,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 17,
@@ -482,6 +773,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 12,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -492,7 +801,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 18,
@@ -522,6 +832,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 12,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -532,7 +860,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 19,
@@ -562,6 +891,24 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 12,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -572,13 +919,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
      "weight": 50
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 20,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 12,
+   "layouts": [
+    "3102_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 21,
@@ -608,6 +962,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 15,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -626,7 +1007,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 22,
@@ -656,6 +1038,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 15,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -674,7 +1083,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 23,
@@ -704,6 +1114,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 15,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -722,7 +1159,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 24,
@@ -752,6 +1190,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 15,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -770,7 +1235,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 25,
@@ -800,6 +1266,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 15,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -818,7 +1311,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 26,
@@ -848,6 +1342,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 17,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -866,7 +1387,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 27,
@@ -896,6 +1418,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 17,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -914,7 +1463,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 28,
@@ -944,6 +1494,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 17,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -962,7 +1539,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 29,
@@ -992,6 +1570,33 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 17,
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01",
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3321_dg01",
+    "3322_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1010,13 +1615,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 30,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 17,
+   "layouts": [
+    "3102_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 31,
@@ -1058,6 +1670,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 20,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1076,7 +1711,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 32,
@@ -1118,6 +1754,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 20,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1136,7 +1795,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 33,
@@ -1178,6 +1838,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 20,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1196,7 +1879,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 34,
@@ -1238,6 +1922,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 20,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1256,7 +1963,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 35,
@@ -1298,6 +2006,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 20,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1316,7 +2047,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 36,
@@ -1358,6 +2090,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 25,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1376,7 +2131,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 37,
@@ -1418,6 +2174,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 25,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1436,7 +2215,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 38,
@@ -1478,6 +2258,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 25,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1496,7 +2299,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 39,
@@ -1538,6 +2342,29 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 25,
+   "layouts": [
+    "3303_dg01",
+    "3304_dg01",
+    "3305_dg01",
+    "3306_dg01",
+    "3307_dg01",
+    "3308_dg01",
+    "3309_dg01",
+    "3310_dg01",
+    "3311_dg01",
+    "3312_dg01",
+    "3313_dg01",
+    "3314_dg01",
+    "3323_dg01",
+    "3324_dg01",
+    "3325_dg01",
+    "3326_dg01",
+    "3327_dg01",
+    "3328_dg01",
+    "3329_dg01"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1556,13 +2383,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_COPPER",
      "weight": 10
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 40,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 25,
+   "layouts": [
+    "3102_dg01"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 41,
@@ -1608,6 +2442,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1634,7 +2497,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 42,
@@ -1680,6 +2544,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1706,7 +2599,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 43,
@@ -1752,6 +2646,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1778,7 +2701,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 44,
@@ -1824,6 +2748,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1850,7 +2803,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 45,
@@ -1896,6 +2850,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1922,7 +2905,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 46,
@@ -1968,6 +2952,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -1994,7 +3007,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 47,
@@ -2040,6 +3054,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2066,7 +3109,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 48,
@@ -2112,6 +3156,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2138,7 +3211,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 49,
@@ -2184,6 +3258,35 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3303_dg02",
+    "3304_dg02",
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3323_dg02",
+    "3324_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2210,13 +3313,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 50,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg02"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 51,
@@ -2250,6 +3360,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2272,7 +3409,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 52,
@@ -2306,6 +3444,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2328,7 +3493,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 53,
@@ -2362,6 +3528,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2384,7 +3577,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 54,
@@ -2418,6 +3612,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2440,7 +3661,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 55,
@@ -2474,6 +3696,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2496,7 +3745,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 56,
@@ -2530,6 +3780,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2552,7 +3829,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 57,
@@ -2586,6 +3864,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2608,7 +3913,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 58,
@@ -2642,6 +3948,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2664,7 +3997,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 59,
@@ -2698,6 +4032,33 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3309_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2720,13 +4081,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 60,
    "rocks": [],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg02"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 61,
@@ -2760,6 +4128,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2782,7 +4176,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 62,
@@ -2816,6 +4211,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2838,7 +4259,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 63,
@@ -2872,6 +4294,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2894,7 +4342,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 64,
@@ -2928,6 +4377,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -2950,7 +4425,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 65,
@@ -2984,6 +4460,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3006,7 +4508,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 66,
@@ -3040,6 +4543,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3062,7 +4591,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 67,
@@ -3096,6 +4626,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3118,7 +4674,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 68,
@@ -3152,6 +4709,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3174,7 +4757,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 69,
@@ -3208,6 +4792,32 @@
      "weight": 2
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3305_dg02",
+    "3306_dg02",
+    "3307_dg02",
+    "3308_dg02",
+    "3310_dg02",
+    "3311_dg02",
+    "3312_dg02",
+    "3313_dg02",
+    "3314_dg02",
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3325_dg02",
+    "3326_dg02",
+    "3327_dg02",
+    "3328_dg02",
+    "3329_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3230,13 +4840,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 70,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg02"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 71,
@@ -3270,6 +4887,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3296,7 +4925,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 72,
@@ -3330,6 +4960,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3356,7 +4998,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 73,
@@ -3390,6 +5033,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3416,7 +5071,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 74,
@@ -3450,6 +5106,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3476,7 +5144,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 75,
@@ -3510,6 +5179,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3536,7 +5217,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 76,
@@ -3570,6 +5252,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3596,7 +5290,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 77,
@@ -3630,6 +5325,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3656,7 +5363,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 78,
@@ -3690,6 +5398,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3716,7 +5436,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 79,
@@ -3750,6 +5471,18 @@
      "weight": 1
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg02",
+    "3316_dg02",
+    "3317_dg02",
+    "3318_dg02",
+    "3319_dg02",
+    "3320_dg02",
+    "3331_dg02",
+    "3332_dg02"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3776,13 +5509,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 80,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg02"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 81,
@@ -3828,6 +5568,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3854,7 +5606,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 82,
@@ -3900,6 +5653,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3926,7 +5691,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 83,
@@ -3972,6 +5738,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -3998,7 +5776,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 84,
@@ -4044,6 +5823,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4070,7 +5861,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 85,
@@ -4116,6 +5908,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4142,7 +5946,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 86,
@@ -4188,6 +5993,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4214,7 +6031,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 87,
@@ -4260,6 +6078,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4286,7 +6116,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 88,
@@ -4332,6 +6163,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4358,7 +6201,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 89,
@@ -4404,6 +6248,18 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3315_dg03",
+    "3316_dg03",
+    "3317_dg03",
+    "3318_dg03",
+    "3319_dg03",
+    "3320_dg03",
+    "3331_dg03",
+    "3332_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4430,13 +6286,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 90,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg03"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 91,
@@ -4486,6 +6349,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4508,7 +6377,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 92,
@@ -4558,6 +6428,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4580,7 +6456,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 93,
@@ -4630,6 +6507,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4652,7 +6535,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 94,
@@ -4702,6 +6586,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4724,7 +6614,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 95,
@@ -4774,6 +6665,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4796,7 +6693,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 96,
@@ -4846,6 +6744,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4868,7 +6772,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 97,
@@ -4918,6 +6823,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -4940,7 +6851,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 98,
@@ -4990,6 +6902,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5012,7 +6930,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 99,
@@ -5062,6 +6981,12 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5084,13 +7009,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 100,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg03"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 101,
@@ -5128,6 +7060,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5154,7 +7096,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 102,
@@ -5192,6 +7135,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5218,7 +7171,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 103,
@@ -5256,6 +7210,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5282,7 +7246,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 104,
@@ -5320,6 +7285,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5346,7 +7321,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 105,
@@ -5384,6 +7360,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5410,7 +7396,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 106,
@@ -5448,6 +7435,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5474,7 +7471,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 107,
@@ -5512,6 +7510,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5538,7 +7546,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 108,
@@ -5576,6 +7585,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5602,7 +7621,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 109,
@@ -5640,6 +7660,16 @@
      "weight": 5
     }
    ],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5666,13 +7696,20 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 110,
    "rocks": [],
+   "monster_percent": 2,
+   "rock_percent": 30,
+   "layouts": [
+    "3102_dg03"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "rest"
   },
   {
    "floor": 111,
@@ -5710,6 +7747,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5732,7 +7779,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 112,
@@ -5770,6 +7818,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5792,7 +7850,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 113,
@@ -5830,6 +7889,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5852,7 +7921,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 114,
@@ -5890,6 +7960,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5912,7 +7992,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 115,
@@ -5950,6 +8031,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -5972,7 +8063,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 116,
@@ -6010,6 +8102,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -6032,7 +8134,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 117,
@@ -6070,6 +8173,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -6092,7 +8205,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 118,
@@ -6130,6 +8244,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -6152,7 +8276,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 119,
@@ -6190,6 +8315,16 @@
      "weight": 2
     }
    ],
+   "monster_percent": 3,
+   "rock_percent": 30,
+   "layouts": [
+    "3319_dg03",
+    "3320_dg03",
+    "3333_dg03",
+    "3334_dg03",
+    "3335_dg03",
+    "3336_dg03"
+   ],
    "special_chance": 5,
    "special_rooms": [
     {
@@ -6212,7 +8347,8 @@
      "room": "DUNGEON_FLOOR_SPECIAL_GEM",
      "weight": 5
     }
-   ]
+   ],
+   "kind": "normal"
   },
   {
    "floor": 120,
@@ -6250,30 +8386,48 @@
      "weight": 2
     }
    ],
+   "monster_percent": 7,
+   "rock_percent": 30,
+   "layouts": [
+    "3200"
+   ],
    "special_chance": 0,
-   "special_rooms": []
+   "special_rooms": [],
+   "kind": "bottom"
   }
  ],
  "rooms": [
   {
    "id": "DUNGEON_FLOOR_SPECIAL_BEE_LV1",
    "name_ja": "蜂の巣部屋lv1",
-   "rocks": []
+   "rocks": [],
+   "layouts": [],
+   "rock_percent": null,
+   "monster_percent": 50
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_BEE_LV2",
    "name_ja": "蜂の巣部屋lv2",
-   "rocks": []
+   "rocks": [],
+   "layouts": [],
+   "rock_percent": null,
+   "monster_percent": 50
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_GHOST",
    "name_ja": "お化け部屋",
-   "rocks": []
+   "rocks": [],
+   "layouts": [],
+   "rock_percent": null,
+   "monster_percent": 1
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_DARKNESS",
    "name_ja": "暗闇部屋",
-   "rocks": []
+   "rocks": [],
+   "layouts": [],
+   "rock_percent": null,
+   "monster_percent": null
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_COPPER",
@@ -6299,7 +8453,13 @@
      "rock": 1354,
      "weight": 5
     }
-   ]
+   ],
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01"
+   ],
+   "rock_percent": 30,
+   "monster_percent": null
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_IRON",
@@ -6325,7 +8485,13 @@
      "rock": 1355,
      "weight": 5
     }
-   ]
+   ],
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01"
+   ],
+   "rock_percent": 30,
+   "monster_percent": null
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_GOLD",
@@ -6351,7 +8517,13 @@
      "rock": 1356,
      "weight": 5
     }
-   ]
+   ],
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01"
+   ],
+   "rock_percent": 30,
+   "monster_percent": null
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_METEORIC_IRON",
@@ -6377,7 +8549,13 @@
      "rock": 1357,
      "weight": 5
     }
-   ]
+   ],
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01"
+   ],
+   "rock_percent": 30,
+   "monster_percent": null
   },
   {
    "id": "DUNGEON_FLOOR_SPECIAL_GEM",
@@ -6403,7 +8581,70 @@
      "rock": 1358,
      "weight": 5
     }
-   ]
+   ],
+   "layouts": [
+    "3301_dg01",
+    "3302_dg01"
+   ],
+   "rock_percent": 30,
+   "monster_percent": null
+  }
+ ],
+ "rewards": [
+  {
+   "floor": 10,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 3
+  },
+  {
+   "floor": 20,
+   "item": "ITEM_ID_OBJECT_COPPER_ORE",
+   "count": 15
+  },
+  {
+   "floor": 30,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 3
+  },
+  {
+   "floor": 40,
+   "item": "ITEM_ID_OBJECT_AMETHYST",
+   "count": 1
+  },
+  {
+   "floor": 50,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 5
+  },
+  {
+   "floor": 60,
+   "item": "ITEM_ID_OBJECT_IRON_ORE",
+   "count": 15
+  },
+  {
+   "floor": 70,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 8
+  },
+  {
+   "floor": 80,
+   "item": "ITEM_ID_OBJECT_TOURMALINE",
+   "count": 1
+  },
+  {
+   "floor": 90,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 8
+  },
+  {
+   "floor": 100,
+   "item": "ITEM_ID_ENERGY_BAR",
+   "count": 10
+  },
+  {
+   "floor": 110,
+   "item": "ITEM_ID_OBJECT_FLUORITE",
+   "count": 1
   }
  ],
  "rocks": {

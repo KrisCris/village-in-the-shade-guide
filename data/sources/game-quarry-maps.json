@@ -1,0 +1,534 @@
+{
+ "source": "map_1_00.dat YMWR ground layer and cell masks; map.dat labels (build 25640656)",
+ "scale": 6,
+ "layouts": {
+  "3102_dg01": {
+   "map_id": 331020001,
+   "label_ja": "ダンジョン休憩所",
+   "file": "maps/quarry/3102_dg01.webp",
+   "width": 417,
+   "height": 455,
+   "cells": 0
+  },
+  "3102_dg02": {
+   "map_id": 331020002,
+   "label_ja": "ダンジョン休憩所_ジャングル",
+   "file": "maps/quarry/3102_dg02.webp",
+   "width": 417,
+   "height": 452,
+   "cells": 0
+  },
+  "3102_dg03": {
+   "map_id": 331020003,
+   "label_ja": "ダンジョン休憩所_金継ぎ",
+   "file": "maps/quarry/3102_dg03.webp",
+   "width": 416,
+   "height": 448,
+   "cells": 0
+  },
+  "3200": {
+   "map_id": 332000001,
+   "label_ja": "ダンジョン最下層",
+   "file": "maps/quarry/3200.webp",
+   "width": 364,
+   "height": 384,
+   "cells": 0
+  },
+  "3301_dg01": {
+   "map_id": 333010001,
+   "label_ja": "ダンジョン_I字_1_廃坑",
+   "file": "maps/quarry/3301_dg01.webp",
+   "width": 232,
+   "height": 290,
+   "cells": 42
+  },
+  "3302_dg01": {
+   "map_id": 333020001,
+   "label_ja": "ダンジョン_I字_2_廃坑",
+   "file": "maps/quarry/3302_dg01.webp",
+   "width": 233,
+   "height": 291,
+   "cells": 55
+  },
+  "3303_dg01": {
+   "map_id": 333030001,
+   "label_ja": "ダンジョン_Y字_1_廃坑",
+   "file": "maps/quarry/3303_dg01.webp",
+   "width": 215,
+   "height": 262,
+   "cells": 46
+  },
+  "3303_dg02": {
+   "map_id": 333030002,
+   "label_ja": "ダンジョン_Y字_1_ジャングル",
+   "file": "maps/quarry/3303_dg02.webp",
+   "width": 218,
+   "height": 260,
+   "cells": 46
+  },
+  "3304_dg01": {
+   "map_id": 333040001,
+   "label_ja": "ダンジョン_Y字_2_廃坑",
+   "file": "maps/quarry/3304_dg01.webp",
+   "width": 186,
+   "height": 305,
+   "cells": 77
+  },
+  "3304_dg02": {
+   "map_id": 333040002,
+   "label_ja": "ダンジョン_Y字_2_ジャングル",
+   "file": "maps/quarry/3304_dg02.webp",
+   "width": 185,
+   "height": 303,
+   "cells": 77
+  },
+  "3305_dg01": {
+   "map_id": 333050001,
+   "label_ja": "ダンジョン_十字_1_廃坑",
+   "file": "maps/quarry/3305_dg01.webp",
+   "width": 210,
+   "height": 263,
+   "cells": 65
+  },
+  "3305_dg02": {
+   "map_id": 333050002,
+   "label_ja": "ダンジョン_十字_1_ジャングル",
+   "file": "maps/quarry/3305_dg02.webp",
+   "width": 210,
+   "height": 262,
+   "cells": 65
+  },
+  "3306_dg01": {
+   "map_id": 333060001,
+   "label_ja": "ダンジョン_十字_2_廃坑",
+   "file": "maps/quarry/3306_dg01.webp",
+   "width": 251,
+   "height": 293,
+   "cells": 75
+  },
+  "3306_dg02": {
+   "map_id": 333060002,
+   "label_ja": "ダンジョン_十字_2_ジャングル",
+   "file": "maps/quarry/3306_dg02.webp",
+   "width": 250,
+   "height": 321,
+   "cells": 75
+  },
+  "3307_dg01": {
+   "map_id": 333070001,
+   "label_ja": "ダンジョン_O時_1_廃坑",
+   "file": "maps/quarry/3307_dg01.webp",
+   "width": 304,
+   "height": 342,
+   "cells": 162
+  },
+  "3307_dg02": {
+   "map_id": 333070002,
+   "label_ja": "ダンジョン_O時_1_ジャングル",
+   "file": "maps/quarry/3307_dg02.webp",
+   "width": 303,
+   "height": 339,
+   "cells": 162
+  },
+  "3308_dg01": {
+   "map_id": 333080001,
+   "label_ja": "ダンジョン_O時_2_廃坑",
+   "file": "maps/quarry/3308_dg01.webp",
+   "width": 266,
+   "height": 354,
+   "cells": 155
+  },
+  "3308_dg02": {
+   "map_id": 333080002,
+   "label_ja": "ダンジョン_O時_2_ジャングル",
+   "file": "maps/quarry/3308_dg02.webp",
+   "width": 266,
+   "height": 347,
+   "cells": 155
+  },
+  "3309_dg01": {
+   "map_id": 333090001,
+   "label_ja": "ダンジョン_だだっぴろい_1_廃坑",
+   "file": "maps/quarry/3309_dg01.webp",
+   "width": 259,
+   "height": 325,
+   "cells": 171
+  },
+  "3309_dg02": {
+   "map_id": 333090002,
+   "label_ja": "ダンジョン_だだっぴろい_1_ジャングル",
+   "file": "maps/quarry/3309_dg02.webp",
+   "width": 261,
+   "height": 323,
+   "cells": 171
+  },
+  "3310_dg01": {
+   "map_id": 333100001,
+   "label_ja": "ダンジョン_だだっぴろい_2_廃坑",
+   "file": "maps/quarry/3310_dg01.webp",
+   "width": 296,
+   "height": 310,
+   "cells": 150
+  },
+  "3310_dg02": {
+   "map_id": 333100002,
+   "label_ja": "ダンジョン_だだっぴろい_2_ジャングル",
+   "file": "maps/quarry/3310_dg02.webp",
+   "width": 296,
+   "height": 308,
+   "cells": 150
+  },
+  "3311_dg01": {
+   "map_id": 333110001,
+   "label_ja": "ダンジョン_碁盤上_1_廃坑",
+   "file": "maps/quarry/3311_dg01.webp",
+   "width": 329,
+   "height": 377,
+   "cells": 163
+  },
+  "3311_dg02": {
+   "map_id": 333110002,
+   "label_ja": "ダンジョン_碁盤上_1_ジャングル",
+   "file": "maps/quarry/3311_dg02.webp",
+   "width": 338,
+   "height": 372,
+   "cells": 163
+  },
+  "3312_dg01": {
+   "map_id": 333120001,
+   "label_ja": "ダンジョン_碁盤上_2_廃坑",
+   "file": "maps/quarry/3312_dg01.webp",
+   "width": 477,
+   "height": 428,
+   "cells": 185
+  },
+  "3312_dg02": {
+   "map_id": 333120002,
+   "label_ja": "ダンジョン_碁盤上_2_ジャングル",
+   "file": "maps/quarry/3312_dg02.webp",
+   "width": 484,
+   "height": 442,
+   "cells": 185
+  },
+  "3313_dg01": {
+   "map_id": 333130001,
+   "label_ja": "ダンジョン_六角_1_廃坑",
+   "file": "maps/quarry/3313_dg01.webp",
+   "width": 516,
+   "height": 562,
+   "cells": 136
+  },
+  "3313_dg02": {
+   "map_id": 333130002,
+   "label_ja": "ダンジョン_六角_1_ジャングル",
+   "file": "maps/quarry/3313_dg02.webp",
+   "width": 522,
+   "height": 560,
+   "cells": 136
+  },
+  "3314_dg01": {
+   "map_id": 333140001,
+   "label_ja": "ダンジョン_六角_2_廃坑",
+   "file": "maps/quarry/3314_dg01.webp",
+   "width": 356,
+   "height": 367,
+   "cells": 98
+  },
+  "3314_dg02": {
+   "map_id": 333140002,
+   "label_ja": "ダンジョン_六角_2_ジャングル",
+   "file": "maps/quarry/3314_dg02.webp",
+   "width": 318,
+   "height": 364,
+   "cells": 98
+  },
+  "3315_dg02": {
+   "map_id": 333150002,
+   "label_ja": "ダンジョン_迷路_1_ジャングル",
+   "file": "maps/quarry/3315_dg02.webp",
+   "width": 382,
+   "height": 368,
+   "cells": 195
+  },
+  "3315_dg03": {
+   "map_id": 333150003,
+   "label_ja": "ダンジョン_迷路_1_金継ぎ",
+   "file": "maps/quarry/3315_dg03.webp",
+   "width": 382,
+   "height": 368,
+   "cells": 195
+  },
+  "3316_dg02": {
+   "map_id": 333160002,
+   "label_ja": "ダンジョン_迷路_2_ジャングル",
+   "file": "maps/quarry/3316_dg02.webp",
+   "width": 596,
+   "height": 580,
+   "cells": 215
+  },
+  "3316_dg03": {
+   "map_id": 333160003,
+   "label_ja": "ダンジョン_迷路_2_金継ぎ",
+   "file": "maps/quarry/3316_dg03.webp",
+   "width": 592,
+   "height": 578,
+   "cells": 215
+  },
+  "3317_dg02": {
+   "map_id": 333170002,
+   "label_ja": "ダンジョン_敵道塞ぎ_1_ジャングル",
+   "file": "maps/quarry/3317_dg02.webp",
+   "width": 493,
+   "height": 548,
+   "cells": 168
+  },
+  "3317_dg03": {
+   "map_id": 333170003,
+   "label_ja": "ダンジョン_敵道塞ぎ_1_金継ぎ",
+   "file": "maps/quarry/3317_dg03.webp",
+   "width": 495,
+   "height": 479,
+   "cells": 168
+  },
+  "3318_dg02": {
+   "map_id": 333180002,
+   "label_ja": "ダンジョン_敵道塞ぎ_2_ジャングル",
+   "file": "maps/quarry/3318_dg02.webp",
+   "width": 328,
+   "height": 406,
+   "cells": 143
+  },
+  "3318_dg03": {
+   "map_id": 333180003,
+   "label_ja": "ダンジョン_敵道塞ぎ_2_金継ぎ",
+   "file": "maps/quarry/3318_dg03.webp",
+   "width": 326,
+   "height": 408,
+   "cells": 143
+  },
+  "3319_dg02": {
+   "map_id": 333190002,
+   "label_ja": "ダンジョン_だだっぴろい_3_ジャングル",
+   "file": "maps/quarry/3319_dg02.webp",
+   "width": 366,
+   "height": 411,
+   "cells": 379
+  },
+  "3319_dg03": {
+   "map_id": 333190003,
+   "label_ja": "ダンジョン_だだっぴろい_3_金継ぎ",
+   "file": "maps/quarry/3319_dg03.webp",
+   "width": 364,
+   "height": 411,
+   "cells": 379
+  },
+  "3320_dg02": {
+   "map_id": 333200002,
+   "label_ja": "ダンジョン_だだっぴろい_4_ジャングル",
+   "file": "maps/quarry/3320_dg02.webp",
+   "width": 364,
+   "height": 401,
+   "cells": 248
+  },
+  "3320_dg03": {
+   "map_id": 333200003,
+   "label_ja": "ダンジョン_だだっぴろい_4_金継ぎ",
+   "file": "maps/quarry/3320_dg03.webp",
+   "width": 359,
+   "height": 413,
+   "cells": 248
+  },
+  "3321_dg01": {
+   "map_id": 333210001,
+   "label_ja": "ダンジョン_L字_1_廃坑",
+   "file": "maps/quarry/3321_dg01.webp",
+   "width": 250,
+   "height": 347,
+   "cells": 54
+  },
+  "3322_dg01": {
+   "map_id": 333220001,
+   "label_ja": "ダンジョン_L字_2_廃坑",
+   "file": "maps/quarry/3322_dg01.webp",
+   "width": 384,
+   "height": 310,
+   "cells": 70
+  },
+  "3323_dg01": {
+   "map_id": 333230001,
+   "label_ja": "ダンジョン_ノの字_1_廃坑",
+   "file": "maps/quarry/3323_dg01.webp",
+   "width": 226,
+   "height": 390,
+   "cells": 55
+  },
+  "3323_dg02": {
+   "map_id": 333230002,
+   "label_ja": "ダンジョン_ノの字_1_ジャングル",
+   "file": "maps/quarry/3323_dg02.webp",
+   "width": 286,
+   "height": 383,
+   "cells": 55
+  },
+  "3324_dg01": {
+   "map_id": 333240001,
+   "label_ja": "ダンジョン_ノの字_2_廃坑",
+   "file": "maps/quarry/3324_dg01.webp",
+   "width": 442,
+   "height": 355,
+   "cells": 70
+  },
+  "3324_dg02": {
+   "map_id": 333240002,
+   "label_ja": "ダンジョン_ノの字_2_ジャングル",
+   "file": "maps/quarry/3324_dg02.webp",
+   "width": 445,
+   "height": 350,
+   "cells": 70
+  },
+  "3325_dg01": {
+   "map_id": 333250001,
+   "label_ja": "ダンジョン_コの字_1_廃坑",
+   "file": "maps/quarry/3325_dg01.webp",
+   "width": 262,
+   "height": 369,
+   "cells": 93
+  },
+  "3325_dg02": {
+   "map_id": 333250002,
+   "label_ja": "ダンジョン_コの字_1_ジャングル",
+   "file": "maps/quarry/3325_dg02.webp",
+   "width": 320,
+   "height": 369,
+   "cells": 93
+  },
+  "3326_dg01": {
+   "map_id": 333260001,
+   "label_ja": "ダンジョン_コの字_2_廃坑",
+   "file": "maps/quarry/3326_dg01.webp",
+   "width": 261,
+   "height": 338,
+   "cells": 92
+  },
+  "3326_dg02": {
+   "map_id": 333260002,
+   "label_ja": "ダンジョン_コの字_2_ジャングル",
+   "file": "maps/quarry/3326_dg02.webp",
+   "width": 260,
+   "height": 334,
+   "cells": 92
+  },
+  "3327_dg01": {
+   "map_id": 333270001,
+   "label_ja": "ダンジョン_渦巻き_1_廃坑",
+   "file": "maps/quarry/3327_dg01.webp",
+   "width": 428,
+   "height": 423,
+   "cells": 190
+  },
+  "3327_dg02": {
+   "map_id": 333270002,
+   "label_ja": "ダンジョン_渦巻き_1_ジャングル",
+   "file": "maps/quarry/3327_dg02.webp",
+   "width": 423,
+   "height": 420,
+   "cells": 190
+  },
+  "3328_dg01": {
+   "map_id": 333280001,
+   "label_ja": "ダンジョン_渦巻き_2_廃坑",
+   "file": "maps/quarry/3328_dg01.webp",
+   "width": 450,
+   "height": 420,
+   "cells": 216
+  },
+  "3328_dg02": {
+   "map_id": 333280002,
+   "label_ja": "ダンジョン_渦巻き_2_ジャングル",
+   "file": "maps/quarry/3328_dg02.webp",
+   "width": 457,
+   "height": 414,
+   "cells": 216
+  },
+  "3329_dg01": {
+   "map_id": 333290001,
+   "label_ja": "ダンジョン_四角_1_廃坑",
+   "file": "maps/quarry/3329_dg01.webp",
+   "width": 560,
+   "height": 520,
+   "cells": 193
+  },
+  "3329_dg02": {
+   "map_id": 333290002,
+   "label_ja": "ダンジョン_四角_1_ジャングル",
+   "file": "maps/quarry/3329_dg02.webp",
+   "width": 564,
+   "height": 569,
+   "cells": 193
+  },
+  "3331_dg02": {
+   "map_id": 333310002,
+   "label_ja": "ダンジョン_半円型_1_ジャングル",
+   "file": "maps/quarry/3331_dg02.webp",
+   "width": 493,
+   "height": 465,
+   "cells": 146
+  },
+  "3331_dg03": {
+   "map_id": 333310003,
+   "label_ja": "ダンジョン_半円型_1_金継ぎ",
+   "file": "maps/quarry/3331_dg03.webp",
+   "width": 492,
+   "height": 443,
+   "cells": 146
+  },
+  "3332_dg02": {
+   "map_id": 333320002,
+   "label_ja": "ダンジョン_半円型_2_ジャングル",
+   "file": "maps/quarry/3332_dg02.webp",
+   "width": 385,
+   "height": 388,
+   "cells": 175
+  },
+  "3332_dg03": {
+   "map_id": 333320003,
+   "label_ja": "ダンジョン_半円型_2_金継ぎ",
+   "file": "maps/quarry/3332_dg03.webp",
+   "width": 384,
+   "height": 387,
+   "cells": 175
+  },
+  "3333_dg03": {
+   "map_id": 333330003,
+   "label_ja": "ダンジョン_アリの巣_1_金継ぎ",
+   "file": "maps/quarry/3333_dg03.webp",
+   "width": 534,
+   "height": 470,
+   "cells": 347
+  },
+  "3334_dg03": {
+   "map_id": 333340003,
+   "label_ja": "ダンジョン_アリの巣_2_金継ぎ",
+   "file": "maps/quarry/3334_dg03.webp",
+   "width": 548,
+   "height": 623,
+   "cells": 317
+  },
+  "3335_dg03": {
+   "map_id": 333350003,
+   "label_ja": "ダンジョン_蜘蛛の巣_1_金継ぎ",
+   "file": "maps/quarry/3335_dg03.webp",
+   "width": 490,
+   "height": 494,
+   "cells": 325
+  },
+  "3336_dg03": {
+   "map_id": 333360003,
+   "label_ja": "ダンジョン_蜘蛛の巣_2_金継ぎ",
+   "file": "maps/quarry/3336_dg03.webp",
+   "width": 512,
+   "height": 533,
+   "cells": 317
+  }
+ }
+}
