@@ -7,6 +7,8 @@ import curse from '../../../data/sources/game-curse-items.json';
 import fishing from '../../../data/sources/game-fishing.json';
 import night from '../../../data/sources/game-night-pickups.json';
 import { getI18n } from '../../i18n/server';
+import { SOILS, mudSeedSoil, type MudEntry, type Soil } from '../../domain/mudSeeds';
+import { DAYS_PER_SEASON } from '../../domain/dailyDigest';
 const {t,tHtml,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
 const items=new Map(catalog.entities.filter(e=>e.kind==='items').map(e=>[e.id,e]));
@@ -47,10 +49,16 @@ const crops=new Map(catalog.entities.filter(e=>e.kind==='crops').map(e=>[e.id,e]
 const cropName=(id:string)=>crops.get(id)?.name.zh_hans??id;
 const seasonName:Record<string,string>={spring:t('春'),summer:t('夏'),autumn:t('秋'),winter:t('冬')};
 // Every outcome except 'none' names the cursed item it yields.
-type MudEntry={crop:string;outcome:string;ridge:boolean;item?:string};
 type Yield=MudEntry&{item:string};
 const yields=(pool:MudEntry[],outcome:string)=>pool.filter((e):e is Yield=>e.outcome===outcome&&!!e.item);
-const mudSeasons=Object.entries(curse.mud_pool as Record<string,MudEntry[]>).map(([season,pool])=>({season,pool,cursed:yields(pool,'cursed'),giant:yields(pool,'giant'),late:yields(pool,'season_end'),plain:pool.filter(e=>e.outcome==='none')}));
+const growth=curse.mud_growth;
+const mudSeasons=Object.entries(curse.mud_pool as Record<string,MudEntry[]>).map(([season,pool])=>({season,pool,cursed:yields(pool,'cursed'),giant:yields(pool,'giant'),late:yields(pool,'season_end'),plain:pool.filter(e=>e.outcome==='none'),plan:mudSeedSoil(pool,growth)}));
+const soilName:Record<Soil,string>={tilled:t('耕地上'),ridge:t('田垄上')};
+const giantDays=Math.max(...mudSeasons.flatMap(s=>s.plan.rows.filter(r=>r.entry.outcome==='giant').map(r=>r.nights[s.plan.soil])));
+const soilGap=Math.max(...mudSeasons.flatMap(s=>s.plan.rows).map(r=>Math.abs(r.nights.tilled-r.nights.ridge)));
+const otherSoil=Math.min(...(Object.values(curse.mud_pool) as MudEntry[][]).flat().map(e=>e.other_soil));
+const outcomeNote=(e:MudEntry)=>e.outcome==='giant'?t('长成巨大才有'):e.outcome==='season_end'?t('入秋才变'):undefined;
+const largeSprinkler='ITEM_ID_GIMMICK_SPRINKLER_LARGE';
 const giantCrops=mudSeasons.flatMap(s=>s.giant);
 const edamame=mudSeasons.flatMap(s=>s.late)[0];
 const giantInfo=Object.values(curse.giants)[0];
@@ -130,29 +138,41 @@ const url=(id:string)=>{const e=item(id);return e?href(entityUrl(e)):'';};
 <p>{t('只有泥土种子会长成被诅咒的作物或巨大作物，商店买的普通种子怎么种都不会变。泥土种子能种在耕地和田垄上，不能种在水田里。')}</p>
 <h3>{t('种下那天就定了长成什么')}</h3>
 <p>{t('种下泥土种子时，游戏从当季的蔬菜里等概率抽一种。只有固定在一个季节种的蔬菜会被抽到，花、果树、菌类、水田作物和全年可种的茶树、桑树都不在其中。种在耕地还是田垄，候选都一样。')}</p>
+<p>{t('浇水过一夜，种子就换成抽到的作物，从它的第一阶段接着长。表里只列会给出被诅咒作物的结果。天数从种下那天算，包括种子那一夜，按每天浇水计。加粗的一列是推荐开的地。')}</p>
 <div class="seasons">{mudSeasons.map(s=><article class="season"><h4>{t('{season}：{n} 种',{season:seasonName[s.season],n:s.pool.length})}</h4>
-<p class="odds">{t('每颗种子：被诅咒 {c}/{n}，可能变巨大 {g}/{n}，适合田垄 {r}/{n}',{c:s.cursed.length+s.late.length,g:s.giant.length,r:s.pool.filter(e=>e.ridge).length,n:s.pool.length})}</p>
-<dl><dt>{t('成熟时必定变成被诅咒的')}</dt><dd><div class="items">{s.cursed.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd>
-{s.late.length>0&&<Fragment><dt>{t('留到入秋才变')}</dt><dd><div class="items">{s.late.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd></Fragment>}
-{s.giant.length>0&&<Fragment><dt>{t('长成巨大作物才有')}</dt><dd><div class="items">{s.giant.map(e=><GuideItem entity={item(e.item)} href={url(e.item)}/>)}</div></dd></Fragment>}
-{s.plain.length>0&&<Fragment><dt>{t('只是普通作物')}</dt><dd>{s.plain.map(e=>cropName(e.crop)).join(t('、'))}</dd></Fragment>}</dl></article>)}</div>
+<p class="odds">{t('每颗种子：被诅咒 {c}/{n}，可能变巨大 {g}/{n}',{c:s.cursed.length+s.late.length,g:s.giant.length,n:s.pool.length})}</p>
+<p class="soil">{s.plan.soil==='ridge'?t('开田垄，最晚第 {day} 天种',{day:s.plan.lastDay.ridge}):t('开耕地，最晚第 {day} 天种',{day:s.plan.lastDay.tilled})}</p>
+<table class="days"><thead><tr><th scope="col">{t('能收到')}</th>{SOILS.map(soil=><th scope="col" class:list={{pick:soil===s.plan.soil}}>{soilName[soil]}</th>)}</tr></thead><tbody>
+{s.plan.rows.map(r=><tr><td><GuideItem entity={item(r.entry.item!)} href={url(r.entry.item!)} note={outcomeNote(r.entry)}/></td>{SOILS.map(soil=><td class:list={{pick:soil===s.plan.soil}}>{t('{n} 天',{n:r.nights[soil]})}</td>)}</tr>)}
+</tbody></table>
+{s.plain.length>0&&<p class="plain">{t('其余 {n} 种只是普通作物：{list}',{n:s.plain.length,list:s.plain.map(e=>cropName(e.crop)).join(t('、'))})}</p>}</article>)}</div>
 <p>{t('抽到会变的作物，长到成熟那天就变成被诅咒的样子，不靠运气，每株收 1 个。抽到普通作物就是普通收成。冬天最划算：{wn} 种候选里 {wc} 种必定变，剩下的{wg}还可能长成巨大作物。春天 {sn} 种里只有 {sc} 种会变，能长成巨大作物的只有{sg}，所以春天很少见到巨大作物。',{wn:winter.pool.length,wc:winter.cursed.length,wg:winter.giant.map(e=>cropName(e.crop)).join(t('、')),sn:spring.pool.length,sc:spring.cursed.length,sg:spring.giant.map(e=>cropName(e.crop)).join(t('、'))})}</p>
+<h3>{t('耕地还是田垄')}</h3>
+<p>{t('每种作物都有适合的地：种子说明里写着“适合于田垄栽种”的适合田垄，其余适合耕地。浇过水的一夜，作物在适合的地上长 {fast} 成长点，在另一种地上只长 {slow}。种子那一夜在哪种地上都一样。',{fast:growth.preferred_soil,slow:otherSoil})}</p>
+<p>{t('种下时不知道会抽到什么，所以卡片推荐的是让当季最慢的那种也最早成熟的地。同一种作物在两种地上最多差 {gap} 天，开错了也只是晚几天。',{gap:soilGap})}</p>
+<p>{t('第 1 天种下写着 5 天的作物，第 6 天早上成熟，这时已经是被诅咒的样子。漏浇一天，成熟就晚一天。换季那一夜游戏先检查作物合不合季节，再让它长，所以最晚要在第 {last} 天早上成熟，卡片上的“最晚第几天种”就是这么算的。换季时还留在地里的被诅咒作物会枯萎，巨大作物会消失。',{last:DAYS_PER_SEASON})}</p>
 <h3>{t('巨大作物的条件')}</h3>
 <ol>
 <li>{t('泥土种子抽到{list}之一。',{list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</li>
-<li>{t('它成熟那天，以它为中心的 5×5 范围里，其余 24 格都得是能耕种的地面，上面没有设施、摆设、树、竹子或菌类原木。普通作物不算阻挡。')}</li>
-<li>{t('满足时，它变成占满 5×5 的巨大作物，范围内的其他作物会被清掉，包括还没收的被诅咒作物。')}</li>
+<li>{t('只在它成熟那一夜检查一次，没有随机成分。表里写着 {n} 天的，第 1 天种下，第 {n} 天晚上睡觉时检查，第 {m} 天早上看到结果。漏浇的夜里作物不长，检查也会晚一天。',{n:giantDays,m:giantDays+1})}</li>
+<li>{t('以它为中心的 5×5 范围里，其余 24 格都得是能耕种的地面，不用先翻土。')}</li>
+<li>{t('这 24 格上不能有放置的东西（户外地板、洒水器、稻草人、家具、设施），也不能有树、竹子、菌类原木、树桩、倒木、岩石或大岩石。')}</li>
+<li>{t('杂草、草、树枝、小石子和其他作物不算阻挡。')}</li>
+<li>{t('满足时，它必定变成占满 5×5 的巨大作物，范围内的其他作物会被清掉，包括还没收的被诅咒作物。')}</li>
 <li>{t('不满足时，它只长成普通作物，不会变成被诅咒的，也没有第二次机会。')}</li>
 </ol>
 <p>{t('巨大作物用斧头、镐或镰刀收，每棵出 {low}～{high} 个被诅咒的和 {low}～{high} 个普通的同种作物。被诅咒的{list}只能从巨大作物拿到。',{low:giantInfo.quantity[0],high:giantInfo.quantity[1],list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</p>
 {edamame&&<Fragment><h3>{t('毛豆要留到入秋')}</h3>
-<p>{t('泥土种子抽到{crop}时，成熟后先别收，让它在田里留到入秋那天，就会变成被诅咒的样子，能收 1 个{item}。',{crop:cropName(edamame.crop),item:name(edamame.item)})}</p></Fragment>}
+<p>{t('泥土种子抽到{crop}时，成熟后先别收，让它在田里留到入秋那天，就会变成被诅咒的样子，能收 1 个{item}。',{crop:cropName(edamame.crop),item:name(edamame.item)})}</p>
+<p>{t('变了以后整个秋天都能收，入冬就没了。种在温室里的不会变。')}</p></Fragment>}
 <h3>{t('怎么种最好')}</h3>
 <ul>
-<li>{t('季初就种。抽到的作物得在当季长熟，过了季会枯萎。')}</li>
-<li>{t('耕地和田垄不影响抽到什么，也不影响会不会变。区别只在天数：适合田垄的作物（种子说明里写着“适合于田垄栽种”）种在田垄上成熟得更快。冬天的候选全都适合田垄，全开田垄就行；其他季节开不开都可以。')}</li>
-<li>{t('泥土种子之间至少空 2 格（中心隔 3 格）。这样不管哪株长成巨大作物，都不会清掉旁边的泥土种子作物。')}</li>
-<li>{t('泥土种子长大后会变成抽到的作物。看到{list}时，检查它周围的 5×5：挪走洒水器等设施和摆设，离耕种区域的边缘至少 2 格。附近如果还有一株会变巨大的，两个 5×5 最好别重叠。',{list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</li>
+<li>{t('季初就种，开卡片上推荐的地，最晚别过卡片上的日子。成熟后在换季前收掉。')}</li>
+<li>{t('想重抽可以读档。抽签在种下的那一刻完成，用的随机数是游戏启动时按时钟设定的，所以读档后重新种会重新抽。但游戏只在睡觉时存档，而且是过夜生长之后才存，醒来看到抽中了什么时，结果已经在最新的存档里。要在读取画面选“{previous}”，读回种下那天早上的存档，再种一次、睡一觉看结果。这一天做的其他事也会一起作废。每次读档，那天种下的种子会全部重抽，没法只留下好的。巨大作物和被诅咒的变化没有随机成分，不用靠读档。',{previous:t('过去的保存数据')})}</li>
+<li>{t('泥土种子之间至少空 2 格（中心隔 3 格），离耕种区域的边缘也留 2 格。这样不管哪株长成巨大作物，都不会清掉旁边的泥土种子作物，靠边的也不会因为范围出界而失败。')}</li>
+<li>{t('想让巨大作物自动长出来：泥土种子按中心隔 6 格的方格种，每 4 颗正中间放一个{sprinkler}。它浇 7×7，4 颗都离它 3 格，正好浇得到，它又不在任何一颗的 5×5 里；相邻两颗的 5×5 也不重叠。',{sprinkler:name(largeSprinkler)})}</li>
+<li>{t('不这样摆时，种下第二天看抽到了什么。是{list}的话，在它成熟前一天把 5×5 里的洒水器、稻草人和户外地板收走，当天手动浇水，并先收掉范围里已经成熟的被诅咒作物。附近还有一株会变巨大的，两个 5×5 最好别重叠。',{list:giantCrops.map(e=>cropName(e.crop)).join(t('、'))})}</li>
+<li>{t('季节稻草人护着的作物换季时不会枯萎。不过稻草人要护到这株作物，就一定落在它的 5×5 里，它也就长不成巨大作物了。')}</li>
 <li>{t('拔被诅咒的作物要 {frames} 帧，期间每 {interval} 帧掉 1/{part} 颗心。开局只有 {hearts} 颗心，心不满时先回复再拔。',{frames:pull.frames,interval:pull.interval,part:pull.per_heart/pull.damage,hearts:hearts(hp.initial)})}</li>
 </ul></section>
 
@@ -172,6 +192,6 @@ const url=(id:string)=>{const e=item(id);return e?href(entityUrl(e)):'';};
 <section id="safe-mode"><h2>{t('安心生活模式')}</h2>
 <p>{t('安心生活模式下，田上杂货店会卖 {scales} 片{scale}和 {foxes} 个{aburaage}，一次只上架 1 个，买走后才上架下一个。买到时上限同样会涨。',{scales:offers(scale),scale:name(scale),foxes:offers(aburaage),aburaage:name(aburaage)})}</p></section>
 
-<details class="sources"><summary>{t('游戏数据来源')}</summary><p>{t('上限：gamedefine.dat 的 PLAYER_STATUS_HP_* 与 PLAYER_STATUS_ST_*。龙神渊：event_horror_abyss 脚本（今野的 1000 元、深夜 0～5 点、各阶段奖励）、gamedefine.dat 的 ABYSS_NEED_COUNT_LV1～7、gamevalue.dat 的阶段范围 1～7。狐狸神社：event_horror_inari_shrine 脚本的 event_monthly_check、event_clear、event_clear_all；出现条件见 event.dat 的 EVENT_ID_INARI_SHRINE_REPLACEMENT；只收当季见 gimmick_event_inari_shrine 脚本的 bundleCheck；每次要几份见 village.exe 的 CTask_Menu_Bundle::initialize_Inner，它按 GAME_VALUE_HORROR_INARI_SHRINE_CLEAR_COUNT + 1 截断；供品：bundle.dat。出货与丢弃的后果：event_horror_common 与 ai_creature_horror_vegetable_monster、ai_creature_horror_fish_monster 脚本，物品分类见 item.dat（village.exe 的 ItemGetCategoryByID 原样返回这个分类）。夜间闪光点：placementitem.dat 与 gimmick_event_kirakira 脚本，换池时机见 event.dat 的 EVENT_ID_MASK_START/END；泥田坊：ai_creature_horror_dorotabo 脚本与 cropsharvest.dat。被诅咒的鱼：fishing.dat 与 fish.dat，鱼饵效果来自 village.exe 的上钩抽选代码。泥土种子与巨大作物：crops.dat、cropsharvest.dat 与 village.exe 的种植和每日生长代码。安心生活模式：storesales.dat 与 event_rankup 脚本。提取脚本 tools/extract-curse-items.py。食物和睡眠的恢复量还没解析。')}</p></details>
+<details class="sources"><summary>{t('游戏数据来源')}</summary><p>{t('上限：gamedefine.dat 的 PLAYER_STATUS_HP_* 与 PLAYER_STATUS_ST_*。龙神渊：event_horror_abyss 脚本（今野的 1000 元、深夜 0～5 点、各阶段奖励）、gamedefine.dat 的 ABYSS_NEED_COUNT_LV1～7、gamevalue.dat 的阶段范围 1～7。狐狸神社：event_horror_inari_shrine 脚本的 event_monthly_check、event_clear、event_clear_all；出现条件见 event.dat 的 EVENT_ID_INARI_SHRINE_REPLACEMENT；只收当季见 gimmick_event_inari_shrine 脚本的 bundleCheck；每次要几份见 village.exe 的 CTask_Menu_Bundle::initialize_Inner，它按 GAME_VALUE_HORROR_INARI_SHRINE_CLEAR_COUNT + 1 截断；供品：bundle.dat。出货与丢弃的后果：event_horror_common 与 ai_creature_horror_vegetable_monster、ai_creature_horror_fish_monster 脚本，物品分类见 item.dat（village.exe 的 ItemGetCategoryByID 原样返回这个分类）。夜间闪光点：placementitem.dat 与 gimmick_event_kirakira 脚本，换池时机见 event.dat 的 EVENT_ID_MASK_START/END；泥田坊：ai_creature_horror_dorotabo 脚本与 cropsharvest.dat。被诅咒的鱼：fishing.dat 与 fish.dat，鱼饵效果来自 village.exe 的上钩抽选代码。泥土种子与巨大作物：crops.dat（成长点和 nonSuitableLandSpeed）、cropsharvest.dat，以及 village.exe 的种植、每日生长和 isBigFormCheck 代码。安心生活模式：storesales.dat 与 event_rankup 脚本。提取脚本 tools/extract-curse-items.py。食物和睡眠的恢复量还没解析。')}</p></details>
 </BaseLayout>
-<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.4rem 0}nav{line-height:2}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{padding:.45rem .6rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:middle}thead th{color:var(--muted);font-weight:600;font-size:.85rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.4rem .8rem;margin:.6rem 0}.seasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:.8rem;margin:.8rem 0}.season{padding:.8rem 1rem;border:1px solid var(--border);border-radius:8px;background:var(--paper)}.season h4{margin:0 0 .2rem}.season .odds{margin:0 0 .4rem;color:var(--muted);font-size:.85rem}.season dl{margin:0}.season dt{margin-top:.5rem;font-size:.85rem;color:var(--muted)}.season dd{margin:.1rem 0 0}.season .items{margin:.2rem 0;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.fish-rates td:nth-child(n+3),.fish-rates th:nth-child(n+3){white-space:nowrap}.pair{display:flex;flex-wrap:wrap;gap:.2rem .8rem}details table{font-size:.9rem}.sources{margin-top:2.5rem}@media(max-width:700px){table{font-size:.85rem}th,td{padding:.4rem .35rem}}</style>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.4rem 0}nav{line-height:2}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{padding:.45rem .6rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:middle}thead th{color:var(--muted);font-weight:600;font-size:.85rem}.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.4rem .8rem;margin:.6rem 0}.seasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:.8rem;margin:.8rem 0}.season{padding:.8rem 1rem;border:1px solid var(--border);border-radius:8px;background:var(--paper)}.season h4{margin:0 0 .2rem}.season .odds{margin:0;color:var(--muted);font-size:.85rem}.season .soil{margin:.2rem 0 0;font-weight:600}.season .plain{margin:.4rem 0 0;color:var(--muted);font-size:.85rem;line-height:1.6}.days{margin:.3rem 0 0}.days th,.days td{padding:.3rem .4rem}.days th:not(:first-child),.days td:not(:first-child){width:4.5rem;text-align:right;white-space:nowrap;color:var(--muted)}.days th.pick,.days td.pick{color:var(--ink);font-weight:700}.fish-rates td:nth-child(n+3),.fish-rates th:nth-child(n+3){white-space:nowrap}.pair{display:flex;flex-wrap:wrap;gap:.2rem .8rem}details table{font-size:.9rem}.sources{margin-top:2.5rem}@media(max-width:700px){table{font-size:.85rem}th,td{padding:.4rem .35rem}.season{padding:.7rem .75rem}.days th:not(:first-child),.days td:not(:first-child){width:auto}.days :global(.guide-item){display:grid;grid-template-columns:auto 1fr;column-gap:.5rem;align-items:center}.days :global(.guide-item:has(small) img){grid-row:span 2}.days :global(.guide-item small){margin:0;padding:0;white-space:normal}}</style>
