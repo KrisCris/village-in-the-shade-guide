@@ -2,9 +2,9 @@
 /** Static crop of the village minimap with markers; every map on a page shares one image download. */
 import mapData from '../../data/sources/game-map-markers.json';
 import { MINIMAP_SIZE, mapPins, type MapLayer } from '../data/anomalyMap';
-interface Props { layers: MapLayer[]; label: string; image: string }
-const { layers, label, image } = Astro.props;
-const { frame, pins, regions } = mapPins(layers, mapData.projection);
+interface Props { layers: MapLayer[]; label: string; image: string; minWidth?: number }
+const { layers, label, image, minWidth } = Astro.props;
+const { frame, pins, regions } = mapPins(layers, mapData.projection, minWidth);
 const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
 ---
 <figure class="amap">
@@ -31,6 +31,6 @@ const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
   figcaption { margin-top: .35rem; }
   .amap-legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin: 0; padding: 0; list-style: none; font-size: .85rem; color: var(--muted); }
   .amap-legend li { display: inline-flex; align-items: center; gap: .4rem; }
-  .amap-legend .amap-pin { position: static; transform: none; flex: none; }
+  .amap-legend .amap-pin { position: relative; transform: none; flex: none; }
   .amap-legend .amap-pin.number { width: 1rem; height: 1rem; }
 </style>

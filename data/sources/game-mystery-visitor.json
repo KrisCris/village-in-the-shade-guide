@@ -1,0 +1,231 @@
+{
+  "source": "Steam build 25640656: event.dat, gameflag.dat, creature.dat, anime.dat, talknameplate.dat, talk.dat, demolist.dat, map.dat → data/map/map_0000_ver120_spr.ymwr.head; scripts dlc_03_01.lub, event_player_birthday.lub",
+  "reviewed_scripts": {
+    "dlc_03_01": "b1f9e4fc0aa95d9ee7a2791c33f314eb3d137509e224a07aef769dcac46c0d14",
+    "event_player_birthday": "dfe4df985d523a677c10b978f74f0883cc10ea4d282a85bfc0e25af986743596"
+  },
+  "creature": {
+    "id": "CREATURE_ID_STORY_NPC_CHA_0170",
+    "name_ja": "デモ用NPC_追加キャラ",
+    "portrait_model": "BU_0170",
+    "portrait_name_ja": "キャラ_01(仮)"
+  },
+  "nameplate": {
+    "id": "TALK_NAME_ID_UNKNOWN",
+    "names": {
+      "ja": "？？？",
+      "en": "???",
+      "fr": "???",
+      "es": "???",
+      "zh-TW": "？？？",
+      "ko": "？？？",
+      "zh-CN": "？？？"
+    }
+  },
+  "event": {
+    "id": "EVENT_ID_DLC_03_001",
+    "name_ja": "DLC_3_追加キャラ伏線イベント",
+    "version": 130,
+    "hours": "7:00-16:59",
+    "requires": [
+      "GAME_FLAG_STORY_06_END",
+      "GAME_FLAG_BIRTHDAY_SETTING_DEMO"
+    ],
+    "excludes": [
+      "GAME_FLAG_DLC_03_001",
+      "GAME_FLAG_BIRTHDAY_SETTING_DEMO_NEXT_DAY"
+    ],
+    "sets": [
+      "GAME_FLAG_DLC_03_001"
+    ],
+    "weathers": [
+      "WEATHER_ID_SUNNY",
+      "WEATHER_ID_RAIN",
+      "WEATHER_ID_CLOUDY",
+      "WEATHER_ID_SNOW"
+    ]
+  },
+  "anchor": {
+    "name": "event_DLC_130_02_pos00",
+    "x": 18450,
+    "y": 22185
+  },
+  "triggers": [
+    {
+      "demo_id": "DEMO_ID_DLC_03_001_L",
+      "name_ja": "DLC3_追加キャラ伏線イベント_左",
+      "side": "L",
+      "center": [
+        17662,
+        21802
+      ],
+      "quad": [
+        [
+          17820,
+          21600
+        ],
+        [
+          17460,
+          21960
+        ],
+        [
+          17505,
+          22005
+        ],
+        [
+          17865,
+          21645
+        ]
+      ]
+    },
+    {
+      "demo_id": "DEMO_ID_DLC_03_001_R",
+      "name_ja": "DLC3_追加キャラ伏線イベント_右",
+      "side": "R",
+      "center": [
+        19125,
+        21870
+      ],
+      "quad": [
+        [
+          18990,
+          21690
+        ],
+        [
+          19305,
+          22005
+        ],
+        [
+          19260,
+          22050
+        ],
+        [
+          18945,
+          21735
+        ]
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "talk_ids": [
+        "TALK_ID_90_3002_001_01_01",
+        "TALK_ID_90_3002_001_01_02"
+      ],
+      "lines": [
+        {
+          "ja": "…………",
+          "en": "...",
+          "fr": "...",
+          "es": "...",
+          "zh-TW": "…………",
+          "ko": "……",
+          "zh-CN": "…………"
+        }
+      ],
+      "east_lines": null
+    },
+    {
+      "talk_ids": [
+        "TALK_ID_90_3002_001_02_01",
+        "TALK_ID_90_3002_001_02_02"
+      ],
+      "lines": [
+        {
+          "ja": "おや……",
+          "en": "Oh...",
+          "fr": "Tiens... ?",
+          "es": "¿Qué...?",
+          "zh-TW": "哎呀……",
+          "ko": "으음…",
+          "zh-CN": "哎呀……"
+        }
+      ],
+      "east_lines": [
+        {
+          "ja": "おや……",
+          "en": "Oh...",
+          "fr": "Tiens... ?",
+          "es": "Ahí va...",
+          "zh-TW": "哎呀……",
+          "ko": "으음…",
+          "zh-CN": "哎呀……"
+        }
+      ]
+    },
+    {
+      "talk_ids": [
+        "TALK_ID_90_3002_001_03_01",
+        "TALK_ID_90_3002_001_03_02"
+      ],
+      "lines": [
+        {
+          "ja": "キミは……",
+          "en": "You're...",
+          "fr": "Tu es...",
+          "es": "Serás...",
+          "zh-TW": "你是……",
+          "ko": "너는…",
+          "zh-CN": "你是……"
+        },
+        {
+          "ja": "へぇ……なるほど",
+          "en": "Ah... I see.",
+          "fr": "Je vois...",
+          "es": "Ostras... Ya veo.",
+          "zh-TW": "哦……原來如此。",
+          "ko": "흐음… 그렇군.",
+          "zh-CN": "哦……原来如此。"
+        }
+      ],
+      "east_lines": [
+        {
+          "ja": "キミは……",
+          "en": "You're...",
+          "fr": "Tu es...",
+          "es": "Tú...",
+          "zh-TW": "你是……",
+          "ko": "너는…",
+          "zh-CN": "你是……"
+        },
+        {
+          "ja": "へぇ……なるほど",
+          "en": "Ah... I see.",
+          "fr": "Je vois...",
+          "es": "Anda... Qué cosas.",
+          "zh-TW": "哦……原來如此。",
+          "ko": "흐음… 그렇군.",
+          "zh-CN": "哦……原来如此。"
+        }
+      ]
+    },
+    {
+      "talk_ids": [
+        "TALK_ID_90_3002_001_04_01",
+        "TALK_ID_90_3002_001_04_02"
+      ],
+      "lines": [
+        {
+          "ja": "邪魔したね、また来るよ",
+          "en": "Sorry for the bother. I'll come back another time.",
+          "fr": "Je vais pas déranger plus longtemps, à plus.",
+          "es": "Perdón por molestar, después vengo.",
+          "zh-TW": "打擾了，我會再來的。",
+          "ko": "실례했어. 다음에 또 올게.",
+          "zh-CN": "打扰了，我会再来的。"
+        }
+      ],
+      "east_lines": [
+        {
+          "ja": "邪魔したね、また来るよ",
+          "en": "Sorry for the bother. I'll come back another time.",
+          "fr": "Je vais pas déranger plus longtemps, à plus.",
+          "es": "Disculpa las molestias, mejor en otro momento.",
+          "zh-TW": "打擾了，我會再來的。",
+          "ko": "실례했어. 다음에 또 올게.",
+          "zh-CN": "打扰了，我会再来的。"
+        }
+      ]
+    }
+  ]
+}

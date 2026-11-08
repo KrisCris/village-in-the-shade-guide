@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import AnimatedPortrait from './AnimatedPortrait';
-import {portraits} from './portraitCatalog';
+import {homePortraits as portraits} from './portraitCatalog';
 import {I18nProvider,useI18n} from '../../i18n/react';
 import type {Locale} from '../../i18n/locales';
 

@@ -194,3 +194,20 @@ def test_farmland_keeps_historical_geometry_separate_from_current_cells():
     assert all('_ver120_' not in row['map'] for row in legacy)
     assert len({row['id'] for row in catalog['shapes']})==len(catalog['shapes'])
     assert all(row['count']==len({tuple(cell) for cell in row['cells']}) for row in catalog['shapes'])
+
+
+def test_mystery_visitor_keeps_every_line_and_the_bridge_triggers():
+    visitor=source('mystery-visitor')
+    languages={'ja','en','fr','es','zh-TW','ko','zh-CN'}
+    assert set(visitor['nameplate']['names'])==languages
+    assert {name.replace('？','?') for name in visitor['nameplate']['names'].values()}=={'???'}
+    lines=[line for step in visitor['dialogue'] for line in step['lines']]
+    assert len(lines)==5
+    assert all(set(line)==languages and all(text.strip() for text in line.values()) for line in lines)
+    assert all(len(digest)==64 for digest in visitor['reviewed_scripts'].values())
+    anchor=visitor['anchor']
+    assert [row['side'] for row in visitor['triggers']]==['L','R']
+    for row in visitor['triggers']:
+        assert len(row['quad'])==4
+        assert row['center']==[round(sum(point[i] for point in row['quad'])/4) for i in (0,1)]
+        assert abs(row['center'][0]-anchor['x'])<1500 and abs(row['center'][1]-anchor['y'])<1500
