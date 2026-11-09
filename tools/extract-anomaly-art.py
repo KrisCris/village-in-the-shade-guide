@@ -77,10 +77,15 @@ NIGHT_MONSTERS = {
     'wall-one': ('ANIME_ID_ENEMY_PLASTERED_WALL_ONE', 11, 'ai_creature_horror_plastered_wall_one SEQ_AWAKE'),
     'walking-stone': ('ANIME_ID_ENEMY_WALKING_STONE', 110, 'ai_creature_horror_walking_stone SEQ_WALK'),
     'treasure-box': ('ANIME_ID_ENEMY_TREASURE_BOX', 111, 'ai_creature_horror_treasure_box SEQ_RUN'),
+    'ground-spirit': ('ANIME_ID_ENEMY_GROUND_SPIRIT', 30, 'ai_creature_horror_ground_spirit SEQ_STAY'),
+    'house-spirit': ('ANIME_ID_ENEMY_HOUSE_SPIRIT', 20, 'ai_creature_horror_house_spirit SEQ_STAY'),
+    'final-cicada': ('ANIME_ID_ENEMY_CICADA_FINAL', 10, 'ai_creature_horror_cicada_final SEQ_STAY_PT2'),
+    'false-item': ('ANIME_ID_ENEMY_FAKE_ITEM', 201, 'ai_creature_horror_fake_item SEQ_HORROR_STAY'),
+    'false-item-hands': ('ANIME_ID_ENEMY_FAKE_ITEM', 111, 'ai_creature_horror_fake_item fake_itm screen overlay; sequence 111 is its handprints without the red tint of SEQ_STAY 30'),
 }
 SETS = {
-    'anomalies': (ART, OUT, PUBLIC, Path('data/sources/game-anomaly-art.json')),
-    'night-monsters': (NIGHT_MONSTERS, Path('output/night-monster-art'), Path('public/art/night-monsters'), Path('data/sources/game-night-monster-art.json')),
+    'anomalies': (ART, OUT, PUBLIC, Path('data/sources/game-anomaly-art.json'), '25311578'),
+    'night-monsters': (NIGHT_MONSTERS, Path('output/night-monster-art'), Path('public/art/night-monsters'), Path('data/sources/game-night-monster-art.json'), '25640656'),
 }
 # The daruma model only ships in the per-language containers; its body is the same in each.
 CONTAINERS = ('resident.fad', 'resident_2.fad', 'resident_lang_jp.fad')
@@ -160,7 +165,7 @@ def export(art=ART, out=OUT):
     print(f'exported {len(found)} models, {len(jobs)} jobs -> {out}')
 
 
-def pack(art=ART, out=OUT, public=PUBLIC, sources_path=Path('data/sources/game-anomaly-art.json')):
+def pack(art=ART, out=OUT, public=PUBLIC, sources_path=Path('data/sources/game-anomaly-art.json'), build='25311578'):
     meta = json.loads((out / 'jobs.json').read_text(encoding='utf-8'))
     public.mkdir(parents=True, exist_ok=True)
     sources = {}
@@ -177,11 +182,11 @@ def pack(art=ART, out=OUT, public=PUBLIC, sources_path=Path('data/sources/game-a
                                     sequence=seq, used_by=used_by, width=canvas.width, height=canvas.height)
     sources_path.write_text(json.dumps(dict(
         source='anime.dat model names; FAN models in data/fairy_1_00.dat, rendered with src/components/art/portraitRenderer.ts',
-        build='25311578', images=sources), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        build=build, images=sources), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'packed {len(sources)} images -> {public}')
 
 
 if __name__ == '__main__':
-    art, out, public, sources_path = SETS[sys.argv[2] if len(sys.argv) > 2 else 'anomalies']
+    art, out, public, sources_path, build = SETS[sys.argv[2] if len(sys.argv) > 2 else 'anomalies']
     step = sys.argv[1] if len(sys.argv) > 1 else 'export'
-    export(art, out) if step == 'export' else pack(art, out, public, sources_path)
+    export(art, out) if step == 'export' else pack(art, out, public, sources_path, build)

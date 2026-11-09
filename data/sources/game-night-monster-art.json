@@ -1,6 +1,6 @@
 {
   "source": "anime.dat model names; FAN models in data/fairy_1_00.dat, rendered with src/components/art/portraitRenderer.ts",
-  "build": "25311578",
+  "build": "25640656",
   "images": {
     "tatazumu": {
       "anime": "ANIME_ID_ENEMY_MOYAMOYASAN",
@@ -100,6 +100,51 @@
       "used_by": "ai_creature_horror_treasure_box SEQ_RUN",
       "width": 134,
       "height": 192
+    },
+    "ground-spirit": {
+      "anime": "ANIME_ID_ENEMY_GROUND_SPIRIT",
+      "model": "ene_1170",
+      "container": "resident.fad",
+      "sequence": 30,
+      "used_by": "ai_creature_horror_ground_spirit SEQ_STAY",
+      "width": 109,
+      "height": 256
+    },
+    "house-spirit": {
+      "anime": "ANIME_ID_ENEMY_HOUSE_SPIRIT",
+      "model": "ene_1180",
+      "container": "resident.fad",
+      "sequence": 20,
+      "used_by": "ai_creature_horror_house_spirit SEQ_STAY",
+      "width": 256,
+      "height": 240
+    },
+    "final-cicada": {
+      "anime": "ANIME_ID_ENEMY_CICADA_FINAL",
+      "model": "ene_1190",
+      "container": "resident.fad",
+      "sequence": 10,
+      "used_by": "ai_creature_horror_cicada_final SEQ_STAY_PT2",
+      "width": 120,
+      "height": 118
+    },
+    "false-item": {
+      "anime": "ANIME_ID_ENEMY_FAKE_ITEM",
+      "model": "ene_1200",
+      "container": "resident_2.fad",
+      "sequence": 201,
+      "used_by": "ai_creature_horror_fake_item SEQ_HORROR_STAY",
+      "width": 188,
+      "height": 256
+    },
+    "false-item-hands": {
+      "anime": "ANIME_ID_ENEMY_FAKE_ITEM",
+      "model": "ene_1200",
+      "container": "resident_2.fad",
+      "sequence": 111,
+      "used_by": "ai_creature_horror_fake_item fake_itm screen overlay; sequence 111 is its handprints without the red tint of SEQ_STAY 30",
+      "width": 256,
+      "height": 225
     }
   }
 }
