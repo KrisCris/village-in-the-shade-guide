@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import data from '../../data/sources/game-night-monsters.json';
+import art from '../../data/sources/game-night-monster-art.json';
 import items from '../../data/generated/build-25640656/entities/items.json';
 import { heartText, monsterName, monsters, seconds, tiles } from './nightMonsters';
 
@@ -18,10 +19,17 @@ describe('night monster names', () => {
     expect(name('CREATURE_ID_HORROR_WALKING_STONE', 'zh-CN')).toBe('行走的石头');
     expect(name('CREATURE_ID_HORROR_MOYAMOYASAN_LV3', 'en')).toBe('Lingering Ghost');
     expect(name('CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE', 'en')).toBe('Nurikabe (Face)');
+    expect(name('CREATURE_ID_HORROR_CICADA_FINAL_PT1', 'ja')).toBe('セミファイナル');
+    expect(name('CREATURE_ID_HORROR_CICADA_FINAL_PT1', 'en')).toBe('Final Cicada');
+    expect(name('CREATURE_ID_HORROR_CICADA_FINAL_PT1', 'zh-CN')).toBe('临终蝉');
+    expect(name('CREATURE_ID_HORROR_GROUND_SPIRIT', 'zh-CN')).toBe('幽灵从地面冒出来吵闹');
+    expect(name('CREATURE_ID_HORROR_FAKE_ITEM', 'en')).toBe('False Item');
   });
 
   it('strips editor suffixes from the display names', () => {
-    for (const monster of Object.values(monsters)) expect([monster.ja, monster.en].join(' ')).not.toMatch(/プレーン|平面|Plane|_/);
+    for (const monster of Object.values(monsters)) {
+      expect([monster.ja, monster.en, monster.zh_hant].join(' ')).not.toMatch(/プレーン|平面|Plane|パターン|Pattern|樣式|_/);
+    }
   });
 });
 
@@ -58,7 +66,39 @@ describe('night monster data', () => {
 
   it('keeps the fixed spawn points the guide maps', () => {
     const counts = Object.fromEntries(Object.entries(data.map_points).map(([key, points]) => [key, points.length]));
-    expect(counts).toEqual({ two_mouths_woman: 4, two_mouths_route: 9, blockage: 6, wall_face: 2, wall_one_always: 10, wall_one_sometimes: 9, whelk: 15 });
+    expect(counts).toEqual({
+      two_mouths_woman: 4, two_mouths_route: 9, blockage: 6, wall_face: 2, wall_one_always: 10, wall_one_sometimes: 9, whelk: 15,
+      scare_ground_spirit: 15, scare_house_spirit: 15, scare_cicada_final: 15, scare_fake_item: 15,
+    });
+  });
+
+  it('places 3 village scares and 3 false items per late night, cicadas only in summer and autumn', () => {
+    const scares = data.village_scares;
+    expect([scares.picks, scares.false_item_picks]).toEqual([3, 3]);
+    expect(scares.seasons).toEqual({
+      CREATURE_ID_HORROR_GROUND_SPIRIT: [0, 1, 2, 3],
+      CREATURE_ID_HORROR_HOUSE_SPIRIT: [0, 1, 2, 3],
+      CREATURE_ID_HORROR_CICADA_FINAL_PT1: [1, 2],
+      CREATURE_ID_HORROR_FAKE_ITEM: [0, 1, 2, 3],
+    });
+    expect(scares.patterns.CREATURE_ID_HORROR_CICADA_FINAL_PT1).toEqual(['CREATURE_ID_HORROR_CICADA_FINAL_PT2', 'CREATURE_ID_HORROR_CICADA_FINAL_PT1']);
+    expect(seconds(data.behaviour.cicada_rampage_frames)).toBe('7.4');
+    expect(data.behaviour.false_item_hand_game_seconds / 60).toBe(10);
+  });
+
+  it('gives every village scare a harmless monster entry, map points and a picture', () => {
+    const slugs = { GROUND_SPIRIT: ['ground_spirit', 'ground-spirit'], HOUSE_SPIRIT: ['house_spirit', 'house-spirit'], CICADA_FINAL_PT1: ['cicada_final', 'final-cicada'], FAKE_ITEM: ['fake_item', 'false-item'] };
+    const points = data.map_points as Record<string, Array<{ x: number; y: number }>>;
+    const images = art.images as Record<string, { model: string }>;
+    for (const id of Object.keys(data.village_scares.seasons)) {
+      const [pointKey, slug] = slugs[id.replace('CREATURE_ID_HORROR_', '') as keyof typeof slugs];
+      const monster = monsters[id as keyof typeof monsters];
+      expect(monster.hit, id).toBeNull();
+      expect([monster.hp, monster.power, monster.on_flags], id).toEqual([0, 0, []]);
+      expect(points[`scare_${pointKey}`], id).toHaveLength(15);
+      expect(images[slug]?.model, id).toMatch(/^ene_/);
+    }
+    expect(images['false-item-hands'].model).toBe(images['false-item'].model);
   });
 
   it('only names items that exist in the catalog', () => {

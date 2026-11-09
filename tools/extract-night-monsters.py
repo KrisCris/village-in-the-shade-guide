@@ -11,6 +11,15 @@ Traced by hand from the scripts below (hashes in `reviewed`); re-trace when a ha
   RandomRange(dayPopMin, dayPopMax) and places members on map cells whose attribute byte
   (cell + 80 + subcell * 8 + 3) holds the table id; anchor tables use their popAnchorName.
 - ai_creature_horror_*: behaviour constants (sight ranges, frames, speeds) read below.
+- Village scares (village.exe, sha256 below): the Lua binding EventAddHorrorPlacement
+  (0x140498890) calls 0x14027B2C0. It reads a 60-row table at 0x140E58210, 32 bytes per row:
+  anchor name pointer, season bit mask, two creature ids (the second 0 unless the row has two
+  patterns). The season bit is 1 << (raw game seconds / 28 days % 4), from 0x140106930 (+0x1C).
+  Pass 1 keeps the ground-spirit, house-spirit and cicada rows whose mask has that bit, shuffles
+  them (0x14027C8F0) and places the first 3 (loop bound at 0x14027B863). Pass 2 does the same
+  with the 15 false-item rows (mask 0xFF, folded to one test) and places 3 (0x14027BC54).
+  A row's anchor matches the map anchors that start with its name (house spirits append _<angle>).
+  GameTimeGetRawSecond (0x140491890) returns the same raw game-second counter.
 Damage: the native hit code multiplies creature.dat power by attack.dat ratePower, keeps
 1 when the product is below 200, else divides by 100, then adds addPower. One heart is
 PLAYER_STATUS_HP_HEART_MAX (4) HP.
@@ -47,6 +56,10 @@ reviewed={
     'ai_creature_horror_whelk':'79434c9a4f454d8ff525fed800fed779c34df074aacb465bfbe894b74ad011e0',
     'ai_creature_horror_walking_stone':'c930abbc2915897326d1fd08ffcf036e345249e14b03c3501e4a281763e96aa8',
     'ai_creature_horror_treasure_box':'cb41b13c468b6e0e48dbcca77f116e25790cece91de4d46ab76888344f31e0eb',
+    'ai_creature_horror_ground_spirit':'f16f8a8cb810170343f5be6311eb24e4e2d0cd90b88a56dde0f6e0c3b1f8ebd7',
+    'ai_creature_horror_house_spirit':'a256aaa22924838070d3d948a804099363d48c0f59f27a24a5af348a45f5360b',
+    'ai_creature_horror_cicada_final':'411b51da9597d40178ab86925a0f41b3387b7cb8d7f7b5dd55e7e30819431d6d',
+    'ai_creature_horror_fake_item':'286f704dca315d950d2178914e767675fb357f855e3210dfbf08ec389352a20c',
     'mapevent_latenight_area':'3201be516f9fbabd5afe5787f885181eda33f18764b255cf4b902112a3a14b39',
     'event_check_late_night':'376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2',
     # Story chapters that create the bosses named in the task (not part of the night tables).
@@ -256,6 +269,67 @@ has('ai_creature_horror_walking_stone','CROPS_ID_OBJECT_WALKING_STONE',3,8,'MapP
 has('ai_creature_horror_treasure_box','ATTACK_FEATURE_ID_ARROW',300,'GameDropTreasureBox')
 assert int(defines['HORROR_WALKING_STONE_POP_MAX'])==5 and int(defines['PLAYER_ST_SLIPDAMAGE_INTERVAL'])==60
 
+# Village scares: harmless jump scares that delete themselves once triggered.
+has('ai_creature_horror_ground_spirit','SEQ_SEARCH','touch_sensor','GameGenerateGameTimeStopTicket','PadPushDisable','SEQ_PLAYER_BUTTOCKS','SEQ_PLAYER_BUTTOCKS_RETURN','SEQ_OUT','BaseDelete')
+has('ai_creature_horror_house_spirit','pop_addhorror_house_spirit_','SEQ_STAY','touch_sensor','touched','SEQ_OUT','BaseDelete')
+has('ai_creature_horror_cicada_final','touch_sensor','SEQ_RAMPAGE',20,'AnimeEndWait','BaseDelete')
+has('ai_creature_horror_fake_item','SEQ_KIRAKIRA','isVisibleCondition','PlayerIsLightOn','CMD_INTERACTION_PICK_UP','SEQ_HORROR_STAY','ANIME_ID_ENEMY_FAKE_ITEM','SCREEN_CENTER',
+    'DISP_TIME',600,'GameTimeGetRawSecond','GAME_FLAG_EVENT_RUNNING','GAME_FLAG_LATENIGHT_EVENT_AREA','GAME_FLAG_LATENIGHT_PLANE_GHOST_AREA')
+for name in ('ai_creature_horror_ground_spirit','ai_creature_horror_house_spirit','ai_creature_horror_cicada_final','ai_creature_horror_fake_item'):
+    assert not {'CreatureDropItem','GameDropItem','attack_id','ATTACK_ID_ENEMY_HORROR_KNOCK_DOWN'}&{c for c in consts(name) if isinstance(c,str)},name
+anime_models={g[0]:g[2] for g in _string_groups(read_table(data.read_entry('data/database/anime.dat')))}
+def anime_frames(anime,seq):
+    """Length of one sequence of a FAN model in resident.fad (layout as in tools/extract-anomaly-art.py)."""
+    b=FafullfsArchive.open(game/'data/fairy_1_00.dat').read_entry('data/fairy/resident.fad')
+    for o in range(80,u32(b,96),32):
+        if b[o:o+8].split(b'\0')[0].decode('ascii','replace')==anime_models[anime]:
+            size,kind,offset=struct.unpack_from('<IIQ',b,o+8); s=b[offset+32:offset+size+16]
+            assert kind==2
+            rows=[struct.unpack_from('<8I',s,u32(s,32)-32+k*32) for k in range(struct.unpack_from('<H',s,8)[0])]
+            return next(r[3] for r in rows if r[0]&0xFFFF==seq)
+    raise KeyError(anime)
+cicada_frames=anime_frames('ANIME_ID_ENEMY_CICADA_FINAL',20)
+assert cicada_frames==444,cicada_frames
+
+exe=(game/'village.exe').read_bytes()
+assert hashlib.sha256(exe).hexdigest()=='979aebe31b42d181ee92e9db0086f22f65f2213029471a50723f61eaa93119a5','Unreviewed executable build; re-trace the village scare table'
+pe=u32(exe,0x3C); image_base=u64(exe,pe+48); optional=struct.unpack_from('<H',exe,pe+20)[0]
+sections=[struct.unpack_from('<4I',exe,pe+24+optional+40*i+8) for i in range(struct.unpack_from('<H',exe,pe+6)[0])]
+def exe_offset(va):
+    rva=va-image_base
+    return next(raw+rva-start for size,start,_,raw in sections if start<=rva<start+size)
+def exe_string(va):
+    o=exe_offset(va)
+    return exe[o:exe.index(b'\0',o)].decode()
+# Both placement passes stop after 3 creatures; pass 1 walks rows 0–44, pass 2 rows 45–59.
+assert exe[exe_offset(0x14027B863):][:4]==bytes.fromhex('4183fc03') and exe[exe_offset(0x14027BC54):][:4]==bytes.fromhex('4183ff03')
+assert exe[exe_offset(0x14027B57C):][:4]==bytes.fromhex('4183f92d')
+SCARE_PICKS=3
+scare_rows=[]
+for i in range(60):
+    name,mask,first,second=struct.unpack_from('<4Q',exe,exe_offset(0x140E58210)+32*i)
+    scare_rows.append(dict(anchor=exe_string(name),mask=mask,creatures=[creature_by_num[c] for c in (first,second) if c]))
+SCARES={'ground_spirit':'CREATURE_ID_HORROR_GROUND_SPIRIT','house_spirit':'CREATURE_ID_HORROR_HOUSE_SPIRIT','cicada_final':'CREATURE_ID_HORROR_CICADA_FINAL_PT1','fake_item':'CREATURE_ID_HORROR_FAKE_ITEM'}
+scare_kinds=defaultdict(list)
+for row in scare_rows: scare_kinds[re.fullmatch(r'pop_addhorror_([a-z_]+)_\d\d',row['anchor'])[1]].append(row)
+assert {k:len(v) for k,v in scare_kinds.items()}=={k:15 for k in SCARES}
+assert all(r['anchor'].startswith('pop_addhorror_fake_item_') for r in scare_rows[45:]) and not any('fake_item' in r['anchor'] for r in scare_rows[:45])
+assert all(len({(r['mask'],tuple(r['creatures'])) for r in rows})==1 for rows in scare_kinds.values())
+scare_masks={k:v[0]['mask'] for k,v in scare_kinds.items()}
+assert scare_masks=={'ground_spirit':0xFF,'house_spirit':0xFF,'cicada_final':6,'fake_item':0xFF},scare_masks
+assert scare_kinds['cicada_final'][0]['creatures']==['CREATURE_ID_HORROR_CICADA_FINAL_PT2','CREATURE_ID_HORROR_CICADA_FINAL_PT1']
+assert all(scare_kinds[k][0]['creatures']==[SCARES[k]] for k in ('ground_spirit','house_spirit','fake_item'))
+def scare_points(kind):
+    names=[r['anchor'] for r in scare_kinds[kind]]
+    found=anchors(village,f'pop_addhorror_{kind}_')
+    matched=[a for a in found if any(a['anchor']==n or a['anchor'].startswith(n+'_') for n in names)]
+    assert len(matched)==len(found)==15,(kind,len(found))
+    return sorted(matched,key=lambda a:a['anchor'])
+for season in ('sum','aut','win'):
+    other=maps.read_entry(heads['MAP_ID_OPENWORLD'].replace('_spr.',f'_{season}.'))
+    other=zlib.decompress(other[20:]) if other.startswith(b'YKCMP_V1') else other
+    assert anchors(other,'pop_addhorror_')==anchors(village,'pop_addhorror_'),season
+
 effect_t,effect_rows=table('gameeffect')
 slip=next(g for r,g in effect_rows if u32(r,0)==30000101)
 assert slip[0]=='GAME_EFFECT_ID_ST_DOWN_FIELD' and 'スタミナ' in slip[9]
@@ -271,14 +345,17 @@ assert len(walking_drops)==11 and walking_drops[0]==dict(item='ITEM_ID_OBJECT_ST
 
 MONSTERS=['CREATURE_ID_HORROR_MOYAMOYASAN_LV3','CREATURE_ID_HORROR_KUNEKUNE','CREATURE_ID_HORROR_WANDERING_GHOST','CREATURE_ID_HORROR_WARP_GHOST','CREATURE_ID_HORROR_OBO',
           'CREATURE_ID_HORROR_TWO_MOUTHS_WOMAN','CREATURE_ID_HORROR_BLOCKAGE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE','CREATURE_ID_HORROR_PLASTERED_WALL_ONE',
-          'CREATURE_ID_HORROR_WHELK','CREATURE_ID_HORROR_WALKING_STONE','CREATURE_ID_HORROR_TREASURE_BOX']
+          'CREATURE_ID_HORROR_WHELK','CREATURE_ID_HORROR_WALKING_STONE','CREATURE_ID_HORROR_TREASURE_BOX',*SCARES.values()]
 def display(name):
-    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面 / _Plane, _顔, _1マス)."""
+    """creature.dat names carry editor suffixes for the field variants (_プレーン / _平面 / _Plane, _顔, _1マス, _パターン1)."""
+    name=re.sub(r'_(パターン|Pattern|樣式)\d$','',name)
     name=re.sub(r'_?(プレーン|平面|Plane)$','',name)
     name=re.sub(r'_(Face|1 Square)$',r' (\1)',name)
     return re.sub(r'_(顔|臉|1マス|1格)$',r'（\1）',name)
 assert display('塗り壁_顔_プレーン')=='塗り壁（顔）' and display('擋路妖_平面')=='擋路妖' and display('塗壁_1格')=='塗壁（1格）'
 assert display('Nurikabe_Face_Plane')=='Nurikabe (Face)' and display('Roadblocker_Plane')=='Roadblocker' and display('Nurikabe_1 Square')=='Nurikabe (1 Square)'
+assert display('セミファイナル_パターン1')=='セミファイナル' and display('Final Cicada_Pattern2')=='Final Cicada' and display('臨終蟬_樣式1')=='臨終蟬'
+assert [display(creatures['CREATURE_ID_HORROR_CICADA_FINAL_PT2'][k]) for k in ('ja','en','zh_hant')]==[display(creatures['CREATURE_ID_HORROR_CICADA_FINAL_PT1'][k]) for k in ('ja','en','zh_hant')]
 SCRIPT_ATTACK={'CREATURE_ID_HORROR_PLASTERED_WALL_FACE_PLANE':'ATTACK_ID_ENEMY_HORROR_KNOCK_DOWN'}
 monsters={}
 for key in MONSTERS:
@@ -316,7 +393,7 @@ for key,story,map_id in (('CREATURE_ID_HORROR_ITSUMADE','story_05_01','MAP_ID_LO
     bosses.append(dict(id=key,ja=c['ja'],en=c['en'],zh_hant=c['zh_hant'],chapter=int(story[6:8]),map=map_id))
 
 out=dict(
-    source='placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, map heads '
+    source='placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, anime.dat, resident.fad, village.exe, map heads '
            +', '.join(sorted({heads[m] for m in ('MAP_ID_OPENWORLD','MAP_ID_BUSHAREA','MAP_ID_LOST_FOREST')}))+' + scripts '+', '.join(f'{k}.lub' for k in reviewed),
     script_sha256=reviewed,
     late_night_hours=[int(defines['DAY_LATE_NIGHT_START_HOUR']),int(defines['DAY_LATE_NIGHT_END_HOUR'])],
@@ -333,6 +410,13 @@ out=dict(
         wall_one_always=strip(a for k in ('00','01','02','05') for a in sorted(wall_groups[k],key=lambda a:a['anchor'])),
         wall_one_sometimes=strip(a for k in ('03','04') for a in sorted(wall_groups[k],key=lambda a:a['anchor'])),
         whelk=strip(sorted(whelk,key=lambda a:a['anchor'])),
+        **{f'scare_{kind}':strip(scare_points(kind)) for kind in SCARES},
+    ),
+    village_scares=dict(
+        source='village.exe 0x14027B2C0 (EventAddHorrorPlacement), row table 0x140E58210',
+        picks=SCARE_PICKS,false_item_picks=SCARE_PICKS,
+        seasons={SCARES[k]:[s for s in range(4) if scare_masks[k]>>s&1] for k in SCARES},
+        patterns={SCARES[k]:scare_kinds[k][0]['creatures'] for k in SCARES},
     ),
     wall_one_groups=dict(always=4,sometimes=2),
     behaviour=dict(
@@ -341,6 +425,7 @@ out=dict(
         warp_wait_frames=300,warp_count=6,obo_sight_tiles=7,obo_light_frames=420,obo_lost_frames=180,obo_light_speed=0.4,
         two_mouths_wait_frames=240,blockage_frames=360,whelk_sight_tiles=6,whelk_lifespan_frames=3600,
         walking_stone_max=int(defines['HORROR_WALKING_STONE_POP_MAX']),walking_stone_hits=[3,8],treasure_box_sense=300,
+        cicada_rampage_frames=cicada_frames,false_item_hand_game_seconds=600,
     ),
     monsters=monsters,
     walking_stone_drops=walking_drops,

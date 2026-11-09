@@ -31,7 +31,8 @@ const C={red:'#e2553f',blue:'#4a86e8',purple:'#a46be6',gold:'#f2b632',white:'#f4
 const snail=view(data.whelk_item);
 const drops=data.walking_stone_drops.map(d=>({...view(d.item),min:d.min,max:d.max,chance:d.chance}));
 const bossMap:Record<string,string>={MAP_ID_LOST_FOREST:t('迷途森林'),MAP_ID_MOUNTAIN_PASS:t('隘口'),MAP_ID_BUSHAREA:t('附身草丛'),MAP_ID_BOTTOM_OF_HOLE:t('大洞底部')};
-const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['monsters',t('妖怪图鉴')],['bosses',t('剧情中的妖怪')]];
+const S=data.village_scares;
+const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['monsters',t('妖怪图鉴')],['village-scares',t('村里的惊吓')],['bosses',t('剧情中的妖怪')]];
 ---
 <BaseLayout title={t('深夜出没的妖怪')}><h1>{t('深夜出没的妖怪')}</h1>
 <p>{t('深夜走进山中、农场和通往隘口的路，会碰上下面这些妖怪。它们和每晚轮换的怪异无关，大多打不倒，主要靠躲。每张卡片写它们在哪里出现、会做什么、伤害多少和怎么应对。')}</p>
@@ -141,6 +142,37 @@ const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['m
 <p set:html={tHtml('出现点和奖励见<a href="/guides/collection-map/#treasures">夜间收集地图</a>。')} /></article>
 </div></section>
 
+<section id="village-scares"><h2>{t('村里的惊吓')}</h2>
+<p>{t('深夜的村庄地图上还藏着几种吓人的东西。它们不伤人，也不掉东西，触发一次就消失。')}</p>
+<ul>
+<li>{t('深夜开始时，{ground}、{house}、{cicada}这三种一起抽选：从它们的出现点里随机选 {n} 处，各放一只。{cicada}只在夏季和秋季参加抽选。',{ground:nm('GROUND_SPIRIT'),house:nm('HOUSE_SPIRIT'),cicada:nm('CICADA_FINAL_PT1'),n:S.picks})}</li>
+<li>{t('{fake}另外从自己的出现点里随机选 {n} 处。',{fake:nm('FAKE_ITEM'),n:S.false_item_picks})}</li>
+<li>{t('每种各有 {n} 个固定出现点，四季都一样。',{n:points.scare_ground_spirit.length})}</li>
+</ul>
+<AnomalyMap image={image} label={t('村里惊吓的出现点')} layers={[layer(nm('GROUND_SPIRIT'),C.purple,'dot','scare_ground_spirit'),layer(nm('HOUSE_SPIRIT'),C.green,'dot','scare_house_spirit'),layer(nm('CICADA_FINAL_PT1'),C.gold,'dot','scare_cicada_final'),layer(nm('FAKE_ITEM'),C.red,'dot','scare_fake_item')]}/>
+<div class="cards">
+
+<article class="card" id="ground-spirit"><h3>{nm('GROUND_SPIRIT')}</h3><div class="art">{([pic('ground-spirit',nm('GROUND_SPIRIT'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('村庄地图')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('平时地上什么也看不到。走到出现点附近，一条长满牙齿的黑色怪物会从地里钻出来，你会吓得摔坐在地上，过一会儿才爬起来。这段时间游戏里的时间暂停，你也不能操作。')}</p>
+<h4>{t('怎么应对')}</h4><p>{t('不会伤人。不想被吓，就绕开地图上的紫点。')}</p></article>
+
+<article class="card" id="house-spirit"><h3>{nm('HOUSE_SPIRIT')}</h3><div class="art">{([pic('house-spirit',nm('HOUSE_SPIRIT'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('村庄地图')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('一颗长着大眼珠的巨大脑袋，从房子后面探出来。走近它，它就缩回去消失。')}</p>
+<h4>{t('怎么应对')}</h4><p>{t('不会伤人，走近就能把它赶走。')}</p></article>
+
+<article class="card" id="final-cicada"><h3>{nm('CICADA_FINAL_PT1')}</h3><div class="art">{([pic('final-cicada',nm('CICADA_FINAL_PT1'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('村庄地图')}</span><span class="pill">{t('夏')}</span><span class="pill">{t('秋')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('一只翻倒在地上、像是已经死掉的蝉。走近碰到它，它会突然在地上乱扑乱撞，约 {s} 秒后消失。',{s:seconds(b.cicada_rampage_frames)})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('不会伤人，扑腾完就没了。')}</p></article>
+
+<article class="card" id="false-item"><h3>{nm('FAKE_ITEM')}</h3><div class="art">{([pic('false-item',nm('FAKE_ITEM')),pic('false-item-hands',t('画面上的血手印'))]).map(p=><figure><img src={p.src} width={p.width} height={p.height} alt="" loading="lazy" decoding="async"/><figcaption>{p.label}</figcaption></figure>)}</div>
+<p class="conds"><span class="pill">{t('村庄地图')}</span></p>
+<h4>{t('会做什么')}</h4><p>{t('地上的一个闪光点，看起来和能捡东西的闪光点一样，要开着灯才能捡。捡起来时它会变成一只血红的怪手，画面上糊满血手印，最长约 {m} 分钟游戏时间才散去。',{m:b.false_item_hand_game_seconds/60})}</p>
+<h4>{t('怎么应对')}</h4><p>{t('不会伤人，也得不到任何东西。')}</p></article>
+</div></section>
+
 <section id="bosses"><h2>{t('剧情中的妖怪')}</h2>
 <details><summary>{t('第五、六章剧透')}</summary>
 <p>{t('下面这些妖怪只在剧情战斗中出现，深夜的区域里不会刷出来。')}</p>
@@ -151,6 +183,7 @@ const nav=[['when',t('什么时候出现')],['maps',t('出现范围地图')],['m
 <li>{t('出现区域和数量：placementhorror.dat，以及村庄地图格子上记录的刷新表编号（四季相同）；入口：demolist.dat 的 DEMO_ID_PLANE_GHOST_AREA_ON_* 和 mapevent_latenight_area。')}</li>
 <li>{t('行为：各妖怪的 ai_creature_horror_* 脚本；生命、攻击力和出现时间：creature.dat；伤害：attack.dat 的倍率乘以攻击力。')}</li>
 <li>{t('行走的石头：event_check_late_night 和 cropsharvest.dat。')}</li>
+<li>{t('村里的惊吓：游戏程序 village.exe 里 EventAddHorrorPlacement 的出现点表（每处出现的妖怪和季节）、各自的 ai_creature_horror_* 脚本，以及村庄地图上的 pop_addhorror_* 出现点。')}</li>
 <li>{t('插图：用游戏自带的动画模型（anime.dat、fairy_1_00.dat）渲染。')}</li>
 <li>{data.source}</li>
 </ul></details>
