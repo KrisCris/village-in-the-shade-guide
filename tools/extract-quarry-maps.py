@@ -1,8 +1,9 @@
 """Render quarry layout thumbnails and count each layout's rock cells.
 
 Run tools/extract-quarry.py first: only the layouts that its floor and special-room
-pools use are exported. Writes public/maps/quarry/<layout>.webp and
-data/sources/game-quarry-maps.json.
+pools use are exported. Writes public/maps/quarry/<layout>.webp (thumbnails),
+public/maps/quarry/large/<layout>.webp (the floor explorer's enlarged view, fetched only
+when a thumbnail is opened) and data/sources/game-quarry-maps.json.
 
 Rock cells are the unique YMWR cells whose mask has bit 0x10; DungeonPlacementEnemyAndVein
 places rocks and monsters on them (see tools/extract-quarry.py). Thumbnails show the
@@ -28,6 +29,7 @@ from honogurashi_extractor.table import read_table
 
 ROOT = Path(__file__).resolve().parents[1]
 SCALE = 6  # native pixels per thumbnail pixel
+LARGE_SCALE = 3  # native pixels per enlarged-view pixel
 ROCK_CELL = 0x10
 
 
@@ -71,7 +73,11 @@ def render(job):
     image = clear_outside(image.crop(tight))
     thumb = image.resize((round(image.width / SCALE), round(image.height / SCALE)), Image.Resampling.LANCZOS)
     thumb.save(Path(out) / f'{key}.webp', quality=78, method=6)
-    return key, dict(file=f'maps/quarry/{key}.webp', width=thumb.width, height=thumb.height, cells=rock_cells(head))
+    large = image.resize((round(image.width / LARGE_SCALE), round(image.height / LARGE_SCALE)), Image.Resampling.LANCZOS)
+    large.save(Path(out) / 'large' / f'{key}.webp', quality=78, method=6)
+    return key, dict(file=f'maps/quarry/{key}.webp', width=thumb.width, height=thumb.height,
+                     large=dict(file=f'maps/quarry/large/{key}.webp', width=large.width, height=large.height),
+                     cells=rock_cells(head))
 
 
 def main():
@@ -87,8 +93,8 @@ def main():
     labels = {Path(group[2]).stem.removeprefix('map_'): (struct.unpack_from('<Q', record)[0], group[1])
               for record, group in zip(table.records, _string_groups(table), strict=True)}
     out = ROOT / 'public/maps/quarry'
-    out.mkdir(parents=True, exist_ok=True)
-    for stale in out.glob('*.webp'):
+    (out / 'large').mkdir(parents=True, exist_ok=True)
+    for stale in [*out.glob('*.webp'), *out.glob('large/*.webp')]:
         if stale.stem not in keys:
             stale.unlink()
     with ProcessPoolExecutor(args.jobs) as pool:
@@ -96,7 +102,7 @@ def main():
     layouts = {key: dict(map_id=labels[key][0], label_ja=labels[key][1], **rendered[key]) for key in keys}
     (ROOT / 'data/sources/game-quarry-maps.json').write_text(json.dumps(dict(
         source='map_1_00.dat YMWR ground layer and cell masks; map.dat labels (build 25640656)',
-        scale=SCALE, layouts=layouts), ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+        scale=SCALE, large_scale=LARGE_SCALE, layouts=layouts), ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'quarry maps: {len(layouts)} layouts')
 
 

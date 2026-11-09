@@ -8,6 +8,8 @@ describe('quarry data', () => {
     for (const key of used) {
       expect(layoutArt[key], key).toBeDefined();
       expect(existsSync(`public/${layoutArt[key].file}`), key).toBe(true);
+      expect(existsSync(`public/${layoutArt[key].large.file}`), key).toBe(true);
+      expect(layoutArt[key].large.width, key).toBeGreaterThan(layoutArt[key].width);
       expect(() => layoutName(key)).not.toThrow();
     }
     expect(Object.keys(layoutArt).sort()).toEqual([...used].sort());
@@ -54,8 +56,10 @@ describe('quarry data', () => {
 describe('explorerData', () => {
   const data = explorerData('en');
 
+  const on = (n: number) => data.floors.find(row => row.from <= n && n <= row.to)!;
+
   it('describes floor 37 with its 19 abandoned-mine layouts', () => {
-    const floor = data.floors.find(row => row.floor === 37)!;
+    const floor = on(37);
     expect(floor).toMatchObject({ kind: 'normal', tileset: 1 });
     expect(data.pools[floor.pool]).toHaveLength(19);
     expect(floor.totals).toHaveLength(19);
@@ -64,8 +68,8 @@ describe('explorerData', () => {
   });
 
   it('shows rest floors with their reward and no rocks', () => {
-    const floor = data.floors.find(row => row.floor === 40)!;
-    expect(floor.kind).toBe('rest');
+    const floor = on(40);
+    expect(floor).toMatchObject({ from: 40, to: 40, kind: 'rest' });
     expect(data.mixes[floor.mix]).toEqual([]);
     expect(data.rewards[40]).toMatchObject({ count: 1 });
     expect(data.rewards[40].href).toContain('/en/');
@@ -73,7 +77,26 @@ describe('explorerData', () => {
 
   it('stores repeated pools once and points every floor at a layout it can draw', () => {
     expect(new Set(data.pools.map(pool => JSON.stringify(pool))).size).toBe(data.pools.length);
-    for (const floor of data.floors) for (const key of data.pools[floor.pool]) expect(data.layouts[key]?.src, key).toMatch(/\.webp$/);
+    for (const floor of data.floors) for (const key of data.pools[floor.pool]) {
+      expect(data.layouts[key]?.src, key).toMatch(/\.webp$/);
+      expect(data.layouts[key].large.src, key).toMatch(/\/maps\/quarry\/large\/.+\.webp$/);
+    }
+  });
+
+  it('merges runs of floors that share the same setup and keeps every floor reachable', () => {
+    expect(data.floors[0].from).toBe(1);
+    expect(data.floors.at(-1)!.to).toBe(120);
+    for (const [i, group] of data.floors.entries()) {
+      expect(group.to).toBeGreaterThanOrEqual(group.from);
+      if (i) expect(group.from).toBe(data.floors[i - 1].to + 1);
+      const first = floors.find(floor => floor.floor === group.from)!;
+      for (const floor of floors.filter(row => row.floor > group.from && row.floor <= group.to)) {
+        expect({ kind: floor.kind, layouts: floor.layouts, rocks: floor.rocks, density: floor.rock_percent, chance: floor.special_chance, rooms: floor.special_rooms }, String(floor.floor))
+          .toEqual({ kind: first.kind, layouts: first.layouts, rocks: first.rocks, density: first.rock_percent, chance: first.special_chance, rooms: first.special_rooms });
+      }
+    }
+    for (const reward of rewards) expect(on(reward.floor)).toMatchObject({ from: reward.floor, to: reward.floor });
+    expect(data.floors.length).toBeLessThan(floors.length / 2);
   });
 
   it('translates layout and room names', () => {
