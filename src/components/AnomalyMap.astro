@@ -4,7 +4,7 @@ import mapData from '../../data/sources/game-map-markers.json';
 import { MINIMAP_SIZE, mapPins, type MapLayer } from '../data/anomalyMap';
 interface Props { layers: MapLayer[]; label: string; image: string; minWidth?: number }
 const { layers, label, image, minWidth } = Astro.props;
-const { frame, pins, regions } = mapPins(layers, mapData.projection, minWidth);
+const { frame, pins, regions, lines } = mapPins(layers, mapData.projection, minWidth);
 const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
 ---
 <figure class="amap">
@@ -12,6 +12,7 @@ const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
     <img src={image} alt="" loading="lazy" decoding="async" width={MINIMAP_SIZE} height={MINIMAP_SIZE}
       style={`width:${pct(MINIMAP_SIZE / frame.width)};left:${pct(-frame.x / frame.width)};top:${pct(-frame.y / frame.height)}`} />
     {regions.length > 0 && <svg class="amap-regions" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">{regions.map((region) => <path d={region.path} fill={region.color} />)}</svg>}
+    {lines.length > 0 && <svg class="amap-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">{lines.map((line) => <g><line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} class="amap-line-under" /><line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} stroke={line.color} /></g>)}</svg>}
     {pins.map((pin) => <span class={`amap-pin ${pin.shape}`} style={`left:${pin.left}%;top:${pin.top}%;--pin:${pin.color}`} aria-hidden="true">{pin.text}</span>)}
   </div>
   <figcaption><ul class="amap-legend">{layers.map((layer) => <li><i class={`amap-pin ${layer.shape}`} style={`--pin:${layer.color}`} aria-hidden="true" />{layer.label}</li>)}</ul></figcaption>
@@ -27,6 +28,10 @@ const pct = (value: number) => `${Math.round(value * 10000) / 100}%`;
   .amap-pin.star { width: 1.5rem; height: 1.5rem; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); border: 0; box-shadow: none; background: #17201c; }
   .amap-regions { position: absolute; inset: 0; width: 100%; height: 100%; fill-opacity: .5; }
   .amap-pin.area { width: .9rem; height: .9rem; border-radius: 2px; border-width: 1px; opacity: .8; }
+  .amap-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke-linecap: round; }
+  .amap-lines line { vector-effect: non-scaling-stroke; stroke-width: 2.5; stroke-dasharray: 7 5; }
+  .amap-lines .amap-line-under { stroke: #17201ccc; stroke-width: 5; stroke-dasharray: none; }
+  .amap-pin.line { width: 1.2rem; height: 0; border: 0; border-top: 3px dashed var(--pin); border-radius: 0; box-shadow: none; background: none; }
   .amap-pin.star::after { content: ''; position: absolute; inset: 3px; clip-path: inherit; background: var(--pin); }
   figcaption { margin-top: .35rem; }
   .amap-legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin: 0; padding: 0; list-style: none; font-size: .85rem; color: var(--muted); }

@@ -1,0 +1,1463 @@
+{
+ "source": "placementcreature.dat, creature.dat, attack.dat, gimmick.dat, gamedefine.dat, village.exe 0x1402C4900, map head data/map/map_0000_ver120_spr.ymwr.head + scripts ai_creature_hunting_template.lub, ai_creature_statemachine_template.lub, ai_creature_squirrel.lub, ai_creature_rabbit.lub, ai_creature_pheasant.lub, ai_creature_fox.lub, ai_creature_raccoon_dog.lub, ai_creature_weasel.lub, ai_creature_boar.lub, ai_creature_deer.lub, ai_creature_bear.lub, gimmick_creature_escape_route.lub, gimmick_hunting_license_sign_fence.lub, gimmick_box_trap.lub, gimmick_bind_trap.lub, event_check_daily.lub",
+ "script_sha256": {
+  "ai_creature_hunting_template": "91df5d2e37454c1a113bd7eb5b40db029512b38b386bf92cdae5b7e7f83493c4",
+  "ai_creature_statemachine_template": "062cd786540a9b470b93f28683de8b9e43a3f4bbebdaf1c6be4ca8ba56a96acf",
+  "ai_creature_squirrel": "18f9acb63ca5b61a1cb64ae8fd5fbe6f91449c59cecdccdd3e9846f2040686d4",
+  "ai_creature_rabbit": "ed7aa35936b77301293f6e050dacf77a0d96077d0fabca3beeaf63625a2b3075",
+  "ai_creature_pheasant": "25f9b2418876db2c1e1261a7b5349fc28e6d7d504332a8c9f86e88f419c6c22e",
+  "ai_creature_fox": "6525875aea768106ff231f7cacad9cfbe2201cc9c8986b795877b577797ff574",
+  "ai_creature_raccoon_dog": "444c543c2bee9c72a216242eebcb5bfb43cfc8b7a438b90c2c70423b3c85d1bc",
+  "ai_creature_weasel": "f741d23f72efbaf1e9266243039739536da0d4fd2f685993527e92bc62b70c29",
+  "ai_creature_boar": "8623348b5d36e82b4a56d1d5e76994e24f538c6b8e64ebbbc059aed6a7486b2b",
+  "ai_creature_deer": "5807f38dbb831321ce9c59a0961972e5bc30aefca877ab0d7ba8a6283255e848",
+  "ai_creature_bear": "f612649fda7f610593af26e3764e9b9301900f5d6fd7f8aeefd8080dd26786bf",
+  "gimmick_creature_escape_route": "b2178b03b136481a5d5e3cc33d63c165c644b59d20f549cf3f53562667c6d9f2",
+  "gimmick_hunting_license_sign_fence": "5519bba34777d352fa54eb265eb43dbd29863e4f37bcd4b624f95ba531485f65",
+  "gimmick_box_trap": "fd8c94d19428abcf3ae16117b78cb7f5adc13e7524d59d10de662713c3baf019",
+  "gimmick_bind_trap": "0a9d8e78183e0d8eb5bb35a6cc8b3704a75135ff071faa2a62e3778968a65bb0",
+  "event_check_daily": "af04dad204746187dacc774e4ca898f569d6fcce535324203253234896b0e381"
+ },
+ "hp_per_heart": 4,
+ "grid": 45,
+ "vanish_time": "20:00",
+ "pheasant_home_hour": 15,
+ "tables": {
+  "4": {
+   "code": "CREATURE_TABLE_SMALL_01",
+   "rows": [
+    {
+     "animal": "RABBIT",
+     "season": 0,
+     "chance": 5,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": null,
+     "count": [
+      1,
+      5
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 1,
+     "chance": 5,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 1,
+     "chance": null,
+     "count": [
+      1,
+      5
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 2,
+     "chance": 5,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 2,
+     "chance": null,
+     "count": [
+      1,
+      5
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 3,
+     "chance": 5,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 3,
+     "chance": null,
+     "count": [
+      1,
+      5
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 10215,
+     "y": 14490
+    },
+    {
+     "x": 10440,
+     "y": 14805
+    },
+    {
+     "x": 11475,
+     "y": 12420
+    },
+    {
+     "x": 11880,
+     "y": 13905
+    },
+    {
+     "x": 11925,
+     "y": 13500
+    },
+    {
+     "x": 12555,
+     "y": 13410
+    }
+   ]
+  },
+  "5": {
+   "code": "CREATURE_TABLE_SMALL_02",
+   "rows": [
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      3
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 8055,
+     "y": 15210
+    },
+    {
+     "x": 8505,
+     "y": 15300
+    },
+    {
+     "x": 8595,
+     "y": 15030
+    },
+    {
+     "x": 9405,
+     "y": 10890
+    },
+    {
+     "x": 11295,
+     "y": 11970
+    },
+    {
+     "x": 11835,
+     "y": 10980
+    },
+    {
+     "x": 11925,
+     "y": 9900
+    }
+   ]
+  },
+  "6": {
+   "code": "CREATURE_TABLE_SMALL_03",
+   "rows": [
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 1,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 1,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 2,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 2,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 3,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RABBIT",
+     "season": 3,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 10125,
+     "y": 13410
+    },
+    {
+     "x": 10530,
+     "y": 13635
+    }
+   ]
+  },
+  "7": {
+   "code": "CREATURE_TABLE_SMALL_04",
+   "rows": [
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 1,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 2,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "SQUIRREL",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 3,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 8730,
+     "y": 13635
+    },
+    {
+     "x": 9225,
+     "y": 13500
+    }
+   ]
+  },
+  "8": {
+   "code": "CREATURE_TABLE_SMALL_05",
+   "rows": [
+    {
+     "animal": "PHEASANT",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 0,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "FOX",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 1,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 1,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "FOX",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 2,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 2,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "FOX",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "PHEASANT",
+     "season": 3,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 3,
+     "chance": 20,
+     "count": [
+      0,
+      2
+     ]
+    },
+    {
+     "animal": "FOX",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      2
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 7875,
+     "y": 13050
+    },
+    {
+     "x": 8145,
+     "y": 12780
+    }
+   ]
+  },
+  "9": {
+   "code": "CREATURE_TABLE_LARGE_01",
+   "rows": [
+    {
+     "animal": "BOAR",
+     "season": 0,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR_BIG",
+     "season": 0,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 1,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR_BIG",
+     "season": 1,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 2,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR_BIG",
+     "season": 2,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 3,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR_BIG",
+     "season": 3,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "WEASEL",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 11520,
+     "y": 10935
+    }
+   ]
+  },
+  "10": {
+   "code": "CREATURE_TABLE_LARGE_02",
+   "rows": [
+    {
+     "animal": "DEER",
+     "season": 0,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER_BIG",
+     "season": 0,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 1,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER_BIG",
+     "season": 1,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "FOX",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 2,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER_BIG",
+     "season": 2,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 3,
+     "chance": 60,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "DEER_BIG",
+     "season": 3,
+     "chance": 2,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "RACCOON_DOG",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 11520,
+     "y": 9855
+    }
+   ]
+  },
+  "11": {
+   "code": "CREATURE_TABLE_LARGE_03",
+   "rows": [
+    {
+     "animal": "BEAR_BIG",
+     "season": 0,
+     "chance": 5,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR",
+     "season": 0,
+     "chance": 30,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 0,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR_BIG",
+     "season": 1,
+     "chance": 5,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR",
+     "season": 1,
+     "chance": 30,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 1,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR_BIG",
+     "season": 2,
+     "chance": 5,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR",
+     "season": 2,
+     "chance": 30,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 2,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR_BIG",
+     "season": 3,
+     "chance": 5,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "BEAR",
+     "season": 3,
+     "chance": 30,
+     "count": [
+      1,
+      1
+     ]
+    },
+    {
+     "animal": "DEER",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    },
+    {
+     "animal": "BOAR",
+     "season": 3,
+     "chance": null,
+     "count": [
+      0,
+      1
+     ]
+    }
+   ],
+   "spots": [
+    {
+     "x": 9900,
+     "y": 11205
+    }
+   ]
+  }
+ },
+ "escape": {
+  "search": 1024,
+  "give_up": 2048,
+  "warp": [
+   90,
+   450
+  ],
+  "pheasant_takeoff_frames": 300,
+  "holes": [
+   {
+    "x": 12334,
+    "y": 10288,
+    "exit": "escape_003"
+   },
+   {
+    "x": 12564,
+    "y": 13121,
+    "exit": "escape_005"
+   },
+   {
+    "x": 8124,
+    "y": 14782,
+    "exit": "escape_004"
+   },
+   {
+    "x": 8948,
+    "y": 13224,
+    "exit": "escape_002"
+   },
+   {
+    "x": 10633,
+    "y": 13451,
+    "exit": "escape_001"
+   },
+   {
+    "x": 7776,
+    "y": 12760,
+    "exit": "escape_002"
+   },
+   {
+    "x": 10342,
+    "y": 10326,
+    "exit": "escape_003"
+   },
+   {
+    "x": 11528,
+    "y": 9470,
+    "exit": "escape_003"
+   }
+  ],
+  "exits": {
+   "escape_001": {
+    "x": 8055,
+    "y": 12960
+   },
+   "escape_002": {
+    "x": 12047,
+    "y": 13634
+   },
+   "escape_003": {
+    "x": 8854,
+    "y": 13560
+   },
+   "escape_004": {
+    "x": 10491,
+    "y": 14630
+   },
+   "escape_005": {
+    "x": 8100,
+    "y": 15345
+   }
+  }
+ },
+ "fences": [
+  {
+   "x": 10466,
+   "y": 14177,
+   "license": "ITEM_ID_HUNTING_LICENSE_WEASEL"
+  },
+  {
+   "x": 9714,
+   "y": 13560,
+   "license": "ITEM_ID_HUNTING_LICENSE_RACCOON_DOG"
+  },
+  {
+   "x": 8422,
+   "y": 13126,
+   "license": "ITEM_ID_HUNTING_LICENSE_FOX"
+  },
+  {
+   "x": 8721,
+   "y": 14870,
+   "license": "ITEM_ID_HUNTING_LICENSE_RACCOON_DOG"
+  },
+  {
+   "x": 9326,
+   "y": 11240,
+   "license": "ITEM_ID_HUNTING_LICENSE_BEAR"
+  },
+  {
+   "x": 10692,
+   "y": 10618,
+   "license": "ITEM_ID_HUNTING_LICENSE_BEAR"
+  },
+  {
+   "x": 11485,
+   "y": 10536,
+   "license": "ITEM_ID_HUNTING_LICENSE_DEER"
+  },
+  {
+   "x": 11346,
+   "y": 12382,
+   "license": "ITEM_ID_HUNTING_LICENSE_WILD_BOAR"
+  },
+  {
+   "x": 7467,
+   "y": 13242,
+   "license": "ITEM_ID_HUNTING_LICENSE_FOX"
+  },
+  {
+   "x": 8927,
+   "y": 15488,
+   "license": "ITEM_ID_HUNTING_LICENSE_PHEASANT"
+  },
+  {
+   "x": 10911,
+   "y": 10133,
+   "license": "ITEM_ID_HUNTING_LICENSE_DEER"
+  }
+ ],
+ "lodge": {
+  "x": 12544,
+  "y": 15982
+ },
+ "traps": {
+  "placement_max": 3,
+  "box_uses": 4,
+  "bind_uses": 3,
+  "lure_chance": 20,
+  "lure_frames": 120,
+  "lure_flee_distance": 384
+ },
+ "behaviour": {
+  "rabbit_alert": 400,
+  "fox_alert_minutes": 30,
+  "fox_backoff": 800,
+  "fox_reset": 1000,
+  "raccoon_reset": 2000,
+  "weasel_aim_frames": 180,
+  "boar_flee_hp": 50,
+  "large_reset": 2000,
+  "deer_flee_attacks": 10,
+  "deer_flee_hits": 5,
+  "deer_reset": 1000,
+  "deer_aim_frames": 180
+ },
+ "animals": {
+  "SQUIRREL": {
+   "ja": "リス",
+   "en": "Squirrel",
+   "zh_hant": "松鼠",
+   "script": "ai_creature_squirrel",
+   "hp": 30,
+   "power": 0,
+   "move_speed": 7.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_SQUIRREL",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_SQUIRREL",
+   "hit": null
+  },
+  "RABBIT": {
+   "ja": "ウサギ",
+   "en": "Rabbit",
+   "zh_hant": "兔子",
+   "script": "ai_creature_rabbit",
+   "hp": 40,
+   "power": 1,
+   "move_speed": 5.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_RABBIT",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_RABBIT",
+   "hit": null
+  },
+  "PHEASANT": {
+   "ja": "キジ",
+   "en": "Pheasant",
+   "zh_hant": "綠雉",
+   "script": "ai_creature_pheasant",
+   "hp": 50,
+   "power": 1,
+   "move_speed": 4.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_PHEASANT",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_PHEASANT",
+   "hit": null
+  },
+  "WEASEL": {
+   "ja": "イタチ",
+   "en": "Weasel",
+   "zh_hant": "鼬鼠",
+   "script": "ai_creature_weasel",
+   "hp": 40,
+   "power": 1,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_WEASEL",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_WEASEL",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16
+   }
+  },
+  "RACCOON_DOG": {
+   "ja": "タヌキ",
+   "en": "Tanuki",
+   "zh_hant": "狸貓",
+   "script": "ai_creature_raccoon_dog",
+   "hp": 40,
+   "power": 1,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_RACCOON_DOG",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_RACCOON_DOG",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16
+   }
+  },
+  "FOX": {
+   "ja": "狐",
+   "en": "Fox",
+   "zh_hant": "狐狸",
+   "script": "ai_creature_fox",
+   "hp": 50,
+   "power": 1,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_FOX",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_FOX",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_BODY_SLAM",
+    "hp": 1,
+    "hearts": 0.25,
+    "knockback": 16
+   }
+  },
+  "BOAR": {
+   "ja": "イノシシ",
+   "en": "Boar",
+   "zh_hant": "野豬",
+   "script": "ai_creature_boar",
+   "hp": 150,
+   "power": 3,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_WILD_BOAR",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_WILD_BOAR",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_RUSH",
+    "hp": 4,
+    "hearts": 1.0,
+    "knockback": 64
+   }
+  },
+  "BOAR_BIG": {
+   "ja": "大イノシシ",
+   "en": "Large Boar",
+   "zh_hant": "大野豬",
+   "script": "ai_creature_boar",
+   "hp": 150,
+   "power": 7,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_WILD_BOAR",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_WILD_BOAR_BOSS",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_RUSH",
+    "hp": 10,
+    "hearts": 2.5,
+    "knockback": 64
+   }
+  },
+  "DEER": {
+   "ja": "鹿",
+   "en": "Deer",
+   "zh_hant": "鹿",
+   "script": "ai_creature_deer",
+   "hp": 200,
+   "power": 12,
+   "move_speed": 7.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_DEER",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_DEER",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_BODY_SLAM",
+    "hp": 12,
+    "hearts": 3.0,
+    "knockback": 16
+   }
+  },
+  "DEER_BIG": {
+   "ja": "大鹿",
+   "en": "Large Deer",
+   "zh_hant": "大鹿",
+   "script": "ai_creature_deer",
+   "hp": 200,
+   "power": 14,
+   "move_speed": 7.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_DEER",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_DEER_BOSS",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_BODY_SLAM",
+    "hp": 14,
+    "hearts": 3.5,
+    "knockback": 16
+   }
+  },
+  "BEAR": {
+   "ja": "熊",
+   "en": "Bear",
+   "zh_hant": "熊",
+   "script": "ai_creature_bear",
+   "hp": 500,
+   "power": 11,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_BEAR",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_BEAR",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_RUSH",
+    "hp": 16,
+    "hearts": 4.0,
+    "knockback": 64
+   }
+  },
+  "BEAR_BIG": {
+   "ja": "大熊",
+   "en": "Large Bear",
+   "zh_hant": "大熊",
+   "script": "ai_creature_bear",
+   "hp": 600,
+   "power": 14,
+   "move_speed": 6.0,
+   "license": "ITEM_ID_HUNTING_LICENSE_BEAR",
+   "certificate": "ITEM_ID_HUNTING_CERTIFICATE_BEAR_BOSS",
+   "hit": {
+    "attack": "ATTACK_ID_ENEMY_RUSH",
+    "hp": 21,
+    "hearts": 5.25,
+    "knockback": 64
+   }
+  }
+ }
+}
