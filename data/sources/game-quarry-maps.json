@@ -1,6 +1,7 @@
 {
  "source": "map_1_00.dat YMWR ground layer and cell masks; map.dat labels (build 25640656)",
  "scale": 6,
+ "large_scale": 3,
  "layouts": {
   "3102_dg01": {
    "map_id": 331020001,
@@ -8,6 +9,11 @@
    "file": "maps/quarry/3102_dg01.webp",
    "width": 417,
    "height": 455,
+   "large": {
+    "file": "maps/quarry/large/3102_dg01.webp",
+    "width": 833,
+    "height": 911
+   },
    "cells": 0
   },
   "3102_dg02": {
@@ -16,6 +22,11 @@
    "file": "maps/quarry/3102_dg02.webp",
    "width": 417,
    "height": 452,
+   "large": {
+    "file": "maps/quarry/large/3102_dg02.webp",
+    "width": 833,
+    "height": 905
+   },
    "cells": 0
   },
   "3102_dg03": {
@@ -24,6 +35,11 @@
    "file": "maps/quarry/3102_dg03.webp",
    "width": 416,
    "height": 448,
+   "large": {
+    "file": "maps/quarry/large/3102_dg03.webp",
+    "width": 832,
+    "height": 897
+   },
    "cells": 0
   },
   "3200": {
@@ -32,6 +48,11 @@
    "file": "maps/quarry/3200.webp",
    "width": 364,
    "height": 384,
+   "large": {
+    "file": "maps/quarry/large/3200.webp",
+    "width": 727,
+    "height": 768
+   },
    "cells": 0
   },
   "3301_dg01": {
@@ -40,6 +61,11 @@
    "file": "maps/quarry/3301_dg01.webp",
    "width": 232,
    "height": 290,
+   "large": {
+    "file": "maps/quarry/large/3301_dg01.webp",
+    "width": 464,
+    "height": 579
+   },
    "cells": 42
   },
   "3302_dg01": {
@@ -48,6 +74,11 @@
    "file": "maps/quarry/3302_dg01.webp",
    "width": 233,
    "height": 291,
+   "large": {
+    "file": "maps/quarry/large/3302_dg01.webp",
+    "width": 466,
+    "height": 582
+   },
    "cells": 55
   },
   "3303_dg01": {
@@ -56,6 +87,11 @@
    "file": "maps/quarry/3303_dg01.webp",
    "width": 215,
    "height": 262,
+   "large": {
+    "file": "maps/quarry/large/3303_dg01.webp",
+    "width": 430,
+    "height": 523
+   },
    "cells": 46
   },
   "3303_dg02": {
@@ -64,6 +100,11 @@
    "file": "maps/quarry/3303_dg02.webp",
    "width": 218,
    "height": 260,
+   "large": {
+    "file": "maps/quarry/large/3303_dg02.webp",
+    "width": 436,
+    "height": 520
+   },
    "cells": 46
   },
   "3304_dg01": {
@@ -72,6 +113,11 @@
    "file": "maps/quarry/3304_dg01.webp",
    "width": 186,
    "height": 305,
+   "large": {
+    "file": "maps/quarry/large/3304_dg01.webp",
+    "width": 373,
+    "height": 611
+   },
    "cells": 77
   },
   "3304_dg02": {
@@ -80,6 +126,11 @@
    "file": "maps/quarry/3304_dg02.webp",
    "width": 185,
    "height": 303,
+   "large": {
+    "file": "maps/quarry/large/3304_dg02.webp",
+    "width": 369,
+    "height": 606
+   },
    "cells": 77
   },
   "3305_dg01": {
@@ -88,6 +139,11 @@
    "file": "maps/quarry/3305_dg01.webp",
    "width": 210,
    "height": 263,
+   "large": {
+    "file": "maps/quarry/large/3305_dg01.webp",
+    "width": 421,
+    "height": 526
+   },
    "cells": 65
   },
   "3305_dg02": {
@@ -96,6 +152,11 @@
    "file": "maps/quarry/3305_dg02.webp",
    "width": 210,
    "height": 262,
+   "large": {
+    "file": "maps/quarry/large/3305_dg02.webp",
+    "width": 420,
+    "height": 523
+   },
    "cells": 65
   },
   "3306_dg01": {
@@ -104,6 +165,11 @@
    "file": "maps/quarry/3306_dg01.webp",
    "width": 251,
    "height": 293,
+   "large": {
+    "file": "maps/quarry/large/3306_dg01.webp",
+    "width": 502,
+    "height": 587
+   },
    "cells": 75
   },
   "3306_dg02": {
@@ -112,6 +178,11 @@
    "file": "maps/quarry/3306_dg02.webp",
    "width": 250,
    "height": 321,
+   "large": {
+    "file": "maps/quarry/large/3306_dg02.webp",
+    "width": 499,
+    "height": 642
+   },
    "cells": 75
   },
   "3307_dg01": {
@@ -120,6 +191,11 @@
    "file": "maps/quarry/3307_dg01.webp",
    "width": 304,
    "height": 342,
+   "large": {
+    "file": "maps/quarry/large/3307_dg01.webp",
+    "width": 607,
+    "height": 684
+   },
    "cells": 162
   },
   "3307_dg02": {
@@ -128,6 +204,11 @@
    "file": "maps/quarry/3307_dg02.webp",
    "width": 303,
    "height": 339,
+   "large": {
+    "file": "maps/quarry/large/3307_dg02.webp",
+    "width": 606,
+    "height": 678
+   },
    "cells": 162
   },
   "3308_dg01": {
@@ -136,6 +217,11 @@
    "file": "maps/quarry/3308_dg01.webp",
    "width": 266,
    "height": 354,
+   "large": {
+    "file": "maps/quarry/large/3308_dg01.webp",
+    "width": 532,
+    "height": 707
+   },
    "cells": 155
   },
   "3308_dg02": {
@@ -144,6 +230,11 @@
    "file": "maps/quarry/3308_dg02.webp",
    "width": 266,
    "height": 347,
+   "large": {
+    "file": "maps/quarry/large/3308_dg02.webp",
+    "width": 532,
+    "height": 695
+   },
    "cells": 155
   },
   "3309_dg01": {
@@ -152,6 +243,11 @@
    "file": "maps/quarry/3309_dg01.webp",
    "width": 259,
    "height": 325,
+   "large": {
+    "file": "maps/quarry/large/3309_dg01.webp",
+    "width": 519,
+    "height": 651
+   },
    "cells": 171
   },
   "3309_dg02": {
@@ -160,6 +256,11 @@
    "file": "maps/quarry/3309_dg02.webp",
    "width": 261,
    "height": 323,
+   "large": {
+    "file": "maps/quarry/large/3309_dg02.webp",
+    "width": 522,
+    "height": 646
+   },
    "cells": 171
   },
   "3310_dg01": {
@@ -168,6 +269,11 @@
    "file": "maps/quarry/3310_dg01.webp",
    "width": 296,
    "height": 310,
+   "large": {
+    "file": "maps/quarry/large/3310_dg01.webp",
+    "width": 592,
+    "height": 620
+   },
    "cells": 150
   },
   "3310_dg02": {
@@ -176,6 +282,11 @@
    "file": "maps/quarry/3310_dg02.webp",
    "width": 296,
    "height": 308,
+   "large": {
+    "file": "maps/quarry/large/3310_dg02.webp",
+    "width": 592,
+    "height": 616
+   },
    "cells": 150
   },
   "3311_dg01": {
@@ -184,6 +295,11 @@
    "file": "maps/quarry/3311_dg01.webp",
    "width": 329,
    "height": 377,
+   "large": {
+    "file": "maps/quarry/large/3311_dg01.webp",
+    "width": 658,
+    "height": 754
+   },
    "cells": 163
   },
   "3311_dg02": {
@@ -192,6 +308,11 @@
    "file": "maps/quarry/3311_dg02.webp",
    "width": 338,
    "height": 372,
+   "large": {
+    "file": "maps/quarry/large/3311_dg02.webp",
+    "width": 676,
+    "height": 745
+   },
    "cells": 163
   },
   "3312_dg01": {
@@ -200,6 +321,11 @@
    "file": "maps/quarry/3312_dg01.webp",
    "width": 477,
    "height": 428,
+   "large": {
+    "file": "maps/quarry/large/3312_dg01.webp",
+    "width": 954,
+    "height": 855
+   },
    "cells": 185
   },
   "3312_dg02": {
@@ -208,6 +334,11 @@
    "file": "maps/quarry/3312_dg02.webp",
    "width": 484,
    "height": 442,
+   "large": {
+    "file": "maps/quarry/large/3312_dg02.webp",
+    "width": 968,
+    "height": 883
+   },
    "cells": 185
   },
   "3313_dg01": {
@@ -216,6 +347,11 @@
    "file": "maps/quarry/3313_dg01.webp",
    "width": 516,
    "height": 562,
+   "large": {
+    "file": "maps/quarry/large/3313_dg01.webp",
+    "width": 1033,
+    "height": 1125
+   },
    "cells": 136
   },
   "3313_dg02": {
@@ -224,6 +360,11 @@
    "file": "maps/quarry/3313_dg02.webp",
    "width": 522,
    "height": 560,
+   "large": {
+    "file": "maps/quarry/large/3313_dg02.webp",
+    "width": 1044,
+    "height": 1119
+   },
    "cells": 136
   },
   "3314_dg01": {
@@ -232,6 +373,11 @@
    "file": "maps/quarry/3314_dg01.webp",
    "width": 356,
    "height": 367,
+   "large": {
+    "file": "maps/quarry/large/3314_dg01.webp",
+    "width": 711,
+    "height": 734
+   },
    "cells": 98
   },
   "3314_dg02": {
@@ -240,6 +386,11 @@
    "file": "maps/quarry/3314_dg02.webp",
    "width": 318,
    "height": 364,
+   "large": {
+    "file": "maps/quarry/large/3314_dg02.webp",
+    "width": 637,
+    "height": 727
+   },
    "cells": 98
   },
   "3315_dg02": {
@@ -248,6 +399,11 @@
    "file": "maps/quarry/3315_dg02.webp",
    "width": 382,
    "height": 368,
+   "large": {
+    "file": "maps/quarry/large/3315_dg02.webp",
+    "width": 765,
+    "height": 736
+   },
    "cells": 195
   },
   "3315_dg03": {
@@ -256,6 +412,11 @@
    "file": "maps/quarry/3315_dg03.webp",
    "width": 382,
    "height": 368,
+   "large": {
+    "file": "maps/quarry/large/3315_dg03.webp",
+    "width": 764,
+    "height": 736
+   },
    "cells": 195
   },
   "3316_dg02": {
@@ -264,6 +425,11 @@
    "file": "maps/quarry/3316_dg02.webp",
    "width": 596,
    "height": 580,
+   "large": {
+    "file": "maps/quarry/large/3316_dg02.webp",
+    "width": 1192,
+    "height": 1159
+   },
    "cells": 215
   },
   "3316_dg03": {
@@ -272,6 +438,11 @@
    "file": "maps/quarry/3316_dg03.webp",
    "width": 592,
    "height": 578,
+   "large": {
+    "file": "maps/quarry/large/3316_dg03.webp",
+    "width": 1183,
+    "height": 1155
+   },
    "cells": 215
   },
   "3317_dg02": {
@@ -280,6 +451,11 @@
    "file": "maps/quarry/3317_dg02.webp",
    "width": 493,
    "height": 548,
+   "large": {
+    "file": "maps/quarry/large/3317_dg02.webp",
+    "width": 986,
+    "height": 1097
+   },
    "cells": 168
   },
   "3317_dg03": {
@@ -288,6 +464,11 @@
    "file": "maps/quarry/3317_dg03.webp",
    "width": 495,
    "height": 479,
+   "large": {
+    "file": "maps/quarry/large/3317_dg03.webp",
+    "width": 991,
+    "height": 958
+   },
    "cells": 168
   },
   "3318_dg02": {
@@ -296,6 +477,11 @@
    "file": "maps/quarry/3318_dg02.webp",
    "width": 328,
    "height": 406,
+   "large": {
+    "file": "maps/quarry/large/3318_dg02.webp",
+    "width": 655,
+    "height": 811
+   },
    "cells": 143
   },
   "3318_dg03": {
@@ -304,6 +490,11 @@
    "file": "maps/quarry/3318_dg03.webp",
    "width": 326,
    "height": 408,
+   "large": {
+    "file": "maps/quarry/large/3318_dg03.webp",
+    "width": 653,
+    "height": 815
+   },
    "cells": 143
   },
   "3319_dg02": {
@@ -312,6 +503,11 @@
    "file": "maps/quarry/3319_dg02.webp",
    "width": 366,
    "height": 411,
+   "large": {
+    "file": "maps/quarry/large/3319_dg02.webp",
+    "width": 732,
+    "height": 823
+   },
    "cells": 379
   },
   "3319_dg03": {
@@ -320,6 +516,11 @@
    "file": "maps/quarry/3319_dg03.webp",
    "width": 364,
    "height": 411,
+   "large": {
+    "file": "maps/quarry/large/3319_dg03.webp",
+    "width": 728,
+    "height": 822
+   },
    "cells": 379
   },
   "3320_dg02": {
@@ -328,6 +529,11 @@
    "file": "maps/quarry/3320_dg02.webp",
    "width": 364,
    "height": 401,
+   "large": {
+    "file": "maps/quarry/large/3320_dg02.webp",
+    "width": 728,
+    "height": 803
+   },
    "cells": 248
   },
   "3320_dg03": {
@@ -336,6 +542,11 @@
    "file": "maps/quarry/3320_dg03.webp",
    "width": 359,
    "height": 413,
+   "large": {
+    "file": "maps/quarry/large/3320_dg03.webp",
+    "width": 718,
+    "height": 826
+   },
    "cells": 248
   },
   "3321_dg01": {
@@ -344,6 +555,11 @@
    "file": "maps/quarry/3321_dg01.webp",
    "width": 250,
    "height": 347,
+   "large": {
+    "file": "maps/quarry/large/3321_dg01.webp",
+    "width": 500,
+    "height": 693
+   },
    "cells": 54
   },
   "3322_dg01": {
@@ -352,6 +568,11 @@
    "file": "maps/quarry/3322_dg01.webp",
    "width": 384,
    "height": 310,
+   "large": {
+    "file": "maps/quarry/large/3322_dg01.webp",
+    "width": 769,
+    "height": 620
+   },
    "cells": 70
   },
   "3323_dg01": {
@@ -360,6 +581,11 @@
    "file": "maps/quarry/3323_dg01.webp",
    "width": 226,
    "height": 390,
+   "large": {
+    "file": "maps/quarry/large/3323_dg01.webp",
+    "width": 453,
+    "height": 780
+   },
    "cells": 55
   },
   "3323_dg02": {
@@ -368,6 +594,11 @@
    "file": "maps/quarry/3323_dg02.webp",
    "width": 286,
    "height": 383,
+   "large": {
+    "file": "maps/quarry/large/3323_dg02.webp",
+    "width": 573,
+    "height": 767
+   },
    "cells": 55
   },
   "3324_dg01": {
@@ -376,6 +607,11 @@
    "file": "maps/quarry/3324_dg01.webp",
    "width": 442,
    "height": 355,
+   "large": {
+    "file": "maps/quarry/large/3324_dg01.webp",
+    "width": 883,
+    "height": 709
+   },
    "cells": 70
   },
   "3324_dg02": {
@@ -384,6 +620,11 @@
    "file": "maps/quarry/3324_dg02.webp",
    "width": 445,
    "height": 350,
+   "large": {
+    "file": "maps/quarry/large/3324_dg02.webp",
+    "width": 890,
+    "height": 699
+   },
    "cells": 70
   },
   "3325_dg01": {
@@ -392,6 +633,11 @@
    "file": "maps/quarry/3325_dg01.webp",
    "width": 262,
    "height": 369,
+   "large": {
+    "file": "maps/quarry/large/3325_dg01.webp",
+    "width": 523,
+    "height": 738
+   },
    "cells": 93
   },
   "3325_dg02": {
@@ -400,6 +646,11 @@
    "file": "maps/quarry/3325_dg02.webp",
    "width": 320,
    "height": 369,
+   "large": {
+    "file": "maps/quarry/large/3325_dg02.webp",
+    "width": 639,
+    "height": 739
+   },
    "cells": 93
   },
   "3326_dg01": {
@@ -408,6 +659,11 @@
    "file": "maps/quarry/3326_dg01.webp",
    "width": 261,
    "height": 338,
+   "large": {
+    "file": "maps/quarry/large/3326_dg01.webp",
+    "width": 522,
+    "height": 676
+   },
    "cells": 92
   },
   "3326_dg02": {
@@ -416,6 +672,11 @@
    "file": "maps/quarry/3326_dg02.webp",
    "width": 260,
    "height": 334,
+   "large": {
+    "file": "maps/quarry/large/3326_dg02.webp",
+    "width": 521,
+    "height": 667
+   },
    "cells": 92
   },
   "3327_dg01": {
@@ -424,6 +685,11 @@
    "file": "maps/quarry/3327_dg01.webp",
    "width": 428,
    "height": 423,
+   "large": {
+    "file": "maps/quarry/large/3327_dg01.webp",
+    "width": 856,
+    "height": 846
+   },
    "cells": 190
   },
   "3327_dg02": {
@@ -432,6 +698,11 @@
    "file": "maps/quarry/3327_dg02.webp",
    "width": 423,
    "height": 420,
+   "large": {
+    "file": "maps/quarry/large/3327_dg02.webp",
+    "width": 846,
+    "height": 840
+   },
    "cells": 190
   },
   "3328_dg01": {
@@ -440,6 +711,11 @@
    "file": "maps/quarry/3328_dg01.webp",
    "width": 450,
    "height": 420,
+   "large": {
+    "file": "maps/quarry/large/3328_dg01.webp",
+    "width": 899,
+    "height": 841
+   },
    "cells": 216
   },
   "3328_dg02": {
@@ -448,6 +724,11 @@
    "file": "maps/quarry/3328_dg02.webp",
    "width": 457,
    "height": 414,
+   "large": {
+    "file": "maps/quarry/large/3328_dg02.webp",
+    "width": 915,
+    "height": 828
+   },
    "cells": 216
   },
   "3329_dg01": {
@@ -456,6 +737,11 @@
    "file": "maps/quarry/3329_dg01.webp",
    "width": 560,
    "height": 520,
+   "large": {
+    "file": "maps/quarry/large/3329_dg01.webp",
+    "width": 1121,
+    "height": 1040
+   },
    "cells": 193
   },
   "3329_dg02": {
@@ -464,6 +750,11 @@
    "file": "maps/quarry/3329_dg02.webp",
    "width": 564,
    "height": 569,
+   "large": {
+    "file": "maps/quarry/large/3329_dg02.webp",
+    "width": 1128,
+    "height": 1138
+   },
    "cells": 193
   },
   "3331_dg02": {
@@ -472,6 +763,11 @@
    "file": "maps/quarry/3331_dg02.webp",
    "width": 493,
    "height": 465,
+   "large": {
+    "file": "maps/quarry/large/3331_dg02.webp",
+    "width": 987,
+    "height": 930
+   },
    "cells": 146
   },
   "3331_dg03": {
@@ -480,6 +776,11 @@
    "file": "maps/quarry/3331_dg03.webp",
    "width": 492,
    "height": 443,
+   "large": {
+    "file": "maps/quarry/large/3331_dg03.webp",
+    "width": 984,
+    "height": 887
+   },
    "cells": 146
   },
   "3332_dg02": {
@@ -488,6 +789,11 @@
    "file": "maps/quarry/3332_dg02.webp",
    "width": 385,
    "height": 388,
+   "large": {
+    "file": "maps/quarry/large/3332_dg02.webp",
+    "width": 770,
+    "height": 776
+   },
    "cells": 175
   },
   "3332_dg03": {
@@ -496,6 +802,11 @@
    "file": "maps/quarry/3332_dg03.webp",
    "width": 384,
    "height": 387,
+   "large": {
+    "file": "maps/quarry/large/3332_dg03.webp",
+    "width": 767,
+    "height": 773
+   },
    "cells": 175
   },
   "3333_dg03": {
@@ -504,6 +815,11 @@
    "file": "maps/quarry/3333_dg03.webp",
    "width": 534,
    "height": 470,
+   "large": {
+    "file": "maps/quarry/large/3333_dg03.webp",
+    "width": 1068,
+    "height": 940
+   },
    "cells": 347
   },
   "3334_dg03": {
@@ -512,6 +828,11 @@
    "file": "maps/quarry/3334_dg03.webp",
    "width": 548,
    "height": 623,
+   "large": {
+    "file": "maps/quarry/large/3334_dg03.webp",
+    "width": 1097,
+    "height": 1246
+   },
    "cells": 317
   },
   "3335_dg03": {
@@ -520,6 +841,11 @@
    "file": "maps/quarry/3335_dg03.webp",
    "width": 490,
    "height": 494,
+   "large": {
+    "file": "maps/quarry/large/3335_dg03.webp",
+    "width": 980,
+    "height": 988
+   },
    "cells": 325
   },
   "3336_dg03": {
@@ -528,6 +854,11 @@
    "file": "maps/quarry/3336_dg03.webp",
    "width": 512,
    "height": 533,
+   "large": {
+    "file": "maps/quarry/large/3336_dg03.webp",
+    "width": 1025,
+    "height": 1066
+   },
    "cells": 317
   }
  }

@@ -15,7 +15,8 @@ import { withBase } from '../lib/sitePath';
  */
 export type QuarryFloor = (typeof quarry.floors)[number] & { kind: FloorKind };
 export type SpecialRoom = { room: string; weight: number };
-type LayoutArt = { map_id: number; label_ja: string; file: string; width: number; height: number; cells: number };
+type Image = { file: string; width: number; height: number };
+type LayoutArt = Image & { map_id: number; label_ja: string; large: Image; cells: number };
 
 export const floors = quarry.floors as QuarryFloor[];
 export const layoutArt = art.layouts as Record<string, LayoutArt>;
@@ -82,9 +83,11 @@ export function specialChances(floor: QuarryFloor) {
   return floor.special_rooms.map(row => ({ room: row.room, chance: floor.special_chance / 100 * row.weight / total }));
 }
 
-export type ExplorerLayout = { src: string; width: number; height: number; label: string; tileset: number };
+export type ExplorerImage = { src: string; width: number; height: number };
+export type ExplorerLayout = ExplorerImage & { label: string; tileset: number; large: ExplorerImage };
 export type ExplorerFloor = {
-  floor: number; kind: FloorKind; tileset: number;
+  /** A run of consecutive floors that show exactly the same thing; from === to for a single floor. */
+  from: number; to: number; kind: FloorKind; tileset: number;
   /** Index into `pools`, `mixes` and `specials`. */
   pool: number; mix: number; special: number;
   /** Rock total of each layout in the pool, in pool order. */
@@ -101,7 +104,8 @@ export type ExplorerData = {
   floors: ExplorerFloor[];
 };
 
-/** Everything the floor explorer shows, translated, with repeated pools and mixes stored once. */
+/** Everything the floor explorer shows, translated, with repeated pools and mixes stored once and
+ * consecutive floors that would show the same thing merged into one entry. */
 export function explorerData(locale: Locale): ExplorerData {
   const t = translatorFor(locale);
   const catalog = getCatalog(locale);
@@ -111,19 +115,28 @@ export function explorerData(locale: Locale): ExplorerData {
   const pool = shared(data.pools), mix = shared(data.mixes), special = shared(data.specials);
   for (const key of new Set(floors.flatMap(floor => floor.layouts))) {
     const image = layoutArt[key], [shape, variant] = layoutName(key).split('\u0000');
-    data.layouts[key] = { src: withBase(`/${image.file}`), width: image.width, height: image.height, label: variant ? `${t(shape)} ${variant}` : t(shape), tileset: tilesetOf(key) };
+    data.layouts[key] = {
+      src: withBase(`/${image.file}`), width: image.width, height: image.height, label: variant ? `${t(shape)} ${variant}` : t(shape), tileset: tilesetOf(key),
+      large: { src: withBase(`/${image.large.file}`), width: image.large.width, height: image.large.height },
+    };
   }
+  const rewarded = new Set(rewards.map(reward => reward.floor));
+  const view = ({ from, to, ...rest }: ExplorerFloor) => JSON.stringify(rest);
   for (const floor of floors) {
     // Several rock types share an in-game name (A/B variants), so merge by name.
     const merged = new Map<string, number>();
     for (const row of floorRocks(floor)) merged.set(rockName(row.rock), (merged.get(rockName(row.rock)) ?? 0) + row.weight);
-    data.floors.push({
-      floor: floor.floor, kind: floor.kind, tileset: Math.max(0, ...floor.layouts.map(tilesetOf)),
+    const entry: ExplorerFloor = {
+      from: floor.floor, to: floor.floor, kind: floor.kind, tileset: Math.max(0, ...floor.layouts.map(tilesetOf)),
       pool: pool(floor.layouts),
       mix: mix([...merged].map(([name, count]) => ({ name, count: Math.round(count * 10) / 10 })).sort((a, b) => b.count - a.count)),
       special: special({ chance: floor.special_chance, rooms: specialChances(floor).map(row => ({ name: t(ROOM_NAMES[row.room]), chance: row.chance })) }),
       totals: layoutRockTotals(floor.rocks as RockWeight[], floor.rock_percent, floor.layouts),
-    });
+    };
+    // Floors with a first-arrival reward always stand alone.
+    const previous = data.floors.at(-1);
+    if (previous && previous.to === floor.floor - 1 && !rewarded.has(previous.to) && !rewarded.has(floor.floor) && view(previous) === view(entry)) previous.to = floor.floor;
+    else data.floors.push(entry);
   }
   for (const reward of rewards) {
     const item = catalog.entities.find(entity => entity.kind === 'items' && entity.id === reward.item);
