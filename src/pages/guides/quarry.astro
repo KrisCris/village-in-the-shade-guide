@@ -2,24 +2,29 @@
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCatalog, entityUrl } from '../../data/repository';
-import quarry from '../../../data/sources/game-quarry.json';
+import QuarryFloorExplorer from '../../components/QuarryFloorExplorer';
+import { floors, rocks, rooms, rewards, ROOM_NAMES, expectedRocks, floorRocks, layoutArt, roomSetup } from '../../data/quarry';
+import { monsterName, monsters } from '../../data/nightMonsters';
 import { getI18n } from '../../i18n/server';
 import { msg } from '../../i18n/translate';
-const { t, href, locale } = getI18n(Astro.url);
+const { t, tHtml, href, locale } = getI18n(Astro.url);
 const catalog = getCatalog(locale);
 const item = (id: string) => catalog.entities.find(e => e.kind === 'items' && e.id === id);
-type Rock = { code: string; names: Record<string, string>; drops: { item: string; min: number; max: number; chance: number }[] };
-const rocks = quarry.rocks as Record<string, Rock>;
 const rockName = (id: number | string) => { const n = rocks[String(id)].names; return (locale === 'zh-CN' ? n['zh-CN'] : n[locale]) || n.ja; };
 
-// Floors with the same rock table form one band; every tenth floor is a rest area without rocks.
+// Floors with the same rock table form one band. Each band weighs its rocks by the average number placed
+// per floor (src/domain/quarry.ts), not by the raw table weights. Rest floors and floor 120 place no rocks.
 const key = (rows: { rock: number; weight: number }[]) => JSON.stringify(rows);
-const bands: { from: number; to: number; rocks: { rock: number; weight: number }[] }[] = [];
-for (const floor of quarry.floors) {
-  if (!floor.rocks.length) continue;
-  const last = bands.at(-1);
-  if (last && key(last.rocks) === key(floor.rocks)) last.to = floor.floor;
-  else bands.push({ from: floor.floor, to: floor.floor, rocks: floor.rocks });
+const placedOn = new Map(floors.map(floor => [floor.floor, floorRocks(floor)]));
+const bands: { from: number; to: number; table: string; rocks: { rock: number; weight: number }[] }[] = [];
+for (const floor of floors) {
+  const placed = placedOn.get(floor.floor)!;
+  if (!placed.length) continue;
+  const last = bands.at(-1), table = key(floor.rocks);
+  if (last && last.table === table) {
+    last.to = floor.floor;
+    for (const row of placed) last.rocks.find(other => other.rock === row.rock)!.weight += row.weight;
+  } else bands.push({ from: floor.floor, to: floor.floor, table, rocks: placed });
 }
 const range = (from: number, to: number) => from === to ? String(from) : `${from}–${to}`;
 
@@ -44,30 +49,42 @@ groups.push([msg('宝石'), gems]);
 const percent = (value: number) => value === 0 ? '—' : value >= .1 ? `${Math.round(value * 100)}%` : value >= .01 ? `${(value * 100).toFixed(1)}%` : `${(value * 100).toFixed(2)}%`;
 const amount = (value: number) => value === 0 ? '—' : value >= 1 ? value.toFixed(1) : value >= .01 ? value.toFixed(2) : value.toFixed(3);
 
-const roomNames: Record<string, string> = {
-  DUNGEON_FLOOR_SPECIAL_BEE_LV1: msg('蜂巢房间 Lv1'), DUNGEON_FLOOR_SPECIAL_BEE_LV2: msg('蜂巢房间 Lv2'),
-  DUNGEON_FLOOR_SPECIAL_GHOST: msg('幽灵房间'), DUNGEON_FLOOR_SPECIAL_DARKNESS: msg('黑暗房间'),
-  DUNGEON_FLOOR_SPECIAL_COPPER: msg('铜矿脉房间'), DUNGEON_FLOOR_SPECIAL_IRON: msg('铁矿脉房间'), DUNGEON_FLOOR_SPECIAL_GOLD: msg('金矿脉房间'),
-  DUNGEON_FLOOR_SPECIAL_METEORIC_IRON: msg('陨铁矿脉房间'), DUNGEON_FLOOR_SPECIAL_GEM: msg('宝石矿脉房间')
-};
+const roomNames = ROOM_NAMES;
 const specialBands: { from: number; to: number; chance: number; rooms: { room: string; weight: number }[] }[] = [];
-for (const floor of quarry.floors) {
+for (const floor of floors) {
   if (!floor.special_rooms.length) continue;
   const last = specialBands.at(-1);
   if (last && last.to >= floor.floor - 2 && last.chance === floor.special_chance && key(last.rooms as never) === key(floor.special_rooms as never)) last.to = floor.floor;
   else specialBands.push({ from: floor.floor, to: floor.floor, chance: floor.special_chance, rooms: floor.special_rooms });
 }
 const roomOrder = Object.keys(roomNames).filter(id => specialBands.some(band => band.rooms.some(row => row.room === id)));
-const veinRooms = quarry.rooms.filter(room => room.rocks.length).map(room => {
-  const total = room.rocks.reduce((sum, row) => sum + row.weight, 0);
-  const veins = room.rocks.filter(row => !/TUNNEL/.test(rocks[String(row.rock)].code)).reduce((sum, row) => sum + row.weight, 0);
-  return { id: room.id, share: veins / total };
+// Ore rooms load their own two layouts and rock list; quarry rocks (TUNNEL) are the only non-ore rocks there.
+const roomFloors = (id: string) => floors.filter(floor => floor.special_rooms.some(row => row.room === id));
+const veinRooms = rooms.filter(room => room.rocks.length).map(room => {
+  const setup = roomSetup(room.id, roomFloors(room.id)[0]), counts = expectedRocks(setup.rocks, setup.density, setup.layouts);
+  const total = counts.reduce((sum, count) => sum + count, 0);
+  const veins = setup.rocks.reduce((sum, row, index) => sum + (/TUNNEL/.test(rocks[String(row.rock)].code) ? 0 : counts[index]), 0);
+  return { id: room.id, total: Math.round(total), veins: Math.round(veins) };
 });
+// Ore rooms with the same counts share one line.
+const veinLines: { ids: string[]; total: number; veins: number }[] = [];
+for (const room of veinRooms) {
+  const line = veinLines.find(other => other.total === room.total && other.veins === room.veins);
+  if (line) line.ids.push(room.id); else veinLines.push({ ids: [room.id], total: room.total, veins: room.veins });
+}
+const oreLayouts = [...new Set(rooms.flatMap(room => room.layouts))].map(id => layoutArt[id]);
+// Monsters per floor are ceil(density% × rock cells); bee rooms swap the floor's monster density for their own.
+const span = (values: number[]) => range(Math.min(...values), Math.max(...values));
+const room = (id: string) => rooms.find(row => row.id === id)!;
+const beeRatio = span(['DUNGEON_FLOOR_SPECIAL_BEE_LV1', 'DUNGEON_FLOOR_SPECIAL_BEE_LV2'].flatMap(id => roomFloors(id).map(floor => Math.round(room(id).monster_percent! / floor.monster_percent))));
+const ghostCount = span(roomFloors('DUNGEON_FLOOR_SPECIAL_GHOST').flatMap(floor => floor.layouts.map(id => Math.ceil(room('DUNGEON_FLOOR_SPECIAL_GHOST').monster_percent! * layoutArt[id].cells / 100))));
+const ghost = (key: string) => monsterName(monsters[`CREATURE_ID_HORROR_${key}` as keyof typeof monsters], locale);
+const firstReward = rewards.map(reward => ({ ...reward, entity: item(reward.item) }));
 // Several rocks share one in-game name, so each row also shows the floors where it appears.
 const rockRows = Object.entries(rocks).map(([id, rock]) => {
-  const floors = quarry.floors.filter(f => f.rocks.some(r => String(r.rock) === id)).map(f => f.floor);
-  const rooms = quarry.rooms.filter(room => room.rocks.some(r => String(r.rock) === id)).map(room => room.id);
-  return { id, rock, floors: floors.length ? range(floors[0], floors.at(-1)!) : '', rooms };
+  const on = floors.filter(f => placedOn.get(f.floor)!.some(r => String(r.rock) === id)).map(f => f.floor);
+  const inRooms = rooms.filter(room => room.rocks.some(r => String(r.rock) === id)).map(room => room.id);
+  return { id, rock, floors: on.length ? range(on[0], on.at(-1)!) : '', rooms: inRooms };
 }).filter(row => row.floors || row.rooms.length)
   // A and B stones are look-alike variants with the same drops; list each once.
   .filter((row, index, rows) => rows.findIndex(other => JSON.stringify([rockName(other.id), other.floors, other.rooms, other.rock.drops]) === JSON.stringify([rockName(row.id), row.floors, row.rooms, row.rock.drops])) === index);
@@ -75,7 +92,7 @@ const rockRows = Object.entries(rocks).map(([id, rock]) => {
 <BaseLayout title={t('采石场掉落分布')}>
   <h1>{t('采石场掉落分布')}</h1>
   <p>{t('每敲碎一块石头，各种掉落分别判定。表中是该层段平均每块石头掉出该物品的概率，颜色越深表示越适合在这几层找它。')}</p>
-  <p class="note">{t('第 10、20……110 层是休息层，没有石头。数值为未学祠堂能力时的基础值；「矿脉探查术」会提高矿脉出现率，「采掘技术」会让石头多掉石材。')} <a href={href('/guides/skills/')}>{t('查看祠堂能力')}</a></p>
+  <p class="note">{t('第 10、20……110 层是休息层，第 120 层是最底层，都没有石头。数值为未学祠堂能力时的基础值；「矿脉探查术」会提高矿脉出现率，「采掘技术」会让石头多掉石材。')} <a href={href('/guides/skills/')}>{t('查看祠堂能力')}</a></p>
 
   <div class="quarry-mode" role="group" aria-label={t('显示方式')}>
     <button type="button" aria-pressed="true" data-mode="chance">{t('掉落概率')}</button>
@@ -96,11 +113,23 @@ const rockRows = Object.entries(rocks).map(([id, rock]) => {
       </tbody>)}
     </table>
   </div>
-  <p class="note">{t('平均数量 = 每敲碎一块石头平均得到的个数，已计入掉落概率和每次掉落的数量范围。')}</p>
+  <p class="note">{t('平均数量 = 每敲碎一块石头平均得到的个数，已计入掉落概率和每次掉落的数量范围。各种石头的比例按每层实际放下的数量计算，不含特殊房间。')}</p>
 
-  <section>
+  <section id="floors">
+    <h2>{t('逐层查看')}</h2>
+    <p>{t('选一层，看它会用哪些地图布局、平均有多少石头、变成特殊房间的概率。')}</p>
+    <QuarryFloorExplorer client:visible source="/list-data/quarry-floors.json" locale={locale} />
+    <h3>{t('第一次到达休息层的奖励')}</h3>
+    <ul class="quarry-rewards">{firstReward.map(reward => <li>
+      <span class="quarry-floor">{t('第 {floor} 层', { floor: reward.floor })}</span>
+      {reward.entity ? <a href={href(entityUrl(reward.entity))}>{reward.entity.icon_path && <img src={withBase(reward.entity.icon_path)} width="28" height="28" alt="" loading="lazy" />}<span>{reward.entity.name.zh_hans}</span></a> : reward.item}
+      <span>×{reward.count}</span>
+    </li>)}</ul>
+  </section>
+
+  <section id="special-rooms">
     <h2>{t('特殊房间')}</h2>
-    <p>{t('从第 11 层起，进入新楼层时有一定概率变成特殊房间。表中是每层变成该房间的概率。矿脉房间里大部分石头都是对应的矿脉石，是集中采矿的机会。')}</p>
+    <p>{t('从第 11 层起，进入新楼层时有一定概率变成特殊房间。表中是每层变成该房间的概率。')}</p>
     <div class="quarry-scroll">
       <table class="quarry-table quarry-rooms">
         <thead><tr><th scope="col">{t('层')}</th>{roomOrder.map(id => <th scope="col">{t(roomNames[id])}</th>)}</tr></thead>
@@ -110,7 +139,16 @@ const rockRows = Object.entries(rocks).map(([id, rock]) => {
         })}</tbody>
       </table>
     </div>
-    <ul class="quarry-veins">{veinRooms.map(room => <li><strong>{t(roomNames[room.id])}</strong>{t('：约 {share} 的石头是矿脉石。', { share: percent(room.share) })}</li>)}</ul>
+    <p class="note">{t('开启安心生活模式后不会出现幽灵房间，它的概率分给其他特殊房间。')}</p>
+    <ul class="quarry-veins">
+      <li><strong>{t(roomNames.DUNGEON_FLOOR_SPECIAL_BEE_LV1)} / {t(roomNames.DUNGEON_FLOOR_SPECIAL_BEE_LV2)}</strong>{t('：怪物全是蜂，数量约是普通楼层的 {ratio} 倍。地图和石头跟这一层相同。', { ratio: beeRatio })}</li>
+      <li><strong>{t(roomNames.DUNGEON_FLOOR_SPECIAL_GHOST)}</strong><Fragment set:html={tHtml('：光线变暗，怪物换成 {count} 只妖怪，每只有 80% 是<a href="/guides/night-monsters/#kunekune">{kunekune}</a>，<a href="/guides/night-monsters/#tatazumu">{lingering}</a>和<a href="/guides/night-monsters/#wandering-ghost">{wandering}</a>各 10%。能力跟深夜出现时一样，但不分时间；躲起来也不会让后两种消失。地图和石头跟这一层相同。', { count: ghostCount, kunekune: ghost('KUNEKUNE'), lingering: ghost('MOYAMOYASAN_LV3'), wandering: ghost('WANDERING_GHOST') })} /></li>
+      <li><strong>{t(roomNames.DUNGEON_FLOOR_SPECIAL_DARKNESS)}</strong>{t('：光线变暗。地图、石头和怪物跟这一层相同。')}</li>
+      {veinLines.map(line => <li><strong>{line.ids.map(id => t(roomNames[id])).join(' / ')}</strong>{t('：平均约 {total} 块石头，其中约 {veins} 块是矿脉石。', { total: line.total, veins: line.veins })}</li>)}
+    </ul>
+    <p>{t('矿脉房间固定用下面两张小地图之一，怪物跟这一层相同。')}</p>
+    <ul class="quarry-maps">{oreLayouts.map(layout => <li><img src={withBase(`/${layout.file}`)} width={layout.width} height={layout.height} alt={t('矿脉房间地图')} loading="lazy" decoding="async" /></li>)}</ul>
+    <p class="note">{t('地图只画出地形；石头、怪物和往下走的洞每次进入时随机摆放。')}</p>
   </section>
 
   <details>
@@ -164,6 +202,15 @@ const rockRows = Object.entries(rocks).map(([id, rock]) => {
   .quarry-table[data-mode='quantity'] .quantity { display: inline; }
   .quarry-rooms td { min-width: 4.5rem; }
   .quarry-veins { line-height: 1.9; }
+  .quarry-veins :global(a) { color: var(--green); }
+  .quarry-rewards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .4rem 1rem; }
+  .quarry-rewards li { display: flex; align-items: center; gap: .5rem; padding: .35rem .6rem; border: 1px solid var(--border); border-radius: 10px; background: var(--paper-raised); font-variant-numeric: tabular-nums; }
+  .quarry-rewards a { display: inline-flex; align-items: center; gap: .35rem; color: var(--ink); }
+  .quarry-rewards img { object-fit: contain; }
+  .quarry-floor { min-width: 4.5em; color: var(--muted); font-size: .88rem; }
+  .quarry-maps { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+  .quarry-maps li { padding: .5rem; border: 1px solid var(--border); border-radius: 10px; background: #15130f; }
+  .quarry-maps img { display: block; max-width: 100%; max-height: 10rem; width: auto; height: auto; }
   .quarry-rocks th { text-align: left; white-space: nowrap; vertical-align: top; }
   .quarry-rocks th small { display: block; color: var(--muted); font-weight: 400; font-size: .75rem; }
   .quarry-rocks td { line-height: 1.9; }

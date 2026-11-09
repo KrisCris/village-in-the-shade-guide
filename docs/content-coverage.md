@@ -27,6 +27,7 @@
 - 委托的随机抽取方式没有完整解析。村里和附加农地的夜间闪光点物品池已从 `placementitem.dat` 解析（`data/sources/game-curse-items.json`）。泥土种子抽哪种作物、何时变成被诅咒的作物或巨大作物写在游戏程序里，已按 `village.exe` 的种植和生长代码整理进同一文件。不能从已解析的个别点位推断整个随机池；随机交付候选不代表固定委托。
 - 怪异页的条件、打法、奖励和地图位置来自 `data/sources/game-anomalies.json`（`tools/extract-anomalies.py`）：脚本、`gimmick.dat` 和村庄地图的锚点与放置物。页面还收录不在深夜轮换里的夜间事件：黏黏妖、巨大兔、鲜红的手机、日本人偶、泥田坊、妖怪蔬菜与妖怪鱼、龙神渊的池主和牛鬼。插图由 `tools/extract-anomaly-art.py` 和 `tools/render-anomaly-art.mjs` 从游戏动画模型渲染。写在游戏程序里的部分（同一晚多种怪异都满足条件时的权重、蛟和不倒翁圆石的选点几率）页面不写具体数值。
 - 深夜妖怪页的出现区域、数量、伤害和掉落来自 `data/sources/game-night-monsters.json`（`tools/extract-night-monsters.py`）：`placementhorror.dat`、村庄地图格子上的刷新表编号、`creature.dat`、`attack.dat` 和各妖怪的 `ai_creature_horror_*` 脚本。附身草丛和迷途森林不在村庄小地图上，页面只用文字说明。同一区域里五种通用妖怪各抽到几只由游戏程序随机决定，页面只写总数。村里的惊吓（从地里冒出的幽灵、房子后面的大影子、临终蝉、假道具）的出现点、季节和每晚抽几处，来自 `village.exe` 里 `EventAddHorrorPlacement` 的出现点表和村庄地图上的 `pop_addhorror_*` 锚点。剧情里的妖怪（以津真天、鵺皮、人影、斑点狗、木灵）只列出章节和地点。
+- 采石场页的楼层、布局、石头名单、特殊房间和第一次到达的奖励来自 `data/sources/game-quarry.json`（`tools/extract-quarry.py`：`dungeon.dat`、`map.dat`、`cropsharvest.dat` 和 `event_dungeon_floor_entry` 脚本）。石头数量按 `village.exe` 里追踪到的摆放代码计算（`src/domain/quarry.ts`），并假设每块石头都放得下；大石块找不到空位时，实际数量会更少。祠堂「矿脉探查术」多出的矿脉石没有给出具体数值。`dungeon.dat` 每条记录的第 8 个字段没有被追踪到的代码读取，含义不明。`map.dat` 里还有蜂巢、幽灵、黑暗和矿脉房间专用的地图（3206–3210），1.30 里没有任何楼层或房间加载它们。
 - 程序生成的“用途”只覆盖已解析的关系，不等于游戏里的全部用途。
 - 品质倍率下的金额带小数，是估算值；游戏最终如何取整没有完全核实。
 - 收益排行基于页面列出的生长时间、加工时长和种子供应等假设，没有考虑天气、技能、机器排队和玩家行动安排，不等于最优解。
