@@ -66,14 +66,17 @@ function regionPath(corners: Array<{ x: number; y: number }>, side: number, fram
   return parts.join('');
 }
 
-/** Pins as percentages of the frame; numbered layers count up in the given order. 'area' layers become shaded regions. */
-export function mapPins(layers: MapLayer[], projection: MinimapProjection) {
+/**
+ * Pins as percentages of the frame; numbered layers count up in the given order. 'area' layers become shaded regions.
+ * `minWidth` (minimap pixels) widens the crop when close-together points need more surroundings.
+ */
+export function mapPins(layers: MapLayer[], projection: MinimapProjection, minWidth?: number) {
   const projected = layers.map((layer) => layer.points.map((p) => projectMinimap(p, projection)));
   const side = (layer: MapLayer) => (layer.size ?? 0) / projection.scale_divisor;
   const extent = layers.flatMap((layer, i) => layer.shape === 'area'
     ? projected[i].flatMap((p) => [p, { x: p.x + side(layer), y: p.y + side(layer) }])
     : projected[i]);
-  const frame = mapFrame(extent);
+  const frame = mapFrame(extent, undefined, minWidth);
   const regions: MapRegion[] = layers.flatMap((layer, i) => layer.shape === 'area' && projected[i].length
     ? [{ color: layer.color, path: regionPath(projected[i], side(layer), frame) }] : []);
   const pins: MapPin[] = layers.flatMap((layer, i) => layer.shape === 'area' ? [] : projected[i].map((p, n) => ({

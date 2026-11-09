@@ -50,6 +50,7 @@ const active = sectionId && currentLink(path, blocks[sectionId].flatMap(block =>
 <style>
   .sidebar { border-right: 1px solid var(--border); padding: 1.6rem 1rem 5rem; }
   .mobile-nav-toggle { display: none; }
+  details { margin: 0; }
   nav { position: sticky; top: 86px; max-height: calc(100vh - 96px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: grid; align-content: start; gap: .25rem; padding: 2px; }
   summary { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .6rem; padding: .4rem .7rem; border-radius: 8px; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .12em; cursor: pointer; list-style: none; }
   details:first-child > summary { margin-top: 0; }

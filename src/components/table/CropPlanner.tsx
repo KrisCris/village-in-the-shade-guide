@@ -89,7 +89,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
       {!groups.length&&<p className="plan-empty">{t('没有符合条件的方案。')}</p>}
     </div>
     <div ref={sentinel}>{more&&<button onClick={loadMore}>{t('加载更多（已显示 {shown} / {total}）',{shown:visible.length,total:groups.length})}</button>}</div>
-    {!ownedSeeds&&<details><summary>{t('本季种子的商店与开放条件')}</summary><table><thead><tr><th>{t('作物')}</th><th>{t('商店')}</th><th>{t('条件')}</th></tr></thead><tbody>{candidates.map(crop=><tr key={crop.id}><td><button onClick={()=>setSelected(crop)}>{crop.name.zh_hans}</button></td><td>{availability.get(crop.id)?.locations.join(' / ')}</td><td>{availability.get(crop.id)?.conditions.join(t('；'))||t('无额外条件')}</td></tr>)}</tbody></table></details>}
+    {!ownedSeeds&&<details className="planner-shops"><summary>{t('本季种子的商店与开放条件')}</summary><table><thead><tr><th>{t('作物')}</th><th>{t('商店')}</th><th>{t('条件')}</th></tr></thead><tbody>{candidates.map(crop=><tr key={crop.id}><td><button onClick={()=>setSelected(crop)}>{crop.name.zh_hans}</button></td><td>{availability.get(crop.id)?.locations.join(' / ')}</td><td>{availability.get(crop.id)?.conditions.join(t('；'))||t('无额外条件')}</td></tr>)}</tbody></table></details>}
     {selected&&<Suspense fallback={<p role="status">{t('正在打开详情…')}</p>}><EntityDrawer initial={selected} onClose={()=>setSelected(null)}/></Suspense>}
     <style>{`.planner-controls{display:flex;align-items:end;flex-wrap:wrap;gap:.8rem;padding:.8rem;margin:1.2rem 0}.planner-controls label{display:grid;gap:.3rem;color:var(--muted);font-size:.78rem}.planner-controls label:first-child{flex:1 1 12rem}.planner-controls label:nth-child(4){min-width:13.5rem}.planner-controls input{min-height:42px;padding:.55rem .7rem;background:var(--paper-raised);color:var(--ink);border:1px solid var(--border);border-radius:8px;font:inherit;font-size:.9rem}.planner-controls b{margin-left:auto;padding:.7rem;color:var(--green)}@media(max-width:700px){.planner-controls>*{flex:1 1 140px}.planner-controls b{margin-left:0}}
 .planner-basis{margin:.4rem 0 .6rem;color:var(--ink);font-size:.92rem}.planner-note{font-size:.85rem;color:var(--muted)}.planner-method p{font-size:.85rem;color:var(--muted)}.planner-method summary{cursor:pointer;color:var(--green)}
@@ -114,7 +114,7 @@ export default function CropPlanner({entities}: {entities:Entity[]}) {
 .planner-table tbody td{border:0;padding:.35rem .7rem;text-align:left!important;white-space:normal}.planner-table td.plan-name,.planner-table td.plan-daily{grid-column:1/-1}.planner-table td.plan-name{padding-top:.7rem}.planner-table td.plan-daily{display:flex;align-items:center;gap:.5rem}.planner-table td.plan-daily b{min-width:0;font-size:1.35rem;text-align:left;order:-1}.plan-bar{flex:1;width:auto;margin:0}
 .planner-table td[data-label]::before{content:attr(data-label);display:block;color:var(--muted);font-size:.7rem}.planner-table td.plan-daily::before{display:none!important}.planner-table td:not(.plan-name):not(.plan-daily){padding-bottom:.7rem}
 .planner-table tr.plan-detail{display:block;border:1px solid var(--border);border-top:0;border-radius:0 0 8px 8px}.planner-table tr.plan-detail td{display:block}.plan-alt .plan-name-inner{padding-left:0}.plan-name-inner{flex-wrap:wrap}}
-details{margin:1rem 0}`}</style>
+.planner-method,.planner-shops{margin:1rem 0}`}</style>
   </>;
 }
 
