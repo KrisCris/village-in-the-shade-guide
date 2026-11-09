@@ -1,4 +1,4 @@
-# Quarry layout thumbnails
+# Quarry layout images
 
 Game artwork © Nippon Ichi Software, Inc. These WebP images are extracted map
 assets for the unofficial Village in the Shade guide, not original artwork by
@@ -18,6 +18,7 @@ uv run python tools/extract-quarry-maps.py --game-dir <installed-game-directory>
 
 Each image is the map's ground layer, drawn the same way as
 `tools/extract-map-art.py`, trimmed to the painted area and reduced to 1/6 for
-transfer. Scenery decals are left out because the near-side walls cover most of
+transfer. `large/` holds the same images at 1/3, which the floor explorer fetches
+only when a reader opens a thumbnail. Scenery decals are left out because the near-side walls cover most of
 the floor at this size. Rocks, monsters and the hole down are placed by the game
 each time a floor loads, so none of them are drawn.
