@@ -1,5 +1,5 @@
 {
- "source": "placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, map heads data/map/map_0000_ver120_spr.ymwr.head, data/map/map_2150_spr.ymwr.head, data/map/map_2160_spr.ymwr.head + scripts ai_creature_horror_moyamoyasan_lv3.lub, ai_creature_horror_kunekune.lub, ai_creature_horror_wandering_ghost.lub, ai_creature_horror_warp_ghost.lub, ai_creature_horror_obo.lub, ai_creature_horror_two_mouths_woman.lub, ai_creature_horror_blockage_plane.lub, ai_creature_horror_blockage.lub, ai_creature_horror_plastered_wall_face.lub, ai_creature_horror_plastered_wall_one.lub, ai_creature_horror_whelk.lub, ai_creature_horror_walking_stone.lub, ai_creature_horror_treasure_box.lub, mapevent_latenight_area.lub, event_check_late_night.lub, story_05_01.lub, story_05_02.lub, story_05_03.lub, story_06_02.lub",
+ "source": "placementhorror.dat, creature.dat, attack.dat, cropsharvest.dat, demolist.dat, gamedefine.dat, anime.dat, resident.fad, village.exe, map heads data/map/map_0000_ver120_spr.ymwr.head, data/map/map_2150_spr.ymwr.head, data/map/map_2160_spr.ymwr.head + scripts ai_creature_horror_moyamoyasan_lv3.lub, ai_creature_horror_kunekune.lub, ai_creature_horror_wandering_ghost.lub, ai_creature_horror_warp_ghost.lub, ai_creature_horror_obo.lub, ai_creature_horror_two_mouths_woman.lub, ai_creature_horror_blockage_plane.lub, ai_creature_horror_blockage.lub, ai_creature_horror_plastered_wall_face.lub, ai_creature_horror_plastered_wall_one.lub, ai_creature_horror_whelk.lub, ai_creature_horror_walking_stone.lub, ai_creature_horror_treasure_box.lub, ai_creature_horror_ground_spirit.lub, ai_creature_horror_house_spirit.lub, ai_creature_horror_cicada_final.lub, ai_creature_horror_fake_item.lub, mapevent_latenight_area.lub, event_check_late_night.lub, story_05_01.lub, story_05_02.lub, story_05_03.lub, story_06_02.lub",
  "script_sha256": {
   "ai_creature_horror_moyamoyasan_lv3": "7ebb55538599d1bf903744cedc539e8472c1ce2b69139b393745c175e707e07e",
   "ai_creature_horror_kunekune": "220855d5a5ed1916cc112bd2da60ac2092d05bb63a00e3f3126e07bc466f5bf8",
@@ -14,6 +14,10 @@
   "ai_creature_horror_whelk": "79434c9a4f454d8ff525fed800fed779c34df074aacb465bfbe894b74ad011e0",
   "ai_creature_horror_walking_stone": "c930abbc2915897326d1fd08ffcf036e345249e14b03c3501e4a281763e96aa8",
   "ai_creature_horror_treasure_box": "cb41b13c468b6e0e48dbcca77f116e25790cece91de4d46ab76888344f31e0eb",
+  "ai_creature_horror_ground_spirit": "f16f8a8cb810170343f5be6311eb24e4e2d0cd90b88a56dde0f6e0c3b1f8ebd7",
+  "ai_creature_horror_house_spirit": "a256aaa22924838070d3d948a804099363d48c0f59f27a24a5af348a45f5360b",
+  "ai_creature_horror_cicada_final": "411b51da9597d40178ab86925a0f41b3387b7cb8d7f7b5dd55e7e30819431d6d",
+  "ai_creature_horror_fake_item": "286f704dca315d950d2178914e767675fb357f855e3210dfbf08ec389352a20c",
   "mapevent_latenight_area": "3201be516f9fbabd5afe5787f885181eda33f18764b255cf4b902112a3a14b39",
   "event_check_late_night": "376eb632105911c4bde30ad9bb728e5e3acaa6260ba70b5fa87e656653cc22a2",
   "story_05_01": "1c39916fa8756e069c99ea42f9c66b32484af975ea3c115ad24b01d93a080899",
@@ -2405,7 +2409,299 @@
     "x": 21240,
     "y": 17415
    }
+  ],
+  "scare_ground_spirit": [
+   {
+    "x": 18470,
+    "y": 19866
+   },
+   {
+    "x": 17400,
+    "y": 16888
+   },
+   {
+    "x": 14514,
+    "y": 17682
+   },
+   {
+    "x": 16524,
+    "y": 18426
+   },
+   {
+    "x": 15804,
+    "y": 17042
+   },
+   {
+    "x": 16114,
+    "y": 15558
+   },
+   {
+    "x": 10603,
+    "y": 14678
+   },
+   {
+    "x": 7335,
+    "y": 14310
+   },
+   {
+    "x": 11070,
+    "y": 10215
+   },
+   {
+    "x": 14670,
+    "y": 19260
+   },
+   {
+    "x": 16695,
+    "y": 25875
+   },
+   {
+    "x": 14715,
+    "y": 27585
+   },
+   {
+    "x": 18531,
+    "y": 17649
+   },
+   {
+    "x": 10170,
+    "y": 17280
+   },
+   {
+    "x": 9990,
+    "y": 11225
+   }
+  ],
+  "scare_house_spirit": [
+   {
+    "x": 15300,
+    "y": 17640
+   },
+   {
+    "x": 17235,
+    "y": 20115
+   },
+   {
+    "x": 16926,
+    "y": 17469
+   },
+   {
+    "x": 19716,
+    "y": 17493
+   },
+   {
+    "x": 18000,
+    "y": 16695
+   },
+   {
+    "x": 14475,
+    "y": 16037
+   },
+   {
+    "x": 16200,
+    "y": 19395
+   },
+   {
+    "x": 18186,
+    "y": 18876
+   },
+   {
+    "x": 18360,
+    "y": 18045
+   },
+   {
+    "x": 14385,
+    "y": 17916
+   },
+   {
+    "x": 15975,
+    "y": 17235
+   },
+   {
+    "x": 15876,
+    "y": 15923
+   },
+   {
+    "x": 18225,
+    "y": 17505
+   },
+   {
+    "x": 17865,
+    "y": 15975
+   },
+   {
+    "x": 19575,
+    "y": 18000
+   }
+  ],
+  "scare_cicada_final": [
+   {
+    "x": 16878,
+    "y": 21054
+   },
+   {
+    "x": 17884,
+    "y": 20407
+   },
+   {
+    "x": 10306,
+    "y": 13724
+   },
+   {
+    "x": 15705,
+    "y": 16934
+   },
+   {
+    "x": 14123,
+    "y": 18770
+   },
+   {
+    "x": 17370,
+    "y": 15795
+   },
+   {
+    "x": 18744,
+    "y": 23700
+   },
+   {
+    "x": 9487,
+    "y": 10789
+   },
+   {
+    "x": 18225,
+    "y": 18855
+   },
+   {
+    "x": 15075,
+    "y": 18495
+   },
+   {
+    "x": 8229,
+    "y": 12938
+   },
+   {
+    "x": 18762,
+    "y": 20439
+   },
+   {
+    "x": 16338,
+    "y": 27738
+   },
+   {
+    "x": 12195,
+    "y": 13590
+   },
+   {
+    "x": 8374,
+    "y": 15098
+   }
+  ],
+  "scare_fake_item": [
+   {
+    "x": 15840,
+    "y": 19890
+   },
+   {
+    "x": 11925,
+    "y": 13950
+   },
+   {
+    "x": 18945,
+    "y": 19485
+   },
+   {
+    "x": 18256,
+    "y": 24189
+   },
+   {
+    "x": 9675,
+    "y": 16245
+   },
+   {
+    "x": 10192,
+    "y": 13522
+   },
+   {
+    "x": 7965,
+    "y": 12960
+   },
+   {
+    "x": 10215,
+    "y": 10890
+   },
+   {
+    "x": 11745,
+    "y": 10845
+   },
+   {
+    "x": 11520,
+    "y": 9810
+   },
+   {
+    "x": 17415,
+    "y": 27405
+   },
+   {
+    "x": 10395,
+    "y": 14580
+   },
+   {
+    "x": 18945,
+    "y": 17460
+   },
+   {
+    "x": 16174,
+    "y": 15758
+   },
+   {
+    "x": 8235,
+    "y": 15390
+   }
   ]
+ },
+ "village_scares": {
+  "source": "village.exe 0x14027B2C0 (EventAddHorrorPlacement), row table 0x140E58210",
+  "picks": 3,
+  "false_item_picks": 3,
+  "seasons": {
+   "CREATURE_ID_HORROR_GROUND_SPIRIT": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "CREATURE_ID_HORROR_HOUSE_SPIRIT": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "CREATURE_ID_HORROR_CICADA_FINAL_PT1": [
+    1,
+    2
+   ],
+   "CREATURE_ID_HORROR_FAKE_ITEM": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "patterns": {
+   "CREATURE_ID_HORROR_GROUND_SPIRIT": [
+    "CREATURE_ID_HORROR_GROUND_SPIRIT"
+   ],
+   "CREATURE_ID_HORROR_HOUSE_SPIRIT": [
+    "CREATURE_ID_HORROR_HOUSE_SPIRIT"
+   ],
+   "CREATURE_ID_HORROR_CICADA_FINAL_PT1": [
+    "CREATURE_ID_HORROR_CICADA_FINAL_PT2",
+    "CREATURE_ID_HORROR_CICADA_FINAL_PT1"
+   ],
+   "CREATURE_ID_HORROR_FAKE_ITEM": [
+    "CREATURE_ID_HORROR_FAKE_ITEM"
+   ]
+  }
  },
  "wall_one_groups": {
   "always": 4,
@@ -2436,7 +2732,9 @@
    3,
    8
   ],
-  "treasure_box_sense": 300
+  "treasure_box_sense": 300,
+  "cicada_rampage_frames": 444,
+  "false_item_hand_game_seconds": 600
  },
  "monsters": {
   "CREATURE_ID_HORROR_MOYAMOYASAN_LV3": {
@@ -2641,6 +2939,58 @@
    "power": 0,
    "move_speed": 4.5,
    "pop_time": "0:00",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_GROUND_SPIRIT": {
+   "ja": "幽霊が地面から生えて騒ぐ",
+   "en": "Ghost Rising from the Ground and Causing a Stir",
+   "zh_hant": "幽靈從地面冒出來吵鬧",
+   "script": "ai_creature_horror_ground_spirit",
+   "hp": 0,
+   "power": 0,
+   "move_speed": 0.0,
+   "pop_time": "",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_HOUSE_SPIRIT": {
+   "ja": "家の裏から大きな影が覗いている",
+   "en": "Large Shadow Peeking out from Behind a House",
+   "zh_hant": "大片影子從房子後面窺探",
+   "script": "ai_creature_horror_house_spirit",
+   "hp": 0,
+   "power": 0,
+   "move_speed": 0.0,
+   "pop_time": "",
+   "vanish_time": "5:00",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_CICADA_FINAL_PT1": {
+   "ja": "セミファイナル",
+   "en": "Final Cicada",
+   "zh_hant": "臨終蟬",
+   "script": "ai_creature_horror_cicada_final",
+   "hp": 0,
+   "power": 0,
+   "move_speed": 0.0,
+   "pop_time": "",
+   "vanish_time": "",
+   "on_flags": [],
+   "hit": null
+  },
+  "CREATURE_ID_HORROR_FAKE_ITEM": {
+   "ja": "偽のアイテム",
+   "en": "False Item",
+   "zh_hant": "假道具",
+   "script": "ai_creature_horror_fake_item",
+   "hp": 0,
+   "power": 0,
+   "move_speed": 0.0,
+   "pop_time": "",
    "vanish_time": "5:00",
    "on_flags": [],
    "hit": null
