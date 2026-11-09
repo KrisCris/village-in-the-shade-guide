@@ -3,22 +3,26 @@ import { projectMinimap, type MinimapProjection } from './collectionMap';
 /** Side length of the village minimap image in pixels. */
 export const MINIMAP_SIZE = 4096;
 
-export type MapShape = 'number' | 'dot' | 'square' | 'star' | 'area';
+export type MapShape = 'number' | 'dot' | 'square' | 'star' | 'area' | 'line';
 export interface MapLayer {
   label: string;
   /** Marker fill; markers get a dark outline so any fill reads on the map. */
   color: string;
   shape: MapShape;
-  /** World coordinates from data/sources/game-anomalies.json map_points; for 'area', the top-left corners of `size` squares. */
+  /** World coordinates from data/sources/game-anomalies.json map_points; for 'area', the top-left corners of `size` squares; for 'line', start and end pairs. */
   points: Array<{ x: number; y: number }>;
   /** First number for 'number' layers (default 1), so several layers can share one sequence. */
   start?: number;
+  /** Text of each 'number' pin, in place of the running count. */
+  labels?: string[];
   /** Side of each square of an 'area' layer, in world units. */
   size?: number;
 }
 export interface MapPin { left: number; top: number; color: string; shape: MapShape; text?: string }
 /** One shaded region: an SVG path in percent of the frame (viewBox 0 0 100 100). */
 export interface MapRegion { color: string; path: string }
+/** One straight connection in percent of the frame. */
+export interface MapLine { color: string; x1: number; y1: number; x2: number; y2: number }
 export interface MapFrame { x: number; y: number; width: number; height: number }
 
 const round = (value: number) => Math.round(value * 100) / 100;
@@ -79,12 +83,20 @@ export function mapPins(layers: MapLayer[], projection: MinimapProjection, minWi
   const frame = mapFrame(extent, undefined, minWidth);
   const regions: MapRegion[] = layers.flatMap((layer, i) => layer.shape === 'area' && projected[i].length
     ? [{ color: layer.color, path: regionPath(projected[i], side(layer), frame) }] : []);
-  const pins: MapPin[] = layers.flatMap((layer, i) => layer.shape === 'area' ? [] : projected[i].map((p, n) => ({
+  const pins: MapPin[] = layers.flatMap((layer, i) => layer.shape === 'area' || layer.shape === 'line' ? [] : projected[i].map((p, n) => ({
     left: round((p.x - frame.x) / frame.width * 100),
     top: round((p.y - frame.y) / frame.height * 100),
     color: layer.color,
     shape: layer.shape,
-    ...(layer.shape === 'number' && { text: String((layer.start ?? 1) + n) }),
+    ...(layer.shape === 'number' && { text: layer.labels?.[n] ?? String((layer.start ?? 1) + n) }),
   })));
-  return { frame, pins, regions };
+  const lines: MapLine[] = layers.flatMap((layer, i) => layer.shape !== 'line' ? [] : projected[i].flatMap((p, n) => {
+    const q = projected[i][n + 1];
+    return n % 2 || !q ? [] : [{
+      color: layer.color,
+      x1: round((p.x - frame.x) / frame.width * 100), y1: round((p.y - frame.y) / frame.height * 100),
+      x2: round((q.x - frame.x) / frame.width * 100), y2: round((q.y - frame.y) / frame.height * 100),
+    }];
+  }));
+  return { frame, pins, regions, lines };
 }

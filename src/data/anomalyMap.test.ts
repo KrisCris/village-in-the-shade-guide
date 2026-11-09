@@ -47,6 +47,25 @@ describe('anomaly map crop', () => {
   });
 });
 
+describe('anomaly map lines and labels', () => {
+  it('joins point pairs into lines and frames both ends', () => {
+    const { frame, pins, lines } = mapPins([
+      { label: 'route', color: '#f00', shape: 'line', points: [{ x: 1000, y: 1000 }, { x: 1400, y: 1300 }, { x: 1200, y: 1000 }] },
+    ], projection);
+    expect(pins).toEqual([]);
+    expect(lines).toHaveLength(1);
+    expect(frame.x + frame.width).toBeGreaterThanOrEqual(1400);
+    const [line] = lines;
+    expect(line.x1).toBeLessThan(line.x2);
+    expect(line.y1).toBeLessThan(line.y2);
+  });
+
+  it('prints custom labels on numbered pins', () => {
+    const { pins } = mapPins([{ label: 'a', color: '#fff', shape: 'number', points: [{ x: 1000, y: 1000 }, { x: 1100, y: 1000 }], labels: ['3', '1'] }], projection);
+    expect(pins.map((p) => p.text)).toEqual(['3', '1']);
+  });
+});
+
 describe('anomaly map areas', () => {
   const area = { label: 'area', color: '#f00', shape: 'area' as const, size: 100, points: [{ x: 1000, y: 1000 }, { x: 1100, y: 1000 }, { x: 1300, y: 1000 }, { x: 1000, y: 1100 }] };
 

@@ -1,7 +1,13 @@
 ---
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnomalyMap from '../../components/AnomalyMap.astro';
+import HuntAnimalCard from '../../components/HuntAnimalCard.astro';
 import {getCatalog,entityUrl} from '../../data/repository';
+import {minimapImage} from '../../data/collectionMap';
+import type {MapLayer} from '../../data/anomalyMap';
+import {heartText} from '../../data/nightMonsters';
+import {hunting as H,ZONES,zoneName,zoneAnimals,animalName,chanceText,escapeExits,exitNumber,spotsWithoutHole,tiles,type AnimalKey} from '../../data/hunting';
 import { getI18n } from '../../i18n/server';
 import { huntRewardOdds } from '../../domain/huntRewards';
 const {t,tHtml,href,locale}=getI18n(Astro.url);
@@ -9,16 +15,135 @@ const {t,tHtml,href,locale}=getI18n(Astro.url);
 const percent=(value:number)=>{const shown=Number((value*100).toFixed(value>=.1?0:1));return value<1&&shown>=100?'>99%':`${shown}%`;};
 const catalog=getCatalog(locale);
 const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
+const itemName=(id:string)=>item(id)?.name.zh_hans??id;
 const licenses=catalog.entities.filter(e=>e.kind==='items'&&e.category_id==='ITEM_CATEGORY_HUNTING_LICENSE').sort((a,b)=>Number(a.buy_price)-Number(b.buy_price));
 const gear=catalog.entities.filter(e=>e.kind==='items'&&e.category_id==='ITEM_CATEGORY_HUNTING_GEAR');
 const rewards=catalog.entities.filter(e=>e.kind==='hunt-rewards');
+const image=withBase(minimapImage(locale));
+const an=(key:AnimalKey)=>animalName(key,locale);
+const zn=(zone:(typeof ZONES)[number])=>zoneName(zone,locale,t);
+const hearts=(key:AnimalKey)=>heartText(H.animals[key].hit!.hearts);
+const sec=(frames:number)=>String(Math.round(frames/6)/10);
+const list=(parts:string[])=>parts.join(t('、'));
+const seasons=[t('春'),t('夏'),t('秋'),t('冬')];
+const B=H.behaviour, E=H.escape, T=H.traps;
+const C={white:'#f4f1e8',gold:'#f2b632',spot:'#c9d2cc'};
+const fenceLayer:MapLayer={label:t('执照围栏'),color:C.white,shape:'square',points:H.fences};
+const lodgeLayer:MapLayer={label:t('猎人小屋'),color:C.white,shape:'star',points:[H.lodge]};
+const exits=escapeExits();
+const holeExits=E.holes.map(h=>String(exitNumber(h.exit)));
+const stranded=spotsWithoutHole();
+// The exit every big-game hole leads to (exit 3, in the tanuki area; checked in src/data/hunting.test.ts).
+const north=exits.find(e=>['9','10','11'].every(table=>e.from.some(z=>z.table===table)))!;
+const pheasantSouth=H.tables['5'].spots.filter(s=>s.y>14000).length;
+const fenceCount=(license:string)=>H.fences.filter(f=>f.license===license).length;
+const nav=[['daily',t('每天的出现规则')],['spots',t('出现点与概率')],['animals',t('各种猎物的反应')],['escape',t('逃跑路线')],['traps',t('陷阱')],['licenses',t('执照预算')],['rewards',t('证明换什么')],['gear',t('狩猎工具')]];
 ---
 <BaseLayout title={t('狩猎执照与材料规划')}><h1>{t('狩猎执照与材料规划')}</h1>
-<nav><a href="#licenses">{t('执照预算')}</a>　<a href="#rewards">{t('证明换什么')}</a>　<a href="#gear">{t('狩猎工具')}</a></nav>
+<p>{t('每天都有新的猎物出现在固定的出现点上。受惊后它会钻进附近的逃生洞，从别的区的固定出口出来。')}</p>
+<nav class="toc" aria-label={t('本页目录')}>{nav.map(([id,label])=><a href={`#${id}`}>{label}</a>)}</nav>
 <section><h2>{t('先按材料需求选择猎物')}</h2><ol><li>{t('从建筑、制作或料理目标点开缺少的材料，再对照下方狩猎证明的报酬。不要只按执照价格从低到高全部购买。')}</li><li>{t('检查对应执照是否已经取得。执照不仅允许狩猎，也关系到对应区域能否进入；购买前把执照费用与工具准备一起计入预算。')}</li><li>{t('狩猎取得证明后，交到猎人小屋的小箱子换报酬。证明与肉、皮、骨等实物不是同一件东西。')}</li><li set:html={tHtml('报酬到手后先分出制作和交付所需，余量再用于料理或出售。允许“肉类”替换的料理可从<a href="/guides/cooking-plan/#ingredients">料理材料表</a>挑选材料，不必消耗唯一一份稀缺猎物材料。')} /></ol></section>
-<section id="licenses"><h2>{t('执照预算')}</h2><div class="grid">{licenses.map(license=>{const offers=catalog.entities.filter(e=>e.kind==='store-offers'&&e.item_id===license.id);return <article class="card"><a class="name" href={href(entityUrl(license))}>{license.icon_path&&<img src={withBase(license.icon_path)} width="52" height="52" alt="" loading="lazy"/>}<strong>{license.name.zh_hans}</strong></a><p>{offers.length?t('商店记录已确认'):t('购买途径待核对')} · {t('基础买价 {price}',{price:String(license.buy_price)})}</p>{offers.map(offer=><p><a href={href(entityUrl(offer))}>{((offer.conditions??[]) as string[]).join(t('；'))||t('查看售卖记录')}</a></p>)}</article>;})}</div><p set:html={tHtml('鹿的执照基础买价为 10,000。游戏执照说明与鹿区域围栏脚本都确认它控制鹿出没区域的进入权限；钓点路线另见<a href="/data/fish/">鱼类钓点筛选</a>。')} /></section>
+
+<section id="daily"><h2>{t('每天的出现规则')}</h2><ul>
+<li>{t('每天开始时，每个狩猎区重新抽一次当天的猎物，放在固定的出现点上。白天不会再补。')}</li>
+<li>{t('猎物 {time} 离开；{pheasant}到 {hour}:00 就会飞走。',{time:H.vanish_time,pheasant:an('PHEASANT'),hour:H.pheasant_home_hour})}</li>
+<li>{t('每个区按固定顺序轮到各种猎物：先判定它今天出不出现，再随机决定几只，先轮到的先占出现点，占满就停。{boar}区、{deer}区和{bear}区各只有 1 个出现点，每天最多 1 只猎物。',{boar:an('BOAR'),deer:an('DEER'),bear:an('BEAR')})}</li>
+<li>{t('打倒猎物时，有对应执照才会掉狩猎证明，掉在它倒下的地方。没有执照也能打，但什么都拿不到；打倒的猎物会跑掉，当天不再出现。')}</li>
+</ul></section>
+
+<section id="spots"><h2>{t('出现点与概率')}</h2>
+<div class="spots">
+<AnomalyMap image={image} label={t('狩猎区的出现点和执照围栏')} layers={[...ZONES.map((zone):MapLayer=>({label:zn(zone),color:zone.color,shape:'dot',points:H.tables[zone.table].spots})),fenceLayer,lodgeLayer]}/>
+<div><div class="table-scroll"><table class="zones"><thead><tr><th>{t('区域')}</th><th>{t('当天至少出现 1 只')}</th></tr></thead><tbody>
+{ZONES.map(zone=><tr><th scope="row"><i class="swatch" style={`--pin:${zone.color}`} aria-hidden="true"/>{zn(zone)}<span class="spot-count">{t('{n} 个出现点',{n:H.tables[zone.table].spots.length})}</span></th><td><ul>{zoneAnimals(zone.table).map(r=><li><span>{an(r.animal)} <span class="num">{chanceText(r.chance)}</span></span>{r.expected>r.chance[1]+.05&&<span class="muted">{t('，平均 {n} 只',{n:Math.round(r.expected*10)/10})}</span>}{r.seasons.length<4&&<span class="muted">{t('（只在{season}季）',{season:list(r.seasons.map(s=>seasons[s]))})}</span>}</li>)}</ul></td></tr>)}
+</tbody></table></div>
+<p class="note">{t('{zone}的出现点分成两片：西南 {n} 个，其余在北边的{boar}、{deer}和{bear}附近。',{zone:zn(ZONES[1]),n:pheasantSouth,boar:an('BOAR'),deer:an('DEER'),bear:an('BEAR')})}</p>
+</div></div></section>
+
+<section id="animals"><h2>{t('各种猎物的反应')}</h2>
+<div class="cards">
+<HuntAnimalCard id="squirrel" keys={['SQUIRREL']} image={image}><ul>
+<li>{t('你一靠近或被它看见，它就逃跑；被打中也会逃。')}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="rabbit" keys={['RABBIT']} image={image}><ul>
+<li>{t('你走进约 {r} 格内，它会停下来盯着你 {a}～{b} 秒，然后往远离你的方向跳开约 6 格，再恢复平常。',{r:tiles(B.rabbit_alert),a:3,b:10})}</li>
+<li>{t('它还没发现你时，只有不蓄力直接射出的箭能射中，中箭后它会逃跑；蓄过力的箭会被它躲开。它盯着你的时候，什么箭都会被躲开。')}</li>
+<li>{t('你贴到它身边或被它看见，它会直接逃跑。')}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="pheasant" keys={['PHEASANT']} image={image}><ul>
+<li>{t('被它看见、你靠近或打中它，它都会逃跑。逃跑 {s} 秒内没钻进逃生洞，它就飞走，当天不再出现。',{s:sec(E.pheasant_takeoff_frames)})}</li>
+<li>{t('到 {hour}:00 它会自己飞走。',{hour:H.pheasant_home_hour})}</li>
+<li>{t('打倒后证明留在原地，它也会飞走。')}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="weasel" keys={['WEASEL']} image={image}><ul>
+<li>{t('你靠近、被它看见，或者瞄准它超过 {s} 秒，它就会发现你，停一下然后扑过来，每次扣 {h} 颗心。',{s:sec(B.weasel_aim_frames),h:hearts('WEASEL')})}</li>
+<li>{t('前两次扑完它会退开；第三次扑完就逃跑。')}</li>
+<li>{t('被打中就逃跑。')}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="tanuki" keys={['RACCOON_DOG']} image={image}><ul>
+<li>{t('发现你后先后退约 3 格、转身面对你，然后在你身边 1～3 格绕圈，找机会扑过来，每次扣 {h} 颗心。',{h:hearts('RACCOON_DOG')})}</li>
+<li>{t('扑 2 次，或者被你撞到 3 次，它就逃跑。被蓄过力的箭或近身攻击打中也会逃跑。')}</li>
+<li>{t('你离开约 {d} 格，它就不再理你。',{d:tiles(B.raccoon_reset)})}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="fox" keys={['FOX']} image={image}><ul>
+<li>{t('发现你后会警戒，最多持续游戏时间 {m} 分钟，之后逃跑。',{m:B.fox_alert_minutes})}</li>
+<li>{t('警戒时你走进它的攻击范围，它会扑过来，每次扣 {h} 颗心，扑完后退开；第 3 次扑完就逃跑。',{h:hearts('FOX')})}</li>
+<li>{t('被打中就逃跑。你离开约 {d} 格，它就恢复平常。',{d:tiles(B.fox_reset)})}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="boar" keys={['BOAR','BOAR_BIG']} image={image}><ul>
+<li>{t('你靠近时它会转向你、吼叫，然后开打：离你 5 格以外就冲撞过来，5 格以内用獠牙顶。每第 5 次攻击会先吼叫，再连续冲撞 3 次。')}</li>
+<li>{t('{boar}每次扣 {h} 颗心，{big}扣 {hb} 颗心；冲撞会把你撞飞。',{boar:an('BOAR'),h:hearts('BOAR'),big:an('BOAR_BIG'),hb:hearts('BOAR_BIG')})}</li>
+<li>{t('生命剩 {hp} 或更少时再挨一下，它就会逃跑。你跑开约 {d} 格，它就不追了。',{hp:B.boar_flee_hp,d:tiles(B.large_reset)})}</li>
+<li>{t('{big}生命和{boar}一样，打倒后掉{cert}。',{big:an('BOAR_BIG'),boar:an('BOAR'),cert:itemName(H.animals.BOAR_BIG.certificate)})}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="deer" keys={['DEER','DEER_BIG']} image={image}><ul>
+<li>{t('你靠近、被它看见，或者瞄准它超过 {s} 秒，它会发现你，先后退，然后开打：离得远就冲过来，近了就用角挑、用头顶。',{s:sec(B.deer_aim_frames)})}</li>
+<li>{t('{deer}每次扣 {h} 颗心，{big}扣 {hb} 颗心。',{deer:an('DEER'),h:hearts('DEER'),big:an('DEER_BIG'),hb:hearts('DEER_BIG')})}</li>
+<li>{t('攻击 {a} 次、打中你 {n} 次，或者生命剩 {hp} 或更少时，它就逃跑。你离开约 {d} 格，它就恢复平常。',{a:B.deer_flee_attacks,n:B.deer_flee_hits,hp:B.boar_flee_hp,d:tiles(B.deer_reset)})}</li>
+<li>{t('{big}打倒后掉{cert}。',{big:an('DEER_BIG'),cert:itemName(H.animals.DEER_BIG.certificate)})}</li></ul></HuntAnimalCard>
+
+<HuntAnimalCard id="bear" keys={['BEAR','BEAR_BIG']} image={image}><ul>
+<li>{t('你靠近时它会吼叫，然后开打：冲撞、挥爪、拍击、扑撞轮着来，每第 5 次是一记大招。')}</li>
+<li>{t('{bear}每次扣 {h} 颗心，{big}扣 {hb} 颗心。',{bear:an('BEAR'),h:hearts('BEAR'),big:an('BEAR_BIG'),hb:hearts('BEAR_BIG')})}</li>
+<li>{t('受伤不会逃跑，会一直打到倒下。你跑开约 {d} 格，它才停下。',{d:tiles(B.large_reset)})}</li>
+<li>{t('{big}打倒后掉{cert}。',{big:an('BEAR_BIG'),cert:itemName(H.animals.BEAR_BIG.certificate)})}</li></ul></HuntAnimalCard>
+</div></section>
+
+<section id="escape"><h2>{t('逃跑路线')}</h2>
+<ul>
+<li>{t('猎物受惊或被打中后，会在身边约 {r} 格的范围里找逃生洞。找到一个能直线跑过去的洞，就跑过去钻进去；没找到之前，它先往远离你的方向跑，边跑边找。',{r:tiles(E.search)})}</li>
+<li>{t('钻进洞的猎物不会消失：它会出现在这个洞对应的出口附近 {a}～{b} 格内，恢复平常，一直待到 {time}。每个洞通往的出口是固定的。',{a:tiles(E.warp[0]),b:tiles(E.warp[1]),time:H.vanish_time})}</li>
+<li>{t('打倒的猎物会飞快跑向一个走得到的逃生洞，钻进去就消失；哪个洞都走不到时，它会在原地淡出。')}</li>
+<li>{t('逃跑途中离洞超过约 {d} 格，它会放弃，在当时的位置恢复平常。',{d:tiles(E.give_up)})}</li>
+</ul>
+<div class="spots">
+<AnomalyMap image={image} label={t('逃生洞和出口')} layers={[{label:t('出现点'),color:C.spot,shape:'dot',points:Object.values(H.tables).flatMap(table=>table.spots)},{label:t('洞通往的出口'),color:C.gold,shape:'line',points:E.holes.flatMap(h=>[h,E.exits[h.exit as keyof typeof E.exits]])},{label:t('逃生洞（数字是它通往的出口）'),color:C.white,shape:'number',points:E.holes,labels:holeExits},{label:t('出口'),color:C.gold,shape:'number',points:exits.map(e=>e.point),labels:exits.map(e=>String(e.number))}]}/>
+<div><div class="table-scroll"><table class="exits"><thead><tr><th>{t('出口')}</th><th>{t('出口所在')}</th><th>{t('从这些区逃进来')}</th></tr></thead><tbody>
+{exits.map(e=><tr><td class="num"><span class="exit-no">{e.number}</span></td><td><i class="swatch" style={`--pin:${e.zone.color}`} aria-hidden="true"/>{zn(e.zone)}</td><td>{list(e.from.map(zn))}{t('（{n} 个洞）',{n:e.holes.length})}</td></tr>)}
+</tbody></table></div>
+<ul class="note-list">
+<li>{t('{boar}、{deer}、{bear}所在的北边，{n} 个洞都通往出口 {exit}。在那里跑掉的大型猎物，去{zone}找。',{boar:an('BOAR'),deer:an('DEER'),bear:an('BEAR'),n:north.holes.length,exit:north.number,zone:zn(north.zone)})}</li>
+<li>{t('其他洞也都把猎物送到猎场的另一边。出口附近大多还有洞，在出口再吓到它，它会接着钻到下一个出口。')}</li>
+<li>{t('出口 {n} 附近没有洞，到这里的猎物再受惊时只会往远处跑。',{n:list(exits.filter(e=>!e.onward).map(e=>String(e.number)))})}</li>
+<li>{t('有 {n} 个出现点附近没有洞（{zones}），那里的猎物受惊后会先往远离你的方向跑。',{n:stranded.length,zones:list([...new Set(stranded.map(s=>zn(ZONES.find(z=>z.table===s.table)!)))])})}</li>
+</ul></div></div></section>
+
+<section id="traps"><h2>{t('陷阱')}</h2><ul>
+<li>{t('{box}用来抓小型动物，{snare}用来抓大型动物。每种最多放 {n} 个，{box}用 {a} 次、{snare}用 {b} 次后损坏。',{box:itemName('ITEM_ID_BOX_TRAP'),snare:itemName('ITEM_ID_BINDING_TRAP'),n:T.placement_max,a:T.box_uses,b:T.bind_uses})}</li>
+<li>{t('放了{bait}的{box}会引诱附近闲逛的小动物：动物在引诱范围里时，每 {s} 秒有 {p}% 的机会被吸引，慢慢走进笼子。它走过去时你离它不到约 {d} 格，它会受惊逃跑。',{bait:itemName('ITEM_ID_WILD_HUNTING_BAIT'),box:itemName('ITEM_ID_BOX_TRAP'),s:sec(T.lure_frames),p:T.lure_chance,d:tiles(T.lure_flee_distance)})}</li>
+<li>{t('放了{bait}的{snare}会套住踩上去的大型动物。',{bait:itemName('ITEM_ID_WILD_HUNTING_BAIT'),snare:itemName('ITEM_ID_BINDING_TRAP')})}</li>
+<li>{t('被抓住的动物要走过去收取，有对应执照才会得到证明。陷阱放着过夜能不能抓到动物、几率多少，还没有核对。')}</li>
+</ul></section>
+
+<section id="licenses"><h2>{t('执照预算')}</h2><div class="grid">{licenses.map(license=>{const offers=catalog.entities.filter(e=>e.kind==='store-offers'&&e.item_id===license.id);const fences=fenceCount(license.id);return <article class="card"><a class="name" href={href(entityUrl(license))}>{license.icon_path&&<img src={withBase(license.icon_path)} width="52" height="52" alt="" loading="lazy"/>}<strong>{license.name.zh_hans}</strong></a><p>{offers.length?t('商店记录已确认'):t('购买途径待核对')} · {t('基础买价 {price}',{price:String(license.buy_price)})} · {fences?t('打开 {n} 处围栏',{n:fences}):t('没有围栏')}</p>{offers.map(offer=><p><a href={href(entityUrl(offer))}>{((offer.conditions??[]) as string[]).join(t('；'))||t('查看售卖记录')}</a></p>)}</article>;})}</div><p set:html={tHtml('鹿的执照基础买价为 10,000。游戏执照说明与鹿区域围栏脚本都确认它控制鹿出没区域的进入权限；钓点路线另见<a href="/data/fish/">鱼类钓点筛选</a>。')} /></section>
 <section id="rewards"><h2>{t('狩猎证明报酬')}</h2><p>{t('每交一张证明，按卡片上标明的次数抽取报酬，每次从下列报酬中抽一项，可能重复。“单次”是抽一次得到这一项的概率，“每张”是一张证明至少得到一次的概率。')}</p><div class="grid">{rewards.map(reward=>{const certificate=item(String(reward.certificate_item_id));return certificate&&<article class="card"><h3><a class="name" href={href(entityUrl(certificate))}>{certificate.icon_path&&<img src={withBase(certificate.icon_path)} width="48" height="48" alt="" loading="lazy"/>}{certificate.name.zh_hans}</a></h3><p class="draws">{t('每张抽 {count} 次',{count:String(reward.draw_count)})}</p><ul>{huntRewardOdds(reward).map(r=>{const entry=item(r.item_id);return entry&&<li><a class="name" href={href(entityUrl(entry))}>{entry.icon_path&&<img src={withBase(entry.icon_path)} width="36" height="36" alt="" loading="lazy"/>}{entry.name.zh_hans} ×{r.quantity}</a><span class="odds">{t('单次 {draw}｜每张 {certificate}',{draw:percent(r.perDraw),certificate:percent(r.perCertificate)})}</span></li>;})}</ul></article>;})}</div></section>
 <section id="gear"><h2>{t('狩猎工具')}</h2><div class="grid">{gear.map(e=><a class="card name" href={href(entityUrl(e))}>{e.icon_path&&<img src={withBase(e.icon_path)} width="48" height="48" alt="" loading="lazy"/>}{e.name.zh_hans}</a>)}</div></section>
-<details class="sources"><summary>{t('游戏数据来源')}</summary><p>{t('item.dat、store.dat：执照价格、说明与售卖条件；huntreward.dat：狩猎证明报酬、每张的抽取次数（dropNum）和各项权重（Rate）；village.exe：每张证明独立抽取 dropNum 次，每次按 Rate 占比抽一项，直接放入小箱子和从交付菜单提交相同；tips.dat 的 TIPS_36_HUNTING_CERTIFICATE：交付地点；gimmick_hunting_license_sign_fence.lub：执照标记与围栏通行状态。猎物的命中次数和刷新概率尚未核对。')}</p></details>
+<details class="sources"><summary>{t('游戏数据来源')}</summary><ul>
+<li>{t('item.dat、store.dat：执照价格、说明与售卖条件；huntreward.dat：狩猎证明报酬、每张的抽取次数（dropNum）和各项权重（Rate）；village.exe：每张证明独立抽取 dropNum 次，每次按 Rate 占比抽一项，直接放入小箱子和从交付菜单提交相同；tips.dat 的 TIPS_36_HUNTING_CERTIFICATE：交付地点。')}</li>
+<li>{t('出现规则：placementcreature.dat 的各区出现表，以及村庄地图格子上记录的出现表编号（四季相同）；游戏程序 village.exe 在每天开始时（event_check_daily 的 GameDailyUpdate）按表的顺序抽签放置。')}</li>
+<li>{t('猎物：creature.dat 的生命、攻击力、离开时间和证明掉落；ai_creature_hunting_template 与各猎物的 ai_creature_* 脚本：察觉、攻击、逃跑和躲箭；伤害：attack.dat 的倍率乘以攻击力。')}</li>
+<li>{t('逃跑路线：地图上的“獣の逃げ道”机关和 escape_001～005 出口点，gimmick_creature_escape_route.lub；围栏：gimmick_hunting_license_sign_fence.lub；陷阱：gimmick_box_trap.lub、gimmick_bind_trap.lub。')}</li>
+<li>{H.source}</li>
+</ul></details>
 </BaseLayout>
-<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem}.card{padding:1rem}.card h3{margin-top:0}.name{display:flex;align-items:center;gap:.5rem;text-decoration:none}.name img{object-fit:contain}.card ul{padding-left:1rem}.draws{margin:-.4rem 0 .2rem;color:var(--muted);font-size:.9rem}.odds{display:block;margin-left:calc(36px + .5rem);color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums;line-height:1.4}nav{line-height:2}</style>
+<style>section{margin:2rem 0;scroll-margin-top:90px}p,li{line-height:1.8}li{margin:.5rem 0}.toc{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;line-height:1.8;margin-bottom:1rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem}.card{padding:1rem}.card h3{margin-top:0}.name{display:flex;align-items:center;gap:.5rem;text-decoration:none}.name img{object-fit:contain}.card ul{padding-left:1rem}.draws{margin:-.4rem 0 .2rem;color:var(--muted);font-size:.9rem}.odds{display:block;margin-left:calc(36px + .5rem);color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums;line-height:1.4}.cards{display:grid;gap:1rem}.spots{display:grid;gap:.4rem 1.4rem;align-items:start}@media (min-width:1280px){.spots{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}.note{font-size:.85rem;color:var(--muted);margin:.4rem 0}.note-list{font-size:.9rem;padding-left:1.2rem}.note-list li{margin:.35rem 0}.muted{color:var(--muted)}.num{font-variant-numeric:tabular-nums}.swatch{display:inline-block;flex:none;width:.65rem;height:.65rem;margin-right:.45rem;border-radius:50%;background:var(--pin);border:1.5px solid #17201c;vertical-align:baseline}.zones,.exits{width:100%;border-collapse:separate;border-spacing:0;margin:.6rem 0;border:1px solid var(--border);border-radius:8px;background:var(--paper-raised);overflow:hidden}.zones th,.exits th{background:color-mix(in srgb,var(--green-soft) 70%,var(--paper-raised))}.zones tbody th{background:none;font-weight:600;white-space:nowrap}.zones th,.zones td,.exits th,.exits td{padding:.45rem .7rem;text-align:left;vertical-align:top}.zones tbody th,.zones tbody td,.exits tbody td{border-top:1px solid var(--border)}.exits thead th,.exits td:nth-child(-n+2){white-space:nowrap}.spot-count{display:block;margin-left:1.1rem;color:var(--muted);font-size:.8rem;font-weight:400}.zones ul{list-style:none;margin:0;padding:0}.zones li{margin:0;line-height:1.6}.zones li span{white-space:nowrap}.exit-no{display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:50%;background:#f2b632;border:2px solid #17201c;color:#17201c;font:700 .7rem/1 var(--font-sans)}details{padding:.8rem 1rem;border:1px solid var(--border);border-radius:10px;margin:.7rem 0}summary{cursor:pointer;font-weight:bold}</style>

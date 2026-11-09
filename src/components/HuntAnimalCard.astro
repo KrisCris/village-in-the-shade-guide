@@ -1,0 +1,60 @@
+---
+/** One hunted animal (with its large variant): where it spawns, the odds there, a map of those spots, and a slot for its behaviour. */
+import AnomalyMap from './AnomalyMap.astro';
+import { withBase } from '../lib/sitePath';
+import { getCatalog, entityUrl } from '../data/repository';
+import { getI18n } from '../i18n/server';
+import type { MapLayer } from '../data/anomalyMap';
+import { hunting, animalName, animalZones, chanceText, zoneName, type AnimalKey } from '../data/hunting';
+interface Props { id: string; keys: AnimalKey[]; image: string }
+const { id, keys, image } = Astro.props;
+const { t, href, locale } = getI18n(Astro.url);
+const catalog = getCatalog(locale);
+const [main] = keys;
+const animal = hunting.animals[main];
+const license = catalog.entities.find((e) => e.kind === 'items' && e.id === animal.license);
+const name = animalName(main, locale);
+const seasons = [t('春'), t('夏'), t('秋'), t('冬')];
+const entries = animalZones(keys);
+const zones = [...new Map(entries.map((entry) => [entry.zone.table, entry.zone])).values()];
+const hp = keys.map((key) => hunting.animals[key].hp);
+const fences = hunting.fences.filter((fence) => fence.license === animal.license);
+const layers: MapLayer[] = [
+  ...zones.map((zone): MapLayer => ({ label: zoneName(zone, locale, t), color: zone.color, shape: 'dot', points: hunting.tables[zone.table].spots })),
+  ...(fences.length ? [{ label: t('执照围栏'), color: '#f4f1e8', shape: 'square' as const, points: fences }] : []),
+];
+const fights = keys.some((key) => hunting.animals[key].hit);
+---
+<article class="card hunt-card" id={id}>
+  <h3>{license ? <a class="name" href={href(entityUrl(license))}>{license.icon_path && <img src={withBase(license.icon_path)} width="44" height="44" alt="" loading="lazy" />}{name}</a> : name}</h3>
+  <p class="conds">
+    <span class="pill">{hp[1] && hp[1] !== hp[0] ? t('生命 {hp}（{big} {bigHp}）', { hp: hp[0], big: animalName(keys[1], locale), bigHp: hp[1] }) : t('生命 {hp}', { hp: hp[0] })}</span>
+    <span class={`pill ${fights ? 'warn' : ''}`}>{fights ? t('会反击') : t('不会攻击')}</span>
+  </p>
+  <div class="body"><div>
+    <h4>{t('在哪里出现')}</h4>
+    <ul class="where">{zones.map((zone) => <li><i class="swatch" style={`--pin:${zone.color}`} aria-hidden="true" />{zoneName(zone, locale, t)}{t('：')}{entries.filter((entry) => entry.zone === zone).map((entry) => [
+      keys.length > 1 || entry.animal !== main ? `${animalName(entry.animal, locale)} ` : '',
+      chanceText(entry.chance),
+      entry.seasons.length < 4 ? t('（只在{season}季）', { season: entry.seasons.map((s) => seasons[s]).join(t('、')) }) : '',
+    ].join('')).join(t('，'))}</li>)}</ul>
+    <h4>{t('会怎么做')}</h4>
+    <slot />
+  </div><AnomalyMap image={image} label={t('{animal}的出现点', { animal: name })} layers={layers} minWidth={460} /></div>
+</article>
+<style>
+  .hunt-card { padding: 1rem 1.1rem; margin: 0; min-width: 0; scroll-margin-top: 90px; }
+  .hunt-card h3 { margin-top: 0; }
+  .name { display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; }
+  .name img { object-fit: contain; }
+  h4 { font-size: .95rem; margin: 1rem 0 .3rem; }
+  .conds { display: flex; flex-wrap: wrap; gap: .4rem; margin: .3rem 0; }
+  .pill.warn { background: color-mix(in srgb, #e2553f 18%, var(--paper-raised)); color: inherit; }
+  .where { list-style: none; padding: 0; margin: .3rem 0; }
+  .where li { display: flex; align-items: baseline; gap: .45rem; line-height: 1.7; font-variant-numeric: tabular-nums; }
+  .swatch { flex: none; width: .65rem; height: .65rem; border-radius: 50%; background: var(--pin); border: 1.5px solid #17201c; transform: translateY(.05rem); }
+  .body { display: grid; gap: .2rem 1.4rem; align-items: start; }
+  .body :global(ul:not(.where)) { margin: .3rem 0; padding-left: 1.3rem; }
+  .body :global(li) { line-height: 1.8; }
+  @media (min-width: 900px) { .body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+</style>
