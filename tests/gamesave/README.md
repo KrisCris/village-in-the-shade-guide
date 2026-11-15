@@ -1,22 +1,20 @@
 # Local save-editor integration fixtures
 
-Personal game saves are intentionally excluded from Git. CI gets them from
-`tests/fixtures/gamesave.tar.gz.enc`, an AES-encrypted archive unpacked by
-`tools/save-fixtures.sh unpack` with the `SAVE_FIXTURES_KEY` Actions secret
-(forks do not receive the secret, so their runs skip these suites). After
-changing a fixture here, re-encrypt it with
-`SAVE_FIXTURES_KEY=... tools/save-fixtures.sh pack`. The integration suites
-use the original development snapshots `save.001` through `save.005` and
-`.systemsave` in this directory. They assert the contents of those specific
-snapshots, so arbitrary saves are not interchangeable fixtures.
+The integration suites use the original development snapshots `save.001`
+through `save.005` and `.systemsave` in this directory. Their assertions depend
+on the contents of these specific snapshots.
+
+Git stores the saves in `tests/fixtures/gamesave.tar.gz.enc`, an AES-encrypted
+archive. CI unpacks it with `tools/save-fixtures.sh unpack` when the
+`SAVE_FIXTURES_KEY` Actions secret is configured. After changing a fixture here,
+re-encrypt it with `SAVE_FIXTURES_KEY=... tools/save-fixtures.sh pack`.
 
 `npm test` generates the public lookup tables, then runs all available tests.
-When these private snapshots are absent, Vitest reports the corresponding
-integration suites as skipped; codec, lookup and search unit tests still run.
-With the original snapshots present, the full save-editor regression runs.
+Vitest uses local fixture availability to enable or skip the integration suites.
+Codec, lookup and search unit tests run on every checkout. The original snapshots
+enable the full save-editor regression suite.
 
-To check the same behavior as a checkout without private saves, without moving
-or deleting any local files:
+For a test run using public data, set `SAVE_EDITOR_SKIP_PRIVATE_FIXTURES`.
 
 ```powershell
 $env:SAVE_EDITOR_SKIP_PRIVATE_FIXTURES = '1'

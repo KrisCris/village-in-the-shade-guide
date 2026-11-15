@@ -60,6 +60,6 @@ uv run pytest
 npm run verify
 ```
 
-Then spot-check the icons, shop conditions, recipes and reverse uses of affected items. A price field does not prove an item can be bought. Value added by processing is measured against selling the ingredients directly, which is different from the full return starting from seeds. Known limits are in [content coverage](content-coverage.en.md); the reference chain for fishing spot names is in [`data-evidence/fishing-locations.md`](data-evidence/fishing-locations.md) (Chinese).
+Then spot-check the icons, shop conditions, recipes and reverse uses of affected items. Check purchase conditions against shop listings. Measure the value added by processing against selling the ingredients directly, and calculate the full production chain's return starting with seed costs. The reference chain for fishing spot names is in [`data-evidence/fishing-locations.md`](data-evidence/fishing-locations.md) (Chinese).
 
 Never commit raw archives or saves.

@@ -1,87 +1,92 @@
-# 静谧田园 Wiki
+# Village in the Shade Wiki
 
-**简体中文** | [English](README.en.md)
+**English** | [中文](README.zh-CN.md) | [日本語](README.ja.md)
 
-《Village in the Shade / ほの暮しの庭》（静谧田园）的非官方资料站、收益规划工具和存档编辑器。
+An unofficial wiki and strategy guide for *Village in the Shade* (ほの暮しの庭), with a searchable game database, interactive maps, farming planners and a browser-based save editor.
 
-网站：<https://kriscris.github.io/village-in-the-shade-guide/>
-支持简体中文、繁體中文、日本語和 English。
+The site is available in Simplified Chinese, Traditional Chinese, Japanese and English. [Visit the site](https://kriscris.github.io/village-in-the-shade-guide/en/)
 
-数据直接从游戏文件提取（当前为 Steam 构建 `25640656`，即 1.30 版本），名称、说明和图标与游戏一致。AppMedia 等站点只用来对照选题，不作为数据来源。
+Data comes directly from the game files, with names, descriptions and icons matching the game. The project's guides, interactive maps and planning tools are built around these game records. The current snapshot is Steam build `25640656`, patch 1.30.
 
-## 网站内容
+## What's on the site
 
-- **资料库**：作物、机械、加工、料理、鱼类、角色和全部物品。可按拼音搜索，按季节、时段、钓点、品质筛选，点列标题排序。详情侧栏列出获取方式、用途、配方、商店和交付等双向关系。
-- **收益规划**：比较加工增值，以及从买种到加工出售的整体收益。
-- **生产工作流**：在画布上安排买种、种植、加工、留货和出售，自动推算数量、日期、土地、机器和资金。见 [生产工作流说明](docs/workflow-planner.md)。
-- **每日规划**：读取存档，核对三张交付清单、加工设备和材料，列出今天该做的事：能交的交付、要加造几台设备、材料去采石场哪几层或砍哪些树、空地种什么、畜舍还能养什么，并记住你的农田范围。只读，不上传。见 [每日规划说明](docs/daily-planner.md)。
-- **攻略**：1.30 新内容（生日、播种机、卫浴设备）、四季留货、四季钓点、采石场掉落、生日与送礼、图书与神社地图、新手与系统、剧情流程、探索收集、外观、狩猎、家畜、料理、夜间准备、祠堂技能等。
-- **存档编辑器**：在浏览器里读取和修改存档，导出为新文件，不上传服务器。可以编辑玩家状态、物品与容器、加工设备、家畜、NPC 好感、任务、图鉴与解锁，以及农场和室内地图。见 [存档编辑器说明](docs/save-editor.md)。
+- Wiki database: Browse crops, machines, processing, crafting and cooking recipes, fish, residents and the full item catalog. Check prices, sources, uses, shops, deliveries and unlock conditions through linked entries. Category pages, filters and sortable tables help narrow the list.
+- Gameplay guides: Plan seasonal stockpiles, sowing and cross-season crops, crop quality and brands, cooking, livestock, buildings, land expansion and the greenhouse. Look up birthdays, gifts, recipe lessons, clothing, Hokora skills, hunting, Errand Coupons and story progression, plus the birthday, Seeder and plumbing additions in 1.30.
+- Fishing and quarry tables: Compare fish by season, time and fishing spot, including bite chances and fish to keep for deliveries. Inspect quarry drops by floor, expected yields, map layouts, special rooms and first-arrival rewards.
+- Night exploration guides: Check anomaly conditions, encounters, exchanges and rewards, late-night monster locations and damage, and how Curse items raise maximum Health and Stamina.
+- Interactive collection map: Find Lost Books, Gears, Ghost Rats, Tamatebako, Fox Shrines and exchange locations. Search and filter markers, open collection instructions, and tick off finds with progress saved in your browser.
+- Profit planner: Compare daily profit, profit per seed and monthly income from crops and processing. Adjust the season, year, seed source and quality, then inspect planting, harvest and processing timelines.
+- Production workflow: Connect purchases, planting, replanting, multi-stage processing, stockpiles, deliveries and sales on a canvas. Track daily land use, machine queues, inventory and cash, with shopping lists and plan import/export. [Workflow guide](docs/workflow-planner.en.md)
+- Daily planner: Read a save locally to build a checklist for deliveries, harvesting, processing, new machines, material gathering, planting, livestock and field guide completion. Check crop forecasts and season-change warnings, locate tasks on the farm and village map, and save your farm area. [Daily planner guide](docs/daily-planner.en.md)
+- Save editor: Edit names, money, date, weather, player stats and appearance, inventories, machines, livestock, friendship, quest progress, collections, skills, recipes and brands. Review and undo changes in the browser before exporting a new save. [Save editor guide](docs/save-editor.en.md)
+- Farm and interior layout editor: Paint crops and terrain, water or till groups of cells, and place, move or rotate buildings, facilities and furniture. Use seasonal and mature-crop previews, touch controls and undo, and transfer layouts between saves with JSON import/export.
+- Search: Find game entries by name, pinyin or initials, and search the full text of guides.
+- Offline app: Install the site on your desktop or home screen and download the current language's pages, images and maps for offline use. Downloads can be paused and resumed from page settings.
+- Page settings: Choose day or night mode and a seasonal theme, toggle falling effects, set item quality, and play background music.
 
-数值和条件都有游戏数据依据，还没核实的规则会在页面上注明。覆盖范围和已知限制见 [内容覆盖说明](docs/content-coverage.md)。
+## Running locally
 
-## 本地运行
-
-需要 Node.js 24 LTS。浏览和构建网站不需要安装游戏或 Python。
+Install Node.js 24 LTS, then run these commands from the repository directory.
 
 ```sh
 npm ci
-npm run dev        # 生成数据并启动开发服务器，地址见终端输出
+npm run dev        # generate data and start the dev server; the URL is printed in the terminal
 ```
 
 ```sh
-npm run build      # 生成静态站点和 Pagefind 搜索索引，输出到 dist/
-npm run preview    # 预览生产构建
+npm run build      # build the static site and Pagefind search index into dist/
+npm run preview    # serve the production build
 ```
 
-网站是纯静态的：Astro 在构建时生成页面，React 负责筛选、规划器和编辑器等交互，Pagefind 提供搜索。部署后不需要服务器或数据库。大列表和详情数据按需加载、分批渲染；性能请用生产预览判断，不要看开发服务器。
+The site uses static hosting. Astro renders pages at build time, React handles filters, planners and the editor, and Pagefind provides search. Large lists and detail data load on demand and render in batches. Use the production preview for performance testing.
 
-## 检查与测试
+## Checks and tests
 
 ```sh
 npm test               # Vitest
-npm run check          # Astro 与 TypeScript
-npm run content:check  # 主题映射
-npm run i18n:check     # 翻译完整性
-npm run verify         # 以上全部，加生产构建
-npm run check:build    # 构建后检查站内链接
-uv run pytest          # 提取器测试（需 Python 3.11+ 和 uv）
+npm run check          # Astro and TypeScript
+npm run content:check  # topic mapping
+npm run i18n:check     # translation completeness
+npm run verify         # all of the above plus a production build
+npm run check:build    # check internal links after building
+uv run pytest          # extractor tests (needs Python 3.11+ and uv)
 ```
 
-每个 pull request 都会在 GitHub Actions 上运行 `npm run verify`、链接检查和 pytest；合并到 `main` 后再次检查并部署到 GitHub Pages。
+GitHub Actions runs `npm run verify`, the link check and pytest on every pull request. After a merge to `main`, the checks run again and the site is deployed to GitHub Pages.
 
-存档编辑器的回归测试使用作者的测试存档。存档不以明文进入仓库，CI 用的是加密副本 `tests/fixtures/gamesave.tar.gz.enc`，由仓库密钥解密。没有存档时，这部分测试会自动跳过。详见 [tests/gamesave/README.md](tests/gamesave/README.md)。
+The save editor's regression tests use the author's test saves. CI decrypts `tests/fixtures/gamesave.tar.gz.enc` with a repository secret before running them. Setup and update instructions are in [tests/gamesave/README.md](tests/gamesave/README.md).
 
-## 目录结构
+## Repository layout
 
-| 路径 | 内容 |
+| Path | Contents |
 | --- | --- |
-| `src/pages/`、`src/components/`、`src/layouts/`、`src/styles/` | 页面、组件和样式 |
-| `src/domain/` | 收益计算、工作流模拟和实体关系 |
-| `src/data/`、`src/lib/` | 数据读取、存档读写和通用工具 |
-| `src/i18n/` | 界面语言与翻译目录 |
-| `data/generated/build-25640656/` | 当前游戏快照（1.30 版本；旧构建 `25311578`、`24969282` 留作对照） |
-| `data/sources/` | 地图、规则、存档编辑器目录等专项数据 |
-| `docs/` | 说明文档和数据核对记录 |
-| `public/` | 图标、地图、场景、立绘等展示素材 |
-| `src/honogurashi_extractor/`、`tools/` | 只读提取器和维护脚本 |
-| `tests/` | 提取器测试和测试存档说明 |
+| `src/pages/`, `src/components/`, `src/layouts/`, `src/styles/` | pages, components and styles |
+| `src/domain/` | profit calculations, workflow simulation and entity relationships |
+| `src/data/`, `src/lib/` | data access, save reading and writing, shared utilities |
+| `src/i18n/` | UI locales and translation catalogs |
+| `data/generated/build-25640656/` | current game snapshot (patch 1.30), with older builds `25311578` and `24969282` kept for comparison |
+| `data/sources/` | maps, rules, save editor catalogs and other targeted data |
+| `docs/` | documentation and data evidence |
+| `public/` | icons, maps, scenery, portraits and other assets |
+| `src/honogurashi_extractor/`, `tools/` | read-only extractor and maintenance scripts |
+| `tests/` | extractor tests and notes on the test saves |
 
-## 更新游戏数据
+## Updating game data
 
-需要 Python 3.11+、uv 和自己的游戏安装。提取器只读游戏文件，不修改游戏或存档。流程见 [游戏数据维护](docs/data-extraction.md)，素材来源见 [素材说明](docs/assets.md)。
+Reading game data with the extractor requires Python 3.11+, uv and your own copy of the game. The extraction process and image sources are documented in [maintaining game data](docs/data-extraction.en.md) and [assets](docs/assets.en.md).
 
-## 参与
+## Contributing
 
-欢迎通过 issue 报告错误或提出建议，按问题类型选择对应的模板。提交代码前请阅读 [维护约定](CONTRIBUTING.md)。
+Use the issue templates to report bugs or suggest changes. Read the [contributing guide](CONTRIBUTING.en.md) before sending code.
 
-## 许可
+## License
 
-Copyright (c) 2026 _connlost。
+Copyright (c) 2026 _connlost.
 
-- **代码**采用 [AGPL-3.0](LICENSE)，并有附加条款：公开部署修改版时要公开源代码、保留作者署名和本仓库链接、标明是修改版，并使用自己的站点名称。
-- **攻略文字、翻译、文档和数据整理**采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)：可以非商业转载和改编，但要署名“静谧田园 Wiki（作者 _connlost）”并附原页面链接，改编后用同样的许可发布。商业使用需要作者书面同意。
+Code is licensed under AGPL-3.0 with additional terms. Public deployments of modified versions must publish their source, keep the author credit and a link to this repository, be marked as modified, and use their own site name. [Code license](LICENSE)
 
-详细说明和署名格式见 [授权说明](LICENSING.md)。
+Guide text, translations, documentation and data curation are licensed under CC BY-NC-SA 4.0. You may repost and adapt them for non-commercial use if you credit "静谧田园 Wiki (by _connlost)", link the original page and share adaptations under the same license. Commercial use needs the author's written permission. [Content license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-游戏的名称、文字、图像和数据归 Nippon Ichi Software, Inc. 及相应权利人所有。本站是非官方攻略，与开发商和发行商无关。
+See [LICENSING.en.md](LICENSING.en.md) for details and the attribution format.
+
+The game's names, text, images and data belong to Nippon Ichi Software, Inc. and other rights holders.
