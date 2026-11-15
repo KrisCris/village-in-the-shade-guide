@@ -18,7 +18,7 @@ Issues and pull requests are welcome. Contributions are licensed the same way as
 
 ## Data
 
-- The game data is the only source of truth. Keep internal IDs and build numbers. External sites such as AppMedia can point you to something worth checking, but they never replace a game field.
+- Use game data as the source of truth, and keep internal IDs and build numbers.
 - A price field does not mean a shop sells the item, and one random delivery request is not a fixed requirement. Mark unverified rules on the page.
 - When you add a way to obtain or use something, check the reverse relationships too (item ↔ recipe ↔ machine ↔ shop).
 - Keep the value added by processing separate from the full return starting from seeds, and state assumptions such as yield, season, quality, repeat harvests and machine time.
