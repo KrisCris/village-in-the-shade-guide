@@ -8,6 +8,7 @@ import { durationText } from './duration';
 import { harvestOptions } from './harvestChoice';
 import { buildCropGrowthModel, type CropGrowthModel } from './cropGrowth';
 import recipeLessons from '../../data/sources/game-recipe-lessons.json';
+import dinnerParties from '../../data/sources/game-dinner-parties.json';
 import nightExchanges from '../../data/sources/game-night-exchanges.json';
 import kappaExchange from '../../data/sources/game-kappa-exchange.json';
 import livestockProducts from '../../data/sources/game-livestock-products.json';
@@ -234,6 +235,20 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       for(const recipe of recipes)add('unlocks',recipe,{chips});
     } else if(recipes.some(recipe=>recipe.id===entity.id||itemQuantity(recipe.output).item_id===entity.id)) {
       add('unlocks',person,{chips,note:t('需尚未取得此食谱；该村民的食谱赠送标记也须未触发。')});
+    }
+  }
+  const [dinnerStart,dinnerEnd]=dinnerParties.invitation.hours.split('-');
+  const dinnerNoteParams={gifts:dinnerParties.invitation.weekly_gifts,start:dinnerStart,end:dinnerEnd,chance:dinnerParties.invitation.daily_chance_percent};
+  for (const host of dinnerParties.hosts) {
+    const person=catalog.entities.find(row=>row.kind==='characters'&&row.numeric_id===host.character_numeric_id);
+    const chips=[t('好感度 Lv{level} 突破后',{level:dinnerParties.invitation.friendship_level}),t('晚饭时传授食谱')];
+    for (const dinner of host.dinners) {
+      const recipes=catalog.entities.filter(row=>row.kind==='cooking-recipes'&&row.unlock_flag===dinner.recipe_unlock_flag);
+      if(entity.kind==='characters'&&entity.id===person?.id) {
+        for(const recipe of recipes)add('unlocks',recipe,{chips,key:`dinner:${recipe.id}`});
+      } else if(recipes.some(recipe=>recipe.id===entity.id||itemQuantity(recipe.output).item_id===entity.id)) {
+        add('unlocks',person,{chips,note:t('本周送满 {gifts} 份礼物后，在 {start}～{end} 与其交谈，每天有一次 {chance}% 的邀请机会。三顿晚饭顺序随机，吃到教这道菜的那一顿才学会。',dinnerNoteParams),key:`dinner:${person?.id}`});
+      }
     }
   }
 

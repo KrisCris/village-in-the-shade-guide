@@ -144,6 +144,14 @@ def test_refreshed_supplemental_references_resolve():
     for row in source('recipe-lessons')['lessons']:
         assert row['character_numeric_id'] in character_ids
         assert {row['recipe_unlock_flag'],row['required_flag'],*row['excluded_flags']} <= flags
+    dinners=source('dinner-parties')
+    recipe_flags={row['unlock_flag'] for row in load('cooking-recipes')}
+    lesson_flags={row['recipe_unlock_flag'] for row in source('recipe-lessons')['lessons']}
+    dinner_flags=[d['recipe_unlock_flag'] for host in dinners['hosts'] for d in host['dinners']]
+    assert {host['character_numeric_id'] for host in dinners['hosts']} <= character_ids
+    assert all(host['required_flag'] in flags and [d['number'] for d in host['dinners']]==[1,2,3] for host in dinners['hosts'])
+    assert len(dinners['hosts'])==14 and len(set(dinner_flags))==42
+    assert set(dinner_flags) <= recipe_flags & flags and not set(dinner_flags) & lesson_flags
     for row in source('night-exchanges')['exchanges']:
         assert set(row['input_item_ids']+row['reward_item_ids']) <= item_ids
     kappa=source('kappa-exchange')
