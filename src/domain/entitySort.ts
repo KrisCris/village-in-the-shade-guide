@@ -4,7 +4,7 @@ import type { Quality } from './quality';
 import { qualityPrice } from './quality';
 import { calculateCropProfit, calculateProcessProfit } from './profit';
 
-export type SortField = 'name' | 'buy' | 'sell' | 'duration' | 'profit';
+export type SortField = 'name' | 'buy' | 'sell' | 'duration' | 'profit' | 'hp' | 'stamina' | 'menu' | 'ingredients' | 'source';
 export type SortDirection = 'asc' | 'desc';
 export type PriceIndex = Record<string, Pick<Entity, 'sell_price' | 'quality_eligible'>>;
 
@@ -61,13 +61,20 @@ export function entityMetrics(row: Entity, quality: Quality, prices: PriceIndex 
   return { buy, sell, profit: typeof row.profit_per_day === 'number' ? row.profit_per_day : null };
 }
 
+const mealFields = { hp: 'heal_hp', stamina: 'heal_stamina', menu: 'menu_price', ingredients: 'ingredient_value' } as const;
+
 function sortValue(row: Entity, field: SortField, quality: Quality, prices: PriceIndex): string | number | null {
   if (field === 'name') return row.name.zh_hans;
+  if (field === 'source') return typeof row.recipe_source_label === 'string' ? row.recipe_source_label : null;
+  if (field in mealFields) {
+    const value = row[mealFields[field as keyof typeof mealFields]];
+    return typeof value === 'number' ? value : null;
+  }
   if (field === 'duration') {
     if (typeof row.duration_minutes === 'number') return row.duration_minutes;
     return typeof row.growth_days === 'number' ? row.growth_days * 1440 : null;
   }
-  return entityMetrics(row, quality, prices)[field];
+  return entityMetrics(row, quality, prices)[field as keyof EntityMetrics];
 }
 
 export function sortEntities(rows: Entity[], field: SortField, direction: SortDirection, quality: Quality, prices: PriceIndex = {}): Entity[] {

@@ -12,6 +12,7 @@ import cropGrowth from '../../data/sources/game-crop-growth.json';
 import sapTrees from '../../data/sources/game-sap-trees.json';
 import cropQuality from '../../data/sources/game-crop-quality.json';
 import { visitorRow } from './mysteryVisitor';
+import { dishEffect, festival, ingredientValue, menuEntry, menuEntryForSale, ordersToLearn, recipeSource } from '../domain/cooking';
 import { defaultLocale, type Locale } from '../i18n/locales';
 import { translatorFor } from '../i18n/server';
 import type { Translate } from '../i18n/translate';
@@ -190,13 +191,30 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
     }
   }
 
+  // Chawantei serves its menu to eat on the spot; the festival stalls sell theirs to take away.
+  const restaurantName = byId.FACILITY_ID_RESTAURANT?.name.zh_hans ?? t('茶碗亭');
+  const festivalName = t('庙会');
+  const [festivalStart, festivalEnd] = festival.hours.split('-');
+  const festivalTime = t('{date} {start}～{end}', { date: t('{season} {day} 日', { season: t('夏'), day: festival.day }), start: festivalStart, end: festivalEnd });
+  const characterByNumber = new Map(entities.filter(e => e.kind === 'characters').map(e => [e.numeric_id, e]));
   for (const entity of entities) {
+    const menu = entity.kind === 'store-offers' ? menuEntryForSale(entity.id) : undefined;
+    if (menu) {
+      entity.menu_venue = menu.venue;
+      entity.menu_price = menu.price;
+      entity.location = menu.venue === 'restaurant' ? restaurantName : festivalName;
+      // The festival rows' flag checks read as contradictory; the stalls open on the festival evening.
+      if (menu.venue === 'festival') entity.conditions = [festivalTime];
+    }
     if (entity.kind === 'store-offers' || entity.kind === 'hunt-rewards') {
       const target = byId[String(entity.item_id ?? entity.certificate_item_id ?? '')];
       if (target) {
-        const label = entity.kind === 'store-offers' ? t('商店出售：{name}', { name: target.name.zh_hans }) : t('狩猎报酬：{name}', { name: target.name.zh_hans });
+        const label = entity.kind === 'hunt-rewards' ? t('狩猎报酬：{name}', { name: target.name.zh_hans })
+          : menu?.venue === 'restaurant' ? t('{place}点餐：{name}', { place: restaurantName, name: target.name.zh_hans })
+          : menu?.venue === 'festival' ? t('{place}摊位：{name}', { place: festivalName, name: target.name.zh_hans })
+          : t('商店出售：{name}', { name: target.name.zh_hans });
         // i18n-ignore-start — zh_hant is a search alias, not page text.
-        const traditionalPrefix = entity.kind === 'store-offers' ? '商店出售' : '狩獵報酬';
+        const traditionalPrefix = entity.kind === 'hunt-rewards' ? '狩獵報酬' : menu?.venue === 'restaurant' ? '茶碗亭點餐' : menu?.venue === 'festival' ? '廟會攤位' : '商店出售';
         entity.name = {
           ...withSearchAliases({
             ...target.name,
@@ -238,6 +256,28 @@ export function buildCatalog(input: Record<string, unknown>, generatedAt = new D
       for (const seedId of entity.seed_item_ids as string[] | undefined ?? []) {
         if (byId[seedId]) byId[seedId].quality_eligible = false;
       }
+    }
+    const dishId = entity.kind === 'cooking-recipes' ? (entity.output as { item_id?: string } | undefined)?.item_id : entity.kind === 'items' ? entity.id : undefined;
+    const effect = dishEffect(dishId);
+    if (effect) {
+      entity.heal_hp = effect.hp;
+      entity.heal_stamina = effect.stamina;
+      const served = menuEntry(dishId);
+      entity.menu_price = served?.price ?? null;
+      entity.menu_venue = served?.venue ?? null;
+    }
+    if (entity.kind === 'cooking-recipes') {
+      entity.ingredient_value = ingredientValue(entity, byId);
+      const source = recipeSource(entity);
+      const name = (id: number) => characterByNumber.get(id)?.name.zh_hans ?? String(id);
+      entity.recipe_source_type = source?.type ?? null;
+      entity.recipe_source_label = !source ? null
+        : source.type === 'lesson' ? t('{name} · Lv{level} 突破后交谈', { name: name(source.character_numeric_id), level: source.level })
+        : source.type === 'dinner' ? t('{name} · 晚饭邀请', { name: name(source.character_numeric_id) })
+        : source.type === 'restaurant' ? t('{place} · 点餐 {count} 次', { place: restaurantName, count: ordersToLearn })
+        : source.type === 'festival' ? t('{place} · 购买 {count} 份', { place: festivalName, count: ordersToLearn })
+        : t('委托：{name}', { name: byId[source.quest_id]?.name.zh_hans ?? source.quest_id });
+      if (entity.recipe_source_label) entity.searchText += ' ' + normalizeSearch(String(entity.recipe_source_label));
     }
     if (entity.kind === 'processes') {
       const output = entity.output as { item_id?: string; quantity?: number } | undefined;

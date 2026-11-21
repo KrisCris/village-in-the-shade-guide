@@ -136,6 +136,37 @@ describe('relation groups', () => {
     expect(taught.map(r=>r.entity.id)).toEqual(['COOKING_ID_020']);
     expect(taught[0].chips).toContain('晚饭时传授食谱');
   });
+  it('links Chawantei, festival and quest recipes to where they are learned', () => {
+    const rice=entity('COOKING_ID_001','cooking-recipes',{unlock_flag:85000,output:{item_id:'ITEM_ID_COOKING_001',quantity:1},heal_hp:9,heal_stamina:200,menu_price:450,menu_venue:'restaurant',ingredient_value:60,recipe_source_label:'茶碗亭 · 点餐 3 次'});
+    const riceDish=entity('ITEM_ID_COOKING_001','items',{buy_price:450,heal_hp:9,heal_stamina:200,menu_price:450,menu_venue:'restaurant'});
+    const riceOrder=entity('STORE_SALE_ID_RESTAURANT_0001','store-offers',{item_id:'ITEM_ID_COOKING_001',location:'茶碗亭',menu_venue:'restaurant',menu_price:450});
+    const yakisoba=entity('COOKING_ID_117','cooking-recipes',{unlock_flag:85116,output:{item_id:'ITEM_ID_COOKING_117',quantity:1}});
+    const yakisobaDish=entity('ITEM_ID_COOKING_117','items',{buy_price:700});
+    const stall=entity('STORE_SALE_ID_RESTAURANT_0117','store-offers',{item_id:'ITEM_ID_COOKING_117',location:'庙会',menu_venue:'festival',menu_price:700,conditions:['夏 15 日 16:00～20:00']});
+    const eggs=entity('COOKING_ID_003','cooking-recipes',{unlock_flag:85002,output:{item_id:'ITEM_ID_COOKING_003',quantity:1}});
+    const errand=entity('QUEST_ID_OLD_MAN_01','quests');
+    const messKit=entity('ITEM_ID_GIMMICK_MESSTIN','items');
+    const data=catalog(rice,riceDish,riceOrder,yakisoba,yakisobaDish,stall,eggs,errand,messKit);
+    const unlocks=(row:Entity)=>buildRelationGroups(row,data,'normal').find(g=>g.key==='unlocks')?.rows ?? [];
+    const acquisition=(row:Entity)=>buildRelationGroups(row,data,'normal').find(g=>g.key==='acquisition')?.rows ?? [];
+    // Chawantei meals are eaten on the spot: a recipe source, not a way to get the dish.
+    expect(unlocks(rice)).toEqual([expect.objectContaining({entity:riceOrder,chips:['点餐 3 次学会'],buyPrice:'450',note:'点的菜当场吃掉，不会放进背包。'})]);
+    expect(unlocks(riceDish).map(r=>r.entity.id)).toEqual(['STORE_SALE_ID_RESTAURANT_0001']);
+    expect(acquisition(riceDish).map(r=>r.entity.id)).not.toContain('STORE_SALE_ID_RESTAURANT_0001');
+    expect(unlocks(riceOrder).map(r=>r.entity.id)).toEqual(['COOKING_ID_001']);
+    // Festival food goes into the bag, so the stall is both a source of the dish and of the recipe.
+    expect(unlocks(yakisoba)).toEqual([expect.objectContaining({entity:stall,chips:['买满 3 份学会','夏 15 日 16:00～20:00'],note:'一次买 3 份也算。'})]);
+    expect(acquisition(yakisobaDish).map(r=>r.entity.id)).toContain('STORE_SALE_ID_RESTAURANT_0117');
+    expect(unlocks(stall).map(r=>r.entity.id)).toEqual(['COOKING_ID_117']);
+    expect(unlocks(eggs)).toEqual([expect.objectContaining({entity:errand,chips:['完成委托后学会'],note:'完成时还会得到ITEM_ID_GIMMICK_MESSTIN。'})]);
+    expect(unlocks(errand).map(r=>r.entity.id)).toEqual(['COOKING_ID_003']);
+    expect(buildRelationGroups(errand,data,'normal').find(g=>g.key==='outputs')?.rows.map(r=>r.entity.id)).toEqual(['ITEM_ID_GIMMICK_MESSTIN']);
+    const facts=buildEntityDetailModel(rice,data,'normal').facts;
+    expect(facts).toEqual(expect.arrayContaining([{label:'恢复生命',value:'9（2.25 颗心）'},{label:'恢复体力',value:'200（1.1 段）'},{label:'茶碗亭点餐价格',value:'450',price:true},{label:'材料价值',value:'60',price:true},{label:'食谱来源',value:'茶碗亭 · 点餐 3 次'}]));
+    const dishFacts=buildEntityDetailModel(riceDish,data,'normal').facts.map(f=>f.label);
+    expect(dishFacts).toEqual(expect.arrayContaining(['茶碗亭点餐价格','食谱来源']));
+    expect(dishFacts).not.toContain('买入价');
+  });
   it('shows shop seasons separately from unlock dates', () => {
     const seed=entity('seed','items',{buy_price:80});
     const offer=entity('offer','store-offers',{item_id:'seed',location:'田上杂货店',seasons:['autumn'],conditions:['第二年秋起']});

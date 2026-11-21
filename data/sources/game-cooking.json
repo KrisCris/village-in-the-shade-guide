@@ -1,0 +1,968 @@
+{
+  "source": "item.dat action effects, storesales.dat, event_restaurant_order.lub, event_holiday_festival.lub, story_sub_oldman.lub; village.exe EventAddOrderCount",
+  "player": {
+    "hp_per_heart": 4,
+    "hp_max": 40,
+    "stamina_per_bar": 190,
+    "stamina_max": 950
+  },
+  "orders_to_learn": 3,
+  "festival": {
+    "season": "summer",
+    "day": 15,
+    "hours": "16:00-20:00"
+  },
+  "dishes": [
+    {
+      "item_id": "ITEM_ID_ENERGY_BAR",
+      "hp": 0,
+      "stamina": 60
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_001",
+      "hp": 2,
+      "stamina": 44
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_002",
+      "hp": 9,
+      "stamina": 199
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_003",
+      "hp": 5,
+      "stamina": 113
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_004",
+      "hp": 18,
+      "stamina": 413
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_005",
+      "hp": 5,
+      "stamina": 122
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_006",
+      "hp": 15,
+      "stamina": 339
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_007",
+      "hp": 16,
+      "stamina": 368
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_008",
+      "hp": 11,
+      "stamina": 253
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_009",
+      "hp": 12,
+      "stamina": 278
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_010",
+      "hp": 13,
+      "stamina": 291
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_011",
+      "hp": 8,
+      "stamina": 173
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_012",
+      "hp": 10,
+      "stamina": 233
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_013",
+      "hp": 10,
+      "stamina": 230
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_014",
+      "hp": 12,
+      "stamina": 275
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_015",
+      "hp": 6,
+      "stamina": 140
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_016",
+      "hp": 11,
+      "stamina": 256
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_017",
+      "hp": 19,
+      "stamina": 437
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_018",
+      "hp": 8,
+      "stamina": 178
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_019",
+      "hp": 16,
+      "stamina": 368
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_020",
+      "hp": 15,
+      "stamina": 338
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_021",
+      "hp": 18,
+      "stamina": 413
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_022",
+      "hp": 13,
+      "stamina": 281
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_023",
+      "hp": 23,
+      "stamina": 507
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_024",
+      "hp": 17,
+      "stamina": 373
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_025",
+      "hp": 23,
+      "stamina": 523
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_026",
+      "hp": 14,
+      "stamina": 307
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_027",
+      "hp": 16,
+      "stamina": 365
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_028",
+      "hp": 18,
+      "stamina": 401
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_029",
+      "hp": 8,
+      "stamina": 182
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_030",
+      "hp": 18,
+      "stamina": 410
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_031",
+      "hp": 6,
+      "stamina": 132
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_032",
+      "hp": 20,
+      "stamina": 443
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_033",
+      "hp": 16,
+      "stamina": 364
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_034",
+      "hp": 11,
+      "stamina": 255
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_035",
+      "hp": 11,
+      "stamina": 251
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_036",
+      "hp": 9,
+      "stamina": 209
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_037",
+      "hp": 7,
+      "stamina": 161
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_038",
+      "hp": 12,
+      "stamina": 266
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_039",
+      "hp": 13,
+      "stamina": 290
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_040",
+      "hp": 15,
+      "stamina": 329
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_041",
+      "hp": 17,
+      "stamina": 380
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_042",
+      "hp": 13,
+      "stamina": 294
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_043",
+      "hp": 31,
+      "stamina": 696
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_044",
+      "hp": 13,
+      "stamina": 286
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_045",
+      "hp": 22,
+      "stamina": 490
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_046",
+      "hp": 9,
+      "stamina": 206
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_047",
+      "hp": 3,
+      "stamina": 56
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_048",
+      "hp": 14,
+      "stamina": 311
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_049",
+      "hp": 14,
+      "stamina": 310
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_050",
+      "hp": 11,
+      "stamina": 257
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_051",
+      "hp": 16,
+      "stamina": 366
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_052",
+      "hp": 12,
+      "stamina": 273
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_053",
+      "hp": 10,
+      "stamina": 214
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_054",
+      "hp": 24,
+      "stamina": 536
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_055",
+      "hp": 24,
+      "stamina": 549
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_056",
+      "hp": 19,
+      "stamina": 429
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_057",
+      "hp": 14,
+      "stamina": 326
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_058",
+      "hp": 13,
+      "stamina": 301
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_059",
+      "hp": 18,
+      "stamina": 403
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_060",
+      "hp": 11,
+      "stamina": 236
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_061",
+      "hp": 24,
+      "stamina": 549
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_062",
+      "hp": 18,
+      "stamina": 404
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_063",
+      "hp": 24,
+      "stamina": 537
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_064",
+      "hp": 18,
+      "stamina": 414
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_065",
+      "hp": 7,
+      "stamina": 146
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_066",
+      "hp": 21,
+      "stamina": 467
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_067",
+      "hp": 23,
+      "stamina": 523
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_068",
+      "hp": 13,
+      "stamina": 288
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_069",
+      "hp": 16,
+      "stamina": 350
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_070",
+      "hp": 17,
+      "stamina": 374
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_071",
+      "hp": 16,
+      "stamina": 367
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_072",
+      "hp": 11,
+      "stamina": 255
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_073",
+      "hp": 21,
+      "stamina": 463
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_074",
+      "hp": 10,
+      "stamina": 215
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_107",
+      "hp": 5,
+      "stamina": 123
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_108",
+      "hp": 16,
+      "stamina": 354
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_109",
+      "hp": 15,
+      "stamina": 345
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_110",
+      "hp": 9,
+      "stamina": 198
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_111",
+      "hp": 23,
+      "stamina": 527
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_112",
+      "hp": 12,
+      "stamina": 274
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_113",
+      "hp": 12,
+      "stamina": 277
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_114",
+      "hp": 17,
+      "stamina": 389
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_115",
+      "hp": 10,
+      "stamina": 221
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_116",
+      "hp": 11,
+      "stamina": 248
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_117",
+      "hp": 20,
+      "stamina": 458
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_118",
+      "hp": 16,
+      "stamina": 360
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_119",
+      "hp": 13,
+      "stamina": 293
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_120",
+      "hp": 2,
+      "stamina": 56
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_130",
+      "hp": 3,
+      "stamina": 75
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_075",
+      "hp": 1,
+      "stamina": 19
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_076",
+      "hp": 4,
+      "stamina": 100
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_077",
+      "hp": 16,
+      "stamina": 349
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_078",
+      "hp": 6,
+      "stamina": 131
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_079",
+      "hp": 15,
+      "stamina": 338
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_080",
+      "hp": 16,
+      "stamina": 366
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_081",
+      "hp": 18,
+      "stamina": 396
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_082",
+      "hp": 13,
+      "stamina": 300
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_083",
+      "hp": 18,
+      "stamina": 399
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_084",
+      "hp": 30,
+      "stamina": 675
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_085",
+      "hp": 30,
+      "stamina": 664
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_086",
+      "hp": 22,
+      "stamina": 491
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_087",
+      "hp": 31,
+      "stamina": 691
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_088",
+      "hp": 23,
+      "stamina": 515
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_089",
+      "hp": 19,
+      "stamina": 423
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_090",
+      "hp": 10,
+      "stamina": 225
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_091",
+      "hp": 32,
+      "stamina": 713
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_092",
+      "hp": 28,
+      "stamina": 641
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_093",
+      "hp": 20,
+      "stamina": 441
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_094",
+      "hp": 24,
+      "stamina": 537
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_095",
+      "hp": 29,
+      "stamina": 662
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_096",
+      "hp": 22,
+      "stamina": 498
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_097",
+      "hp": 20,
+      "stamina": 455
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_098",
+      "hp": 13,
+      "stamina": 298
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_099",
+      "hp": 18,
+      "stamina": 413
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_100",
+      "hp": 19,
+      "stamina": 420
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_101",
+      "hp": 9,
+      "stamina": 200
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_102",
+      "hp": 15,
+      "stamina": 333
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_103",
+      "hp": 18,
+      "stamina": 413
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_104",
+      "hp": 16,
+      "stamina": 361
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_105",
+      "hp": 28,
+      "stamina": 627
+    },
+    {
+      "item_id": "ITEM_ID_BIRTHDAY_CAKE",
+      "hp": 39,
+      "stamina": 950
+    }
+  ],
+  "menu": [
+    {
+      "item_id": "ITEM_ID_COOKING_001",
+      "venue": "restaurant",
+      "price": 450,
+      "recipe_unlock_flag": 85000,
+      "popup_id": "INTANGEBLE_ID_RECIPE_01",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0001"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_005",
+      "venue": "restaurant",
+      "price": 495,
+      "recipe_unlock_flag": 85004,
+      "popup_id": "INTANGEBLE_ID_RECIPE_05",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0005"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_012",
+      "venue": "restaurant",
+      "price": 500,
+      "recipe_unlock_flag": 85011,
+      "popup_id": "INTANGEBLE_ID_RECIPE_12",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0012"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_019",
+      "venue": "restaurant",
+      "price": 800,
+      "recipe_unlock_flag": 85018,
+      "popup_id": "INTANGEBLE_ID_RECIPE_19",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0019"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_031",
+      "venue": "restaurant",
+      "price": 510,
+      "recipe_unlock_flag": 85030,
+      "popup_id": "INTANGEBLE_ID_RECIPE_31",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0031"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_033",
+      "venue": "restaurant",
+      "price": 450,
+      "recipe_unlock_flag": 85032,
+      "popup_id": "INTANGEBLE_ID_RECIPE_33",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0033",
+        "STORE_SALE_ID_RESTAURANT_0033_HORROR_OFF"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_035",
+      "venue": "restaurant",
+      "price": 400,
+      "recipe_unlock_flag": 85034,
+      "popup_id": "INTANGEBLE_ID_RECIPE_35",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0035"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_036",
+      "venue": "restaurant",
+      "price": 380,
+      "recipe_unlock_flag": 85035,
+      "popup_id": "INTANGEBLE_ID_RECIPE_36",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0036"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_037",
+      "venue": "restaurant",
+      "price": 600,
+      "recipe_unlock_flag": 85036,
+      "popup_id": "INTANGEBLE_ID_RECIPE_37",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0037"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_039",
+      "venue": "restaurant",
+      "price": 580,
+      "recipe_unlock_flag": 85038,
+      "popup_id": "INTANGEBLE_ID_RECIPE_39",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0039"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_040",
+      "venue": "restaurant",
+      "price": 755,
+      "recipe_unlock_flag": 85039,
+      "popup_id": "INTANGEBLE_ID_RECIPE_40",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0040"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_046",
+      "venue": "restaurant",
+      "price": 765,
+      "recipe_unlock_flag": 85045,
+      "popup_id": "INTANGEBLE_ID_RECIPE_46",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0046"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_047",
+      "venue": "restaurant",
+      "price": 350,
+      "recipe_unlock_flag": 85046,
+      "popup_id": "INTANGEBLE_ID_RECIPE_47",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0047"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_048",
+      "venue": "restaurant",
+      "price": 860,
+      "recipe_unlock_flag": 85047,
+      "popup_id": "INTANGEBLE_ID_RECIPE_48",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0048"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_056",
+      "venue": "restaurant",
+      "price": 730,
+      "recipe_unlock_flag": 85055,
+      "popup_id": "INTANGEBLE_ID_RECIPE_56",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0056"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_057",
+      "venue": "restaurant",
+      "price": 705,
+      "recipe_unlock_flag": 85056,
+      "popup_id": "INTANGEBLE_ID_RECIPE_57",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0057"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_058",
+      "venue": "restaurant",
+      "price": 685,
+      "recipe_unlock_flag": 85057,
+      "popup_id": "INTANGEBLE_ID_RECIPE_58",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0058"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_059",
+      "venue": "restaurant",
+      "price": 650,
+      "recipe_unlock_flag": 85058,
+      "popup_id": "INTANGEBLE_ID_RECIPE_59",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0059"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_069",
+      "venue": "restaurant",
+      "price": 860,
+      "recipe_unlock_flag": 85068,
+      "popup_id": "INTANGEBLE_ID_RECIPE_69",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0069"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_073",
+      "venue": "restaurant",
+      "price": 3820,
+      "recipe_unlock_flag": 85072,
+      "popup_id": "INTANGEBLE_ID_RECIPE_73",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0073"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_117",
+      "venue": "festival",
+      "price": 700,
+      "recipe_unlock_flag": 85116,
+      "popup_id": "INTANGEBLE_ID_RECIPE_117",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0117"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_118",
+      "venue": "festival",
+      "price": 500,
+      "recipe_unlock_flag": 85117,
+      "popup_id": "INTANGEBLE_ID_RECIPE_118",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0118"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_119",
+      "venue": "festival",
+      "price": 600,
+      "recipe_unlock_flag": 85118,
+      "popup_id": "INTANGEBLE_ID_RECIPE_119",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0119"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_075",
+      "venue": "restaurant",
+      "price": 320,
+      "recipe_unlock_flag": 85074,
+      "popup_id": "INTANGEBLE_ID_RECIPE_75",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0075"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_078",
+      "venue": "restaurant",
+      "price": 540,
+      "recipe_unlock_flag": 85077,
+      "popup_id": "INTANGEBLE_ID_RECIPE_78",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0078"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_087",
+      "venue": "restaurant",
+      "price": 860,
+      "recipe_unlock_flag": 85086,
+      "popup_id": "INTANGEBLE_ID_RECIPE_87",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0087"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_088",
+      "venue": "restaurant",
+      "price": 1200,
+      "recipe_unlock_flag": 85087,
+      "popup_id": "INTANGEBLE_ID_RECIPE_88",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0088"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_090",
+      "venue": "restaurant",
+      "price": 560,
+      "recipe_unlock_flag": 85089,
+      "popup_id": "INTANGEBLE_ID_RECIPE_90",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0090"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_091",
+      "venue": "restaurant",
+      "price": 1320,
+      "recipe_unlock_flag": 85090,
+      "popup_id": "INTANGEBLE_ID_RECIPE_91",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0091"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_094",
+      "venue": "restaurant",
+      "price": 1320,
+      "recipe_unlock_flag": 85093,
+      "popup_id": "INTANGEBLE_ID_RECIPE_94",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0094"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_096",
+      "venue": "restaurant",
+      "price": 820,
+      "recipe_unlock_flag": 85095,
+      "popup_id": "INTANGEBLE_ID_RECIPE_96",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0096"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_102",
+      "venue": "restaurant",
+      "price": 920,
+      "recipe_unlock_flag": 85101,
+      "popup_id": "INTANGEBLE_ID_RECIPE_102",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0102"
+      ]
+    },
+    {
+      "item_id": "ITEM_ID_COOKING_104",
+      "venue": "restaurant",
+      "price": 920,
+      "recipe_unlock_flag": 85103,
+      "popup_id": "INTANGEBLE_ID_RECIPE_104",
+      "sale_ids": [
+        "STORE_SALE_ID_RESTAURANT_0104"
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "quest_id": "QUEST_ID_OLD_MAN_01",
+      "recipe_unlock_flag": 85002,
+      "popup_id": "INTANGEBLE_ID_RECIPE_03",
+      "reward_item_id": "ITEM_ID_GIMMICK_MESSTIN"
+    }
+  ]
+}

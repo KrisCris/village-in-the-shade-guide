@@ -152,6 +152,15 @@ def test_refreshed_supplemental_references_resolve():
     assert all(host['required_flag'] in flags and [d['number'] for d in host['dinners']]==[1,2,3] for host in dinners['hosts'])
     assert len(dinners['hosts'])==14 and len(set(dinner_flags))==42
     assert set(dinner_flags) <= recipe_flags & flags and not set(dinner_flags) & lesson_flags
+    cooking=source('cooking')
+    store_offers={row['id'] for row in load('store-offers')}
+    assert len(cooking['dishes'])==122 and {row['item_id'] for row in cooking['dishes']} <= item_ids
+    assert len(cooking['menu'])==33 and [row['venue'] for row in cooking['menu']].count('festival')==3
+    assert all(row['item_id'] in item_ids and set(row['sale_ids']) <= store_offers for row in cooking['menu'])
+    assert all(row['reward_item_id'] in item_ids for row in cooking['quests'])
+    # Lessons, dinners, the menu and Rokkaku's Errand teach every recipe exactly once.
+    taught=sorted([*lesson_flags,*dinner_flags,*(row['recipe_unlock_flag'] for row in cooking['menu']),*(row['recipe_unlock_flag'] for row in cooking['quests'])])
+    assert taught==sorted(recipe_flags)
     for row in source('night-exchanges')['exchanges']:
         assert set(row['input_item_ids']+row['reward_item_ids']) <= item_ids
     kappa=source('kappa-exchange')
