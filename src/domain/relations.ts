@@ -14,6 +14,7 @@ import kappaExchange from '../../data/sources/game-kappa-exchange.json';
 import livestockProducts from '../../data/sources/game-livestock-products.json';
 import recipeDocuments from '../../data/sources/game-recipe-documents.json';
 import appearanceGroups from '../../data/sources/game-appearance-groups.json';
+import { cookingQuests, hearts, menuEntryForSale, ordersToLearn, recipeSource, staminaBars } from './cooking';
 import { format, msg, type Translate } from '../i18n/translate';
 
 export type RelationGroupKey = 'acquisition' | 'materials' | 'outputs' | 'machines' | 'used-in' | 'requirements' | 'unlocks' | 'other' | 'likes' | 'dislikes' | 'gift-recipients';
@@ -128,7 +129,8 @@ function recipeMachineIds(recipe: Entity): string[] {
 export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Quality, t: Translate = format): RelationGroup[] {
   const groups = new Map<RelationGroupKey, RelationRowModel[]>();
   const seen = new Set<string>();
-  const soldItemIds = new Set(catalog.entities.filter(e=>e.kind==='store-offers').map(e=>e.item_id));
+  // Chawantei meals are eaten on the spot, so its menu is not a way to get the item.
+  const soldItemIds = new Set(catalog.entities.filter(e=>e.kind==='store-offers'&&e.menu_venue!=='restaurant').map(e=>e.item_id));
   const add = (group: RelationGroupKey, target: Entity | undefined, options: {
     quantity?: number;
     chips?: Array<string | null | undefined>;
@@ -252,6 +254,36 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
     }
   }
 
+  // Chawantei's menu, the festival stalls and Rokkaku's Errand teach the remaining recipes.
+  const recipeForDish = (itemId: unknown) => catalog.entities.find(row => row.kind === 'cooking-recipes' && itemQuantity(row.output).item_id === itemId);
+  const menuUnlock = (offer: Entity) => {
+    const festival = offer.menu_venue === 'festival';
+    const saleSeasons = seasonList((offer.seasons ?? []) as string[], t);
+    return {
+      chips: [festival ? t('买满 {count} 份学会', { count: ordersToLearn }) : t('点餐 {count} 次学会', { count: ordersToLearn }), ...(saleSeasons ? [t('{seasons}季出售', { seasons: saleSeasons })] : []), ...(offer.conditions as string[] ?? [])],
+      buyPrice: String(menuEntryForSale(offer.id)?.price ?? ''),
+      buyLabel: t('每份价格'),
+      note: festival ? t('一次买 {count} 份也算。', { count: ordersToLearn }) : t('点的菜当场吃掉，不会放进背包。'),
+      key: `menu:${offer.id}`,
+    };
+  };
+  const pageRecipe = entity.kind === 'cooking-recipes' ? entity : entity.kind === 'items' ? recipeForDish(entity.id) : undefined;
+  const pageSource = pageRecipe && recipeSource(pageRecipe);
+  if (pageSource?.type === 'restaurant' || pageSource?.type === 'festival') {
+    const saleIds = pageSource.menu.sale_ids;
+    for (const offer of catalog.entities.filter(row => row.kind === 'store-offers' && saleIds.includes(row.id))) add('unlocks', offer, menuUnlock(offer));
+  }
+  const questReward = (itemId: string) => findCatalogEntity(catalog, itemId, 'items')?.name.zh_hans ?? itemId;
+  if (pageSource?.type === 'quest') {
+    add('unlocks', catalog.byId[pageSource.quest_id], { chips: [t('完成委托后学会')], note: t('完成时还会得到{item}。', { item: questReward(pageSource.reward_item_id) }), key: `quest:${pageSource.quest_id}` });
+  }
+  if (entity.kind === 'store-offers' && entity.menu_venue) add('unlocks', recipeForDish(entity.item_id), { ...menuUnlock(entity), buyPrice: undefined, buyLabel: undefined });
+  for (const quest of cookingQuests) {
+    if (entity.id !== quest.quest_id) continue;
+    for (const recipe of catalog.entities.filter(row => row.kind === 'cooking-recipes' && row.unlock_flag === quest.recipe_unlock_flag)) add('unlocks', recipe, { chips: [t('完成委托后学会')], key: `quest:${recipe.id}` });
+    add('outputs', findCatalogEntity(catalog, quest.reward_item_id, 'items'), { quantity: 1, chips: [t('完成后获得')] });
+  }
+
   if (entity.kind === 'crops') {
     for (const seedId of entity.seed_item_ids as string[] | undefined ?? []) {
       add('acquisition', catalog.byId[seedId], { quantity: 1, chips: [t('种子 / 树苗')] });
@@ -328,7 +360,7 @@ export function buildRelationGroups(entity: Entity, catalog: Catalog, quality: Q
       const reward = ((source.rewards ?? []) as Array<{item_id: string; quantity: number}>).find((reward) => subjectIds.has(reward.item_id));
       if (reward) add('acquisition', source, {quantity:reward.quantity, chips:[t('完成后获得'),String(source.location || '')]});
     }
-    if (source.kind === 'store-offers' && source.item_id && subjectIds.has(String(source.item_id))) {
+    if (source.kind === 'store-offers' && source.menu_venue !== 'restaurant' && source.item_id && subjectIds.has(String(source.item_id))) {
       const saleSeasons = seasonList((source.seasons ?? []) as string[], t);
       add('acquisition', source, { buyPrice: priceText(catalog.byId[String(source.item_id)], 'buy_price', quality, t), chips: [String(source.location || t('商店')), ...(saleSeasons ? [t('{seasons}季出售',{seasons:saleSeasons})] : []), ...(source.conditions as string[] ?? [])] });
     }
@@ -447,7 +479,13 @@ export function buildEntityDetailModel(entity: Entity, catalog: Catalog, quality
     if (value != null && value !== '') facts.push({ label, value: String(value), ...(price ? { price: true } : {}) });
   };
   if (entity.kind === 'characters') addFact(t('生日'), entity.birthday_season && entity.birthday_day ? t('{season} {day} 日', { season: t(seasons[String(entity.birthday_season)] ?? String(entity.birthday_season)), day: String(entity.birthday_day) }) : t('无生日数据'));
-  if (!['processes','activities'].includes(entity.kind) && catalog.entities.some(e=>e.kind==='store-offers'&&e.item_id===entity.id)) addFact(t('买入价'), priceText(entity, 'buy_price', quality, t), true);
+  if (!['processes','activities'].includes(entity.kind) && catalog.entities.some(e=>e.kind==='store-offers'&&!e.menu_venue&&e.item_id===entity.id)) addFact(t('买入价'), priceText(entity, 'buy_price', quality, t), true);
+  if (typeof entity.heal_hp === 'number') addFact(t('恢复生命'), hearts(entity.heal_hp) === '1' ? t('{value}（1 颗心）', { value: entity.heal_hp }) : t('{value}（{count} 颗心）', { value: entity.heal_hp, count: hearts(entity.heal_hp) }));
+  if (typeof entity.heal_stamina === 'number') addFact(t('恢复体力'), staminaBars(entity.heal_stamina) === '1' ? t('{value}（1 段）', { value: entity.heal_stamina }) : t('{value}（{count} 段）', { value: entity.heal_stamina, count: staminaBars(entity.heal_stamina) }));
+  if (typeof entity.menu_price === 'number') addFact(entity.menu_venue === 'festival' ? t('庙会摊位价格') : t('茶碗亭点餐价格'), entity.menu_price, true);
+  if (typeof entity.ingredient_value === 'number') addFact(t('材料价值'), entity.ingredient_value, true);
+  const sourceRecipe = entity.kind === 'cooking-recipes' ? entity : entity.kind === 'items' && typeof entity.heal_hp === 'number' ? catalog.entities.find(row => row.kind === 'cooking-recipes' && itemQuantity(row.output).item_id === entity.id) : undefined;
+  addFact(t('食谱来源'), sourceRecipe?.recipe_source_label as string | null | undefined);
   addFact(t('地点'), entity.location as string | undefined);
   addFact(t('栽培方式'), entity.cultivation_method as string | undefined);
   addFact(t('所需金额'), entity.money_cost as number | undefined, true);

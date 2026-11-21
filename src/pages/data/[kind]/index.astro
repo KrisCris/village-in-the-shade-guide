@@ -6,6 +6,7 @@ import { visibleRowsForKind } from '../../../data/catalogViews';
 import { groupProcessesByOutput } from '../../../domain/processGroups';
 import { kindLabels } from '../../../data/types';
 import { getI18n } from '../../../i18n/server';
+import { ordersToLearn, player } from '../../../domain/cooking';
 export function getStaticPaths() {
   const catalog = getCatalog();
   return Object.keys(catalog.counts).map((kind) => ({ params: { kind }, props: { kind } }));
@@ -20,6 +21,7 @@ const label = kindLabels[kind] ? t(kindLabels[kind]) : kind;
 <BaseLayout title={t('{label}一览', { label })} description={t('{label}完整数据表，支持中文、日文和内部 ID 搜索。', { label })}>
   <h1>{label}</h1>
   {['crops','processes'].includes(kind) && <p><a href={href("/planner/")}>{t('种植与加工收益排行')} →</a></p>}
+  {kind === 'cooking-recipes' && <p>{t('生命和体力是吃一份做好的料理恢复的量，{heart} 点生命为一颗心，{bar} 点体力为一段。茶碗亭的菜只能当场吃，同一道菜点满 {count} 次就学会做法；庙会摊位的料理可以带走，买满 {count} 份也会学会。材料价值按材料的基础卖价合计，可替换的材料按最便宜的一种计算。', { count: ordersToLearn, heart: player.hp_per_heart, bar: player.stamina_per_bar })}</p>}
   <p class="muted">{t('共 {count} 条', { count: rows.length })}</p>
   <LazyEntityExplorer client:load source={`/list-data/kind-${kind}.json`} locale={locale}/>
 </BaseLayout>
