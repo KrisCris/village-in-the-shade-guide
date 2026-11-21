@@ -1,0 +1,482 @@
+{
+  "source": "Steam build 25640656: event.dat, gameflag.dat, weather.dat; scripts event_likeability_*.lub, ai_chara_template.lub; village.exe gift count",
+  "invitation": {
+    "hours": "7:00-16:45",
+    "friendship_level": 3,
+    "story_flag": "GAME_FLAG_STORY_02_END",
+    "sunshine_mode_flag": "GAME_FLAG_HORROR_OFF_MODE",
+    "weekly_gifts": 2,
+    "daily_chance_percent": 10,
+    "weathers": [
+      "WEATHER_ID_SUNNY",
+      "WEATHER_ID_RAIN",
+      "WEATHER_ID_CLOUDY",
+      "WEATHER_ID_SNOW"
+    ],
+    "dinner_time": "18:00"
+  },
+  "hosts": [
+    {
+      "character_numeric_id": 1010,
+      "chara_id": "CHARA_ID_ORPHAN",
+      "script": "event_likeability_orphan",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_ORPHAN_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_ORPHAN_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6402,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_ORPHAN_DINNER_PARTY_01",
+          "function": "event_likeability_orphan_007",
+          "recipe_unlock_flag": 85001,
+          "popup_id": "INTANGEBLE_ID_RECIPE_02"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_ORPHAN_DINNER_PARTY_02",
+          "function": "event_likeability_orphan_008",
+          "recipe_unlock_flag": 85020,
+          "popup_id": "INTANGEBLE_ID_RECIPE_21"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_ORPHAN_DINNER_PARTY_03",
+          "function": "event_likeability_orphan_009",
+          "recipe_unlock_flag": 85084,
+          "popup_id": "INTANGEBLE_ID_RECIPE_85"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1020,
+      "chara_id": "CHARA_ID_CARPENTER",
+      "script": "event_likeability_carpenter",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_CARPENTER_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_CARPENTER_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6412,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CARPENTER_DINNER_PARTY_01",
+          "function": "event_likeability_carpenter_007",
+          "recipe_unlock_flag": 85051,
+          "popup_id": "INTANGEBLE_ID_RECIPE_52"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CARPENTER_DINNER_PARTY_02",
+          "function": "event_likeability_carpenter_008",
+          "recipe_unlock_flag": 85041,
+          "popup_id": "INTANGEBLE_ID_RECIPE_42"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CARPENTER_DINNER_PARTY_03",
+          "function": "event_likeability_carpenter_009",
+          "recipe_unlock_flag": 85114,
+          "popup_id": "INTANGEBLE_ID_RECIPE_115"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1030,
+      "chara_id": "CHARA_ID_LUMBERJACK",
+      "script": "event_likeability_lumberjack",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_LUMBERJACK_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_LUMBERJACK_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6422,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_LUMBERJACK_DINNER_PARTY_01",
+          "function": "event_likeability_lumberjack_007",
+          "recipe_unlock_flag": 85017,
+          "popup_id": "INTANGEBLE_ID_RECIPE_18"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_LUMBERJACK_DINNER_PARTY_02",
+          "function": "event_likeability_lumberjack_008",
+          "recipe_unlock_flag": 85007,
+          "popup_id": "INTANGEBLE_ID_RECIPE_08"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_LUMBERJACK_DINNER_PARTY_03",
+          "function": "event_likeability_lumberjack_009",
+          "recipe_unlock_flag": 85048,
+          "popup_id": "INTANGEBLE_ID_RECIPE_49"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1040,
+      "chara_id": "CHARA_ID_VILLAGE_HEAD",
+      "script": "event_likeability_village_head",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_VILLAGE_HEAD_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_VILLAGE_HEAD_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6432,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_VILLAGE_HEAD_DINNER_PARTY_01",
+          "function": "event_likeability_village_head_007",
+          "recipe_unlock_flag": 85015,
+          "popup_id": "INTANGEBLE_ID_RECIPE_16"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_VILLAGE_HEAD_DINNER_PARTY_02",
+          "function": "event_likeability_village_head_008",
+          "recipe_unlock_flag": 85099,
+          "popup_id": "INTANGEBLE_ID_RECIPE_100"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_VILLAGE_HEAD_DINNER_PARTY_03",
+          "function": "event_likeability_village_head_009",
+          "recipe_unlock_flag": 85033,
+          "popup_id": "INTANGEBLE_ID_RECIPE_34"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1050,
+      "chara_id": "CHARA_ID_HUNTER",
+      "script": "event_likeability_hunter",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_HUNTER_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_HUNTER_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6442,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_HUNTER_DINNER_PARTY_01",
+          "function": "event_likeability_hunter_007",
+          "recipe_unlock_flag": 85113,
+          "popup_id": "INTANGEBLE_ID_RECIPE_114"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_HUNTER_DINNER_PARTY_02",
+          "function": "event_likeability_hunter_008",
+          "recipe_unlock_flag": 85054,
+          "popup_id": "INTANGEBLE_ID_RECIPE_55"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_HUNTER_DINNER_PARTY_03",
+          "function": "event_likeability_hunter_009",
+          "recipe_unlock_flag": 85016,
+          "popup_id": "INTANGEBLE_ID_RECIPE_17"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1060,
+      "chara_id": "CHARA_ID_GENERAL_STORE_MANAGER",
+      "script": "event_likeability_general_store_manager",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_GENERAL_STORE_MANAGER_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_GENERAL_STORE_MANAGER_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6452,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GENERAL_STORE_MANAGER_DINNER_PARTY_01",
+          "function": "event_likeability_general_store_manager_007",
+          "recipe_unlock_flag": 85109,
+          "popup_id": "INTANGEBLE_ID_RECIPE_110"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GENERAL_STORE_MANAGER_DINNER_PARTY_02",
+          "function": "event_likeability_general_store_manager_008",
+          "recipe_unlock_flag": 85094,
+          "popup_id": "INTANGEBLE_ID_RECIPE_95"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GENERAL_STORE_MANAGER_DINNER_PARTY_03",
+          "function": "event_likeability_general_store_manager_009",
+          "recipe_unlock_flag": 85005,
+          "popup_id": "INTANGEBLE_ID_RECIPE_06"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1070,
+      "chara_id": "CHARA_ID_OLD_MAN",
+      "script": "event_likeability_old_man",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_OLD_MAN_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_OLD_MAN_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6462,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_OLD_MAN_DINNER_PARTY_01",
+          "function": "event_likeability_old_man_007",
+          "recipe_unlock_flag": 85115,
+          "popup_id": "INTANGEBLE_ID_RECIPE_116"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_OLD_MAN_DINNER_PARTY_02",
+          "function": "event_likeability_old_man_008",
+          "recipe_unlock_flag": 85106,
+          "popup_id": "INTANGEBLE_ID_RECIPE_107"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_OLD_MAN_DINNER_PARTY_03",
+          "function": "event_likeability_old_man_009",
+          "recipe_unlock_flag": 85083,
+          "popup_id": "INTANGEBLE_ID_RECIPE_84"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1080,
+      "chara_id": "CHARA_ID_SECRETARY",
+      "script": "event_likeability_secretary",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_SECRETARY_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_SECRETARY_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6472,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_SECRETARY_DINNER_PARTY_01",
+          "function": "event_likeability_secretary_007",
+          "recipe_unlock_flag": 85107,
+          "popup_id": "INTANGEBLE_ID_RECIPE_108"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_SECRETARY_DINNER_PARTY_02",
+          "function": "event_likeability_secretary_008",
+          "recipe_unlock_flag": 85050,
+          "popup_id": "INTANGEBLE_ID_RECIPE_51"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_SECRETARY_DINNER_PARTY_03",
+          "function": "event_likeability_secretary_009",
+          "recipe_unlock_flag": 85108,
+          "popup_id": "INTANGEBLE_ID_RECIPE_109"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1090,
+      "chara_id": "CHARA_ID_CITY_HALL_STAFF",
+      "script": "event_likeability_city_hall_staff",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_CITY_HALL_STAFF_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_CITY_HALL_STAFF_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6482,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CITY_HALL_STAFF_DINNER_PARTY_01",
+          "function": "event_likeability_city_hall_staff_007",
+          "recipe_unlock_flag": 85071,
+          "popup_id": "INTANGEBLE_ID_RECIPE_72"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CITY_HALL_STAFF_DINNER_PARTY_02",
+          "function": "event_likeability_city_hall_staff_008",
+          "recipe_unlock_flag": 85008,
+          "popup_id": "INTANGEBLE_ID_RECIPE_09"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_CITY_HALL_STAFF_DINNER_PARTY_03",
+          "function": "event_likeability_city_hall_staff_009",
+          "recipe_unlock_flag": 85040,
+          "popup_id": "INTANGEBLE_ID_RECIPE_41"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1100,
+      "chara_id": "CHARA_ID_GIRL",
+      "script": "event_likeability_girl",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_GIRL_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_GIRL_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6492,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GIRL_DINNER_PARTY_01",
+          "function": "event_likeability_girl_007",
+          "recipe_unlock_flag": 85019,
+          "popup_id": "INTANGEBLE_ID_RECIPE_20"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GIRL_DINNER_PARTY_02",
+          "function": "event_likeability_girl_008",
+          "recipe_unlock_flag": 85088,
+          "popup_id": "INTANGEBLE_ID_RECIPE_89"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_GIRL_DINNER_PARTY_03",
+          "function": "event_likeability_girl_009",
+          "recipe_unlock_flag": 85010,
+          "popup_id": "INTANGEBLE_ID_RECIPE_11"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1110,
+      "chara_id": "CHARA_ID_YOUNG_MAN",
+      "script": "event_likeability_young_man",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_YOUNG_MAN_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_YOUNG_MAN_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6502,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_YOUNG_MAN_DINNER_PARTY_01",
+          "function": "event_likeability_young_man_007",
+          "recipe_unlock_flag": 85049,
+          "popup_id": "INTANGEBLE_ID_RECIPE_50"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_YOUNG_MAN_DINNER_PARTY_02",
+          "function": "event_likeability_young_man_008",
+          "recipe_unlock_flag": 85060,
+          "popup_id": "INTANGEBLE_ID_RECIPE_61"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_YOUNG_MAN_DINNER_PARTY_03",
+          "function": "event_likeability_young_man_009",
+          "recipe_unlock_flag": 85112,
+          "popup_id": "INTANGEBLE_ID_RECIPE_113"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1120,
+      "chara_id": "CHARA_ID_BOY",
+      "script": "event_likeability_boy",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_BOY_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_BOY_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6512,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_BOY_DINNER_PARTY_01",
+          "function": "event_likeability_boy_007",
+          "recipe_unlock_flag": 85110,
+          "popup_id": "INTANGEBLE_ID_RECIPE_111"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_BOY_DINNER_PARTY_02",
+          "function": "event_likeability_boy_008",
+          "recipe_unlock_flag": 85064,
+          "popup_id": "INTANGEBLE_ID_RECIPE_65"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_BOY_DINNER_PARTY_03",
+          "function": "event_likeability_boy_009",
+          "recipe_unlock_flag": 85037,
+          "popup_id": "INTANGEBLE_ID_RECIPE_38"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1130,
+      "chara_id": "CHARA_ID_FEMALE_DOCTOR",
+      "script": "event_likeability_female_doctor",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_FEMALE_DOCTOR_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_FEMALE_DOCTOR_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6522,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_FEMALE_DOCTOR_DINNER_PARTY_01",
+          "function": "event_likeability_female_doctor_007",
+          "recipe_unlock_flag": 85111,
+          "popup_id": "INTANGEBLE_ID_RECIPE_112"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_FEMALE_DOCTOR_DINNER_PARTY_02",
+          "function": "event_likeability_female_doctor_008",
+          "recipe_unlock_flag": 85096,
+          "popup_id": "INTANGEBLE_ID_RECIPE_97"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_FEMALE_DOCTOR_DINNER_PARTY_03",
+          "function": "event_likeability_female_doctor_009",
+          "recipe_unlock_flag": 85026,
+          "popup_id": "INTANGEBLE_ID_RECIPE_27"
+        }
+      ]
+    },
+    {
+      "character_numeric_id": 1140,
+      "chara_id": "CHARA_ID_STREET_VENDOR",
+      "script": "event_likeability_street_vendor",
+      "invitation_event_ids": [
+        "EVENT_ID_NPC_LIKEABILITY_STREET_VENDOR_BEFORE_DINNER_PARTY",
+        "EVENT_ID_NPC_LIKEABILITY_STREET_VENDOR_BEFORE_DINNER_PARTY_HORROR_OFF"
+      ],
+      "required_flag": 6532,
+      "dinners": [
+        {
+          "number": 1,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_STREET_VENDOR_DINNER_PARTY_01",
+          "function": "event_likeability_street_vendor_007",
+          "recipe_unlock_flag": 85009,
+          "popup_id": "INTANGEBLE_ID_RECIPE_10"
+        },
+        {
+          "number": 2,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_STREET_VENDOR_DINNER_PARTY_02",
+          "function": "event_likeability_street_vendor_008",
+          "recipe_unlock_flag": 85065,
+          "popup_id": "INTANGEBLE_ID_RECIPE_66"
+        },
+        {
+          "number": 3,
+          "event_id": "EVENT_ID_NPC_LIKEABILITY_STREET_VENDOR_DINNER_PARTY_03",
+          "function": "event_likeability_street_vendor_009",
+          "recipe_unlock_flag": 85063,
+          "popup_id": "INTANGEBLE_ID_RECIPE_64"
+        }
+      ]
+    }
+  ]
+}

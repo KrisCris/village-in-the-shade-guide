@@ -121,6 +121,21 @@ describe('relation groups', () => {
     expect(buildRelationGroups(person,data,'normal').find(g=>g.key==='unlocks')?.rows).toContainEqual(expect.objectContaining({entity:recipe}));
     expect(buildRelationGroups(meal,data,'normal').find(g=>g.key==='unlocks')?.rows).toContainEqual(expect.objectContaining({entity:person}));
   });
+  it('links dinner-invitation recipes to the host in both directions', () => {
+    // Yoh's first dinner teaches Kids' Curry (GAME_FLAG_COOKING_RECIPE_20).
+    const person=entity('CHARA_ID_GIRL','characters',{numeric_id:1100});
+    const recipe=entity('COOKING_ID_020','cooking-recipes',{unlock_flag:85019,output:{item_id:'curry',quantity:1}});
+    const lesson=entity('COOKING_ID_004','cooking-recipes',{unlock_flag:85003});
+    const curry=entity('curry','items');
+    const data=catalog(person,recipe,lesson,curry);
+    const host=buildRelationGroups(recipe,data,'normal').find(g=>g.key==='unlocks')!.rows;
+    expect(host).toEqual([expect.objectContaining({entity:person,chips:['好感度 Lv3 突破后','晚饭时传授食谱'],note:expect.stringContaining('10%')})]);
+    expect(host[0].note).toContain('7:00～16:45');
+    expect(buildRelationGroups(curry,data,'normal').find(g=>g.key==='unlocks')?.rows.map(r=>r.entity.id)).toEqual(['CHARA_ID_GIRL']);
+    const taught=buildRelationGroups(person,data,'normal').find(g=>g.key==='unlocks')!.rows;
+    expect(taught.map(r=>r.entity.id)).toEqual(['COOKING_ID_020']);
+    expect(taught[0].chips).toContain('晚饭时传授食谱');
+  });
   it('shows shop seasons separately from unlock dates', () => {
     const seed=entity('seed','items',{buy_price:80});
     const offer=entity('offer','store-offers',{item_id:'seed',location:'田上杂货店',seasons:['autumn'],conditions:['第二年秋起']});
