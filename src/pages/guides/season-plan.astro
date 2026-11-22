@@ -21,6 +21,8 @@ const seasonTitle=(index:number)=>t('{season}季',{season:seasonNames[index]});
 const weekdays=Array.from({length:7},(_,index)=>weekdayName(index,locale));
 const url=(entity:Entity)=>href(entityUrl(entity));
 const item=(id:string)=>catalog.byId[id];
+/** Which clears ask for a shrine offering: the Nth clear takes the season's first N, and the 4th is the last. */
+const clearTag=(slot:number)=>slot===1?t('每次都要'):slot===4?t('只在第 4 次完成时'):t('第 {n} 次完成起',{n:slot});
 /** How many of one item a set of bundles asks for in total. */
 function share(id:string,rows:PlanBundle[]){return rows.flatMap(r=>r.items).filter(s=>s.item.id===id).reduce((n,s)=>n+s.quantity,0);}
 const list=(parts:string[])=>parts.join(t('、'));
@@ -140,10 +142,10 @@ return <li class:list={['day',{weekend:isWeekend(day),eve:isFestivalEve(plan.sea
 <div class="lists">
 <article class="list-card card">
 <h3>{t('狐狸神社供奉')}</h3>
-<p class="list-note">{t('第 1 章后在深夜出现。没完成过只要第 1 份，之后每完成一次多要一份；交过的供品一直算数。一季最多完成一次。')}</p>
-<ol class="bundles">{plan.shrine.map(row=><li class="bundle">
+<p class="list-note">{t('第 1 章后在深夜出现。一季最多完成一次，第 N 次完成要交本季前 N 份，交过的一直算数；完成 4 次后神社不再出现。所以渔产只在第 4 次完成时要一次，交那一季的。')}</p>
+<ol class="bundles">{plan.shrine.map(row=><li class={`bundle${row.slot===4?' is-last':''}`}>
 <span class="slot" aria-label={t('第 {n} 份',{n:row.slot})}>{row.slot}</span>
-<div class="bundle-body"><a class="bundle-name" href={url(row.entity)}>{row.entity.name.zh_hans}</a>
+<div class="bundle-body"><span class="bundle-head"><a class="bundle-name" href={url(row.entity)}>{row.entity.name.zh_hans}</a><span class="clear-tag">{clearTag(row.slot)}</span></span>
 <ul class="chips">{row.items.map((stack:PlanStack)=><li><a class="chip" href={url(stack.item)}>{stack.item.icon_path&&<img src={withBase(String(stack.item.icon_path))} width="28" height="28" alt="" loading="lazy" />}<span>{stack.item.name.zh_hans}</span><b>×{stack.quantity}</b></a></li>)}</ul></div>
 </li>)}</ol>
 {shrineReward&&<p class="reward-line">{t('每次交齐得到')}{[shrineReward.item,aburaage].filter(Boolean).map(reward=><a class="mini-chip" href={url(reward!)}>{reward!.icon_path&&<img src={withBase(String(reward!.icon_path))} width="22" height="22" alt="" loading="lazy" />}{reward!.name.zh_hans}</a>)}<span set:html={tHtml('油豆腐让活力条 +1 段，详见<a href="/guides/cursed-items/#fox-shrine">狐狸神社</a>。')} /></p>}
@@ -365,6 +367,10 @@ return <li class:list={['day',{weekend:isWeekend(day),eve:isFestivalEve(plan.sea
   .slot{display:grid;place-items:center;flex-shrink:0;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--green-soft);color:var(--green);font-weight:800;font-size:.82rem}
   .bundle-body{flex:1;min-width:0;display:grid;gap:.35rem}
   .bundle-name{font-weight:700;color:var(--ink);text-decoration:none;font-size:.93rem}
+  .bundle-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .55rem}
+  .clear-tag{padding:.05rem .5rem;border-radius:999px;background:var(--paper-deep);color:var(--muted);font-size:.72rem;font-weight:600;line-height:1.5;white-space:nowrap}
+  .bundle.is-last .slot{background:transparent;border:1.5px dashed color-mix(in srgb,var(--gold) 70%,var(--border));color:var(--gold)}
+  .bundle.is-last .clear-tag{background:color-mix(in srgb,var(--gold) 16%,transparent);color:color-mix(in srgb,var(--gold) 75%,var(--ink))}
   .bundle-name:hover{color:var(--green);text-decoration:underline}
   .bundle-reward{display:flex;align-items:center;gap:.4rem;flex-shrink:0;max-width:10.5rem;color:var(--ink);text-decoration:none;font-size:.82rem;line-height:1.25}
   .bundle-reward img{object-fit:contain;flex-shrink:0}
