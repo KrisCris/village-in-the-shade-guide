@@ -16,6 +16,14 @@ describe('daily payload', () => {
     expect(payload.bundles.every((bundle) => bundle.items.length > 0)).toBe(true);
   });
 
+  it('lists the residents who take gifts with their birthday and likes', () => {
+    expect(payload.residents).toHaveLength(14);
+    const boy = payload.residents.find((resident) => resident.id === 1120)!;
+    expect(boy.birthday).toEqual([0, 21]);
+    expect(boy.likes).toContain(numeric.get('ITEM_ID_COOKING_011'));
+    expect(payload.residents.every((resident) => resident.likes.length > 0 && resident.dislikes.length > 0)).toBe(true);
+  });
+
   it('merges quarry floors with the same drops and finds iron where it is richest', () => {
     const bands = quarryBands(numeric);
     expect(bands.every((band, index) => index === 0 || band.from > bands[index - 1].to)).toBe(true);

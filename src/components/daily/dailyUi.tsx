@@ -9,6 +9,7 @@ import { GAME_SEASONS } from '../../lib/saveTime';
 import { lookupName, type SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
 import { activeLocale, tr } from '../../i18n/active';
+import { CALENDAR_ICONS } from '../art/calendarIcons';
 
 /** Cells to mark on the farm map; `trees` counts them as trees rather than field cells. */
 export interface MapTarget { label: string; cells: number[]; unit?: 'trees' }
@@ -26,6 +27,7 @@ const ICONS = {
   close: <path d="M6 6l12 12M18 6 6 18" />,
   swap: <path d="M6.5 8h11l-3-3M17.5 16h-11l3 3" />,
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
+  gift: <path d={CALENDAR_ICONS.gift} />,
   book: <><path d="M3.5 5.8c2.9-1.1 5.7-1 8.5.7 2.8-1.7 5.6-1.8 8.5-.7v12.9c-2.9-1.1-5.7-1-8.5.7-2.8-1.7-5.6-1.8-8.5-.7z" /><path d="M12 6.5v12.9" /></>,
 };
 export type IconName = keyof typeof ICONS;
@@ -122,11 +124,12 @@ export function useNames(names: SaveNameTables) {
   const item = (id: number) => lookupName(names, 'items', String(id)) ?? `#${id}`;
   const crop = (id: number) => lookupName(names, 'crops', String(id)) ?? tr('作物 {id}', { id });
   const animal = (id: number) => ANIMALS.find((entry) => entry.id === id)?.name ?? `#${id}`;
+  const resident = (id: number) => lookupName(names, 'characters', String(id)) ?? `#${id}`;
   const seasons = (list: number[]) => list.map((season) => GAME_SEASONS[season]).join(tr('、'));
   const number = (value: number) => new Intl.NumberFormat(activeLocale(), { maximumFractionDigits: 1 }).format(value);
   // The chestnut tree shares its crop name with the nut.
   const tree = (id: number) => ({ 1000: tr('栗子树'), 1001: tr('柳杉'), 1002: tr('松树'), 1003: tr('槲树'), 1004: tr('桧木') } as Record<number, string>)[id] ?? crop(id);
-  return { item, crop, animal, seasons, number, tree };
+  return { item, crop, animal, resident, seasons, number, tree };
 }
 export type Names = ReturnType<typeof useNames>;
 

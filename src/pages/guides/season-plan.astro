@@ -1,66 +1,419 @@
 ---
 import { withBase } from '../../lib/sitePath';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SeasonNav from '../../components/art/SeasonNav.astro';
-import {getCatalog,entityUrl,inCatalog} from '../../data/repository';
+import {getCatalog,entityUrl} from '../../data/repository';
 import type {Entity} from '../../data/types';
+import {seasonPlans,yearRoundCatalog,laterSeeds,type PlanBundle,type PlanStack} from '../../data/seasonPlan';
+import {festivals,weekday,weekdayName,isWeekend,isFestivalEve,birthdayLabel,DAYS_PER_SEASON,LATE_NIGHT_DAYS,GIFTS,type CalendarFestival} from '../../data/calendar';
+import {SEASON_GLYPHS} from '../../components/art/seasonGlyphs';
+import {CALENDAR_ICONS,type CalendarIconName} from '../../components/art/calendarIcons';
+import rules from '../../../data/sources/game-rules.json';
+import kappa from '../../../data/sources/game-kappa-exchange.json';
+import anomalies from '../../../data/sources/game-anomalies.json';
 import { getI18n } from '../../i18n/server';
 const {t,tHtml,href,locale}=getI18n(Astro.url);
 const catalog=getCatalog(locale);
-// Bundle names and cultivation methods are matched in the source language.
-const source=getCatalog();
-const local=(e:Entity)=>inCatalog(catalog,e);
-const seasons=[['spring',t('春'),t('{season}季',{season:t('春')}),'春'],['summer',t('夏'),t('{season}季',{season:t('夏')}),'夏'],['autumn',t('秋'),t('{season}季',{season:t('秋')}),'秋'],['winter',t('冬'),t('{season}季',{season:t('冬')}),'冬']]; // i18n-ignore — last column matches source bundle names
-const activities=source.entities.filter(e=>e.kind==='activities');
-const item=(id:string)=>catalog.entities.find(e=>e.kind==='items'&&e.id===id);
-const inputs=(e:Entity)=>(e.inputs ?? []) as {item_id:string;quantity:number}[];
-const offers=catalog.entities.filter(e=>e.kind==='store-offers');
-const crops=catalog.entities.filter(e=>e.kind==='crops');
-const mushrooms=source.entities.filter(e=>e.kind==='crops'&&e.cultivation_method==='菌类栽培').map(local); // i18n-ignore
-const seedOffers=(id:string)=>{
- const crop=crops.find(e=>((e.harvest_item_ids ?? []) as string[]).includes(id));
- return crop?offers.filter(e=>((crop.seed_item_ids ?? []) as string[]).includes(String(e.item_id))):[];
+const plans=seasonPlans(catalog);
+const fests=festivals(locale);
+const fair=fests.find(f=>f.key==='FAIR')!;
+const seasonNames=[t('春'),t('夏'),t('秋'),t('冬')];
+const seasonTitle=(index:number)=>t('{season}季',{season:seasonNames[index]});
+const weekdays=Array.from({length:7},(_,index)=>weekdayName(index,locale));
+const url=(entity:Entity)=>href(entityUrl(entity));
+const item=(id:string)=>catalog.byId[id];
+/** How many of one item a set of bundles asks for in total. */
+function share(id:string,rows:PlanBundle[]){return rows.flatMap(r=>r.items).filter(s=>s.item.id===id).reduce((n,s)=>n+s.quantity,0);}
+const list=(parts:string[])=>parts.join(t('、'));
+const talk=rules.constants.NPC_LOVE_ADD_TALK.value;
+const [nightStart,nightEnd]=anomalies.late_night.hours;
+const liked=(person:Entity)=>((person.gift_items??[]) as {item_id:string;preference:number}[]).filter(g=>g.preference===1).map(g=>item(g.item_id)).filter(Boolean) as Entity[];
+const sweetPotato=item('ITEM_ID_CROPS_SWEET_POTATO');
+const aburaage=item('ITEM_ID_CURSED_FOX_ABURAAGE');
+
+type Event={day:number;kind:CalendarIconName|'birthday';title:string;time?:string;notes:string[];person?:Entity;items?:Entity[]};
+const festivalNotes:Record<string,string[]>={
+  SAKURA_VIEWING:[t('第 2 年起才有。大家在广场赏花。')],
+  FESTIVAL:[t('晚上广场摆摊。琪娜娜这天卖彩色小鸡，不卖其他家畜。')],
+  HARVEST:[t('大家在广场烤红薯，游戏日历提醒带一个去。')],
+  NEW_YEARS_EVE:[t('帮忙准备就能拿到年糕。')],
 };
-const shopConditions=(id:string)=>[...new Set(seedOffers(id).flatMap(e=>(e.conditions ?? []) as string[]))].join(t('；'));
+const hours=(festival:CalendarFestival)=>`${festival.start}–${festival.end}`;
+function events(season:number):Event[]{
+  const plan=plans[season];
+  const rows:Event[]=[
+    ...plan.birthdays.map(person=>({day:Number(person.birthday_day),kind:'birthday' as const,title:birthdayLabel(person.name.zh_hans,locale),notes:[],person,items:liked(person)})),
+    ...fests.filter(f=>f.season===season).map(f=>({day:f.day,kind:'festival' as const,title:f.name,time:hours(f),notes:[...festivalNotes[f.key]??[],t('前一晚没有深夜。')],items:f.key==='HARVEST'&&sweetPotato?[sweetPotato]:undefined})),
+    {day:fair.letterDay,kind:'letter',title:t('品评会通知信'),notes:[t('回信时选参加作物、家畜还是马的评鉴。')]},
+    {day:fair.day,kind:'fair',title:t('品评会'),time:hours(fair),notes:[tHtml('按回信选的部门在广场参加，评分方法见<a href="/guides/crop-quality/#fair">作物品评会</a>和<a href="/guides/livestock-plan/#fair">家畜品评会</a>。'),t('前一晚没有深夜。')]},
+    {day:DAYS_PER_SEASON,kind:'end',title:t('本季最后一天'),notes:[t('下一季不能生长的作物在换日时枯萎；季节稻草人 5×5 范围内的不会。')]},
+  ];
+  const order=['birthday','festival','fair','letter','end'];
+  return rows.sort((a,b)=>a.day-b.day||order.indexOf(a.kind)-order.indexOf(b.kind));
+}
+const lateNight=(season:number,day:number)=>LATE_NIGHT_DAYS.includes(day)&&!isFestivalEve(season,day);
+const kappaItem=item(kappa.input_item_id);
+const yearRound=yearRoundCatalog(catalog);
+const later=laterSeeds(catalog);
+const mushrooms=['ITEM_ID_CROPS_SHIMEJI_MUSHROOM','ITEM_ID_CROPS_SHIITAKE_MUSHROOM'].map(item).filter(Boolean) as Entity[];
+const shimeji=catalog.entities.find(e=>e.kind==='crops'&&e.id==='CROPS_ID_SHIMEJI');
+/** Per-season panel data: the dated events, events grouped by day, and items both the shrine and the catalog ask for. */
+const panels=plans.map(plan=>{
+  const agenda=events(plan.season);
+  const byDay=new Map<number,Event[]>();
+  for(const event of agenda)byDay.set(event.day,[...byDay.get(event.day)??[],event]);
+  const sharedItems=[...plan.shared].map(item).filter(Boolean) as Entity[];
+  return {plan,agenda,byDay,sharedItems,shrineReward:plan.shrine[0]?.rewards[0]};
+});
 ---
-<BaseLayout title={t('四季留货与交付规划')}>
+<BaseLayout title={t('四季规划：节日、生日与交付')} description={t('每季 28 天的节日、品评会、村民生日，以及狐狸神社供奉和村长家交付目录要留的东西。')}>
 <div class="season-guide">
-<h1>{t('四季留货与交付规划')}</h1>
-<p><a href={href('/planner/workflow/')}>{t('在生产工作流中安排留货')} →</a> {t('自动生成供奉与交付需求节点，可删除已完成项目，并连接种植或加工产物。')}</p>
-<SeasonNav />
-<nav><a href="#daily">{t('每天怎么安排')}</a></nav>
-<p>{t('先留供奉与交付所需，再出售或加工余量。下列数量直接来自游戏交付表；没有确认年份或截止日期的条目，不视为“第一年必须完成”。')}</p>
-<section id="daily"><h2>{t('每天怎么安排')}</h2><ol>
-<li>{t('先查当前委托截止日与本季生日，准备今天要交的物品；随机委托以存档里的对象和数量为准。')}</li>
-<li>{t('处理田地收获，按下方清单分出供奉、交付和礼物库存。月底播种前查看首次成熟时间，避免只看售价。')}</li>
-<li set:html={tHtml('把剩余作物安排加工；原料已在手时比较“加工增值”，决定种什么时比较“种植到加工收益”。<a href="/planner/">打开收益规划器</a>。')} />
-<li>{t('按缺货清单决定外出目标：山菜优先补本季供品；鱼按季节、时段和钓点安排，不为不出现的鱼空等。')}</li>
-<li>{t('出货前再检查建筑、料理、交付用途。尚未凑齐一组的供品不要混进可出售库存。')}</li>
-</ol></section>
-{seasons.map(([season,,title,sourceName])=>{
-const bundles=activities.filter(e=>e.id.startsWith(`BUNDLE_ID_${season.toUpperCase()}_`) || (e.id.startsWith('BUNDLE_ID_VILLAGE_HEAD_')&&e.name.zh_hans.startsWith(`${sourceName}季`))).map(local); // i18n-ignore
-const residents=catalog.entities.filter(e=>e.kind==='characters'&&e.birthday_season===season).sort((a,b)=>Number(a.birthday_day)-Number(b.birthday_day));
-return <section id={season}><h2>{title}</h2>
-<p><a href={href(`/data/crops/?season=${season}`)}>{t('本季种植')}</a> · <a href={href(`/data/fish/?season=${season}`)}>{t('本季鱼与钓点时段')}</a> · <a href={href(`/guides/fishing-spots/#${season}`)}>{t('本季钓鱼留货清单')}</a></p>
-<h3>{t('生日安排')}</h3><p>{residents.map(e=><a class="birthday" href={href(entityUrl(e))}>{t('{day} 日 · {name}',{day:String(e.birthday_day),name:e.name.zh_hans})}</a>)}</p>
-<h3>{t('本季交付总需求')}</h3>
-<p>{t('以下合计包含本季供奉与交付目录，不含礼物；已完成的组别可以扣除。种子开放较晚的物品要提前看年份，不能默认第一年就能凑齐。')}</p>
-<p set:html={tHtml('狐狸神社不是每季都要 4 份：第几次完成，那一季就只要前几份。合计按 4 份都要算，是最多的情况，规则见<a href="/guides/cursed-items/#fox-shrine">狐狸神社</a>。')} />
-<div class="needs reserves">{[...new Set(bundles.flatMap(e=>inputs(e).map(i=>i.item_id)))].map(id=>{
-const target=item(id);const uses=bundles.filter(e=>inputs(e).some(i=>i.item_id===id));const quantity=uses.flatMap(e=>inputs(e)).filter(i=>i.item_id===id).reduce((n,i)=>n+i.quantity,0);
-return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{uses.map(e=>e.name.zh_hans).join(t('、'))}</small>{shopConditions(id)&&<small>{t('种子：{conditions}',{conditions:shopConditions(id)})}</small>}</span><b>×{quantity}</b></a>;
-})}</div>
-{season==='summer'&&<><p set:html={tHtml('准备做<a href="/guides/night-preparation/#kappa">河童交换</a>时，在上方目录需求之外另留 30 个黄瓜，可以分批交付。奖励按进度为服装、铜镜或剑，不是三个一起领取。')} /><p set:html={tHtml('留一部分毛豆植株进入秋季，种子说明写着入秋枯萎后会变成黄豆。豆芽、毛豆与黄豆是不同收获选择，不能把三阶段产量直接相加。<a href="/data/crops/CROPS_ID_EDAMAME/">查看各阶段产量与用途</a>。')} /></>}
-{season==='autumn'&&<p>{t('菌类也要纳入种植计划：')}{mushrooms.map(e=><a href={href(entityUrl(e))}>{e.name.zh_hans}　</a>)}{t('使用栽培包，秋季生长，可重复收获。花卉要同时检查供奉与村长家交付需求，已完成的项目无需重复预留。')}</p>}
-{bundles.map(e=><article class="card"><h3><a href={href(entityUrl(e))}>{e.name.zh_hans}</a></h3><p>{String(e.location)}</p><div class="needs">{inputs(e).map(input=>{const target=item(input.item_id);return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}</span><b>×{input.quantity}</b></a>;})}</div>{((e.rewards ?? []) as {item_id:string;quantity:number}[]).length>0&&<p>{t('奖励：')}{((e.rewards ?? []) as {item_id:string;quantity:number}[]).map(r=>{const target=item(r.item_id);return target&&<a href={href(entityUrl(target))}>{target.name.zh_hans} ×{r.quantity}　</a>;})}</p>}</article>)}
-</section>})}
-<section><h2>{t('全年保留目标')}</h2><p>{t('建筑材料、加工交付、畜产品与稀有鱼不只属于一个季度。先选自己准备完成的项目，再累计所需数量；不要把所有未接取项目都当成当月硬性任务。')}</p><p set:html={tHtml('<a href="/data/activities/?q=村长">村长家交付目录</a> · <a href="/data/activities/?q=建筑">建筑材料</a> · <a href="/data/characters/">角色喜恶与生日</a>')} /></section>
-<section><h2>{t('第二、三年新增种子')}</h2>{[[t('第二年'), [520,523,526]],[t('第三年'),[521,524]]].map(([year,flags])=>{
- const selected=offers.filter(e=>((e.required_flags ?? []) as number[]).some(f=>(flags as number[]).includes(f)));
- return <article><h3>{String(year)}</h3><div class="needs reserves">{[...new Set(selected.map(e=>String(e.item_id)))].map(id=>{const target=item(id);const conditions=[...new Set(selected.filter(e=>e.item_id===id).flatMap(e=>e.conditions as string[]))];return target&&<a href={href(entityUrl(target))}>{target.icon_path&&<img src={withBase(target.icon_path)} width="48" height="48" alt="" loading="lazy" />}<span>{target.name.zh_hans}<small>{conditions.join(t('；'))}</small></span></a>;})}</div></article>;
-})}</section>
-<details class="sources"><summary>{t('数据来源')}</summary><p>{t('供奉与交付：bundle.dat、bundlegroup.dat；生日：character.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。')}</p></details>
+<h1>{t('四季规划：节日、生日与交付')}</h1>
+<p class="lede">{t('一季 28 天，第 1 天总是星期一。按季节查看节日、品评会、村民生日，以及狐狸神社和村长家交付目录要留的东西。')}</p>
+
+<section id="daily" class="routine" aria-labelledby="daily-title">
+<div class="routine-steps">
+<h2 id="daily-title">{t('每天的安排')}</h2>
+<ol>
+<li><b>{t('7:00 换日后')}</b><span>{t('收获、浇水、喂家畜；取出设备里做好的东西，放进新原料。')}</span></li>
+<li><b>{t('去村长家')}</b><span>{t('交付目录里凑齐的项目当场交掉。0:00 以后进不了村民家，要交就趁早。')}</span></li>
+<li><b>{t('遇到村民')}</b><span>{t('聊一句加 {talk} 点好感。礼物每人每天 {day} 份、每周 {week} 份，周一清零；生日当天送的不占这 {week} 份。',{talk,day:GIFTS.per_day,week:GIFTS.per_week})}</span></li>
+<li><b>{t('出门')}</b><span set:html={tHtml('山菜按季节长出，鱼按季节和时段上钩，矿石去<a href="/guides/quarry/">采石场</a>。钓鱼时间看<a href="/guides/fishing-spots/">钓点指南</a>。')} /></li>
+<li><b>{t('深夜')}</b><span set:html={tHtml('狐狸神社只在深夜（{start}:00–{end}:00）出现。每周有 {min}–{max} 次深夜：每季第 1、15 天和雷雨天一定有，节日前一晚没有，详见<a href="/guides/anomalies/#late-night">深夜规则</a>。',{start:nightStart,end:nightEnd,min:anomalies.late_night.weekly_count[0],max:anomalies.late_night.weekly_count[1]})} /></li>
+<li><b>{t('出货前')}</b><span set:html={tHtml('先留出供奉、交付和礼物要用的，剩下的再卖或加工。加工划不划算看<a href="/planner/">收益规划</a>。')} /></li>
+</ol>
+</div>
+<aside class="planner-cta card">
+<p class="eyebrow">{t('工具 · 读取存档')}</p>
+<h3>{t('让每日规划替你列今天的清单')}</h3>
+<p>{t('选一个存档，每日规划会把上面这些事换成具体待办：今天能交齐哪些供奉和目录、设备里放什么、还缺哪些材料、空地种什么，以及这周谁过生日、你手上有没有对方喜欢的东西。')}</p>
+<a class="button cta-button" href={href('/planner/today/')}>{t('打开每日规划')} →</a>
+<small>{t('存档只在浏览器里读取，不会上传，也不会被修改。')}</small>
+<a class="cta-secondary" href={href('/planner/workflow/')}>{t('在生产工作流中安排留货')} →</a>
+</aside>
+</section>
+
+<section id="seasons" class="seasons" aria-label={t('四季')}>
+<div class="season-tabs" role="tablist" aria-label={t('选择季节')}>
+{plans.map(plan=><a role="tab" id={`tab-${plan.key}`} href={`#${plan.key}`} aria-controls={plan.key} data-season-tab={plan.key}>
+<svg viewBox="-24 -24 48 48" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">{SEASON_GLYPHS[plan.key].map(shape=><path d={shape.d} fill={shape.fill ?? 'none'} stroke={shape.stroke} stroke-width={shape.strokeWidth} transform={shape.transform} />)}</svg>
+<span>{seasonTitle(plan.season)}</span></a>)}
+</div>
+
+{panels.map(({plan,agenda,byDay,sharedItems,shrineReward})=><section id={plan.key} class="season-panel" role="tabpanel" aria-labelledby={`tab-${plan.key}`} data-season-panel={plan.key}>
+<header class="panel-head">
+<h2>{seasonTitle(plan.season)}</h2>
+<nav class="panel-links" aria-label={t('{season}季相关',{season:seasonNames[plan.season]})}>
+<a href={href(`/data/crops/?season=${plan.key}`)}>{t('本季种植')}</a>
+<a href={href(`/data/fish/?season=${plan.key}`)}>{t('本季鱼与钓点时段')}</a>
+<a href={href(`/guides/fishing-spots/#${plan.key}`)}>{t('本季钓鱼留货清单')}</a>
+</nav>
+</header>
+
+<div class="calendar-block">
+<div class="month card" aria-hidden="true">
+<div class="month-head">{weekdays.map((name,index)=><span class:list={[{weekend:index>=5}]}>{name}</span>)}</div>
+<ol class="month-grid">{Array.from({length:DAYS_PER_SEASON},(_,index)=>{
+const day=index+1,list=byDay.get(day)??[];
+const people=list.filter(e=>e.kind==='birthday');
+const marks=list.filter(e=>e.kind!=='birthday');
+return <li class:list={['day',{weekend:isWeekend(day),eve:isFestivalEve(plan.season,day),busy:list.length>0,festive:list.some(e=>e.kind==='festival'||e.kind==='fair')}]} title={list.map(e=>e.title).join(' · ')||undefined}>
+<span class="day-number">{day}</span>
+<span class="day-marks">
+{people.map(e=>e.person?.icon_path&&<img src={withBase(String(e.person.icon_path))} width="22" height="22" alt="" loading="lazy" />)}
+{marks.map(e=><svg class={`mark mark-${e.kind}`} viewBox="0 0 24 24"><path d={CALENDAR_ICONS[e.kind as CalendarIconName]} /></svg>)}
+{lateNight(plan.season,day)&&<span class="moon" />}
+</span>
+</li>;})}</ol>
+<p class="month-legend"><span><i class="key-moon" />{t('一定有深夜')}</span><span><i class="key-eve" />{t('没有深夜')}</span><span><i class="key-monday" />{t('周一礼物次数清零')}</span></p>
+</div>
+<ol class="agenda">{agenda.map(e=><li class={`agenda-item is-${e.kind}`}>
+<span class="agenda-date"><b>{e.day}</b><small>{weekdays[weekday(e.day)]}</small></span>
+<span class="agenda-icon">{e.kind==='birthday'&&e.person?.icon_path?<img src={withBase(String(e.person.icon_path))} width="36" height="36" alt="" loading="lazy" />:<svg viewBox="0 0 24 24" aria-hidden="true"><path d={CALENDAR_ICONS[e.kind as CalendarIconName]} /></svg>}</span>
+<div class="agenda-body">
+<p class="agenda-title">{e.person?<a href={url(e.person)}>{e.title}</a>:e.title}{e.time&&<span class="agenda-time">{e.time}</span>}</p>
+{e.notes.map(note=><p class="agenda-note" set:html={note} />)}
+{e.items&&e.items.length>0&&<p class="agenda-items">{e.kind==='birthday'&&<span class="agenda-label">{t('喜欢')}</span>}{e.items.map(gift=><a class="mini-chip" href={url(gift)}>{gift.icon_path&&<img src={withBase(String(gift.icon_path))} width="22" height="22" alt="" loading="lazy" />}{gift.name.zh_hans}</a>)}</p>}
+</div>
+</li>)}</ol>
+</div>
+
+<div class="lists">
+<article class="list-card card">
+<h3>{t('狐狸神社供奉')}</h3>
+<p class="list-note">{t('第 1 章后在深夜出现。没完成过只要第 1 份，之后每完成一次多要一份；交过的供品一直算数。一季最多完成一次。')}</p>
+<ol class="bundles">{plan.shrine.map(row=><li class="bundle">
+<span class="slot" aria-label={t('第 {n} 份',{n:row.slot})}>{row.slot}</span>
+<div class="bundle-body"><a class="bundle-name" href={url(row.entity)}>{row.entity.name.zh_hans}</a>
+<ul class="chips">{row.items.map((stack:PlanStack)=><li><a class="chip" href={url(stack.item)}>{stack.item.icon_path&&<img src={withBase(String(stack.item.icon_path))} width="28" height="28" alt="" loading="lazy" />}<span>{stack.item.name.zh_hans}</span><b>×{stack.quantity}</b></a></li>)}</ul></div>
+</li>)}</ol>
+{shrineReward&&<p class="reward-line">{t('每次交齐得到')}{[shrineReward.item,aburaage].filter(Boolean).map(reward=><a class="mini-chip" href={url(reward!)}>{reward!.icon_path&&<img src={withBase(String(reward!.icon_path))} width="22" height="22" alt="" loading="lazy" />}{reward!.name.zh_hans}</a>)}<span set:html={tHtml('油豆腐让活力条 +1 段，详见<a href="/guides/cursed-items/#fox-shrine">狐狸神社</a>。')} /></p>}
+</article>
+<article class="list-card card">
+<h3>{t('村长家交付目录')}</h3>
+<p class="list-note">{t('在村长家交，交齐一项拿到右边的奖励。')}</p>
+<ol class="bundles">{plan.catalog.map(row=><li class="bundle">
+<div class="bundle-body"><a class="bundle-name" href={url(row.entity)}>{row.entity.name.zh_hans}</a>
+<ul class="chips">{row.items.map((stack:PlanStack)=><li><a class="chip" href={url(stack.item)}>{stack.item.icon_path&&<img src={withBase(String(stack.item.icon_path))} width="28" height="28" alt="" loading="lazy" />}<span>{stack.item.name.zh_hans}</span><b>×{stack.quantity}</b></a></li>)}</ul></div>
+{row.rewards.map(reward=><a class="bundle-reward" href={url(reward.item)} title={t('奖励')}>{reward.item.icon_path&&<img src={withBase(String(reward.item.icon_path))} width="32" height="32" alt="" loading="lazy" />}<span><small>{t('奖励')}</small>{reward.item.name.zh_hans}</span></a>)}
+</li>)}</ol>
+{sharedItems.length>0&&<p class="list-foot">{t('神社也要这些，同一季两边都交的话合计留：')}{sharedItems.map(e=><a class="mini-chip" href={url(e)}>{e.icon_path&&<img src={withBase(String(e.icon_path))} width="22" height="22" alt="" loading="lazy" />}{e.name.zh_hans}<b>×{share(e.id,plan.shrine)+share(e.id,plan.catalog)}</b></a>)}</p>}
+</article>
+</div>
+
+{(plan.seedNotes.length>0||plan.season===1||plan.season===2)&&<div class="notes">
+{plan.seedNotes.length>0&&<article class="note-card card">
+<h3>{t('种子要满足条件才上架')}</h3>
+<p class="list-note">{t('第 1 年{season}季一开始还买不到下面这些种子，按上架条件分组。',{season:seasonNames[plan.season]})}</p>
+<ul class="seed-notes">{plan.seedNotes.map(note=><li><span class="condition">{note.condition}</span><span class="note-items">{note.items.map(e=><a class="mini-chip" href={url(e)}>{e.icon_path&&<img src={withBase(String(e.icon_path))} width="22" height="22" alt="" loading="lazy" />}{e.name.zh_hans}</a>)}</span></li>)}</ul>
+</article>}
+{plan.season===1&&<article class="note-card card">
+<h3>{t('夏季另外要留的')}</h3>
+<ul class="tips">
+{kappaItem&&<li set:html={tHtml('想做<a href="/guides/night-preparation/#kappa">河童交换</a>的话，供奉之外再留 {count} 个{item}，可以分几次交。奖励按进度给，不会一次全给。',{count:kappa.input_quantity,item:kappaItem.name.zh_hans})} />}
+<li set:html={tHtml('毛豆留几株过季：种子说明写着入秋枯萎后变成黄豆。豆芽、毛豆和黄豆是三种收法，产量不能相加，<a href="/data/crops/CROPS_ID_EDAMAME/">各阶段产量</a>。')} />
+</ul>
+</article>}
+{plan.season===2&&<article class="note-card card">
+<h3>{t('秋季的菌类')}</h3>
+<ul class="tips">
+<li>{t('{items}的栽培包在秋季品评会第二天才上架，只在秋季生长，{shimeji}要 {days} 天，所以第 1 年秋季来不及。供奉的秋季蔬菜和目录的秋季蔬菜按第 2 年秋季安排。',{items:list(mushrooms.map(e=>e.name.zh_hans)),shimeji:mushrooms[0]?.name.zh_hans??'',days:Number(shimeji?.growth_days??0)})}</li>
+<li set:html={tHtml('种下后可以反复收获，详见<a href="/guides/cultivation-plan/">种植规划</a>。')} />
+</ul>
+</article>}
+</div>}
+</section>)}
+</section>
+
+<section id="year-round"><h2>{t('不分季节的交付目录')}</h2>
+<p>{t('这些项目哪个季节都能交。加工品、畜产品和稀有鱼要提前攒，先挑自己准备做的，不必全部当成本月任务。')}</p>
+<div class="year-round">{yearRound.map(page=><article class="list-card card"><h3>{page.page}</h3><ol class="bundles">{page.bundles.map(row=><li class="bundle">
+<div class="bundle-body"><a class="bundle-name" href={url(row.entity)}>{row.entity.name.zh_hans}</a>
+<ul class="chips">{row.items.map((stack:PlanStack)=><li><a class="chip" href={url(stack.item)}>{stack.item.icon_path&&<img src={withBase(String(stack.item.icon_path))} width="28" height="28" alt="" loading="lazy" />}<span>{stack.item.name.zh_hans}</span><b>×{stack.quantity}</b></a></li>)}</ul></div>
+{row.rewards.map(reward=><a class="bundle-reward" href={url(reward.item)} title={t('奖励')}>{reward.item.icon_path&&<img src={withBase(String(reward.item.icon_path))} width="32" height="32" alt="" loading="lazy" />}<span><small>{t('奖励')}</small>{reward.item.name.zh_hans}</span></a>)}
+</li>)}</ol></article>)}</div>
+<p set:html={tHtml('<a href="/data/activities/?q=村长">村长家交付目录</a> · <a href="/data/activities/?q=建筑">建筑材料</a> · <a href="/guides/residents/">村民喜好与生日</a>')} />
+</section>
+
+<section id="new-seeds"><h2>{t('第 2、3 年新增的种子')}</h2>
+<p>{t('下面的种子到了对应年份的季节才在店里上架，第 1 年用不到它们的交付项目可以先放着。')}</p>
+<div class="later-seeds">{later.map(group=><div class="later-row"><span class="later-when">{t('第 {year} 年{season}季起',{year:group.year,season:seasonNames[group.season]})}</span><span class="note-items">{group.seeds.map(e=><a class="mini-chip" href={url(e)}>{e.icon_path&&<img src={withBase(String(e.icon_path))} width="22" height="22" alt="" loading="lazy" />}{e.name.zh_hans}</a>)}</span></div>)}</div>
+</section>
+
+<details class="sources"><summary>{t('数据来源')}</summary>
+<p>{t('节日、品评会和通知信的日期：event.dat 的 *_SEND_LETTER、*_MAP_PREPARATION、*_NOTICE_POPUP 与开始、结束时间；名称取自游戏日历的 STR_ID_CALENDAR_*。没有深夜的日子：common.lub 的 isBeforeFestival；第 1、15 天的深夜：event_check_late_night.lub。星期：gamedefine.dat 的 WEEK_* 与 village.exe 0x140106930。')}</p>
+<p>{t('送礼次数：village.exe 0x14029ac30 读写村民的 present（当天）和 wkpres（本周），生日当天不计入 wkpres，也不受每周上限限制。供奉与交付：bundle.dat、bundlegroup.dat；生日与喜好：character.dat；种子上架条件：storesales.dat；毛豆转化：item.dat、cropsharvest.dat。安排顺序是本站建议，不是游戏强制流程。')}</p>
+</details>
 </div>
 </BaseLayout>
-<style>@media(min-width:801px){.season-guide{padding-right:64px}}</style>
-<style>nav{display:flex;flex-wrap:wrap;gap:1rem}section{margin:2rem 0;scroll-margin-top:90px}li{margin:.7rem 0;line-height:1.8}.birthday{display:inline-block;margin-right:1rem;margin-bottom:.6rem}.card{padding:1rem;margin:.8rem 0}.card h3{margin:0}.card p{color:var(--muted)}.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}.needs a{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none}.needs img{object-fit:contain;flex-shrink:0}.needs b{color:var(--vermilion);margin-left:auto}.needs small{display:block;font-size:.8rem;color:var(--muted);margin-top:.25rem}.reserves{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}.reserves a{background:var(--paper-raised);padding:.7rem;border-radius:8px}.reserves a:hover{background:var(--border)}</style>
+
+<script>
+  import {onPageMount} from '../../lib/pageLifecycle';
+  const dispose=onPageMount(()=>{
+    const bar=document.querySelector<HTMLElement>('.season-tabs');
+    if(!bar)return;
+    const tabs=[...bar.querySelectorAll<HTMLAnchorElement>('[role="tab"]')];
+    const panels=tabs.map(tab=>document.getElementById(tab.getAttribute('aria-controls')!)!);
+    const header=document.querySelector<HTMLElement>('.site-header');
+    const keys=tabs.map(tab=>tab.dataset.seasonTab!);
+    const select=(index:number,focus=false)=>{
+      tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});
+      if(focus)tabs[index].focus();
+    };
+    const fromHash=()=>keys.indexOf(location.hash.slice(1));
+    // Open the season named in the link, else the site's current season palette.
+    const initial=fromHash()>=0?fromHash():Math.max(0,keys.indexOf(document.documentElement.dataset.season??''));
+    bar.dataset.ready='';
+    select(initial);
+    // Hiding the other panels moves the linked one; bring it back into view.
+    if(fromHash()>=0)requestAnimationFrame(()=>document.getElementById('seasons')!.scrollIntoView({behavior:'instant'}));
+    const measure=()=>bar.parentElement!.style.setProperty('--season-header',`${header?.getBoundingClientRect().height??64}px`);
+    const observer=header?new ResizeObserver(measure):null;
+    if(header)observer!.observe(header);
+    measure();
+    const click=(event:MouseEvent)=>{
+      const tab=(event.target as Element).closest<HTMLAnchorElement>('[role="tab"]');
+      if(!tab||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;
+      event.preventDefault();
+      const index=tabs.indexOf(tab);
+      select(index);
+      history.replaceState(history.state,'',`#${keys[index]}`);
+      if(bar.getBoundingClientRect().top<=parseFloat(getComputedStyle(bar).top)+1)document.getElementById('seasons')!.scrollIntoView({behavior:'instant'});
+    };
+    const key=(event:KeyboardEvent)=>{
+      const index=tabs.indexOf(document.activeElement as HTMLAnchorElement);
+      if(index<0)return;
+      const next={ArrowRight:index+1,ArrowLeft:index-1,Home:0,End:tabs.length-1}[event.key];
+      if(next===undefined)return;
+      event.preventDefault();
+      const target=(next+tabs.length)%tabs.length;
+      select(target,true);
+      history.replaceState(history.state,'',`#${keys[target]}`);
+    };
+    const hash=()=>{const index=fromHash();if(index>=0)select(index);};
+    bar.addEventListener('click',click);bar.addEventListener('keydown',key);window.addEventListener('hashchange',hash);
+    return()=>{observer?.disconnect();bar.removeEventListener('click',click);bar.removeEventListener('keydown',key);window.removeEventListener('hashchange',hash);};
+  });
+  if(import.meta.hot)import.meta.hot.dispose(dispose);
+</script>
+
+<style>
+  .season-guide{--chip-bg:color-mix(in srgb,var(--paper-raised) 88%,var(--paper-deep));max-width:1180px}
+  .season-guide :is(p,li){line-height:1.65}
+  .lede{margin-bottom:1.5rem}
+  section{margin:2rem 0;scroll-margin-top:110px}
+
+  /* Daily routine and the planner hand-off */
+  .routine{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:1.25rem;align-items:start}
+  .routine h2{margin-top:0}
+  .routine ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem;counter-reset:step}
+  .routine li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.75rem;padding:.55rem 0;border-bottom:1px dashed color-mix(in srgb,var(--border) 70%,transparent);counter-increment:step}
+  .routine li:last-child{border-bottom:0}
+  .routine li b{color:var(--vermilion);font-size:.9rem;font-weight:750;padding-top:.05rem}
+  .routine li span{color:var(--ink)}
+  .planner-cta{padding:1.15rem 1.2rem 1.1rem;border-top:3px solid var(--green)}
+  .planner-cta .eyebrow{margin:0 0 .3rem}
+  .planner-cta h3{margin:0 0 .5rem;font-size:1.15rem}
+  .planner-cta p{margin:0 0 .9rem;color:var(--muted);font-size:.93rem}
+  .cta-button{display:inline-flex;align-items:center;justify-content:center;width:100%;background:var(--green);border-color:var(--green);color:var(--paper-raised);font-weight:700;text-decoration:none}
+  .cta-button:hover{background:color-mix(in srgb,var(--green) 85%,var(--ink));color:var(--paper-raised)}
+  .planner-cta small{display:block;margin-top:.55rem;color:var(--muted);font-size:.78rem}
+  .cta-secondary{display:block;margin-top:.8rem;padding-top:.75rem;border-top:1px dashed var(--border);font-size:.88rem}
+
+  /* Season tabs */
+  .seasons{margin-top:2.5rem}
+  .season-tabs{position:sticky;top:var(--season-header,64px);z-index:20;display:flex;gap:.35rem;width:fit-content;max-width:100%;margin:0 0 1rem;padding:.3rem;border:1px solid var(--border);border-radius:999px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);overflow-x:auto;scrollbar-width:none}
+  .season-tabs:not([data-ready]){position:static}
+  .season-tabs a{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:.3rem .95rem .3rem .45rem;border-radius:999px;color:var(--ink);text-decoration:none;font-weight:650;white-space:nowrap;transition:background-color .2s,box-shadow .2s}
+  .season-tabs svg{width:28px;height:28px;flex-shrink:0}
+  .season-tabs a:hover{background:var(--green-soft)}
+  .season-tabs a[aria-selected="true"]{background:var(--green-soft);box-shadow:inset 0 0 0 1.5px var(--green);color:var(--green)}
+  .season-tabs a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  .season-panel{margin:0 0 2.5rem;scroll-margin-top:140px}
+  .season-panel:focus-visible{outline:none}
+  .panel-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 1.2rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+  .panel-head h2{border:0!important;margin:.2rem 0 .5rem;padding:0!important}
+  .panel-head h2::after{display:none!important}
+  .panel-links{display:flex;flex-wrap:wrap;gap:.25rem 1rem;font-size:.9rem;padding-bottom:.55rem}
+
+  /* Month grid and agenda */
+  .calendar-block{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:1.25rem;align-items:start}
+  .month{position:sticky;top:calc(var(--season-header,64px) + 4.25rem);padding:.8rem .8rem .65rem}
+  .month-head,.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+  .month-head span{text-align:center;font-size:.74rem;font-weight:700;color:var(--muted);padding-bottom:.25rem}
+  .month-head span:first-child{color:var(--green)}
+  .month-head .weekend{color:var(--vermilion)}
+  .month-grid{list-style:none;margin:0;padding:0}
+  .day{position:relative;display:flex;flex-direction:column;gap:2px;aspect-ratio:1/1.05;min-width:0;padding:3px 4px;border-radius:6px;background:color-mix(in srgb,var(--paper) 60%,transparent);line-height:1!important}
+  .day:nth-child(7n+1){box-shadow:inset 2px 0 0 color-mix(in srgb,var(--green) 55%,transparent)}
+  .day.weekend .day-number{color:var(--vermilion)}
+  .day.busy{background:color-mix(in srgb,var(--green-soft) 55%,var(--paper-raised))}
+  .day.festive{background:color-mix(in srgb,var(--gold) 18%,var(--paper-raised));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 45%,transparent)}
+  .day.eve{background-image:repeating-linear-gradient(135deg,transparent 0 5px,color-mix(in srgb,var(--muted) 12%,transparent) 5px 6px)}
+  .day-number{font-size:.78rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+  .day-marks{display:flex;flex-wrap:wrap;align-items:center;gap:1px;margin-top:auto}
+  .day-marks img{width:20px;height:20px;border-radius:50%;object-fit:cover;background:var(--paper-raised);box-shadow:0 0 0 1px var(--border)}
+  .mark{width:16px;height:16px;fill:none;stroke:var(--green);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .mark-festival,.mark-fair{stroke:var(--gold)}
+  .mark-end{stroke:var(--muted)}
+  .moon{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.75}
+  .month-legend{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:.6rem 0 0;font-size:.74rem;color:var(--muted)}
+  .month-legend span{display:inline-flex;align-items:center;gap:.35rem}
+  .month-legend i{display:inline-block;width:12px;height:12px;border-radius:3px}
+  .key-moon{background:radial-gradient(circle,var(--ink) 0 3px,transparent 3.5px);opacity:.75}
+  .key-eve{background:repeating-linear-gradient(135deg,transparent 0 3px,color-mix(in srgb,var(--muted) 45%,transparent) 3px 4px);box-shadow:inset 0 0 0 1px var(--border)}
+  .key-monday{box-shadow:inset 3px 0 0 var(--green),inset 0 0 0 1px var(--border);background:color-mix(in srgb,var(--paper) 60%,transparent)}
+
+  .agenda{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+  .agenda-item{display:grid;grid-template-columns:2.6rem 2.5rem minmax(0,1fr);gap:.7rem;align-items:start;padding:.55rem .4rem;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+  .agenda-item:last-child{border-bottom:0}
+  .agenda-date{display:flex;flex-direction:column;align-items:center;line-height:1.1}
+  .agenda-date b{font-size:1.25rem;font-family:var(--font-serif);font-variant-numeric:tabular-nums}
+  .agenda-date small{font-size:.72rem;color:var(--muted)}
+  .agenda-icon{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--green-soft)}
+  .agenda-icon img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+  .agenda-icon svg{width:22px;height:22px;fill:none;stroke:var(--green);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .is-festival .agenda-icon,.is-fair .agenda-icon{background:color-mix(in srgb,var(--gold) 20%,var(--paper-raised))}
+  .is-festival .agenda-icon svg,.is-fair .agenda-icon svg{stroke:var(--gold)}
+  .is-end .agenda-icon{background:color-mix(in srgb,var(--muted) 15%,var(--paper-raised))}
+  .is-end .agenda-icon svg{stroke:var(--muted)}
+  .agenda-body p{margin:0}
+  .agenda-title{font-weight:700;display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem}
+  .agenda-title a{color:var(--ink)}
+  .agenda-time{font-weight:600;font-size:.82rem;color:var(--gold);font-variant-numeric:tabular-nums}
+  .agenda-note{color:var(--muted);font-size:.88rem}
+  .agenda-items{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;margin-top:.35rem!important}
+  .agenda-label{font-size:.78rem;color:var(--muted);margin-right:.15rem}
+
+  /* Chips */
+  .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
+  .chips li{line-height:1!important}
+  .chip,.mini-chip{display:inline-flex;align-items:center;gap:.35rem;border:1px solid color-mix(in srgb,var(--border) 75%,transparent);border-radius:999px;background:var(--chip-bg);color:var(--ink);text-decoration:none;line-height:1.2;transition:border-color .2s,background-color .2s}
+  .chip{padding:.15rem .6rem .15rem .2rem;font-size:.9rem}
+  .chip img,.mini-chip img{object-fit:contain;flex-shrink:0}
+  .chip b{color:var(--vermilion);font-weight:750;font-variant-numeric:tabular-nums;margin-left:.1rem}
+  .mini-chip{padding:.1rem .5rem .1rem .15rem;font-size:.82rem}
+  .mini-chip b{color:var(--vermilion);font-weight:750;font-variant-numeric:tabular-nums}
+  .chip:hover,.mini-chip:hover{border-color:var(--green);background:var(--green-soft)}
+
+  /* Delivery lists */
+  .lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.25rem}
+  .list-card{padding:1rem 1.1rem}
+  .list-card h3{margin:0 0 .25rem;font-size:1.08rem}
+  .list-note{margin:0 0 .6rem;color:var(--muted);font-size:.86rem}
+  .bundles{list-style:none;margin:0;padding:0}
+  .bundle{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-top:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+  .slot{display:grid;place-items:center;flex-shrink:0;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--green-soft);color:var(--green);font-weight:800;font-size:.82rem}
+  .bundle-body{flex:1;min-width:0;display:grid;gap:.35rem}
+  .bundle-name{font-weight:700;color:var(--ink);text-decoration:none;font-size:.93rem}
+  .bundle-name:hover{color:var(--green);text-decoration:underline}
+  .bundle-reward{display:flex;align-items:center;gap:.4rem;flex-shrink:0;max-width:10.5rem;color:var(--ink);text-decoration:none;font-size:.82rem;line-height:1.25}
+  .bundle-reward img{object-fit:contain;flex-shrink:0}
+  .bundle-reward small{display:block;font-size:.7rem;color:var(--muted)}
+  .bundle-reward:hover span{color:var(--green);text-decoration:underline}
+  .reward-line{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;margin:.6rem 0 0;padding-top:.6rem;border-top:1px solid color-mix(in srgb,var(--border) 55%,transparent);font-size:.86rem;color:var(--muted)}
+  .list-foot{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;margin:.6rem 0 0;padding-top:.6rem;border-top:1px solid color-mix(in srgb,var(--border) 55%,transparent);font-size:.86rem;color:var(--muted)}
+
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:1rem;margin-top:1rem}
+  .note-card{padding:.95rem 1.1rem;border-left:3px solid var(--gold)}
+  .note-card h3{margin:0 0 .5rem;font-size:1rem}
+  .seed-notes,.tips{margin:0;padding:0;list-style:none;display:grid;gap:.55rem}
+  .tips{padding-left:1.1rem;list-style:disc}
+  .tips li{font-size:.9rem}
+  .seed-notes li{display:grid;gap:.3rem}
+  .condition{font-size:.84rem;font-weight:700;color:var(--gold)}
+  .note-items{display:flex;flex-wrap:wrap;gap:.3rem}
+
+  .year-round{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:1rem;margin:1rem 0}
+  .later-seeds{display:grid;gap:.6rem}
+  .later-row{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:.8rem;align-items:start;padding:.6rem 0;border-top:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+  .later-when{font-weight:700;font-size:.9rem;padding-top:.15rem}
+
+  @media(max-width:1100px){
+    .lists{grid-template-columns:minmax(0,1fr)}
+  }
+  @media(max-width:900px){
+    .routine{grid-template-columns:minmax(0,1fr)}
+    .planner-cta{position:static}
+    .calendar-block{grid-template-columns:minmax(0,1fr)}
+    .month{position:static;max-width:440px;width:100%}
+  }
+  @media(max-width:640px){
+    .routine li{grid-template-columns:minmax(0,1fr);gap:.15rem}
+    .season-tabs{width:100%;gap:.2rem;border-radius:14px}
+    .season-tabs a{flex:1 1 0;justify-content:center;min-width:0;padding:.3rem .25rem;gap:.25rem;font-size:.85rem}
+    .season-tabs svg{width:20px;height:20px}
+    .panel-links{font-size:.85rem;gap:.2rem .8rem}
+    .month{max-width:none;padding:.6rem .5rem .55rem}
+    .day{padding:2px 3px}
+    .day-marks img{width:16px;height:16px}
+    .mark{width:13px;height:13px}
+    .agenda-item{grid-template-columns:2.2rem 2.2rem minmax(0,1fr);gap:.55rem;padding-inline:0}
+    .agenda-icon{width:2.2rem;height:2.2rem}
+    .agenda-icon img{width:32px;height:32px}
+    .bundle{flex-wrap:wrap}
+    .bundle-reward{max-width:none;margin-left:2.35rem}
+    .list-card .bundle:not(:has(.slot)) .bundle-reward{margin-left:0}
+    .later-row{grid-template-columns:minmax(0,1fr);gap:.35rem}
+    .chip{font-size:.85rem}
+  }
+</style>

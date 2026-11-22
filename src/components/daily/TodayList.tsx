@@ -4,6 +4,8 @@ import type { SaveNameTables } from '../../lib/saveNames';
 import SaveIcon from '../save/SaveIcon';
 import { finishTime, gradedName, Icon, MapButton, Meter, Section, sourceTarget, sourceText, type MapTarget, type Names } from './dailyUi';
 import { tr } from '../../i18n/active';
+import { GIFTS } from '../../data/calendar';
+import { CalendarGlyph, festivalNotes } from './VillagersSection';
 
 type Tone = 'urgent' | 'deliver' | 'craft' | 'gather' | 'field' | 'routine';
 interface Row { key: string; tag: string; tone: Tone; icon?: ReactNode; title: string; details: string[]; target?: MapTarget | null; section: string; later?: boolean }
@@ -15,13 +17,17 @@ export function actionKey(action: DailyAction): string {
     case 'fetch': return `fetch:${action.trip}${action.later ? ':later' : ''}`;
     case 'gather': return `gather:${action.lines[0].material.itemId}`;
     case 'animal': return `animal:${action.idea.species}`;
+    case 'event': return `event:${action.event.festival.key}`;
+    case 'birthday': return `birthday:${action.resident.resident.id}`;
     default: return action.kind;
   }
 }
 
 /** Today's to-do list as a checklist: one line per job, with where it happens and a way to tick it off. Jobs that wait for the morning come last. */
-export default function TodayList({ actions, names, name, now, night, done, onToggle, onMap }: {
+export default function TodayList({ actions, names, name, now, night, done, onToggle, onMap, fairEntry = null }: {
   actions: DailyAction[];
+  /** The Evaluation division the save entered. */
+  fairEntry?: number | null;
   /** The save is after midnight, before the 07:00 turnover. */
   night: boolean;
   names: SaveNameTables;
@@ -47,6 +53,26 @@ export default function TodayList({ actions, names, name, now, night, done, onTo
           target: { label: tr('明天会枯萎的作物'), cells },
           title: tr('今天收完 {count} 格作物', { count: cells.length }),
           details: [tr('{crops}明天就会枯萎', { crops: list(action.groups.map((group) => name.crop(group.crop))) })],
+        };
+      }
+      case 'event': {
+        const { festival } = action.event;
+        return {
+          key, tag: festival.key === 'FAIR' ? tr('品评会') : tr('节日'), tone: 'deliver', icon: <CalendarGlyph name={action.event.kind} size={28} />, section: 'daily-villagers', later: action.later,
+          title: tr('{festival} {start}–{end}', { festival: festival.name, start: festival.start, end: festival.end }),
+          details: festivalNotes(festival, fairEntry),
+        };
+      }
+      case 'birthday': {
+        const { resident: entry } = action, person = name.resident(entry.resident.id);
+        return {
+          key, tag: tr('生日'), tone: 'deliver', icon: <SaveIcon names={names} kind="characters" value={String(entry.resident.id)} size={36} />, section: 'daily-villagers', later: action.later,
+          title: tr('今天是{name}的生日', { name: person }),
+          details: [
+            entry.liked.length ? tr('手上有对方喜欢的：{items}', { items: list(entry.liked.map(([itemId, count]) => `${name.item(itemId)} × ${count}`)) })
+              : tr('喜欢：{items}', { items: list(entry.resident.likes.slice(0, 4).map(name.item)) }),
+            tr('生日当天送的不占每周 {week} 份。', { week: GIFTS.per_week }),
+          ],
         };
       }
       case 'deliver': return {

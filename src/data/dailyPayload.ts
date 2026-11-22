@@ -66,6 +66,9 @@ export interface DailySeed { seed: number; days: number; items: number[]; sales:
  */
 export interface DailyQuality { count: number; crop: number; ranks: [copper: number, silver: number, gold: number]; pick?: number; season?: number }
 
+/** A resident who takes gifts (character.dat): the birthday and the items they like and dislike, as numeric item IDs. */
+export interface DailyResident { id: number; birthday: [season: number, day: number] | null; likes: number[]; dislikes: number[] }
+
 export interface DailyPayload {
   prices: Record<string, number>;
   bundles: DailyBundleSpec[];
@@ -85,6 +88,8 @@ export interface DailyPayload {
   /** Adult livestock (livestock.dat id) → its house type (0 barn, 1 coop, 2 stable) and the items it produces. */
   animals: Array<{ species: number; house: number; products: number[] }>;
   houses: HouseOrder[];
+  /** Residents who take gifts, in character.dat order. */
+  residents: DailyResident[];
 }
 
 const SEASONS = ['SPRING', 'SUMMER', 'AUTUMN', 'WINTER'];
@@ -152,8 +157,20 @@ export function dailyPayload(catalog: Catalog): DailyPayload {
     for (const [itemId] of stacks(reward.rewards)) if (certificate) hunts[itemId] = [...new Set([...hunts[itemId] ?? [], certificate])];
   }
 
-  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, quality: qualityCounts(catalog, numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks) };
+  return { prices, bundles, crafts, fish, fishing: fishingSpots(catalog, numeric), wild, quarry: quarryBands(numeric), seeds, hunts, quality: qualityCounts(catalog, numeric), animals: livestockProducts(), houses: houseOrders(catalog, stacks), residents: residents(catalog, numeric) };
 }
+
+/** Story characters (the ghost girl, the mother) list no gifts and are left out. */
+function residents(catalog: Catalog, numeric: ReadonlyMap<string, number>): DailyResident[] {
+  return catalog.entities.flatMap((entity): DailyResident[] => {
+    const gifts = (entity.gift_items ?? []) as Array<{ item_id: string; preference: number }>;
+    if (entity.kind !== 'characters' || typeof entity.numeric_id !== 'number' || !gifts.length) return [];
+    const season = seasonIndexOf(entity.birthday_season), day = Number(entity.birthday_day);
+    const items = (preference: number) => gifts.filter((gift) => gift.preference === preference && numeric.has(gift.item_id)).map((gift) => numeric.get(gift.item_id)!);
+    return [{ id: entity.numeric_id, birthday: season >= 0 && day > 0 ? [season, day] : null, likes: items(1), dislikes: items(-1) }];
+  }).sort((a, b) => a.id - b.id);
+}
+const seasonIndexOf = (season: unknown) => ['spring', 'summer', 'autumn', 'winter'].indexOf(String(season));
 
 function qualityCounts(catalog: Catalog, numeric: ReadonlyMap<string, number>): Record<string, DailyQuality> {
   const crops = catalog.entities.filter((entity) => entity.kind === 'crops' && typeof entity.numeric_id === 'number');

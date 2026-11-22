@@ -13,6 +13,8 @@ import { plantingIdeas } from './dailyPlanting';
 import { planProcessing } from './dailyProcessing';
 import { harvestGrades } from './dailyQuality';
 import { itemSources, periodsLeft, type ItemSource, type SourceContext, type SourceProcess } from './dailySources';
+import { villagerPlan } from './dailyVillagers';
+import type { CalendarFestival } from '../data/calendar';
 
 /** Item categories the processing plan treats as produce. */
 const PRODUCE = new Set(['ITEM_CATEGORY_CROPS', 'ITEM_CATEGORY_FRUIT', 'ITEM_CATEGORY_FLOWER', 'ITEM_CATEGORY_WILD_VEGETABLE', 'ITEM_CATEGORY_LIVESTOCK_PRODUCT']);
@@ -52,6 +54,8 @@ export function dailyPlan(input: {
   settings: { choices: Record<string, number> };
   /** Empty cells in the farm area. */
   vacant: number;
+  /** Festivals and the Evaluation, named in the page's language. */
+  festivals?: CalendarFestival[];
 }) {
   const { snapshot, payload, unlocked, settings } = input;
   const rows = ripening(snapshot, DAILY_CROPS);
@@ -113,6 +117,9 @@ export function dailyPlan(input: {
     fishing: payload.fishing, registered: new Set(snapshot.encyclopedia), hidden: input.hidden, needs,
     context: { ...context, held: free, processes: SOURCE_PROCESSES.filter((_, index) => families.has(SOURCE_FAMILIES[index])) },
   });
-  const actions = dailyActions({ digest: input.digest, deliveries, processing, materials, planting, vacant: input.vacant, animals: livestock.ideas, collect });
-  return { deliveries, processing, sources, materials, planting, livestock, collect, actions };
+  const villagers = villagerPlan({
+    date: snapshot.date, weather: snapshot.weather, lateNights: snapshot.lateNights, residents: payload.residents ?? [], villagers: snapshot.villagers, held: snapshot.held, festivals: input.festivals ?? [],
+  });
+  const actions = dailyActions({ digest: input.digest, deliveries, processing, materials, planting, vacant: input.vacant, animals: livestock.ideas, collect, villagers });
+  return { deliveries, processing, sources, materials, planting, livestock, collect, villagers, actions };
 }

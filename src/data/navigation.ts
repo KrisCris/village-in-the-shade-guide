@@ -36,7 +36,7 @@ export const patchGuide: GuideLink = {title: msg('1.30 更新：生日、播种�
 // related-guide links so none of them can drop one.
 export const guideGroups: Array<{id: string; label: string; guides: GuideLink[]}> = [
   {id: 'farming', label: msg('农务与生产'), guides: [
-    {title: msg('四季留货与交付'), label: msg('四季留货规划'), description: msg('每季供奉和交付目录要留多少货'), href: '/guides/season-plan/', icon: 'CROPS'},
+    {title: msg('四季规划：节日、生日与交付'), label: msg('四季日历与留货'), description: msg('每季的节日和生日，以及供奉和交付目录要留的东西'), href: '/guides/season-plan/', icon: 'CROPS'},
     {title: msg('种植加工收益排行'), description: msg('按每天收益比较作物和加工品'), href: '/planner/', icon: 'PROCESSED_PRODUCT'},
     {title: msg('播种、跨季与菌类'), label: msg('播种与菌类'), description: msg('每季种什么，毛豆、稻米和果树怎么安排'), href: '/guides/cultivation-plan/', icon: 'SEEDING'},
     {title: msg('作物品质、品评会与品牌'), label: msg('品质与品牌'), description: msg('收多少个出金★，怎样拿到品牌作物和畜产品'), href: '/guides/crop-quality/', icon: 'ITEM_ID_FERTILIZER_HIGH_GRADE'},

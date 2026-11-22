@@ -1,0 +1,202 @@
+{
+  "source": "Steam build 25640656: event.dat, string.dat, gamedefine.dat, logtext.dat; scripts common.lub (isBeforeFestival), event_check_late_night.lub; village.exe 0x140106930 (weekday), 0x14029ac30 (gift limits)",
+  "days_per_season": 28,
+  "week": {
+    "first_day_weekday": 0,
+    "weekday_names": [
+      {
+        "ja": "月",
+        "en": "Mon",
+        "fr": "Lu.",
+        "es": "Lunes",
+        "zh-TW": "一",
+        "ko": "월",
+        "zh-CN": "一"
+      },
+      {
+        "ja": "火",
+        "en": "Tue",
+        "fr": "Ma.",
+        "es": "Martes",
+        "zh-TW": "二",
+        "ko": "화",
+        "zh-CN": "二"
+      },
+      {
+        "ja": "水",
+        "en": "Wed",
+        "fr": "Me.",
+        "es": "Miércoles",
+        "zh-TW": "三",
+        "ko": "수",
+        "zh-CN": "三"
+      },
+      {
+        "ja": "木",
+        "en": "Thu",
+        "fr": "Je.",
+        "es": "Jueves",
+        "zh-TW": "四",
+        "ko": "목",
+        "zh-CN": "四"
+      },
+      {
+        "ja": "金",
+        "en": "Fri",
+        "fr": "Ve.",
+        "es": "Viernes",
+        "zh-TW": "五",
+        "ko": "금",
+        "zh-CN": "五"
+      },
+      {
+        "ja": "土",
+        "en": "Sat",
+        "fr": "Sa.",
+        "es": "Sábado",
+        "zh-TW": "六",
+        "ko": "토",
+        "zh-CN": "六"
+      },
+      {
+        "ja": "日",
+        "en": "Sun",
+        "fr": "Di.",
+        "es": "Domingo",
+        "zh-TW": "日",
+        "ko": "일",
+        "zh-CN": "日"
+      }
+    ]
+  },
+  "birthday_label": {
+    "ja": "<value 1>の誕生日",
+    "en": "<value 1>'s Birthday",
+    "fr": "Anniversaire de <value 1>",
+    "es": "Cumpleaños de <value 1>",
+    "zh-TW": "<value 1>的生日",
+    "ko": "<value 1>의 생일",
+    "zh-CN": "<value 1>的生日"
+  },
+  "festivals": [
+    {
+      "key": "SAKURA_VIEWING",
+      "season": "spring",
+      "day": 12,
+      "letter_day": 4,
+      "from_year": 2,
+      "start": "10:00",
+      "end": "19:00",
+      "names": {
+        "ja": "お花見",
+        "en": "Cherry Blossom Festival",
+        "fr": "Festival des cerisiers en fleur",
+        "es": "Festival de cerezos en flor",
+        "zh-TW": "賞花",
+        "ko": "꽃놀이",
+        "zh-CN": "赏花"
+      }
+    },
+    {
+      "key": "FESTIVAL",
+      "season": "summer",
+      "day": 15,
+      "letter_day": 7,
+      "from_year": 1,
+      "start": "16:00",
+      "end": "20:00",
+      "names": {
+        "ja": "縁日",
+        "en": "Summer Festival",
+        "fr": "Jour de fête",
+        "es": "Festival",
+        "zh-TW": "廟會日",
+        "ko": "노점 축제",
+        "zh-CN": "庙会日"
+      }
+    },
+    {
+      "key": "HARVEST",
+      "season": "autumn",
+      "day": 23,
+      "letter_day": 15,
+      "from_year": 1,
+      "start": "10:00",
+      "end": "19:00",
+      "names": {
+        "ja": "収穫祭",
+        "en": "Harvest Festival",
+        "fr": "Festival des récoltes",
+        "es": "Festival de la cosecha",
+        "zh-TW": "收穫祭典",
+        "ko": "수확제",
+        "zh-CN": "收获祭典"
+      }
+    },
+    {
+      "key": "NEW_YEARS_EVE",
+      "season": "winter",
+      "day": 28,
+      "letter_day": 20,
+      "from_year": 1,
+      "start": "20:00",
+      "end": "22:59",
+      "names": {
+        "ja": "年末祭",
+        "en": "New Year's Festival",
+        "fr": "Festival de fin d’année",
+        "es": "Fin de año",
+        "zh-TW": "年終祭典",
+        "ko": "연말 축제",
+        "zh-CN": "年终祭典"
+      }
+    }
+  ],
+  "fair": {
+    "day": 27,
+    "letter_day": 19,
+    "start": "10:00",
+    "end": "16:00",
+    "names": {
+      "ja": "品評会",
+      "en": "Evaluation Day",
+      "fr": "Concours",
+      "es": "Competición",
+      "zh-TW": "評鑑會",
+      "ko": "품평회",
+      "zh-CN": "评鉴会"
+    }
+  },
+  "eves": {
+    "every_season": [
+      26
+    ],
+    "spring": [
+      11
+    ],
+    "summer": [
+      14
+    ],
+    "autumn": [
+      22
+    ],
+    "winter": [
+      27
+    ]
+  },
+  "late_night_days": [
+    1,
+    15
+  ],
+  "gifts": {
+    "per_day": 1,
+    "per_week": 2,
+    "birthday_outside_weekly": true,
+    "week_resets": "monday",
+    "save_values": {
+      "today": "present",
+      "week": "wkpres",
+      "talked": "talk"
+    }
+  }
+}

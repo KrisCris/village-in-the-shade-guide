@@ -15,6 +15,9 @@ describe('Traditional Chinese conversion', () => {
   it('applies the hand-written vocabulary', () => {
     expect(toTraditional('姜')).toBe('薑');
     expect(toTraditional('计划')).toBe('計畫');
+    // OpenCC reads 天后 and 球后 as titles (Queen of Heaven, female sports star).
+    expect(toTraditional('3 天后到账')).toBe('3 天後到帳');
+    expect(toTraditional('遇到煤炭球后')).toBe('遇到煤炭球後');
   });
 
   it('works without any terms', () => {
