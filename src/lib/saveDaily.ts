@@ -11,6 +11,7 @@ import { UNLOCKS } from './saveDeliveries';
 import { flagEnabled, gameValue, readEncyclopedia } from './saveProgress';
 import { shrineLevel } from './saveShrine';
 import { animalHouses, animalResidents } from './saveAnimals';
+import { fairDayEntry } from './saveFair';
 import { tr } from '../i18n/active';
 
 /**
@@ -56,6 +57,12 @@ export interface DailyScarecrow {
   /** Farm cells in its effect range (5×5 around the cell it stands on). */
   cells: number[];
 }
+/**
+ * A resident's friendship as the save keeps it: affection in `loveRate_`, and in the status map
+ * `talk` (talked today), `present` (gifts today) and `wkpres` (gifts this week, cleared on Mondays).
+ * village.exe 0x14029ac30 reads and writes these when a gift is given.
+ */
+export interface DailyVillager { id: number; love: number; talked: boolean; giftsToday: number; giftsWeek: number }
 export interface DailySnapshot {
   /** In-game seconds since year 1, spring 1, 07:00. */
   seconds: number;
@@ -83,6 +90,11 @@ export interface DailySnapshot {
   harvested: Record<number, number>;
   /** Count items whose crop has a brand name (brandCropsNameMap_): every harvest of it is 品牌. */
   brands: number[];
+  villagers: DailyVillager[];
+  /** Late nights happen: chapter 1 is over (GAME_FLAG_STORY_01_END). */
+  lateNights: boolean;
+  /** The Evaluation division the save has entered (0 crops, 1 livestock, 2 horses), once the reply is in. */
+  fairEntry: number | null;
 }
 
 const DAY = 86_400;
@@ -152,6 +164,20 @@ export function farmableCells(doc: SerDocument, ids: number[]): number[] {
   const footprints = draftObjects(doc, {}).filter((object) => (object.spec || object.blocksPlacement) && !object.parent).map(objectFootprint);
   return sceneCells(FARM_SCENE).filter((cell) => wanted.has(cell.id) && cell.mask & 3 && areaAvailable(doc, cell.area) &&
     !footprints.some((polygons) => polygons.some((polygon) => containsPoint(polygon, cell)))).map((cell) => cell.id);
+}
+
+/** Every resident in npcStatusList_, story characters included; the plan keeps the ones that take gifts. */
+export function readVillagers(doc: SerDocument): DailyVillager[] {
+  const list = doc.resolve('npcStatusList_');
+  return (list ? doc.children(list) : []).flatMap((pointer) => {
+    const id = doc.resolve('p/pData_/dataID', pointer), love = doc.resolve('p/loveRate_/this->value_', pointer);
+    if (!id) return [];
+    const status = doc.resolve('p/statusValueMap_', pointer);
+    return [{
+      id: Number(readSigned(doc, id)), love: love ? Number(readSigned(doc, love)) : 0, talked: mapValue(doc, status, 'talk') > 0,
+      giftsToday: mapValue(doc, status, 'present'), giftsWeek: mapValue(doc, status, 'wkpres'),
+    }];
+  });
 }
 
 const SEASON_CODES = ['SPRING', 'SUMMER', 'AUTUMN', 'WINTER'];
@@ -241,6 +267,9 @@ export function dailySnapshot(doc: SerDocument): DailySnapshot {
     encyclopedia: [...readEncyclopedia(doc)].map(Number),
     harvested: Object.fromEntries(mapPairs(doc, 'pHarvestStatus_/p/nowValue_').map(([key, value]) => [Number(readSigned(doc, key)), Number(readSigned(doc, value))])),
     brands: mapPairs(doc, 'brandCropsNameMap_').map(([key]) => Number(readSigned(doc, key))),
+    villagers: readVillagers(doc),
+    lateNights: flagEnabled(doc, STORY_01_END),
+    fairEntry: fairDayEntry(doc) ?? null,
   };
 }
 

@@ -6,6 +6,7 @@ import type { MaterialLine } from './dailyMaterials';
 import type { PlantingIdea } from './dailyPlanting';
 import type { BuildLine, MachineDay, ProcessingPlan } from './dailyProcessing';
 import type { ItemSource } from './dailySources';
+import type { ResidentDay, VillagerPlan, WeekEvent } from './dailyVillagers';
 
 /**
  * Today's to-do list, most pressing first: what is lost tonight, deliveries
@@ -19,6 +20,10 @@ import type { ItemSource } from './dailySources';
  */
 export type DailyAction =
   | { kind: 'wither'; groups: StopGroup[] }
+  /** A festival or the Evaluation today. */
+  | { kind: 'event'; event: Extract<WeekEvent, { kind: 'festival' | 'fair' }>; later?: boolean }
+  /** A resident's birthday with no gift given yet. */
+  | { kind: 'birthday'; resident: ResidentDay; later?: boolean }
   | { kind: 'deliver'; plans: DeliveryPlan[]; later?: boolean }
   /** A fishing or foraging trip that brings in everything some deliveries still miss. */
   | { kind: 'fetch'; trip: 'fish' | 'wild'; items: Array<[itemId: number, count: number]>; plans: DeliveryPlan[]; later?: boolean }
@@ -51,11 +56,18 @@ export function dailyActions(input: {
   vacant: number;
   animals: AnimalIdea[];
   collect?: CollectPlan;
+  villagers?: VillagerPlan;
 }): DailyAction[] {
   const { digest, deliveries, processing } = input;
   const night = digest.hoursToTurnover > 0;
   const actions: DailyAction[] = [];
   if (digest.seasonEnd.witherTomorrow.length) actions.push({ kind: 'wither', groups: digest.seasonEnd.witherTomorrow });
+  // Festivals open at 10:00 and residents stay home after midnight, so a night save keeps both for the morning.
+  const events = (input.villagers?.week ?? []).filter((event): event is Extract<WeekEvent, { kind: 'festival' | 'fair' }> => event.offset === 0 && (event.kind === 'festival' || event.kind === 'fair'))
+    .map((event): DailyAction => ({ kind: 'event', event, ...(night ? { later: true } : {}) }));
+  const birthdays = (input.villagers?.residents ?? []).filter((entry) => entry.birthdayIn === 0 && entry.giftsLeft > 0)
+    .map((resident): DailyAction => ({ kind: 'birthday', resident, ...(night ? { later: true } : {}) }));
+  if (!night) actions.push(...events, ...birthdays);
   // The catalog is handed in at the village head's house, which cannot be entered after midnight.
   const indoors = (plan: DeliveryPlan) => night && plan.spec.list === 'catalog';
   const handIn = deliveries.ready.filter((plan) => !indoors(plan)), morning = deliveries.ready.filter(indoors);
@@ -104,6 +116,7 @@ export function dailyActions(input: {
   const urgent = new Set(digest.seasonEnd.witherTomorrow.flatMap((group) => group.cells));
   const harvest = digest.harvest.flatMap((group) => group.cells).filter((cell) => !urgent.has(cell));
   if (harvest.length || digest.chores.water.length || digest.chores.hungry) actions.push({ kind: 'routine', harvest, water: digest.chores.water, hungry: digest.chores.hungry });
+  if (night) actions.push(...events, ...birthdays);
   if (morning.length) actions.push({ kind: 'deliver', plans: morning, later: true });
   actions.push(...[...trips.values()].filter((trip) => trip.later));
   return actions;

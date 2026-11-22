@@ -24,7 +24,7 @@ function planFor(name: string, vacant: number) {
     itemCategory: (itemId) => categories.get(itemId), hidden, settings: { choices: {} }, vacant,
   });
 }
-const ORDER = ['wither', 'deliver', 'fetch', 'machines', 'build', 'gather', 'plant', 'animal', 'collect', 'routine'];
+const ORDER = ['wither', 'event', 'birthday', 'deliver', 'fetch', 'machines', 'build', 'gather', 'plant', 'animal', 'collect', 'routine'];
 
 // save.004 is winter 2 of year 1: 446 farm cells learned, 129 of them empty.
 describe.skipIf(!hasPrivateSaveFixtures)('daily plan on the winter 2 fixture save', () => {

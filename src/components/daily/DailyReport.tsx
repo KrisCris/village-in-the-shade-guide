@@ -15,6 +15,8 @@ import BuildSection from './BuildSection';
 import CollectSection from './CollectSection';
 import PlantingSection from './PlantingSection';
 import FarmSection from './FarmSection';
+import VillagersSection from './VillagersSection';
+import { festivals } from '../../data/calendar';
 import { activeLocale, tr } from '../../i18n/active';
 
 const FarmAreaMap = lazy(() => import('./FarmAreaMap'));
@@ -110,9 +112,9 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
   const vacant = land.tilled + land.plain;
   const hidden = useMemo(() => new Set((names.encyclopediaHidden ?? []).map(Number)), [names]);
   const plan = useMemo(() => data && dailyPlan({
-    snapshot, digest, payload: data.payload, crops: data.crops, unlocked, itemCategory: (itemId) => names.itemCategories?.[itemId], hidden, settings, vacant,
+    snapshot, digest, payload: data.payload, crops: data.crops, unlocked, itemCategory: (itemId) => names.itemCategories?.[itemId], hidden, settings, vacant, festivals: festivals(activeLocale()),
   }), [data, snapshot, digest, unlocked, names, hidden, settings, vacant]);
-  const sections = ['daily-today', 'daily-deliveries', 'daily-collect', 'daily-machines', 'daily-build', 'daily-land', 'daily-farm'];
+  const sections = ['daily-today', 'daily-villagers', 'daily-deliveries', 'daily-collect', 'daily-machines', 'daily-build', 'daily-land', 'daily-farm'];
   const active = useActiveSection(sections, Boolean(plan));
   const navList = useRef<HTMLUListElement>(null);
   // On a phone the menu scrolls sideways; keep the highlighted part in view.
@@ -138,8 +140,14 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
     const handIn = night ? deliveries.ready.filter((entry) => entry.spec.list !== 'catalog') : deliveries.ready, waiting = deliveries.ready.length - handIn.length;
     const roomy = plan.livestock.ideas.filter((idea) => idea.room > 0).length;
     const { collect } = plan, caught = new Set(collect.spots.flatMap((spot) => spot.catches.map((entry) => entry.itemId))).size;
+    const { villagers } = plan, birthdays = villagers.week.flatMap((event) => event.kind === 'birthday' ? [event] : []);
+    const giftsOpen = villagers.residents.filter((entry) => entry.giftsLeft > 0).length;
+    const birthdayToday = villagers.residents.some((entry) => entry.birthdayIn === 0 && entry.giftsLeft > 0);
     tiles.push(
       { key: 'today', id: 'daily-today', icon: 'today', label: tr('今日待办'), value: tasks.length - ticked, caption: tasks.length ? tr('已完成 {done} / {total} 项', { done: ticked, total: tasks.length }) : tr('今天没有要紧的事。'), tone: tasks.length && ticked === tasks.length ? 'done' : undefined },
+      { key: 'villagers', id: 'daily-villagers', icon: 'gift', label: tr('7 天内的生日'), value: birthdays.length,
+        caption: birthdays.length ? birthdays.slice(0, 2).map((event) => tr('{name} · {when}', { name: name.resident(event.resident), when: event.offset === 0 ? tr('今天') : event.offset === 1 ? tr('明天') : tr('{days} 天后', { days: event.offset }) })).join(tr('、'))
+          : tr('今天还能收礼的有 {count} 位', { count: giftsOpen }), tone: birthdayToday ? 'alert' : undefined },
       { key: 'deliver', id: 'daily-deliveries', icon: 'deliver', label: tr('今天可以交'), value: handIn.length, caption: waiting ? tr('另有 {count} 项 7:00 后能交', { count: waiting }) : tr('已完成 {done} / {total} 项', { done: deliveries.done, total: deliveries.total }), tone: handIn.length ? 'alert' : undefined },
       { key: 'collect', id: 'daily-collect', icon: 'book', label: tr('今日可收集'), value: caught + collect.lines.length,
         caption: caught + collect.lines.length ? tr('钓鱼 {fish} 种 · 其他 {other} 种', { fish: caught, other: collect.lines.length }) : tr('今天拿得到的都已登记') },
@@ -149,7 +157,7 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
     );
   }
   const navLabel: Record<string, string> = {
-    'daily-today': tr('待办'), 'daily-deliveries': tr('交付'), 'daily-collect': tr('收集'), 'daily-machines': tr('设备'), 'daily-build': tr('加造'), 'daily-land': tr('空地和家畜'), 'daily-farm': tr('农场概况'),
+    'daily-today': tr('待办'), 'daily-villagers': tr('村民与生日'), 'daily-deliveries': tr('交付'), 'daily-collect': tr('收集'), 'daily-machines': tr('设备'), 'daily-build': tr('加造'), 'daily-land': tr('空地和家畜'), 'daily-farm': tr('农场概况'),
   };
 
   return <div className="daily-report" style={{ '--daily-top': `${headerHeight}px` } as CSSProperties}>
@@ -189,7 +197,8 @@ export default function DailyReport({ doc, snapshot, names, area, storageFailed,
           <button type="button" className="daily-nav-map" onClick={() => showOnMap(null)}><Icon name="map" size={18} />{tr('地图')}</button>
         </nav>
 
-        <TodayList actions={plan.actions} names={names} name={name} now={snapshot.seconds} night={night} done={done} onToggle={toggle} onMap={showOnMap} />
+        <TodayList actions={plan.actions} names={names} name={name} now={snapshot.seconds} night={night} done={done} onToggle={toggle} onMap={showOnMap} fairEntry={snapshot.fairEntry} />
+        <VillagersSection plan={plan.villagers} season={date.season} fairEntry={snapshot.fairEntry} night={night} names={names} name={name} />
         <DeliverySection deliveries={plan.deliveries} names={names} name={name} night={night} onMap={showOnMap} />
         <CollectSection plan={plan.collect} names={names} name={name} onMap={showOnMap} />
         <ProcessingSection plan={plan.processing} now={snapshot.seconds} names={names} name={name}

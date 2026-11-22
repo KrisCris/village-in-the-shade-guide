@@ -142,3 +142,16 @@ describe.skipIf(!hasPrivateSaveFixtures)('daily view on the fixture saves', () =
     expect(brands.every((id) => counts.has(id))).toBe(true);
   });
 });
+
+describe.skipIf(!hasPrivateSaveFixtures)('residents in the fixture saves', () => {
+  it('reads affection and the day’s talk and gift counts for every resident', () => {
+    const { snapshot } = readDailySave(new Uint8Array(readFileSync('tests/gamesave/save.004')), 'save.004');
+    const ids = snapshot.villagers.map((villager) => villager.id);
+    expect(ids).toEqual(expect.arrayContaining([1010, 1020, 1030, 1040, 1050, 1060, 1070, 1080, 1090, 1100, 1110, 1120, 1130, 1140]));
+    expect(snapshot.villagers.every((villager) => villager.love >= 0 && villager.love <= 2100)).toBe(true);
+    expect(snapshot.villagers.some((villager) => villager.love > 0)).toBe(true);
+    // A 07:00 save is the start of a day: nobody has been talked to or given anything yet.
+    expect(snapshot.villagers.every((villager) => !villager.talked && villager.giftsToday === 0)).toBe(true);
+    expect(snapshot.lateNights).toBe(true);
+  });
+});
